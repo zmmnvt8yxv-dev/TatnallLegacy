@@ -141,14 +141,26 @@ function aggregateMember(owner, seasons){
 
 // ===== Metrics helpers (blowouts + draft aggregation) =====
 // biggest blowout only
-function biggestBlowoutsFromMatchups(matchups, limit = 1) {
+function biggestBlowoutsFromMatchups(matchups, limit = 3) {
   const rows = (matchups||[]).map(m => {
     const h = Number(m.home_score||0), a = Number(m.away_score||0);
     const margin = Math.abs(h - a);
     const winner = h > a ? m.home_team : (a > h ? m.away_team : null);
     const loser  = h > a ? m.away_team : (a > h ? m.home_team : null);
-    return { week: m.week, winner, loser, margin, home_team: m.home_team, away_team: m.away_team, home_score: h, away_score: a };
-  }).filter(r => r.margin > 0);
+    return {
+      week: m.week,
+      winner,
+      loser,
+      margin,
+      home_team: m.home_team,
+      away_team: m.away_team,
+      home_score: h,
+      away_score: a
+    };
+  })
+  // exclude ties, and any matchup where either side has 0 points
+  .filter(r => r.margin > 0 && r.home_score > 0 && r.away_score > 0);
+
   rows.sort((a,b)=> b.margin - a.margin);
   return rows.slice(0, limit);
 }
