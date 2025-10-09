@@ -21,3 +21,17 @@ tbody tr:hover { background:#0b1322; }
 footer { color:var(--muted); text-align:center; padding:30px 0 50px; }
 .hidden { display:none !important; }
 .badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); color:var(--muted); }
+/* Tabs */
+header { position: sticky; top: 0; z-index: 50; background: #0b1220; }
+.tabs {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin: .5rem 0 1rem;
+}
+.tab {
+  display: inline-block; padding: .35rem .65rem; border-radius: .5rem;
+  text-decoration: none; font-weight: 600; border: 1px solid #2b3955;
+  color: #cbd5e1; background: #0f172a;
+}
+.tab:hover { background: #17223a; }
+.tab.active { color: white; border-color: #3b82f6; box-shadow: 0 0 0 1px #3b82f6 inset; }
+html { scroll-behavior: smooth; }
+section.panel { scroll-margin-top: 84px; } /* offsets sticky header when jumping */
