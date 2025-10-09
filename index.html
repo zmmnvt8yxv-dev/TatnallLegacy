@@ -11,29 +11,22 @@
   <header>
     <h1>Tatnall League Legacy</h1>
 
-    <!-- TABS -->
     <nav class="tabs" aria-label="Sections">
-  <a href="#summary"      class="tab" data-target="#summary">Summary</a>
-  <a href="#teams"        class="tab" data-target="#teams">Teams</a>
-  <a href="#matchups"     class="tab" data-target="#matchups">Matchups</a>
-  <a href="#transactions" class="tab" data-target="#transactions">Transactions</a>
-  <a href="#draft"        class="tab" data-target="#draft">Draft</a>
-  <a href="#members"      class="tab" data-target="#members">Members</a>
-  <a href="#mostDrafted"  class="tab" data-target="#mostDrafted">Most Drafted</a>
-</nav>
+      <a href="#summary"      class="tab" data-target="#summary">Summary</a>
+      <a href="#teams"        class="tab" data-target="#teams">Teams</a>
+      <a href="#matchups"     class="tab" data-target="#matchups">Matchups</a>
+      <a href="#transactions" class="tab" data-target="#transactions">Transactions</a>
+      <a href="#draft"        class="tab" data-target="#draft">Draft</a>
+      <a href="#members"      class="tab" data-target="#members">Members</a>
+      <a href="#mostDrafted"  class="tab" data-target="#mostDrafted">Most Drafted</a>
+    </nav>
 
     <div class="controls">
       <label for="seasonSelect">Season:</label>
       <select id="seasonSelect" aria-label="Season"></select>
     </div>
   </header>
-<section id="mostDrafted" class="panel" aria-labelledby="mostdrafted-title">
-  <h2 id="mostdrafted-title">Most Drafted Players (Across Seasons)</h2>
-  <div class="controls row">
-    <input id="mdSearch" type="search" placeholder="Filter by player…" aria-label="Filter most-drafted players" />
-  </div>
-  <div class="tablewrap" id="mostDraftedWrap"></div>
-</section>
+
   <main id="content">
     <section id="summary" class="panel" aria-labelledby="summary-title">
       <h2 id="summary-title">Season Summary</h2>
@@ -79,6 +72,15 @@
       </div>
       <div id="memberSummary" class="grid-4"></div>
       <div class="tablewrap" id="memberTableWrap" style="display:none;"></div>
+    </section>
+
+    <!-- LAST SECTION -->
+    <section id="mostDrafted" class="panel" aria-labelledby="mostdrafted-title">
+      <h2 id="mostdrafted-title">Most Drafted Players (Across Seasons)</h2>
+      <div class="controls row">
+        <input id="mdSearch" type="search" placeholder="Filter by player…" aria-label="Filter most-drafted players" />
+      </div>
+      <div class="tablewrap" id="mostDraftedWrap"></div>
     </section>
   </main>
 
