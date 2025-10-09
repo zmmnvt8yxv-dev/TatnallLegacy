@@ -29,7 +29,7 @@ function attachSort(ths, tbl){ ths.forEach((th,i)=> th.addEventListener("click",
 
 // ---------- Owner normalization (aliases -> canonical) ----------
 const OWNER_ALIASES_RAW = {
-  "espn92085473": "Edward Saad",
+  "espn92085473": "Roy Lee",
   "edward3864": "Edward Saad",
   "phillyphilly709": "Edward Saad",
 
