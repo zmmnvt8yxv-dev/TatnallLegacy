@@ -53,15 +53,17 @@
       <div class="tablewrap" id="draftWrap"></div>
     </section>
 
-    <!-- Moved inside <main> so it renders with the rest of the content -->
-    <section id="members" class="panel" aria-labelledby="members-title">
-      <h2 id="members-title">Member Summary (All Years)</h2>
-      <div class="controls row">
-        <label for="memberSelect">Member:</label>
-        <select id="memberSelect" aria-label="Member"></select>
-      </div>
-      <div id="memberSummary" class="grid-4"></div>
-    </section>
+   <section id="members" class="panel" aria-labelledby="members-title">
+  <h2 id="members-title">Member Summary (All Years)</h2>
+  <div class="controls row">
+    <label for="memberSelect">Member:</label>
+    <select id="memberSelect" aria-label="Member"></select>
+  </div>
+  <!-- Single-member stats -->
+  <div id="memberSummary" class="grid-4"></div>
+  <!-- All-members ranked table -->
+  <div class="tablewrap" id="memberTableWrap" style="display:none;"></div>
+</section>
   </main>
 
   <footer>
