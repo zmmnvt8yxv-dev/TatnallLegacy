@@ -1,0 +1,7 @@
+{
+  "name": "tatnall-legacy",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": { "pg": "^8.11.5" }
+}
