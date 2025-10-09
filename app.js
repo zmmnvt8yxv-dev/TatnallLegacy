@@ -239,7 +239,7 @@ function renderSummary(year, data){
 const blows = biggestBlowoutsFromMatchups(matchups, 1);
 if (blows.length){
   const b = blows[0];
-  stats.push(["Biggest Blowout",
+  stats.push(["Biggest Ass-Whooping",
     `W${b.week}: ${b.winner} over ${b.loser} by ${fmt(b.margin)} (${fmt(b.home_score)}–${b.away_score})`
   ]);
 }
