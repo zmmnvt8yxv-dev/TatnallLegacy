@@ -1,63 +1,67 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <title>Tatnall League Legacy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="./" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header>
-  <h1>Tatnall League Legacy</h1>
-  <div class="controls">
-    <label for="seasonSelect">Season:</label>
-    <select id="seasonSelect"></select>
-  </div>
-</header>
-
-<main id="content">
-  <section id="summary" class="panel">
-    <h2>Season Summary</h2>
-    <div id="summaryStats" class="grid-4"></div>
-  </section>
-
-  <section id="teams" class="panel">
-    <h2>Teams & Standings</h2>
-    <div class="tablewrap" id="teamsWrap"></div>
-  </section>
-
-  <section id="matchups" class="panel">
-    <h2>Matchups</h2>
-    <div class="controls row">
-      <label>Week:
-        <select id="weekFilter"></select>
-      </label>
-      <input id="matchupSearch" type="search" placeholder="Filter by team..."/>
+  <header>
+    <h1>Tatnall League Legacy</h1>
+    <div class="controls">
+      <label for="seasonSelect">Season:</label>
+      <select id="seasonSelect" aria-label="Season"></select>
     </div>
-    <div class="tablewrap" id="matchupsWrap"></div>
-  </section>
+  </header>
 
-  <section id="transactions" class="panel">
-    <h2>Transactions</h2>
-    <div class="controls row">
-      <input id="txnSearch" type="search" placeholder="Filter by team/player/type..."/>
-    </div>
-    <div class="tablewrap" id="txnsWrap"></div>
-  </section>
+  <main id="content">
+    <section id="summary" class="panel" aria-labelledby="summary-title">
+      <h2 id="summary-title">Season Summary</h2>
+      <div id="summaryStats" class="grid-4"></div>
+    </section>
 
-  <section id="draft" class="panel">
-    <h2>Draft Results</h2>
-    <div class="controls row">
-      <input id="draftSearch" type="search" placeholder="Filter by player/team..."/>
-    </div>
-    <div class="tablewrap" id="draftWrap"></div>
-  </section>
-</main>
+    <section id="teams" class="panel" aria-labelledby="teams-title">
+      <h2 id="teams-title">Teams & Standings</h2>
+      <div class="tablewrap" id="teamsWrap"></div>
+    </section>
 
-<footer>
-  <small>Built from ESPN data via espn_api. Local static UI.</small>
-</footer>
+    <section id="matchups" class="panel" aria-labelledby="matchups-title">
+      <h2 id="matchups-title">Matchups</h2>
+      <div class="controls row">
+        <label for="weekFilter">Week:</label>
+        <select id="weekFilter" aria-label="Week filter"></select>
+        <input id="matchupSearch" type="search" placeholder="Filter by team…" aria-label="Filter matchups" />
+      </div>
+      <div class="tablewrap" id="matchupsWrap"></div>
+    </section>
 
-<script src="app.js"></script>
+    <section id="transactions" class="panel" aria-labelledby="transactions-title">
+      <h2 id="transactions-title">Transactions</h2>
+      <div class="controls row">
+        <input id="txnSearch" type="search" placeholder="Filter by team/player/type…" aria-label="Filter transactions" />
+      </div>
+      <div class="tablewrap" id="txnsWrap"></div>
+    </section>
+
+    <section id="draft" class="panel" aria-labelledby="draft-title">
+      <h2 id="draft-title">Draft Results</h2>
+      <div class="controls row">
+        <input id="draftSearch" type="search" placeholder="Filter by player/team…" aria-label="Filter draft results" />
+      </div>
+      <div class="tablewrap" id="draftWrap"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Built from ESPN/Sleeper data. Static UI on GitHub Pages.</small>
+  </footer>
+
+  <noscript>
+    <div class="panel">Enable JavaScript to view league data.</div>
+  </noscript>
+
+  <script src="app.js" defer></script>
 </body>
 </html>
