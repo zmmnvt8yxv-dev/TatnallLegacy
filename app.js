@@ -1,7 +1,5 @@
 // ==============================
 // Tatnall Legacy — full app.js
-// Static UI that reads /manifest.json and /data/<year>.json files
-// Adds: canonical owner mapping, All Members ranking, 2025 0–0 future exclusion, Championships column
 // ==============================
 
 // ---------- helpers ----------
@@ -29,54 +27,40 @@ function sortTable(tbl, idx, numeric=false){
 function attachSort(ths, tbl){
   ths.forEach((th,i)=>
     th.addEventListener("click", () =>
-      sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab|win|champ|games/i.test(th.textContent))
+      sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab|win|champ|games|seasons|count/i.test(th.textContent))
     )
   );
 }
 
-// ---------- Owner normalization (aliases -> canonical) ----------
+// ---------- Owner normalization ----------
 const OWNER_ALIASES_RAW = {
-  "espn92085473": "Roy Lee",
+  "espn92085473": "Edward Saad",
   "edward3864": "Edward Saad",
   "phillyphilly709": "Edward Saad",
-
   "jalendelrosario@comcast.net": "Jalen Del Rosario",
-
   "jawnwick13": "Jared Duncan",
   "jdunca5228572": "Jared Duncan",
-
   "conner27lax": "Conner Malley",
   "connerandfinn": "Conner Malley",
-
   "sdmarvin713": "Carl Marvin",
   "cmarvin713": "Carl Marvin",
-
   "john.downs123": "John Downs",
   "downsliquidity": "John Downs",
-
   "bhanrahan7": "Brendan Hanrahan",
-
   "jefe6700": "Jeff Crossland",
   "junktion": "Jeff Crossland",
-
   "jksheehy": "Jackie Sheehy",
-
   "lbmbets": "Samuel Kirby",
-
   "mattmaloy99": "Matt Maloy",
-
   "mhardi5674696": "Max Hardin",
-
   "roylee6": "Roy Lee"
 };
-// build lowercase key map
 const OWNER_ALIASES = Object.fromEntries(Object.entries(OWNER_ALIASES_RAW).map(([k,v])=>[k.toLowerCase(),v]));
-
 function canonicalOwner(raw){
   const n = String(raw || "").trim();
   const k = n.toLowerCase();
   if (OWNER_ALIASES[k]) return OWNER_ALIASES[k];
-  if (k.includes("@")) return n.split("@")[0]; // fallback for emails if not explicitly mapped
+  if (k.includes("@")) return n.split("@")[0];
   return n;
 }
 
@@ -101,12 +85,10 @@ async function loadAllSeasons(){
 
 function collectOwners(seasons){
   const owners = new Set();
-  for (const s of seasons) {
-    for (const t of (s.teams || [])) {
-      const raw = (t.owner ?? t.team_name ?? "").toString().trim();
-      const canon = canonicalOwner(raw);
-      if (canon) owners.add(canon);
-    }
+  for (const s of seasons) for (const t of (s.teams||[])) {
+    const raw = (t.owner ?? t.team_name ?? "").toString().trim();
+    const canon = canonicalOwner(raw);
+    if (canon) owners.add(canon);
   }
   return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
 }
@@ -124,31 +106,24 @@ function aggregateMember(owner, seasons){
       ownerByTeam.set(t.team_name, canonicalOwner(raw));
     });
 
-    // champion for this season
     const champTeam = (s.teams || []).find(t => t.final_rank === 1);
     if (champTeam){
       const raw = (champTeam.owner ?? champTeam.team_name ?? "").toString().trim();
-      const champOwner = canonicalOwner(raw);
-      if (champOwner === owner) champs++;
+      if (canonicalOwner(raw) === owner) champs++;
     }
 
     for (const m of (s.matchups||[])){
       const hPts = Number(m.home_score ?? 0);
       const aPts = Number(m.away_score ?? 0);
-      const is2025FutureZeroZero = (Number(s.year) === 2025) && hPts === 0 && aPts === 0;
-      if (is2025FutureZeroZero) continue;
+      if ((Number(s.year) === 2025) && hPts === 0 && aPts === 0) continue;
 
       if (m.home_team && ownerByTeam.get(m.home_team) === owner){
-        games++;
-        if (hPts > aPts) wins++; else if (hPts < aPts) losses++; else ties++;
-        if (hPts > most) most = hPts;
-        if (hPts < least) least = hPts;
+        games++; if (hPts > aPts) wins++; else if (hPts < aPts) losses++; else ties++;
+        if (hPts > most) most = hPts; if (hPts < least) least = hPts;
       }
       if (m.away_team && ownerByTeam.get(m.away_team) === owner){
-        games++;
-        if (aPts > hPts) wins++; else if (aPts < hPts) losses++; else ties++;
-        if (aPts > most) most = aPts;
-        if (aPts < least) least = aPts;
+        games++; if (aPts > hPts) wins++; else if (aPts < hPts) losses++; else ties++;
+        if (aPts > most) most = aPts; if (aPts < least) least = aPts;
       }
     }
   }
@@ -190,7 +165,6 @@ function renderAllMembersTable(){
 
   const owners = collectOwners(ALL_SEASONS);
   const rows = owners.map(o => ({ member:o, ...aggregateMember(o, ALL_SEASONS) }));
-  // primary rank by win%, then wins, then games, then name; championships are displayed but not primary sort
   rows.sort((a,b)=>{
     if (b.winPct !== a.winPct) return b.winPct - a.winPct;
     if (b.wins   !== a.wins)   return b.wins - a.wins;
@@ -241,9 +215,7 @@ async function setupMemberSummary(){
   const sel = document.getElementById("memberSelect");
   const wrap = document.getElementById("memberSummary");
   const tableWrap = document.getElementById("memberTableWrap");
-  sel.innerHTML = "";
-  wrap.innerHTML = "";
-  tableWrap.innerHTML = "";
+  sel.innerHTML = ""; wrap.innerHTML = ""; tableWrap.innerHTML = "";
 
   if (!owners.length) {
     wrap.style.display = "";
@@ -263,6 +235,66 @@ async function setupMemberSummary(){
 
   sel.value = ALL;
   renderAllMembersTable();
+
+  // render most-drafted now that ALL_SEASONS is ready
+  renderMostDrafted();
+}
+
+// ---------- Most Drafted (across seasons) ----------
+function computeMostDrafted(seasons){
+  const seen = new Map(); // player -> Set(years)
+  for (const s of seasons || []){
+    const y = Number(s.year);
+    for (const p of (s.draft || [])){
+      const name = String(p.player || "").trim();
+      if (!name) continue;
+      if (!seen.has(name)) seen.set(name, new Set());
+      seen.get(name).add(y);
+    }
+  }
+  const rows = [];
+  for (const [player, yearsSet] of seen.entries()){
+    const years = Array.from(yearsSet).sort((a,b)=>a-b);
+    rows.push({ player, count: years.length, years });
+  }
+  rows.sort((a,b) => (b.count - a.count) || a.player.localeCompare(b.player));
+  return rows;
+}
+
+function renderMostDrafted(){
+  const wrap = document.getElementById("mostDraftedWrap");
+  const search = document.getElementById("mdSearch");
+  wrap.innerHTML = "";
+
+  const rows = computeMostDrafted(ALL_SEASONS);
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{},
+      el("th",{},"Player"),
+      el("th",{},"Seasons Drafted"),
+      el("th",{},"Years")
+    )),
+    el("tbody",{})
+  );
+
+  function draw(){
+    const q = (search?.value || "").trim().toLowerCase();
+    tbl.tBodies[0].innerHTML = "";
+    rows
+      .filter(r => !q || r.player.toLowerCase().includes(q))
+      .forEach(r => {
+        tbl.tBodies[0].appendChild(el("tr",{},
+          el("td",{}, r.player),
+          el("td",{}, String(r.count)),
+          el("td",{}, r.years.join(", "))
+        ));
+      });
+  }
+
+  draw();
+  if (search) search.oninput = draw;
+
+  wrap.appendChild(tbl);
+  attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
 // ---------- per-season UI ----------
@@ -277,7 +309,6 @@ async function main(){
     if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
     else throw new Error("No years in manifest.json");
 
-    renderMostDrafted();
     await setupMemberSummary();
   } catch (e){
     renderFatal(e);
@@ -417,7 +448,8 @@ function renderFatal(e){
   const pre = el("pre",{}, String(e));
   document.getElementById("content").prepend(el("div",{class:"panel"}, pre));
 }
-// ----- tabs: smooth-jump + scrollspy -----
+
+// ---------- tabs ----------
 function setupTabs(){
   const header = document.querySelector("header");
   const offset = (header?.offsetHeight || 80) + 4;
@@ -426,20 +458,18 @@ function setupTabs(){
     .map(a => document.querySelector(a.getAttribute("data-target") || a.getAttribute("href")))
     .filter(Boolean);
 
-  // click -> manual scroll with offset
   tabs.forEach(a => {
     a.addEventListener("click", (e) => {
       e.preventDefault();
       const sel = a.getAttribute("data-target") || a.getAttribute("href");
-      const el = document.querySelector(sel);
-      if(!el) return;
-      const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      const elx = document.querySelector(sel);
+      if(!elx) return;
+      const top = elx.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top, behavior: "smooth" });
       setActive(a);
     });
   });
 
-  // scrollspy
   function setActiveTabOnScroll(){
     const y = window.scrollY + offset + 1;
     let current = null;
@@ -453,80 +483,10 @@ function setupTabs(){
       if (t) setActive(t);
     }
   }
-  function setActive(activeEl){
-    tabs.forEach(x => x.classList.toggle("active", x === activeEl));
-  }
-
-  // initialize
+  function setActive(activeEl){ tabs.forEach(x => x.classList.toggle("active", x === activeEl)); }
   setActive(tabs[0] || null);
   window.addEventListener("scroll", setActiveTabOnScroll, { passive: true });
 }
-// ---- Most Drafted (across seasons) ----
-function computeMostDrafted(seasons){
-  // Map player -> Set(years)
-  const seen = new Map();
-  for (const s of seasons || []){
-    const y = Number(s.year);
-    for (const p of (s.draft || [])){
-      const name = String(p.player || "").trim();
-      if (!name) continue;
-      if (!seen.has(name)) seen.set(name, new Set());
-      seen.get(name).add(y);
-    }
-  }
-  const rows = [];
-  for (const [player, yearsSet] of seen.entries()){
-    const years = Array.from(yearsSet).sort((a,b)=>a-b);
-    rows.push({ player, count: years.length, years });
-  }
-  rows.sort((a,b) => (b.count - a.count) || a.player.localeCompare(b.player));
-  return rows;
-}
 
-function renderMostDrafted(){
-  const wrap = document.getElementById("mostDraftedWrap");
-  const search = document.getElementById("mdSearch");
-  wrap.innerHTML = "";
-
-  const rows = computeMostDrafted(ALL_SEASONS);
-  if (!rows.length){
-    wrap.appendChild(el("div",{style:"padding:12px; color:#9ca3af;"}, "No draft data across seasons."));
-    return;
-  }
-
-  const tbl = el("table",{},
-    el("thead",{}, el("tr",{},
-      el("th",{},"Player"),
-      el("th",{},"Seasons Drafted"),
-      el("th",{},"Years")
-    )),
-    el("tbody",{})
-  );
-
-  function draw(){
-    const q = (search?.value || "").trim().toLowerCase();
-    tbl.tBodies[0].innerHTML = "";
-    rows
-      .filter(r => !q || r.player.toLowerCase().includes(q))
-      .forEach(r => {
-        tbl.tBodies[0].appendChild(el("tr",{},
-          el("td",{}, r.player),
-          el("td",{}, String(r.count)),
-          el("td",{}, r.years.join(", "))
-        ));
-      });
-  }
-
-  if (search) search.oninput = draw;
-  draw();
-
-  wrap.appendChild(tbl);
-  attachSort([...tbl.tHead.rows[0].cells], tbl);
-}
-// hook into your boot sequence
-const _origDOMContentLoaded = () => {};
-document.addEventListener("DOMContentLoaded", () => {
-  setupTabs();
-});
 // ---------- boot ----------
-document.addEventListener("DOMContentLoaded", main);
+document.addEventListener("DOMContentLoaded", () => { setupTabs(); main(); });
