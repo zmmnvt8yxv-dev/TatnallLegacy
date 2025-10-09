@@ -71,7 +71,8 @@ const OWNER_ALIASES_RAW = {
   "max hardin": "Max Hardin",
   "roy lee": "Roy Lee",
   "samuel kirby": "Samuel Kirby",
-  "stephen marvin": "Carl Marvin"
+  "stephen marvin": "Carl Marvin",
+  "John downs123": "John Downs"
 };
 const OWNER_ALIASES = Object.fromEntries(
   Object.entries(OWNER_ALIASES_RAW).map(([k,v]) => [k.toLowerCase(), v])
