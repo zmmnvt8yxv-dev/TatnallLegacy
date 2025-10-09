@@ -1,0 +1,22 @@
+name: Generate Sleeper 2025 JSON
+
+on:
+  workflow_dispatch:   # run manually from Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - run: pip install requests
+      - run: python sleeper_2025_to_json.py
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/2025.json manifest.json
+          git commit -m "Add Sleeper 2025 JSON" || echo "No changes"
+          git push
