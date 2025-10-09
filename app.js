@@ -1,5 +1,5 @@
 // ==============================
-// Tatnall Legacy — full app.js
+// Tatnall Legacy — full app.js (fixed)
 // ==============================
 
 // ---------- helpers ----------
@@ -34,7 +34,7 @@ function attachSort(ths, tbl){
 
 // ---------- Owner normalization ----------
 const OWNER_ALIASES_RAW = {
-  "espn92085473": "Edward Saad",
+  "espn92085473": "Roy Lee",
   "edward3864": "Edward Saad",
   "phillyphilly709": "Edward Saad",
   "jalendelrosario@comcast.net": "Jalen Del Rosario",
@@ -64,7 +64,7 @@ function canonicalOwner(raw){
   return n;
 }
 
-// ---------- all-years member summary ----------
+// ---------- all-years ----------
 let ALL_SEASONS = null;
 
 async function loadAllSeasons(){
@@ -93,7 +93,12 @@ function collectOwners(seasons){
   return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
 }
 
-// aggregate across seasons; skip 0–0 future games for 2025; count championships
+// helper: exclude unplayed 0–0 matches in 2025
+function is2025FutureZeroZero(season, m){
+  return Number(season.year)===2025 && Number(m.home_score||0)===0 && Number(m.away_score||0)===0;
+}
+
+// aggregate across seasons; apply 2025 0–0 rule; count championships
 function aggregateMember(owner, seasons){
   let wins=0, losses=0, ties=0, games=0;
   let most = -Infinity, least = Infinity;
@@ -113,9 +118,10 @@ function aggregateMember(owner, seasons){
     }
 
     for (const m of (s.matchups||[])){
+      if (is2025FutureZeroZero(s,m)) continue;
+
       const hPts = Number(m.home_score ?? 0);
       const aPts = Number(m.away_score ?? 0);
-      if ((Number(s.year) === 2025) && hPts === 0 && aPts === 0) continue;
 
       if (m.home_team && ownerByTeam.get(m.home_team) === owner){
         games++; if (hPts > aPts) wins++; else if (hPts < aPts) losses++; else ties++;
@@ -133,114 +139,19 @@ function aggregateMember(owner, seasons){
   return {wins, losses, ties, games, winPct, most, least, champs};
 }
 
-function renderMemberSummary(owner){
-  const wrap = document.getElementById("memberSummary");
-  const tableWrap = document.getElementById("memberTableWrap");
-  tableWrap.style.display = "none";
-  wrap.style.display = "";
-
-  const s = aggregateMember(owner, ALL_SEASONS);
-  wrap.innerHTML = "";
-  if(!s) return;
-
-  const stats = [
-    ["Member", owner],
-    ["Record", `${s.wins}-${s.losses}${s.ties?`-${s.ties}`:""}`],
-    ["Win %", (s.winPct*100).toFixed(1) + "%"],
-    ["Championships", s.champs],
-    ["Games", s.games],
-    ["Most points (single game)", fmt(s.most)],
-    ["Least points (single game)", fmt(s.least)]
-  ];
-  for (const [k,v] of stats){
-    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
-  }
+// ===== Metrics helpers (blowouts + draft aggregation) =====
+function biggestBlowoutsFromMatchups(matchups, limit = 3) {
+  const rows = (matchups||[]).map(m => {
+    const h = Number(m.home_score||0), a = Number(m.away_score||0);
+    const margin = Math.abs(h - a);
+    const winner = h > a ? m.home_team : (a > h ? m.away_team : null);
+    const loser  = h > a ? m.away_team : (a > h ? m.home_team : null);
+    return { week: m.week, winner, loser, margin, home_team: m.home_team, away_team: m.away_team, home_score: h, away_score: a };
+  }).filter(r => r.margin > 0);
+  rows.sort((a,b)=> b.margin - a.margin);
+  return rows.slice(0, limit);
 }
 
-function renderAllMembersTable(){
-  const wrap = document.getElementById("memberSummary");
-  const tableWrap = document.getElementById("memberTableWrap");
-  wrap.style.display = "none";
-  tableWrap.style.display = "";
-
-  const owners = collectOwners(ALL_SEASONS);
-  const rows = owners.map(o => ({ member:o, ...aggregateMember(o, ALL_SEASONS) }));
-  rows.sort((a,b)=>{
-    if (b.winPct !== a.winPct) return b.winPct - a.winPct;
-    if (b.wins   !== a.wins)   return b.wins - a.wins;
-    if (b.games  !== a.games)  return b.games - a.games;
-    return a.member.localeCompare(b.member);
-  });
-  rows.forEach((r,i)=> r.rank = i+1);
-
-  const tbl = el("table",{},
-    el("thead",{}, el("tr",{},
-      el("th",{},"Rank"),
-      el("th",{},"Member"),
-      el("th",{},"W"),
-      el("th",{},"L"),
-      el("th",{},"T"),
-      el("th",{},"Win %"),
-      el("th",{},"Champs"),
-      el("th",{},"Games"),
-      el("th",{},"Most PF (G)"),
-      el("th",{},"Least PF (G)")
-    )),
-    el("tbody",{})
-  );
-
-  rows.forEach(r=>{
-    tbl.tBodies[0].appendChild(el("tr",{},
-      el("td",{}, r.rank),
-      el("td",{}, r.member),
-      el("td",{}, r.wins),
-      el("td",{}, r.losses),
-      el("td",{}, r.ties),
-      el("td",{}, (r.winPct*100).toFixed(1)),
-      el("td",{}, r.champs),
-      el("td",{}, r.games),
-      el("td",{}, fmt(r.most)),
-      el("td",{}, fmt(r.least))
-    ));
-  });
-
-  tableWrap.innerHTML = "";
-  tableWrap.appendChild(tbl);
-  attachSort([...tbl.tHead.rows[0].cells], tbl);
-}
-
-async function setupMemberSummary(){
-  ALL_SEASONS = await loadAllSeasons();
-  const owners = collectOwners(ALL_SEASONS);
-  const sel = document.getElementById("memberSelect");
-  const wrap = document.getElementById("memberSummary");
-  const tableWrap = document.getElementById("memberTableWrap");
-  sel.innerHTML = ""; wrap.innerHTML = ""; tableWrap.innerHTML = "";
-
-  if (!owners.length) {
-    wrap.style.display = "";
-    tableWrap.style.display = "none";
-    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},"No members detected"), el("p",{},"Check data/*.json")));
-    return;
-  }
-
-  const ALL = "__ALL__";
-  sel.appendChild(el("option",{value:ALL},"All Members"));
-  owners.forEach(o => sel.appendChild(el("option",{value:o}, o)));
-
-  sel.onchange = () => {
-    if (sel.value === ALL) renderAllMembersTable();
-    else renderMemberSummary(sel.value);
-  };
-
-  sel.value = ALL;
-  renderAllMembersTable();
-
-  // render most-drafted now that ALL_SEASONS is ready
-  renderMostDrafted();
-}
-
-// ---------- Most Drafted (across seasons) ----------
 function computeMostDrafted(seasons){
   const seen = new Map(); // player -> Set(years)
   for (const s of seasons || []){
@@ -261,43 +172,7 @@ function computeMostDrafted(seasons){
   return rows;
 }
 
-function renderMostDrafted(){
-  const wrap = document.getElementById("mostDraftedWrap");
-  const search = document.getElementById("mdSearch");
-  wrap.innerHTML = "";
-
-  const rows = computeMostDrafted(ALL_SEASONS);
-  const tbl = el("table",{},
-    el("thead",{}, el("tr",{},
-      el("th",{},"Player"),
-      el("th",{},"Seasons Drafted"),
-      el("th",{},"Years")
-    )),
-    el("tbody",{})
-  );
-
-  function draw(){
-    const q = (search?.value || "").trim().toLowerCase();
-    tbl.tBodies[0].innerHTML = "";
-    rows
-      .filter(r => !q || r.player.toLowerCase().includes(q))
-      .forEach(r => {
-        tbl.tBodies[0].appendChild(el("tr",{},
-          el("td",{}, r.player),
-          el("td",{}, String(r.count)),
-          el("td",{}, r.years.join(", "))
-        ));
-      });
-  }
-
-  draw();
-  if (search) search.oninput = draw;
-
-  wrap.appendChild(tbl);
-  attachSort([...tbl.tHead.rows[0].cells], tbl);
-}
-
-// ---------- per-season UI ----------
+// ---------- per-season + UI ----------
 async function main(){
   try {
     const m = await loadJSON("manifest.json");
@@ -309,7 +184,7 @@ async function main(){
     if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
     else throw new Error("No years in manifest.json");
 
-    await setupMemberSummary();
+    await setupMemberSummary();   // also triggers “Most Drafted” render
   } catch (e){
     renderFatal(e);
   }
@@ -328,7 +203,6 @@ async function renderSeason(year){
   }
 }
 
-// ---------- renderers ----------
 function renderSummary(year, data){
   const wrap = document.getElementById("summaryStats"); wrap.innerHTML="";
   const teams = data.teams||[], matchups=data.matchups||[], draft=data.draft||[], txns=data.transactions||[];
@@ -336,6 +210,7 @@ function renderSummary(year, data){
   const bestPF = teams.slice().sort((a,b)=> (b.points_for||0)-(a.points_for||0))[0];
   const bestPA = teams.slice().sort((a,b)=> (a.points_against||0)-(b.points_against||0))[0];
   const avgPF = teams.length ? (teams.reduce((s,t)=>s+(t.points_for||0),0)/teams.length) : 0;
+
   const stats = [
     ["Season", year],
     ["Champion", champ],
@@ -346,6 +221,13 @@ function renderSummary(year, data){
     ["Draft Picks", draft.length],
     ["Transactions", txns.length]
   ];
+
+  const blows = biggestBlowoutsFromMatchups(matchups, 3);
+  if (blows.length){
+    const lines = blows.map(b => `W${b.week}: ${b.winner} over ${b.loser} by ${fmt(b.margin)} (${fmt(b.home_score)}–${fmt(b.away_score)})`);
+    stats.push(["Biggest Blowouts", lines.join(" | ")]);
+  }
+
   for(const [k,v] of stats) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
 }
 
@@ -447,6 +329,150 @@ function renderFatal(e){
   console.error(e);
   const pre = el("pre",{}, String(e));
   document.getElementById("content").prepend(el("div",{class:"panel"}, pre));
+}
+
+// ---------- Members panel ----------
+function renderMemberSummary(owner){
+  const wrap = document.getElementById("memberSummary");
+  const tableWrap = document.getElementById("memberTableWrap");
+  tableWrap.style.display = "none";
+  wrap.style.display = "";
+
+  const s = aggregateMember(owner, ALL_SEASONS);
+  wrap.innerHTML = "";
+  if(!s) return;
+
+  const stats = [
+    ["Member", owner],
+    ["Record", `${s.wins}-${s.losses}${s.ties?`-${s.ties}`:""}`],
+    ["Win %", (s.winPct*100).toFixed(1) + "%"],
+    ["Championships", s.champs],
+    ["Games", s.games],
+    ["Most points (single game)", fmt(s.most)],
+    ["Least points (single game)", fmt(s.least)]
+  ];
+  for (const [k,v] of stats){
+    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
+  }
+}
+
+function renderAllMembersTable(){
+  const wrap = document.getElementById("memberSummary");
+  const tableWrap = document.getElementById("memberTableWrap");
+  wrap.style.display = "none";
+  tableWrap.style.display = "";
+
+  const owners = collectOwners(ALL_SEASONS);
+  const rows = owners.map(o => ({ member:o, ...aggregateMember(o, ALL_SEASONS) }));
+  rows.sort((a,b)=>{
+    if (b.winPct !== a.winPct) return b.winPct - a.winPct;
+    if (b.wins   !== a.wins)   return b.wins - a.wins;
+    if (b.games  !== a.games)  return b.games - a.games;
+    return a.member.localeCompare(b.member);
+  });
+  rows.forEach((r,i)=> r.rank = i+1);
+
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{},
+      el("th",{},"Rank"),
+      el("th",{},"Member"),
+      el("th",{},"W"),
+      el("th",{},"L"),
+      el("th",{},"T"),
+      el("th",{},"Win %"),
+      el("th",{},"Champs"),
+      el("th",{},"Games"),
+      el("th",{},"Most PF (G)"),
+      el("th",{},"Least PF (G)")
+    )),
+    el("tbody",{})
+  );
+
+  rows.forEach(r=>{
+    tbl.tBodies[0].appendChild(el("tr",{},
+      el("td",{}, r.rank),
+      el("td",{}, r.member),
+      el("td",{}, r.wins),
+      el("td",{}, r.losses),
+      el("td",{}, r.ties),
+      el("td",{}, (r.winPct*100).toFixed(1)),
+      el("td",{}, r.champs),
+      el("td",{}, r.games),
+      el("td",{}, fmt(r.most)),
+      el("td",{}, fmt(r.least))
+    ));
+  });
+
+  tableWrap.innerHTML = "";
+  tableWrap.appendChild(tbl);
+  attachSort([...tbl.tHead.rows[0].cells], tbl);
+}
+
+async function setupMemberSummary(){
+  ALL_SEASONS = await loadAllSeasons();
+
+  const owners = collectOwners(ALL_SEASONS);
+  const sel = document.getElementById("memberSelect");
+  const wrap = document.getElementById("memberSummary");
+  const tableWrap = document.getElementById("memberTableWrap");
+  if (sel) sel.innerHTML = "";
+  if (wrap) wrap.innerHTML = "";
+  if (tableWrap) tableWrap.innerHTML = "";
+
+  if (!owners.length) {
+    if (wrap){
+      wrap.style.display = "";
+      if (tableWrap) tableWrap.style.display = "none";
+      wrap.appendChild(el("div",{class:"stat"}, el("h3",{},"No members detected"), el("p",{},"Check data/*.json")));
+    }
+  } else if (sel) {
+    const ALL = "__ALL__";
+    sel.appendChild(el("option",{value:ALL},"All Members"));
+    owners.forEach(o => sel.appendChild(el("option",{value:o}, o)));
+    sel.onchange = () => { if (sel.value === ALL) renderAllMembersTable(); else renderMemberSummary(sel.value); };
+    sel.value = ALL;
+    renderAllMembersTable();
+  }
+
+  // render Most Drafted table (if section exists)
+  renderMostDrafted();
+}
+
+// ---------- Most Drafted (across seasons) ----------
+function renderMostDrafted(){
+  const wrap = document.getElementById("mostDraftedWrap");
+  const search = document.getElementById("mdSearch");
+  if (!wrap) return;
+
+  wrap.innerHTML = "";
+  const rows = computeMostDrafted(ALL_SEASONS);
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{},
+      el("th",{},"Player"),
+      el("th",{},"Seasons Drafted"),
+      el("th",{},"Years")
+    )),
+    el("tbody",{})
+  );
+
+  function draw(){
+    const q = (search?.value || "").trim().toLowerCase();
+    tbl.tBodies[0].innerHTML = "";
+    rows
+      .filter(r => !q || r.player.toLowerCase().includes(q))
+      .forEach(r => {
+        tbl.tBodies[0].appendChild(el("tr",{},
+          el("td",{}, r.player),
+          el("td",{}, String(r.count)),
+          el("td",{}, r.years.join(", "))
+        ));
+      });
+  }
+  draw();
+  if (search) search.oninput = draw;
+
+  wrap.appendChild(tbl);
+  attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
 // ---------- tabs ----------
