@@ -1,7 +1,9 @@
-// -------- helpers --------
-async function loadJSON(path){
-  const r = await fetch(path + (path.includes("?") ? "&" : "?") + "v=" + Date.now()); // bust cache
-  if(!r.ok) throw new Error(`fetch ${path} -> ${r.status}`);
+// ---- path + fetch helpers (GitHub Pages safe) ----
+const ROOT = new URL(".", document.baseURI).pathname.replace(/\/+$/, "") + "/"; // e.g. "/TatnallLegacy/"
+async function loadJSON(relPath){
+  const url = ROOT + relPath.replace(/^\/+/, "");
+  const r = await fetch(url + (url.includes("?") ? "&" : "?") + "v=" + Date.now(), { cache: "no-store" });
+  if(!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
   return r.json();
 }
 function el(tag, attrs={}, ...kids){
@@ -19,27 +21,36 @@ function sortTable(tbl, idx, numeric=false){
 }
 function attachSort(ths, tbl){ ths.forEach((th,i)=> th.addEventListener("click", ()=> sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab/i.test(th.textContent)))); }
 
-// -------- static-only loaders (GitHub Pages) --------
+// ---- static-only loaders ----
 async function main(){
-  const m = await loadJSON("manifest.json");           // relative path, no leading slash
-  const years = m.years || [];
-  const sel = document.getElementById("seasonSelect");
-  sel.innerHTML = "";
-  years.slice().reverse().forEach(y => sel.appendChild(el("option",{value:y}, y)));
-  sel.onchange = () => renderSeason(+sel.value);
-  if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
+  try {
+    const m = await loadJSON("manifest.json");
+    const years = m.years || [];
+    const sel = document.getElementById("seasonSelect");
+    sel.innerHTML = "";
+    years.slice().reverse().forEach(y => sel.appendChild(el("option",{value:y}, y)));
+    sel.onchange = () => renderSeason(+sel.value);
+    if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
+    else throw new Error("No years in manifest.json");
+  } catch (e){
+    renderFatal(e);
+  }
 }
 
 async function renderSeason(year){
-  const data = await loadJSON(`data/${year}.json`);
-  renderSummary(year, data);
-  renderTeams(data.teams||[]);
-  renderMatchups(data.matchups||[]);
-  renderTransactions(data.transactions||[]);
-  renderDraft(data.draft||[]);
+  try{
+    const data = await loadJSON(`data/${year}.json`);
+    renderSummary(year, data);
+    renderTeams(data.teams||[]);
+    renderMatchups(data.matchups||[]);
+    renderTransactions(data.transactions||[]);
+    renderDraft(data.draft||[]);
+  } catch(e){
+    renderFatal(e);
+  }
 }
 
-// -------- renderers --------
+// ---- renderers ----
 function renderSummary(year, data){
   const wrap = document.getElementById("summaryStats"); wrap.innerHTML="";
   const teams = data.teams||[], matchups=data.matchups||[], draft=data.draft||[], txns=data.transactions||[];
@@ -59,7 +70,6 @@ function renderSummary(year, data){
   ];
   for(const [k,v] of stats) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
 }
-
 function renderTeams(teams){
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
   if(!teams.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No teams found."))); return; }
@@ -80,7 +90,6 @@ function renderTeams(teams){
   });
   wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
-
 function renderMatchups(matchups){
   const wrap = document.getElementById("matchupsWrap"); wrap.innerHTML="";
   const weekSel = document.getElementById("weekFilter");
@@ -109,16 +118,11 @@ function renderMatchups(matchups){
   weekSel.onchange=apply; search.oninput=apply; apply();
   wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
-
 function renderTransactions(txns){
   const wrap = document.getElementById("txnsWrap"); wrap.innerHTML="";
   const search = document.getElementById("txnSearch");
   const hasAny = Array.isArray(txns) && txns.length>0;
-  const flatten = tx => {
-    const date = tx.date || "";
-    const entries = (tx.entries||[]).map(e=>({date, ...e}));
-    return entries.length ? entries : [];
-  };
+  const flatten = tx => (tx.entries||[]).map(e=>({date:tx.date||"", ...e}));
   const rows = hasAny ? txns.flatMap(flatten) : [];
   if(!rows.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No transactions available for this season."))); return; }
   const tbl = el("table",{}, 
@@ -135,7 +139,6 @@ function renderTransactions(txns){
   }
   search.oninput=apply; apply(); wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
-
 function renderDraft(draft){
   const wrap = document.getElementById("draftWrap"); wrap.innerHTML="";
   const search = document.getElementById("draftSearch");
@@ -155,8 +158,11 @@ function renderDraft(draft){
   }
   search.oninput=apply; apply(); wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
-
-main().catch(e=>{
+function renderFatal(e){
+  console.error(e);
   const pre = el("pre",{}, String(e));
   document.getElementById("content").prepend(el("div",{class:"panel"}, pre));
-});
+}
+
+// Ensure run after DOM parses in all browsers
+document.addEventListener("DOMContentLoaded", main);
