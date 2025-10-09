@@ -1,5 +1,5 @@
 // ==============================
-// Tatnall Legacy — full app.js (fixed)
+// Tatnall Legacy — app.js (clean)
 // ==============================
 
 // ---------- helpers ----------
@@ -33,9 +33,8 @@ function attachSort(ths, tbl){
 }
 
 // ---------- Owner normalization ----------
-// ---------- Owner normalization ----------
-// ---------- Owner normalization ----------
 const OWNER_ALIASES_RAW = {
+  // IDs/handles
   "espn92085473": "Roy Lee",
   "edward3864": "Edward Saad",
   "phillyphilly709": "Edward Saad",
@@ -57,7 +56,7 @@ const OWNER_ALIASES_RAW = {
   "mhardi5674696": "Max Hardin",
   "roylee6": "Roy Lee",
 
-  // plain-name / typo variants
+  // plain-name/typo variants from JSON
   "brendan hanrahan": "Brendan Hanrahan",
   "carl marvin": "Carl Marvin",
   "conner malley": "Conner Malley",
@@ -91,13 +90,19 @@ function canonicalOwner(raw){
   let n = String(raw || "").trim();
   if (!n) return "";
 
-  if (n.includes("@")) n = n.split("@")[0];       // email prefix
+  // email -> prefix
+  if (n.includes("@")) n = n.split("@")[0];
+
+  // unify separators and spacing
   n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim();
 
   const key = n.toLowerCase();
   if (OWNER_ALIASES[key]) return OWNER_ALIASES[key];
 
+  // if it looks like a human name, title-case it
   if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n);
+
+  // otherwise return as-is (ids/handles)
   return n;
 }
 
@@ -112,6 +117,7 @@ function collectOwners(seasons){
   }
   return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
 }
+
 // ---------- all-years ----------
 let ALL_SEASONS = null;
 
@@ -129,16 +135,6 @@ async function loadAllSeasons(){
     }
   }
   return seasons;
-}
-
-function collectOwners(seasons){
-  const owners = new Set();
-  for (const s of seasons) for (const t of (s.teams||[])) {
-    const raw = (t.owner ?? t.team_name ?? "").toString().trim();
-    const canon = canonicalOwner(raw);
-    if (canon) owners.add(canon);
-  }
-  return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
 }
 
 // helper: exclude unplayed 0–0 matches in 2025
@@ -187,7 +183,7 @@ function aggregateMember(owner, seasons){
   return {wins, losses, ties, games, winPct, most, least, champs};
 }
 
-// ===== Metrics helpers (blowouts + draft aggregation) =====
+// ===== Metrics helpers =====
 function biggestBlowoutsFromMatchups(matchups, limit = 3) {
   const rows = (matchups||[]).map(m => {
     const h = Number(m.home_score||0), a = Number(m.away_score||0);
@@ -205,7 +201,7 @@ function biggestBlowoutsFromMatchups(matchups, limit = 3) {
       away_score: a
     };
   })
-  // exclude ties, and any matchup where either side has 0 points
+  // exclude ties + any zero-score side
   .filter(r => r.margin > 0 && r.home_score > 0 && r.away_score > 0);
 
   rows.sort((a,b)=> b.margin - a.margin);
