@@ -140,7 +140,8 @@ function aggregateMember(owner, seasons){
 }
 
 // ===== Metrics helpers (blowouts + draft aggregation) =====
-function biggestBlowoutsFromMatchups(matchups, limit = 3) {
+// biggest blowout only
+function biggestBlowoutsFromMatchups(matchups, limit = 1) {
   const rows = (matchups||[]).map(m => {
     const h = Number(m.home_score||0), a = Number(m.away_score||0);
     const margin = Math.abs(h - a);
@@ -222,11 +223,14 @@ function renderSummary(year, data){
     ["Transactions", txns.length]
   ];
 
-  const blows = biggestBlowoutsFromMatchups(matchups, 3);
-  if (blows.length){
-    const lines = blows.map(b => `W${b.week}: ${b.winner} over ${b.loser} by ${fmt(b.margin)} (${fmt(b.home_score)}–${fmt(b.away_score)})`);
-    stats.push(["Biggest Blowouts", lines.join(" | ")]);
-  }
+  // Biggest blowout (only #1) — per season
+const blows = biggestBlowoutsFromMatchups(matchups, 1);
+if (blows.length){
+  const b = blows[0];
+  stats.push(["Biggest Blowout",
+    `W${b.week}: ${b.winner} over ${b.loser} by ${fmt(b.margin)} (${fmt(b.home_score)}–${b.away_score})`
+  ]);
+}
 
   for(const [k,v] of stats) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
 }
