@@ -20,6 +20,7 @@ function sortTable(tbl, idx, numeric=false){
   if(!asc) rows.reverse(); rows.forEach(r=>tbody.appendChild(r)); tbl._asc=asc;
 }
 function attachSort(ths, tbl){ ths.forEach((th,i)=> th.addEventListener("click", ()=> sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab/i.test(th.textContent)))); }
+
 // ---------- ALL-YEARS MEMBER SUMMARY ----------
 let ALL_SEASONS = null;
 
@@ -49,13 +50,11 @@ function aggregateMember(owner, seasons){
     (s.teams||[]).forEach(t => map.set(t.team_name, t.owner || t.team_name));
 
     for (const m of (s.matchups||[])){
-      // home side
       if (m.home_team && map.get(m.home_team) === owner){
         const pts = Number(m.home_score)||0, opp = Number(m.away_score)||0;
         games++; if (pts>opp) wins++; else if (pts<opp) losses++; else ties++;
         if (pts>most) most=pts; if (pts<least) least=pts;
       }
-      // away side
       if (m.away_team && map.get(m.away_team) === owner){
         const pts = Number(m.away_score)||0, opp = Number(m.home_score)||0;
         games++; if (pts>opp) wins++; else if (pts<opp) losses++; else ties++;
@@ -95,6 +94,7 @@ async function setupMemberSummary(){
   sel.onchange = () => renderMemberSummary(sel.value);
   if (owners.length){ sel.value = owners[0]; renderMemberSummary(sel.value); }
 }
+
 // ---- static-only loaders ----
 async function main(){
   try {
@@ -106,6 +106,9 @@ async function main(){
     sel.onchange = () => renderSeason(+sel.value);
     if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
     else throw new Error("No years in manifest.json");
+
+    // initialize all-years member summary AFTER initial season render
+    await setupMemberSummary();
   } catch (e){
     renderFatal(e);
   }
@@ -144,6 +147,7 @@ function renderSummary(year, data){
   ];
   for(const [k,v] of stats) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
 }
+
 function renderTeams(teams){
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
   if(!teams.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No teams found."))); return; }
@@ -164,6 +168,7 @@ function renderTeams(teams){
   });
   wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
+
 function renderMatchups(matchups){
   const wrap = document.getElementById("matchupsWrap"); wrap.innerHTML="";
   const weekSel = document.getElementById("weekFilter");
@@ -192,6 +197,7 @@ function renderMatchups(matchups){
   weekSel.onchange=apply; search.oninput=apply; apply();
   wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
+
 function renderTransactions(txns){
   const wrap = document.getElementById("txnsWrap"); wrap.innerHTML="";
   const search = document.getElementById("txnSearch");
@@ -213,6 +219,7 @@ function renderTransactions(txns){
   }
   search.oninput=apply; apply(); wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
+
 function renderDraft(draft){
   const wrap = document.getElementById("draftWrap"); wrap.innerHTML="";
   const search = document.getElementById("draftSearch");
@@ -232,11 +239,12 @@ function renderDraft(draft){
   }
   search.oninput=apply; apply(); wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
+
 function renderFatal(e){
   console.error(e);
   const pre = el("pre",{}, String(e));
   document.getElementById("content").prepend(el("div",{class:"panel"}, pre));
 }
-await setupMemberSummary();
-// Ensure run after DOM parses in all browsers
+
+// Ensure run after DOM parses
 document.addEventListener("DOMContentLoaded", main);
