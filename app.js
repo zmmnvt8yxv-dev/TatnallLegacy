@@ -1,5 +1,11 @@
-// ---- path + fetch helpers (GitHub Pages safe) ----
+// ==============================
+// Tatnall Legacy — full app.js
+// Static UI that reads /manifest.json and /data/<year>.json files
+// ==============================
+
+// ---------- helpers ----------
 const ROOT = new URL(".", document.baseURI).pathname.replace(/\/+$/, "") + "/";
+
 async function loadJSON(relPath){
   const url = ROOT + relPath.replace(/^\/+/, "");
   const r = await fetch(url + (url.includes("?") ? "&" : "?") + "v=" + Date.now(), { cache: "no-store" });
@@ -19,9 +25,55 @@ function sortTable(tbl, idx, numeric=false){
     if(numeric){ return (parseFloat(av)||0)-(parseFloat(bv)||0); } return av.localeCompare(bv); });
   if(!asc) rows.reverse(); rows.forEach(r=>tbody.appendChild(r)); tbl._asc=asc;
 }
-function attachSort(ths, tbl){ ths.forEach((th,i)=> th.addEventListener("click", ()=> sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab|win/i.test(th.textContent)))); }
+function attachSort(ths, tbl){ ths.forEach((th,i)=> th.addEventListener("click", ()=> sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab|win|games/i.test(th.textContent)))); }
 
-// ---------- ALL-YEARS MEMBER SUMMARY ----------
+// ---------- Owner normalization (aliases -> canonical) ----------
+const OWNER_ALIASES_RAW = {
+  "espn92085473": "Edward Saad",
+  "edward3864": "Edward Saad",
+  "phillyphilly709": "Edward Saad",
+
+  "jalendelrosario@comcast.net": "Jalen Del Rosario",
+
+  "jawnwick13": "Jared Duncan",
+  "jdunca5228572": "Jared Duncan",
+
+  "conner27lax": "Conner Malley",
+  "connerandfinn": "Conner Malley",
+
+  "sdmarvin713": "Carl Marvin",
+  "cmarvin713": "Carl Marvin",
+
+  "john.downs123": "John Downs",
+  "downsliquidity": "John Downs",
+
+  "bhanrahan7": "Brendan Hanrahan",
+
+  "jefe6700": "Jeff Crossland",
+  "junktion": "Jeff Crossland",
+
+  "jksheehy": "Jackie Sheehy",
+
+  "lbmbets": "Samuel Kirby",
+
+  "mattmaloy99": "Matt Maloy",
+
+  "mhardi5674696": "Max Hardin",
+
+  "roylee6": "Roy Lee"
+};
+// build lowercase key map
+const OWNER_ALIASES = Object.fromEntries(Object.entries(OWNER_ALIASES_RAW).map(([k,v])=>[k.toLowerCase(),v]));
+
+function canonicalOwner(raw){
+  const n = String(raw || "").trim();
+  const k = n.toLowerCase();
+  if (OWNER_ALIASES[k]) return OWNER_ALIASES[k];
+  if (k.includes("@")) return n.split("@")[0]; // fallback for emails if not explicitly mapped
+  return n;
+}
+
+// ---------- all-years member summary ----------
 let ALL_SEASONS = null;
 
 async function loadAllSeasons(){
@@ -44,23 +96,25 @@ function collectOwners(seasons){
   const owners = new Set();
   for (const s of seasons) {
     for (const t of (s.teams || [])) {
-      const o = (t.owner ?? "").toString().trim();
-      const fallback = (t.team_name ?? "").toString().trim();
-      const pick = o || fallback;
-      if (pick) owners.add(pick);
+      const raw = (t.owner ?? t.team_name ?? "").toString().trim();
+      const canon = canonicalOwner(raw);
+      if (canon) owners.add(canon);
     }
   }
   return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
 }
 
-// skip 0–0 future games for 2025
+// aggregate across seasons; skip 0–0 future games for 2025
 function aggregateMember(owner, seasons){
   let wins=0, losses=0, ties=0, games=0;
   let most = -Infinity, least = Infinity;
 
   for (const s of seasons){
-    const map = new Map();
-    (s.teams||[]).forEach(t => map.set(t.team_name, t.owner || t.team_name));
+    const ownerByTeam = new Map();
+    (s.teams||[]).forEach(t => {
+      const raw = (t.owner ?? t.team_name ?? "").toString().trim();
+      ownerByTeam.set(t.team_name, canonicalOwner(raw));
+    });
 
     for (const m of (s.matchups||[])){
       const hPts = Number(m.home_score ?? 0);
@@ -68,13 +122,13 @@ function aggregateMember(owner, seasons){
       const is2025FutureZeroZero = (Number(s.year) === 2025) && hPts === 0 && aPts === 0;
       if (is2025FutureZeroZero) continue;
 
-      if (m.home_team && map.get(m.home_team) === owner){
+      if (m.home_team && ownerByTeam.get(m.home_team) === owner){
         games++;
         if (hPts > aPts) wins++; else if (hPts < aPts) losses++; else ties++;
         if (hPts > most) most = hPts;
         if (hPts < least) least = hPts;
       }
-      if (m.away_team && map.get(m.away_team) === owner){
+      if (m.away_team && ownerByTeam.get(m.away_team) === owner){
         games++;
         if (aPts > hPts) wins++; else if (aPts < hPts) losses++; else ties++;
         if (aPts > most) most = aPts;
@@ -191,7 +245,7 @@ async function setupMemberSummary(){
   renderAllMembersTable();
 }
 
-// ---- season page loaders ----
+// ---------- per-season UI ----------
 async function main(){
   try {
     const m = await loadJSON("manifest.json");
@@ -222,7 +276,7 @@ async function renderSeason(year){
   }
 }
 
-// ---- renderers ----
+// ---------- renderers ----------
 function renderSummary(year, data){
   const wrap = document.getElementById("summaryStats"); wrap.innerHTML="";
   const teams = data.teams||[], matchups=data.matchups||[], draft=data.draft||[], txns=data.transactions||[];
@@ -237,23 +291,10 @@ function renderSummary(year, data){
     ["Lowest Points Against", bestPA? `${bestPA.team_name} (${fmt(bestPA.points_against)})`:"—"],
     ["Average PF / Team", fmt(avgPF)],
     ["Games Recorded", matchups.length],
-    ["Draft Picks", draft length = draft.length, ""].slice(0,2), // guard for older browsers (no destructuring issues)
-  ].flat();
-  // Fallback if the previous line looks odd in minifiers:
-  const stats2 = [
-    ["Transactions", txns.length]
-  ];
-  const pack = [
-    ["Season", year],
-    ["Champion", champ],
-    ["Top Points For", bestPF? `${bestPF.team_name} (${fmt(bestPF.points_for)})`:"—"],
-    ["Lowest Points Against", bestPA? `${bestPA.team_name} (${fmt(bestPA.points_against)})`:"—"],
-    ["Average PF / Team", fmt(avgPF)],
-    ["Games Recorded", matchups.length],
     ["Draft Picks", draft.length],
     ["Transactions", txns.length]
   ];
-  for(const [k,v] of pack) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
+  for(const [k,v] of stats) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
 }
 
 function renderTeams(teams){
@@ -265,8 +306,9 @@ function renderTeams(teams){
     el("tbody",{})
   );
   teams.forEach(t=>{
+    const owner = canonicalOwner(t.owner || t.team_name);
     tbl.tBodies[0].appendChild(el("tr",{},
-      el("td",{}, `${t.team_name}${t.owner?` (${t.owner})`:""}`),
+      el("td",{}, `${t.team_name}${owner?` (${owner})`:""}`),
       el("td",{}, fmt(t.record)),
       el("td",{}, fmt(t.points_for)),
       el("td",{}, fmt(t.points_against)),
@@ -355,5 +397,5 @@ function renderFatal(e){
   document.getElementById("content").prepend(el("div",{class:"panel"}, pre));
 }
 
-// Ensure run after DOM parses
+// ---------- boot ----------
 document.addEventListener("DOMContentLoaded", main);
