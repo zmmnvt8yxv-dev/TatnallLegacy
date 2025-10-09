@@ -1,0 +1,1858 @@
+{
+  "year": 2023,
+  "teams": [
+    {
+      "team_id": 1,
+      "team_name": "Federal Burrow of Investigation",
+      "owner": "sdmarvin713",
+      "record": "4-10",
+      "points_for": 1846.56,
+      "points_against": 2187.64,
+      "regular_season_rank": 8,
+      "final_rank": 7
+    },
+    {
+      "team_id": 2,
+      "team_name": "Team Downs",
+      "owner": "John.downs123",
+      "record": "8-6",
+      "points_for": 1971.7799999999997,
+      "points_against": 1924.22,
+      "regular_season_rank": 4,
+      "final_rank": 4
+    },
+    {
+      "team_id": 3,
+      "team_name": "Harder Kulm",
+      "owner": "Edward3864",
+      "record": "7-7",
+      "points_for": 1929.42,
+      "points_against": 1908.2,
+      "regular_season_rank": 5,
+      "final_rank": 6
+    },
+    {
+      "team_id": 4,
+      "team_name": "Wish I had CMC",
+      "owner": "connerandfinn",
+      "record": "6-8",
+      "points_for": 2182.28,
+      "points_against": 2088.44,
+      "regular_season_rank": 6,
+      "final_rank": 5
+    },
+    {
+      "team_id": 5,
+      "team_name": "Insane in the Achane ",
+      "owner": "LbmBets",
+      "record": "8-6",
+      "points_for": 2060.1600000000003,
+      "points_against": 2077.44,
+      "regular_season_rank": 3,
+      "final_rank": 3
+    },
+    {
+      "team_id": 6,
+      "team_name": "Emergency Room",
+      "owner": "Jefe6700",
+      "record": "9-5",
+      "points_for": 1895.02,
+      "points_against": 1801.88,
+      "regular_season_rank": 2,
+      "final_rank": 2
+    },
+    {
+      "team_id": 7,
+      "team_name": "Only i can say The N word",
+      "owner": "jdunca5228572",
+      "record": "5-9",
+      "points_for": 2023.76,
+      "points_against": 2119.96,
+      "regular_season_rank": 7,
+      "final_rank": 8
+    },
+    {
+      "team_id": 8,
+      "team_name": "Sniper Gang - 1800 Block",
+      "owner": "espn92085473",
+      "record": "9-5",
+      "points_for": 2111.1,
+      "points_against": 1912.3,
+      "regular_season_rank": 1,
+      "final_rank": 1
+    }
+  ],
+  "matchups": [
+    {
+      "week": 1,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 123.52,
+      "away_team": "Only i can say The N word",
+      "away_score": 151.58,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Federal Burrow of Investigation",
+      "home_score": 93.74,
+      "away_team": "Insane in the Achane ",
+      "away_score": 152.32,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Harder Kulm",
+      "home_score": 91.72,
+      "away_team": "Team Downs",
+      "away_score": 94.2,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Wish I had CMC",
+      "home_score": 109.38,
+      "away_team": "Emergency Room",
+      "away_score": 122.78,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Only i can say The N word",
+      "home_score": 141.12,
+      "away_team": "Insane in the Achane ",
+      "away_score": 142.78,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Federal Burrow of Investigation",
+      "home_score": 138.62,
+      "away_team": "Sniper Gang - 1800 Block",
+      "away_score": 170.02,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Team Downs",
+      "home_score": 157.14,
+      "away_team": "Emergency Room",
+      "away_score": 159.04,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Wish I had CMC",
+      "home_score": 147.2,
+      "away_team": "Harder Kulm",
+      "away_score": 169.44,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Federal Burrow of Investigation",
+      "home_score": 129.68,
+      "away_team": "Only i can say The N word",
+      "away_score": 120.6,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Insane in the Achane ",
+      "home_score": 169.58,
+      "away_team": "Sniper Gang - 1800 Block",
+      "away_score": 154.04,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Wish I had CMC",
+      "home_score": 164.78,
+      "away_team": "Team Downs",
+      "away_score": 185.46,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Emergency Room",
+      "home_score": 180.34,
+      "away_team": "Harder Kulm",
+      "away_score": 156.56,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Only i can say The N word",
+      "home_score": 124.52,
+      "away_team": "Team Downs",
+      "away_score": 150.5,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 157.78,
+      "away_team": "Harder Kulm",
+      "away_score": 125.6,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Insane in the Achane ",
+      "home_score": 170.38,
+      "away_team": "Emergency Room",
+      "away_score": 114.66,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Federal Burrow of Investigation",
+      "home_score": 129.42,
+      "away_team": "Wish I had CMC",
+      "away_score": 198.7,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Team Downs",
+      "home_score": 128.82,
+      "away_team": "Sniper Gang - 1800 Block",
+      "away_score": 133.94,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Harder Kulm",
+      "home_score": 157.6,
+      "away_team": "Insane in the Achane ",
+      "away_score": 173.1,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Emergency Room",
+      "home_score": 144.42,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 122.64,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Wish I had CMC",
+      "home_score": 166.64,
+      "away_team": "Only i can say The N word",
+      "away_score": 111.68,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Insane in the Achane ",
+      "home_score": 159.12,
+      "away_team": "Team Downs",
+      "away_score": 104.98,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Federal Burrow of Investigation",
+      "home_score": 96.44,
+      "away_team": "Harder Kulm",
+      "away_score": 133.56,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Only i can say The N word",
+      "home_score": 103.36,
+      "away_team": "Emergency Room",
+      "away_score": 145.88,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 148.18,
+      "away_team": "Wish I had CMC",
+      "away_score": 103.58,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Team Downs",
+      "home_score": 129.74,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 111.26,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Harder Kulm",
+      "home_score": 164.9,
+      "away_team": "Only i can say The N word",
+      "away_score": 109.02,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Emergency Room",
+      "home_score": 115.16,
+      "away_team": "Sniper Gang - 1800 Block",
+      "away_score": 113.06,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Wish I had CMC",
+      "home_score": 95.46,
+      "away_team": "Insane in the Achane ",
+      "away_score": 183.98,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Only i can say The N word",
+      "home_score": 223.58,
+      "away_team": "Sniper Gang - 1800 Block",
+      "away_score": 164.22,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Insane in the Achane ",
+      "home_score": 139.34,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 152.7,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Team Downs",
+      "home_score": 126.32,
+      "away_team": "Harder Kulm",
+      "away_score": 134.14,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Emergency Room",
+      "home_score": 121.26,
+      "away_team": "Wish I had CMC",
+      "away_score": 134.76,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Insane in the Achane ",
+      "home_score": 91.82,
+      "away_team": "Only i can say The N word",
+      "away_score": 220.9,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 154.26,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 129.22,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Emergency Room",
+      "home_score": 115.22,
+      "away_team": "Team Downs",
+      "away_score": 84.08,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Harder Kulm",
+      "home_score": 124.66,
+      "away_team": "Wish I had CMC",
+      "away_score": 118.9,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Only i can say The N word",
+      "home_score": 197.12,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 175.3,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 162.48,
+      "away_team": "Insane in the Achane ",
+      "away_score": 105.92,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team Downs",
+      "home_score": 208.36,
+      "away_team": "Wish I had CMC",
+      "away_score": 167.08,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Harder Kulm",
+      "home_score": 138.04,
+      "away_team": "Emergency Room",
+      "away_score": 74.76,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Team Downs",
+      "home_score": 198.22,
+      "away_team": "Only i can say The N word",
+      "away_score": 139.88,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Harder Kulm",
+      "home_score": 104.22,
+      "away_team": "Sniper Gang - 1800 Block",
+      "away_score": 132.76,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Emergency Room",
+      "home_score": 137.78,
+      "away_team": "Insane in the Achane ",
+      "away_score": 121.02,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Wish I had CMC",
+      "home_score": 196.72,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 115.1,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 177.44,
+      "away_team": "Team Downs",
+      "away_score": 100.04,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Insane in the Achane ",
+      "home_score": 202.4,
+      "away_team": "Harder Kulm",
+      "away_score": 158.66,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Federal Burrow of Investigation",
+      "home_score": 165.1,
+      "away_team": "Emergency Room",
+      "away_score": 158.28,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Only i can say The N word",
+      "home_score": 156.76,
+      "away_team": "Wish I had CMC",
+      "away_score": 146.46,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Team Downs",
+      "home_score": 147.36,
+      "away_team": "Insane in the Achane ",
+      "away_score": 131.62,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Harder Kulm",
+      "home_score": 136.0,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 172.88,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Emergency Room",
+      "home_score": 185.72,
+      "away_team": "Only i can say The N word",
+      "away_score": 101.54,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Wish I had CMC",
+      "home_score": 196.66,
+      "away_team": "Sniper Gang - 1800 Block",
+      "away_score": 194.58,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Federal Burrow of Investigation",
+      "home_score": 114.46,
+      "away_team": "Team Downs",
+      "away_score": 156.56,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Only i can say The N word",
+      "home_score": 122.1,
+      "away_team": "Harder Kulm",
+      "away_score": 134.32,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 124.82,
+      "away_team": "Emergency Room",
+      "away_score": 119.72,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Insane in the Achane ",
+      "home_score": 116.78,
+      "away_team": "Wish I had CMC",
+      "away_score": 235.96,
+      "is_playoff": false
+    },
+    {
+      "week": 15,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 150.88,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Team Downs",
+      "home_score": 200.1,
+      "away_team": "Harder Kulm",
+      "away_score": 113.26,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Insane in the Achane ",
+      "home_score": 158.82,
+      "away_team": "Wish I had CMC",
+      "away_score": 145.68,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Emergency Room",
+      "home_score": 106.42,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Only i can say The N word",
+      "home_score": 151.4,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 152.38,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 173.56,
+      "away_team": "Team Downs",
+      "away_score": 97.92,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Emergency Room",
+      "home_score": 174.04,
+      "away_team": "Insane in the Achane ",
+      "away_score": 148.78,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Harder Kulm",
+      "home_score": 99.72,
+      "away_team": "Wish I had CMC",
+      "away_score": 144.78,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Only i can say The N word",
+      "home_score": 135.26,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 146.32,
+      "is_playoff": true
+    },
+    {
+      "week": 17,
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_score": 163.98,
+      "away_team": "Emergency Room",
+      "away_score": 138.52,
+      "is_playoff": true
+    },
+    {
+      "week": 17,
+      "home_team": "Insane in the Achane ",
+      "home_score": 184.74,
+      "away_team": "Team Downs",
+      "away_score": 152.88,
+      "is_playoff": true
+    },
+    {
+      "week": 17,
+      "home_team": "Harder Kulm",
+      "home_score": 107.02,
+      "away_team": "Wish I had CMC",
+      "away_score": 193.46,
+      "is_playoff": true
+    },
+    {
+      "week": 17,
+      "home_team": "Only i can say The N word",
+      "home_score": 109.56,
+      "away_team": "Federal Burrow of Investigation",
+      "away_score": 157.64,
+      "is_playoff": true
+    }
+  ],
+  "transactions": [],
+  "draft": [
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Christian McCaffrey",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Justin Jefferson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Derrick Henry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Austin Ekeler",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Travis Kelce",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Bijan Robinson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Nick Chubb",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Jalen Hurts",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Ja'Marr Chase",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "A.J. Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Tyreek Hill",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "49ers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Stefon Diggs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Russell Wilson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "George Kittle",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Patrick Mahomes",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Davante Adams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Saquon Barkley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "CeeDee Lamb",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Isiah Pacheco",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Garrett Wilson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Calvin Ridley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Joe Mixon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "DK Metcalf",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Josh Allen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Trevor Lawrence",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Josh Jacobs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Jaylen Waddle",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Tony Pollard",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Breece Hall",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Deebo Samuel",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Jonathan Taylor",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Jahmyr Gibbs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Lamar Jackson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Najee Harris",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Amon-Ra St. Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Tee Higgins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Rhamondre Stevenson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "DeVonta Smith",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Joe Burrow",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Mark Andrews",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Amari Cooper",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Miles Sanders",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Justin Herbert",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "T.J. Hockenson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Jordan Love",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Keenan Allen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Justin Tucker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Eagles D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Younghoe Koo",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Christian Watson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Deshaun Watson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Aaron Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Aaron Rodgers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Chris Olave",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Darren Waller",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Kirk Cousins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Kenneth Walker III",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "DJ Moore",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Kyle Pitts",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Travis Etienne Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Dalvin Cook",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Marquise Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Dallas Goedert",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Jared Goff",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Terry McLaurin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Diontae Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Cam Akers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Chris Godwin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Justin Fields",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Jerry Jeudy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Mike Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Dameon Pierce",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Mike Evans",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Rachaad White",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Brandon Aiyuk",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "James Conner",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Brian Robinson Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Brandin Cooks",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Pat Freiermuth",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "DeAndre Hopkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Tyler Lockett",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Alvin Kamara",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Drake London",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "David Njoku",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "James Cook",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Geno Smith",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Daniel Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "J.K. Dobbins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "D'Andre Swift",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Alexander Mattison",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Javonte Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Gabe Davis",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Romeo Doubs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Harrison Butker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Ravens D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Khalil Herbert",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Dak Prescott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Courtland Sutton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Saints D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Daniel Carlson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Zay Flowers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Tua Tagovailoa",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Tyler Bass",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "David Montgomery",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "George Pickens",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Samaje Perine",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Harder Kulm",
+      "player": "Evan McPherson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Steelers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Tyler Allgeier",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Anthony Richardson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "AJ Dillon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "De'Von Achane",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Treylon Burks",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Matthew Stafford",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Rashaad Penny",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Tank Bigsby",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Skyy Moore",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Christian Kirk",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Bills D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Raheem Mostert",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Michael Pittman Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Jerick McKinnon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Jamaal Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Jaxon Smith-Njigba",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Kyler Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "D'Onta Foreman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Jahan Dotson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Devin Singletary",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Michael Thomas",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Odell Beckham Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Quentin Johnston",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Elijah Mitchell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Jordan Addison",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "Antonio Gibson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Jerome Ford",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Sniper Gang - 1800 Block",
+      "player": "JuJu Smith-Schuster",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Patriots D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Only i can say The N word",
+      "player": "Chase Edmonds",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Federal Burrow of Investigation",
+      "player": "Kenny Pickett",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Jake Elliott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Bryce Young",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Jets D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Jaylen Warren",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Jeff Wilson Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Roschon Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "DJ Chark Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Evan Engram",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Wish I had CMC",
+      "player": "Gus Edwards",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Dolphins D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Graham Gano",
+      "player_nfl": null,
+      "keeper": null
+    }
+  ]
+}

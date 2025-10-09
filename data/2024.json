@@ -1,0 +1,1858 @@
+{
+  "year": 2024,
+  "teams": [
+    {
+      "team_id": 1,
+      "team_name": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "owner": "sdmarvin713",
+      "record": "11-3",
+      "points_for": 2328.8599999999997,
+      "points_against": 2086.64,
+      "regular_season_rank": 1,
+      "final_rank": 2
+    },
+    {
+      "team_id": 2,
+      "team_name": "Tugg Speedman",
+      "owner": "John.downs123",
+      "record": "6-8",
+      "points_for": 2231.1400000000003,
+      "points_against": 2399.28,
+      "regular_season_rank": 5,
+      "final_rank": 5
+    },
+    {
+      "team_id": 3,
+      "team_name": "MaHomelander",
+      "owner": "Edward3864",
+      "record": "6-8",
+      "points_for": 2272.1,
+      "points_against": 2315.74,
+      "regular_season_rank": 4,
+      "final_rank": 3
+    },
+    {
+      "team_id": 4,
+      "team_name": "Team Malley",
+      "owner": "connerandfinn",
+      "record": "9-5",
+      "points_for": 2609.34,
+      "points_against": 2338.9,
+      "regular_season_rank": 3,
+      "final_rank": 1
+    },
+    {
+      "team_id": 5,
+      "team_name": "Insane in the Achane ",
+      "owner": "LbmBets",
+      "record": "10-4",
+      "points_for": 2499.0400000000004,
+      "points_against": 2197.68,
+      "regular_season_rank": 2,
+      "final_rank": 4
+    },
+    {
+      "team_id": 6,
+      "team_name": "Emergency Room",
+      "owner": "Jefe6700",
+      "record": "5-9",
+      "points_for": 2157.6,
+      "points_against": 2344.5,
+      "regular_season_rank": 7,
+      "final_rank": 7
+    },
+    {
+      "team_id": 7,
+      "team_name": "Make-A-Wish-Kid",
+      "owner": "jdunca5228572",
+      "record": "5-9",
+      "points_for": 2293.4800000000005,
+      "points_against": 2523.2,
+      "regular_season_rank": 6,
+      "final_rank": 6
+    },
+    {
+      "team_id": 8,
+      "team_name": "Mayo Clinic",
+      "owner": "espn92085473",
+      "record": "4-10",
+      "points_for": 2087.82,
+      "points_against": 2273.44,
+      "regular_season_rank": 8,
+      "final_rank": 8
+    }
+  ],
+  "matchups": [
+    {
+      "week": 1,
+      "home_team": "Mayo Clinic",
+      "home_score": 132.04,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 171.04,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 135.4,
+      "away_team": "Insane in the Achane ",
+      "away_score": 150.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "MaHomelander",
+      "home_score": 169.02,
+      "away_team": "Tugg Speedman",
+      "away_score": 176.7,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Team Malley",
+      "home_score": 128.28,
+      "away_team": "Emergency Room",
+      "away_score": 182.68,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Make-A-Wish-Kid",
+      "home_score": 129.56,
+      "away_team": "Insane in the Achane ",
+      "away_score": 217.56,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 141.18,
+      "away_team": "Mayo Clinic",
+      "away_score": 129.9,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Tugg Speedman",
+      "home_score": 196.9,
+      "away_team": "Emergency Room",
+      "away_score": 129.06,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Team Malley",
+      "home_score": 149.0,
+      "away_team": "MaHomelander",
+      "away_score": 211.52,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 205.74,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 143.28,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Insane in the Achane ",
+      "home_score": 120.22,
+      "away_team": "Mayo Clinic",
+      "away_score": 175.86,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Team Malley",
+      "home_score": 195.56,
+      "away_team": "Tugg Speedman",
+      "away_score": 128.04,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Emergency Room",
+      "home_score": 147.64,
+      "away_team": "MaHomelander",
+      "away_score": 133.84,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Make-A-Wish-Kid",
+      "home_score": 150.36,
+      "away_team": "Tugg Speedman",
+      "away_score": 135.86,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Mayo Clinic",
+      "home_score": 143.48,
+      "away_team": "MaHomelander",
+      "away_score": 173.08,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Insane in the Achane ",
+      "home_score": 184.18,
+      "away_team": "Emergency Room",
+      "away_score": 125.94,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 183.76,
+      "away_team": "Team Malley",
+      "away_score": 176.72,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Tugg Speedman",
+      "home_score": 167.2,
+      "away_team": "Mayo Clinic",
+      "away_score": 133.26,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "MaHomelander",
+      "home_score": 137.54,
+      "away_team": "Insane in the Achane ",
+      "away_score": 169.46,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Emergency Room",
+      "home_score": 150.3,
+      "away_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "away_score": 189.76,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Team Malley",
+      "home_score": 247.7,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 180.8,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Insane in the Achane ",
+      "home_score": 180.22,
+      "away_team": "Tugg Speedman",
+      "away_score": 143.44,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 129.22,
+      "away_team": "MaHomelander",
+      "away_score": 161.94,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Make-A-Wish-Kid",
+      "home_score": 154.78,
+      "away_team": "Emergency Room",
+      "away_score": 176.22,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Mayo Clinic",
+      "home_score": 125.4,
+      "away_team": "Team Malley",
+      "away_score": 194.74,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Tugg Speedman",
+      "home_score": 134.5,
+      "away_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "away_score": 135.6,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "MaHomelander",
+      "home_score": 153.66,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 149.22,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Emergency Room",
+      "home_score": 202.9,
+      "away_team": "Mayo Clinic",
+      "away_score": 129.7,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Team Malley",
+      "home_score": 168.38,
+      "away_team": "Insane in the Achane ",
+      "away_score": 154.2,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Make-A-Wish-Kid",
+      "home_score": 165.86,
+      "away_team": "Mayo Clinic",
+      "away_score": 168.82,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Insane in the Achane ",
+      "home_score": 203.08,
+      "away_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "away_score": 173.02,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Tugg Speedman",
+      "home_score": 201.2,
+      "away_team": "MaHomelander",
+      "away_score": 176.9,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Emergency Room",
+      "home_score": 162.14,
+      "away_team": "Team Malley",
+      "away_score": 176.02,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Insane in the Achane ",
+      "home_score": 195.36,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 181.22,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Mayo Clinic",
+      "home_score": 133.98,
+      "away_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "away_score": 144.82,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Emergency Room",
+      "home_score": 111.02,
+      "away_team": "Tugg Speedman",
+      "away_score": 186.66,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "MaHomelander",
+      "home_score": 177.12,
+      "away_team": "Team Malley",
+      "away_score": 217.94,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Make-A-Wish-Kid",
+      "home_score": 118.22,
+      "away_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "away_score": 165.42,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Mayo Clinic",
+      "home_score": 142.14,
+      "away_team": "Insane in the Achane ",
+      "away_score": 142.16,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Tugg Speedman",
+      "home_score": 146.0,
+      "away_team": "Team Malley",
+      "away_score": 247.32,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "MaHomelander",
+      "home_score": 102.84,
+      "away_team": "Emergency Room",
+      "away_score": 121.7,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Tugg Speedman",
+      "home_score": 160.84,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 188.1,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "MaHomelander",
+      "home_score": 187.72,
+      "away_team": "Mayo Clinic",
+      "away_score": 171.84,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Emergency Room",
+      "home_score": 163.82,
+      "away_team": "Insane in the Achane ",
+      "away_score": 231.1,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Team Malley",
+      "home_score": 148.12,
+      "away_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "away_score": 163.64,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Mayo Clinic",
+      "home_score": 184.62,
+      "away_team": "Tugg Speedman",
+      "away_score": 116.46,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Insane in the Achane ",
+      "home_score": 190.56,
+      "away_team": "MaHomelander",
+      "away_score": 119.82,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 157.34,
+      "away_team": "Emergency Room",
+      "away_score": 134.08,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Make-A-Wish-Kid",
+      "home_score": 202.46,
+      "away_team": "Team Malley",
+      "away_score": 185.18,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Tugg Speedman",
+      "home_score": 196.3,
+      "away_team": "Insane in the Achane ",
+      "away_score": 177.76,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "MaHomelander",
+      "home_score": 161.48,
+      "away_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "away_score": 183.48,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Emergency Room",
+      "home_score": 173.18,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 194.28,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Team Malley",
+      "home_score": 169.14,
+      "away_team": "Mayo Clinic",
+      "away_score": 137.96,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 220.48,
+      "away_team": "Tugg Speedman",
+      "away_score": 141.04,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Make-A-Wish-Kid",
+      "home_score": 164.3,
+      "away_team": "MaHomelander",
+      "away_score": 205.62,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Mayo Clinic",
+      "home_score": 178.82,
+      "away_team": "Emergency Room",
+      "away_score": 176.92,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Insane in the Achane ",
+      "home_score": 183.18,
+      "away_team": "Team Malley",
+      "away_score": 205.24,
+      "is_playoff": false
+    },
+    {
+      "week": 15,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 224.36,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "MaHomelander",
+      "home_score": 176.32,
+      "away_team": "Tugg Speedman",
+      "away_score": 155.94,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Team Malley",
+      "home_score": 168.14,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 130.98,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Insane in the Achane ",
+      "home_score": 0.0,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Emergency Room",
+      "home_score": 202.02,
+      "away_team": "Mayo Clinic",
+      "away_score": 152.66,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 196.38,
+      "away_team": "MaHomelander",
+      "away_score": 188.94,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Insane in the Achane ",
+      "home_score": 154.52,
+      "away_team": "Team Malley",
+      "away_score": 177.16,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Tugg Speedman",
+      "home_score": 151.62,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 162.66,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Emergency Room",
+      "home_score": 230.58,
+      "away_team": "Mayo Clinic",
+      "away_score": 155.56,
+      "is_playoff": true
+    },
+    {
+      "week": 17,
+      "home_team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "home_score": 177.96,
+      "away_team": "Team Malley",
+      "away_score": 212.1,
+      "is_playoff": true
+    },
+    {
+      "week": 17,
+      "home_team": "Insane in the Achane ",
+      "home_score": 107.34,
+      "away_team": "MaHomelander",
+      "away_score": 127.12,
+      "is_playoff": true
+    },
+    {
+      "week": 17,
+      "home_team": "Tugg Speedman",
+      "home_score": 177.0,
+      "away_team": "Make-A-Wish-Kid",
+      "away_score": 134.4,
+      "is_playoff": true
+    },
+    {
+      "week": 17,
+      "home_team": "Emergency Room",
+      "home_score": 198.6,
+      "away_team": "Mayo Clinic",
+      "away_score": 154.54,
+      "is_playoff": true
+    }
+  ],
+  "transactions": [],
+  "draft": [
+    {
+      "round": 1,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Mike Evans",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Chris Olave",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "James Cook",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "David Njoku",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Breece Hall",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Nico Collins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Drake London",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Zay Flowers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "De'Von Achane",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Amon-Ra St. Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "George Pickens",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Jordan Love",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "C.J. Stroud",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Anthony Richardson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Puka Nacua",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Christian McCaffrey",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "CeeDee Lamb",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Bijan Robinson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Justin Jefferson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Malik Nabers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Tyreek Hill",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Saquon Barkley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Travis Kelce",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Josh Allen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Joe Burrow",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Ja'Marr Chase",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "A.J. Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Derrick Henry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Jonathan Taylor",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Marvin Harrison Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Jahmyr Gibbs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Kyren Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Lamar Jackson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Travis Etienne Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Davante Adams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Isiah Pacheco",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Garrett Wilson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Stefon Diggs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Deebo Samuel Sr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Patrick Mahomes",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Sam LaPorta",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Josh Jacobs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Rhamondre Stevenson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Tee Higgins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Joe Mixon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Kenneth Walker III",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Dak Prescott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Alvin Kamara",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Dalton Kincaid",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Zamir White",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "D'Andre Swift",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Evan Engram",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Jaxon Smith-Njigba",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Cooper Kupp",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Justin Herbert",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Rachaad White",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Jalen Hurts",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "David Montgomery",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "James Conner",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Keenan Allen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Michael Pittman Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Rashee Rice",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "DeVonta Smith",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "DK Metcalf",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Mark Andrews",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Nick Chubb",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "DJ Moore",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Amari Cooper",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Brandon Aiyuk",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Aaron Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Ladd McConkey",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Najee Harris",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Trey McBride",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Younghoe Koo",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Jaylen Waddle",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Jaylen Warren",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Calvin Ridley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Tank Dell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Xavier Worthy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Brock Bowers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Browns D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Jets D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Chris Godwin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Kyle Pitts",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Jayden Reed",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Caleb Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Keon Coleman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Zack Moss",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Raheem Mostert",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "J.K. Dobbins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Javonte Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Kyler Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Jayden Daniels",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Aaron Rodgers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Rome Odunze",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Austin Ekeler",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Tua Tagovailoa",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Jonathon Brooks",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Terry McLaurin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Tony Pollard",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Jared Goff",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "George Kittle",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "MarShawn Lloyd",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Brian Robinson Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Trey Benson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Hollywood Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Jake Ferguson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Cowboys D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Brock Purdy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Tyjae Spears",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Blake Corum",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Diontae Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Jakobi Meyers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Devin Singletary",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Trevor Lawrence",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Brandon Aubrey",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Kirk Cousins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Courtland Sutton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "T.J. Hockenson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Christian Watson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Brian Thomas Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Ezekiel Elliott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Jake Elliott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Chase Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Deshaun Watson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "Matthew Stafford",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Seahawks D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Ravens D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Justin Fields",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Gus Edwards",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Emergency Room",
+      "player": "Steelers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Make-A-Wish-Kid",
+      "player": "Justin Tucker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Geno Smith",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Mayo Clinic",
+      "player": "49ers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "King of December \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+      "player": "Harrison Butker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Pat Freiermuth",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Tyler Allgeier",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Insane in the Achane ",
+      "player": "Ka'imi Fairbairn",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Christian Kirk",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "DeAndre Hopkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Jerome Ford",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Jameson Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "MaHomelander",
+      "player": "Greg Zuerlein",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Drake Maye",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Mike Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Jerry Jeudy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Jaleel McLaughlin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Joshua Palmer",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Khalil Shakir",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Will Levis",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Lions D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Tugg Speedman",
+      "player": "Evan McPherson",
+      "player_nfl": null,
+      "keeper": null
+    }
+  ]
+}

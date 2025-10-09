@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Tatnall League Legacy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header>
+  <h1>Tatnall League Legacy</h1>
+  <div class="controls">
+    <label for="seasonSelect">Season:</label>
+    <select id="seasonSelect"></select>
+  </div>
+</header>
+
+<main id="content">
+  <section id="summary" class="panel">
+    <h2>Season Summary</h2>
+    <div id="summaryStats" class="grid-4"></div>
+  </section>
+
+  <section id="teams" class="panel">
+    <h2>Teams & Standings</h2>
+    <div class="tablewrap" id="teamsWrap"></div>
+  </section>
+
+  <section id="matchups" class="panel">
+    <h2>Matchups</h2>
+    <div class="controls row">
+      <label>Week:
+        <select id="weekFilter"></select>
+      </label>
+      <input id="matchupSearch" type="search" placeholder="Filter by team..."/>
+    </div>
+    <div class="tablewrap" id="matchupsWrap"></div>
+  </section>
+
+  <section id="transactions" class="panel">
+    <h2>Transactions</h2>
+    <div class="controls row">
+      <input id="txnSearch" type="search" placeholder="Filter by team/player/type..."/>
+    </div>
+    <div class="tablewrap" id="txnsWrap"></div>
+  </section>
+
+  <section id="draft" class="panel">
+    <h2>Draft Results</h2>
+    <div class="controls row">
+      <input id="draftSearch" type="search" placeholder="Filter by player/team..."/>
+    </div>
+    <div class="tablewrap" id="draftWrap"></div>
+  </section>
+</main>
+
+<footer>
+  <small>Built from ESPN data via espn_api. Local static UI.</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1826 @@
+{
+  "year": 2020,
+  "teams": [
+    {
+      "team_id": 1,
+      "team_name": "The King",
+      "owner": "sdmarvin713",
+      "record": "10-2-1",
+      "points_for": 2001.0,
+      "points_against": 1746.0,
+      "regular_season_rank": 1,
+      "final_rank": 1
+    },
+    {
+      "team_id": 2,
+      "team_name": "Team Downs",
+      "owner": "John.downs123",
+      "record": "9-4",
+      "points_for": 2016.0,
+      "points_against": 1777.0,
+      "regular_season_rank": 2,
+      "final_rank": 3
+    },
+    {
+      "team_id": 3,
+      "team_name": "Valar Morghulis",
+      "owner": "Edward3864",
+      "record": "4-9",
+      "points_for": 1652.0,
+      "points_against": 1828.0,
+      "regular_season_rank": 8,
+      "final_rank": 8
+    },
+    {
+      "team_id": 4,
+      "team_name": "Team Malley",
+      "owner": "connerandfinn",
+      "record": "5-8",
+      "points_for": 1832.0,
+      "points_against": 1892.0,
+      "regular_season_rank": 6,
+      "final_rank": 2
+    },
+    {
+      "team_id": 5,
+      "team_name": "Team jack",
+      "owner": "jksheehy",
+      "record": "5-7-1",
+      "points_for": 1861.0,
+      "points_against": 1940.0,
+      "regular_season_rank": 5,
+      "final_rank": 5
+    },
+    {
+      "team_id": 6,
+      "team_name": "Fuck My Alarm",
+      "owner": "Jefe6700",
+      "record": "5-8",
+      "points_for": 1704.0,
+      "points_against": 1934.0,
+      "regular_season_rank": 7,
+      "final_rank": 7
+    },
+    {
+      "team_id": 7,
+      "team_name": "Big Dick Bandito",
+      "owner": "jdunca5228572",
+      "record": "6-7",
+      "points_for": 1827.0,
+      "points_against": 1893.0,
+      "regular_season_rank": 4,
+      "final_rank": 4
+    },
+    {
+      "team_id": 8,
+      "team_name": "Golden Taint",
+      "owner": "mattmaloy99",
+      "record": "7-6",
+      "points_for": 1933.0,
+      "points_against": 1816.0,
+      "regular_season_rank": 3,
+      "final_rank": 6
+    }
+  ],
+  "matchups": [
+    {
+      "week": 1,
+      "home_team": "Big Dick Bandito",
+      "home_score": 123.0,
+      "away_team": "The King",
+      "away_score": 153.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Team jack",
+      "home_score": 157.0,
+      "away_team": "Fuck My Alarm",
+      "away_score": 126.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Team Malley",
+      "home_score": 149.0,
+      "away_team": "Team Downs",
+      "away_score": 161.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Golden Taint",
+      "home_score": 166.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 144.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "The King",
+      "home_score": 196.0,
+      "away_team": "Fuck My Alarm",
+      "away_score": 186.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Team jack",
+      "home_score": 173.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 152.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Team Downs",
+      "home_score": 178.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 113.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Golden Taint",
+      "home_score": 166.0,
+      "away_team": "Team Malley",
+      "away_score": 122.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Team jack",
+      "home_score": 173.0,
+      "away_team": "The King",
+      "away_score": 173.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Fuck My Alarm",
+      "home_score": 153.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 182.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Golden Taint",
+      "home_score": 143.0,
+      "away_team": "Team Downs",
+      "away_score": 196.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Valar Morghulis",
+      "home_score": 102.0,
+      "away_team": "Team Malley",
+      "away_score": 121.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "The King",
+      "home_score": 182.0,
+      "away_team": "Team Downs",
+      "away_score": 152.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Big Dick Bandito",
+      "home_score": 188.0,
+      "away_team": "Team Malley",
+      "away_score": 118.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Fuck My Alarm",
+      "home_score": 110.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 167.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Team jack",
+      "home_score": 120.0,
+      "away_team": "Golden Taint",
+      "away_score": 182.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Team Downs",
+      "home_score": 176.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 82.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Team Malley",
+      "home_score": 137.0,
+      "away_team": "Fuck My Alarm",
+      "away_score": 151.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Valar Morghulis",
+      "home_score": 118.0,
+      "away_team": "Team jack",
+      "away_score": 163.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Golden Taint",
+      "home_score": 159.0,
+      "away_team": "The King",
+      "away_score": 188.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Fuck My Alarm",
+      "home_score": 150.0,
+      "away_team": "Team Downs",
+      "away_score": 140.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Team jack",
+      "home_score": 118.0,
+      "away_team": "Team Malley",
+      "away_score": 211.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "The King",
+      "home_score": 106.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 132.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Big Dick Bandito",
+      "home_score": 88.0,
+      "away_team": "Golden Taint",
+      "away_score": 161.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Team Downs",
+      "home_score": 116.0,
+      "away_team": "Team jack",
+      "away_score": 150.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Team Malley",
+      "home_score": 111.0,
+      "away_team": "The King",
+      "away_score": 138.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Valar Morghulis",
+      "home_score": 145.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 215.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Golden Taint",
+      "home_score": 147.0,
+      "away_team": "Fuck My Alarm",
+      "away_score": 123.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "The King",
+      "home_score": 159.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 82.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Fuck My Alarm",
+      "home_score": 136.0,
+      "away_team": "Team jack",
+      "away_score": 132.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Team Downs",
+      "home_score": 154.0,
+      "away_team": "Team Malley",
+      "away_score": 138.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Valar Morghulis",
+      "home_score": 75.0,
+      "away_team": "Golden Taint",
+      "away_score": 121.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Fuck My Alarm",
+      "home_score": 141.0,
+      "away_team": "The King",
+      "away_score": 128.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Big Dick Bandito",
+      "home_score": 144.0,
+      "away_team": "Team jack",
+      "away_score": 132.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Valar Morghulis",
+      "home_score": 129.0,
+      "away_team": "Team Downs",
+      "away_score": 146.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Team Malley",
+      "home_score": 143.0,
+      "away_team": "Golden Taint",
+      "away_score": 135.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "The King",
+      "home_score": 120.0,
+      "away_team": "Team jack",
+      "away_score": 110.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Big Dick Bandito",
+      "home_score": 116.0,
+      "away_team": "Fuck My Alarm",
+      "away_score": 104.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team Downs",
+      "home_score": 168.0,
+      "away_team": "Golden Taint",
+      "away_score": 147.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team Malley",
+      "home_score": 96.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 158.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "The King",
+      "home_score": 142.0,
+      "away_team": "Team Downs",
+      "away_score": 134.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Big Dick Bandito",
+      "home_score": 173.0,
+      "away_team": "Team Malley",
+      "away_score": 128.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Fuck My Alarm",
+      "home_score": 120.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 99.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Team jack",
+      "home_score": 157.0,
+      "away_team": "Golden Taint",
+      "away_score": 136.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Team Downs",
+      "home_score": 149.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 145.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Team Malley",
+      "home_score": 187.0,
+      "away_team": "Fuck My Alarm",
+      "away_score": 97.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Valar Morghulis",
+      "home_score": 155.0,
+      "away_team": "Team jack",
+      "away_score": 125.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Golden Taint",
+      "home_score": 128.0,
+      "away_team": "The King",
+      "away_score": 155.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Fuck My Alarm",
+      "home_score": 107.0,
+      "away_team": "Team Downs",
+      "away_score": 146.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Team jack",
+      "home_score": 151.0,
+      "away_team": "Team Malley",
+      "away_score": 171.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "The King",
+      "home_score": 161.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 115.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Big Dick Bandito",
+      "home_score": 137.0,
+      "away_team": "Golden Taint",
+      "away_score": 142.0,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "The King",
+      "home_score": 217.0,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Big Dick Bandito",
+      "home_score": 154.0,
+      "away_team": "Team jack",
+      "away_score": 111.0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Golden Taint",
+      "home_score": 164.0,
+      "away_team": "Team Malley",
+      "away_score": 179.0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Team Downs",
+      "home_score": 132.0,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Fuck My Alarm",
+      "home_score": 114.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 106.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "The King",
+      "home_score": 219.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 115.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Team Downs",
+      "home_score": 165.0,
+      "away_team": "Team Malley",
+      "away_score": 167.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Golden Taint",
+      "home_score": 176.0,
+      "away_team": "Team jack",
+      "away_score": 139.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Fuck My Alarm",
+      "home_score": 131.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 137.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "The King",
+      "home_score": 174.0,
+      "away_team": "Team Malley",
+      "away_score": 120.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Team Downs",
+      "home_score": 186.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 117.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Golden Taint",
+      "home_score": 148.0,
+      "away_team": "Team jack",
+      "away_score": 159.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Fuck My Alarm",
+      "home_score": 143.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 123.0,
+      "is_playoff": true
+    }
+  ],
+  "transactions": [],
+  "draft": [
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Saquon Barkley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Christian McCaffrey",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Ezekiel Elliott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Alvin Kamara",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "The King",
+      "player": "Dalvin Cook",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Clyde Edwards-Helaire",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Derrick Henry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Nick Chubb",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Michael Thomas",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Josh Jacobs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Tyreek Hill",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "The King",
+      "player": "Miles Sanders",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "DeAndre Hopkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Aaron Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Kenyan Drake",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Davante Adams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Julio Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Joe Mixon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Austin Ekeler",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Travis Kelce",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "The King",
+      "player": "Mike Evans",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Kenny Golladay",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Chris Godwin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "George Kittle",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Chris Carson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Amari Cooper",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Odell Beckham Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "The King",
+      "player": "Allen Robinson II",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Patrick Mahomes",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Adam Thielen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "DJ Moore",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Lamar Jackson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Leonard Fournette",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "JuJu Smith-Schuster",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team jack",
+      "player": "A.J. Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Courtland Sutton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "The King",
+      "player": "Calvin Ridley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Le'Veon Bell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Mark Andrews",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Tyler Lockett",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Todd Gurley II",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Melvin Gordon III",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "David Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "The King",
+      "player": "Jonathan Taylor",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Zach Ertz",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Robert Woods",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "DK Metcalf",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Devin Singletary",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "James Conner",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team jack",
+      "player": "T.Y. Hilton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "D'Andre Swift",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "The King",
+      "player": "Raheem Mostert",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Mark Ingram II",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Kyler Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Terry McLaurin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Cam Akers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Stefon Diggs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Will Fuller V",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "The King",
+      "player": "David Montgomery",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Ronald Jones II",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team jack",
+      "player": "A.J. Green",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Keenan Allen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Deshaun Watson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Deebo Samuel",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Jarvis Landry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Russell Wilson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "DJ Chark Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "The King",
+      "player": "Darren Waller",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Brandin Cooks",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Dak Prescott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "DeVante Parker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Tom Brady",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Marquise Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Matt Ryan",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "The King",
+      "player": "Kareem Hunt",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Kerryon Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Marvin Jones Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Michael Gallup",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Darrell Henderson Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Rob Gronkowski",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Tyler Boyd",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Julian Edelman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Tyler Higbee",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "The King",
+      "player": "Carson Wentz",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Jordan Howard",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Zack Moss",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Evan Engram",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Aaron Rodgers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Tarik Cohen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Matthew Stafford",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "The King",
+      "player": "Diontae Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Jamison Crowder",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Tevin Coleman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Christian Kirk",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Phillip Lindsay",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Henry Ruggs III",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "J.K. Dobbins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Drew Brees",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Josh Allen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "The King",
+      "player": "Sterling Shepard",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "James White",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Emmanuel Sanders",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Alexander Mattison",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Mecole Hardman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Jerry Jeudy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Antonio Gibson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "The King",
+      "player": "Breshad Perriman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "CeeDee Lamb",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Matt Breida",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Hunter Henry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Bills D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Justin Tucker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Latavius Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Marlon Mack",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Adrian Peterson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "The King",
+      "player": "Daniel Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Ke'Shawn Vaughn",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Duke Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Carlos Hyde",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "49ers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Jalen Reagor",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Jared Cook",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "The King",
+      "player": "Ben Roethlisberger",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Brandon Aiyuk",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Ravens D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Cam Newton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "N'Keal Harry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Dion Lewis",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Ryan Tannehill",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team jack",
+      "player": "John Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Justin Jefferson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "The King",
+      "player": "Justin Jackson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "DeSean Jackson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Jared Goff",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Tee Higgins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Harrison Butker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Wil Lutz",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Patriots D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "The King",
+      "player": "Matt Prater",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Steelers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Golden Tate",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Colts D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 18,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Tua Tagovailoa",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Hayden Hurst",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Fuck My Alarm",
+      "player": "Greg Zuerlein",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Team jack",
+      "player": "Matt Gay",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Robbie Gould",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "The King",
+      "player": "Chargers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Chris Boswell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Bears D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 19,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Justin Herbert",
+      "player_nfl": null,
+      "keeper": null
+    }
+  ]
+}
