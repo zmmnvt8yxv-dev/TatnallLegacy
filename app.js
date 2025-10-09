@@ -1,5 +1,5 @@
 // ==============================
-// Tatnall Legacy — app.js (clean)
+// Tatnall Legacy — app.js (unified safe schema)
 // ==============================
 
 // ---------- helpers ----------
@@ -33,52 +33,6 @@ function attachSort(ths, tbl){
 }
 
 // ---------- Owner normalization ----------
-const OWNER_ALIASES_RAW = {
-  // IDs/handles
-  "espn92085473": "Roy Lee",
-  "edward3864": "Edward Saad",
-  "phillyphilly709": "Edward Saad",
-  "jalendelrosario@comcast.net": "Jalen Del Rosario",
-  "jawnwick13": "Jared Duncan",
-  "jdunca5228572": "Jared Duncan",
-  "conner27lax": "Conner Malley",
-  "connerandfinn": "Conner Malley",
-  "sdmarvin713": "Carl Marvin",
-  "cmarvin713": "Carl Marvin",
-  "john.downs123": "John Downs",
-  "downsliquidity": "John Downs",
-  "bhanrahan7": "Brendan Hanrahan",
-  "jefe6700": "Jeff Crossland",
-  "junktion": "Jeff Crossland",
-  "jksheehy": "Jackie Sheehy",
-  "lbmbets": "Samuel Kirby",
-  "mattmaloy99": "Matt Maloy",
-  "mhardi5674696": "Max Hardin",
-  "roylee6": "Roy Lee",
-
-  // plain-name/typo variants from JSON
-  "brendan hanrahan": "Brendan Hanrahan",
-  "carl marvin": "Carl Marvin",
-  "conner malley": "Conner Malley",
-  "edward saad": "Edward Saad",
-  "jack sheehy": "Jackie Sheehy",
-  "jalen del rosario": "Jalen Del Rosario",
-  "jared duncan": "Jared Duncan",
-  "jeff crossland": "Jeff Crossland",
-  "jeffrey crossland": "Jeff Crossland",
-  "john downs": "John Downs",
-  "matt maloy": "Matt Maloy",
-  "max hardin": "Max Hardin",
-  "roy lee": "Roy Lee",
-  "samuel kirby": "Samuel Kirby",
-  "stephen marvin": "Carl Marvin",
-  "John downs123": "John Downs"
-};
-const OWNER_ALIASES = Object.fromEntries(
-  Object.entries(OWNER_ALIASES_RAW).map(([k,v]) => [k.toLowerCase(), v])
-);
-
-/// ---------- Owner normalization ----------
 function titleCaseName(s) {
   const lowerParticles = new Set(["de", "del", "da", "di", "van", "von", "la", "le"]);
   return s.trim().split(/\s+/).map((w,i) => {
@@ -91,39 +45,9 @@ function titleCaseName(s) {
 function canonicalOwner(raw){
   let n = String(raw || "").trim();
   if (!n) return "";
-  if (n.includes("@")) n = n.split("@")[0];  // cut off emails
+  if (n.includes("@")) n = n.split("@")[0];  
   n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim();
-
-  // If looks like a name → title case
   if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n);
-
-  return n;
-}
-
-function collectOwners(seasons){
-  const owners = new Set();
-  for (const s of seasons) {
-    for (const t of (s.teams||[])) {
-      const raw = (t.owner ?? t.team_name ?? "").toString().trim();
-      const canon = canonicalOwner(raw);
-      if (canon) owners.add(canon);
-    }
-  }
-  return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
-}
-  // email -> prefix
-  if (n.includes("@")) n = n.split("@")[0];
-
-  // unify separators and spacing
-  n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim();
-
-  const key = n.toLowerCase();
-  if (OWNER_ALIASES[key]) return OWNER_ALIASES[key];
-
-  // if it looks like a human name, title-case it
-  if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n);
-
-  // otherwise return as-is (ids/handles)
   return n;
 }
 
@@ -150,6 +74,12 @@ async function loadAllSeasons(){
     try {
       const d = await loadJSON(`data/${y}.json`);
       if (typeof d.year !== "number") d.year = Number(y);
+      // normalize structure
+      d.teams = d.teams || [];
+      d.matchups = d.matchups || [];
+      d.transactions = d.transactions || [];
+      d.draft = d.draft || [];
+      d.lineups = d.lineups || [];
       seasons.push(d);
     } catch (err) {
       console.warn("Skipping season:", y, err);
@@ -163,7 +93,7 @@ function is2025FutureZeroZero(season, m){
   return Number(season.year)===2025 && Number(m.home_score||0)===0 && Number(m.away_score||0)===0;
 }
 
-// aggregate across seasons; apply 2025 0–0 rule; count championships
+// aggregate across seasons; championships
 function aggregateMember(owner, seasons){
   let wins=0, losses=0, ties=0, games=0;
   let most = -Infinity, least = Infinity;
@@ -184,10 +114,8 @@ function aggregateMember(owner, seasons){
 
     for (const m of (s.matchups||[])){
       if (is2025FutureZeroZero(s,m)) continue;
-
       const hPts = Number(m.home_score ?? 0);
       const aPts = Number(m.away_score ?? 0);
-
       if (m.home_team && ownerByTeam.get(m.home_team) === owner){
         games++; if (hPts > aPts) wins++; else if (hPts < aPts) losses++; else ties++;
         if (hPts > most) most = hPts; if (hPts < least) least = hPts;
@@ -198,7 +126,6 @@ function aggregateMember(owner, seasons){
       }
     }
   }
-
   if (games === 0){ most = null; least = null; }
   const winPct = games ? Math.round((wins + ties*0.5)/games*1000)/1000 : 0;
   return {wins, losses, ties, games, winPct, most, least, champs};
@@ -211,26 +138,14 @@ function biggestBlowoutsFromMatchups(matchups, limit = 3) {
     const margin = Math.abs(h - a);
     const winner = h > a ? m.home_team : (a > h ? m.away_team : null);
     const loser  = h > a ? m.away_team : (a > h ? m.home_team : null);
-    return {
-      week: m.week,
-      winner,
-      loser,
-      margin,
-      home_team: m.home_team,
-      away_team: m.away_team,
-      home_score: h,
-      away_score: a
-    };
-  })
-  // exclude ties + any zero-score side
-  .filter(r => r.margin > 0 && r.home_score > 0 && r.away_score > 0);
-
+    return { week: m.week, winner, loser, margin, home_team:m.home_team, away_team:m.away_team, home_score:h, away_score:a };
+  }).filter(r => r.margin > 0 && r.home_score > 0 && r.away_score > 0);
   rows.sort((a,b)=> b.margin - a.margin);
   return rows.slice(0, limit);
 }
 
 function computeMostDrafted(seasons){
-  const seen = new Map(); // player -> Set(years)
+  const seen = new Map();
   for (const s of seasons || []){
     const y = Number(s.year);
     for (const p of (s.draft || [])){
@@ -242,10 +157,9 @@ function computeMostDrafted(seasons){
   }
   const rows = [];
   for (const [player, yearsSet] of seen.entries()){
-    const years = Array.from(yearsSet).sort((a,b)=>a-b);
-    rows.push({ player, count: years.length, years });
+    rows.push({ player, count: yearsSet.size, years: [...yearsSet].sort((a,b)=>a-b) });
   }
-  rows.sort((a,b) => (b.count - a.count) || a.player.localeCompare(b.player));
+  rows.sort((a,b)=>(b.count - a.count) || a.player.localeCompare(b.player));
   return rows;
 }
 
@@ -260,25 +174,26 @@ async function main(){
     sel.onchange = () => renderSeason(+sel.value);
     if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
     else throw new Error("No years in manifest.json");
-
-    await setupMemberSummary();   // also triggers “Most Drafted” render
-  } catch (e){
-    renderFatal(e);
-  }
+    await setupMemberSummary();
+  } catch (e){ renderFatal(e); }
 }
 
 async function renderSeason(year){
   try{
     const data = await loadJSON(`data/${year}.json`);
+    data.teams = data.teams||[]; data.matchups=data.matchups||[];
+    data.transactions=data.transactions||[]; data.draft=data.draft||[]; data.lineups=data.lineups||[];
     renderSummary(year, data);
-    renderTeams(data.teams||[]);
-    renderMatchups(data.matchups||[]);
-    renderTransactions(data.transactions||[]);
-    renderDraft(data.draft||[]);
-  } catch(e){
-    renderFatal(e);
-  }
+    renderTeams(data.teams);
+    renderMatchups(data.matchups);
+    renderTransactions(data.transactions);
+    renderDraft(data.draft);
+    // if you add lineup rendering later: renderLineups(data.lineups);
+  } catch(e){ renderFatal(e); }
 }
+
+// ... [keep the rest of your rendering + member summary functions unchanged] ...
+
 
 function renderSummary(year, data){
   const wrap = document.getElementById("summaryStats"); wrap.innerHTML="";
@@ -642,6 +557,7 @@ function setupTabs(){
   setActive(tabs[0] || null);
   window.addEventListener("scroll", setActiveTabOnScroll, { passive: true });
 }
+
 
 // ---------- boot ----------
 document.addEventListener("DOMContentLoaded", () => { setupTabs(); main(); });
