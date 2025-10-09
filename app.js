@@ -140,7 +140,6 @@ function aggregateMember(owner, seasons){
 }
 
 // ===== Metrics helpers (blowouts + draft aggregation) =====
-// biggest blowout only
 function biggestBlowoutsFromMatchups(matchups, limit = 3) {
   const rows = (matchups||[]).map(m => {
     const h = Number(m.home_score||0), a = Number(m.away_score||0);
@@ -236,13 +235,13 @@ function renderSummary(year, data){
   ];
 
   // Biggest blowout (only #1) — per season
-const blows = biggestBlowoutsFromMatchups(matchups, 1);
-if (blows.length){
-  const b = blows[0];
-  stats.push(["Biggest Ass-Whooping",
-    `W${b.week}: ${b.winner} over ${b.loser} by ${fmt(b.margin)} (${fmt(b.home_score)}–${b.away_score})`
-  ]);
-}
+  const blows = biggestBlowoutsFromMatchups(matchups, 1);
+  if (blows.length){
+    const b = blows[0];
+    stats.push(["Biggest Ass-Whooping",
+      `W${b.week}: ${b.winner} over ${b.loser} by ${fmt(b.margin)} (${fmt(b.home_score)}–${fmt(b.away_score)})`
+    ]);
+  }
 
   for(const [k,v] of stats) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
 }
@@ -348,14 +347,47 @@ function renderFatal(e){
 }
 
 // ---------- Members panel ----------
+function teamOwnerMap(season){
+  const m = new Map();
+  (season.teams||[]).forEach(t=>{
+    const raw = (t.owner ?? t.team_name ?? "").toString().trim();
+    m.set(t.team_name, canonicalOwner(raw));
+  });
+  return m;
+}
+
+function memberBiggestBlowout(owner, seasons){
+  let best = null; // {season, week, myTeam, oppTeam, myScore, oppScore, margin}
+  for (const s of seasons||[]){
+    const own = teamOwnerMap(s);
+    for (const m of (s.matchups||[])){
+      if (is2025FutureZeroZero(s,m)) continue;
+      const h = Number(m.home_score||0), a = Number(m.away_score||0);
+      if (h===0 || a===0) continue;
+      const homeOwner = own.get(m.home_team);
+      const awayOwner = own.get(m.away_team);
+
+      if (homeOwner===owner && h>a){
+        const margin = h-a;
+        if (!best || margin>best.margin) best = {season:Number(s.year), week:m.week, myTeam:m.home_team, oppTeam:m.away_team, myScore:h, oppScore:a, margin};
+      }
+      if (awayOwner===owner && a>h){
+        const margin = a-h;
+        if (!best || margin>best.margin) best = {season:Number(s.year), week:m.week, myTeam:m.away_team, oppTeam:m.home_team, myScore:a, oppScore:h, margin};
+      }
+    }
+  }
+  return best;
+}
+
 function renderMemberSummary(owner){
   const wrap = document.getElementById("memberSummary");
   const tableWrap = document.getElementById("memberTableWrap");
   tableWrap.style.display = "none";
   wrap.style.display = "";
+  wrap.innerHTML = "";
 
   const s = aggregateMember(owner, ALL_SEASONS);
-  wrap.innerHTML = "";
   if(!s) return;
 
   const stats = [
@@ -369,6 +401,16 @@ function renderMemberSummary(owner){
   ];
   for (const [k,v] of stats){
     wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
+  }
+
+  const bw = memberBiggestBlowout(owner, ALL_SEASONS);
+  if (bw){
+    wrap.appendChild(
+      el("div",{class:"stat"},
+        el("h3",{},"Biggest blowout (all years)"),
+        el("p",{}, `Δ${fmt(bw.margin)} — ${bw.myTeam} over ${bw.oppTeam} ${fmt(bw.myScore)}–${fmt(bw.oppScore)} (Y${bw.season} W${bw.week})`)
+      )
+    );
   }
 }
 
@@ -399,12 +441,17 @@ function renderAllMembersTable(){
       el("th",{},"Champs"),
       el("th",{},"Games"),
       el("th",{},"Most PF (G)"),
-      el("th",{},"Least PF (G)")
+      el("th",{},"Least PF (G)"),
+      el("th",{},"Best Win Δ"),
+      el("th",{},"Best Win (detail)")
     )),
     el("tbody",{})
   );
 
   rows.forEach(r=>{
+    const bw = memberBiggestBlowout(r.member, ALL_SEASONS);
+    const bestDelta = bw ? fmt(bw.margin) : "";
+    const bestDetail = bw ? `Y${bw.season} W${bw.week}: ${bw.myTeam} over ${bw.oppTeam} ${fmt(bw.myScore)}–${fmt(bw.oppScore)}` : "";
     tbl.tBodies[0].appendChild(el("tr",{},
       el("td",{}, r.rank),
       el("td",{}, r.member),
@@ -415,7 +462,9 @@ function renderAllMembersTable(){
       el("td",{}, r.champs),
       el("td",{}, r.games),
       el("td",{}, fmt(r.most)),
-      el("td",{}, fmt(r.least))
+      el("td",{}, fmt(r.least)),
+      el("td",{}, bestDelta),
+      el("td",{}, bestDetail)
     ));
   });
 
@@ -450,7 +499,6 @@ async function setupMemberSummary(){
     renderAllMembersTable();
   }
 
-  // render Most Drafted table (if section exists)
   renderMostDrafted();
 }
 
