@@ -32,52 +32,7 @@ function attachSort(ths, tbl){
   );
 }
 
-// ---------- Owner normalization ----------
-const OWNER_ALIASES_RAW = {
-  // IDs/handles
-  "espn92085473": "Roy Lee",
-  "edward3864": "Edward Saad",
-  "phillyphilly709": "Edward Saad",
-  "jalendelrosario@comcast.net": "Jalen Del Rosario",
-  "jawnwick13": "Jared Duncan",
-  "jdunca5228572": "Jared Duncan",
-  "conner27lax": "Conner Malley",
-  "connerandfinn": "Conner Malley",
-  "sdmarvin713": "Carl Marvin",
-  "cmarvin713": "Carl Marvin",
-  "john.downs123": "John Downs",
-  "downsliquidity": "John Downs",
-  "bhanrahan7": "Brendan Hanrahan",
-  "jefe6700": "Jeff Crossland",
-  "junktion": "Jeff Crossland",
-  "jksheehy": "Jackie Sheehy",
-  "lbmbets": "Samuel Kirby",
-  "mattmaloy99": "Matt Maloy",
-  "mhardi5674696": "Max Hardin",
-  "roylee6": "Roy Lee",
-
-  // plain-name/typo variants from JSON
-  "brendan hanrahan": "Brendan Hanrahan",
-  "carl marvin": "Carl Marvin",
-  "conner malley": "Conner Malley",
-  "edward saad": "Edward Saad",
-  "jack sheehy": "Jackie Sheehy",
-  "jalen del rosario": "Jalen Del Rosario",
-  "jared duncan": "Jared Duncan",
-  "jeff crossland": "Jeff Crossland",
-  "jeffrey crossland": "Jeff Crossland",
-  "john downs": "John Downs",
-  "matt maloy": "Matt Maloy",
-  "max hardin": "Max Hardin",
-  "roy lee": "Roy Lee",
-  "samuel kirby": "Samuel Kirby",
-  "stephen marvin": "Carl Marvin",
-  "John downs123": "John Downs"
-};
-const OWNER_ALIASES = Object.fromEntries(
-  Object.entries(OWNER_ALIASES_RAW).map(([k,v]) => [k.toLowerCase(), v])
-);
-
+/// ---------- Owner normalization ----------
 function titleCaseName(s) {
   const lowerParticles = new Set(["de", "del", "da", "di", "van", "von", "la", "le"]);
   return s.trim().split(/\s+/).map((w,i) => {
@@ -90,7 +45,26 @@ function titleCaseName(s) {
 function canonicalOwner(raw){
   let n = String(raw || "").trim();
   if (!n) return "";
+  if (n.includes("@")) n = n.split("@")[0];  // cut off emails
+  n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim();
 
+  // If looks like a name → title case
+  if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n);
+
+  return n;
+}
+
+function collectOwners(seasons){
+  const owners = new Set();
+  for (const s of seasons) {
+    for (const t of (s.teams||[])) {
+      const raw = (t.owner ?? t.team_name ?? "").toString().trim();
+      const canon = canonicalOwner(raw);
+      if (canon) owners.add(canon);
+    }
+  }
+  return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
+}
   // email -> prefix
   if (n.includes("@")) n = n.split("@")[0];
 
