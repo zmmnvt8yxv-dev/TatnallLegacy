@@ -34,8 +34,8 @@ function attachSort(ths, tbl){
 
 // ---------- Owner normalization ----------
 // ---------- Owner normalization ----------
+// ---------- Owner normalization ----------
 const OWNER_ALIASES_RAW = {
-  // IDs / handles
   "espn92085473": "Roy Lee",
   "edward3864": "Edward Saad",
   "phillyphilly709": "Edward Saad",
@@ -57,7 +57,7 @@ const OWNER_ALIASES_RAW = {
   "mhardi5674696": "Max Hardin",
   "roylee6": "Roy Lee",
 
-  // plain-name variants from JSON (lower/typo forms -> canonical)
+  // plain-name / typo variants
   "brendan hanrahan": "Brendan Hanrahan",
   "carl marvin": "Carl Marvin",
   "conner malley": "Conner Malley",
@@ -78,6 +78,40 @@ const OWNER_ALIASES = Object.fromEntries(
   Object.entries(OWNER_ALIASES_RAW).map(([k,v]) => [k.toLowerCase(), v])
 );
 
+function titleCaseName(s) {
+  const lowerParticles = new Set(["de", "del", "da", "di", "van", "von", "la", "le"]);
+  return s.trim().split(/\s+/).map((w,i) => {
+    const wl = w.toLowerCase();
+    if (i > 0 && lowerParticles.has(wl)) return wl;
+    return wl.charAt(0).toUpperCase() + wl.slice(1);
+  }).join(" ");
+}
+
+function canonicalOwner(raw){
+  let n = String(raw || "").trim();
+  if (!n) return "";
+
+  if (n.includes("@")) n = n.split("@")[0];       // email prefix
+  n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim();
+
+  const key = n.toLowerCase();
+  if (OWNER_ALIASES[key]) return OWNER_ALIASES[key];
+
+  if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n);
+  return n;
+}
+
+function collectOwners(seasons){
+  const owners = new Set();
+  for (const s of seasons) {
+    for (const t of (s.teams||[])) {
+      const raw = (t.owner ?? t.team_name ?? "").toString().trim();
+      const canon = canonicalOwner(raw);
+      if (canon) owners.add(canon);
+    }
+  }
+  return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
+}
 // ---------- all-years ----------
 let ALL_SEASONS = null;
 
