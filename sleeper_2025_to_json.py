@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-# Generates data/2025.json and updates manifest.json
-import json, math
+# Generates data/2025.json from Sleeper and updates manifest.json
+import json, math, os
 from pathlib import Path
 from collections import defaultdict
-import os, requests
+import requests
 
 YEAR = 2025
-SLEEPER_LEAGUE_ID = os.getenv("SLEEPER_LEAGUE_ID", "1262418074540195841")  # env override supported
+SLEEPER_LEAGUE_ID = os.getenv("SLEEPER_LEAGUE_ID", "1262418074540195841")
 
 BASE = "https://api.sleeper.app/v1"
 S = requests.Session()
-S.headers.update({"User-Agent": "tatnall-legacy/1.0"})
+S.headers.update({"User-Agent": "tatnall-legacy/1.1"})
 
 def get(url):
     r = S.get(url, timeout=30)
@@ -54,46 +54,54 @@ def discover_weeks(league_id, max_weeks=22):
         weeks.append(w)
     return weeks
 
+def is_future_zero_zero(a_pts, b_pts):
+    # only suppress for the current Sleeper season we’re importing
+    return YEAR == 2025 and float(a_pts or 0) == 0.0 and float(b_pts or 0) == 0.0
+
 def build_matchups_and_stats(league_id, r_by_id):
     weeks = discover_weeks(league_id)
     matchups = []
     pf = defaultdict(float)
     pa = defaultdict(float)
     wl = defaultdict(lambda: [0,0,0])  # wins, losses, ties
+
     for w in weeks:
         wk = get(f"{BASE}/league/{league_id}/matchups/{w}")
         by_mid = defaultdict(list)
         for row in wk:
             if "roster_id" in row:
                 by_mid[row.get("matchup_id")].append(row)
+
         for _, rows in by_mid.items():
             if len(rows) < 2:
                 r = rows[0]
                 rid = r["roster_id"]
-                team = r_by_id.get(rid, {})
                 pts = float(r.get("points") or 0)
                 matchups.append({
                     "week": w,
-                    "home_team": team.get("team_name"),
+                    "home_team": r_by_id.get(rid, {}).get("team_name"),
                     "home_score": pts,
                     "away_team": None,
                     "away_score": None,
                     "is_playoff": bool(r.get("playoff"))
                 })
-                pf[rid] += pts
+                # do not count single-row pseudo-matchups into standings
                 continue
+
+            # normalize home/away by roster_id for stable ordering
             rows.sort(key=lambda x: float(x.get("points") or 0), reverse=True)
             a, b = rows[0], rows[1]
             a_id, b_id = a["roster_id"], b["roster_id"]
             a_pts, b_pts = float(a.get("points") or 0), float(b.get("points") or 0)
+
+            # pick home/away deterministically
             if a_id <= b_id:
                 home, away = a, b
                 h_pts, a_pts2 = a_pts, b_pts
             else:
                 home, away = b, a
                 h_pts, a_pts2 = b_pts, a_pts
-                a_id, b_id = b_id, a_id
-                a_pts, b_pts = b_pts, a_pts
+
             matchups.append({
                 "week": w,
                 "home_team": r_by_id.get(home["roster_id"], {}).get("team_name"),
@@ -102,11 +110,17 @@ def build_matchups_and_stats(league_id, r_by_id):
                 "away_score": float(a_pts2),
                 "is_playoff": bool(home.get("playoff") or away.get("playoff")),
             })
+
+            # ---- standings aggregation (skip 0–0 in 2025) ----
+            if is_future_zero_zero(a_pts, b_pts):
+                continue
+
             pf[a_id] += a_pts; pf[b_id] += b_pts
             pa[a_id] += b_pts; pa[b_id] += a_pts
             if a_pts > b_pts: wl[a_id][0]+=1; wl[b_id][1]+=1
             elif a_pts < b_pts: wl[b_id][0]+=1; wl[a_id][1]+=1
             else: wl[a_id][2]+=1; wl[b_id][2]+=1
+
     return matchups, pf, pa, wl, weeks
 
 def players_index():
@@ -126,19 +140,15 @@ def build_transactions(league_id, r_by_id, weeks, name_map):
             continue
         for t in arr:
             entries = []
-            # prefer per-entry roster -> team mapping; fallback to first roster_ids
             rid_fallback = None
             if isinstance(t.get("roster_ids"), list) and t["roster_ids"]:
                 rid_fallback = t["roster_ids"][0]
-            # adds
             for pid, rid2 in (t.get("adds") or {}).items():
                 team_name2 = r_by_id.get(rid2, {}).get("team_name") or r_by_id.get(rid_fallback, {}).get("team_name")
                 entries.append({"type": "ADD", "team": team_name2, "player": name_map.get(pid, pid), "faab": t.get("waiver_bid")})
-            # drops
             for pid, rid2 in (t.get("drops") or {}).items():
                 team_name2 = r_by_id.get(rid2, {}).get("team_name") or r_by_id.get(rid_fallback, {}).get("team_name")
                 entries.append({"type": "DROP", "team": team_name2, "player": name_map.get(pid, pid), "faab": None})
-            # trades (coarse)
             if t.get("type") == "trade":
                 for pid in (t.get("adds") or {}).keys():
                     entries.append({"type": "TRADE", "team": r_by_id.get(rid_fallback, {}).get("team_name"), "player": name_map.get(pid, pid), "faab": None})
@@ -169,7 +179,6 @@ def build_draft(league_id, r_by_id, name_map, team_map):
 
 def build_teams(r_by_id, pf, pa, wl):
     teams = []
-    # rank by wins desc, PF desc
     order = sorted(r_by_id.keys(), key=lambda rid: (wl[rid][0], pf[rid]), reverse=True)
     rank_by_rid = {rid: i+1 for i, rid in enumerate(order)}
     for rid, meta in r_by_id.items():
@@ -203,7 +212,6 @@ def main():
     out = {"year": YEAR, "teams": teams, "matchups": matchups, "transactions": transactions, "draft": draft}
     (data_dir / f"{YEAR}.json").write_text(json.dumps(out, indent=2))
 
-    # manifest
     manifest_path = root / "manifest.json"
     years = []
     if manifest_path.exists():
