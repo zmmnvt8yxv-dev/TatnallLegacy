@@ -27,7 +27,13 @@
       <select id="seasonSelect" aria-label="Season"></select>
     </div>
   </header>
-
+<section id="mostDrafted" class="panel" aria-labelledby="mostdrafted-title">
+  <h2 id="mostdrafted-title">Most Drafted Players (Across Seasons)</h2>
+  <div class="controls row">
+    <input id="mdSearch" type="search" placeholder="Filter by player…" aria-label="Filter most-drafted players" />
+  </div>
+  <div class="tablewrap" id="mostDraftedWrap"></div>
+</section>
   <main id="content">
     <section id="summary" class="panel" aria-labelledby="summary-title">
       <h2 id="summary-title">Season Summary</h2>
