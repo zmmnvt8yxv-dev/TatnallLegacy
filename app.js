@@ -1,5 +1,5 @@
 // ---- path + fetch helpers (GitHub Pages safe) ----
-const ROOT = new URL(".", document.baseURI).pathname.replace(/\/+$/, "") + "/"; // e.g. "/TatnallLegacy/"
+const ROOT = new URL(".", document.baseURI).pathname.replace(/\/+$/, "") + "/";
 async function loadJSON(relPath){
   const url = ROOT + relPath.replace(/^\/+/, "");
   const r = await fetch(url + (url.includes("?") ? "&" : "?") + "v=" + Date.now(), { cache: "no-store" });
@@ -19,7 +19,7 @@ function sortTable(tbl, idx, numeric=false){
     if(numeric){ return (parseFloat(av)||0)-(parseFloat(bv)||0); } return av.localeCompare(bv); });
   if(!asc) rows.reverse(); rows.forEach(r=>tbody.appendChild(r)); tbl._asc=asc;
 }
-function attachSort(ths, tbl){ ths.forEach((th,i)=> th.addEventListener("click", ()=> sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab/i.test(th.textContent)))); }
+function attachSort(ths, tbl){ ths.forEach((th,i)=> th.addEventListener("click", ()=> sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab|win/i.test(th.textContent)))); }
 
 // ---------- ALL-YEARS MEMBER SUMMARY ----------
 let ALL_SEASONS = null;
@@ -43,7 +43,7 @@ async function loadAllSeasons(){
 function collectOwners(seasons){
   const owners = new Set();
   for (const s of seasons) {
-    for (const t of (s.teams||[])) {
+    for (const t of (s.teams || [])) {
       const o = (t.owner ?? "").toString().trim();
       const fallback = (t.team_name ?? "").toString().trim();
       const pick = o || fallback;
@@ -53,6 +53,7 @@ function collectOwners(seasons){
   return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
 }
 
+// aggregate across seasons; skip 0–0 future games for 2025
 function aggregateMember(owner, seasons){
   let wins=0, losses=0, ties=0, games=0;
   let most = -Infinity, least = Infinity;
@@ -65,8 +66,7 @@ function aggregateMember(owner, seasons){
       const hPts = Number(m.home_score ?? 0);
       const aPts = Number(m.away_score ?? 0);
       const is2025FutureZeroZero = (Number(s.year) === 2025) && hPts === 0 && aPts === 0;
-
-      if (is2025FutureZeroZero) continue; // skip future 0–0
+      if (is2025FutureZeroZero) continue;
 
       if (m.home_team && map.get(m.home_team) === owner){
         games++;
@@ -89,10 +89,15 @@ function aggregateMember(owner, seasons){
 }
 
 function renderMemberSummary(owner){
-  const s = aggregateMember(owner, ALL_SEASONS);
   const wrap = document.getElementById("memberSummary");
+  const tableWrap = document.getElementById("memberTableWrap");
+  tableWrap.style.display = "none";
+  wrap.style.display = "";
+
+  const s = aggregateMember(owner, ALL_SEASONS);
   wrap.innerHTML = "";
   if(!s) return;
+
   const stats = [
     ["Member", owner],
     ["Record", `${s.wins}-${s.losses}${s.ties?`-${s.ties}`:""}`],
@@ -106,26 +111,93 @@ function renderMemberSummary(owner){
   }
 }
 
+// NEW: render ranked table for all members
+function renderAllMembersTable(){
+  const wrap = document.getElementById("memberSummary");
+  const tableWrap = document.getElementById("memberTableWrap");
+  wrap.style.display = "none";
+  tableWrap.style.display = "";
+
+  // build stats per owner
+  const owners = collectOwners(ALL_SEASONS);
+  const rows = owners.map(o => ({ member:o, ...aggregateMember(o, ALL_SEASONS) }));
+  // rank by winPct desc, then wins desc, then games desc, then name asc
+  rows.sort((a,b)=>{
+    if (b.winPct !== a.winPct) return b.winPct - a.winPct;
+    if (b.wins   !== a.wins)   return b.wins - a.wins;
+    if (b.games  !== a.games)  return b.games - a.games;
+    return a.member.localeCompare(b.member);
+  });
+  // assign ranks
+  rows.forEach((r,i)=> r.rank = i+1);
+
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{},
+      el("th",{},"Rank"),
+      el("th",{},"Member"),
+      el("th",{},"W"),
+      el("th",{},"L"),
+      el("th",{},"T"),
+      el("th",{},"Win %"),
+      el("th",{},"Games"),
+      el("th",{},"Most PF (G)"),
+      el("th",{},"Least PF (G)")
+    )),
+    el("tbody",{})
+  );
+
+  rows.forEach(r=>{
+    tbl.tBodies[0].appendChild(el("tr",{},
+      el("td",{}, r.rank),
+      el("td",{}, r.member),
+      el("td",{}, r.wins),
+      el("td",{}, r.losses),
+      el("td",{}, r.ties),
+      el("td",{}, (r.winPct*100).toFixed(1)),
+      el("td",{}, r.games),
+      el("td",{}, fmt(r.most)),
+      el("td",{}, fmt(r.least))
+    ));
+  });
+
+  tableWrap.innerHTML = "";
+  tableWrap.appendChild(tbl);
+  attachSort([...tbl.tHead.rows[0].cells], tbl);
+}
+
 async function setupMemberSummary(){
   ALL_SEASONS = await loadAllSeasons();
   const owners = collectOwners(ALL_SEASONS);
   const sel = document.getElementById("memberSelect");
   const wrap = document.getElementById("memberSummary");
+  const tableWrap = document.getElementById("memberTableWrap");
   sel.innerHTML = "";
   wrap.innerHTML = "";
+  tableWrap.innerHTML = "";
 
   if (!owners.length) {
-    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},"No members detected"), el("p",{},"Check data/*.json")));
+    wrap.style.display = "";
+    tableWrap.style.display = "none";
+    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},"No members detected"), el("p",{},"Check data/*.json teams[].owner/team_name")));
     return;
   }
 
+  // Insert "All Members" option
+  const ALL = "__ALL__";
+  sel.appendChild(el("option",{value:ALL},"All Members"));
   owners.forEach(o => sel.appendChild(el("option",{value:o}, o)));
-  sel.onchange = () => renderMemberSummary(sel.value);
-  sel.value = owners[0];
-  renderMemberSummary(sel.value);
+
+  sel.onchange = () => {
+    if (sel.value === ALL) renderAllMembersTable();
+    else renderMemberSummary(sel.value);
+  };
+
+  // default to All Members
+  sel.value = ALL;
+  renderAllMembersTable();
 }
 
-// ---- static-only loaders ----
+// ---- season page loaders ----
 async function main(){
   try {
     const m = await loadJSON("manifest.json");
@@ -180,13 +252,13 @@ function renderSummary(year, data){
 function renderTeams(teams){
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
   if(!teams.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No teams found."))); return; }
-  const tbl = el("table",{}, 
-    el("thead",{}, el("tr",{}, el("th",{}, "Team/Manager"), el("th",{}, "Record"), el("th",{}, "Points For"),
-      el("th",{}, "Points Against"), el("th",{}, "In-Season Rank"), el("th",{}, "Final Rank"))),
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{}, el("th",{},"Team/Manager"), el("th",{},"Record"), el("th",{},"Points For"),
+      el("th",{},"Points Against"), el("th",{},"In-Season Rank"), el("th",{},"Final Rank"))),
     el("tbody",{})
   );
   teams.forEach(t=>{
-    tbl.tBodies[0].appendChild(el("tr",{}, 
+    tbl.tBodies[0].appendChild(el("tr",{},
       el("td",{}, `${t.team_name}${t.owner?` (${t.owner})`:""}`),
       el("td",{}, fmt(t.record)),
       el("td",{}, fmt(t.points_for)),
@@ -206,9 +278,9 @@ function renderMatchups(matchups){
   weekSel.innerHTML=""; weekSel.appendChild(el("option",{value:""},"All Weeks"));
   weeks.forEach(w=> weekSel.appendChild(el("option",{value:w}, `Week ${w}`)));
   if(!matchups.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No matchups found."))); return; }
-  const tbl = el("table",{}, 
-    el("thead",{}, el("tr",{}, el("th",{}, "Week"), el("th",{}, "Home Team"), el("th",{}, "Home Score"),
-      el("th",{}, "Away Team"), el("th",{}, "Away Score"), el("th",{}, "Type"))),
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{}, el("th",{},"Week"), el("th",{},"Home Team"), el("th",{},"Home Score"),
+      el("th",{},"Away Team"), el("th",{},"Away Score"), el("th",{},"Type"))),
     el("tbody",{})
   );
   function row(m){
@@ -218,7 +290,8 @@ function renderMatchups(matchups){
   }
   function apply(){
     const wk=weekSel.value; const q=search.value.trim().toLowerCase();
-    tbl.tBodies[0].innerHTML=""; matchups
+    tbl.tBodies[0].innerHTML="";
+    matchups
       .filter(m => !wk || String(m.week)===wk)
       .filter(m => !q || [m.home_team,m.away_team].some(n => String(n||"").toLowerCase().includes(q)))
       .forEach(m => tbl.tBodies[0].appendChild(row(m)));
@@ -234,8 +307,8 @@ function renderTransactions(txns){
   const flatten = tx => (tx.entries||[]).map(e=>({date:tx.date||"", ...e}));
   const rows = hasAny ? txns.flatMap(flatten) : [];
   if(!rows.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No transactions available for this season."))); return; }
-  const tbl = el("table",{}, 
-    el("thead",{}, el("tr",{}, el("th",{}, "Date"), el("th",{}, "Type"), el("th",{}, "Team"), el("th",{}, "Player"), el("th",{}, "FAAB"))),
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{}, el("th",{},"Date"), el("th",{},"Type"), el("th",{},"Team"), el("th",{},"Player"), el("th",{},"FAAB"))),
     el("tbody",{})
   );
   function apply(){
@@ -253,9 +326,9 @@ function renderDraft(draft){
   const wrap = document.getElementById("draftWrap"); wrap.innerHTML="";
   const search = document.getElementById("draftSearch");
   if(!draft.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No draft data."))); return; }
-  const tbl = el("table",{}, 
-    el("thead",{}, el("tr",{}, el("th",{}, "Round"), el("th",{}, "Pick"), el("th",{}, "Team"),
-      el("th",{}, "Player"), el("th",{}, "NFL Team"), el("th",{}, "Keeper"))),
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{}, el("th",{},"Round"), el("th",{},"Pick"), el("th",{},"Team"),
+      el("th",{},"Player"), el("th",{},"NFL Team"), el("th",{},"Keeper"))),
     el("tbody",{})
   );
   function apply(){
