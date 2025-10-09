@@ -277,6 +277,7 @@ async function main(){
     if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
     else throw new Error("No years in manifest.json");
 
+    renderMostDrafted();
     await setupMemberSummary();
   } catch (e){
     renderFatal(e);
@@ -460,7 +461,68 @@ function setupTabs(){
   setActive(tabs[0] || null);
   window.addEventListener("scroll", setActiveTabOnScroll, { passive: true });
 }
+// ---- Most Drafted (across seasons) ----
+function computeMostDrafted(seasons){
+  // Map player -> Set(years)
+  const seen = new Map();
+  for (const s of seasons || []){
+    const y = Number(s.year);
+    for (const p of (s.draft || [])){
+      const name = String(p.player || "").trim();
+      if (!name) continue;
+      if (!seen.has(name)) seen.set(name, new Set());
+      seen.get(name).add(y);
+    }
+  }
+  const rows = [];
+  for (const [player, yearsSet] of seen.entries()){
+    const years = Array.from(yearsSet).sort((a,b)=>a-b);
+    rows.push({ player, count: years.length, years });
+  }
+  rows.sort((a,b) => (b.count - a.count) || a.player.localeCompare(b.player));
+  return rows;
+}
 
+function renderMostDrafted(){
+  const wrap = document.getElementById("mostDraftedWrap");
+  const search = document.getElementById("mdSearch");
+  wrap.innerHTML = "";
+
+  const rows = computeMostDrafted(ALL_SEASONS);
+  if (!rows.length){
+    wrap.appendChild(el("div",{style:"padding:12px; color:#9ca3af;"}, "No draft data across seasons."));
+    return;
+  }
+
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{},
+      el("th",{},"Player"),
+      el("th",{},"Seasons Drafted"),
+      el("th",{},"Years")
+    )),
+    el("tbody",{})
+  );
+
+  function draw(){
+    const q = (search?.value || "").trim().toLowerCase();
+    tbl.tBodies[0].innerHTML = "";
+    rows
+      .filter(r => !q || r.player.toLowerCase().includes(q))
+      .forEach(r => {
+        tbl.tBodies[0].appendChild(el("tr",{},
+          el("td",{}, r.player),
+          el("td",{}, String(r.count)),
+          el("td",{}, r.years.join(", "))
+        ));
+      });
+  }
+
+  if (search) search.oninput = draw;
+  draw();
+
+  wrap.appendChild(tbl);
+  attachSort([...tbl.tHead.rows[0].cells], tbl);
+}
 // hook into your boot sequence
 const _origDOMContentLoaded = () => {};
 document.addEventListener("DOMContentLoaded", () => {
