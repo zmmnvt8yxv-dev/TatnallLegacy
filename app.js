@@ -1,6 +1,7 @@
 // ==============================
 // Tatnall Legacy — full app.js
 // Static UI that reads /manifest.json and /data/<year>.json files
+// Adds: canonical owner mapping, All Members ranking, 2025 0–0 future exclusion, Championships column
 // ==============================
 
 // ---------- helpers ----------
@@ -25,7 +26,13 @@ function sortTable(tbl, idx, numeric=false){
     if(numeric){ return (parseFloat(av)||0)-(parseFloat(bv)||0); } return av.localeCompare(bv); });
   if(!asc) rows.reverse(); rows.forEach(r=>tbody.appendChild(r)); tbl._asc=asc;
 }
-function attachSort(ths, tbl){ ths.forEach((th,i)=> th.addEventListener("click", ()=> sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab|win|games/i.test(th.textContent)))); }
+function attachSort(ths, tbl){
+  ths.forEach((th,i)=>
+    th.addEventListener("click", () =>
+      sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab|win|champ|games/i.test(th.textContent))
+    )
+  );
+}
 
 // ---------- Owner normalization (aliases -> canonical) ----------
 const OWNER_ALIASES_RAW = {
@@ -104,10 +111,11 @@ function collectOwners(seasons){
   return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
 }
 
-// aggregate across seasons; skip 0–0 future games for 2025
+// aggregate across seasons; skip 0–0 future games for 2025; count championships
 function aggregateMember(owner, seasons){
   let wins=0, losses=0, ties=0, games=0;
   let most = -Infinity, least = Infinity;
+  let champs = 0;
 
   for (const s of seasons){
     const ownerByTeam = new Map();
@@ -115,6 +123,14 @@ function aggregateMember(owner, seasons){
       const raw = (t.owner ?? t.team_name ?? "").toString().trim();
       ownerByTeam.set(t.team_name, canonicalOwner(raw));
     });
+
+    // champion for this season
+    const champTeam = (s.teams || []).find(t => t.final_rank === 1);
+    if (champTeam){
+      const raw = (champTeam.owner ?? champTeam.team_name ?? "").toString().trim();
+      const champOwner = canonicalOwner(raw);
+      if (champOwner === owner) champs++;
+    }
 
     for (const m of (s.matchups||[])){
       const hPts = Number(m.home_score ?? 0);
@@ -139,7 +155,7 @@ function aggregateMember(owner, seasons){
 
   if (games === 0){ most = null; least = null; }
   const winPct = games ? Math.round((wins + ties*0.5)/games*1000)/1000 : 0;
-  return {wins, losses, ties, games, winPct, most, least};
+  return {wins, losses, ties, games, winPct, most, least, champs};
 }
 
 function renderMemberSummary(owner){
@@ -156,6 +172,7 @@ function renderMemberSummary(owner){
     ["Member", owner],
     ["Record", `${s.wins}-${s.losses}${s.ties?`-${s.ties}`:""}`],
     ["Win %", (s.winPct*100).toFixed(1) + "%"],
+    ["Championships", s.champs],
     ["Games", s.games],
     ["Most points (single game)", fmt(s.most)],
     ["Least points (single game)", fmt(s.least)]
@@ -173,6 +190,7 @@ function renderAllMembersTable(){
 
   const owners = collectOwners(ALL_SEASONS);
   const rows = owners.map(o => ({ member:o, ...aggregateMember(o, ALL_SEASONS) }));
+  // primary rank by win%, then wins, then games, then name; championships are displayed but not primary sort
   rows.sort((a,b)=>{
     if (b.winPct !== a.winPct) return b.winPct - a.winPct;
     if (b.wins   !== a.wins)   return b.wins - a.wins;
@@ -189,6 +207,7 @@ function renderAllMembersTable(){
       el("th",{},"L"),
       el("th",{},"T"),
       el("th",{},"Win %"),
+      el("th",{},"Champs"),
       el("th",{},"Games"),
       el("th",{},"Most PF (G)"),
       el("th",{},"Least PF (G)")
@@ -204,6 +223,7 @@ function renderAllMembersTable(){
       el("td",{}, r.losses),
       el("td",{}, r.ties),
       el("td",{}, (r.winPct*100).toFixed(1)),
+      el("td",{}, r.champs),
       el("td",{}, r.games),
       el("td",{}, fmt(r.most)),
       el("td",{}, fmt(r.least))
