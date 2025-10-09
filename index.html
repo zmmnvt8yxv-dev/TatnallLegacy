@@ -52,6 +52,16 @@
       </div>
       <div class="tablewrap" id="draftWrap"></div>
     </section>
+
+    <!-- Moved inside <main> so it renders with the rest of the content -->
+    <section id="members" class="panel" aria-labelledby="members-title">
+      <h2 id="members-title">Member Summary (All Years)</h2>
+      <div class="controls row">
+        <label for="memberSelect">Member:</label>
+        <select id="memberSelect" aria-label="Member"></select>
+      </div>
+      <div id="memberSummary" class="grid-4"></div>
+    </section>
   </main>
 
   <footer>
@@ -61,14 +71,7 @@
   <noscript>
     <div class="panel">Enable JavaScript to view league data.</div>
   </noscript>
-<section id="members" class="panel">
-  <h2>Member Summary (All Years)</h2>
-  <div class="controls row">
-    <label for="memberSelect">Member:</label>
-    <select id="memberSelect"></select>
-  </div>
-  <div id="memberSummary" class="grid-4"></div>
-</section>
+
   <script src="app.js" defer></script>
 </body>
 </html>
