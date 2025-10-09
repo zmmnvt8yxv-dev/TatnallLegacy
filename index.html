@@ -10,6 +10,17 @@
 <body>
   <header>
     <h1>Tatnall League Legacy</h1>
+
+    <!-- TABS -->
+    <nav class="tabs" aria-label="Sections">
+      <a href="#summary"     class="tab" data-target="#summary">Summary</a>
+      <a href="#teams"       class="tab" data-target="#teams">Teams</a>
+      <a href="#matchups"    class="tab" data-target="#matchups">Matchups</a>
+      <a href="#transactions"class="tab" data-target="#transactions">Transactions</a>
+      <a href="#draft"       class="tab" data-target="#draft">Draft</a>
+      <a href="#members"     class="tab" data-target="#members">Members</a>
+    </nav>
+
     <div class="controls">
       <label for="seasonSelect">Season:</label>
       <select id="seasonSelect" aria-label="Season"></select>
@@ -53,17 +64,15 @@
       <div class="tablewrap" id="draftWrap"></div>
     </section>
 
-   <section id="members" class="panel" aria-labelledby="members-title">
-  <h2 id="members-title">Member Summary (All Years)</h2>
-  <div class="controls row">
-    <label for="memberSelect">Member:</label>
-    <select id="memberSelect" aria-label="Member"></select>
-  </div>
-  <!-- Single-member stats -->
-  <div id="memberSummary" class="grid-4"></div>
-  <!-- All-members ranked table -->
-  <div class="tablewrap" id="memberTableWrap" style="display:none;"></div>
-</section>
+    <section id="members" class="panel" aria-labelledby="members-title">
+      <h2 id="members-title">Member Summary (All Years)</h2>
+      <div class="controls row">
+        <label for="memberSelect">Member:</label>
+        <select id="memberSelect" aria-label="Member"></select>
+      </div>
+      <div id="memberSummary" class="grid-4"></div>
+      <div class="tablewrap" id="memberTableWrap" style="display:none;"></div>
+    </section>
   </main>
 
   <footer>
