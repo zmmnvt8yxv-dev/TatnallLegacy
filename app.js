@@ -1,6 +1,17 @@
 import requests
 from bs4 import BeautifulSoup
 
+async function main() {
+  let years = [];
+  try {
+    const api = await loadJSON("/api/seasons");
+    years = api.years || [];
+  } catch(e) {
+    const manifest = await loadJSON("manifest.json");
+    years = manifest.years || [];
+  }
+  // populate dropdown etc...
+}
 
 def _fetch_transactions_api(L: League):
     txns, offset, size = [], 0, 50
