@@ -33,7 +33,9 @@ function attachSort(ths, tbl){
 }
 
 // ---------- Owner normalization ----------
+// ---------- Owner normalization ----------
 const OWNER_ALIASES_RAW = {
+  // IDs / handles
   "espn92085473": "Roy Lee",
   "edward3864": "Edward Saad",
   "phillyphilly709": "Edward Saad",
@@ -53,16 +55,28 @@ const OWNER_ALIASES_RAW = {
   "lbmbets": "Samuel Kirby",
   "mattmaloy99": "Matt Maloy",
   "mhardi5674696": "Max Hardin",
-  "roylee6": "Roy Lee"
+  "roylee6": "Roy Lee",
+
+  // plain-name variants from JSON (lower/typo forms -> canonical)
+  "brendan hanrahan": "Brendan Hanrahan",
+  "carl marvin": "Carl Marvin",
+  "conner malley": "Conner Malley",
+  "edward saad": "Edward Saad",
+  "jack sheehy": "Jackie Sheehy",
+  "jalen del rosario": "Jalen Del Rosario",
+  "jared duncan": "Jared Duncan",
+  "jeff crossland": "Jeff Crossland",
+  "jeffrey crossland": "Jeff Crossland",
+  "john downs": "John Downs",
+  "matt maloy": "Matt Maloy",
+  "max hardin": "Max Hardin",
+  "roy lee": "Roy Lee",
+  "samuel kirby": "Samuel Kirby",
+  "stephen marvin": "Carl Marvin"
 };
-const OWNER_ALIASES = Object.fromEntries(Object.entries(OWNER_ALIASES_RAW).map(([k,v])=>[k.toLowerCase(),v]));
-function canonicalOwner(raw){
-  const n = String(raw || "").trim();
-  const k = n.toLowerCase();
-  if (OWNER_ALIASES[k]) return OWNER_ALIASES[k];
-  if (k.includes("@")) return n.split("@")[0];
-  return n;
-}
+const OWNER_ALIASES = Object.fromEntries(
+  Object.entries(OWNER_ALIASES_RAW).map(([k,v]) => [k.toLowerCase(), v])
+);
 
 // ---------- all-years ----------
 let ALL_SEASONS = null;
