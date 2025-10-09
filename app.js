@@ -20,7 +20,81 @@ function sortTable(tbl, idx, numeric=false){
   if(!asc) rows.reverse(); rows.forEach(r=>tbody.appendChild(r)); tbl._asc=asc;
 }
 function attachSort(ths, tbl){ ths.forEach((th,i)=> th.addEventListener("click", ()=> sortTable(tbl, i, /\bscore\b|points|rank|pick|round|faab/i.test(th.textContent)))); }
+// ---------- ALL-YEARS MEMBER SUMMARY ----------
+let ALL_SEASONS = null;
 
+async function loadAllSeasons(){
+  const m = await loadJSON("manifest.json");
+  const years = m.years || [];
+  const seasons = [];
+  for (const y of years) {
+    const d = await loadJSON(`data/${y}.json`);
+    seasons.push(d);
+  }
+  return seasons;
+}
+
+function collectOwners(seasons){
+  const owners = new Set();
+  for (const s of seasons) for (const t of (s.teams||[])) owners.add(t.owner || t.team_name);
+  return [...owners].sort((a,b)=>a.localeCompare(b));
+}
+
+function aggregateMember(owner, seasons){
+  let wins=0, losses=0, ties=0, games=0;
+  let most = -Infinity, least = Infinity;
+
+  for (const s of seasons){
+    const map = new Map();
+    (s.teams||[]).forEach(t => map.set(t.team_name, t.owner || t.team_name));
+
+    for (const m of (s.matchups||[])){
+      // home side
+      if (m.home_team && map.get(m.home_team) === owner){
+        const pts = Number(m.home_score)||0, opp = Number(m.away_score)||0;
+        games++; if (pts>opp) wins++; else if (pts<opp) losses++; else ties++;
+        if (pts>most) most=pts; if (pts<least) least=pts;
+      }
+      // away side
+      if (m.away_team && map.get(m.away_team) === owner){
+        const pts = Number(m.away_score)||0, opp = Number(m.home_score)||0;
+        games++; if (pts>opp) wins++; else if (pts<opp) losses++; else ties++;
+        if (pts>most) most=pts; if (pts<least) least=pts;
+      }
+    }
+  }
+
+  if (games === 0){ most = null; least = null; }
+  const winPct = games ? Math.round((wins + ties*0.5)/games*1000)/1000 : 0;
+  return {wins, losses, ties, games, winPct, most, least};
+}
+
+function renderMemberSummary(owner){
+  const s = aggregateMember(owner, ALL_SEASONS);
+  const wrap = document.getElementById("memberSummary");
+  wrap.innerHTML = "";
+  const stats = [
+    ["Member", owner],
+    ["Record", `${s.wins}-${s.losses}${s.ties?`-${s.ties}`:""}`],
+    ["Win %", (s.winPct*100).toFixed(1) + "%"],
+    ["Games", s.games],
+    ["Most points (single game)", fmt(s.most)],
+    ["Least points (single game)", fmt(s.least)]
+  ];
+  for (const [k,v] of stats){
+    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
+  }
+}
+
+async function setupMemberSummary(){
+  ALL_SEASONS = await loadAllSeasons();
+  const owners = collectOwners(ALL_SEASONS);
+  const sel = document.getElementById("memberSelect");
+  sel.innerHTML = "";
+  owners.forEach(o => sel.appendChild(el("option",{value:o}, o)));
+  sel.onchange = () => renderMemberSummary(sel.value);
+  if (owners.length){ sel.value = owners[0]; renderMemberSummary(sel.value); }
+}
 // ---- static-only loaders ----
 async function main(){
   try {
