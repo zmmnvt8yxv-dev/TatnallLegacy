@@ -31,9 +31,10 @@ async function loadAllSeasons(){
   for (const y of years) {
     try {
       const d = await loadJSON(`data/${y}.json`);
+      if (typeof d.year !== "number") d.year = Number(y);
       seasons.push(d);
-    } catch(e){
-      console.warn("Skip year", y, e);
+    } catch (err) {
+      console.warn("Skipping season:", y, err);
     }
   }
   return seasons;
@@ -43,11 +44,13 @@ function collectOwners(seasons){
   const owners = new Set();
   for (const s of seasons) {
     for (const t of (s.teams||[])) {
-      if(t.owner) owners.add(t.owner);
-      else if(t.team_name) owners.add(t.team_name);
+      const o = (t.owner ?? "").toString().trim();
+      const fallback = (t.team_name ?? "").toString().trim();
+      const pick = o || fallback;
+      if (pick) owners.add(pick);
     }
   }
-  return [...owners].sort((a,b)=>a.localeCompare(b));
+  return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
 }
 
 function aggregateMember(owner, seasons){
@@ -59,15 +62,23 @@ function aggregateMember(owner, seasons){
     (s.teams||[]).forEach(t => map.set(t.team_name, t.owner || t.team_name));
 
     for (const m of (s.matchups||[])){
+      const hPts = Number(m.home_score ?? 0);
+      const aPts = Number(m.away_score ?? 0);
+      const is2025FutureZeroZero = (Number(s.year) === 2025) && hPts === 0 && aPts === 0;
+
+      if (is2025FutureZeroZero) continue; // skip future 0–0
+
       if (m.home_team && map.get(m.home_team) === owner){
-        const pts = Number(m.home_score)||0, opp = Number(m.away_score)||0;
-        games++; if (pts>opp) wins++; else if (pts<opp) losses++; else ties++;
-        if (pts>most) most=pts; if (pts<least) least=pts;
+        games++;
+        if (hPts > aPts) wins++; else if (hPts < aPts) losses++; else ties++;
+        if (hPts > most) most = hPts;
+        if (hPts < least) least = hPts;
       }
       if (m.away_team && map.get(m.away_team) === owner){
-        const pts = Number(m.away_score)||0, opp = Number(m.home_score)||0;
-        games++; if (pts>opp) wins++; else if (pts<opp) losses++; else ties++;
-        if (pts>most) most=pts; if (pts<least) least=pts;
+        games++;
+        if (aPts > hPts) wins++; else if (aPts < hPts) losses++; else ties++;
+        if (aPts > most) most = aPts;
+        if (aPts < least) least = aPts;
       }
     }
   }
@@ -99,10 +110,19 @@ async function setupMemberSummary(){
   ALL_SEASONS = await loadAllSeasons();
   const owners = collectOwners(ALL_SEASONS);
   const sel = document.getElementById("memberSelect");
+  const wrap = document.getElementById("memberSummary");
   sel.innerHTML = "";
+  wrap.innerHTML = "";
+
+  if (!owners.length) {
+    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},"No members detected"), el("p",{},"Check data/*.json")));
+    return;
+  }
+
   owners.forEach(o => sel.appendChild(el("option",{value:o}, o)));
   sel.onchange = () => renderMemberSummary(sel.value);
-  if (owners.length){ sel.value = owners[0]; renderMemberSummary(sel.value); }
+  sel.value = owners[0];
+  renderMemberSummary(sel.value);
 }
 
 // ---- static-only loaders ----
@@ -117,7 +137,7 @@ async function main(){
     if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
     else throw new Error("No years in manifest.json");
 
-    await setupMemberSummary(); // also initialize member summary
+    await setupMemberSummary();
   } catch (e){
     renderFatal(e);
   }
