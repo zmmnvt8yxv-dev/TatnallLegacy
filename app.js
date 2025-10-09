@@ -416,6 +416,55 @@ function renderFatal(e){
   const pre = el("pre",{}, String(e));
   document.getElementById("content").prepend(el("div",{class:"panel"}, pre));
 }
+// ----- tabs: smooth-jump + scrollspy -----
+function setupTabs(){
+  const header = document.querySelector("header");
+  const offset = (header?.offsetHeight || 80) + 4;
+  const tabs = Array.from(document.querySelectorAll(".tabs .tab"));
+  const sections = tabs
+    .map(a => document.querySelector(a.getAttribute("data-target") || a.getAttribute("href")))
+    .filter(Boolean);
 
+  // click -> manual scroll with offset
+  tabs.forEach(a => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const sel = a.getAttribute("data-target") || a.getAttribute("href");
+      const el = document.querySelector(sel);
+      if(!el) return;
+      const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+      setActive(a);
+    });
+  });
+
+  // scrollspy
+  function setActiveTabOnScroll(){
+    const y = window.scrollY + offset + 1;
+    let current = null;
+    for (const sec of sections){
+      const top = sec.offsetTop;
+      if (top <= y) current = sec;
+    }
+    if (current){
+      const id = "#" + current.id;
+      const t = tabs.find(a => (a.getAttribute("data-target")||a.getAttribute("href")) === id);
+      if (t) setActive(t);
+    }
+  }
+  function setActive(activeEl){
+    tabs.forEach(x => x.classList.toggle("active", x === activeEl));
+  }
+
+  // initialize
+  setActive(tabs[0] || null);
+  window.addEventListener("scroll", setActiveTabOnScroll, { passive: true });
+}
+
+// hook into your boot sequence
+const _origDOMContentLoaded = () => {};
+document.addEventListener("DOMContentLoaded", () => {
+  setupTabs();
+});
 // ---------- boot ----------
 document.addEventListener("DOMContentLoaded", main);
