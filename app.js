@@ -53,7 +53,7 @@ function collectOwners(seasons){
   return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
 }
 
-// aggregate across seasons; skip 0–0 future games for 2025
+// skip 0–0 future games for 2025
 function aggregateMember(owner, seasons){
   let wins=0, losses=0, ties=0, games=0;
   let most = -Infinity, least = Infinity;
@@ -111,24 +111,20 @@ function renderMemberSummary(owner){
   }
 }
 
-// NEW: render ranked table for all members
 function renderAllMembersTable(){
   const wrap = document.getElementById("memberSummary");
   const tableWrap = document.getElementById("memberTableWrap");
   wrap.style.display = "none";
   tableWrap.style.display = "";
 
-  // build stats per owner
   const owners = collectOwners(ALL_SEASONS);
   const rows = owners.map(o => ({ member:o, ...aggregateMember(o, ALL_SEASONS) }));
-  // rank by winPct desc, then wins desc, then games desc, then name asc
   rows.sort((a,b)=>{
     if (b.winPct !== a.winPct) return b.winPct - a.winPct;
     if (b.wins   !== a.wins)   return b.wins - a.wins;
     if (b.games  !== a.games)  return b.games - a.games;
     return a.member.localeCompare(b.member);
   });
-  // assign ranks
   rows.forEach((r,i)=> r.rank = i+1);
 
   const tbl = el("table",{},
@@ -178,11 +174,10 @@ async function setupMemberSummary(){
   if (!owners.length) {
     wrap.style.display = "";
     tableWrap.style.display = "none";
-    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},"No members detected"), el("p",{},"Check data/*.json teams[].owner/team_name")));
+    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},"No members detected"), el("p",{},"Check data/*.json")));
     return;
   }
 
-  // Insert "All Members" option
   const ALL = "__ALL__";
   sel.appendChild(el("option",{value:ALL},"All Members"));
   owners.forEach(o => sel.appendChild(el("option",{value:o}, o)));
@@ -192,7 +187,6 @@ async function setupMemberSummary(){
     else renderMemberSummary(sel.value);
   };
 
-  // default to All Members
   sel.value = ALL;
   renderAllMembersTable();
 }
@@ -243,10 +237,23 @@ function renderSummary(year, data){
     ["Lowest Points Against", bestPA? `${bestPA.team_name} (${fmt(bestPA.points_against)})`:"—"],
     ["Average PF / Team", fmt(avgPF)],
     ["Games Recorded", matchups.length],
+    ["Draft Picks", draft length = draft.length, ""].slice(0,2), // guard for older browsers (no destructuring issues)
+  ].flat();
+  // Fallback if the previous line looks odd in minifiers:
+  const stats2 = [
+    ["Transactions", txns.length]
+  ];
+  const pack = [
+    ["Season", year],
+    ["Champion", champ],
+    ["Top Points For", bestPF? `${bestPF.team_name} (${fmt(bestPF.points_for)})`:"—"],
+    ["Lowest Points Against", bestPA? `${bestPA.team_name} (${fmt(bestPA.points_against)})`:"—"],
+    ["Average PF / Team", fmt(avgPF)],
+    ["Games Recorded", matchups.length],
     ["Draft Picks", draft.length],
     ["Transactions", txns.length]
   ];
-  for(const [k,v] of stats) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
+  for(const [k,v] of pack) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
 }
 
 function renderTeams(teams){
