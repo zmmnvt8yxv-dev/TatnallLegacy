@@ -1,16 +1,22 @@
 import requests
 from bs4 import BeautifulSoup
 
-async function main() {
-  let years = [];
-  try {
-    const api = await loadJSON("/api/seasons");
-    years = api.years || [];
-  } catch(e) {
-    const manifest = await loadJSON("manifest.json");
-    years = manifest.years || [];
-  }
-  // populate dropdown etc...
+async function main(){
+  const m = await loadJSON("manifest.json");
+  const years = m.years || [];
+  const seasonSelect = document.getElementById("seasonSelect");
+  years.slice().reverse().forEach(y=> seasonSelect.appendChild(el("option",{value:y}, y)));
+  seasonSelect.addEventListener("change", ()=> renderSeason(+seasonSelect.value));
+  if(years.length){ seasonSelect.value = years[years.length-1]; await renderSeason(+seasonSelect.value); }
+}
+
+async function renderSeason(year){
+  const data = await loadJSON(`data/${year}.json`);
+  renderSummary(year, data);
+  renderTeams(data.teams||[]);
+  renderMatchups(data.matchups||[]);
+  renderTransactions(data.transactions||[]);
+  renderDraft(data.draft||[]);
 }
 
 def _fetch_transactions_api(L: League):
