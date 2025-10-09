@@ -1,0 +1,7192 @@
+{
+  "year": 2025,
+  "teams": [
+    {
+      "team_id": 3,
+      "team_name": "Insane in The Achane ",
+      "owner": "LbmBets",
+      "record": "5-0-13",
+      "points_for": 964.42,
+      "points_against": 753.96,
+      "regular_season_rank": 1,
+      "final_rank": null
+    },
+    {
+      "team_id": 1,
+      "team_name": "CeeDees TeeDees",
+      "owner": "cmarvin713",
+      "record": "3-2-13",
+      "points_for": 855.18,
+      "points_against": 823.02,
+      "regular_season_rank": 2,
+      "final_rank": null
+    },
+    {
+      "team_id": 2,
+      "team_name": "Kenneth walker for $30",
+      "owner": "jawnwick13",
+      "record": "3-2-13",
+      "points_for": 766.74,
+      "points_against": 779.16,
+      "regular_season_rank": 3,
+      "final_rank": null
+    },
+    {
+      "team_id": 5,
+      "team_name": "FantasyGPT 2.5",
+      "owner": "roylee6",
+      "record": "2-3-13",
+      "points_for": 845.18,
+      "points_against": 867.44,
+      "regular_season_rank": 4,
+      "final_rank": null
+    },
+    {
+      "team_id": 6,
+      "team_name": "PhillyPhilly709",
+      "owner": "PhillyPhilly709",
+      "record": "2-3-13",
+      "points_for": 824.68,
+      "points_against": 848.96,
+      "regular_season_rank": 5,
+      "final_rank": null
+    },
+    {
+      "team_id": 7,
+      "team_name": "downsliquidity",
+      "owner": "downsliquidity",
+      "record": "2-3-13",
+      "points_for": 801.58,
+      "points_against": 853.76,
+      "regular_season_rank": 6,
+      "final_rank": null
+    },
+    {
+      "team_id": 8,
+      "team_name": "Hospital Bill",
+      "owner": "Junktion",
+      "record": "2-3-13",
+      "points_for": 713.38,
+      "points_against": 735.84,
+      "regular_season_rank": 7,
+      "final_rank": null
+    },
+    {
+      "team_id": 4,
+      "team_name": "MoneyBall",
+      "owner": "conner27lax",
+      "record": "1-4-13",
+      "points_for": 741.38,
+      "points_against": 850.4,
+      "regular_season_rank": 8,
+      "final_rank": null
+    }
+  ],
+  "matchups": [
+    {
+      "week": 1,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 160.42,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 180.32,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 166.74,
+      "away_team": "PhillyPhilly709",
+      "away_score": 135.54,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Insane in The Achane ",
+      "home_score": 142.2,
+      "away_team": "downsliquidity",
+      "away_score": 110.4,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "MoneyBall",
+      "home_score": 153.0,
+      "away_team": "Hospital Bill",
+      "away_score": 139.6,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 162.36,
+      "away_team": "Insane in The Achane ",
+      "away_score": 209.84,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 117.36,
+      "away_team": "Hospital Bill",
+      "away_score": 120.14,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "MoneyBall",
+      "home_score": 167.64,
+      "away_team": "PhillyPhilly709",
+      "away_score": 178.08,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "FantasyGPT 2.5",
+      "home_score": 167.72,
+      "away_team": "downsliquidity",
+      "away_score": 175.84,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 180.04,
+      "away_team": "downsliquidity",
+      "away_score": 150.36,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 172.62,
+      "away_team": "MoneyBall",
+      "away_score": 115.9,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Insane in The Achane ",
+      "home_score": 192.08,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 161.94,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "PhillyPhilly709",
+      "home_score": 138.02,
+      "away_team": "Hospital Bill",
+      "away_score": 136.88,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 174.34,
+      "away_team": "MoneyBall",
+      "away_score": 132.42,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 186.66,
+      "away_team": "downsliquidity",
+      "away_score": 186.38,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Insane in The Achane ",
+      "home_score": 199.1,
+      "away_team": "PhillyPhilly709",
+      "away_score": 195.9,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "FantasyGPT 2.5",
+      "home_score": 149.44,
+      "away_team": "Hospital Bill",
+      "away_score": 166.68,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 178.02,
+      "away_team": "Hospital Bill",
+      "away_score": 150.08,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 123.36,
+      "away_team": "Insane in The Achane ",
+      "away_score": 221.2,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "MoneyBall",
+      "home_score": 172.42,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 185.76,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "PhillyPhilly709",
+      "home_score": 177.14,
+      "away_team": "downsliquidity",
+      "away_score": 178.6,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "MoneyBall",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "downsliquidity",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "Kenneth walker for $30",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "MoneyBall",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "FantasyGPT 2.5",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "MoneyBall",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "Insane in The Achane ",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "MoneyBall",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "FantasyGPT 2.5",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "MoneyBall",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "PhillyPhilly709",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "MoneyBall",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "FantasyGPT 2.5",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "Insane in The Achane ",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "MoneyBall",
+      "home_score": 0.0,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "PhillyPhilly709",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "MoneyBall",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "downsliquidity",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "Kenneth walker for $30",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "MoneyBall",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "FantasyGPT 2.5",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 15,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 15,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 15,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 15,
+      "home_team": "MoneyBall",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 16,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "Insane in The Achane ",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 16,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 16,
+      "home_team": "MoneyBall",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 16,
+      "home_team": "FantasyGPT 2.5",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 17,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 17,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "MoneyBall",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 17,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "FantasyGPT 2.5",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 17,
+      "home_team": "PhillyPhilly709",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 18,
+      "home_team": "CeeDees TeeDees",
+      "home_score": 0.0,
+      "away_team": "MoneyBall",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 18,
+      "home_team": "Kenneth walker for $30",
+      "home_score": 0.0,
+      "away_team": "downsliquidity",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 18,
+      "home_team": "Insane in The Achane ",
+      "home_score": 0.0,
+      "away_team": "PhillyPhilly709",
+      "away_score": 0.0,
+      "is_playoff": false
+    },
+    {
+      "week": 18,
+      "home_team": "FantasyGPT 2.5",
+      "home_score": 0.0,
+      "away_team": "Hospital Bill",
+      "away_score": 0.0,
+      "is_playoff": false
+    }
+  ],
+  "transactions": [
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Hollywood Brown",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Dameon Pierce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Keon Coleman",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jared Goff",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Travis Etienne",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jared Goff",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Travis Etienne",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Dameon Pierce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Keon Coleman",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Dameon Pierce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Quentin Johnston",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Dameon Pierce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Cedric Tillman",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Evan Engram",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Keenan Allen",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Evan Engram",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Keon Coleman",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Evan Engram",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Hollywood Brown",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Evan Engram",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Daniel Jones",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Woody Marks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Michael Penix",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Woody Marks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Travis Etienne",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Jayden Higgins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "LeQuint Allen",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Rachaad White",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Quentin Johnston",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Dameon Pierce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Keon Coleman",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Travis Etienne",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Travis Etienne",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Woody Marks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Harold Fannin",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Zach Ertz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Keenan Allen",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Keon Coleman",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "San Francisco 49ers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Minnesota Vikings",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Tyler Loop",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Jake Elliott",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Travis Etienne",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Kaleb Johnson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Kayshon Boutte",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Marvin Mims",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Quentin Johnston",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Marvin Mims",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Hollywood Brown",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Marvin Mims",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Travis Etienne",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Rhamondre Stevenson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Travis Etienne",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Rachaad White",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Jake Bates",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Travis Etienne",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Jake Elliott",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Tyler Bass",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Bhayshul Tuten",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Los Angeles Rams",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Chris Rodriguez",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Cameron Dicker",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen McMillan",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen Coker",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Keon Coleman",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Dont'e Thornton",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Joshua Palmer",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Washington Commanders",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Ray Davis",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Jerome Ford",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Najee Harris",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Khalil Shakir",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Wil Lutz",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Michael Penix",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Arizona Cardinals",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Kendre Miller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Kendre Miller",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Tahj Brooks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Dameon Pierce",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Amari Cooper",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Bhayshul Tuten",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Ray Davis",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Christian Watson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Tyler Bass",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Eric Gray",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Isaac TeSlaa",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Minnesota Vikings",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Jake Elliott",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Matt Gay",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Xavier Legette",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Joshua Palmer",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Tyler Lockett",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Amari Cooper",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Skyy Moore",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Josh Downs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Matt Gay",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Isaac TeSlaa",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Minnesota Vikings",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Eric Gray",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Taysom Hill",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Minnesota Vikings",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Khalil Shakir",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Chase McLaughlin",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Darren Waller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Woody Marks",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Dameon Pierce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Darren Waller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Jauan Jennings",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Tyjae Spears",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Christian Watson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen McMillan",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Skyy Moore",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Jaydon Blue",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Tony Pollard",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Jaydon Blue",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Tony Pollard",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Jaydon Blue",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Tony Pollard",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Tahj Brooks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Dameon Pierce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Arizona Cardinals",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Cameron Dicker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Jake Bates",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "San Francisco 49ers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Rachaad White",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Matt Gay",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Josh Jacobs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Justin Jefferson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Chase Brown",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Bucky Irving",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "James Cook",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Ladd McConkey",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "De'Von Achane",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Nico Collins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Chase Brown",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Bucky Irving",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 1",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Bijan Robinson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Wan'Dale Robinson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Stefon Diggs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Atlanta Falcons",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Los Angeles Rams",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Seattle Seahawks",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Los Angeles Rams",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Green Bay Packers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Los Angeles Rams",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Jake Ferguson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Mark Andrews",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Juwan Johnson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Mark Andrews",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Blake Corum",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "David Njoku",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Jake Ferguson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Tank Bigsby",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Juwan Johnson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Tank Bigsby",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Elic Ayomanor",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen Coker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Blake Corum",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen Coker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Kyle Monangai",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen Coker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Daniel Jones",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Detroit Lions",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Woody Marks",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen Coker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Daniel Jones",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen Coker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Aaron Rodgers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Detroit Lions",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Troy Franklin",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Stefon Diggs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Elic Ayomanor",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Buffalo Bills",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Arizona Cardinals",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Tampa Bay Buccaneers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Arizona Cardinals",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Seattle Seahawks",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Arizona Cardinals",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Green Bay Packers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Arizona Cardinals",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Daniel Jones",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Kaleb Johnson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Hunter Renfrow",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Kareem Hunt",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Elic Ayomanor",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Austin Ekeler",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Woody Marks",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Ollie Gordon",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Green Bay Packers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "San Francisco 49ers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Jake Bates",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Romeo Doubs",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Jayden Reed",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Geno Smith",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Daniel Carlson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "LeQuint Allen",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Ray Davis",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "C.J. Stroud",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Cedric Tillman",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Daniel Jones",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Michael Penix",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Jake Bates",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Minnesota Vikings",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Dallas Cowboys",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Dallas Cowboys",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Washington Commanders",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "J.J. McCarthy",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Austin Ekeler",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "J.J. McCarthy",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Austin Ekeler",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "J.J. McCarthy",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Austin Ekeler",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Bo Nix",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Dylan Sampson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Bo Nix",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Dylan Sampson",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Insane in The Achane ",
+          "player": "Bo Nix",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Insane in The Achane ",
+          "player": "Dylan Sampson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Kendre Miller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Matt Gay",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Rashid Shaheed",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Josh Downs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "George Kittle",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "J.K. Dobbins",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "George Kittle",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "J.K. Dobbins",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Insane in The Achane ",
+          "player": "George Kittle",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Insane in The Achane ",
+          "player": "J.K. Dobbins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Detroit Lions",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Jayden Higgins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Hollywood Brown",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Jerome Ford",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Kareem Hunt",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Jerome Ford",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Hollywood Brown",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Colston Loveland",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Braelon Allen",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 2",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Jaydon Blue",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Emari Demercado",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Zach Ertz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Jaxson Dart",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Braelon Allen",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Buffalo Bills",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Indianapolis Colts",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Hunter Henry",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Kayshon Boutte",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Tyjae Spears",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Romeo Doubs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Detroit Lions",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Seattle Seahawks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Houston Texans",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Seattle Seahawks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Buffalo Bills",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Seattle Seahawks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Buffalo Bills",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Minnesota Vikings",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Najee Harris",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Rashid Shaheed",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Darnell Mooney",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Joey Slye",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Jake Bates",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Najee Harris",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Tyjae Spears",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Zach Ertz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Mark Andrews",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Luke Musgrave",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Braelon Allen",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Tyjae Spears",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Tampa Bay Buccaneers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Pittsburgh Steelers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Rachaad White",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Zavier Scott",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "C.J. Stroud",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "C.J. Stroud",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Zach Ertz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Cam Ward",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Hunter Renfrow",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Caleb Williams",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Rome Odunze",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Bhayshul Tuten",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Baker Mayfield",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Tee Higgins",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Jaylen Warren",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Caleb Williams",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Rome Odunze",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Bhayshul Tuten",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Baker Mayfield",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Tee Higgins",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jaylen Warren",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Caleb Williams",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Rome Odunze",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Bhayshul Tuten",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Baker Mayfield",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Tee Higgins",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Jaylen Warren",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Luke Musgrave",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Cedric Tillman",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Chris Boswell",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Wil Lutz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Mac Jones",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Chris Rodriguez",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Troy Franklin",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Spencer Shrader",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Tyler Loop",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Austin Ekeler",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Indianapolis Colts",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "San Francisco 49ers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "T.J. Hockenson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Matt Prater",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Chase McLaughlin",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Seattle Seahawks",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Pittsburgh Steelers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Green Bay Packers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Cam Ward",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Troy Franklin",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Darnell Mooney",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Aaron Rodgers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Ray Davis",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Sam Darnold",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Ray Davis",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Carson Wentz",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Ray Davis",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Mac Jones",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Ray Davis",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Daniel Jones",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Ray Davis",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 3",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Chris Godwin",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Isaiah Bond",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Malik Washington",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Darius Slayton",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Darren Waller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Chase McLaughlin",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Daniel Carlson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Kansas City Chiefs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Cleveland Browns",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Houston Texans",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Detroit Lions",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Houston Texans",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Arizona Cardinals",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Houston Texans",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Jake Bates",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Matt Prater",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Joey Slye",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Sam LaPorta",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Sam LaPorta",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "PhillyPhilly709",
+          "player": "Sam LaPorta",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Jayden Daniels",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Troy Franklin",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Woody Marks",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Mike Evans",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Derrick Henry",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Alvin Kamara",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Matthew Stafford",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Jake Ferguson",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Bijan Robinson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Jayden Daniels",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Troy Franklin",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Woody Marks",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Mike Evans",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Derrick Henry",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Alvin Kamara",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Matthew Stafford",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Jake Ferguson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Bijan Robinson",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Jayden Daniels",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Troy Franklin",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Woody Marks",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Mike Evans",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Derrick Henry",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Alvin Kamara",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Matthew Stafford",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Jake Ferguson",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Bijan Robinson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Sam Darnold",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Aaron Rodgers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Brenton Strange",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Isaiah Likely",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Stefon Diggs",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Travis Kelce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Brashard Smith",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Travis Kelce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Rachaad White",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Travis Kelce",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Darren Waller",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Tyrone Tracy",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Emari Demercado",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Baltimore Ravens",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Dalton Kincaid",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Mark Andrews",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Joshua Karty",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Chris Boswell",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Jake Elliott",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Chris Boswell",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Harrison Butker",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Chris Boswell",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Kenneth Walker",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Quentin Johnston",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Kenneth Walker",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Quentin Johnston",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Kenneth walker for $30",
+          "player": "Kenneth Walker",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Kenneth walker for $30",
+          "player": "Quentin Johnston",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Cam Ward",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Josh Downs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Darius Slayton",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Khalil Shakir",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Stefon Diggs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Hollywood Brown",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Darnell Mooney",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "RJ Harvey",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "J.K. Dobbins",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "DeVonta Smith",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Jake Ferguson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "RJ Harvey",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "J.K. Dobbins",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "DeVonta Smith",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Jake Ferguson",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "RJ Harvey",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "J.K. Dobbins",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "DeVonta Smith",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Jake Ferguson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Saquon Barkley",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Baker Mayfield",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Courtland Sutton",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen Hurts",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Jauan Jennings",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Chase Brown",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Saquon Barkley",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Baker Mayfield",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Courtland Sutton",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Jalen Hurts",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Jauan Jennings",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Chase Brown",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Saquon Barkley",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Baker Mayfield",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Courtland Sutton",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Jalen Hurts",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Jauan Jennings",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "CeeDees TeeDees",
+          "player": "Chase Brown",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Michael Penix",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Los Angeles Chargers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Tampa Bay Buccaneers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Travis Hunter",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Nick Chubb",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Quentin Johnston",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Travis Hunter",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Nick Chubb",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Quentin Johnston",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "PhillyPhilly709",
+          "player": "Travis Hunter",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "PhillyPhilly709",
+          "player": "Nick Chubb",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "PhillyPhilly709",
+          "player": "Quentin Johnston",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Darnell Mooney",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Hollywood Brown",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Tre Tucker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Chris Godwin",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Dont'e Thornton",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Hassan Haskins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Isaiah Likely",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Hollywood Brown",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Los Angeles Chargers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Seattle Seahawks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Matthew Stafford",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Trevor Lawrence",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Ollie Gordon",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Brian Robinson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "New England Patriots",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Atlanta Falcons",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Zavier Scott",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Buffalo Bills",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Tampa Bay Buccaneers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Rachaad White",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Ollie Gordon",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Kareem Hunt",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "James Conner",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 4",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Hunter Henry",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Tyrone Tracy",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Sam Darnold",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Elic Ayomanor",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Pittsburgh Steelers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Trevor Lawrence",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Tua Tagovailoa",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Rashid Shaheed",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Brian Thomas",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Tetairoa McMillan",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Ashton Jeanty",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Garrett Wilson",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Jordan Addison",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Brian Thomas",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Tetairoa McMillan",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Ashton Jeanty",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Garrett Wilson",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Jordan Addison",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "PhillyPhilly709",
+          "player": "Brian Thomas",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "PhillyPhilly709",
+          "player": "Tetairoa McMillan",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "PhillyPhilly709",
+          "player": "Ashton Jeanty",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "PhillyPhilly709",
+          "player": "Garrett Wilson",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "PhillyPhilly709",
+          "player": "Jordan Addison",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Kimani Vidal",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Hassan Haskins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Kendrick Bourne",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Juwan Johnson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Kenneth Gainwell",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "J.J. McCarthy",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Kendre Miller",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "J.J. McCarthy",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Las Vegas Raiders",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Indianapolis Colts",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Pittsburgh Steelers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Arizona Cardinals",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Kendre Miller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Jayden Reed",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Detroit Lions",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Spencer Shrader",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Trevor Lawrence",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Geno Smith",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Bryce Young",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Geno Smith",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Hassan Haskins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "AJ Barner",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Brenton Strange",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Malik Nabers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Las Vegas Raiders",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Minnesota Vikings",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "CeeDees TeeDees",
+          "player": "Pittsburgh Steelers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "CeeDees TeeDees",
+          "player": "Minnesota Vikings",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Josh Jacobs",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Jaylen Waddle",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Breece Hall",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Josh Jacobs",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Jaylen Waddle",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Breece Hall",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "FantasyGPT 2.5",
+          "player": "Josh Jacobs",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "FantasyGPT 2.5",
+          "player": "Jaylen Waddle",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "FantasyGPT 2.5",
+          "player": "Breece Hall",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Kendre Miller",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Darius Slayton",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Blake Corum",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Alvin Kamara",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "A.J. Brown",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Tyler Allgeier",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Blake Corum",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Alvin Kamara",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "A.J. Brown",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Tyler Allgeier",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Blake Corum",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Alvin Kamara",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "A.J. Brown",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "MoneyBall",
+          "player": "Tyler Allgeier",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Mason Taylor",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Malik Washington",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Kendre Miller",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Malik Washington",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Mason Taylor",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Brashard Smith",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Justice Hill",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Kendre Miller",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Malik Washington",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Geno Smith",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Bryce Young",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Matt Prater",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Kendre Miller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Malik Washington",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Rico Dowdle",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Jake Elliott",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Malik Nabers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Chris Rodriguez",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Justice Hill",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Malik Nabers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Bryce Young",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Emari Demercado",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Chris Rodriguez",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Emari Demercado",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Brashard Smith",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Cleveland Browns",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "New England Patriots",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Emari Demercado",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Michael Carter",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Geno Smith",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Tua Tagovailoa",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Hassan Haskins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Tyreek Hill",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Dallas Goedert",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Tyrone Tracy",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Stefon Diggs",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Chris Boswell",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Darius Slayton",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Chris Boswell",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Rachaad White",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Chris Boswell",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Harrison Butker",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Dylan Sampson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Jake Bates",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Dylan Sampson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Jason Myers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Matt Prater",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "downsliquidity",
+          "player": "Chase McLaughlin",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "downsliquidity",
+          "player": "Matt Prater",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Sam Darnold",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Chris Rodriguez",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Rachaad White",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Cooper Kupp",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Detroit Lions",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Buffalo Bills",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 5",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Sam Darnold",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Hassan Haskins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Kendrick Bourne",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Brandon McManus",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Joey Slye",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Dallas Cowboys",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Kansas City Chiefs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Michael Badgley",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Malik Washington",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Joey Slye",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Isiah Pacheco",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "New England Patriots",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Jayden Reed",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Ollie Gordon",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Hospital Bill",
+          "player": "Kendre Miller",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Hospital Bill",
+          "player": "Tre Tucker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Rashid Shaheed",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Kendre Miller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Kenneth Gainwell",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Kimani Vidal",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Dalton Kincaid",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Daniel Carlson",
+          "faab": null
+        }
+      ]
+    }
+  ],
+  "draft": [
+    {
+      "round": 1,
+      "overall": 1,
+      "team": "MoneyBall",
+      "player": "Bijan Robinson",
+      "player_nfl": "ATL",
+      "keeper": false
+    },
+    {
+      "round": 1,
+      "overall": 2,
+      "team": "CeeDees TeeDees",
+      "player": "Bucky Irving",
+      "player_nfl": "TB",
+      "keeper": false
+    },
+    {
+      "round": 1,
+      "overall": 3,
+      "team": "CeeDees TeeDees",
+      "player": "Chase Brown",
+      "player_nfl": "CIN",
+      "keeper": false
+    },
+    {
+      "round": 1,
+      "overall": 4,
+      "team": "PhillyPhilly709",
+      "player": "Josh Jacobs",
+      "player_nfl": "GB",
+      "keeper": false
+    },
+    {
+      "round": 1,
+      "overall": 5,
+      "team": "PhillyPhilly709",
+      "player": "Justin Jefferson",
+      "player_nfl": "MIN",
+      "keeper": false
+    },
+    {
+      "round": 1,
+      "overall": 6,
+      "team": "Insane in The Achane ",
+      "player": "Nico Collins",
+      "player_nfl": "HOU",
+      "keeper": false
+    },
+    {
+      "round": 1,
+      "overall": 7,
+      "team": "Insane in The Achane ",
+      "player": "De'Von Achane",
+      "player_nfl": "MIA",
+      "keeper": false
+    },
+    {
+      "round": 1,
+      "overall": 8,
+      "team": "downsliquidity",
+      "player": "James Cook",
+      "player_nfl": "BUF",
+      "keeper": false
+    },
+    {
+      "round": 2,
+      "overall": 9,
+      "team": "downsliquidity",
+      "player": "Ladd McConkey",
+      "player_nfl": "LAC",
+      "keeper": false
+    },
+    {
+      "round": 2,
+      "overall": 10,
+      "team": "Kenneth walker for $30",
+      "player": "Brock Bowers",
+      "player_nfl": "LV",
+      "keeper": false
+    },
+    {
+      "round": 2,
+      "overall": 11,
+      "team": "Kenneth walker for $30",
+      "player": "Jahmyr Gibbs",
+      "player_nfl": "DET",
+      "keeper": false
+    },
+    {
+      "round": 2,
+      "overall": 12,
+      "team": "Hospital Bill",
+      "player": "Brian Thomas",
+      "player_nfl": "JAX",
+      "keeper": false
+    },
+    {
+      "round": 2,
+      "overall": 13,
+      "team": "Hospital Bill",
+      "player": "Tee Higgins",
+      "player_nfl": "CIN",
+      "keeper": false
+    },
+    {
+      "round": 2,
+      "overall": 14,
+      "team": "FantasyGPT 2.5",
+      "player": "Malik Nabers",
+      "player_nfl": "NYG",
+      "keeper": false
+    },
+    {
+      "round": 2,
+      "overall": 15,
+      "team": "FantasyGPT 2.5",
+      "player": "Rashee Rice",
+      "player_nfl": "KC",
+      "keeper": false
+    },
+    {
+      "round": 2,
+      "overall": 16,
+      "team": "Hospital Bill",
+      "player": "Ashton Jeanty",
+      "player_nfl": "LV",
+      "keeper": false
+    },
+    {
+      "round": 3,
+      "overall": 17,
+      "team": "MoneyBall",
+      "player": "Saquon Barkley",
+      "player_nfl": "PHI",
+      "keeper": false
+    },
+    {
+      "round": 3,
+      "overall": 18,
+      "team": "MoneyBall",
+      "player": "George Kittle",
+      "player_nfl": "SF",
+      "keeper": false
+    },
+    {
+      "round": 3,
+      "overall": 19,
+      "team": "downsliquidity",
+      "player": "Ja'Marr Chase",
+      "player_nfl": "CIN",
+      "keeper": false
+    },
+    {
+      "round": 3,
+      "overall": 20,
+      "team": "FantasyGPT 2.5",
+      "player": "Christian McCaffrey",
+      "player_nfl": "SF",
+      "keeper": false
+    },
+    {
+      "round": 3,
+      "overall": 21,
+      "team": "CeeDees TeeDees",
+      "player": "CeeDee Lamb",
+      "player_nfl": "DAL",
+      "keeper": false
+    },
+    {
+      "round": 3,
+      "overall": 22,
+      "team": "FantasyGPT 2.5",
+      "player": "Josh Allen",
+      "player_nfl": "BUF",
+      "keeper": false
+    },
+    {
+      "round": 3,
+      "overall": 23,
+      "team": "Insane in The Achane ",
+      "player": "Puka Nacua",
+      "player_nfl": "LAR",
+      "keeper": false
+    },
+    {
+      "round": 3,
+      "overall": 24,
+      "team": "Kenneth walker for $30",
+      "player": "Omarion Hampton",
+      "player_nfl": "LAC",
+      "keeper": false
+    },
+    {
+      "round": 4,
+      "overall": 25,
+      "team": "Hospital Bill",
+      "player": "Sam LaPorta",
+      "player_nfl": "DET",
+      "keeper": false
+    },
+    {
+      "round": 4,
+      "overall": 26,
+      "team": "Hospital Bill",
+      "player": "Derrick Henry",
+      "player_nfl": "BAL",
+      "keeper": false
+    },
+    {
+      "round": 4,
+      "overall": 27,
+      "team": "Insane in The Achane ",
+      "player": "Jonathan Taylor",
+      "player_nfl": "IND",
+      "keeper": false
+    },
+    {
+      "round": 4,
+      "overall": 28,
+      "team": "FantasyGPT 2.5",
+      "player": "Lamar Jackson",
+      "player_nfl": "BAL",
+      "keeper": false
+    },
+    {
+      "round": 4,
+      "overall": 29,
+      "team": "FantasyGPT 2.5",
+      "player": "Breece Hall",
+      "player_nfl": "NYJ",
+      "keeper": false
+    },
+    {
+      "round": 4,
+      "overall": 30,
+      "team": "Kenneth walker for $30",
+      "player": "Kaleb Johnson",
+      "player_nfl": "PIT",
+      "keeper": false
+    },
+    {
+      "round": 4,
+      "overall": 31,
+      "team": "PhillyPhilly709",
+      "player": "Amon-Ra St. Brown",
+      "player_nfl": "DET",
+      "keeper": false
+    },
+    {
+      "round": 4,
+      "overall": 32,
+      "team": "MoneyBall",
+      "player": "Jalen Hurts",
+      "player_nfl": "PHI",
+      "keeper": false
+    },
+    {
+      "round": 5,
+      "overall": 33,
+      "team": "PhillyPhilly709",
+      "player": "Tetairoa McMillan",
+      "player_nfl": "CAR",
+      "keeper": false
+    },
+    {
+      "round": 5,
+      "overall": 34,
+      "team": "MoneyBall",
+      "player": "Jayden Daniels",
+      "player_nfl": "WAS",
+      "keeper": false
+    },
+    {
+      "round": 5,
+      "overall": 35,
+      "team": "Insane in The Achane ",
+      "player": "Drake London",
+      "player_nfl": "ATL",
+      "keeper": false
+    },
+    {
+      "round": 5,
+      "overall": 36,
+      "team": "FantasyGPT 2.5",
+      "player": "A.J. Brown",
+      "player_nfl": "PHI",
+      "keeper": false
+    },
+    {
+      "round": 5,
+      "overall": 37,
+      "team": "Hospital Bill",
+      "player": "Joe Burrow",
+      "player_nfl": "CIN",
+      "keeper": false
+    },
+    {
+      "round": 5,
+      "overall": 38,
+      "team": "Kenneth walker for $30",
+      "player": "TreVeyon Henderson",
+      "player_nfl": "NE",
+      "keeper": false
+    },
+    {
+      "round": 5,
+      "overall": 39,
+      "team": "CeeDees TeeDees",
+      "player": "Kyren Williams",
+      "player_nfl": "LAR",
+      "keeper": false
+    },
+    {
+      "round": 5,
+      "overall": 40,
+      "team": "CeeDees TeeDees",
+      "player": "Austin Ekeler",
+      "player_nfl": "WAS",
+      "keeper": false
+    },
+    {
+      "round": 6,
+      "overall": 41,
+      "team": "MoneyBall",
+      "player": "Travis Kelce",
+      "player_nfl": "KC",
+      "keeper": false
+    },
+    {
+      "round": 6,
+      "overall": 42,
+      "team": "CeeDees TeeDees",
+      "player": "Trey McBride",
+      "player_nfl": "ARI",
+      "keeper": false
+    },
+    {
+      "round": 6,
+      "overall": 43,
+      "team": "downsliquidity",
+      "player": "Tyreek Hill",
+      "player_nfl": "MIA",
+      "keeper": false
+    },
+    {
+      "round": 6,
+      "overall": 44,
+      "team": "PhillyPhilly709",
+      "player": "DJ Moore",
+      "player_nfl": "CHI",
+      "keeper": false
+    },
+    {
+      "round": 6,
+      "overall": 45,
+      "team": "MoneyBall",
+      "player": "Terry McLaurin",
+      "player_nfl": "WAS",
+      "keeper": false
+    },
+    {
+      "round": 6,
+      "overall": 46,
+      "team": "Kenneth walker for $30",
+      "player": "Kenneth Walker",
+      "player_nfl": "SEA",
+      "keeper": false
+    },
+    {
+      "round": 6,
+      "overall": 47,
+      "team": "downsliquidity",
+      "player": "Travis Hunter",
+      "player_nfl": "JAX",
+      "keeper": false
+    },
+    {
+      "round": 6,
+      "overall": 48,
+      "team": "MoneyBall",
+      "player": "Emeka Egbuka",
+      "player_nfl": "TB",
+      "keeper": false
+    },
+    {
+      "round": 7,
+      "overall": 49,
+      "team": "Hospital Bill",
+      "player": "Baker Mayfield",
+      "player_nfl": "TB",
+      "keeper": false
+    },
+    {
+      "round": 7,
+      "overall": 50,
+      "team": "Insane in The Achane ",
+      "player": "Brock Purdy",
+      "player_nfl": "SF",
+      "keeper": false
+    },
+    {
+      "round": 7,
+      "overall": 51,
+      "team": "PhillyPhilly709",
+      "player": "Patrick Mahomes",
+      "player_nfl": "KC",
+      "keeper": false
+    },
+    {
+      "round": 7,
+      "overall": 52,
+      "team": "PhillyPhilly709",
+      "player": "Garrett Wilson",
+      "player_nfl": "NYJ",
+      "keeper": false
+    },
+    {
+      "round": 7,
+      "overall": 53,
+      "team": "Insane in The Achane ",
+      "player": "Chuba Hubbard",
+      "player_nfl": "CAR",
+      "keeper": false
+    },
+    {
+      "round": 7,
+      "overall": 54,
+      "team": "downsliquidity",
+      "player": "Tank Bigsby",
+      "player_nfl": "PHI",
+      "keeper": false
+    },
+    {
+      "round": 7,
+      "overall": 55,
+      "team": "CeeDees TeeDees",
+      "player": "Davante Adams",
+      "player_nfl": "LAR",
+      "keeper": false
+    },
+    {
+      "round": 7,
+      "overall": 56,
+      "team": "Hospital Bill",
+      "player": "Mike Evans",
+      "player_nfl": "TB",
+      "keeper": false
+    },
+    {
+      "round": 8,
+      "overall": 57,
+      "team": "CeeDees TeeDees",
+      "player": "Courtland Sutton",
+      "player_nfl": "DEN",
+      "keeper": false
+    },
+    {
+      "round": 8,
+      "overall": 58,
+      "team": "downsliquidity",
+      "player": "Drake Maye",
+      "player_nfl": "NE",
+      "keeper": false
+    },
+    {
+      "round": 8,
+      "overall": 59,
+      "team": "PhillyPhilly709",
+      "player": "Bo Nix",
+      "player_nfl": "DEN",
+      "keeper": false
+    },
+    {
+      "round": 8,
+      "overall": 60,
+      "team": "PhillyPhilly709",
+      "player": "Xavier Worthy",
+      "player_nfl": "KC",
+      "keeper": false
+    },
+    {
+      "round": 8,
+      "overall": 61,
+      "team": "Hospital Bill",
+      "player": "Alvin Kamara",
+      "player_nfl": "NO",
+      "keeper": false
+    },
+    {
+      "round": 8,
+      "overall": 62,
+      "team": "downsliquidity",
+      "player": "Marvin Harrison",
+      "player_nfl": "ARI",
+      "keeper": false
+    },
+    {
+      "round": 8,
+      "overall": 63,
+      "team": "Insane in The Achane ",
+      "player": "C.J. Stroud",
+      "player_nfl": "HOU",
+      "keeper": false
+    },
+    {
+      "round": 8,
+      "overall": 64,
+      "team": "MoneyBall",
+      "player": "Matt Gay",
+      "player_nfl": "WAS",
+      "keeper": false
+    },
+    {
+      "round": 9,
+      "overall": 65,
+      "team": "Kenneth walker for $30",
+      "player": "Justin Fields",
+      "player_nfl": "NYJ",
+      "keeper": false
+    },
+    {
+      "round": 9,
+      "overall": 66,
+      "team": "MoneyBall",
+      "player": "J.J. McCarthy",
+      "player_nfl": "MIN",
+      "keeper": false
+    },
+    {
+      "round": 9,
+      "overall": 67,
+      "team": "downsliquidity",
+      "player": "Dak Prescott",
+      "player_nfl": "DAL",
+      "keeper": false
+    },
+    {
+      "round": 9,
+      "overall": 68,
+      "team": "Kenneth walker for $30",
+      "player": "Justin Herbert",
+      "player_nfl": "LAC",
+      "keeper": false
+    },
+    {
+      "round": 9,
+      "overall": 69,
+      "team": "downsliquidity",
+      "player": "James Conner",
+      "player_nfl": "ARI",
+      "keeper": false
+    },
+    {
+      "round": 9,
+      "overall": 70,
+      "team": "Hospital Bill",
+      "player": "Brandon Aubrey",
+      "player_nfl": "DAL",
+      "keeper": false
+    },
+    {
+      "round": 9,
+      "overall": 71,
+      "team": "CeeDees TeeDees",
+      "player": "Jaxon Smith-Njigba",
+      "player_nfl": "SEA",
+      "keeper": false
+    },
+    {
+      "round": 9,
+      "overall": 72,
+      "team": "MoneyBall",
+      "player": "Baltimore Ravens",
+      "player_nfl": "BAL",
+      "keeper": false
+    },
+    {
+      "round": 10,
+      "overall": 73,
+      "team": "PhillyPhilly709",
+      "player": "Kyler Murray",
+      "player_nfl": "ARI",
+      "keeper": false
+    },
+    {
+      "round": 10,
+      "overall": 74,
+      "team": "Kenneth walker for $30",
+      "player": "Denver Broncos",
+      "player_nfl": "DEN",
+      "keeper": false
+    },
+    {
+      "round": 10,
+      "overall": 75,
+      "team": "Kenneth walker for $30",
+      "player": "Cam Little",
+      "player_nfl": "JAX",
+      "keeper": false
+    },
+    {
+      "round": 10,
+      "overall": 76,
+      "team": "Kenneth walker for $30",
+      "player": "Jerry Jeudy",
+      "player_nfl": "CLE",
+      "keeper": false
+    },
+    {
+      "round": 10,
+      "overall": 77,
+      "team": "downsliquidity",
+      "player": "Joe Mixon",
+      "player_nfl": "HOU",
+      "keeper": false
+    },
+    {
+      "round": 10,
+      "overall": 78,
+      "team": "FantasyGPT 2.5",
+      "player": "Isiah Pacheco",
+      "player_nfl": "KC",
+      "keeper": false
+    },
+    {
+      "round": 10,
+      "overall": 79,
+      "team": "CeeDees TeeDees",
+      "player": "Zay Flowers",
+      "player_nfl": "BAL",
+      "keeper": false
+    },
+    {
+      "round": 10,
+      "overall": 80,
+      "team": "MoneyBall",
+      "player": "Jakobi Meyers",
+      "player_nfl": "LV",
+      "keeper": false
+    },
+    {
+      "round": 11,
+      "overall": 81,
+      "team": "CeeDees TeeDees",
+      "player": "Caleb Williams",
+      "player_nfl": "CHI",
+      "keeper": false
+    },
+    {
+      "round": 11,
+      "overall": 82,
+      "team": "PhillyPhilly709",
+      "player": "Mark Andrews",
+      "player_nfl": "BAL",
+      "keeper": false
+    },
+    {
+      "round": 11,
+      "overall": 83,
+      "team": "FantasyGPT 2.5",
+      "player": "Jaylen Waddle",
+      "player_nfl": "MIA",
+      "keeper": false
+    },
+    {
+      "round": 11,
+      "overall": 84,
+      "team": "Kenneth walker for $30",
+      "player": "George Pickens",
+      "player_nfl": "DAL",
+      "keeper": false
+    },
+    {
+      "round": 11,
+      "overall": 85,
+      "team": "PhillyPhilly709",
+      "player": "T.J. Hockenson",
+      "player_nfl": "MIN",
+      "keeper": false
+    },
+    {
+      "round": 11,
+      "overall": 86,
+      "team": "Hospital Bill",
+      "player": "Jacory Croskey-Merritt",
+      "player_nfl": "WAS",
+      "keeper": false
+    },
+    {
+      "round": 11,
+      "overall": 87,
+      "team": "downsliquidity",
+      "player": "DK Metcalf",
+      "player_nfl": "PIT",
+      "keeper": false
+    },
+    {
+      "round": 11,
+      "overall": 88,
+      "team": "downsliquidity",
+      "player": "Brandon Aiyuk",
+      "player_nfl": "SF",
+      "keeper": false
+    },
+    {
+      "round": 12,
+      "overall": 89,
+      "team": "CeeDees TeeDees",
+      "player": "Jordan Love",
+      "player_nfl": "GB",
+      "keeper": false
+    },
+    {
+      "round": 12,
+      "overall": 90,
+      "team": "Insane in The Achane ",
+      "player": "Jake Bates",
+      "player_nfl": "DET",
+      "keeper": false
+    },
+    {
+      "round": 12,
+      "overall": 91,
+      "team": "PhillyPhilly709",
+      "player": "David Montgomery",
+      "player_nfl": "DET",
+      "keeper": false
+    },
+    {
+      "round": 12,
+      "overall": 92,
+      "team": "downsliquidity",
+      "player": "Quinshon Judkins",
+      "player_nfl": "CLE",
+      "keeper": false
+    },
+    {
+      "round": 12,
+      "overall": 93,
+      "team": "Kenneth walker for $30",
+      "player": "Jameson Williams",
+      "player_nfl": "DET",
+      "keeper": false
+    },
+    {
+      "round": 12,
+      "overall": 94,
+      "team": "downsliquidity",
+      "player": "Tyler Warren",
+      "player_nfl": "IND",
+      "keeper": false
+    },
+    {
+      "round": 12,
+      "overall": 95,
+      "team": "MoneyBall",
+      "player": "Xavier Legette",
+      "player_nfl": "CAR",
+      "keeper": false
+    },
+    {
+      "round": 12,
+      "overall": 96,
+      "team": "CeeDees TeeDees",
+      "player": "Rome Odunze",
+      "player_nfl": "CHI",
+      "keeper": false
+    },
+    {
+      "round": 13,
+      "overall": 97,
+      "team": "MoneyBall",
+      "player": "Jaydon Blue",
+      "player_nfl": "DAL",
+      "keeper": false
+    },
+    {
+      "round": 13,
+      "overall": 98,
+      "team": "Hospital Bill",
+      "player": "Philadelphia Eagles",
+      "player_nfl": "PHI",
+      "keeper": false
+    },
+    {
+      "round": 13,
+      "overall": 99,
+      "team": "downsliquidity",
+      "player": "DeVonta Smith",
+      "player_nfl": "PHI",
+      "keeper": false
+    },
+    {
+      "round": 13,
+      "overall": 100,
+      "team": "Kenneth walker for $30",
+      "player": "Calvin Ridley",
+      "player_nfl": "TEN",
+      "keeper": false
+    },
+    {
+      "round": 13,
+      "overall": 101,
+      "team": "Hospital Bill",
+      "player": "Tyrone Tracy",
+      "player_nfl": "NYG",
+      "keeper": false
+    },
+    {
+      "round": 13,
+      "overall": 102,
+      "team": "FantasyGPT 2.5",
+      "player": "David Njoku",
+      "player_nfl": "CLE",
+      "keeper": false
+    },
+    {
+      "round": 13,
+      "overall": 103,
+      "team": "MoneyBall",
+      "player": "Tyler Lockett",
+      "player_nfl": "TEN",
+      "keeper": false
+    },
+    {
+      "round": 13,
+      "overall": 104,
+      "team": "CeeDees TeeDees",
+      "player": "Jared Goff",
+      "player_nfl": "DET",
+      "keeper": false
+    },
+    {
+      "round": 14,
+      "overall": 105,
+      "team": "downsliquidity",
+      "player": "RJ Harvey",
+      "player_nfl": "DEN",
+      "keeper": false
+    },
+    {
+      "round": 14,
+      "overall": 106,
+      "team": "Insane in The Achane ",
+      "player": "Michael Penix",
+      "player_nfl": "ATL",
+      "keeper": false
+    },
+    {
+      "round": 14,
+      "overall": 107,
+      "team": "downsliquidity",
+      "player": "Pittsburgh Steelers",
+      "player_nfl": "PIT",
+      "keeper": false
+    },
+    {
+      "round": 14,
+      "overall": 108,
+      "team": "PhillyPhilly709",
+      "player": "Tony Pollard",
+      "player_nfl": "TEN",
+      "keeper": false
+    },
+    {
+      "round": 14,
+      "overall": 109,
+      "team": "Kenneth walker for $30",
+      "player": "Aaron Jones",
+      "player_nfl": "MIN",
+      "keeper": false
+    },
+    {
+      "round": 14,
+      "overall": 110,
+      "team": "FantasyGPT 2.5",
+      "player": "Minnesota Vikings",
+      "player_nfl": "MIN",
+      "keeper": false
+    },
+    {
+      "round": 14,
+      "overall": 111,
+      "team": "downsliquidity",
+      "player": "Chris Olave",
+      "player_nfl": "NO",
+      "keeper": false
+    },
+    {
+      "round": 14,
+      "overall": 112,
+      "team": "CeeDees TeeDees",
+      "player": "Jaylen Warren",
+      "player_nfl": "PIT",
+      "keeper": false
+    },
+    {
+      "round": 15,
+      "overall": 113,
+      "team": "Insane in The Achane ",
+      "player": "J.K. Dobbins",
+      "player_nfl": "DEN",
+      "keeper": false
+    },
+    {
+      "round": 15,
+      "overall": 114,
+      "team": "Insane in The Achane ",
+      "player": "San Francisco 49ers",
+      "player_nfl": "SF",
+      "keeper": false
+    },
+    {
+      "round": 15,
+      "overall": 115,
+      "team": "Insane in The Achane ",
+      "player": "D'Andre Swift",
+      "player_nfl": "CHI",
+      "keeper": false
+    },
+    {
+      "round": 15,
+      "overall": 116,
+      "team": "Hospital Bill",
+      "player": "Jayden Higgins",
+      "player_nfl": "HOU",
+      "keeper": false
+    },
+    {
+      "round": 15,
+      "overall": 117,
+      "team": "FantasyGPT 2.5",
+      "player": "Jake Elliott",
+      "player_nfl": "PHI",
+      "keeper": false
+    },
+    {
+      "round": 15,
+      "overall": 118,
+      "team": "CeeDees TeeDees",
+      "player": "Keon Coleman",
+      "player_nfl": "BUF",
+      "keeper": false
+    },
+    {
+      "round": 15,
+      "overall": 119,
+      "team": "Insane in The Achane ",
+      "player": "Javonte Williams",
+      "player_nfl": "DAL",
+      "keeper": false
+    },
+    {
+      "round": 15,
+      "overall": 120,
+      "team": "CeeDees TeeDees",
+      "player": "Trey Benson",
+      "player_nfl": "ARI",
+      "keeper": false
+    },
+    {
+      "round": 16,
+      "overall": 121,
+      "team": "Insane in The Achane ",
+      "player": "Matthew Golden",
+      "player_nfl": "GB",
+      "keeper": false
+    },
+    {
+      "round": 16,
+      "overall": 122,
+      "team": "Kenneth walker for $30",
+      "player": "Zach Charbonnet",
+      "player_nfl": "SEA",
+      "keeper": false
+    },
+    {
+      "round": 16,
+      "overall": 123,
+      "team": "Hospital Bill",
+      "player": "Cooper Kupp",
+      "player_nfl": "SEA",
+      "keeper": false
+    },
+    {
+      "round": 16,
+      "overall": 124,
+      "team": "FantasyGPT 2.5",
+      "player": "Deebo Samuel",
+      "player_nfl": "WAS",
+      "keeper": false
+    },
+    {
+      "round": 16,
+      "overall": 125,
+      "team": "PhillyPhilly709",
+      "player": "Chris Rodriguez",
+      "player_nfl": "WAS",
+      "keeper": false
+    },
+    {
+      "round": 16,
+      "overall": 126,
+      "team": "CeeDees TeeDees",
+      "player": "Cameron Dicker",
+      "player_nfl": "LAC",
+      "keeper": false
+    },
+    {
+      "round": 16,
+      "overall": 127,
+      "team": "Insane in The Achane ",
+      "player": "Ricky Pearsall",
+      "player_nfl": "SF",
+      "keeper": false
+    },
+    {
+      "round": 16,
+      "overall": 128,
+      "team": "Insane in The Achane ",
+      "player": "Tucker Kraft",
+      "player_nfl": "GB",
+      "keeper": false
+    },
+    {
+      "round": 17,
+      "overall": 129,
+      "team": "Kenneth walker for $30",
+      "player": "Jordan Mason",
+      "player_nfl": "MIN",
+      "keeper": false
+    },
+    {
+      "round": 17,
+      "overall": 130,
+      "team": "Hospital Bill",
+      "player": "Stefon Diggs",
+      "player_nfl": "NE",
+      "keeper": false
+    },
+    {
+      "round": 17,
+      "overall": 131,
+      "team": "Kenneth walker for $30",
+      "player": "Cam Ward",
+      "player_nfl": "TEN",
+      "keeper": false
+    },
+    {
+      "round": 17,
+      "overall": 132,
+      "team": "PhillyPhilly709",
+      "player": "Nick Chubb",
+      "player_nfl": "HOU",
+      "keeper": false
+    },
+    {
+      "round": 17,
+      "overall": 133,
+      "team": "CeeDees TeeDees",
+      "player": "Arizona Cardinals",
+      "player_nfl": "ARI",
+      "keeper": false
+    },
+    {
+      "round": 17,
+      "overall": 134,
+      "team": "PhillyPhilly709",
+      "player": "Jordan Addison",
+      "player_nfl": "MIN",
+      "keeper": false
+    },
+    {
+      "round": 17,
+      "overall": 135,
+      "team": "Kenneth walker for $30",
+      "player": "Colston Loveland",
+      "player_nfl": "CHI",
+      "keeper": false
+    },
+    {
+      "round": 17,
+      "overall": 136,
+      "team": "PhillyPhilly709",
+      "player": "Travis Etienne",
+      "player_nfl": "JAX",
+      "keeper": false
+    },
+    {
+      "round": 18,
+      "overall": 137,
+      "team": "FantasyGPT 2.5",
+      "player": "Brian Robinson",
+      "player_nfl": "SF",
+      "keeper": false
+    },
+    {
+      "round": 18,
+      "overall": 138,
+      "team": "FantasyGPT 2.5",
+      "player": "Jayden Reed",
+      "player_nfl": "GB",
+      "keeper": false
+    },
+    {
+      "round": 18,
+      "overall": 139,
+      "team": "PhillyPhilly709",
+      "player": "Braelon Allen",
+      "player_nfl": "NYJ",
+      "keeper": false
+    },
+    {
+      "round": 18,
+      "overall": 140,
+      "team": "Insane in The Achane ",
+      "player": "Dylan Sampson",
+      "player_nfl": "CLE",
+      "keeper": false
+    },
+    {
+      "round": 18,
+      "overall": 141,
+      "team": "Hospital Bill",
+      "player": "Trevor Lawrence",
+      "player_nfl": "JAX",
+      "keeper": false
+    },
+    {
+      "round": 18,
+      "overall": 142,
+      "team": "Insane in The Achane ",
+      "player": "Evan Engram",
+      "player_nfl": "DEN",
+      "keeper": false
+    },
+    {
+      "round": 18,
+      "overall": 143,
+      "team": "MoneyBall",
+      "player": "Ollie Gordon",
+      "player_nfl": "MIA",
+      "keeper": false
+    },
+    {
+      "round": 18,
+      "overall": 144,
+      "team": "Hospital Bill",
+      "player": "Cam Skattebo",
+      "player_nfl": "NYG",
+      "keeper": false
+    },
+    {
+      "round": 19,
+      "overall": 145,
+      "team": "FantasyGPT 2.5",
+      "player": "Kyle Pitts",
+      "player_nfl": "ATL",
+      "keeper": false
+    },
+    {
+      "round": 19,
+      "overall": 146,
+      "team": "MoneyBall",
+      "player": "Tyler Allgeier",
+      "player_nfl": "ATL",
+      "keeper": false
+    },
+    {
+      "round": 19,
+      "overall": 147,
+      "team": "Hospital Bill",
+      "player": "Chris Godwin",
+      "player_nfl": "TB",
+      "keeper": false
+    },
+    {
+      "round": 19,
+      "overall": 148,
+      "team": "FantasyGPT 2.5",
+      "player": "Michael Pittman",
+      "player_nfl": "IND",
+      "keeper": false
+    },
+    {
+      "round": 19,
+      "overall": 149,
+      "team": "MoneyBall",
+      "player": "Najee Harris",
+      "player_nfl": "LAC",
+      "keeper": false
+    },
+    {
+      "round": 19,
+      "overall": 150,
+      "team": "FantasyGPT 2.5",
+      "player": "Rhamondre Stevenson",
+      "player_nfl": "NE",
+      "keeper": false
+    },
+    {
+      "round": 19,
+      "overall": 151,
+      "team": "MoneyBall",
+      "player": "Bhayshul Tuten",
+      "player_nfl": "JAX",
+      "keeper": false
+    },
+    {
+      "round": 19,
+      "overall": 152,
+      "team": "FantasyGPT 2.5",
+      "player": "Marvin Mims",
+      "player_nfl": "DEN",
+      "keeper": false
+    }
+  ]
+}
