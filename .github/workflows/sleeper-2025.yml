@@ -1,9 +1,12 @@
 name: Generate Sleeper 2025 JSON
 
 on:
-  workflow_dispatch: {}     # run manually from Actions tab
   schedule:
-    - cron: "0 10 * * MON"  # optional: every Monday 10:00 UTC
+    # Runs every Tuesday at 8 AM EST
+    # Convert 8 AM EST to UTC: 8 AM EST = 13:00 UTC (during standard time)
+    # 0 13 * * 2  (Minute 0, Hour 13, Day of Month *, Month *, Day of Week 2 for Tuesday)
+    - cron: '0 13 * * 2'
+
 
 permissions:
   contents: write           # required to push changes back
