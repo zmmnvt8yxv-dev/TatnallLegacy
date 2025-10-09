@@ -237,6 +237,6 @@ function renderFatal(e){
   const pre = el("pre",{}, String(e));
   document.getElementById("content").prepend(el("div",{class:"panel"}, pre));
 }
-
+await setupMemberSummary();
 // Ensure run after DOM parses in all browsers
 document.addEventListener("DOMContentLoaded", main);
