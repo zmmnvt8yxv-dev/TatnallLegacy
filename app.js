@@ -35,34 +35,124 @@ function attachSort(ths, tbl){
 // ---------- Owner normalization ----------
 function titleCaseName(s) {
   const lowerParticles = new Set(["de", "del", "da", "di", "van", "von", "la", "le"]);
-  return s.trim().split(/\s+/).map((w,i) => {
-    const wl = w.toLowerCase();
-    if (i > 0 && lowerParticles.has(wl)) return wl;
-    return wl.charAt(0).toUpperCase() + wl.slice(1);
-  }).join(" ");
+  return String(s || "")
+    .trim()
+    .split(/\s+/)
+    .map((w, i) => {
+      const wl = w.toLowerCase();
+      if (i > 0 && lowerParticles.has(wl)) return wl;
+      return wl.charAt(0).toUpperCase() + wl.slice(1);
+    })
+    .join(" ");
 }
 
-function canonicalOwner(raw){
-  let n = String(raw || "").trim();
+// All known variants → canonical common names (all keys MUST be lowercase)
+const OWNER_ALIASES = {
+  // Carl Marvin
+  "carl marvin": "Carl Marvin",
+  "cmarvin713": "Carl Marvin",
+  "sdmarvin713": "Carl Marvin",
+  "stephen marvin": "Carl Marvin",
+
+  // Conner Malley
+  "conner malley": "Conner Malley",
+  "conner27lax": "Conner Malley",
+  "connerandfinn": "Conner Malley",
+
+  // Jared Duncan
+  "jared duncan": "Jared Duncan",
+  "jawnwick13": "Jared Duncan",
+  "jdunca5228572": "Jared Duncan",
+
+  // Jeff Crossland
+  "jeff crossland": "Jeff Crossland",
+  "jeffrey crossland": "Jeff Crossland",
+  "jefe6700": "Jeff Crossland",
+  "junktion": "Jeff Crossland",
+
+  // John Downs
+  "john downs": "John Downs",
+  "john downs123": "John Downs",
+  "downsliquidity": "John Downs",
+
+  // Roy Lee
+  "roy lee": "Roy Lee",
+  "roylee6": "Roy Lee",
+  "espn92085473": "Roy Lee",
+
+  // Edward Saad
+  "edward saad": "Edward Saad",
+  "edward3864": "Edward Saad",
+  "phillyphilly709": "Edward Saad",
+
+  // Jalen Del Rosario
+  "jalen del rosario": "Jalen Del Rosario",
+  "jalendelrosario": "Jalen Del Rosario",
+  "jalendelrosario@comcast.net": "Jalen Del Rosario",
+
+  // Jackie Sheehy
+  "jack sheehy": "Jackie Sheehy",
+  "jksheehy": "Jackie Sheehy",
+
+  // Samuel Kirby
+  "samuel kirby": "Samuel Kirby",
+  "lbmbets": "Samuel Kirby",
+
+  // Max Hardin
+  "max hardin": "Max Hardin",
+  "mhardi5674696": "Max Hardin",
+
+  // Matt Maloy
+  "matt maloy": "Matt Maloy",
+  "mattmaloy99": "Matt Maloy"
+};
+
+// Convert anything into a safe, comparable owner string and map to a common name.
+function canonicalOwner(raw) {
+  // guard: if the value is an object/array/number, ignore (prevents "[object Object]")
+  if (raw === null || raw === undefined) return "";
+  if (typeof raw !== "string") {
+    // Some exports accidentally stick objects into owner; try a couple common fallbacks:
+    // owner.name / owner.nickname / owner.display_name — or give up.
+    const guess =
+      raw.name || raw.nickname || raw.display_name || raw.team_name || raw.owner || "";
+    if (typeof guess !== "string") return "";
+    raw = guess;
+  }
+
+  let n = raw.trim();
   if (!n) return "";
-  if (n.includes("@")) n = n.split("@")[0];  
+
+  // Email → prefix
+  if (n.includes("@")) n = n.split("@")[0];
+
+  // Unify separators and spacing
   n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim();
+
+  const key = n.toLowerCase();
+  if (OWNER_ALIASES[key]) return OWNER_ALIASES[key];
+
+  // Looks like a human name? Title-case it (so “john downs” → “John Downs”).
   if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n);
+
+  // Otherwise (ids/handles) just return the cleaned text
   return n;
 }
 
-function collectOwners(seasons){
+// Build a sorted unique list of owners from all seasons
+function collectOwners(seasons) {
   const owners = new Set();
-  for (const s of seasons) {
-    for (const t of (s.teams||[])) {
+  for (const s of seasons || []) {
+    for (const t of s.teams || []) {
       const raw = (t.owner ?? t.team_name ?? "").toString().trim();
       const canon = canonicalOwner(raw);
       if (canon) owners.add(canon);
     }
   }
-  return [...owners].sort((a,b)=>a.localeCompare(b, undefined, {sensitivity:"base"}));
+  return [...owners].sort((a, b) =>
+    a.localeCompare(b, undefined, { sensitivity: "base" })
+  );
 }
-
 // ---------- all-years ----------
 let ALL_SEASONS = null;
 
