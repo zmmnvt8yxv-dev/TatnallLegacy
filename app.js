@@ -31,7 +31,54 @@ function attachSort(ths, tbl){
     )
   );
 }
+// --- Live tab red dot (schedule-based) ---
+function setLiveDot(on){
+  const dot = document.getElementById("liveDot");
+  if (dot){
+    dot.classList.toggle("on", !!on);
+    dot.setAttribute("aria-label", on ? "Live games in progress" : "No live games");
+  }
+}
+function nowInEastern(){
+  // Create a Date object representing now in America/New_York
+  return new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+}
+function fourthThursdayOfNovember(year){
+  // Thanksgiving is the 4th Thursday in November (22..28)
+  for (let d = 22; d <= 28; d++){
+    const t = new Date(year, 10, d, 12, 0, 0); // local noon to avoid DST edge
+    if (t.getDay() === 4) return d;
+  }
+  return 26; // fallback
+}
+function isThanksgiving(dt){
+  return dt.getMonth() === 10 && dt.getDate() === fourthThursdayOfNovember(dt.getFullYear());
+}
+function isNflWindowNowEastern(){
+  const dt = nowInEastern();
+  const dow = dt.getDay();     // 0=Sun ... 4=Thu ... 1=Mon
+  const mins = dt.getHours()*60 + dt.getMinutes();
 
+  // helper to test minute ranges [start,end]
+  const inRange = (h1,m1,h2,m2) => mins >= h1*60+m1 && mins <= h2*60+m2;
+
+  if (dow === 4){ // Thursday
+    if (isThanksgiving(dt))   return inRange(12,0,22,0);   // 12:00–22:00 ET
+    return inRange(20,30,23,0);                            // 20:30–23:00 ET
+  }
+  if (dow === 0){ // Sunday
+    return inRange(13,0,23,0);                             // 13:00–23:00 ET
+  }
+  if (dow === 1){ // Monday
+    return inRange(20,30,23,0);                            // 20:30–23:00 ET
+  }
+  return false;
+}
+function startLiveDotClock(){
+  const update = () => setLiveDot(isNflWindowNowEastern());
+  update();                      // initial
+  setInterval(update, 30_000);   // check every 30s
+}
 // ---------- Owner normalization ----------
 function titleCaseName(s) {
   const lowerParticles = new Set(["de", "del", "da", "di", "van", "von", "la", "le"]);
@@ -948,4 +995,8 @@ function setupTabs(){
 document.addEventListener("DOMContentLoaded", () => {
   setupTabs();
   main();
+  startLiveDotClock();                    // <-- add this line
+  if (SLEEPER_LEAGUE_ID && SLEEPER_LEAGUE_ID !== "1262418074540195841") {
+    renderSleeperLive(SLEEPER_LEAGUE_ID);
+  }
 });
