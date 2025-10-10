@@ -1033,7 +1033,7 @@ async function renderLiveMatchupDetail(mid){
 
   try{
     const [bundle, players] = await Promise.all([
-      getFullSleeperLiveBundle(SLEEPER_LEAGUE_ID),
+      getFullSleeperLiveBundle(1262418074540195841),
       getSleeperPlayers()
     ]);
     const { seasonYear, week, users, rosters, matchups } = bundle;
@@ -1211,7 +1211,7 @@ function initSleeperLive(){
     if (ticking) return;
     ticking = true;
     try{
-      const bundle = await getSleeperLiveBundle(SLEEPER_LEAGUE_ID);
+      const bundle = await getSleeperLiveBundle(1262418074540195841);
       const { week, matchups } = bundle;
 
       // Week 0 means offseason / not in a scoring week yet
