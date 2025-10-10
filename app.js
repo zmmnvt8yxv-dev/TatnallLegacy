@@ -1,5 +1,5 @@
 // ==============================
-// Tatnall Legacy — app.js (unified safe schema)
+// Tatnall Legacy — app.js (unified safe schema, fixed)
 // ==============================
 
 // ---------- helpers ----------
@@ -53,8 +53,7 @@ const OWNER_ALIASES = {
   "cmarvin713": "Carl Marvin",
   "sdmarvin713": "Carl Marvin",
   "stephen marvin": "Carl Marvin",
-"brendan hanrahan": "Brendan Hanrahan",
-"bhanrahan7": "Brendan Hanrahan",
+
   // Conner Malley
   "conner malley": "Conner Malley",
   "conner27lax": "Conner Malley",
@@ -105,38 +104,28 @@ const OWNER_ALIASES = {
 
   // Matt Maloy
   "matt maloy": "Matt Maloy",
-  "mattmaloy99": "Matt Maloy"
+  "mattmaloy99": "Matt Maloy",
+
+  // Brendan Hanrahan
+  "brendan hanrahan": "Brendan Hanrahan",
+  "bhanrahan7": "Brendan Hanrahan"
 };
 
 // Convert anything into a safe, comparable owner string and map to a common name.
 function canonicalOwner(raw) {
-  // guard: if the value is an object/array/number, ignore (prevents "[object Object]")
   if (raw === null || raw === undefined) return "";
   if (typeof raw !== "string") {
-    // Some exports accidentally stick objects into owner; try a couple common fallbacks:
-    // owner.name / owner.nickname / owner.display_name — or give up.
-    const guess =
-      raw.name || raw.nickname || raw.display_name || raw.team_name || raw.owner || "";
+    const guess = raw.name || raw.nickname || raw.display_name || raw.team_name || raw.owner || "";
     if (typeof guess !== "string") return "";
     raw = guess;
   }
-
   let n = raw.trim();
   if (!n) return "";
-
-  // Email → prefix
-  if (n.includes("@")) n = n.split("@")[0];
-
-  // Unify separators and spacing
-  n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim();
-
+  if (n.includes("@")) n = n.split("@")[0];       // email → prefix
+  n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim(); // unify separators
   const key = n.toLowerCase();
   if (OWNER_ALIASES[key]) return OWNER_ALIASES[key];
-
-  // Looks like a human name? Title-case it (so “john downs” → “John Downs”).
-  if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n);
-
-  // Otherwise (ids/handles) just return the cleaned text
+  if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n); // human name? title-case
   return n;
 }
 
@@ -154,6 +143,7 @@ function collectOwners(seasons) {
     a.localeCompare(b, undefined, { sensitivity: "base" })
   );
 }
+
 // ---------- all-years ----------
 let ALL_SEASONS = null;
 
@@ -197,7 +187,11 @@ function aggregateMember(owner, seasons){
       ownerByTeam.set(t.team_name, canonicalOwner(raw));
     });
 
-    const champTeam = (s.teams || []).find(t => t.final_rank === 1); if (champTeam){   const raw = (champTeam.owner ?? champTeam.team_name ?? "");   if (canonicalOwner(raw) === owner) champs++; }
+    const champTeam = (s.teams || []).find(t => t.final_rank === 1);
+    if (champTeam){
+      const raw = (champTeam.owner ?? champTeam.team_name ?? "");
+      if (canonicalOwner(raw) === owner) champs++;
+    }
 
     for (const m of (s.matchups||[])){
       if (is2025FutureZeroZero(s,m)) continue;
@@ -249,10 +243,8 @@ function computeMostDrafted(seasons){
   rows.sort((a,b)=>(b.count - a.count) || a.player.localeCompare(b.player));
   return rows;
 }
-// --- Metrics: lineups-driven ---
 
-// Most points by a player for a team (single game).
-// teamFilter: a team name to restrict to that team; null -> league-wide.
+// --- Metrics: lineups-driven ---
 function mostPointsByPlayerForTeam(lineups, teamFilter = null){
   if (!Array.isArray(lineups)) return null;
   const rows = teamFilter
@@ -260,29 +252,24 @@ function mostPointsByPlayerForTeam(lineups, teamFilter = null){
     : lineups.filter(r => r.started);
   if (!rows.length) return null;
   rows.sort((a,b) => Number(b.points||0) - Number(a.points||0));
-  return rows[0]; // {week, team, player, points, ...}
+  return rows[0];
 }
-
-// Most-started player by team.
-// teamFilter = null -> league-wide table [{team, player, starts}], sorted desc.
-// teamFilter = "Team A" -> single row {team, player, starts} for that team.
 function mostStartedPlayerByTeam(lineups, teamFilter = null){
   if (!Array.isArray(lineups)) return teamFilter ? null : [];
   const rows = teamFilter
     ? lineups.filter(r => r.started && r.team === teamFilter)
     : lineups.filter(r => r.started);
-
-  const counts = new Map(); // key = team||player
+  const counts = new Map(); // `${team}||${player}` -> {team, player, starts}
   for (const r of rows){
     const key = `${r.team}||${r.player}`;
     if (!counts.has(key)) counts.set(key, { team: r.team, player: r.player, starts: 0 });
     counts.get(key).starts++;
   }
-
   const out = [...counts.values()];
   out.sort((a,b) => b.starts - a.starts || a.team.localeCompare(b.team) || a.player.localeCompare(b.player));
   return teamFilter ? (out[0] || null) : out;
 }
+
 // ---------- per-season + UI ----------
 async function main(){
   try {
@@ -308,14 +295,10 @@ async function renderSeason(year){
     renderMatchups(data.matchups);
     renderTransactions(data.transactions);
     renderDraft(data.draft);
-    // if you add lineup rendering later: renderLineups(data.lineups);
+    // (optionally render lineups later)
   } catch(e){ renderFatal(e); }
 }
 
-// ... [keep the rest of your rendering + member summary functions unchanged] ...
-
-
-function renderSummary(year, data)  // Lineup-driven metrics (if available for this season)
 function renderSummary(year, data){
   const wrap = document.getElementById("summaryStats");
   wrap.innerHTML = "";
@@ -341,9 +324,8 @@ function renderSummary(year, data){
     ["Transactions", txns.length]
   ];
 
-  // Lineup-driven metrics (if available for this season)
+  // Lineup-driven metrics (if available)
   if (Array.isArray(data.lineups) && data.lineups.length){
-    // League best single-game by a player
     const bestP = mostPointsByPlayerForTeam(data.lineups, null);
     if (bestP){
       stats.push([
@@ -351,8 +333,6 @@ function renderSummary(year, data){
         `${bestP.player} — ${fmt(bestP.points)} for ${bestP.team} (W${bestP.week})`
       ]);
     }
-
-    // League most-started player overall
     const mostStarted = mostStartedPlayerByTeam(data.lineups, null);
     if (mostStarted.length){
       const top = mostStarted[0];
@@ -363,7 +343,7 @@ function renderSummary(year, data){
     }
   }
 
-  // Biggest blowout (only #1) — per season
+  // Biggest blowout (only #1)
   const blows = biggestBlowoutsFromMatchups(matchups, 1);
   if (blows.length){
     const b = blows[0];
@@ -379,9 +359,13 @@ function renderSummary(year, data){
     );
   }
 }
+
 function renderTeams(teams){
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
-  if(!teams.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No teams found."))); return; }
+  if(!teams.length){
+    wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No teams found.")));
+    return;
+  }
   const tbl = el("table",{},
     el("thead",{}, el("tr",{}, el("th",{},"Team/Manager"), el("th",{},"Record"), el("th",{},"Points For"),
       el("th",{},"Points Against"), el("th",{},"In-Season Rank"), el("th",{},"Final Rank"))),
@@ -408,7 +392,10 @@ function renderMatchups(matchups){
   const weeks = [...new Set((matchups||[]).map(m=>m.week))].sort((a,b)=>a-b);
   weekSel.innerHTML=""; weekSel.appendChild(el("option",{value:""},"All Weeks"));
   weeks.forEach(w=> weekSel.appendChild(el("option",{value:w}, `Week ${w}`)));
-  if(!matchups.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No matchups found."))); return; }
+  if(!matchups.length){
+    wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No matchups found.")));
+    return;
+  }
   const tbl = el("table",{},
     el("thead",{}, el("tr",{}, el("th",{},"Week"), el("th",{},"Home Team"), el("th",{},"Home Score"),
       el("th",{},"Away Team"), el("th",{},"Away Score"), el("th",{},"Type"))),
@@ -437,7 +424,10 @@ function renderTransactions(txns){
   const hasAny = Array.isArray(txns) && txns.length>0;
   const flatten = tx => (tx.entries||[]).map(e=>({date:tx.date||"", ...e}));
   const rows = hasAny ? txns.flatMap(flatten) : [];
-  if(!rows.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No transactions available for this season."))); return; }
+  if(!rows.length){
+    wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No transactions available for this season.")));
+    return;
+  }
   const tbl = el("table",{},
     el("thead",{}, el("tr",{}, el("th",{},"Date"), el("th",{},"Type"), el("th",{},"Team"), el("th",{},"Player"), el("th",{},"FAAB"))),
     el("tbody",{})
@@ -456,7 +446,10 @@ function renderTransactions(txns){
 function renderDraft(draft){
   const wrap = document.getElementById("draftWrap"); wrap.innerHTML="";
   const search = document.getElementById("draftSearch");
-  if(!draft.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No draft data."))); return; }
+  if(!draft.length){
+    wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No draft data.")));
+    return;
+  }
   const tbl = el("table",{},
     el("thead",{}, el("tr",{}, el("th",{},"Round"), el("th",{},"Pick"), el("th",{},"Team"),
       el("th",{},"Player"), el("th",{},"NFL Team"), el("th",{},"Keeper"))),
@@ -473,12 +466,6 @@ function renderDraft(draft){
   search.oninput=apply; apply(); wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
-function renderFatal(e){
-  console.error(e);
-  const pre = el("pre",{}, String(e));
-  document.getElementById("content").prepend(el("div",{class:"panel"}, pre));
-}
-
 // ---------- Members panel ----------
 function teamOwnerMap(season){
   const m = new Map();
@@ -490,7 +477,7 @@ function teamOwnerMap(season){
 }
 
 function memberBiggestBlowout(owner, seasons){
-  let best = null; // {season, week, myTeam, oppTeam, myScore, oppScore, margin}
+  let best = null;
   for (const s of seasons||[]){
     const own = teamOwnerMap(s);
     for (const m of (s.matchups||[])){
@@ -499,7 +486,6 @@ function memberBiggestBlowout(owner, seasons){
       if (h===0 || a===0) continue;
       const homeOwner = own.get(m.home_team);
       const awayOwner = own.get(m.away_team);
-
       if (homeOwner===owner && h>a){
         const margin = h-a;
         if (!best || margin>best.margin) best = {season:Number(s.year), week:m.week, myTeam:m.home_team, oppTeam:m.away_team, myScore:h, oppScore:a, margin};
@@ -546,7 +532,7 @@ function renderMemberSummary(owner){
     );
   }
 }
- 
+
 function renderAllMembersTable(){
   const wrap = document.getElementById("memberSummary");
   const tableWrap = document.getElementById("memberTableWrap");
@@ -584,7 +570,7 @@ function renderAllMembersTable(){
   rows.forEach(r=>{
     const bw = memberBiggestBlowout(r.member, ALL_SEASONS);
     const bestDelta = bw ? fmt(bw.margin) : "";
-    const bestDetail = bw ? `Y${bw.season} W${bw.week}: ${bw.myTeam} over ${bw.oppTeam} ${fmt(bw.myScore)}–${fmt(bw.oppScore)}` : "";
+    const bestDetail = bw ? `Y${bw.season} W${bw.week}: ${bw.myTeam} over ${bw.oppTeam} ${fmt(bw.myScore)}–${bw.oppScore}` : "";
     tbl.tBodies[0].appendChild(el("tr",{},
       el("td",{}, r.rank),
       el("td",{}, r.member),
@@ -710,7 +696,6 @@ function setupTabs(){
   setActive(tabs[0] || null);
   window.addEventListener("scroll", setActiveTabOnScroll, { passive: true });
 }
-
 
 // ---------- boot ----------
 document.addEventListener("DOMContentLoaded", () => { setupTabs(); main(); });
