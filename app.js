@@ -622,17 +622,43 @@ async function setupMemberSummary(){
 }
 
 // ---------- Most Drafted (across seasons) ----------
+
+// Aggregate lineup-based per-player stats across all seasons
+function computePlayerStartStats(seasons){
+  const stats = new Map(); // player -> { starts, maxPointsStarted }
+  for (const s of seasons || []){
+    const L = s.lineups || [];
+    for (const r of L){
+      if (!r || !r.started) continue;
+      const player = String(r.player || "").trim();
+      if (!player) continue;
+      const pts = Number(r.points || 0);
+
+      if (!stats.has(player)) stats.set(player, { starts: 0, maxPointsStarted: null });
+      const st = stats.get(player);
+      st.starts += 1;
+      if (st.maxPointsStarted === null || pts > st.maxPointsStarted) st.maxPointsStarted = pts;
+    }
+  }
+  return stats;
+}
+
 function renderMostDrafted(){
   const wrap = document.getElementById("mostDraftedWrap");
   const search = document.getElementById("mdSearch");
   if (!wrap) return;
 
   wrap.innerHTML = "";
-  const rows = computeMostDrafted(ALL_SEASONS);
+
+  const rows = computeMostDrafted(ALL_SEASONS); // [{player, count, years}]
+  const startStats = computePlayerStartStats(ALL_SEASONS); // Map player -> {starts, maxPointsStarted}
+
   const tbl = el("table",{},
     el("thead",{}, el("tr",{},
       el("th",{},"Player"),
       el("th",{},"Seasons Drafted"),
+      el("th",{},"Most Pts as Starter"),
+      el("th",{},"Times Started"),
       el("th",{},"Years")
     )),
     el("tbody",{})
@@ -641,16 +667,21 @@ function renderMostDrafted(){
   function draw(){
     const q = (search?.value || "").trim().toLowerCase();
     tbl.tBodies[0].innerHTML = "";
+
     rows
       .filter(r => !q || r.player.toLowerCase().includes(q))
       .forEach(r => {
+        const st = startStats.get(r.player) || { starts: 0, maxPointsStarted: null };
         tbl.tBodies[0].appendChild(el("tr",{},
           el("td",{}, r.player),
           el("td",{}, String(r.count)),
+          el("td",{}, st.maxPointsStarted == null ? "" : fmt(st.maxPointsStarted)),
+          el("td",{}, String(st.starts || 0)),
           el("td",{}, r.years.join(", "))
         ));
       });
   }
+
   draw();
   if (search) search.oninput = draw;
 
