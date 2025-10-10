@@ -852,11 +852,12 @@ function initSleeperLive(){
       ticking = false;
     }
   }
-  tick();
-  setInterval(tick, LIVE_POLL_MS);
-}
+// First paint immediately, then poll every 20s
+tick();
+setInterval(tick, LIVE_POLL_MS);
+} // <<< CLOSES initSleeperLive()
 
-// Back button (global)
+// Back button
 document.addEventListener("click", (e)=>{
   const btn = e.target.closest("#liveBackBtn");
   if (!btn) return;
@@ -869,8 +870,7 @@ window.addEventListener("hashchange", liveRouteHandler, { passive:true });
 // ---------- boot ----------
 document.addEventListener("DOMContentLoaded", () => {
   setupTabs();
-  main();
+  main();                 // calls initSleeperLive() inside main()
   startLiveDotClock();
-  // The list view is drawn by initSleeperLive(); router handles #live/m/<id>
   liveRouteHandler();
 });
