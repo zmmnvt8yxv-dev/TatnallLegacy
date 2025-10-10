@@ -53,7 +53,8 @@ const OWNER_ALIASES = {
   "cmarvin713": "Carl Marvin",
   "sdmarvin713": "Carl Marvin",
   "stephen marvin": "Carl Marvin",
-
+"brendan hanrahan": "Brendan Hanrahan",
+"bhanrahan7": "Brendan Hanrahan",
   // Conner Malley
   "conner malley": "Conner Malley",
   "conner27lax": "Conner Malley",
@@ -196,11 +197,7 @@ function aggregateMember(owner, seasons){
       ownerByTeam.set(t.team_name, canonicalOwner(raw));
     });
 
-    const champTeam = (s.teams || []).find(t => t.final_rank === 1);
-    if (champTeam){
-      cconst raw = (champTeam.owner ?? champTeam.team_name ?? "");
-      if (canonicalOwner(raw) === owner) champs++;
-    }
+    const champTeam = (s.teams || []).find(t => t.final_rank === 1); if (champTeam){   const raw = (champTeam.owner ?? champTeam.team_name ?? "");   if (canonicalOwner(raw) === owner) champs++; }
 
     for (const m of (s.matchups||[])){
       if (is2025FutureZeroZero(s,m)) continue;
@@ -319,6 +316,32 @@ async function renderSeason(year){
 
 
 function renderSummary(year, data)  // Lineup-driven metrics (if available for this season)
+function renderSummary(year, data){
+  const wrap = document.getElementById("summaryStats");
+  wrap.innerHTML = "";
+
+  const teams = data.teams || [];
+  const matchups = data.matchups || [];
+  const draft = data.draft || [];
+  const txns = data.transactions || [];
+
+  const champ = teams.find(t => t.final_rank === 1)?.team_name || "—";
+  const bestPF = teams.slice().sort((a,b)=> (b.points_for||0)-(a.points_for||0))[0];
+  const bestPA = teams.slice().sort((a,b)=> (a.points_against||0)-(b.points_against||0))[0];
+  const avgPF = teams.length ? (teams.reduce((s,t)=>s+(t.points_for||0),0)/teams.length) : 0;
+
+  const stats = [
+    ["Season", year],
+    ["Champion", champ],
+    ["Top Points For", bestPF ? `${bestPF.team_name} (${fmt(bestPF.points_for)})` : "—"],
+    ["Lowest Points Against", bestPA ? `${bestPA.team_name} (${fmt(bestPA.points_against)})` : "—"],
+    ["Average PF / Team", fmt(avgPF)],
+    ["Games Recorded", matchups.length],
+    ["Draft Picks", draft.length],
+    ["Transactions", txns.length]
+  ];
+
+  // Lineup-driven metrics (if available for this season)
   if (Array.isArray(data.lineups) && data.lineups.length){
     // League best single-game by a player
     const bestP = mostPointsByPlayerForTeam(data.lineups, null);
@@ -329,7 +352,7 @@ function renderSummary(year, data)  // Lineup-driven metrics (if available for t
       ]);
     }
 
-    // League most-started player overall (top row)
+    // League most-started player overall
     const mostStarted = mostStartedPlayerByTeam(data.lineups, null);
     if (mostStarted.length){
       const top = mostStarted[0];
@@ -339,18 +362,23 @@ function renderSummary(year, data)  // Lineup-driven metrics (if available for t
       ]);
     }
   }
+
   // Biggest blowout (only #1) — per season
   const blows = biggestBlowoutsFromMatchups(matchups, 1);
   if (blows.length){
     const b = blows[0];
-    stats.push(["Biggest Ass-Whooping",
+    stats.push([
+      "Biggest Ass-Whooping",
       `W${b.week}: ${b.winner} over ${b.loser} by ${fmt(b.margin)} (${fmt(b.home_score)}–${fmt(b.away_score)})`
     ]);
   }
 
-  for(const [k,v] of stats) wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
+  for (const [k, v] of stats){
+    wrap.appendChild(
+      el("div", { class:"stat" }, el("h3",{},k), el("p",{}, String(v)))
+    );
+  }
 }
-
 function renderTeams(teams){
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
   if(!teams.length){ wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"}, "No teams found."))); return; }
