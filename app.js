@@ -107,7 +107,13 @@ function labelOfPlayer(pid, players){
   const pos = p?.position || "";
   const nfl = p?.team || p?.active_team || "";
   const nm  = nameOfPlayer(pid, players);
-  return `${nm}${pos?` (${pos}${nfl?` – ${nfl}`:""})`:""}`;
+
+  let suffix = "";
+  if (pos){
+    // use simple hyphen-minus to avoid any odd unicode in some editors
+    suffix = ` (${pos}${nfl ? ` - ${nfl}` : ""})`;
+  }
+  return nm + suffix;
 }
 
 // ---------- Owner normalization ----------
