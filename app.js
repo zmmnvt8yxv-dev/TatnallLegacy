@@ -1199,48 +1199,46 @@ function initSleeperLive(){
   const wrap = document.getElementById("liveWrap");
   if (!wrap) return;
 
-  // If you still have the placeholder ID, show a helpful note and bail.
-  if (!SLEEPER_LEAGUE_ID || SLEEPER_LEAGUE_ID === "1262418074540195841"){
-    wrap.innerHTML = "<div class='muted'>Set your real Sleeper league ID in <code>SLEEPER_LEAGUE_ID</code> to enable Live.</div>";
-    return;
-  }
-
-  let ticking = false;
-
-  async function tick(){
-    if (ticking) return;
-    ticking = true;
-    try{
-      const bundle = await getSleeperLiveBundle(1262418074540195841);
-      const { week, matchups } = bundle;
-
-      // Week 0 means offseason / not in a scoring week yet
-      if (!Number(week)){
-        wrap.innerHTML = "<div class='muted'>Live unavailable (offseason or pre-week).</div>";
-        setLiveDot(false);
-      } else {
-        renderSleeperLiveOnce(wrap, bundle);
-
-        // Turn the dot on if any matchup has live/recorded points
-        const isActive = Array.isArray(matchups) && matchups.some(m =>
-          Number(m.points || 0) > 0 ||
-          (Array.isArray(m.starters_points) && m.starters_points.some(x => Number(x||0) > 0))
-        );
-        setLiveDot(isActive);
-      }
-    } catch (err){
-      console.error("Live tick failed:", err);
-      wrap.innerHTML = "<div class='muted'>Live temporarily unavailable.</div>";
-      setLiveDot(false);
-    } finally {
-      ticking = false;
-    }
-  }
-
-  // First paint immediately, then poll every 20s
-  tick();
-  setInterval(tick, LIVE_POLL_MS);
+ // If you still have the placeholder ID, show a helpful note and bail.
+if (!SLEEPER_LEAGUE_ID){                    // <- only check truthy
+  wrap.innerHTML = "<div class='muted'>Set your Sleeper league ID in <code>SLEEPER_LEAGUE_ID</code> to enable Live.</div>";
+  return;
 }
+
+let ticking = false;
+
+async function tick(){
+  if (ticking) return;
+  ticking = true;
+  try{
+    const bundle = await getSleeperLiveBundle(String(SLEEPER_LEAGUE_ID));   // <- use the variable
+    const { week, matchups } = bundle;
+
+    if (!Number(week)){
+      wrap.innerHTML = "<div class='muted'>Live unavailable (offseason or pre-week).</div>";
+      setLiveDot(false);
+    } else {
+      renderSleeperLiveOnce(wrap, bundle);
+
+      const isActive = Array.isArray(matchups) && matchups.some(m =>
+        Number(m.points || 0) > 0 ||
+        (Array.isArray(m.starters_points) && m.starters_points.some(x => Number(x||0) > 0))
+      );
+      setLiveDot(isActive);
+    }
+  } catch (err){
+    console.error("Live tick failed:", err);
+    wrap.innerHTML = "<div class='muted'>Live temporarily unavailable.</div>";
+    setLiveDot(false);
+  } finally {
+    ticking = false;
+  }
+}
+
+// First paint immediately, then poll every 20s
+tick();
+setInterval(tick, LIVE_POLL_MS);
+
 // Back button
 document.addEventListener("click", (e)=>{
   const btn = e.target.closest("#liveBackBtn");
@@ -1254,13 +1252,13 @@ function renderSleeperLive(leagueId){
   const wrap = document.getElementById("liveWrap");
   if (!wrap) return;
 
-  if (!leagueId || leagueId === "1262418074540195841"){
-    wrap.innerHTML = "<div class='muted'>Set your real Sleeper league ID in <code>SLEEPER_LEAGUE_ID</code> to enable Live.</div>";
+  if (!leagueId){
+    wrap.innerHTML = "<div class='muted'>Set your Sleeper league ID in <code>SLEEPER_LEAGUE_ID</code> to enable Live.</div>";
     return;
   }
 
   wrap.innerHTML = "Loading…";
-  getSleeperLiveBundle(leagueId)
+  getSleeperLiveBundle(String(leagueId))
     .then(({ week, users, rosters, matchups }) => {
       if (!Number(week)){
         wrap.innerHTML = "<div class='muted'>Live unavailable (offseason or pre-week).</div>";
@@ -1280,13 +1278,12 @@ function renderSleeperLive(leagueId){
       setLiveDot(false);
     });
 }
+
 // ---------- boot ----------
 document.addEventListener("DOMContentLoaded", () => {
   setupTabs();
   main();
   startLiveDotClock();
-  if (SLEEPER_LEAGUE_ID && SLEEPER_LEAGUE_ID !== "1262418074540195841") {
-    renderSleeperLive(SLEEPER_LEAGUE_ID);
-  }
-  liveRouteHandler(); // <— handle #live/m/<id> if user clicks a matchup
+  renderSleeperLive(SLEEPER_LEAGUE_ID);       // <- no equality check
+  liveRouteHandler();
 });
