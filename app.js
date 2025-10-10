@@ -45,8 +45,9 @@ function titleCaseName(s) {
     })
     .join(" ");
 }
+
 // ---------- Sleeper Live Scoreboard ----------
-const SLEEPER_LEAGUE_ID = "1262418074540195841";   // <-- put your real 2025 Sleeper league ID
+const SLEEPER_LEAGUE_ID = "1262418074540195841";   // ← your real 2025 Sleeper league ID
 const LIVE_POLL_MS = 20000; // 20 seconds
 
 async function fetchJSONnolag(url){
@@ -56,11 +57,9 @@ async function fetchJSONnolag(url){
 }
 
 async function getSleeperLiveBundle(leagueId){
-  // Current NFL state -> current week
   const state = await fetchJSONnolag("https://api.sleeper.app/v1/state/nfl");
   const week = Number(state.week || 0);
 
-  // League data
   const [users, rosters, matchups] = await Promise.all([
     fetchJSONnolag(`https://api.sleeper.app/v1/league/${leagueId}/users`),
     fetchJSONnolag(`https://api.sleeper.app/v1/league/${leagueId}/rosters`),
@@ -77,7 +76,6 @@ function buildSleeperNameMaps(users, rosters){
   function teamLabelFromRoster(roster){
     if (!roster) return "Unknown";
     const u = userById.get(roster.owner_id) || {};
-    // Prefer custom team_name from metadata, then display_name, then fallback
     const nick = (u.metadata && (u.metadata.team_name || u.metadata.nickname)) || u.display_name;
     return nick || `Team ${roster.roster_id}`;
   }
@@ -86,7 +84,6 @@ function buildSleeperNameMaps(users, rosters){
 }
 
 function groupSleeperMatchups(matchups){
-  // Group by matchup_id so we can pair opponents
   const g = new Map();
   for (const m of matchups || []){
     const id = m.matchup_id ?? m.roster_id ?? Math.random();
@@ -97,9 +94,8 @@ function groupSleeperMatchups(matchups){
 }
 
 function totalPointsFromMatchupRow(m){
-  // Sleeper exposes `points` that updates live; fall back to starters_points sum
   const p = Number(m.points ?? 0);
-  if (!isNaN(p) && p > 0) return p;
+  if (!Number.isNaN(p) && p > 0) return p;
   const sp = Array.isArray(m.starters_points) ? m.starters_points.reduce((s,x)=>s+Number(x||0),0) : 0;
   return Number(sp || 0);
 }
@@ -122,16 +118,15 @@ function renderSleeperLiveOnce(wrap, { week, users, rosters, matchups }){
   const tbl = el("table",{},
     el("thead",{}, el("tr",{},
       el("th",{},"Week"),
-      el("th",{},"Home / Team A"),
+      el("th",{},"Team A"),
       el("th",{},"Pts"),
-      el("th",{},"Away / Team B"),
+      el("th",{},"Team B"),
       el("th",{},"Pts")
     )),
     el("tbody",{})
   );
 
   for (const pair of pairs){
-    // Sleeper doesn't label "home/away" for fantasy; just show A vs B
     const A = pair[0];
     const B = pair[1] || null;
 
@@ -163,14 +158,15 @@ function renderSleeperLiveOnce(wrap, { week, users, rosters, matchups }){
 function initSleeperLive(){
   const wrap = document.getElementById("liveWrap");
   if (!wrap) return;
-  if (!SLEEPER_LEAGUE_ID || SLEEPER_LEAGUE_ID === "1262418074540195841"){
+  // ✅ Only block when USING the placeholder, not your real ID
+  if (!SLEEPER_LEAGUE_ID || SLEEPER_LEAGUE_ID === "YOUR_LEAGUE_ID_HERE"){
     wrap.innerHTML = "<div class='muted'>Set SLEEPER_LEAGUE_ID in app.js to enable Live.</div>";
     return;
   }
 
   let ticking = false;
   async function tick(){
-    if (ticking) return; // prevent overlap if a slow request lingers
+    if (ticking) return;
     ticking = true;
     try{
       const bundle = await getSleeperLiveBundle(SLEEPER_LEAGUE_ID);
@@ -183,10 +179,10 @@ function initSleeperLive(){
     }
   }
 
-  // first paint, then poll
   tick();
   setInterval(tick, LIVE_POLL_MS);
 }
+
 // All known variants → canonical common names (all keys MUST be lowercase)
 const OWNER_ALIASES = {
   // Carl Marvin
@@ -262,11 +258,11 @@ function canonicalOwner(raw) {
   }
   let n = raw.trim();
   if (!n) return "";
-  if (n.includes("@")) n = n.split("@")[0];       // email → prefix
-  n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim(); // unify separators
+  if (n.includes("@")) n = n.split("@")[0];
+  n = n.replace(/[._]+/g, " ").replace(/\s+/g, " ").trim();
   const key = n.toLowerCase();
   if (OWNER_ALIASES[key]) return OWNER_ALIASES[key];
-  if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n); // human name? title-case
+  if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n);
   return n;
 }
 
@@ -296,7 +292,6 @@ async function loadAllSeasons(){
     try {
       const d = await loadJSON(`data/${y}.json`);
       if (typeof d.year !== "number") d.year = Number(y);
-      // normalize structure
       d.teams = d.teams || [];
       d.matchups = d.matchups || [];
       d.transactions = d.transactions || [];
@@ -400,7 +395,7 @@ function mostStartedPlayerByTeam(lineups, teamFilter = null){
   const rows = teamFilter
     ? lineups.filter(r => r.started && r.team === teamFilter)
     : lineups.filter(r => r.started);
-  const counts = new Map(); // `${team}||${player}` -> {team, player, starts}
+  const counts = new Map();
   for (const r of rows){
     const key = `${r.team}||${r.player}`;
     if (!counts.has(key)) counts.set(key, { team: r.team, player: r.player, starts: 0 });
@@ -423,6 +418,10 @@ async function main(){
     if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
     else throw new Error("No years in manifest.json");
     await setupMemberSummary();
+
+    // start live polling
+    initSleeperLive();
+
   } catch (e){ renderFatal(e); }
 }
 
@@ -436,7 +435,6 @@ async function renderSeason(year){
     renderMatchups(data.matchups);
     renderTransactions(data.transactions);
     renderDraft(data.draft);
-    // (optionally render lineups later)
   } catch(e){ renderFatal(e); }
 }
 
@@ -465,7 +463,6 @@ function renderSummary(year, data){
     ["Transactions", txns.length]
   ];
 
-  // Lineup-driven metrics (if available)
   if (Array.isArray(data.lineups) && data.lineups.length){
     const bestP = mostPointsByPlayerForTeam(data.lineups, null);
     if (bestP){
@@ -484,7 +481,6 @@ function renderSummary(year, data){
     }
   }
 
-  // Biggest blowout (only #1)
   const blows = biggestBlowoutsFromMatchups(matchups, 1);
   if (blows.length){
     const b = blows[0];
@@ -495,9 +491,7 @@ function renderSummary(year, data){
   }
 
   for (const [k, v] of stats){
-    wrap.appendChild(
-      el("div", { class:"stat" }, el("h3",{},k), el("p",{}, String(v)))
-    );
+    wrap.appendChild(el("div",{class:"stat"}, el("h3",{},k), el("p",{}, String(v))));
   }
 }
 
@@ -711,7 +705,7 @@ function renderAllMembersTable(){
   rows.forEach(r=>{
     const bw = memberBiggestBlowout(r.member, ALL_SEASONS);
     const bestDelta = bw ? fmt(bw.margin) : "";
-    const bestDetail = bw ? `Y${bw.season} W${bw.week}: ${bw.myTeam} over ${bw.oppTeam} ${fmt(bw.myScore)}–${bw.oppScore}` : "";
+    const bestDetail = bw ? `Y${bw.season} W${bw.week}: ${bw.myTeam} over ${bw.oppTeam} ${fmt(bw.myScore)}–${fmt(bw.oppScore)}` : "";
     tbl.tBodies[0].appendChild(el("tr",{},
       el("td",{}, r.rank),
       el("td",{}, r.member),
@@ -765,20 +759,7 @@ async function setupMemberSummary(){
 // ---------- Most Drafted (across seasons) ----------
 
 // Aggregate lineup-based per-player stats across all seasons
-// ---------- Most Drafted (across seasons) ----------
-
-// Aggregate lineup-based per-player stats across all seasons
 function computePlayerStartStats(seasons){
-  // player -> {
-  //   starts: number,
-  //   maxPointsStarted: number|null,
-  //   maxPtsSeason: number|null,
-  //   maxPtsWeek: number|null,
-  //   maxPtsTeam: string|null,
-  //   maxPtsOwnerFirst: string|null,
-  //   topTeam: string|null,
-  //   topTeamStarts: number
-  // }
   const stats = new Map();
 
   for (const s of seasons || []){
@@ -786,7 +767,6 @@ function computePlayerStartStats(seasons){
     const teams = s.teams || [];
     const lineups = s.lineups || [];
 
-    // team -> owner (canonicalized)
     const ownerByTeam = new Map();
     for (const t of teams){
       const rawOwner = (t.owner ?? t.team_name ?? "");
@@ -811,17 +791,15 @@ function computePlayerStartStats(seasons){
           maxPtsWeek: null,
           maxPtsTeam: null,
           maxPtsOwnerFirst: null,
-          _countsByTeam: new Map(), // internal
+          _countsByTeam: new Map(),
           topTeam: null,
           topTeamStarts: 0
         });
       }
 
       const st = stats.get(player);
-      // bump starts
       st.starts += 1;
 
-      // track team counts
       const prev = st._countsByTeam.get(team) || 0;
       st._countsByTeam.set(team, prev + 1);
       if (prev + 1 > st.topTeamStarts){
@@ -829,7 +807,6 @@ function computePlayerStartStats(seasons){
         st.topTeam = team;
       }
 
-      // max points while started
       if (st.maxPointsStarted === null || pts > st.maxPointsStarted){
         st.maxPointsStarted = pts;
         st.maxPtsSeason = seasonYear;
@@ -840,8 +817,7 @@ function computePlayerStartStats(seasons){
     }
   }
 
-  // finalize objects (remove internals)
-  for (const [k, v] of stats.entries()){
+  for (const [, v] of stats.entries()){
     delete v._countsByTeam;
   }
   return stats;
@@ -912,6 +888,7 @@ function renderMostDrafted(){
   wrap.appendChild(tbl);
   attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
+
 // ---------- tabs ----------
 function setupTabs(){
   const header = document.querySelector("header");
@@ -950,176 +927,9 @@ function setupTabs(){
   setActive(tabs[0] || null);
   window.addEventListener("scroll", setActiveTabOnScroll, { passive: true });
 }
-// ---------- Live Sleeper Scoreboard ----------
-const SLEEPER_LEAGUE_ID = "1262418074540195841"; // <-- put your 2025 Sleeper league ID here
 
-async function sleeperFetch(url){
-  const r = await fetch(url, { cache: "no-store" });
-  if(!r.ok) throw new Error(`Sleeper HTTP ${r.status} for ${url}`);
-  return r.json();
-}
-
-async function fetchSleeperLive(leagueId){
-  // 1) Get current NFL week
-  const state = await sleeperFetch("https://api.sleeper.app/v1/state/nfl");
-  const week = Number(state.week || 1);
-
-  // 2) League resources
-  const [users, rosters, matchups] = await Promise.all([
-    sleeperFetch(`https://api.sleeper.app/v1/league/${leagueId}/users`),
-    sleeperFetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`),
-    sleeperFetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/${week}`)
-  ]);
-
-  // Build maps
-  // user_id -> display name
-  const userNameById = new Map();
-  for (const u of users || []){
-    const dn = (u?.metadata?.team_name) || u?.display_name || u?.username || `User ${u?.user_id}`;
-    userNameById.set(u.user_id, dn);
-  }
-
-  // roster_id -> team display; matchup_id grouping
-  const rosterInfo = new Map();
-  for (const r of rosters || []){
-    const label =
-      (r?.metadata?.team_name) ||
-      userNameById.get(r?.owner_id) ||
-      `Roster ${r?.roster_id}`;
-    rosterInfo.set(r.roster_id, {
-      team: label,
-      owner_id: r?.owner_id
-    });
-  }
-
-  // Group by matchup_id (Sleeper pairs teams by the same matchup_id)
-  const gamesByMatchup = new Map(); // matchup_id -> array of entries
-  for (const m of matchups || []){
-    const mid = m?.matchup_id ?? `m${Math.random()}`;
-    if (!gamesByMatchup.has(mid)) gamesByMatchup.set(mid, []);
-    gamesByMatchup.get(mid).push(m);
-  }
-
-  // Normalize into rows
-  const rows = [];
-  for (const [mid, entries] of gamesByMatchup.entries()){
-    const a = entries[0] || null;
-    const b = entries[1] || null;
-
-    const aTeam = a ? (rosterInfo.get(a.roster_id)?.team || `Roster ${a.roster_id}`) : "—";
-    const bTeam = b ? (rosterInfo.get(b.roster_id)?.team || `Roster ${b.roster_id}`) : "—";
-    const aPts = a ? Number(a.points || 0) : 0;
-    const bPts = b ? Number(b.points || 0) : 0;
-
-    rows.push({
-      matchup_id: mid,
-      aTeam, aPts,
-      bTeam, bPts
-    });
-  }
-
-  // Sort by total points desc for fun
-  rows.sort((x,y)=> (y.aPts+y.bPts) - (x.aPts+x.bPts));
-
-  return { week, rows };
-}
-async function main(){
-  try {
-    const m = await loadJSON("manifest.json");
-    const years = m.years || [];
-    const sel = document.getElementById("seasonSelect");
-    sel.innerHTML = "";
-    years.slice().reverse().forEach(y => sel.appendChild(el("option",{value:y}, y)));
-    sel.onchange = () => renderSeason(+sel.value);
-    if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
-    else throw new Error("No years in manifest.json");
-
-    await setupMemberSummary();
-
-    // 👉 start live polling
-    initSleeperLive();
-
-  } catch (e){
-    renderFatal(e);
-  }
-}
-function renderSleeperLive(leagueId){
-  const wrap = document.getElementById("liveWrap");
-  if (!wrap) return; // no-op if the section doesn't exist
-  wrap.innerHTML = "";
-
-  const header = el("div",{class:"panel"},
-    el("div",{style:"display:flex; gap:8px; align-items:center; justify-content:space-between;"},
-      el("div",{},
-        el("h2",{}, "Live Scoreboard (Sleeper)"),
-        el("p",{style:"color:#6b7280; margin:4px 0 0; font-size:12px;"}, "Auto-refresh is off (manual refresh recommended).")
-      ),
-      el("div",{},
-        el("button",{id:"liveRefreshBtn", class:"btn"}, "Refresh")
-      )
-    )
-  );
-  wrap.appendChild(header);
-
-  const body = el("div",{class:"tablewrap"});
-  wrap.appendChild(body);
-
-  async function draw(){
-    try{
-      body.innerHTML = "Loading…";
-      const { week, rows } = await fetchSleeperLive(leagueId);
-
-      if (!rows.length){
-        body.innerHTML = `<div style="padding:12px; color:#9ca3af;">No matchups found for week ${week}.</div>`;
-        return;
-      }
-
-      const tbl = el("table",{},
-        el("thead",{}, el("tr",{},
-          el("th",{},"Week"),
-          el("th",{},"Matchup"),
-          el("th",{},"Team A"),
-          el("th",{},"Pts A"),
-          el("th",{},"Team B"),
-          el("th",{},"Pts B")
-        )),
-        el("tbody",{})
-      );
-
-      rows.forEach((r,i)=>{
-        tbl.tBodies[0].appendChild(el("tr",{},
-          el("td",{}, String(week)),
-          el("td",{}, `#${r.matchup_id}`),
-          el("td",{}, r.aTeam),
-          el("td",{}, String(r.aPts)),
-          el("td",{}, r.bTeam),
-          el("td",{}, String(r.bPts))
-        ));
-      });
-
-      body.innerHTML = "";
-      body.appendChild(tbl);
-      attachSort([...tbl.tHead.rows[0].cells], tbl);
-    } catch(e){
-      console.error(e);
-      body.innerHTML = `<div style="padding:12px; color:#ef4444;">${String(e)}</div>`;
-    }
-  }
-
-  // wire up refresh button
-  const btn = header.querySelector("#liveRefreshBtn");
-  if (btn) btn.onclick = draw;
-
-  // initial draw
-  draw();
-}
-// ---------- boot ----------
 // ---------- boot ----------
 document.addEventListener("DOMContentLoaded", () => {
   setupTabs();
   main();
-  // Start live scoreboard if we have a Sleeper league ID and a live container on page
-  if (SLEEPER_LEAGUE_ID && SLEEPER_LEAGUE_ID !== "1262418074540195841") {
-    renderSleeperLive(SLEEPER_LEAGUE_ID);
-  }
 });
