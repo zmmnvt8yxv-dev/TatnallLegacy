@@ -144,7 +144,7 @@ function collectOwners(seasons) {
   const owners = new Set();
   for (const s of seasons || []) {
     for (const t of s.teams || []) {
-      const raw = (t.owner ?? t.team_name ?? "").toString().trim();
+      const raw = (t.owner ?? t.team_name ?? "");
       const canon = canonicalOwner(raw);
       if (canon) owners.add(canon);
     }
@@ -192,13 +192,13 @@ function aggregateMember(owner, seasons){
   for (const s of seasons){
     const ownerByTeam = new Map();
     (s.teams||[]).forEach(t => {
-      const raw = (t.owner ?? t.team_name ?? "").toString().trim();
+      const raw = (t.owner ?? t.team_name ?? "");
       ownerByTeam.set(t.team_name, canonicalOwner(raw));
     });
 
     const champTeam = (s.teams || []).find(t => t.final_rank === 1);
     if (champTeam){
-      const raw = (champTeam.owner ?? champTeam.team_name ?? "").toString().trim();
+      cconst raw = (champTeam.owner ?? champTeam.team_name ?? "");
       if (canonicalOwner(raw) === owner) champs++;
     }
 
@@ -310,7 +310,15 @@ async function renderSeason(year){
     renderTeams(data.teams);
     renderMatchups(data.matchups);
     renderTransactions(data.transactions);
-      // Lineup-driven metrics (if available for this season)
+    renderDraft(data.draft);
+    // if you add lineup rendering later: renderLineups(data.lineups);
+  } catch(e){ renderFatal(e); }
+}
+
+// ... [keep the rest of your rendering + member summary functions unchanged] ...
+
+
+function renderSummary(year, data)  // Lineup-driven metrics (if available for this season)
   if (Array.isArray(data.lineups) && data.lineups.length){
     // League best single-game by a player
     const bestP = mostPointsByPlayerForTeam(data.lineups, null);
@@ -331,33 +339,6 @@ async function renderSeason(year){
       ]);
     }
   }
-    renderDraft(data.draft);
-    // if you add lineup rendering later: renderLineups(data.lineups);
-  } catch(e){ renderFatal(e); }
-}
-
-// ... [keep the rest of your rendering + member summary functions unchanged] ...
-
-
-function renderSummary(year, data){
-  const wrap = document.getElementById("summaryStats"); wrap.innerHTML="";
-  const teams = data.teams||[], matchups=data.matchups||[], draft=data.draft||[], txns=data.transactions||[];
-  const champ = teams.find(t=> t.final_rank===1)?.team_name || "—";
-  const bestPF = teams.slice().sort((a,b)=> (b.points_for||0)-(a.points_for||0))[0];
-  const bestPA = teams.slice().sort((a,b)=> (a.points_against||0)-(b.points_against||0))[0];
-  const avgPF = teams.length ? (teams.reduce((s,t)=>s+(t.points_for||0),0)/teams.length) : 0;
-
-  const stats = [
-    ["Season", year],
-    ["Champion", champ],
-    ["Top Points For", bestPF? `${bestPF.team_name} (${fmt(bestPF.points_for)})`:"—"],
-    ["Lowest Points Against", bestPA? `${bestPA.team_name} (${fmt(bestPA.points_against)})`:"—"],
-    ["Average PF / Team", fmt(avgPF)],
-    ["Games Recorded", matchups.length],
-    ["Draft Picks", draft.length],
-    ["Transactions", txns.length]
-  ];
-
   // Biggest blowout (only #1) — per season
   const blows = biggestBlowoutsFromMatchups(matchups, 1);
   if (blows.length){
@@ -474,7 +455,7 @@ function renderFatal(e){
 function teamOwnerMap(season){
   const m = new Map();
   (season.teams||[]).forEach(t=>{
-    const raw = (t.owner ?? t.team_name ?? "").toString().trim();
+    const raw = (t.owner ?? t.team_name ?? "");
     m.set(t.team_name, canonicalOwner(raw));
   });
   return m;
@@ -537,67 +518,7 @@ function renderMemberSummary(owner){
     );
   }
 }
-  // --- Member lineup metrics ---
-
-  // Build quick map of team->owner per season
-  const bySeasonOwnerMap = new Map();
-  for (const s of (ALL_SEASONS || [])){
-    const m = new Map();
-    (s.teams || []).forEach(t => m.set(t.team_name, (t.owner ?? t.team_name)));
-    bySeasonOwnerMap.set(Number(s.year), m);
-  }
-
-  // Helper to check if a lineup row belongs to this member (by team)
-  function isMyTeamRow(s, r){
-    const map = bySeasonOwnerMap.get(Number(s.year));
-    if (!map) return false;
-    const rawOwner = map.get(r.team);
-    return canonicalOwner(rawOwner) === owner;
-  }
-
-  // Member best single-game (all seasons)
-  let bestAll = null;
-  for (const s of (ALL_SEASONS || [])){
-    if (!Array.isArray(s.lineups)) continue;
-    for (const r of s.lineups){
-      if (!r.started) continue;
-      if (!isMyTeamRow(s, r)) continue;
-      if (!bestAll || Number(r.points||0) > Number(bestAll.points||0)) {
-        bestAll = { ...r, season: Number(s.year) };
-      }
-    }
-  }
-  if (bestAll){
-    wrap.appendChild(el("div",{class:"stat"},
-      el("h3",{},"Best Player Game (member, all seasons)"),
-      el("p",{}, `${bestAll.player} — ${fmt(bestAll.points)} for ${bestAll.team} (Y${bestAll.season} W${bestAll.week})`)
-    ));
-  }
-
-  // Member most-started (this season only, if lineups exist)
-  const currentYear = Number(document.getElementById("seasonSelect")?.value);
-  const currentSeason = (ALL_SEASONS || []).find(s => Number(s.year) === currentYear);
-  if (currentSeason && Array.isArray(currentSeason.lineups) && currentSeason.lineups.length){
-    // gather this member's teams this season
-    const myTeams = new Set(
-      (currentSeason.teams || [])
-        .filter(t => canonicalOwner(t.owner ?? t.team_name) === owner)
-        .map(t => t.team_name)
-    );
-
-    let topThisSeason = null;
-    for (const team of myTeams){
-      const row = mostStartedPlayerByTeam(currentSeason.lineups, team);
-      if (!row) continue;
-      if (!topThisSeason || row.starts > topThisSeason.starts) topThisSeason = row;
-    }
-    if (topThisSeason){
-      wrap.appendChild(el("div",{class:"stat"},
-        el("h3",{},"Most Started (member, this season)"),
-        el("p",{}, `${topThisSeason.player} — ${topThisSeason.starts} starts for ${topThisSeason.team}`)
-      ));
-    }
-  }
+ 
 function renderAllMembersTable(){
   const wrap = document.getElementById("memberSummary");
   const tableWrap = document.getElementById("memberTableWrap");
