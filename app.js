@@ -252,7 +252,40 @@ function computeMostDrafted(seasons){
   rows.sort((a,b)=>(b.count - a.count) || a.player.localeCompare(b.player));
   return rows;
 }
+// --- Metrics: lineups-driven ---
 
+// Most points by a player for a team (single game).
+// teamFilter: a team name to restrict to that team; null -> league-wide.
+function mostPointsByPlayerForTeam(lineups, teamFilter = null){
+  if (!Array.isArray(lineups)) return null;
+  const rows = teamFilter
+    ? lineups.filter(r => r.started && r.team === teamFilter)
+    : lineups.filter(r => r.started);
+  if (!rows.length) return null;
+  rows.sort((a,b) => Number(b.points||0) - Number(a.points||0));
+  return rows[0]; // {week, team, player, points, ...}
+}
+
+// Most-started player by team.
+// teamFilter = null -> league-wide table [{team, player, starts}], sorted desc.
+// teamFilter = "Team A" -> single row {team, player, starts} for that team.
+function mostStartedPlayerByTeam(lineups, teamFilter = null){
+  if (!Array.isArray(lineups)) return teamFilter ? null : [];
+  const rows = teamFilter
+    ? lineups.filter(r => r.started && r.team === teamFilter)
+    : lineups.filter(r => r.started);
+
+  const counts = new Map(); // key = team||player
+  for (const r of rows){
+    const key = `${r.team}||${r.player}`;
+    if (!counts.has(key)) counts.set(key, { team: r.team, player: r.player, starts: 0 });
+    counts.get(key).starts++;
+  }
+
+  const out = [...counts.values()];
+  out.sort((a,b) => b.starts - a.starts || a.team.localeCompare(b.team) || a.player.localeCompare(b.player));
+  return teamFilter ? (out[0] || null) : out;
+}
 // ---------- per-season + UI ----------
 async function main(){
   try {
@@ -277,6 +310,27 @@ async function renderSeason(year){
     renderTeams(data.teams);
     renderMatchups(data.matchups);
     renderTransactions(data.transactions);
+      // Lineup-driven metrics (if available for this season)
+  if (Array.isArray(data.lineups) && data.lineups.length){
+    // League best single-game by a player
+    const bestP = mostPointsByPlayerForTeam(data.lineups, null);
+    if (bestP){
+      stats.push([
+        "Most Points (player, single game)",
+        `${bestP.player} — ${fmt(bestP.points)} for ${bestP.team} (W${bestP.week})`
+      ]);
+    }
+
+    // League most-started player overall (top row)
+    const mostStarted = mostStartedPlayerByTeam(data.lineups, null);
+    if (mostStarted.length){
+      const top = mostStarted[0];
+      stats.push([
+        "Most Started (league)",
+        `${top.player} — ${top.starts} starts (top team: ${top.team})`
+      ]);
+    }
+  }
     renderDraft(data.draft);
     // if you add lineup rendering later: renderLineups(data.lineups);
   } catch(e){ renderFatal(e); }
@@ -483,7 +537,67 @@ function renderMemberSummary(owner){
     );
   }
 }
+  // --- Member lineup metrics ---
 
+  // Build quick map of team->owner per season
+  const bySeasonOwnerMap = new Map();
+  for (const s of (ALL_SEASONS || [])){
+    const m = new Map();
+    (s.teams || []).forEach(t => m.set(t.team_name, (t.owner ?? t.team_name)));
+    bySeasonOwnerMap.set(Number(s.year), m);
+  }
+
+  // Helper to check if a lineup row belongs to this member (by team)
+  function isMyTeamRow(s, r){
+    const map = bySeasonOwnerMap.get(Number(s.year));
+    if (!map) return false;
+    const rawOwner = map.get(r.team);
+    return canonicalOwner(rawOwner) === owner;
+  }
+
+  // Member best single-game (all seasons)
+  let bestAll = null;
+  for (const s of (ALL_SEASONS || [])){
+    if (!Array.isArray(s.lineups)) continue;
+    for (const r of s.lineups){
+      if (!r.started) continue;
+      if (!isMyTeamRow(s, r)) continue;
+      if (!bestAll || Number(r.points||0) > Number(bestAll.points||0)) {
+        bestAll = { ...r, season: Number(s.year) };
+      }
+    }
+  }
+  if (bestAll){
+    wrap.appendChild(el("div",{class:"stat"},
+      el("h3",{},"Best Player Game (member, all seasons)"),
+      el("p",{}, `${bestAll.player} — ${fmt(bestAll.points)} for ${bestAll.team} (Y${bestAll.season} W${bestAll.week})`)
+    ));
+  }
+
+  // Member most-started (this season only, if lineups exist)
+  const currentYear = Number(document.getElementById("seasonSelect")?.value);
+  const currentSeason = (ALL_SEASONS || []).find(s => Number(s.year) === currentYear);
+  if (currentSeason && Array.isArray(currentSeason.lineups) && currentSeason.lineups.length){
+    // gather this member's teams this season
+    const myTeams = new Set(
+      (currentSeason.teams || [])
+        .filter(t => canonicalOwner(t.owner ?? t.team_name) === owner)
+        .map(t => t.team_name)
+    );
+
+    let topThisSeason = null;
+    for (const team of myTeams){
+      const row = mostStartedPlayerByTeam(currentSeason.lineups, team);
+      if (!row) continue;
+      if (!topThisSeason || row.starts > topThisSeason.starts) topThisSeason = row;
+    }
+    if (topThisSeason){
+      wrap.appendChild(el("div",{class:"stat"},
+        el("h3",{},"Most Started (member, this season)"),
+        el("p",{}, `${topThisSeason.player} — ${topThisSeason.starts} starts for ${topThisSeason.team}`)
+      ));
+    }
+  }
 function renderAllMembersTable(){
   const wrap = document.getElementById("memberSummary");
   const tableWrap = document.getElementById("memberTableWrap");
