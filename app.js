@@ -154,7 +154,11 @@ function renderSleeperLiveOnce(wrap, { week, users, rosters, matchups }){
 
   wrap.appendChild(tbl);
 }
-
+function setLiveDot(on){
+  const dot = document.getElementById("liveDot");
+  if (!dot) return;
+  dot.classList.toggle("on", !!on);
+}
 function initSleeperLive(){
   const wrap = document.getElementById("liveWrap");
   if (!wrap) return;
@@ -166,18 +170,30 @@ function initSleeperLive(){
 
   let ticking = false;
   async function tick(){
-    if (ticking) return;
-    ticking = true;
-    try{
-      const bundle = await getSleeperLiveBundle(SLEEPER_LEAGUE_ID);
-      renderSleeperLiveOnce(wrap, bundle);
-    }catch(err){
-      console.error("Live tick failed:", err);
-      wrap.innerHTML = "<div class='muted'>Live temporarily unavailable.</div>";
-    }finally{
-      ticking = false;
-    }
+  if (ticking) return; // prevent overlap if a slow request lingers
+  ticking = true;
+  try{
+    const bundle = await getSleeperLiveBundle(SLEEPER_LEAGUE_ID);
+    renderSleeperLiveOnce(wrap, bundle);
+
+    // consider it "live" if there's a current week and any matchup is showing points now
+    const isActive =
+      Number(bundle.week) > 0 &&
+      Array.isArray(bundle.matchups) &&
+      bundle.matchups.some(m =>
+        Number(m.points || 0) > 0 ||
+        (Array.isArray(m.starters_points) && m.starters_points.some(x => Number(x||0) > 0))
+      );
+
+    setLiveDot(isActive);
+  }catch(err){
+    console.error("Live tick failed:", err);
+    wrap.innerHTML = "<div class='muted'>Live temporarily unavailable.</div>";
+    setLiveDot(false);
+  }finally{
+    ticking = false;
   }
+}
 
   tick();
   setInterval(tick, LIVE_POLL_MS);
