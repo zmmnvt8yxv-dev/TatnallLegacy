@@ -159,7 +159,12 @@ async function getSleeperLiveBundle(leagueId){
 
   return { week, users, rosters, matchups };
 }
-
+// Sleeper fetch (same semantics as fetchJSONnolag, just named for clarity)
+async function sleeperFetch(url){
+  const r = await fetch(url, { cache: "no-store" });
+  if(!r.ok) throw new Error(`Sleeper HTTP ${r.status} for ${url}`);
+  return r.json();
+}
 function buildSleeperNameMaps(users, rosters){
   const userById = new Map(users.map(u => [u.user_id, u]));
   const rosterById = new Map(rosters.map(r => [r.roster_id, r]));
@@ -212,31 +217,12 @@ function renderSleeperLiveOnce(wrap, { week, users, rosters, matchups }){
     wrap.appendChild(el("div",{class:"muted"}, `No live data for Week ${week} yet.`));
     return;
   }
-LIVE_CACHE = { week, rows }; // keep quick table for routing
+
   const { rosterById, teamLabelFromRoster } = buildSleeperNameMaps(users, rosters);
   const pairs = groupSleeperMatchups(matchups);
 
-  const tbl = el("table",{},
-    el("thead",{}, el("tr",{},
-      el("th",{},"Week"),
-      el("th",{},"Team A"),
-      el("th",{},"Pts"),
-      el("th",{},"Team B"),
-      el("th",{},"Pts")
-    )),
-    el("tbody",{})
-  );
-rows.forEach((r,i)=>{
-  const tr = el("tr",{ "data-mid": String(r.matchup_id) },
-    el("td",{}, String(week)),
-    el("td",{}, el("a",{ href: `#live/m/${r.matchup_id}`}, `#${r.matchup_id}`)),   // <— clickable
-    el("td",{}, r.aTeam),
-    el("td",{}, String(r.aPts)),
-    el("td",{}, r.bTeam),
-    el("td",{}, String(r.bPts))
-  );
-  tbl.tBodies[0].appendChild(tr);
-});
+  // Build normalized rows so we can also route to details
+  const rows = [];
   for (const pair of pairs){
     const A = pair[0];
     const B = pair[1] || null;
@@ -245,69 +231,48 @@ rows.forEach((r,i)=>{
     const nameA = teamLabelFromRoster(rosterA);
     const ptsA  = totalPointsFromMatchupRow(A);
 
-    let nameB = "—", ptsB = "";
+    let nameB = "—", ptsB = 0;
     if (B){
       const rosterB = rosterById.get(B.roster_id);
       nameB = teamLabelFromRoster(rosterB);
       ptsB  = totalPointsFromMatchupRow(B);
     }
 
-    tbl.tBodies[0].appendChild(
-      el("tr",{},
-        el("td",{}, String(week)),
-        el("td",{}, nameA),
-        el("td",{}, fmt(ptsA)),
-        el("td",{}, nameB),
-        el("td",{}, B ? fmt(ptsB) : "")
-      )
-    );
+    rows.push({
+      matchup_id: A?.matchup_id ?? A?.roster_id ?? Math.random(),
+      aTeam: nameA, aPts: ptsA,
+      bTeam: nameB, bPts: ptsB
+    });
   }
+
+  // keep quick table for routing
+  LIVE_CACHE = { week, rows };
+
+  const tbl = el("table",{},
+    el("thead",{}, el("tr",{},
+      el("th",{},"Week"),
+      el("th",{},"Matchup"),
+      el("th",{},"Team A"),
+      el("th",{},"Pts A"),
+      el("th",{},"Team B"),
+      el("th",{},"Pts B")
+    )),
+    el("tbody",{})
+  );
+
+  rows.forEach(r=>{
+    const tr = el("tr",{"data-mid": String(r.matchup_id)},
+      el("td",{}, String(week)),
+      el("td",{}, el("a",{href:`#live/m/${r.matchup_id}`}, `#${r.matchup_id}`)),
+      el("td",{}, r.aTeam),
+      el("td",{}, fmt(r.aPts)),
+      el("td",{}, r.bTeam),
+      el("td",{}, fmt(r.bPts))
+    );
+    tbl.tBodies[0].appendChild(tr);
+  });
 
   wrap.appendChild(tbl);
-}
-function setLiveDot(on){
-  const dot = document.getElementById("liveDot");
-  if (!dot) return;
-  dot.classList.toggle("on", !!on);
-}
-function initSleeperLive(){
-  const wrap = document.getElementById("liveWrap");
-  if (!wrap) return;
-  // ✅ Only block when USING the placeholder, not your real ID
-  if (!SLEEPER_LEAGUE_ID || SLEEPER_LEAGUE_ID === "YOUR_LEAGUE_ID_HERE"){
-    wrap.innerHTML = "<div class='muted'>Set SLEEPER_LEAGUE_ID in app.js to enable Live.</div>";
-    return;
-  }
-
-  let ticking = false;
-  async function tick(){
-  if (ticking) return; // prevent overlap if a slow request lingers
-  ticking = true;
-  try{
-    const bundle = await getSleeperLiveBundle(SLEEPER_LEAGUE_ID);
-    renderSleeperLiveOnce(wrap, bundle);
-
-    // consider it "live" if there's a current week and any matchup is showing points now
-    const isActive =
-      Number(bundle.week) > 0 &&
-      Array.isArray(bundle.matchups) &&
-      bundle.matchups.some(m =>
-        Number(m.points || 0) > 0 ||
-        (Array.isArray(m.starters_points) && m.starters_points.some(x => Number(x||0) > 0))
-      );
-
-    setLiveDot(isActive);
-  }catch(err){
-    console.error("Live tick failed:", err);
-    wrap.innerHTML = "<div class='muted'>Live temporarily unavailable.</div>";
-    setLiveDot(false);
-  }finally{
-    ticking = false;
-  }
-}
-
-  tick();
-  setInterval(tick, LIVE_POLL_MS);
 }
 
 // All known variants → canonical common names (all keys MUST be lowercase)
@@ -1240,6 +1205,17 @@ document.addEventListener("click", (e)=>{
   liveRouteHandler();
 });
 window.addEventListener("hashchange", liveRouteHandler, { passive:true });
+function renderSleeperLive(leagueId){
+  const wrap = document.getElementById("liveWrap");
+  if (!wrap) return;
+  wrap.innerHTML = "Loading…";
+  getSleeperLiveBundle(leagueId)
+    .then(bundle => renderSleeperLiveOnce(wrap, bundle))
+    .catch(err => {
+      console.error(err);
+      wrap.innerHTML = "<div class='muted'>Unable to load live scoreboard.</div>";
+    });
+}
 // ---------- boot ----------
 document.addEventListener("DOMContentLoaded", () => {
   setupTabs();
