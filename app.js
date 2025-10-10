@@ -411,7 +411,11 @@ function renderSummary(year, data){
 function renderTeams(teams){
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
   if(!teams.length){
-    wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:"#9ca3af"},"No teams found.")));
+    wrap.appendChild(
+  el("div",{class:"tablewrap"},
+    el("div",{style:"padding:12px; color:#9ca3af;"},"No teams found.")
+  )
+);
     return;
   }
   const tbl = el("table",{},
