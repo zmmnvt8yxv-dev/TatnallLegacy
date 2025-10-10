@@ -809,6 +809,157 @@ function setupTabs(){
   setActive(tabs[0] || null);
   window.addEventListener("scroll", setActiveTabOnScroll, { passive: true });
 }
+// ---------- Live Sleeper Scoreboard ----------
+const SLEEPER_LEAGUE_ID = "1262418074540195841"; // <-- put your 2025 Sleeper league ID here
 
+async function sleeperFetch(url){
+  const r = await fetch(url, { cache: "no-store" });
+  if(!r.ok) throw new Error(`Sleeper HTTP ${r.status} for ${url}`);
+  return r.json();
+}
+
+async function fetchSleeperLive(leagueId){
+  // 1) Get current NFL week
+  const state = await sleeperFetch("https://api.sleeper.app/v1/state/nfl");
+  const week = Number(state.week || 1);
+
+  // 2) League resources
+  const [users, rosters, matchups] = await Promise.all([
+    sleeperFetch(`https://api.sleeper.app/v1/league/${leagueId}/users`),
+    sleeperFetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`),
+    sleeperFetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/${week}`)
+  ]);
+
+  // Build maps
+  // user_id -> display name
+  const userNameById = new Map();
+  for (const u of users || []){
+    const dn = (u?.metadata?.team_name) || u?.display_name || u?.username || `User ${u?.user_id}`;
+    userNameById.set(u.user_id, dn);
+  }
+
+  // roster_id -> team display; matchup_id grouping
+  const rosterInfo = new Map();
+  for (const r of rosters || []){
+    const label =
+      (r?.metadata?.team_name) ||
+      userNameById.get(r?.owner_id) ||
+      `Roster ${r?.roster_id}`;
+    rosterInfo.set(r.roster_id, {
+      team: label,
+      owner_id: r?.owner_id
+    });
+  }
+
+  // Group by matchup_id (Sleeper pairs teams by the same matchup_id)
+  const gamesByMatchup = new Map(); // matchup_id -> array of entries
+  for (const m of matchups || []){
+    const mid = m?.matchup_id ?? `m${Math.random()}`;
+    if (!gamesByMatchup.has(mid)) gamesByMatchup.set(mid, []);
+    gamesByMatchup.get(mid).push(m);
+  }
+
+  // Normalize into rows
+  const rows = [];
+  for (const [mid, entries] of gamesByMatchup.entries()){
+    const a = entries[0] || null;
+    const b = entries[1] || null;
+
+    const aTeam = a ? (rosterInfo.get(a.roster_id)?.team || `Roster ${a.roster_id}`) : "—";
+    const bTeam = b ? (rosterInfo.get(b.roster_id)?.team || `Roster ${b.roster_id}`) : "—";
+    const aPts = a ? Number(a.points || 0) : 0;
+    const bPts = b ? Number(b.points || 0) : 0;
+
+    rows.push({
+      matchup_id: mid,
+      aTeam, aPts,
+      bTeam, bPts
+    });
+  }
+
+  // Sort by total points desc for fun
+  rows.sort((x,y)=> (y.aPts+y.bPts) - (x.aPts+x.bPts));
+
+  return { week, rows };
+}
+
+function renderSleeperLive(leagueId){
+  const wrap = document.getElementById("liveWrap");
+  if (!wrap) return; // no-op if the section doesn't exist
+  wrap.innerHTML = "";
+
+  const header = el("div",{class:"panel"},
+    el("div",{style:"display:flex; gap:8px; align-items:center; justify-content:space-between;"},
+      el("div",{},
+        el("h2",{}, "Live Scoreboard (Sleeper)"),
+        el("p",{style:"color:#6b7280; margin:4px 0 0; font-size:12px;"}, "Auto-refresh is off (manual refresh recommended).")
+      ),
+      el("div",{},
+        el("button",{id:"liveRefreshBtn", class:"btn"}, "Refresh")
+      )
+    )
+  );
+  wrap.appendChild(header);
+
+  const body = el("div",{class:"tablewrap"});
+  wrap.appendChild(body);
+
+  async function draw(){
+    try{
+      body.innerHTML = "Loading…";
+      const { week, rows } = await fetchSleeperLive(leagueId);
+
+      if (!rows.length){
+        body.innerHTML = `<div style="padding:12px; color:#9ca3af;">No matchups found for week ${week}.</div>`;
+        return;
+      }
+
+      const tbl = el("table",{},
+        el("thead",{}, el("tr",{},
+          el("th",{},"Week"),
+          el("th",{},"Matchup"),
+          el("th",{},"Team A"),
+          el("th",{},"Pts A"),
+          el("th",{},"Team B"),
+          el("th",{},"Pts B")
+        )),
+        el("tbody",{})
+      );
+
+      rows.forEach((r,i)=>{
+        tbl.tBodies[0].appendChild(el("tr",{},
+          el("td",{}, String(week)),
+          el("td",{}, `#${r.matchup_id}`),
+          el("td",{}, r.aTeam),
+          el("td",{}, String(r.aPts)),
+          el("td",{}, r.bTeam),
+          el("td",{}, String(r.bPts))
+        ));
+      });
+
+      body.innerHTML = "";
+      body.appendChild(tbl);
+      attachSort([...tbl.tHead.rows[0].cells], tbl);
+    } catch(e){
+      console.error(e);
+      body.innerHTML = `<div style="padding:12px; color:#ef4444;">${String(e)}</div>`;
+    }
+  }
+
+  // wire up refresh button
+  const btn = header.querySelector("#liveRefreshBtn");
+  if (btn) btn.onclick = draw;
+
+  // initial draw
+  draw();
+}
 // ---------- boot ----------
-document.addEventListener("DOMContentLoaded", () => { setupTabs(); main(); });
+// ---------- boot ----------
+document.addEventListener("DOMContentLoaded", () => {
+  setupTabs();
+  main();
+  // Start live scoreboard if we have a Sleeper league ID and a live container on page
+  if (SLEEPER_LEAGUE_ID && SLEEPER_LEAGUE_ID !== "1262418074540195841") {
+    renderSleeperLive(SLEEPER_LEAGUE_ID);
+  }
+});
