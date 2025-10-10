@@ -624,21 +624,84 @@ async function setupMemberSummary(){
 // ---------- Most Drafted (across seasons) ----------
 
 // Aggregate lineup-based per-player stats across all seasons
+// ---------- Most Drafted (across seasons) ----------
+
+// Aggregate lineup-based per-player stats across all seasons
 function computePlayerStartStats(seasons){
-  const stats = new Map(); // player -> { starts, maxPointsStarted }
+  // player -> {
+  //   starts: number,
+  //   maxPointsStarted: number|null,
+  //   maxPtsSeason: number|null,
+  //   maxPtsWeek: number|null,
+  //   maxPtsTeam: string|null,
+  //   maxPtsOwnerFirst: string|null,
+  //   topTeam: string|null,
+  //   topTeamStarts: number
+  // }
+  const stats = new Map();
+
   for (const s of seasons || []){
-    const L = s.lineups || [];
-    for (const r of L){
+    const seasonYear = Number(s.year);
+    const teams = s.teams || [];
+    const lineups = s.lineups || [];
+
+    // team -> owner (canonicalized)
+    const ownerByTeam = new Map();
+    for (const t of teams){
+      const rawOwner = (t.owner ?? t.team_name ?? "");
+      ownerByTeam.set(t.team_name, canonicalOwner(rawOwner));
+    }
+
+    for (const r of lineups){
       if (!r || !r.started) continue;
       const player = String(r.player || "").trim();
       if (!player) continue;
-      const pts = Number(r.points || 0);
 
-      if (!stats.has(player)) stats.set(player, { starts: 0, maxPointsStarted: null });
+      const pts = Number(r.points || 0);
+      const team = String(r.team || "").trim();
+      const ownerFull = ownerByTeam.get(team) || "";
+      const ownerFirst = ownerFull ? String(ownerFull).split(/\s+/)[0] : "";
+
+      if (!stats.has(player)){
+        stats.set(player, {
+          starts: 0,
+          maxPointsStarted: null,
+          maxPtsSeason: null,
+          maxPtsWeek: null,
+          maxPtsTeam: null,
+          maxPtsOwnerFirst: null,
+          _countsByTeam: new Map(), // internal
+          topTeam: null,
+          topTeamStarts: 0
+        });
+      }
+
       const st = stats.get(player);
+      // bump starts
       st.starts += 1;
-      if (st.maxPointsStarted === null || pts > st.maxPointsStarted) st.maxPointsStarted = pts;
+
+      // track team counts
+      const prev = st._countsByTeam.get(team) || 0;
+      st._countsByTeam.set(team, prev + 1);
+      if (prev + 1 > st.topTeamStarts){
+        st.topTeamStarts = prev + 1;
+        st.topTeam = team;
+      }
+
+      // max points while started
+      if (st.maxPointsStarted === null || pts > st.maxPointsStarted){
+        st.maxPointsStarted = pts;
+        st.maxPtsSeason = seasonYear;
+        st.maxPtsWeek = r.week ?? null;
+        st.maxPtsTeam = team || null;
+        st.maxPtsOwnerFirst = ownerFirst || null;
+      }
     }
+  }
+
+  // finalize objects (remove internals)
+  for (const [k, v] of stats.entries()){
+    delete v._countsByTeam;
   }
   return stats;
 }
@@ -651,7 +714,7 @@ function renderMostDrafted(){
   wrap.innerHTML = "";
 
   const rows = computeMostDrafted(ALL_SEASONS); // [{player, count, years}]
-  const startStats = computePlayerStartStats(ALL_SEASONS); // Map player -> {starts, maxPointsStarted}
+  const startStats = computePlayerStartStats(ALL_SEASONS); // Map player -> {...}
 
   const tbl = el("table",{},
     el("thead",{}, el("tr",{},
@@ -659,6 +722,7 @@ function renderMostDrafted(){
       el("th",{},"Seasons Drafted"),
       el("th",{},"Most Pts as Starter"),
       el("th",{},"Times Started"),
+      el("th",{},"Top Team (starts)"),
       el("th",{},"Years")
     )),
     el("tbody",{})
@@ -671,12 +735,31 @@ function renderMostDrafted(){
     rows
       .filter(r => !q || r.player.toLowerCase().includes(q))
       .forEach(r => {
-        const st = startStats.get(r.player) || { starts: 0, maxPointsStarted: null };
+        const st = startStats.get(r.player) || {
+          starts: 0,
+          maxPointsStarted: null,
+          maxPtsSeason: null,
+          maxPtsWeek: null,
+          maxPtsTeam: null,
+          maxPtsOwnerFirst: null,
+          topTeam: null,
+          topTeamStarts: 0
+        };
+
+        const maxPtsLabel = (st.maxPointsStarted == null)
+          ? ""
+          : `${fmt(st.maxPointsStarted)}${st.maxPtsOwnerFirst ? ` (for ${st.maxPtsOwnerFirst}` : ""}${st.maxPtsSeason ? `${st.maxPtsOwnerFirst ? ", " : " ("}${st.maxPtsSeason}` : ""}${st.maxPtsOwnerFirst || st.maxPtsSeason ? ")" : ""}`;
+
+        const topTeamLabel = st.topTeam
+          ? `${st.topTeam} — ${st.topTeamStarts}`
+          : "";
+
         tbl.tBodies[0].appendChild(el("tr",{},
           el("td",{}, r.player),
           el("td",{}, String(r.count)),
-          el("td",{}, st.maxPointsStarted == null ? "" : fmt(st.maxPointsStarted)),
+          el("td",{}, maxPtsLabel),
           el("td",{}, String(st.starts || 0)),
+          el("td",{}, topTeamLabel),
           el("td",{}, r.years.join(", "))
         ));
       });
@@ -688,7 +771,6 @@ function renderMostDrafted(){
   wrap.appendChild(tbl);
   attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
-
 // ---------- tabs ----------
 function setupTabs(){
   const header = document.querySelector("header");
