@@ -79,6 +79,50 @@ function startLiveDotClock(){
   update();                      // initial
   setInterval(update, 30_000);   // check every 30s
 }
+// Keep the most recent live bundle in memory so detail view is instant
+let LIVE_CACHE = null;
+
+// Try to fetch weekly projections (not guaranteed by Sleeper). Safe fallback if unavailable.
+async function tryFetchSleeperProjections(year, week){
+  // Sleeper’s public projections endpoint is not officially documented—this is best-effort.
+  // If it fails, we silently return an empty map.
+  try{
+    const url = `https://api.sleeper.app/projections/nfl/regular/${year}/${week}`;
+    const r = await fetch(url, { cache: "no-store" });
+    if(!r.ok) throw new Error("no projections");
+    const arr = await r.json();                // array of { player_id, fp: <points> } or similar
+    const map = new Map();
+    for(const row of arr || []){
+      const pid = row.player_id || row.player?.player_id || row.id;
+      const proj = Number(row.fp ?? row.fpts ?? row.proj ?? row.points ?? 0);
+      if (pid) map.set(String(pid), proj);
+    }
+    return map;
+  }catch(_){
+    return new Map();
+  }
+}
+
+// Fetch player metadata once (names/pos/NFL team) and cache
+let SLEEPER_PLAYERS = null;
+async function getSleeperPlayers(){
+  if (SLEEPER_PLAYERS) return SLEEPER_PLAYERS;
+  const r = await fetch("https://api.sleeper.app/v1/players/nfl", { cache: "force-cache" });
+  const json = await r.json();
+  SLEEPER_PLAYERS = json || {};
+  return SLEEPER_PLAYERS;
+}
+function nameOfPlayer(pid, players){
+  const p = players?.[pid];
+  return p?.full_name || p?.first_name && p?.last_name ? `${p.first_name} ${p.last_name}` : (p?.last_name || pid);
+}
+function labelOfPlayer(pid, players){
+  const p = players?.[pid];
+  const pos = p?.position || "";
+  const nfl = p?.team || p?.active_team || "";
+  const nm  = nameOfPlayer(pid, players);
+  return `${nm}${pos?` (${pos}${nfl?` – ${nfl}`:""})`:""}`;
+}
 // ---------- Owner normalization ----------
 function titleCaseName(s) {
   const lowerParticles = new Set(["de", "del", "da", "di", "van", "von", "la", "le"]);
@@ -146,7 +190,17 @@ function totalPointsFromMatchupRow(m){
   const sp = Array.isArray(m.starters_points) ? m.starters_points.reduce((s,x)=>s+Number(x||0),0) : 0;
   return Number(sp || 0);
 }
-
+async function getFullSleeperLiveBundle(leagueId){
+  const state = await sleeperFetch("https://api.sleeper.app/v1/state/nfl");
+  const week  = Number(state.week || 0);
+  const seasonYear = Number(state.season || new Date().getFullYear());
+  const [users, rosters, matchups] = await Promise.all([
+    sleeperFetch(`https://api.sleeper.app/v1/league/${leagueId}/users`),
+    sleeperFetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`),
+    week ? sleeperFetch(`https://api.sleeper.app/v1/league/${leagueId}/matchups/${week}`) : Promise.resolve([])
+  ]);
+  return { seasonYear, week, users, rosters, matchups };
+}
 function renderSleeperLiveOnce(wrap, { week, users, rosters, matchups }){
   wrap.innerHTML = "";
 
@@ -158,7 +212,7 @@ function renderSleeperLiveOnce(wrap, { week, users, rosters, matchups }){
     wrap.appendChild(el("div",{class:"muted"}, `No live data for Week ${week} yet.`));
     return;
   }
-
+LIVE_CACHE = { week, rows }; // keep quick table for routing
   const { rosterById, teamLabelFromRoster } = buildSleeperNameMaps(users, rosters);
   const pairs = groupSleeperMatchups(matchups);
 
@@ -172,7 +226,17 @@ function renderSleeperLiveOnce(wrap, { week, users, rosters, matchups }){
     )),
     el("tbody",{})
   );
-
+rows.forEach((r,i)=>{
+  const tr = el("tr",{ "data-mid": String(r.matchup_id) },
+    el("td",{}, String(week)),
+    el("td",{}, el("a",{ href: `#live/m/${r.matchup_id}`}, `#${r.matchup_id}`)),   // <— clickable
+    el("td",{}, r.aTeam),
+    el("td",{}, String(r.aPts)),
+    el("td",{}, r.bTeam),
+    el("td",{}, String(r.bPts))
+  );
+  tbl.tBodies[0].appendChild(tr);
+});
   for (const pair of pairs){
     const A = pair[0];
     const B = pair[1] || null;
@@ -990,13 +1054,199 @@ function setupTabs(){
   setActive(tabs[0] || null);
   window.addEventListener("scroll", setActiveTabOnScroll, { passive: true });
 }
+async function renderLiveMatchupDetail(mid){
+  const sec = document.getElementById("liveMatchup");
+  const wrap = document.getElementById("liveMatchupWrap");
+  const meta = document.getElementById("liveMatchupMeta");
+  if (!sec || !wrap) return;
 
+  // Show section, hide main live table while viewing detail
+  document.getElementById("live")?.setAttribute("style","display:none;");
+  sec.style.display = "";
+
+  wrap.innerHTML = "Loading…";
+
+  try{
+    const [bundle, players] = await Promise.all([
+      getFullSleeperLiveBundle(SLEEPER_LEAGUE_ID),
+      getSleeperPlayers()
+    ]);
+    const { seasonYear, week, users, rosters, matchups } = bundle;
+
+    // Indexes
+    const userById = new Map((users||[]).map(u => [u.user_id, u]));
+    const rosterById = new Map((rosters||[]).map(r => [r.roster_id, r]));
+
+    // Group by matchup_id
+    const byMatchup = new Map();
+    for (const m of (matchups||[])){
+      const id = m.matchup_id ?? m.roster_id;
+      if (!byMatchup.has(id)) byMatchup.set(id, []);
+      byMatchup.get(id).push(m);
+    }
+    const pair = byMatchup.get(Number(mid)) || byMatchup.get(String(mid)) || [];
+
+    if (pair.length === 0){
+      wrap.innerHTML = `<div style="padding:12px; color:#9ca3af;">Matchup #${mid} not found for week ${week}.</div>`;
+      return;
+    }
+
+    // A & B sides
+    const A = pair[0];
+    const B = pair[1] || null;
+
+    const rosterLabel = (roster) => {
+      if (!roster) return "—";
+      const u = userById.get(roster.owner_id);
+      const custom = (u?.metadata?.team_name || u?.metadata?.nickname);
+      return custom || u?.display_name || `Roster ${roster.roster_id}`;
+    };
+
+    const rosterA = rosterById.get(A.roster_id);
+    const rosterB = B ? rosterById.get(B.roster_id) : null;
+
+    const title = `Week ${week} • #${mid}: ${rosterLabel(rosterA)} vs ${rosterLabel(rosterB)}`;
+    meta.textContent = title;
+
+    // Projections (best-effort)
+    let projMap = new Map();
+    try {
+      projMap = await tryFetchSleeperProjections(seasonYear, week);
+    } catch(_) {}
+
+    // Build rows per side (use starters first, then bench that has points)
+    function sideRows(M){
+      const rows = [];
+      const starters = Array.isArray(M.starters) ? M.starters : [];
+      const spoints  = Array.isArray(M.starters_points) ? M.starters_points : [];
+      const pp = M.players_points || {}; // {player_id: points}
+
+      // starters
+      starters.forEach((pid, idx) => {
+        if (!pid) return;
+        const pts = Number(spoints[idx] ?? pp[pid] ?? 0);
+        const proj = projMap.get(String(pid));
+        rows.push({
+          type: "Starter",
+          player_id: pid,
+          label: labelOfPlayer(pid, players),
+          pts, proj: (proj ?? null)
+        });
+      });
+
+      // bench with non-zero points (optional)
+      for (const [pid, pts] of Object.entries(pp)){
+        if (starters.includes(pid)) continue;
+        const npts = Number(pts || 0);
+        if (npts === 0) continue;
+        const proj = projMap.get(String(pid));
+        rows.push({
+          type: "Bench",
+          player_id: pid,
+          label: labelOfPlayer(pid, players),
+          pts: npts, proj: (proj ?? null)
+        });
+      }
+
+      // totals
+      const total = rows.reduce((s,r)=> s + (Number(r.pts) || 0), 0);
+      const projTotal = rows.reduce((s,r)=> s + (Number(r.proj) || 0), 0);
+
+      // nice ordering: starters by points desc, then bench
+      rows.sort((a,b)=>{
+        if (a.type !== b.type) return a.type === "Starter" ? -1 : 1;
+        return (b.pts - a.pts) || a.label.localeCompare(b.label);
+      });
+
+      return { rows, total, projTotal };
+    }
+
+    const Aset = sideRows(A);
+    const Bset = B ? sideRows(B) : { rows:[], total:0, projTotal:0 };
+
+    // Build UI
+    const tbl = el("table",{},
+      el("thead",{}, el("tr",{},
+        el("th",{},"Side"),
+        el("th",{},"Player"),
+        el("th",{},"Pts"),
+        el("th",{},"Proj")
+      )),
+      el("tbody",{})
+    );
+
+    function addBlock(label, set){
+      // section header
+      tbl.tBodies[0].appendChild(
+        el("tr",{class:"subhead"},
+          el("td",{colSpan:4}, label)
+        )
+      );
+      // rows
+      set.rows.forEach(r=>{
+        tbl.tBodies[0].appendChild(
+          el("tr",{},
+            el("td",{}, r.type),
+            el("td",{}, r.label),
+            el("td",{}, fmt(r.pts)),
+            el("td",{}, (r.proj==null ? "—" : fmt(r.proj)))
+          )
+        );
+      });
+      // totals
+      tbl.tBodies[0].appendChild(
+        el("tr",{class:"total"},
+          el("td",{colSpan:2}, "Total"),
+          el("td",{}, fmt(set.total)),
+          el("td",{}, set.rows.some(r=>r.proj!=null) ? fmt(set.projTotal) : "—")
+        )
+      );
+    }
+
+    wrap.innerHTML = "";
+    addBlock(rosterLabel(rosterA), Aset);
+    if (B) addBlock(rosterLabel(rosterB), Bset);
+
+    wrap.appendChild(tbl);
+    attachSort([...tbl.tHead.rows[0].cells], tbl);
+
+  } catch (e){
+    console.error(e);
+    wrap.innerHTML = `<div style="padding:12px; color:#ef4444;">${String(e)}</div>`;
+  }
+}
+function liveRouteHandler(){
+  const hash = String(location.hash || "");
+  const mm = hash.match(/^#\/?live\/m\/(\d+)/i) || hash.match(/^#live\/m\/(\d+)/i);
+  const liveSec = document.getElementById("live");
+  const detail  = document.getElementById("liveMatchup");
+  if (mm){
+    // detail mode
+    const mid = mm[1];
+    renderLiveMatchupDetail(mid);
+  }else{
+    // list mode
+    if (detail) detail.style.display = "none";
+    if (liveSec) liveSec.style.display = "";
+  }
+}
+
+// Back button
+document.addEventListener("click", (e)=>{
+  const btn = e.target.closest("#liveBackBtn");
+  if (!btn) return;
+  e.preventDefault();
+  history.replaceState(null, "", "#live");
+  liveRouteHandler();
+});
+window.addEventListener("hashchange", liveRouteHandler, { passive:true });
 // ---------- boot ----------
 document.addEventListener("DOMContentLoaded", () => {
   setupTabs();
   main();
-  startLiveDotClock();                    // <-- add this line
+  startLiveDotClock();
   if (SLEEPER_LEAGUE_ID && SLEEPER_LEAGUE_ID !== "1262418074540195841") {
     renderSleeperLive(SLEEPER_LEAGUE_ID);
   }
+  liveRouteHandler(); // <— handle #live/m/<id> if user clicks a matchup
 });
