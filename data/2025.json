@@ -5,69 +5,69 @@
       "team_id": 3,
       "team_name": "Insane in The Achane ",
       "owner": "LbmBets",
-      "record": "5-0",
-      "points_for": 964.42,
-      "points_against": 753.96,
+      "record": "6-0",
+      "points_for": 1172.84,
+      "points_against": 850.14,
       "regular_season_rank": 1,
       "final_rank": null
     },
     {
       "team_id": 1,
-      "team_name": "CeeDees TeeDees",
+      "team_name": "110 wins",
       "owner": "cmarvin713",
-      "record": "3-2",
-      "points_for": 855.18,
-      "points_against": 823.02,
+      "record": "4-2",
+      "points_for": 1019.86,
+      "points_against": 980.42,
       "regular_season_rank": 2,
-      "final_rank": null
-    },
-    {
-      "team_id": 2,
-      "team_name": "Kenneth walker for $30",
-      "owner": "jawnwick13",
-      "record": "3-2",
-      "points_for": 766.74,
-      "points_against": 779.16,
-      "regular_season_rank": 3,
       "final_rank": null
     },
     {
       "team_id": 5,
       "team_name": "FantasyGPT 2.5",
       "owner": "roylee6",
-      "record": "2-3",
-      "points_for": 845.18,
-      "points_against": 867.44,
-      "regular_season_rank": 4,
-      "final_rank": null
-    },
-    {
-      "team_id": 6,
-      "team_name": "PhillyPhilly709",
-      "owner": "PhillyPhilly709",
-      "record": "2-3",
-      "points_for": 824.68,
-      "points_against": 848.96,
-      "regular_season_rank": 5,
-      "final_rank": null
-    },
-    {
-      "team_id": 7,
-      "team_name": "downsliquidity",
-      "owner": "downsliquidity",
-      "record": "2-3",
-      "points_for": 801.58,
-      "points_against": 853.76,
-      "regular_season_rank": 6,
+      "record": "3-3",
+      "points_for": 978.0,
+      "points_against": 968.6,
+      "regular_season_rank": 3,
       "final_rank": null
     },
     {
       "team_id": 8,
       "team_name": "Hospital Bill",
       "owner": "Junktion",
-      "record": "2-3",
-      "points_for": 713.38,
-      "points_against": 735.84,
+      "record": "3-3",
+      "points_for": 896.6,
+      "points_against": 908.12,
+      "regular_season_rank": 4,
+      "final_rank": null
+    },
+    {
+      "team_id": 2,
+      "team_name": "Kenneth walker for $30",
+      "owner": "jawnwick13",
+      "record": "3-3",
+      "points_for": 867.9,
+      "points_against": 911.98,
+      "regular_season_rank": 5,
+      "final_rank": null
+    },
+    {
+      "team_id": 6,
+      "team_name": "PhillyPhilly709",
+      "owner": "PhillyPhilly709",
+      "record": "2-4",
+      "points_for": 982.08,
+      "points_against": 1013.64,
+      "regular_season_rank": 6,
+      "final_rank": null
+    },
+    {
+      "team_id": 7,
+      "team_name": "downsliquidity",
+      "owner": "downsliquidity",
+      "record": "2-4",
+      "points_for": 973.86,
+      "points_against": 1036.98,
       "regular_season_rank": 7,
       "final_rank": null
     },
@@ -75,9 +75,9 @@
       "team_id": 4,
       "team_name": "MoneyBall",
       "owner": "conner27lax",
-      "record": "1-4",
-      "points_for": 741.38,
-      "points_against": 850.4,
+      "record": "1-5",
+      "points_for": 837.56,
+      "points_against": 1058.82,
       "regular_season_rank": 8,
       "final_rank": null
     }
@@ -85,7 +85,7 @@
   "matchups": [
     {
       "week": 1,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 160.42,
       "away_team": "FantasyGPT 2.5",
       "away_score": 180.32,
@@ -117,7 +117,7 @@
     },
     {
       "week": 2,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 162.36,
       "away_team": "Insane in The Achane ",
       "away_score": 209.84,
@@ -149,7 +149,7 @@
     },
     {
       "week": 3,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 180.04,
       "away_team": "downsliquidity",
       "away_score": 150.36,
@@ -181,7 +181,7 @@
     },
     {
       "week": 4,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 174.34,
       "away_team": "MoneyBall",
       "away_score": 132.42,
@@ -213,7 +213,7 @@
     },
     {
       "week": 5,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 178.02,
       "away_team": "Hospital Bill",
       "away_score": 150.08,
@@ -245,39 +245,39 @@
     },
     {
       "week": 6,
-      "home_team": "CeeDees TeeDees",
-      "home_score": 0.0,
+      "home_team": "110 wins",
+      "home_score": 164.68,
       "away_team": "PhillyPhilly709",
-      "away_score": 0.0,
+      "away_score": 157.4,
       "is_playoff": false
     },
     {
       "week": 6,
       "home_team": "Kenneth walker for $30",
-      "home_score": 0.0,
+      "home_score": 101.16,
       "away_team": "FantasyGPT 2.5",
-      "away_score": 0.0,
+      "away_score": 132.82,
       "is_playoff": false
     },
     {
       "week": 6,
       "home_team": "Insane in The Achane ",
-      "home_score": 0.0,
+      "home_score": 208.42,
       "away_team": "MoneyBall",
-      "away_score": 0.0,
+      "away_score": 96.18,
       "is_playoff": false
     },
     {
       "week": 6,
       "home_team": "downsliquidity",
-      "home_score": 0.0,
+      "home_score": 172.28,
       "away_team": "Hospital Bill",
-      "away_score": 0.0,
+      "away_score": 183.22,
       "is_playoff": false
     },
     {
       "week": 7,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "Kenneth walker for $30",
       "away_score": 0.0,
@@ -309,7 +309,7 @@
     },
     {
       "week": 8,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "FantasyGPT 2.5",
       "away_score": 0.0,
@@ -341,7 +341,7 @@
     },
     {
       "week": 9,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "Insane in The Achane ",
       "away_score": 0.0,
@@ -373,7 +373,7 @@
     },
     {
       "week": 10,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "downsliquidity",
       "away_score": 0.0,
@@ -405,7 +405,7 @@
     },
     {
       "week": 11,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "MoneyBall",
       "away_score": 0.0,
@@ -437,7 +437,7 @@
     },
     {
       "week": 12,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "Hospital Bill",
       "away_score": 0.0,
@@ -469,7 +469,7 @@
     },
     {
       "week": 13,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "PhillyPhilly709",
       "away_score": 0.0,
@@ -501,7 +501,7 @@
     },
     {
       "week": 14,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "Kenneth walker for $30",
       "away_score": 0.0,
@@ -533,7 +533,7 @@
     },
     {
       "week": 15,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "FantasyGPT 2.5",
       "away_score": 0.0,
@@ -565,7 +565,7 @@
     },
     {
       "week": 16,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "Insane in The Achane ",
       "away_score": 0.0,
@@ -597,7 +597,7 @@
     },
     {
       "week": 17,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "downsliquidity",
       "away_score": 0.0,
@@ -629,7 +629,7 @@
     },
     {
       "week": 18,
-      "home_team": "CeeDees TeeDees",
+      "home_team": "110 wins",
       "home_score": 0.0,
       "away_team": "MoneyBall",
       "away_score": 0.0,
@@ -683,13 +683,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Keon Coleman",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jared Goff",
           "faab": null
         }
@@ -700,13 +700,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Travis Etienne",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jared Goff",
           "faab": null
         }
@@ -1202,13 +1202,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Cameron Dicker",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen McMillan",
           "faab": null
         }
@@ -1219,13 +1219,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen Coker",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Keon Coleman",
           "faab": null
         }
@@ -1253,13 +1253,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Washington Commanders",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Ray Davis",
           "faab": null
         }
@@ -1377,13 +1377,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Ray Davis",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Christian Watson",
           "faab": null
         }
@@ -1623,7 +1623,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jauan Jennings",
           "faab": null
         }
@@ -1634,7 +1634,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Tyjae Spears",
           "faab": null
         }
@@ -1645,7 +1645,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Christian Watson",
           "faab": null
         }
@@ -1656,7 +1656,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen McMillan",
           "faab": null
         }
@@ -1741,7 +1741,7 @@
       "entries": [
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Arizona Cardinals",
           "faab": null
         }
@@ -1752,7 +1752,7 @@
       "entries": [
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Cameron Dicker",
           "faab": null
         }
@@ -1824,7 +1824,7 @@
       "entries": [
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Chase Brown",
           "faab": null
         }
@@ -1835,7 +1835,7 @@
       "entries": [
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Bucky Irving",
           "faab": null
         }
@@ -1890,7 +1890,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Chase Brown",
           "faab": null
         }
@@ -1901,7 +1901,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Bucky Irving",
           "faab": null
         }
@@ -2076,13 +2076,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Elic Ayomanor",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen Coker",
           "faab": null
         }
@@ -2093,13 +2093,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Blake Corum",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen Coker",
           "faab": null
         }
@@ -2110,13 +2110,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Kyle Monangai",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen Coker",
           "faab": null
         }
@@ -2144,13 +2144,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Woody Marks",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen Coker",
           "faab": null
         }
@@ -2161,13 +2161,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Daniel Jones",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen Coker",
           "faab": null
         }
@@ -2493,13 +2493,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Minnesota Vikings",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Dallas Cowboys",
           "faab": null
         }
@@ -2510,13 +2510,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Dallas Cowboys",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Washington Commanders",
           "faab": null
         }
@@ -2527,7 +2527,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "J.J. McCarthy",
           "faab": null
         },
@@ -2545,19 +2545,19 @@
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Austin Ekeler",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "J.J. McCarthy",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Austin Ekeler",
           "faab": null
         }
@@ -2796,13 +2796,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jaxson Dart",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Braelon Allen",
           "faab": null
         }
@@ -2915,13 +2915,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Buffalo Bills",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Minnesota Vikings",
           "faab": null
         }
@@ -3027,13 +3027,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Braelon Allen",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Tyjae Spears",
           "faab": null
         }
@@ -3145,19 +3145,19 @@
         },
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Bhayshul Tuten",
           "faab": null
         },
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Baker Mayfield",
           "faab": null
         },
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Tee Higgins",
           "faab": null
         },
@@ -3169,13 +3169,13 @@
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Caleb Williams",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Rome Odunze",
           "faab": null
         },
@@ -3199,43 +3199,43 @@
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jaylen Warren",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Caleb Williams",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Rome Odunze",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Bhayshul Tuten",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Baker Mayfield",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Tee Higgins",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jaylen Warren",
           "faab": null
         }
@@ -4123,7 +4123,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Josh Downs",
           "faab": null
         }
@@ -4134,7 +4134,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Darius Slayton",
           "faab": null
         }
@@ -4145,7 +4145,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Khalil Shakir",
           "faab": null
         }
@@ -4156,7 +4156,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Stefon Diggs",
           "faab": null
         }
@@ -4266,7 +4266,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Saquon Barkley",
           "faab": null
         },
@@ -4284,7 +4284,7 @@
         },
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen Hurts",
           "faab": null
         },
@@ -4308,13 +4308,13 @@
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Baker Mayfield",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Courtland Sutton",
           "faab": null
         },
@@ -4326,49 +4326,49 @@
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jauan Jennings",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Chase Brown",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Saquon Barkley",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Baker Mayfield",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Courtland Sutton",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jalen Hurts",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Jauan Jennings",
           "faab": null
         },
         {
           "type": "TRADE",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Chase Brown",
           "faab": null
         }
@@ -4901,13 +4901,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Kenneth Gainwell",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "J.J. McCarthy",
           "faab": null
         }
@@ -4918,13 +4918,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Kendre Miller",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "J.J. McCarthy",
           "faab": null
         }
@@ -5101,13 +5101,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Las Vegas Raiders",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Minnesota Vikings",
           "faab": null
         }
@@ -5118,13 +5118,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Pittsburgh Steelers",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "CeeDees TeeDees",
+          "team": "110 wins",
           "player": "Minnesota Vikings",
           "faab": null
         }
@@ -5784,6 +5784,173 @@
       "date": "Week 6",
       "entries": [
         {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Indianapolis Colts",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Calvin Ridley",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Matt Prater",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Tampa Bay Buccaneers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Los Angeles Rams",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Las Vegas Raiders",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Bam Knight",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Elic Ayomanor",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Tua Tagovailoa",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Cleveland Browns",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Sam Darnold",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Ryan Flournoy",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "Elic Ayomanor",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "J.J. McCarthy",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "Harold Fannin",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Matt Gay",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Brandon McManus",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
           "type": "ADD",
           "team": "Kenneth walker for $30",
           "player": "Kendrick Bourne",
@@ -5804,6 +5971,23 @@
           "type": "DROP",
           "team": "FantasyGPT 2.5",
           "player": "Joey Slye",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 6",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "MoneyBall",
+          "player": "J.J. McCarthy",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "MoneyBall",
+          "player": "RJ Harvey",
           "faab": null
         }
       ]
@@ -5983,7 +6167,7 @@
     {
       "round": 1,
       "overall": 2,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Bucky Irving",
       "player_nfl": "TB",
       "keeper": false
@@ -5991,7 +6175,7 @@
     {
       "round": 1,
       "overall": 3,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Chase Brown",
       "player_nfl": "CIN",
       "keeper": false
@@ -6135,7 +6319,7 @@
     {
       "round": 3,
       "overall": 21,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "CeeDee Lamb",
       "player_nfl": "DAL",
       "keeper": false
@@ -6279,7 +6463,7 @@
     {
       "round": 5,
       "overall": 39,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Kyren Williams",
       "player_nfl": "LAR",
       "keeper": false
@@ -6287,7 +6471,7 @@
     {
       "round": 5,
       "overall": 40,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Austin Ekeler",
       "player_nfl": "WAS",
       "keeper": false
@@ -6303,7 +6487,7 @@
     {
       "round": 6,
       "overall": 42,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Trey McBride",
       "player_nfl": "ARI",
       "keeper": false
@@ -6407,7 +6591,7 @@
     {
       "round": 7,
       "overall": 55,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Davante Adams",
       "player_nfl": "LAR",
       "keeper": false
@@ -6423,7 +6607,7 @@
     {
       "round": 8,
       "overall": 57,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Courtland Sutton",
       "player_nfl": "DEN",
       "keeper": false
@@ -6535,7 +6719,7 @@
     {
       "round": 9,
       "overall": 71,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Jaxon Smith-Njigba",
       "player_nfl": "SEA",
       "keeper": false
@@ -6599,7 +6783,7 @@
     {
       "round": 10,
       "overall": 79,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Zay Flowers",
       "player_nfl": "BAL",
       "keeper": false
@@ -6615,7 +6799,7 @@
     {
       "round": 11,
       "overall": 81,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Caleb Williams",
       "player_nfl": "CHI",
       "keeper": false
@@ -6679,7 +6863,7 @@
     {
       "round": 12,
       "overall": 89,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Jordan Love",
       "player_nfl": "GB",
       "keeper": false
@@ -6735,7 +6919,7 @@
     {
       "round": 12,
       "overall": 96,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Rome Odunze",
       "player_nfl": "CHI",
       "keeper": false
@@ -6799,7 +6983,7 @@
     {
       "round": 13,
       "overall": 104,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Jared Goff",
       "player_nfl": "DET",
       "keeper": false
@@ -6863,7 +7047,7 @@
     {
       "round": 14,
       "overall": 112,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Jaylen Warren",
       "player_nfl": "PIT",
       "keeper": false
@@ -6911,7 +7095,7 @@
     {
       "round": 15,
       "overall": 118,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Keon Coleman",
       "player_nfl": "BUF",
       "keeper": false
@@ -6927,7 +7111,7 @@
     {
       "round": 15,
       "overall": 120,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Trey Benson",
       "player_nfl": "ARI",
       "keeper": false
@@ -6975,7 +7159,7 @@
     {
       "round": 16,
       "overall": 126,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Cameron Dicker",
       "player_nfl": "LAC",
       "keeper": false
@@ -7031,7 +7215,7 @@
     {
       "round": 17,
       "overall": 133,
-      "team": "CeeDees TeeDees",
+      "team": "110 wins",
       "player": "Arizona Cardinals",
       "player_nfl": "ARI",
       "keeper": false
