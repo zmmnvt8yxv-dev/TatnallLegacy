@@ -1,0 +1,43 @@
+name: Update trades-2025.json from Sleeper
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "13 6 * * *"   # daily 06:13 UTC
+
+permissions:
+  contents: write
+
+env:
+  YEAR: "2025"
+  SLEEPER_LEAGUE_ID: "1262418074540195841"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: python -m pip install --upgrade requests
+
+      - name: Generate trades JSON
+        run: python sleeper_trades_to_json.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/trades-${YEAR}.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update trades-${YEAR}.json from Sleeper"
+            git push
+          else
+            echo "No changes."
+          fi
