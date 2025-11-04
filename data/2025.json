@@ -5,9 +5,9 @@
       "team_id": 3,
       "team_name": "Insane in The Achane ",
       "owner": "LbmBets",
-      "record": "7-1",
-      "points_for": 1573.78,
-      "points_against": 1222.76,
+      "record": "8-1",
+      "points_for": 1778.52,
+      "points_against": 1419.52,
       "regular_season_rank": 1,
       "final_rank": null
     },
@@ -15,29 +15,29 @@
       "team_id": 1,
       "team_name": "112 wins",
       "owner": "cmarvin713",
-      "record": "6-2",
-      "points_for": 1381.22,
-      "points_against": 1252.14,
+      "record": "6-3",
+      "points_for": 1577.98,
+      "points_against": 1456.88,
       "regular_season_rank": 2,
-      "final_rank": null
-    },
-    {
-      "team_id": 7,
-      "team_name": "downsliquidity",
-      "owner": "downsliquidity",
-      "record": "4-4",
-      "points_for": 1380.1,
-      "points_against": 1414.58,
-      "regular_season_rank": 3,
       "final_rank": null
     },
     {
       "team_id": 5,
       "team_name": "FantasyGPT 2.5",
       "owner": "roylee6",
-      "record": "4-4",
-      "points_for": 1320.88,
-      "points_against": 1262.68,
+      "record": "5-4",
+      "points_for": 1523.16,
+      "points_against": 1391.94,
+      "regular_season_rank": 3,
+      "final_rank": null
+    },
+    {
+      "team_id": 7,
+      "team_name": "Dak Shots",
+      "owner": "downsliquidity",
+      "record": "4-5",
+      "points_for": 1509.36,
+      "points_against": 1616.86,
       "regular_season_rank": 4,
       "final_rank": null
     },
@@ -45,29 +45,29 @@
       "team_id": 8,
       "team_name": "Hospital Bill",
       "owner": "Junktion",
-      "record": "4-4",
-      "points_for": 1187.64,
-      "points_against": 1202.96,
+      "record": "4-5",
+      "points_for": 1321.96,
+      "points_against": 1381.44,
       "regular_season_rank": 5,
-      "final_rank": null
-    },
-    {
-      "team_id": 6,
-      "team_name": "PhillyPhilly709",
-      "owner": "PhillyPhilly709",
-      "record": "3-5",
-      "points_for": 1271.22,
-      "points_against": 1357.4,
-      "regular_season_rank": 6,
       "final_rank": null
     },
     {
       "team_id": 2,
       "team_name": "Kenneth walker for $30",
       "owner": "jawnwick13",
-      "record": "3-5",
-      "points_for": 1140.5,
-      "points_against": 1268.4,
+      "record": "4-5",
+      "points_for": 1318.98,
+      "points_against": 1402.72,
+      "regular_season_rank": 6,
+      "final_rank": null
+    },
+    {
+      "team_id": 6,
+      "team_name": "PhillyPhilly709",
+      "owner": "PhillyPhilly709",
+      "record": "3-6",
+      "points_for": 1402.88,
+      "points_against": 1499.96,
       "regular_season_rank": 7,
       "final_rank": null
     },
@@ -75,9 +75,9 @@
       "team_id": 4,
       "team_name": "2008 Detroit Lions",
       "owner": "conner27lax",
-      "record": "1-7",
-      "points_for": 1109.06,
-      "points_against": 1383.48,
+      "record": "2-7",
+      "points_for": 1251.62,
+      "points_against": 1515.14,
       "regular_season_rank": 8,
       "final_rank": null
     }
@@ -103,7 +103,7 @@
       "week": 1,
       "home_team": "Insane in The Achane ",
       "home_score": 142.2,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 110.4,
       "is_playoff": false
     },
@@ -143,7 +143,7 @@
       "week": 2,
       "home_team": "FantasyGPT 2.5",
       "home_score": 167.72,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 175.84,
       "is_playoff": false
     },
@@ -151,7 +151,7 @@
       "week": 3,
       "home_team": "112 wins",
       "home_score": 180.04,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 150.36,
       "is_playoff": false
     },
@@ -191,7 +191,7 @@
       "week": 4,
       "home_team": "Kenneth walker for $30",
       "home_score": 186.66,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 186.38,
       "is_playoff": false
     },
@@ -239,7 +239,7 @@
       "week": 5,
       "home_team": "PhillyPhilly709",
       "home_score": 177.14,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 178.6,
       "is_playoff": false
     },
@@ -269,7 +269,7 @@
     },
     {
       "week": 6,
-      "home_team": "downsliquidity",
+      "home_team": "Dak Shots",
       "home_score": 172.28,
       "away_team": "Hospital Bill",
       "away_score": 183.22,
@@ -295,7 +295,7 @@
       "week": 7,
       "home_team": "2008 Detroit Lions",
       "home_score": 176.8,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 196.64,
       "is_playoff": false
     },
@@ -327,7 +327,7 @@
       "week": 8,
       "home_team": "Insane in The Achane ",
       "home_score": 200.8,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 209.6,
       "is_playoff": false
     },
@@ -342,40 +342,40 @@
     {
       "week": 9,
       "home_team": "112 wins",
-      "home_score": 0.0,
+      "home_score": 196.76,
       "away_team": "Insane in The Achane ",
-      "away_score": 0.0,
+      "away_score": 204.74,
       "is_playoff": false
     },
     {
       "week": 9,
       "home_team": "Kenneth walker for $30",
-      "home_score": 0.0,
+      "home_score": 178.48,
       "away_team": "Hospital Bill",
-      "away_score": 0.0,
+      "away_score": 134.32,
       "is_playoff": false
     },
     {
       "week": 9,
       "home_team": "2008 Detroit Lions",
-      "home_score": 0.0,
+      "home_score": 142.56,
       "away_team": "PhillyPhilly709",
-      "away_score": 0.0,
+      "away_score": 131.66,
       "is_playoff": false
     },
     {
       "week": 9,
       "home_team": "FantasyGPT 2.5",
-      "home_score": 0.0,
-      "away_team": "downsliquidity",
-      "away_score": 0.0,
+      "home_score": 202.28,
+      "away_team": "Dak Shots",
+      "away_score": 129.26,
       "is_playoff": false
     },
     {
       "week": 10,
       "home_team": "112 wins",
       "home_score": 0.0,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 0.0,
       "is_playoff": false
     },
@@ -415,7 +415,7 @@
       "week": 11,
       "home_team": "Kenneth walker for $30",
       "home_score": 0.0,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 0.0,
       "is_playoff": false
     },
@@ -463,7 +463,7 @@
       "week": 12,
       "home_team": "PhillyPhilly709",
       "home_score": 0.0,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 0.0,
       "is_playoff": false
     },
@@ -493,7 +493,7 @@
     },
     {
       "week": 13,
-      "home_team": "downsliquidity",
+      "home_team": "Dak Shots",
       "home_score": 0.0,
       "away_team": "Hospital Bill",
       "away_score": 0.0,
@@ -519,7 +519,7 @@
       "week": 14,
       "home_team": "2008 Detroit Lions",
       "home_score": 0.0,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 0.0,
       "is_playoff": false
     },
@@ -551,7 +551,7 @@
       "week": 15,
       "home_team": "Insane in The Achane ",
       "home_score": 0.0,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 0.0,
       "is_playoff": false
     },
@@ -591,7 +591,7 @@
       "week": 16,
       "home_team": "FantasyGPT 2.5",
       "home_score": 0.0,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 0.0,
       "is_playoff": false
     },
@@ -599,7 +599,7 @@
       "week": 17,
       "home_team": "112 wins",
       "home_score": 0.0,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 0.0,
       "is_playoff": false
     },
@@ -639,7 +639,7 @@
       "week": 18,
       "home_team": "Kenneth walker for $30",
       "home_score": 0.0,
-      "away_team": "downsliquidity",
+      "away_team": "Dak Shots",
       "away_score": 0.0,
       "is_playoff": false
     },
@@ -666,13 +666,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Marquise Brown",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Dameon Pierce",
           "faab": null
         }
@@ -717,13 +717,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Travis Etienne",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Dameon Pierce",
           "faab": null
         }
@@ -734,13 +734,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Keon Coleman",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Dameon Pierce",
           "faab": null
         }
@@ -751,13 +751,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Quentin Johnston",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Dameon Pierce",
           "faab": null
         }
@@ -904,13 +904,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Quentin Johnston",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Dameon Pierce",
           "faab": null
         }
@@ -1349,13 +1349,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Dameon Pierce",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Amari Cooper",
           "faab": null
         }
@@ -1478,13 +1478,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Amari Cooper",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Skyy Moore",
           "faab": null
         }
@@ -1578,13 +1578,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Chase McLaughlin",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Darren Waller",
           "faab": null
         }
@@ -1612,7 +1612,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Darren Waller",
           "faab": null
         }
@@ -1667,7 +1667,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Skyy Moore",
           "faab": null
         }
@@ -2042,13 +2042,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Jake Ferguson",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Tank Bigsby",
           "faab": null
         }
@@ -2059,13 +2059,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Juwan Johnson",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Tank Bigsby",
           "faab": null
         }
@@ -3044,13 +3044,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Tampa Bay Buccaneers",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Pittsburgh Steelers",
           "faab": null
         }
@@ -3369,13 +3369,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Matt Prater",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Chase McLaughlin",
           "faab": null
         }
@@ -3386,13 +3386,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Seattle Seahawks",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Pittsburgh Steelers",
           "faab": null
         }
@@ -3538,7 +3538,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Isaiah Bond",
           "faab": null
         }
@@ -3549,7 +3549,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Malik Washington",
           "faab": null
         }
@@ -3560,7 +3560,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Darius Slayton",
           "faab": null
         }
@@ -3571,7 +3571,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Darren Waller",
           "faab": null
         }
@@ -3661,13 +3661,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Jake Bates",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Matt Prater",
           "faab": null
         }
@@ -4195,7 +4195,7 @@
         },
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "J.K. Dobbins",
           "faab": null
         },
@@ -4213,7 +4213,7 @@
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "RJ Harvey",
           "faab": null
         },
@@ -4225,13 +4225,13 @@
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "DeVonta Smith",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Jake Ferguson",
           "faab": null
         },
@@ -4390,13 +4390,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Los Angeles Chargers",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Tampa Bay Buccaneers",
           "faab": null
         }
@@ -4413,7 +4413,7 @@
         },
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Nick Chubb",
           "faab": null
         },
@@ -4425,7 +4425,7 @@
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Travis Hunter",
           "faab": null
         },
@@ -4437,7 +4437,7 @@
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Quentin Johnston",
           "faab": null
         },
@@ -4623,13 +4623,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Buffalo Bills",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Tampa Bay Buccaneers",
           "faab": null
         }
@@ -4640,7 +4640,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Rachaad White",
           "faab": null
         }
@@ -4651,7 +4651,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Ollie Gordon",
           "faab": null
         }
@@ -4662,7 +4662,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Kareem Hunt",
           "faab": null
         }
@@ -4673,7 +4673,7 @@
       "entries": [
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "James Conner",
           "faab": null
         }
@@ -5194,13 +5194,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Kendre Miller",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Darius Slayton",
           "faab": null
         }
@@ -5525,7 +5525,7 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Emari Demercado",
           "faab": null
         }
@@ -5570,7 +5570,7 @@
       "entries": [
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Tyreek Hill",
           "faab": null
         }
@@ -5683,13 +5683,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Jason Myers",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Matt Prater",
           "faab": null
         }
@@ -5700,13 +5700,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Chase McLaughlin",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Matt Prater",
           "faab": null
         }
@@ -6520,13 +6520,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Chicago Bears",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Los Angeles Chargers",
           "faab": null
         }
@@ -6537,13 +6537,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Seattle Seahawks",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Los Angeles Chargers",
           "faab": null
         }
@@ -6554,13 +6554,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Travis Kelce",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Darius Slayton",
           "faab": null
         }
@@ -6869,13 +6869,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Isiah Pacheco",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Isaiah Bond",
           "faab": null
         }
@@ -6910,6 +6910,475 @@
           "type": "ADD",
           "team": "Insane in The Achane ",
           "player": "Kansas City Chiefs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Dak Shots",
+          "player": "Troy Franklin",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Dak Shots",
+          "player": "Darren Waller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Dak Shots",
+          "player": "Zonovan Knight",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Dak Shots",
+          "player": "Emari Demercado",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "112 wins",
+          "player": "Los Angeles Chargers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "112 wins",
+          "player": "Kansas City Chiefs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "112 wins",
+          "player": "Los Angeles Rams",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "112 wins",
+          "player": "Kansas City Chiefs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "112 wins",
+          "player": "Zonovan Knight",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "112 wins",
+          "player": "Dalton Schultz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "112 wins",
+          "player": "Kareem Hunt",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "112 wins",
+          "player": "Dalton Schultz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "112 wins",
+          "player": "Tyrone Tracy",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "112 wins",
+          "player": "Dalton Schultz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Tank Bigsby",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Kenneth Gainwell",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Michael Badgley",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Will Reichard",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Jake Bates",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Will Reichard",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Chris Boswell",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Will Reichard",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Los Angeles Chargers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Indianapolis Colts",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Los Angeles Rams",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Indianapolis Colts",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "RJ Harvey",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Harold Fannin",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "RJ Harvey",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "Harold Fannin",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "2008 Detroit Lions",
+          "player": "RJ Harvey",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "2008 Detroit Lions",
+          "player": "Harold Fannin",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Sam LaPorta",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Aaron Rodgers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Kareem Hunt",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Tyrone Tracy",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Cade Otton",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Tre Tucker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Kareem Hunt",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Zonovan Knight",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Tyrone Tracy",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Brandon McManus",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "Eddy Pineiro",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Los Angeles Rams",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "Baltimore Ravens",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "Kirk Cousins",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Dak Shots",
+          "player": "Tank Bigsby",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Dak Shots",
+          "player": "Darren Waller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Dak Shots",
+          "player": "Devin Singletary",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Dak Shots",
+          "player": "Darren Waller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Dak Shots",
+          "player": "Tyrone Tracy",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Dak Shots",
+          "player": "Darren Waller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 8",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Tyrone Tracy",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Darnell Mooney",
           "faab": null
         }
       ]
@@ -7397,13 +7866,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Tampa Bay Buccaneers",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Seattle Seahawks",
           "faab": null
         }
@@ -7482,13 +7951,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Brashard Smith",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Kareem Hunt",
           "faab": null
         }
@@ -7527,13 +7996,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Indianapolis Colts",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Seattle Seahawks",
           "faab": null
         }
@@ -7544,13 +8013,13 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Khalil Shakir",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Kareem Hunt",
           "faab": null
         }
@@ -7561,14 +8030,660 @@
       "entries": [
         {
           "type": "ADD",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "DJ Moore",
           "faab": null
         },
         {
           "type": "DROP",
-          "team": "downsliquidity",
+          "team": "Dak Shots",
           "player": "Isaiah Bond",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Jaylin Noel",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "Brandon McManus",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "Chicago Bears",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Juwan Johnson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Theo Johnson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Zach Ertz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Dalton Kincaid",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Kyle Monangai",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "112 wins",
+          "player": "Kareem Hunt",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "112 wins",
+          "player": "A.J. Brown",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Tee Higgins",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Zay Flowers",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "112 wins",
+          "player": "Kyle Monangai",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "Kareem Hunt",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "A.J. Brown",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "112 wins",
+          "player": "Tee Higgins",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "112 wins",
+          "player": "Zay Flowers",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "112 wins",
+          "player": "Kyle Monangai",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "112 wins",
+          "player": "Kareem Hunt",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "112 wins",
+          "player": "A.J. Brown",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "112 wins",
+          "player": "Tee Higgins",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "112 wins",
+          "player": "Zay Flowers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Jacoby Brissett",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Michael Carter",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Michael Carter",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Insane in The Achane ",
+          "player": "Trevor Lawrence",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Samaje Perine",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "112 wins",
+          "player": "Bhayshul Tuten",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "112 wins",
+          "player": "Dalton Schultz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Seattle Seahawks",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Chad Ryland",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Samaje Perine",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Darnell Mooney",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Chicago Bears",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "Baltimore Ravens",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Samaje Perine",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Justin Fields",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Brian Thomas",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Tyrone Tracy",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Jaylen Waddle",
+          "faab": null
+        },
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Jahmyr Gibbs",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Brian Thomas",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Tyrone Tracy",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Jaylen Waddle",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Jahmyr Gibbs",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Kenneth walker for $30",
+          "player": "Brian Thomas",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Kenneth walker for $30",
+          "player": "Tyrone Tracy",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Kenneth walker for $30",
+          "player": "Jaylen Waddle",
+          "faab": null
+        },
+        {
+          "type": "TRADE",
+          "team": "Kenneth walker for $30",
+          "player": "Jahmyr Gibbs",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Dylan Sampson",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Dak Shots",
+          "player": "Jake Bates",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Dak Shots",
+          "player": "Emari Demercado",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Ka'imi Fairbairn",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Harrison Butker",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Matthew Golden",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Matthew Golden",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "Insane in The Achane ",
+          "player": "Marcus Mariota",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "2008 Detroit Lions",
+          "player": "Tre Tucker",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "2008 Detroit Lions",
+          "player": "Baltimore Ravens",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Zonovan Knight",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Devin Neal",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "FantasyGPT 2.5",
+          "player": "Chimere Dike",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "FantasyGPT 2.5",
+          "player": "Devin Neal",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Atlanta Falcons",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "PhillyPhilly709",
+          "player": "Tyrone Tracy",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Dalton Kincaid",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Keon Coleman",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Kenneth walker for $30",
+          "player": "Kareem Hunt",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Kenneth walker for $30",
+          "player": "Justin Fields",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "DROP",
+          "team": "PhillyPhilly709",
+          "player": "Wil Lutz",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Dak Shots",
+          "player": "Jake Bates",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Dak Shots",
+          "player": "Darren Waller",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Dak Shots",
+          "player": "Detroit Lions",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Dak Shots",
+          "player": "Tampa Bay Buccaneers",
+          "faab": null
+        }
+      ]
+    },
+    {
+      "date": "Week 9",
+      "entries": [
+        {
+          "type": "ADD",
+          "team": "Dak Shots",
+          "player": "Los Angeles Rams",
+          "faab": null
+        },
+        {
+          "type": "DROP",
+          "team": "Dak Shots",
+          "player": "Tampa Bay Buccaneers",
           "faab": null
         }
       ]
@@ -7634,7 +8749,7 @@
     {
       "round": 1,
       "overall": 8,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "James Cook",
       "player_nfl": "BUF",
       "keeper": false
@@ -7642,7 +8757,7 @@
     {
       "round": 2,
       "overall": 9,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Ladd McConkey",
       "player_nfl": "LAC",
       "keeper": false
@@ -7722,7 +8837,7 @@
     {
       "round": 3,
       "overall": 19,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Ja'Marr Chase",
       "player_nfl": "CIN",
       "keeper": false
@@ -7914,7 +9029,7 @@
     {
       "round": 6,
       "overall": 43,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Tyreek Hill",
       "player_nfl": "MIA",
       "keeper": false
@@ -7946,7 +9061,7 @@
     {
       "round": 6,
       "overall": 47,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Travis Hunter",
       "player_nfl": "JAX",
       "keeper": false
@@ -8002,7 +9117,7 @@
     {
       "round": 7,
       "overall": 54,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Tank Bigsby",
       "player_nfl": "PHI",
       "keeper": false
@@ -8034,7 +9149,7 @@
     {
       "round": 8,
       "overall": 58,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Drake Maye",
       "player_nfl": "NE",
       "keeper": false
@@ -8066,7 +9181,7 @@
     {
       "round": 8,
       "overall": 62,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Marvin Harrison",
       "player_nfl": "ARI",
       "keeper": false
@@ -8106,7 +9221,7 @@
     {
       "round": 9,
       "overall": 67,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Dak Prescott",
       "player_nfl": "DAL",
       "keeper": false
@@ -8122,7 +9237,7 @@
     {
       "round": 9,
       "overall": 69,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "James Conner",
       "player_nfl": "ARI",
       "keeper": false
@@ -8186,7 +9301,7 @@
     {
       "round": 10,
       "overall": 77,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Joe Mixon",
       "player_nfl": "HOU",
       "keeper": false
@@ -8266,7 +9381,7 @@
     {
       "round": 11,
       "overall": 87,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "DK Metcalf",
       "player_nfl": "PIT",
       "keeper": false
@@ -8274,7 +9389,7 @@
     {
       "round": 11,
       "overall": 88,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Brandon Aiyuk",
       "player_nfl": "SF",
       "keeper": false
@@ -8306,7 +9421,7 @@
     {
       "round": 12,
       "overall": 92,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Quinshon Judkins",
       "player_nfl": "CLE",
       "keeper": false
@@ -8322,7 +9437,7 @@
     {
       "round": 12,
       "overall": 94,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Tyler Warren",
       "player_nfl": "IND",
       "keeper": false
@@ -8362,7 +9477,7 @@
     {
       "round": 13,
       "overall": 99,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "DeVonta Smith",
       "player_nfl": "PHI",
       "keeper": false
@@ -8410,7 +9525,7 @@
     {
       "round": 14,
       "overall": 105,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "RJ Harvey",
       "player_nfl": "DEN",
       "keeper": false
@@ -8426,7 +9541,7 @@
     {
       "round": 14,
       "overall": 107,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Pittsburgh Steelers",
       "player_nfl": "PIT",
       "keeper": false
@@ -8458,7 +9573,7 @@
     {
       "round": 14,
       "overall": 111,
-      "team": "downsliquidity",
+      "team": "Dak Shots",
       "player": "Chris Olave",
       "player_nfl": "NO",
       "keeper": false
