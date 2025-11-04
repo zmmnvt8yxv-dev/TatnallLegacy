@@ -653,7 +653,7 @@ function renderMostDrafted(){
   wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
-// ---------- tabs (improved: external links allowed; hash tabs act as SPA) ----------
+// ---------- tabs (safe: internal=# scroll; external navigates normally) ----------
 function setupTabs(){
   const header = document.querySelector("header");
   const offset = (header?.offsetHeight || 80) + 4;
@@ -662,56 +662,39 @@ function setupTabs(){
   const isHash = href => typeof href === "string" && href.startsWith("#");
   const isExternal = a => a.hasAttribute("data-external") || !isHash(a.getAttribute("href"));
 
-  // Clicks: only intercept hash tabs; let external (e.g., trade.html) navigate normally.
+  // click: intercept only internal hash tabs
   tabs.forEach(a => {
     a.addEventListener("click", (e) => {
-      if (isExternal(a)) return;                    // normal navigation
+      if (isExternal(a)) return;                       // allow trade.html, etc.
       if (e.metaKey || e.ctrlKey || e.button === 1) return;
       e.preventDefault();
-      const hash = a.getAttribute("href") || a.getAttribute("data-target") || "#summary";
-      if (location.hash !== hash) history.pushState(null, "", hash);
-      scrollToHash(hash);
-      setActiveTab(hash);
+      const hash = a.getAttribute("href") || a.getAttribute("data-target");
+      const target = hash && document.querySelector(hash);
+      if (!target) return;
+
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+      tabs.forEach(x => x.classList.toggle("active", x === a));
+      history.replaceState(null, "", hash);            // no extra events; no push/pop noise
     });
   });
 
-  // Scroll-to-section
-  function scrollToHash(hash){
-    const target = document.querySelector(hash);
-    if (!target) return;
-    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top, behavior: "smooth" });
-  }
+  // highlight current tab while scrolling
+  const sections = tabs
+    .map(a => isExternal(a) ? null : document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
 
-  // Active state via hash/scroll
-  function setActiveTab(hash){
-    tabs.forEach(a => a.classList.toggle("active", (a.getAttribute("href") === hash)));
-  }
   function setActiveOnScroll(){
     const y = window.scrollY + offset + 1;
-    // consider only internal sections
-    const sections = tabs
-      .map(a => isExternal(a) ? null : document.querySelector(a.getAttribute("href")))
-      .filter(Boolean);
-    let current = null;
-    for (const sec of sections){ const top = sec.offsetTop; if (top <= y) current = sec; }
-    if (current) setActiveTab("#" + current.id);
+    let current = sections[0] || null;
+    for (const sec of sections){ if (sec.offsetTop <= y) current = sec; }
+    const currentHash = current ? ("#" + current.id) : null;
+    tabs.forEach(a => a.classList.toggle("active", a.getAttribute("href") === currentHash));
   }
 
-  // Route on load/back-forward
-  function applyRoute(){
-    const hash = location.hash && document.querySelector(location.hash) ? location.hash : "#summary";
-    setActiveTab(hash);
-    // No auto-scroll on initial load if already near the target
-    if (!location.hash) return;
-    scrollToHash(hash);
-  }
-  window.addEventListener("popstate", applyRoute);
-  window.addEventListener("hashchange", applyRoute);
-  window.addEventListener("scroll", setActiveOnScroll, { passive: true });
-
-  applyRoute();
+  // initial active state
   setActiveOnScroll();
+  window.addEventListener("scroll", setActiveOnScroll, { passive: true });
 }
 
 // ---------- Live: detail route ----------
