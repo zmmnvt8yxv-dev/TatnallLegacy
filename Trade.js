@@ -1,63 +1,90 @@
 // ==============================
-// Trade Analysis (from data/<year>.json only)
+// Trade Analysis (reads data/<year>.json; groups adjacent TRADE txns)
 // ==============================
 
 const $ = s => document.querySelector(s);
-const el = (t,a={},...kids)=>{const n=document.createElement(t);for(const[k,v]of Object.entries(a))(k==="class")?n.className=v:n.setAttribute(k,v);for(const k of kids)n.append(k?.nodeType?k:document.createTextNode(k??""));return n;}
+const el = (t,a={},...kids)=>{ const n=document.createElement(t);
+  for (const [k,v] of Object.entries(a)) (k==="class")? n.className=v : n.setAttribute(k,v);
+  for (const k of kids) n.append(k?.nodeType?k:document.createTextNode(k??""));
+  return n;
+};
 const fmt = n => (n==null? "": (Math.round(Number(n)*100)/100).toString());
 
-// ---- local fetch (no base/path tricks)
-async function loadJSON(rel){ const r = await fetch(rel, {cache:"no-store"}); if(!r.ok) throw new Error(`${r.status} ${rel}`); return r.json(); }
+// -------- local fetch (no base/path tricks) --------
+async function j(url){ const r=await fetch(url,{cache:"no-store"}); if(!r.ok) throw new Error(`${r.status} ${url}`); return r.json(); }
 
-// ---- derive trades from saved season JSON
-// season.transactions item shape: { date:"Week N", entries:[{type:"ADD"|"DROP"|"TRADE", team, player, faab}] }
-function deriveTradesFromTransactions(transactions){
+// -------- derive trades by grouping adjacent txns with TRADE entries --------
+//
+// Your 2025.json structure: { transactions: [ {date:"Week N", entries:[{type,team,player,faab}, ...]}, ... ] }
+// A single real trade often appears as TWO consecutive transaction objects,
+// each with only one team and its TRADE lines. We group adjacent transactions
+// that (a) contain at least one TRADE entry and (b) share the same week.
+//
+function weekOf(tx){ return parseInt(String(tx?.date||"").replace(/[^0-9]/g,""),10) || null; }
+
+function deriveTrades(transactions){
   const trades = [];
+  const txs = Array.isArray(transactions) ? transactions : [];
+  let i = 0;
 
-  for (const tx of (transactions||[])){
-    const week = parseInt(String(tx.date||"").replace(/[^0-9]/g,""),10) || null;
-    const entries = Array.isArray(tx.entries) ? tx.entries : [];
+  while (i < txs.length){
+    const cur = txs[i];
+    const w = weekOf(cur);
+    const curHasTrade = (cur.entries||[]).some(e => e.type === "TRADE");
 
-    // Collect teams present in this transaction (for trade detection)
-    const teamSet = new Set(entries.map(e => e.team).filter(Boolean));
+    if (!curHasTrade){ i++; continue; }
 
-    // Build per-team adds/drops
+    // Start a group at i and consume following txs that also have TRADE and same week.
+    const group = [cur];
+    let j = i + 1;
+    while (j < txs.length){
+      const nxt = txs[j];
+      const nxtHasTrade = (nxt.entries||[]).some(e => e.type === "TRADE");
+      if (!nxtHasTrade) break;
+      if (weekOf(nxt) !== w) break;
+      group.push(nxt);
+      j++;
+    }
+    i = j; // advance
+
+    // Build parties: treat TRADE/ADD as gains; DROP as losses.
     const byTeam = new Map(); // team -> {gain:Set<string>, lose:Set<string>}
-    const ensure = (team)=>{ if(!byTeam.has(team)) byTeam.set(team,{gain:new Set(),lose:new Set()}); return byTeam.get(team); };
+    const ensure = (team)=>{ const key=(team||"Unknown").trim(); if(!byTeam.has(key)) byTeam.set(key,{gain:new Set(),lose:new Set()}); return byTeam.get(key); };
 
-    for (const e of entries){
-      const team = e.team || "Unknown";
-      if (e.type === "ADD")  ensure(team).gain.add(e.player);
-      if (e.type === "DROP") ensure(team).lose.add(e.player);
+    for (const tx of group){
+      for (const e of (tx.entries||[])){
+        const team = (e.team || "Unknown").trim();
+        if (e.type === "TRADE" || e.type === "ADD") ensure(team).gain.add(String(e.player||"").trim());
+        else if (e.type === "DROP") ensure(team).lose.add(String(e.player||"").trim());
+      }
     }
 
-    // Decide if this tx is a trade:
-    //  - at least 2 distinct teams present, OR
-    //  - any entry marked "TRADE" (your exporter adds these on Sleeper trades)
-    const hasTradeMarker = entries.some(e => e.type === "TRADE");
-    const isTrade = hasTradeMarker || teamSet.size >= 2;
-
-    if (!isTrade) continue;
-
-    // Ensure every seen team appears as a party even if no gain/lose captured
-    for (const t of teamSet) ensure(t);
+    // Infer what each team "sent": union of gains of *other* teams within the group.
+    const teams = [...byTeam.keys()];
+    for (const t of teams){
+      const me = byTeam.get(t);
+      const othersGain = new Set();
+      for (const u of teams){ if (u===t) continue; for (const p of byTeam.get(u).gain) othersGain.add(p); }
+      // merge inferred loses with explicit drop list
+      for (const p of othersGain) me.lose.add(p);
+    }
 
     // Normalize parties
     const parties = [...byTeam.entries()]
       .map(([team,obj])=>({ team, gain:[...obj.gain], lose:[...obj.lose] }))
-      .filter(p => p.gain.length || p.lose.length || teamSet.size >= 2)
+      // keep teams that participated (have any gain or lose)
+      .filter(p => p.gain.length || p.lose.length)
       .sort((a,b)=> a.team.localeCompare(b.team));
 
     if (parties.length >= 2){
-      const id = `w${week||0}-${trades.length+1}`;
-      trades.push({ id, week, parties, created:null, status:"complete" });
+      trades.push({ id: `w${w||0}-${trades.length+1}`, week: w, parties, created:null, status:"complete" });
     }
   }
 
   return trades;
 }
 
-// ---- scoring using saved lineups (optional)
+// -------- scoring from saved lineups (optional) --------
 function indexLineupsByTeamAfterWeek(lineups){
   const byTeam = new Map(); // team -> player -> Map(week->pts_started)
   for (const r of (lineups||[])){
@@ -87,7 +114,7 @@ function scoreTrade(trade, teamMap){
     const gained = sumAfterWeek(p.team, p.gain, trade.week, teamMap);
     const lost   = sumAfterWeek(p.team, p.lose, trade.week, teamMap);
     const delta  = gained - lost;
-    const score  = Math.max(0, Math.min(100, 50 + delta)); // simple clamp
+    const score  = Math.max(0, Math.min(100, 50 + delta)); // clamp
     return { team:p.team, delta, score, gained, lost };
   });
 }
@@ -98,16 +125,13 @@ function scoreColor(score){
   return "#ef4444";
 }
 
-// ---- renderers
+// -------- renderers --------
 function renderTradeList(trades){
-  const host = $("#list");
-  host.innerHTML = "";
-
+  const host = $("#list"); host.innerHTML = "";
   if (!trades.length){
-    host.appendChild(el("div",{class:"muted",style:"padding:8px"},"No trades found for this season."));
+    host.appendChild(el("div",{class:"muted",style:"padding:8px"},"No trades detected for this season."));
     return;
   }
-
   const tbl = el("table",{}, el("thead",{}, el("tr",{},
     el("th",{},"Week"), el("th",{},"Parties"), el("th",{},"Summary"), el("th",{},"Details")
   )), el("tbody",{}));
@@ -119,21 +143,20 @@ function renderTradeList(trades){
       return `${p.team}: ${got}`;
     }).join(" | ");
 
-    const row = el("tr",{"data-trade-id":t.id},
-      el("td",{}, String(t.week ?? "—")),
-      el("td",{}, parties),
-      el("td",{}, summary),
-      el("td",{}, el("a",{href:`#trade/${t.id}`,class:"badge"},"View"))
+    tbl.tBodies[0].appendChild(
+      el("tr",{"data-trade-id":t.id},
+        el("td",{}, String(t.week ?? "—")),
+        el("td",{}, parties),
+        el("td",{}, summary),
+        el("td",{}, el("a",{href:`#trade/${t.id}`,class:"badge"},"View"))
+      )
     );
-    tbl.tBodies[0].appendChild(row);
   }
-
   host.appendChild(tbl);
 }
 
 function renderTradeDetail(trade, teamMap){
-  const old = $("#tradeDetail"); if (old) old.remove();
-
+  $("#tradeDetail")?.remove();
   const scored = scoreTrade(trade, teamMap);
 
   const box = el("section",{id:"tradeDetail",class:"panel",style:"margin-bottom:12px"},
@@ -197,7 +220,7 @@ function renderRollup(trades, teamMap){
   }
 }
 
-// ---- filters
+// -------- filters --------
 function applyFilters(allTrades){
   const teamVal = $("#teamFilter").value || "";
   const q = ($("#q").value||"").trim().toLowerCase();
@@ -212,26 +235,27 @@ function applyFilters(allTrades){
   });
 }
 
-// ---- boot
+// -------- boot --------
 async function main(){
   const meta = $("#meta"); meta.textContent = "Loading…";
 
-  // seasons list
-  let mf; try { mf = await loadJSON("manifest.json"); } catch { mf = { years: [] }; }
+  // seasons
+  let mf; try { mf = await j("manifest.json"); } catch { mf = { years: [] }; }
   const years = (mf.years||[]).slice().sort((a,b)=>a-b);
   const yearSel = $("#yearSelect"); yearSel.innerHTML="";
   years.forEach(y => yearSel.appendChild(el("option",{value:String(y)}, y)));
   const selectedYear = years[years.length-1] || new Date().getFullYear();
   yearSel.value = String(selectedYear);
 
-  // load selected season
-  const season = await loadJSON(`data/${selectedYear}.json`);
+  // load season JSON
+  const season = await j(`data/${selectedYear}.json`);
   const teamNames = (season.teams||[]).map(t=>t.team_name).sort((a,b)=>a.localeCompare(b));
-  const teamSel = $("#teamFilter"); teamSel.innerHTML = ""; teamSel.appendChild(el("option",{value:""},"All Teams"));
+  const teamSel = $("#teamFilter");
+  teamSel.innerHTML = ""; teamSel.appendChild(el("option",{value:""},"All Teams"));
   teamNames.forEach(n => teamSel.appendChild(el("option",{value:n}, n)));
 
-  // derive trades and scoring index
-  const tradesAll = deriveTradesFromTransactions(season.transactions||[]);
+  // derive trades from adjacent groups of TRADE txns
+  const tradesAll = deriveTrades(season.transactions||[]);
   const teamMap = (season.lineups && season.lineups.length) ? indexLineupsByTeamAfterWeek(season.lineups) : null;
 
   meta.textContent = `${tradesAll.length} trades • Season ${selectedYear}`;
