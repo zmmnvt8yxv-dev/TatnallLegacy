@@ -2,42 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Tatnall League Legacy — Trade Analysis</title>
+  <title>Tatnall League — Trade Analysis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="./" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px}
+    .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+    .pill{padding:.45rem .75rem;border:1px solid #3b3b3b;border-radius:.75rem;color:#d1d5db;text-decoration:none}
+    .pill:hover{background:#1f2937}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .trade-card{border:1px solid #2f2f2f;border-radius:.75rem;padding:12px}
+    .muted{color:#9ca3af}
+    .badge{display:inline-block;padding:.15rem .4rem;border:1px solid #3b3b3b;border-radius:.5rem;font-size:.75rem}
+    .scorebar{height:6px;border-radius:4px;background:#111;overflow:hidden}
+    .scorebar>span{display:block;height:100%}
+    .pos{font-variant-numeric:tabular-nums}
+    .tablewrap{overflow:auto}
+    table th{white-space:nowrap}
+  </style>
 </head>
 <body>
   <header>
-    <h1>Trade Analysis</h1>
-    <nav class="tabs" aria-label="Sections">
-      <a href="index.html" class="tab">← Back to League</a>
-    </nav>
-    <div class="controls">
-      <label for="seasonSelect">Season:</label>
-      <select id="seasonSelect" aria-label="Season"></select>
-      <label for="teamSelect" style="margin-left:12px;">Team:</label>
-      <select id="teamSelect" aria-label="Team"></select>
-      <input id="tradeSearch" type="search" placeholder="Search player/team…" aria-label="Filter trades" style="margin-left:12px;min-width:220px;">
+    <a class="pill" href="index.html">← Back</a>
+    <h1 style="margin:0;font-size:1.25rem">Trade Analysis</h1>
+    <div class="toolbar">
+      <label for="yearSelect">Season:</label>
+      <select id="yearSelect" aria-label="Season"></select>
+      <label for="teamFilter">Team:</label>
+      <select id="teamFilter" aria-label="Team filter"></select>
+      <input id="q" type="search" placeholder="Search player…" aria-label="Search player" />
     </div>
   </header>
 
-  <main id="content">
-    <section class="panel" aria-labelledby="ta-overview-title">
-      <h2 id="ta-overview-title">Overview</h2>
-      <div id="taSummary" class="grid-4"></div>
+  <main id="content" style="padding:12px 16px;">
+    <section class="panel">
+      <div id="meta" class="muted" style="margin-bottom:8px;"></div>
+      <div id="list" class="grid-2"></div>
     </section>
 
-    <section class="panel" aria-labelledby="ta-trades-title">
-      <h2 id="ta-trades-title">Trades</h2>
-      <div class="tablewrap" id="tradesWrap"></div>
+    <section class="panel" style="margin-top:16px;">
+      <h2 style="margin:0 0 8px">Rollup</h2>
+      <div class="tablewrap">
+        <table id="rollupTbl">
+          <thead>
+            <tr>
+              <th>Team</th>
+              <th>Trades</th>
+              <th>Players Acquired</th>
+              <th>Players Sent</th>
+              <th>Net Started Pts After Trade</th>
+              <th>Avg Trade Score</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <small>Built from Sleeper data. Static UI on GitHub Pages.</small>
-  </footer>
-
+  <noscript><div class="panel">Enable JavaScript to view trades.</div></noscript>
   <script src="trade.js" defer></script>
 </body>
 </html>
