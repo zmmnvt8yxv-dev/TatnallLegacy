@@ -71,3 +71,6 @@ section.panel { scroll-margin-top: 84px; } /* offsets sticky header when jumping
 .scorepill .num { position:relative; display:block; text-align:center; font-variant-numeric:tabular-nums; }
 
 .muted { color: #8b949e; }
+/* keep tab color consistent for visited links */
+.tabs .tab,
+.tabs .tab:visited { color: #d1d5db; }
