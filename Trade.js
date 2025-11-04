@@ -2,18 +2,15 @@
 // Trade Analysis (from data/<year>.json only)
 // ==============================
 
-const ROOT = new URL(".", document.baseURI).pathname.replace(/\/+$/, "") + "/";
-
-// ---- tiny utils
 const $ = s => document.querySelector(s);
 const el = (t,a={},...kids)=>{const n=document.createElement(t);for(const[k,v]of Object.entries(a))(k==="class")?n.className=v:n.setAttribute(k,v);for(const k of kids)n.append(k?.nodeType?k:document.createTextNode(k??""));return n;}
 const fmt = n => (n==null? "": (Math.round(Number(n)*100)/100).toString());
 
-// ---- local fetch
-async function loadJSON(rel){ const r = await fetch(ROOT+rel.replace(/^\/+/,""), {cache:"no-store"}); if(!r.ok) throw new Error(`${r.status} ${rel}`); return r.json(); }
+// ---- local fetch (no base/path tricks)
+async function loadJSON(rel){ const r = await fetch(rel, {cache:"no-store"}); if(!r.ok) throw new Error(`${r.status} ${rel}`); return r.json(); }
 
-// ---- parse trades from saved season JSON
-// season.transactions is an array of { date:"Week N", entries:[{type, team, player, faab}] }
+// ---- derive trades from saved season JSON
+// season.transactions item shape: { date:"Week N", entries:[{type:"ADD"|"DROP"|"TRADE", team, player, faab}] }
 function deriveTradesFromTransactions(transactions){
   const trades = [];
 
@@ -21,7 +18,10 @@ function deriveTradesFromTransactions(transactions){
     const week = parseInt(String(tx.date||"").replace(/[^0-9]/g,""),10) || null;
     const entries = Array.isArray(tx.entries) ? tx.entries : [];
 
-    // Build per-team adds/drops for this single transaction (kept grouped in your JSON)
+    // Collect teams present in this transaction (for trade detection)
+    const teamSet = new Set(entries.map(e => e.team).filter(Boolean));
+
+    // Build per-team adds/drops
     const byTeam = new Map(); // team -> {gain:Set<string>, lose:Set<string>}
     const ensure = (team)=>{ if(!byTeam.has(team)) byTeam.set(team,{gain:new Set(),lose:new Set()}); return byTeam.get(team); };
 
@@ -29,19 +29,28 @@ function deriveTradesFromTransactions(transactions){
       const team = e.team || "Unknown";
       if (e.type === "ADD")  ensure(team).gain.add(e.player);
       if (e.type === "DROP") ensure(team).lose.add(e.player);
-      // we ignore the synthetic "TRADE" markers your script added; adds/drops carry the useful info
     }
 
-    // A real trade must involve ≥2 teams and at least one add/drop total
-    const partiesRaw = [...byTeam.entries()]
-      .map(([team,obj])=>({team, gain:[...obj.gain], lose:[...obj.lose]}))
-      .filter(p => p.gain.length || p.lose.length);
+    // Decide if this tx is a trade:
+    //  - at least 2 distinct teams present, OR
+    //  - any entry marked "TRADE" (your exporter adds these on Sleeper trades)
+    const hasTradeMarker = entries.some(e => e.type === "TRADE");
+    const isTrade = hasTradeMarker || teamSet.size >= 2;
 
-    if (partiesRaw.length >= 2){
-      // normalize order for stable IDs
-      partiesRaw.sort((a,b)=> a.team.localeCompare(b.team));
+    if (!isTrade) continue;
+
+    // Ensure every seen team appears as a party even if no gain/lose captured
+    for (const t of teamSet) ensure(t);
+
+    // Normalize parties
+    const parties = [...byTeam.entries()]
+      .map(([team,obj])=>({ team, gain:[...obj.gain], lose:[...obj.lose] }))
+      .filter(p => p.gain.length || p.lose.length || teamSet.size >= 2)
+      .sort((a,b)=> a.team.localeCompare(b.team));
+
+    if (parties.length >= 2){
       const id = `w${week||0}-${trades.length+1}`;
-      trades.push({ id, week, parties: partiesRaw, created: null, status: "complete" });
+      trades.push({ id, week, parties, created:null, status:"complete" });
     }
   }
 
