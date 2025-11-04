@@ -1,5 +1,5 @@
 // ==============================
-// Tatnall Legacy — app.js (unified safe schema, fixed)
+// Tatnall Legacy — app.js (unified, with robust tab + external link handling)
 // ==============================
 
 // ---------- helpers ----------
@@ -110,7 +110,6 @@ function labelOfPlayer(pid, players){
 
   let suffix = "";
   if (pos){
-    // use simple hyphen-minus to avoid any odd unicode in some editors
     suffix = ` (${pos}${nfl ? ` - ${nfl}` : ""})`;
   }
   return nm + suffix;
@@ -131,7 +130,7 @@ function titleCaseName(s) {
 }
 
 // ---------- Sleeper Live Scoreboard ----------
-const SLEEPER_LEAGUE_ID = "1262418074540195841";   // ← put your real league ID here
+const SLEEPER_LEAGUE_ID = "1262418074540195841";
 const LIVE_POLL_MS = 20000;
 
 async function fetchJSONnolag(url){
@@ -259,7 +258,7 @@ function renderSleeperLiveOnce(wrap, { week, users, rosters, matchups }){
   wrap.appendChild(tbl);
 }
 
-// ---------- all-years / members / draft (unchanged from your version) ----------
+// ---------- all-years / members / draft ----------
 const OWNER_ALIASES = {
   "carl marvin": "Carl Marvin","cmarvin713": "Carl Marvin","sdmarvin713": "Carl Marvin","stephen marvin": "Carl Marvin",
   "conner malley": "Conner Malley","conner27lax": "Conner Malley","connerandfinn": "Conner Malley",
@@ -304,7 +303,7 @@ function aggregateMember(owner, seasons){
   let wins=0, losses=0, ties=0, games=0; let most=-Infinity, least=Infinity; let champs=0;
   for(const s of seasons){ const ownerByTeam=new Map(); (s.teams||[]).forEach(t=>{ const raw=(t.owner??t.team_name??""); ownerByTeam.set(t.team_name, canonicalOwner(raw)); });
     const champTeam=(s.teams||[]).find(t=>t.final_rank===1); if (champTeam){ const raw=(champTeam.owner??champTeam.team_name??""); if (canonicalOwner(raw)===owner) champs++; }
-    for(const m of (s.matchups||[])){ if(is2025FutureZeroZero(s,m)) continue; const hPts=Number(m.home_score??0); const aPts=Number(m.away_score??0);
+    for(const m of (s.matchups||[])){ if(is2025FutureZeroZero(s,m)) continue; const hPts=Number(m.home_score||0), aPts=Number(m.away_score||0);
       if(m.home_team && ownerByTeam.get(m.home_team)===owner){ games++; if(hPts>aPts) wins++; else if(hPts<aPts) losses++; else ties++; if(hPts>most) most=hPts; if(hPts<least) least=hPts; }
       if(m.away_team && ownerByTeam.get(m.away_team)===owner){ games++; if(aPts>hPts) wins++; else if(aPts<hPts) losses++; else ties++; if(aPts>most) most=aPts; if(aPts<least) least=aPts; } } }
   if(games===0){ most=null; least=null; } const winPct=games? Math.round((wins+ties*0.5)/games*1000)/1000 : 0;
@@ -412,10 +411,10 @@ function renderTeams(teams){
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
   if(!teams.length){
     wrap.appendChild(
-  el("div",{class:"tablewrap"},
-    el("div",{style:"padding:12px; color:#9ca3af;"},"No teams found.")
-  )
-);
+      el("div",{class:"tablewrap"},
+        el("div",{style:"padding:12px; color:#9ca3af;"},"No teams found.")
+      )
+    );
     return;
   }
   const tbl = el("table",{},
@@ -490,7 +489,7 @@ function renderTransactions(txns){
     rows
       .filter(r => !q || [r.type,r.team,r.player].some(v=> String(v||"").toLowerCase().includes(q)))
       .forEach(r => body.appendChild(el("tr",{}, el("td",{}, fmt(r.date)), el("td",{}, fmt(r.type)),
-        el("td",{}, fmt(r.team)), el("td",{}, fmt(r.player)), el("td",{}, fmt(r.faab)))));
+        el("td",{}, fmt(r.team)), el("td",{}, fmt(r.player)), el("td",{}, fmt(r.faab))));
   }
   search.oninput=apply; apply(); wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
@@ -518,7 +517,7 @@ function renderDraft(draft){
   search.oninput=apply; apply(); wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
-// ---------- Members panel (unchanged helpers + renderers) ----------
+// ---------- Members panel ----------
 function teamOwnerMap(season){
   const m = new Map();
   (season.teams||[]).forEach(t=>{
@@ -654,31 +653,65 @@ function renderMostDrafted(){
   wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
-// ---------- tabs ----------
+// ---------- tabs (improved: external links allowed; hash tabs act as SPA) ----------
 function setupTabs(){
   const header = document.querySelector("header");
   const offset = (header?.offsetHeight || 80) + 4;
-  const tabs = Array.from(document.querySelectorAll(".tabs .tab"));
-  const sections = tabs.map(a => document.querySelector(a.getAttribute("data-target") || a.getAttribute("href"))).filter(Boolean);
 
+  const tabs = Array.from(document.querySelectorAll("nav.tabs .tab"));
+  const isHash = href => typeof href === "string" && href.startsWith("#");
+  const isExternal = a => a.hasAttribute("data-external") || !isHash(a.getAttribute("href"));
+
+  // Clicks: only intercept hash tabs; let external (e.g., trade.html) navigate normally.
   tabs.forEach(a => {
     a.addEventListener("click", (e) => {
+      if (isExternal(a)) return;                    // normal navigation
+      if (e.metaKey || e.ctrlKey || e.button === 1) return;
       e.preventDefault();
-      const sel = a.getAttribute("data-target") || a.getAttribute("href");
-      const elx = document.querySelector(sel);
-      if(!elx) return;
-      const top = elx.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: "smooth" });
-      setActive(a);
+      const hash = a.getAttribute("href") || a.getAttribute("data-target") || "#summary";
+      if (location.hash !== hash) history.pushState(null, "", hash);
+      scrollToHash(hash);
+      setActiveTab(hash);
     });
   });
-  function setActiveTabOnScroll(){
-    const y = window.scrollY + offset + 1; let current = null;
-    for (const sec of sections){ const top = sec.offsetTop; if (top <= y) current = sec; }
-    if (current){ const id = "#" + current.id; const t = tabs.find(a => (a.getAttribute("data-target")||a.getAttribute("href")) === id); if (t) setActive(t); }
+
+  // Scroll-to-section
+  function scrollToHash(hash){
+    const target = document.querySelector(hash);
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: "smooth" });
   }
-  function setActive(activeEl){ tabs.forEach(x => x.classList.toggle("active", x === activeEl)); }
-  setActive(tabs[0] || null); window.addEventListener("scroll", setActiveTabOnScroll, { passive: true });
+
+  // Active state via hash/scroll
+  function setActiveTab(hash){
+    tabs.forEach(a => a.classList.toggle("active", (a.getAttribute("href") === hash)));
+  }
+  function setActiveOnScroll(){
+    const y = window.scrollY + offset + 1;
+    // consider only internal sections
+    const sections = tabs
+      .map(a => isExternal(a) ? null : document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+    let current = null;
+    for (const sec of sections){ const top = sec.offsetTop; if (top <= y) current = sec; }
+    if (current) setActiveTab("#" + current.id);
+  }
+
+  // Route on load/back-forward
+  function applyRoute(){
+    const hash = location.hash && document.querySelector(location.hash) ? location.hash : "#summary";
+    setActiveTab(hash);
+    // No auto-scroll on initial load if already near the target
+    if (!location.hash) return;
+    scrollToHash(hash);
+  }
+  window.addEventListener("popstate", applyRoute);
+  window.addEventListener("hashchange", applyRoute);
+  window.addEventListener("scroll", setActiveOnScroll, { passive: true });
+
+  applyRoute();
+  setActiveOnScroll();
 }
 
 // ---------- Live: detail route ----------
@@ -694,7 +727,7 @@ async function renderLiveMatchupDetail(mid){
 
   try{
     const [bundle, players] = await Promise.all([
-      getFullSleeperLiveBundle(String(SLEEPER_LEAGUE_ID)),   // <-- use your configured ID
+      getFullSleeperLiveBundle(String(SLEEPER_LEAGUE_ID)),
       getSleeperPlayers()
     ]);
     const { seasonYear, week, users, rosters, matchups } = bundle;
@@ -862,10 +895,9 @@ function initSleeperLive(){
       ticking = false;
     }
   }
-// First paint immediately, then poll every 20s
-tick();
-setInterval(tick, LIVE_POLL_MS);
-} // <<< CLOSES initSleeperLive()
+  tick();
+  setInterval(tick, LIVE_POLL_MS);
+}
 
 // Back button
 document.addEventListener("click", (e)=>{
@@ -880,7 +912,7 @@ window.addEventListener("hashchange", liveRouteHandler, { passive:true });
 // ---------- boot ----------
 document.addEventListener("DOMContentLoaded", () => {
   setupTabs();
-  main();                 // calls initSleeperLive() inside main()
+  main();
   startLiveDotClock();
   liveRouteHandler();
 });
