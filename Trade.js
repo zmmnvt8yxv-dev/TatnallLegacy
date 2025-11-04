@@ -1,273 +1,206 @@
-// trade.js — Trade Analysis standalone page
+// Trade Analysis — focuses on trades list, scores, and assets per side
 
-// ------- helpers -------
-const $ = (sel, root = document) => root.querySelector(sel);
-const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-const fmt = n => (Math.abs(n) >= 100 ? n.toFixed(0) : n.toFixed(1));
+// ---------- dom ----------
+const $ = (s, r=document)=>r.querySelector(s);
+const escapeHtml = s => String(s||"").replace(/[&<>"']/g,c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
 
-// lazy-load html2canvas for PNG export
-function loadHtml2Canvas() {
-  if (window.html2canvas) return Promise.resolve();
-  return new Promise((res, rej) => {
-    const s = document.createElement("script");
-    s.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
-    s.onload = res; s.onerror = rej;
-    document.head.appendChild(s);
-  });
-}
+// ---------- state ----------
+let MANIFEST, YEAR, DATA, TEAM_FILTER = "all";
 
-// ------- state -------
-let MANIFEST = null;
-let YEAR = null;
-let DATA = null;
-let TEAM_RID = null; // roster_id
-let TEAM_NAME = "";
-
-// ------- boot -------
-document.addEventListener("DOMContentLoaded", init);
-
-async function init() {
-  MANIFEST = await (await fetch("manifest.json", { cache: "no-store" })).json();
+// ---------- boot ----------
+document.addEventListener("DOMContentLoaded", async () => {
+  MANIFEST = await fetchJSON("manifest.json");
   buildSeasonSelect(MANIFEST.years);
   YEAR = +$("#seasonSelect").value;
   await loadSeason(YEAR);
   bindUI();
+});
+
+// ---------- io ----------
+async function fetchJSON(path){
+  const res = await fetch(path, {cache: "no-store"});
+  if(!res.ok) throw new Error(`HTTP ${res.status} for ${path}`);
+  return res.json();
 }
 
-function buildSeasonSelect(years) {
+// ---------- selects ----------
+function buildSeasonSelect(years){
   const sel = $("#seasonSelect");
-  sel.innerHTML = years
-    .sort((a,b)=>b-a)
-    .map(y => `<option value="${y}" ${y===Math.max(...years)?'selected':''}>${y}</option>`)
-    .join("");
+  const sorted = [...years].sort((a,b)=>b-a);
+  sel.innerHTML = sorted.map((y,i)=>`<option value="${y}" ${i===0?'selected':''}>${y}</option>`).join("");
 }
 
-async function loadSeason(y) {
+function buildTeamSelect(){
+  const sel = $("#teamSelect");
+  const opts = [`<option value="all">All Teams</option>`]
+    .concat((DATA.teams||[]).map(t=>`<option value="${t.team_id}">${escapeHtml(t.team_name)}</option>`));
+  sel.innerHTML = opts.join("");
+  sel.value = TEAM_FILTER;
+}
+
+// ---------- load ----------
+async function loadSeason(y){
   YEAR = y;
-  DATA = await (await fetch(`data/${y}.json`, { cache: "no-store" })).json();
+  DATA = await fetchJSON(`data/${y}.json`);
+  if(!Array.isArray(DATA.trade_evals)){ DATA.trade_evals = []; }
   buildTeamSelect();
-  if (!TEAM_RID) {
-    const first = DATA.teams?.[0]?.team_id || Object.keys(DATA.draft_day_roster || {})[0];
-    setTeam(+first || 1);
-  } else {
-    setTeam(TEAM_RID);
-  }
   renderAll();
 }
 
-// ------- selectors -------
-function buildTeamSelect() {
-  const sel = $("#teamSelect");
-  const options = (DATA.teams || [])
-    .map(t => `<option value="${t.team_id}">${escapeHtml(t.team_name || `Roster ${t.team_id}`)}</option>`)
-    .join("");
-  sel.innerHTML = options;
-}
-
-function setTeam(rid) {
-  TEAM_RID = +rid;
-  const t = (DATA.teams || []).find(x => +x.team_id === +rid);
-  TEAM_NAME = t?.team_name || `Roster ${rid}`;
-  $("#teamSelect").value = rid;
-}
-
-function bindUI() {
+// ---------- ui events ----------
+function bindUI(){
   $("#seasonSelect").addEventListener("change", e => loadSeason(+e.target.value));
-  $("#teamSelect").addEventListener("change", e => { setTeam(+e.target.value); renderAll(); });
-  $("#tradeSearch").addEventListener("input", () => renderTrades());
-  $("#saveDraftPng").addEventListener("click", () => savePane("#draftPane", `${YEAR}_${slug(TEAM_NAME)}_draft.png`));
-  $("#saveNowPng").addEventListener("click", () => savePane("#nowPane", `${YEAR}_${slug(TEAM_NAME)}_now.png`));
+  $("#teamSelect").addEventListener("change", e => { TEAM_FILTER = e.target.value; renderAll(); });
+  $("#tradeSearch").addEventListener("input", renderTrades);
 }
 
-// ------- render root -------
-function renderAll() {
-  renderSummary();
-  renderRosters();
+// ---------- render ----------
+function renderAll(){
+  renderOverview();
   renderTrades();
 }
 
-// ------- summary -------
-function renderSummary() {
-  const rows = tradeRowsForRoster(TEAM_RID);
+function renderOverview(){
+  // all trades or team-filtered perspective counts
+  const rows = getTradeRows();
   const total = rows.length;
-  const netSum = rows.reduce((a, r) => a + r.net_points_after, 0);
-  const best = rows.reduce((m, r) => r.score_0_to_100 > (m?.score_0_to_100 ?? -1) ? r : m, null);
-  const worst = rows.reduce((m, r) => r.score_0_to_100 < (m?.score_0_to_100 ?? 101) ? r : m, null);
+  const netSum = rows.reduce((a,r)=>a+r.net_for_team,0);
+  const best = rows.reduce((m,r)=> r.score_for_team > (m?.score_for_team ?? -1) ? r : m, null);
+  const worst= rows.reduce((m,r)=> r.score_for_team < (m?.score_for_team ?? 101)? r : m, null);
 
-  const acq = acquisitionBreakdown(TEAM_RID);
-  const grid = $("#taSummary");
-  grid.innerHTML = `
-    ${stat("Team", escapeHtml(TEAM_NAME))}
-    ${stat("Trades", String(total))}
-    ${stat("Net Points (all trades)", fmt(netSum))}
-    ${stat("Best Trade", best ? `W${best.week} · ${best.score_0_to_100}` : "—")}
-    ${stat("Worst Trade", worst ? `W${worst.week} · ${worst.score_0_to_100}` : "—")}
-    ${stat("On Roster: Draft", String(acq.draft))}
-    ${stat("On Roster: Trade", String(acq.trade))}
-    ${stat("On Roster: Waivers/FA", String(acq.waivers + acq.fa))}
+  $("#taSummary").innerHTML = [
+    stat("Trades", total),
+    stat("Net Points (sum)", fmt(netSum)),
+    stat("Best Trade", best? `W${best.week} · ${best.score_for_team}` : "—"),
+    stat("Worst Trade", worst? `W${worst.week} · ${worst.score_for_team}` : "—"),
+  ].join("");
+}
+
+function stat(label, value){
+  return `<div class="stat"><div class="label">${escapeHtml(label)}</div><div class="value">${escapeHtml(String(value))}</div></div>`;
+}
+
+function renderTrades(){
+  const q = ($("#tradeSearch").value||"").toLowerCase();
+
+  const wrap = $("#tradesWrap");
+  wrap.innerHTML = "";
+
+  // table header
+  const table = document.createElement("table");
+  table.className = "table";
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th style="width:64px;">Week</th>
+        <th>Teams</th>
+        <th>Assets</th>
+        <th style="width:140px;">Net Pts</th>
+        <th style="width:120px;">Score</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
   `;
-}
+  wrap.appendChild(table);
+  const tbody = table.querySelector("tbody");
 
-function stat(label, value) {
-  return `<div class="stat">
-    <div class="label">${escapeHtml(label)}</div>
-    <div class="value">${value}</div>
-  </div>`;
-}
-
-// ------- rosters (Draft vs Now) -------
-function renderRosters() {
-  renderRosterPane($("#draftPane"), TEAM_RID, "draft");
-  renderRosterPane($("#nowPane"), TEAM_RID, "now");
-}
-
-function renderRosterPane(container, rid, kind) {
-  container.innerHTML = "";
-  const playerIds = (kind === "draft"
-    ? DATA.draft_day_roster?.[String(rid)] || []
-    : DATA.current_roster?.[String(rid)] || []);
-  const cards = playerIds.map(pid => playerCard(pid, rid, kind));
-  for (const c of cards) container.appendChild(c);
-}
-
-function playerCard(pid, rid, kind) {
-  const p = DATA.player_index?.[pid] || {};
-  const div = document.createElement("div");
-  div.className = "player-card";
-  const acq = DATA.acquisitions?.find(a => a.player_id === pid && +a.roster_id === +rid);
-  const chip = kind === "draft" ? "DRAFT" : (acq?.obtained?.method || "").toUpperCase();
-  const lineage = formatLineage(acq?.history || []);
-  div.innerHTML = `
-    <div class="pc-name">${escapeHtml(p.full_name || pid)}</div>
-    <div class="pc-meta">${escapeHtml(p.pos || "")} ${p.team ? "· " + escapeHtml(p.team) : ""}</div>
-    <div class="pc-chip">${chip || ""}</div>
-  `;
-  if (lineage) div.title = lineage;
-  return div;
-}
-
-function formatLineage(hist) {
-  if (!hist || !hist.length) return "";
-  return hist.map(h => {
-    const m = (h.method || "").toUpperCase();
-    return h.week ? `${m} (W${h.week})` : m;
-  }).join(" → ");
-}
-
-function acquisitionBreakdown(rid) {
-  const now = DATA.current_roster?.[String(rid)] || [];
-  const tally = { draft: 0, trade: 0, waivers: 0, fa: 0 };
-  for (const pid of now) {
-    const a = DATA.acquisitions?.find(x => x.player_id === pid && +x.roster_id === +rid);
-    if (a?.obtained?.method && tally[a.obtained.method] !== undefined) tally[a.obtained.method]++;
-  }
-  return tally;
-}
-
-// ------- trades table -------
-function tradeRowsForRoster(rid) {
-  const rows = [];
-  for (const te of DATA.trade_evals || []) {
-    const pr = (te.per_roster || []).find(x => +x.roster_id === +rid);
-    if (pr) rows.push({
-      week: te.week,
-      tx_id: te.tx_id,
-      players_in: pr.players_in || [],
-      players_out: pr.players_out || [],
-      net_points_after: Number(pr.net_points_after || 0),
-      score_0_to_100: Number(pr.score_0_to_100 || 50)
-    });
-  }
-  return rows.sort((a,b) => a.week - b.week);
-}
-
-function renderTrades() {
-  const tbody = ensureTable($("#tradesWrap"), [
-    "Week","Players In","Players Out","Net Pts After","Score"
-  ]);
-  const q = ($("#tradeSearch").value || "").toLowerCase();
-  tbody.innerHTML = "";
-
-  const rows = tradeRowsForRoster(TEAM_RID);
-  for (const r of rows) {
-    const inNames = r.players_in.map(nameOf).join(", ");
-    const outNames = r.players_out.map(nameOf).join(", ");
-    const hay = `${inNames} ${outNames} W${r.week}`.toLowerCase();
-    if (q && !hay.includes(q)) continue;
+  const rows = getTradeRows();
+  for(const row of rows){
+    const hay = (row.search_blob).toLowerCase();
+    if(q && !hay.includes(q)) continue;
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td class="mono">W${r.week}</td>
-      <td>${escapeHtml(inNames) || "—"}</td>
-      <td>${escapeHtml(outNames) || "—"}</td>
-      <td class="mono ${r.net_points_after>=0?'pos':'neg'}">${fmt(r.net_points_after)}</td>
+      <td class="mono">W${row.week}</td>
+      <td><div class="teams">
+            <div class="team ${row.winner===row.team_a ? 'winner':''}">
+              ${escapeHtml(row.team_a_name)}
+            </div>
+            <div class="team ${row.winner===row.team_b ? 'winner':''}">
+              ${escapeHtml(row.team_b_name)}
+            </div>
+          </div>
+      </td>
       <td>
-        <div class="scorebar" aria-label="${r.score_0_to_100}">
-          <div class="fill" style="width:${r.score_0_to_100}%"></div>
-          <span class="scoretxt">${r.score_0_to_100}</span>
+        <div class="assets">
+          <div><span class="arrow">→</span> <strong>${escapeHtml(row.team_a_name)}</strong>: ${escapeHtml(row.to_a_names || '—')}</div>
+          <div><span class="arrow">→</span> <strong>${escapeHtml(row.team_b_name)}</strong>: ${escapeHtml(row.to_b_names || '—')}</div>
+        </div>
+      </td>
+      <td class="mono ${row.net_for_team>=0?'pos':'neg'}">${fmt(row.net_for_team)}</td>
+      <td>
+        <div class="scorepill" title="${row.score_for_team}">
+          <div class="bar" style="width:${row.score_for_team}%"></div>
+          <span class="num">${row.score_for_team}</span>
         </div>
       </td>
     `;
     tbody.appendChild(tr);
   }
-}
 
-function nameOf(pid) {
-  return DATA.player_index?.[pid]?.full_name || pid;
-}
-
-function ensureTable(container, headers) {
-  if (!container.firstElementChild) {
-    const table = document.createElement("table");
-    table.className = "table";
-    const thead = document.createElement("thead");
-    thead.innerHTML = `<tr>${headers.map(h=>`<th>${escapeHtml(h)}</th>`).join("")}</tr>`;
-    const tbody = document.createElement("tbody");
-    table.appendChild(thead); table.appendChild(tbody);
-    container.appendChild(table);
-    return tbody;
+  if(!tbody.children.length){
+    const empty = document.createElement("div");
+    empty.className = "muted";
+    empty.style.padding = "10px";
+    empty.textContent = "No trades match this filter.";
+    wrap.appendChild(empty);
   }
-  return container.querySelector("tbody");
 }
 
-// ------- export PNG -------
-async function savePane(selector, filename) {
-  await loadHtml2Canvas();
-  const node = document.querySelector(selector);
-  const canvas = await window.html2canvas(node, { scale: 2, useCORS: true });
-  const a = document.createElement("a");
-  a.download = filename;
-  a.href = canvas.toDataURL("image/png");
-  a.click();
+// ---------- data shaping ----------
+function getTradeRows(){
+  // Output: one row per transaction from the perspective of either:
+  //  - a specific team (TEAM_FILTER != 'all') -> only that team's side
+  //  - "all" -> both sides (two rows per trade)
+  const rows = [];
+  const nameOf = pid => DATA.player_index?.[pid]?.full_name || pid;
+
+  for(const t of DATA.trade_evals){
+    // Expect exactly two teams; if more, still create one row per side.
+    for(const pr of t.per_roster || []){
+      const other = (t.per_roster || []).find(x => x !== pr) || null;
+
+      // filter by team selection
+      if(TEAM_FILTER !== "all" && String(pr.roster_id) !== String(TEAM_FILTER)) continue;
+
+      const teamName = teamNameByRid(pr.roster_id);
+      const otherName = other ? teamNameByRid(other.roster_id) : "—";
+
+      const to_this = (pr.players_in||[]).map(nameOf).join(", ");
+      const to_other= (pr.players_out||[]).map(nameOf).join(", ");
+
+      const winnerRid = (() => {
+        if(!other) return null;
+        const a = pr.score_0_to_100;
+        const b = other.score_0_to_100;
+        return a===b ? null : (a>b ? pr.roster_id : other.roster_id);
+      })();
+
+      rows.push({
+        week: t.week,
+        tx_id: t.tx_id,
+        team_a: pr.roster_id,
+        team_b: other?.roster_id ?? null,
+        team_a_name: teamName,
+        team_b_name: otherName,
+        to_a_names: to_this,       // assets that went to this row's team
+        to_b_names: to_other,      // assets that left this row's team (thus went to the other)
+        net_for_team: Number(pr.net_points_after || 0),
+        score_for_team: Number(pr.score_0_to_100 || 50),
+        winner: winnerRid,
+        search_blob: `${teamName} ${otherName} ${to_this} ${to_other} W${t.week}`
+      });
+    }
+  }
+  // If "all", show both sides interleaved but grouped by week/tx
+  rows.sort((a,b)=> (a.week - b.week) || (String(a.tx_id).localeCompare(String(b.tx_id))));
+  return rows;
 }
 
-// ------- utils -------
-function escapeHtml(s) {
-  return String(s || "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function teamNameByRid(rid){
+  const t = (DATA.teams||[]).find(x => String(x.team_id)===String(rid));
+  return t?.team_name || `Roster ${rid}`;
 }
-function slug(s){return String(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");}
 
-/* minimal styles scoped to this page (optional if your styles.css already covers these)
-   Add to styles.css if you prefer.
-*/
-const style = document.createElement("style");
-style.textContent = `
-  .two-col { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 900px){ .two-col{ grid-template-columns: 1fr; } }
-  .cards { display:grid; gap:8px; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); }
-  .player-card { background:#161b22; border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px; }
-  .player-card .pc-name { font-weight:600; }
-  .player-card .pc-meta { opacity:0.75; font-size:0.9rem; }
-  .player-card .pc-chip { margin-top:6px; display:inline-block; font-size:0.75rem; padding:2px 6px; border-radius:999px; border:1px solid rgba(255,255,255,0.12); opacity:0.9; }
-  .table { width:100%; border-collapse:collapse; }
-  .table th, .table td { padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.08); vertical-align:top; }
-  .mono { font-variant-numeric: tabular-nums; }
-  .pos { color:#58d68d; } .neg { color:#ff6b6b; }
-  .scorebar { position:relative; height:20px; background:#11161c; border:1px solid rgba(255,255,255,0.08); border-radius:6px; overflow:hidden; }
-  .scorebar .fill { position:absolute; inset:0 auto 0 0; background:#238636; }
-  .scorebar .scoretxt { position:relative; display:block; text-align:center; font-size:0.85rem; }
-  .stat { background:#0f141a; border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:10px; }
-  .stat .label { opacity:0.7; font-size:0.85rem; }
-  .stat .value { font-weight:700; margin-top:4px; }
-`;
-document.head.appendChild(style);
+// ---------- utils ----------
+function fmt(n){ n = Number(n||0); return (Math.abs(n)>=100 ? n.toFixed(0) : n.toFixed(1)); }
