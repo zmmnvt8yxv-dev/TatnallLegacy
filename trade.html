@@ -1,4 +1,3 @@
-/
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,6 +18,7 @@
       <select id="seasonSelect" aria-label="Season"></select>
       <label for="teamSelect" style="margin-left:12px;">Team:</label>
       <select id="teamSelect" aria-label="Team"></select>
+      <input id="tradeSearch" type="search" placeholder="Search player/team…" aria-label="Filter trades" style="margin-left:12px;min-width:220px;">
     </div>
   </header>
 
@@ -30,28 +30,7 @@
 
     <section class="panel" aria-labelledby="ta-trades-title">
       <h2 id="ta-trades-title">Trades</h2>
-      <div class="controls row">
-        <input id="tradeSearch" type="search" placeholder="Filter by player/team…" aria-label="Filter trades" />
-      </div>
       <div class="tablewrap" id="tradesWrap"></div>
-    </section>
-
-    <section class="panel" aria-labelledby="ta-rosters-title">
-      <h2 id="ta-rosters-title">Draft Day vs Now</h2>
-      <div class="controls row" style="gap:8px;">
-        <button id="saveDraftPng" class="btn" type="button">Save Draft Day Image</button>
-        <button id="saveNowPng" class="btn" type="button">Save Current Team Image</button>
-      </div>
-      <div id="rostersSplit" class="two-col">
-        <div>
-          <h3>Draft Day</h3>
-          <div id="draftPane" class="cards"></div>
-        </div>
-        <div>
-          <h3>Now</h3>
-          <div id="nowPane" class="cards"></div>
-        </div>
-      </div>
     </section>
   </main>
 
@@ -59,7 +38,6 @@
     <small>Built from Sleeper data. Static UI on GitHub Pages.</small>
   </footer>
 
-  <!-- separate script; we will design this next -->
   <script src="trade.js" defer></script>
 </body>
 </html>
