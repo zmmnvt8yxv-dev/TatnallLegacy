@@ -1367,6 +1367,118 @@
           "sent_picks": []
         }
       ]
+    },
+    {
+      "id": "1291507704723947520",
+      "week": 9,
+      "created": 1762296598189,
+      "status": "complete",
+      "parties": [
+        {
+          "roster_id": 4,
+          "team": "2008 Detroit Lions",
+          "gained_players": [
+            {
+              "id": "4881",
+              "name": "Lamar Jackson",
+              "pos": "QB",
+              "nfl": "BAL"
+            },
+            {
+              "id": "8132",
+              "name": "Tyler Allgeier",
+              "pos": "RB",
+              "nfl": "ATL"
+            },
+            {
+              "id": "8676",
+              "name": "Rashid Shaheed",
+              "pos": "WR",
+              "nfl": "SEA"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "12534",
+              "name": "Kyle Monangai",
+              "pos": "RB",
+              "nfl": "CHI"
+            },
+            {
+              "id": "421",
+              "name": "Matthew Stafford",
+              "pos": "QB",
+              "nfl": "LAR"
+            },
+            {
+              "id": "7525",
+              "name": "DeVonta Smith",
+              "pos": "WR",
+              "nfl": "PHI"
+            },
+            {
+              "id": "8137",
+              "name": "George Pickens",
+              "pos": "WR",
+              "nfl": "DAL"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 5,
+          "team": "FantasyGPT 2.5",
+          "gained_players": [
+            {
+              "id": "12534",
+              "name": "Kyle Monangai",
+              "pos": "RB",
+              "nfl": "CHI"
+            },
+            {
+              "id": "421",
+              "name": "Matthew Stafford",
+              "pos": "QB",
+              "nfl": "LAR"
+            },
+            {
+              "id": "7525",
+              "name": "DeVonta Smith",
+              "pos": "WR",
+              "nfl": "PHI"
+            },
+            {
+              "id": "8137",
+              "name": "George Pickens",
+              "pos": "WR",
+              "nfl": "DAL"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "4881",
+              "name": "Lamar Jackson",
+              "pos": "QB",
+              "nfl": "BAL"
+            },
+            {
+              "id": "8132",
+              "name": "Tyler Allgeier",
+              "pos": "RB",
+              "nfl": "ATL"
+            },
+            {
+              "id": "8676",
+              "name": "Rashid Shaheed",
+              "pos": "WR",
+              "nfl": "SEA"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        }
+      ]
     }
   ]
 }
