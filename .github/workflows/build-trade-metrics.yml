@@ -1,3 +1,4 @@
+# .github/workflows/build-trade-metrics.yml
 name: Build Trade Metrics (2025)
 
 on:
@@ -35,6 +36,46 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run trade metrics builder
+        env:
+          SLEEPER_LEAGUE_ID: ${{ secrets.SLEEPER_LEAGUE_ID }}
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          LID="${SLEEPER_LEAGUE_ID:-${DEFAULT_LEAGUE_ID}}"
+          echo "Using League ID: $LID"
+          if [ -f "scripts/build_trade_metrics_2025.py" ]; then
+            python scripts/build_trade_metrics_2025.py "$LID"
+          else
+            python build_trade_metrics_2025.py "$LID"
+          fi
+
+      - name: Commit any new data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/lineups-2025.json data/proj-2025-cum.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Update trade metrics data [skip ci]"
+            git push
+          else
+            echo "No data changes detected."
+          fi
+
+      - name: Upload artifacts (best-effort)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trade-metrics-2025
+          path: |
+            data/lineups-2025.json
+            data/proj-2025-cum.json
+          if-no-files-found: warn
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
