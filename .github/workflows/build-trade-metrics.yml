@@ -49,7 +49,7 @@ jobs:
           mkdir -p data
           LID="${SLEEPER_LEAGUE_ID:-${DEFAULT_LEAGUE_ID}}"
           echo "Using League ID: $LID"
-          python scripts/build_trade_metrics_2025.py "$LID"
+          python build_trade_metrics_2025.py "$LID"
 
       - name: Commit any new data
         run: |
