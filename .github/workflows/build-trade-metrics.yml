@@ -120,7 +120,7 @@ jobs:
             git push
           else
             echo "No data changes detected."
-          fi
+          
 
       - name: Upload artifacts (best-effort)
         if: always()
