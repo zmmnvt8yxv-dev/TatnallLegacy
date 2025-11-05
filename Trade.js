@@ -1,4 +1,4 @@
-// trade.js — minimal, uses only data/trades-2025.json
+/// trade.js — minimal, uses only data/trades-2025.json
 
 const $ = s => document.querySelector(s);
 const el = (t,a={},...kids)=>{const n=document.createElement(t);
