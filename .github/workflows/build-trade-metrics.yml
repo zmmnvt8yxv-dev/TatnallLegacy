@@ -1,4 +1,3 @@
-# .github/workflows/build-trade-metrics.yml
 name: Build Trade Metrics (2025)
 
 on:
@@ -6,7 +5,7 @@ on:
   push:
     branches: [ main, master ]
     paths:
-      - build_trade_metrics_2025.py
+      - scripts/build_trade_metrics_2025.py
       - .github/workflows/build-trade-metrics.yml
   schedule:
     - cron: "22 6 * * 2,5"
@@ -20,12 +19,11 @@ concurrency:
 
 env:
   PYTHON_VERSION: "3.11"
-  SLEEPER_LEAGUE_ID: ${{ secrets.SLEEPER_LEAGUE_ID }}
+  DEFAULT_LEAGUE_ID: "1262418074540195841"
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,50 +35,44 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Build trade metrics JSONs
+      - name: Run trade metrics builder
         env:
-          SLEEPER_LEAGUE_ID: ${{ env.SLEEPER_LEAGUE_ID }}
+          SLEEPER_LEAGUE_ID: ${{ secrets.SLEEPER_LEAGUE_ID }}
         run: |
           set -euo pipefail
-          python build_trade_metrics_2025.py
-          # Do not fail if files are missing on first run; just report
+          mkdir -p data
+          LID="${SLEEPER_LEAGUE_ID:-${DEFAULT_LEAGUE_ID}}"
+          echo "Using League ID: $LID"
+          if [ -f "build_trade_metrics_2025.py" ]; then
+            python build_trade_metrics_2025.py "$LID"
+          else
+            python scripts/build_trade_metrics_2025.py "$LID"
+          fi
+          echo "Completed build_trade_metrics_2025.py"
+
           for f in data/lineups-2025.json data/proj-2025-cum.json; do
             if [ -f "$f" ]; then
-              echo "Created: $f"
-              wc -c "$f"
+              echo "✓ $f"
             else
-              echo "WARNING: $f not found (first run or upstream fetch empty)."
+              echo "⚠️ WARNING: $f not generated (likely first run or no data)."
             fi
           done
 
-      - name: Commit changes (if any)
+      - name: Commit any new data
         run: |
-          set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Stage only if present
-          ADDED=0
-          for f in data/lineups-2025.json data/proj-2025-cum.json; do
-            if [ -f "$f" ]; then
-              git add "$f"
-              ADDED=1
-            fi
-          done
-          if [ "$ADDED" -eq 1 ]; then
-            # Commit only if there are diffs
-            if ! git diff --cached --quiet; then
-              git commit -m "Update trade metrics for 2025 [skip ci]"
-              git push
-            else
-              echo "No changes to commit."
-            fi
+          git add data/lineups-2025.json data/proj-2025-cum.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Update trade metrics data [skip ci]"
+            git push
           else
-            echo "No files generated; skipping commit."
+            echo "No data changes detected."
           fi
 
       - name: Upload artifacts (best-effort)
