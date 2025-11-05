@@ -6,10 +6,10 @@ on:
   push:
     branches: [ main, master ]
     paths:
-      - TatnallLegacy/build_trade_metrics_2025.py
+      - scripts/build_trade_metrics_2025.py
       - .github/workflows/build-trade-metrics.yml
   schedule:
-    - cron: "22 6 * * 2,5"  # Tue/Fri 06:22 UTC
+    - cron: "22 6 * * 2,5"
 
 permissions:
   contents: write
@@ -20,7 +20,7 @@ concurrency:
 
 env:
   PYTHON_VERSION: "3.11"
-  SLEEPER_LEAGUE_ID: ${{ secrets.SLEEPER_LEAGUE_ID }} # set in repo secrets; falls back inside script if unset
+  SLEEPER_LEAGUE_ID: ${{ secrets.SLEEPER_LEAGUE_ID }}
 
 jobs:
   build:
@@ -42,29 +42,48 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      # OPTIONAL: run your existing season build first if it generates data/2025.json
-      # - name: Build season JSON
-      #   run: |
-      #     python scripts/get_2025.py
-
       - name: Build trade metrics JSONs
         env:
           SLEEPER_LEAGUE_ID: ${{ env.SLEEPER_LEAGUE_ID }}
         run: |
+          set -euo pipefail
           python scripts/build_trade_metrics_2025.py
-          ls -lh data/lineups-2025.json data/proj-2025-cum.json
+          # Do not fail if files are missing on first run; just report
+          for f in data/lineups-2025.json data/proj-2025-cum.json; do
+            if [ -f "$f" ]; then
+              echo "Created: $f"
+              wc -c "$f"
+            else
+              echo "WARNING: $f not found (first run or upstream fetch empty)."
+            fi
+          done
 
       - name: Commit changes (if any)
         run: |
-          set -e
-          git diff --quiet -- data/lineups-2025.json data/proj-2025-cum.json && exit 0
+          set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/lineups-2025.json data/proj-2025-cum.json
-          git commit -m "Update trade metrics for 2025 [skip ci]"
-          git push
+          # Stage only if present
+          ADDED=0
+          for f in data/lineups-2025.json data/proj-2025-cum.json; do
+            if [ -f "$f" ]; then
+              git add "$f"
+              ADDED=1
+            fi
+          done
+          if [ "$ADDED" -eq 1 ]; then
+            # Commit only if there are diffs
+            if ! git diff --cached --quiet; then
+              git commit -m "Update trade metrics for 2025 [skip ci]"
+              git push
+            else
+              echo "No changes to commit."
+            fi
+          else
+            echo "No files generated; skipping commit."
+          fi
 
-      - name: Upload artifacts (diagnostic)
+      - name: Upload artifacts (best-effort)
         if: always()
         uses: actions/upload-artifact@v4
         with:
