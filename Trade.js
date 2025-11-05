@@ -6,7 +6,7 @@ const fmt = n => (n==null? "": (Math.round(Number(n)*100)/100).toString());
 
 async function loadManifest(){ const r=await fetch("manifest.json",{cache:"no-store"}); if(!r.ok) return {years:[]}; return r.json(); }
 async function loadTrades(year){
-  const r = await fetch(`data/trades-${year}.json?ts=${Date.now()}`, {cache:"no-store"});
+  const r = await fetch(`data/trades-2025.json?ts=${Date.now()}`, {cache:"no-store"});
   if(!r.ok) throw new Error("trades file missing");
   return r.json(); // {year, league_id, teams:[{roster_id,team,...}], trades:[...]}
 }
