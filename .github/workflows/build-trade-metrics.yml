@@ -116,11 +116,11 @@ jobs:
             echo "No data changes detected."
           fi
 
-      - name: Upload artifacts (best-effort)
+           - name: Upload artifacts (best-effort)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: trade-metrics-2025
+          name: trade-metrics-2025-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             data/lineups-2025.json
             data/proj-2025-cum.json
