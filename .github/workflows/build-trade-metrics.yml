@@ -6,7 +6,7 @@ on:
   push:
     branches: [ main, master ]
     paths:
-      - /build_trade_metrics_2025.py
+      - build_trade_metrics_2025.py
       - .github/workflows/build-trade-metrics.yml
   schedule:
     - cron: "22 6 * * 2,5"
@@ -47,7 +47,7 @@ jobs:
           SLEEPER_LEAGUE_ID: ${{ env.SLEEPER_LEAGUE_ID }}
         run: |
           set -euo pipefail
-          python /build_trade_metrics_2025.py
+          python build_trade_metrics_2025.py
           # Do not fail if files are missing on first run; just report
           for f in data/lineups-2025.json data/proj-2025-cum.json; do
             if [ -f "$f" ]; then
