@@ -105,23 +105,44 @@ def fetch_lineups_rows(league_id, roster_by_id):
 # ---------------- PROJECTIONS (CUMULATIVE ROS) ----------------
 def fetch_weekly_projections(season_year, week):
     """
-    Returns {player_id(str): projected_points(float)} for that week.
+    Return {player_id: projected_points} for week.
+    Endpoint: /projections/nfl/<season>/<week>?season_type=regular&position[]=QB&... 
     """
-    url = f"https://api.sleeper.app/projections/nfl/regular/{season_year}/{week}"
-    r = S.get(url, timeout=30)
-    if r.status_code in (404, 400):
+    params = [
+        ("season_type", "regular"),
+        ("position[]", "QB"),
+        ("position[]", "RB"),
+        ("position[]", "WR"),
+        ("position[]", "TE"),
+        ("position[]", "K"),
+        ("position[]", "DEF"),
+        ("position[]", "FLEX"),
+    ]
+    url = f"https://api.sleeper.app/projections/nfl/{season_year}/{week}"
+    r = S.get(url, params=params, timeout=30)
+    if r.status_code in (400, 404):
         return {}
     r.raise_for_status()
     arr = r.json() or []
     out = {}
     for row in arr:
-        pid = row.get("player_id") or (row.get("player") or {}).get("player_id") or row.get("id")
+        pid = (
+            row.get("player_id")
+            or (row.get("player") or {}).get("player_id")
+            or row.get("id")
+        )
         if not pid:
             continue
-        val = row.get("fp")
-        if val is None: val = row.get("fpts")
-        if val is None: val = row.get("proj")
-        if val is None: val = row.get("points", 0)
+        # common numeric fields seen in responses
+        val = (
+            row.get("fp", None)
+            if row.get("fp", None) is not None else
+            row.get("fpts", None)
+            if row.get("fpts", None) is not None else
+            row.get("proj", None)
+            if row.get("proj", None) is not None else
+            row.get("points", 0)
+        )
         try:
             out[str(pid)] = float(val or 0.0)
         except Exception:
