@@ -3,20 +3,16 @@ name: Build Trade Metrics (2025)
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "22 6 * * 2,5"
   push:
     branches: [ main, master ]
     paths:
-      - scripts/build_trade_metrics_2025.py
+      - build_trade_metrics_2025.py
       - .github/workflows/build-trade-metrics.yml
-  schedule:
-    - cron: "22 6 * * 2,5"
 
 permissions:
   contents: write
-
-concurrency:
-  group: build-trade-metrics
-  cancel-in-progress: false
 
 env:
   PYTHON_VERSION: "3.11"
@@ -30,18 +26,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: true
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Run trade metrics builder
+      - name: Run builder
         env:
           SLEEPER_LEAGUE_ID: ${{ secrets.SLEEPER_LEAGUE_ID }}
         run: |
@@ -50,17 +47,34 @@ jobs:
           LID="${SLEEPER_LEAGUE_ID:-${DEFAULT_LEAGUE_ID}}"
           echo "Using League ID: $LID"
           python build_trade_metrics_2025.py "$LID"
+          echo "==== data dir ===="
+          ls -lah data || true
 
-      - name: Commit any new data
+      - name: Diagnose git state
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/lineups-2025.json data/proj-2025-cum.json || true
-          if ! git diff --cached --quiet; then
-            git commit -m "Update trade metrics data [skip ci]"
-            git push
+          echo "Ref name: ${{ github.ref_name }}"
+          git status --porcelain=v1
+          echo "---- .gitignore matches on data/ ----"
+          git check-ignore -v data/* || true
+
+      - name: Commit and push data
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+          git add -A data
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
           else
-            echo "No data changes detected."
+            git commit -m "Update trade metrics data for 2025 [skip ci]"
+            # keep branch up-to-date to avoid non-fast-forward
+            git fetch origin "${BRANCH_NAME}"
+            git pull --rebase origin "${BRANCH_NAME}" || true
+            git push origin HEAD:"${BRANCH_NAME}"
           fi
 
       - name: Upload artifacts (best-effort)
