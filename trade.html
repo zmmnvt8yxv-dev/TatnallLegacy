@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Tatnall League — Trade Analysis</title>
+  <title>Trade Analysis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="./" />
   <link rel="stylesheet" href="styles.css" />
@@ -11,9 +11,10 @@
     .pill{padding:.45rem .75rem;border:1px solid #3b3b3b;border-radius:.75rem;color:#d1d5db;text-decoration:none}
     .pill:hover{background:#1f2937}
     .muted{color:#9ca3af}
-    .trade-card{border:1px solid #2f2f2f;border-radius:.75rem;padding:12px}
+    .card{border:1px solid #2f2f2f;border-radius:.75rem;padding:12px;margin-bottom:12px}
     .party{border:1px solid #2f2f2f;border-radius:.65rem;padding:10px;margin:8px 0}
-    #q{min-width:240px}
+    main{padding:12px 16px}
+    #q{min-width:260px}
   </style>
 </head>
 <body>
@@ -23,12 +24,11 @@
     <input id="q" type="search" placeholder="Search player/team…" aria-label="Search" />
   </header>
 
-  <main style="padding:12px 16px;">
-    <div id="meta" class="muted" style="margin-bottom:8px;"></div>
-    <div id="list" style="display:grid;gap:12px;"></div>
-  </main>
-<div id="meta"></div> and <div id="list"></div>.
-  <noscript><div class="panel">Enable JavaScript to view trades.</div></noscript>
+  <!-- THESE TWO NODES ARE REQUIRED -->
+  <div id="meta" class="muted" style="padding:0 16px 8px"></div>
+  <main id="list"></main>
+
+  <noscript><div class="card">Enable JavaScript.</div></noscript>
   <script src="trade.js" defer></script>
 </body>
 </html>
