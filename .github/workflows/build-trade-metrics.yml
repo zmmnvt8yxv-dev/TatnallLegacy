@@ -3,7 +3,10 @@ name: Build trade metrics (2025)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "20 18 * * 5"   # Fri 18:20 UTC (adjust as needed)
+    - cron: "20 18 * * 5"
+
+permissions:
+  contents: write   # <-- REQUIRED for git push
 
 env:
   PYTHON_VERSION: "3.11"
@@ -15,6 +18,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # ensure token is wired
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,9 +40,11 @@ jobs:
           mkdir -p data
           LID="${SLEEPER_LEAGUE_ID:-${DEFAULT_LEAGUE_ID}}"
           echo "Using League ID: $LID"
-          python build_trade_metrics_2025.py "$LID"
+          python scripts/build_trade_metrics_2025.py "$LID"
 
       - name: Commit any new data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
           git config user.name  "github-actions[bot]"
@@ -44,7 +52,9 @@ jobs:
           git add data/lineups-2025.json data/proj-2025-cum.json || true
           if ! git diff --cached --quiet; then
             git commit -m "Update trade metrics data [skip ci]"
-            git push
+            # force origin URL to use the workflow token
+            git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git push origin HEAD:main
           else
             echo "No data changes detected."
           fi
