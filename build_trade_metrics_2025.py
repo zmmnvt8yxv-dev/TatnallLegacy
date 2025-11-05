@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 # scripts/build_trade_metrics_2025.py
+# Generates:
+#   data/lineups-2025.json      -> started points by team/player per week
+#   data/proj-2025-cum.json     -> cumulative ROS projections keyed by "start week"
+
 import os, sys, json, time
 from pathlib import Path
 import requests
@@ -9,7 +13,7 @@ YEAR = 2025
 DEFAULT_LEAGUE_ID = "1262418074540195841"
 BASE = "https://api.sleeper.app/v1"
 REG_SEASON_WEEKS = 18
-UA = {"User-Agent": "tatnall-legacy/trade-metrics/1.2"}
+UA = {"User-Agent": "tatnall-legacy/trade-metrics/1.3"}
 
 # ---------------- RESOLUTION ----------------
 def resolve_league_id():
@@ -35,6 +39,7 @@ def build_roster_maps(league_id):
     users   = get(f"{BASE}/league/{league_id}/users") or []
     rosters = get(f"{BASE}/league/{league_id}/rosters") or []
     u_by_id = {u["user_id"]: u for u in users}
+
     def team_label(r):
         meta = r.get("metadata") or {}
         u = u_by_id.get(r.get("owner_id")) or {}
@@ -46,6 +51,7 @@ def build_roster_maps(league_id):
             or u.get("display_name")
             or f"Roster {r.get('roster_id')}"
         )
+
     roster_by_id = {}
     for r in rosters:
         roster_by_id[r["roster_id"]] = {
@@ -58,6 +64,7 @@ def build_roster_maps(league_id):
 def fetch_lineups_rows(league_id, roster_by_id):
     """
     rows: {week, team, player_id, player, started:true, points}
+    Only starters; bench omitted.
     """
     rows = []
     for w in range(1, REG_SEASON_WEEKS + 1):
@@ -65,15 +72,16 @@ def fetch_lineups_rows(league_id, roster_by_id):
         if wk is None:
             break
         if not wk:
-            # still allow later weeks; Sleeper can return [] early
-            time.sleep(0.25)
+            time.sleep(0.2)
             continue
+
         for m in wk:
             rid = m.get("roster_id")
             team = roster_by_id.get(rid, {}).get("team_name") or f"Roster {rid}"
             starters = m.get("starters") or []
             starters_points = m.get("starters_points") or []
             players_points = m.get("players_points") or {}
+
             for i, pid in enumerate(starters):
                 if not pid:
                     continue
@@ -82,15 +90,16 @@ def fetch_lineups_rows(league_id, roster_by_id):
                     pts = float(starters_points[i] or 0.0)
                 else:
                     pts = float(players_points.get(pid, 0.0) or 0.0)
+
                 rows.append({
                     "week": w,
                     "team": team,
                     "player_id": str(pid),
-                    "player": str(pid),   # name not needed; UI keys by team+name text
+                    "player": str(pid),   # name not required for client math
                     "started": True,
                     "points": round(pts, 4),
                 })
-        time.sleep(0.25)
+        time.sleep(0.2)
     return rows
 
 # ---------------- PROJECTIONS (CUMULATIVE ROS) ----------------
@@ -109,9 +118,9 @@ def fetch_weekly_projections(season_year, week):
         pid = row.get("player_id") or (row.get("player") or {}).get("player_id") or row.get("id")
         if not pid:
             continue
-        val = row.get("fp", None)
-        if val is None: val = row.get("fpts", None)
-        if val is None: val = row.get("proj", None)
+        val = row.get("fp")
+        if val is None: val = row.get("fpts")
+        if val is None: val = row.get("proj")
         if val is None: val = row.get("points", 0)
         try:
             out[str(pid)] = float(val or 0.0)
@@ -127,32 +136,36 @@ def fetch_nfl_state_year_week():
 
 def build_cumulative_from(season_year):
     """
-    cumulative_from[w][pid] = sum(proj for weeks w+1..REG_SEASON_WEEKS)
+    cumulative_from[w][pid] = sum(projection(pid) for weeks (w+1..REG_SEASON_WEEKS))
     """
     weekly = {}
     all_pids = set()
+
     for w in range(1, REG_SEASON_WEEKS + 1):
         try:
             weekly[w] = fetch_weekly_projections(season_year, w)
             all_pids.update(weekly[w].keys())
         except requests.HTTPError:
             weekly[w] = {}
-        time.sleep(0.25)
+        time.sleep(0.2)
 
-    cumulative_from = {}
-    for w in range(1, REG_SEASON_WEEKS + 1):
-        acc = {}
-        ssum = {}
-        # accumulate backwards for efficiency
-    # compute suffix sums
+    # suffix sum by player id
     suffix = {pid: 0.0 for pid in all_pids}
+    cumulative_from = {}
+
     for w in range(REG_SEASON_WEEKS, 0, -1):
         wkmap = weekly.get(w, {})
+        # update suffix with week w
         for pid in all_pids:
             suffix[pid] += float(wkmap.get(pid, 0.0) or 0.0)
-        # store sum for weeks (w..end); we need (w+1..end)
-        cumulative_from[w] = {pid: round(suffix[pid] - float(wkmap.get(pid, 0.0) or 0.0), 4)
-                              for pid in all_pids if (suffix[pid] - float(wkmap.get(pid, 0.0) or 0.0)) > 0.0}
+        # for key w, store sum of (w+1..end) => suffix minus week w
+        cf = {}
+        for pid in all_pids:
+            val = suffix[pid] - float(wkmap.get(pid, 0.0) or 0.0)
+            if val > 0.0:
+                cf[pid] = round(val, 4)
+        cumulative_from[w] = cf
+
     return cumulative_from
 
 # ---------------- MAIN ----------------
@@ -192,51 +205,6 @@ def main():
     print(f"saved proj-{YEAR}-cum.json (weeks=1..{REG_SEASON_WEEKS}, season_source={season_year})")
 
     print("✓ done")
-
-if __name__ == "__main__":
-    main()                break
-            raise
-        for m in matchups:
-            rid = m.get("roster_id")
-            starters = m.get("starters", [])
-            players_points = m.get("players_points", {}) or {}
-            for pid in starters:
-                data.append({
-                    "week": week,
-                    "team_id": rid,
-                    "player_id": pid,
-                    "points": players_points.get(pid, 0.0)
-                })
-        time.sleep(0.4)
-    return data
-
-def get_projections():
-    """Simplified placeholder for player rest-of-season expectations"""
-    # This stub should be replaced with true projection integration later.
-    # Currently builds an empty structure to avoid breaking downstream code.
-    return {"timestamp": time.time(), "source": "placeholder", "players": {}}
-
-# ---------- MAIN ----------
-def main():
-    league_id = resolve_league_id()
-    print(f"Building trade metrics for {league_id} ({YEAR})")
-
-    data_dir = Path("data")
-    data_dir.mkdir(exist_ok=True)
-
-    print("→ Fetching lineups/scoring…")
-    lineups = get_lineups(league_id)
-    with open(data_dir / f"lineups-{YEAR}.json", "w") as f:
-        json.dump({"year": YEAR, "league_id": league_id, "lineups": lineups}, f, indent=2)
-    print(f"Saved {len(lineups)} lineup rows.")
-
-    print("→ Generating placeholder projections…")
-    proj = get_projections()
-    with open(data_dir / f"proj-{YEAR}-cum.json", "w") as f:
-        json.dump(proj, f, indent=2)
-    print("Projections saved (placeholder only).")
-
-    print("✅ Completed build_trade_metrics_2025.py")
 
 if __name__ == "__main__":
     main()
