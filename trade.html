@@ -7,13 +7,17 @@
   <base href="./" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px}
-    .pill{padding:.45rem .75rem;border:1px solid #3b3b3b;border-radius:.75rem;color:#d1d5db;text-decoration:none}
-    .pill:hover{background:#1f2937}
-    .muted{color:#9ca3af}
-    .card{border:1px solid #2f2f2f;border-radius:.75rem;padding:12px;margin-bottom:12px}
-    .party{border:1px solid #2f2f2f;border-radius:.65rem;padding:10px;margin:8px 0}
+    :root{--muted:#9ca3af;--bd:#2f2f2f}
+    body{margin:0;background:#0b1320;color:#e5e7eb;font:14px/1.4 system-ui,Segoe UI,Roboto,Helvetica,Arial}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;position:sticky;top:0;background:#0b1320;z-index:1}
+    .pill{padding:.45rem .75rem;border:1px solid var(--bd);border-radius:.75rem;color:#d1d5db;text-decoration:none}
+    .pill:hover{background:#111827}
+    .muted{color:var(--muted)}
     main{padding:12px 16px}
+    #log{white-space:pre-wrap;margin:0 16px 8px 16px;color:#f59e0b}
+    .card{border:1px solid var(--bd);border-radius:.75rem;padding:12px;margin:12px 0}
+    .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .party{border:1px solid var(--bd);border-radius:.65rem;padding:10px;margin:8px 0}
     #q{min-width:260px}
   </style>
 </head>
@@ -24,11 +28,75 @@
     <input id="q" type="search" placeholder="Search player/team…" aria-label="Search" />
   </header>
 
-  <!-- THESE TWO NODES ARE REQUIRED -->
-  <div id="meta" class="muted" style="padding:0 16px 8px"></div>
+  <div id="log" class="muted"></div>
+  <div id="meta" class="muted" style="margin:0 16px 8px 16px;"></div>
   <main id="list"></main>
 
-  <noscript><div class="card">Enable JavaScript.</div></noscript>
-  <script src="trade.js" defer></script>
+  <script>
+  (async function(){
+    const log = document.getElementById('log');
+    const meta = document.getElementById('meta');
+    const list = document.getElementById('list');
+    const q = document.getElementById('q');
+
+    const DATA_URL = new URL('data/trades-2025.json', location.href).toString();
+    function el(t,a={},...kids){const n=document.createElement(t);for(const[k,v] of Object.entries(a)) (k==='class')? n.className=v : n.setAttribute(k,v); for(const k of kids) n.append(k?.nodeType?k:document.createTextNode(String(k??""))); return n;}
+    function partyBlock(p){
+      const got  = (p.gained_players||[]).map(x=>x.name);
+      const sent = (p.sent_players||[]).map(x=>x.name);
+      const gotP = (p.gained_picks||[]).map(x=>`Pick ${x.season??""} R${x.round??""}`);
+      const senP = (p.sent_picks||[]).map(x=>`Pick ${x.season??""} R${x.round??""}`);
+      return el('div',{class:'party'},
+        el('div',{style:'font-weight:700;margin-bottom:6px'}, p.team || `Roster ${p.roster_id||""}`),
+        el('div',{}, el('span',{class:'muted'},'Received: '), (got.length||gotP.length)? [...got,...gotP].join(', ') : '—'),
+        el('div',{}, el('span',{class:'muted'},'Sent: '),     (sent.length||senP.length)? [...sent,...senP].join(', ') : '—'),
+      );
+    }
+    function draw(trades){
+      const needle = (q.value||'').trim().toLowerCase();
+      list.innerHTML = '';
+      let shown = 0;
+      for(const t of trades){
+        const hay = (t.parties||[]).map(p => [
+          p.team,
+          ...(p.gained_players||[]).map(x=>x.name),
+          ...(p.sent_players||[]).map(x=>x.name)
+        ].join(' ')).join(' ').toLowerCase();
+        if (needle && !hay.includes(needle)) continue;
+
+        const header = (t.parties||[]).map(p=>p.team).filter(Boolean).join(' ↔ ');
+        const card = el('section',{class:'card'},
+          el('div',{class:'row'}, el('strong',{}, `Week ${t.week ?? '—'}`), el('span',{class:'muted'}, header))
+        );
+        (t.parties||[]).forEach(p => card.appendChild(partyBlock(p)));
+        list.appendChild(card);
+        shown++;
+      }
+      if (shown===0) list.appendChild(el('div',{class:'card muted'}, 'No trades match your filter.'));
+    }
+
+    try{
+      log.textContent = `Fetching: ${DATA_URL}`;
+      const r = await fetch(DATA_URL + (DATA_URL.includes('?')?'&':'?') + 'v=' + Date.now(), {cache:'no-store'});
+      if(!r.ok){
+        log.textContent = `Fetch failed: HTTP ${r.status} — ${DATA_URL}`;
+        return;
+      }
+      const data = await r.json();
+      if(!data || !Array.isArray(data.trades)){
+        log.textContent = `JSON loaded but malformed (missing "trades" array).`;
+        return;
+      }
+      const trades = data.trades.slice().sort((a,b)=>(a.week??0)-(b.week??0)||(a.created??0)-(b.created??0));
+      meta.textContent = `${trades.length} trades • Season ${data.year ?? 2025}`;
+      log.textContent = `Loaded ${trades.length} trades from ${DATA_URL}`;
+      draw(trades);
+      q.oninput = () => draw(trades);
+    }catch(e){
+      log.textContent = `Runtime error: ${String(e && e.message || e)}`;
+      console.error(e);
+    }
+  })();
+  </script>
 </body>
 </html>
