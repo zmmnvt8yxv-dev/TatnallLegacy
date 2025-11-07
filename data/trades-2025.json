@@ -1479,6 +1479,82 @@
           "sent_picks": []
         }
       ]
+    },
+    {
+      "id": "1292189624218701824",
+      "week": 10,
+      "created": 1762448138997,
+      "status": "complete",
+      "parties": [
+        {
+          "roster_id": 2,
+          "team": "Kenneth walker for $30",
+          "gained_players": [
+            {
+              "id": "12506",
+              "name": "Harold Fannin",
+              "pos": "TE",
+              "nfl": "CLE"
+            },
+            {
+              "id": "7543",
+              "name": "Travis Etienne",
+              "pos": "RB",
+              "nfl": "JAX"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "12493",
+              "name": "Oronde Gadsden",
+              "pos": "TE",
+              "nfl": "LAC"
+            },
+            {
+              "id": "8148",
+              "name": "Jameson Williams",
+              "pos": "WR",
+              "nfl": "DET"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 6,
+          "team": "PhillyPhilly709",
+          "gained_players": [
+            {
+              "id": "12493",
+              "name": "Oronde Gadsden",
+              "pos": "TE",
+              "nfl": "LAC"
+            },
+            {
+              "id": "8148",
+              "name": "Jameson Williams",
+              "pos": "WR",
+              "nfl": "DET"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "12506",
+              "name": "Harold Fannin",
+              "pos": "TE",
+              "nfl": "CLE"
+            },
+            {
+              "id": "7543",
+              "name": "Travis Etienne",
+              "pos": "RB",
+              "nfl": "JAX"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        }
+      ]
     }
   ]
 }
