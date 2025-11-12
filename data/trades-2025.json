@@ -10,7 +10,7 @@
     },
     {
       "roster_id": 2,
-      "team": "Kenneth walker for $30",
+      "team": "Only I can say the N-word",
       "owner_id": "1262429321784459264",
       "owner_name": "jawnwick13"
     },
@@ -22,7 +22,7 @@
     },
     {
       "roster_id": 4,
-      "team": "2008 Detroit Lions",
+      "team": "Kenneth walker for JJ McC",
       "owner_id": "1262431325780979712",
       "owner_name": "conner27lax"
     },
@@ -60,7 +60,7 @@
       "parties": [
         {
           "roster_id": 4,
-          "team": "2008 Detroit Lions",
+          "team": "Kenneth walker for JJ McC",
           "gained_players": [
             {
               "id": "5967",
@@ -111,28 +111,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 4,
-          "team": "2008 Detroit Lions",
-          "gained_players": [
-            {
-              "id": "6806",
-              "name": "J.K. Dobbins",
-              "pos": "RB",
-              "nfl": "DEN"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "4217",
-              "name": "George Kittle",
-              "pos": "TE",
-              "nfl": "SF"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 3,
           "team": "Insane in The Achane ",
           "gained_players": [
@@ -149,6 +127,28 @@
               "name": "J.K. Dobbins",
               "pos": "RB",
               "nfl": "DEN"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 4,
+          "team": "Kenneth walker for JJ McC",
+          "gained_players": [
+            {
+              "id": "6806",
+              "name": "J.K. Dobbins",
+              "pos": "RB",
+              "nfl": "DEN"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "4217",
+              "name": "George Kittle",
+              "pos": "TE",
+              "nfl": "SF"
             }
           ],
           "gained_picks": [],
@@ -186,7 +186,7 @@
         },
         {
           "roster_id": 4,
-          "team": "2008 Detroit Lions",
+          "team": "Kenneth walker for JJ McC",
           "gained_players": [
             {
               "id": "4663",
@@ -478,7 +478,7 @@
         },
         {
           "roster_id": 4,
-          "team": "2008 Detroit Lions",
+          "team": "Kenneth walker for JJ McC",
           "gained_players": [
             {
               "id": "4892",
@@ -532,7 +532,7 @@
       "parties": [
         {
           "roster_id": 2,
-          "team": "Kenneth walker for $30",
+          "team": "Only I can say the N-word",
           "gained_players": [
             {
               "id": "9754",
@@ -583,40 +583,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 4,
-          "team": "2008 Detroit Lions",
-          "gained_players": [
-            {
-              "id": "12489",
-              "name": "RJ Harvey",
-              "pos": "RB",
-              "nfl": "DEN"
-            },
-            {
-              "id": "7525",
-              "name": "DeVonta Smith",
-              "pos": "WR",
-              "nfl": "PHI"
-            },
-            {
-              "id": "8110",
-              "name": "Jake Ferguson",
-              "pos": "TE",
-              "nfl": "DAL"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "6806",
-              "name": "J.K. Dobbins",
-              "pos": "RB",
-              "nfl": "DEN"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 7,
           "team": "Dak Shots",
           "gained_players": [
@@ -645,6 +611,40 @@
               "name": "Jake Ferguson",
               "pos": "TE",
               "nfl": "DAL"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 4,
+          "team": "Kenneth walker for JJ McC",
+          "gained_players": [
+            {
+              "id": "12489",
+              "name": "RJ Harvey",
+              "pos": "RB",
+              "nfl": "DEN"
+            },
+            {
+              "id": "7525",
+              "name": "DeVonta Smith",
+              "pos": "WR",
+              "nfl": "PHI"
+            },
+            {
+              "id": "8110",
+              "name": "Jake Ferguson",
+              "pos": "TE",
+              "nfl": "DAL"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "6806",
+              "name": "J.K. Dobbins",
+              "pos": "RB",
+              "nfl": "DEN"
             }
           ],
           "gained_picks": [],
@@ -697,70 +697,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 4,
-          "team": "2008 Detroit Lions",
-          "gained_players": [
-            {
-              "id": "2216",
-              "name": "Mike Evans",
-              "pos": "WR",
-              "nfl": "TB"
-            },
-            {
-              "id": "3198",
-              "name": "Derrick Henry",
-              "pos": "RB",
-              "nfl": "BAL"
-            },
-            {
-              "id": "4035",
-              "name": "Alvin Kamara",
-              "pos": "RB",
-              "nfl": "NO"
-            },
-            {
-              "id": "421",
-              "name": "Matthew Stafford",
-              "pos": "QB",
-              "nfl": "LAR"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "11566",
-              "name": "Jayden Daniels",
-              "pos": "QB",
-              "nfl": "WAS"
-            },
-            {
-              "id": "11627",
-              "name": "Troy Franklin",
-              "pos": "WR",
-              "nfl": "DEN"
-            },
-            {
-              "id": "12474",
-              "name": "Woody Marks",
-              "pos": "RB",
-              "nfl": "HOU"
-            },
-            {
-              "id": "8110",
-              "name": "Jake Ferguson",
-              "pos": "TE",
-              "nfl": "DAL"
-            },
-            {
-              "id": "9509",
-              "name": "Bijan Robinson",
-              "pos": "RB",
-              "nfl": "ATL"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 8,
           "team": "Hospital Bill",
           "gained_players": [
@@ -823,6 +759,70 @@
           ],
           "gained_picks": [],
           "sent_picks": []
+        },
+        {
+          "roster_id": 4,
+          "team": "Kenneth walker for JJ McC",
+          "gained_players": [
+            {
+              "id": "2216",
+              "name": "Mike Evans",
+              "pos": "WR",
+              "nfl": "TB"
+            },
+            {
+              "id": "3198",
+              "name": "Derrick Henry",
+              "pos": "RB",
+              "nfl": "BAL"
+            },
+            {
+              "id": "4035",
+              "name": "Alvin Kamara",
+              "pos": "RB",
+              "nfl": "NO"
+            },
+            {
+              "id": "421",
+              "name": "Matthew Stafford",
+              "pos": "QB",
+              "nfl": "LAR"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "11566",
+              "name": "Jayden Daniels",
+              "pos": "QB",
+              "nfl": "WAS"
+            },
+            {
+              "id": "11627",
+              "name": "Troy Franklin",
+              "pos": "WR",
+              "nfl": "DEN"
+            },
+            {
+              "id": "12474",
+              "name": "Woody Marks",
+              "pos": "RB",
+              "nfl": "HOU"
+            },
+            {
+              "id": "8110",
+              "name": "Jake Ferguson",
+              "pos": "TE",
+              "nfl": "DAL"
+            },
+            {
+              "id": "9509",
+              "name": "Bijan Robinson",
+              "pos": "RB",
+              "nfl": "ATL"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
         }
       ]
     },
@@ -832,40 +832,6 @@
       "created": 1759774796392,
       "status": "complete",
       "parties": [
-        {
-          "roster_id": 4,
-          "team": "2008 Detroit Lions",
-          "gained_players": [
-            {
-              "id": "11586",
-              "name": "Blake Corum",
-              "pos": "RB",
-              "nfl": "LAR"
-            },
-            {
-              "id": "5859",
-              "name": "A.J. Brown",
-              "pos": "WR",
-              "nfl": "PHI"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "4035",
-              "name": "Alvin Kamara",
-              "pos": "RB",
-              "nfl": "NO"
-            },
-            {
-              "id": "8132",
-              "name": "Tyler Allgeier",
-              "pos": "RB",
-              "nfl": "ATL"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
         {
           "roster_id": 5,
           "team": "FantasyGPT 2.5",
@@ -895,6 +861,40 @@
               "name": "A.J. Brown",
               "pos": "WR",
               "nfl": "PHI"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 4,
+          "team": "Kenneth walker for JJ McC",
+          "gained_players": [
+            {
+              "id": "11586",
+              "name": "Blake Corum",
+              "pos": "RB",
+              "nfl": "LAR"
+            },
+            {
+              "id": "5859",
+              "name": "A.J. Brown",
+              "pos": "WR",
+              "nfl": "PHI"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "4035",
+              "name": "Alvin Kamara",
+              "pos": "RB",
+              "nfl": "NO"
+            },
+            {
+              "id": "8132",
+              "name": "Tyler Allgeier",
+              "pos": "RB",
+              "nfl": "ATL"
             }
           ],
           "gained_picks": [],
@@ -1062,7 +1062,7 @@
       "parties": [
         {
           "roster_id": 4,
-          "team": "2008 Detroit Lions",
+          "team": "Kenneth walker for JJ McC",
           "gained_players": [
             {
               "id": "4199",
@@ -1108,7 +1108,7 @@
         },
         {
           "roster_id": 2,
-          "team": "Kenneth walker for $30",
+          "team": "Only I can say the N-word",
           "gained_players": [
             {
               "id": "5045",
@@ -1162,7 +1162,7 @@
       "parties": [
         {
           "roster_id": 4,
-          "team": "2008 Detroit Lions",
+          "team": "Kenneth walker for JJ McC",
           "gained_players": [],
           "sent_players": [
             {
@@ -1212,7 +1212,7 @@
       "parties": [
         {
           "roster_id": 2,
-          "team": "Kenneth walker for $30",
+          "team": "Only I can say the N-word",
           "gained_players": [
             {
               "id": "11631",
@@ -1328,7 +1328,7 @@
         },
         {
           "roster_id": 4,
-          "team": "2008 Detroit Lions",
+          "team": "Kenneth walker for JJ McC",
           "gained_players": [
             {
               "id": "12534",
@@ -1374,58 +1374,6 @@
       "created": 1762296598189,
       "status": "complete",
       "parties": [
-        {
-          "roster_id": 4,
-          "team": "2008 Detroit Lions",
-          "gained_players": [
-            {
-              "id": "4881",
-              "name": "Lamar Jackson",
-              "pos": "QB",
-              "nfl": "BAL"
-            },
-            {
-              "id": "8132",
-              "name": "Tyler Allgeier",
-              "pos": "RB",
-              "nfl": "ATL"
-            },
-            {
-              "id": "8676",
-              "name": "Rashid Shaheed",
-              "pos": "WR",
-              "nfl": "SEA"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "12534",
-              "name": "Kyle Monangai",
-              "pos": "RB",
-              "nfl": "CHI"
-            },
-            {
-              "id": "421",
-              "name": "Matthew Stafford",
-              "pos": "QB",
-              "nfl": "LAR"
-            },
-            {
-              "id": "7525",
-              "name": "DeVonta Smith",
-              "pos": "WR",
-              "nfl": "PHI"
-            },
-            {
-              "id": "8137",
-              "name": "George Pickens",
-              "pos": "WR",
-              "nfl": "DAL"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
         {
           "roster_id": 5,
           "team": "FantasyGPT 2.5",
@@ -1477,6 +1425,58 @@
           ],
           "gained_picks": [],
           "sent_picks": []
+        },
+        {
+          "roster_id": 4,
+          "team": "Kenneth walker for JJ McC",
+          "gained_players": [
+            {
+              "id": "4881",
+              "name": "Lamar Jackson",
+              "pos": "QB",
+              "nfl": "BAL"
+            },
+            {
+              "id": "8132",
+              "name": "Tyler Allgeier",
+              "pos": "RB",
+              "nfl": "ATL"
+            },
+            {
+              "id": "8676",
+              "name": "Rashid Shaheed",
+              "pos": "WR",
+              "nfl": "SEA"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "12534",
+              "name": "Kyle Monangai",
+              "pos": "RB",
+              "nfl": "CHI"
+            },
+            {
+              "id": "421",
+              "name": "Matthew Stafford",
+              "pos": "QB",
+              "nfl": "LAR"
+            },
+            {
+              "id": "7525",
+              "name": "DeVonta Smith",
+              "pos": "WR",
+              "nfl": "PHI"
+            },
+            {
+              "id": "8137",
+              "name": "George Pickens",
+              "pos": "WR",
+              "nfl": "DAL"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
         }
       ]
     },
@@ -1488,7 +1488,7 @@
       "parties": [
         {
           "roster_id": 2,
-          "team": "Kenneth walker for $30",
+          "team": "Only I can say the N-word",
           "gained_players": [
             {
               "id": "12506",
@@ -1549,6 +1549,58 @@
               "name": "Travis Etienne",
               "pos": "RB",
               "nfl": "JAX"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        }
+      ]
+    },
+    {
+      "id": "1293974408225886208",
+      "week": 10,
+      "created": 1762877726624,
+      "status": "complete",
+      "parties": [
+        {
+          "roster_id": 4,
+          "team": "Kenneth walker for JJ McC",
+          "gained_players": [
+            {
+              "id": "8151",
+              "name": "Kenneth Walker",
+              "pos": "RB",
+              "nfl": "SEA"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "11565",
+              "name": "J.J. McCarthy",
+              "pos": "QB",
+              "nfl": "MIN"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 6,
+          "team": "PhillyPhilly709",
+          "gained_players": [
+            {
+              "id": "11565",
+              "name": "J.J. McCarthy",
+              "pos": "QB",
+              "nfl": "MIN"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "8151",
+              "name": "Kenneth Walker",
+              "pos": "RB",
+              "nfl": "SEA"
             }
           ],
           "gained_picks": [],
