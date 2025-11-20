@@ -22,7 +22,7 @@
     },
     {
       "roster_id": 4,
-      "team": "Kenneth walker for JJ McC",
+      "team": "Team Cancun",
       "owner_id": "1262431325780979712",
       "owner_name": "conner27lax"
     },
@@ -59,28 +59,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
-          "gained_players": [
-            {
-              "id": "5967",
-              "name": "Tony Pollard",
-              "pos": "RB",
-              "nfl": "TEN"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "12457",
-              "name": "Jaydon Blue",
-              "pos": "RB",
-              "nfl": "DAL"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 6,
           "team": "PhillyPhilly709",
           "gained_players": [
@@ -97,6 +75,28 @@
               "name": "Tony Pollard",
               "pos": "RB",
               "nfl": "TEN"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 4,
+          "team": "Team Cancun",
+          "gained_players": [
+            {
+              "id": "5967",
+              "name": "Tony Pollard",
+              "pos": "RB",
+              "nfl": "TEN"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "12457",
+              "name": "Jaydon Blue",
+              "pos": "RB",
+              "nfl": "DAL"
             }
           ],
           "gained_picks": [],
@@ -134,7 +134,7 @@
         },
         {
           "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
+          "team": "Team Cancun",
           "gained_players": [
             {
               "id": "6806",
@@ -186,7 +186,7 @@
         },
         {
           "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
+          "team": "Team Cancun",
           "gained_players": [
             {
               "id": "4663",
@@ -478,7 +478,7 @@
         },
         {
           "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
+          "team": "Team Cancun",
           "gained_players": [
             {
               "id": "4892",
@@ -618,7 +618,7 @@
         },
         {
           "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
+          "team": "Team Cancun",
           "gained_players": [
             {
               "id": "12489",
@@ -762,7 +762,7 @@
         },
         {
           "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
+          "team": "Team Cancun",
           "gained_players": [
             {
               "id": "2216",
@@ -868,7 +868,7 @@
         },
         {
           "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
+          "team": "Team Cancun",
           "gained_players": [
             {
               "id": "11586",
@@ -1061,52 +1061,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
-          "gained_players": [
-            {
-              "id": "4199",
-              "name": "Aaron Jones",
-              "pos": "RB",
-              "nfl": "MIN"
-            },
-            {
-              "id": "8137",
-              "name": "George Pickens",
-              "pos": "WR",
-              "nfl": "DAL"
-            },
-            {
-              "id": "8408",
-              "name": "Jordan Mason",
-              "pos": "RB",
-              "nfl": "MIN"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "5045",
-              "name": "Courtland Sutton",
-              "pos": "WR",
-              "nfl": "DEN"
-            },
-            {
-              "id": "5927",
-              "name": "Terry McLaurin",
-              "pos": "WR",
-              "nfl": "WAS"
-            },
-            {
-              "id": "9224",
-              "name": "Chase Brown",
-              "pos": "RB",
-              "nfl": "CIN"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 2,
           "team": "Only I can say the N-word",
           "gained_players": [
@@ -1151,6 +1105,52 @@
           ],
           "gained_picks": [],
           "sent_picks": []
+        },
+        {
+          "roster_id": 4,
+          "team": "Team Cancun",
+          "gained_players": [
+            {
+              "id": "4199",
+              "name": "Aaron Jones",
+              "pos": "RB",
+              "nfl": "MIN"
+            },
+            {
+              "id": "8137",
+              "name": "George Pickens",
+              "pos": "WR",
+              "nfl": "DAL"
+            },
+            {
+              "id": "8408",
+              "name": "Jordan Mason",
+              "pos": "RB",
+              "nfl": "MIN"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "5045",
+              "name": "Courtland Sutton",
+              "pos": "WR",
+              "nfl": "DEN"
+            },
+            {
+              "id": "5927",
+              "name": "Terry McLaurin",
+              "pos": "WR",
+              "nfl": "WAS"
+            },
+            {
+              "id": "9224",
+              "name": "Chase Brown",
+              "pos": "RB",
+              "nfl": "CIN"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
         }
       ]
     },
@@ -1160,27 +1160,6 @@
       "created": 1761742119748,
       "status": "complete",
       "parties": [
-        {
-          "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
-          "gained_players": [],
-          "sent_players": [
-            {
-              "id": "12489",
-              "name": "RJ Harvey",
-              "pos": "RB",
-              "nfl": "DEN"
-            },
-            {
-              "id": "12506",
-              "name": "Harold Fannin",
-              "pos": "TE",
-              "nfl": "CLE"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
         {
           "roster_id": 6,
           "team": "PhillyPhilly709",
@@ -1199,6 +1178,27 @@
             }
           ],
           "sent_players": [],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 4,
+          "team": "Team Cancun",
+          "gained_players": [],
+          "sent_players": [
+            {
+              "id": "12489",
+              "name": "RJ Harvey",
+              "pos": "RB",
+              "nfl": "DEN"
+            },
+            {
+              "id": "12506",
+              "name": "Harold Fannin",
+              "pos": "TE",
+              "nfl": "CLE"
+            }
+          ],
           "gained_picks": [],
           "sent_picks": []
         }
@@ -1328,7 +1328,7 @@
         },
         {
           "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
+          "team": "Team Cancun",
           "gained_players": [
             {
               "id": "12534",
@@ -1428,7 +1428,7 @@
         },
         {
           "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
+          "team": "Team Cancun",
           "gained_players": [
             {
               "id": "4881",
@@ -1563,28 +1563,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 4,
-          "team": "Kenneth walker for JJ McC",
-          "gained_players": [
-            {
-              "id": "8151",
-              "name": "Kenneth Walker",
-              "pos": "RB",
-              "nfl": "SEA"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "11565",
-              "name": "J.J. McCarthy",
-              "pos": "QB",
-              "nfl": "MIN"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 6,
           "team": "PhillyPhilly709",
           "gained_players": [
@@ -1601,6 +1579,28 @@
               "name": "Kenneth Walker",
               "pos": "RB",
               "nfl": "SEA"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 4,
+          "team": "Team Cancun",
+          "gained_players": [
+            {
+              "id": "8151",
+              "name": "Kenneth Walker",
+              "pos": "RB",
+              "nfl": "SEA"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "11565",
+              "name": "J.J. McCarthy",
+              "pos": "QB",
+              "nfl": "MIN"
             }
           ],
           "gained_picks": [],
