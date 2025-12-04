@@ -4,7 +4,7 @@
   "teams": [
     {
       "roster_id": 1,
-      "team": "115 wins",
+      "team": "\ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
       "owner_id": "866330097534279680",
       "owner_name": "cmarvin713"
     },
@@ -34,7 +34,7 @@
     },
     {
       "roster_id": 6,
-      "team": "PhillyPhilly709",
+      "team": "\u201cFeels Different This Yr\u201d",
       "owner_id": "725035808507097088",
       "owner_name": "PhillyPhilly709"
     },
@@ -59,28 +59,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 6,
-          "team": "PhillyPhilly709",
-          "gained_players": [
-            {
-              "id": "12457",
-              "name": "Jaydon Blue",
-              "pos": "RB",
-              "nfl": "DAL"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "5967",
-              "name": "Tony Pollard",
-              "pos": "RB",
-              "nfl": "TEN"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 4,
           "team": "Team Cancun",
           "gained_players": [
@@ -97,6 +75,28 @@
               "name": "Jaydon Blue",
               "pos": "RB",
               "nfl": "DAL"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 6,
+          "team": "\u201cFeels Different This Yr\u201d",
+          "gained_players": [
+            {
+              "id": "12457",
+              "name": "Jaydon Blue",
+              "pos": "RB",
+              "nfl": "DAL"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "5967",
+              "name": "Tony Pollard",
+              "pos": "RB",
+              "nfl": "TEN"
             }
           ],
           "gained_picks": [],
@@ -163,28 +163,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 1,
-          "team": "115 wins",
-          "gained_players": [
-            {
-              "id": "11565",
-              "name": "J.J. McCarthy",
-              "pos": "QB",
-              "nfl": "MIN"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "4663",
-              "name": "Austin Ekeler",
-              "pos": "RB",
-              "nfl": "WAS"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 4,
           "team": "Team Cancun",
           "gained_players": [
@@ -201,6 +179,28 @@
               "name": "J.J. McCarthy",
               "pos": "QB",
               "nfl": "MIN"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 1,
+          "team": "\ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+          "gained_players": [
+            {
+              "id": "11565",
+              "name": "J.J. McCarthy",
+              "pos": "QB",
+              "nfl": "MIN"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "4663",
+              "name": "Austin Ekeler",
+              "pos": "RB",
+              "nfl": "WAS"
             }
           ],
           "gained_picks": [],
@@ -238,7 +238,7 @@
         },
         {
           "roster_id": 6,
-          "team": "PhillyPhilly709",
+          "team": "\u201cFeels Different This Yr\u201d",
           "gained_players": [
             {
               "id": "12469",
@@ -266,52 +266,6 @@
       "created": 1758242149474,
       "status": "complete",
       "parties": [
-        {
-          "roster_id": 1,
-          "team": "115 wins",
-          "gained_players": [
-            {
-              "id": "12490",
-              "name": "Bhayshul Tuten",
-              "pos": "RB",
-              "nfl": "JAX"
-            },
-            {
-              "id": "4892",
-              "name": "Baker Mayfield",
-              "pos": "QB",
-              "nfl": "TB"
-            },
-            {
-              "id": "6801",
-              "name": "Tee Higgins",
-              "pos": "WR",
-              "nfl": "CIN"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "11560",
-              "name": "Caleb Williams",
-              "pos": "QB",
-              "nfl": "CHI"
-            },
-            {
-              "id": "11620",
-              "name": "Rome Odunze",
-              "pos": "WR",
-              "nfl": "CHI"
-            },
-            {
-              "id": "8228",
-              "name": "Jaylen Warren",
-              "pos": "RB",
-              "nfl": "PIT"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
         {
           "roster_id": 8,
           "team": "Hospital Bill",
@@ -357,6 +311,52 @@
           ],
           "gained_picks": [],
           "sent_picks": []
+        },
+        {
+          "roster_id": 1,
+          "team": "\ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+          "gained_players": [
+            {
+              "id": "12490",
+              "name": "Bhayshul Tuten",
+              "pos": "RB",
+              "nfl": "JAX"
+            },
+            {
+              "id": "4892",
+              "name": "Baker Mayfield",
+              "pos": "QB",
+              "nfl": "TB"
+            },
+            {
+              "id": "6801",
+              "name": "Tee Higgins",
+              "pos": "WR",
+              "nfl": "CIN"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "11560",
+              "name": "Caleb Williams",
+              "pos": "QB",
+              "nfl": "CHI"
+            },
+            {
+              "id": "11620",
+              "name": "Rome Odunze",
+              "pos": "WR",
+              "nfl": "CHI"
+            },
+            {
+              "id": "8228",
+              "name": "Jaylen Warren",
+              "pos": "RB",
+              "nfl": "PIT"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
         }
       ]
     },
@@ -396,7 +396,7 @@
         },
         {
           "roster_id": 6,
-          "team": "PhillyPhilly709",
+          "team": "\u201cFeels Different This Yr\u201d",
           "gained_players": [
             {
               "id": "12530",
@@ -430,52 +430,6 @@
       "created": 1759235571606,
       "status": "complete",
       "parties": [
-        {
-          "roster_id": 1,
-          "team": "115 wins",
-          "gained_players": [
-            {
-              "id": "4866",
-              "name": "Saquon Barkley",
-              "pos": "RB",
-              "nfl": "PHI"
-            },
-            {
-              "id": "6904",
-              "name": "Jalen Hurts",
-              "pos": "QB",
-              "nfl": "PHI"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "4892",
-              "name": "Baker Mayfield",
-              "pos": "QB",
-              "nfl": "TB"
-            },
-            {
-              "id": "5045",
-              "name": "Courtland Sutton",
-              "pos": "WR",
-              "nfl": "DEN"
-            },
-            {
-              "id": "7049",
-              "name": "Jauan Jennings",
-              "pos": "WR",
-              "nfl": "SF"
-            },
-            {
-              "id": "9224",
-              "name": "Chase Brown",
-              "pos": "RB",
-              "nfl": "CIN"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
         {
           "roster_id": 4,
           "team": "Team Cancun",
@@ -521,6 +475,52 @@
           ],
           "gained_picks": [],
           "sent_picks": []
+        },
+        {
+          "roster_id": 1,
+          "team": "\ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+          "gained_players": [
+            {
+              "id": "4866",
+              "name": "Saquon Barkley",
+              "pos": "RB",
+              "nfl": "PHI"
+            },
+            {
+              "id": "6904",
+              "name": "Jalen Hurts",
+              "pos": "QB",
+              "nfl": "PHI"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "4892",
+              "name": "Baker Mayfield",
+              "pos": "QB",
+              "nfl": "TB"
+            },
+            {
+              "id": "5045",
+              "name": "Courtland Sutton",
+              "pos": "WR",
+              "nfl": "DEN"
+            },
+            {
+              "id": "7049",
+              "name": "Jauan Jennings",
+              "pos": "WR",
+              "nfl": "SF"
+            },
+            {
+              "id": "9224",
+              "name": "Chase Brown",
+              "pos": "RB",
+              "nfl": "CIN"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
         }
       ]
     },
@@ -554,7 +554,7 @@
         },
         {
           "roster_id": 6,
-          "team": "PhillyPhilly709",
+          "team": "\u201cFeels Different This Yr\u201d",
           "gained_players": [
             {
               "id": "8151",
@@ -675,7 +675,7 @@
         },
         {
           "roster_id": 6,
-          "team": "PhillyPhilly709",
+          "team": "\u201cFeels Different This Yr\u201d",
           "gained_players": [
             {
               "id": "10859",
@@ -938,7 +938,7 @@
         },
         {
           "roster_id": 6,
-          "team": "PhillyPhilly709",
+          "team": "\u201cFeels Different This Yr\u201d",
           "gained_players": [
             {
               "id": "7526",
@@ -1014,7 +1014,7 @@
         },
         {
           "roster_id": 6,
-          "team": "PhillyPhilly709",
+          "team": "\u201cFeels Different This Yr\u201d",
           "gained_players": [
             {
               "id": "11631",
@@ -1161,27 +1161,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 6,
-          "team": "PhillyPhilly709",
-          "gained_players": [
-            {
-              "id": "12489",
-              "name": "RJ Harvey",
-              "pos": "RB",
-              "nfl": "DEN"
-            },
-            {
-              "id": "12506",
-              "name": "Harold Fannin",
-              "pos": "TE",
-              "nfl": "CLE"
-            }
-          ],
-          "sent_players": [],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 4,
           "team": "Team Cancun",
           "gained_players": [],
@@ -1199,6 +1178,27 @@
               "nfl": "CLE"
             }
           ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 6,
+          "team": "\u201cFeels Different This Yr\u201d",
+          "gained_players": [
+            {
+              "id": "12489",
+              "name": "RJ Harvey",
+              "pos": "RB",
+              "nfl": "DEN"
+            },
+            {
+              "id": "12506",
+              "name": "Harold Fannin",
+              "pos": "TE",
+              "nfl": "CLE"
+            }
+          ],
+          "sent_players": [],
           "gained_picks": [],
           "sent_picks": []
         }
@@ -1246,7 +1246,7 @@
         },
         {
           "roster_id": 6,
-          "team": "PhillyPhilly709",
+          "team": "\u201cFeels Different This Yr\u201d",
           "gained_players": [
             {
               "id": "9221",
@@ -1287,46 +1287,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 1,
-          "team": "115 wins",
-          "gained_players": [
-            {
-              "id": "4098",
-              "name": "Kareem Hunt",
-              "pos": "RB",
-              "nfl": "KC"
-            },
-            {
-              "id": "5859",
-              "name": "A.J. Brown",
-              "pos": "WR",
-              "nfl": "PHI"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "12534",
-              "name": "Kyle Monangai",
-              "pos": "RB",
-              "nfl": "CHI"
-            },
-            {
-              "id": "6801",
-              "name": "Tee Higgins",
-              "pos": "WR",
-              "nfl": "CIN"
-            },
-            {
-              "id": "9997",
-              "name": "Zay Flowers",
-              "pos": "WR",
-              "nfl": "BAL"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 4,
           "team": "Team Cancun",
           "gained_players": [
@@ -1361,6 +1321,46 @@
               "name": "A.J. Brown",
               "pos": "WR",
               "nfl": "PHI"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 1,
+          "team": "\ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+          "gained_players": [
+            {
+              "id": "4098",
+              "name": "Kareem Hunt",
+              "pos": "RB",
+              "nfl": "KC"
+            },
+            {
+              "id": "5859",
+              "name": "A.J. Brown",
+              "pos": "WR",
+              "nfl": "PHI"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "12534",
+              "name": "Kyle Monangai",
+              "pos": "RB",
+              "nfl": "CHI"
+            },
+            {
+              "id": "6801",
+              "name": "Tee Higgins",
+              "pos": "WR",
+              "nfl": "CIN"
+            },
+            {
+              "id": "9997",
+              "name": "Zay Flowers",
+              "pos": "WR",
+              "nfl": "BAL"
             }
           ],
           "gained_picks": [],
@@ -1522,7 +1522,7 @@
         },
         {
           "roster_id": 6,
-          "team": "PhillyPhilly709",
+          "team": "\u201cFeels Different This Yr\u201d",
           "gained_players": [
             {
               "id": "12493",
@@ -1563,28 +1563,6 @@
       "status": "complete",
       "parties": [
         {
-          "roster_id": 6,
-          "team": "PhillyPhilly709",
-          "gained_players": [
-            {
-              "id": "11565",
-              "name": "J.J. McCarthy",
-              "pos": "QB",
-              "nfl": "MIN"
-            }
-          ],
-          "sent_players": [
-            {
-              "id": "8151",
-              "name": "Kenneth Walker",
-              "pos": "RB",
-              "nfl": "SEA"
-            }
-          ],
-          "gained_picks": [],
-          "sent_picks": []
-        },
-        {
           "roster_id": 4,
           "team": "Team Cancun",
           "gained_players": [
@@ -1601,6 +1579,28 @@
               "name": "J.J. McCarthy",
               "pos": "QB",
               "nfl": "MIN"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 6,
+          "team": "\u201cFeels Different This Yr\u201d",
+          "gained_players": [
+            {
+              "id": "11565",
+              "name": "J.J. McCarthy",
+              "pos": "QB",
+              "nfl": "MIN"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "8151",
+              "name": "Kenneth Walker",
+              "pos": "RB",
+              "nfl": "SEA"
             }
           ],
           "gained_picks": [],
