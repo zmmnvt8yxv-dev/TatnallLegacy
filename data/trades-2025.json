@@ -1607,6 +1607,130 @@
           "sent_picks": []
         }
       ]
+    },
+    {
+      "id": "1302443094985175040",
+      "week": 14,
+      "created": 1764891656025,
+      "status": "complete",
+      "parties": [
+        {
+          "roster_id": 7,
+          "team": "Dak Shots",
+          "gained_players": [
+            {
+              "id": "12484",
+              "name": "Jayden Higgins",
+              "pos": "WR",
+              "nfl": "HOU"
+            },
+            {
+              "id": "12489",
+              "name": "RJ Harvey",
+              "pos": "RB",
+              "nfl": "DEN"
+            },
+            {
+              "id": "8155",
+              "name": "Breece Hall",
+              "pos": "RB",
+              "nfl": "NYJ"
+            },
+            {
+              "id": "9758",
+              "name": "C.J. Stroud",
+              "pos": "QB",
+              "nfl": "HOU"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "11635",
+              "name": "Ladd McConkey",
+              "pos": "WR",
+              "nfl": "LAC"
+            },
+            {
+              "id": "1466",
+              "name": "Travis Kelce",
+              "pos": "TE",
+              "nfl": "KC"
+            },
+            {
+              "id": "6804",
+              "name": "Jordan Love",
+              "pos": "QB",
+              "nfl": "GB"
+            },
+            {
+              "id": "7567",
+              "name": "Kenneth Gainwell",
+              "pos": "RB",
+              "nfl": "PIT"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        },
+        {
+          "roster_id": 6,
+          "team": "\u201cFeels Different This Yr\u201d",
+          "gained_players": [
+            {
+              "id": "11635",
+              "name": "Ladd McConkey",
+              "pos": "WR",
+              "nfl": "LAC"
+            },
+            {
+              "id": "1466",
+              "name": "Travis Kelce",
+              "pos": "TE",
+              "nfl": "KC"
+            },
+            {
+              "id": "6804",
+              "name": "Jordan Love",
+              "pos": "QB",
+              "nfl": "GB"
+            },
+            {
+              "id": "7567",
+              "name": "Kenneth Gainwell",
+              "pos": "RB",
+              "nfl": "PIT"
+            }
+          ],
+          "sent_players": [
+            {
+              "id": "12484",
+              "name": "Jayden Higgins",
+              "pos": "WR",
+              "nfl": "HOU"
+            },
+            {
+              "id": "12489",
+              "name": "RJ Harvey",
+              "pos": "RB",
+              "nfl": "DEN"
+            },
+            {
+              "id": "8155",
+              "name": "Breece Hall",
+              "pos": "RB",
+              "nfl": "NYJ"
+            },
+            {
+              "id": "9758",
+              "name": "C.J. Stroud",
+              "pos": "QB",
+              "nfl": "HOU"
+            }
+          ],
+          "gained_picks": [],
+          "sent_picks": []
+        }
+      ]
     }
   ]
 }
