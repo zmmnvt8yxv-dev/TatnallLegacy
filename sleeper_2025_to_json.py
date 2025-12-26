@@ -20,8 +20,8 @@ def get(url):
 
 # ---------- league core ----------
 def load_core(league_id):
-    users  = get(f"{BASE}/league/{league_id}/users")
-    rosters= get(f"{BASE}/league/{league_id}/rosters")
+    users = get(f"{BASE}/league/{league_id}/users")
+    rosters = get(f"{BASE}/league/{league_id}/rosters")
 
     users_out = []
     u_by_id = {}
@@ -49,11 +49,11 @@ def load_core(league_id):
 
 def discover_weeks(league_id, max_weeks=22):
     weeks = []
-    for w in range(1, max_weeks+1):
+    for w in range(1, max_weeks + 1):
         try:
             arr = get(f"{BASE}/league/{league_id}/matchups/{w}")
         except requests.HTTPError as e:
-            if e.response.status_code == 404:
+            if e.response is not None and e.response.status_code == 404:
                 break
             raise
         if not arr:
@@ -64,13 +64,13 @@ def discover_weeks(league_id, max_weeks=22):
 def is_future_zero_zero(a_pts, b_pts):
     return YEAR == 2025 and float(a_pts or 0) == 0.0 and float(b_pts or 0) == 0.0
 
-# ---------- standings + matchups (unchanged behavior) ----------
+# ---------- standings + matchups ----------
 def build_matchups_and_stats(league_id, r_by_id):
     weeks = discover_weeks(league_id)
     matchups = []
     pf = defaultdict(float)
     pa = defaultdict(float)
-    wl = defaultdict(lambda: [0,0,0])  # wins, losses, ties
+    wl = defaultdict(lambda: [0, 0, 0])  # wins, losses, ties
 
     for w in weeks:
         wk = get(f"{BASE}/league/{league_id}/matchups/{w}")
@@ -84,14 +84,16 @@ def build_matchups_and_stats(league_id, r_by_id):
                 r = rows[0]
                 rid = r["roster_id"]
                 pts = float(r.get("points") or 0)
-                matchups.append({
-                    "week": w,
-                    "home_team": r_by_id.get(rid, {}).get("team_name"),
-                    "home_score": pts,
-                    "away_team": None,
-                    "away_score": None,
-                    "is_playoff": bool(r.get("playoff"))
-                })
+                matchups.append(
+                    {
+                        "week": w,
+                        "home_team": r_by_id.get(rid, {}).get("team_name"),
+                        "home_score": pts,
+                        "away_team": None,
+                        "away_score": None,
+                        "is_playoff": bool(r.get("playoff")),
+                    }
+                )
                 continue
 
             rows.sort(key=lambda x: float(x.get("points") or 0), reverse=True)
@@ -106,23 +108,33 @@ def build_matchups_and_stats(league_id, r_by_id):
                 home, away = b, a
                 h_pts, a_pts2 = b_pts, a_pts
 
-            matchups.append({
-                "week": w,
-                "home_team": r_by_id.get(home["roster_id"], {}).get("team_name"),
-                "home_score": float(h_pts),
-                "away_team": r_by_id.get(away["roster_id"], {}).get("team_name"),
-                "away_score": float(a_pts2),
-                "is_playoff": bool(home.get("playoff") or away.get("playoff")),
-            })
+            matchups.append(
+                {
+                    "week": w,
+                    "home_team": r_by_id.get(home["roster_id"], {}).get("team_name"),
+                    "home_score": float(h_pts),
+                    "away_team": r_by_id.get(away["roster_id"], {}).get("team_name"),
+                    "away_score": float(a_pts2),
+                    "is_playoff": bool(home.get("playoff") or away.get("playoff")),
+                }
+            )
 
             if is_future_zero_zero(a_pts, b_pts):
                 continue
 
-            pf[a_id] += a_pts; pf[b_id] += b_pts
-            pa[a_id] += b_pts; pa[b_id] += a_pts
-            if a_pts > b_pts: wl[a_id][0]+=1; wl[b_id][1]+=1
-            elif a_pts < b_pts: wl[b_id][0]+=1; wl[a_id][1]+=1
-            else: wl[a_id][2]+=1; wl[b_id][2]+=1
+            pf[a_id] += a_pts
+            pf[b_id] += b_pts
+            pa[a_id] += b_pts
+            pa[b_id] += a_pts
+            if a_pts > b_pts:
+                wl[a_id][0] += 1
+                wl[b_id][1] += 1
+            elif a_pts < b_pts:
+                wl[b_id][0] += 1
+                wl[a_id][1] += 1
+            else:
+                wl[a_id][2] += 1
+                wl[b_id][2] += 1
 
     return matchups, pf, pa, wl, weeks
 
@@ -131,13 +143,18 @@ def players_index():
     data = get("https://api.sleeper.app/v1/players/nfl")
     name, team, pos = {}, {}, {}
     for pid, p in data.items():
-        nm = p.get("full_name") or (f"{p.get('first_name','').strip()} {p.get('last_name','').strip()}".strip()) or p.get("last_name") or pid
+        nm = (
+            p.get("full_name")
+            or (f"{p.get('first_name','').strip()} {p.get('last_name','').strip()}".strip())
+            or p.get("last_name")
+            or pid
+        )
         name[pid] = nm
         team[pid] = p.get("team")
         pos[pid] = p.get("position")
     return name, team, pos
 
-# ---------- legacy transactions (kept for compatibility) ----------
+# ---------- legacy transactions ----------
 def build_transactions(league_id, r_by_id, weeks, name_map):
     txns = []
     for w in weeks:
@@ -162,7 +179,7 @@ def build_transactions(league_id, r_by_id, weeks, name_map):
                 txns.append({"date": f"Week {w}", "entries": entries})
     return txns
 
-# ---------- draft table for legacy UI (kept) ----------
+# ---------- draft table for legacy UI ----------
 def build_draft(league_id, r_by_id, name_map, team_map):
     drafts = get(f"{BASE}/league/{league_id}/drafts") or []
     if not drafts:
@@ -173,38 +190,42 @@ def build_draft(league_id, r_by_id, name_map, team_map):
     out = []
     for p in picks:
         pid = p.get("player_id")
-        out.append({
-            "round": p.get("round"),
-            "overall": p.get("pick_no"),
-            "team": r_by_id.get(p.get("roster_id"), {}).get("team_name"),
-            "player": (name_map.get(pid) or pid),
-            "player_nfl": team_map.get(pid),
-            "keeper": bool(p.get("is_keeper"))
-        })
+        out.append(
+            {
+                "round": p.get("round"),
+                "overall": p.get("pick_no"),
+                "team": r_by_id.get(p.get("roster_id"), {}).get("team_name"),
+                "player": (name_map.get(pid) or pid),
+                "player_nfl": team_map.get(pid),
+                "keeper": bool(p.get("is_keeper")),
+            }
+        )
     out.sort(key=lambda x: (x.get("overall") or 0))
     return out
 
 def build_teams(r_by_id, pf, pa, wl):
     teams = []
     order = sorted(r_by_id.keys(), key=lambda rid: (wl[rid][0], pf[rid]), reverse=True)
-    rank_by_rid = {rid: i+1 for i, rid in enumerate(order)}
+    rank_by_rid = {rid: i + 1 for i, rid in enumerate(order)}
     for rid, meta in r_by_id.items():
-        w,l,t = wl[rid]
+        w, l, t = wl[rid]
         record = f"{w}-{l}-{t}" if t else f"{w}-{l}"
-        teams.append({
-            "team_id": rid,
-            "team_name": meta["team_name"],
-            "owner": meta["owner_name"],
-            "record": record,
-            "points_for": round(pf[rid], 2),
-            "points_against": round(pa[rid], 2),
-            "regular_season_rank": rank_by_rid.get(rid),
-            "final_rank": None
-        })
+        teams.append(
+            {
+                "team_id": rid,
+                "team_name": meta["team_name"],
+                "owner": meta["owner_name"],
+                "record": record,
+                "points_for": round(pf[rid], 2),
+                "points_against": round(pa[rid], 2),
+                "regular_season_rank": rank_by_rid.get(rid),
+                "final_rank": None,
+            }
+        )
     teams.sort(key=lambda t: (t.get("regular_season_rank") or math.inf, t["team_name"]))
     return teams
 
-# ---------- NEW: data for app (draft-day, current, points, lineage, trade scores) ----------
+# ---------- NEW: data for app ----------
 def draft_day_roster(league_id):
     drafts = get(f"{BASE}/league/{league_id}/drafts") or []
     if not drafts:
@@ -265,7 +286,6 @@ def fetch_raw_transactions(league_id, weeks, tail_extra=6):
     return raw
 
 def build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, points_by_week, weeks_complete):
-    # ownership seeded by draft
     ownership = {}
     hist = defaultdict(list)  # (pid,rid)->list of events
     for rid, plist in draft_map.items():
@@ -279,7 +299,6 @@ def build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, points_by_week, w
             total += float(points_by_week.get(str(wk), {}).get(pid, 0.0))
         return total
 
-    # acquisitions history + trade evals
     trade_evals = []
     for tx in raw_txs:
         ttype = tx["type"]
@@ -301,37 +320,29 @@ def build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, points_by_week, w
 
         if ttype == "trade":
             per_roster = []
-            for rid in sorted(set(list(ro_in.keys()) + list(ro_out.keys()))):
-                players_in  = ro_in.get(rid, [])
+            for rid in sorted(set(ro_in.keys()) | set(ro_out.keys())):
+                players_in = ro_in.get(rid, [])
                 players_out = ro_out.get(rid, [])
-                pts_in  = sum(points_after_week(p, tx["week"]) for p in players_in)
+                pts_in = sum(points_after_week(p, tx["week"]) for p in players_in)
                 pts_out = sum(points_after_week(p, tx["week"]) for p in players_out)
                 net = pts_in - pts_out
                 scale = 100.0
                 score = int(round(50 + 50 * math.tanh(net / scale)))
-                per_roster.append({
-                    "roster_id": rid,
-                    "team_name": r_by_id.get(rid, {}).get("team_name"),
-                    "players_in": players_in,
-                    "players_out": players_out,
-                    "net_points_after": round(net, 2),
-                    "score_0_to_100": score
-                })
-            trade_evals.append({
-                "tx_id": tx["transaction_id"],
-                "week": tx["week"],
-                "executed": tx["executed"],
-                "per_roster": per_roster
-            })
+                per_roster.append(
+                    {
+                        "roster_id": rid,
+                        "team_name": r_by_id.get(rid, {}).get("team_name"),
+                        "players_in": players_in,
+                        "players_out": players_out,
+                        "net_points_after": round(net, 2),
+                        "score_0_to_100": score,
+                    }
+                )
+            trade_evals.append({"tx_id": tx["transaction_id"], "week": tx["week"], "executed": tx["executed"], "per_roster": per_roster})
 
     acquisitions = []
     for (pid, rid), h in hist.items():
-        acquisitions.append({
-            "player_id": pid,
-            "roster_id": rid,
-            "obtained": h[0],
-            "history": h
-        })
+        acquisitions.append({"player_id": pid, "roster_id": rid, "obtained": h[0], "history": h})
 
     return acquisitions, trade_evals
 
@@ -345,55 +356,37 @@ def main():
     matchups, pf, pa, wl, weeks = build_matchups_and_stats(SLEEPER_LEAGUE_ID, r_by_id)
     name_map, nfl_team_map, pos_map = players_index()
 
-    # legacy outputs (kept)
     transactions = build_transactions(SLEEPER_LEAGUE_ID, r_by_id, weeks, name_map)
     draft_table = build_draft(SLEEPER_LEAGUE_ID, r_by_id, name_map, nfl_team_map)
     teams = build_teams(r_by_id, pf, pa, wl)
 
-    # new app data
     draft_map, draft_id, raw_picks = draft_day_roster(SLEEPER_LEAGUE_ID)
     current_map = current_roster(rosters_raw)
     by_week_pts, cumulative_pts, weeks_complete = player_points(SLEEPER_LEAGUE_ID, weeks)
     raw_txs = fetch_raw_transactions(SLEEPER_LEAGUE_ID, weeks)
-    acquisitions, trade_evals = build_acquisitions_and_scores(
-        r_by_id, draft_map, raw_txs, by_week_pts, weeks_complete
-    )
+    acquisitions, trade_evals = build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, by_week_pts, weeks_complete)
 
-    # player index compact
-    # FIX: use set(...) everywhere; the original code mixed list and set with "|"
-    all_pids = (
-        set(cumulative_pts.keys())
-        | {p for lst in draft_map.values() for p in lst}
-        | {p for lst in current_map.values() for p in lst}
-    )
+    # FIX: never do list | set; build one set with set unions
+    all_pids = set(cumulative_pts.keys())
+    all_pids |= {p for lst in draft_map.values() for p in lst}
+    all_pids |= {p for lst in current_map.values() for p in lst}
 
     player_index = {}
     for pid in all_pids:
-        player_index[pid] = {
-            "full_name": name_map.get(pid, pid),
-            "team": nfl_team_map.get(pid),
-            "pos": pos_map.get(pid)
-        }
+        player_index[pid] = {"full_name": name_map.get(pid, pid), "team": nfl_team_map.get(pid), "pos": pos_map.get(pid)}
 
     out = {
-        # existing consumers rely on these:
         "year": YEAR,
         "teams": teams,
         "matchups": matchups,
         "transactions": transactions,
         "draft": draft_table,
-
-        # additions for the new UI:
         "users": users_out,
         "player_index": player_index,
         "draft_day_roster": draft_map,
         "current_roster": current_map,
         "raw_transactions": raw_txs,
-        "player_points": {
-            "by_week": by_week_pts,
-            "cumulative": cumulative_pts,
-            "weeks_complete": weeks_complete
-        },
+        "player_points": {"by_week": by_week_pts, "cumulative": cumulative_pts, "weeks_complete": weeks_complete},
         "acquisitions": acquisitions,
         "trade_evals": trade_evals,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
