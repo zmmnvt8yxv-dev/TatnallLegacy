@@ -283,7 +283,6 @@ def build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, points_by_week, w
     trade_evals = []
     for tx in raw_txs:
         ttype = tx["type"]
-        # movements per roster
         ro_in = defaultdict(list)
         ro_out = defaultdict(list)
         for pid, rid in tx["adds"].items():
@@ -291,7 +290,6 @@ def build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, points_by_week, w
         for pid, rid in tx["drops"].items():
             ro_out[int(rid)].append(pid)
 
-        # lineage updates
         for rid, pids in ro_in.items():
             for pid in pids:
                 prev = ownership.get(pid)
@@ -301,7 +299,6 @@ def build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, points_by_week, w
                 hist[(pid, rid)].append({"method": method, "week": tx["week"], "from_roster_id": prev, "tx_id": tx["transaction_id"]})
                 ownership[pid] = rid
 
-        # trade scoring
         if ttype == "trade":
             per_roster = []
             for rid in sorted(set(list(ro_in.keys()) + list(ro_out.keys()))):
@@ -363,10 +360,15 @@ def main():
     )
 
     # player index compact
+    # FIX: use set(...) everywhere; the original code mixed list and set with "|"
+    all_pids = (
+        set(cumulative_pts.keys())
+        | {p for lst in draft_map.values() for p in lst}
+        | {p for lst in current_map.values() for p in lst}
+    )
+
     player_index = {}
-    for pid in set(list(cumulative_pts.keys()) |
-                   {p for lst in draft_map.values() for p in lst} |
-                   {p for lst in current_map.values() for p in lst}):
+    for pid in all_pids:
         player_index[pid] = {
             "full_name": name_map.get(pid, pid),
             "team": nfl_team_map.get(pid),
