@@ -42,8 +42,10 @@ YEAR = int(os.getenv("YEAR", "2025"))
 LEAGUE_ID = os.getenv("SLEEPER_LEAGUE_ID", "1262418074540195841")
 BASE = "https://api.sleeper.app/v1"
 
+USER_AGENT = "tatnall-legacy-trades/1.0"
 S = requests.Session()
-S.headers.update({"User-Agent": "tatnall-legacy-trades/1.0"})
+S.headers.update({"User-Agent": USER_AGENT})
+HTTPError = requests.HTTPError
 
 def get(url):
     r = S.get(url, timeout=30)
@@ -87,7 +89,7 @@ def discover_weeks(league_id, max_weeks=22):
     for w in range(1, max_weeks+1):
         try:
             arr = get(f"{BASE}/league/{league_id}/matchups/{w}")
-        except requests.HTTPError as e:
+        except HTTPError as e:
             if e.response is not None and e.response.status_code == 404:
                 break
             raise
