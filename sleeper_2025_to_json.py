@@ -366,14 +366,19 @@ def main():
     raw_txs = fetch_raw_transactions(SLEEPER_LEAGUE_ID, weeks)
     acquisitions, trade_evals = build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, by_week_pts, weeks_complete)
 
-    # FIX: never do list | set; build one set with set unions
+       # player index compact
+    # Build one set via set-unions (never list | set)
     all_pids = set(cumulative_pts.keys())
     all_pids |= {p for lst in draft_map.values() for p in lst}
     all_pids |= {p for lst in current_map.values() for p in lst}
 
     player_index = {}
     for pid in all_pids:
-        player_index[pid] = {"full_name": name_map.get(pid, pid), "team": nfl_team_map.get(pid), "pos": pos_map.get(pid)}
+        player_index[pid] = {
+            "full_name": name_map.get(pid, pid),
+            "team": nfl_team_map.get(pid),
+            "pos": pos_map.get(pid),
+        }
 
     out = {
         "year": YEAR,
