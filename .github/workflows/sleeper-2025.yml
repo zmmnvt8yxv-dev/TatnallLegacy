@@ -3,7 +3,7 @@ name: Generate Sleeper 2025 JSON
 on:
   schedule:
     # Runs every Tuesday at 8 AM EST/
-    # Convert 8 AM EST to UTC: 8 AM EST = 13:00 UTC (during standard time)
+    # Convert 8 AM EST to UTC: 8 AM EST = 13:00 UTC (during standard time)/
     # 0 13 * * 2  (Minute 0, Hour 13, Day of Month *, Month *, Day of Week 2 for Tuesday)
     - cron: '0 13 * * 2'
 
