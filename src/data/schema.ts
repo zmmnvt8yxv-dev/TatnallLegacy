@@ -43,6 +43,37 @@ export const DraftPickSchema = z.object({
   keeper: z.boolean().nullable().optional(),
 });
 
+export const PowerRankingEntrySchema = z.object({
+  week: z.number().int(),
+  team: z.string(),
+  rank: z.number().int(),
+  record: z.string().nullable().optional(),
+  points_for: z.number().nullable().optional(),
+  note: z.string().nullable().optional(),
+});
+
+export const PowerRankingsSchema = z.object({
+  schemaVersion: z.literal(SCHEMA_VERSION),
+  generated_at: z.string().nullable().optional(),
+  season: z.number().int().nullable().optional(),
+  entries: z.array(PowerRankingEntrySchema),
+});
+
+export const WeeklyRecapEntrySchema = z.object({
+  week: z.number().int(),
+  title: z.string(),
+  summary: z.string(),
+  highlights: z.array(z.string()).optional(),
+  notable_teams: z.array(z.string()).optional(),
+});
+
+export const WeeklyRecapsSchema = z.object({
+  schemaVersion: z.literal(SCHEMA_VERSION),
+  generated_at: z.string().nullable().optional(),
+  season: z.number().int().nullable().optional(),
+  entries: z.array(WeeklyRecapEntrySchema),
+});
+
 export const AwardSchema = z.object({
   id: z.string().default(""),
   title: z.string().default(""),
@@ -98,6 +129,10 @@ export type Team = z.infer<typeof TeamSchema>;
 export type Matchup = z.infer<typeof MatchupSchema>;
 export type Transaction = z.infer<typeof TransactionSchema>;
 export type DraftPick = z.infer<typeof DraftPickSchema>;
+export type PowerRankingEntry = z.infer<typeof PowerRankingEntrySchema>;
+export type PowerRankings = z.infer<typeof PowerRankingsSchema>;
+export type WeeklyRecapEntry = z.infer<typeof WeeklyRecapEntrySchema>;
+export type WeeklyRecaps = z.infer<typeof WeeklyRecapsSchema>;
 export type Award = z.infer<typeof AwardSchema>;
 export type Lineup = z.infer<typeof LineupSchema>;
 export type Supplemental = z.infer<typeof SupplementalSchema>;
