@@ -18,6 +18,13 @@ tbody tr:hover { background:#0b1322; }
 .stat h3 { margin:0; font-size:13px; color:var(--muted); font-weight:500; }
 .stat p { margin:6px 0 0; font-size:20px; color:var(--ink); }
 .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.record-summary { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+.record-summary .controls { margin-left:auto; }
+.record-summary .controls label { font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+.record-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.record-chip { display:flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#0b1220; border:1px solid var(--line); font-size:13px; }
+.record-chip span { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.06em; }
+.record-chip strong { font-weight:600; }
 footer { color:var(--muted); text-align:center; padding:30px 0 50px; }
 .hidden { display:none !important; }
 .badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); color:var(--muted); }

@@ -18,6 +18,16 @@ function el(tag, attrs={}, ...kids){
   return n;
 }
 function fmt(n){ if(n===null||n===undefined) return ""; return typeof n==="number"? (Math.round(n*100)/100).toString(): String(n); }
+function parseRecord(record){
+  if (!record) return { wins: 0, losses: 0, ties: 0, winPct: 0 };
+  const parts = String(record).split("-").map(p => parseInt(p, 10));
+  const wins = Number.isFinite(parts[0]) ? parts[0] : 0;
+  const losses = Number.isFinite(parts[1]) ? parts[1] : 0;
+  const ties = Number.isFinite(parts[2]) ? parts[2] : 0;
+  const total = wins + losses + ties;
+  const winPct = total ? (wins + ties * 0.5) / total : 0;
+  return { wins, losses, ties, winPct };
+}
 function sortTable(tbl, idx, numeric=false){
   const tbody=tbl.tBodies[0]; const rows=[...tbody.rows]; const asc=!tbl._asc;
   rows.sort((a,b)=>{ const av=a.cells[idx].textContent.trim(); const bv=b.cells[idx].textContent.trim();
@@ -409,8 +419,14 @@ function renderSummary(year, data){
 }
 
 function renderTeams(teams){
+  const summaryWrap = document.getElementById("recordSummary");
+  const chipsWrap = document.getElementById("recordChips");
+  const controlsWrap = document.getElementById("teamSortControls");
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
+  chipsWrap.innerHTML = "";
+  controlsWrap.innerHTML = "";
   if(!teams.length){
+    summaryWrap.classList.add("hidden");
     wrap.appendChild(
   el("div",{class:"tablewrap"},
     el("div",{style:"padding:12px; color:#9ca3af;"},"No teams found.")
@@ -418,22 +434,78 @@ function renderTeams(teams){
 );
     return;
   }
+  summaryWrap.classList.remove("hidden");
+  const teamsWithStats = teams.map(t => {
+    const recordMeta = parseRecord(t.record);
+    return { ...t, ...recordMeta };
+  });
+  const byRecord = (a, b) => {
+    if (b.winPct !== a.winPct) return b.winPct - a.winPct;
+    if (b.wins !== a.wins) return b.wins - a.wins;
+    return (b.points_for || 0) - (a.points_for || 0);
+  };
+  const topRecord = [...teamsWithStats].sort(byRecord)[0];
+  const bestPF = teamsWithStats.reduce((best, t) => ((t.points_for || 0) > (best?.points_for || 0) ? t : best), null);
+  const bestWinPct = teamsWithStats.reduce((best, t) => ((t.winPct || 0) > (best?.winPct || 0) ? t : best), null);
+  const pctLabel = winPct => `${(winPct * 100).toFixed(1)}%`;
+  const chips = [
+    ["Top Record", topRecord ? `${topRecord.team_name} (${fmt(topRecord.record)})` : "—"],
+    ["Best PF", bestPF ? `${bestPF.team_name} (${fmt(bestPF.points_for)})` : "—"],
+    ["Highest Win%", bestWinPct ? `${bestWinPct.team_name} (${pctLabel(bestWinPct.winPct)})` : "—"]
+  ];
+  chips.forEach(([label, value]) => {
+    chipsWrap.appendChild(
+      el("div", { class: "record-chip" },
+        el("span", {}, label),
+        el("strong", {}, value)
+      )
+    );
+  });
+  const sortLabel = el("label", { for: "teamSort" }, "Sort by:");
+  const sortSelect = el("select", { id: "teamSort", "aria-label": "Sort teams" },
+    el("option", { value: "record" }, "Record"),
+    el("option", { value: "pf" }, "PF"),
+    el("option", { value: "rank" }, "Rank")
+  );
+  controlsWrap.append(sortLabel, sortSelect);
   const tbl = el("table",{},
     el("thead",{}, el("tr",{}, el("th",{},"Team/Manager"), el("th",{},"Record"), el("th",{},"Points For"),
       el("th",{},"Points Against"), el("th",{},"In-Season Rank"), el("th",{},"Final Rank"))),
     el("tbody",{})
   );
-  teams.forEach(t=>{
-    const owner = canonicalOwner(t.owner || t.team_name);
-    tbl.tBodies[0].appendChild(el("tr",{},
-      el("td",{}, `${t.team_name}${owner?` (${owner})`:""}`),
-      el("td",{}, fmt(t.record)),
-      el("td",{}, fmt(t.points_for)),
-      el("td",{}, fmt(t.points_against)),
-      el("td",{}, fmt(t.regular_season_rank)),
-      el("td",{}, fmt(t.final_rank))
-    ));
-  });
+  function renderRows(sortedTeams){
+    tbl.tBodies[0].innerHTML = "";
+    sortedTeams.forEach(t => {
+      const owner = canonicalOwner(t.owner || t.team_name);
+      tbl.tBodies[0].appendChild(el("tr",{},
+        el("td",{}, `${t.team_name}${owner?` (${owner})`:""}`),
+        el("td",{}, fmt(t.record)),
+        el("td",{}, fmt(t.points_for)),
+        el("td",{}, fmt(t.points_against)),
+        el("td",{}, fmt(t.regular_season_rank)),
+        el("td",{}, fmt(t.final_rank))
+      ));
+    });
+  }
+  function sortTeams(sortKey){
+    const data = [...teamsWithStats];
+    if (sortKey === "pf"){
+      return data.sort((a, b) => (b.points_for || 0) - (a.points_for || 0));
+    }
+    if (sortKey === "rank"){
+      return data.sort((a, b) => {
+        const rankA = a.final_rank ?? a.regular_season_rank ?? Number.POSITIVE_INFINITY;
+        const rankB = b.final_rank ?? b.regular_season_rank ?? Number.POSITIVE_INFINITY;
+        return rankA - rankB;
+      });
+    }
+    return data.sort(byRecord);
+  }
+  function applySort(){
+    renderRows(sortTeams(sortSelect.value));
+  }
+  sortSelect.addEventListener("change", applySort);
+  applySort();
   wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
