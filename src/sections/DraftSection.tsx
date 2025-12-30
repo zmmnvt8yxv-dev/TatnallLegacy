@@ -1,64 +1,30 @@
+import { useMemo } from "react";
+import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
 import { TableShell } from "../components/TableShell";
-
-const draftRows = [
-  {
-    round: 1,
-    pick: 1,
-    player: "Breece Hall",
-    position: "RB",
-    team: "Midnight Riders",
-    manager: "A. Johnson",
-    value: 92,
-  },
-  {
-    round: 1,
-    pick: 2,
-    player: "Justin Jefferson",
-    position: "WR",
-    team: "Neon Knights",
-    manager: "T. Alvarez",
-    value: 90,
-  },
-  {
-    round: 1,
-    pick: 3,
-    player: "Ja'Marr Chase",
-    position: "WR",
-    team: "Emerald City",
-    manager: "K. Rivera",
-    value: 88,
-  },
-  {
-    round: 1,
-    pick: 4,
-    player: "Christian McCaffrey",
-    position: "RB",
-    team: "Lightning Bolts",
-    manager: "M. Chen",
-    value: 87,
-  },
-  {
-    round: 1,
-    pick: 5,
-    player: "Josh Allen",
-    position: "QB",
-    team: "Monarchs",
-    manager: "S. Patel",
-    value: 86,
-  },
-  {
-    round: 1,
-    pick: 6,
-    player: "Tyreek Hill",
-    position: "WR",
-    team: "Ironclads",
-    manager: "R. Gomez",
-    value: 85,
-  },
-];
+import { selectDraftPicks } from "../data/selectors";
+import { useSeasonData } from "../hooks/useSeasonData";
 
 export function DraftSection() {
+  const { status, season, error } = useSeasonData();
+  const draftRows = useMemo(() => (season ? selectDraftPicks(season) : []), [season]);
+
+  if (status === "loading") {
+    return <LoadingSection title="Draft Results" subtitle="Loading draft selections…" />;
+  }
+
+  if (status === "error" || !season) {
+    return (
+      <SectionShell
+        id="draft"
+        title="Draft Results"
+        subtitle="Sortable board with round-by-round results."
+      >
+        <p className="text-sm text-red-500">Unable to load season data: {error ?? "Unknown error"}</p>
+      </SectionShell>
+    );
+  }
+
   return (
     <SectionShell
       id="draft"
@@ -73,7 +39,8 @@ export function DraftSection() {
             <option value="round">Round</option>
             <option value="pick">Pick</option>
             <option value="player">Player</option>
-            <option value="value">Draft Value</option>
+            <option value="team">Team</option>
+            <option value="manager">Manager</option>
           </select>
           <input
             id="draftSearch"
@@ -104,7 +71,7 @@ export function DraftSection() {
                   Player
                 </button>
               </th>
-              <th>Pos</th>
+              <th>NFL</th>
               <th>
                 <button type="button" className="table-sort" aria-sort="none">
                   Team
@@ -115,25 +82,29 @@ export function DraftSection() {
                   Manager
                 </button>
               </th>
-              <th>
-                <button type="button" className="table-sort" aria-sort="none">
-                  Value
-                </button>
-              </th>
+              <th>Keeper</th>
             </tr>
           </thead>
           <tbody>
-            {draftRows.map((row) => (
-              <tr key={`${row.round}-${row.pick}`}>
-                <td>{row.round}</td>
-                <td>{row.pick}</td>
-                <td>{row.player}</td>
-                <td>{row.position}</td>
-                <td>{row.team}</td>
-                <td>{row.manager}</td>
-                <td>{row.value}</td>
+            {draftRows.length === 0 ? (
+              <tr>
+                <td colSpan={7} className="text-sm text-muted">
+                  No draft picks available for this season yet.
+                </td>
               </tr>
-            ))}
+            ) : (
+              draftRows.map((row) => (
+                <tr key={`${row.round}-${row.pick}-${row.team}-${row.player}`}>
+                  <td>{row.round || "—"}</td>
+                  <td>{row.pick || "—"}</td>
+                  <td>{row.player}</td>
+                  <td>{row.nflTeam}</td>
+                  <td>{row.team}</td>
+                  <td>{row.manager}</td>
+                  <td>{row.keeper ? "Yes" : "No"}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </TableShell>

@@ -46,6 +46,38 @@ export type MatchupCard = {
   awayScore: number;
 };
 
+export type TransactionCard = {
+  id: string;
+  team: string;
+  type: string;
+  player: string;
+  faab: number | null;
+  detail: string;
+  timestamp: string;
+};
+
+export type DraftRow = {
+  round: number;
+  pick: number;
+  player: string;
+  nflTeam: string;
+  team: string;
+  manager: string;
+  keeper: boolean;
+};
+
+export type MemberSummary = {
+  id: string;
+  owner: string;
+  team: string;
+  record: string;
+  winPct: number | null;
+  pointsFor: number;
+  pointsAgainst: number;
+  finalRank: number | null;
+  regularSeasonRank: number | null;
+};
+
 const summaryCache = new WeakMap<SeasonData, string>();
 const summaryStatsCache = new WeakMap<SeasonData, SummaryStat[]>();
 const kpiStatsCache = new WeakMap<SeasonData, KpiStat[]>();
@@ -54,6 +86,11 @@ const standingsCache = new WeakMap<SeasonData, StandingsRow[]>();
 const standingsHighlightsCache = new WeakMap<SeasonData, StandingsHighlight[]>();
 const matchupWeeksCache = new WeakMap<SeasonData, string[]>();
 const matchupsCache = new WeakMap<SeasonData, MatchupCard[]>();
+const transactionFiltersCache = new WeakMap<SeasonData, string[]>();
+const transactionWeeksCache = new WeakMap<SeasonData, string[]>();
+const transactionsCache = new WeakMap<SeasonData, TransactionCard[]>();
+const draftCache = new WeakMap<SeasonData, DraftRow[]>();
+const memberSummariesCache = new WeakMap<SeasonData, MemberSummary[]>();
 
 type TeamAggregate = {
   name: string;
@@ -187,6 +224,47 @@ function formatChange(current: number, previous: number, unit: string): string {
   const delta = current - previous;
   const sign = delta > 0 ? "+" : delta < 0 ? "−" : "";
   return `${sign}${Math.abs(delta).toFixed(1)}${unit}`;
+}
+
+function formatTransactionType(type: string): string {
+  const normalized = type.trim().toLowerCase();
+  if (!normalized) {
+    return "Transaction";
+  }
+  if (normalized === "add") {
+    return "Add";
+  }
+  if (normalized === "drop") {
+    return "Drop";
+  }
+  if (normalized === "trade") {
+    return "Trade";
+  }
+  return type;
+}
+
+function extractWeekIndex(label: string): number | null {
+  const match = label.match(/week\s+(\d+)/i);
+  if (!match) {
+    return null;
+  }
+  return Number.parseInt(match[1], 10);
+}
+
+function normalizeTeamName(team: string | null | undefined): string {
+  if (!team) {
+    return "—";
+  }
+  const match = team.match(/^Team\((.*)\)$/);
+  return match ? match[1] : team;
+}
+
+function buildOwnerLookup(season: SeasonData): Map<string, string> {
+  const lookup = new Map<string, string>();
+  season.teams.forEach((team) => {
+    lookup.set(normalizeTeamName(team.team_name), team.owner ?? "—");
+  });
+  return lookup;
 }
 
 export function selectSeasonSummary(season: SeasonData): string {
@@ -477,4 +555,138 @@ export function selectMatchups(season: SeasonData): MatchupCard[] {
     });
   matchupsCache.set(season, cards);
   return cards;
+}
+
+export function selectTransactionFilters(season: SeasonData): string[] {
+  const cached = transactionFiltersCache.get(season);
+  if (cached) {
+    return cached;
+  }
+  const types = new Set<string>();
+  season.transactions.forEach((transaction) => {
+    transaction.entries.forEach((entry) => {
+      if (entry.type) {
+        types.add(formatTransactionType(entry.type));
+      }
+    });
+  });
+  const filters = ["All Transactions", ...Array.from(types).sort((a, b) => a.localeCompare(b))];
+  transactionFiltersCache.set(season, filters);
+  return filters;
+}
+
+export function selectTransactionWeeks(season: SeasonData): string[] {
+  const cached = transactionWeeksCache.get(season);
+  if (cached) {
+    return cached;
+  }
+  const dates = new Set<string>();
+  season.transactions.forEach((transaction) => {
+    if (transaction.date) {
+      dates.add(transaction.date);
+    }
+  });
+  const labels = ["All Weeks", ...Array.from(dates).sort((a, b) => {
+    const weekA = extractWeekIndex(a);
+    const weekB = extractWeekIndex(b);
+    if (weekA != null && weekB != null) {
+      return weekA - weekB;
+    }
+    if (weekA != null) {
+      return -1;
+    }
+    if (weekB != null) {
+      return 1;
+    }
+    return a.localeCompare(b);
+  })];
+  transactionWeeksCache.set(season, labels);
+  return labels;
+}
+
+export function selectTransactions(season: SeasonData): TransactionCard[] {
+  const cached = transactionsCache.get(season);
+  if (cached) {
+    return cached;
+  }
+  const cards: TransactionCard[] = [];
+  season.transactions.forEach((transaction, transactionIndex) => {
+    const timestamp = transaction.date || "—";
+    transaction.entries.forEach((entry, entryIndex) => {
+      const team = normalizeTeamName(entry.team);
+      const type = formatTransactionType(entry.type ?? "");
+      const player = entry.player || "—";
+      const faab = entry.faab ?? null;
+      const detailParts = [type];
+      if (faab != null) {
+        detailParts.push(`FAAB $${faab}`);
+      }
+      const detail = detailParts.join(" · ");
+      cards.push({
+        id: `${transactionIndex}-${entryIndex}-${team}-${player}`,
+        team,
+        type,
+        player,
+        faab,
+        detail,
+        timestamp,
+      });
+    });
+  });
+  transactionsCache.set(season, cards);
+  return cards;
+}
+
+export function selectDraftPicks(season: SeasonData): DraftRow[] {
+  const cached = draftCache.get(season);
+  if (cached) {
+    return cached;
+  }
+  const ownerLookup = buildOwnerLookup(season);
+  const rows = season.draft
+    .map((pick) => {
+      const teamName = normalizeTeamName(pick.team);
+      return {
+        round: pick.round ?? 0,
+        pick: pick.overall ?? 0,
+        player: pick.player ?? "—",
+        nflTeam: pick.player_nfl ?? "—",
+        team: teamName,
+        manager: ownerLookup.get(teamName) ?? "—",
+        keeper: Boolean(pick.keeper),
+      };
+    })
+    .sort((a, b) => {
+      if (a.round !== b.round) {
+        return a.round - b.round;
+      }
+      return a.pick - b.pick;
+    });
+  draftCache.set(season, rows);
+  return rows;
+}
+
+export function selectMemberSummaries(season: SeasonData): MemberSummary[] {
+  const cached = memberSummariesCache.get(season);
+  if (cached) {
+    return cached;
+  }
+  const summaries = season.teams.map((team) => {
+    const record = team.record ?? "—";
+    const parsed = parseRecord(record);
+    const winPct = parsed ? parsed.wins / Math.max(parsed.wins + parsed.losses, 1) : null;
+    return {
+      id: `${team.owner ?? "member"}-${team.team_name}`,
+      owner: team.owner ?? "—",
+      team: team.team_name,
+      record,
+      winPct,
+      pointsFor: toNumber(team.points_for),
+      pointsAgainst: toNumber(team.points_against),
+      finalRank: team.final_rank ?? null,
+      regularSeasonRank: team.regular_season_rank ?? null,
+    };
+  });
+  memberSummariesCache.set(season, summaries);
+  return summaries;
 }
