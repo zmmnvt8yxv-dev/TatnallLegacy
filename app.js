@@ -18,6 +18,16 @@ function el(tag, attrs={}, ...kids){
   return n;
 }
 function fmt(n){ if(n===null||n===undefined) return ""; return typeof n==="number"? (Math.round(n*100)/100).toString(): String(n); }
+function parseRecord(record){
+  if (!record) return { wins: 0, losses: 0, ties: 0, winPct: 0 };
+  const parts = String(record).split("-").map(p => parseInt(p, 10));
+  const wins = Number.isFinite(parts[0]) ? parts[0] : 0;
+  const losses = Number.isFinite(parts[1]) ? parts[1] : 0;
+  const ties = Number.isFinite(parts[2]) ? parts[2] : 0;
+  const total = wins + losses + ties;
+  const winPct = total ? (wins + ties * 0.5) / total : 0;
+  return { wins, losses, ties, winPct };
+}
 function sortTable(tbl, idx, numeric=false){
   const tbody=tbl.tBodies[0]; const rows=[...tbody.rows]; const asc=!tbl._asc;
   rows.sort((a,b)=>{ const av=a.cells[idx].textContent.trim(); const bv=b.cells[idx].textContent.trim();
@@ -409,55 +419,13 @@ function renderSummary(year, data){
 }
 
 function renderTeams(teams){
+  const summaryWrap = document.getElementById("recordSummary");
+  const chipsWrap = document.getElementById("recordChips");
+  const sortSelect = document.getElementById("teamSort");
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
+  chipsWrap.innerHTML = "";
   if(!teams.length){
-    wrap.appendChild(el("div",{style:"padding:12px; color:#9ca3af;"},"No teams found."));
-    return;
-  }
-  const grid = el("div",{class:"record-grid"});
-  const parseRecord = (record) => {
-    const parts = String(record ?? "").split("-").map((v)=>Number.parseInt(v, 10)).filter((v)=>Number.isFinite(v));
-    const wins = parts[0] ?? 0;
-    const losses = parts[1] ?? 0;
-    const ties = parts[2] ?? 0;
-    const games = wins + losses + ties;
-    const winPct = games ? (wins + ties * 0.5) / games : 0;
-    const recordDisplay = [wins, losses, ties].filter((v,i)=>v || i < 2).join("-");
-    return { wins, losses, ties, winPct, recordDisplay };
-  };
-  teams.forEach(t=>{
-    const owner = canonicalOwner(t.owner || t.team_name);
-    const { winPct, recordDisplay } = parseRecord(t.record);
-    const winPctText = `${(winPct * 100).toFixed(1)}%`;
-    const winClass = winPct >= 0.6 ? "win-pill win-pill--good" : winPct >= 0.5 ? "win-pill win-pill--mid" : "win-pill win-pill--bad";
-    const inSeason = fmt(t.regular_season_rank) || "—";
-    const finalRank = fmt(t.final_rank) || "—";
-    const card = el("div",{class:"record-card"},
-      el("div",{class:"record-card__header"},
-        el("div",{class:"record-card__team"}, t.team_name),
-        owner ? el("div",{class:"record-card__owner"}, owner) : ""
-      ),
-      el("div",{class:"record-card__body"},
-        el("div",{class:"record-card__row"},
-          el("span",{class:"record-card__label"},"Record"),
-          el("span",{class:"record-card__value"},
-            el("span",{}, recordDisplay),
-            el("span",{class:winClass}, winPctText)
-          )
-        ),
-        el("div",{class:"record-card__row"},
-          el("span",{class:"record-card__label"},"Points For/Against"),
-          el("span",{class:"record-card__value"}, `${fmt(t.points_for)} / ${fmt(t.points_against)}`)
-        ),
-        el("div",{class:"record-card__badges"},
-          el("span",{class:"badge"}, `In-Season ${inSeason}`),
-          el("span",{class:"badge"}, `Final ${finalRank}`)
-        )
-      )
-    );
-    grid.appendChild(card);
-  });
-  wrap.appendChild(grid);
+
 }
 
 function renderMatchups(matchups){
