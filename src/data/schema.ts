@@ -61,10 +61,12 @@ export const PowerRankingsSchema = z.object({
 
 export const WeeklyRecapEntrySchema = z.object({
   week: z.number().int(),
-  title: z.string(),
-  summary: z.string(),
+  title: z.string().optional(),
+  summary: z.string().optional(),
   highlights: z.array(z.string()).optional(),
   notable_teams: z.array(z.string()).optional(),
+  markdown: z.string().optional(),
+  content: z.unknown().optional(),
 });
 
 export const WeeklyRecapsSchema = z.object({
