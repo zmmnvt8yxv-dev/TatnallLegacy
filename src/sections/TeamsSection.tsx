@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { LoadingSection } from "../components/LoadingSection";
 import { selectStandings, selectStandingsFilters, selectStandingsHighlights } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
@@ -6,12 +6,65 @@ import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card"
 
 export function TeamsSection() {
   const { status, season, error } = useSeasonData();
+  const [searchText, setSearchText] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("All Teams");
+  const [sortKey, setSortKey] = useState("final_rank");
   const standingsHighlights = useMemo(
     () => (season ? selectStandingsHighlights(season) : []),
     [season],
   );
   const standings = useMemo(() => (season ? selectStandings(season) : []), [season]);
   const filters = useMemo(() => (season ? selectStandingsFilters(season) : []), [season]);
+  const activeFilter = filters.includes(selectedFilter) ? selectedFilter : filters[0] ?? "All Teams";
+  const normalizedSearch = searchText.trim().toLowerCase();
+  const filteredStandings = useMemo(() => {
+    const filtered = standings.filter((team) => {
+      const matchesSearch =
+        !normalizedSearch ||
+        team.team.toLowerCase().includes(normalizedSearch) ||
+        team.owner.toLowerCase().includes(normalizedSearch);
+      const matchesFilter =
+        activeFilter === "All Teams" || team.badges.includes(activeFilter);
+      return matchesSearch && matchesFilter;
+    });
+
+    const parseRecord = (record: string) => {
+      const match = record.match(/(\d+)-(\d+)/);
+      if (!match) {
+        return null;
+      }
+      return { wins: Number.parseInt(match[1], 10), losses: Number.parseInt(match[2], 10) };
+    };
+    const winPct = (record: string) => {
+      const parsed = parseRecord(record);
+      if (!parsed) {
+        return 0;
+      }
+      return parsed.wins / Math.max(parsed.wins + parsed.losses, 1);
+    };
+
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortKey) {
+        case "winPct":
+          return winPct(b.record) - winPct(a.record);
+        case "points_for":
+          return b.pointsFor - a.pointsFor;
+        case "points_against":
+          return b.pointsAgainst - a.pointsAgainst;
+        case "regular_season_rank":
+        case "final_rank":
+          return a.rank - b.rank;
+        case "team_name":
+          return a.team.localeCompare(b.team);
+        case "owner":
+          return a.owner.localeCompare(b.owner);
+        default:
+          return a.rank - b.rank;
+      }
+    });
+
+    return sorted;
+  }, [activeFilter, normalizedSearch, sortKey, standings]);
 
   if (status === "loading") {
     return <LoadingSection title="Teams" subtitle="Loading season standings…" />;
@@ -52,11 +105,19 @@ export function TeamsSection() {
             placeholder="Search team or owner…"
             aria-label="Search teams or owners"
             className="input"
+            value={searchText}
+            onChange={(event) => setSearchText(event.target.value)}
           />
           <label htmlFor="teamSort" className="text-sm text-muted">
             Sort:
           </label>
-          <select id="teamSort" aria-label="Sort teams" className="input">
+          <select
+            id="teamSort"
+            aria-label="Sort teams"
+            className="input"
+            value={sortKey}
+            onChange={(event) => setSortKey(event.target.value)}
+          >
             <option value="final_rank">Standings</option>
             <option value="winPct">Win %</option>
             <option value="points_for">Points For</option>
@@ -94,14 +155,19 @@ export function TeamsSection() {
 
       <div className="filter-row" role="group" aria-label="Team filters">
         {filters.map((filter) => (
-          <button key={filter} type="button" className="filter-pill">
+          <button
+            key={filter}
+            type="button"
+            className={`filter-pill${filter === activeFilter ? " is-active" : ""}`}
+            onClick={() => setSelectedFilter(filter)}
+          >
             {filter}
           </button>
         ))}
       </div>
 
       <div className="standings-grid">
-        {standings.map((team) => (
+        {filteredStandings.map((team) => (
           <article key={team.team} className="standings-card">
             <div className="standings-card__header">
               <div>
