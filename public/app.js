@@ -5,8 +5,14 @@
 // ---------- helpers ----------
 const ROOT = new URL(".", document.baseURI).pathname.replace(/\/+$/, "") + "/";
 
+let dataLoaderRef = null;
+let initialized = false;
+let cleanupHandlers = [];
+let liveDotIntervalId = null;
+let livePollIntervalId = null;
+
 function getDataLoader(){
-  return window.TatnallDataLoader || null;
+  return dataLoaderRef;
 }
 function el(tag, attrs={}, ...kids){
   const n=document.createElement(tag);
@@ -82,7 +88,7 @@ function isNflWindowNowEastern(){
 function startLiveDotClock(){
   const update = () => setLiveDot(isNflWindowNowEastern());
   update();
-  setInterval(update, 30_000);
+  return setInterval(update, 30_000);
 }
 
 // Keep the most recent live bundle in memory so detail view is instant
@@ -403,7 +409,6 @@ async function main(){
     if (years.length){ sel.value = years[years.length-1]; await renderSeason(+sel.value); }
     else throw new Error("No years in manifest.json");
     await setupMemberSummary();
-    initSleeperLive();
   } catch (e){ console.error(e); }
 }
 
@@ -1086,28 +1091,68 @@ function initSleeperLive(){
   }
 // First paint immediately, then poll every 20s
 tick();
-setInterval(tick, LIVE_POLL_MS);
+return setInterval(tick, LIVE_POLL_MS);
 } // <<< CLOSES initSleeperLive()
 
-// Back button
-document.addEventListener("click", (e)=>{
-  const btn = e.target.closest("#liveBackBtn");
-  if (!btn) return;
-  e.preventDefault();
-  history.replaceState(null, "", "#live");
-  liveRouteHandler();
-});
-window.addEventListener("hashchange", liveRouteHandler, { passive:true });
+export function initLegacyApp(options = {}){
+  if (initialized) return cleanupLegacyApp;
+  dataLoaderRef = options.dataLoader || null;
+  if (!dataLoaderRef){
+    console.error("Legacy app init aborted: data loader unavailable.");
+    return cleanupLegacyApp;
+  }
 
-// ---------- boot ----------
-document.addEventListener("DOMContentLoaded", () => {
-  // Load data/UI first; tabs and live extras after.
+  const requiredIds = ["seasonSelect", "summaryStats", "teamsWrap", "memberSummary", "liveWrap"];
+  const missing = requiredIds.filter(id => !document.getElementById(id));
+  if (missing.length){
+    console.warn("Legacy app init skipped. Missing DOM nodes:", missing);
+    cleanupLegacyApp();
+    return cleanupLegacyApp;
+  }
+
+  initialized = true;
+
+  const handleBackClick = (e)=>{
+    const btn = e.target.closest("#liveBackBtn");
+    if (!btn) return;
+    e.preventDefault();
+    history.replaceState(null, "", "#live");
+    liveRouteHandler();
+  };
+  const handleHashChange = () => liveRouteHandler();
+
+  document.addEventListener("click", handleBackClick);
+  window.addEventListener("hashchange", handleHashChange, { passive:true });
+
+  cleanupHandlers = [
+    () => document.removeEventListener("click", handleBackClick),
+    () => window.removeEventListener("hashchange", handleHashChange)
+  ];
+
   Promise.resolve()
     .then(() => main())
     .catch(err => console.error(err))
     .finally(() => {
       try { setupTabs(); } catch(e){ console.error(e); }
-      startLiveDotClock();
+      liveDotIntervalId = startLiveDotClock();
+      livePollIntervalId = initSleeperLive();
       liveRouteHandler();
     });
-});
+
+  return cleanupLegacyApp;
+}
+
+export function cleanupLegacyApp(){
+  cleanupHandlers.forEach(fn => fn());
+  cleanupHandlers = [];
+  if (liveDotIntervalId){
+    clearInterval(liveDotIntervalId);
+    liveDotIntervalId = null;
+  }
+  if (livePollIntervalId){
+    clearInterval(livePollIntervalId);
+    livePollIntervalId = null;
+  }
+  initialized = false;
+  dataLoaderRef = null;
+}
