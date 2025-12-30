@@ -431,9 +431,136 @@ function renderTeams(teams){
   const summaryWrap = document.getElementById("recordSummary");
   const chipsWrap = document.getElementById("recordChips");
   const sortSelect = document.getElementById("teamSort");
+  const search = document.getElementById("teamSearch");
+  const champOnly = document.getElementById("filterChamp");
+  const playoffOnly = document.getElementById("filterPlayoff");
+  const viewButtons = document.querySelectorAll("[data-team-view]");
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
   chipsWrap.innerHTML = "";
-  if(!teams.length){
+  if (!summaryWrap || !chipsWrap || !sortSelect || !wrap) return;
+  summaryWrap.innerHTML = "";
+  const rows = (teams || []).map(t => {
+    const record = parseRecord(t.record);
+    return {
+      team_name: t.team_name || "—",
+      owner: canonicalOwner(t.owner ?? t.team_name ?? ""),
+      wins: record.wins,
+      losses: record.losses,
+      ties: record.ties,
+      winPct: record.winPct,
+      points_for: Number(t.points_for || 0),
+      points_against: Number(t.points_against || 0),
+      final_rank: t.final_rank ?? null,
+      regular_season_rank: t.regular_season_rank ?? null
+    };
+  });
+
+  if(!rows.length){
+    wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"},"No teams found.")));
+    return;
+  }
+
+  const bestRecord = rows.slice().sort((a,b)=> (b.winPct-a.winPct) || (b.wins-a.wins) || (a.losses-b.losses))[0];
+  const topPF = rows.slice().sort((a,b)=> b.points_for-a.points_for)[0];
+  const lowPA = rows.slice().sort((a,b)=> a.points_against-b.points_against)[0];
+  const champ = rows.find(r=> r.final_rank === 1);
+  const avgPF = rows.reduce((s,r)=> s + r.points_for, 0) / rows.length;
+
+  function stat(label, value){
+    summaryWrap.appendChild(el("div",{class:"stat"}, el("h3",{}, label), el("p",{}, value)));
+  }
+
+  stat("Teams", String(rows.length));
+  stat("Champion", champ ? champ.team_name : "—");
+  stat("Top Points For", topPF ? `${topPF.team_name} (${fmt(topPF.points_for)})` : "—");
+  stat("Avg PF / Team", fmt(avgPF));
+
+  const chips = [
+    ["Best Record", bestRecord ? `${bestRecord.team_name} (${bestRecord.wins}-${bestRecord.losses}${bestRecord.ties ? `-${bestRecord.ties}` : ""})` : "—"],
+    ["Stingiest Defense", lowPA ? `${lowPA.team_name} (${fmt(lowPA.points_against)})` : "—"],
+    ["Regular Season #1", rows.find(r => r.regular_season_rank === 1)?.team_name || "—"]
+  ];
+  chips.forEach(([label, value])=>{
+    chipsWrap.appendChild(el("div",{class:"record-chip"}, el("span",{}, label), el("strong",{}, value)));
+  });
+
+  const sorters = {
+    final_rank: (a,b)=> (a.final_rank ?? 999) - (b.final_rank ?? 999),
+    winPct: (a,b)=> (b.winPct - a.winPct) || (b.wins - a.wins),
+    points_for: (a,b)=> b.points_for - a.points_for,
+    points_against: (a,b)=> a.points_against - b.points_against,
+    team_name: (a,b)=> a.team_name.localeCompare(b.team_name),
+    owner: (a,b)=> a.owner.localeCompare(b.owner),
+    regular_season_rank: (a,b)=> (a.regular_season_rank ?? 999) - (b.regular_season_rank ?? 999)
+  };
+
+  let viewMode = localStorage.getItem("teamView") || "grid";
+  const setViewMode = (mode) => {
+    viewMode = mode;
+    localStorage.setItem("teamView", mode);
+    viewButtons.forEach(btn => btn.classList.toggle("is-active", btn.dataset.teamView === mode));
+    wrap.classList.toggle("record-grid--list", mode === "list");
+  };
+
+  function winClass(winPct){
+    if (winPct >= 0.65) return "win-pill--good";
+    if (winPct >= 0.5) return "win-pill--mid";
+    return "win-pill--bad";
+  }
+
+  function renderCard(r){
+    const badges = [];
+    if (r.final_rank === 1) badges.push("Champion");
+    if (r.final_rank && r.final_rank <= 4) badges.push("Top 4");
+    if (r.regular_season_rank === 1) badges.push("Reg Season #1");
+    return el("article",{class:"record-card"},
+      el("div",{class:"record-card__header"},
+        el("h3",{class:"record-card__team"}, r.team_name),
+        el("div",{class:"record-card__owner"}, r.owner || "—")
+      ),
+      el("div",{class:"record-card__body"},
+        el("div",{class:"record-card__row"},
+          el("span",{},"Record"),
+          el("span",{class:"record-card__value"},
+            `${r.wins}-${r.losses}${r.ties ? `-${r.ties}` : ""}`,
+            el("span",{class:`win-pill ${winClass(r.winPct)}`}, `${(r.winPct*100).toFixed(1)}%`)
+          )
+        ),
+        el("div",{class:"record-card__row"}, el("span",{},"Points For"), el("span",{class:"record-card__value"}, fmt(r.points_for))),
+        el("div",{class:"record-card__row"}, el("span",{},"Points Against"), el("span",{class:"record-card__value"}, fmt(r.points_against))),
+        el("div",{class:"record-card__row"}, el("span",{},"Final Rank"), el("span",{class:"record-card__value"}, r.final_rank ?? "—")),
+        el("div",{class:"record-card__row"}, el("span",{},"Reg Season Rank"), el("span",{class:"record-card__value"}, r.regular_season_rank ?? "—")),
+        badges.length ? el("div",{class:"record-card__badges"}, ...badges.map(b=>el("span",{class:"badge"}, b))) : ""
+      )
+    );
+  }
+
+  function apply(){
+    const q = (search?.value || "").trim().toLowerCase();
+    const champFilter = champOnly?.checked;
+    const playoffFilter = playoffOnly?.checked;
+    const sorter = sorters[sortSelect.value] || sorters.final_rank;
+    const filtered = rows.filter(r => {
+      if (q && ![r.team_name, r.owner].some(v => String(v||"").toLowerCase().includes(q))) return false;
+      if (champFilter && r.final_rank !== 1) return false;
+      if (playoffFilter && !(r.final_rank && r.final_rank <= 4)) return false;
+      return true;
+    }).sort(sorter);
+    wrap.innerHTML = "";
+    if (!filtered.length){
+      wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"},"No teams match the current filters.")));
+      return;
+    }
+    filtered.forEach(r => wrap.appendChild(renderCard(r)));
+  }
+
+  setViewMode(viewMode);
+  viewButtons.forEach(btn => btn.addEventListener("click", () => { setViewMode(btn.dataset.teamView); apply(); }));
+  if (search) search.oninput = apply;
+  sortSelect.onchange = apply;
+  if (champOnly) champOnly.onchange = apply;
+  if (playoffOnly) playoffOnly.onchange = apply;
+  apply();
 
 }
 
