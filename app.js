@@ -31,6 +31,15 @@ function attachSort(ths, tbl){
     )
   );
 }
+function recordWinPct(record){
+  if (!record) return 0;
+  const parts = String(record).split("-").map(v => Number(v) || 0);
+  const wins = parts[0] || 0;
+  const losses = parts[1] || 0;
+  const ties = parts[2] || 0;
+  const games = wins + losses + ties;
+  return games ? (wins + ties * 0.5) / games : 0;
+}
 
 // --- Live tab red dot (schedule-based) ---
 function setLiveDot(on){
@@ -418,6 +427,17 @@ function renderTeams(teams){
 );
     return;
   }
+  const bestWinPct = Math.max(...teams.map(t => recordWinPct(t.record)));
+  const bestRecordTeams = new Set(
+    teams.filter(t => Math.abs(recordWinPct(t.record) - bestWinPct) < 1e-6 && bestWinPct > 0)
+      .map(t => t.team_name)
+  );
+  const bestPFValue = Math.max(...teams.map(t => Number(t.points_for) || 0));
+  const bestPFTeams = new Set(
+    teams.filter(t => (Number(t.points_for) || 0) === bestPFValue && bestPFValue > 0)
+      .map(t => t.team_name)
+  );
+  const champTeams = new Set(teams.filter(t => t.final_rank === 1).map(t => t.team_name));
   const tbl = el("table",{},
     el("thead",{}, el("tr",{}, el("th",{},"Team/Manager"), el("th",{},"Record"), el("th",{},"Points For"),
       el("th",{},"Points Against"), el("th",{},"In-Season Rank"), el("th",{},"Final Rank"))),
@@ -425,8 +445,19 @@ function renderTeams(teams){
   );
   teams.forEach(t=>{
     const owner = canonicalOwner(t.owner || t.team_name);
+    const teamLabel = `${t.team_name}${owner?` (${owner})`:""}`;
+    const badges = [];
+    if (champTeams.has(t.team_name)) badges.push(el("span",{class:"badge badge--champion"},"Champion"));
+    if (bestRecordTeams.has(t.team_name)) badges.push(el("span",{class:"badge badge--record"},"Top Record"));
+    if (bestPFTeams.has(t.team_name)) badges.push(el("span",{class:"badge badge--pf"},"Most PF"));
+    const teamCell = el("td",{});
+    const header = el("div",{class:"team-card__header"}, el("div",{class:"team-card__title"}, teamLabel));
+    if (badges.length){
+      header.appendChild(el("div",{class:"team-card__badges"}, ...badges));
+    }
+    teamCell.appendChild(header);
     tbl.tBodies[0].appendChild(el("tr",{},
-      el("td",{}, `${t.team_name}${owner?` (${owner})`:""}`),
+      teamCell,
       el("td",{}, fmt(t.record)),
       el("td",{}, fmt(t.points_for)),
       el("td",{}, fmt(t.points_against)),

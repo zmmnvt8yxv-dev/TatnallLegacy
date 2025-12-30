@@ -20,7 +20,13 @@ tbody tr:hover { background:#0b1322; }
 .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
 footer { color:var(--muted); text-align:center; padding:30px 0 50px; }
 .hidden { display:none !important; }
-.badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); color:var(--muted); }
+.badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); color:var(--muted); background:rgba(148,163,184,0.08); letter-spacing:.2px; }
+.badge--champion { color:#facc15; border-color:rgba(250,204,21,.55); background:rgba(250,204,21,.12); box-shadow:0 0 10px rgba(250,204,21,.35); }
+.badge--record { color:#38bdf8; border-color:rgba(56,189,248,.55); background:rgba(56,189,248,.12); box-shadow:0 0 10px rgba(56,189,248,.28); }
+.badge--pf { color:#a78bfa; border-color:rgba(167,139,250,.55); background:rgba(167,139,250,.12); box-shadow:0 0 10px rgba(167,139,250,.3); }
+.team-card__header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; }
+.team-card__title { font-weight:600; }
+.team-card__badges { display:flex; flex-wrap:wrap; gap:6px; }
 /* Tabs */
 header { position: sticky; top: 0; z-index: 50; background: #0b1220; }
 .tabs {
