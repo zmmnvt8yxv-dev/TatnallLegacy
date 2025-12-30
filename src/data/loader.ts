@@ -210,9 +210,18 @@ type DataLoader = {
   loadWeeklyRecaps: () => Promise<WeeklyRecaps>;
   preloadSeasons: (years: number[]) => Promise<SeasonData[]>;
   clearCache: () => void;
+  getDiagnostics: () => LoaderDiagnostics;
 };
 
 const ROOT = new URL(".", document.baseURI).pathname.replace(/\/+$/, "") + "/";
+const DEFAULT_MANIFEST_YEARS = [
+  2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
+];
+const diagnostics: LoaderDiagnostics = {
+  basePath: ROOT,
+  manifestUrl: `${ROOT}data/manifest.json`,
+  lastFetchError: undefined,
+};
 const memo = new Map<string, Promise<unknown>>();
 
 function memoize<T>(key: string, loader: () => Promise<T>): Promise<T> {
@@ -225,16 +234,50 @@ function memoize<T>(key: string, loader: () => Promise<T>): Promise<T> {
 async function fetchJson<T>(relPath: string, version?: string): Promise<T> {
   const url = ROOT + relPath.replace(/^\/+/, "");
   const cacheBust = version ? `?v=${encodeURIComponent(version)}` : "";
-  const response = await fetch(`${url}${cacheBust}`, { cache: "force-cache" });
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status} for ${url}`);
+  try {
+    const response = await fetch(`${url}${cacheBust}`, { cache: "force-cache" });
+    if (!response.ok) {
+      const message = `HTTP ${response.status} for ${url}`;
+      diagnostics.lastFetchError = message;
+      throw new Error(message);
+    }
+    return response.json() as Promise<T>;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : `Unknown error for ${url}`;
+    diagnostics.lastFetchError = message;
+    throw new Error(message);
   }
-  return response.json() as Promise<T>;
 }
+
+export type LoaderDiagnostics = {
+  basePath: string;
+  manifestUrl: string;
+  lastFetchError?: string;
+  manifestError?: string;
+};
 
 function createDataLoader(): DataLoader {
   const loadManifest = () =>
-    memoize("manifest", () => fetchJson<ManifestData>("data/manifest.json"));
+    memoize("manifest", async () => {
+      try {
+        const manifest = await fetchJson<ManifestData>("data/manifest.json");
+        diagnostics.manifestError = undefined;
+        return manifest;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Unknown manifest error";
+        diagnostics.manifestError = message;
+        const manifestMessage = `Manifest fetch failed (${diagnostics.manifestUrl}): ${message}`;
+        if (import.meta.env?.DEV) {
+          console.warn(manifestMessage);
+          return {
+            years: DEFAULT_MANIFEST_YEARS,
+            schemaVersion: "fallback",
+            generatedAt: new Date().toISOString(),
+          };
+        }
+        throw new Error(manifestMessage);
+      }
+    });
 
   const loadSeason = (year: number) =>
     memoize(`season:${year}`, async () => {
@@ -269,7 +312,17 @@ function createDataLoader(): DataLoader {
     memo.clear();
   };
 
-  return { loadManifest, loadSeason, loadPowerRankings, loadWeeklyRecaps, preloadSeasons, clearCache };
+  const getDiagnostics = () => ({ ...diagnostics });
+
+  return {
+    loadManifest,
+    loadSeason,
+    loadPowerRankings,
+    loadWeeklyRecaps,
+    preloadSeasons,
+    clearCache,
+    getDiagnostics,
+  };
 }
 
 export const dataLoader = createDataLoader();
