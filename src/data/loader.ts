@@ -37,12 +37,31 @@ function normalizeArray<T>(value: unknown, mapper: (item: unknown, key?: string)
 function normalizeTeam(value: unknown, key?: string): SeasonData["teams"][number] {
   const source = isRecord(value) ? value : {};
   const records = isRecord(source.records) ? source.records : {};
+  const owners = Array.isArray(source.owners)
+    ? source.owners
+        .map((owner) => {
+          if (typeof owner === "string") return owner;
+          if (isRecord(owner)) {
+            const name = toStringValue(owner.displayName ?? owner.name ?? null, "").trim();
+            if (name) return name;
+            const firstName = toStringValue(owner.firstName ?? null, "").trim();
+            const lastName = toStringValue(owner.lastName ?? null, "").trim();
+            return [firstName, lastName].filter(Boolean).join(" ").trim();
+          }
+          return "";
+        })
+        .filter(Boolean)
+    : [];
   const teamName =
     toStringValue(source.team_name || source.name || source.team, "") || (key ? `Team ${key}` : "");
+  const ownerFallback = owners.length ? owners.join(", ") : null;
   return {
     team_id: toInteger(source.team_id ?? source.teamId ?? key, null),
     team_name: teamName,
-    owner: toStringValue(source.owner ?? source.manager ?? records.owner ?? null, null),
+    owner: toStringValue(
+      source.owner ?? source.manager ?? records.owner ?? ownerFallback ?? null,
+      null
+    ),
     record: toStringValue(source.record ?? records.record ?? null, null),
     points_for: toNumber(source.points_for ?? records.points_for ?? records.pointsFor, null),
     points_against: toNumber(source.points_against ?? records.points_against ?? records.pointsAgainst, null),
