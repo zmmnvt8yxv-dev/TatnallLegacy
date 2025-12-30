@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
@@ -7,6 +7,10 @@ import { useSeasonData } from "../hooks/useSeasonData";
 
 export function TransactionsSection() {
   const { status, season, error } = useSeasonData();
+  const [searchText, setSearchText] = useState("");
+  const [selectedWeek, setSelectedWeek] = useState("All Weeks");
+  const [selectedFilter, setSelectedFilter] = useState("All Transactions");
+  const [sortOrder] = useState("recent");
   const transactionWeeks = useMemo(
     () => (season ? selectTransactionWeeks(season) : []),
     [season],
@@ -16,6 +20,33 @@ export function TransactionsSection() {
     [season],
   );
   const transactions = useMemo(() => (season ? selectTransactions(season) : []), [season]);
+  const activeWeek = transactionWeeks.includes(selectedWeek)
+    ? selectedWeek
+    : transactionWeeks[0] ?? "All Weeks";
+  const activeFilter = transactionFilters.includes(selectedFilter)
+    ? selectedFilter
+    : transactionFilters[0] ?? "All Transactions";
+  const normalizedSearch = searchText.trim().toLowerCase();
+  const filteredTransactions = useMemo(() => {
+    const filtered = transactions.filter((transaction) => {
+      const matchesWeek = activeWeek === "All Weeks" || transaction.timestamp === activeWeek;
+      const matchesFilter =
+        activeFilter === "All Transactions" || transaction.type === activeFilter;
+      const matchesSearch =
+        !normalizedSearch ||
+        transaction.team.toLowerCase().includes(normalizedSearch) ||
+        transaction.player.toLowerCase().includes(normalizedSearch) ||
+        transaction.type.toLowerCase().includes(normalizedSearch) ||
+        transaction.detail.toLowerCase().includes(normalizedSearch);
+      return matchesWeek && matchesFilter && matchesSearch;
+    });
+
+    if (sortOrder === "recent") {
+      return [...filtered].sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+    }
+
+    return filtered;
+  }, [activeFilter, activeWeek, normalizedSearch, sortOrder, transactions]);
 
   if (status === "loading") {
     return <LoadingSection title="Transactions" subtitle="Loading transaction log…" />;
@@ -43,7 +74,13 @@ export function TransactionsSection() {
           <label htmlFor="txnWeekFilter" className="text-sm text-muted">
             Week:
           </label>
-          <select id="txnWeekFilter" aria-label="Week filter" className="input">
+          <select
+            id="txnWeekFilter"
+            aria-label="Week filter"
+            className="input"
+            value={activeWeek}
+            onChange={(event) => setSelectedWeek(event.target.value)}
+          >
             {transactionWeeks.map((week) => (
               <option key={week} value={week}>
                 {week}
@@ -56,22 +93,29 @@ export function TransactionsSection() {
             placeholder="Filter by team/player/type…"
             aria-label="Filter transactions"
             className="input"
+            value={searchText}
+            onChange={(event) => setSearchText(event.target.value)}
           />
         </>
       }
     >
       <div className="filter-row" role="group" aria-label="Transaction filters">
         {transactionFilters.map((filter) => (
-          <button key={filter} type="button" className="filter-pill">
+          <button
+            key={filter}
+            type="button"
+            className={`filter-pill${filter === activeFilter ? " is-active" : ""}`}
+            onClick={() => setSelectedFilter(filter)}
+          >
             {filter}
           </button>
         ))}
       </div>
-      {transactions.length === 0 ? (
+      {filteredTransactions.length === 0 ? (
         <p className="text-sm text-muted">No transactions have been logged for this season yet.</p>
       ) : (
         <div className="transaction-list">
-          {transactions.map((transaction, index) => (
+          {filteredTransactions.map((transaction, index) => (
             <motion.article
               key={transaction.id}
               className="transaction-card"
