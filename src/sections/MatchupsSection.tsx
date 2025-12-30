@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { SectionShell } from "../components/SectionShell";
 
 const matchupWeeks = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7", "Week 8"];
@@ -81,8 +82,15 @@ export function MatchupsSection() {
       }
     >
       <div className="matchups-grid">
-        {matchups.map((matchup) => (
-          <article key={`${matchup.home}-${matchup.away}`} className="matchup-card">
+        {matchups.map((matchup, index) => (
+          <motion.article
+            key={`${matchup.home}-${matchup.away}`}
+            className="matchup-card"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.05 }}
+            whileHover={{ y: -3 }}
+          >
             <div className="matchup-card__header">
               <p className="matchup-card__week">{matchup.week}</p>
               <span
@@ -108,7 +116,7 @@ export function MatchupsSection() {
               </div>
             </div>
             <p className="matchup-card__kickoff">{matchup.kickoff}</p>
-          </article>
+          </motion.article>
         ))}
       </div>
     </SectionShell>

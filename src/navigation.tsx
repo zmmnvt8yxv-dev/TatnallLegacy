@@ -1,13 +1,32 @@
-import type { ReactElement } from "react";
-import { DataInspectorSection } from "./sections/DataInspectorSection";
-import { DraftSection } from "./sections/DraftSection";
-import { LiveSection } from "./sections/LiveSection";
-import { MatchupsSection } from "./sections/MatchupsSection";
-import { MembersSection } from "./sections/MembersSection";
-import { MostDraftedSection } from "./sections/MostDraftedSection";
-import { SummarySection } from "./sections/SummarySection";
-import { TeamsSection } from "./sections/TeamsSection";
-import { TransactionsSection } from "./sections/TransactionsSection";
+import { lazy, type ReactElement } from "react";
+
+const SummarySection = lazy(async () => ({
+  default: (await import("./sections/SummarySection")).SummarySection,
+}));
+const TeamsSection = lazy(async () => ({
+  default: (await import("./sections/TeamsSection")).TeamsSection,
+}));
+const MatchupsSection = lazy(async () => ({
+  default: (await import("./sections/MatchupsSection")).MatchupsSection,
+}));
+const TransactionsSection = lazy(async () => ({
+  default: (await import("./sections/TransactionsSection")).TransactionsSection,
+}));
+const DraftSection = lazy(async () => ({
+  default: (await import("./sections/DraftSection")).DraftSection,
+}));
+const MembersSection = lazy(async () => ({
+  default: (await import("./sections/MembersSection")).MembersSection,
+}));
+const MostDraftedSection = lazy(async () => ({
+  default: (await import("./sections/MostDraftedSection")).MostDraftedSection,
+}));
+const LiveSection = lazy(async () => ({
+  default: (await import("./sections/LiveSection")).LiveSection,
+}));
+const DataInspectorSection = lazy(async () => ({
+  default: (await import("./sections/DataInspectorSection")).DataInspectorSection,
+}));
 
 export type NavigationItem = {
   path: string;
