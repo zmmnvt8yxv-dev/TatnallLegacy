@@ -20,7 +20,7 @@
       <a href="#members"      class="tab" data-target="#members">Members</a>
       <a href="#mostDrafted"  class="tab" data-target="#mostDrafted">Most Drafted</a>
       <a href="#live"         class="tab" data-target="#live">Live <span id="liveDot" class="dot" aria-hidden="true"></span></a>
-   <a href="trade.html">Trade Analysis</a>
+      <a href="trade.html" class="tab" data-external="true">Trade Analysis</a>
     </nav>
 
     <!-- Compact navigation for narrow screens -->
@@ -50,7 +50,37 @@
     </section>
 
     <section id="teams" class="panel" aria-labelledby="teams-title">
-
+      <div class="section-header">
+        <div>
+          <h2 id="teams-title">Teams</h2>
+          <p class="section-subtitle">Season records, ranks, and quick highlights.</p>
+        </div>
+        <div class="controls row">
+          <label class="sr-only" for="teamSearch">Search teams</label>
+          <input id="teamSearch" type="search" placeholder="Search team or owner…" aria-label="Search teams or owners" />
+          <label for="teamSort">Sort:</label>
+          <select id="teamSort" aria-label="Sort teams">
+            <option value="final_rank">Standings</option>
+            <option value="winPct">Win %</option>
+            <option value="points_for">Points For</option>
+            <option value="points_against">Points Against</option>
+            <option value="regular_season_rank">Regular Season Rank</option>
+            <option value="team_name">Team Name (A–Z)</option>
+            <option value="owner">Owner (A–Z)</option>
+          </select>
+          <div class="toggle-group" role="group" aria-label="Team view">
+            <button class="btn toggle is-active" type="button" data-team-view="grid">Cards</button>
+            <button class="btn toggle" type="button" data-team-view="list">Compact</button>
+          </div>
+        </div>
+      </div>
+      <div id="recordSummary" class="summary-cards grid-4"></div>
+      <div class="filter-row" role="group" aria-label="Team filters">
+        <label class="filter-pill"><input type="checkbox" id="filterChamp" /> Champions</label>
+        <label class="filter-pill"><input type="checkbox" id="filterPlayoff" /> Top 4</label>
+      </div>
+      <div id="recordChips" class="record-chips"></div>
+      <div id="teamsWrap" class="record-grid"></div>
     </section>
 
     <section id="matchups" class="panel" aria-labelledby="matchups-title">
