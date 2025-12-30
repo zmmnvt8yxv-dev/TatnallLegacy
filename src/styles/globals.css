@@ -41,7 +41,7 @@
   }
 
   .tab {
-    @apply relative rounded-full border border-border px-4 py-2 text-sm font-medium text-muted transition hover:border-accent hover:text-foreground;
+    @apply relative inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-muted transition hover:border-accent hover:text-foreground;
   }
 
   .tab.active {

@@ -1,4 +1,5 @@
 import type { PropsWithChildren, ReactNode } from "react";
+import { SectionCard } from "./SectionCard";
 
 type SectionShellProps = PropsWithChildren<{
   id: string;
@@ -9,7 +10,7 @@ type SectionShellProps = PropsWithChildren<{
 
 export function SectionShell({ id, title, subtitle, actions, children }: SectionShellProps) {
   return (
-    <section id={id} className="panel" aria-labelledby={`${id}-title`}>
+    <SectionCard id={id} aria-labelledby={`${id}-title`}>
       <div className="section-header">
         <div className="space-y-1">
           <h2 id={`${id}-title`} className="text-xl font-semibold">
@@ -20,6 +21,6 @@ export function SectionShell({ id, title, subtitle, actions, children }: Section
         {actions ? <div className="controls row">{actions}</div> : null}
       </div>
       {children}
-    </section>
+    </SectionCard>
   );
 }

@@ -1,4 +1,5 @@
 import { SectionShell } from "../components/SectionShell";
+import { TableShell } from "../components/TableShell";
 
 export function MatchupsSection() {
   return (
@@ -21,7 +22,7 @@ export function MatchupsSection() {
         </>
       }
     >
-      <div className="tablewrap" id="matchupsWrap" />
+      <TableShell id="matchupsWrap" />
     </SectionShell>
   );
 }
