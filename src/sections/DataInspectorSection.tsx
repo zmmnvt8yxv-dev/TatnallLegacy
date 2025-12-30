@@ -7,14 +7,21 @@ import {
   SeasonSchema,
   WeeklyRecapsSchema,
   type PowerRankings,
+  type SeasonData,
   type WeeklyRecaps,
 } from "../data/schema";
+
+const EMPTY_LIST_KEYS: Array<keyof Pick<
+  SeasonData,
+  "teams" | "matchups" | "transactions" | "draft" | "awards"
+>> = ["teams", "matchups", "transactions", "draft", "awards"];
 
 type SeasonCheck = {
   year: number;
   status: "valid" | "invalid";
   errors: string[];
   summary: string;
+  emptyLists: string[];
 };
 
 type InspectorState = {
@@ -26,6 +33,8 @@ type InspectorState = {
   weeklyRecaps?: WeeklyRecaps;
   powerRankingsStatus?: string;
   weeklyRecapsStatus?: string;
+  powerRankingsEmpty?: boolean;
+  weeklyRecapsEmpty?: boolean;
 };
 
 export function DataInspectorSection() {
@@ -46,6 +55,7 @@ export function DataInspectorSection() {
           manifest.years.map(async (year) => {
             const payload = await dataLoader.loadSeason(year);
             const parsed = SeasonSchema.safeParse(payload);
+            const emptyLists = EMPTY_LIST_KEYS.filter((key) => payload[key].length === 0);
             return {
               year,
               status: parsed.success ? "valid" : "invalid",
@@ -53,6 +63,7 @@ export function DataInspectorSection() {
                 ? []
                 : parsed.error.issues.map((issue) => `${issue.path.join(".")} ${issue.message}`),
               summary: selectSeasonSummary(payload),
+              emptyLists,
             } satisfies SeasonCheck;
           })
         );
@@ -61,6 +72,10 @@ export function DataInspectorSection() {
         const powerRankingResult = PowerRankingsSchema.safeParse(powerRankings);
         const weeklyRecaps = await dataLoader.loadWeeklyRecaps();
         const weeklyRecapsResult = WeeklyRecapsSchema.safeParse(weeklyRecaps);
+        const powerRankingsEmpty =
+          powerRankingResult.success && powerRankings.entries.length === 0;
+        const weeklyRecapsEmpty =
+          weeklyRecapsResult.success && weeklyRecaps.entries.length === 0;
 
         if (!isMounted) return;
 
@@ -75,6 +90,8 @@ export function DataInspectorSection() {
           weeklyRecapsStatus: weeklyRecapsResult.success
             ? `${weeklyRecaps.entries.length} entries`
             : weeklyRecapsResult.error.issues.map((issue) => issue.message).join("; "),
+          powerRankingsEmpty,
+          weeklyRecapsEmpty,
           diagnostics: dataLoader.getDiagnostics(),
         });
       } catch (error) {
@@ -157,6 +174,11 @@ export function DataInspectorSection() {
                           ))}
                         </ul>
                       )}
+                      {season.emptyLists.length > 0 && (
+                        <p className="mt-2 text-xs text-amber-400">
+                          Empty lists: {season.emptyLists.join(", ")}
+                        </p>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -166,11 +188,21 @@ export function DataInspectorSection() {
                 <dl className="mt-2 space-y-2">
                   <div>
                     <dt className="font-medium text-foreground">Power Rankings</dt>
-                    <dd>{state.powerRankingsStatus}</dd>
+                    <dd>
+                      {state.powerRankingsStatus}
+                      {state.powerRankingsEmpty && (
+                        <span className="ml-2 text-xs text-amber-400">(empty list)</span>
+                      )}
+                    </dd>
                   </div>
                   <div>
                     <dt className="font-medium text-foreground">Weekly Recaps</dt>
-                    <dd>{state.weeklyRecapsStatus}</dd>
+                    <dd>
+                      {state.weeklyRecapsStatus}
+                      {state.weeklyRecapsEmpty && (
+                        <span className="ml-2 text-xs text-amber-400">(empty list)</span>
+                      )}
+                    </dd>
                   </div>
                 </dl>
               </div>
