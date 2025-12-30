@@ -3,7 +3,9 @@ import { NavLink, Route, Routes } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
+import { PowerRankings } from '@/pages/PowerRankings';
 import { Summary } from '@/pages/Summary';
+import { WeeklyRecaps } from '@/pages/WeeklyRecaps';
 
 const navigation = [
   { label: 'Summary', path: '/' },
@@ -94,21 +96,11 @@ function App() {
           />
           <Route
             path="/rankings"
-            element={
-              <PlaceholderPage
-                title="Rankings"
-                description="Power rankings, tier breakdowns, and movement snapshots."
-              />
-            }
+            element={<PowerRankings />}
           />
           <Route
             path="/recaps"
-            element={
-              <PlaceholderPage
-                title="Recaps"
-                description="Weekly recaps, headline storylines, and award callouts."
-              />
-            }
+            element={<WeeklyRecaps />}
           />
           <Route
             path="/live"
