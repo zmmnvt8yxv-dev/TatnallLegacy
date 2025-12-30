@@ -229,6 +229,10 @@
     @apply flex items-center gap-2 rounded-full border border-border bg-surface-alt px-3 py-2 text-sm text-muted shadow-soft;
   }
 
+  .filter-pill.is-active {
+    @apply border-accent bg-surface text-foreground;
+  }
+
   .record-chips {
     @apply mt-4 grid gap-3 md:grid-cols-3;
   }
@@ -375,6 +379,10 @@
 
   .standings-grid {
     @apply mt-6 grid gap-4 md:grid-cols-2;
+  }
+
+  .standings-grid.standings-grid--list {
+    @apply md:grid-cols-1;
   }
 
   .standings-card {
