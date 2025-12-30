@@ -1,4 +1,5 @@
 import { SectionShell } from "../components/SectionShell";
+import { TableShell } from "../components/TableShell";
 
 export function MembersSection() {
   return (
@@ -15,7 +16,7 @@ export function MembersSection() {
       }
     >
       <div id="memberSummary" className="grid-4" />
-      <div id="memberTableWrap" className="tablewrap" style={{ display: "none" }} />
+      <TableShell id="memberTableWrap" style={{ display: "none" }} />
     </SectionShell>
   );
 }

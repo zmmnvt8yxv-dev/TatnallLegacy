@@ -1,4 +1,5 @@
 import { SectionShell } from "../components/SectionShell";
+import { TableShell } from "../components/TableShell";
 
 export function DraftSection() {
   return (
@@ -15,7 +16,7 @@ export function DraftSection() {
         />
       }
     >
-      <div className="tablewrap" id="draftWrap" />
+      <TableShell id="draftWrap" />
     </SectionShell>
   );
 }

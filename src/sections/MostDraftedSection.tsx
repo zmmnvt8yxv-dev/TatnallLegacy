@@ -1,4 +1,5 @@
 import { SectionShell } from "../components/SectionShell";
+import { TableShell } from "../components/TableShell";
 
 export function MostDraftedSection() {
   return (
@@ -21,7 +22,7 @@ export function MostDraftedSection() {
         </>
       }
     >
-      <div className="tablewrap" id="mostDraftedWrap" />
+      <TableShell id="mostDraftedWrap" />
     </SectionShell>
   );
 }

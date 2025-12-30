@@ -1,4 +1,5 @@
 import { SectionShell } from "../components/SectionShell";
+import { TableShell } from "../components/TableShell";
 
 export function TransactionsSection() {
   return (
@@ -21,7 +22,7 @@ export function TransactionsSection() {
         </>
       }
     >
-      <div className="tablewrap" id="txnsWrap" />
+      <TableShell id="txnsWrap" />
     </SectionShell>
   );
 }

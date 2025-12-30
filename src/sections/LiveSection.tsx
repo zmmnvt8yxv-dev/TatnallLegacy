@@ -1,4 +1,6 @@
+import { SectionCard } from "../components/SectionCard";
 import { SectionShell } from "../components/SectionShell";
+import { TableShell } from "../components/TableShell";
 
 export function LiveSection() {
   return (
@@ -6,12 +8,7 @@ export function LiveSection() {
       <SectionShell id="live" title="Live">
         <div id="liveWrap" />
       </SectionShell>
-      <section
-        id="liveMatchup"
-        className="panel"
-        aria-labelledby="liveMatchup-title"
-        style={{ display: "none" }}
-      >
+      <SectionCard id="liveMatchup" aria-labelledby="liveMatchup-title" style={{ display: "none" }}>
         <div className="section-header">
           <div className="space-y-1">
             <h2 id="liveMatchup-title" className="text-xl font-semibold">
@@ -25,8 +22,8 @@ export function LiveSection() {
             <div id="liveMatchupMeta" className="muted" />
           </div>
         </div>
-        <div className="tablewrap" id="liveMatchupWrap" />
-      </section>
+        <TableShell id="liveMatchupWrap" />
+      </SectionCard>
     </>
   );
 }

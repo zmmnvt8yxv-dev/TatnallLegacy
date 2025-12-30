@@ -1,15 +1,25 @@
+import { SectionShell } from "../components/SectionShell";
+import { StatCard } from "../components/StatCard";
+
+const summaryStats = [
+  { label: "Seasons Tracked", value: "—" },
+  { label: "Active Teams", value: "—" },
+  { label: "Playoff Spots", value: "—" },
+  { label: "Weeks Played", value: "—" },
+];
+
 export function SummarySection() {
   return (
-    <section id="summary" className="panel" aria-labelledby="summary-title">
-      <div className="section-header">
-        <div className="space-y-1">
-          <h2 id="summary-title" className="text-xl font-semibold">
-            Season Summary
-          </h2>
-          <p className="section-subtitle">League-wide highlights and at-a-glance stats.</p>
-        </div>
+    <SectionShell
+      id="summary"
+      title="Season Summary"
+      subtitle="League-wide highlights and at-a-glance stats."
+    >
+      <div id="summaryStats" className="grid-4">
+        {summaryStats.map((stat) => (
+          <StatCard key={stat.label} label={stat.label} value={stat.value} />
+        ))}
       </div>
-      <div id="summaryStats" className="grid-4" />
-    </section>
+    </SectionShell>
   );
 }

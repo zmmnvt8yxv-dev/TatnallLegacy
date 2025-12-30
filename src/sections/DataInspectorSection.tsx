@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SectionCard } from "../components/SectionCard";
 import { dataLoader } from "../data/loader";
 import {
   PowerRankingsSchema,
@@ -92,7 +93,7 @@ export function DataInspectorSection() {
   }, []);
 
   return (
-    <section id="data-inspector" className="panel" aria-labelledby="data-inspector-title">
+    <SectionCard id="data-inspector" aria-labelledby="data-inspector-title">
       <div className="section-header">
         <div className="space-y-1">
           <h2 id="data-inspector-title" className="text-xl font-semibold">
@@ -168,6 +169,6 @@ export function DataInspectorSection() {
           </>
         )}
       </div>
-    </section>
+    </SectionCard>
   );
 }
