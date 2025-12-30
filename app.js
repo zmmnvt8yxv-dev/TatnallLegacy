@@ -41,6 +41,15 @@ function attachSort(ths, tbl){
     )
   );
 }
+function recordWinPct(record){
+  if (!record) return 0;
+  const parts = String(record).split("-").map(v => Number(v) || 0);
+  const wins = parts[0] || 0;
+  const losses = parts[1] || 0;
+  const ties = parts[2] || 0;
+  const games = wins + losses + ties;
+  return games ? (wins + ties * 0.5) / games : 0;
+}
 
 // --- Live tab red dot (schedule-based) ---
 function setLiveDot(on){
