@@ -96,6 +96,115 @@
     @apply mt-6 grid gap-3 md:grid-cols-3;
   }
 
+  .summary-block {
+    @apply mt-8;
+  }
+
+  .section-heading {
+    @apply text-lg font-semibold text-foreground;
+  }
+
+  .section-caption {
+    @apply mt-1 text-sm text-muted;
+  }
+
+  .chart-grid {
+    @apply mt-4 grid gap-4 lg:grid-cols-2;
+  }
+
+  .chart-card {
+    @apply overflow-hidden;
+  }
+
+  .chart-card__header {
+    @apply flex flex-col gap-3 border-b border-border pb-3 md:flex-row md:items-start md:justify-between;
+  }
+
+  .chart-card__subtitle {
+    @apply mt-2 text-sm font-medium text-foreground;
+  }
+
+  .chart-card__description {
+    @apply mt-1 text-xs text-muted;
+  }
+
+  .chart-card__actions {
+    @apply text-xs text-muted;
+  }
+
+  .chart-card__content {
+    @apply pt-4;
+  }
+
+  .chart-card__chart {
+    @apply h-56 w-full;
+  }
+
+  .heatmap {
+    @apply mt-2 grid gap-2;
+  }
+
+  .heatmap__row {
+    display: contents;
+  }
+
+  .heatmap__corner {
+    @apply h-6;
+  }
+
+  .heatmap__label {
+    @apply text-xs text-muted;
+  }
+
+  .heatmap__label--col {
+    @apply text-center;
+  }
+
+  .heatmap__label--row {
+    @apply flex items-center pr-2;
+  }
+
+  .heatmap__cell {
+    @apply flex h-10 items-center justify-center rounded-lg text-xs font-medium text-foreground;
+  }
+
+  .heatmap__cell--empty {
+    @apply border border-dashed border-border bg-surface-alt text-muted;
+  }
+
+  .heatmap__legend {
+    @apply mt-4 flex items-center justify-between gap-3 text-xs text-muted;
+  }
+
+  .heatmap__legend-bar {
+    @apply h-2 flex-1 rounded-full;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 25%, var(--color-surface-alt)), color-mix(in srgb, var(--color-accent) 85%, var(--color-surface-alt)));
+  }
+
+  .awards-grid {
+    @apply grid gap-3 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .award-card {
+    @apply rounded-xl border border-border bg-surface-alt px-4 py-3 text-sm;
+  }
+
+  .award-card__title {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .award-card__value {
+    @apply mt-2 text-lg font-semibold text-foreground;
+  }
+
+  .award-card__detail {
+    @apply mt-1 text-sm text-foreground;
+  }
+
+  .award-card__note {
+    @apply mt-1 text-xs text-muted;
+  }
+
   .stat {
     @apply rounded-xl border border-border bg-surface-alt px-4 py-3 shadow-soft;
   }
