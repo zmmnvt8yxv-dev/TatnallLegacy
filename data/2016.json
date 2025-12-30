@@ -1,0 +1,1702 @@
+{
+  "schemaVersion": "1.0.0",
+  "year": 2016,
+  "league_id": null,
+  "generated_at": null,
+  "teams": [
+    {
+      "team_id": 1,
+      "team_name": "Jalen is  Stupid",
+      "owner": "sdmarvin713",
+      "record": "7-6",
+      "points_for": 1852.0,
+      "points_against": 1715.0,
+      "regular_season_rank": 3,
+      "final_rank": 3
+    },
+    {
+      "team_id": 2,
+      "team_name": "Hello all my Peasants",
+      "owner": "John.downs123",
+      "record": "8-5",
+      "points_for": 1978.0,
+      "points_against": 1776.0,
+      "regular_season_rank": 2,
+      "final_rank": 1
+    },
+    {
+      "team_id": 3,
+      "team_name": "Team Saad",
+      "owner": "Edward3864",
+      "record": "9-4",
+      "points_for": 1992.0,
+      "points_against": 1726.0,
+      "regular_season_rank": 1,
+      "final_rank": 2
+    },
+    {
+      "team_id": 4,
+      "team_name": "Fantastic Seventh",
+      "owner": "connerandfinn",
+      "record": "5-8",
+      "points_for": 1678.0,
+      "points_against": 1798.0,
+      "regular_season_rank": 8,
+      "final_rank": 7
+    },
+    {
+      "team_id": 5,
+      "team_name": "Team Hardin",
+      "owner": "mhardi5674696",
+      "record": "6-7",
+      "points_for": 1803.0,
+      "points_against": 1943.0,
+      "regular_season_rank": 6,
+      "final_rank": 6
+    },
+    {
+      "team_id": 6,
+      "team_name": "Fuck Matt Prater",
+      "owner": "Jefe6700",
+      "record": "5-8",
+      "points_for": 1716.0,
+      "points_against": 1926.0,
+      "regular_season_rank": 7,
+      "final_rank": 8
+    },
+    {
+      "team_id": 7,
+      "team_name": "Gimme your Ring",
+      "owner": "jdunca5228572",
+      "record": "6-7",
+      "points_for": 1823.0,
+      "points_against": 2017.0,
+      "regular_season_rank": 5,
+      "final_rank": 4
+    },
+    {
+      "team_id": 8,
+      "team_name": "Team del Rosario",
+      "owner": "jalendelrosario@comcast.net",
+      "record": "6-7",
+      "points_for": 1897.0,
+      "points_against": 1838.0,
+      "regular_season_rank": 4,
+      "final_rank": 5
+    }
+  ],
+  "matchups": [
+    {
+      "week": 1,
+      "home_team": "Team Saad",
+      "home_score": 171.0,
+      "away_team": "Fuck Matt Prater",
+      "away_score": 157.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Jalen is  Stupid",
+      "home_score": 144.0,
+      "away_team": "Gimme your Ring",
+      "away_score": 166.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Team Hardin",
+      "home_score": 97.0,
+      "away_team": "Hello all my Peasants",
+      "away_score": 167.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Team del Rosario",
+      "home_score": 141.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 155.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 150.0,
+      "away_team": "Gimme your Ring",
+      "away_score": 120.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Jalen is  Stupid",
+      "home_score": 115.0,
+      "away_team": "Team Saad",
+      "away_score": 183.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Hello all my Peasants",
+      "home_score": 131.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 122.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Team del Rosario",
+      "home_score": 134.0,
+      "away_team": "Team Hardin",
+      "away_score": 164.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Jalen is  Stupid",
+      "home_score": 174.0,
+      "away_team": "Fuck Matt Prater",
+      "away_score": 101.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Gimme your Ring",
+      "home_score": 122.0,
+      "away_team": "Team Saad",
+      "away_score": 161.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Team del Rosario",
+      "home_score": 164.0,
+      "away_team": "Hello all my Peasants",
+      "away_score": 173.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Fantastic Seventh",
+      "home_score": 138.0,
+      "away_team": "Team Hardin",
+      "away_score": 144.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 159.0,
+      "away_team": "Hello all my Peasants",
+      "away_score": 148.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Team Saad",
+      "home_score": 189.0,
+      "away_team": "Team Hardin",
+      "away_score": 125.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Gimme your Ring",
+      "home_score": 148.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 137.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Jalen is  Stupid",
+      "home_score": 92.0,
+      "away_team": "Team del Rosario",
+      "away_score": 132.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Hello all my Peasants",
+      "home_score": 160.0,
+      "away_team": "Team Saad",
+      "away_score": 166.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Team Hardin",
+      "home_score": 139.0,
+      "away_team": "Gimme your Ring",
+      "away_score": 140.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Fantastic Seventh",
+      "home_score": 156.0,
+      "away_team": "Jalen is  Stupid",
+      "away_score": 144.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Team del Rosario",
+      "home_score": 129.0,
+      "away_team": "Fuck Matt Prater",
+      "away_score": 110.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Gimme your Ring",
+      "home_score": 129.0,
+      "away_team": "Hello all my Peasants",
+      "away_score": 179.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Jalen is  Stupid",
+      "home_score": 143.0,
+      "away_team": "Team Hardin",
+      "away_score": 120.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 99.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 182.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Team Saad",
+      "home_score": 133.0,
+      "away_team": "Team del Rosario",
+      "away_score": 120.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Hello all my Peasants",
+      "home_score": 109.0,
+      "away_team": "Jalen is  Stupid",
+      "away_score": 113.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Team Hardin",
+      "home_score": 167.0,
+      "away_team": "Fuck Matt Prater",
+      "away_score": 163.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Fantastic Seventh",
+      "home_score": 118.0,
+      "away_team": "Team Saad",
+      "away_score": 146.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Team del Rosario",
+      "home_score": 158.0,
+      "away_team": "Gimme your Ring",
+      "away_score": 155.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 144.0,
+      "away_team": "Team Saad",
+      "away_score": 139.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Gimme your Ring",
+      "home_score": 145.0,
+      "away_team": "Jalen is  Stupid",
+      "away_score": 141.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Hello all my Peasants",
+      "home_score": 156.0,
+      "away_team": "Team Hardin",
+      "away_score": 130.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Fantastic Seventh",
+      "home_score": 112.0,
+      "away_team": "Team del Rosario",
+      "away_score": 173.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Gimme your Ring",
+      "home_score": 162.0,
+      "away_team": "Fuck Matt Prater",
+      "away_score": 139.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Team Saad",
+      "home_score": 115.0,
+      "away_team": "Jalen is  Stupid",
+      "away_score": 141.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Fantastic Seventh",
+      "home_score": 131.0,
+      "away_team": "Hello all my Peasants",
+      "away_score": 121.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Team Hardin",
+      "home_score": 123.0,
+      "away_team": "Team del Rosario",
+      "away_score": 189.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 138.0,
+      "away_team": "Jalen is  Stupid",
+      "away_score": 117.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team Saad",
+      "home_score": 197.0,
+      "away_team": "Gimme your Ring",
+      "away_score": 123.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Hello all my Peasants",
+      "home_score": 153.0,
+      "away_team": "Team del Rosario",
+      "away_score": 158.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team Hardin",
+      "home_score": 153.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 108.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 113.0,
+      "away_team": "Hello all my Peasants",
+      "away_score": 152.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Team Saad",
+      "home_score": 131.0,
+      "away_team": "Team Hardin",
+      "away_score": 133.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Gimme your Ring",
+      "home_score": 111.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 95.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Jalen is  Stupid",
+      "home_score": 199.0,
+      "away_team": "Team del Rosario",
+      "away_score": 140.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Hello all my Peasants",
+      "home_score": 142.0,
+      "away_team": "Team Saad",
+      "away_score": 136.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Team Hardin",
+      "home_score": 190.0,
+      "away_team": "Gimme your Ring",
+      "away_score": 144.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Fantastic Seventh",
+      "home_score": 92.0,
+      "away_team": "Jalen is  Stupid",
+      "away_score": 188.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Team del Rosario",
+      "home_score": 135.0,
+      "away_team": "Fuck Matt Prater",
+      "away_score": 144.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Gimme your Ring",
+      "home_score": 158.0,
+      "away_team": "Hello all my Peasants",
+      "away_score": 187.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Jalen is  Stupid",
+      "home_score": 141.0,
+      "away_team": "Team Hardin",
+      "away_score": 118.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 99.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 130.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Team Saad",
+      "home_score": 125.0,
+      "away_team": "Team del Rosario",
+      "away_score": 124.0,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Team Saad",
+      "home_score": 111.0,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Team del Rosario",
+      "home_score": 81.0,
+      "away_team": "Gimme your Ring",
+      "away_score": 111.0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Jalen is  Stupid",
+      "home_score": 192.0,
+      "away_team": "Team Hardin",
+      "away_score": 100.0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Hello all my Peasants",
+      "home_score": 135.0,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 117.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 72.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Team Saad",
+      "home_score": 149.0,
+      "away_team": "Gimme your Ring",
+      "away_score": 130.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Hello all my Peasants",
+      "home_score": 146.0,
+      "away_team": "Jalen is  Stupid",
+      "away_score": 124.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Team del Rosario",
+      "home_score": 110.0,
+      "away_team": "Team Hardin",
+      "away_score": 110.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 101.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 144.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Team Saad",
+      "home_score": 84.0,
+      "away_team": "Hello all my Peasants",
+      "away_score": 197.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Jalen is  Stupid",
+      "home_score": 156.0,
+      "away_team": "Gimme your Ring",
+      "away_score": 144.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Team del Rosario",
+      "home_score": 183.0,
+      "away_team": "Team Hardin",
+      "away_score": 175.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Fuck Matt Prater",
+      "home_score": 128.0,
+      "away_team": "Fantastic Seventh",
+      "away_score": 132.0,
+      "is_playoff": true
+    }
+  ],
+  "transactions": [],
+  "draft": [
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Antonio Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Adrian Peterson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Devonta Freeman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "DeAndre Hopkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Ezekiel Elliott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Odell Beckham Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Todd Gurley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Julio Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Jamaal Charles",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Le'Veon Bell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Lamar Miller",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Allen Robinson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "A.J. Green",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "David Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Rob Gronkowski",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Brandon Marshall",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Doug Martin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Amari Cooper",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Jordy Nelson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Keenan Allen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "LeSean McCoy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Dez Bryant",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Alshon Jeffery",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Mark Ingram",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Jordan Reed",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Mike Evans",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Brandin Cooks",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "C.J. Anderson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Eddie Lacy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Sammy Watkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Doug Baldwin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Jonathan Stewart",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Cam Newton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Russell Wilson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Julian Edelman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Latavius Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Matt Forte",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Carlos Hyde",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Thomas Rawls",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Golden Tate",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Demaryius Thomas",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Ryan Mathews",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Jarvis Landry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "T.Y. Hilton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Travis Kelce",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Greg Olsen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Aaron Rodgers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Emmanuel Sanders",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Jeremy Langford",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Melvin Gordon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Andrew Luck",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "T.J. Yeldon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Ben Roethlisberger",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Jeremy Hill",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Jeremy Maclin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Kelvin Benjamin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Delanie Walker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Frank Gore",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Donte Moncrief",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Eric Decker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Drew Brees",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Arian Foster",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Randall Cobb",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Matt Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Carson Palmer",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "DeMarco Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Chris Ivory",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Allen Hurns",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "DeAngelo Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Andy Dalton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Tom Brady",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Jordan Matthews",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Duke Johnson Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "DeVante Parker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Philip Rivers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Michael Crabtree",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Blake Bortles",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Josh Gordon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "DeSean Jackson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Justin Forsett",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Stefon Diggs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "John Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Jameis Winston",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Michael Floyd",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Broncos D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Gary Barnidge",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Coby Fleener",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Eli Manning",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Ameer Abdullah",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Larry Fitzgerald",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Danny Woodhead",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Derek Carr",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Tyler Eifert",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Antonio Gates",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Rashad Jennings",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Kirk Cousins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Zach Ertz",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "LeGarrette Blount",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Derrick Henry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Bilal Powell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Markus Wheaton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Giovani Bernard",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Matthew Stafford",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Tyrod Taylor",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Christine Michael",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Marcus Mariota",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Graham Gano",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Marvin Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Charles Sims",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Seahawks D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Panthers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Tavon Austin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Jordan Cameron",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Julius Thomas",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Dak Prescott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Bengals D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Charcandrick West",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Packers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Cardinals D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Ryan Fitzpatrick",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Texans D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Chandler Catanzaro",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Matt Ryan",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Charles Clay",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Steven Hauschka",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Stephen Gostkowski",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Joe Flacco",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Dolphins D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Fuck Matt Prater",
+      "player": "Roberto Aguayo",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Chris Boswell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Fantastic Seventh",
+      "player": "Jerick McKinnon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Gimme your Ring",
+      "player": "Dion Lewis",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Saad",
+      "player": "Dustin Hopkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Teddy Bridgewater",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Jalen is  Stupid",
+      "player": "Jay Ajayi",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Hello all my Peasants",
+      "player": "Josh Brown",
+      "player_nfl": null,
+      "keeper": null
+    }
+  ],
+  "awards": []
+}

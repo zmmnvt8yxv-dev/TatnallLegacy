@@ -1,0 +1,1702 @@
+{
+  "schemaVersion": "1.0.0",
+  "year": 2017,
+  "league_id": null,
+  "generated_at": null,
+  "teams": [
+    {
+      "team_id": 1,
+      "team_name": "The Champ",
+      "owner": "sdmarvin713",
+      "record": "9-4",
+      "points_for": 1800.0,
+      "points_against": 1659.0,
+      "regular_season_rank": 1,
+      "final_rank": 1
+    },
+    {
+      "team_id": 2,
+      "team_name": "Hello All My Peasants",
+      "owner": "John.downs123",
+      "record": "8-5",
+      "points_for": 2065.0,
+      "points_against": 1747.0,
+      "regular_season_rank": 2,
+      "final_rank": 2
+    },
+    {
+      "team_id": 3,
+      "team_name": "Valar Morghulis",
+      "owner": "Edward3864",
+      "record": "7-6",
+      "points_for": 1718.0,
+      "points_against": 1669.0,
+      "regular_season_rank": 5,
+      "final_rank": 5
+    },
+    {
+      "team_id": 4,
+      "team_name": "Fuck Mccown",
+      "owner": "connerandfinn",
+      "record": "7-6",
+      "points_for": 1656.0,
+      "points_against": 1719.0,
+      "regular_season_rank": 6,
+      "final_rank": 6
+    },
+    {
+      "team_id": 5,
+      "team_name": "Team Hardin",
+      "owner": "mhardi5674696",
+      "record": "3-10",
+      "points_for": 1521.0,
+      "points_against": 1726.0,
+      "regular_season_rank": 8,
+      "final_rank": 7
+    },
+    {
+      "team_id": 6,
+      "team_name": "Please Lord Have Mercy",
+      "owner": "Jefe6700",
+      "record": "3-9-1",
+      "points_for": 1528.0,
+      "points_against": 1725.0,
+      "regular_season_rank": 7,
+      "final_rank": 8
+    },
+    {
+      "team_id": 7,
+      "team_name": "Abby Klassman",
+      "owner": "jdunca5228572",
+      "record": "7-5-1",
+      "points_for": 1625.0,
+      "points_against": 1625.0,
+      "regular_season_rank": 3,
+      "final_rank": 3
+    },
+    {
+      "team_id": 8,
+      "team_name": "Team del Rosario",
+      "owner": "jalendelrosario@comcast.net",
+      "record": "7-6",
+      "points_for": 1746.0,
+      "points_against": 1789.0,
+      "regular_season_rank": 4,
+      "final_rank": 4
+    }
+  ],
+  "matchups": [
+    {
+      "week": 1,
+      "home_team": "The Champ",
+      "home_score": 125.0,
+      "away_team": "Fuck Mccown",
+      "away_score": 85.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Team Hardin",
+      "home_score": 83.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 121.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Hello All My Peasants",
+      "home_score": 164.0,
+      "away_team": "Team del Rosario",
+      "away_score": 105.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Please Lord Have Mercy",
+      "home_score": 123.0,
+      "away_team": "Abby Klassman",
+      "away_score": 123.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Fuck Mccown",
+      "home_score": 135.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 116.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Team Hardin",
+      "home_score": 105.0,
+      "away_team": "The Champ",
+      "away_score": 110.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Team del Rosario",
+      "home_score": 110.0,
+      "away_team": "Abby Klassman",
+      "away_score": 158.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Please Lord Have Mercy",
+      "home_score": 121.0,
+      "away_team": "Hello All My Peasants",
+      "away_score": 147.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Team Hardin",
+      "home_score": 119.0,
+      "away_team": "Fuck Mccown",
+      "away_score": 163.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Valar Morghulis",
+      "home_score": 88.0,
+      "away_team": "The Champ",
+      "away_score": 176.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Please Lord Have Mercy",
+      "home_score": 138.0,
+      "away_team": "Team del Rosario",
+      "away_score": 154.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Abby Klassman",
+      "home_score": 97.0,
+      "away_team": "Hello All My Peasants",
+      "away_score": 192.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Fuck Mccown",
+      "home_score": 142.0,
+      "away_team": "Team del Rosario",
+      "away_score": 100.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "The Champ",
+      "home_score": 128.0,
+      "away_team": "Hello All My Peasants",
+      "away_score": 229.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Valar Morghulis",
+      "home_score": 114.0,
+      "away_team": "Abby Klassman",
+      "away_score": 94.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Team Hardin",
+      "home_score": 111.0,
+      "away_team": "Please Lord Have Mercy",
+      "away_score": 97.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Team del Rosario",
+      "home_score": 141.0,
+      "away_team": "The Champ",
+      "away_score": 147.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Hello All My Peasants",
+      "home_score": 147.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 158.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Abby Klassman",
+      "home_score": 123.0,
+      "away_team": "Team Hardin",
+      "away_score": 117.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Please Lord Have Mercy",
+      "home_score": 109.0,
+      "away_team": "Fuck Mccown",
+      "away_score": 117.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Valar Morghulis",
+      "home_score": 135.0,
+      "away_team": "Team del Rosario",
+      "away_score": 160.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Team Hardin",
+      "home_score": 157.0,
+      "away_team": "Hello All My Peasants",
+      "away_score": 170.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Fuck Mccown",
+      "home_score": 122.0,
+      "away_team": "Abby Klassman",
+      "away_score": 96.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "The Champ",
+      "home_score": 130.0,
+      "away_team": "Please Lord Have Mercy",
+      "away_score": 110.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Team del Rosario",
+      "home_score": 157.0,
+      "away_team": "Team Hardin",
+      "away_score": 107.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Hello All My Peasants",
+      "home_score": 192.0,
+      "away_team": "Fuck Mccown",
+      "away_score": 118.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Abby Klassman",
+      "home_score": 124.0,
+      "away_team": "The Champ",
+      "away_score": 151.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Please Lord Have Mercy",
+      "home_score": 104.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 150.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Fuck Mccown",
+      "home_score": 115.0,
+      "away_team": "The Champ",
+      "away_score": 138.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Valar Morghulis",
+      "home_score": 109.0,
+      "away_team": "Team Hardin",
+      "away_score": 126.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Team del Rosario",
+      "home_score": 135.0,
+      "away_team": "Hello All My Peasants",
+      "away_score": 159.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Abby Klassman",
+      "home_score": 160.0,
+      "away_team": "Please Lord Have Mercy",
+      "away_score": 101.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Valar Morghulis",
+      "home_score": 158.0,
+      "away_team": "Fuck Mccown",
+      "away_score": 101.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "The Champ",
+      "home_score": 93.0,
+      "away_team": "Team Hardin",
+      "away_score": 111.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Abby Klassman",
+      "home_score": 104.0,
+      "away_team": "Team del Rosario",
+      "away_score": 138.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Hello All My Peasants",
+      "home_score": 140.0,
+      "away_team": "Please Lord Have Mercy",
+      "away_score": 150.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Fuck Mccown",
+      "home_score": 141.0,
+      "away_team": "Team Hardin",
+      "away_score": 119.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "The Champ",
+      "home_score": 157.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 143.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team del Rosario",
+      "home_score": 122.0,
+      "away_team": "Please Lord Have Mercy",
+      "away_score": 107.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Hello All My Peasants",
+      "home_score": 88.0,
+      "away_team": "Abby Klassman",
+      "away_score": 106.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Fuck Mccown",
+      "home_score": 132.0,
+      "away_team": "Team del Rosario",
+      "away_score": 161.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "The Champ",
+      "home_score": 172.0,
+      "away_team": "Hello All My Peasants",
+      "away_score": 131.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Valar Morghulis",
+      "home_score": 126.0,
+      "away_team": "Abby Klassman",
+      "away_score": 130.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Team Hardin",
+      "home_score": 112.0,
+      "away_team": "Please Lord Have Mercy",
+      "away_score": 129.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Team del Rosario",
+      "home_score": 159.0,
+      "away_team": "The Champ",
+      "away_score": 155.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Hello All My Peasants",
+      "home_score": 140.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 159.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Abby Klassman",
+      "home_score": 147.0,
+      "away_team": "Team Hardin",
+      "away_score": 103.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Please Lord Have Mercy",
+      "home_score": 121.0,
+      "away_team": "Fuck Mccown",
+      "away_score": 145.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Valar Morghulis",
+      "home_score": 141.0,
+      "away_team": "Team del Rosario",
+      "away_score": 114.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Team Hardin",
+      "home_score": 151.0,
+      "away_team": "Hello All My Peasants",
+      "away_score": 166.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Fuck Mccown",
+      "home_score": 140.0,
+      "away_team": "Abby Klassman",
+      "away_score": 163.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "The Champ",
+      "home_score": 114.0,
+      "away_team": "Please Lord Have Mercy",
+      "away_score": 118.0,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "The Champ",
+      "home_score": 144.0,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Team del Rosario",
+      "home_score": 164.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 160.0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Abby Klassman",
+      "home_score": 134.0,
+      "away_team": "Fuck Mccown",
+      "away_score": 101.0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Hello All My Peasants",
+      "home_score": 157.0,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Please Lord Have Mercy",
+      "home_score": 130.0,
+      "away_team": "Team Hardin",
+      "away_score": 122.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "The Champ",
+      "home_score": 166.0,
+      "away_team": "Team del Rosario",
+      "away_score": 128.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Hello All My Peasants",
+      "home_score": 155.0,
+      "away_team": "Abby Klassman",
+      "away_score": 125.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Valar Morghulis",
+      "home_score": 103.0,
+      "away_team": "Fuck Mccown",
+      "away_score": 150.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Please Lord Have Mercy",
+      "home_score": 97.0,
+      "away_team": "Team Hardin",
+      "away_score": 130.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "The Champ",
+      "home_score": 147.0,
+      "away_team": "Hello All My Peasants",
+      "away_score": 144.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Abby Klassman",
+      "home_score": 155.0,
+      "away_team": "Team del Rosario",
+      "away_score": 110.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Valar Morghulis",
+      "home_score": 121.0,
+      "away_team": "Fuck Mccown",
+      "away_score": 99.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Please Lord Have Mercy",
+      "home_score": 120.0,
+      "away_team": "Team Hardin",
+      "away_score": 121.0,
+      "is_playoff": true
+    }
+  ],
+  "transactions": [],
+  "draft": [
+    {
+      "round": 1,
+      "overall": null,
+      "team": "The Champ",
+      "player": "David Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Le'Veon Bell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Antonio Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Julio Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Odell Beckham Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Jordy Nelson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "LeSean McCoy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Devonta Freeman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Mike Evans",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Melvin Gordon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Leonard Fournette",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Jordan Howard",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "A.J. Green",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "DeMarco Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Michael Thomas",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Jay Ajayi",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Ezekiel Elliott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Rob Gronkowski",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Todd Gurley II",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Marshawn Lynch",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "T.Y. Hilton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Isaiah Crowell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Lamar Miller",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Dez Bryant",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Doug Baldwin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "DeAndre Hopkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Amari Cooper",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Carlos Hyde",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Travis Kelce",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Terrelle Pryor Sr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Brandin Cooks",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Ty Montgomery",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Christian McCaffrey",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Dalvin Cook",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Alshon Jeffery",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Frank Gore",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Demaryius Thomas",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Keenan Allen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Tom Brady",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Golden Tate",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Joe Mixon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Aaron Rodgers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Kelvin Benjamin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Jordan Reed",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Davante Adams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Allen Robinson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Drew Brees",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Michael Crabtree",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Greg Olsen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Ameer Abdullah",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Doug Martin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Matt Ryan",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Cam Newton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Rob Kelley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Spencer Ware",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Bilal Powell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Sammy Watkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Brandon Marshall",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Paul Perkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Danny Woodhead",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "C.J. Anderson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Eddie Lacy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Tyreek Hill",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Jamison Crowder",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Martavis Bryant",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Mike Gillislee",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "DeVante Parker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Tyler Eifert",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Emmanuel Sanders",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Darren McFadden",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Eric Decker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Martellus Bennett",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Adrian Peterson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Jimmy Graham",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Delanie Walker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Jarvis Landry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Cameron Meredith",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Julian Edelman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Russell Wilson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Kirk Cousins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Stefon Diggs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Tevin Coleman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Dak Prescott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Derek Carr",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Andrew Luck",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Jameis Winston",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Jeremy Maclin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Marcus Mariota",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Matthew Stafford",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Mike Wallace",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "LeGarrette Blount",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Adam Vinatieri",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "DeSean Jackson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Hunter Henry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Akeem Hunt",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Mark Ingram",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Jacquizz Rodgers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Derrick Henry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Ben Roethlisberger",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Latavius Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Willie Snead",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Larry Fitzgerald",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Broncos D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Deshaun Watson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Samaje Perine",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Justin Tucker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Thomas Rawls",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Donte Moncrief",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Chiefs D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Duke Johnson Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Nelson Agholor",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Jonathan Stewart",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Texans D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Seahawks D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Jamaal Charles",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Matt Bryant",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Vikings D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Carson Wentz",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Ted Ginn Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Pierre Garcon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Cardinals D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Matt Forte",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Bengals D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Theo Riddick",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "John Ross",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Patriots D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Stephen Gostkowski",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Philip Rivers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Caleb Sturgis",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Hello All My Peasants",
+      "player": "Jordan Matthews",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team del Rosario",
+      "player": "Dan Bailey",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Abby Klassman",
+      "player": "Rishard Matthews",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Hardin",
+      "player": "Kenny Britt",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Matt Prater",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Fuck Mccown",
+      "player": "Will Fuller V",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Please Lord Have Mercy",
+      "player": "Chris Boswell",
+      "player_nfl": null,
+      "keeper": null
+    }
+  ],
+  "awards": []
+}

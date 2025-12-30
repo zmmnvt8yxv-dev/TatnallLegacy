@@ -1,0 +1,1702 @@
+{
+  "schemaVersion": "1.0.0",
+  "year": 2019,
+  "league_id": null,
+  "generated_at": null,
+  "teams": [
+    {
+      "team_id": 1,
+      "team_name": "The Champ",
+      "owner": "sdmarvin713",
+      "record": "8-5",
+      "points_for": 1923.0,
+      "points_against": 1889.0,
+      "regular_season_rank": 3,
+      "final_rank": 6
+    },
+    {
+      "team_id": 2,
+      "team_name": "Team Downs",
+      "owner": "John.downs123",
+      "record": "3-10",
+      "points_for": 1684.0,
+      "points_against": 1935.0,
+      "regular_season_rank": 8,
+      "final_rank": 8
+    },
+    {
+      "team_id": 3,
+      "team_name": "Valar Morghulis",
+      "owner": "Edward3864",
+      "record": "7-6",
+      "points_for": 1865.0,
+      "points_against": 1835.0,
+      "regular_season_rank": 2,
+      "final_rank": 4
+    },
+    {
+      "team_id": 4,
+      "team_name": "Team Malley",
+      "owner": "connerandfinn",
+      "record": "8-5",
+      "points_for": 1903.0,
+      "points_against": 1888.0,
+      "regular_season_rank": 4,
+      "final_rank": 3
+    },
+    {
+      "team_id": 5,
+      "team_name": "Team Blow me ",
+      "owner": "jksheehy",
+      "record": "6-7",
+      "points_for": 1870.0,
+      "points_against": 1835.0,
+      "regular_season_rank": 6,
+      "final_rank": 2
+    },
+    {
+      "team_id": 6,
+      "team_name": "Dear Lord Please",
+      "owner": "Jefe6700",
+      "record": "8-5",
+      "points_for": 1940.0,
+      "points_against": 1807.0,
+      "regular_season_rank": 1,
+      "final_rank": 1
+    },
+    {
+      "team_id": 7,
+      "team_name": "Big Dick Bandito",
+      "owner": "jdunca5228572",
+      "record": "5-8",
+      "points_for": 1758.0,
+      "points_against": 1838.0,
+      "regular_season_rank": 7,
+      "final_rank": 7
+    },
+    {
+      "team_id": 8,
+      "team_name": "Golden Taint",
+      "owner": "mattmaloy99",
+      "record": "7-6",
+      "points_for": 1815.0,
+      "points_against": 1731.0,
+      "regular_season_rank": 5,
+      "final_rank": 5
+    }
+  ],
+  "matchups": [
+    {
+      "week": 1,
+      "home_team": "Big Dick Bandito",
+      "home_score": 96.0,
+      "away_team": "The Champ",
+      "away_score": 142.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Team Blow me ",
+      "home_score": 197.0,
+      "away_team": "Dear Lord Please",
+      "away_score": 177.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Team Malley",
+      "home_score": 176.0,
+      "away_team": "Team Downs",
+      "away_score": 126.0,
+      "is_playoff": false
+    },
+    {
+      "week": 1,
+      "home_team": "Golden Taint",
+      "home_score": 167.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 126.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "The Champ",
+      "home_score": 142.0,
+      "away_team": "Dear Lord Please",
+      "away_score": 108.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Team Blow me ",
+      "home_score": 145.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 127.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Team Downs",
+      "home_score": 113.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 169.0,
+      "is_playoff": false
+    },
+    {
+      "week": 2,
+      "home_team": "Golden Taint",
+      "home_score": 139.0,
+      "away_team": "Team Malley",
+      "away_score": 135.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Team Blow me ",
+      "home_score": 167.0,
+      "away_team": "The Champ",
+      "away_score": 128.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Dear Lord Please",
+      "home_score": 175.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 174.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Golden Taint",
+      "home_score": 149.0,
+      "away_team": "Team Downs",
+      "away_score": 150.0,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Valar Morghulis",
+      "home_score": 170.0,
+      "away_team": "Team Malley",
+      "away_score": 139.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "The Champ",
+      "home_score": 165.0,
+      "away_team": "Team Downs",
+      "away_score": 129.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Big Dick Bandito",
+      "home_score": 111.0,
+      "away_team": "Team Malley",
+      "away_score": 193.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Dear Lord Please",
+      "home_score": 144.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 124.0,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Team Blow me ",
+      "home_score": 87.0,
+      "away_team": "Golden Taint",
+      "away_score": 110.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Team Downs",
+      "home_score": 118.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 196.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Team Malley",
+      "home_score": 75.0,
+      "away_team": "Dear Lord Please",
+      "away_score": 202.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Valar Morghulis",
+      "home_score": 135.0,
+      "away_team": "Team Blow me ",
+      "away_score": 163.0,
+      "is_playoff": false
+    },
+    {
+      "week": 5,
+      "home_team": "Golden Taint",
+      "home_score": 171.0,
+      "away_team": "The Champ",
+      "away_score": 210.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Dear Lord Please",
+      "home_score": 164.0,
+      "away_team": "Team Downs",
+      "away_score": 148.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Team Blow me ",
+      "home_score": 115.0,
+      "away_team": "Team Malley",
+      "away_score": 134.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "The Champ",
+      "home_score": 190.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 176.0,
+      "is_playoff": false
+    },
+    {
+      "week": 6,
+      "home_team": "Big Dick Bandito",
+      "home_score": 104.0,
+      "away_team": "Golden Taint",
+      "away_score": 103.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Team Downs",
+      "home_score": 160.0,
+      "away_team": "Team Blow me ",
+      "away_score": 127.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Team Malley",
+      "home_score": 191.0,
+      "away_team": "The Champ",
+      "away_score": 118.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Valar Morghulis",
+      "home_score": 156.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 148.0,
+      "is_playoff": false
+    },
+    {
+      "week": 7,
+      "home_team": "Golden Taint",
+      "home_score": 111.0,
+      "away_team": "Dear Lord Please",
+      "away_score": 98.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "The Champ",
+      "home_score": 104.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 180.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Dear Lord Please",
+      "home_score": 164.0,
+      "away_team": "Team Blow me ",
+      "away_score": 143.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Team Downs",
+      "home_score": 213.0,
+      "away_team": "Team Malley",
+      "away_score": 120.0,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Valar Morghulis",
+      "home_score": 158.0,
+      "away_team": "Golden Taint",
+      "away_score": 134.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Dear Lord Please",
+      "home_score": 157.0,
+      "away_team": "The Champ",
+      "away_score": 152.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Big Dick Bandito",
+      "home_score": 139.0,
+      "away_team": "Team Blow me ",
+      "away_score": 128.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Valar Morghulis",
+      "home_score": 156.0,
+      "away_team": "Team Downs",
+      "away_score": 84.0,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Team Malley",
+      "home_score": 141.0,
+      "away_team": "Golden Taint",
+      "away_score": 173.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "The Champ",
+      "home_score": 166.0,
+      "away_team": "Team Blow me ",
+      "away_score": 139.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Big Dick Bandito",
+      "home_score": 123.0,
+      "away_team": "Dear Lord Please",
+      "away_score": 186.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team Downs",
+      "home_score": 106.0,
+      "away_team": "Golden Taint",
+      "away_score": 138.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team Malley",
+      "home_score": 151.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 124.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "The Champ",
+      "home_score": 123.0,
+      "away_team": "Team Downs",
+      "away_score": 102.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Big Dick Bandito",
+      "home_score": 139.0,
+      "away_team": "Team Malley",
+      "away_score": 144.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Dear Lord Please",
+      "home_score": 103.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 135.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Team Blow me ",
+      "home_score": 156.0,
+      "away_team": "Golden Taint",
+      "away_score": 144.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Team Downs",
+      "home_score": 108.0,
+      "away_team": "Big Dick Bandito",
+      "away_score": 116.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Team Malley",
+      "home_score": 156.0,
+      "away_team": "Dear Lord Please",
+      "away_score": 126.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Valar Morghulis",
+      "home_score": 103.0,
+      "away_team": "Team Blow me ",
+      "away_score": 171.0,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Golden Taint",
+      "home_score": 140.0,
+      "away_team": "The Champ",
+      "away_score": 155.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Dear Lord Please",
+      "home_score": 136.0,
+      "away_team": "Team Downs",
+      "away_score": 127.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Team Blow me ",
+      "home_score": 132.0,
+      "away_team": "Team Malley",
+      "away_score": 148.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "The Champ",
+      "home_score": 128.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 133.0,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Big Dick Bandito",
+      "home_score": 105.0,
+      "away_team": "Golden Taint",
+      "away_score": 136.0,
+      "is_playoff": false
+    },
+    {
+      "week": 14,
+      "home_team": "Dear Lord Please",
+      "home_score": 117.0,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Team Malley",
+      "home_score": 212.0,
+      "away_team": "Golden Taint",
+      "away_score": 153.0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "The Champ",
+      "home_score": 122.0,
+      "away_team": "Team Blow me ",
+      "away_score": 153.0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Valar Morghulis",
+      "home_score": 99.0,
+      "away_team": null,
+      "away_score": 0,
+      "is_playoff": true
+    },
+    {
+      "week": 14,
+      "home_team": "Big Dick Bandito",
+      "home_score": 164.0,
+      "away_team": "Team Downs",
+      "away_score": 123.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Dear Lord Please",
+      "home_score": 161.0,
+      "away_team": "Team Malley",
+      "away_score": 133.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Valar Morghulis",
+      "home_score": 149.0,
+      "away_team": "Team Blow me ",
+      "away_score": 150.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "The Champ",
+      "home_score": 157.0,
+      "away_team": "Golden Taint",
+      "away_score": 167.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Big Dick Bandito",
+      "home_score": 168.0,
+      "away_team": "Team Downs",
+      "away_score": 108.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Dear Lord Please",
+      "home_score": 130.0,
+      "away_team": "Team Blow me ",
+      "away_score": 128.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Valar Morghulis",
+      "home_score": 122.0,
+      "away_team": "Team Malley",
+      "away_score": 148.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "The Champ",
+      "home_score": 127.0,
+      "away_team": "Golden Taint",
+      "away_score": 142.0,
+      "is_playoff": true
+    },
+    {
+      "week": 16,
+      "home_team": "Big Dick Bandito",
+      "home_score": 164.0,
+      "away_team": "Team Downs",
+      "away_score": 131.0,
+      "is_playoff": true
+    }
+  ],
+  "transactions": [],
+  "draft": [
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Saquon Barkley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Alvin Kamara",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Christian McCaffrey",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "David Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Le'Veon Bell",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "DeAndre Hopkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Ezekiel Elliott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 1,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Todd Gurley II",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Julio Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Davante Adams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Michael Thomas",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Odell Beckham Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Tyreek Hill",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "James Conner",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "JuJu Smith-Schuster",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 2,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Travis Kelce",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Antonio Brown",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Joe Mixon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Mike Evans",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Dalvin Cook",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Nick Chubb",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Keenan Allen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Leonard Fournette",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 3,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Adam Thielen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Devonta Freeman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "T.Y. Hilton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Zach Ertz",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Josh Jacobs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Kerryon Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Amari Cooper",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Damien Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 4,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Brandin Cooks",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Derrick Henry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Stefon Diggs",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Chris Carson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "George Kittle",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Julian Edelman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Marlon Mack",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Robert Woods",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 5,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Hunter Henry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Aaron Jones",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Melvin Gordon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Patrick Mahomes",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Chris Godwin",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Sony Michel",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "DJ Moore",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Kenny Golladay",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 6,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "David Montgomery",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Tyler Boyd",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Mark Ingram II",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Derrius Guice",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Alshon Jeffery",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Kenyan Drake",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Cooper Kupp",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Austin Ekeler",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 7,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Darrell Henderson Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Tyler Lockett",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Sammy Watkins",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "James White",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Phillip Lindsay",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "A.J. Green",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Evan Engram",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Tevin Coleman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 8,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Tarik Cohen",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Miles Sanders",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Aaron Rodgers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Deshaun Watson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Lamar Miller",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Mike Williams",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Jarvis Landry",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Andrew Luck",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 9,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Drew Brees",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Allen Robinson II",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Cam Newton",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Calvin Ridley",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Matt Ryan",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Carson Wentz",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Baker Mayfield",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "O.J. Howard",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 10,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Will Fuller V",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Russell Wilson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Jared Goff",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Dede Westbrook",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Latavius Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Kyler Murray",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Marvin Jones Jr.",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Sterling Shepard",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 11,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Larry Fitzgerald",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Kalen Ballage",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Jimmy Graham",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Christian Kirk",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Jordan Howard",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Robby Anderson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "LeSean McCoy",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Royce Freeman",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 12,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Peyton Barber",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Philip Rivers",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Emmanuel Sanders",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "DK Metcalf",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Rashaad Penny",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Dante Pettis",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Dak Prescott",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Bears D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 13,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Corey Davis",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Justin Jackson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Kareem Hunt",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Duke Johnson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Ben Roethlisberger",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Mitchell Trubisky",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Ronald Jones II",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "DeVante Parker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 14,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "DeSean Jackson",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Tom Brady",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "David Moore",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Greg Zuerlein",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Jerick McKinnon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Justin Tucker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Carlos Hyde",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Wil Lutz",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 15,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Jameis Winston",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Jaguars D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Donte Moncrief",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Rams D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Eagles D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Chargers D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Jaylen Samuels",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Bills D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 16,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Harrison Butker",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Golden Taint",
+      "player": "Colts D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Downs",
+      "player": "Stephen Gostkowski",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Dear Lord Please",
+      "player": "Vikings D/ST",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Valar Morghulis",
+      "player": "Younghoe Koo",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "The Champ",
+      "player": "Jared Cook",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Blow me ",
+      "player": "Ka'imi Fairbairn",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Team Malley",
+      "player": "Josh Gordon",
+      "player_nfl": null,
+      "keeper": null
+    },
+    {
+      "round": 17,
+      "overall": null,
+      "team": "Big Dick Bandito",
+      "player": "Adam Vinatieri",
+      "player_nfl": null,
+      "keeper": null
+    }
+  ],
+  "awards": []
+}

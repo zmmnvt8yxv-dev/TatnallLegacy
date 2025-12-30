@@ -5,11 +5,8 @@
 // ---------- helpers ----------
 const ROOT = new URL(".", document.baseURI).pathname.replace(/\/+$/, "") + "/";
 
-async function loadJSON(relPath){
-  const url = ROOT + relPath.replace(/^\/+/, "");
-  const r = await fetch(url + (url.includes("?") ? "&" : "?") + "v=" + Date.now(), { cache: "no-store" });
-  if(!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
-  return r.json();
+function getDataLoader(){
+  return window.TatnallDataLoader || null;
 }
 function el(tag, attrs={}, ...kids){
   const n=document.createElement(tag);
@@ -302,12 +299,14 @@ function collectOwners(seasons){ const owners=new Set(); for(const s of seasons|
 
 let ALL_SEASONS = null;
 async function loadAllSeasons(){
-  const m = await loadJSON("manifest.json");
+  const loader = getDataLoader();
+  if (!loader) throw new Error("Data loader unavailable.");
+  const m = await loader.loadManifest();
   const years = m.years || [];
   const seasons = [];
   for (const y of years) {
     try {
-      const d = await loadJSON(`data/${y}.json`);
+      const d = await loader.loadSeason(Number(y));
       if (typeof d.year !== "number") d.year = Number(y);
       d.teams = d.teams || []; d.matchups = d.matchups || []; d.transactions = d.transactions || [];
       d.draft = d.draft || []; d.lineups = d.lineups || [];
@@ -345,7 +344,7 @@ function computeMostDrafted(seasons){
 }
 function buildCurrentRosterInfo(seasons){
   const eligible = (seasons || [])
-    .filter(s => s && s.current_roster && s.player_index && Array.isArray(s.teams) && s.teams.length)
+    .filter(s => s && s.supplemental?.current_roster && s.supplemental?.player_index && Array.isArray(s.teams) && s.teams.length)
     .sort((a, b) => Number(b.year) - Number(a.year));
   const season = eligible[0];
   if (!season) return { seasonYear: null, teamNames: [], rosterByTeam: new Map(), freeAgents: new Set() };
@@ -354,9 +353,9 @@ function buildCurrentRosterInfo(seasons){
   const teamById = new Map(season.teams.map(t => [String(t.team_id), t.team_name]));
   const rosterByTeam = new Map();
   const rosteredNames = new Set();
-  const playerIndex = season.player_index || {};
+  const playerIndex = season.supplemental?.player_index || {};
 
-  for (const [rosterId, playerIds] of Object.entries(season.current_roster || {})){
+  for (const [rosterId, playerIds] of Object.entries(season.supplemental?.current_roster || {})){
     const teamName = teamById.get(String(rosterId)) || `Team ${rosterId}`;
     const names = new Set();
     for (const pid of playerIds || []){
@@ -393,7 +392,9 @@ function mostStartedPlayerByTeam(lineups, teamFilter=null){
 // ---------- per-season + UI ----------
 async function main(){
   try {
-    const m = await loadJSON("manifest.json");
+    const loader = getDataLoader();
+    if (!loader) throw new Error("Data loader unavailable.");
+    const m = await loader.loadManifest();
     const years = m.years || [];
     const sel = document.getElementById("seasonSelect");
     sel.innerHTML = "";
@@ -408,7 +409,9 @@ async function main(){
 
 async function renderSeason(year){
   try{
-    const data = await loadJSON(`data/${year}.json`);
+    const loader = getDataLoader();
+    if (!loader) throw new Error("Data loader unavailable.");
+    const data = await loader.loadSeason(Number(year));
     data.teams = data.teams||[]; data.matchups=data.matchups||[];
     data.transactions=data.transactions||[]; data.draft=data.draft||[]; data.lineups=data.lineups||[];
     renderSummary(year, data);

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Generates data/2025.json from Sleeper and updates manifest.json
+# Generates data/raw/2025.json from Sleeper
 import json, math, os, time
 from pathlib import Path
 from collections import defaultdict
@@ -349,7 +349,7 @@ def build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, points_by_week, w
 # ---------- driver ----------
 def main():
     root = Path(__file__).resolve().parent
-    data_dir = root / "data"
+    data_dir = root / "data" / "raw"
     data_dir.mkdir(exist_ok=True)
 
     r_by_id, users_out, rosters_raw = load_core(SLEEPER_LEAGUE_ID)
@@ -400,18 +400,6 @@ def main():
     }
 
     (data_dir / f"{YEAR}.json").write_text(json.dumps(out, indent=2))
-
-    manifest_path = root / "manifest.json"
-    years = []
-    if manifest_path.exists():
-        try:
-            years = json.loads(manifest_path.read_text()).get("years", [])
-        except Exception:
-            years = []
-    if YEAR not in years:
-        years.append(YEAR)
-    years = sorted({int(x) for x in years})
-    manifest_path.write_text(json.dumps({"years": years}, indent=2))
 
 if __name__ == "__main__":
     main()
