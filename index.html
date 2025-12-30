@@ -96,6 +96,8 @@
     <section id="transactions" class="panel" aria-labelledby="transactions-title">
       <h2 id="transactions-title">Transactions</h2>
       <div class="controls row">
+        <label for="txnWeekFilter">Week:</label>
+        <select id="txnWeekFilter" aria-label="Week filter"></select>
         <input id="txnSearch" type="search" placeholder="Filter by team/player/type…" aria-label="Filter transactions" />
       </div>
       <div class="tablewrap" id="txnsWrap"></div>
@@ -122,6 +124,8 @@
     <section id="mostDrafted" class="panel" aria-labelledby="mostdrafted-title">
       <h2 id="mostdrafted-title">Most Drafted Players (Across Seasons)</h2>
       <div class="controls row">
+        <label for="mdTeamFilter">Current team:</label>
+        <select id="mdTeamFilter" aria-label="Filter by current team"></select>
         <input id="mdSearch" type="search" placeholder="Filter by player…" aria-label="Filter most-drafted players" />
       </div>
       <div class="tablewrap" id="mostDraftedWrap"></div>

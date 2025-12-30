@@ -343,6 +343,41 @@ function computeMostDrafted(seasons){
   const rows=[]; for(const [player, yearsSet] of seen.entries()){ rows.push({ player, count: yearsSet.size, years: [...yearsSet].sort((a,b)=>a-b) }); }
   rows.sort((a,b)=>(b.count-a.count)||a.player.localeCompare(b.player)); return rows;
 }
+function buildCurrentRosterInfo(seasons){
+  const eligible = (seasons || [])
+    .filter(s => s && s.current_roster && s.player_index && Array.isArray(s.teams) && s.teams.length)
+    .sort((a, b) => Number(b.year) - Number(a.year));
+  const season = eligible[0];
+  if (!season) return { seasonYear: null, teamNames: [], rosterByTeam: new Map(), freeAgents: new Set() };
+
+  const teamNames = season.teams.map(t => t.team_name).filter(Boolean);
+  const teamById = new Map(season.teams.map(t => [String(t.team_id), t.team_name]));
+  const rosterByTeam = new Map();
+  const rosteredNames = new Set();
+  const playerIndex = season.player_index || {};
+
+  for (const [rosterId, playerIds] of Object.entries(season.current_roster || {})){
+    const teamName = teamById.get(String(rosterId)) || `Team ${rosterId}`;
+    const names = new Set();
+    for (const pid of playerIds || []){
+      const info = playerIndex[pid];
+      const name = info?.full_name || info?.name;
+      if (!name) continue;
+      names.add(name);
+      rosteredNames.add(name);
+    }
+    rosterByTeam.set(teamName, names);
+  }
+
+  const allPlayers = new Set(
+    Object.values(playerIndex)
+      .map(p => p?.full_name || p?.name)
+      .filter(Boolean)
+  );
+  const freeAgents = new Set([...allPlayers].filter(name => !rosteredNames.has(name)));
+
+  return { seasonYear: Number(season.year), teamNames, rosterByTeam, freeAgents };
+}
 function mostPointsByPlayerForTeam(lineups, teamFilter=null){
   if(!Array.isArray(lineups)) return null;
   const rows=teamFilter? lineups.filter(r=>r.started && r.team===teamFilter) : lineups.filter(r=>r.started);
@@ -600,9 +635,22 @@ function renderMatchups(matchups){
 function renderTransactions(txns){
   const wrap = document.getElementById("txnsWrap"); wrap.innerHTML="";
   const search = document.getElementById("txnSearch");
+  const weekSelect = document.getElementById("txnWeekFilter");
   const hasAny = Array.isArray(txns) && txns.length>0;
   const flatten = tx => (tx.entries||[]).map(e=>({date:tx.date||"", ...e}));
   const rows = hasAny ? txns.flatMap(flatten) : [];
+  const parseWeekNumber = (label) => {
+    const match = String(label || "").match(/week\s*(\d+)/i);
+    return match ? Number(match[1]) : null;
+  };
+
+  if (weekSelect){
+    const weeks = [...new Set(rows.map(r => parseWeekNumber(r.date)).filter(n => Number.isFinite(n)))]
+      .sort((a,b)=>a-b);
+    weekSelect.innerHTML = "";
+    weekSelect.appendChild(el("option",{value:""},"All Weeks"));
+    weeks.forEach(w => weekSelect.appendChild(el("option",{value:String(w)}, `Week ${w}`)));
+  }
   if(!rows.length){
     wrap.appendChild(el("div",{class:"tablewrap"}, el("div",{style:"padding:12px; color:#9ca3af;"},"No transactions available for this season.")));
     return;
@@ -613,13 +661,18 @@ function renderTransactions(txns){
   );
   function apply(){
     const q = search.value.trim().toLowerCase();
+    const wk = weekSelect ? weekSelect.value : "";
     const body = tbl.tBodies[0]; body.innerHTML="";
     rows
+      .filter(r => !wk || String(parseWeekNumber(r.date)) === wk)
       .filter(r => !q || [r.type,r.team,r.player].some(v=> String(v||"").toLowerCase().includes(q)))
       .forEach(r => body.appendChild(el("tr",{}, el("td",{}, fmt(r.date)), el("td",{}, fmt(r.type)),
         el("td",{}, fmt(r.team)), el("td",{}, fmt(r.player)), el("td",{}, fmt(r.faab)))));
   }
-  search.oninput=apply; apply(); wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
+  search.oninput=apply;
+  if (weekSelect) weekSelect.onchange = apply;
+  apply();
+  wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
 function renderDraft(draft){
@@ -757,18 +810,35 @@ function computePlayerStartStats(seasons){
 function renderMostDrafted(){
   const wrap = document.getElementById("mostDraftedWrap");
   const search = document.getElementById("mdSearch");
+  const teamSelect = document.getElementById("mdTeamFilter");
   if (!wrap) return;
   wrap.innerHTML = "";
   const rows = computeMostDrafted(ALL_SEASONS);
   const startStats = computePlayerStartStats(ALL_SEASONS);
+  const rosterInfo = buildCurrentRosterInfo(ALL_SEASONS);
+  if (teamSelect){
+    teamSelect.innerHTML = "";
+    teamSelect.appendChild(el("option",{value:""},"All Players"));
+    rosterInfo.teamNames.forEach(team => teamSelect.appendChild(el("option",{value:team}, team)));
+    teamSelect.appendChild(el("option",{value:"__FA__"},"Free Agents"));
+  }
   const tbl = el("table",{}, el("thead",{}, el("tr",{},
     el("th",{},"Player"), el("th",{},"Seasons Drafted"), el("th",{},"Most Pts as Starter"),
     el("th",{},"Times Started"), el("th",{},"Top Team (starts)"), el("th",{},"Years")
   )), el("tbody",{}));
   function draw(){
     const q = (search?.value || "").trim().toLowerCase();
+    const teamFilter = teamSelect ? teamSelect.value : "";
     tbl.tBodies[0].innerHTML = "";
-    rows.filter(r => !q || r.player.toLowerCase().includes(q)).forEach(r=>{
+    rows
+      .filter(r => {
+        if (!teamFilter) return true;
+        if (teamFilter === "__FA__") return rosterInfo.freeAgents.has(r.player);
+        const rostered = rosterInfo.rosterByTeam.get(teamFilter);
+        return rostered ? rostered.has(r.player) : false;
+      })
+      .filter(r => !q || r.player.toLowerCase().includes(q))
+      .forEach(r=>{
       const st = startStats.get(r.player) || { starts:0, maxPointsStarted:null, maxPtsSeason:null, maxPtsWeek:null, maxPtsTeam:null, maxPtsOwnerFirst:null, topTeam:null, topTeamStarts:0 };
       const maxPtsLabel = (st.maxPointsStarted == null) ? "" :
         `${fmt(st.maxPointsStarted)}${st.maxPtsOwnerFirst ? ` (for ${st.maxPtsOwnerFirst}` : ""}${st.maxPtsSeason ? `${st.maxPtsOwnerFirst ? ", " : " ("}${st.maxPtsSeason}` : ""}${st.maxPtsOwnerFirst || st.maxPtsSeason ? ")" : ""}`;
@@ -777,7 +847,7 @@ function renderMostDrafted(){
         el("td",{}, maxPtsLabel), el("td",{}, String(st.starts || 0)), el("td",{}, topTeamLabel), el("td",{}, r.years.join(", "))));
     });
   }
-  draw(); if (search) search.oninput = draw;
+  draw(); if (search) search.oninput = draw; if (teamSelect) teamSelect.onchange = draw;
   wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
