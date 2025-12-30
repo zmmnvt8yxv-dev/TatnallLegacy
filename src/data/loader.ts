@@ -1,4 +1,201 @@
-import type { SeasonData } from "./schema";
+import { SCHEMA_VERSION, type SeasonData } from "./schema";
+
+type RecordValue = Record<string, unknown>;
+
+const REQUIRED_LIST_KEYS = ["teams", "matchups", "transactions", "draft", "awards"];
+
+function isRecord(value: unknown): value is RecordValue {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function toNumber(value: unknown, fallback: number | null = null): number | null {
+  const num = typeof value === "string" || typeof value === "number" ? Number(value) : Number.NaN;
+  return Number.isFinite(num) ? num : fallback;
+}
+
+function toInteger(value: unknown, fallback: number | null = null): number | null {
+  const num = toNumber(value, null);
+  return num === null ? fallback : Math.trunc(num);
+}
+
+function toStringValue(value: unknown, fallback = ""): string {
+  if (typeof value === "string") return value;
+  if (value === null || value === undefined) return fallback;
+  return String(value);
+}
+
+function normalizeArray<T>(value: unknown, mapper: (item: unknown, key?: string) => T): T[] {
+  if (Array.isArray(value)) {
+    return value.map((item) => mapper(item));
+  }
+  if (isRecord(value)) {
+    return Object.entries(value).map(([key, item]) => mapper(item, key));
+  }
+  return [];
+}
+
+function normalizeTeam(value: unknown, key?: string): SeasonData["teams"][number] {
+  const source = isRecord(value) ? value : {};
+  const records = isRecord(source.records) ? source.records : {};
+  const teamName =
+    toStringValue(source.team_name || source.name || source.team, "") || (key ? `Team ${key}` : "");
+  return {
+    team_id: toInteger(source.team_id ?? source.teamId ?? key, null),
+    team_name: teamName,
+    owner: toStringValue(source.owner ?? source.manager ?? records.owner ?? null, null),
+    record: toStringValue(source.record ?? records.record ?? null, null),
+    points_for: toNumber(source.points_for ?? records.points_for ?? records.pointsFor, null),
+    points_against: toNumber(source.points_against ?? records.points_against ?? records.pointsAgainst, null),
+    regular_season_rank: toInteger(
+      source.regular_season_rank ?? records.regular_season_rank ?? records.regularSeasonRank,
+      null
+    ),
+    final_rank: toInteger(source.final_rank ?? records.final_rank ?? records.finalRank, null),
+  };
+}
+
+function normalizeMatchup(value: unknown): SeasonData["matchups"][number] {
+  const source = isRecord(value) ? value : {};
+  return {
+    week: toInteger(source.week ?? source.week_id ?? source.weekId ?? source.weekNumber, null),
+    home_team: toStringValue(source.home_team ?? source.homeTeam ?? null, null),
+    home_score: toNumber(source.home_score ?? source.homeScore, null),
+    away_team: toStringValue(source.away_team ?? source.awayTeam ?? null, null),
+    away_score: toNumber(source.away_score ?? source.awayScore, null),
+    is_playoff:
+      typeof source.is_playoff === "boolean"
+        ? source.is_playoff
+        : typeof source.isPlayoff === "boolean"
+          ? source.isPlayoff
+          : null,
+  };
+}
+
+function normalizeTransactionEntry(value: unknown): SeasonData["transactions"][number]["entries"][number] {
+  const source = isRecord(value) ? value : {};
+  return {
+    type: toStringValue(source.type, ""),
+    team: toStringValue(source.team ?? source.team_name ?? null, null),
+    player: toStringValue(source.player ?? source.player_name ?? null, null),
+    faab: toNumber(source.faab ?? source.fab, null),
+  };
+}
+
+function normalizeTransaction(value: unknown): SeasonData["transactions"][number] {
+  const source = isRecord(value) ? value : {};
+  return {
+    date: toStringValue(source.date, ""),
+    entries: normalizeArray(source.entries, normalizeTransactionEntry),
+  };
+}
+
+function normalizeDraftPick(value: unknown): SeasonData["draft"][number] {
+  const source = isRecord(value) ? value : {};
+  return {
+    round: toInteger(source.round ?? source.round_num ?? source.roundNum, null),
+    overall: toInteger(source.overall ?? source.pick ?? source.pickOverall, null),
+    team: toStringValue(source.team ?? source.team_name ?? null, null),
+    player: toStringValue(source.player ?? source.player_name ?? null, null),
+    player_nfl: toStringValue(source.player_nfl ?? source.nfl_team ?? source.playerTeam ?? null, null),
+    keeper: typeof source.keeper === "boolean" ? source.keeper : null,
+  };
+}
+
+function normalizeAward(value: unknown): SeasonData["awards"][number] {
+  const source = isRecord(value) ? value : {};
+  return {
+    id: toStringValue(source.id, ""),
+    title: toStringValue(source.title, ""),
+    description: toStringValue(source.description ?? null, null),
+    team: toStringValue(source.team ?? source.team_name ?? null, null),
+    owner: toStringValue(source.owner ?? null, null),
+    value: toNumber(source.value ?? source.amount, null),
+  };
+}
+
+function normalizeLineup(value: unknown): SeasonData["lineups"][number] {
+  const source = isRecord(value) ? value : {};
+  return {
+    week: toInteger(source.week ?? source.week_id ?? source.weekId, null),
+    team: toStringValue(source.team ?? source.team_name ?? null, null),
+    player_id: toStringValue(source.player_id ?? source.playerId ?? null, null),
+    player: toStringValue(source.player ?? source.player_name ?? null, null),
+    started: typeof source.started === "boolean" ? source.started : null,
+    points: toNumber(source.points ?? source.score, null),
+  };
+}
+
+function normalizeMatchups(value: unknown): SeasonData["matchups"] {
+  if (Array.isArray(value)) {
+    return value.map((item) => normalizeMatchup(item));
+  }
+  if (isRecord(value)) {
+    const flattened: unknown[] = [];
+    for (const entry of Object.values(value)) {
+      if (Array.isArray(entry)) {
+        flattened.push(...entry);
+      } else if (entry !== null && entry !== undefined) {
+        flattened.push(entry);
+      }
+    }
+    return flattened.map((item) => normalizeMatchup(item));
+  }
+  return [];
+}
+
+function normalizeSeasonData(raw: unknown): SeasonData {
+  const source = isRecord(raw) ? raw : {};
+  const lineups = normalizeArray(source.lineups ?? source.lineup_map ?? source.lineupMap, normalizeLineup);
+  const supplemental = isRecord(source.supplemental)
+    ? source.supplemental
+    : isRecord(source)
+      ? {
+          current_roster: source.current_roster,
+          player_index: source.player_index,
+          draft_day_roster: source.draft_day_roster,
+          users: source.users,
+          trade_evals: source.trade_evals,
+          acquisitions: source.acquisitions,
+        }
+      : undefined;
+  return {
+    schemaVersion:
+      typeof source.schemaVersion === "string"
+        ? source.schemaVersion
+        : typeof source.schema_version === "string"
+          ? source.schema_version
+          : SCHEMA_VERSION,
+    year: toInteger(source.year ?? source.season, 0) ?? 0,
+    league_id: toStringValue(source.league_id ?? source.leagueId ?? null, null),
+    generated_at: toStringValue(source.generated_at ?? source.generatedAt ?? null, null),
+    teams: normalizeArray(source.teams ?? source.team_map ?? source.teamMap, normalizeTeam),
+    matchups: normalizeMatchups(source.matchups ?? source.matchups_map ?? source.matchupsMap),
+    transactions: normalizeArray(
+      source.transactions ?? source.transaction_map ?? source.transactionMap,
+      normalizeTransaction
+    ),
+    draft: normalizeArray(source.draft ?? source.draft_map ?? source.draftMap, normalizeDraftPick),
+    awards: normalizeArray(source.awards ?? source.award_map ?? source.awardMap, normalizeAward),
+    lineups,
+    supplemental:
+      supplemental && Object.values(supplemental).some((value) => value !== undefined) ? supplemental : undefined,
+  };
+}
+
+function validateSeasonData(raw: unknown, normalized: SeasonData): void {
+  const source = isRecord(raw) ? raw : {};
+  const missingKeys = REQUIRED_LIST_KEYS.filter((key) => !(key in source));
+  const emptyKeys = REQUIRED_LIST_KEYS.filter((key) => {
+    const value = normalized[key as keyof SeasonData];
+    return Array.isArray(value) && value.length === 0;
+  });
+  if (missingKeys.length || emptyKeys.length) {
+    console.warn(
+      "Season data missing or empty keys",
+      { year: normalized.year, missingKeys, emptyKeys }
+    );
+  }
+}
 
 export type ManifestData = {
   years: number[];
@@ -41,7 +238,10 @@ function createDataLoader(): DataLoader {
     memoize(`season:${year}`, async () => {
       const manifest = await loadManifest();
       const version = manifest.generatedAt || manifest.schemaVersion;
-      return fetchJson<SeasonData>(`data/${year}.json`, version || undefined);
+      const raw = await fetchJson<SeasonData>(`data/${year}.json`, version || undefined);
+      const normalized = normalizeSeasonData(raw);
+      validateSeasonData(raw, normalized);
+      return normalized;
     });
 
   const preloadSeasons = async (years: number[]) => {
