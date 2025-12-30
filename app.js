@@ -421,10 +421,9 @@ function renderSummary(year, data){
 function renderTeams(teams){
   const summaryWrap = document.getElementById("recordSummary");
   const chipsWrap = document.getElementById("recordChips");
-  const controlsWrap = document.getElementById("teamSortControls");
+  const sortSelect = document.getElementById("teamSort");
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
   chipsWrap.innerHTML = "";
-  controlsWrap.innerHTML = "";
   if(!teams.length){
     summaryWrap.classList.add("hidden");
     wrap.appendChild(
@@ -461,13 +460,6 @@ function renderTeams(teams){
       )
     );
   });
-  const sortLabel = el("label", { for: "teamSort" }, "Sort by:");
-  const sortSelect = el("select", { id: "teamSort", "aria-label": "Sort teams" },
-    el("option", { value: "record" }, "Record"),
-    el("option", { value: "pf" }, "PF"),
-    el("option", { value: "rank" }, "Rank")
-  );
-  controlsWrap.append(sortLabel, sortSelect);
   const tbl = el("table",{},
     el("thead",{}, el("tr",{}, el("th",{},"Team/Manager"), el("th",{},"Record"), el("th",{},"Points For"),
       el("th",{},"Points Against"), el("th",{},"In-Season Rank"), el("th",{},"Final Rank"))),
@@ -504,8 +496,12 @@ function renderTeams(teams){
   function applySort(){
     renderRows(sortTeams(sortSelect.value));
   }
-  sortSelect.addEventListener("change", applySort);
-  applySort();
+  if (sortSelect){
+    sortSelect.addEventListener("change", applySort);
+    applySort();
+  } else {
+    renderRows(sortTeams("record"));
+  }
   wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
 }
 
