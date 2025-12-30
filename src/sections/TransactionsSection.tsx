@@ -1,54 +1,38 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
+import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
-
-const transactionWeeks = ["All Weeks", "Week 6", "Week 7", "Week 8"];
-
-const transactionFilters = ["Waivers", "Trades", "Free Agency", "IR Moves", "Completed", "Pending"];
-
-const transactions = [
-  {
-    id: "txn-1",
-    team: "Neon Knights",
-    type: "Trade",
-    player: "C. Lamb",
-    detail: "Sent for 2025 2nd-round pick",
-    timestamp: "Today · 1:12 PM",
-  },
-  {
-    id: "txn-2",
-    team: "Monarchs",
-    type: "Waiver",
-    player: "Z. Moss",
-    detail: "Claimed · $18 FAAB",
-    timestamp: "Yesterday · 9:03 AM",
-  },
-  {
-    id: "txn-3",
-    team: "Midnight Riders",
-    type: "Free Agency",
-    player: "K. Bourne",
-    detail: "Added to bench",
-    timestamp: "Yesterday · 7:41 AM",
-  },
-  {
-    id: "txn-4",
-    team: "Emerald City",
-    type: "IR Move",
-    player: "T. Pollard",
-    detail: "Moved to IR",
-    timestamp: "Tue · 5:22 PM",
-  },
-  {
-    id: "txn-5",
-    team: "Lightning Bolts",
-    type: "Trade",
-    player: "J. Hurts",
-    detail: "Received for A. Jones + 2025 1st",
-    timestamp: "Mon · 2:10 PM",
-  },
-];
+import { selectTransactionFilters, selectTransactions, selectTransactionWeeks } from "../data/selectors";
+import { useSeasonData } from "../hooks/useSeasonData";
 
 export function TransactionsSection() {
+  const { status, season, error } = useSeasonData();
+  const transactionWeeks = useMemo(
+    () => (season ? selectTransactionWeeks(season) : []),
+    [season],
+  );
+  const transactionFilters = useMemo(
+    () => (season ? selectTransactionFilters(season) : []),
+    [season],
+  );
+  const transactions = useMemo(() => (season ? selectTransactions(season) : []), [season]);
+
+  if (status === "loading") {
+    return <LoadingSection title="Transactions" subtitle="Loading transaction log…" />;
+  }
+
+  if (status === "error" || !season) {
+    return (
+      <SectionShell
+        id="transactions"
+        title="Transactions"
+        subtitle="Track roster churn with search and quick filters."
+      >
+        <p className="text-sm text-red-500">Unable to load season data: {error ?? "Unknown error"}</p>
+      </SectionShell>
+    );
+  }
+
   return (
     <SectionShell
       id="transactions"
@@ -83,28 +67,32 @@ export function TransactionsSection() {
           </button>
         ))}
       </div>
-      <div className="transaction-list">
-        {transactions.map((transaction, index) => (
-          <motion.article
-            key={transaction.id}
-            className="transaction-card"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.04 }}
-            whileHover={{ y: -3 }}
-          >
-            <div>
-              <p className="transaction-card__team">{transaction.team}</p>
-              <p className="transaction-card__player">{transaction.player}</p>
-              <p className="transaction-card__detail">{transaction.detail}</p>
-            </div>
-            <div className="transaction-card__meta">
-              <span className="transaction-card__type">{transaction.type}</span>
-              <span className="transaction-card__time">{transaction.timestamp}</span>
-            </div>
-          </motion.article>
-        ))}
-      </div>
+      {transactions.length === 0 ? (
+        <p className="text-sm text-muted">No transactions have been logged for this season yet.</p>
+      ) : (
+        <div className="transaction-list">
+          {transactions.map((transaction, index) => (
+            <motion.article
+              key={transaction.id}
+              className="transaction-card"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.04 }}
+              whileHover={{ y: -3 }}
+            >
+              <div>
+                <p className="transaction-card__team">{transaction.team}</p>
+                <p className="transaction-card__player">{transaction.player}</p>
+                <p className="transaction-card__detail">{transaction.detail}</p>
+              </div>
+              <div className="transaction-card__meta">
+                <span className="transaction-card__type">{transaction.type}</span>
+                <span className="transaction-card__time">{transaction.timestamp}</span>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      )}
     </SectionShell>
   );
 }
