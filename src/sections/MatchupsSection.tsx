@@ -4,18 +4,21 @@ import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
 import { selectMatchupWeeks, selectMatchups } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
+import { useSeasonSelection } from "../hooks/useSeasonSelection";
 
 export function MatchupsSection() {
-  const { status, season, error } = useSeasonData();
+  const { year } = useSeasonSelection();
+  const { status, season, error } = useSeasonData(year);
   const [searchText, setSearchText] = useState("");
-  const [selectedWeek, setSelectedWeek] = useState("");
-  const [statusFilter, setStatusFilter] = useState("All");
+  const [selectedWeek, setSelectedWeek] = useState("All Weeks");
+  const [statusFilter, setStatusFilter] = useState<"All" | "Final" | "Upcoming">("All");
   const [sortOrder] = useState("week");
   const matchupWeeks = useMemo(() => (season ? selectMatchupWeeks(season) : []), [season]);
   const matchups = useMemo(() => (season ? selectMatchups(season) : []), [season]);
-  const activeWeek = matchupWeeks.includes(selectedWeek)
-    ? selectedWeek
-    : matchupWeeks[0] ?? "";
+  const activeWeek =
+    selectedWeek === "All Weeks" || matchupWeeks.includes(selectedWeek)
+      ? selectedWeek
+      : "All Weeks";
   const normalizedSearch = searchText.trim().toLowerCase();
   const filteredMatchups = useMemo(() => {
     const filtered = matchups.filter((matchup) => {
@@ -23,10 +26,9 @@ export function MatchupsSection() {
         !normalizedSearch ||
         matchup.home.toLowerCase().includes(normalizedSearch) ||
         matchup.away.toLowerCase().includes(normalizedSearch);
-      const matchesWeek = !activeWeek || matchup.week === activeWeek;
+      const matchesWeek = activeWeek === "All Weeks" || matchup.week === activeWeek;
       const matchesStatus =
-        statusFilter === "All" ||
-        (statusFilter === "Live" ? matchup.status === "Final" : matchup.status === "Upcoming");
+        statusFilter === "All" || matchup.status === statusFilter;
       return matchesSearch && matchesWeek && matchesStatus;
     });
 
@@ -74,6 +76,7 @@ export function MatchupsSection() {
             value={activeWeek}
             onChange={(event) => setSelectedWeek(event.target.value)}
           >
+            <option value="All Weeks">All Weeks</option>
             {matchupWeeks.map((week) => (
               <option key={week} value={week}>
                 {week}
@@ -90,10 +93,10 @@ export function MatchupsSection() {
             </button>
             <button
               type="button"
-              className={`btn toggle${statusFilter === "Live" ? " is-active" : ""}`}
-              onClick={() => setStatusFilter("Live")}
+              className={`btn toggle${statusFilter === "Final" ? " is-active" : ""}`}
+              onClick={() => setStatusFilter("Final")}
             >
-              Live
+              Final
             </button>
             <button
               type="button"
