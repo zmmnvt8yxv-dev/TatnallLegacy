@@ -8,6 +8,10 @@ h1 { margin:0; font-size:20px; letter-spacing:.5px }
 main { max-width:1100px; margin:20px auto; padding:0 16px; }
 .panel { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 16px 10px; margin:16px 0; }
 .panel h2 { margin:4px 0 14px; font-size:18px; }
+.section-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.section-subtitle { margin:0 0 8px; color:var(--muted); font-size:13px; }
+.quick-filters { display:flex; flex-wrap:wrap; gap:8px; }
+.quick-filter { padding:4px 10px; border-radius:999px; border:1px solid var(--line); background:#0b1220; color:var(--muted); font-size:12px; }
 .tablewrap { overflow:auto; border:1px solid var(--line); border-radius:10px; }
 table { width:100%; border-collapse:separate; border-spacing:0; }
 thead th { position:sticky; top:0; background:#0b1220; color:var(--muted); font-weight:600; text-align:left; padding:10px; border-bottom:1px solid var(--line); cursor:pointer; }
@@ -18,15 +22,29 @@ tbody tr:hover { background:#0b1322; }
 .stat h3 { margin:0; font-size:13px; color:var(--muted); font-weight:500; }
 .stat p { margin:6px 0 0; font-size:20px; color:var(--ink); }
 .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.record-summary { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+.record-summary .controls { margin-left:auto; }
+.record-summary .controls label { font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+.record-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.record-chip { display:flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#0b1220; border:1px solid var(--line); font-size:13px; }
+.record-chip span { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.06em; }
+.record-chip strong { font-weight:600; }
 footer { color:var(--muted); text-align:center; padding:30px 0 50px; }
 .hidden { display:none !important; }
-.badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); color:var(--muted); background:rgba(148,163,184,0.08); letter-spacing:.2px; }
-.badge--champion { color:#facc15; border-color:rgba(250,204,21,.55); background:rgba(250,204,21,.12); box-shadow:0 0 10px rgba(250,204,21,.35); }
-.badge--record { color:#38bdf8; border-color:rgba(56,189,248,.55); background:rgba(56,189,248,.12); box-shadow:0 0 10px rgba(56,189,248,.28); }
-.badge--pf { color:#a78bfa; border-color:rgba(167,139,250,.55); background:rgba(167,139,250,.12); box-shadow:0 0 10px rgba(167,139,250,.3); }
-.team-card__header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; }
-.team-card__title { font-weight:600; }
-.team-card__badges { display:flex; flex-wrap:wrap; gap:6px; }
+.badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); color:var(--muted); }
+.record-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+.record-card { background:#0b1220; border:1px solid rgba(148,163,184,.2); border-radius:16px; overflow:hidden; box-shadow:0 10px 24px rgba(2,6,23,.45); display:flex; flex-direction:column; }
+.record-card__header { padding:12px 14px; background:linear-gradient(135deg, rgba(15,23,42,.9), rgba(30,41,59,.9)); border-bottom:1px solid rgba(148,163,184,.18); }
+.record-card__team { font-size:16px; font-weight:600; margin:0 0 4px; }
+.record-card__owner { font-size:12px; color:var(--muted); }
+.record-card__body { padding:12px 14px 14px; display:flex; flex-direction:column; gap:10px; }
+.record-card__row { display:flex; justify-content:space-between; gap:12px; align-items:center; font-size:13px; }
+.record-card__value { display:flex; align-items:center; gap:8px; font-variant-numeric:tabular-nums; }
+.win-pill { display:inline-flex; align-items:center; gap:6px; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:600; border:1px solid; }
+.win-pill--good { color:#22c55e; border-color:rgba(34,197,94,.4); background:rgba(34,197,94,.12); }
+.win-pill--mid { color:#fbbf24; border-color:rgba(251,191,36,.4); background:rgba(251,191,36,.12); }
+.win-pill--bad { color:#f87171; border-color:rgba(248,113,113,.4); background:rgba(248,113,113,.12); }
+.record-card__badges { display:flex; flex-wrap:wrap; gap:8px; }
 /* Tabs */
 header { position: sticky; top: 0; z-index: 50; background: #0b1220; }
 .tabs {

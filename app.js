@@ -18,6 +18,16 @@ function el(tag, attrs={}, ...kids){
   return n;
 }
 function fmt(n){ if(n===null||n===undefined) return ""; return typeof n==="number"? (Math.round(n*100)/100).toString(): String(n); }
+function parseRecord(record){
+  if (!record) return { wins: 0, losses: 0, ties: 0, winPct: 0 };
+  const parts = String(record).split("-").map(p => parseInt(p, 10));
+  const wins = Number.isFinite(parts[0]) ? parts[0] : 0;
+  const losses = Number.isFinite(parts[1]) ? parts[1] : 0;
+  const ties = Number.isFinite(parts[2]) ? parts[2] : 0;
+  const total = wins + losses + ties;
+  const winPct = total ? (wins + ties * 0.5) / total : 0;
+  return { wins, losses, ties, winPct };
+}
 function sortTable(tbl, idx, numeric=false){
   const tbody=tbl.tBodies[0]; const rows=[...tbody.rows]; const asc=!tbl._asc;
   rows.sort((a,b)=>{ const av=a.cells[idx].textContent.trim(); const bv=b.cells[idx].textContent.trim();
@@ -418,54 +428,13 @@ function renderSummary(year, data){
 }
 
 function renderTeams(teams){
+  const summaryWrap = document.getElementById("recordSummary");
+  const chipsWrap = document.getElementById("recordChips");
+  const sortSelect = document.getElementById("teamSort");
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
+  chipsWrap.innerHTML = "";
   if(!teams.length){
-    wrap.appendChild(
-  el("div",{class:"tablewrap"},
-    el("div",{style:"padding:12px; color:#9ca3af;"},"No teams found.")
-  )
-);
-    return;
-  }
-  const bestWinPct = Math.max(...teams.map(t => recordWinPct(t.record)));
-  const bestRecordTeams = new Set(
-    teams.filter(t => Math.abs(recordWinPct(t.record) - bestWinPct) < 1e-6 && bestWinPct > 0)
-      .map(t => t.team_name)
-  );
-  const bestPFValue = Math.max(...teams.map(t => Number(t.points_for) || 0));
-  const bestPFTeams = new Set(
-    teams.filter(t => (Number(t.points_for) || 0) === bestPFValue && bestPFValue > 0)
-      .map(t => t.team_name)
-  );
-  const champTeams = new Set(teams.filter(t => t.final_rank === 1).map(t => t.team_name));
-  const tbl = el("table",{},
-    el("thead",{}, el("tr",{}, el("th",{},"Team/Manager"), el("th",{},"Record"), el("th",{},"Points For"),
-      el("th",{},"Points Against"), el("th",{},"In-Season Rank"), el("th",{},"Final Rank"))),
-    el("tbody",{})
-  );
-  teams.forEach(t=>{
-    const owner = canonicalOwner(t.owner || t.team_name);
-    const teamLabel = `${t.team_name}${owner?` (${owner})`:""}`;
-    const badges = [];
-    if (champTeams.has(t.team_name)) badges.push(el("span",{class:"badge badge--champion"},"Champion"));
-    if (bestRecordTeams.has(t.team_name)) badges.push(el("span",{class:"badge badge--record"},"Top Record"));
-    if (bestPFTeams.has(t.team_name)) badges.push(el("span",{class:"badge badge--pf"},"Most PF"));
-    const teamCell = el("td",{});
-    const header = el("div",{class:"team-card__header"}, el("div",{class:"team-card__title"}, teamLabel));
-    if (badges.length){
-      header.appendChild(el("div",{class:"team-card__badges"}, ...badges));
-    }
-    teamCell.appendChild(header);
-    tbl.tBodies[0].appendChild(el("tr",{},
-      teamCell,
-      el("td",{}, fmt(t.record)),
-      el("td",{}, fmt(t.points_for)),
-      el("td",{}, fmt(t.points_against)),
-      el("td",{}, fmt(t.regular_season_rank)),
-      el("td",{}, fmt(t.final_rank))
-    ));
-  });
-  wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
+
 }
 
 function renderMatchups(matchups){
