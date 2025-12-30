@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { SectionShell } from "../components/SectionShell";
 
 const transactionWeeks = ["All Weeks", "Week 6", "Week 7", "Week 8"];
@@ -83,8 +84,15 @@ export function TransactionsSection() {
         ))}
       </div>
       <div className="transaction-list">
-        {transactions.map((transaction) => (
-          <article key={transaction.id} className="transaction-card">
+        {transactions.map((transaction, index) => (
+          <motion.article
+            key={transaction.id}
+            className="transaction-card"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.04 }}
+            whileHover={{ y: -3 }}
+          >
             <div>
               <p className="transaction-card__team">{transaction.team}</p>
               <p className="transaction-card__player">{transaction.player}</p>
@@ -94,7 +102,7 @@ export function TransactionsSection() {
               <span className="transaction-card__type">{transaction.type}</span>
               <span className="transaction-card__time">{transaction.timestamp}</span>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </SectionShell>

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { SectionCard } from "../components/SectionCard";
 import { dataLoader } from "../data/loader";
+import { selectSeasonSummary } from "../data/selectors";
 import {
   PowerRankingsSchema,
   SeasonSchema,
   WeeklyRecapsSchema,
   type PowerRankings,
-  type SeasonData,
   type WeeklyRecaps,
 } from "../data/schema";
 
@@ -26,10 +26,6 @@ type InspectorState = {
   powerRankingsStatus?: string;
   weeklyRecapsStatus?: string;
 };
-
-function summarizeSeason(season: SeasonData) {
-  return `${season.teams.length} teams • ${season.matchups.length} matchups • ${season.transactions.length} transactions • ${season.draft.length} draft picks`;
-}
 
 export function DataInspectorSection() {
   const [state, setState] = useState<InspectorState>({ status: "idle", seasons: [] });
@@ -51,7 +47,7 @@ export function DataInspectorSection() {
               errors: parsed.success
                 ? []
                 : parsed.error.issues.map((issue) => `${issue.path.join(".")} ${issue.message}`),
-              summary: summarizeSeason(payload),
+              summary: selectSeasonSummary(payload),
             } satisfies SeasonCheck;
           })
         );

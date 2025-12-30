@@ -10,6 +10,8 @@
     "build:data": "python scripts/build_data.py"
   },
   "dependencies": {
+    "framer-motion": "^12.23.26",
+    "html-to-image": "^1.11.13",
     "pg": "^8.11.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
