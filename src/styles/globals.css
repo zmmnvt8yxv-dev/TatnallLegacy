@@ -88,6 +88,14 @@
     @apply grid gap-4;
   }
 
+  .summary-kpis {
+    @apply mt-6 grid gap-4 lg:grid-cols-3;
+  }
+
+  .summary-highlights {
+    @apply mt-6 grid gap-3 md:grid-cols-3;
+  }
+
   .stat {
     @apply rounded-xl border border-border bg-surface-alt px-4 py-3 shadow-soft;
   }
@@ -182,6 +190,179 @@
 
   .tablewrap tr:hover td {
     @apply bg-surface;
+  }
+
+  .kpi-card {
+    @apply flex flex-col gap-4 rounded-2xl border border-border bg-surface-alt p-4 shadow-soft md:flex-row md:items-center md:justify-between;
+  }
+
+  .kpi-card__label {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .kpi-card__value-row {
+    @apply mt-2 flex items-center gap-2;
+  }
+
+  .kpi-card__value {
+    @apply text-2xl font-semibold text-foreground;
+  }
+
+  .kpi-card__change {
+    @apply rounded-full border border-border px-2 py-1 text-xs text-foreground;
+  }
+
+  .kpi-card__caption {
+    @apply text-xs text-muted;
+  }
+
+  .sparkline {
+    @apply flex h-12 items-end gap-1;
+  }
+
+  .sparkline__bar {
+    @apply w-2 rounded-full bg-accent opacity-70;
+  }
+
+  .highlight-card {
+    @apply rounded-xl border border-border bg-surface-alt px-4 py-3 shadow-soft;
+  }
+
+  .highlight-card__label {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .highlight-card__value {
+    @apply mt-2 text-sm font-medium text-foreground;
+  }
+
+  .standings-grid {
+    @apply mt-6 grid gap-4 md:grid-cols-2;
+  }
+
+  .standings-card {
+    @apply flex flex-col gap-4 rounded-2xl border border-border bg-surface-alt p-4 shadow-soft;
+  }
+
+  .standings-card__header {
+    @apply flex items-start justify-between gap-3 border-b border-border pb-3;
+  }
+
+  .standings-card__rank {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .standings-card__team {
+    @apply text-lg font-semibold;
+  }
+
+  .standings-card__owner {
+    @apply text-sm text-muted;
+  }
+
+  .standings-card__record {
+    @apply flex flex-col items-end text-sm font-medium text-foreground;
+  }
+
+  .standings-card__streak {
+    @apply text-xs text-muted;
+  }
+
+  .standings-card__stats {
+    @apply grid grid-cols-2 gap-3 text-sm;
+  }
+
+  .standings-card__label {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .standings-card__value {
+    @apply mt-1 text-sm font-medium text-foreground;
+  }
+
+  .standings-card__badges {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .matchups-grid {
+    @apply grid gap-4 md:grid-cols-2;
+  }
+
+  .matchup-card {
+    @apply rounded-2xl border border-border bg-surface-alt p-4 shadow-soft;
+  }
+
+  .matchup-card__header {
+    @apply flex items-center justify-between border-b border-border pb-3 text-sm;
+  }
+
+  .matchup-card__week {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .matchup-card__body {
+    @apply mt-3 grid gap-2;
+  }
+
+  .matchup-card__team {
+    @apply flex items-center justify-between text-sm;
+  }
+
+  .matchup-card__kickoff {
+    @apply mt-3 text-xs text-muted;
+  }
+
+  .status-pill {
+    @apply rounded-full border border-border px-3 py-1 text-xs font-medium;
+  }
+
+  .status-pill--live {
+    @apply border-accent bg-accent bg-opacity-10 text-accent;
+  }
+
+  .status-pill--active {
+    @apply border-warning bg-warning bg-opacity-10 text-warning;
+  }
+
+  .status-pill--upcoming {
+    @apply text-muted;
+  }
+
+  .transaction-list {
+    @apply mt-5 grid gap-3;
+  }
+
+  .transaction-card {
+    @apply flex flex-col justify-between gap-3 rounded-2xl border border-border bg-surface-alt p-4 text-sm shadow-soft md:flex-row md:items-center;
+  }
+
+  .transaction-card__team {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .transaction-card__player {
+    @apply mt-1 text-base font-semibold text-foreground;
+  }
+
+  .transaction-card__detail {
+    @apply text-sm text-muted;
+  }
+
+  .transaction-card__meta {
+    @apply flex flex-col items-start gap-1 text-xs text-muted md:items-end;
+  }
+
+  .transaction-card__type {
+    @apply rounded-full border border-border px-3 py-1 text-xs text-foreground;
+  }
+
+  .table-sort {
+    @apply inline-flex items-center gap-1 text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .table-sort::after {
+    content: "↕";
+    @apply text-[10px] text-muted;
   }
 
   .muted {
