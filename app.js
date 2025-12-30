@@ -411,30 +411,53 @@ function renderSummary(year, data){
 function renderTeams(teams){
   const wrap = document.getElementById("teamsWrap"); wrap.innerHTML="";
   if(!teams.length){
-    wrap.appendChild(
-  el("div",{class:"tablewrap"},
-    el("div",{style:"padding:12px; color:#9ca3af;"},"No teams found.")
-  )
-);
+    wrap.appendChild(el("div",{style:"padding:12px; color:#9ca3af;"},"No teams found."));
     return;
   }
-  const tbl = el("table",{},
-    el("thead",{}, el("tr",{}, el("th",{},"Team/Manager"), el("th",{},"Record"), el("th",{},"Points For"),
-      el("th",{},"Points Against"), el("th",{},"In-Season Rank"), el("th",{},"Final Rank"))),
-    el("tbody",{})
-  );
+  const grid = el("div",{class:"record-grid"});
+  const parseRecord = (record) => {
+    const parts = String(record ?? "").split("-").map((v)=>Number.parseInt(v, 10)).filter((v)=>Number.isFinite(v));
+    const wins = parts[0] ?? 0;
+    const losses = parts[1] ?? 0;
+    const ties = parts[2] ?? 0;
+    const games = wins + losses + ties;
+    const winPct = games ? (wins + ties * 0.5) / games : 0;
+    const recordDisplay = [wins, losses, ties].filter((v,i)=>v || i < 2).join("-");
+    return { wins, losses, ties, winPct, recordDisplay };
+  };
   teams.forEach(t=>{
     const owner = canonicalOwner(t.owner || t.team_name);
-    tbl.tBodies[0].appendChild(el("tr",{},
-      el("td",{}, `${t.team_name}${owner?` (${owner})`:""}`),
-      el("td",{}, fmt(t.record)),
-      el("td",{}, fmt(t.points_for)),
-      el("td",{}, fmt(t.points_against)),
-      el("td",{}, fmt(t.regular_season_rank)),
-      el("td",{}, fmt(t.final_rank))
-    ));
+    const { winPct, recordDisplay } = parseRecord(t.record);
+    const winPctText = `${(winPct * 100).toFixed(1)}%`;
+    const winClass = winPct >= 0.6 ? "win-pill win-pill--good" : winPct >= 0.5 ? "win-pill win-pill--mid" : "win-pill win-pill--bad";
+    const inSeason = fmt(t.regular_season_rank) || "—";
+    const finalRank = fmt(t.final_rank) || "—";
+    const card = el("div",{class:"record-card"},
+      el("div",{class:"record-card__header"},
+        el("div",{class:"record-card__team"}, t.team_name),
+        owner ? el("div",{class:"record-card__owner"}, owner) : ""
+      ),
+      el("div",{class:"record-card__body"},
+        el("div",{class:"record-card__row"},
+          el("span",{class:"record-card__label"},"Record"),
+          el("span",{class:"record-card__value"},
+            el("span",{}, recordDisplay),
+            el("span",{class:winClass}, winPctText)
+          )
+        ),
+        el("div",{class:"record-card__row"},
+          el("span",{class:"record-card__label"},"Points For/Against"),
+          el("span",{class:"record-card__value"}, `${fmt(t.points_for)} / ${fmt(t.points_against)}`)
+        ),
+        el("div",{class:"record-card__badges"},
+          el("span",{class:"badge"}, `In-Season ${inSeason}`),
+          el("span",{class:"badge"}, `Final ${finalRank}`)
+        )
+      )
+    );
+    grid.appendChild(card);
   });
-  wrap.appendChild(tbl); attachSort([...tbl.tHead.rows[0].cells], tbl);
+  wrap.appendChild(grid);
 }
 
 function renderMatchups(matchups){
