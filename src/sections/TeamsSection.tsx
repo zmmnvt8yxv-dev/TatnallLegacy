@@ -1,85 +1,38 @@
+import { useMemo } from "react";
+import { LoadingSection } from "../components/LoadingSection";
+import { selectStandings, selectStandingsFilters, selectStandingsHighlights } from "../data/selectors";
+import { useSeasonData } from "../hooks/useSeasonData";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 
-const standingsHighlights = [
-  { label: "Best Record", value: "Midnight Riders (7-1)" },
-  { label: "Most Points", value: "Neon Knights (1,014)" },
-  { label: "Least Points Allowed", value: "Golden State (742)" },
-  { label: "Longest Streak", value: "Emerald City (W4)" },
-];
-
-const standings = [
-  {
-    rank: 1,
-    team: "Midnight Riders",
-    owner: "A. Johnson",
-    record: "7-1",
-    pointsFor: 1012.4,
-    pointsAgainst: 812.8,
-    streak: "W5",
-    badges: ["Division A", "Clinched"],
-  },
-  {
-    rank: 2,
-    team: "Neon Knights",
-    owner: "T. Alvarez",
-    record: "6-2",
-    pointsFor: 1014.0,
-    pointsAgainst: 845.1,
-    streak: "W2",
-    badges: ["Division A"],
-  },
-  {
-    rank: 3,
-    team: "Emerald City",
-    owner: "K. Rivera",
-    record: "6-2",
-    pointsFor: 986.3,
-    pointsAgainst: 811.4,
-    streak: "W4",
-    badges: ["Division B"],
-  },
-  {
-    rank: 4,
-    team: "Lightning Bolts",
-    owner: "M. Chen",
-    record: "5-3",
-    pointsFor: 948.2,
-    pointsAgainst: 904.6,
-    streak: "L1",
-    badges: ["Division B"],
-  },
-  {
-    rank: 5,
-    team: "Monarchs",
-    owner: "S. Patel",
-    record: "4-4",
-    pointsFor: 902.7,
-    pointsAgainst: 918.3,
-    streak: "W1",
-    badges: ["Wildcard"],
-  },
-  {
-    rank: 6,
-    team: "Ironclads",
-    owner: "R. Gomez",
-    record: "4-4",
-    pointsFor: 876.5,
-    pointsAgainst: 910.9,
-    streak: "L2",
-    badges: ["Wildcard"],
-  },
-];
-
-const filters = [
-  "Division A",
-  "Division B",
-  "Clinched",
-  "Wildcard Race",
-  "Risers",
-  "Sliders",
-];
-
 export function TeamsSection() {
+  const { status, season, error } = useSeasonData();
+  const standingsHighlights = useMemo(
+    () => (season ? selectStandingsHighlights(season) : []),
+    [season],
+  );
+  const standings = useMemo(() => (season ? selectStandings(season) : []), [season]);
+  const filters = useMemo(() => (season ? selectStandingsFilters(season) : []), [season]);
+
+  if (status === "loading") {
+    return <LoadingSection title="Teams" subtitle="Loading season standings…" />;
+  }
+
+  if (status === "error" || !season) {
+    return (
+      <section id="teams" className="panel" aria-labelledby="teams-title">
+        <div className="section-header">
+          <div className="space-y-1">
+            <h2 id="teams-title" className="text-xl font-semibold">
+              Teams
+            </h2>
+            <p className="section-subtitle">Season records, ranks, and quick highlights.</p>
+          </div>
+        </div>
+        <p className="text-sm text-red-500">Unable to load season data: {error ?? "Unknown error"}</p>
+      </section>
+    );
+  }
+
   return (
     <section id="teams" className="panel" aria-labelledby="teams-title">
       <div className="section-header">

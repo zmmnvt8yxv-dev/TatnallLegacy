@@ -1,59 +1,13 @@
 import { lazy, Suspense, useMemo, useRef, useState } from "react";
 import { toBlob, toPng } from "html-to-image";
 import { SummaryChartsSkeleton } from "../components/ChartSkeletons";
+import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
 import { StatCard } from "../components/StatCard";
+import { selectKpiStats, selectSeasonHighlights, selectSummaryStats } from "../data/selectors";
+import { useSeasonData } from "../hooks/useSeasonData";
 
 const SummaryCharts = lazy(() => import("./SummaryCharts"));
-
-const summaryStats = [
-  { label: "Seasons Tracked", value: "12", caption: "2013–2024 archive" },
-  { label: "Active Teams", value: "14", caption: "2 divisions" },
-  { label: "Playoff Spots", value: "6", caption: "Top 3 per division" },
-  { label: "Weeks Played", value: "8", caption: "Regular season midpoint" },
-];
-
-const kpiStats = [
-  {
-    label: "League Scoring Pace",
-    value: "126.4",
-    change: "+3.8%",
-    caption: "vs. last season",
-    trend: [62, 71, 68, 82, 76, 88, 91, 86],
-  },
-  {
-    label: "Average Margin",
-    value: "11.2",
-    change: "-1.4 pts",
-    caption: "tighter games",
-    trend: [20, 18, 16, 14, 13, 12, 11, 10],
-  },
-  {
-    label: "Upset Rate",
-    value: "33%",
-    change: "+6%",
-    caption: "favorites falling",
-    trend: [24, 28, 26, 31, 33, 35, 32, 34],
-  },
-];
-
-const highlights = [
-  {
-    label: "Highest Score",
-    value: "172.8",
-    caption: "Lightning Bolts vs. Monarchs",
-  },
-  {
-    label: "Longest Win Streak",
-    value: "5",
-    caption: "Midnight Riders",
-  },
-  {
-    label: "Top Waiver Adds",
-    value: "14",
-    caption: "Season-to-date claims",
-  },
-];
 
 const snapshotOptions = {
   cacheBust: true,
@@ -77,13 +31,32 @@ function MiniSparkline({ data, label }: { data: number[]; label: string }) {
 }
 
 export function SummarySection() {
+  const { status, season, error } = useSeasonData();
   const snapshotRef = useRef<HTMLDivElement | null>(null);
   const [snapshotStatus, setSnapshotStatus] = useState<string>("");
-
+  const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
+  const kpiStats = useMemo(() => (season ? selectKpiStats(season) : []), [season]);
+  const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
   const snapshotFilename = useMemo(() => {
     const date = new Date().toISOString().slice(0, 10);
     return `weekly-summary-${date}.png`;
   }, []);
+
+  if (status === "loading") {
+    return <LoadingSection title="Season Summary" subtitle="Loading season data…" />;
+  }
+
+  if (status === "error" || !season) {
+    return (
+      <SectionShell
+        id="summary"
+        title="Season Summary"
+        subtitle="League-wide highlights and at-a-glance stats."
+      >
+        <p className="text-sm text-red-500">Unable to load season data: {error ?? "Unknown error"}</p>
+      </SectionShell>
+    );
+  }
 
   const resetStatus = () => {
     setSnapshotStatus("");
@@ -162,36 +135,36 @@ export function SummarySection() {
     >
       <div id="summarySnapshot" ref={snapshotRef} className="space-y-6">
         <div id="summaryStats" className="grid-4">
-        {summaryStats.map((stat) => (
-          <StatCard
-            key={stat.label}
-            label={stat.label}
-            value={stat.value}
-            caption={stat.caption}
-          />
-        ))}
+          {summaryStats.map((stat) => (
+            <StatCard
+              key={stat.label}
+              label={stat.label}
+              value={stat.value}
+              caption={stat.caption}
+            />
+          ))}
         </div>
 
         <div className="summary-kpis">
-        {kpiStats.map((stat) => (
-          <div key={stat.label} className="kpi-card">
-            <div>
-              <p className="kpi-card__label">{stat.label}</p>
-              <div className="kpi-card__value-row">
-                <p className="kpi-card__value">{stat.value}</p>
-                <span className="kpi-card__change">{stat.change}</span>
+          {kpiStats.map((stat) => (
+            <div key={stat.label} className="kpi-card">
+              <div>
+                <p className="kpi-card__label">{stat.label}</p>
+                <div className="kpi-card__value-row">
+                  <p className="kpi-card__value">{stat.value}</p>
+                  <span className="kpi-card__change">{stat.change}</span>
+                </div>
+                <p className="kpi-card__caption">{stat.caption}</p>
               </div>
-              <p className="kpi-card__caption">{stat.caption}</p>
+              <MiniSparkline data={stat.trend} label={stat.label} />
             </div>
-            <MiniSparkline data={stat.trend} label={stat.label} />
-          </div>
-        ))}
+          ))}
         </div>
 
         <div className="summary-highlights">
-        {highlights.map((item) => (
-          <StatCard key={item.label} label={item.label} value={item.value} caption={item.caption} />
-        ))}
+          {highlights.map((item) => (
+            <StatCard key={item.label} label={item.label} value={item.value} caption={item.caption} />
+          ))}
         </div>
         <Suspense fallback={<SummaryChartsSkeleton />}>
           <SummaryCharts />

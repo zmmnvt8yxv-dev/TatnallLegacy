@@ -1,48 +1,31 @@
+import { useMemo } from "react";
 import { motion } from "framer-motion";
+import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
-
-const matchupWeeks = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7", "Week 8"];
-
-const matchups = [
-  {
-    week: "Week 8",
-    home: "Midnight Riders",
-    away: "Lightning Bolts",
-    kickoff: "Sunday 1:00 PM",
-    status: "Live",
-    homeScore: 86.4,
-    awayScore: 78.9,
-  },
-  {
-    week: "Week 8",
-    home: "Neon Knights",
-    away: "Monarchs",
-    kickoff: "Sunday 4:05 PM",
-    status: "In Progress",
-    homeScore: 63.2,
-    awayScore: 69.7,
-  },
-  {
-    week: "Week 8",
-    home: "Emerald City",
-    away: "Ironclads",
-    kickoff: "Sunday 8:20 PM",
-    status: "Upcoming",
-    homeScore: 0,
-    awayScore: 0,
-  },
-  {
-    week: "Week 8",
-    home: "Golden State",
-    away: "Coastal Kings",
-    kickoff: "Monday 8:15 PM",
-    status: "Upcoming",
-    homeScore: 0,
-    awayScore: 0,
-  },
-];
+import { selectMatchupWeeks, selectMatchups } from "../data/selectors";
+import { useSeasonData } from "../hooks/useSeasonData";
 
 export function MatchupsSection() {
+  const { status, season, error } = useSeasonData();
+  const matchupWeeks = useMemo(() => (season ? selectMatchupWeeks(season) : []), [season]);
+  const matchups = useMemo(() => (season ? selectMatchups(season) : []), [season]);
+
+  if (status === "loading") {
+    return <LoadingSection title="Matchups" subtitle="Loading weekly matchups…" />;
+  }
+
+  if (status === "error" || !season) {
+    return (
+      <SectionShell
+        id="matchups"
+        title="Matchups"
+        subtitle="Track weekly matchups and live scoring swings."
+      >
+        <p className="text-sm text-red-500">Unable to load season data: {error ?? "Unknown error"}</p>
+      </SectionShell>
+    );
+  }
+
   return (
     <SectionShell
       id="matchups"
@@ -95,11 +78,7 @@ export function MatchupsSection() {
               <p className="matchup-card__week">{matchup.week}</p>
               <span
                 className={`status-pill ${
-                  matchup.status === "Live"
-                    ? "status-pill--live"
-                    : matchup.status === "In Progress"
-                      ? "status-pill--active"
-                      : "status-pill--upcoming"
+                  matchup.status === "Final" ? "status-pill--active" : "status-pill--upcoming"
                 }`}
               >
                 {matchup.status}
