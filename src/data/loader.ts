@@ -35,7 +35,7 @@ async function fetchJson<T>(relPath: string, version?: string): Promise<T> {
 
 function createDataLoader(): DataLoader {
   const loadManifest = () =>
-    memoize("manifest", () => fetchJson<ManifestData>("manifest.json"));
+    memoize("manifest", () => fetchJson<ManifestData>("data/manifest.json"));
 
   const loadSeason = (year: number) =>
     memoize(`season:${year}`, async () => {

@@ -289,6 +289,7 @@ def main() -> None:
         "years": years,
     }
     write_json(root / "manifest.json", manifest)
+    write_json(root / "public" / "data" / "manifest.json", manifest)
 
 
 if __name__ == "__main__":
