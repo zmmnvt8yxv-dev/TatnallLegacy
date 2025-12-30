@@ -1,4 +1,4 @@
-import { SCHEMA_VERSION, type SeasonData } from "./schema";
+import { SCHEMA_VERSION, type PowerRankings, type SeasonData, type WeeklyRecaps } from "./schema";
 
 type RecordValue = Record<string, unknown>;
 
@@ -206,6 +206,8 @@ export type ManifestData = {
 type DataLoader = {
   loadManifest: () => Promise<ManifestData>;
   loadSeason: (year: number) => Promise<SeasonData>;
+  loadPowerRankings: () => Promise<PowerRankings>;
+  loadWeeklyRecaps: () => Promise<WeeklyRecaps>;
   preloadSeasons: (years: number[]) => Promise<SeasonData[]>;
   clearCache: () => void;
 };
@@ -244,6 +246,20 @@ function createDataLoader(): DataLoader {
       return normalized;
     });
 
+  const loadPowerRankings = () =>
+    memoize("power-rankings", async () => {
+      const manifest = await loadManifest();
+      const version = manifest.generatedAt || manifest.schemaVersion;
+      return fetchJson<PowerRankings>("data/power-rankings.json", version || undefined);
+    });
+
+  const loadWeeklyRecaps = () =>
+    memoize("weekly-recaps", async () => {
+      const manifest = await loadManifest();
+      const version = manifest.generatedAt || manifest.schemaVersion;
+      return fetchJson<WeeklyRecaps>("data/weekly-recaps.json", version || undefined);
+    });
+
   const preloadSeasons = async (years: number[]) => {
     const unique = Array.from(new Set(years));
     return Promise.all(unique.map((year) => loadSeason(year)));
@@ -253,7 +269,7 @@ function createDataLoader(): DataLoader {
     memo.clear();
   };
 
-  return { loadManifest, loadSeason, preloadSeasons, clearCache };
+  return { loadManifest, loadSeason, loadPowerRankings, loadWeeklyRecaps, preloadSeasons, clearCache };
 }
 
 export const dataLoader = createDataLoader();

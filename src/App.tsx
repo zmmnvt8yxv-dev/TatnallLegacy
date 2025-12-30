@@ -8,6 +8,7 @@ import { DraftSection } from "./sections/DraftSection";
 import { MembersSection } from "./sections/MembersSection";
 import { MostDraftedSection } from "./sections/MostDraftedSection";
 import { LiveSection } from "./sections/LiveSection";
+import { DataInspectorSection } from "./sections/DataInspectorSection";
 
 export function App() {
   return (
@@ -22,6 +23,7 @@ export function App() {
         <MembersSection />
         <MostDraftedSection />
         <LiveSection />
+        {import.meta.env.DEV ? <DataInspectorSection /> : null}
       </main>
       <footer className="border-t border-border bg-surface py-6">
         <div className="mx-auto w-full max-w-6xl px-4 text-sm text-muted">
