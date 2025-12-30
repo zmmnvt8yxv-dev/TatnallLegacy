@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SectionCard } from "../components/SectionCard";
-import { dataLoader } from "../data/loader";
+import { dataLoader, type LoaderDiagnostics } from "../data/loader";
 import { selectSeasonSummary } from "../data/selectors";
 import {
   PowerRankingsSchema,
@@ -21,6 +21,7 @@ type InspectorState = {
   status: "idle" | "loading" | "ready" | "error";
   errorMessage?: string;
   seasons: SeasonCheck[];
+  diagnostics: LoaderDiagnostics;
   powerRankings?: PowerRankings;
   weeklyRecaps?: WeeklyRecaps;
   powerRankingsStatus?: string;
@@ -28,13 +29,17 @@ type InspectorState = {
 };
 
 export function DataInspectorSection() {
-  const [state, setState] = useState<InspectorState>({ status: "idle", seasons: [] });
+  const [state, setState] = useState<InspectorState>({
+    status: "idle",
+    seasons: [],
+    diagnostics: dataLoader.getDiagnostics(),
+  });
 
   useEffect(() => {
     let isMounted = true;
 
     const load = async () => {
-      setState({ status: "loading", seasons: [] });
+      setState({ status: "loading", seasons: [], diagnostics: dataLoader.getDiagnostics() });
       try {
         const manifest = await dataLoader.loadManifest();
         const seasons = await Promise.all(
@@ -70,6 +75,7 @@ export function DataInspectorSection() {
           weeklyRecapsStatus: weeklyRecapsResult.success
             ? `${weeklyRecaps.entries.length} entries`
             : weeklyRecapsResult.error.issues.map((issue) => issue.message).join("; "),
+          diagnostics: dataLoader.getDiagnostics(),
         });
       } catch (error) {
         if (!isMounted) return;
@@ -77,6 +83,7 @@ export function DataInspectorSection() {
           status: "error",
           seasons: [],
           errorMessage: error instanceof Error ? error.message : "Unknown error",
+          diagnostics: dataLoader.getDiagnostics(),
         });
       }
     };
@@ -101,6 +108,25 @@ export function DataInspectorSection() {
         </div>
       </div>
       <div className="space-y-4 text-sm text-muted">
+        <div className="rounded-lg border border-border bg-surface px-4 py-3">
+          <h3 className="text-base font-semibold text-foreground">Loader Diagnostics</h3>
+          <dl className="mt-2 space-y-1 text-xs text-muted">
+            <div>
+              <dt className="font-medium text-foreground">Base path</dt>
+              <dd className="break-all">{state.diagnostics.basePath}</dd>
+            </div>
+            <div>
+              <dt className="font-medium text-foreground">Manifest URL</dt>
+              <dd className="break-all">{state.diagnostics.manifestUrl}</dd>
+            </div>
+            <div>
+              <dt className="font-medium text-foreground">Fetch failure</dt>
+              <dd className="break-all">
+                {state.diagnostics.lastFetchError ?? state.diagnostics.manifestError ?? "None"}
+              </dd>
+            </div>
+          </dl>
+        </div>
         {state.status === "loading" && <p>Loading data...</p>}
         {state.status === "error" && (
           <p className="text-red-500">Unable to load data: {state.errorMessage}</p>
