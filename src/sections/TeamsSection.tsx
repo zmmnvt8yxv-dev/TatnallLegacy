@@ -3,12 +3,15 @@ import { LoadingSection } from "../components/LoadingSection";
 import { selectStandings, selectStandingsFilters, selectStandingsHighlights } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
+import { useSeasonSelection } from "../hooks/useSeasonSelection";
 
 export function TeamsSection() {
-  const { status, season, error } = useSeasonData();
+  const { year } = useSeasonSelection();
+  const { status, season, error } = useSeasonData(year);
   const [searchText, setSearchText] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("All Teams");
   const [sortKey, setSortKey] = useState("final_rank");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const standingsHighlights = useMemo(
     () => (season ? selectStandingsHighlights(season) : []),
     [season],
@@ -127,10 +130,20 @@ export function TeamsSection() {
             <option value="owner">Owner (A–Z)</option>
           </select>
           <div className="toggle-group" role="group" aria-label="Team view">
-            <button className="btn toggle is-active" type="button" data-team-view="grid">
+            <button
+              className={`btn toggle ${viewMode === "grid" ? "is-active" : ""}`}
+              type="button"
+              data-team-view="grid"
+              onClick={() => setViewMode("grid")}
+            >
               Cards
             </button>
-            <button className="btn toggle" type="button" data-team-view="list">
+            <button
+              className={`btn toggle ${viewMode === "list" ? "is-active" : ""}`}
+              type="button"
+              data-team-view="list"
+              onClick={() => setViewMode("list")}
+            >
               Compact
             </button>
           </div>
@@ -166,7 +179,7 @@ export function TeamsSection() {
         ))}
       </div>
 
-      <div className="standings-grid">
+      <div className={`standings-grid ${viewMode === "list" ? "standings-grid--list" : ""}`}>
         {filteredStandings.map((team) => (
           <article key={team.team} className="standings-card">
             <div className="standings-card__header">
