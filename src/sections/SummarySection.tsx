@@ -185,6 +185,10 @@ export function SummarySection() {
           ...season,
           matchups: season.matchups.filter((matchup) => matchup.week === selectedWeek),
         };
+  const selectedWeekMatchups =
+    selectedWeek === "all"
+      ? []
+      : visibleMatchups.filter((matchup) => matchup.week === selectedWeek);
 
   return (
     <SectionShell
@@ -203,7 +207,6 @@ export function SummarySection() {
               value={selectedWeek === "all" ? "all" : String(selectedWeek)}
               onChange={(event) => {
                 const value = event.target.value;
-                userSelectedWeekRef.current = true;
                 setSelectedWeek(value === "all" ? "all" : Number(value));
               }}
               disabled={availableWeeks.length === 0}
