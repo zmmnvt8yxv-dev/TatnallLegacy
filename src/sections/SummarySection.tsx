@@ -44,27 +44,40 @@ export function SummarySection() {
   const [snapshotStatus, setSnapshotStatus] = useState<string>("");
   const [selectedWeek, setSelectedWeek] = useState<number | "all">("all");
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
-  const availableWeeks = useMemo(() => (season ? selectVisibleWeeks(season) : []), [season]);
-  const filteredSeason = useMemo(() => {
+  const kpiStats = useMemo(() => (season ? selectKpiStats(season) : []), [season]);
+  const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
+  const champion = useMemo(() => {
     if (!season) {
       return null;
     }
-    if (selectedWeek === "all") {
-      return season;
+    const byFinalRank = season.teams.find((team) => team.final_rank === 1);
+    if (byFinalRank) {
+      return byFinalRank;
     }
-    return {
-      ...season,
-      matchups: season.matchups.filter((matchup) => matchup.week === selectedWeek),
-    };
-  }, [season, selectedWeek]);
-  const kpiStats = useMemo(
-    () => (filteredSeason ? selectKpiStats(filteredSeason) : []),
-    [filteredSeason],
-  );
-  const highlights = useMemo(
-    () => (filteredSeason ? selectSeasonHighlights(filteredSeason) : []),
-    [filteredSeason],
-  );
+    const sorted = [...season.teams].sort(
+      (a, b) => (a.regular_season_rank ?? 99) - (b.regular_season_rank ?? 99),
+    );
+    return sorted[0] ?? null;
+  }, [season]);
+  const finalMatchup = useMemo(() => {
+    if (!season) {
+      return null;
+    }
+    const playoffMatchups = season.matchups.filter((matchup) => matchup.is_playoff);
+    if (playoffMatchups.length === 0) {
+      return null;
+    }
+    const latestWeek = Math.max(...playoffMatchups.map((matchup) => matchup.week ?? 0));
+    const finalWeekMatchups = playoffMatchups.filter(
+      (matchup) => (matchup.week ?? 0) === latestWeek,
+    );
+    return finalWeekMatchups
+      .map((matchup) => ({
+        ...matchup,
+        total: (matchup.home_score ?? 0) + (matchup.away_score ?? 0),
+      }))
+      .sort((a, b) => b.total - a.total)[0];
+  }, [season]);
   const snapshotFilename = useMemo(() => {
     const date = new Date().toISOString().slice(0, 10);
     return `weekly-summary-${date}.png`;
@@ -140,21 +153,9 @@ export function SummarySection() {
     }
   };
 
-  useEffect(() => {
-    if (!initializedWeekRef.current && availableWeeks.length > 0) {
-      setSelectedWeek(Math.max(...availableWeeks));
-      initializedWeekRef.current = true;
-    }
-  }, [availableWeeks]);
-
-  useEffect(() => {
-    if (selectedWeek !== "all" && !availableWeeks.includes(selectedWeek)) {
-      setSelectedWeek("all");
-    }
-  }, [availableWeeks, selectedWeek]);
-
-  const weekLabel = selectedWeek === "all" ? "Season to date" : `Week ${selectedWeek}`;
-  const weekMatchups = filteredSeason?.matchups.length ?? 0;
+  const isCurrentSeason = year != null && years.length > 0 && year === Math.max(...years);
+  const formatScore = (value: number | null | undefined) =>
+    typeof value === "number" ? value.toFixed(1) : "—";
 
   return (
     <SectionShell
