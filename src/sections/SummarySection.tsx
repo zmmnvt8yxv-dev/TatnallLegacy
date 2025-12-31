@@ -203,6 +203,7 @@ export function SummarySection() {
               value={selectedWeek === "all" ? "all" : String(selectedWeek)}
               onChange={(event) => {
                 const value = event.target.value;
+                userSelectedWeekRef.current = true;
                 setSelectedWeek(value === "all" ? "all" : Number(value));
               }}
               disabled={availableWeeks.length === 0}
