@@ -3,12 +3,14 @@ import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
 import { TableShell } from "../components/TableShell";
 import { selectDraftPicks } from "../data/selectors";
+import { usePlayerProfile } from "../components/PlayerProfileProvider";
 import { useSeasonData } from "../hooks/useSeasonData";
 import { useSeasonSelection } from "../hooks/useSeasonSelection";
 
 export function DraftSection() {
   const { year } = useSeasonSelection();
   const { status, season, error } = useSeasonData(year);
+  const { openProfile } = usePlayerProfile();
   const [searchText, setSearchText] = useState("");
   const [sortKey, setSortKey] = useState("round");
   const draftRows = useMemo(() => (season ? selectDraftPicks(season) : []), [season]);
@@ -138,7 +140,19 @@ export function DraftSection() {
                 <tr key={`${row.round}-${row.pick}-${row.team}-${row.player}`}>
                   <td>{row.round || "—"}</td>
                   <td>{row.pick || "—"}</td>
-                  <td>{row.player}</td>
+                  <td>
+                    {row.player === "—" ? (
+                      "—"
+                    ) : (
+                      <button
+                        type="button"
+                        className="player-link"
+                        onClick={() => openProfile(row.player)}
+                      >
+                        {row.player}
+                      </button>
+                    )}
+                  </td>
                   <td>{row.nflTeam}</td>
                   <td>{row.team}</td>
                   <td>{row.manager}</td>
