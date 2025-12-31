@@ -11,6 +11,13 @@ function formatNumber(value: number): string {
   return value.toFixed(1);
 }
 
+function formatStatValue(value: number | null | undefined): string {
+  if (value === null || value === undefined || Number.isNaN(value)) {
+    return "—";
+  }
+  return Number.isInteger(value) ? value.toString() : value.toFixed(1);
+}
+
 function formatSeasonSpan(seasons: number[]) {
   if (!seasons.length) {
     return "";
@@ -104,6 +111,43 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
     }
     return [...profile.seasons, liveSummary].sort((a, b) => a.season - b.season);
   }, [profile, liveSeason, liveWeeklyStats.status, liveWeeklyStats.weeks]);
+  const liveStatTotals = useMemo(() => {
+    if (liveWeeklyStats.status !== "ready" || liveWeeklyStats.weeks.length === 0) {
+      return null;
+    }
+    let hasStats = false;
+    const totals = liveWeeklyStats.weeks.reduce(
+      (acc, week) => {
+        const statKeys = [
+          "passingYards",
+          "passingTds",
+          "rushingYards",
+          "rushingTds",
+          "receptions",
+          "receivingYards",
+          "receivingTds",
+        ] as const;
+        statKeys.forEach((key) => {
+          const value = week[key];
+          if (value !== null && value !== undefined) {
+            hasStats = true;
+            acc[key] += value;
+          }
+        });
+        return acc;
+      },
+      {
+        passingYards: 0,
+        passingTds: 0,
+        rushingYards: 0,
+        rushingTds: 0,
+        receptions: 0,
+        receivingYards: 0,
+        receivingTds: 0,
+      },
+    );
+    return { hasStats, totals };
+  }, [liveWeeklyStats.status, liveWeeklyStats.weeks]);
   const seasonTotals = useMemo(() => {
     if (!profile) {
       return null;
@@ -367,6 +411,43 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
           </div>
         </div>
 
+        {liveStatTotals?.hasStats ? (
+          <div>
+            <h3 className="section-heading">{liveSeason} Stat Totals</h3>
+            <p className="section-caption">Live weekly stats for the current season.</p>
+            <div className="player-profile__advanced">
+              <div className="stat">
+                <h3>Pass Yds</h3>
+                <p>{formatStatValue(liveStatTotals.totals.passingYards)}</p>
+              </div>
+              <div className="stat">
+                <h3>Pass TD</h3>
+                <p>{formatStatValue(liveStatTotals.totals.passingTds)}</p>
+              </div>
+              <div className="stat">
+                <h3>Rush Yds</h3>
+                <p>{formatStatValue(liveStatTotals.totals.rushingYards)}</p>
+              </div>
+              <div className="stat">
+                <h3>Rush TD</h3>
+                <p>{formatStatValue(liveStatTotals.totals.rushingTds)}</p>
+              </div>
+              <div className="stat">
+                <h3>Receptions</h3>
+                <p>{formatStatValue(liveStatTotals.totals.receptions)}</p>
+              </div>
+              <div className="stat">
+                <h3>Rec Yds</h3>
+                <p>{formatStatValue(liveStatTotals.totals.receivingYards)}</p>
+              </div>
+              <div className="stat">
+                <h3>Rec TD</h3>
+                <p>{formatStatValue(liveStatTotals.totals.receivingTds)}</p>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
         <div>
           <h3 className="section-heading">Season Breakdown</h3>
           <p className="section-caption">Year-over-year performance with advanced splits.</p>
@@ -423,7 +504,13 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
                                 <thead>
                                   <tr>
                                     <th>Week</th>
-                                    <th>Points</th>
+                                    <th>Pass Yds</th>
+                                    <th>Pass TD</th>
+                                    <th>Rush Yds</th>
+                                    <th>Rush TD</th>
+                                    <th>Rec</th>
+                                    <th>Rec Yds</th>
+                                    <th>Rec TD</th>
                                     <th>Opponent</th>
                                     <th>Team</th>
                                     <th>Started</th>
@@ -434,7 +521,13 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
                                     season.weeks.map((week) => (
                                       <tr key={`season-${season.season}-week-${week.week}`}>
                                         <td>W{week.week}</td>
-                                        <td>{formatNumber(week.points)}</td>
+                                        <td>{formatStatValue(week.passingYards)}</td>
+                                        <td>{formatStatValue(week.passingTds)}</td>
+                                        <td>{formatStatValue(week.rushingYards)}</td>
+                                        <td>{formatStatValue(week.rushingTds)}</td>
+                                        <td>{formatStatValue(week.receptions)}</td>
+                                        <td>{formatStatValue(week.receivingYards)}</td>
+                                        <td>{formatStatValue(week.receivingTds)}</td>
                                         <td>{week.opponent ?? "—"}</td>
                                         <td>{week.team ?? "—"}</td>
                                         <td>
@@ -448,7 +541,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
                                     ))
                                   ) : (
                                     <tr>
-                                      <td colSpan={5} className="text-sm text-muted">
+                                      <td colSpan={11} className="text-sm text-muted">
                                         No weekly stats available.
                                       </td>
                                     </tr>
