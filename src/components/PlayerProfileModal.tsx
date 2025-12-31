@@ -53,6 +53,30 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
     return selectPlayerProfile(seasons, playerName);
   }, [playerName, seasons, status]);
 
+  const metricOptions = useMemo(() => {
+    if (profile?.position === "QB") {
+      return [
+        { id: "ppr", label: "PPR Scoring" },
+        { id: "standard", label: "Standard Scoring" },
+        { id: "passing", label: "Passing/Rushing" },
+      ];
+    }
+    if (["RB", "WR", "TE"].includes(profile?.position ?? "")) {
+      return [
+        { id: "ppr", label: "PPR Scoring" },
+        { id: "standard", label: "Standard Scoring" },
+        { id: "rushing", label: "Rushing/Receiving" },
+      ];
+    }
+    return [{ id: "ppr", label: "Scoring Snapshot" }];
+  }, [profile]);
+
+  useEffect(() => {
+    if (!metricOptions.some((option) => option.id === metricView)) {
+      setMetricView(metricOptions[0]?.id ?? "ppr");
+    }
+  }, [metricOptions, metricView]);
+
   useEffect(() => {
     if (!isOpen) {
       return;
@@ -102,29 +126,6 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   }
 
   const titleId = "player-profile-title";
-  const metricOptions = useMemo(() => {
-    if (profile?.position === "QB") {
-      return [
-        { id: "ppr", label: "PPR Scoring" },
-        { id: "standard", label: "Standard Scoring" },
-        { id: "passing", label: "Passing/Rushing" },
-      ];
-    }
-    if (["RB", "WR", "TE"].includes(profile?.position ?? "")) {
-      return [
-        { id: "ppr", label: "PPR Scoring" },
-        { id: "standard", label: "Standard Scoring" },
-        { id: "rushing", label: "Rushing/Receiving" },
-      ];
-    }
-    return [{ id: "ppr", label: "Scoring Snapshot" }];
-  }, [profile?.position]);
-
-  useEffect(() => {
-    if (!metricOptions.some((option) => option.id === metricView)) {
-      setMetricView(metricOptions[0]?.id ?? "ppr");
-    }
-  }, [metricOptions, metricView]);
 
   const content = (() => {
     if (status === "loading" || status === "idle") {
