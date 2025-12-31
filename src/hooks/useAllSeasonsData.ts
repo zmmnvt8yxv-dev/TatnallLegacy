@@ -7,6 +7,8 @@ type AllSeasonsState = {
   seasons: SeasonData[];
   years: number[];
   error?: string;
+  errorUrl?: string;
+  errorStatus?: number;
   loadAllSeasons: () => void;
 };
 
@@ -42,11 +44,14 @@ export function useAllSeasonsData(): AllSeasonsState {
         if (!isMounted.current) {
           return;
         }
+        const diagnostics = dataLoader.getDiagnostics();
         setState({
           status: "error",
           seasons: [],
           years: [],
           error: error instanceof Error ? error.message : "Unable to load season data",
+          errorUrl: diagnostics.lastFetchUrl ?? diagnostics.manifestUrl,
+          errorStatus: diagnostics.lastFetchStatus,
         });
       }
     };
