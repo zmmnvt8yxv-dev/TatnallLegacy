@@ -141,11 +141,15 @@
   }
 
   .chart-card__chart {
-    @apply h-56 w-full;
+    @apply h-64 w-full;
   }
 
   .heatmap {
     @apply mt-2 grid gap-2;
+  }
+
+  .heatmap-scroll {
+    @apply overflow-x-auto pb-2;
   }
 
   .heatmap__row {
@@ -227,6 +231,10 @@
 
   .filter-pill {
     @apply flex items-center gap-2 rounded-full border border-border bg-surface-alt px-3 py-2 text-sm text-muted shadow-soft;
+  }
+
+  .filter-pill.is-active {
+    @apply border-accent bg-surface text-foreground;
   }
 
   .record-chips {
@@ -375,6 +383,10 @@
 
   .standings-grid {
     @apply mt-6 grid gap-4 md:grid-cols-2;
+  }
+
+  .standings-grid.standings-grid--list {
+    @apply md:grid-cols-1;
   }
 
   .standings-card {
