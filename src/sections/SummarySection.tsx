@@ -1,10 +1,15 @@
-import { lazy, Suspense, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { toBlob, toPng } from "html-to-image";
 import { SummaryChartsSkeleton } from "../components/ChartSkeletons";
 import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
 import { StatCard } from "../components/StatCard";
-import { selectKpiStats, selectSeasonHighlights, selectSummaryStats } from "../data/selectors";
+import {
+  selectKpiStats,
+  selectSeasonHighlights,
+  selectSummaryStats,
+  selectVisibleWeeks,
+} from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
 import { useSeasonSelection } from "../hooks/useSeasonSelection";
 
@@ -35,10 +40,31 @@ export function SummarySection() {
   const { year, years } = useSeasonSelection();
   const { status, season, error } = useSeasonData(year);
   const snapshotRef = useRef<HTMLDivElement | null>(null);
+  const initializedWeekRef = useRef(false);
   const [snapshotStatus, setSnapshotStatus] = useState<string>("");
+  const [selectedWeek, setSelectedWeek] = useState<number | "all">("all");
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
-  const kpiStats = useMemo(() => (season ? selectKpiStats(season) : []), [season]);
-  const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
+  const availableWeeks = useMemo(() => (season ? selectVisibleWeeks(season) : []), [season]);
+  const filteredSeason = useMemo(() => {
+    if (!season) {
+      return null;
+    }
+    if (selectedWeek === "all") {
+      return season;
+    }
+    return {
+      ...season,
+      matchups: season.matchups.filter((matchup) => matchup.week === selectedWeek),
+    };
+  }, [season, selectedWeek]);
+  const kpiStats = useMemo(
+    () => (filteredSeason ? selectKpiStats(filteredSeason) : []),
+    [filteredSeason],
+  );
+  const highlights = useMemo(
+    () => (filteredSeason ? selectSeasonHighlights(filteredSeason) : []),
+    [filteredSeason],
+  );
   const snapshotFilename = useMemo(() => {
     const date = new Date().toISOString().slice(0, 10);
     return `weekly-summary-${date}.png`;
@@ -114,151 +140,115 @@ export function SummarySection() {
     }
   };
 
-  const champion = useMemo(() => {
-    const byFinalRank = season.teams.find((team) => team.final_rank === 1);
-    if (byFinalRank) {
-      return byFinalRank;
+  useEffect(() => {
+    if (!initializedWeekRef.current && availableWeeks.length > 0) {
+      setSelectedWeek(Math.max(...availableWeeks));
+      initializedWeekRef.current = true;
     }
-    const sorted = [...season.teams].sort(
-      (a, b) => (a.regular_season_rank ?? 99) - (b.regular_season_rank ?? 99),
-    );
-    return sorted[0] ?? null;
-  }, [season]);
+  }, [availableWeeks]);
 
-  const finalMatchup = useMemo(() => {
-    const playoffMatchups = season.matchups.filter((matchup) => matchup.is_playoff);
-    if (playoffMatchups.length === 0) {
-      return null;
+  useEffect(() => {
+    if (selectedWeek !== "all" && !availableWeeks.includes(selectedWeek)) {
+      setSelectedWeek("all");
     }
-    const latestWeek = Math.max(...playoffMatchups.map((matchup) => matchup.week ?? 0));
-    const finalWeekMatchups = playoffMatchups.filter(
-      (matchup) => (matchup.week ?? 0) === latestWeek,
-    );
-    return finalWeekMatchups
-      .map((matchup) => ({
-        ...matchup,
-        total: (matchup.home_score ?? 0) + (matchup.away_score ?? 0),
-      }))
-      .sort((a, b) => b.total - a.total)[0];
-  }, [season]);
+  }, [availableWeeks, selectedWeek]);
 
-  const isCurrentSeason = year != null && years.length > 0 && year === Math.max(...years);
-  const formatScore = (value: number | null | undefined) =>
-    typeof value === "number" ? value.toFixed(1) : "—";
+  const weekLabel = selectedWeek === "all" ? "Season to date" : `Week ${selectedWeek}`;
+  const weekMatchups = filteredSeason?.matchups.length ?? 0;
 
   return (
-    <>
-      <section
-        className={`champion-banner${isCurrentSeason ? " champion-banner--current" : ""}`}
-        aria-label="Season champion spotlight"
-      >
-        <div className="champion-banner__content">
-          <div>
-            <p className="champion-banner__kicker">Season {year} Champion</p>
-            <h2 className="champion-banner__title">
-              {champion?.team_name ?? "League Champion"}
-            </h2>
-            <p className="champion-banner__subtitle">
-              {champion?.owner ? `Managed by ${champion.owner}` : "Celebrating a legendary run."}
-            </p>
-          </div>
-          <div className="champion-banner__scoreboard">
-            <p className="champion-banner__scoreboard-title">Championship Scoreboard</p>
-            {finalMatchup ? (
-              <div className="champion-banner__score">
-                <div>
-                  <span className="champion-banner__team">{finalMatchup.home_team ?? "—"}</span>
-                  <span className="champion-banner__points">
-                    {formatScore(finalMatchup.home_score)}
-                  </span>
-                </div>
-                <span className="champion-banner__vs">vs</span>
-                <div>
-                  <span className="champion-banner__team">{finalMatchup.away_team ?? "—"}</span>
-                  <span className="champion-banner__points">
-                    {formatScore(finalMatchup.away_score)}
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <p className="text-sm text-muted">No playoff matchup data available.</p>
-            )}
-          </div>
-        </div>
-        {isCurrentSeason ? (
-          <div className="champion-banner__celebration">
-            <p className="champion-banner__congrats">Congrats on an unforgettable title!</p>
-            <div className="confetti" aria-hidden="true">
-              {Array.from({ length: 18 }).map((_, index) => (
-                <span key={`confetti-${index}`} />
+    <SectionShell
+      id="summary"
+      title="Season Summary"
+      subtitle="League-wide highlights and at-a-glance stats."
+      actions={
+        <>
+          <div className="summary-week-select">
+            <label className="summary-week-select__label" htmlFor="summary-week-select">
+              Week focus
+            </label>
+            <select
+              id="summary-week-select"
+              className="input"
+              value={selectedWeek === "all" ? "all" : String(selectedWeek)}
+              onChange={(event) => {
+                const value = event.target.value;
+                setSelectedWeek(value === "all" ? "all" : Number(value));
+              }}
+              disabled={availableWeeks.length === 0}
+            >
+              <option value="all">Season to date</option>
+              {availableWeeks.map((week) => (
+                <option key={week} value={week}>
+                  Week {week}
+                </option>
               ))}
-            </div>
+            </select>
           </div>
-        ) : null}
-      </section>
-      <SectionShell
-        id="summary"
-        title="Season Summary"
-        subtitle="League-wide highlights and at-a-glance stats."
-        actions={
-          <>
-            <button type="button" className="btn btn-primary" onClick={handleExport}>
-              Export snapshot
-            </button>
-            <button type="button" className="btn" onClick={handleShare}>
-              Share summary
-            </button>
-            {snapshotStatus ? (
-              <span className="text-xs text-muted" role="status" aria-live="polite">
-                {snapshotStatus}
-              </span>
-            ) : null}
-          </>
-        }
-      >
-        <div id="summarySnapshot" ref={snapshotRef} className="space-y-6">
-          <div id="summaryStats" className="grid-4">
-            {summaryStats.map((stat) => (
-              <StatCard
-                key={stat.label}
-                label={stat.label}
-                value={stat.value}
-                caption={stat.caption}
-              />
-            ))}
-          </div>
-
-          <div className="summary-kpis">
-            {kpiStats.map((stat) => (
-              <div key={stat.label} className="kpi-card">
-                <div>
-                  <p className="kpi-card__label">{stat.label}</p>
-                  <div className="kpi-card__value-row">
-                    <p className="kpi-card__value">{stat.value}</p>
-                    <span className="kpi-card__change">{stat.change}</span>
-                  </div>
-                  <p className="kpi-card__caption">{stat.caption}</p>
-                </div>
-                <MiniSparkline data={stat.trend} label={stat.label} />
-              </div>
-            ))}
-          </div>
-
-          <div className="summary-highlights">
-            {highlights.map((item) => (
-              <StatCard
-                key={item.label}
-                label={item.label}
-                value={item.value}
-                caption={item.caption}
-              />
-            ))}
-          </div>
-          <Suspense fallback={<SummaryChartsSkeleton />}>
-            <SummaryCharts season={season} />
-          </Suspense>
+          <button type="button" className="btn btn-primary" onClick={handleExport}>
+            Export snapshot
+          </button>
+          <button type="button" className="btn" onClick={handleShare}>
+            Share summary
+          </button>
+          {snapshotStatus ? (
+            <span className="text-xs text-muted" role="status" aria-live="polite">
+              {snapshotStatus}
+            </span>
+          ) : null}
+        </>
+      }
+    >
+      <div id="summarySnapshot" ref={snapshotRef} className="space-y-6">
+        <div id="summaryStats" className="grid-4">
+          {summaryStats.map((stat) => (
+            <StatCard
+              key={stat.label}
+              label={stat.label}
+              value={stat.value}
+              caption={stat.caption}
+            />
+          ))}
         </div>
-      </SectionShell>
-    </>
+
+        <div className="summary-week-meta">
+          <p className="text-xs uppercase tracking-[0.2em] text-muted">{weekLabel}</p>
+          <p className="text-sm text-muted">{weekMatchups} matchups in view.</p>
+          {selectedWeek !== "all" && weekMatchups === 0 ? (
+            <p className="text-xs text-amber-300">No matchup data for this week yet.</p>
+          ) : null}
+        </div>
+
+        <div className="summary-kpis">
+          {kpiStats.map((stat) => (
+            <div key={stat.label} className="kpi-card">
+              <div>
+                <p className="kpi-card__label">{stat.label}</p>
+                <div className="kpi-card__value-row">
+                  <p className="kpi-card__value">{stat.value}</p>
+                  <span className="kpi-card__change">{stat.change}</span>
+                </div>
+                <p className="kpi-card__caption">{stat.caption}</p>
+              </div>
+              <MiniSparkline data={stat.trend} label={stat.label} />
+            </div>
+          ))}
+        </div>
+
+        <div className="summary-highlights">
+          {highlights.map((item) => (
+            <StatCard
+              key={item.label}
+              label={item.label}
+              value={item.value}
+              caption={item.caption}
+            />
+          ))}
+        </div>
+        <Suspense fallback={<SummaryChartsSkeleton />}>
+          {filteredSeason ? <SummaryCharts season={filteredSeason} /> : null}
+        </Suspense>
+      </div>
+    </SectionShell>
   );
 }
