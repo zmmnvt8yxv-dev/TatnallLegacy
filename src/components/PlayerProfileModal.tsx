@@ -2,8 +2,9 @@ import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { selectPlayerProfile, summarizeSeasonWeeks } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
-import { usePlayerWeeklyStats } from "../hooks/usePlayerWeeklyStats";
+import { usePlayerNflverseSeasonWeeklyStats } from "../hooks/usePlayerNflverseSeasonWeeklyStats";
 import { getNflTeamLogoUrl } from "../lib/playerAssets";
+import { mergeSeasonWeeks } from "../lib/playerStats";
 import { PlayerHeadshot } from "./PlayerHeadshot";
 import { PlayerTrendChart } from "./PlayerTrendChart";
 
@@ -87,37 +88,57 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   }, [metricOptions, metricView]);
 
   const liveSeason = 2025;
-  const liveWeeklyStats = usePlayerWeeklyStats(
-    profile?.playerId ?? null,
+  const seasonYears = useMemo(() => {
+    if (!profile) {
+      return [];
+    }
+    const years = profile.seasons.map((season) => season.season);
+    if (!years.includes(liveSeason)) {
+      years.push(liveSeason);
+    }
+    return years;
+  }, [profile, liveSeason]);
+  const nflverseWeeklyStats = usePlayerNflverseSeasonWeeklyStats(
     profile?.player ?? null,
-    profile ? liveSeason : null,
+    seasonYears,
   );
   const seasonsToDisplay = useMemo(() => {
     if (!profile) {
       return [];
     }
-    if (liveWeeklyStats.status !== "ready" || liveWeeklyStats.weeks.length === 0) {
+    if (nflverseWeeklyStats.status !== "ready") {
       return profile.seasons;
     }
-    const liveSummary = summarizeSeasonWeeks(
-      liveSeason,
-      liveWeeklyStats.weeks,
-      profile.seasons.find((season) => season.season === liveSeason)?.fantasyTeams ?? [],
-    );
-    const existingIndex = profile.seasons.findIndex((season) => season.season === liveSeason);
-    if (existingIndex >= 0) {
-      return profile.seasons.map((season) =>
-        season.season === liveSeason ? liveSummary : season,
+    const mergedSeasons = profile.seasons.map((season) => {
+      const nflverseWeeks = nflverseWeeklyStats.weeksBySeason[season.season];
+      if (!nflverseWeeks?.length) {
+        return season;
+      }
+      const mergedWeeks = mergeSeasonWeeks(season.weeks, nflverseWeeks);
+      return summarizeSeasonWeeks(season.season, mergedWeeks, season.fantasyTeams, {
+        preferFallbackFantasyTeams: true,
+      });
+    });
+    const liveWeeks = nflverseWeeklyStats.weeksBySeason[liveSeason];
+    if (liveWeeks?.length && !mergedSeasons.some((season) => season.season === liveSeason)) {
+      const liveSummary = summarizeSeasonWeeks(
+        liveSeason,
+        mergeSeasonWeeks([], liveWeeks),
+        [],
+        { preferFallbackFantasyTeams: true },
       );
+      return [...mergedSeasons, liveSummary].sort((a, b) => a.season - b.season);
     }
-    return [...profile.seasons, liveSummary].sort((a, b) => a.season - b.season);
-  }, [profile, liveSeason, liveWeeklyStats.status, liveWeeklyStats.weeks]);
+    return mergedSeasons;
+  }, [profile, liveSeason, nflverseWeeklyStats.status, nflverseWeeklyStats.weeksBySeason]);
   const liveStatTotals = useMemo(() => {
-    if (liveWeeklyStats.status !== "ready" || liveWeeklyStats.weeks.length === 0) {
+    const liveWeeks =
+      seasonsToDisplay.find((season) => season.season === liveSeason)?.weeks ?? [];
+    if (liveWeeks.length === 0) {
       return null;
     }
     let hasStats = false;
-    const totals = liveWeeklyStats.weeks.reduce(
+    const totals = liveWeeks.reduce(
       (acc, week) => {
         const statKeys = [
           "passingYards",
@@ -148,7 +169,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       },
     );
     return { hasStats, totals };
-  }, [liveWeeklyStats.status, liveWeeklyStats.weeks]);
+  }, [liveSeason, seasonsToDisplay]);
   const seasonTotals = useMemo(() => {
     if (!profile) {
       return null;

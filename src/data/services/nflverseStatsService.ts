@@ -114,6 +114,10 @@ function mapNflverseWeeklyStats(
         position: row.position || null,
         opponent: getFirstValue(row, OPPONENT_KEYS),
         stats: {
+          fantasy_points: toNumber(row.fantasy_points) ?? 0,
+          fantasy_points_ppr:
+            toNumber(row.fantasy_points_ppr) ?? toNumber(row.fantasy_points) ?? 0,
+          fantasy_points_half_ppr: toNumber(row.fantasy_points_half_ppr) ?? 0,
           passing_yards: toNumber(row.passing_yards) ?? 0,
           passing_tds: toNumber(row.passing_tds) ?? 0,
           rushing_yards: toNumber(row.rushing_yards) ?? 0,

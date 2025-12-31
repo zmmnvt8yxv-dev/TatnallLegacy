@@ -161,6 +161,7 @@ export function summarizeSeasonWeeks(
   season: number,
   weeks: PlayerSeasonWeek[],
   fallbackFantasyTeams: string[] = [],
+  options: { preferFallbackFantasyTeams?: boolean } = {},
 ): PlayerSeasonSummary {
   const fantasyTeams = new Set(
     weeks.map((week) => week.team).filter((team): team is string => Boolean(team)),
@@ -178,6 +179,13 @@ export function summarizeSeasonWeeks(
     0,
   );
 
+  const resolvedFantasyTeams =
+    options.preferFallbackFantasyTeams && fallbackFantasyTeams.length
+      ? fallbackFantasyTeams
+      : fantasyTeams.size
+        ? Array.from(fantasyTeams)
+        : fallbackFantasyTeams;
+
   return {
     season,
     games,
@@ -186,7 +194,7 @@ export function summarizeSeasonWeeks(
     maxPoints,
     bestWeek: bestWeekEntry ? bestWeekEntry.week : null,
     aboveThreshold,
-    fantasyTeams: fantasyTeams.size ? Array.from(fantasyTeams) : fallbackFantasyTeams,
+    fantasyTeams: resolvedFantasyTeams,
     weeks: weeks.slice().sort((a, b) => a.week - b.week),
   };
 }
