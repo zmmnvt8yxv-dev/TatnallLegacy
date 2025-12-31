@@ -1,4 +1,12 @@
 import { SCHEMA_VERSION, type PowerRankings, type SeasonData, type WeeklyRecaps } from "./schema";
+const APP_ORIGIN = typeof window !== "undefined" && window.location?.origin ? window.location.origin : "http://localhost";
+const APP_BASE = import.meta.env.BASE_URL || "/";
+
+function assetUrl(path: string) {
+  const base = APP_BASE.endsWith("/") ? APP_BASE : `${APP_BASE}/`;
+  const normalized = path.startsWith("/") ? path.slice(1) : path;
+  return new URL(`${base}${normalized}`, APP_ORIGIN).toString();
+}
 
 type RecordValue = Record<string, unknown>;
 
@@ -232,7 +240,7 @@ type DataLoader = {
   getDiagnostics: () => LoaderDiagnostics;
 };
 
-const ROOT = new URL(".", document.baseURI).pathname.replace(/\/+$/, "") + "/";
+const ROOT = new URL(".", APP_ORIGIN + APP_BASE).pathname.replace(/\/+$/, "") + "/";
 const DEFAULT_MANIFEST_YEARS = [
   2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
 ];
