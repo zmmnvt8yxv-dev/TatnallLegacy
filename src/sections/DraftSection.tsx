@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
 import { TableShell } from "../components/TableShell";
+import { PlayerName } from "../components/PlayerName";
 import { selectDraftPicks } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
 import { useSeasonSelection } from "../hooks/useSeasonSelection";
@@ -138,7 +139,9 @@ export function DraftSection() {
                 <tr key={`${row.round}-${row.pick}-${row.team}-${row.player}`}>
                   <td>{row.round || "—"}</td>
                   <td>{row.pick || "—"}</td>
-                  <td>{row.player}</td>
+                  <td>
+                    <PlayerName name={row.player} />
+                  </td>
                   <td>{row.nflTeam}</td>
                   <td>{row.team}</td>
                   <td>{row.manager}</td>

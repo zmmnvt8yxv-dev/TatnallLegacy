@@ -97,6 +97,30 @@ export type MemberSummary = {
   regularSeasonRank: number | null;
 };
 
+export type PlayerSeasonSummary = {
+  season: number;
+  games: number;
+  totalPoints: number;
+  avgPoints: number;
+  maxPoints: number;
+  bestWeek: number | null;
+  aboveThreshold: number;
+  fantasyTeams: string[];
+};
+
+export type PlayerProfile = {
+  player: string;
+  seasons: PlayerSeasonSummary[];
+  totalPoints: number;
+  totalGames: number;
+  avgPoints: number;
+  maxPoints: number;
+  aboveThreshold: number;
+  nflTeams: string[];
+  fantasyTeams: string[];
+  pointsTrend: number[];
+};
+
 const summaryCache = new WeakMap<SeasonData, string>();
 const summaryStatsCache = new WeakMap<SeasonData, SummaryStat[]>();
 const kpiStatsCache = new WeakMap<SeasonData, KpiStat[]>();
@@ -961,4 +985,147 @@ export function selectMemberSummaries(season: SeasonData): MemberSummary[] {
   });
   memberSummariesCache.set(season, summaries);
   return summaries;
+}
+
+const PLAYER_HIGH_SCORE_THRESHOLD = 20;
+const PLAYER_NAME_SUFFIXES = new Set(["jr", "sr", "ii", "iii", "iv", "v"]);
+
+export function normalizePlayerName(name: string): string {
+  const cleaned = name
+    .toLowerCase()
+    .replace(/[.'’]/g, "")
+    .replace(/[^a-z0-9\\s-]/g, " ")
+    .replace(/[-]/g, " ")
+    .replace(/\\s+/g, " ")
+    .trim();
+  if (!cleaned) {
+    return "";
+  }
+  const parts = cleaned.split(" ").filter((part) => !PLAYER_NAME_SUFFIXES.has(part));
+  return parts.join(" ");
+}
+
+export function selectPlayerDirectory(seasons: SeasonData[]): string[] {
+  const players = new Set<string>();
+  seasons.forEach((season) => {
+    season.lineups?.forEach((entry) => {
+      if (entry.player) {
+        players.add(entry.player);
+      }
+    });
+    season.draft.forEach((pick) => {
+      if (pick.player) {
+        players.add(pick.player);
+      }
+    });
+    season.transactions.forEach((transaction) => {
+      transaction.entries.forEach((entry) => {
+        if (entry.player) {
+          players.add(entry.player);
+        }
+      });
+    });
+  });
+
+  return Array.from(players).sort((a, b) => a.localeCompare(b));
+}
+
+export function selectPlayerProfile(
+  seasons: SeasonData[],
+  playerName: string,
+): PlayerProfile | null {
+  const normalized = normalizePlayerName(playerName);
+  if (!normalized) {
+    return null;
+  }
+
+  const seasonSummaries: PlayerSeasonSummary[] = [];
+  const nflTeams = new Set<string>();
+  const fantasyTeams = new Set<string>();
+
+  seasons.forEach((season) => {
+    const entries =
+      season.lineups?.filter((entry) => {
+        if (!entry.player) {
+          return false;
+        }
+        if (entry.started === false) {
+          return false;
+        }
+        return normalizePlayerName(entry.player) === normalized;
+      }) ?? [];
+
+    if (entries.length === 0) {
+      season.draft.forEach((pick) => {
+        if (pick.player && normalizePlayerName(pick.player) === normalized && pick.player_nfl) {
+          nflTeams.add(pick.player_nfl);
+        }
+      });
+      return;
+    }
+
+    let totalPoints = 0;
+    let maxPoints = 0;
+    let bestWeek: number | null = null;
+    let aboveThreshold = 0;
+    const seasonFantasyTeams = new Set<string>();
+
+    entries.forEach((entry) => {
+      const points = toNumber(entry.points);
+      totalPoints += points;
+      if (points > maxPoints) {
+        maxPoints = points;
+        bestWeek = entry.week ?? null;
+      }
+      if (points >= PLAYER_HIGH_SCORE_THRESHOLD) {
+        aboveThreshold += 1;
+      }
+      if (entry.team) {
+        seasonFantasyTeams.add(entry.team);
+        fantasyTeams.add(entry.team);
+      }
+    });
+
+    season.draft.forEach((pick) => {
+      if (pick.player && normalizePlayerName(pick.player) === normalized && pick.player_nfl) {
+        nflTeams.add(pick.player_nfl);
+      }
+    });
+
+    const games = entries.length;
+    seasonSummaries.push({
+      season: season.year,
+      games,
+      totalPoints,
+      avgPoints: games ? totalPoints / games : 0,
+      maxPoints,
+      bestWeek,
+      aboveThreshold,
+      fantasyTeams: Array.from(seasonFantasyTeams),
+    });
+  });
+
+  if (seasonSummaries.length === 0) {
+    return null;
+  }
+
+  const sortedSeasons = seasonSummaries.sort((a, b) => a.season - b.season);
+  const totalPoints = sortedSeasons.reduce((sum, season) => sum + season.totalPoints, 0);
+  const totalGames = sortedSeasons.reduce((sum, season) => sum + season.games, 0);
+  const maxPoints = sortedSeasons.reduce((max, season) => Math.max(max, season.maxPoints), 0);
+  const aboveThreshold = sortedSeasons.reduce((sum, season) => sum + season.aboveThreshold, 0);
+  const pointsTrend = sortedSeasons.map((season) => season.totalPoints);
+
+  return {
+    player: playerName,
+    seasons: sortedSeasons,
+    totalPoints,
+    totalGames,
+    avgPoints: totalGames ? totalPoints / totalGames : 0,
+    maxPoints,
+    aboveThreshold,
+    nflTeams: Array.from(nflTeams),
+    fantasyTeams: Array.from(fantasyTeams),
+    pointsTrend,
+  };
 }
