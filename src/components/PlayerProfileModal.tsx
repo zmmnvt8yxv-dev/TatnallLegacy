@@ -4,7 +4,6 @@ import { selectPlayerProfile, summarizeSeasonWeeks } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
 import { usePlayerNflverseSeasonWeeklyStats } from "../hooks/usePlayerNflverseSeasonWeeklyStats";
 import { getNflTeamLogoUrl } from "../lib/playerAssets";
-import { mergeSeasonWeeks } from "../lib/playerStats";
 import { PlayerHeadshot } from "./PlayerHeadshot";
 import { PlayerTrendChart } from "./PlayerTrendChart";
 
@@ -102,35 +101,34 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
     profile?.player ?? null,
     seasonYears,
   );
+  const externalSeasonSummaries = useMemo(() => {
+    if (!profile || nflverseWeeklyStats.status !== "ready") {
+      return null;
+    }
+    const fantasyTeamsBySeason = new Map(
+      profile.seasons.map((season) => [season.season, season.fantasyTeams]),
+    );
+    const summaries = Object.entries(nflverseWeeklyStats.weeksBySeason)
+      .map(([seasonKey, weeks]) => {
+        const seasonNumber = Number(seasonKey);
+        const summary = summarizeSeasonWeeks(seasonNumber, weeks);
+        const fallbackTeams = fantasyTeamsBySeason.get(seasonNumber) ?? [];
+        return fallbackTeams.length
+          ? { ...summary, fantasyTeams: fallbackTeams }
+          : summary;
+      })
+      .sort((a, b) => a.season - b.season);
+    return summaries;
+  }, [profile, nflverseWeeklyStats.status, nflverseWeeklyStats.weeksBySeason]);
   const seasonsToDisplay = useMemo(() => {
     if (!profile) {
       return [];
     }
-    if (nflverseWeeklyStats.status !== "ready") {
+    if (externalSeasonSummaries === null) {
       return profile.seasons;
     }
-    const mergedSeasons = profile.seasons.map((season) => {
-      const nflverseWeeks = nflverseWeeklyStats.weeksBySeason[season.season];
-      if (!nflverseWeeks?.length) {
-        return season;
-      }
-      const mergedWeeks = mergeSeasonWeeks(season.weeks, nflverseWeeks);
-      return summarizeSeasonWeeks(season.season, mergedWeeks, season.fantasyTeams, {
-        preferFallbackFantasyTeams: true,
-      });
-    });
-    const liveWeeks = nflverseWeeklyStats.weeksBySeason[liveSeason];
-    if (liveWeeks?.length && !mergedSeasons.some((season) => season.season === liveSeason)) {
-      const liveSummary = summarizeSeasonWeeks(
-        liveSeason,
-        mergeSeasonWeeks([], liveWeeks),
-        [],
-        { preferFallbackFantasyTeams: true },
-      );
-      return [...mergedSeasons, liveSummary].sort((a, b) => a.season - b.season);
-    }
-    return mergedSeasons;
-  }, [profile, liveSeason, nflverseWeeklyStats.status, nflverseWeeklyStats.weeksBySeason]);
+    return externalSeasonSummaries;
+  }, [externalSeasonSummaries, profile]);
   const liveStatTotals = useMemo(() => {
     const liveWeeks =
       seasonsToDisplay.find((season) => season.season === liveSeason)?.weeks ?? [];
@@ -381,8 +379,8 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
         </div>
         <p className="text-xs text-muted">
           {!showScoring
-            ? "Position-specific splits are not yet available for historical league data."
-            : `Showing ${scoringLabel} derived from league scoring.`}
+            ? "Position-specific splits are not yet available for external stat feeds."
+            : `Showing ${scoringLabel} derived from external scoring feeds.`}
         </p>
       </div>
 
