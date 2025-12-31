@@ -4,9 +4,11 @@ import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
 import { selectTransactionFilters, selectTransactions, selectTransactionWeeks } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
+import { useSeasonSelection } from "../hooks/useSeasonSelection";
 
 export function TransactionsSection() {
-  const { status, season, error } = useSeasonData();
+  const { year } = useSeasonSelection();
+  const { status, season, error } = useSeasonData(year);
   const [searchText, setSearchText] = useState("");
   const [selectedWeek, setSelectedWeek] = useState("All Weeks");
   const [selectedFilter, setSelectedFilter] = useState("All Transactions");
