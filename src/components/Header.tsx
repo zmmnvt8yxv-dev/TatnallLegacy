@@ -1,6 +1,7 @@
 import { PageHeader } from "./PageHeader";
 import { useTheme } from "./ThemeProvider";
 import { useSeasonSelection } from "../hooks/useSeasonSelection";
+import { PlayerSearch } from "./PlayerSearch";
 
 export function Header() {
   const { theme, toggleTheme } = useTheme();
@@ -14,6 +15,7 @@ export function Header() {
           subtitle="Historical league data, standings, and live insights."
         />
         <div className="flex flex-wrap items-center gap-3">
+          <PlayerSearch />
           <div className="controls flex items-center gap-2">
             <label htmlFor="seasonSelect" className="text-sm text-muted">
               Season:

@@ -1,17 +1,23 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AppLayout } from "./components/AppLayout";
 import { LoadingSection } from "./components/LoadingSection";
+import { PlayerProfileProvider } from "./components/PlayerProfileProvider";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { SeasonSelectionProvider } from "./hooks/useSeasonSelection";
 import { navigationItems } from "./navigation";
+
+const PlayerProfilePage = lazy(async () => ({
+  default: (await import("./sections/PlayerProfilePage")).PlayerProfilePage,
+}));
 
 export function App() {
   return (
     <ThemeProvider>
       <SeasonSelectionProvider>
-        <Routes>
-          <Route element={<AppLayout />}>
+        <PlayerProfileProvider>
+          <Routes>
+            <Route element={<AppLayout />}>
             {navigationItems.map((item) => (
               <Route
                 key={item.path}
@@ -19,9 +25,18 @@ export function App() {
                 element={<Suspense fallback={<LoadingSection />}>{item.element}</Suspense>}
               />
             ))}
+            <Route
+              path="/player/:playerName"
+              element={
+                <Suspense fallback={<LoadingSection />}>
+                  <PlayerProfilePage />
+                </Suspense>
+              }
+            />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
+        </PlayerProfileProvider>
       </SeasonSelectionProvider>
     </ThemeProvider>
   );
