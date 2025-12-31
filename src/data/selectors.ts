@@ -139,6 +139,15 @@ export type PlayerSeasonSummary = {
   bestWeek: number | null;
   aboveThreshold: number;
   fantasyTeams: string[];
+  weeks: PlayerSeasonWeek[];
+};
+
+export type PlayerSeasonWeek = {
+  week: number;
+  points: number;
+  opponent: string | null;
+  team: string | null;
+  started: boolean | null;
 };
 
 export type PlayerTeamTimeline = {
@@ -1442,6 +1451,20 @@ export function selectPlayerProfile(
   const awards: string[] = [];
 
   seasons.forEach((season) => {
+    const matchupMap = new Map<string, string>();
+    season.matchups.forEach((matchup) => {
+      if (
+        matchup.week === null ||
+        matchup.week === undefined ||
+        !matchup.home_team ||
+        !matchup.away_team
+      ) {
+        return;
+      }
+      matchupMap.set(`${matchup.week}:${matchup.home_team}`, matchup.away_team);
+      matchupMap.set(`${matchup.week}:${matchup.away_team}`, matchup.home_team);
+    });
+
     const entries =
       season.lineups?.filter((entry) => {
         if (!entry.player) {
@@ -1468,6 +1491,7 @@ export function selectPlayerProfile(
     let bestWeek: number | null = null;
     let aboveThreshold = 0;
     const seasonFantasyTeams = new Set<string>();
+    const weeks: PlayerSeasonWeek[] = [];
 
     entries.forEach((entry) => {
       const points = toNumber(entry.points);
@@ -1482,6 +1506,15 @@ export function selectPlayerProfile(
       if (entry.team) {
         seasonFantasyTeams.add(entry.team);
         fantasyTeams.add(entry.team);
+      }
+      if (entry.week !== null && entry.week !== undefined) {
+        weeks.push({
+          week: entry.week,
+          points,
+          opponent: entry.team ? matchupMap.get(`${entry.week}:${entry.team}`) ?? null : null,
+          team: entry.team ?? null,
+          started: entry.started ?? null,
+        });
       }
       entriesBySeason.push({ season: season.year, entry });
     });
@@ -1503,6 +1536,7 @@ export function selectPlayerProfile(
       bestWeek,
       aboveThreshold,
       fantasyTeams: Array.from(seasonFantasyTeams),
+      weeks: weeks.sort((a, b) => a.week - b.week),
     });
   });
 

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { selectPlayerProfile } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
@@ -46,6 +46,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const [metricView, setMetricView] = useState("ppr");
   const [logoFallback, setLogoFallback] = useState<Record<string, boolean>>({});
+  const [expandedSeasons, setExpandedSeasons] = useState<Record<number, boolean>>({});
   const profile = useMemo(() => {
     if (!playerName || status !== "ready") {
       return null;
@@ -76,6 +77,10 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       setMetricView(metricOptions[0]?.id ?? "ppr");
     }
   }, [metricOptions, metricView]);
+
+  useEffect(() => {
+    setExpandedSeasons({});
+  }, [playerName]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -324,20 +329,87 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
                   <th>High</th>
                   <th>Best Week</th>
                   <th>20+</th>
+                  <th aria-label="Season drilldown">Details</th>
                 </tr>
               </thead>
               <tbody>
-                {profile.seasons.map((season) => (
-                  <tr key={season.season}>
-                    <td>{season.season}</td>
-                    <td>{season.games}</td>
-                    <td>{formatNumber(season.totalPoints)}</td>
-                    <td>{formatNumber(season.avgPoints)}</td>
-                    <td>{formatNumber(season.maxPoints)}</td>
-                    <td>{season.bestWeek ? `W${season.bestWeek}` : "—"}</td>
-                    <td>{season.aboveThreshold}</td>
-                  </tr>
-                ))}
+                {profile.seasons.map((season) => {
+                  const expanded = Boolean(expandedSeasons[season.season]);
+                  const detailId = `season-${season.season}-weeks`;
+                  return (
+                    <Fragment key={season.season}>
+                      <tr>
+                        <td>{season.season}</td>
+                        <td>{season.games}</td>
+                        <td>{formatNumber(season.totalPoints)}</td>
+                        <td>{formatNumber(season.avgPoints)}</td>
+                        <td>{formatNumber(season.maxPoints)}</td>
+                        <td>{season.bestWeek ? `W${season.bestWeek}` : "—"}</td>
+                        <td>{season.aboveThreshold}</td>
+                        <td>
+                          <button
+                            type="button"
+                            className="btn text-xs"
+                            onClick={() =>
+                              setExpandedSeasons((prev) => ({
+                                ...prev,
+                                [season.season]: !prev[season.season],
+                              }))
+                            }
+                            aria-expanded={expanded}
+                            aria-controls={detailId}
+                          >
+                            {expanded ? "Hide" : "View"}
+                          </button>
+                        </td>
+                      </tr>
+                      {expanded ? (
+                        <tr>
+                          <td colSpan={8}>
+                            <div id={detailId} className="tablewrap player-profile__table">
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th>Week</th>
+                                    <th>Points</th>
+                                    <th>Opponent</th>
+                                    <th>Team</th>
+                                    <th>Started</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {season.weeks.length ? (
+                                    season.weeks.map((week) => (
+                                      <tr key={`season-${season.season}-week-${week.week}`}>
+                                        <td>W{week.week}</td>
+                                        <td>{formatNumber(week.points)}</td>
+                                        <td>{week.opponent ?? "—"}</td>
+                                        <td>{week.team ?? "—"}</td>
+                                        <td>
+                                          {week.started === null
+                                            ? "—"
+                                            : week.started
+                                              ? "Yes"
+                                              : "No"}
+                                        </td>
+                                      </tr>
+                                    ))
+                                  ) : (
+                                    <tr>
+                                      <td colSpan={5} className="text-sm text-muted">
+                                        No weekly stats available.
+                                      </td>
+                                    </tr>
+                                  )}
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>
+                      ) : null}
+                    </Fragment>
+                  );
+                })}
               </tbody>
             </table>
           </div>
