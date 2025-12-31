@@ -988,9 +988,21 @@ export function selectMemberSummaries(season: SeasonData): MemberSummary[] {
 }
 
 const PLAYER_HIGH_SCORE_THRESHOLD = 20;
+const PLAYER_NAME_SUFFIXES = new Set(["jr", "sr", "ii", "iii", "iv", "v"]);
 
-function normalizePlayerName(name: string): string {
-  return name.trim().toLowerCase();
+export function normalizePlayerName(name: string): string {
+  const cleaned = name
+    .toLowerCase()
+    .replace(/[.'’]/g, "")
+    .replace(/[^a-z0-9\\s-]/g, " ")
+    .replace(/[-]/g, " ")
+    .replace(/\\s+/g, " ")
+    .trim();
+  if (!cleaned) {
+    return "";
+  }
+  const parts = cleaned.split(" ").filter((part) => !PLAYER_NAME_SUFFIXES.has(part));
+  return parts.join(" ");
 }
 
 export function selectPlayerDirectory(seasons: SeasonData[]): string[] {
