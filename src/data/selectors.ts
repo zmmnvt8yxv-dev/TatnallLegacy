@@ -151,6 +151,16 @@ function formatPoints(value: number): string {
   return value.toFixed(1);
 }
 
+function isWeekVisible(season: SeasonData, week: number | null | undefined): boolean {
+  if (week == null) {
+    return false;
+  }
+  if (season.year === 2025) {
+    return week <= 17;
+  }
+  return true;
+}
+
 function buildTeamAggregates(season: SeasonData): Map<string, TeamAggregate> {
   const aggregates = new Map<string, TeamAggregate>();
   season.teams.forEach((team) => {
@@ -556,7 +566,9 @@ export function selectMatchupWeeks(season: SeasonData): string[] {
   }
   const weeks = Array.from(
     new Set(
-      season.matchups.map((matchup) => matchup.week).filter((week): week is number => week != null),
+      season.matchups
+        .map((matchup) => matchup.week)
+        .filter((week): week is number => week != null && isWeekVisible(season, week)),
     ),
   ).sort((a, b) => a - b);
   const labels = weeks.map((week) => `Week ${week}`);
@@ -570,7 +582,12 @@ export function selectMatchups(season: SeasonData): MatchupCard[] {
     return cached;
   }
   const cards = season.matchups
-    .filter((matchup) => matchup.home_team && matchup.away_team)
+    .filter(
+      (matchup) =>
+        matchup.home_team &&
+        matchup.away_team &&
+        isWeekVisible(season, matchup.week ?? null),
+    )
     .map((matchup) => {
       const homeScore = toNumber(matchup.home_score);
       const awayScore = toNumber(matchup.away_score);
@@ -597,6 +614,7 @@ export function selectPointsTrend(season: SeasonData): PointsTrendRow[] {
   }
   const weekly = new Map<number, { totalPoints: number; totalMargin: number; matchups: number }>();
   season.matchups.forEach((matchup) => {
+    if (!isWeekVisible(season, matchup.week ?? null)) {
     if (matchup.week == null) {
       return;
     }
@@ -639,6 +657,11 @@ export function selectRivalryHeatmap(
     .sort((a, b) => a.localeCompare(b));
   const matchupTotals = new Map<string, { total: number; count: number }>();
   season.matchups.forEach((matchup) => {
+    if (
+      !matchup.home_team ||
+      !matchup.away_team ||
+      !isWeekVisible(season, matchup.week ?? null)
+    ) {
     if (!matchup.home_team || !matchup.away_team) {
       return;
     }
@@ -693,6 +716,10 @@ export function selectAwardCards(season: SeasonData): AwardCard[] {
   }
 
   const matchups = season.matchups.filter(
+    (matchup) =>
+      matchup.home_team &&
+      matchup.away_team &&
+      isWeekVisible(season, matchup.week ?? null),
     (matchup) => matchup.home_team && matchup.away_team && matchup.week != null,
   );
   if (matchups.length === 0) {
