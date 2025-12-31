@@ -75,6 +75,39 @@ export type TransactionCard = {
   timestamp: string;
 };
 
+export type RosterPlayer = {
+  id: string;
+  name: string;
+  position: string | null;
+  nflTeam: string | null;
+};
+
+export type TeamRoster = {
+  team: string;
+  owner: string;
+  record: string;
+  pointsFor: number;
+  pointsAgainst: number;
+  roster: RosterPlayer[];
+  sourceLabel: string;
+};
+
+export type TradeTeamSummary = {
+  team: string;
+  rosterId: number | null;
+  playersIn: RosterPlayer[];
+  playersOut: RosterPlayer[];
+  netPoints: number | null;
+  score: number | null;
+};
+
+export type TradeSummary = {
+  id: string;
+  week: number | null;
+  executed: number | null;
+  teams: TradeTeamSummary[];
+};
+
 export type DraftRow = {
   round: number;
   pick: number;
@@ -143,6 +176,8 @@ const matchupsCache = new WeakMap<SeasonData, MatchupCard[]>();
 const transactionFiltersCache = new WeakMap<SeasonData, string[]>();
 const transactionWeeksCache = new WeakMap<SeasonData, string[]>();
 const transactionsCache = new WeakMap<SeasonData, TransactionCard[]>();
+const teamRosterCache = new WeakMap<SeasonData, TeamRoster[]>();
+const tradesCache = new WeakMap<SeasonData, TradeSummary[]>();
 const draftCache = new WeakMap<SeasonData, DraftRow[]>();
 const memberSummariesCache = new WeakMap<SeasonData, MemberSummary[]>();
 const pointsTrendCache = new WeakMap<SeasonData, PointsTrendRow[]>();
@@ -161,6 +196,10 @@ type TeamAggregate = {
 
 function toNumber(value: number | null | undefined): number {
   return typeof value === "number" && Number.isFinite(value) ? value : 0;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
 }
 
 function formatScore(value: number): string {
@@ -184,6 +223,20 @@ function formatWeekLabel(week: number | null | undefined): string {
 
 function formatPoints(value: number): string {
   return value.toFixed(1);
+}
+
+function resolvePlayer(season: SeasonData, id: string): RosterPlayer {
+  const playerIndex = season.supplemental?.player_index?.[id];
+  const name =
+    playerIndex?.full_name?.trim() ||
+    playerIndex?.name?.trim() ||
+    id;
+  return {
+    id,
+    name,
+    position: playerIndex?.pos ?? null,
+    nflTeam: playerIndex?.team ?? null,
+  };
 }
 
 function isWeekVisible(season: SeasonData, week: number | null | undefined): boolean {
@@ -524,6 +577,58 @@ export function selectStandings(season: SeasonData): StandingsRow[] {
     };
   });
   standingsCache.set(season, rows);
+  return rows;
+}
+
+/** Build team roster cards using supplemental roster data. */
+export function selectTeamRosters(season: SeasonData): TeamRoster[] {
+  const cached = teamRosterCache.get(season);
+  if (cached) {
+    return cached;
+  }
+
+  const rosterSource = (season.supplemental?.current_roster ??
+    season.supplemental?.draft_day_roster ??
+    {}) as Record<string, string[]>;
+  const sourceLabel = season.supplemental?.current_roster
+    ? "Current roster"
+    : season.supplemental?.draft_day_roster
+      ? "Draft day roster"
+      : "Roster unavailable";
+  const positionPriority = new Map([
+    ["QB", 1],
+    ["RB", 2],
+    ["WR", 3],
+    ["TE", 4],
+    ["FLEX", 5],
+    ["K", 6],
+    ["DEF", 7],
+  ]);
+
+  const rows = season.teams.map((team) => {
+    const rosterIds = rosterSource[String(team.team_id ?? "")] ?? [];
+    const roster = rosterIds.map((id) => resolvePlayer(season, id));
+    roster.sort((a, b) => {
+      const posA = positionPriority.get(a.position ?? "") ?? 99;
+      const posB = positionPriority.get(b.position ?? "") ?? 99;
+      if (posA !== posB) {
+        return posA - posB;
+      }
+      return a.name.localeCompare(b.name);
+    });
+
+    return {
+      team: team.team_name,
+      owner: team.owner ?? "—",
+      record: team.record ?? "—",
+      pointsFor: toNumber(team.points_for),
+      pointsAgainst: toNumber(team.points_against),
+      roster,
+      sourceLabel,
+    };
+  });
+
+  teamRosterCache.set(season, rows);
   return rows;
 }
 
@@ -969,6 +1074,57 @@ export function selectTransactions(season: SeasonData): TransactionCard[] {
   });
   transactionsCache.set(season, cards);
   return cards;
+}
+
+/** Summarize trades with per-team assets and evaluation scores. */
+export function selectTradeSummaries(season: SeasonData): TradeSummary[] {
+  const cached = tradesCache.get(season);
+  if (cached) {
+    return cached;
+  }
+  const tradeEvals = Array.isArray(season.supplemental?.trade_evals)
+    ? season.supplemental?.trade_evals
+    : [];
+  const trades = tradeEvals
+    .map((trade, index) => {
+      if (!isRecord(trade)) {
+        return null;
+      }
+      const perRoster = Array.isArray(trade["per_roster"]) ? trade["per_roster"] : [];
+      const teams = perRoster
+        .map((entry) => {
+          if (!isRecord(entry)) {
+            return null;
+          }
+          const teamName =
+            typeof entry["team_name"] === "string" ? entry["team_name"] : "Unknown Team";
+          const playersIn = Array.isArray(entry["players_in"])
+            ? entry["players_in"].map((id) => resolvePlayer(season, String(id)))
+            : [];
+          const playersOut = Array.isArray(entry["players_out"])
+            ? entry["players_out"].map((id) => resolvePlayer(season, String(id)))
+            : [];
+          return {
+            team: teamName,
+            rosterId: typeof entry["roster_id"] === "number" ? entry["roster_id"] : null,
+            playersIn,
+            playersOut,
+            netPoints:
+              typeof entry["net_points_after"] === "number" ? entry["net_points_after"] : null,
+            score: typeof entry["score_0_to_100"] === "number" ? entry["score_0_to_100"] : null,
+          };
+        })
+        .filter((entry): entry is TradeTeamSummary => Boolean(entry));
+      return {
+        id: typeof trade["tx_id"] === "string" ? trade["tx_id"] : `trade-${index}`,
+        week: typeof trade["week"] === "number" ? trade["week"] : null,
+        executed: typeof trade["executed"] === "number" ? trade["executed"] : null,
+        teams,
+      };
+    })
+    .filter((trade): trade is TradeSummary => Boolean(trade));
+  tradesCache.set(season, trades);
+  return trades;
 }
 
 /** Convert draft rows into a table-friendly representation. */

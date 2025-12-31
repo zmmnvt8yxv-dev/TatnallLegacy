@@ -120,6 +120,10 @@ export function MatchupsSection() {
     >
       <div className="matchups-grid">
         {filteredMatchups.map((matchup, index) => (
+          (() => {
+            const homeWins = matchup.homeScore > matchup.awayScore;
+            const awayWins = matchup.awayScore > matchup.homeScore;
+            return (
           <motion.article
             key={`${matchup.home}-${matchup.away}`}
             className="matchup-card"
@@ -139,17 +143,19 @@ export function MatchupsSection() {
               </span>
             </div>
             <div className="matchup-card__body">
-              <div className="matchup-card__team">
+              <div className={`matchup-card__team${awayWins ? " matchup-card__team--winner" : ""}`}>
                 <span>{matchup.away}</span>
                 <strong>{matchup.awayScore ? matchup.awayScore.toFixed(1) : "—"}</strong>
               </div>
-              <div className="matchup-card__team">
+              <div className={`matchup-card__team${homeWins ? " matchup-card__team--winner" : ""}`}>
                 <span>{matchup.home}</span>
                 <strong>{matchup.homeScore ? matchup.homeScore.toFixed(1) : "—"}</strong>
               </div>
             </div>
             <p className="matchup-card__kickoff">{matchup.kickoff}</p>
           </motion.article>
+            );
+          })()
         ))}
       </div>
     </SectionShell>
