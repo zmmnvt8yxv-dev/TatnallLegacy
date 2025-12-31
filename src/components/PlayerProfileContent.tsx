@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { selectPlayerProfile } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
+import { usePlayerWeeklyStats } from "../hooks/usePlayerWeeklyStats";
 import { getNflTeamLogoUrl } from "../lib/playerAssets";
 import { PlayerHeadshot } from "./PlayerHeadshot";
 import { PlayerTrendChart } from "./PlayerTrendChart";

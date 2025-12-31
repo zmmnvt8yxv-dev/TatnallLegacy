@@ -2,6 +2,7 @@ import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { selectPlayerProfile } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
+import { usePlayerWeeklyStats } from "../hooks/usePlayerWeeklyStats";
 import { getNflTeamLogoUrl } from "../lib/playerAssets";
 import { PlayerHeadshot } from "./PlayerHeadshot";
 import { PlayerTrendChart } from "./PlayerTrendChart";
@@ -77,6 +78,28 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       setMetricView(metricOptions[0]?.id ?? "ppr");
     }
   }, [metricOptions, metricView]);
+
+  const liveSeason = 2025;
+  const hasLiveSeason = Boolean(profile?.seasons.some((season) => season.season === liveSeason));
+  const liveWeeklyStats = usePlayerWeeklyStats(
+    profile?.playerId ?? null,
+    hasLiveSeason ? liveSeason : null,
+  );
+  const seasonsToDisplay = useMemo(() => {
+    if (!profile) {
+      return [];
+    }
+    if (liveWeeklyStats.status !== "ready" || liveWeeklyStats.weeks.length === 0) {
+      return profile.seasons;
+    }
+    return profile.seasons.map((season) =>
+      season.season === liveSeason ? { ...season, weeks: liveWeeklyStats.weeks } : season,
+    );
+  }, [profile, liveSeason, liveWeeklyStats.status, liveWeeklyStats.weeks]);
+
+  useEffect(() => {
+    setExpandedSeasons({});
+  }, [playerName]);
 
   useEffect(() => {
     setExpandedSeasons({});
