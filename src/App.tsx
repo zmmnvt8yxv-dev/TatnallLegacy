@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AppLayout } from "./components/AppLayout";
 import { LoadingSection } from "./components/LoadingSection";
@@ -6,6 +6,10 @@ import { PlayerProfileProvider } from "./components/PlayerProfileProvider";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { SeasonSelectionProvider } from "./hooks/useSeasonSelection";
 import { navigationItems } from "./navigation";
+
+const PlayerProfilePage = lazy(async () => ({
+  default: (await import("./sections/PlayerProfilePage")).PlayerProfilePage,
+}));
 
 export function App() {
   return (
