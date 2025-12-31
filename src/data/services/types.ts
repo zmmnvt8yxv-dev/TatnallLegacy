@@ -23,6 +23,7 @@ export type PlayerWeeklyStats = {
   week: number;
   team?: string | null;
   position?: string | null;
+  opponent?: string | null;
   stats: Record<string, number>;
 };
 
