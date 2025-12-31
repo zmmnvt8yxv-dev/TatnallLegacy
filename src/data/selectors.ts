@@ -139,7 +139,50 @@ export type PlayerSeasonSummary = {
   bestWeek: number | null;
   aboveThreshold: number;
   fantasyTeams: string[];
+  weeks: PlayerSeasonWeek[];
 };
+
+export type PlayerSeasonWeek = {
+  week: number;
+  points: number;
+  opponent: string | null;
+  team: string | null;
+  started: boolean | null;
+};
+
+export function summarizeSeasonWeeks(
+  season: number,
+  weeks: PlayerSeasonWeek[],
+  fallbackFantasyTeams: string[] = [],
+): PlayerSeasonSummary {
+  const fantasyTeams = new Set(
+    weeks.map((week) => week.team).filter((team): team is string => Boolean(team)),
+  );
+  const points = weeks.map((week) => week.points);
+  const totalPoints = points.reduce((sum, value) => sum + value, 0);
+  const games = weeks.length;
+  const maxPoints = points.reduce((max, value) => Math.max(max, value), 0);
+  const bestWeekEntry = weeks.reduce<PlayerSeasonWeek | null>(
+    (best, entry) => (!best || entry.points > best.points ? entry : best),
+    null,
+  );
+  const aboveThreshold = weeks.reduce(
+    (count, entry) => count + (entry.points >= PLAYER_HIGH_SCORE_THRESHOLD ? 1 : 0),
+    0,
+  );
+
+  return {
+    season,
+    games,
+    totalPoints,
+    avgPoints: games ? totalPoints / games : 0,
+    maxPoints,
+    bestWeek: bestWeekEntry ? bestWeekEntry.week : null,
+    aboveThreshold,
+    fantasyTeams: fantasyTeams.size ? Array.from(fantasyTeams) : fallbackFantasyTeams,
+    weeks: weeks.slice().sort((a, b) => a.week - b.week),
+  };
+}
 
 export type PlayerTeamTimeline = {
   team: string;
@@ -1442,18 +1485,31 @@ export function selectPlayerProfile(
   const awards: string[] = [];
 
   seasons.forEach((season) => {
-    const entries =
+    const matchupMap = new Map<string, string>();
+    season.matchups.forEach((matchup) => {
+      if (
+        matchup.week === null ||
+        matchup.week === undefined ||
+        !matchup.home_team ||
+        !matchup.away_team
+      ) {
+        return;
+      }
+      matchupMap.set(`${matchup.week}:${matchup.home_team}`, matchup.away_team);
+      matchupMap.set(`${matchup.week}:${matchup.away_team}`, matchup.home_team);
+    });
+
+    const playerEntries =
       season.lineups?.filter((entry) => {
         if (!entry.player) {
-          return false;
-        }
-        if (entry.started === false) {
           return false;
         }
         return normalizePlayerName(entry.player) === normalized;
       }) ?? [];
 
-    if (entries.length === 0) {
+    const scoringEntries = playerEntries.filter((entry) => entry.started !== false);
+
+    if (playerEntries.length === 0) {
       season.draft.forEach((pick) => {
         if (pick.player && normalizePlayerName(pick.player) === normalized && pick.player_nfl) {
           nflTeams.add(pick.player_nfl);
@@ -1468,8 +1524,9 @@ export function selectPlayerProfile(
     let bestWeek: number | null = null;
     let aboveThreshold = 0;
     const seasonFantasyTeams = new Set<string>();
+    const weeks: PlayerSeasonWeek[] = [];
 
-    entries.forEach((entry) => {
+    scoringEntries.forEach((entry) => {
       const points = toNumber(entry.points);
       totalPoints += points;
       if (points > maxPoints) {
@@ -1479,9 +1536,22 @@ export function selectPlayerProfile(
       if (points >= PLAYER_HIGH_SCORE_THRESHOLD) {
         aboveThreshold += 1;
       }
+    });
+
+    playerEntries.forEach((entry) => {
+      const points = toNumber(entry.points);
       if (entry.team) {
         seasonFantasyTeams.add(entry.team);
         fantasyTeams.add(entry.team);
+      }
+      if (entry.week !== null && entry.week !== undefined) {
+        weeks.push({
+          week: entry.week,
+          points,
+          opponent: entry.team ? matchupMap.get(`${entry.week}:${entry.team}`) ?? null : null,
+          team: entry.team ?? null,
+          started: entry.started ?? null,
+        });
       }
       entriesBySeason.push({ season: season.year, entry });
     });
@@ -1493,7 +1563,7 @@ export function selectPlayerProfile(
       }
     });
 
-    const games = entries.length;
+    const games = scoringEntries.length;
     seasonSummaries.push({
       season: season.year,
       games,
@@ -1503,6 +1573,7 @@ export function selectPlayerProfile(
       bestWeek,
       aboveThreshold,
       fantasyTeams: Array.from(seasonFantasyTeams),
+      weeks: weeks.sort((a, b) => a.week - b.week),
     });
   });
 
