@@ -1,6 +1,8 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { selectPlayerProfile } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
+
+const NFL_TEAM_LOGO_BASE = "https://static.www.nfl.com/league/api/clubs/logos";
 
 function formatNumber(value: number): string {
   return value.toFixed(1);
@@ -29,6 +31,9 @@ type PlayerProfileModalProps = {
 
 export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfileModalProps) {
   const { status, seasons } = useAllSeasonsData();
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const [logoFallback, setLogoFallback] = useState<Record<string, boolean>>({});
   const profile = useMemo(() => {
     if (!playerName || status !== "ready") {
       return null;
@@ -41,14 +46,37 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       return;
     }
 
+    const focusableSelector =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         onClose();
+        return;
+      }
+      if (event.key !== "Tab") {
+        return;
+      }
+      const focusableElements = modalRef.current?.querySelectorAll<HTMLElement>(
+        focusableSelector,
+      );
+      if (!focusableElements || focusableElements.length === 0) {
+        return;
+      }
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
+    closeButtonRef.current?.focus();
 
     return () => {
       document.body.style.overflow = "";
@@ -59,6 +87,14 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   if (!isOpen || !playerName) {
     return null;
   }
+
+  const titleId = "player-profile-title";
+  const initials =
+    playerName
+      ?.split(" ")
+      .map((part) => part[0])
+      .join("")
+      .slice(0, 2) ?? "";
 
   const content = (() => {
     if (status === "loading") {
@@ -84,9 +120,27 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
         <div className="player-profile__meta">
           <div>
             <p className="player-profile__label">NFL Teams</p>
-            <p className="player-profile__value">
-              {profile.nflTeams.length ? profile.nflTeams.join(", ") : "—"}
-            </p>
+            <div className="player-profile__value player-profile__teams">
+              {profile.nflTeams.length ? (
+                profile.nflTeams.map((team) => (
+                  <span key={team} className="team-pill">
+                    {!logoFallback[team] ? (
+                      <img
+                        src={`${NFL_TEAM_LOGO_BASE}/${team}.svg`}
+                        alt={`${team} logo`}
+                        className="team-pill__logo"
+                        onError={() =>
+                          setLogoFallback((prev) => ({ ...prev, [team]: true }))
+                        }
+                      />
+                    ) : null}
+                    <span>{team}</span>
+                  </span>
+                ))
+              ) : (
+                <span>—</span>
+              )}
+            </div>
           </div>
           <div>
             <p className="player-profile__label">Fantasy Teams</p>
@@ -177,14 +231,33 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   })();
 
   return (
-    <div className="modal-backdrop" role="dialog" aria-modal="true" aria-label="Player profile">
-      <div className="modal-card">
+    <div className="modal-backdrop" aria-hidden="false">
+      <div
+        ref={modalRef}
+        className="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+      >
         <header className="modal-header">
-          <div>
-            <p className="modal-kicker">Player Profile</p>
-            <h2 className="modal-title">{playerName}</h2>
+          <div className="modal-header__title">
+            <div className="player-avatar" aria-hidden="true">
+              <span className="player-avatar__initials">{initials || "?"}</span>
+            </div>
+            <div>
+              <p className="modal-kicker">Player Profile</p>
+              <h2 id={titleId} className="modal-title">
+                {playerName}
+              </h2>
+            </div>
           </div>
-          <button type="button" className="btn" onClick={onClose} aria-label="Close player profile">
+          <button
+            ref={closeButtonRef}
+            type="button"
+            className="btn"
+            onClick={onClose}
+            aria-label="Close player profile"
+          >
             Close
           </button>
         </header>
