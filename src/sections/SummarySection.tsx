@@ -40,12 +40,13 @@ export function SummarySection() {
   const { year, years } = useSeasonSelection();
   const { status, season, error } = useSeasonData(year);
   const snapshotRef = useRef<HTMLDivElement | null>(null);
-  const initializedWeekRef = useRef(false);
   const [snapshotStatus, setSnapshotStatus] = useState<string>("");
   const [selectedWeek, setSelectedWeek] = useState<number | "all">("all");
+  const availableWeeks = useMemo(() => (season ? selectVisibleWeeks(season) : []), [season]);
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
   const kpiStats = useMemo(() => (season ? selectKpiStats(season) : []), [season]);
   const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
+  const lastYearRef = useRef<number | null>(null);
   const champion = useMemo(() => {
     if (!season) {
       return null;
@@ -82,6 +83,22 @@ export function SummarySection() {
     const date = new Date().toISOString().slice(0, 10);
     return `weekly-summary-${date}.png`;
   }, []);
+  const isCurrentSeason = year != null && years.length > 0 && year === Math.max(...years);
+
+  useEffect(() => {
+    if (!season || year == null) {
+      return;
+    }
+    if (lastYearRef.current === year) {
+      return;
+    }
+    lastYearRef.current = year;
+    if (isCurrentSeason && availableWeeks.length > 0) {
+      setSelectedWeek(availableWeeks[availableWeeks.length - 1]);
+      return;
+    }
+    setSelectedWeek("all");
+  }, [availableWeeks, isCurrentSeason, season, year]);
 
   if (status === "loading") {
     return <LoadingSection title="Season Summary" subtitle="Loading season data…" />;
@@ -153,9 +170,21 @@ export function SummarySection() {
     }
   };
 
-  const isCurrentSeason = year != null && years.length > 0 && year === Math.max(...years);
-  const formatScore = (value: number | null | undefined) =>
-    typeof value === "number" ? value.toFixed(1) : "—";
+  const visibleMatchups = season.matchups.filter(
+    (matchup) => matchup.week != null && availableWeeks.includes(matchup.week),
+  );
+  const weekMatchups =
+    selectedWeek === "all"
+      ? visibleMatchups.length
+      : visibleMatchups.filter((matchup) => matchup.week === selectedWeek).length;
+  const weekLabel = selectedWeek === "all" ? "Season to date" : `Week ${selectedWeek}`;
+  const filteredSeason =
+    selectedWeek === "all"
+      ? season
+      : {
+          ...season,
+          matchups: season.matchups.filter((matchup) => matchup.week === selectedWeek),
+        };
 
   return (
     <SectionShell
