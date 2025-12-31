@@ -5,6 +5,7 @@ const DEFAULT_BASE_URL =
   "https://github.com/nflverse/nflverse-data/releases/download/player_stats";
 const DEFAULT_STATS_PATH = "player_stats.csv";
 const DEFAULT_CACHE_TTL_MS = 1000 * 60 * 15;
+const DEFAULT_PROXY_URL = "https://api.allorigins.win/raw?url=";
 
 const nflverseWeeklyCache = createRequestCache<PlayerWeeklyStats[]>();
 
@@ -83,6 +84,41 @@ function buildUrl(): string {
   return `${baseUrl.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
 }
 
+function buildProxyUrl(targetUrl: string): string | null {
+  const configuredProxy = import.meta.env.VITE_NFLVERSE_STATS_PROXY;
+  if (configuredProxy === "") {
+    return null;
+  }
+  const proxyBase = configuredProxy ?? DEFAULT_PROXY_URL;
+  if (!proxyBase) {
+    return null;
+  }
+  if (proxyBase.includes("{url}")) {
+    return proxyBase.replace("{url}", encodeURIComponent(targetUrl));
+  }
+  return `${proxyBase}${encodeURIComponent(targetUrl)}`;
+}
+
+async function fetchCsvText(url: string): Promise<string> {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`NFLverse stats request failed: ${response.status}`);
+    }
+    return response.text();
+  } catch (error) {
+    const proxyUrl = buildProxyUrl(url);
+    if (!proxyUrl) {
+      throw error;
+    }
+    const response = await fetch(proxyUrl);
+    if (!response.ok) {
+      throw new Error(`NFLverse stats proxy request failed: ${response.status}`);
+    }
+    return response.text();
+  }
+}
+
 function mapNflverseWeeklyStats(
   rows: CsvRow[],
   playerName: string,
@@ -139,11 +175,7 @@ export async function fetchNflverseWeeklyStats(
 ): Promise<PlayerWeeklyStats[]> {
   const key = `nflverse:${playerName}:${season}`;
   return getOrSetCached(nflverseWeeklyCache, key, async () => {
-    const response = await fetch(buildUrl());
-    if (!response.ok) {
-      throw new Error(`NFLverse stats request failed: ${response.status}`);
-    }
-    const csvText = await response.text();
+    const csvText = await fetchCsvText(buildUrl());
     const [headerLine, ...lines] = csvText.split(/\r?\n/);
     if (!headerLine) {
       return [];
