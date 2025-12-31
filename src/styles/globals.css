@@ -580,10 +580,6 @@
     @apply flex flex-wrap items-center gap-4;
   }
 
-  .modal-header__actions {
-    @apply flex flex-wrap items-center gap-2;
-  }
-
   .modal-kicker {
     @apply text-xs uppercase tracking-[0.3em] text-muted;
   }
@@ -638,10 +634,6 @@
 
   .player-profile__table {
     @apply mt-4;
-  }
-
-  .player-profile-page {
-    @apply space-y-6;
   }
 
   @media (max-width: 640px) {
