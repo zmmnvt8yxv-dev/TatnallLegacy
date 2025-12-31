@@ -54,6 +54,33 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
     }
   }, [loadAllSeasons, playerName]);
 
+  const metricOptions = useMemo(() => {
+    if (!profile) {
+      return [{ id: "ppr", label: "Scoring Snapshot" }];
+    }
+    if (profile.position === "QB") {
+      return [
+        { id: "ppr", label: "PPR Scoring" },
+        { id: "standard", label: "Standard Scoring" },
+        { id: "passing", label: "Passing/Rushing" },
+      ];
+    }
+    if (["RB", "WR", "TE"].includes(profile.position ?? "")) {
+      return [
+        { id: "ppr", label: "PPR Scoring" },
+        { id: "standard", label: "Standard Scoring" },
+        { id: "rushing", label: "Rushing/Receiving" },
+      ];
+    }
+    return [{ id: "ppr", label: "Scoring Snapshot" }];
+  }, [profile]);
+
+  useEffect(() => {
+    if (!metricOptions.some((option) => option.id === metricView)) {
+      setMetricView(metricOptions[0]?.id ?? "ppr");
+    }
+  }, [metricOptions, metricView]);
+
   if (status === "loading" || status === "idle") {
     return <p className="text-sm text-muted">Loading player history…</p>;
   }
@@ -71,29 +98,6 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
   const consistency = profile.totalGames
     ? Math.round((profile.aboveThreshold / profile.totalGames) * 100)
     : 0;
-  const metricOptions = useMemo(() => {
-    if (profile.position === "QB") {
-      return [
-        { id: "ppr", label: "PPR Scoring" },
-        { id: "standard", label: "Standard Scoring" },
-        { id: "passing", label: "Passing/Rushing" },
-      ];
-    }
-    if (["RB", "WR", "TE"].includes(profile.position ?? "")) {
-      return [
-        { id: "ppr", label: "PPR Scoring" },
-        { id: "standard", label: "Standard Scoring" },
-        { id: "rushing", label: "Rushing/Receiving" },
-      ];
-    }
-    return [{ id: "ppr", label: "Scoring Snapshot" }];
-  }, [profile.position]);
-
-  useEffect(() => {
-    if (!metricOptions.some((option) => option.id === metricView)) {
-      setMetricView(metricOptions[0]?.id ?? "ppr");
-    }
-  }, [metricOptions, metricView]);
 
   const showScoring = metricView === "ppr" || metricView === "standard";
   const scoringLabel = metricView === "standard" ? "Standard points" : "PPR points";
