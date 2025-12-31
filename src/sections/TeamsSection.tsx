@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { LoadingSection } from "../components/LoadingSection";
+import { SectionShell } from "../components/SectionShell";
 import { selectStandings, selectStandingsFilters, selectStandingsHighlights } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
@@ -75,30 +76,23 @@ export function TeamsSection() {
 
   if (status === "error" || !season) {
     return (
-      <section id="teams" className="panel" aria-labelledby="teams-title">
-        <div className="section-header">
-          <div className="space-y-1">
-            <h2 id="teams-title" className="text-xl font-semibold">
-              Teams
-            </h2>
-            <p className="section-subtitle">Season records, ranks, and quick highlights.</p>
-          </div>
-        </div>
+      <SectionShell
+        id="teams"
+        title="Teams"
+        subtitle="Season records, ranks, and quick highlights."
+      >
         <p className="text-sm text-red-500">Unable to load season data: {error ?? "Unknown error"}</p>
-      </section>
+      </SectionShell>
     );
   }
 
   return (
-    <section id="teams" className="panel" aria-labelledby="teams-title">
-      <div className="section-header">
-        <div className="space-y-1">
-          <h2 id="teams-title" className="text-xl font-semibold">
-            Teams
-          </h2>
-          <p className="section-subtitle">Season records, ranks, and quick highlights.</p>
-        </div>
-        <div className="controls row">
+    <SectionShell
+      id="teams"
+      title="Teams"
+      subtitle="Season records, ranks, and quick highlights."
+      actions={
+        <>
           <label className="sr-only" htmlFor="teamSearch">
             Search teams
           </label>
@@ -147,9 +141,9 @@ export function TeamsSection() {
               Compact
             </button>
           </div>
-        </div>
-      </div>
-
+        </>
+      }
+    >
       <Card className="mb-6">
         <CardHeader>
           <CardTitle>Standings Highlights</CardTitle>
@@ -213,6 +207,6 @@ export function TeamsSection() {
           </article>
         ))}
       </div>
-    </section>
+    </SectionShell>
   );
 }

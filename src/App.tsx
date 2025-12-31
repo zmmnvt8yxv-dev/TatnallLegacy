@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { NavLink, Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { NavLink, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import { PlayerSearch } from "./components/PlayerSearch";
 import { Button } from "./components/ui/button";
@@ -47,8 +47,10 @@ const navigation = [...baseNavigation, ...devNavigation];
 
 export default function App() {
   const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isNavOpen, setNavOpen] = useState(false);
   const [currentUser, setCurrentUserState] = useState<SleeperUser | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const { status, years, year, setYear, error } = useSeasonSelection();
 
@@ -59,6 +61,10 @@ export default function App() {
       setCurrentUserState(getCurrentUser());
     });
   }, []);
+
+  useEffect(() => {
+    setNavOpen(false);
+  }, [location.pathname]);
 
   const handleLoginSuccess = (user: SleeperUser) => {
     setCurrentUserState(user);
@@ -81,28 +87,24 @@ export default function App() {
   }, [status, years]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      <header className="border-b border-slate-800 bg-slate-950/95">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-6 lg:flex-row lg:items-center lg:justify-between">
+    <div className="app-shell">
+      <header className="app-header">
+        <div className="app-header__inner">
           <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
-              Tatnall Legacy
-            </p>
-            <h1 className="text-2xl font-semibold text-white">
-              League Operations Hub
-            </h1>
+            <p className="app-title__kicker">Tatnall Legacy</p>
+            <h1 className="app-title__headline">League Operations Hub</h1>
           </div>
-          <div className="flex w-full flex-col gap-4 lg:w-auto lg:items-end">
-            <div className="flex w-full flex-wrap items-center gap-3 lg:justify-end">
+          <div className="app-toolbar">
+            <div className="app-toolbar__row">
               <PlayerSearch />
-              <div className="flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-3 py-2 text-xs text-slate-300">
-                <label htmlFor="seasonSelect" className="text-[10px] uppercase tracking-[0.2em] text-slate-500">
+              <div className="app-pill">
+                <label htmlFor="seasonSelect" className="app-pill__label">
                   Season
                 </label>
                 <select
                   id="seasonSelect"
                   aria-label="Season"
-                  className="rounded-md border border-slate-700 bg-slate-950 px-2 py-1 text-xs text-slate-100"
+                  className="input text-xs"
                   disabled={status !== "ready"}
                   value={year ?? ""}
                   onChange={(event) => setYear(Number(event.target.value))}
@@ -117,18 +119,16 @@ export default function App() {
               <Button
                 type="button"
                 variant="outline"
-                className="border-slate-700 text-slate-200 hover:bg-slate-900"
+                className="border-border text-foreground hover:bg-surface-alt"
                 onClick={toggleTheme}
               >
                 {theme === "dark" ? "Light mode" : "Dark mode"}
               </Button>
             </div>
-            <div className="flex items-center justify-between gap-3 rounded-full border border-slate-800 bg-slate-900/60 px-3 py-2 text-xs text-slate-300">
+            <div className="app-pill">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500">
-                  Sleeper Access
-                </p>
-                <p className="text-xs text-slate-200">
+                <p className="app-pill__label">Sleeper Access</p>
+                <p className="app-pill__value">
                   {currentUser
                     ? `Logged in as @${currentUser.username}`
                     : "Log in to access the user log"}
@@ -137,7 +137,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setLoginOpen(true)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-950/60 hover:border-slate-500"
+                className="app-icon-button"
                 aria-label="Open Sleeper login"
               >
                 <img
@@ -150,35 +150,46 @@ export default function App() {
           </div>
         </div>
         {status === "error" ? (
-          <div className="border-t border-slate-800 bg-slate-950 px-6 py-2 text-xs text-red-400">
+          <div className="border-t border-border bg-surface px-6 py-2 text-xs text-red-500">
             Unable to load seasons: {error}
           </div>
         ) : null}
-        <nav className="mx-auto w-full max-w-6xl px-6 pb-4">
-          <div className="flex flex-wrap gap-2">
-            {navigation.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                end={item.path === "/"}
-                className={({ isActive }) =>
-                  cn(
-                    "rounded-md px-3 py-1.5 text-sm font-medium transition",
-                    isActive
-                      ? "bg-slate-800 text-white"
-                      : "text-slate-300 hover:bg-slate-800/70 hover:text-white"
-                  )
-                }
+        <nav className="app-nav">
+          <div className="app-nav__inner">
+            <div className="app-nav__controls">
+              <span className="text-xs uppercase tracking-[0.2em] text-muted md:hidden">
+                Navigation
+              </span>
+              <button
+                type="button"
+                className="app-nav__toggle"
+                onClick={() => setNavOpen((open) => !open)}
+                aria-expanded={isNavOpen}
+                aria-controls="primary-navigation"
               >
-                {item.label}
-              </NavLink>
-            ))}
-            <a
-              href="trade.html"
-              className="rounded-md px-3 py-1.5 text-sm font-medium text-slate-300 transition hover:bg-slate-800/70 hover:text-white"
+                {isNavOpen ? "Close menu" : "Open menu"}
+              </button>
+            </div>
+            <div
+              id="primary-navigation"
+              className={cn("app-nav__links", isNavOpen ? "flex" : "hidden md:flex")}
             >
-              Trade Analysis
-            </a>
+              {navigation.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  end={item.path === "/"}
+                  className={({ isActive }) =>
+                    cn("app-nav__link", isActive && "app-nav__link--active")
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+              <a href="trade.html" className="app-nav__link">
+                Trade Analysis
+              </a>
+            </div>
           </div>
         </nav>
       </header>
