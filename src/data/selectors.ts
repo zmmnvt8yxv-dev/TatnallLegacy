@@ -128,6 +128,7 @@ const highlightCache = new WeakMap<SeasonData, HighlightStat[]>();
 const standingsCache = new WeakMap<SeasonData, StandingsRow[]>();
 const standingsHighlightsCache = new WeakMap<SeasonData, StandingsHighlight[]>();
 const matchupWeeksCache = new WeakMap<SeasonData, string[]>();
+const visibleWeeksCache = new WeakMap<SeasonData, number[]>();
 const matchupsCache = new WeakMap<SeasonData, MatchupCard[]>();
 const transactionFiltersCache = new WeakMap<SeasonData, string[]>();
 const transactionWeeksCache = new WeakMap<SeasonData, string[]>();
@@ -588,6 +589,17 @@ export function selectMatchupWeeks(season: SeasonData): string[] {
   if (cached) {
     return cached;
   }
+  const weeks = selectVisibleWeeks(season);
+  const labels = weeks.map((week) => `Week ${week}`);
+  matchupWeeksCache.set(season, labels);
+  return labels;
+}
+
+export function selectVisibleWeeks(season: SeasonData): number[] {
+  const cached = visibleWeeksCache.get(season);
+  if (cached) {
+    return cached;
+  }
   const weeks = Array.from(
     new Set(
       season.matchups
@@ -595,9 +607,8 @@ export function selectMatchupWeeks(season: SeasonData): string[] {
         .filter((week): week is number => week != null && isWeekVisible(season, week)),
     ),
   ).sort((a, b) => a - b);
-  const labels = weeks.map((week) => `Week ${week}`);
-  matchupWeeksCache.set(season, labels);
-  return labels;
+  visibleWeeksCache.set(season, weeks);
+  return weeks;
 }
 
 export function selectMatchups(season: SeasonData): MatchupCard[] {
