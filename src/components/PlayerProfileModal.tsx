@@ -30,7 +30,7 @@ type PlayerProfileModalProps = {
 };
 
 export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfileModalProps) {
-  const { status, seasons, loadAllSeasons } = useAllSeasonsData();
+  const { status, seasons } = useAllSeasonsData();
   const modalRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const [logoFallback, setLogoFallback] = useState<Record<string, boolean>>({});
@@ -45,7 +45,6 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
     if (!isOpen) {
       return;
     }
-    loadAllSeasons();
 
     const focusableSelector =
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -83,7 +82,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, loadAllSeasons, onClose]);
+  }, [isOpen, onClose]);
 
   if (!isOpen || !playerName) {
     return null;
@@ -98,7 +97,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       .slice(0, 2) ?? "";
 
   const content = (() => {
-    if (status === "loading" || status === "idle") {
+    if (status === "loading") {
       return <p className="text-sm text-muted">Loading player history…</p>;
     }
     if (status === "error") {

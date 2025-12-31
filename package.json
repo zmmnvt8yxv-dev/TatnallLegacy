@@ -10,9 +10,6 @@
     "build:data": "python scripts/build_data.py"
   },
   "dependencies": {
-    "@tremor/react": "^3.18.7",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
     "framer-motion": "^12.23.26",
     "html-to-image": "^1.11.13",
     "pg": "^8.11.5",
@@ -20,7 +17,6 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
     "recharts": "^3.6.0",
-    "tailwind-merge": "^3.4.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
