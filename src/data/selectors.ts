@@ -625,7 +625,7 @@ export function selectPointsTrend(season: SeasonData): PointsTrendRow[] {
     entry.totalMargin += homeScore - awayScore;
     entry.matchups += 1;
     weekly.set(matchup.week, entry);
-  });
+  }));
   const rows = Array.from(weekly.entries())
     .sort(([weekA], [weekB]) => weekA - weekB)
     .map(([week, entry]) => {
