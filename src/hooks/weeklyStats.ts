@@ -9,19 +9,61 @@ const POINTS_KEYS = [
   "fpts",
 ];
 
-const PASSING_YARDS_KEYS = ["passing_yards", "pass_yards", "pass_yds", "passYds", "passYards"];
-const PASSING_TDS_KEYS = ["passing_tds", "pass_tds", "pass_td", "passTds", "passTDs"];
-const RUSHING_YARDS_KEYS = ["rushing_yards", "rush_yards", "rush_yds", "rushYds", "rushYards"];
-const RUSHING_TDS_KEYS = ["rushing_tds", "rush_tds", "rush_td", "rushTds", "rushTDs"];
-const RECEPTIONS_KEYS = ["receptions", "rec", "recs", "receptions_total"];
+const PASSING_YARDS_KEYS = [
+  "passing_yards",
+  "passing_yds",
+  "pass_yards",
+  "pass_yds",
+  "passYds",
+  "passYards",
+  "pass_yd",
+];
+const PASSING_TDS_KEYS = [
+  "passing_tds",
+  "passing_td",
+  "pass_tds",
+  "pass_td",
+  "passTds",
+  "passTDs",
+  "passTD",
+];
+const RUSHING_YARDS_KEYS = [
+  "rushing_yards",
+  "rushing_yds",
+  "rush_yards",
+  "rush_yds",
+  "rush_yd",
+  "rushYds",
+  "rushYards",
+];
+const RUSHING_TDS_KEYS = [
+  "rushing_tds",
+  "rushing_td",
+  "rush_tds",
+  "rush_td",
+  "rushTds",
+  "rushTDs",
+  "rushTD",
+];
+const RECEPTIONS_KEYS = ["receptions", "reception", "rec", "recs", "receptions_total"];
 const RECEIVING_YARDS_KEYS = [
   "receiving_yards",
+  "receiving_yds",
   "rec_yards",
   "rec_yds",
   "recYds",
   "recYards",
+  "rec_yd",
 ];
-const RECEIVING_TDS_KEYS = ["receiving_tds", "rec_tds", "rec_td", "recTds", "recTDs"];
+const RECEIVING_TDS_KEYS = [
+  "receiving_tds",
+  "receiving_td",
+  "rec_tds",
+  "rec_td",
+  "recTds",
+  "recTDs",
+  "recTD",
+];
 
 function getPoints(stats: Record<string, number>): number {
   for (const key of POINTS_KEYS) {
