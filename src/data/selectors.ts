@@ -121,8 +121,6 @@ export type PlayerProfile = {
   pointsTrend: number[];
 };
 
-// Cache expensive selector results by season reference to avoid recalculating
-// derived UI data when the underlying season object hasn't changed.
 const summaryCache = new WeakMap<SeasonData, string>();
 const summaryStatsCache = new WeakMap<SeasonData, SummaryStat[]>();
 const kpiStatsCache = new WeakMap<SeasonData, KpiStat[]>();
@@ -337,7 +335,6 @@ function buildOwnerLookup(season: SeasonData): Map<string, string> {
   return lookup;
 }
 
-/** Build a one-line description of the season highlights for the summary header. */
 export function selectSeasonSummary(season: SeasonData): string {
   const cached = summaryCache.get(season);
   if (cached) {
@@ -348,7 +345,6 @@ export function selectSeasonSummary(season: SeasonData): string {
   return summary;
 }
 
-/** Assemble the headline summary stats shown at the top of the summary section. */
 export function selectSummaryStats(season: SeasonData): SummaryStat[] {
   const cached = summaryStatsCache.get(season);
   if (cached) {
@@ -364,7 +360,6 @@ export function selectSummaryStats(season: SeasonData): SummaryStat[] {
   return stats;
 }
 
-/** Build KPI cards with trends for the summary dashboard. */
 export function selectKpiStats(season: SeasonData): KpiStat[] {
   const cached = kpiStatsCache.get(season);
   if (cached) {
@@ -411,7 +406,6 @@ export function selectKpiStats(season: SeasonData): KpiStat[] {
   return stats;
 }
 
-/** Return highlight callouts (best teams, streaks, etc.) for the summary view. */
 export function selectSeasonHighlights(season: SeasonData): HighlightStat[] {
   const cached = highlightCache.get(season);
   if (cached) {
@@ -483,7 +477,6 @@ export function selectSeasonHighlights(season: SeasonData): HighlightStat[] {
   return highlights;
 }
 
-/** Transform team records into sortable standings rows. */
 export function selectStandings(season: SeasonData): StandingsRow[] {
   const cached = standingsCache.get(season);
   if (cached) {
@@ -519,7 +512,6 @@ export function selectStandings(season: SeasonData): StandingsRow[] {
   return rows;
 }
 
-/** Summarize notable standings achievements (top scorer, best defense, etc.). */
 export function selectStandingsHighlights(season: SeasonData): StandingsHighlight[] {
   const cached = standingsHighlightsCache.get(season);
   if (cached) {
@@ -583,7 +575,6 @@ export function selectStandingsHighlights(season: SeasonData): StandingsHighligh
   return highlights;
 }
 
-/** Provide filter labels for the standings view based on award badges. */
 export function selectStandingsFilters(season: SeasonData): string[] {
   const standings = selectStandings(season);
   const badges = new Set<string>();
@@ -593,7 +584,6 @@ export function selectStandingsFilters(season: SeasonData): string[] {
   return ["All Teams", ...Array.from(badges)];
 }
 
-/** Build available matchup week labels for selector UI. */
 export function selectMatchupWeeks(season: SeasonData): string[] {
   const cached = matchupWeeksCache.get(season);
   if (cached) {
@@ -605,7 +595,6 @@ export function selectMatchupWeeks(season: SeasonData): string[] {
   return labels;
 }
 
-/** Identify weeks that should be displayed (e.g., hide future postseason weeks). */
 export function selectVisibleWeeks(season: SeasonData): number[] {
   const cached = visibleWeeksCache.get(season);
   if (cached) {
@@ -622,7 +611,6 @@ export function selectVisibleWeeks(season: SeasonData): number[] {
   return weeks;
 }
 
-/** Normalize matchup data into cards for the weekly matchup panel. */
 export function selectMatchups(season: SeasonData): MatchupCard[] {
   const cached = matchupsCache.get(season);
   if (cached) {
@@ -654,7 +642,6 @@ export function selectMatchups(season: SeasonData): MatchupCard[] {
   return cards;
 }
 
-/** Aggregate weekly points for/against into a trend series. */
 export function selectPointsTrend(season: SeasonData): PointsTrendRow[] {
   const cached = pointsTrendCache.get(season);
   if (cached) {
@@ -699,8 +686,6 @@ export function selectPointsTrend(season: SeasonData): PointsTrendRow[] {
   pointsTrendCache.set(season, rows);
   return rows;
 }
-
-/** Build a rivalry heatmap matrix based on matchup outcomes. */
 export function selectRivalryHeatmap(
   season: SeasonData,
 ): { teams: string[]; matrix: RivalryHeatmapRow[] } {
@@ -750,7 +735,6 @@ export function selectRivalryHeatmap(
   return data;
 }
 
-/** Prepare award cards for postseason awards and honors. */
 export function selectAwardCards(season: SeasonData): AwardCard[] {
   const cached = awardsCache.get(season);
   if (cached) {
@@ -880,7 +864,6 @@ export function selectAwardCards(season: SeasonData): AwardCard[] {
   return cards;
 }
 
-/** Build filters for transaction history (trades, waivers, etc.). */
 export function selectTransactionFilters(season: SeasonData): string[] {
   const cached = transactionFiltersCache.get(season);
   if (cached) {
@@ -899,7 +882,6 @@ export function selectTransactionFilters(season: SeasonData): string[] {
   return filters;
 }
 
-/** Build week filter labels for transaction history. */
 export function selectTransactionWeeks(season: SeasonData): string[] {
   const cached = transactionWeeksCache.get(season);
   if (cached) {
@@ -929,7 +911,6 @@ export function selectTransactionWeeks(season: SeasonData): string[] {
   return labels;
 }
 
-/** Normalize transaction logs into display-ready cards. */
 export function selectTransactions(season: SeasonData): TransactionCard[] {
   const cached = transactionsCache.get(season);
   if (cached) {
@@ -963,7 +944,6 @@ export function selectTransactions(season: SeasonData): TransactionCard[] {
   return cards;
 }
 
-/** Convert draft rows into a table-friendly representation. */
 export function selectDraftPicks(season: SeasonData): DraftRow[] {
   const cached = draftCache.get(season);
   if (cached) {
@@ -993,7 +973,6 @@ export function selectDraftPicks(season: SeasonData): DraftRow[] {
   return rows;
 }
 
-/** Summarize members across the league for the members view. */
 export function selectMemberSummaries(season: SeasonData): MemberSummary[] {
   const cached = memberSummariesCache.get(season);
   if (cached) {
@@ -1022,7 +1001,6 @@ export function selectMemberSummaries(season: SeasonData): MemberSummary[] {
 const PLAYER_HIGH_SCORE_THRESHOLD = 20;
 const PLAYER_NAME_SUFFIXES = new Set(["jr", "sr", "ii", "iii", "iv", "v"]);
 
-/** Normalize player names so search and profile lookups are consistent. */
 export function normalizePlayerName(name: string): string {
   const cleaned = name
     .toLowerCase()
@@ -1038,7 +1016,6 @@ export function normalizePlayerName(name: string): string {
   return parts.join(" ");
 }
 
-/** Build a unique list of all players across seasons for search/autocomplete. */
 export function selectPlayerDirectory(seasons: SeasonData[]): string[] {
   const players = new Set<string>();
   seasons.forEach((season) => {
@@ -1064,7 +1041,6 @@ export function selectPlayerDirectory(seasons: SeasonData[]): string[] {
   return Array.from(players).sort((a, b) => a.localeCompare(b));
 }
 
-/** Aggregate multi-season player stats for the player profile modal/page. */
 export function selectPlayerProfile(
   seasons: SeasonData[],
   playerName: string,

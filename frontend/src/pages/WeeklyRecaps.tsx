@@ -2,8 +2,23 @@ import { Card, Text, Title } from '@tremor/react';
 import { type ReactNode, useEffect, useMemo, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import { dataLoader } from '@/data/loader';
-import type { WeeklyRecapEntry, WeeklyRecaps as WeeklyRecapsResponse } from '@/data/schema';
+
+type WeeklyRecapEntry = {
+  week: number;
+  title?: string;
+  summary?: string;
+  highlights?: string[];
+  notable_teams?: string[];
+  markdown?: string;
+  content?: Record<string, unknown> | string;
+};
+
+type WeeklyRecapsResponse = {
+  schemaVersion: string;
+  generated_at?: string | null;
+  season?: number | null;
+  entries: WeeklyRecapEntry[];
+};
 
 type LoadState = 'idle' | 'loading' | 'loaded' | 'error';
 
@@ -95,7 +110,11 @@ export function WeeklyRecaps() {
     const load = async () => {
       setStatus('loading');
       try {
-        const payload = await dataLoader.loadWeeklyRecaps();
+        const response = await fetch('/data/weekly-recaps.json');
+        if (!response.ok) {
+          throw new Error('Unable to load weekly recaps');
+        }
+        const payload = (await response.json()) as WeeklyRecapsResponse;
         if (active) {
           setData(payload);
           setStatus('loaded');
