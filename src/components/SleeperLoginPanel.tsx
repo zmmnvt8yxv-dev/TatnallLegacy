@@ -23,7 +23,6 @@ export function SleeperLoginModal({
   onSuccess
 }: SleeperLoginModalProps) {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [currentUser, setUser] = useState<SleeperUser | null>(null);
@@ -43,10 +42,9 @@ export function SleeperLoginModal({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmed = username.trim();
-    const trimmedPassword = password.trim();
 
-    if (!trimmed || !trimmedPassword) {
-      const message = 'Credentials failed. Enter a Sleeper username and password.';
+    if (!trimmed) {
+      const message = 'Please enter a Sleeper username.';
       setErrorMessage(message);
       setStatus('error');
       window.alert(message);
@@ -62,20 +60,19 @@ export function SleeperLoginModal({
       );
 
       if (!response.ok) {
-        throw new Error('Credentials failed. Sleeper account not found.');
+        throw new Error('Sleeper account not found. Double-check the username.');
       }
 
       const user = (await response.json()) as SleeperUser;
 
       if (!user.user_id) {
-        throw new Error('Credentials failed. Unable to load Sleeper account.');
+        throw new Error('Unable to load Sleeper account.');
       }
 
       setCurrentUser(user);
       setUser(user);
       addUserLogEntry(createSleeperLogEntry(user));
       setUsername('');
-      setPassword('');
       setStatus('idle');
       onSuccess(user);
       onClose();
@@ -108,7 +105,7 @@ export function SleeperLoginModal({
               Sleeper Login
             </p>
             <p className="text-base font-semibold text-white">
-              Enter your Sleeper credentials
+              Identify your Sleeper username
             </p>
           </div>
           <Button size="sm" variant="outline" onClick={onClose}>
@@ -144,32 +141,22 @@ export function SleeperLoginModal({
         ) : (
           <form className="mt-4 flex flex-col gap-3" onSubmit={handleSubmit}>
             <label className="flex flex-col gap-2 text-xs uppercase tracking-[0.2em] text-slate-400">
-              Username
+              Sleeper username
               <input
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
-                placeholder="Sleeper username"
-                className="h-10 rounded-md border border-slate-700 bg-slate-950/60 px-3 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
-              />
-            </label>
-            <label className="flex flex-col gap-2 text-xs uppercase tracking-[0.2em] text-slate-400">
-              Password
-              <input
-                type="password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                placeholder="Sleeper password"
+                placeholder="e.g. tatnall_legacy"
                 className="h-10 rounded-md border border-slate-700 bg-slate-950/60 px-3 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500"
               />
             </label>
             <Button type="submit" disabled={status === 'loading'}>
-              {status === 'loading' ? 'Checking…' : 'Log in'}
+              {status === 'loading' ? 'Checking…' : 'Continue'}
             </Button>
             {errorMessage ? (
               <p className="text-xs text-rose-300">{errorMessage}</p>
             ) : (
               <p className="text-xs text-slate-400">
-                Log in to access the user log portal.
+                Sleeper data is public, so no password is required.
               </p>
             )}
           </form>

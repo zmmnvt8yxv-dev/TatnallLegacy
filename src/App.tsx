@@ -10,6 +10,7 @@ import { cn } from "./lib/utils";
 import {
   ensureGuestLog,
   getCurrentUser,
+  setCurrentUser,
   subscribeToUserLog,
   type SleeperUser,
 } from "./lib/userLog";
@@ -45,6 +46,7 @@ const devNavigation = import.meta.env.DEV
   : [];
 
 const navigation = [...baseNavigation, ...devNavigation];
+const adminUsername = import.meta.env.VITE_ADMIN_USERNAME ?? "conner27lax";
 
 export default function App() {
   const [isLoginOpen, setLoginOpen] = useState(false);
@@ -69,14 +71,14 @@ export default function App() {
 
   const handleLoginSuccess = (user: SleeperUser) => {
     setCurrentUserState(user);
-    if (user.username === "conner27lax") {
+    if (user.username === adminUsername) {
       navigate("/user-log");
       return;
     }
     navigate("/");
   };
 
-  const canAccessLog = currentUser?.username === "conner27lax";
+  const canAccessLog = currentUser?.username === adminUsername;
   const seasonOptions = useMemo(() => {
     if (status === "loading") {
       return [{ label: "Loading seasons…", value: "" }];
@@ -132,21 +134,37 @@ export default function App() {
                 <p className="app-pill__value">
                   {currentUser
                     ? `Logged in as @${currentUser.username}`
-                    : "Log in to access the user log"}
+                    : "Log in to personalize the experience"}
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={() => setLoginOpen(true)}
-                className="app-icon-button"
-                aria-label="Open Sleeper login"
-              >
-                <img
-                  src="https://sleepercdn.com/images/app-logo.png"
-                  alt="Sleeper logo"
-                  className="h-6 w-6"
-                />
-              </button>
+              <div className="flex items-center gap-2">
+                {currentUser ? (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="border-border text-xs text-foreground hover:bg-surface-alt"
+                    onClick={() => {
+                      setCurrentUser(null);
+                      setCurrentUserState(null);
+                    }}
+                  >
+                    Log out
+                  </Button>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={() => setLoginOpen(true)}
+                  className="app-icon-button"
+                  aria-label="Open Sleeper login"
+                  title="Log in with your Sleeper username (no password required)"
+                >
+                  <img
+                    src="https://sleepercdn.com/images/app-logo.png"
+                    alt="Sleeper logo"
+                    className="h-6 w-6"
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -209,7 +227,12 @@ export default function App() {
           <Route path="/player/:name" element={<PlayerProfilePage />} />
           <Route
             path="/user-log"
-            element={<UserLogPortal canAccess={Boolean(canAccessLog)} />}
+            element={
+              <UserLogPortal
+                canAccess={Boolean(canAccessLog)}
+                adminUsername={adminUsername}
+              />
+            }
           />
           {import.meta.env.DEV ? (
             <Route path="/data-inspector" element={<DataInspectorSection />} />
