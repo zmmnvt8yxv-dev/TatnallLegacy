@@ -40,13 +40,13 @@ export function SummarySection() {
   const { year, years } = useSeasonSelection();
   const { status, season, error } = useSeasonData(year);
   const snapshotRef = useRef<HTMLDivElement | null>(null);
-  const userSelectedWeekRef = useRef(false);
   const [snapshotStatus, setSnapshotStatus] = useState<string>("");
   const [selectedWeek, setSelectedWeek] = useState<number | "all">("all");
   const availableWeeks = useMemo(() => (season ? selectVisibleWeeks(season) : []), [season]);
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
   const kpiStats = useMemo(() => (season ? selectKpiStats(season) : []), [season]);
   const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
+  const lastYearRef = useRef<number | null>(null);
   const champion = useMemo(() => {
     if (!season) {
       return null;
@@ -86,20 +86,18 @@ export function SummarySection() {
   const isCurrentSeason = year != null && years.length > 0 && year === Math.max(...years);
 
   useEffect(() => {
-    userSelectedWeekRef.current = false;
-    setSelectedWeek("all");
-  }, [year]);
-
-  useEffect(() => {
     if (!season || year == null) {
       return;
     }
-    if (userSelectedWeekRef.current) {
+    if (lastYearRef.current === year) {
       return;
     }
+    lastYearRef.current = year;
     if (isCurrentSeason && availableWeeks.length > 0) {
       setSelectedWeek(availableWeeks[availableWeeks.length - 1]);
+      return;
     }
+    setSelectedWeek("all");
   }, [availableWeeks, isCurrentSeason, season, year]);
 
   if (status === "loading") {
