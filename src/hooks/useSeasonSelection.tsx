@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { dataLoader } from "../data/loader";
+import { notifyOnce } from "../lib/toast";
 
 type SeasonSelectionState = {
   status: "loading" | "ready" | "error";
@@ -40,14 +41,22 @@ export function SeasonSelectionProvider({ children }: { children: React.ReactNod
         const year = resolveDefaultYear(years);
         if (!active) return;
         setState({ status: "ready", years, year, error: undefined });
+        notifyOnce(
+          "season-manifest-ready",
+          "League seasons synced.",
+          { type: "success" }
+        );
       } catch (error) {
         if (!active) return;
+        const message =
+          error instanceof Error ? error.message : "Unable to load seasons";
         setState({
           status: "error",
           years: [],
           year: undefined,
-          error: error instanceof Error ? error.message : "Unable to load seasons",
+          error: message,
         });
+        notifyOnce("season-manifest-error", message, { type: "error" });
       }
     };
 

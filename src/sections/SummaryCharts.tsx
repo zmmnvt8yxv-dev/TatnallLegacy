@@ -65,6 +65,9 @@ export default function SummaryCharts({ season }: SummaryChartsProps) {
                     strokeWidth={2}
                     dot={false}
                     name="Points For"
+                    isAnimationActive
+                    animationDuration={900}
+                    animationEasing="ease-in-out"
                   />
                   <Line
                     type="monotone"
@@ -73,6 +76,9 @@ export default function SummaryCharts({ season }: SummaryChartsProps) {
                     strokeWidth={2}
                     dot={false}
                     name="Points Against"
+                    isAnimationActive
+                    animationDuration={900}
+                    animationEasing="ease-in-out"
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -100,7 +106,15 @@ export default function SummaryCharts({ season }: SummaryChartsProps) {
                     }}
                     labelStyle={{ color: "var(--color-muted)" }}
                   />
-                  <Bar dataKey="net" fill="var(--color-positive)" name="Net Margin" radius={[6, 6, 0, 0]} />
+                  <Bar
+                    dataKey="net"
+                    fill="var(--color-positive)"
+                    name="Net Margin"
+                    radius={[6, 6, 0, 0]}
+                    isAnimationActive
+                    animationDuration={900}
+                    animationEasing="ease-in-out"
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>

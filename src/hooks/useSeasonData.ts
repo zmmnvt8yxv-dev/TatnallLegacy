@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { dataLoader } from "../data/loader";
 import type { SeasonData } from "../data/schema";
+import { notifyOnce } from "../lib/toast";
 
 type SeasonState = {
   status: "loading" | "ready" | "error";
@@ -46,6 +47,24 @@ export function useSeasonData(requestedYear?: number): SeasonState {
       active = false;
     };
   }, [requestedYear]);
+
+  useEffect(() => {
+    if (state.status === "ready" && state.year) {
+      notifyOnce(
+        `season-load-${state.year}`,
+        `Season ${state.year} data loaded.`,
+        { type: "success" }
+      );
+      return;
+    }
+    if (state.status === "error") {
+      notifyOnce(
+        `season-load-error-${requestedYear ?? "latest"}`,
+        state.error ?? "Unable to load season data.",
+        { type: "error" }
+      );
+    }
+  }, [requestedYear, state.error, state.status, state.year]);
 
   return state;
 }

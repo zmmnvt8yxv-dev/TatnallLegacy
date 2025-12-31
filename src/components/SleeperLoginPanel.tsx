@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -47,7 +48,7 @@ export function SleeperLoginModal({
       const message = 'Please enter a Sleeper username.';
       setErrorMessage(message);
       setStatus('error');
-      window.alert(message);
+      toast.error(message);
       return;
     }
 
@@ -81,7 +82,7 @@ export function SleeperLoginModal({
         error instanceof Error ? error.message : 'Credentials failed.';
       setErrorMessage(message);
       setStatus('error');
-      window.alert(message);
+      toast.error(message);
     }
   };
 
