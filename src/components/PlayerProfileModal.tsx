@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { selectPlayerProfile } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
+import { PlayerTrendChart } from "./PlayerTrendChart";
 
 const NFL_TEAM_LOGO_BASE = "https://static.www.nfl.com/league/api/clubs/logos";
 
@@ -8,19 +10,28 @@ function formatNumber(value: number): string {
   return value.toFixed(1);
 }
 
-function MiniSparkline({ data, label }: { data: number[]; label: string }) {
-  const max = Math.max(...data);
-  return (
-    <div className="sparkline" role="img" aria-label={`${label} trend`}>
-      {data.map((value, index) => (
-        <span
-          key={`${label}-${index}`}
-          className="sparkline__bar"
-          style={{ height: `${Math.max((value / (max || 1)) * 100, 12)}%` }}
-        />
-      ))}
-    </div>
-  );
+function formatSeasonSpan(seasons: number[]) {
+  if (!seasons.length) {
+    return "";
+  }
+  const ranges: Array<[number, number]> = [];
+  let start = seasons[0];
+  let end = seasons[0];
+  seasons.slice(1).forEach((season) => {
+    if (season === end + 1) {
+      end = season;
+    } else {
+      ranges.push([start, end]);
+      start = season;
+      end = season;
+    }
+  });
+  ranges.push([start, end]);
+  return ranges
+    .map(([rangeStart, rangeEnd]) =>
+      rangeStart === rangeEnd ? `${rangeStart}` : `${rangeStart}-${rangeEnd}`,
+    )
+    .join(", ");
 }
 
 type PlayerProfileModalProps = {
@@ -115,7 +126,6 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
     const consistency = profile.totalGames
       ? Math.round((profile.aboveThreshold / profile.totalGames) * 100)
       : 0;
-
     return (
       <div className="space-y-6">
         <div className="player-profile__meta">
@@ -144,9 +154,19 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
             </div>
           </div>
           <div>
+            <p className="player-profile__label">Position</p>
+            <p className="player-profile__value">{profile.position ?? "—"}</p>
+          </div>
+          <div>
             <p className="player-profile__label">Fantasy Teams</p>
             <p className="player-profile__value">
-              {profile.fantasyTeams.length ? profile.fantasyTeams.join(", ") : "—"}
+              {profile.fantasyTeamTimeline.length
+                ? profile.fantasyTeamTimeline
+                    .map(
+                      (team) => `${team.team} (${formatSeasonSpan(team.seasons) || "—"})`,
+                    )
+                    .join(", ")
+                : "—"}
             </p>
           </div>
           <div>
@@ -225,7 +245,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
         <div>
           <h3 className="section-heading">Historical Trend</h3>
           <p className="section-caption">Total fantasy points across seasons.</p>
-          <MiniSparkline data={profile.pointsTrend} label={`${profile.player} points`} />
+          <PlayerTrendChart data={profile.seasons} />
         </div>
       </div>
     );
@@ -252,15 +272,20 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
               </h2>
             </div>
           </div>
-          <button
-            ref={closeButtonRef}
-            type="button"
-            className="btn"
-            onClick={onClose}
-            aria-label="Close player profile"
-          >
-            Close
-          </button>
+          <div className="modal-header__actions">
+            <Link to={`/player/${encodeURIComponent(playerName)}`} className="btn" onClick={onClose}>
+              Full Profile
+            </Link>
+            <button
+              ref={closeButtonRef}
+              type="button"
+              className="btn"
+              onClick={onClose}
+              aria-label="Close player profile"
+            >
+              Close
+            </button>
+          </div>
         </header>
         <div className="modal-body">{content}</div>
       </div>

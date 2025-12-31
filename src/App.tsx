@@ -14,6 +14,7 @@ import {
   type SleeperUser,
 } from "./lib/userLog";
 import { PowerRankings } from "./pages/PowerRankings";
+import { PlayerProfilePage } from "./pages/PlayerProfilePage";
 import { Summary } from "./pages/Summary";
 import { UserLogPortal } from "./pages/UserLogPortal";
 import { WeeklyRecaps } from "./pages/WeeklyRecaps";
@@ -205,6 +206,7 @@ export default function App() {
           <Route path="/rankings" element={<PowerRankings />} />
           <Route path="/recaps" element={<WeeklyRecaps />} />
           <Route path="/live" element={<LiveSection />} />
+          <Route path="/player/:name" element={<PlayerProfilePage />} />
           <Route
             path="/user-log"
             element={<UserLogPortal canAccess={Boolean(canAccessLog)} />}

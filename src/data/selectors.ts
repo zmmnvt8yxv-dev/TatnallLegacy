@@ -108,8 +108,15 @@ export type PlayerSeasonSummary = {
   fantasyTeams: string[];
 };
 
+export type PlayerTeamTimeline = {
+  team: string;
+  seasons: number[];
+};
+
 export type PlayerProfile = {
   player: string;
+  position: string | null;
+  currentTeam: string | null;
   seasons: PlayerSeasonSummary[];
   totalPoints: number;
   totalGames: number;
@@ -118,6 +125,7 @@ export type PlayerProfile = {
   aboveThreshold: number;
   nflTeams: string[];
   fantasyTeams: string[];
+  fantasyTeamTimeline: PlayerTeamTimeline[];
   pointsTrend: number[];
 };
 
@@ -1038,30 +1046,77 @@ export function normalizePlayerName(name: string): string {
   return parts.join(" ");
 }
 
+export type PlayerDirectoryEntry = {
+  name: string;
+  team?: string;
+  position?: string;
+};
+
 /** Build a unique list of all players across seasons for search/autocomplete. */
-export function selectPlayerDirectory(seasons: SeasonData[]): string[] {
-  const players = new Set<string>();
+export function selectPlayerDirectory(seasons: SeasonData[]): PlayerDirectoryEntry[] {
+  const players = new Map<string, PlayerDirectoryEntry>();
+
+  const ensureEntry = (name: string) => {
+    const normalized = normalizePlayerName(name);
+    if (!normalized) {
+      return null;
+    }
+    const existing = players.get(normalized);
+    if (existing) {
+      return existing;
+    }
+    const entry = { name };
+    players.set(normalized, entry);
+    return entry;
+  };
+
   seasons.forEach((season) => {
     season.lineups?.forEach((entry) => {
       if (entry.player) {
-        players.add(entry.player);
+        ensureEntry(entry.player);
       }
     });
     season.draft.forEach((pick) => {
       if (pick.player) {
-        players.add(pick.player);
+        const entry = ensureEntry(pick.player);
+        if (entry && pick.player_nfl && !entry.team) {
+          entry.team = pick.player_nfl;
+        }
       }
     });
     season.transactions.forEach((transaction) => {
       transaction.entries.forEach((entry) => {
         if (entry.player) {
-          players.add(entry.player);
+          ensureEntry(entry.player);
         }
       });
     });
+
+    const playerIndex = season.supplemental?.player_index;
+    if (playerIndex) {
+      Object.values(playerIndex).forEach((player) => {
+        const name = player.full_name ?? player.name;
+        if (!name) {
+          return;
+        }
+        const entry = ensureEntry(name);
+        if (!entry) {
+          return;
+        }
+        if (player.full_name && entry.name !== player.full_name) {
+          entry.name = player.full_name;
+        }
+        if (player.team && !entry.team) {
+          entry.team = player.team;
+        }
+        if (player.pos && !entry.position) {
+          entry.position = player.pos;
+        }
+      });
+    }
   });
 
-  return Array.from(players).sort((a, b) => a.localeCompare(b));
+  return Array.from(players.values()).sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /** Aggregate multi-season player stats for the player profile modal/page. */
@@ -1072,6 +1127,34 @@ export function selectPlayerProfile(
   const normalized = normalizePlayerName(playerName);
   if (!normalized) {
     return null;
+  }
+
+  const sortedSeasonData = [...seasons].sort((a, b) => b.year - a.year);
+  let position: string | null = null;
+  let currentTeam: string | null = null;
+
+  for (const season of sortedSeasonData) {
+    const playerIndex = season.supplemental?.player_index;
+    if (!playerIndex) {
+      continue;
+    }
+    for (const player of Object.values(playerIndex)) {
+      const name = player.full_name ?? player.name;
+      if (!name) {
+        continue;
+      }
+      if (normalizePlayerName(name) !== normalized) {
+        continue;
+      }
+      position = player.pos ?? position;
+      currentTeam = player.team ?? currentTeam;
+      if (position || currentTeam) {
+        break;
+      }
+    }
+    if (position || currentTeam) {
+      break;
+    }
   }
 
   const seasonSummaries: PlayerSeasonSummary[] = [];
@@ -1150,9 +1233,27 @@ export function selectPlayerProfile(
   const maxPoints = sortedSeasons.reduce((max, season) => Math.max(max, season.maxPoints), 0);
   const aboveThreshold = sortedSeasons.reduce((sum, season) => sum + season.aboveThreshold, 0);
   const pointsTrend = sortedSeasons.map((season) => season.totalPoints);
+  const fantasyTeamTimelineMap = new Map<string, number[]>();
+
+  sortedSeasons.forEach((season) => {
+    season.fantasyTeams.forEach((team) => {
+      const years = fantasyTeamTimelineMap.get(team) ?? [];
+      years.push(season.season);
+      fantasyTeamTimelineMap.set(team, years);
+    });
+  });
+
+  const fantasyTeamTimeline = Array.from(fantasyTeamTimelineMap.entries())
+    .map(([team, seasons]) => ({
+      team,
+      seasons: seasons.sort((a, b) => a - b),
+    }))
+    .sort((a, b) => a.team.localeCompare(b.team));
 
   return {
     player: playerName,
+    position,
+    currentTeam,
     seasons: sortedSeasons,
     totalPoints,
     totalGames,
@@ -1161,6 +1262,7 @@ export function selectPlayerProfile(
     aboveThreshold,
     nflTeams: Array.from(nflTeams),
     fantasyTeams: Array.from(fantasyTeams),
+    fantasyTeamTimeline,
     pointsTrend,
   };
 }

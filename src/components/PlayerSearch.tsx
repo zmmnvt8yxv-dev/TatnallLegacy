@@ -26,8 +26,10 @@ export function PlayerSearch() {
   const playerIndex = useMemo(
     () =>
       players.map((player) => ({
-        name: player,
-        normalized: normalizePlayerName(player),
+        name: player.name,
+        team: player.team,
+        position: player.position,
+        normalized: normalizePlayerName(player.name),
       })),
     [players],
   );
@@ -67,6 +69,8 @@ export function PlayerSearch() {
     return playerIndex
       .map((entry) => ({
         name: entry.name,
+        team: entry.team,
+        position: entry.position,
         score: getMatchScore(normalizedQuery, entry.normalized),
       }))
       .filter((entry) => entry.score > 0)
@@ -93,6 +97,11 @@ export function PlayerSearch() {
         {name.slice(endIndex)}
       </>
     );
+  };
+
+  const formatHint = (position?: string, team?: string) => {
+    const parts = [position, team].filter(Boolean);
+    return parts.length ? parts.join(" · ") : "";
   };
 
   const handleSelect = (playerName: string) => {
@@ -128,24 +137,30 @@ export function PlayerSearch() {
         Search players
       </label>
       <div className="player-search__field">
-        <input
-          ref={inputRef}
-          id="playerSearch"
-          type="search"
-          placeholder={placeholder}
-          aria-label="Search players"
-          className="input player-search__input"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          onFocus={() => {
-            loadAllSeasons();
-            setIsOpen(true);
-          }}
-          onBlur={() => setTimeout(() => setIsOpen(false), 150)}
-          disabled={disabled}
-        />
+        <div className="player-search__input-wrap">
+          <span className="player-search__icon" aria-hidden="true">
+            🔍
+          </span>
+          <input
+            ref={inputRef}
+            id="playerSearch"
+            type="search"
+            placeholder={placeholder}
+            aria-label="Search players"
+            className="input player-search__input"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            onFocus={() => {
+              loadAllSeasons();
+              setIsOpen(true);
+            }}
+            onBlur={() => setTimeout(() => setIsOpen(false), 150)}
+            disabled={disabled}
+          />
+        </div>
         <button type="submit" className="btn player-search__button" disabled={disabled}>
-          View
+          <span aria-hidden="true">➜</span>
+          <span className="sr-only">View player profile</span>
         </button>
       </div>
       {isOpen && !disabled ? (
@@ -162,7 +177,14 @@ export function PlayerSearch() {
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => handleSelect(player.name)}
                   >
-                    {highlightMatch(player.name)}
+                    <span className="player-search__item-name">
+                      {highlightMatch(player.name)}
+                    </span>
+                    {formatHint(player.position, player.team) ? (
+                      <span className="player-search__hint">
+                        {formatHint(player.position, player.team)}
+                      </span>
+                    ) : null}
                   </button>
                 </li>
               ))}
