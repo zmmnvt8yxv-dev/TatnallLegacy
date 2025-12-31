@@ -1,13 +1,19 @@
-import { useEffect } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
-import { SleeperLoginPanel } from '@/components/SleeperLoginPanel';
+import { SleeperLoginModal } from '@/components/SleeperLoginPanel';
 import { cn } from '@/lib/utils';
-import { ensureGuestLog } from '@/lib/userLog';
+import {
+  ensureGuestLog,
+  getCurrentUser,
+  subscribeToUserLog,
+  type SleeperUser
+} from '@/lib/userLog';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
 import { PowerRankings } from '@/pages/PowerRankings';
 import { Summary } from '@/pages/Summary';
+import { UserLogPortal } from '@/pages/UserLogPortal';
 import { WeeklyRecaps } from '@/pages/WeeklyRecaps';
 
 const navigation = [
@@ -22,9 +28,28 @@ const navigation = [
 ];
 
 function App() {
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [currentUser, setCurrentUserState] = useState<SleeperUser | null>(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
     ensureGuestLog();
+    setCurrentUserState(getCurrentUser());
+    return subscribeToUserLog(() => {
+      setCurrentUserState(getCurrentUser());
+    });
   }, []);
+
+  const handleLoginSuccess = (user: SleeperUser) => {
+    setCurrentUserState(user);
+    if (user.username === 'conner27lax') {
+      navigate('/user-log');
+      return;
+    }
+    navigate('/');
+  };
+
+  const canAccessLog = currentUser?.username === 'conner27lax';
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -40,8 +65,29 @@ function App() {
           </div>
           <div className="flex w-full flex-col gap-3 md:w-auto md:items-end">
             <Button className="w-full md:w-auto">Generate League Report</Button>
-            <div className="w-full md:min-w-[320px]">
-              <SleeperLoginPanel />
+            <div className="flex items-center justify-between gap-3 rounded-full border border-slate-800 bg-slate-900/60 px-3 py-2 text-xs text-slate-300 md:justify-end">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500">
+                  Sleeper Access
+                </p>
+                <p className="text-xs text-slate-200">
+                  {currentUser
+                    ? `Logged in as @${currentUser.username}`
+                    : 'Log in to access the user log'}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setLoginOpen(true)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-950/60 hover:border-slate-500"
+                aria-label="Open Sleeper login"
+              >
+                <img
+                  src="https://sleepercdn.com/images/app-logo.png"
+                  alt="Sleeper logo"
+                  className="h-6 w-6"
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -123,8 +169,17 @@ function App() {
               />
             }
           />
+          <Route
+            path="/user-log"
+            element={<UserLogPortal canAccess={Boolean(canAccessLog)} />}
+          />
         </Routes>
       </main>
+      <SleeperLoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setLoginOpen(false)}
+        onSuccess={handleLoginSuccess}
+      />
     </div>
   );
 }
