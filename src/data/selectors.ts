@@ -1507,7 +1507,7 @@ export function selectPlayerProfile(
       matchupMap.set(`${matchup.week}:${matchup.away_team}`, matchup.home_team);
     });
 
-    const entries =
+    const playerEntries =
       season.lineups?.filter((entry) => {
         if (!entry.player) {
           return false;

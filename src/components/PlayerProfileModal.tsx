@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { selectPlayerProfile, summarizeSeasonWeeks } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
 import { usePlayerWeeklyStats } from "../hooks/usePlayerWeeklyStats";
@@ -80,10 +79,9 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   }, [metricOptions, metricView]);
 
   const liveSeason = 2025;
-  const hasLiveSeason = Boolean(profile?.seasons.some((season) => season.season === liveSeason));
   const liveWeeklyStats = usePlayerWeeklyStats(
     profile?.playerId ?? null,
-    hasLiveSeason ? liveSeason : null,
+    profile?.playerId ? liveSeason : null,
   );
   const seasonsToDisplay = useMemo(() => {
     if (!profile) {
@@ -92,14 +90,40 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
     if (liveWeeklyStats.status !== "ready" || liveWeeklyStats.weeks.length === 0) {
       return profile.seasons;
     }
-    return profile.seasons.map((season) =>
-      season.season === liveSeason ? { ...season, weeks: liveWeeklyStats.weeks } : season,
+    const liveSummary = summarizeSeasonWeeks(
+      liveSeason,
+      liveWeeklyStats.weeks,
+      profile.seasons.find((season) => season.season === liveSeason)?.fantasyTeams ?? [],
     );
+    const existingIndex = profile.seasons.findIndex((season) => season.season === liveSeason);
+    if (existingIndex >= 0) {
+      return profile.seasons.map((season) =>
+        season.season === liveSeason ? liveSummary : season,
+      );
+    }
+    return [...profile.seasons, liveSummary].sort((a, b) => a.season - b.season);
   }, [profile, liveSeason, liveWeeklyStats.status, liveWeeklyStats.weeks]);
-
-  useEffect(() => {
-    setExpandedSeasons({});
-  }, [playerName]);
+  const seasonTotals = useMemo(() => {
+    if (!profile) {
+      return null;
+    }
+    const seasons = seasonsToDisplay.length ? seasonsToDisplay : profile.seasons;
+    const totalPoints = seasons.reduce((sum, season) => sum + season.totalPoints, 0);
+    const totalGames = seasons.reduce((sum, season) => sum + season.games, 0);
+    const maxPoints = seasons.reduce((max, season) => Math.max(max, season.maxPoints), 0);
+    const aboveThreshold = seasons.reduce(
+      (sum, season) => sum + season.aboveThreshold,
+      0,
+    );
+    return {
+      totalPoints,
+      totalGames,
+      avgPoints: totalGames ? totalPoints / totalGames : 0,
+      maxPoints,
+      aboveThreshold,
+      pointsTrend: seasons.map((season) => season.totalPoints),
+    };
+  }, [profile, seasonsToDisplay]);
 
   useEffect(() => {
     setExpandedSeasons({});
@@ -170,8 +194,8 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       );
     }
 
-    const consistency = profile.totalGames
-      ? Math.round((profile.aboveThreshold / profile.totalGames) * 100)
+    const consistency = seasonTotals?.totalGames
+      ? Math.round((seasonTotals.aboveThreshold / seasonTotals.totalGames) * 100)
       : 0;
     const showScoring = metricView === "ppr" || metricView === "standard";
     const scoringLabel = metricView === "standard" ? "Standard points" : "PPR points";
@@ -270,7 +294,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
           </div>
           <div>
             <p className="player-profile__label">Seasons Tracked</p>
-            <p className="player-profile__value">{profile.seasons.length}</p>
+            <p className="player-profile__value">{seasonsToDisplay.length}</p>
           </div>
         </div>
 
@@ -300,19 +324,19 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
             <>
               <div className="stat">
                 <h3>Total Points</h3>
-                <p>{formatNumber(profile.totalPoints)}</p>
+                <p>{formatNumber(seasonTotals?.totalPoints ?? 0)}</p>
               </div>
               <div className="stat">
                 <h3>Games Played</h3>
-                <p>{profile.totalGames}</p>
+                <p>{seasonTotals?.totalGames ?? 0}</p>
               </div>
               <div className="stat">
                 <h3>Avg Points</h3>
-                <p>{formatNumber(profile.avgPoints)}</p>
+                <p>{formatNumber(seasonTotals?.avgPoints ?? 0)}</p>
               </div>
               <div className="stat">
                 <h3>Peak Week</h3>
-                <p>{formatNumber(profile.maxPoints)}</p>
+                <p>{formatNumber(seasonTotals?.maxPoints ?? 0)}</p>
               </div>
             </>
         ) : (
@@ -326,7 +350,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
         <div className="player-profile__advanced">
           <div className="stat">
             <h3>20+ Point Games</h3>
-            <p>{profile.aboveThreshold}</p>
+            <p>{seasonTotals?.aboveThreshold ?? 0}</p>
           </div>
           <div className="stat">
             <h3>Consistency Rate</h3>
@@ -334,7 +358,11 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
           </div>
           <div className="stat">
             <h3>Best Season Total</h3>
-            <p>{formatNumber(Math.max(...profile.pointsTrend))}</p>
+            <p>
+              {seasonTotals?.pointsTrend.length
+                ? formatNumber(Math.max(...seasonTotals.pointsTrend))
+                : "0.0"}
+            </p>
           </div>
         </div>
 
@@ -356,7 +384,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
                 </tr>
               </thead>
               <tbody>
-                {profile.seasons.map((season) => {
+                {seasonsToDisplay.map((season) => {
                   const expanded = Boolean(expandedSeasons[season.season]);
                   const detailId = `season-${season.season}-weeks`;
                   return (
@@ -441,7 +469,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
         <div>
           <h3 className="section-heading">Historical Trend</h3>
           <p className="section-caption">Total fantasy points across seasons.</p>
-          <PlayerTrendChart data={profile.seasons} />
+          <PlayerTrendChart data={seasonsToDisplay} />
         </div>
 
         <div>
