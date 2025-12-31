@@ -150,6 +150,48 @@ export type PlayerSeasonWeek = {
   started: boolean | null;
 };
 
+export type PlayerSeasonWeek = {
+  week: number;
+  points: number;
+  opponent: string | null;
+  team: string | null;
+  started: boolean | null;
+};
+
+export function summarizeSeasonWeeks(
+  season: number,
+  weeks: PlayerSeasonWeek[],
+  fallbackFantasyTeams: string[] = [],
+): PlayerSeasonSummary {
+  const fantasyTeams = new Set(
+    weeks.map((week) => week.team).filter((team): team is string => Boolean(team)),
+  );
+  const points = weeks.map((week) => week.points);
+  const totalPoints = points.reduce((sum, value) => sum + value, 0);
+  const games = weeks.length;
+  const maxPoints = points.reduce((max, value) => Math.max(max, value), 0);
+  const bestWeekEntry = weeks.reduce<PlayerSeasonWeek | null>(
+    (best, entry) => (!best || entry.points > best.points ? entry : best),
+    null,
+  );
+  const aboveThreshold = weeks.reduce(
+    (count, entry) => count + (entry.points >= PLAYER_HIGH_SCORE_THRESHOLD ? 1 : 0),
+    0,
+  );
+
+  return {
+    season,
+    games,
+    totalPoints,
+    avgPoints: games ? totalPoints / games : 0,
+    maxPoints,
+    bestWeek: bestWeekEntry ? bestWeekEntry.week : null,
+    aboveThreshold,
+    fantasyTeams: fantasyTeams.size ? Array.from(fantasyTeams) : fallbackFantasyTeams,
+    weeks: weeks.slice().sort((a, b) => a.week - b.week),
+  };
+}
+
 export type PlayerTeamTimeline = {
   team: string;
   seasons: number[];
@@ -1470,13 +1512,12 @@ export function selectPlayerProfile(
         if (!entry.player) {
           return false;
         }
-        if (entry.started === false) {
-          return false;
-        }
         return normalizePlayerName(entry.player) === normalized;
       }) ?? [];
 
-    if (entries.length === 0) {
+    const scoringEntries = playerEntries.filter((entry) => entry.started !== false);
+
+    if (playerEntries.length === 0) {
       season.draft.forEach((pick) => {
         if (pick.player && normalizePlayerName(pick.player) === normalized && pick.player_nfl) {
           nflTeams.add(pick.player_nfl);
@@ -1493,7 +1534,7 @@ export function selectPlayerProfile(
     const seasonFantasyTeams = new Set<string>();
     const weeks: PlayerSeasonWeek[] = [];
 
-    entries.forEach((entry) => {
+    scoringEntries.forEach((entry) => {
       const points = toNumber(entry.points);
       totalPoints += points;
       if (points > maxPoints) {
@@ -1503,6 +1544,10 @@ export function selectPlayerProfile(
       if (points >= PLAYER_HIGH_SCORE_THRESHOLD) {
         aboveThreshold += 1;
       }
+    });
+
+    playerEntries.forEach((entry) => {
+      const points = toNumber(entry.points);
       if (entry.team) {
         seasonFantasyTeams.add(entry.team);
         fantasyTeams.add(entry.team);
@@ -1526,7 +1571,7 @@ export function selectPlayerProfile(
       }
     });
 
-    const games = entries.length;
+    const games = scoringEntries.length;
     seasonSummaries.push({
       season: season.year,
       games,
