@@ -1,5 +1,6 @@
+import Fuse from "fuse.js";
 import { useMemo, useRef, useState, type FormEvent } from "react";
-import { normalizePlayerName, selectPlayerDirectory } from "../data/selectors";
+import { normalizePlayerName, selectPlayerSearchIndex } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
 import { useDebouncedValue } from "../hooks/useDebouncedValue";
 import { usePlayerProfile } from "./PlayerProfileProvider";
@@ -20,83 +21,51 @@ export function PlayerSearch() {
     if (status !== "ready") {
       return [];
     }
-    return selectPlayerDirectory(seasons);
+    return selectPlayerSearchIndex(seasons);
   }, [seasons, status]);
 
-  const playerIndex = useMemo(
-    () =>
-      players.map((player) => ({
-        name: player.name,
-        team: player.team,
-        position: player.position,
-        normalized: normalizePlayerName(player.name),
-      })),
-    [players],
-  );
-
-  const getInitials = (name: string) =>
-    name
-      .split(" ")
-      .map((part) => part[0])
-      .join("");
-
-  const isSubsequence = (needle: string, haystack: string) => {
-    if (!needle) return false;
-    let needleIndex = 0;
-    for (const char of haystack) {
-      if (char === needle[needleIndex]) {
-        needleIndex += 1;
-      }
-      if (needleIndex >= needle.length) {
-        return true;
-      }
+  const fuse = useMemo(() => {
+    if (!players.length) {
+      return null;
     }
-    return false;
-  };
-
-  const getMatchScore = (queryValue: string, targetValue: string) => {
-    if (!queryValue) return 0;
-    if (targetValue.includes(queryValue)) return 3;
-    if (getInitials(targetValue).startsWith(queryValue)) return 2;
-    if (isSubsequence(queryValue, targetValue)) return 1;
-    return 0;
-  };
+    return new Fuse(players, {
+      keys: ["name", "team", "position", "normalized"],
+      threshold: 0.35,
+      ignoreLocation: true,
+      includeMatches: true,
+    });
+  }, [players]);
 
   const matches = useMemo(() => {
-    if (!normalizedQuery) {
+    if (!normalizedQuery || !fuse) {
       return [];
     }
-    return playerIndex
-      .map((entry) => ({
-        name: entry.name,
-        team: entry.team,
-        position: entry.position,
-        score: getMatchScore(normalizedQuery, entry.normalized),
-      }))
-      .filter((entry) => entry.score > 0)
-      .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name))
+    return fuse
+      .search(normalizedQuery)
       .slice(0, MAX_SUGGESTIONS);
-  }, [normalizedQuery, playerIndex]);
+  }, [fuse, normalizedQuery]);
 
-  const highlightMatch = (name: string) => {
-    const trimmed = debouncedQuery.trim();
-    if (!trimmed) {
+  const highlightMatch = (name: string, indices?: [number, number][]) => {
+    if (!indices || indices.length === 0) {
       return name;
     }
-    const lowerName = name.toLowerCase();
-    const lowerQuery = trimmed.toLowerCase();
-    const startIndex = lowerName.indexOf(lowerQuery);
-    if (startIndex === -1) {
-      return name;
+    const parts: Array<string | JSX.Element> = [];
+    let lastIndex = 0;
+    indices.forEach(([start, end], index) => {
+      if (lastIndex < start) {
+        parts.push(name.slice(lastIndex, start));
+      }
+      parts.push(
+        <mark className="player-search__highlight" key={`${start}-${end}-${index}`}>
+          {name.slice(start, end + 1)}
+        </mark>,
+      );
+      lastIndex = end + 1;
+    });
+    if (lastIndex < name.length) {
+      parts.push(name.slice(lastIndex));
     }
-    const endIndex = startIndex + lowerQuery.length;
-    return (
-      <>
-        {name.slice(0, startIndex)}
-        <mark className="player-search__highlight">{name.slice(startIndex, endIndex)}</mark>
-        {name.slice(endIndex)}
-      </>
-    );
+    return <>{parts}</>;
   };
 
   const formatHint = (position?: string, team?: string) => {
@@ -116,8 +85,8 @@ export function PlayerSearch() {
     if (!normalizedQuery) {
       return;
     }
-    const exactMatch = playerIndex.find((player) => player.normalized === normalizedQuery);
-    const fallback = exactMatch?.name ?? matches[0]?.name;
+    const exactMatch = players.find((player) => player.normalized === normalizedQuery);
+    const fallback = exactMatch?.name ?? matches[0]?.item.name;
     if (fallback) {
       handleSelect(fallback);
     }
@@ -169,25 +138,43 @@ export function PlayerSearch() {
             <p className="player-search__empty">No matches found.</p>
           ) : (
             <ul className="player-search__list">
-              {matches.map((player) => (
-                <li key={player.name}>
+              {matches.map((match) => {
+                const player = match.item;
+                const nameMatch = match.matches?.find((item) => item.key === "name");
+                const recent = player.recentPerformance;
+                return (
+                  <li key={player.name}>
                   <button
                     type="button"
                     className="player-search__item"
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => handleSelect(player.name)}
+                    aria-label={`View ${player.name}`}
                   >
                     <span className="player-search__item-name">
-                      {highlightMatch(player.name)}
+                      {highlightMatch(player.name, nameMatch?.indices)}
                     </span>
-                    {formatHint(player.position, player.team) ? (
-                      <span className="player-search__hint">
-                        {formatHint(player.position, player.team)}
+                    <span className="player-search__meta">
+                      {formatHint(player.position, player.team) ? (
+                        <span className="player-search__hint">
+                          {formatHint(player.position, player.team)}
+                        </span>
+                      ) : null}
+                      {recent ? (
+                        <span className="player-search__stat">
+                          W{recent.week} {recent.points.toFixed(1)} pts
+                        </span>
+                      ) : (
+                        <span className="player-search__stat">No recent points</span>
+                      )}
+                      <span className="player-search__stat">
+                        Consensus #{player.consensusRank ?? "—"}
                       </span>
-                    ) : null}
+                    </span>
                   </button>
                 </li>
-              ))}
+              );
+              })}
             </ul>
           )}
         </div>

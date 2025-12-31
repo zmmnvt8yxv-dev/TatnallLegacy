@@ -896,7 +896,15 @@
   }
 
   .player-search__item-name {
-    @apply flex-1;
+    @apply flex-1 text-sm font-semibold text-foreground;
+  }
+
+  .player-search__meta {
+    @apply mt-1 flex flex-wrap items-center gap-2 text-xs text-muted;
+  }
+
+  .player-search__stat {
+    @apply rounded-full border border-border bg-surface px-2 py-0.5 text-[0.7rem] font-semibold text-muted;
   }
 
   .player-search__hint {
@@ -953,8 +961,44 @@
     @apply flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface-alt text-sm font-semibold text-foreground;
   }
 
+  .player-avatar--photo {
+    @apply overflow-hidden p-0;
+  }
+
+  .player-avatar__image {
+    @apply h-full w-full object-cover;
+  }
+
   .player-avatar__initials {
     @apply uppercase tracking-wide;
+  }
+
+  .player-profile__hero {
+    @apply flex flex-col gap-4 rounded-xl border border-border bg-surface-alt px-4 py-4;
+  }
+
+  .player-profile__hero-main {
+    @apply flex flex-wrap items-center gap-4;
+  }
+
+  .player-profile__headshot {
+    @apply h-16 w-16 text-base;
+  }
+
+  .player-profile__hero-stats {
+    @apply mt-2 flex flex-wrap gap-3 text-xs text-muted;
+  }
+
+  .player-profile__season-logos {
+    @apply mt-2 flex flex-wrap gap-3;
+  }
+
+  .season-logo {
+    @apply flex flex-col items-center gap-1 rounded-lg border border-border bg-surface px-2 py-2 text-xs font-semibold text-muted;
+  }
+
+  .season-logo__img {
+    @apply h-8 w-8;
   }
 
   .player-profile__meta {
@@ -987,6 +1031,50 @@
 
   .player-profile__advanced {
     @apply grid gap-3 md:grid-cols-3;
+  }
+
+  .player-profile__filters {
+    @apply mt-2 flex flex-wrap gap-2;
+  }
+
+  .player-profile__milestones {
+    @apply mt-4 grid gap-3 md:grid-cols-2;
+  }
+
+  .compare-card {
+    @apply rounded-2xl border border-border bg-surface px-6 py-6 shadow-soft;
+  }
+
+  .compare-card__controls {
+    @apply grid gap-4 md:grid-cols-2;
+  }
+
+  .compare-card__summary {
+    @apply grid gap-4 lg:grid-cols-2;
+  }
+
+  .compare-card__player {
+    @apply relative flex flex-wrap items-center gap-4 rounded-xl border border-border bg-surface-alt px-4 py-4;
+  }
+
+  .compare-card__headshot {
+    @apply h-16 w-16 text-base;
+  }
+
+  .compare-card__stats {
+    @apply mt-2 flex flex-wrap gap-3 text-xs text-muted;
+  }
+
+  .compare-card__pill {
+    @apply absolute right-4 top-4 rounded-full px-2 py-1 text-xs font-semibold text-white;
+  }
+
+  .compare-card__chart {
+    @apply rounded-xl border border-border bg-surface-alt px-4 py-4;
+  }
+
+  .compare-card__chart-frame {
+    @apply mt-4 h-64 w-full;
   }
 
   .player-profile__table {

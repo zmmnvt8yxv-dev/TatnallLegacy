@@ -2,9 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { selectPlayerProfile } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
+import { getNflTeamLogoUrl } from "../lib/playerAssets";
+import { PlayerHeadshot } from "./PlayerHeadshot";
 import { PlayerTrendChart } from "./PlayerTrendChart";
-
-const NFL_TEAM_LOGO_BASE = "https://static.www.nfl.com/league/api/clubs/logos";
 
 function formatNumber(value: number): string {
   return value.toFixed(1);
@@ -44,6 +44,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   const { status, seasons, loadAllSeasons } = useAllSeasonsData();
   const modalRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const [metricView, setMetricView] = useState("ppr");
   const [logoFallback, setLogoFallback] = useState<Record<string, boolean>>({});
   const profile = useMemo(() => {
     if (!playerName || status !== "ready") {
@@ -101,12 +102,29 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   }
 
   const titleId = "player-profile-title";
-  const initials =
-    playerName
-      ?.split(" ")
-      .map((part) => part[0])
-      .join("")
-      .slice(0, 2) ?? "";
+  const metricOptions = useMemo(() => {
+    if (profile?.position === "QB") {
+      return [
+        { id: "ppr", label: "PPR Scoring" },
+        { id: "standard", label: "Standard Scoring" },
+        { id: "passing", label: "Passing/Rushing" },
+      ];
+    }
+    if (["RB", "WR", "TE"].includes(profile?.position ?? "")) {
+      return [
+        { id: "ppr", label: "PPR Scoring" },
+        { id: "standard", label: "Standard Scoring" },
+        { id: "rushing", label: "Rushing/Receiving" },
+      ];
+    }
+    return [{ id: "ppr", label: "Scoring Snapshot" }];
+  }, [profile?.position]);
+
+  useEffect(() => {
+    if (!metricOptions.some((option) => option.id === metricView)) {
+      setMetricView(metricOptions[0]?.id ?? "ppr");
+    }
+  }, [metricOptions, metricView]);
 
   const content = (() => {
     if (status === "loading" || status === "idle") {
@@ -126,22 +144,74 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
     const consistency = profile.totalGames
       ? Math.round((profile.aboveThreshold / profile.totalGames) * 100)
       : 0;
+    const showScoring = metricView === "ppr" || metricView === "standard";
+    const scoringLabel = metricView === "standard" ? "Standard points" : "PPR points";
     return (
       <div className="space-y-6">
+        <div className="player-profile__hero">
+          <div className="player-profile__hero-main">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted">Career snapshot</p>
+              <h3 className="text-2xl font-semibold text-foreground">{profile.player}</h3>
+              <p className="text-sm text-muted">
+                {[profile.position ?? "—", profile.currentTeam ?? "—"].join(" · ")}
+              </p>
+              <div className="player-profile__hero-stats">
+                {profile.recentPerformance ? (
+                  <span>
+                    Recent: {profile.recentPerformance.season} W
+                    {profile.recentPerformance.week} (
+                    {profile.recentPerformance.points.toFixed(1)} pts)
+                  </span>
+                ) : (
+                  <span>Recent: —</span>
+                )}
+                <span>Consensus #{profile.consensusRank ?? "—"}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="player-profile__label">NFL Team Timeline</p>
+            <div className="player-profile__season-logos">
+              {profile.nflTeamHistory.length ? (
+                profile.nflTeamHistory.map((entry) => (
+                  <div key={`${entry.season}-${entry.team}`} className="season-logo">
+                    {!logoFallback[`${entry.season}-${entry.team}`] ? (
+                      <img
+                        src={getNflTeamLogoUrl(entry.team)}
+                        alt={`${entry.team} logo`}
+                        className="season-logo__img"
+                        onError={() =>
+                          setLogoFallback((prev) => ({
+                            ...prev,
+                            [`${entry.season}-${entry.team}`]: true,
+                          }))
+                        }
+                      />
+                    ) : null}
+                    <span>{entry.season}</span>
+                  </div>
+                ))
+              ) : (
+                <span className="text-sm text-muted">No team history available.</span>
+              )}
+            </div>
+          </div>
+        </div>
         <div className="player-profile__meta">
           <div>
             <p className="player-profile__label">NFL Teams</p>
             <div className="player-profile__value player-profile__teams">
-              {profile.nflTeams.length ? (
-                profile.nflTeams.map((team) => (
-                  <span key={team} className="team-pill">
-                    {!logoFallback[team] ? (
-                      <img
-                        src={`${NFL_TEAM_LOGO_BASE}/${team}.svg`}
-                        alt={`${team} logo`}
-                        className="team-pill__logo"
-                        onError={() =>
-                          setLogoFallback((prev) => ({ ...prev, [team]: true }))
+            {profile.nflTeams.length ? (
+              profile.nflTeams.map((team) => (
+                <span key={team} className="team-pill">
+                  {!logoFallback[team] ? (
+                    <img
+                      src={getNflTeamLogoUrl(team)}
+                      alt={`${team} logo`}
+                      className="team-pill__logo"
+                      onError={() =>
+                        setLogoFallback((prev) => ({ ...prev, [team]: true }))
                         }
                       />
                     ) : null}
@@ -175,24 +245,54 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
           </div>
         </div>
 
-        <div className="player-profile__stats">
-          <div className="stat">
-            <h3>Total Points</h3>
-            <p>{formatNumber(profile.totalPoints)}</p>
-          </div>
-          <div className="stat">
-            <h3>Games Played</h3>
-            <p>{profile.totalGames}</p>
-          </div>
-          <div className="stat">
-            <h3>Avg Points</h3>
-            <p>{formatNumber(profile.avgPoints)}</p>
-          </div>
-          <div className="stat">
-            <h3>Peak Week</h3>
-            <p>{formatNumber(profile.maxPoints)}</p>
-          </div>
+        <div>
+          <p className="player-profile__label">Metric Filters</p>
+          <div className="player-profile__filters">
+            {metricOptions.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                className={`btn ${metricView === option.id ? "btn-primary" : ""}`}
+                onClick={() => setMetricView(option.id)}
+              >
+                {option.label}
+              </button>
+            ))}
         </div>
+        <p className="text-xs text-muted">
+          {!showScoring
+            ? "Position-specific splits are not yet available for historical league data."
+            : `Showing ${scoringLabel} derived from league scoring.`}
+        </p>
+      </div>
+
+        <div className="player-profile__stats">
+          {showScoring ? (
+            <>
+              <div className="stat">
+                <h3>Total Points</h3>
+                <p>{formatNumber(profile.totalPoints)}</p>
+              </div>
+              <div className="stat">
+                <h3>Games Played</h3>
+                <p>{profile.totalGames}</p>
+              </div>
+              <div className="stat">
+                <h3>Avg Points</h3>
+                <p>{formatNumber(profile.avgPoints)}</p>
+              </div>
+              <div className="stat">
+                <h3>Peak Week</h3>
+                <p>{formatNumber(profile.maxPoints)}</p>
+              </div>
+            </>
+        ) : (
+          <div className="stat">
+            <h3>Position Splits</h3>
+            <p className="text-muted">No split data available.</p>
+          </div>
+        )}
+      </div>
 
         <div className="player-profile__advanced">
           <div className="stat">
@@ -247,6 +347,45 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
           <p className="section-caption">Total fantasy points across seasons.</p>
           <PlayerTrendChart data={profile.seasons} />
         </div>
+
+        <div>
+          <h3 className="section-heading">Milestones & Records</h3>
+          <p className="section-caption">Career highs, streaks, and accolades.</p>
+          <div className="player-profile__milestones">
+            <div className="stat">
+              <h3>Highest Game Score</h3>
+              <p>
+                {profile.milestones.bestGame
+                  ? `${formatNumber(profile.milestones.bestGame.points)} pts (W${profile.milestones.bestGame.week}, ${profile.milestones.bestGame.season})`
+                  : "—"}
+              </p>
+            </div>
+            <div className="stat">
+              <h3>Longest 20+ Pt Streak</h3>
+              <p>
+                {profile.milestones.longestHighScoreStreak.length
+                  ? `${profile.milestones.longestHighScoreStreak.length} games`
+                  : "—"}
+              </p>
+            </div>
+            <div className="stat">
+              <h3>Best Season</h3>
+              <p>
+                {profile.milestones.bestSeason
+                  ? `${profile.milestones.bestSeason.season} (${formatNumber(profile.milestones.bestSeason.totalPoints)} pts)`
+                  : "—"}
+              </p>
+            </div>
+            <div className="stat">
+              <h3>Awards</h3>
+              <p>
+                {profile.milestones.awards.length
+                  ? profile.milestones.awards.join(", ")
+                  : "No awards logged"}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   })();
@@ -262,9 +401,13 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       >
         <header className="modal-header">
           <div className="modal-header__title">
-            <div className="player-avatar" aria-hidden="true">
-              <span className="player-avatar__initials">{initials || "?"}</span>
-            </div>
+            {playerName ? (
+              <PlayerHeadshot
+                playerId={profile?.playerId}
+                playerName={playerName}
+                className="player-profile__headshot"
+              />
+            ) : null}
             <div>
               <p className="modal-kicker">Player Profile</p>
               <h2 id={titleId} className="modal-title">
