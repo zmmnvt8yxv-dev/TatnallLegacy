@@ -5,7 +5,7 @@ const DEFAULT_BASE_URL =
   "https://github.com/nflverse/nflverse-data/releases/download/player_stats";
 const DEFAULT_STATS_PATH = "player_stats.csv";
 const DEFAULT_CACHE_TTL_MS = 1000 * 60 * 15;
-const DEFAULT_PROXY_URL = "https://ghproxy.net/";
+const DEFAULT_PROXY_URL = "https://api.allorigins.win/raw?url=";
 
 const nflverseWeeklyCache = createRequestCache<PlayerWeeklyStats[]>();
 
