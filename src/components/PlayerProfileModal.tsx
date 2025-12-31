@@ -4,6 +4,7 @@ import { selectPlayerProfile, summarizeSeasonWeeks } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
 import { usePlayerNflverseSeasonWeeklyStats } from "../hooks/usePlayerNflverseSeasonWeeklyStats";
 import { getNflTeamLogoUrl } from "../lib/playerAssets";
+import { DataLoadErrorPanel } from "./DataLoadErrorPanel";
 import { PlayerHeadshot } from "./PlayerHeadshot";
 import { PlayerTrendChart } from "./PlayerTrendChart";
 
@@ -49,7 +50,7 @@ type PlayerProfileModalProps = {
 };
 
 export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfileModalProps) {
-  const { status, seasons, loadAllSeasons } = useAllSeasonsData();
+  const { status, seasons, loadAllSeasons, error, errorStatus, errorUrl } = useAllSeasonsData();
   const modalRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const [metricView, setMetricView] = useState("ppr");
@@ -249,7 +250,14 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       return <p className="text-sm text-muted">Loading player history…</p>;
     }
     if (status === "error") {
-      return <p className="text-sm text-red-500">Unable to load player history.</p>;
+      return (
+        <DataLoadErrorPanel
+          title="Unable to load player history."
+          message={error}
+          url={errorUrl}
+          status={errorStatus}
+        />
+      );
     }
     if (!profile) {
       return (

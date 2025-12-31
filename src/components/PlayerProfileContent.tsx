@@ -3,6 +3,7 @@ import { selectPlayerProfile, summarizeSeasonWeeks } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
 import { usePlayerNflverseSeasonWeeklyStats } from "../hooks/usePlayerNflverseSeasonWeeklyStats";
 import { getNflTeamLogoUrl } from "../lib/playerAssets";
+import { DataLoadErrorPanel } from "./DataLoadErrorPanel";
 import { PlayerHeadshot } from "./PlayerHeadshot";
 import { PlayerTrendChart } from "./PlayerTrendChart";
 
@@ -46,7 +47,7 @@ type PlayerProfileContentProps = {
 };
 
 export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) {
-  const { status, seasons, loadAllSeasons } = useAllSeasonsData();
+  const { status, seasons, loadAllSeasons, error, errorStatus, errorUrl } = useAllSeasonsData();
   const [metricView, setMetricView] = useState("ppr");
   const [logoFallback, setLogoFallback] = useState<Record<string, boolean>>({});
   const [expandedSeasons, setExpandedSeasons] = useState<Record<number, boolean>>({});
@@ -201,7 +202,14 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
     return <p className="text-sm text-muted">Loading player history…</p>;
   }
   if (status === "error") {
-    return <p className="text-sm text-red-500">Unable to load player history.</p>;
+    return (
+      <DataLoadErrorPanel
+        title="Unable to load player history."
+        message={error}
+        url={errorUrl}
+        status={errorStatus}
+      />
+    );
   }
   if (!profile) {
     return (

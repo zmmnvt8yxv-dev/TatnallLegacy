@@ -1,5 +1,6 @@
 import { SCHEMA_VERSION, type PowerRankings, type SeasonData, type WeeklyRecaps } from "./schema";
-const APP_ORIGIN = typeof window !== "undefined" && window.location?.origin ? window.location.origin : "http://localhost";
+const APP_ORIGIN =
+  typeof window !== "undefined" && window.location?.origin ? window.location.origin : "http://localhost";
 const APP_BASE = import.meta.env.BASE_URL || "/";
 
 function assetUrl(path: string) {
@@ -240,13 +241,12 @@ type DataLoader = {
   getDiagnostics: () => LoaderDiagnostics;
 };
 
-const ROOT = new URL(".", APP_ORIGIN + APP_BASE).pathname.replace(/\/+$/, "") + "/";
 const DEFAULT_MANIFEST_YEARS = [
   2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,
 ];
 const diagnostics: LoaderDiagnostics = {
-  basePath: ROOT,
-  manifestUrl: `${ROOT}data/manifest.json`,
+  basePath: APP_BASE,
+  manifestUrl: assetUrl("data/manifest.json"),
   lastFetchError: undefined,
 };
 const memo = new Map<string, Promise<unknown>>();
@@ -259,18 +259,27 @@ function memoize<T>(key: string, loader: () => Promise<T>): Promise<T> {
 }
 
 async function fetchJson<T>(relPath: string, version?: string): Promise<T> {
-  const url = ROOT + relPath.replace(/^\/+/, "");
+  const url = assetUrl(relPath);
   const cacheBust = version ? `?v=${encodeURIComponent(version)}` : "";
+  const fetchUrl = `${url}${cacheBust}`;
   try {
-    const response = await fetch(`${url}${cacheBust}`, { cache: "force-cache" });
+    diagnostics.lastFetchUrl = fetchUrl;
+    diagnostics.lastFetchStatus = undefined;
+    const response = await fetch(fetchUrl, { cache: "force-cache" });
     if (!response.ok) {
-      const message = `HTTP ${response.status} for ${url}`;
+      const message = `HTTP ${response.status} for ${fetchUrl}`;
+      diagnostics.lastFetchUrl = fetchUrl;
+      diagnostics.lastFetchStatus = response.status;
       diagnostics.lastFetchError = message;
       throw new Error(message);
     }
+    diagnostics.lastFetchUrl = fetchUrl;
+    diagnostics.lastFetchStatus = response.status;
+    diagnostics.lastFetchError = undefined;
     return response.json() as Promise<T>;
   } catch (error) {
-    const message = error instanceof Error ? error.message : `Unknown error for ${url}`;
+    const message = error instanceof Error ? error.message : `Unknown error for ${fetchUrl}`;
+    diagnostics.lastFetchUrl = fetchUrl;
     diagnostics.lastFetchError = message;
     throw new Error(message);
   }
@@ -280,6 +289,8 @@ export type LoaderDiagnostics = {
   basePath: string;
   manifestUrl: string;
   lastFetchError?: string;
+  lastFetchUrl?: string;
+  lastFetchStatus?: number;
   manifestError?: string;
 };
 
