@@ -186,7 +186,7 @@
 
   .heatmap__legend-bar {
     @apply h-2 flex-1 rounded-full;
-    background: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 25%, var(--color-surface-alt)), color-mix(in srgb, var(--color-accent) 85%, var(--color-surface-alt)));
+    background: linear-gradient(90deg, #ffffff, #4b0b0b);
   }
 
   .awards-grid {

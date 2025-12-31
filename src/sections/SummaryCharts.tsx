@@ -22,6 +22,8 @@ export default function SummaryCharts({ season }: SummaryChartsProps) {
   const pointsTrend = useMemo(() => selectPointsTrend(season), [season]);
   const rivalryData = useMemo(() => selectRivalryHeatmap(season), [season]);
   const awards = useMemo(() => selectAwardCards(season), [season]);
+  const heatmapLowColor = "#ffffff";
+  const heatmapHighColor = "#4b0b0b";
   const rivalryMax = useMemo(() => {
     const rivalryValues = rivalryData.matrix
       .flatMap((row) => row.values)
@@ -148,7 +150,7 @@ export default function SummaryCharts({ season }: SummaryChartsProps) {
                         key={`${row.team}-${index}`}
                         className="heatmap__cell"
                         style={{
-                          backgroundColor: `color-mix(in srgb, var(--color-accent) ${mixPercent}%, var(--color-surface-alt))`,
+                          backgroundColor: `color-mix(in srgb, ${heatmapHighColor} ${mixPercent}%, ${heatmapLowColor})`,
                         }}
                         title={`${row.team} vs. ${rivalryData.teams[index]}: ${value.toFixed(1)} pts`}
                       >
