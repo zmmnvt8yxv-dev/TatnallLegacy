@@ -615,6 +615,7 @@ export function selectPointsTrend(season: SeasonData): PointsTrendRow[] {
   const weekly = new Map<number, { totalPoints: number; totalMargin: number; matchups: number }>();
   season.matchups.forEach((matchup) => {
     if (!isWeekVisible(season, matchup.week ?? null)) {
+    if (matchup.week == null) {
       return;
     }
     const homeScore = toNumber(matchup.home_score);
@@ -661,6 +662,7 @@ export function selectRivalryHeatmap(
       !matchup.away_team ||
       !isWeekVisible(season, matchup.week ?? null)
     ) {
+    if (!matchup.home_team || !matchup.away_team) {
       return;
     }
     const teamA = matchup.home_team;
@@ -718,6 +720,7 @@ export function selectAwardCards(season: SeasonData): AwardCard[] {
       matchup.home_team &&
       matchup.away_team &&
       isWeekVisible(season, matchup.week ?? null),
+    (matchup) => matchup.home_team && matchup.away_team && matchup.week != null,
   );
   if (matchups.length === 0) {
     awardsCache.set(season, []);
