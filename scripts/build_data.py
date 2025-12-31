@@ -74,6 +74,8 @@ def main() -> None:
     source_dir = root / args.source
     out_dir = root / args.out
     out_dir.mkdir(exist_ok=True)
+    public_dir = root / "public" / "data"
+    public_dir.mkdir(parents=True, exist_ok=True)
 
     raw_dir = out_dir / "raw"
     raw_dir.mkdir(exist_ok=True)
@@ -120,6 +122,7 @@ def main() -> None:
         payload = normalize_season(source, year, lineups if isinstance(lineups, list) else None)
         validate_season(payload, year)
         write_json(out_dir / f"{year}.json", payload)
+        write_json(public_dir / f"{year}.json", payload)
 
     for extra_file, validator in (
         ("power-rankings.json", validate_power_rankings),
@@ -128,6 +131,7 @@ def main() -> None:
         path = out_dir / extra_file
         if path.exists():
             validator(path)
+            write_json(public_dir / extra_file, load_json(path))
 
     manifest = {
         "schemaVersion": SCHEMA_VERSION,

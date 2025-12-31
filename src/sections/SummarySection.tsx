@@ -39,6 +39,38 @@ export function SummarySection() {
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
   const kpiStats = useMemo(() => (season ? selectKpiStats(season) : []), [season]);
   const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
+  const champion = useMemo(() => {
+    if (!season) {
+      return null;
+    }
+    const byFinalRank = season.teams.find((team) => team.final_rank === 1);
+    if (byFinalRank) {
+      return byFinalRank;
+    }
+    const sorted = [...season.teams].sort(
+      (a, b) => (a.regular_season_rank ?? 99) - (b.regular_season_rank ?? 99),
+    );
+    return sorted[0] ?? null;
+  }, [season]);
+  const finalMatchup = useMemo(() => {
+    if (!season) {
+      return null;
+    }
+    const playoffMatchups = season.matchups.filter((matchup) => matchup.is_playoff);
+    if (playoffMatchups.length === 0) {
+      return null;
+    }
+    const latestWeek = Math.max(...playoffMatchups.map((matchup) => matchup.week ?? 0));
+    const finalWeekMatchups = playoffMatchups.filter(
+      (matchup) => (matchup.week ?? 0) === latestWeek,
+    );
+    return finalWeekMatchups
+      .map((matchup) => ({
+        ...matchup,
+        total: (matchup.home_score ?? 0) + (matchup.away_score ?? 0),
+      }))
+      .sort((a, b) => b.total - a.total)[0];
+  }, [season]);
   const snapshotFilename = useMemo(() => {
     const date = new Date().toISOString().slice(0, 10);
     return `weekly-summary-${date}.png`;
@@ -113,34 +145,6 @@ export function SummarySection() {
       setSnapshotStatus("Unable to share snapshot.");
     }
   };
-
-  const champion = useMemo(() => {
-    const byFinalRank = season.teams.find((team) => team.final_rank === 1);
-    if (byFinalRank) {
-      return byFinalRank;
-    }
-    const sorted = [...season.teams].sort(
-      (a, b) => (a.regular_season_rank ?? 99) - (b.regular_season_rank ?? 99),
-    );
-    return sorted[0] ?? null;
-  }, [season]);
-
-  const finalMatchup = useMemo(() => {
-    const playoffMatchups = season.matchups.filter((matchup) => matchup.is_playoff);
-    if (playoffMatchups.length === 0) {
-      return null;
-    }
-    const latestWeek = Math.max(...playoffMatchups.map((matchup) => matchup.week ?? 0));
-    const finalWeekMatchups = playoffMatchups.filter(
-      (matchup) => (matchup.week ?? 0) === latestWeek,
-    );
-    return finalWeekMatchups
-      .map((matchup) => ({
-        ...matchup,
-        total: (matchup.home_score ?? 0) + (matchup.away_score ?? 0),
-      }))
-      .sort((a, b) => b.total - a.total)[0];
-  }, [season]);
 
   const isCurrentSeason = year != null && years.length > 0 && year === Math.max(...years);
   const formatScore = (value: number | null | undefined) =>
