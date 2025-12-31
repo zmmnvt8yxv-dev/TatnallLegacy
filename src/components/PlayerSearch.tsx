@@ -8,7 +8,7 @@ const MAX_SUGGESTIONS = 8;
 
 export function PlayerSearch() {
   const { openProfile } = usePlayerProfile();
-  const { status, seasons } = useAllSeasonsData();
+  const { status, seasons, loadAllSeasons } = useAllSeasonsData();
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -114,7 +114,13 @@ export function PlayerSearch() {
     }
   };
 
-  const disabled = status !== "ready";
+  const disabled = status === "loading" || status === "error";
+  const placeholder =
+    status === "loading"
+      ? "Loading players…"
+      : status === "error"
+        ? "Player data unavailable"
+        : "Search players…";
 
   return (
     <form className="player-search" onSubmit={handleSubmit} role="search">
@@ -126,12 +132,15 @@ export function PlayerSearch() {
           ref={inputRef}
           id="playerSearch"
           type="search"
-          placeholder={disabled ? "Loading players…" : "Search players…"}
+          placeholder={placeholder}
           aria-label="Search players"
           className="input player-search__input"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          onFocus={() => setIsOpen(true)}
+          onFocus={() => {
+            loadAllSeasons();
+            setIsOpen(true);
+          }}
           onBlur={() => setTimeout(() => setIsOpen(false), 150)}
           disabled={disabled}
         />
