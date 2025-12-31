@@ -1514,12 +1514,29 @@ export function selectPlayerProfile(
       matchupMap.set(`${matchup.week}:${matchup.away_team}`, matchup.home_team);
     });
 
+    const matchingPlayerIds = new Set<string>();
+    const playerIndex = season.supplemental?.player_index;
+    if (playerIndex) {
+      Object.entries(playerIndex).forEach(([id, player]) => {
+        const name = player.full_name ?? player.name;
+        if (name && normalizePlayerName(name) === normalized) {
+          matchingPlayerIds.add(id);
+        }
+      });
+    }
+
     const playerEntries =
       season.lineups?.filter((entry) => {
-        if (!entry.player) {
-          return false;
+        if (entry.player && normalizePlayerName(entry.player) === normalized) {
+          return true;
         }
-        return normalizePlayerName(entry.player) === normalized;
+        if (entry.player_id && matchingPlayerIds.has(entry.player_id)) {
+          return true;
+        }
+        if (entry.player && matchingPlayerIds.has(entry.player)) {
+          return true;
+        }
+        return false;
       }) ?? [];
 
     const scoringEntries = playerEntries.filter((entry) => entry.started !== false);
