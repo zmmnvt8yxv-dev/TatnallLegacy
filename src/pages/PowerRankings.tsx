@@ -2,23 +2,9 @@ import { Card, Text, Title } from '@tremor/react';
 import { type ChangeEvent, useEffect, useMemo, useState } from 'react';
 
 import { Button, buttonVariants } from '@/components/ui/button';
+import { dataLoader } from '@/data/loader';
+import type { PowerRankingEntry, PowerRankings as PowerRankingsResponse } from '@/data/schema';
 import { cn } from '@/lib/utils';
-
-type PowerRankingEntry = {
-  week: number;
-  team: string;
-  rank: number;
-  record?: string | null;
-  points_for?: number | null;
-  note?: string | null;
-};
-
-type PowerRankingsResponse = {
-  schemaVersion: string;
-  generated_at?: string | null;
-  season?: number | null;
-  entries: PowerRankingEntry[];
-};
 
 type LoadState = 'idle' | 'loading' | 'loaded' | 'error';
 
@@ -36,11 +22,7 @@ export function PowerRankings() {
     const load = async () => {
       setStatus('loading');
       try {
-        const response = await fetch('/data/power-rankings.json');
-        if (!response.ok) {
-          throw new Error('Unable to load power rankings');
-        }
-        const payload = (await response.json()) as PowerRankingsResponse;
+        const payload = await dataLoader.loadPowerRankings();
         if (active) {
           setData(payload);
           setStatus('loaded');

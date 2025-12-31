@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { selectPlayerProfile } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
 
@@ -28,7 +28,7 @@ type PlayerProfileContentProps = {
 };
 
 export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) {
-  const { status, seasons } = useAllSeasonsData();
+  const { status, seasons, loadAllSeasons } = useAllSeasonsData();
   const [logoFallback, setLogoFallback] = useState<Record<string, boolean>>({});
   const profile = useMemo(() => {
     if (!playerName || status !== "ready") {
@@ -37,7 +37,13 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
     return selectPlayerProfile(seasons, playerName);
   }, [playerName, seasons, status]);
 
-  if (status === "loading") {
+  useEffect(() => {
+    if (playerName) {
+      loadAllSeasons();
+    }
+  }, [loadAllSeasons, playerName]);
+
+  if (status === "loading" || status === "idle") {
     return <p className="text-sm text-muted">Loading player history…</p>;
   }
   if (status === "error") {

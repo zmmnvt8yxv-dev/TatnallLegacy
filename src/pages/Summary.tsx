@@ -9,6 +9,7 @@ import {
 } from 'recharts';
 
 import { Button } from '@/components/ui/button';
+import { SummarySection } from '@/sections/SummarySection';
 
 const kpis = [
   {
@@ -109,7 +110,7 @@ export function Summary() {
           </div>
         </Card>
       </section>
-
+      <SummarySection />
     </div>
   );
 }
