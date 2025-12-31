@@ -250,6 +250,52 @@ export function SummarySection() {
           ) : null}
         </div>
 
+        {selectedWeek !== "all" ? (
+          <div className="summary-block">
+            <div className="section-heading">Week {selectedWeek} Scoreboard</div>
+            <p className="section-caption">Box score snapshots for each matchup.</p>
+            {selectedWeekMatchups.length === 0 ? (
+              <p className="text-sm text-muted">No matchups recorded for this week.</p>
+            ) : (
+              <div className="matchups-grid">
+                {selectedWeekMatchups.map((matchup) => {
+                  const homeScore = matchup.home_score ?? null;
+                  const awayScore = matchup.away_score ?? null;
+                  const status = homeScore || awayScore ? "Final" : "Upcoming";
+                  return (
+                    <article
+                      key={`${matchup.week}-${matchup.home_team}-${matchup.away_team}`}
+                      className="matchup-card"
+                    >
+                      <div className="matchup-card__header">
+                        <p className="matchup-card__week">Week {matchup.week}</p>
+                        <span
+                          className={`status-pill ${
+                            status === "Final" ? "status-pill--active" : "status-pill--upcoming"
+                          }`}
+                        >
+                          {status}
+                        </span>
+                      </div>
+                      <div className="matchup-card__body">
+                        <div className="matchup-card__team">
+                          <span>{matchup.away_team}</span>
+                          <strong>{awayScore != null ? awayScore.toFixed(1) : "—"}</strong>
+                        </div>
+                        <div className="matchup-card__team">
+                          <span>{matchup.home_team}</span>
+                          <strong>{homeScore != null ? homeScore.toFixed(1) : "—"}</strong>
+                        </div>
+                      </div>
+                      <p className="matchup-card__kickoff">Box score summary</p>
+                    </article>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        ) : null}
+
         <div className="summary-kpis">
           {kpiStats.map((stat) => (
             <div key={stat.label} className="kpi-card">
