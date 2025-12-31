@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
+import { SleeperLoginPanel } from '@/components/SleeperLoginPanel';
 import { cn } from '@/lib/utils';
+import { ensureGuestLog } from '@/lib/userLog';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
 import { PowerRankings } from '@/pages/PowerRankings';
 import { Summary } from '@/pages/Summary';
@@ -19,6 +22,10 @@ const navigation = [
 ];
 
 function App() {
+  useEffect(() => {
+    ensureGuestLog();
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <header className="border-b border-slate-800 bg-slate-950/95">
@@ -31,7 +38,12 @@ function App() {
               League Operations Hub
             </h1>
           </div>
-          <Button className="w-full md:w-auto">Generate League Report</Button>
+          <div className="flex w-full flex-col gap-3 md:w-auto md:items-end">
+            <Button className="w-full md:w-auto">Generate League Report</Button>
+            <div className="w-full md:min-w-[320px]">
+              <SleeperLoginPanel />
+            </div>
+          </div>
         </div>
         <nav className="mx-auto w-full max-w-6xl px-6 pb-4">
           <div className="flex flex-wrap gap-2">
