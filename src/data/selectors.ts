@@ -150,6 +150,14 @@ export type PlayerSeasonWeek = {
   started: boolean | null;
 };
 
+export type PlayerSeasonWeek = {
+  week: number;
+  points: number;
+  opponent: string | null;
+  team: string | null;
+  started: boolean | null;
+};
+
 export function summarizeSeasonWeeks(
   season: number,
   weeks: PlayerSeasonWeek[],
@@ -1499,7 +1507,7 @@ export function selectPlayerProfile(
       matchupMap.set(`${matchup.week}:${matchup.away_team}`, matchup.home_team);
     });
 
-    const playerEntries =
+    const entries =
       season.lineups?.filter((entry) => {
         if (!entry.player) {
           return false;

@@ -80,7 +80,11 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   }, [metricOptions, metricView]);
 
   const liveSeason = 2025;
-  const liveWeeklyStats = usePlayerWeeklyStats(profile?.playerId ?? null, profile ? liveSeason : null);
+  const hasLiveSeason = Boolean(profile?.seasons.some((season) => season.season === liveSeason));
+  const liveWeeklyStats = usePlayerWeeklyStats(
+    profile?.playerId ?? null,
+    hasLiveSeason ? liveSeason : null,
+  );
   const seasonsToDisplay = useMemo(() => {
     if (!profile) {
       return [];
@@ -88,22 +92,14 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
     if (liveWeeklyStats.status !== "ready" || liveWeeklyStats.weeks.length === 0) {
       return profile.seasons;
     }
-
-    const existingSeason = profile.seasons.find((season) => season.season === liveSeason);
-    const liveSummary = summarizeSeasonWeeks(
-      liveSeason,
-      liveWeeklyStats.weeks,
-      existingSeason?.fantasyTeams ?? [],
+    return profile.seasons.map((season) =>
+      season.season === liveSeason ? { ...season, weeks: liveWeeklyStats.weeks } : season,
     );
-
-    const updated = profile.seasons.map((season) =>
-      season.season === liveSeason ? liveSummary : season,
-    );
-    if (!existingSeason) {
-      updated.push(liveSummary);
-    }
-    return updated.sort((a, b) => a.season - b.season);
   }, [profile, liveSeason, liveWeeklyStats.status, liveWeeklyStats.weeks]);
+
+  useEffect(() => {
+    setExpandedSeasons({});
+  }, [playerName]);
 
   useEffect(() => {
     setExpandedSeasons({});
@@ -360,7 +356,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
                 </tr>
               </thead>
               <tbody>
-                {seasonsToDisplay.map((season) => {
+                {profile.seasons.map((season) => {
                   const expanded = Boolean(expandedSeasons[season.season]);
                   const detailId = `season-${season.season}-weeks`;
                   return (

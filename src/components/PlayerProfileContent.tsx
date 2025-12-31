@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
-import { selectPlayerProfile, summarizeSeasonWeeks } from "../data/selectors";
+import { selectPlayerProfile } from "../data/selectors";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
 import { usePlayerWeeklyStats } from "../hooks/usePlayerWeeklyStats";
 import { getNflTeamLogoUrl } from "../lib/playerAssets";
@@ -82,32 +82,6 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
       setMetricView(metricOptions[0]?.id ?? "ppr");
     }
   }, [metricOptions, metricView]);
-
-  const liveSeason = 2025;
-  const liveWeeklyStats = usePlayerWeeklyStats(profile?.playerId ?? null, profile ? liveSeason : null);
-  const seasonsToDisplay = useMemo(() => {
-    if (!profile) {
-      return [];
-    }
-    if (liveWeeklyStats.status !== "ready" || liveWeeklyStats.weeks.length === 0) {
-      return profile.seasons;
-    }
-
-    const existingSeason = profile.seasons.find((season) => season.season === liveSeason);
-    const liveSummary = summarizeSeasonWeeks(
-      liveSeason,
-      liveWeeklyStats.weeks,
-      existingSeason?.fantasyTeams ?? [],
-    );
-
-    const updated = profile.seasons.map((season) =>
-      season.season === liveSeason ? liveSummary : season,
-    );
-    if (!existingSeason) {
-      updated.push(liveSummary);
-    }
-    return updated.sort((a, b) => a.season - b.season);
-  }, [profile, liveSeason, liveWeeklyStats.status, liveWeeklyStats.weeks]);
 
   useEffect(() => {
     setExpandedSeasons({});
@@ -316,7 +290,7 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
               </tr>
             </thead>
             <tbody>
-              {seasonsToDisplay.map((season) => {
+              {profile.seasons.map((season) => {
                 const expanded = Boolean(expandedSeasons[season.season]);
                 const detailId = `season-${season.season}-weeks`;
                 return (
