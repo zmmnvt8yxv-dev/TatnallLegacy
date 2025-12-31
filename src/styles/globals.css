@@ -41,11 +41,15 @@
   }
 
   .app-header {
-    @apply border-b border-border bg-surface bg-opacity-95 backdrop-blur;
+    @apply sticky top-0 z-40 border-b border-border bg-surface bg-opacity-95 backdrop-blur;
   }
 
-  .app-header__inner {
-    @apply mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-6 lg:flex-row lg:items-center lg:justify-between;
+  .app-topbar {
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-4 md:flex-row md:items-center md:justify-between;
+  }
+
+  .app-brand {
+    @apply space-y-1;
   }
 
   .app-title__kicker {
@@ -56,16 +60,20 @@
     @apply text-2xl font-semibold text-foreground;
   }
 
-  .app-toolbar {
-    @apply flex w-full flex-col gap-4 lg:w-auto lg:items-end;
-  }
-
-  .app-toolbar__row {
-    @apply flex w-full flex-wrap items-center gap-3 lg:justify-end;
+  .app-topbar__actions {
+    @apply flex w-full flex-wrap items-center gap-3 md:w-auto md:justify-end;
   }
 
   .app-pill {
     @apply flex items-center gap-2 rounded-full border border-border bg-surface-alt bg-opacity-70 px-3 py-2 text-xs text-muted shadow-soft;
+  }
+
+  .app-pill--compact {
+    @apply gap-2;
+  }
+
+  .app-pill--wide {
+    @apply w-full justify-between gap-4;
   }
 
   .app-pill__label {
@@ -80,6 +88,38 @@
     @apply flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface-alt bg-opacity-70 transition hover:border-accent;
   }
 
+  .app-statusbar {
+    @apply mx-auto w-full max-w-6xl px-6 pb-4;
+  }
+
+  .app-hamburger {
+    @apply relative flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface-alt bg-opacity-70 transition hover:border-accent;
+  }
+
+  .app-hamburger span {
+    @apply absolute block h-0.5 w-5 rounded-full bg-foreground transition;
+  }
+
+  .app-hamburger span:nth-child(1) {
+    transform: translateY(-6px);
+  }
+
+  .app-hamburger span:nth-child(3) {
+    transform: translateY(6px);
+  }
+
+  .app-hamburger.is-open span:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  .app-hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .app-hamburger.is-open span:nth-child(3) {
+    transform: translateY(0) rotate(-45deg);
+  }
+
   .app-nav {
     @apply border-t border-border;
   }
@@ -88,12 +128,17 @@
     @apply mx-auto w-full max-w-6xl px-6 pb-4;
   }
 
-  .app-nav__controls {
-    @apply flex items-center justify-between pb-3 md:pb-0;
+  .app-nav__panel {
+    @apply overflow-hidden transition-all duration-300 ease-out;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
   }
 
-  .app-nav__toggle {
-    @apply inline-flex items-center gap-2 rounded-full border border-border bg-surface-alt bg-opacity-70 px-3 py-2 text-xs font-medium text-foreground transition hover:border-accent md:hidden;
+  .app-nav__panel.is-open {
+    max-height: 420px;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .app-nav__links {
@@ -106,6 +151,143 @@
 
   .app-nav__link--active {
     @apply bg-surface-alt text-foreground shadow-soft;
+  }
+
+  @media (min-width: 768px) {
+    .app-pill--wide {
+      width: auto;
+    }
+
+    .app-nav__panel {
+      max-height: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .summary-panel {
+    @apply fixed inset-0 z-40 flex justify-end opacity-0 transition;
+    pointer-events: none;
+  }
+
+  .summary-panel.is-open {
+    @apply opacity-100;
+    pointer-events: auto;
+  }
+
+  .summary-panel__overlay {
+    @apply absolute inset-0 bg-black/60;
+  }
+
+  .summary-panel__content {
+    @apply relative flex h-full w-[90vw] max-w-sm flex-col gap-4 border-l border-border bg-surface px-6 py-6 shadow-lg transition-transform;
+    transform: translateX(100%);
+  }
+
+  .summary-panel.is-open .summary-panel__content {
+    transform: translateX(0);
+  }
+
+  .summary-panel__header {
+    @apply flex items-center justify-between gap-4;
+  }
+
+  .summary-panel__kicker {
+    @apply text-xs uppercase tracking-[0.3em] text-muted;
+  }
+
+  .summary-panel__title {
+    @apply text-lg font-semibold text-foreground;
+  }
+
+  .summary-panel__stats {
+    @apply grid gap-3;
+  }
+
+  .summary-panel__stat {
+    @apply rounded-xl border border-border bg-surface-alt px-4 py-3 shadow-soft;
+  }
+
+  .summary-panel__stat-label {
+    @apply text-[0.65rem] uppercase tracking-[0.2em] text-muted;
+  }
+
+  .summary-panel__stat-value {
+    @apply text-lg font-semibold text-foreground;
+  }
+
+  .summary-panel__stat-detail {
+    @apply text-xs text-muted;
+  }
+
+  @media (min-width: 768px) {
+    .summary-panel {
+      display: none;
+    }
+  }
+
+  .draft-board {
+    @apply flex flex-col gap-6;
+  }
+
+  .draft-board__round {
+    @apply overflow-hidden rounded-2xl border border-border bg-surface shadow-soft;
+  }
+
+  .draft-board__round-header {
+    @apply flex flex-col gap-2 border-b border-border bg-surface-alt px-5 py-4 sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .draft-board__round-label {
+    @apply text-sm font-semibold text-foreground;
+  }
+
+  .draft-board__round-meta {
+    @apply text-xs text-muted;
+  }
+
+  .draft-board__round-pill {
+    @apply rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted;
+  }
+
+  .draft-board__grid {
+    @apply grid gap-3 px-5 py-4 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .draft-board__card {
+    @apply rounded-xl border border-border bg-surface-alt p-4 shadow-soft transition hover:border-accent;
+  }
+
+  .draft-board__card-top {
+    @apply flex items-center justify-between gap-2;
+  }
+
+  .draft-board__pick {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .draft-board__player {
+    @apply mt-2 text-base font-semibold text-foreground;
+  }
+
+  .draft-board__team {
+    @apply text-sm text-foreground;
+  }
+
+  .draft-board__manager {
+    @apply text-xs text-muted;
+  }
+
+  .draft-board__badges {
+    @apply mt-3 flex flex-wrap gap-2;
+  }
+
+  .draft-board__badge {
+    @apply rounded-full border border-border bg-surface px-2 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-muted;
+  }
+
+  .draft-board__badge--keeper {
+    @apply border-accent text-foreground;
   }
 
   .tabs {

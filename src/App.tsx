@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { NavLink, Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 import { PlayerSearch } from "./components/PlayerSearch";
 import { Button } from "./components/ui/button";
@@ -73,6 +74,7 @@ export default function App() {
 
   const handleLoginSuccess = (user: SleeperUser) => {
     setCurrentUserState(user);
+    toast.success(`Welcome back, @${user.username}.`);
     if (user.username === adminUsername) {
       navigate("/user-log");
       return;
@@ -94,79 +96,91 @@ export default function App() {
   return (
     <div className="app-shell">
       <header className="app-header">
-        <div className="app-header__inner">
-          <div>
+        <div className="app-topbar">
+          <div className="app-brand">
             <p className="app-title__kicker">Tatnall Legacy</p>
             <h1 className="app-title__headline">League Operations Hub</h1>
           </div>
-          <div className="app-toolbar">
-            <div className="app-toolbar__row">
-              <PlayerSearch />
-              <div className="app-pill">
-                <label htmlFor="seasonSelect" className="app-pill__label">
-                  Season
-                </label>
-                <select
-                  id="seasonSelect"
-                  aria-label="Season"
-                  className="input text-xs"
-                  disabled={status !== "ready"}
-                  value={year ?? ""}
-                  onChange={(event) => setYear(Number(event.target.value))}
-                >
-                  {seasonOptions.map((option) => (
-                    <option key={option.value || option.label} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <Button
-                type="button"
-                variant="outline"
-                className="border-border text-foreground hover:bg-surface-alt"
-                onClick={toggleTheme}
+          <div className="app-topbar__actions">
+            <PlayerSearch />
+            <div className="app-pill app-pill--compact">
+              <label htmlFor="seasonSelect" className="app-pill__label">
+                League
+              </label>
+              <select
+                id="seasonSelect"
+                aria-label="League season"
+                className="input text-xs"
+                disabled={status !== "ready"}
+                value={year ?? ""}
+                onChange={(event) => setYear(Number(event.target.value))}
               >
-                {theme === "dark" ? "Light mode" : "Dark mode"}
-              </Button>
+                {seasonOptions.map((option) => (
+                  <option key={option.value || option.label} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
             </div>
-            <div className="app-pill">
-              <div>
-                <p className="app-pill__label">Sleeper Access</p>
-                <p className="app-pill__value">
-                  {currentUser
-                    ? `Logged in as @${currentUser.username}`
-                    : "Log in to personalize the experience"}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                {currentUser ? (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="border-border text-xs text-foreground hover:bg-surface-alt"
-                    onClick={() => {
-                      setCurrentUser(null);
-                      setCurrentUserState(null);
-                    }}
-                  >
-                    Log out
-                  </Button>
-                ) : null}
-                <button
+            <Button
+              type="button"
+              variant="outline"
+              className="border-border text-foreground hover:bg-surface-alt"
+              onClick={toggleTheme}
+            >
+              {theme === "dark" ? "Light mode" : "Dark mode"}
+            </Button>
+            <button
+              type="button"
+              className={cn("app-hamburger md:hidden", isNavOpen && "is-open")}
+              onClick={() => setNavOpen((open) => !open)}
+              aria-expanded={isNavOpen}
+              aria-controls="primary-navigation"
+              aria-label={isNavOpen ? "Close navigation" : "Open navigation"}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+        </div>
+        <div className="app-statusbar">
+          <div className="app-pill app-pill--wide">
+            <div>
+              <p className="app-pill__label">Sleeper Access</p>
+              <p className="app-pill__value">
+                {currentUser
+                  ? `Logged in as @${currentUser.username}`
+                  : "Log in to personalize the experience"}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              {currentUser ? (
+                <Button
                   type="button"
-                  onClick={() => setLoginOpen(true)}
-                  className="app-icon-button"
-                  aria-label="Open Sleeper login"
-                  title="Log in with your Sleeper username (no password required)"
+                  variant="outline"
+                  className="border-border text-xs text-foreground hover:bg-surface-alt"
+                  onClick={() => {
+                    setCurrentUser(null);
+                    setCurrentUserState(null);
+                  }}
                 >
-                  <img
-                    src="https://sleepercdn.com/images/app-logo.png"
-                    alt="Sleeper logo"
-                    className="h-6 w-6"
-                  />
-                </button>
-              </div>
+                  Log out
+                </Button>
+              ) : null}
+              <button
+                type="button"
+                onClick={() => setLoginOpen(true)}
+                className="app-icon-button"
+                aria-label="Open Sleeper login"
+                title="Log in with your Sleeper username (no password required)"
+              >
+                <img
+                  src="https://sleepercdn.com/images/app-logo.png"
+                  alt="Sleeper logo"
+                  className="h-6 w-6"
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -177,39 +191,27 @@ export default function App() {
         ) : null}
         <nav className="app-nav">
           <div className="app-nav__inner">
-            <div className="app-nav__controls">
-              <span className="text-xs uppercase tracking-[0.2em] text-muted md:hidden">
-                Navigation
-              </span>
-              <button
-                type="button"
-                className="app-nav__toggle"
-                onClick={() => setNavOpen((open) => !open)}
-                aria-expanded={isNavOpen}
-                aria-controls="primary-navigation"
-              >
-                {isNavOpen ? "Close menu" : "Open menu"}
-              </button>
-            </div>
             <div
               id="primary-navigation"
-              className={cn("app-nav__links", isNavOpen ? "flex" : "hidden md:flex")}
+              className={cn("app-nav__panel", isNavOpen && "is-open")}
             >
-              {navigation.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end={item.path === "/"}
-                  className={({ isActive }) =>
-                    cn("app-nav__link", isActive && "app-nav__link--active")
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-              <a href="trade.html" className="app-nav__link">
-                Trade Analysis
-              </a>
+              <div className="app-nav__links">
+                {navigation.map((item) => (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    end={item.path === "/"}
+                    className={({ isActive }) =>
+                      cn("app-nav__link", isActive && "app-nav__link--active")
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
+                <a href="trade.html" className="app-nav__link">
+                  Trade Analysis
+                </a>
+              </div>
             </div>
           </div>
         </nav>
@@ -247,6 +249,16 @@ export default function App() {
         isOpen={isLoginOpen}
         onClose={() => setLoginOpen(false)}
         onSuccess={handleLoginSuccess}
+      />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme={theme}
       />
     </div>
   );

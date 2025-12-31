@@ -40,6 +40,9 @@ export function PlayerTrendChart({ data }: PlayerTrendChartProps) {
             strokeWidth={3}
             dot={{ r: 4, fill: "#38bdf8" }}
             activeDot={{ r: 6 }}
+            isAnimationActive
+            animationDuration={900}
+            animationEasing="ease-in-out"
           />
         </LineChart>
       </ResponsiveContainer>

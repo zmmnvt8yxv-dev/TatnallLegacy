@@ -1,4 +1,5 @@
 import { Card, Metric, Text, Title } from '@tremor/react';
+import { useState } from 'react';
 import {
   Line,
   LineChart,
@@ -9,6 +10,7 @@ import {
 } from 'recharts';
 
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import { SummarySection } from '@/sections/SummarySection';
 
 const kpis = [
@@ -39,6 +41,8 @@ const momentumData = [
 ];
 
 export function Summary() {
+  const [isPanelOpen, setPanelOpen] = useState(false);
+
   return (
     <div className="space-y-8">
       <section className="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 md:flex-row md:items-center md:justify-between">
@@ -55,6 +59,11 @@ export function Summary() {
         </div>
         <Button variant="outline">Export Weekly Brief</Button>
       </section>
+      <div className="flex md:hidden">
+        <Button type="button" variant="outline" onClick={() => setPanelOpen(true)}>
+          Open League Summary
+        </Button>
+      </div>
 
       <section className="grid gap-4 md:grid-cols-3">
         {kpis.map((kpi) => (
@@ -104,6 +113,9 @@ export function Summary() {
                   stroke="#38bdf8"
                   strokeWidth={3}
                   dot={{ r: 4, fill: '#38bdf8' }}
+                  isAnimationActive
+                  animationDuration={900}
+                  animationEasing="ease-in-out"
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -111,6 +123,41 @@ export function Summary() {
         </Card>
       </section>
       <SummarySection />
+      <div className={cn('summary-panel', isPanelOpen && 'is-open')}>
+        <button
+          type="button"
+          className="summary-panel__overlay"
+          aria-label="Close league summary panel"
+          onClick={() => setPanelOpen(false)}
+        />
+        <aside className="summary-panel__content" aria-label="League summary panel">
+          <div className="summary-panel__header">
+            <div>
+              <p className="summary-panel__kicker">League Overview</p>
+              <h3 className="summary-panel__title">Quick stats at a glance</h3>
+            </div>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => setPanelOpen(false)}
+            >
+              Close
+            </button>
+          </div>
+          <p className="text-sm text-muted">
+            Stay up to speed with the latest league-wide signals before diving into the detailed dashboards.
+          </p>
+          <div className="summary-panel__stats">
+            {kpis.map((kpi) => (
+              <div key={kpi.label} className="summary-panel__stat">
+                <p className="summary-panel__stat-label">{kpi.label}</p>
+                <p className="summary-panel__stat-value">{kpi.value}</p>
+                <p className="summary-panel__stat-detail">{kpi.detail}</p>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }

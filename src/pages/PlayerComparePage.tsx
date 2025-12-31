@@ -193,8 +193,22 @@ export function PlayerComparePage() {
                       formatter={(value) => [`${value} pts`, "Total"]}
                     />
                     <Legend />
-                    <Bar dataKey="playerA" fill={colors.playerA} name={playerAProfile.player} />
-                    <Bar dataKey="playerB" fill={colors.playerB} name={playerBProfile.player} />
+                    <Bar
+                      dataKey="playerA"
+                      fill={colors.playerA}
+                      name={playerAProfile.player}
+                      isAnimationActive
+                      animationDuration={900}
+                      animationEasing="ease-in-out"
+                    />
+                    <Bar
+                      dataKey="playerB"
+                      fill={colors.playerB}
+                      name={playerBProfile.player}
+                      isAnimationActive
+                      animationDuration={900}
+                      animationEasing="ease-in-out"
+                    />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -233,6 +247,9 @@ export function PlayerComparePage() {
                       dot={{ r: 3, fill: colors.playerA }}
                       activeDot={{ r: 5 }}
                       name={playerAProfile.player}
+                      isAnimationActive
+                      animationDuration={900}
+                      animationEasing="ease-in-out"
                     />
                     <Line
                       type="monotone"
@@ -242,6 +259,9 @@ export function PlayerComparePage() {
                       dot={{ r: 3, fill: colors.playerB }}
                       activeDot={{ r: 5 }}
                       name={playerBProfile.player}
+                      isAnimationActive
+                      animationDuration={900}
+                      animationEasing="ease-in-out"
                     />
                   </LineChart>
                 </ResponsiveContainer>
