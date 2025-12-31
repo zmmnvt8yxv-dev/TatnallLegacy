@@ -612,20 +612,27 @@ export function selectPointsTrend(season: SeasonData): PointsTrendRow[] {
   if (cached) {
     return cached;
   }
+
   const weekly = new Map<number, { totalPoints: number; totalMargin: number; matchups: number }>();
   season.matchups.forEach((matchup) => {
-    if (!isWeekVisible(season, matchup.week ?? null)) {
     if (matchup.week == null) {
       return;
     }
+    if (!isWeekVisible(season, matchup.week)) {
+      return;
+    }
+
     const homeScore = toNumber(matchup.home_score);
     const awayScore = toNumber(matchup.away_score);
     const entry = weekly.get(matchup.week) ?? { totalPoints: 0, totalMargin: 0, matchups: 0 };
+
     entry.totalPoints += homeScore + awayScore;
     entry.totalMargin += homeScore - awayScore;
     entry.matchups += 1;
+
     weekly.set(matchup.week, entry);
-  }));
+  });
+
   const rows = Array.from(weekly.entries())
     .sort(([weekA], [weekB]) => weekA - weekB)
     .map(([week, entry]) => {
@@ -640,10 +647,10 @@ export function selectPointsTrend(season: SeasonData): PointsTrendRow[] {
         net: Number(net.toFixed(1)),
       };
     });
+
   pointsTrendCache.set(season, rows);
   return rows;
 }
-
 export function selectRivalryHeatmap(
   season: SeasonData,
 ): { teams: string[]; matrix: RivalryHeatmapRow[] } {
@@ -657,11 +664,12 @@ export function selectRivalryHeatmap(
     .sort((a, b) => a.localeCompare(b));
   const matchupTotals = new Map<string, { total: number; count: number }>();
   season.matchups.forEach((matchup) => {
-    if (
-      !matchup.home_team ||
-      !matchup.away_team ||
-      !isWeekVisible(season, matchup.week ?? null)
-    ) {
+        if (matchup.week == null) {
+      return;
+    }
+    if (!isWeekVisible(season, matchup.week)) {
+      return;
+    }
     if (!matchup.home_team || !matchup.away_team) {
       return;
     }
@@ -715,12 +723,12 @@ export function selectAwardCards(season: SeasonData): AwardCard[] {
     return awardsFromData;
   }
 
-  const matchups = season.matchups.filter(
+    const matchups = season.matchups.filter(
     (matchup) =>
       matchup.home_team &&
       matchup.away_team &&
-      isWeekVisible(season, matchup.week ?? null),
-    (matchup) => matchup.home_team && matchup.away_team && matchup.week != null,
+      matchup.week != null &&
+      isWeekVisible(season, matchup.week),
   );
   if (matchups.length === 0) {
     awardsCache.set(season, []);
