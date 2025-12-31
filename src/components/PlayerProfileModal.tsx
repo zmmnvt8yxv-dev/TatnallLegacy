@@ -102,6 +102,10 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   }, [playerName]);
 
   useEffect(() => {
+    setExpandedSeasons({});
+  }, [playerName]);
+
+  useEffect(() => {
     if (!isOpen) {
       return;
     }
@@ -352,7 +356,7 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
                 </tr>
               </thead>
               <tbody>
-                {seasonsToDisplay.map((season) => {
+                {profile.seasons.map((season) => {
                   const expanded = Boolean(expandedSeasons[season.season]);
                   const detailId = `season-${season.season}-weeks`;
                   return (

@@ -83,24 +83,6 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
     }
   }, [metricOptions, metricView]);
 
-  const liveSeason = 2025;
-  const hasLiveSeason = Boolean(profile?.seasons.some((season) => season.season === liveSeason));
-  const liveWeeklyStats = usePlayerWeeklyStats(
-    profile?.playerId ?? null,
-    hasLiveSeason ? liveSeason : null,
-  );
-  const seasonsToDisplay = useMemo(() => {
-    if (!profile) {
-      return [];
-    }
-    if (liveWeeklyStats.status !== "ready" || liveWeeklyStats.weeks.length === 0) {
-      return profile.seasons;
-    }
-    return profile.seasons.map((season) =>
-      season.season === liveSeason ? { ...season, weeks: liveWeeklyStats.weeks } : season,
-    );
-  }, [profile, liveSeason, liveWeeklyStats.status, liveWeeklyStats.weeks]);
-
   useEffect(() => {
     setExpandedSeasons({});
   }, [playerName]);
@@ -308,7 +290,7 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
               </tr>
             </thead>
             <tbody>
-              {seasonsToDisplay.map((season) => {
+              {profile.seasons.map((season) => {
                 const expanded = Boolean(expandedSeasons[season.season]);
                 const detailId = `season-${season.season}-weeks`;
                 return (
