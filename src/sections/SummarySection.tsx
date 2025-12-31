@@ -165,7 +165,12 @@ export function SummarySection() {
 
         <div className="summary-highlights">
           {highlights.map((item) => (
-            <StatCard key={item.label} label={item.label} value={item.value} caption={item.caption} />
+            <StatCard
+              key={item.label}
+              label={item.label}
+              value={item.value}
+              caption={item.caption}
+            />
           ))}
         </div>
         <Suspense fallback={<SummaryChartsSkeleton />}>

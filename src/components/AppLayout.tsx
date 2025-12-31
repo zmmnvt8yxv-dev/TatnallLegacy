@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { externalNavigation, navigationItems } from "../navigation";
+import { ChampionBanner } from "./ChampionBanner";
 import { Header } from "./Header";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -43,6 +44,7 @@ export function AppLayout() {
               </a>
             ))}
           </nav>
+          <ChampionBanner />
           <main className="space-y-6">
             <Outlet />
           </main>

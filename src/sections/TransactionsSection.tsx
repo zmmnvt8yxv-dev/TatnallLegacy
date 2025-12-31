@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { LoadingSection } from "../components/LoadingSection";
+import { PlayerName } from "../components/PlayerName";
 import { SectionShell } from "../components/SectionShell";
 import { selectTransactionFilters, selectTransactions, selectTransactionWeeks } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
@@ -128,7 +129,7 @@ export function TransactionsSection() {
             >
               <div>
                 <p className="transaction-card__team">{transaction.team}</p>
-                <p className="transaction-card__player">{transaction.player}</p>
+                <PlayerName name={transaction.player} className="transaction-card__player" />
                 <p className="transaction-card__detail">{transaction.detail}</p>
               </div>
               <div className="transaction-card__meta">
