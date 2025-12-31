@@ -89,7 +89,8 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
   const liveSeason = 2025;
   const liveWeeklyStats = usePlayerWeeklyStats(
     profile?.playerId ?? null,
-    profile?.playerId ? liveSeason : null,
+    profile?.player ?? null,
+    profile ? liveSeason : null,
   );
   const seasonsToDisplay = useMemo(() => {
     if (!profile) {
