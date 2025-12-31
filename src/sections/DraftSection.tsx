@@ -1,13 +1,46 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
 import { TableShell } from "../components/TableShell";
 import { selectDraftPicks } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
+import { useSeasonSelection } from "../hooks/useSeasonSelection";
 
 export function DraftSection() {
-  const { status, season, error } = useSeasonData();
+  const { year } = useSeasonSelection();
+  const { status, season, error } = useSeasonData(year);
+  const [searchText, setSearchText] = useState("");
+  const [sortKey, setSortKey] = useState("round");
   const draftRows = useMemo(() => (season ? selectDraftPicks(season) : []), [season]);
+  const normalizedSearch = searchText.trim().toLowerCase();
+  const filteredRows = useMemo(() => {
+    const filtered = draftRows.filter((row) => {
+      const matchesSearch =
+        !normalizedSearch ||
+        row.player.toLowerCase().includes(normalizedSearch) ||
+        row.team.toLowerCase().includes(normalizedSearch) ||
+        row.manager.toLowerCase().includes(normalizedSearch);
+      return matchesSearch;
+    });
+
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortKey) {
+        case "pick":
+          return a.pick - b.pick;
+        case "player":
+          return a.player.localeCompare(b.player);
+        case "team":
+          return a.team.localeCompare(b.team);
+        case "manager":
+          return a.manager.localeCompare(b.manager);
+        case "round":
+        default:
+          return a.round - b.round;
+      }
+    });
+
+    return sorted;
+  }, [draftRows, normalizedSearch, sortKey]);
 
   if (status === "loading") {
     return <LoadingSection title="Draft Results" subtitle="Loading draft selections…" />;
@@ -35,7 +68,13 @@ export function DraftSection() {
           <label htmlFor="draftSort" className="text-sm text-muted">
             Sort:
           </label>
-          <select id="draftSort" aria-label="Sort draft table" className="input">
+          <select
+            id="draftSort"
+            aria-label="Sort draft table"
+            className="input"
+            value={sortKey}
+            onChange={(event) => setSortKey(event.target.value)}
+          >
             <option value="round">Round</option>
             <option value="pick">Pick</option>
             <option value="player">Player</option>
@@ -48,6 +87,8 @@ export function DraftSection() {
             placeholder="Filter by player/team…"
             aria-label="Filter draft results"
             className="input"
+            value={searchText}
+            onChange={(event) => setSearchText(event.target.value)}
           />
         </>
       }
@@ -86,14 +127,14 @@ export function DraftSection() {
             </tr>
           </thead>
           <tbody>
-            {draftRows.length === 0 ? (
+            {filteredRows.length === 0 ? (
               <tr>
                 <td colSpan={7} className="text-sm text-muted">
                   No draft picks available for this season yet.
                 </td>
               </tr>
             ) : (
-              draftRows.map((row) => (
+              filteredRows.map((row) => (
                 <tr key={`${row.round}-${row.pick}-${row.team}-${row.player}`}>
                   <td>{row.round || "—"}</td>
                   <td>{row.pick || "—"}</td>

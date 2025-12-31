@@ -46,6 +46,25 @@ export type MatchupCard = {
   awayScore: number;
 };
 
+export type PointsTrendRow = {
+  week: string;
+  pointsFor: number;
+  pointsAgainst: number;
+  net: number;
+};
+
+export type RivalryHeatmapRow = {
+  team: string;
+  values: Array<number | null>;
+};
+
+export type AwardCard = {
+  title: string;
+  value: string;
+  detail: string;
+  note?: string;
+};
+
 export type TransactionCard = {
   id: string;
   team: string;
@@ -91,6 +110,12 @@ const transactionWeeksCache = new WeakMap<SeasonData, string[]>();
 const transactionsCache = new WeakMap<SeasonData, TransactionCard[]>();
 const draftCache = new WeakMap<SeasonData, DraftRow[]>();
 const memberSummariesCache = new WeakMap<SeasonData, MemberSummary[]>();
+const pointsTrendCache = new WeakMap<SeasonData, PointsTrendRow[]>();
+const rivalryHeatmapCache = new WeakMap<
+  SeasonData,
+  { teams: string[]; matrix: RivalryHeatmapRow[] }
+>();
+const awardsCache = new WeakMap<SeasonData, AwardCard[]>();
 
 type TeamAggregate = {
   name: string;
@@ -116,6 +141,24 @@ function parseRecord(record?: string | null): { wins: number; losses: number } |
     return null;
   }
   return { wins: Number.parseInt(match[1], 10), losses: Number.parseInt(match[2], 10) };
+}
+
+function formatWeekLabel(week: number | null | undefined): string {
+  return week != null ? `W${week}` : "W?";
+}
+
+function formatPoints(value: number): string {
+  return value.toFixed(1);
+}
+
+function isWeekVisible(season: SeasonData, week: number | null | undefined): boolean {
+  if (week == null) {
+    return false;
+  }
+  if (season.year === 2025) {
+    return week <= 17;
+  }
+  return true;
 }
 
 function buildTeamAggregates(season: SeasonData): Map<string, TeamAggregate> {
@@ -523,7 +566,9 @@ export function selectMatchupWeeks(season: SeasonData): string[] {
   }
   const weeks = Array.from(
     new Set(
-      season.matchups.map((matchup) => matchup.week).filter((week): week is number => week != null),
+      season.matchups
+        .map((matchup) => matchup.week)
+        .filter((week): week is number => week != null && isWeekVisible(season, week)),
     ),
   ).sort((a, b) => a - b);
   const labels = weeks.map((week) => `Week ${week}`);
@@ -537,7 +582,12 @@ export function selectMatchups(season: SeasonData): MatchupCard[] {
     return cached;
   }
   const cards = season.matchups
-    .filter((matchup) => matchup.home_team && matchup.away_team)
+    .filter(
+      (matchup) =>
+        matchup.home_team &&
+        matchup.away_team &&
+        isWeekVisible(season, matchup.week ?? null),
+    )
     .map((matchup) => {
       const homeScore = toNumber(matchup.home_score);
       const awayScore = toNumber(matchup.away_score);
@@ -554,6 +604,217 @@ export function selectMatchups(season: SeasonData): MatchupCard[] {
       };
     });
   matchupsCache.set(season, cards);
+  return cards;
+}
+
+export function selectPointsTrend(season: SeasonData): PointsTrendRow[] {
+  const cached = pointsTrendCache.get(season);
+  if (cached) {
+    return cached;
+  }
+  const weekly = new Map<number, { totalPoints: number; totalMargin: number; matchups: number }>();
+  season.matchups.forEach((matchup) => {
+    if (!isWeekVisible(season, matchup.week ?? null)) {
+      return;
+    }
+    const homeScore = toNumber(matchup.home_score);
+    const awayScore = toNumber(matchup.away_score);
+    const entry = weekly.get(matchup.week) ?? { totalPoints: 0, totalMargin: 0, matchups: 0 };
+    entry.totalPoints += homeScore + awayScore;
+    entry.totalMargin += homeScore - awayScore;
+    entry.matchups += 1;
+    weekly.set(matchup.week, entry);
+  });
+  const rows = Array.from(weekly.entries())
+    .sort(([weekA], [weekB]) => weekA - weekB)
+    .map(([week, entry]) => {
+      const teamCount = entry.matchups * 2;
+      const pointsFor = teamCount ? entry.totalPoints / teamCount : 0;
+      const pointsAgainst = teamCount ? entry.totalPoints / teamCount : 0;
+      const net = entry.matchups ? entry.totalMargin / entry.matchups : 0;
+      return {
+        week: formatWeekLabel(week),
+        pointsFor: Number(pointsFor.toFixed(1)),
+        pointsAgainst: Number(pointsAgainst.toFixed(1)),
+        net: Number(net.toFixed(1)),
+      };
+    });
+  pointsTrendCache.set(season, rows);
+  return rows;
+}
+
+export function selectRivalryHeatmap(
+  season: SeasonData,
+): { teams: string[]; matrix: RivalryHeatmapRow[] } {
+  const cached = rivalryHeatmapCache.get(season);
+  if (cached) {
+    return cached;
+  }
+  const teams = season.teams
+    .map((team) => team.team_name)
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
+  const matchupTotals = new Map<string, { total: number; count: number }>();
+  season.matchups.forEach((matchup) => {
+    if (
+      !matchup.home_team ||
+      !matchup.away_team ||
+      !isWeekVisible(season, matchup.week ?? null)
+    ) {
+      return;
+    }
+    const teamA = matchup.home_team;
+    const teamB = matchup.away_team;
+    const key = [teamA, teamB].sort().join("||");
+    const entry = matchupTotals.get(key) ?? { total: 0, count: 0 };
+    entry.total += toNumber(matchup.home_score) + toNumber(matchup.away_score);
+    entry.count += 1;
+    matchupTotals.set(key, entry);
+  });
+  const matrix = teams.map((team) => {
+    const values = teams.map((opponent) => {
+      if (team === opponent) {
+        return null;
+      }
+      const key = [team, opponent].sort().join("||");
+      const entry = matchupTotals.get(key);
+      if (!entry) {
+        return null;
+      }
+      return entry.total / entry.count;
+    });
+    return { team, values };
+  });
+  const data = { teams, matrix };
+  rivalryHeatmapCache.set(season, data);
+  return data;
+}
+
+export function selectAwardCards(season: SeasonData): AwardCard[] {
+  const cached = awardsCache.get(season);
+  if (cached) {
+    return cached;
+  }
+
+  const awardsFromData = season.awards.map((award) => {
+    const value =
+      typeof award.value === "number" ? formatPoints(award.value) : award.value ? String(award.value) : "—";
+    const detail = award.team ?? award.owner ?? "—";
+    return {
+      title: award.title || "Award",
+      value,
+      detail,
+      note: award.description ?? undefined,
+    };
+  });
+
+  if (awardsFromData.length > 0) {
+    awardsCache.set(season, awardsFromData);
+    return awardsFromData;
+  }
+
+  const matchups = season.matchups.filter(
+    (matchup) =>
+      matchup.home_team &&
+      matchup.away_team &&
+      isWeekVisible(season, matchup.week ?? null),
+  );
+  if (matchups.length === 0) {
+    awardsCache.set(season, []);
+    return [];
+  }
+
+  let highestScore = matchups[0];
+  let lowestScore = matchups[0];
+  let closestFinish = matchups[0];
+  let biggestBlowout = matchups[0];
+  let highestTotal = matchups[0];
+
+  matchups.forEach((matchup) => {
+    const homeScore = toNumber(matchup.home_score);
+    const awayScore = toNumber(matchup.away_score);
+    const maxScore = Math.max(homeScore, awayScore);
+    const minScore = Math.min(homeScore, awayScore);
+    const margin = Math.abs(homeScore - awayScore);
+    const total = homeScore + awayScore;
+
+    const highestScoreMax =
+      Math.max(toNumber(highestScore.home_score), toNumber(highestScore.away_score));
+    if (maxScore > highestScoreMax) {
+      highestScore = matchup;
+    }
+
+    const lowestScoreMin =
+      Math.min(toNumber(lowestScore.home_score), toNumber(lowestScore.away_score));
+    if (minScore < lowestScoreMin) {
+      lowestScore = matchup;
+    }
+
+    const closestMargin = Math.abs(
+      toNumber(closestFinish.home_score) - toNumber(closestFinish.away_score),
+    );
+    if (margin < closestMargin) {
+      closestFinish = matchup;
+    }
+
+    const biggestMargin = Math.abs(
+      toNumber(biggestBlowout.home_score) - toNumber(biggestBlowout.away_score),
+    );
+    if (margin > biggestMargin) {
+      biggestBlowout = matchup;
+    }
+
+    const highestTotalCurrent =
+      toNumber(highestTotal.home_score) + toNumber(highestTotal.away_score);
+    if (total > highestTotalCurrent) {
+      highestTotal = matchup;
+    }
+  });
+
+  const cards: AwardCard[] = [
+    {
+      title: "Highest Score",
+      value: formatPoints(
+        Math.max(toNumber(highestScore.home_score), toNumber(highestScore.away_score)),
+      ),
+      detail: `${highestScore.home_team} vs. ${highestScore.away_team}`,
+      note: `Week ${highestScore.week}`,
+    },
+    {
+      title: "Lowest Score",
+      value: formatPoints(
+        Math.min(toNumber(lowestScore.home_score), toNumber(lowestScore.away_score)),
+      ),
+      detail: `${lowestScore.home_team} vs. ${lowestScore.away_team}`,
+      note: `Week ${lowestScore.week}`,
+    },
+    {
+      title: "Closest Finish",
+      value: formatPoints(
+        Math.abs(toNumber(closestFinish.home_score) - toNumber(closestFinish.away_score)),
+      ),
+      detail: `${closestFinish.home_team} vs. ${closestFinish.away_team}`,
+      note: `Week ${closestFinish.week}`,
+    },
+    {
+      title: "Largest Blowout",
+      value: formatPoints(
+        Math.abs(toNumber(biggestBlowout.home_score) - toNumber(biggestBlowout.away_score)),
+      ),
+      detail: `${biggestBlowout.home_team} vs. ${biggestBlowout.away_team}`,
+      note: `Week ${biggestBlowout.week}`,
+    },
+    {
+      title: "Highest Total Points",
+      value: formatPoints(
+        toNumber(highestTotal.home_score) + toNumber(highestTotal.away_score),
+      ),
+      detail: `${highestTotal.home_team} vs. ${highestTotal.away_team}`,
+      note: `Week ${highestTotal.week}`,
+    },
+  ];
+
+  awardsCache.set(season, cards);
   return cards;
 }
 

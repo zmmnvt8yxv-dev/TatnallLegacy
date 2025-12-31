@@ -6,6 +6,7 @@ import { SectionShell } from "../components/SectionShell";
 import { StatCard } from "../components/StatCard";
 import { selectKpiStats, selectSeasonHighlights, selectSummaryStats } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
+import { useSeasonSelection } from "../hooks/useSeasonSelection";
 
 const SummaryCharts = lazy(() => import("./SummaryCharts"));
 
@@ -31,7 +32,8 @@ function MiniSparkline({ data, label }: { data: number[]; label: string }) {
 }
 
 export function SummarySection() {
-  const { status, season, error } = useSeasonData();
+  const { year } = useSeasonSelection();
+  const { status, season, error } = useSeasonData(year);
   const snapshotRef = useRef<HTMLDivElement | null>(null);
   const [snapshotStatus, setSnapshotStatus] = useState<string>("");
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
@@ -167,7 +169,7 @@ export function SummarySection() {
           ))}
         </div>
         <Suspense fallback={<SummaryChartsSkeleton />}>
-          <SummaryCharts />
+          <SummaryCharts season={season} />
         </Suspense>
       </div>
     </SectionShell>
