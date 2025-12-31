@@ -169,7 +169,7 @@ export function SummarySection() {
           ))}
         </div>
         <Suspense fallback={<SummaryChartsSkeleton />}>
-          <SummaryCharts />
+          <SummaryCharts season={season} />
         </Suspense>
       </div>
     </SectionShell>

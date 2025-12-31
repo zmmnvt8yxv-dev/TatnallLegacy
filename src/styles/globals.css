@@ -141,11 +141,15 @@
   }
 
   .chart-card__chart {
-    @apply h-56 w-full;
+    @apply h-64 w-full;
   }
 
   .heatmap {
     @apply mt-2 grid gap-2;
+  }
+
+  .heatmap-scroll {
+    @apply overflow-x-auto pb-2;
   }
 
   .heatmap__row {
