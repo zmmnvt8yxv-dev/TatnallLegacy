@@ -217,6 +217,10 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
 
   const showScoring = metricView === "ppr" || metricView === "standard";
   const scoringLabel = metricView === "standard" ? "Standard points" : "PPR points";
+  const positionRankLabel =
+    profile.position && profile.positionRank
+      ? `${profile.position}${profile.positionRank}`
+      : null;
 
   return (
     <div className="space-y-6">
@@ -242,6 +246,14 @@ export function PlayerProfileContent({ playerName }: PlayerProfileContentProps) 
                 </span>
               ) : (
                 <span>Recent: —</span>
+              )}
+              {positionRankLabel ? (
+                <span>
+                  Pos Rank: {positionRankLabel}
+                  {profile.positionRankSeason ? ` (${profile.positionRankSeason})` : ""}
+                </span>
+              ) : (
+                <span>Pos Rank: —</span>
               )}
               <span>Consensus #{profile.consensusRank ?? "—"}</span>
             </div>

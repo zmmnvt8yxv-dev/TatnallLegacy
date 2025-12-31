@@ -246,6 +246,8 @@ export type PlayerProfile = {
   fantasyTeamTimeline: PlayerTeamTimeline[];
   pointsTrend: number[];
   recentPerformance: PlayerRecentPerformance | null;
+  positionRank: number | null;
+  positionRankSeason: number | null;
   consensusRank: number | null;
   milestones: PlayerMilestones;
 };
@@ -1375,6 +1377,46 @@ export function selectPlayerDirectory(seasons: SeasonData[]): PlayerDirectoryEnt
 type PlayerConsensusRankMap = Map<string, number>;
 type PlayerRecentPerformanceMap = Map<string, PlayerRecentPerformance>;
 
+function buildPositionRankMap(season: SeasonData, position: string): Map<string, number> {
+  const nameToPosition = new Map<string, string>();
+  const playerIndex = season.supplemental?.player_index;
+
+  if (playerIndex) {
+    Object.values(playerIndex).forEach((player) => {
+      const name = player.full_name ?? player.name;
+      if (!name) {
+        return;
+      }
+      const normalized = normalizePlayerName(name);
+      if (!normalized || !player.pos) {
+        return;
+      }
+      nameToPosition.set(normalized, player.pos);
+    });
+  }
+
+  const totals = new Map<string, number>();
+  const entries = season.lineups ?? [];
+
+  entries.forEach((entry) => {
+    if (!entry.player || entry.started === false) {
+      return;
+    }
+    const normalized = normalizePlayerName(entry.player);
+    if (!normalized) {
+      return;
+    }
+    if (nameToPosition.get(normalized) !== position) {
+      return;
+    }
+    const points = toNumber(entry.points);
+    totals.set(normalized, (totals.get(normalized) ?? 0) + points);
+  });
+
+  const ranked = Array.from(totals.entries()).sort((a, b) => b[1] - a[1]);
+  return new Map(ranked.map(([name], index) => [name, index + 1]));
+}
+
 function buildConsensusRankMap(seasons: SeasonData[]): PlayerConsensusRankMap {
   const totals = new Map<string, { total: number; count: number }>();
 
@@ -1646,6 +1688,25 @@ export function selectPlayerProfile(
   const consensusRank = buildConsensusRankMap(seasons).get(normalized) ?? null;
   const recentPerformance =
     buildRecentPerformanceMap(seasons).get(normalized) ?? null;
+  let positionRank: number | null = null;
+  let positionRankSeason: number | null = null;
+
+  if (position) {
+    for (let index = sortedSeasons.length - 1; index >= 0; index -= 1) {
+      const seasonYear = sortedSeasons[index].season;
+      const seasonData = seasons.find((season) => season.year === seasonYear);
+      if (!seasonData) {
+        continue;
+      }
+      const rankMap = buildPositionRankMap(seasonData, position);
+      const rank = rankMap.get(normalized) ?? null;
+      if (rank) {
+        positionRank = rank;
+        positionRankSeason = seasonYear;
+        break;
+      }
+    }
+  }
 
   const bestSeason = sortedSeasons.reduce(
     (best, season) =>
@@ -1728,6 +1789,8 @@ export function selectPlayerProfile(
     fantasyTeamTimeline,
     pointsTrend,
     recentPerformance,
+    positionRank,
+    positionRankSeason,
     consensusRank,
     milestones: {
       bestGame,

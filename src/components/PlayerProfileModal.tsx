@@ -264,6 +264,10 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
       : 0;
     const showScoring = metricView === "ppr" || metricView === "standard";
     const scoringLabel = metricView === "standard" ? "Standard points" : "PPR points";
+    const positionRankLabel =
+      profile.position && profile.positionRank
+        ? `${profile.position}${profile.positionRank}`
+        : null;
     return (
       <div className="space-y-6">
         <div className="player-profile__hero">
@@ -283,6 +287,14 @@ export function PlayerProfileModal({ isOpen, playerName, onClose }: PlayerProfil
                   </span>
                 ) : (
                   <span>Recent: —</span>
+                )}
+                {positionRankLabel ? (
+                  <span>
+                    Pos Rank: {positionRankLabel}
+                    {profile.positionRankSeason ? ` (${profile.positionRankSeason})` : ""}
+                  </span>
+                ) : (
+                  <span>Pos Rank: —</span>
                 )}
                 <span>Consensus #{profile.consensusRank ?? "—"}</span>
               </div>
