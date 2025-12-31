@@ -6,6 +6,7 @@ import { SectionShell } from "../components/SectionShell";
 import { StatCard } from "../components/StatCard";
 import {
   selectKpiStats,
+  selectStandingsHighlights,
   selectSeasonHighlights,
   selectSummaryStats,
   selectVisibleWeeks,
@@ -41,16 +42,20 @@ export function SummarySection() {
   const { status, season, error } = useSeasonData(year);
   const snapshotRef = useRef<HTMLDivElement | null>(null);
   const [snapshotStatus, setSnapshotStatus] = useState<string>("");
-  const [selectedWeek, setSelectedWeek] = useState<number | "all">("all");
+  const [selectedWeek, setSelectedWeek] = useState<number | "all" | "full">("all");
   const availableWeeks = useMemo(() => (season ? selectVisibleWeeks(season) : []), [season]);
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
   const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
+  const standingsHighlights = useMemo(
+    () => (season ? selectStandingsHighlights(season) : []),
+    [season],
+  );
   const lastYearRef = useRef<number | null>(null);
   const filteredSeason = useMemo(() => {
     if (!season) {
       return null;
     }
-    if (selectedWeek === "all") {
+    if (selectedWeek === "all" || selectedWeek === "full") {
       return season;
     }
     return {
@@ -112,7 +117,7 @@ export function SummarySection() {
       setSelectedWeek(availableWeeks[availableWeeks.length - 1]);
       return;
     }
-    setSelectedWeek("all");
+    setSelectedWeek("full");
   }, [availableWeeks, isCurrentSeason, season, year]);
 
   if (status === "loading") {
@@ -189,14 +194,150 @@ export function SummarySection() {
     (matchup) => matchup.week != null && availableWeeks.includes(matchup.week),
   );
   const weekMatchups =
-    selectedWeek === "all"
+    selectedWeek === "all" || selectedWeek === "full"
       ? visibleMatchups.length
       : visibleMatchups.filter((matchup) => matchup.week === selectedWeek).length;
-  const weekLabel = selectedWeek === "all" ? "Season to date" : `Week ${selectedWeek}`;
-  const selectedWeekMatchups =
+  const weekLabel =
     selectedWeek === "all"
+      ? "Season to date"
+      : selectedWeek === "full"
+        ? "Full season"
+        : `Week ${selectedWeek}`;
+  const selectedWeekMatchups =
+    selectedWeek === "all" || selectedWeek === "full"
       ? []
       : visibleMatchups.filter((matchup) => matchup.week === selectedWeek);
+  const isFullSeason = selectedWeek === "full";
+  const safeNumber = (value: number | null | undefined) =>
+    typeof value === "number" && Number.isFinite(value) ? value : 0;
+  const scoredMatchups = visibleMatchups.filter(
+    (matchup) => safeNumber(matchup.home_score) || safeNumber(matchup.away_score),
+  );
+  const totalPoints = scoredMatchups.reduce(
+    (sum, matchup) => sum + safeNumber(matchup.home_score) + safeNumber(matchup.away_score),
+    0,
+  );
+  const totalMargins = scoredMatchups.reduce(
+    (sum, matchup) =>
+      sum + Math.abs(safeNumber(matchup.home_score) - safeNumber(matchup.away_score)),
+    0,
+  );
+  const avgPointsPerMatchup = scoredMatchups.length
+    ? totalPoints / scoredMatchups.length
+    : 0;
+  const avgMargin = scoredMatchups.length ? totalMargins / scoredMatchups.length : 0;
+  const formatScore = (value: number) => value.toFixed(1);
+  const formatMatchupLabel = (matchup: typeof scoredMatchups[number]) => {
+    const week = matchup.week != null ? `Week ${matchup.week}` : "Week —";
+    return `${matchup.away_team ?? "Away"} vs. ${matchup.home_team ?? "Home"} (${week})`;
+  };
+  const highestCombinedMatchup = scoredMatchups.reduce<typeof scoredMatchups[number] | null>(
+    (best, matchup) => {
+      if (!best) {
+        return matchup;
+      }
+      const bestTotal = safeNumber(best.home_score) + safeNumber(best.away_score);
+      const currentTotal = safeNumber(matchup.home_score) + safeNumber(matchup.away_score);
+      return currentTotal > bestTotal ? matchup : best;
+    },
+    null,
+  );
+  const biggestBlowout = scoredMatchups.reduce<typeof scoredMatchups[number] | null>(
+    (best, matchup) => {
+      if (!best) {
+        return matchup;
+      }
+      const bestMargin = Math.abs(safeNumber(best.home_score) - safeNumber(best.away_score));
+      const currentMargin = Math.abs(
+        safeNumber(matchup.home_score) - safeNumber(matchup.away_score),
+      );
+      return currentMargin > bestMargin ? matchup : best;
+    },
+    null,
+  );
+  const closestFinish = scoredMatchups.reduce<typeof scoredMatchups[number] | null>(
+    (best, matchup) => {
+      const currentMargin = Math.abs(
+        safeNumber(matchup.home_score) - safeNumber(matchup.away_score),
+      );
+      if (!best) {
+        return matchup;
+      }
+      const bestMargin = Math.abs(safeNumber(best.home_score) - safeNumber(best.away_score));
+      if (currentMargin === 0 && bestMargin === 0) {
+        return best;
+      }
+      if (bestMargin === 0) {
+        return matchup;
+      }
+      return currentMargin < bestMargin ? matchup : best;
+    },
+    null,
+  );
+  const fullSeasonStats = [
+    {
+      label: "Champion",
+      value: champion?.team_name ?? "—",
+      caption: champion?.owner ?? "League winner",
+    },
+    {
+      label: "Total Points Scored",
+      value: formatScore(totalPoints),
+      caption: `${scoredMatchups.length} matchups logged`,
+    },
+    {
+      label: "Average Matchup Score",
+      value: formatScore(avgPointsPerMatchup),
+      caption: "Combined points per matchup",
+    },
+    {
+      label: "Average Margin",
+      value: formatScore(avgMargin),
+      caption: "Typical win gap",
+    },
+  ];
+  const fullSeasonInsights = standingsHighlights.map((item) => ({
+    label: item.label,
+    value: item.value,
+    caption: "Season standings highlight",
+  }));
+  const funFacts = [
+    {
+      label: "Highest Combined Score",
+      value: highestCombinedMatchup
+        ? formatScore(
+            safeNumber(highestCombinedMatchup.home_score) +
+              safeNumber(highestCombinedMatchup.away_score),
+          )
+        : "—",
+      caption: highestCombinedMatchup ? formatMatchupLabel(highestCombinedMatchup) : "—",
+    },
+    {
+      label: "Biggest Blowout",
+      value: biggestBlowout
+        ? formatScore(
+            Math.abs(safeNumber(biggestBlowout.home_score) - safeNumber(biggestBlowout.away_score)),
+          )
+        : "—",
+      caption: biggestBlowout ? formatMatchupLabel(biggestBlowout) : "—",
+    },
+    {
+      label: "Closest Finish",
+      value: closestFinish
+        ? formatScore(
+            Math.abs(safeNumber(closestFinish.home_score) - safeNumber(closestFinish.away_score)),
+          )
+        : "—",
+      caption: closestFinish ? formatMatchupLabel(closestFinish) : "—",
+    },
+    {
+      label: "Finals Shootout",
+      value: finalMatchup ? formatScore(finalMatchup.total) : "—",
+      caption: finalMatchup
+        ? `${finalMatchup.away_team} vs. ${finalMatchup.home_team} (Playoffs)`
+        : "—",
+    },
+  ];
 
   return (
     <SectionShell
@@ -212,14 +353,25 @@ export function SummarySection() {
             <select
               id="summary-week-select"
               className="input"
-              value={selectedWeek === "all" ? "all" : String(selectedWeek)}
+              value={
+                selectedWeek === "all"
+                  ? "all"
+                  : selectedWeek === "full"
+                    ? "full"
+                    : String(selectedWeek)
+              }
               onChange={(event) => {
                 const value = event.target.value;
-                setSelectedWeek(value === "all" ? "all" : Number(value));
+                if (value === "all" || value === "full") {
+                  setSelectedWeek(value);
+                  return;
+                }
+                setSelectedWeek(Number(value));
               }}
               disabled={availableWeeks.length === 0}
             >
               <option value="all">Season to date</option>
+              <option value="full">Full season</option>
               {availableWeeks.map((week) => (
                 <option key={week} value={week}>
                   Week {week}
@@ -242,100 +394,183 @@ export function SummarySection() {
       }
     >
       <div id="summarySnapshot" ref={snapshotRef} className="space-y-6">
-        <div id="summaryStats" className="grid-4">
-          {summaryStats.map((stat) => (
-            <StatCard
-              key={stat.label}
-              label={stat.label}
-              value={stat.value}
-              caption={stat.caption}
-            />
-          ))}
-        </div>
-
-        <div className="summary-week-meta">
-          <p className="text-xs uppercase tracking-[0.2em] text-muted">{weekLabel}</p>
-          <p className="text-sm text-muted">{weekMatchups} matchups in view.</p>
-          {selectedWeek !== "all" && weekMatchups === 0 ? (
-            <p className="text-xs text-amber-300">No matchup data for this week yet.</p>
-          ) : null}
-        </div>
-
-        {selectedWeek !== "all" ? (
-          <div className="summary-block">
-            <div className="section-heading">Week {selectedWeek} Scoreboard</div>
-            <p className="section-caption">Box score snapshots for each matchup.</p>
-            {selectedWeekMatchups.length === 0 ? (
-              <p className="text-sm text-muted">No matchups recorded for this week.</p>
-            ) : (
-              <div className="matchups-grid">
-                {selectedWeekMatchups.map((matchup) => {
-                  const homeScore = matchup.home_score ?? null;
-                  const awayScore = matchup.away_score ?? null;
-                  const status = homeScore || awayScore ? "Final" : "Upcoming";
-                  return (
-                    <article
-                      key={`${matchup.week}-${matchup.home_team}-${matchup.away_team}`}
-                      className="matchup-card"
-                    >
-                      <div className="matchup-card__header">
-                        <p className="matchup-card__week">Week {matchup.week}</p>
-                        <span
-                          className={`status-pill ${
-                            status === "Final" ? "status-pill--active" : "status-pill--upcoming"
-                          }`}
-                        >
-                          {status}
-                        </span>
-                      </div>
-                      <div className="matchup-card__body">
-                        <div className="matchup-card__team">
-                          <span>{matchup.away_team}</span>
-                          <strong>{awayScore != null ? awayScore.toFixed(1) : "—"}</strong>
-                        </div>
-                        <div className="matchup-card__team">
-                          <span>{matchup.home_team}</span>
-                          <strong>{homeScore != null ? homeScore.toFixed(1) : "—"}</strong>
-                        </div>
-                      </div>
-                      <p className="matchup-card__kickoff">Box score summary</p>
-                    </article>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        ) : null}
-
-        <div className="summary-kpis">
-          {kpiStats.map((stat) => (
-            <div key={stat.label} className="kpi-card">
-              <div>
-                <p className="kpi-card__label">{stat.label}</p>
-                <div className="kpi-card__value-row">
-                  <p className="kpi-card__value">{stat.value}</p>
-                  <span className="kpi-card__change">{stat.change}</span>
-                </div>
-                <p className="kpi-card__caption">{stat.caption}</p>
-              </div>
-              <MiniSparkline data={stat.trend} label={stat.label} />
+        {isFullSeason ? (
+          <>
+            <div className="summary-full-intro">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted">Full season recap</p>
+              <p className="text-sm text-muted">
+                {weekMatchups} matchups archived • {formatScore(totalPoints)} total points
+              </p>
             </div>
-          ))}
-        </div>
 
-        <div className="summary-highlights">
-          {highlights.map((item) => (
-            <StatCard
-              key={item.label}
-              label={item.label}
-              value={item.value}
-              caption={item.caption}
-            />
-          ))}
-        </div>
-        <Suspense fallback={<SummaryChartsSkeleton />}>
-          {filteredSeason ? <SummaryCharts season={filteredSeason} /> : null}
-        </Suspense>
+            <div id="summaryStats" className="grid-4">
+              {fullSeasonStats.map((stat) => (
+                <StatCard
+                  key={stat.label}
+                  label={stat.label}
+                  value={stat.value}
+                  caption={stat.caption}
+                />
+              ))}
+            </div>
+
+            <div className="summary-block">
+              <div className="section-heading">Season insights</div>
+              <p className="section-caption">Standout performances across the full schedule.</p>
+              <div className="summary-highlights">
+                {fullSeasonInsights.map((item) => (
+                  <StatCard
+                    key={item.label}
+                    label={item.label}
+                    value={item.value}
+                    caption={item.caption}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="summary-block">
+              <div className="section-heading">Fun facts</div>
+              <p className="section-caption">Moments that defined the season.</p>
+              <div className="summary-highlights">
+                {funFacts.map((item) => (
+                  <StatCard
+                    key={item.label}
+                    label={item.label}
+                    value={item.value}
+                    caption={item.caption}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="summary-ai">
+              <div>
+                <p className="section-heading">Ask the league AI</p>
+                <p className="section-caption">
+                  Drop a question about trends, outcomes, or “what if” scenarios.
+                </p>
+              </div>
+              <div className="summary-ai__form">
+                <input
+                  className="input summary-ai__input"
+                  type="text"
+                  placeholder="Ask about the season..."
+                  aria-label="Ask the league AI about the full season"
+                />
+                <button type="button" className="btn btn-primary">
+                  Ask AI
+                </button>
+              </div>
+              <p className="summary-ai__hint">
+                Example: “Who had the biggest comeback win this season?”
+              </p>
+            </div>
+
+            <Suspense fallback={<SummaryChartsSkeleton />}>
+              {filteredSeason ? <SummaryCharts season={filteredSeason} /> : null}
+            </Suspense>
+          </>
+        ) : (
+          <>
+            <div id="summaryStats" className="grid-4">
+              {summaryStats.map((stat) => (
+                <StatCard
+                  key={stat.label}
+                  label={stat.label}
+                  value={stat.value}
+                  caption={stat.caption}
+                />
+              ))}
+            </div>
+
+            <div className="summary-week-meta">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted">{weekLabel}</p>
+              <p className="text-sm text-muted">{weekMatchups} matchups in view.</p>
+              {selectedWeek !== "all" && weekMatchups === 0 ? (
+                <p className="text-xs text-amber-300">No matchup data for this week yet.</p>
+              ) : null}
+            </div>
+
+            {selectedWeek !== "all" ? (
+              <div className="summary-block">
+                <div className="section-heading">Week {selectedWeek} Scoreboard</div>
+                <p className="section-caption">Box score snapshots for each matchup.</p>
+                {selectedWeekMatchups.length === 0 ? (
+                  <p className="text-sm text-muted">No matchups recorded for this week.</p>
+                ) : (
+                  <div className="matchups-grid">
+                    {selectedWeekMatchups.map((matchup) => {
+                      const homeScore = matchup.home_score ?? null;
+                      const awayScore = matchup.away_score ?? null;
+                      const status = homeScore || awayScore ? "Final" : "Upcoming";
+                      return (
+                        <article
+                          key={`${matchup.week}-${matchup.home_team}-${matchup.away_team}`}
+                          className="matchup-card"
+                        >
+                          <div className="matchup-card__header">
+                            <p className="matchup-card__week">Week {matchup.week}</p>
+                            <span
+                              className={`status-pill ${
+                                status === "Final"
+                                  ? "status-pill--active"
+                                  : "status-pill--upcoming"
+                              }`}
+                            >
+                              {status}
+                            </span>
+                          </div>
+                          <div className="matchup-card__body">
+                            <div className="matchup-card__team">
+                              <span>{matchup.away_team}</span>
+                              <strong>{awayScore != null ? awayScore.toFixed(1) : "—"}</strong>
+                            </div>
+                            <div className="matchup-card__team">
+                              <span>{matchup.home_team}</span>
+                              <strong>{homeScore != null ? homeScore.toFixed(1) : "—"}</strong>
+                            </div>
+                          </div>
+                          <p className="matchup-card__kickoff">Box score summary</p>
+                        </article>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            ) : null}
+
+            <div className="summary-kpis">
+              {kpiStats.map((stat) => (
+                <div key={stat.label} className="kpi-card">
+                  <div>
+                    <p className="kpi-card__label">{stat.label}</p>
+                    <div className="kpi-card__value-row">
+                      <p className="kpi-card__value">{stat.value}</p>
+                      <span className="kpi-card__change">{stat.change}</span>
+                    </div>
+                    <p className="kpi-card__caption">{stat.caption}</p>
+                  </div>
+                  <MiniSparkline data={stat.trend} label={stat.label} />
+                </div>
+              ))}
+            </div>
+
+            <div className="summary-highlights">
+              {highlights.map((item) => (
+                <StatCard
+                  key={item.label}
+                  label={item.label}
+                  value={item.value}
+                  caption={item.caption}
+                />
+              ))}
+            </div>
+            <Suspense fallback={<SummaryChartsSkeleton />}>
+              {filteredSeason ? <SummaryCharts season={filteredSeason} /> : null}
+            </Suspense>
+          </>
+        )}
       </div>
     </SectionShell>
   );
