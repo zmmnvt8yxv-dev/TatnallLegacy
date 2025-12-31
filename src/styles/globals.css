@@ -518,141 +518,6 @@
     @apply text-sm text-muted;
   }
 
-  .champion-banner {
-    @apply relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-surface to-surface-alt p-6 shadow-soft;
-  }
-
-  .champion-banner__content {
-    @apply flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between;
-  }
-
-  .champion-banner__kicker {
-    @apply text-xs uppercase tracking-[0.3em] text-muted;
-  }
-
-  .champion-banner__title {
-    @apply mt-3 text-3xl font-semibold text-foreground sm:text-4xl;
-  }
-
-  .champion-banner__subtitle {
-    @apply mt-3 text-sm text-muted;
-  }
-
-  .champion-banner__scoreboard {
-    @apply rounded-2xl border border-border bg-surface px-5 py-4 shadow-soft;
-  }
-
-  .champion-banner__scoreboard-title {
-    @apply text-xs uppercase tracking-[0.2em] text-muted;
-  }
-
-  .champion-banner__score {
-    @apply mt-4 flex flex-wrap items-center gap-4 text-sm;
-  }
-
-  .champion-banner__team {
-    @apply block text-sm font-medium text-foreground;
-  }
-
-  .champion-banner__points {
-    @apply mt-1 block text-2xl font-semibold text-foreground;
-  }
-
-  .champion-banner__vs {
-    @apply rounded-full border border-border px-3 py-1 text-xs uppercase tracking-[0.2em] text-muted;
-  }
-
-  .champion-banner__celebration {
-    @apply mt-6 rounded-2xl border border-accent bg-accent bg-opacity-10 px-5 py-4 text-sm text-foreground;
-  }
-
-  .champion-banner__congrats {
-    @apply text-base font-semibold;
-  }
-
-  .confetti {
-    @apply pointer-events-none absolute inset-0;
-  }
-
-  .confetti span {
-    position: absolute;
-    width: 10px;
-    height: 16px;
-    opacity: 0.8;
-    background: linear-gradient(135deg, #facc15, #f97316);
-    animation: confetti-fall 3s linear infinite;
-  }
-
-  .confetti span:nth-child(3n) {
-    background: linear-gradient(135deg, #38bdf8, #2563eb);
-  }
-
-  .confetti span:nth-child(4n) {
-    background: linear-gradient(135deg, #34d399, #16a34a);
-  }
-
-  .confetti span:nth-child(odd) {
-    animation-duration: 3.4s;
-  }
-
-  .confetti span:nth-child(even) {
-    animation-duration: 2.8s;
-  }
-
-  .confetti span:nth-child(1) {
-    left: 5%;
-    animation-delay: 0s;
-  }
-
-  .confetti span:nth-child(2) {
-    left: 15%;
-    animation-delay: 0.3s;
-  }
-
-  .confetti span:nth-child(3) {
-    left: 25%;
-    animation-delay: 0.6s;
-  }
-
-  .confetti span:nth-child(4) {
-    left: 35%;
-    animation-delay: 0.1s;
-  }
-
-  .confetti span:nth-child(5) {
-    left: 45%;
-    animation-delay: 0.4s;
-  }
-
-  .confetti span:nth-child(6) {
-    left: 55%;
-    animation-delay: 0.2s;
-  }
-
-  .confetti span:nth-child(7) {
-    left: 65%;
-    animation-delay: 0.5s;
-  }
-
-  .confetti span:nth-child(8) {
-    left: 75%;
-    animation-delay: 0.15s;
-  }
-
-  .confetti span:nth-child(9) {
-    left: 85%;
-    animation-delay: 0.35s;
-  }
-
-  .confetti span:nth-child(10) {
-    left: 95%;
-    animation-delay: 0.45s;
-  }
-
-  .champion-banner--current {
-    @apply border-accent bg-gradient-to-br from-surface to-surface-alt;
-  }
-
   .player-link {
     @apply text-left text-sm font-medium text-foreground underline-offset-4 transition hover:text-accent hover:underline;
   }
@@ -715,10 +580,6 @@
     @apply flex flex-wrap items-center gap-4;
   }
 
-  .modal-header__actions {
-    @apply flex flex-wrap items-center gap-2;
-  }
-
   .modal-kicker {
     @apply text-xs uppercase tracking-[0.3em] text-muted;
   }
@@ -775,10 +636,6 @@
     @apply mt-4;
   }
 
-  .player-profile-page {
-    @apply space-y-6;
-  }
-
   @media (max-width: 640px) {
     .modal-card {
       @apply h-full max-h-full max-w-full rounded-none;
@@ -818,15 +675,6 @@
     to {
       transform: translateY(0);
       opacity: 1;
-    }
-  }
-
-  @keyframes confetti-fall {
-    0% {
-      transform: translateY(-10%) rotate(0deg);
-    }
-    100% {
-      transform: translateY(120%) rotate(360deg);
     }
   }
 }
