@@ -646,6 +646,38 @@
     @apply flex flex-wrap gap-2;
   }
 
+  .standings-card__roster {
+    @apply rounded-xl border border-border bg-surface p-3;
+  }
+
+  .standings-card__roster-header {
+    @apply flex items-start justify-between gap-3;
+  }
+
+  .standings-card__roster-meta {
+    @apply text-xs text-muted;
+  }
+
+  .standings-card__roster-count {
+    @apply text-xs font-medium text-muted;
+  }
+
+  .roster-list {
+    @apply mt-3 grid gap-2 sm:grid-cols-2;
+  }
+
+  .roster-list__item {
+    @apply flex flex-col gap-1 rounded-lg border border-border bg-surface-alt p-2;
+  }
+
+  .roster-list__name {
+    @apply text-sm font-medium;
+  }
+
+  .roster-list__meta {
+    @apply text-xs text-muted;
+  }
+
   .matchups-grid {
     @apply grid gap-4 md:grid-cols-2;
   }
@@ -668,6 +700,10 @@
 
   .matchup-card__team {
     @apply flex items-center justify-between text-sm;
+  }
+
+  .matchup-card__team--winner strong {
+    @apply text-accent;
   }
 
   .matchup-card__kickoff {
@@ -716,6 +752,94 @@
 
   .transaction-card__type {
     @apply rounded-full border border-border px-3 py-1 text-xs text-foreground;
+  }
+
+  .trade-card {
+    @apply mb-6;
+  }
+
+  .trade-grid {
+    @apply grid gap-4;
+  }
+
+  .trade-card__entry {
+    @apply rounded-2xl border border-border bg-surface-alt p-4 shadow-soft;
+  }
+
+  .trade-card__meta {
+    @apply flex flex-wrap items-center justify-between gap-2 text-xs text-muted;
+  }
+
+  .trade-card__week {
+    @apply font-medium uppercase tracking-[0.2em];
+  }
+
+  .trade-card__teams {
+    @apply mt-4 grid gap-4 md:grid-cols-2;
+  }
+
+  .trade-card__team {
+    @apply rounded-xl border border-border bg-surface p-3;
+  }
+
+  .trade-card__team-header {
+    @apply flex items-center justify-between gap-2;
+  }
+
+  .trade-card__team-name {
+    @apply text-sm font-semibold text-foreground;
+  }
+
+  .trade-card__score {
+    @apply rounded-full border border-border px-2 py-1 text-xs text-muted;
+  }
+
+  .trade-card__assets {
+    @apply mt-3 grid gap-3 text-sm;
+  }
+
+  .trade-card__label {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .trade-card__list {
+    @apply mt-2 grid gap-1;
+  }
+
+  .trade-card__net {
+    @apply mt-3 text-xs text-muted;
+  }
+
+  .live-grid {
+    @apply grid gap-4 md:grid-cols-2;
+  }
+
+  .live-card {
+    @apply rounded-2xl border border-border bg-surface-alt p-4 shadow-soft;
+  }
+
+  .live-card__header {
+    @apply flex items-center justify-between border-b border-border pb-3 text-sm;
+  }
+
+  .live-card__week {
+    @apply text-xs uppercase tracking-[0.2em] text-muted;
+  }
+
+  .live-card__teams {
+    @apply mt-3 grid gap-2;
+  }
+
+  .live-card__team {
+    @apply flex items-center justify-between text-sm;
+  }
+
+  .live-card__team--winner strong {
+    @apply text-accent;
+  }
+
+  .live-card__meta {
+    @apply mt-3 text-xs text-muted;
   }
 
   .table-sort {

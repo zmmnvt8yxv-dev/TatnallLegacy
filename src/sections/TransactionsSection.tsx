@@ -3,9 +3,15 @@ import { motion } from "framer-motion";
 import { LoadingSection } from "../components/LoadingSection";
 import { PlayerName } from "../components/PlayerName";
 import { SectionShell } from "../components/SectionShell";
-import { selectTransactionFilters, selectTransactions, selectTransactionWeeks } from "../data/selectors";
+import {
+  selectTradeSummaries,
+  selectTransactionFilters,
+  selectTransactions,
+  selectTransactionWeeks,
+} from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
 import { useSeasonSelection } from "../hooks/useSeasonSelection";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 
 export function TransactionsSection() {
   const { year } = useSeasonSelection();
@@ -23,6 +29,7 @@ export function TransactionsSection() {
     [season],
   );
   const transactions = useMemo(() => (season ? selectTransactions(season) : []), [season]);
+  const trades = useMemo(() => (season ? selectTradeSummaries(season) : []), [season]);
   const activeWeek = transactionWeeks.includes(selectedWeek)
     ? selectedWeek
     : transactionWeeks[0] ?? "All Weeks";
@@ -67,6 +74,18 @@ export function TransactionsSection() {
     );
   }
 
+  const formatTradeTimestamp = (timestamp: number | null) => {
+    if (!timestamp) {
+      return "Date unavailable";
+    }
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+    return formatter.format(new Date(timestamp));
+  };
+
   return (
     <SectionShell
       id="transactions"
@@ -102,6 +121,74 @@ export function TransactionsSection() {
         </>
       }
     >
+      {trades.length > 0 ? (
+        <Card className="trade-card">
+          <CardHeader>
+            <CardTitle>Trade Spotlight</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="trade-grid">
+              {trades.map((trade) => (
+                <article key={trade.id} className="trade-card__entry">
+                  <div className="trade-card__meta">
+                    <p className="trade-card__week">
+                      {trade.week ? `Week ${trade.week}` : "Week TBD"}
+                    </p>
+                    <p className="trade-card__date">{formatTradeTimestamp(trade.executed)}</p>
+                  </div>
+                  <div className="trade-card__teams">
+                    {trade.teams.map((team) => (
+                      <div key={`${trade.id}-${team.team}`} className="trade-card__team">
+                        <div className="trade-card__team-header">
+                          <p className="trade-card__team-name">{team.team}</p>
+                          {team.score != null ? (
+                            <span className="trade-card__score">Value {team.score}</span>
+                          ) : null}
+                        </div>
+                        <div className="trade-card__assets">
+                          <div>
+                            <p className="trade-card__label">Received</p>
+                            {team.playersIn.length ? (
+                              <ul className="trade-card__list">
+                                {team.playersIn.map((player) => (
+                                  <li key={`${trade.id}-${team.team}-in-${player.id}`}>
+                                    <PlayerName name={player.name} />
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <p className="text-sm text-muted">No players listed</p>
+                            )}
+                          </div>
+                          <div>
+                            <p className="trade-card__label">Sent</p>
+                            {team.playersOut.length ? (
+                              <ul className="trade-card__list">
+                                {team.playersOut.map((player) => (
+                                  <li key={`${trade.id}-${team.team}-out-${player.id}`}>
+                                    <PlayerName name={player.name} />
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <p className="text-sm text-muted">No players listed</p>
+                            )}
+                          </div>
+                        </div>
+                        {team.netPoints != null ? (
+                          <p className="trade-card__net">
+                            Net points impact: {team.netPoints.toFixed(1)}
+                          </p>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      ) : null}
       <div className="filter-row" role="group" aria-label="Transaction filters">
         {transactionFilters.map((filter) => (
           <button

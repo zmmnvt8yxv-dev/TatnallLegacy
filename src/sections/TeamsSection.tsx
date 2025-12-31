@@ -1,10 +1,16 @@
 import { useMemo, useState } from "react";
 import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
-import { selectStandings, selectStandingsFilters, selectStandingsHighlights } from "../data/selectors";
+import {
+  selectStandings,
+  selectStandingsFilters,
+  selectStandingsHighlights,
+  selectTeamRosters,
+} from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 import { useSeasonSelection } from "../hooks/useSeasonSelection";
+import { PlayerName } from "../components/PlayerName";
 
 export function TeamsSection() {
   const { year } = useSeasonSelection();
@@ -13,14 +19,20 @@ export function TeamsSection() {
   const [selectedFilter, setSelectedFilter] = useState("All Teams");
   const [sortKey, setSortKey] = useState("final_rank");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [showRoster, setShowRoster] = useState(true);
   const standingsHighlights = useMemo(
     () => (season ? selectStandingsHighlights(season) : []),
     [season],
   );
   const standings = useMemo(() => (season ? selectStandings(season) : []), [season]);
+  const teamRosters = useMemo(() => (season ? selectTeamRosters(season) : []), [season]);
   const filters = useMemo(() => (season ? selectStandingsFilters(season) : []), [season]);
   const activeFilter = filters.includes(selectedFilter) ? selectedFilter : filters[0] ?? "All Teams";
   const normalizedSearch = searchText.trim().toLowerCase();
+  const rosterMap = useMemo(
+    () => new Map(teamRosters.map((team) => [team.team, team])),
+    [teamRosters],
+  );
   const filteredStandings = useMemo(() => {
     const filtered = standings.filter((team) => {
       const matchesSearch =
@@ -123,6 +135,22 @@ export function TeamsSection() {
             <option value="team_name">Team Name (A–Z)</option>
             <option value="owner">Owner (A–Z)</option>
           </select>
+          <div className="toggle-group" role="group" aria-label="Roster display">
+            <button
+              className={`btn toggle ${showRoster ? "is-active" : ""}`}
+              type="button"
+              onClick={() => setShowRoster(true)}
+            >
+              Roster
+            </button>
+            <button
+              className={`btn toggle ${!showRoster ? "is-active" : ""}`}
+              type="button"
+              onClick={() => setShowRoster(false)}
+            >
+              Stats Only
+            </button>
+          </div>
           <div className="toggle-group" role="group" aria-label="Team view">
             <button
               className={`btn toggle ${viewMode === "grid" ? "is-active" : ""}`}
@@ -197,6 +225,35 @@ export function TeamsSection() {
                 <p className="standings-card__value">{team.pointsAgainst.toFixed(1)}</p>
               </div>
             </div>
+            {showRoster ? (
+              <div className="standings-card__roster">
+                <div className="standings-card__roster-header">
+                  <div>
+                    <p className="standings-card__label">Roster</p>
+                    <p className="standings-card__roster-meta">
+                      {rosterMap.get(team.team)?.sourceLabel ?? "Roster unavailable"}
+                    </p>
+                  </div>
+                  <span className="standings-card__roster-count">
+                    {rosterMap.get(team.team)?.roster.length ?? 0} players
+                  </span>
+                </div>
+                {rosterMap.get(team.team)?.roster.length ? (
+                  <ul className="roster-list">
+                    {rosterMap.get(team.team)?.roster.map((player) => (
+                      <li key={`${team.team}-${player.id}`} className="roster-list__item">
+                        <PlayerName name={player.name} className="roster-list__name" />
+                        <span className="roster-list__meta">
+                          {[player.position, player.nflTeam].filter(Boolean).join(" · ")}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-sm text-muted">Roster data is not available for this season.</p>
+                )}
+              </div>
+            ) : null}
             <div className="standings-card__badges">
               {team.badges.map((badge) => (
                 <span key={badge} className="badge">

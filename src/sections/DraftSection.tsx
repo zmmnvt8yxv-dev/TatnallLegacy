@@ -12,8 +12,19 @@ export function DraftSection() {
   const { status, season, error } = useSeasonData(year);
   const [searchText, setSearchText] = useState("");
   const [sortKey, setSortKey] = useState("round");
+  const [selectedRound, setSelectedRound] = useState("All Rounds");
   const draftRows = useMemo(() => (season ? selectDraftPicks(season) : []), [season]);
+  const rounds = useMemo(
+    () =>
+      Array.from(new Set(draftRows.map((row) => row.round).filter((round) => round > 0))).sort(
+        (a, b) => a - b,
+      ),
+    [draftRows],
+  );
   const normalizedSearch = searchText.trim().toLowerCase();
+  const activeRound = rounds.includes(Number.parseInt(selectedRound, 10))
+    ? Number.parseInt(selectedRound, 10)
+    : null;
   const filteredRows = useMemo(() => {
     const filtered = draftRows.filter((row) => {
       const matchesSearch =
@@ -21,7 +32,8 @@ export function DraftSection() {
         row.player.toLowerCase().includes(normalizedSearch) ||
         row.team.toLowerCase().includes(normalizedSearch) ||
         row.manager.toLowerCase().includes(normalizedSearch);
-      return matchesSearch;
+      const matchesRound = activeRound == null || row.round === activeRound;
+      return matchesSearch && matchesRound;
     });
 
     const sorted = [...filtered].sort((a, b) => {
@@ -41,7 +53,7 @@ export function DraftSection() {
     });
 
     return sorted;
-  }, [draftRows, normalizedSearch, sortKey]);
+  }, [activeRound, draftRows, normalizedSearch, sortKey]);
 
   if (status === "loading") {
     return <LoadingSection title="Draft Results" subtitle="Loading draft selections…" />;
@@ -81,6 +93,23 @@ export function DraftSection() {
             <option value="player">Player</option>
             <option value="team">Team</option>
             <option value="manager">Manager</option>
+          </select>
+          <label htmlFor="draftRound" className="text-sm text-muted">
+            Round:
+          </label>
+          <select
+            id="draftRound"
+            aria-label="Filter by round"
+            className="input"
+            value={selectedRound}
+            onChange={(event) => setSelectedRound(event.target.value)}
+          >
+            <option value="All Rounds">All Rounds</option>
+            {rounds.map((round) => (
+              <option key={round} value={String(round)}>
+                Round {round}
+              </option>
+            ))}
           </select>
           <input
             id="draftSearch"
