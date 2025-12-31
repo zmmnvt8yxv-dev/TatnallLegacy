@@ -44,9 +44,24 @@ export function SummarySection() {
   const [selectedWeek, setSelectedWeek] = useState<number | "all">("all");
   const availableWeeks = useMemo(() => (season ? selectVisibleWeeks(season) : []), [season]);
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
-  const kpiStats = useMemo(() => (season ? selectKpiStats(season) : []), [season]);
   const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
   const lastYearRef = useRef<number | null>(null);
+  const filteredSeason = useMemo(() => {
+    if (!season) {
+      return null;
+    }
+    if (selectedWeek === "all") {
+      return season;
+    }
+    return {
+      ...season,
+      matchups: season.matchups.filter((matchup) => matchup.week === selectedWeek),
+    };
+  }, [season, selectedWeek]);
+  const kpiStats = useMemo(
+    () => (filteredSeason ? selectKpiStats(filteredSeason) : []),
+    [filteredSeason],
+  );
   const champion = useMemo(() => {
     if (!season) {
       return null;
@@ -178,13 +193,6 @@ export function SummarySection() {
       ? visibleMatchups.length
       : visibleMatchups.filter((matchup) => matchup.week === selectedWeek).length;
   const weekLabel = selectedWeek === "all" ? "Season to date" : `Week ${selectedWeek}`;
-  const filteredSeason =
-    selectedWeek === "all"
-      ? season
-      : {
-          ...season,
-          matchups: season.matchups.filter((matchup) => matchup.week === selectedWeek),
-        };
   const selectedWeekMatchups =
     selectedWeek === "all"
       ? []
