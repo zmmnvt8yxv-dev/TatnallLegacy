@@ -15,6 +15,7 @@ import {
   type SleeperUser,
 } from "./lib/userLog";
 import { PowerRankings } from "./pages/PowerRankings";
+import { PlayerComparePage } from "./pages/PlayerComparePage";
 import { PlayerProfilePage } from "./pages/PlayerProfilePage";
 import { Summary } from "./pages/Summary";
 import { UserLogPortal } from "./pages/UserLogPortal";
@@ -39,6 +40,7 @@ const baseNavigation = [
   { label: "Rankings", path: "/rankings" },
   { label: "Recaps", path: "/recaps" },
   { label: "Live", path: "/live" },
+  { label: "Compare", path: "/compare" },
 ];
 
 const devNavigation = import.meta.env.DEV
@@ -225,6 +227,7 @@ export default function App() {
           <Route path="/recaps" element={<WeeklyRecaps />} />
           <Route path="/live" element={<LiveSection />} />
           <Route path="/player/:name" element={<PlayerProfilePage />} />
+          <Route path="/compare" element={<PlayerComparePage />} />
           <Route
             path="/user-log"
             element={

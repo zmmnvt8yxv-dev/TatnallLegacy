@@ -146,8 +146,34 @@ export type PlayerTeamTimeline = {
   seasons: number[];
 };
 
+export type PlayerSeasonTeam = {
+  season: number;
+  team: string;
+};
+
+export type PlayerRecentPerformance = {
+  season: number;
+  week: number;
+  points: number;
+};
+
+export type PlayerMilestones = {
+  bestGame: PlayerRecentPerformance | null;
+  longestHighScoreStreak: {
+    length: number;
+    start: PlayerRecentPerformance | null;
+    end: PlayerRecentPerformance | null;
+  };
+  bestSeason: {
+    season: number;
+    totalPoints: number;
+  } | null;
+  awards: string[];
+};
+
 export type PlayerProfile = {
   player: string;
+  playerId: string | null;
   position: string | null;
   currentTeam: string | null;
   seasons: PlayerSeasonSummary[];
@@ -157,9 +183,22 @@ export type PlayerProfile = {
   maxPoints: number;
   aboveThreshold: number;
   nflTeams: string[];
+  nflTeamHistory: PlayerSeasonTeam[];
   fantasyTeams: string[];
   fantasyTeamTimeline: PlayerTeamTimeline[];
   pointsTrend: number[];
+  recentPerformance: PlayerRecentPerformance | null;
+  consensusRank: number | null;
+  milestones: PlayerMilestones;
+};
+
+export type PlayerSearchEntry = {
+  name: string;
+  team?: string;
+  position?: string;
+  normalized: string;
+  recentPerformance: PlayerRecentPerformance | null;
+  consensusRank: number | null;
 };
 
 // Cache expensive selector results by season reference to avoid recalculating
@@ -1275,6 +1314,86 @@ export function selectPlayerDirectory(seasons: SeasonData[]): PlayerDirectoryEnt
   return Array.from(players.values()).sort((a, b) => a.name.localeCompare(b.name));
 }
 
+type PlayerConsensusRankMap = Map<string, number>;
+type PlayerRecentPerformanceMap = Map<string, PlayerRecentPerformance>;
+
+function buildConsensusRankMap(seasons: SeasonData[]): PlayerConsensusRankMap {
+  const totals = new Map<string, { total: number; count: number }>();
+
+  seasons.forEach((season) => {
+    season.draft.forEach((pick) => {
+      if (!pick.player || pick.overall === null || pick.overall === undefined) {
+        return;
+      }
+      const normalized = normalizePlayerName(pick.player);
+      if (!normalized) {
+        return;
+      }
+      const existing = totals.get(normalized) ?? { total: 0, count: 0 };
+      totals.set(normalized, {
+        total: existing.total + pick.overall,
+        count: existing.count + 1,
+      });
+    });
+  });
+
+  const ranked = Array.from(totals.entries())
+    .map(([player, data]) => ({
+      player,
+      avgPick: data.total / data.count,
+    }))
+    .sort((a, b) => a.avgPick - b.avgPick);
+
+  return new Map(ranked.map((entry, index) => [entry.player, index + 1]));
+}
+
+function buildRecentPerformanceMap(seasons: SeasonData[]): PlayerRecentPerformanceMap {
+  const recent = new Map<string, PlayerRecentPerformance>();
+
+  seasons.forEach((season) => {
+    const entries = season.lineups ?? [];
+    entries.forEach((entry) => {
+      if (!entry.player || entry.week === null || entry.week === undefined) {
+        return;
+      }
+      const normalized = normalizePlayerName(entry.player);
+      if (!normalized) {
+        return;
+      }
+      const week = entry.week ?? 0;
+      const points = typeof entry.points === "number" ? entry.points : 0;
+      const existing = recent.get(normalized);
+      if (
+        !existing ||
+        season.year > existing.season ||
+        (season.year === existing.season && week > existing.week)
+      ) {
+        recent.set(normalized, { season: season.year, week, points });
+      }
+    });
+  });
+
+  return recent;
+}
+
+export function selectPlayerSearchIndex(seasons: SeasonData[]): PlayerSearchEntry[] {
+  const directory = selectPlayerDirectory(seasons);
+  const consensusRankMap = buildConsensusRankMap(seasons);
+  const recentPerformanceMap = buildRecentPerformanceMap(seasons);
+
+  return directory.map((entry) => {
+    const normalized = normalizePlayerName(entry.name);
+    return {
+      name: entry.name,
+      team: entry.team,
+      position: entry.position,
+      normalized,
+      recentPerformance: recentPerformanceMap.get(normalized) ?? null,
+      consensusRank: consensusRankMap.get(normalized) ?? null,
+    };
+  });
+}
+
 /** Aggregate multi-season player stats for the player profile modal/page. */
 export function selectPlayerProfile(
   seasons: SeasonData[],
@@ -1288,13 +1407,14 @@ export function selectPlayerProfile(
   const sortedSeasonData = [...seasons].sort((a, b) => b.year - a.year);
   let position: string | null = null;
   let currentTeam: string | null = null;
+  let playerId: string | null = null;
 
   for (const season of sortedSeasonData) {
     const playerIndex = season.supplemental?.player_index;
     if (!playerIndex) {
       continue;
     }
-    for (const player of Object.values(playerIndex)) {
+    for (const [id, player] of Object.entries(playerIndex)) {
       const name = player.full_name ?? player.name;
       if (!name) {
         continue;
@@ -1304,6 +1424,7 @@ export function selectPlayerProfile(
       }
       position = player.pos ?? position;
       currentTeam = player.team ?? currentTeam;
+      playerId = id;
       if (position || currentTeam) {
         break;
       }
@@ -1315,7 +1436,10 @@ export function selectPlayerProfile(
 
   const seasonSummaries: PlayerSeasonSummary[] = [];
   const nflTeams = new Set<string>();
+  const nflTeamHistory: PlayerSeasonTeam[] = [];
   const fantasyTeams = new Set<string>();
+  const entriesBySeason: Array<{ season: number; entry: SeasonData["lineups"][number] }> = [];
+  const awards: string[] = [];
 
   seasons.forEach((season) => {
     const entries =
@@ -1333,6 +1457,7 @@ export function selectPlayerProfile(
       season.draft.forEach((pick) => {
         if (pick.player && normalizePlayerName(pick.player) === normalized && pick.player_nfl) {
           nflTeams.add(pick.player_nfl);
+          nflTeamHistory.push({ season: season.year, team: pick.player_nfl });
         }
       });
       return;
@@ -1358,11 +1483,13 @@ export function selectPlayerProfile(
         seasonFantasyTeams.add(entry.team);
         fantasyTeams.add(entry.team);
       }
+      entriesBySeason.push({ season: season.year, entry });
     });
 
     season.draft.forEach((pick) => {
       if (pick.player && normalizePlayerName(pick.player) === normalized && pick.player_nfl) {
         nflTeams.add(pick.player_nfl);
+        nflTeamHistory.push({ season: season.year, team: pick.player_nfl });
       }
     });
 
@@ -1406,8 +1533,68 @@ export function selectPlayerProfile(
     }))
     .sort((a, b) => a.team.localeCompare(b.team));
 
+  const consensusRank = buildConsensusRankMap(seasons).get(normalized) ?? null;
+  const recentPerformance =
+    buildRecentPerformanceMap(seasons).get(normalized) ?? null;
+
+  const bestSeason = sortedSeasons.reduce(
+    (best, season) =>
+      !best || season.totalPoints > best.totalPoints
+        ? { season: season.season, totalPoints: season.totalPoints }
+        : best,
+    null as { season: number; totalPoints: number } | null,
+  );
+
+  const sortedEntries = entriesBySeason
+    .filter((item) => item.entry.week !== null && item.entry.week !== undefined)
+    .sort((a, b) => a.season - b.season || (a.entry.week ?? 0) - (b.entry.week ?? 0));
+
+  let bestGame: PlayerRecentPerformance | null = null;
+  let currentStreak = 0;
+  let currentStart: PlayerRecentPerformance | null = null;
+  let longestStreak = 0;
+  let longestStart: PlayerRecentPerformance | null = null;
+  let longestEnd: PlayerRecentPerformance | null = null;
+
+  sortedEntries.forEach(({ season, entry }) => {
+    const week = entry.week ?? 0;
+    const points = toNumber(entry.points);
+    if (!bestGame || points > bestGame.points) {
+      bestGame = { season, week, points };
+    }
+    if (points >= PLAYER_HIGH_SCORE_THRESHOLD) {
+      if (currentStreak === 0) {
+        currentStart = { season, week, points };
+      }
+      currentStreak += 1;
+      if (currentStreak >= longestStreak) {
+        longestStreak = currentStreak;
+        longestStart = currentStart;
+        longestEnd = { season, week, points };
+      }
+    } else {
+      currentStreak = 0;
+      currentStart = null;
+    }
+  });
+
+  seasons.forEach((season) => {
+    season.awards.forEach((award) => {
+      const title = award.title ?? "";
+      const description = award.description ?? "";
+      const combined = `${title} ${description}`.trim();
+      if (!combined) {
+        return;
+      }
+      if (normalizePlayerName(combined).includes(normalized)) {
+        awards.push(title || description);
+      }
+    });
+  });
+
   return {
     player: playerName,
+    playerId,
     position,
     currentTeam,
     seasons: sortedSeasons,
@@ -1417,8 +1604,30 @@ export function selectPlayerProfile(
     maxPoints,
     aboveThreshold,
     nflTeams: Array.from(nflTeams),
+    nflTeamHistory: nflTeamHistory
+      .filter((entry) => entry.team)
+      .reduce<PlayerSeasonTeam[]>((acc, entry) => {
+        const existing = acc.find((item) => item.season === entry.season);
+        if (!existing) {
+          acc.push(entry);
+        }
+        return acc;
+      }, [])
+      .sort((a, b) => a.season - b.season),
     fantasyTeams: Array.from(fantasyTeams),
     fantasyTeamTimeline,
     pointsTrend,
+    recentPerformance,
+    consensusRank,
+    milestones: {
+      bestGame,
+      longestHighScoreStreak: {
+        length: longestStreak,
+        start: longestStart,
+        end: longestEnd,
+      },
+      bestSeason,
+      awards,
+    },
   };
 }
