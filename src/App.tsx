@@ -18,24 +18,16 @@ export function App() {
         <PlayerProfileProvider>
           <Routes>
             <Route element={<AppLayout />}>
-            {navigationItems.map((item) => (
-              <Route
-                key={item.path}
-                path={item.path}
-                element={<Suspense fallback={<LoadingSection />}>{item.element}</Suspense>}
-              />
-            ))}
-            <Route
-              path="/player/:playerName"
-              element={
-                <Suspense fallback={<LoadingSection />}>
-                  <PlayerProfilePage />
-                </Suspense>
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
+              {navigationItems.map((item) => (
+                <Route
+                  key={item.path}
+                  path={item.path}
+                  element={<Suspense fallback={<LoadingSection />}>{item.element}</Suspense>}
+                />
+              ))}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
         </PlayerProfileProvider>
       </SeasonSelectionProvider>
     </ThemeProvider>
