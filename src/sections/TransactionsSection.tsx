@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
+import { usePlayerProfile } from "../components/PlayerProfileProvider";
 import { selectTransactionFilters, selectTransactions, selectTransactionWeeks } from "../data/selectors";
 import { useSeasonData } from "../hooks/useSeasonData";
 import { useSeasonSelection } from "../hooks/useSeasonSelection";
@@ -9,6 +10,7 @@ import { useSeasonSelection } from "../hooks/useSeasonSelection";
 export function TransactionsSection() {
   const { year } = useSeasonSelection();
   const { status, season, error } = useSeasonData(year);
+  const { openProfile } = usePlayerProfile();
   const [searchText, setSearchText] = useState("");
   const [selectedWeek, setSelectedWeek] = useState("All Weeks");
   const [selectedFilter, setSelectedFilter] = useState("All Transactions");
@@ -128,7 +130,17 @@ export function TransactionsSection() {
             >
               <div>
                 <p className="transaction-card__team">{transaction.team}</p>
-                <p className="transaction-card__player">{transaction.player}</p>
+                {transaction.player === "—" ? (
+                  <p className="transaction-card__player">{transaction.player}</p>
+                ) : (
+                  <button
+                    type="button"
+                    className="transaction-card__player player-link"
+                    onClick={() => openProfile(transaction.player)}
+                  >
+                    {transaction.player}
+                  </button>
+                )}
                 <p className="transaction-card__detail">{transaction.detail}</p>
               </div>
               <div className="transaction-card__meta">
