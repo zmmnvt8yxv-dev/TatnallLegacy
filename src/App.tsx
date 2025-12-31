@@ -176,7 +176,7 @@ export default function App() {
                 title="Log in with your Sleeper username (no password required)"
               >
                 <img
-                  src="https://sleepercdn.com/images/app-logo.png"
+                  src="/sleeper-logo.svg"
                   alt="Sleeper logo"
                   className="h-6 w-6"
                 />

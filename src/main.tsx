@@ -6,7 +6,7 @@ import { PlayerProfileProvider } from "./components/PlayerProfileProvider";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { SeasonSelectionProvider } from "./hooks/useSeasonSelection";
 import "./styles/globals.css";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
