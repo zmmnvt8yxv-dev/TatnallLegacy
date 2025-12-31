@@ -40,13 +40,13 @@ export function SummarySection() {
   const { year, years } = useSeasonSelection();
   const { status, season, error } = useSeasonData(year);
   const snapshotRef = useRef<HTMLDivElement | null>(null);
-  const userSelectedWeekRef = useRef(false);
   const [snapshotStatus, setSnapshotStatus] = useState<string>("");
   const [selectedWeek, setSelectedWeek] = useState<number | "all">("all");
   const availableWeeks = useMemo(() => (season ? selectVisibleWeeks(season) : []), [season]);
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
   const kpiStats = useMemo(() => (season ? selectKpiStats(season) : []), [season]);
   const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
+  const lastYearRef = useRef<number | null>(null);
   const champion = useMemo(() => {
     if (!season) {
       return null;
@@ -86,20 +86,18 @@ export function SummarySection() {
   const isCurrentSeason = year != null && years.length > 0 && year === Math.max(...years);
 
   useEffect(() => {
-    userSelectedWeekRef.current = false;
-    setSelectedWeek("all");
-  }, [year]);
-
-  useEffect(() => {
     if (!season || year == null) {
       return;
     }
-    if (userSelectedWeekRef.current) {
+    if (lastYearRef.current === year) {
       return;
     }
+    lastYearRef.current = year;
     if (isCurrentSeason && availableWeeks.length > 0) {
       setSelectedWeek(availableWeeks[availableWeeks.length - 1]);
+      return;
     }
+    setSelectedWeek("all");
   }, [availableWeeks, isCurrentSeason, season, year]);
 
   if (status === "loading") {
@@ -175,16 +173,10 @@ export function SummarySection() {
   const visibleMatchups = season.matchups.filter(
     (matchup) => matchup.week != null && availableWeeks.includes(matchup.week),
   );
-  const scoreboardMatchups = useMemo(() => {
-    if (selectedWeek === "all") {
-      return [];
-    }
-    return visibleMatchups.filter((matchup) => matchup.week === selectedWeek);
-  }, [selectedWeek, visibleMatchups]);
   const weekMatchups =
     selectedWeek === "all"
       ? visibleMatchups.length
-      : scoreboardMatchups.length;
+      : visibleMatchups.filter((matchup) => matchup.week === selectedWeek).length;
   const weekLabel = selectedWeek === "all" ? "Season to date" : `Week ${selectedWeek}`;
   const filteredSeason =
     selectedWeek === "all"
@@ -262,16 +254,14 @@ export function SummarySection() {
           <div className="summary-block">
             <div className="section-heading">Week {selectedWeek} Scoreboard</div>
             <p className="section-caption">Box score snapshots for each matchup.</p>
-            {scoreboardMatchups.length === 0 ? (
+            {selectedWeekMatchups.length === 0 ? (
               <p className="text-sm text-muted">No matchups recorded for this week.</p>
             ) : (
               <div className="matchups-grid">
-                {scoreboardMatchups.map((matchup) => {
+                {selectedWeekMatchups.map((matchup) => {
                   const homeScore = matchup.home_score ?? null;
                   const awayScore = matchup.away_score ?? null;
                   const status = homeScore || awayScore ? "Final" : "Upcoming";
-                  const homeTeam = matchup.home_team?.trim() || "Home";
-                  const awayTeam = matchup.away_team?.trim() || "Away";
                   return (
                     <article
                       key={`${matchup.week}-${matchup.home_team}-${matchup.away_team}`}
@@ -289,11 +279,11 @@ export function SummarySection() {
                       </div>
                       <div className="matchup-card__body">
                         <div className="matchup-card__team">
-                          <span>{awayTeam}</span>
+                          <span>{matchup.away_team}</span>
                           <strong>{awayScore != null ? awayScore.toFixed(1) : "—"}</strong>
                         </div>
                         <div className="matchup-card__team">
-                          <span>{homeTeam}</span>
+                          <span>{matchup.home_team}</span>
                           <strong>{homeScore != null ? homeScore.toFixed(1) : "—"}</strong>
                         </div>
                       </div>
