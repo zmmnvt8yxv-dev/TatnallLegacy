@@ -40,9 +40,10 @@ export function SummarySection() {
   const { year, years } = useSeasonSelection();
   const { status, season, error } = useSeasonData(year);
   const snapshotRef = useRef<HTMLDivElement | null>(null);
-  const initializedWeekRef = useRef(false);
+  const userSelectedWeekRef = useRef(false);
   const [snapshotStatus, setSnapshotStatus] = useState<string>("");
   const [selectedWeek, setSelectedWeek] = useState<number | "all">("all");
+  const availableWeeks = useMemo(() => (season ? selectVisibleWeeks(season) : []), [season]);
   const summaryStats = useMemo(() => (season ? selectSummaryStats(season) : []), [season]);
   const kpiStats = useMemo(() => (season ? selectKpiStats(season) : []), [season]);
   const highlights = useMemo(() => (season ? selectSeasonHighlights(season) : []), [season]);
@@ -82,6 +83,24 @@ export function SummarySection() {
     const date = new Date().toISOString().slice(0, 10);
     return `weekly-summary-${date}.png`;
   }, []);
+  const isCurrentSeason = year != null && years.length > 0 && year === Math.max(...years);
+
+  useEffect(() => {
+    userSelectedWeekRef.current = false;
+    setSelectedWeek("all");
+  }, [year]);
+
+  useEffect(() => {
+    if (!season || year == null) {
+      return;
+    }
+    if (userSelectedWeekRef.current) {
+      return;
+    }
+    if (isCurrentSeason && availableWeeks.length > 0) {
+      setSelectedWeek(availableWeeks[availableWeeks.length - 1]);
+    }
+  }, [availableWeeks, isCurrentSeason, season, year]);
 
   if (status === "loading") {
     return <LoadingSection title="Season Summary" subtitle="Loading season data…" />;
@@ -153,9 +172,21 @@ export function SummarySection() {
     }
   };
 
-  const isCurrentSeason = year != null && years.length > 0 && year === Math.max(...years);
-  const formatScore = (value: number | null | undefined) =>
-    typeof value === "number" ? value.toFixed(1) : "—";
+  const visibleMatchups = season.matchups.filter(
+    (matchup) => matchup.week != null && availableWeeks.includes(matchup.week),
+  );
+  const weekMatchups =
+    selectedWeek === "all"
+      ? visibleMatchups.length
+      : visibleMatchups.filter((matchup) => matchup.week === selectedWeek).length;
+  const weekLabel = selectedWeek === "all" ? "Season to date" : `Week ${selectedWeek}`;
+  const filteredSeason =
+    selectedWeek === "all"
+      ? season
+      : {
+          ...season,
+          matchups: season.matchups.filter((matchup) => matchup.week === selectedWeek),
+        };
 
   return (
     <SectionShell
@@ -174,6 +205,7 @@ export function SummarySection() {
               value={selectedWeek === "all" ? "all" : String(selectedWeek)}
               onChange={(event) => {
                 const value = event.target.value;
+                userSelectedWeekRef.current = true;
                 setSelectedWeek(value === "all" ? "all" : Number(value));
               }}
               disabled={availableWeeks.length === 0}
