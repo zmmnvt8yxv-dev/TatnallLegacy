@@ -148,14 +148,13 @@ export type PlayerSeasonWeek = {
   opponent: string | null;
   team: string | null;
   started: boolean | null;
-};
-
-export type PlayerSeasonWeek = {
-  week: number;
-  points: number;
-  opponent: string | null;
-  team: string | null;
-  started: boolean | null;
+  passingYards?: number | null;
+  passingTds?: number | null;
+  rushingYards?: number | null;
+  rushingTds?: number | null;
+  receptions?: number | null;
+  receivingYards?: number | null;
+  receivingTds?: number | null;
 };
 
 export function summarizeSeasonWeeks(
@@ -1559,6 +1558,13 @@ export function selectPlayerProfile(
           opponent: entry.team ? matchupMap.get(`${entry.week}:${entry.team}`) ?? null : null,
           team: entry.team ?? null,
           started: entry.started ?? null,
+          passingYards: null,
+          passingTds: null,
+          rushingYards: null,
+          rushingTds: null,
+          receptions: null,
+          receivingYards: null,
+          receivingTds: null,
         });
       }
       entriesBySeason.push({ season: season.year, entry });
