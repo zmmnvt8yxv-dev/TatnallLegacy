@@ -743,12 +743,20 @@
     @apply flex w-full items-center gap-2;
   }
 
+  .player-search__input-wrap {
+    @apply relative flex-1;
+  }
+
+  .player-search__icon {
+    @apply pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted;
+  }
+
   .player-search__input {
-    @apply flex-1;
+    @apply w-full pl-9;
   }
 
   .player-search__button {
-    @apply whitespace-nowrap;
+    @apply flex h-10 w-10 items-center justify-center px-0;
   }
 
   .player-search__panel {
@@ -760,7 +768,15 @@
   }
 
   .player-search__item {
-    @apply w-full rounded-lg px-3 py-2 text-left text-sm text-foreground transition hover:bg-surface-alt;
+    @apply flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2 text-left text-sm text-foreground transition hover:bg-surface-alt;
+  }
+
+  .player-search__item-name {
+    @apply flex-1;
+  }
+
+  .player-search__hint {
+    @apply text-xs text-muted;
   }
 
   .player-search__highlight {
@@ -793,6 +809,10 @@
     @apply flex flex-wrap items-center gap-4;
   }
 
+  .modal-header__actions {
+    @apply flex items-center gap-2;
+  }
+
   .modal-kicker {
     @apply text-xs uppercase tracking-[0.3em] text-muted;
   }
@@ -814,7 +834,7 @@
   }
 
   .player-profile__meta {
-    @apply grid gap-4 rounded-xl border border-border bg-surface-alt px-4 py-4 text-sm md:grid-cols-3;
+    @apply grid gap-4 rounded-xl border border-border bg-surface-alt px-4 py-4 text-sm md:grid-cols-4;
   }
 
   .player-profile__label {
@@ -849,6 +869,10 @@
     @apply mt-4;
   }
 
+  .player-profile__trend-chart {
+    @apply mt-4 h-52 w-full;
+  }
+
   @media (max-width: 640px) {
     .modal-card {
       @apply h-full max-h-full max-w-full rounded-none;
@@ -867,7 +891,7 @@
     }
 
     .player-search__button {
-      @apply px-4 py-2;
+      @apply h-10 w-10 px-0;
     }
   }
 
