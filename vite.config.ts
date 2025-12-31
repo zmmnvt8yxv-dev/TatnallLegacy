@@ -5,3 +5,4 @@ export default defineConfig(({ command }) => ({
   base: command === "build" ? "/TatnallLegacy/" : "/",
   plugins: [react()],
 }));
+
