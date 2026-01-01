@@ -386,17 +386,23 @@ def main():
         "matchups": matchups,
         "transactions": transactions,
         "draft": draft_table,
-        "users": users_out,
-        "player_index": player_index,
-        "draft_day_roster": draft_map,
-        "current_roster": current_map,
-        "raw_transactions": raw_txs,
-        "player_points": {"by_week": by_week_pts, "cumulative": cumulative_pts, "weeks_complete": weeks_complete},
-        "acquisitions": acquisitions,
-        "trade_evals": trade_evals,
+        "supplemental": {
+            "users": users_out,
+            "player_index": player_index,
+            "draft_day_roster": draft_map,
+            "current_roster": current_map,
+            "raw_transactions": raw_txs,
+            "player_points": {
+                "by_week": by_week_pts,
+                "cumulative": cumulative_pts,
+                "weeks_complete": weeks_complete,
+            },
+            "acquisitions": acquisitions,
+            "trade_evals": trade_evals,
+            "draft_id": draft_id,
+        },
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "league_id": SLEEPER_LEAGUE_ID,
-        "draft_id": draft_id,
     }
 
     (data_dir / f"{YEAR}.json").write_text(json.dumps(out, indent=2))

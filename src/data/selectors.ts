@@ -1,5 +1,5 @@
 import { aliasMap, normalizeName, resolvePlayerKey } from "../lib/playerIdentity";
-import type { Matchup, SeasonData, Team } from "./schema";
+import type { Matchup, PlayerPoints, SeasonData, Team } from "./schema";
 
 export type SummaryStat = {
   label: string;
@@ -1175,6 +1175,17 @@ export function selectTransactions(season: SeasonData): TransactionCard[] {
   });
   transactionsCache.set(season, cards);
   return cards;
+}
+
+/** Provide raw transactions for detailed history views. */
+export function selectRawTransactions(season: SeasonData): unknown[] {
+  const raw = season.supplemental?.raw_transactions;
+  return Array.isArray(raw) ? raw : [];
+}
+
+/** Provide player points payloads for weekly/season rollups. */
+export function selectPlayerPoints(season: SeasonData): PlayerPoints | null {
+  return season.supplemental?.player_points ?? null;
 }
 
 /** Summarize trades with per-team assets and evaluation scores. */

@@ -101,6 +101,12 @@ export const PlayerIndexSchema = z.object({
   pos: z.string().nullable().optional(),
 });
 
+export const PlayerPointsSchema = z.object({
+  by_week: z.record(z.record(z.number())),
+  cumulative: z.record(z.number()),
+  weeks_complete: z.number().int(),
+});
+
 export const SupplementalSchema = z.object({
   current_roster: z.record(z.array(z.string())).optional(),
   player_index: z.record(PlayerIndexSchema).optional(),
@@ -111,6 +117,9 @@ export const SupplementalSchema = z.object({
   })).optional(),
   trade_evals: z.array(z.unknown()).optional(),
   acquisitions: z.array(z.unknown()).optional(),
+  raw_transactions: z.array(z.unknown()).optional(),
+  player_points: PlayerPointsSchema.optional(),
+  draft_id: z.string().nullable().optional(),
 });
 
 export const SeasonSchema = z.object({
@@ -138,4 +147,5 @@ export type WeeklyRecaps = z.infer<typeof WeeklyRecapsSchema>;
 export type Award = z.infer<typeof AwardSchema>;
 export type Lineup = z.infer<typeof LineupSchema>;
 export type Supplemental = z.infer<typeof SupplementalSchema>;
+export type PlayerPoints = z.infer<typeof PlayerPointsSchema>;
 export type SeasonData = z.infer<typeof SeasonSchema>;

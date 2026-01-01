@@ -173,6 +173,25 @@ SEASON_SCHEMA: Dict[str, Any] = {
                 },
                 "trade_evals": {"type": "array"},
                 "acquisitions": {"type": "array"},
+                "raw_transactions": {"type": "array"},
+                "player_points": {
+                    "type": "object",
+                    "properties": {
+                        "by_week": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "object",
+                                "additionalProperties": {"type": "number"},
+                            },
+                        },
+                        "cumulative": {
+                            "type": "object",
+                            "additionalProperties": {"type": "number"},
+                        },
+                        "weeks_complete": {"type": "integer"},
+                    },
+                },
+                "draft_id": {"type": ["string", "null"]},
             },
         },
     },

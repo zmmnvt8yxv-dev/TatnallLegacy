@@ -23,6 +23,7 @@ def load_api_json(url: str, timeout: int = 20) -> JsonDict:
 
 def normalize_season(source: JsonDict, year: int, lineups: Optional[List[Dict[str, Any]]]) -> JsonDict:
     """Normalize raw season payloads into the shared schema used by the front end."""
+    supplemental_source = source.get("supplemental") if isinstance(source.get("supplemental"), dict) else {}
     supplemental = None
     if any(
         k in source
@@ -33,16 +34,25 @@ def normalize_season(source: JsonDict, year: int, lineups: Optional[List[Dict[st
             "users",
             "trade_evals",
             "acquisitions",
+            "raw_transactions",
+            "player_points",
+            "draft_id",
         )
     ):
         supplemental = {
-            "current_roster": source.get("current_roster"),
-            "player_index": source.get("player_index"),
-            "draft_day_roster": source.get("draft_day_roster"),
-            "users": source.get("users"),
-            "trade_evals": source.get("trade_evals"),
-            "acquisitions": source.get("acquisitions"),
+            **supplemental_source,
+            "current_roster": supplemental_source.get("current_roster") or source.get("current_roster"),
+            "player_index": supplemental_source.get("player_index") or source.get("player_index"),
+            "draft_day_roster": supplemental_source.get("draft_day_roster") or source.get("draft_day_roster"),
+            "users": supplemental_source.get("users") or source.get("users"),
+            "trade_evals": supplemental_source.get("trade_evals") or source.get("trade_evals"),
+            "acquisitions": supplemental_source.get("acquisitions") or source.get("acquisitions"),
+            "raw_transactions": supplemental_source.get("raw_transactions") or source.get("raw_transactions"),
+            "player_points": supplemental_source.get("player_points") or source.get("player_points"),
+            "draft_id": supplemental_source.get("draft_id") or source.get("draft_id"),
         }
+    elif supplemental_source:
+        supplemental = supplemental_source
 
     payload: JsonDict = {
         "schemaVersion": SCHEMA_VERSION,
