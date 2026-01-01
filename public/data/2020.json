@@ -1,5 +1,8 @@
 {
+  "schemaVersion": "1.0.0",
   "year": 2020,
+  "league_id": null,
+  "generated_at": null,
   "teams": [
     {
       "team_name": "The King",
@@ -1815,6 +1818,7 @@
       "keeper": false
     }
   ],
+  "awards": [],
   "lineups": [
     {
       "week": 1,
@@ -25126,7 +25130,5 @@
       "points": 13.0,
       "started": true
     }
-  ],
-  "schemaVersion": "1.0.0",
-  "awards": []
+  ]
 }
