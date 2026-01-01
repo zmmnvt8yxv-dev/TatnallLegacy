@@ -242,7 +242,7 @@ export function TeamsSection() {
                   <ul className="roster-list">
                     {rosterMap.get(team.team)?.roster.map((player) => (
                       <li key={`${team.team}-${player.id}`} className="roster-list__item">
-                        <PlayerName name={player.name} className="roster-list__name" />
+                        <PlayerName name=<PlayerName name={player.name} /> className="roster-list__name" />
                         <span className="roster-list__meta">
                           {[player.position, player.nflTeam].filter(Boolean).join(" · ")}
                         </span>
