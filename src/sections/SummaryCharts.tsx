@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { BarChart, Bar, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { ChartCard } from "../components/ChartCard";
 import { selectAwardCards, selectPointsTrend, selectRivalryHeatmap } from "../data/selectors";
