@@ -9,7 +9,11 @@ import {
   type WeeklyRecaps,
 } from "./schema";
 const APP_ORIGIN =
-  typeof window !== "undefined" && window.location?.origin ? window.location.origin : "http://localhost";
+  typeof window !== "undefined" && window.location
+    ? window.location.origin && window.location.origin !== "null"
+      ? window.location.origin
+      : window.location.href
+    : "http://localhost";
 const APP_BASE = import.meta.env.BASE_URL || "/";
 
 function assetUrl(path: string) {
