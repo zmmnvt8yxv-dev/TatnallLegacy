@@ -33,7 +33,7 @@ export default function SummaryCharts({ season }: SummaryChartsProps) {
             description="Tracking the gap between total offense and defense by week."
           >
             <div className="chart-card__chart" aria-label="Points for and against trends">
-              <ResponsiveContainer>
+              <ResponsiveContainer width="100%" height={260}>
                 <LineChart data={pointsTrend} margin={{ top: 12, right: 20, left: 0, bottom: 4 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
                   <XAxis dataKey="week" stroke="var(--color-muted)" tickLine={false} axisLine={false} />
@@ -81,7 +81,7 @@ export default function SummaryCharts({ season }: SummaryChartsProps) {
             description="Positive weeks highlight offense-heavy stretches."
           >
             <div className="chart-card__chart" aria-label="Net scoring margin by week">
-              <ResponsiveContainer>
+              <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={pointsTrend} margin={{ top: 12, right: 20, left: 0, bottom: 4 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
                   <XAxis dataKey="week" stroke="var(--color-muted)" tickLine={false} axisLine={false} />
