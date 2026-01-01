@@ -175,7 +175,7 @@ export function DraftSection() {
                 <div className="draft-board__grid">
                   {picks.map((row) => (
                     <article
-                      key={`${row.round}-${row.pick}-${row.team}-${row.player}`}
+                      key={`${row.round}-${row.pick}-${row.team}-$<PlayerName name={row.player} />`}
                       className="draft-board__card"
                     >
                       <div className="draft-board__card-top">
@@ -189,7 +189,7 @@ export function DraftSection() {
                         ) : null}
                       </div>
                       <p className="draft-board__player">
-                        <PlayerName name={row.player} />
+                        <PlayerName name=<PlayerName name={row.player} /> />
                       </p>
                       <p className="draft-board__team">{row.team}</p>
                       <p className="draft-board__manager">Managed by {row.manager}</p>
@@ -246,11 +246,11 @@ export function DraftSection() {
                 </tr>
               ) : (
                 filteredRows.map((row) => (
-                  <tr key={`${row.round}-${row.pick}-${row.team}-${row.player}`}>
+                  <tr key={`${row.round}-${row.pick}-${row.team}-$<PlayerName name={row.player} />`}>
                     <td>{row.round || "—"}</td>
                     <td>{row.pick || "—"}</td>
                     <td>
-                      <PlayerName name={row.player} />
+                      <PlayerName name=<PlayerName name={row.player} /> />
                     </td>
                     <td>{row.nflTeam}</td>
                     <td>{row.team}</td>
