@@ -1,3 +1,4 @@
+import { aliasMap, normalizeName, resolvePlayerKey } from "../lib/playerIdentity";
 import type { Matchup, SeasonData, Team } from "./schema";
 
 export type SummaryStat = {
@@ -257,6 +258,7 @@ export type PlayerSearchEntry = {
   team?: string;
   position?: string;
   normalized: string;
+  searchTerms: string[];
   recentPerformance: PlayerRecentPerformance | null;
   consensusRank: number | null;
 };
@@ -1283,45 +1285,45 @@ export function selectMemberSummaries(season: SeasonData): MemberSummary[] {
 }
 
 const PLAYER_HIGH_SCORE_THRESHOLD = 20;
-const PLAYER_NAME_SUFFIXES = new Set(["jr", "sr", "ii", "iii", "iv", "v"]);
-
-/** Normalize player names so search and profile lookups are consistent. */
-export function normalizePlayerName(name: string): string {
-  const cleaned = name
-    .toLowerCase()
-    .replace(/[.'’]/g, "")
-    .replace(/[^a-z0-9\\s-]/g, " ")
-    .replace(/[-]/g, " ")
-    .replace(/\\s+/g, " ")
-    .trim();
-  if (!cleaned) {
-    return "";
-  }
-  const parts = cleaned.split(" ").filter((part) => !PLAYER_NAME_SUFFIXES.has(part));
-  return parts.join(" ");
-}
-
 export type PlayerDirectoryEntry = {
+  key: string;
   name: string;
   team?: string;
   position?: string;
+  searchNames: string[];
 };
 
 /** Build a unique list of all players across seasons for search/autocomplete. */
 export function selectPlayerDirectory(seasons: SeasonData[]): PlayerDirectoryEntry[] {
   const players = new Map<string, PlayerDirectoryEntry>();
 
-  const ensureEntry = (name: string) => {
-    const normalized = normalizePlayerName(name);
-    if (!normalized) {
+  const ensureEntry = (name: string, metadata?: { team?: string; pos?: string }) => {
+    const key = resolvePlayerKey(name, metadata);
+    if (!key) {
       return null;
     }
-    const existing = players.get(normalized);
+    const existing = players.get(key);
     if (existing) {
+      if (name && name.length > existing.name.length) {
+        existing.name = name;
+      }
+      if (name) {
+        const normalizedName = normalizeName(name);
+        if (normalizedName && !existing.searchNames.includes(normalizedName)) {
+          existing.searchNames.push(normalizedName);
+        }
+      }
       return existing;
     }
-    const entry = { name };
-    players.set(normalized, entry);
+    const normalizedName = normalizeName(name);
+    const entry = {
+      key,
+      name,
+      team: metadata?.team,
+      position: metadata?.pos,
+      searchNames: normalizedName ? [normalizedName] : [],
+    };
+    players.set(key, entry);
     return entry;
   };
 
@@ -1333,7 +1335,7 @@ export function selectPlayerDirectory(seasons: SeasonData[]): PlayerDirectoryEnt
     });
     season.draft.forEach((pick) => {
       if (pick.player) {
-        const entry = ensureEntry(pick.player);
+        const entry = ensureEntry(pick.player, { team: pick.player_nfl ?? undefined });
         if (entry && pick.player_nfl && !entry.team) {
           entry.team = pick.player_nfl;
         }
@@ -1354,7 +1356,7 @@ export function selectPlayerDirectory(seasons: SeasonData[]): PlayerDirectoryEnt
         if (!name) {
           return;
         }
-        const entry = ensureEntry(name);
+        const entry = ensureEntry(name, { team: player.team ?? undefined, pos: player.pos ?? undefined });
         if (!entry) {
           return;
         }
@@ -1387,11 +1389,11 @@ function buildPositionRankMap(season: SeasonData, position: string): Map<string,
       if (!name) {
         return;
       }
-      const normalized = normalizePlayerName(name);
-      if (!normalized || !player.pos) {
+      const key = resolvePlayerKey(name, { team: player.team ?? undefined, pos: player.pos ?? undefined });
+      if (!key || !player.pos) {
         return;
       }
-      nameToPosition.set(normalized, player.pos);
+      nameToPosition.set(key, player.pos);
     });
   }
 
@@ -1402,15 +1404,15 @@ function buildPositionRankMap(season: SeasonData, position: string): Map<string,
     if (!entry.player || entry.started === false) {
       return;
     }
-    const normalized = normalizePlayerName(entry.player);
-    if (!normalized) {
+    const key = resolvePlayerKey(entry.player);
+    if (!key) {
       return;
     }
-    if (nameToPosition.get(normalized) !== position) {
+    if (nameToPosition.get(key) !== position) {
       return;
     }
     const points = toNumber(entry.points);
-    totals.set(normalized, (totals.get(normalized) ?? 0) + points);
+    totals.set(key, (totals.get(key) ?? 0) + points);
   });
 
   const ranked = Array.from(totals.entries()).sort((a, b) => b[1] - a[1]);
@@ -1425,12 +1427,12 @@ function buildConsensusRankMap(seasons: SeasonData[]): PlayerConsensusRankMap {
       if (!pick.player || pick.overall === null || pick.overall === undefined) {
         return;
       }
-      const normalized = normalizePlayerName(pick.player);
-      if (!normalized) {
+      const key = resolvePlayerKey(pick.player, { team: pick.player_nfl ?? undefined });
+      if (!key) {
         return;
       }
-      const existing = totals.get(normalized) ?? { total: 0, count: 0 };
-      totals.set(normalized, {
+      const existing = totals.get(key) ?? { total: 0, count: 0 };
+      totals.set(key, {
         total: existing.total + pick.overall,
         count: existing.count + 1,
       });
@@ -1456,19 +1458,19 @@ function buildRecentPerformanceMap(seasons: SeasonData[]): PlayerRecentPerforman
       if (!entry.player || entry.week === null || entry.week === undefined) {
         return;
       }
-      const normalized = normalizePlayerName(entry.player);
-      if (!normalized) {
+      const key = resolvePlayerKey(entry.player);
+      if (!key) {
         return;
       }
       const week = entry.week ?? 0;
       const points = typeof entry.points === "number" ? entry.points : 0;
-      const existing = recent.get(normalized);
+      const existing = recent.get(key);
       if (
         !existing ||
         season.year > existing.season ||
         (season.year === existing.season && week > existing.week)
       ) {
-        recent.set(normalized, { season: season.year, week, points });
+        recent.set(key, { season: season.year, week, points });
       }
     });
   });
@@ -1480,16 +1482,40 @@ export function selectPlayerSearchIndex(seasons: SeasonData[]): PlayerSearchEntr
   const directory = selectPlayerDirectory(seasons);
   const consensusRankMap = buildConsensusRankMap(seasons);
   const recentPerformanceMap = buildRecentPerformanceMap(seasons);
+  const aliasTermsByKey = new Map<string, Set<string>>();
+
+  aliasMap.forEach((entry) => {
+    const key = resolvePlayerKey(entry.canonical, {
+      team: entry.team ?? undefined,
+      pos: entry.pos ?? undefined,
+    });
+    const term = normalizeName(entry.alias);
+    if (!key || !term) {
+      return;
+    }
+    const existing = aliasTermsByKey.get(key) ?? new Set<string>();
+    existing.add(term);
+    aliasTermsByKey.set(key, existing);
+  });
 
   return directory.map((entry) => {
-    const normalized = normalizePlayerName(entry.name);
+    const normalized = entry.key;
+    const searchTerms = new Set(entry.searchNames);
+    if (normalized) {
+      searchTerms.add(normalized);
+    }
+    const aliasTerms = aliasTermsByKey.get(entry.key);
+    if (aliasTerms) {
+      aliasTerms.forEach((term) => searchTerms.add(term));
+    }
     return {
       name: entry.name,
       team: entry.team,
       position: entry.position,
       normalized,
-      recentPerformance: recentPerformanceMap.get(normalized) ?? null,
-      consensusRank: consensusRankMap.get(normalized) ?? null,
+      searchTerms: Array.from(searchTerms),
+      recentPerformance: recentPerformanceMap.get(entry.key) ?? null,
+      consensusRank: consensusRankMap.get(entry.key) ?? null,
     };
   });
 }
@@ -1499,8 +1525,9 @@ export function selectPlayerProfile(
   seasons: SeasonData[],
   playerName: string,
 ): PlayerProfile | null {
-  const normalized = normalizePlayerName(playerName);
-  if (!normalized) {
+  const playerKey = resolvePlayerKey(playerName);
+  const normalizedPlayerName = normalizeName(playerName);
+  if (!playerKey) {
     return null;
   }
 
@@ -1519,7 +1546,8 @@ export function selectPlayerProfile(
       if (!name) {
         continue;
       }
-      if (normalizePlayerName(name) !== normalized) {
+      const key = resolvePlayerKey(name, { team: player.team ?? undefined, pos: player.pos ?? undefined });
+      if (key !== playerKey) {
         continue;
       }
       position = player.pos ?? position;
@@ -1561,7 +1589,10 @@ export function selectPlayerProfile(
     if (playerIndex) {
       Object.entries(playerIndex).forEach(([id, player]) => {
         const name = player.full_name ?? player.name;
-        if (name && normalizePlayerName(name) === normalized) {
+        const key = name
+          ? resolvePlayerKey(name, { team: player.team ?? undefined, pos: player.pos ?? undefined })
+          : "";
+        if (key && key === playerKey) {
           matchingPlayerIds.add(id);
         }
       });
@@ -1569,7 +1600,7 @@ export function selectPlayerProfile(
 
     const playerEntries =
       season.lineups?.filter((entry) => {
-        if (entry.player && normalizePlayerName(entry.player) === normalized) {
+        if (entry.player && resolvePlayerKey(entry.player) === playerKey) {
           return true;
         }
         if (entry.player_id && matchingPlayerIds.has(entry.player_id)) {
@@ -1585,7 +1616,7 @@ export function selectPlayerProfile(
 
     if (playerEntries.length === 0) {
       season.draft.forEach((pick) => {
-        if (pick.player && normalizePlayerName(pick.player) === normalized && pick.player_nfl) {
+        if (pick.player && resolvePlayerKey(pick.player) === playerKey && pick.player_nfl) {
           nflTeams.add(pick.player_nfl);
           nflTeamHistory.push({ season: season.year, team: pick.player_nfl });
         }
@@ -1638,7 +1669,7 @@ export function selectPlayerProfile(
     });
 
     season.draft.forEach((pick) => {
-      if (pick.player && normalizePlayerName(pick.player) === normalized && pick.player_nfl) {
+      if (pick.player && resolvePlayerKey(pick.player) === playerKey && pick.player_nfl) {
         nflTeams.add(pick.player_nfl);
         nflTeamHistory.push({ season: season.year, team: pick.player_nfl });
       }
@@ -1685,9 +1716,8 @@ export function selectPlayerProfile(
     }))
     .sort((a, b) => a.team.localeCompare(b.team));
 
-  const consensusRank = buildConsensusRankMap(seasons).get(normalized) ?? null;
-  const recentPerformance =
-    buildRecentPerformanceMap(seasons).get(normalized) ?? null;
+  const consensusRank = buildConsensusRankMap(seasons).get(playerKey) ?? null;
+  const recentPerformance = buildRecentPerformanceMap(seasons).get(playerKey) ?? null;
   let positionRank: number | null = null;
   let positionRankSeason: number | null = null;
 
@@ -1699,7 +1729,7 @@ export function selectPlayerProfile(
         continue;
       }
       const rankMap = buildPositionRankMap(seasonData, position);
-      const rank = rankMap.get(normalized) ?? null;
+      const rank = rankMap.get(playerKey) ?? null;
       if (rank) {
         positionRank = rank;
         positionRankSeason = seasonYear;
@@ -1757,7 +1787,11 @@ export function selectPlayerProfile(
       if (!combined) {
         return;
       }
-      if (normalizePlayerName(combined).includes(normalized)) {
+      const combinedNormalized = normalizeName(combined);
+      if (
+        (normalizedPlayerName && combinedNormalized.includes(normalizedPlayerName)) ||
+        combinedNormalized.includes(playerKey)
+      ) {
         awards.push(title || description);
       }
     });

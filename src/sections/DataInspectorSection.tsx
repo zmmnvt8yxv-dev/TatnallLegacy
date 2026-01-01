@@ -1,7 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { SectionCard } from "../components/SectionCard";
 import { dataLoader, type LoaderDiagnostics } from "../data/loader";
 import { selectSeasonSummary } from "../data/selectors";
+import {
+  addAliasEntry,
+  aliasMap,
+  normalizeName,
+  resolvePlayerKey,
+  type PlayerAlias,
+} from "../lib/playerIdentity";
 import {
   PowerRankingsSchema,
   SeasonSchema,
@@ -28,6 +35,7 @@ type InspectorState = {
   status: "idle" | "loading" | "ready" | "error";
   errorMessage?: string;
   seasons: SeasonCheck[];
+  seasonData: SeasonData[];
   diagnostics: LoaderDiagnostics;
   powerRankings?: PowerRankings;
   weeklyRecaps?: WeeklyRecaps;
@@ -41,30 +49,146 @@ export function DataInspectorSection() {
   const [state, setState] = useState<InspectorState>({
     status: "idle",
     seasons: [],
+    seasonData: [],
     diagnostics: dataLoader.getDiagnostics(),
   });
+  const [aliasForm, setAliasForm] = useState({
+    alias: "",
+    canonical: "",
+    team: "",
+    pos: "",
+  });
+  const [aliasVersion, setAliasVersion] = useState(0);
+
+  const handleAliasSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const alias = aliasForm.alias.trim();
+    const canonical = aliasForm.canonical.trim();
+    if (!alias || !canonical) {
+      return;
+    }
+    const entry: PlayerAlias = {
+      alias,
+      canonical,
+      team: aliasForm.team.trim() || undefined,
+      pos: aliasForm.pos.trim() || undefined,
+    };
+    addAliasEntry(entry);
+    setAliasForm({ alias: "", canonical: "", team: "", pos: "" });
+    setAliasVersion((version) => version + 1);
+  };
+
+  const reconciliationReport = useMemo(() => {
+    if (state.seasonData.length === 0) {
+      return [];
+    }
+
+    const buildSimilarityKey = (name: string) => {
+      const normalized = normalizeName(name);
+      if (!normalized) {
+        return "";
+      }
+      const parts = normalized.split(" ").filter(Boolean);
+      if (parts.length === 0) {
+        return "";
+      }
+      const last = parts[parts.length - 1];
+      const initials = parts.slice(0, -1).map((part) => part[0]).join("");
+      return `${last}-${initials}`;
+    };
+
+    const groups = new Map<
+      string,
+      { names: Set<string>; keys: Set<string>; seasons: Set<number>; count: number }
+    >();
+
+    const addName = (name: string | null | undefined, metadata?: { team?: string; pos?: string }, season?: number) => {
+      if (!name) {
+        return;
+      }
+      const key = resolvePlayerKey(name, metadata);
+      const similarityKey = buildSimilarityKey(name);
+      if (!key || !similarityKey) {
+        return;
+      }
+      const entry = groups.get(similarityKey) ?? {
+        names: new Set<string>(),
+        keys: new Set<string>(),
+        seasons: new Set<number>(),
+        count: 0,
+      };
+      entry.names.add(name);
+      entry.keys.add(key);
+      if (season != null) {
+        entry.seasons.add(season);
+      }
+      entry.count += 1;
+      groups.set(similarityKey, entry);
+    };
+
+    state.seasonData.forEach((season) => {
+      season.lineups?.forEach((entry) => {
+        addName(entry.player, undefined, season.year);
+      });
+      season.draft.forEach((pick) => {
+        addName(pick.player, { team: pick.player_nfl ?? undefined }, season.year);
+      });
+      season.transactions.forEach((transaction) => {
+        transaction.entries.forEach((entry) => {
+          addName(entry.player, undefined, season.year);
+        });
+      });
+      const playerIndex = season.supplemental?.player_index;
+      if (playerIndex) {
+        Object.values(playerIndex).forEach((player) => {
+          const name = player.full_name ?? player.name ?? null;
+          addName(name, { team: player.team ?? undefined, pos: player.pos ?? undefined }, season.year);
+        });
+      }
+    });
+
+    return Array.from(groups.entries())
+      .filter(([, entry]) => entry.keys.size > 1)
+      .map(([signature, entry]) => ({
+        signature,
+        names: Array.from(entry.names).sort(),
+        keys: Array.from(entry.keys).sort(),
+        seasons: Array.from(entry.seasons).sort(),
+        count: entry.count,
+      }))
+      .sort((a, b) => b.count - a.count || a.signature.localeCompare(b.signature))
+      .slice(0, 50);
+  }, [state.seasonData, aliasVersion]);
 
   useEffect(() => {
     let isMounted = true;
 
     const load = async () => {
-      setState({ status: "loading", seasons: [], diagnostics: dataLoader.getDiagnostics() });
+      setState({
+        status: "loading",
+        seasons: [],
+        seasonData: [],
+        diagnostics: dataLoader.getDiagnostics(),
+      });
       try {
         const manifest = await dataLoader.loadManifest();
-        const seasons = await Promise.all(
+        const seasonEntries = await Promise.all(
           manifest.years.map(async (year) => {
             const payload = await dataLoader.loadSeason(year);
             const parsed = SeasonSchema.safeParse(payload);
             const emptyLists = EMPTY_LIST_KEYS.filter((key) => payload[key].length === 0);
             return {
-              year,
-              status: parsed.success ? "valid" : "invalid",
-              errors: parsed.success
-                ? []
-                : parsed.error.issues.map((issue) => `${issue.path.join(".")} ${issue.message}`),
-              summary: selectSeasonSummary(payload),
-              emptyLists,
-            } satisfies SeasonCheck;
+              payload,
+              check: {
+                year,
+                status: parsed.success ? "valid" : "invalid",
+                errors: parsed.success
+                  ? []
+                  : parsed.error.issues.map((issue) => `${issue.path.join(".")} ${issue.message}`),
+                summary: selectSeasonSummary(payload),
+                emptyLists,
+              } satisfies SeasonCheck,
+            };
           })
         );
 
@@ -81,7 +205,8 @@ export function DataInspectorSection() {
 
         setState({
           status: "ready",
-          seasons,
+          seasons: seasonEntries.map((entry) => entry.check),
+          seasonData: seasonEntries.map((entry) => entry.payload),
           powerRankings: powerRankingResult.success ? powerRankings : undefined,
           weeklyRecaps: weeklyRecapsResult.success ? weeklyRecaps : undefined,
           powerRankingsStatus: powerRankingResult.success
@@ -99,6 +224,7 @@ export function DataInspectorSection() {
         setState({
           status: "error",
           seasons: [],
+          seasonData: [],
           errorMessage: error instanceof Error ? error.message : "Unknown error",
           diagnostics: dataLoader.getDiagnostics(),
         });
@@ -220,6 +346,94 @@ export function DataInspectorSection() {
                 </ul>
               </div>
             )}
+            <div className="rounded-lg border border-border bg-surface px-4 py-3">
+              <h3 className="text-base font-semibold text-foreground">Player Identity Reconciliation</h3>
+              <p className="mt-1 text-xs text-muted">
+                Review potential near-duplicate player names and add aliases to the canonical map.
+              </p>
+              <p className="mt-2 text-xs text-muted">
+                Alias entries loaded: {aliasMap.length}
+              </p>
+              <form className="mt-4 grid gap-3 md:grid-cols-5" onSubmit={handleAliasSubmit}>
+                <label className="space-y-1 text-xs text-muted">
+                  <span className="font-medium text-foreground">Alias</span>
+                  <input
+                    type="text"
+                    className="input"
+                    value={aliasForm.alias}
+                    onChange={(event) =>
+                      setAliasForm((prev) => ({ ...prev, alias: event.target.value }))
+                    }
+                    placeholder="e.g. Gabe Davis"
+                  />
+                </label>
+                <label className="space-y-1 text-xs text-muted">
+                  <span className="font-medium text-foreground">Canonical</span>
+                  <input
+                    type="text"
+                    className="input"
+                    value={aliasForm.canonical}
+                    onChange={(event) =>
+                      setAliasForm((prev) => ({ ...prev, canonical: event.target.value }))
+                    }
+                    placeholder="e.g. Gabriel Davis"
+                  />
+                </label>
+                <label className="space-y-1 text-xs text-muted">
+                  <span className="font-medium text-foreground">Team (optional)</span>
+                  <input
+                    type="text"
+                    className="input"
+                    value={aliasForm.team}
+                    onChange={(event) =>
+                      setAliasForm((prev) => ({ ...prev, team: event.target.value }))
+                    }
+                    placeholder="e.g. BUF"
+                  />
+                </label>
+                <label className="space-y-1 text-xs text-muted">
+                  <span className="font-medium text-foreground">Pos (optional)</span>
+                  <input
+                    type="text"
+                    className="input"
+                    value={aliasForm.pos}
+                    onChange={(event) =>
+                      setAliasForm((prev) => ({ ...prev, pos: event.target.value }))
+                    }
+                    placeholder="e.g. WR"
+                  />
+                </label>
+                <div className="flex items-end">
+                  <button type="submit" className="btn w-full">
+                    Add Alias
+                  </button>
+                </div>
+              </form>
+              <div className="mt-4 space-y-3 text-xs text-muted">
+                {reconciliationReport.length === 0 ? (
+                  <p>No near-duplicate names detected yet.</p>
+                ) : (
+                  <ul className="space-y-3">
+                    {reconciliationReport.map((entry) => (
+                      <li key={entry.signature} className="rounded-md border border-border p-3">
+                        <p className="font-medium text-foreground">
+                          Similarity: {entry.signature}
+                        </p>
+                        <p className="mt-1">
+                          Names: {entry.names.join(", ")}
+                        </p>
+                        <p className="mt-1">
+                          Canonical keys: {entry.keys.join(", ")}
+                        </p>
+                        <p className="mt-1">
+                          Seasons: {entry.seasons.join(", ")}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
           </>
         )}
       </div>

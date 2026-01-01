@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState, type FormEvent } from "react";
-import { normalizePlayerName, selectPlayerSearchIndex } from "../data/selectors";
+import { selectPlayerSearchIndex } from "../data/selectors";
+import { normalizeName } from "../lib/playerIdentity";
 import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
 import { useDebouncedValue } from "../hooks/useDebouncedValue";
 import { usePlayerProfile } from "./PlayerProfileProvider";
@@ -61,7 +62,7 @@ export function PlayerSearch() {
     [debouncedQuery],
   );
 
-  const normalizedQuery = useMemo(() => normalizePlayerName(debouncedQuery), [debouncedQuery]);
+  const normalizedQuery = useMemo(() => normalizeName(debouncedQuery), [debouncedQuery]);
 
   const players = useMemo(() => {
     if (status !== "ready") {
@@ -77,21 +78,27 @@ export function PlayerSearch() {
     const normalizedParts = normalizedQuery.split(" ").filter(Boolean);
     const results: PlayerMatch[] = [];
     players.forEach((player) => {
-      const normalizedName = player.normalized;
-      if (!normalizedName) {
+      const candidateTerms = player.searchTerms.length ? player.searchTerms : [player.normalized];
+      if (candidateTerms.length === 0) {
         return;
       }
-      const matchesAll = normalizedParts.every((part) => normalizedName.includes(part));
+      const matchesAll = normalizedParts.every((part) =>
+        candidateTerms.some((term) => term.includes(part)),
+      );
       if (!matchesAll) {
         return;
       }
-      let score = normalizedParts.reduce((total, part) => total + normalizedName.indexOf(part), 0);
-      if (normalizedName === normalizedQuery) {
+      const primaryTerm = candidateTerms[0] ?? "";
+      let score = normalizedParts.reduce(
+        (total, part) => total + primaryTerm.indexOf(part),
+        0,
+      );
+      if (primaryTerm === normalizedQuery) {
         score -= 10;
-      } else if (normalizedName.startsWith(normalizedQuery)) {
+      } else if (primaryTerm.startsWith(normalizedQuery)) {
         score -= 5;
       }
-      if (player.team && normalizePlayerName(player.team).includes(normalizedQuery)) {
+      if (player.team && normalizeName(player.team).includes(normalizedQuery)) {
         score -= 1;
       }
       if (player.position && player.position.toLowerCase().startsWith(normalizedQuery)) {
@@ -148,7 +155,11 @@ export function PlayerSearch() {
     if (!normalizedQuery) {
       return;
     }
-    const exactMatch = players.find((player) => player.normalized === normalizedQuery);
+    const exactMatch = players.find(
+      (player) =>
+        player.normalized === normalizedQuery ||
+        player.searchTerms.some((term) => term === normalizedQuery),
+    );
     const fallback = exactMatch?.name ?? matches[0]?.item.name;
     if (fallback) {
       handleSelect(fallback);
