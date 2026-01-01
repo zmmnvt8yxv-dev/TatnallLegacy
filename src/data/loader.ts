@@ -11,9 +11,7 @@ function assetUrl(path: string) {
 
 type RecordValue = Record<string, unknown>;
 
-const REQUIRED_LIST_KEYS = ["teams", "matchups", "transactions", "draft", "awards", "lineups"];
-const NON_EMPTY_LIST_KEYS = ["teams", "matchups", "draft"];
-const LINEUPS_REQUIRED_FROM_YEAR = 2020;
+const REQUIRED_LIST_KEYS = ["teams", "matchups", "draft"];
 
 function isRecord(value: unknown): value is RecordValue {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
