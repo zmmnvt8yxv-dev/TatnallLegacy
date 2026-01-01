@@ -1,7 +1,15 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { SectionCard } from "../components/SectionCard";
 import { dataLoader, type LoaderDiagnostics } from "../data/loader";
-import { selectSeasonSummary } from "../data/selectors";
+import {
+  selectNflRosterSummary,
+  selectNflScheduleGames,
+  selectNflTeams,
+  selectSeasonSummary,
+  type NflRosterTeamSummary,
+  type NflScheduleGameCard,
+  type NflTeamCard,
+} from "../data/selectors";
 import {
   addAliasEntry,
   aliasMap,
@@ -10,6 +18,9 @@ import {
   type PlayerAlias,
 } from "../lib/playerIdentity";
 import {
+  NflRosterSchema,
+  NflScheduleSchema,
+  NflTeamsSchema,
   PowerRankingsSchema,
   SeasonSchema,
   WeeklyRecapsSchema,
@@ -43,6 +54,12 @@ type InspectorState = {
   weeklyRecapsStatus?: string;
   powerRankingsEmpty?: boolean;
   weeklyRecapsEmpty?: boolean;
+  nflRosterStatus?: string;
+  nflScheduleStatus?: string;
+  nflTeamsStatus?: string;
+  nflRosterSummary?: NflRosterTeamSummary[];
+  nflScheduleGames?: NflScheduleGameCard[];
+  nflTeams?: NflTeamCard[];
 };
 
 export function DataInspectorSection() {
@@ -201,6 +218,22 @@ export function DataInspectorSection() {
         const weeklyRecapsEmpty =
           weeklyRecapsResult.success && weeklyRecaps.entries.length === 0;
 
+        const nflRosters = await dataLoader.loadNflRosters();
+        const nflRosterResult = NflRosterSchema.safeParse(nflRosters);
+        const nflSchedule = await dataLoader.loadNflSchedule();
+        const nflScheduleResult = NflScheduleSchema.safeParse(nflSchedule);
+        const nflTeams = await dataLoader.loadNflTeams();
+        const nflTeamsResult = NflTeamsSchema.safeParse(nflTeams);
+        const nflRosterSummary = nflRosterResult.success
+          ? selectNflRosterSummary(nflRosters)
+          : [];
+        const nflScheduleGames = nflScheduleResult.success
+          ? selectNflScheduleGames(nflSchedule)
+          : [];
+        const nflTeamCards = nflTeamsResult.success
+          ? selectNflTeams(nflTeams)
+          : [];
+
         if (!isMounted) return;
 
         setState({
@@ -217,6 +250,18 @@ export function DataInspectorSection() {
             : weeklyRecapsResult.error.issues.map((issue) => issue.message).join("; "),
           powerRankingsEmpty,
           weeklyRecapsEmpty,
+          nflRosterStatus: nflRosterResult.success
+            ? `${nflRosters.length} roster entries`
+            : nflRosterResult.error.issues.map((issue) => issue.message).join("; "),
+          nflScheduleStatus: nflScheduleResult.success
+            ? `${nflSchedule.length} games`
+            : nflScheduleResult.error.issues.map((issue) => issue.message).join("; "),
+          nflTeamsStatus: nflTeamsResult.success
+            ? `${nflTeams.length} teams`
+            : nflTeamsResult.error.issues.map((issue) => issue.message).join("; "),
+          nflRosterSummary,
+          nflScheduleGames,
+          nflTeams: nflTeamCards,
           diagnostics: dataLoader.getDiagnostics(),
         });
       } catch (error) {
@@ -346,6 +391,55 @@ export function DataInspectorSection() {
                 </ul>
               </div>
             )}
+            <div className="rounded-lg border border-border bg-surface px-4 py-3">
+              <h3 className="text-base font-semibold text-foreground">NFL Reference Data</h3>
+              <dl className="mt-2 space-y-2 text-xs text-muted">
+                <div>
+                  <dt className="font-medium text-foreground">Rosters (2025)</dt>
+                  <dd>{state.nflRosterStatus ?? "Unavailable"}</dd>
+                </div>
+                <div>
+                  <dt className="font-medium text-foreground">Schedule (2025)</dt>
+                  <dd>{state.nflScheduleStatus ?? "Unavailable"}</dd>
+                </div>
+                <div>
+                  <dt className="font-medium text-foreground">NFL Teams</dt>
+                  <dd>{state.nflTeamsStatus ?? "Unavailable"}</dd>
+                </div>
+              </dl>
+              <div className="mt-3 grid gap-3 text-xs text-muted md:grid-cols-3">
+                <div>
+                  <p className="font-medium text-foreground">Roster Sample</p>
+                  <ul className="mt-1 space-y-1">
+                    {(state.nflRosterSummary ?? []).slice(0, 3).map((team) => (
+                      <li key={team.team}>
+                        {team.team}: {team.totalPlayers} players ({team.activePlayers} active)
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Schedule Sample</p>
+                  <ul className="mt-1 space-y-1">
+                    {(state.nflScheduleGames ?? []).slice(0, 3).map((game) => (
+                      <li key={game.id}>
+                        {game.weekLabel}: {game.away} @ {game.home}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Team Sample</p>
+                  <ul className="mt-1 space-y-1">
+                    {(state.nflTeams ?? []).slice(0, 3).map((team) => (
+                      <li key={team.abbr}>
+                        {team.abbr} — {team.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
             <div className="rounded-lg border border-border bg-surface px-4 py-3">
               <h3 className="text-base font-semibold text-foreground">Player Identity Reconciliation</h3>
               <p className="mt-1 text-xs text-muted">

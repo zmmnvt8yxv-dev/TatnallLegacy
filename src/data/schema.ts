@@ -94,6 +94,66 @@ export const LineupSchema = z.object({
   points: z.number().nullable().optional(),
 });
 
+export const NflRosterEntrySchema = z
+  .object({
+    season: z.number().int().nullable().optional(),
+    team: z.string().nullable().optional(),
+    position: z.string().nullable().optional(),
+    depth_chart_position: z.string().nullable().optional(),
+    full_name: z.string().nullable().optional(),
+    first_name: z.string().nullable().optional(),
+    last_name: z.string().nullable().optional(),
+    jersey_number: z.number().nullable().optional(),
+    status: z.string().nullable().optional(),
+    gsis_id: z.string().nullable().optional(),
+    sleeper_id: z.string().nullable().optional(),
+    espn_id: z.string().nullable().optional(),
+    headshot_url: z.string().nullable().optional(),
+  })
+  .passthrough();
+
+export const NflRosterSchema = z.array(NflRosterEntrySchema);
+
+export const NflScheduleEntrySchema = z
+  .object({
+    game_id: z.string(),
+    season: z.number().int().nullable().optional(),
+    game_type: z.string().nullable().optional(),
+    week: z.number().int().nullable().optional(),
+    gameday: z.string().nullable().optional(),
+    weekday: z.string().nullable().optional(),
+    gametime: z.string().nullable().optional(),
+    away_team: z.string().nullable().optional(),
+    away_score: z.number().nullable().optional(),
+    home_team: z.string().nullable().optional(),
+    home_score: z.number().nullable().optional(),
+    location: z.string().nullable().optional(),
+    stadium: z.string().nullable().optional(),
+  })
+  .passthrough();
+
+export const NflScheduleSchema = z.array(NflScheduleEntrySchema);
+
+export const NflTeamSchema = z
+  .object({
+    team_abbr: z.string(),
+    team_name: z.string().nullable().optional(),
+    team_id: z.number().nullable().optional(),
+    team_nick: z.string().nullable().optional(),
+    team_conf: z.string().nullable().optional(),
+    team_division: z.string().nullable().optional(),
+    team_color: z.string().nullable().optional(),
+    team_color2: z.string().nullable().optional(),
+    team_color3: z.string().nullable().optional(),
+    team_color4: z.string().nullable().optional(),
+    team_logo_wikipedia: z.string().nullable().optional(),
+    team_logo_espn: z.string().nullable().optional(),
+    team_wordmark: z.string().nullable().optional(),
+  })
+  .passthrough();
+
+export const NflTeamsSchema = z.array(NflTeamSchema);
+
 export const PlayerIndexSchema = z.object({
   full_name: z.string().nullable().optional(),
   name: z.string().nullable().optional(),

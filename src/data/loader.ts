@@ -343,6 +343,13 @@ export type ManifestData = {
   years: number[];
   schemaVersion?: string;
   generatedAt?: string;
+  datasets?: Array<{
+    id: string;
+    path: string;
+    label?: string;
+    description?: string;
+    season?: number;
+  }>;
 };
 
 type DataLoader = {
@@ -350,6 +357,9 @@ type DataLoader = {
   loadSeason: (year: number) => Promise<SeasonData>;
   loadPowerRankings: () => Promise<PowerRankings>;
   loadWeeklyRecaps: () => Promise<WeeklyRecaps>;
+  loadNflRosters: () => Promise<NflRoster>;
+  loadNflSchedule: () => Promise<NflSchedule>;
+  loadNflTeams: () => Promise<NflTeams>;
   preloadSeasons: (years: number[]) => Promise<SeasonData[]>;
   loadTrades: (year: number, tradeEvals?: unknown[]) => Promise<Trade[]>;
   clearCache: () => void;
@@ -499,6 +509,9 @@ function createDataLoader(): DataLoader {
     loadSeason,
     loadPowerRankings,
     loadWeeklyRecaps,
+    loadNflRosters,
+    loadNflSchedule,
+    loadNflTeams,
     preloadSeasons,
     loadTrades,
     clearCache,
