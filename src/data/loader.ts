@@ -11,7 +11,9 @@ function assetUrl(path: string) {
 
 type RecordValue = Record<string, unknown>;
 
-const REQUIRED_LIST_KEYS = ["teams", "matchups", "transactions", "draft", "awards"];
+const REQUIRED_LIST_KEYS = ["teams", "matchups", "transactions", "draft", "awards", "lineups"];
+const NON_EMPTY_LIST_KEYS = ["teams", "matchups", "draft"];
+const LINEUPS_REQUIRED_FROM_YEAR = 2020;
 
 function isRecord(value: unknown): value is RecordValue {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -213,10 +215,13 @@ function normalizeSeasonData(raw: unknown): SeasonData {
 function validateSeasonData(raw: unknown, normalized: SeasonData): void {
   const source = isRecord(raw) ? raw : {};
   const missingKeys = REQUIRED_LIST_KEYS.filter((key) => !(key in source));
-  const emptyKeys = REQUIRED_LIST_KEYS.filter((key) => {
+  const emptyKeys = NON_EMPTY_LIST_KEYS.filter((key) => {
     const value = normalized[key as keyof SeasonData];
     return Array.isArray(value) && value.length === 0;
   });
+  if (normalized.year >= LINEUPS_REQUIRED_FROM_YEAR && normalized.lineups.length === 0) {
+    emptyKeys.push("lineups");
+  }
   if (missingKeys.length || emptyKeys.length) {
     console.warn(
       "Season data missing or empty keys",

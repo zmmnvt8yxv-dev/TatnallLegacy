@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "build:data": "python scripts/build_data.py",
+    "validate:data": "node scripts/validate_data.js",
     "test": "vitest",
     "test:run": "vitest run"
   },

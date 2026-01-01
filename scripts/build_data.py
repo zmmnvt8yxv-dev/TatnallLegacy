@@ -12,6 +12,7 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from collections import defaultdict
 from typing import Any, Dict, List, Optional
 
 from jsonschema import Draft202012Validator
@@ -43,6 +44,34 @@ def validate_season(payload: Dict[str, Any], year: int) -> None:
             f"Schema validation failed for {year}: schemaVersion {payload.get('schemaVersion')} "
             f"does not match {SCHEMA_VERSION}"
         )
+
+
+def align_matchup_scores(payload: Dict[str, Any]) -> None:
+    lineups = payload.get("lineups") or []
+    if not lineups:
+        return
+
+    totals: dict[tuple[str, int], float] = defaultdict(float)
+    for entry in lineups:
+        if not entry.get("started"):
+            continue
+        team = entry.get("team")
+        week = entry.get("week")
+        if not team or week is None:
+            continue
+        totals[(team, int(week))] += float(entry.get("points") or 0)
+
+    for matchup in payload.get("matchups") or []:
+        week = matchup.get("week")
+        if week is None:
+            continue
+        for team_key, score_key in (("home_team", "home_score"), ("away_team", "away_score")):
+            team = matchup.get(team_key)
+            if not team:
+                continue
+            key = (team, int(week))
+            if key in totals:
+                matchup[score_key] = round(totals[key], 2)
 
 
 def validate_power_rankings(path: Path) -> None:
@@ -120,6 +149,8 @@ def main() -> None:
             lineups = lineups.get("rows")
 
         payload = normalize_season(source, year, lineups if isinstance(lineups, list) else None)
+        if year == 2025:
+            align_matchup_scores(payload)
         validate_season(payload, year)
         write_json(out_dir / f"{year}.json", payload)
         write_json(public_dir / f"{year}.json", payload)
