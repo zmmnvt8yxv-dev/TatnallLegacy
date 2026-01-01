@@ -165,7 +165,7 @@ export function TransactionsSection() {
                               <ul className="trade-card__list">
                                 {team.playersIn.map((player) => (
                                   <li key={`${trade.id}-${team.team}-in-${player.id}`}>
-                                    <PlayerName name=<PlayerName name={player.name} /> />
+                                    <PlayerName name={player.name} />
                                     {formatPlayerMeta(player.position, player.nflTeam) ? (
                                       <span className="trade-card__player-meta">
                                         {formatPlayerMeta(player.position, player.nflTeam)}
@@ -189,7 +189,7 @@ export function TransactionsSection() {
                               <ul className="trade-card__list">
                                 {team.playersOut.map((player) => (
                                   <li key={`${trade.id}-${team.team}-out-${player.id}`}>
-                                    <PlayerName name=<PlayerName name={player.name} /> />
+                                    <PlayerName name={player.name} />
                                     {formatPlayerMeta(player.position, player.nflTeam) ? (
                                       <span className="trade-card__player-meta">
                                         {formatPlayerMeta(player.position, player.nflTeam)}
