@@ -378,6 +378,18 @@
     @apply rounded-xl border border-border bg-surface-alt p-4;
   }
 
+  .summary-ai__header {
+    @apply flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between;
+  }
+
+  .summary-ai__settings {
+    @apply flex flex-col gap-2 rounded-lg border border-border bg-surface px-3 py-2;
+  }
+
+  .summary-ai__label {
+    @apply text-[0.7rem] uppercase tracking-[0.2em] text-muted;
+  }
+
   .summary-ai__form {
     @apply mt-4 flex flex-col gap-3 md:flex-row md:items-center;
   }
@@ -388,6 +400,30 @@
 
   .summary-ai__hint {
     @apply mt-3 text-xs text-muted;
+  }
+
+  .ai-helper__status {
+    @apply mt-3;
+  }
+
+  .ai-helper__results {
+    @apply mt-4 flex flex-col gap-4;
+  }
+
+  .ai-helper__card {
+    @apply rounded-lg border border-border bg-surface px-4 py-3;
+  }
+
+  .ai-helper__title {
+    @apply text-sm font-semibold text-foreground;
+  }
+
+  .ai-helper__code {
+    @apply mt-2 max-h-64 overflow-auto rounded-lg bg-slate-900/70 p-3 text-xs text-slate-100;
+  }
+
+  .ai-helper__list {
+    @apply mt-2 list-disc space-y-1 pl-4;
   }
 
   .section-heading {
