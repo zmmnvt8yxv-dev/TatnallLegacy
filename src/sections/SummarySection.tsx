@@ -3,6 +3,7 @@ import { toBlob, toPng } from "html-to-image";
 import { SummaryChartsSkeleton } from "../components/ChartSkeletons";
 import { LoadingSection } from "../components/LoadingSection";
 import { SectionShell } from "../components/SectionShell";
+import { AiHelperPanel } from "../components/AiHelperPanel";
 import { StatCard } from "../components/StatCard";
 import {
   selectKpiStats,
@@ -444,28 +445,7 @@ export function SummarySection() {
               </div>
             </div>
 
-            <div className="summary-ai">
-              <div>
-                <p className="section-heading">Ask the league AI</p>
-                <p className="section-caption">
-                  Drop a question about trends, outcomes, or “what if” scenarios.
-                </p>
-              </div>
-              <div className="summary-ai__form">
-                <input
-                  className="input summary-ai__input"
-                  type="text"
-                  placeholder="Ask about the season..."
-                  aria-label="Ask the league AI about the full season"
-                />
-                <button type="button" className="btn btn-primary">
-                  Ask AI
-                </button>
-              </div>
-              <p className="summary-ai__hint">
-                Example: “Who had the biggest comeback win this season?”
-              </p>
-            </div>
+            <AiHelperPanel />
 
             <Suspense fallback={<SummaryChartsSkeleton />}>
               {filteredSeason ? <SummaryCharts season={filteredSeason} /> : null}
