@@ -86,6 +86,11 @@ export function TransactionsSection() {
     return formatter.format(new Date(timestamp));
   };
 
+  const formatPlayerMeta = (position: string | null, nflTeam: string | null) => {
+    const parts = [position, nflTeam].filter(Boolean);
+    return parts.length ? parts.join(" · ") : null;
+  };
+
   return (
     <SectionShell
       id="transactions"
@@ -135,12 +140,20 @@ export function TransactionsSection() {
                       {trade.week ? `Week ${trade.week}` : "Week TBD"}
                     </p>
                     <p className="trade-card__date">{formatTradeTimestamp(trade.executed)}</p>
+                    {trade.status ? (
+                      <span className="trade-card__status">{trade.status}</span>
+                    ) : null}
                   </div>
                   <div className="trade-card__teams">
                     {trade.teams.map((team) => (
                       <div key={`${trade.id}-${team.team}`} className="trade-card__team">
                         <div className="trade-card__team-header">
-                          <p className="trade-card__team-name">{team.team}</p>
+                          <div>
+                            <p className="trade-card__team-name">{team.team}</p>
+                            {team.rosterId != null ? (
+                              <p className="trade-card__roster">Roster {team.rosterId}</p>
+                            ) : null}
+                          </div>
                           {team.score != null ? (
                             <span className="trade-card__score">Value {team.score}</span>
                           ) : null}
@@ -148,11 +161,21 @@ export function TransactionsSection() {
                         <div className="trade-card__assets">
                           <div>
                             <p className="trade-card__label">Received</p>
-                            {team.playersIn.length ? (
+                            {team.playersIn.length || team.picksIn.length ? (
                               <ul className="trade-card__list">
                                 {team.playersIn.map((player) => (
                                   <li key={`${trade.id}-${team.team}-in-${player.id}`}>
                                     <PlayerName name={player.name} />
+                                    {formatPlayerMeta(player.position, player.nflTeam) ? (
+                                      <span className="trade-card__player-meta">
+                                        {formatPlayerMeta(player.position, player.nflTeam)}
+                                      </span>
+                                    ) : null}
+                                  </li>
+                                ))}
+                                {team.picksIn.map((pick, pickIndex) => (
+                                  <li key={`${trade.id}-${team.team}-pick-in-${pickIndex}`}>
+                                    <span className="trade-card__pick">{pick}</span>
                                   </li>
                                 ))}
                               </ul>
@@ -162,11 +185,21 @@ export function TransactionsSection() {
                           </div>
                           <div>
                             <p className="trade-card__label">Sent</p>
-                            {team.playersOut.length ? (
+                            {team.playersOut.length || team.picksOut.length ? (
                               <ul className="trade-card__list">
                                 {team.playersOut.map((player) => (
                                   <li key={`${trade.id}-${team.team}-out-${player.id}`}>
                                     <PlayerName name={player.name} />
+                                    {formatPlayerMeta(player.position, player.nflTeam) ? (
+                                      <span className="trade-card__player-meta">
+                                        {formatPlayerMeta(player.position, player.nflTeam)}
+                                      </span>
+                                    ) : null}
+                                  </li>
+                                ))}
+                                {team.picksOut.map((pick, pickIndex) => (
+                                  <li key={`${trade.id}-${team.team}-pick-out-${pickIndex}`}>
+                                    <span className="trade-card__pick">{pick}</span>
                                   </li>
                                 ))}
                               </ul>

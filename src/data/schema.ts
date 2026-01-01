@@ -101,6 +101,39 @@ export const PlayerIndexSchema = z.object({
   pos: z.string().nullable().optional(),
 });
 
+export const TradePlayerSchema = z.object({
+  id: z.string().default(""),
+  name: z.string().default(""),
+  pos: z.string().nullable().optional(),
+  nfl: z.string().nullable().optional(),
+});
+
+export const TradePickSchema = z.object({
+  season: z.number().int().nullable().optional(),
+  round: z.number().int().nullable().optional(),
+  original_team: z.string().nullable().optional(),
+});
+
+export const TradePartySchema = z.object({
+  roster_id: z.number().int().nullable().optional(),
+  team: z.string().default(""),
+  gained_players: z.array(TradePlayerSchema).default([]),
+  sent_players: z.array(TradePlayerSchema).default([]),
+  gained_picks: z.array(TradePickSchema).default([]),
+  sent_picks: z.array(TradePickSchema).default([]),
+  net_points: z.number().nullable().optional(),
+  score: z.number().nullable().optional(),
+});
+
+export const TradeSchema = z.object({
+  id: z.string().default(""),
+  week: z.number().int().nullable().optional(),
+  status: z.string().nullable().optional(),
+  created: z.number().nullable().optional(),
+  executed: z.number().nullable().optional(),
+  parties: z.array(TradePartySchema).default([]),
+});
+
 export const SupplementalSchema = z.object({
   current_roster: z.record(z.array(z.string())).optional(),
   player_index: z.record(PlayerIndexSchema).optional(),
@@ -111,6 +144,7 @@ export const SupplementalSchema = z.object({
   })).optional(),
   trade_evals: z.array(z.unknown()).optional(),
   acquisitions: z.array(z.unknown()).optional(),
+  trades: z.array(TradeSchema).optional(),
 });
 
 export const SeasonSchema = z.object({
@@ -137,5 +171,9 @@ export type WeeklyRecapEntry = z.infer<typeof WeeklyRecapEntrySchema>;
 export type WeeklyRecaps = z.infer<typeof WeeklyRecapsSchema>;
 export type Award = z.infer<typeof AwardSchema>;
 export type Lineup = z.infer<typeof LineupSchema>;
+export type TradePlayer = z.infer<typeof TradePlayerSchema>;
+export type TradePick = z.infer<typeof TradePickSchema>;
+export type TradeParty = z.infer<typeof TradePartySchema>;
+export type Trade = z.infer<typeof TradeSchema>;
 export type Supplemental = z.infer<typeof SupplementalSchema>;
 export type SeasonData = z.infer<typeof SeasonSchema>;
