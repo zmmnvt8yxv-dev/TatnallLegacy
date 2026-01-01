@@ -285,18 +285,21 @@ function normalizeMatchups(value: unknown): SeasonData["matchups"] {
 function normalizeSeasonData(raw: unknown): SeasonData {
   const source = isRecord(raw) ? raw : {};
   const lineups = normalizeArray(source.lineups ?? source.lineup_map ?? source.lineupMap, normalizeLineup);
-  const supplemental = isRecord(source.supplemental)
-    ? source.supplemental
-    : isRecord(source)
-      ? {
-          current_roster: source.current_roster,
-          player_index: source.player_index,
-          draft_day_roster: source.draft_day_roster,
-          users: source.users,
-          trade_evals: source.trade_evals,
-          acquisitions: source.acquisitions,
-        }
-      : undefined;
+  const baseSupplemental = isRecord(source.supplemental) ? source.supplemental : {};
+  const supplemental = isRecord(source)
+    ? {
+        ...baseSupplemental,
+        current_roster: baseSupplemental.current_roster ?? source.current_roster,
+        player_index: baseSupplemental.player_index ?? source.player_index,
+        draft_day_roster: baseSupplemental.draft_day_roster ?? source.draft_day_roster,
+        users: baseSupplemental.users ?? source.users,
+        trade_evals: baseSupplemental.trade_evals ?? source.trade_evals,
+        acquisitions: baseSupplemental.acquisitions ?? source.acquisitions,
+        raw_transactions: baseSupplemental.raw_transactions ?? source.raw_transactions,
+        player_points: baseSupplemental.player_points ?? source.player_points,
+        draft_id: baseSupplemental.draft_id ?? source.draft_id,
+      }
+    : undefined;
   return {
     schemaVersion:
       typeof source.schemaVersion === "string"

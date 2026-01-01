@@ -1266,6 +1266,17 @@ export function selectTransactions(season: SeasonData): TransactionCard[] {
   return cards;
 }
 
+/** Provide raw transactions for detailed history views. */
+export function selectRawTransactions(season: SeasonData): unknown[] {
+  const raw = season.supplemental?.raw_transactions;
+  return Array.isArray(raw) ? raw : [];
+}
+
+/** Provide player points payloads for weekly/season rollups. */
+export function selectPlayerPoints(season: SeasonData): PlayerPoints | null {
+  return season.supplemental?.player_points ?? null;
+}
+
 /** Summarize trades with per-team assets and evaluation scores. */
 export function selectTradeSummaries(season: SeasonData): TradeSummary[] {
   const cached = tradesCache.get(season);

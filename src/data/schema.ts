@@ -236,4 +236,5 @@ export type TradePick = z.infer<typeof TradePickSchema>;
 export type TradeParty = z.infer<typeof TradePartySchema>;
 export type Trade = z.infer<typeof TradeSchema>;
 export type Supplemental = z.infer<typeof SupplementalSchema>;
+export type PlayerPoints = z.infer<typeof PlayerPointsSchema>;
 export type SeasonData = z.infer<typeof SeasonSchema>;
