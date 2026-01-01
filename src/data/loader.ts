@@ -1,4 +1,4 @@
-import { SCHEMA_VERSION, type PowerRankings, type SeasonData, type WeeklyRecaps } from "./schema";
+import { SCHEMA_VERSION, type PowerRankings, type SeasonData, type Trade, type WeeklyRecaps } from "./schema";
 const APP_ORIGIN =
   typeof window !== "undefined" && window.location?.origin ? window.location.origin : "http://localhost";
 const APP_BASE = import.meta.env.BASE_URL || "/";
@@ -155,6 +155,115 @@ function normalizeLineup(value: unknown): SeasonData["lineups"][number] {
   };
 }
 
+function normalizeTradePlayer(value: unknown): Trade["parties"][number]["gained_players"][number] {
+  const source = isRecord(value) ? value : {};
+  return {
+    id: toStringValue(source.id ?? source.player_id ?? source.playerId ?? "", ""),
+    name: toStringValue(source.name ?? source.player_name ?? source.playerName ?? "", ""),
+    pos: toStringValue(source.pos ?? source.position ?? null, null),
+    nfl: toStringValue(source.nfl ?? source.team ?? source.nfl_team ?? source.nflTeam ?? null, null),
+  };
+}
+
+function normalizeTradePick(value: unknown): Trade["parties"][number]["gained_picks"][number] {
+  const source = isRecord(value) ? value : {};
+  return {
+    season: toInteger(source.season ?? source.year ?? null, null),
+    round: toInteger(source.round ?? source.round_num ?? source.roundNum ?? null, null),
+    original_team: toStringValue(
+      source.original_team ?? source.originalTeam ?? source.team ?? source.team_name ?? null,
+      null
+    ),
+  };
+}
+
+function normalizeTradeParty(value: unknown): Trade["parties"][number] {
+  const source = isRecord(value) ? value : {};
+  return {
+    roster_id: toInteger(source.roster_id ?? source.rosterId ?? null, null),
+    team: toStringValue(source.team ?? source.team_name ?? "", ""),
+    gained_players: normalizeArray(source.gained_players ?? source.players_in, normalizeTradePlayer),
+    sent_players: normalizeArray(source.sent_players ?? source.players_out, normalizeTradePlayer),
+    gained_picks: normalizeArray(source.gained_picks ?? source.picks_in, normalizeTradePick),
+    sent_picks: normalizeArray(source.sent_picks ?? source.picks_out, normalizeTradePick),
+    net_points: toNumber(source.net_points ?? source.net_points_after ?? source.netPointsAfter, null),
+    score: toNumber(source.score ?? source.score_0_to_100 ?? source.score0To100, null),
+  };
+}
+
+function normalizeTrade(value: unknown): Trade {
+  const source = isRecord(value) ? value : {};
+  return {
+    id: toStringValue(source.id ?? source.tx_id ?? "", ""),
+    week: toInteger(source.week ?? source.week_id ?? source.weekId ?? null, null),
+    status: toStringValue(source.status ?? source.state ?? null, null),
+    created: toNumber(source.created ?? source.created_at ?? source.createdAt, null),
+    executed: toNumber(source.executed ?? source.executed_at ?? source.executedAt, null),
+    parties: normalizeArray(source.parties ?? source.per_roster ?? source.rosters, normalizeTradeParty),
+  };
+}
+
+function buildTradeEvalLookup(tradeEvals: unknown[]): Map<string, { executed: number | null; perRoster: Map<number, { netPoints: number | null; score: number | null }> }> {
+  const lookup = new Map<string, { executed: number | null; perRoster: Map<number, { netPoints: number | null; score: number | null }> }>();
+  tradeEvals.forEach((entry) => {
+    if (!isRecord(entry)) {
+      return;
+    }
+    const tradeId = toStringValue(entry.tx_id ?? entry.id ?? "", "");
+    if (!tradeId) {
+      return;
+    }
+    const perRoster = new Map<number, { netPoints: number | null; score: number | null }>();
+    const rosterEntries = Array.isArray(entry.per_roster) ? entry.per_roster : [];
+    rosterEntries.forEach((rosterEntry) => {
+      if (!isRecord(rosterEntry)) {
+        return;
+      }
+      const rosterId = toInteger(rosterEntry.roster_id ?? rosterEntry.rosterId ?? null, null);
+      if (rosterId == null) {
+        return;
+      }
+      perRoster.set(rosterId, {
+        netPoints: toNumber(rosterEntry.net_points_after ?? rosterEntry.netPointsAfter, null),
+        score: toNumber(rosterEntry.score_0_to_100 ?? rosterEntry.score0To100, null),
+      });
+    });
+    lookup.set(tradeId, {
+      executed: toNumber(entry.executed ?? entry.executed_at ?? entry.executedAt, null),
+      perRoster,
+    });
+  });
+  return lookup;
+}
+
+function normalizeTradesData(raw: unknown, tradeEvals: unknown[] = []): Trade[] {
+  const source = isRecord(raw) ? raw : {};
+  const trades = normalizeArray(source.trades ?? source.transactions ?? source.trade_map ?? source.tradeMap, normalizeTrade);
+  const evalLookup = buildTradeEvalLookup(tradeEvals);
+  return trades.map((trade) => {
+    const evalEntry = evalLookup.get(trade.id);
+    if (!evalEntry) {
+      return trade;
+    }
+    return {
+      ...trade,
+      executed: trade.executed ?? evalEntry.executed,
+      parties: trade.parties.map((party) => {
+        const rosterId = party.roster_id ?? null;
+        const evalRoster = rosterId != null ? evalEntry.perRoster.get(rosterId) : undefined;
+        if (!evalRoster) {
+          return party;
+        }
+        return {
+          ...party,
+          net_points: party.net_points ?? evalRoster.netPoints,
+          score: party.score ?? evalRoster.score,
+        };
+      }),
+    };
+  });
+}
+
 function normalizeMatchups(value: unknown): SeasonData["matchups"] {
   if (Array.isArray(value)) {
     return value.map((item) => normalizeMatchup(item));
@@ -237,6 +346,13 @@ export type ManifestData = {
   years: number[];
   schemaVersion?: string;
   generatedAt?: string;
+  datasets?: Array<{
+    id: string;
+    path: string;
+    label?: string;
+    description?: string;
+    season?: number;
+  }>;
 };
 
 type DataLoader = {
@@ -244,7 +360,11 @@ type DataLoader = {
   loadSeason: (year: number) => Promise<SeasonData>;
   loadPowerRankings: () => Promise<PowerRankings>;
   loadWeeklyRecaps: () => Promise<WeeklyRecaps>;
+  loadNflRosters: () => Promise<NflRoster>;
+  loadNflSchedule: () => Promise<NflSchedule>;
+  loadNflTeams: () => Promise<NflTeams>;
   preloadSeasons: (years: number[]) => Promise<SeasonData[]>;
+  loadTrades: (year: number, tradeEvals?: unknown[]) => Promise<Trade[]>;
   clearCache: () => void;
   getDiagnostics: () => LoaderDiagnostics;
 };
@@ -332,6 +452,22 @@ function createDataLoader(): DataLoader {
       const raw = await fetchJson<SeasonData>(`data/${year}.json`, version || undefined);
       const normalized = normalizeSeasonData(raw);
       validateSeasonData(raw, normalized);
+      try {
+        const trades = await loadTrades(year, normalized.supplemental?.trade_evals ?? []);
+        if (trades.length > 0) {
+          normalized.supplemental = {
+            ...(normalized.supplemental ?? {}),
+            trades,
+          };
+        }
+      } catch (error) {
+        if (import.meta.env?.DEV) {
+          console.warn(
+            `Trade data fetch failed for ${year}:`,
+            error instanceof Error ? error.message : error
+          );
+        }
+      }
       return normalized;
     });
 
@@ -347,6 +483,17 @@ function createDataLoader(): DataLoader {
       const manifest = await loadManifest();
       const version = manifest.generatedAt || manifest.schemaVersion;
       return fetchJson<WeeklyRecaps>("data/weekly-recaps.json", version || undefined);
+    });
+
+  const loadTrades = (year: number, tradeEvals: unknown[] = []) =>
+    memoize(`trades:${year}`, async () => {
+      if (year !== 2025) {
+        return [];
+      }
+      const manifest = await loadManifest();
+      const version = manifest.generatedAt || manifest.schemaVersion;
+      const raw = await fetchJson<unknown>("data/trades-2025.json", version || undefined);
+      return normalizeTradesData(raw, tradeEvals);
     });
 
   const preloadSeasons = async (years: number[]) => {
@@ -365,7 +512,11 @@ function createDataLoader(): DataLoader {
     loadSeason,
     loadPowerRankings,
     loadWeeklyRecaps,
+    loadNflRosters,
+    loadNflSchedule,
+    loadNflTeams,
     preloadSeasons,
+    loadTrades,
     clearCache,
     getDiagnostics,
   };
