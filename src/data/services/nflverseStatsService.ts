@@ -6,7 +6,11 @@ const DEFAULT_BASE_URL =
   "https://github.com/nflverse/nflverse-data/releases/download/player_stats";
 const DEFAULT_STATS_PATH = "player_stats.csv";
 const DEFAULT_CACHE_TTL_MS = 1000 * 60 * 15;
-const DEFAULT_PROXY_URL = "https://api.allorigins.win/raw?url=";
+const DEFAULT_PROXY_URLS = [
+  "https://cors.isomorphic-git.org/",
+  "https://corsproxy.io/?",
+  "https://api.allorigins.win/raw?url=",
+];
 
 const nflverseWeeklyCache = createRequestCache<PlayerWeeklyStats[]>();
 
@@ -77,32 +81,46 @@ function buildUrl(): string {
   return `${baseUrl.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
 }
 
-function buildProxyUrl(targetUrl: string): string | null {
+function buildProxyUrls(targetUrl: string): string[] {
   const configuredProxy = import.meta.env.VITE_NFLVERSE_STATS_PROXY;
   if (configuredProxy === "") {
-    return null;
+    return [];
   }
-  const proxyBase = configuredProxy ?? DEFAULT_PROXY_URL;
-  if (!proxyBase) {
-    return null;
-  }
-  if (proxyBase.includes("{url}")) {
-    return proxyBase.replace("{url}", encodeURIComponent(targetUrl));
-  }
-  return `${proxyBase}${encodeURIComponent(targetUrl)}`;
+  const proxyBases = configuredProxy
+    ? configuredProxy
+        .split(",")
+        .map((entry) => entry.trim())
+        .filter(Boolean)
+    : DEFAULT_PROXY_URLS;
+  return proxyBases.map((proxyBase) => {
+    if (proxyBase.includes("{url}")) {
+      return proxyBase.replace("{url}", encodeURIComponent(targetUrl));
+    }
+    if (proxyBase.includes("?") || proxyBase.endsWith("=")) {
+      return `${proxyBase}${encodeURIComponent(targetUrl)}`;
+    }
+    return proxyBase.endsWith("/")
+      ? `${proxyBase}${targetUrl}`
+      : `${proxyBase}/${targetUrl}`;
+  });
 }
 
 async function fetchCsvText(url: string): Promise<string> {
-  const proxyUrl = buildProxyUrl(url);
-  if (proxyUrl) {
-    try {
-      const response = await fetch(proxyUrl);
-      if (!response.ok) {
-        throw new Error(`NFLverse stats proxy request failed: ${response.status}`);
+  const proxyUrls = buildProxyUrls(url);
+  if (proxyUrls.length > 0) {
+    for (const proxyUrl of proxyUrls) {
+      try {
+        const response = await fetch(proxyUrl);
+        if (!response.ok) {
+          throw new Error(`NFLverse stats proxy request failed: ${response.status}`);
+        }
+        return response.text();
+      } catch (error) {
+        console.warn(
+          "NFLverse stats proxy failed, retrying with next proxy.",
+          error,
+        );
       }
-      return response.text();
-    } catch (error) {
-      console.warn("NFLverse stats proxy failed, retrying direct request.", error);
     }
   }
 
