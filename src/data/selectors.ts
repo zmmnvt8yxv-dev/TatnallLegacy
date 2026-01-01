@@ -1,12 +1,5 @@
 import { aliasMap, normalizeName, resolvePlayerKey } from "../lib/playerIdentity";
-import type {
-  Matchup,
-  NflRosterEntry,
-  NflScheduleEntry,
-  NflTeam,
-  SeasonData,
-  Team,
-} from "./schema";
+import type { Matchup, SeasonData, Team, Trade } from "./schema";
 
 export type SummaryStat = {
   label: string;
@@ -105,6 +98,8 @@ export type TradeTeamSummary = {
   rosterId: number | null;
   playersIn: RosterPlayer[];
   playersOut: RosterPlayer[];
+  picksIn: string[];
+  picksOut: string[];
   netPoints: number | null;
   score: number | null;
 };
@@ -113,6 +108,7 @@ export type TradeSummary = {
   id: string;
   week: number | null;
   executed: number | null;
+  status: string | null;
   teams: TradeTeamSummary[];
 };
 
@@ -412,6 +408,25 @@ function resolvePlayer(season: SeasonData, id: string): RosterPlayer {
     position: playerIndex?.pos ?? null,
     nflTeam: playerIndex?.team ?? null,
   };
+}
+
+function resolveTradePlayer(season: SeasonData, player: Trade["parties"][number]["gained_players"][number]): RosterPlayer {
+  const fallback = player.id ? resolvePlayer(season, player.id) : null;
+  const name = player.name?.trim() || fallback?.name || player.id || "—";
+  const id = player.id || player.name || fallback?.id || "unknown";
+  return {
+    id,
+    name,
+    position: player.pos ?? fallback?.position ?? null,
+    nflTeam: player.nfl ?? fallback?.nflTeam ?? null,
+  };
+}
+
+function formatTradePickLabel(pick: Trade["parties"][number]["gained_picks"][number]): string {
+  const round = pick.round != null ? `R${pick.round}` : "Pick";
+  const season = pick.season != null ? ` ${pick.season}` : "";
+  const origin = pick.original_team ? ` (${pick.original_team})` : "";
+  return `${round}${season}${origin}`;
 }
 
 function isWeekVisible(season: SeasonData, week: number | null | undefined): boolean {
@@ -1257,6 +1272,34 @@ export function selectTradeSummaries(season: SeasonData): TradeSummary[] {
   if (cached) {
     return cached;
   }
+  const canonicalTrades = Array.isArray(season.supplemental?.trades)
+    ? season.supplemental?.trades
+    : [];
+
+  if (canonicalTrades.length > 0) {
+    const trades = canonicalTrades.map((trade, index) => {
+      const teams = trade.parties.map((party) => ({
+        team: party.team || "Unknown Team",
+        rosterId: party.roster_id ?? null,
+        playersIn: party.gained_players.map((player) => resolveTradePlayer(season, player)),
+        playersOut: party.sent_players.map((player) => resolveTradePlayer(season, player)),
+        picksIn: party.gained_picks.map((pick) => formatTradePickLabel(pick)),
+        picksOut: party.sent_picks.map((pick) => formatTradePickLabel(pick)),
+        netPoints: party.net_points ?? null,
+        score: party.score ?? null,
+      }));
+      return {
+        id: trade.id || `trade-${index}`,
+        week: trade.week ?? null,
+        executed: trade.executed ?? trade.created ?? null,
+        status: trade.status ?? null,
+        teams,
+      };
+    });
+    tradesCache.set(season, trades);
+    return trades;
+  }
+
   const tradeEvals = Array.isArray(season.supplemental?.trade_evals)
     ? season.supplemental?.trade_evals
     : [];
@@ -1284,6 +1327,8 @@ export function selectTradeSummaries(season: SeasonData): TradeSummary[] {
             rosterId: typeof entry["roster_id"] === "number" ? entry["roster_id"] : null,
             playersIn,
             playersOut,
+            picksIn: [],
+            picksOut: [],
             netPoints:
               typeof entry["net_points_after"] === "number" ? entry["net_points_after"] : null,
             score: typeof entry["score_0_to_100"] === "number" ? entry["score_0_to_100"] : null,
@@ -1294,6 +1339,7 @@ export function selectTradeSummaries(season: SeasonData): TradeSummary[] {
         id: typeof trade["tx_id"] === "string" ? trade["tx_id"] : `trade-${index}`,
         week: typeof trade["week"] === "number" ? trade["week"] : null,
         executed: typeof trade["executed"] === "number" ? trade["executed"] : null,
+        status: null,
         teams,
       };
     })

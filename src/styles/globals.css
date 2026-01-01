@@ -992,6 +992,10 @@
     @apply font-medium uppercase tracking-[0.2em];
   }
 
+  .trade-card__status {
+    @apply rounded-full border border-border px-2 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-muted;
+  }
+
   .trade-card__teams {
     @apply mt-4 grid gap-4 md:grid-cols-2;
   }
@@ -1008,6 +1012,10 @@
     @apply text-sm font-semibold text-foreground;
   }
 
+  .trade-card__roster {
+    @apply text-xs text-muted;
+  }
+
   .trade-card__score {
     @apply rounded-full border border-border px-2 py-1 text-xs text-muted;
   }
@@ -1022,6 +1030,14 @@
 
   .trade-card__list {
     @apply mt-2 grid gap-1;
+  }
+
+  .trade-card__player-meta {
+    @apply ml-2 text-xs text-muted;
+  }
+
+  .trade-card__pick {
+    @apply text-xs text-muted;
   }
 
   .trade-card__net {
