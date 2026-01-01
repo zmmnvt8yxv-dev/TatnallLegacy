@@ -1,4 +1,12 @@
-import { SCHEMA_VERSION, type PowerRankings, type SeasonData, type WeeklyRecaps } from "./schema";
+import {
+  SCHEMA_VERSION,
+  type NflRoster,
+  type NflSchedule,
+  type NflTeams,
+  type PowerRankings,
+  type SeasonData,
+  type WeeklyRecaps,
+} from "./schema";
 const APP_ORIGIN =
   typeof window !== "undefined" && window.location?.origin ? window.location.origin : "http://localhost";
 const APP_BASE = import.meta.env.BASE_URL || "/";
@@ -234,6 +242,13 @@ export type ManifestData = {
   years: number[];
   schemaVersion?: string;
   generatedAt?: string;
+  datasets?: Array<{
+    id: string;
+    path: string;
+    label?: string;
+    description?: string;
+    season?: number;
+  }>;
 };
 
 type DataLoader = {
@@ -241,6 +256,9 @@ type DataLoader = {
   loadSeason: (year: number) => Promise<SeasonData>;
   loadPowerRankings: () => Promise<PowerRankings>;
   loadWeeklyRecaps: () => Promise<WeeklyRecaps>;
+  loadNflRosters: () => Promise<NflRoster>;
+  loadNflSchedule: () => Promise<NflSchedule>;
+  loadNflTeams: () => Promise<NflTeams>;
   preloadSeasons: (years: number[]) => Promise<SeasonData[]>;
   clearCache: () => void;
   getDiagnostics: () => LoaderDiagnostics;
@@ -346,6 +364,27 @@ function createDataLoader(): DataLoader {
       return fetchJson<WeeklyRecaps>("data/weekly-recaps.json", version || undefined);
     });
 
+  const loadNflRosters = () =>
+    memoize("nfl-rosters", async () => {
+      const manifest = await loadManifest();
+      const version = manifest.generatedAt || manifest.schemaVersion;
+      return fetchJson<NflRoster>("data/rosters-2025.json", version || undefined);
+    });
+
+  const loadNflSchedule = () =>
+    memoize("nfl-schedule", async () => {
+      const manifest = await loadManifest();
+      const version = manifest.generatedAt || manifest.schemaVersion;
+      return fetchJson<NflSchedule>("data/schedules-2025.json", version || undefined);
+    });
+
+  const loadNflTeams = () =>
+    memoize("nfl-teams", async () => {
+      const manifest = await loadManifest();
+      const version = manifest.generatedAt || manifest.schemaVersion;
+      return fetchJson<NflTeams>("data/teams.json", version || undefined);
+    });
+
   const preloadSeasons = async (years: number[]) => {
     const unique = Array.from(new Set(years));
     return Promise.all(unique.map((year) => loadSeason(year)));
@@ -362,6 +401,9 @@ function createDataLoader(): DataLoader {
     loadSeason,
     loadPowerRankings,
     loadWeeklyRecaps,
+    loadNflRosters,
+    loadNflSchedule,
+    loadNflTeams,
     preloadSeasons,
     clearCache,
     getDiagnostics,

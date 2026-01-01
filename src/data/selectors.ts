@@ -1,5 +1,12 @@
 import { aliasMap, normalizeName, resolvePlayerKey } from "../lib/playerIdentity";
-import type { Matchup, SeasonData, Team } from "./schema";
+import type {
+  Matchup,
+  NflRosterEntry,
+  NflScheduleEntry,
+  NflTeam,
+  SeasonData,
+  Team,
+} from "./schema";
 
 export type SummaryStat = {
   label: string;
@@ -263,6 +270,48 @@ export type PlayerSearchEntry = {
   consensusRank: number | null;
 };
 
+export type NflTeamCard = {
+  abbr: string;
+  name: string;
+  nickname: string;
+  conference: string;
+  division: string;
+  colors: string[];
+  logos: {
+    primary?: string | null;
+    wordmark?: string | null;
+  };
+};
+
+export type NflRosterPlayerCard = {
+  id: string;
+  name: string;
+  team: string;
+  position: string | null;
+  depthChart: string | null;
+  status: string | null;
+  jersey: number | null;
+};
+
+export type NflRosterTeamSummary = {
+  team: string;
+  totalPlayers: number;
+  activePlayers: number;
+  positions: string[];
+};
+
+export type NflScheduleGameCard = {
+  id: string;
+  weekLabel: string;
+  kickoff: string;
+  home: string;
+  away: string;
+  location: string;
+  status: string;
+  homeScore: number | null;
+  awayScore: number | null;
+};
+
 // Cache expensive selector results by season reference to avoid recalculating
 // derived UI data when the underlying season object hasn't changed.
 const summaryCache = new WeakMap<SeasonData, string>();
@@ -324,6 +373,31 @@ function formatWeekLabel(week: number | null | undefined): string {
 
 function formatPoints(value: number): string {
   return value.toFixed(1);
+}
+
+function formatWeek(week: number | null | undefined): string {
+  return week != null ? `Week ${week}` : "Week TBD";
+}
+
+function formatKickoff(
+  gameday: string | null | undefined,
+  gametime: string | null | undefined,
+): string {
+  if (!gameday && !gametime) {
+    return "TBD";
+  }
+  if (gameday && gametime) {
+    return `${gameday} • ${gametime}`;
+  }
+  return gameday ?? gametime ?? "TBD";
+}
+
+function resolveRosterName(entry: NflRosterEntry): string {
+  return (
+    entry.full_name?.trim() ||
+    [entry.first_name, entry.last_name].filter(Boolean).join(" ").trim() ||
+    "Unknown"
+  );
 }
 
 function resolvePlayer(season: SeasonData, id: string): RosterPlayer {
@@ -1837,4 +1911,76 @@ export function selectPlayerProfile(
       awards,
     },
   };
+}
+
+export function selectNflTeams(teams: NflTeam[]): NflTeamCard[] {
+  return [...teams]
+    .map((team) => ({
+      abbr: team.team_abbr,
+      name: team.team_name ?? team.team_abbr,
+      nickname: team.team_nick ?? "",
+      conference: team.team_conf ?? "",
+      division: team.team_division ?? "",
+      colors: [team.team_color, team.team_color2, team.team_color3, team.team_color4].filter(
+        (color): color is string => Boolean(color),
+      ),
+      logos: {
+        primary: team.team_logo_espn ?? team.team_logo_wikipedia ?? null,
+        wordmark: team.team_wordmark ?? null,
+      },
+    }))
+    .sort((a, b) => a.abbr.localeCompare(b.abbr));
+}
+
+export function selectNflRosterPlayers(roster: NflRosterEntry[]): NflRosterPlayerCard[] {
+  return roster.map((entry) => {
+    const id = entry.gsis_id ?? entry.sleeper_id ?? entry.espn_id ?? resolveRosterName(entry);
+    return {
+      id,
+      name: resolveRosterName(entry),
+      team: entry.team ?? "—",
+      position: entry.position ?? null,
+      depthChart: entry.depth_chart_position ?? null,
+      status: entry.status ?? null,
+      jersey: typeof entry.jersey_number === "number" ? entry.jersey_number : null,
+    };
+  });
+}
+
+export function selectNflRosterSummary(roster: NflRosterEntry[]): NflRosterTeamSummary[] {
+  const grouped = new Map<string, { total: number; active: number; positions: Set<string> }>();
+  roster.forEach((entry) => {
+    const team = entry.team ?? "—";
+    const existing = grouped.get(team) ?? { total: 0, active: 0, positions: new Set<string>() };
+    existing.total += 1;
+    if (entry.status === "ACT") {
+      existing.active += 1;
+    }
+    if (entry.position) {
+      existing.positions.add(entry.position);
+    }
+    grouped.set(team, existing);
+  });
+  return Array.from(grouped.entries())
+    .map(([team, data]) => ({
+      team,
+      totalPlayers: data.total,
+      activePlayers: data.active,
+      positions: Array.from(data.positions).sort(),
+    }))
+    .sort((a, b) => a.team.localeCompare(b.team));
+}
+
+export function selectNflScheduleGames(schedule: NflScheduleEntry[]): NflScheduleGameCard[] {
+  return schedule.map((game) => ({
+    id: game.game_id,
+    weekLabel: formatWeek(game.week ?? null),
+    kickoff: formatKickoff(game.gameday ?? null, game.gametime ?? null),
+    home: game.home_team ?? "—",
+    away: game.away_team ?? "—",
+    location: game.location ?? "TBD",
+    status: game.game_type ?? "",
+    homeScore: typeof game.home_score === "number" ? game.home_score : null,
+    awayScore: typeof game.away_score === "number" ? game.away_score : null,
+  }));
 }
