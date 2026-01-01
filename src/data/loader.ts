@@ -1,6 +1,19 @@
-import { SCHEMA_VERSION, type PowerRankings, type SeasonData, type Trade, type WeeklyRecaps } from "./schema";
+import {
+  SCHEMA_VERSION,
+  type NflRoster,
+  type NflSchedule,
+  type NflTeams,
+  type PowerRankings,
+  type SeasonData,
+  type Trade,
+  type WeeklyRecaps,
+} from "./schema";
 const APP_ORIGIN =
-  typeof window !== "undefined" && window.location?.origin ? window.location.origin : "http://localhost";
+  typeof window !== "undefined" && window.location
+    ? window.location.origin && window.location.origin !== "null"
+      ? window.location.origin
+      : window.location.href
+    : "http://localhost";
 const APP_BASE = import.meta.env.BASE_URL || "/";
 
 function assetUrl(path: string) {
@@ -483,6 +496,27 @@ function createDataLoader(): DataLoader {
       const manifest = await loadManifest();
       const version = manifest.generatedAt || manifest.schemaVersion;
       return fetchJson<WeeklyRecaps>("data/weekly-recaps.json", version || undefined);
+    });
+
+  const loadNflRosters = () =>
+    memoize("nfl-rosters", async () => {
+      const manifest = await loadManifest();
+      const version = manifest.generatedAt || manifest.schemaVersion;
+      return fetchJson<NflRoster>("data/rosters-2025.json", version || undefined);
+    });
+
+  const loadNflSchedule = () =>
+    memoize("nfl-schedule", async () => {
+      const manifest = await loadManifest();
+      const version = manifest.generatedAt || manifest.schemaVersion;
+      return fetchJson<NflSchedule>("data/schedules-2025.json", version || undefined);
+    });
+
+  const loadNflTeams = () =>
+    memoize("nfl-teams", async () => {
+      const manifest = await loadManifest();
+      const version = manifest.generatedAt || manifest.schemaVersion;
+      return fetchJson<NflTeams>("data/teams.json", version || undefined);
     });
 
   const loadTrades = (year: number, tradeEvals: unknown[] = []) =>
