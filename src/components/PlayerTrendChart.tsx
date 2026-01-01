@@ -13,7 +13,7 @@ export function PlayerTrendChart({ data }: PlayerTrendChartProps) {
 
   return (
     <div className="player-profile__trend-chart" role="img" aria-label="Season totals trend">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height={260}>
         <LineChart data={chartData} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
           <XAxis dataKey="season" stroke="#94a3b8" tickLine={false} axisLine={false} />
           <YAxis

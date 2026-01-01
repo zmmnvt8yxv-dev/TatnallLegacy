@@ -172,7 +172,7 @@ export function PlayerComparePage() {
               <h3 className="section-heading">Points by Season</h3>
               <p className="section-caption">Bar chart comparison across seasons.</p>
               <div className="compare-card__chart-frame">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height={260}>
                   <BarChart data={chartData} margin={{ top: 12, right: 16, left: 0, bottom: 0 }}>
                     <XAxis dataKey="season" stroke="#94a3b8" tickLine={false} axisLine={false} />
                     <YAxis
@@ -218,7 +218,7 @@ export function PlayerComparePage() {
               <h3 className="section-heading">Season Trends</h3>
               <p className="section-caption">Line chart showing points trendlines.</p>
               <div className="compare-card__chart-frame">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height={260}>
                   <LineChart data={chartData} margin={{ top: 12, right: 16, left: 0, bottom: 0 }}>
                     <XAxis dataKey="season" stroke="#94a3b8" tickLine={false} axisLine={false} />
                     <YAxis

@@ -94,7 +94,7 @@ export function Summary() {
             </Button>
           </div>
           <div className="mt-6 h-64">
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height={260}>
               <LineChart data={momentumData}>
                 <XAxis dataKey="week" stroke="#94a3b8" />
                 <YAxis stroke="#94a3b8" />
