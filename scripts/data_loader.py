@@ -56,10 +56,12 @@ def normalize_season(source: JsonDict, year: int, lineups: Optional[List[Dict[st
         "awards": source.get("awards") or [],
     }
 
-    if lineups:
+    if lineups is not None:
         payload["lineups"] = lineups
-    elif source.get("lineups"):
+    elif isinstance(source.get("lineups"), list):
         payload["lineups"] = source.get("lineups")
+    else:
+        payload["lineups"] = []
 
     if supplemental:
         payload["supplemental"] = supplemental

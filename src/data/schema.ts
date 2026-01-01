@@ -123,7 +123,7 @@ export const SeasonSchema = z.object({
   transactions: z.array(TransactionSchema),
   draft: z.array(DraftPickSchema),
   awards: z.array(AwardSchema).default([]),
-  lineups: z.array(LineupSchema).optional(),
+  lineups: z.array(LineupSchema).default([]),
   supplemental: SupplementalSchema.optional(),
 });
 

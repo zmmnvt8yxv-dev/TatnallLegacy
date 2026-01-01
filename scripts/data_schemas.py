@@ -90,7 +90,16 @@ WEEKLY_RECAP_ENTRY_SCHEMA: Dict[str, Any] = {
 SEASON_SCHEMA: Dict[str, Any] = {
     "$schema": SCHEMA_URI,
     "type": "object",
-    "required": ["schemaVersion", "year", "teams", "matchups", "transactions", "draft", "awards"],
+    "required": [
+        "schemaVersion",
+        "year",
+        "teams",
+        "matchups",
+        "transactions",
+        "draft",
+        "awards",
+        "lineups",
+    ],
     "properties": {
         "schemaVersion": {"type": "string"},
         "year": {"type": "integer"},
