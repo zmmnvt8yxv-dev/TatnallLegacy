@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional
 
 from jsonschema import Draft202012Validator
 
-from data_loader import load_json, normalize_power_rankings, normalize_season, normalize_weekly_recaps
+from data_loader import load_json, normalize_espn_lineups, normalize_power_rankings, normalize_season, normalize_weekly_recaps
 from data_schemas import POWER_RANKINGS_SCHEMA, SCHEMA_VERSION, SEASON_SCHEMA, WEEKLY_RECAPS_SCHEMA
 
 VALIDATOR = Draft202012Validator(SEASON_SCHEMA)
@@ -145,12 +145,9 @@ def main() -> None:
         elif (source_dir / f"lineups-{year}.json").exists():
             lineups = load_json(source_dir / f"lineups-{year}.json")
 
-        if isinstance(lineups, dict):
-            lineups = lineups.get("rows")
-
-        payload = normalize_season(source, year, lineups if isinstance(lineups, list) else None)
-        if year == 2025:
-            align_matchup_scores(payload)
+        normalized_lineups = normalize_espn_lineups(lineups) if lineups is not None else None
+        payload = normalize_season(source, year, normalized_lineups)
+        align_matchup_scores(payload)
         validate_season(payload, year)
         write_json(out_dir / f"{year}.json", payload)
         write_json(public_dir / f"{year}.json", payload)

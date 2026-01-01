@@ -1,5 +1,8 @@
 {
+  "schemaVersion": "1.0.0",
   "year": 2015,
+  "league_id": null,
+  "generated_at": null,
   "teams": [
     {
       "team_id": 1,
@@ -1695,7 +1698,6 @@
       "keeper": null
     }
   ],
-  "lineups": [],
-  "schemaVersion": "1.0.0",
-  "awards": []
+  "awards": [],
+  "lineups": []
 }

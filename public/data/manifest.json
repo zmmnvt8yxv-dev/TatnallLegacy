@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-01-01T13:55:37Z",
+  "generatedAt": "2026-01-01T14:40:08.714984+00:00",
   "years": [
     2015,
     2016,
@@ -13,27 +13,5 @@
     2023,
     2024,
     2025
-  ],
-  "datasets": [
-    {
-      "id": "nfl-teams",
-      "path": "data/teams.json",
-      "label": "NFL Teams",
-      "description": "NFL franchise metadata with colors and logos."
-    },
-    {
-      "id": "nfl-rosters-2025",
-      "path": "data/rosters-2025.json",
-      "label": "NFL Rosters (2025)",
-      "season": 2025,
-      "description": "NFL player rosters with depth chart positions for 2025."
-    },
-    {
-      "id": "nfl-schedule-2025",
-      "path": "data/schedules-2025.json",
-      "label": "NFL Schedule (2025)",
-      "season": 2025,
-      "description": "NFL schedule and results for 2025."
-    }
   ]
 }
