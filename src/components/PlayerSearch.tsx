@@ -5,6 +5,7 @@ import { useAllSeasonsData } from "../hooks/useAllSeasonsData";
 import { useDebouncedValue } from "../hooks/useDebouncedValue";
 import { usePlayerProfile } from "./PlayerProfileProvider";
 
+import { PlayerName } from "./PlayerName";
 const MAX_SUGGESTIONS = 8;
 
 type PlayerMatch = {
@@ -216,13 +217,13 @@ export function PlayerSearch() {
                 const player = match.item;
                 const recent = player.recentPerformance;
                 return (
-                  <li key={player.name}>
+                  <li key=<PlayerName name={player.name} />>
                     <button
                       type="button"
                       className="player-search__item"
                       onMouseDown={(event) => event.preventDefault()}
                       onClick={() => handleSelect(player.name)}
-                      aria-label={`View ${player.name}`}
+                      aria-label={player.name}
                     >
                       <span className="player-search__item-name">
                         {highlightMatch(player.name, match.indices)}
