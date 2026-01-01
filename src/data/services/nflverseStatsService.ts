@@ -1,3 +1,4 @@
+import { normalizeName } from "../../lib/playerIdentity";
 import { createRequestCache, getOrSetCached } from "./cache";
 import type { PlayerWeeklyStats } from "./types";
 
@@ -15,14 +16,6 @@ const OPPONENT_KEYS = ["opponent_team", "opponent"];
 const SEASON_TYPE_KEYS = ["season_type", "season_type_id", "season_type_name"];
 
 type CsvRow = Record<string, string>;
-
-function normalizePlayerName(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
-    .replace(/\b(jr|sr|ii|iii|iv|v)\b/g, "")
-    .trim();
-}
 
 function parseCsvLine(line: string): string[] {
   const result: string[] = [];
@@ -125,7 +118,7 @@ function mapNflverseWeeklyStats(
   playerName: string,
   season: number,
 ): PlayerWeeklyStats[] {
-  const normalizedPlayer = normalizePlayerName(playerName);
+  const normalizedPlayer = normalizeName(playerName);
 
   return rows
     .map((row) => {
@@ -135,7 +128,7 @@ function mapNflverseWeeklyStats(
         return null;
       }
 
-      const candidateName = normalizePlayerName(
+      const candidateName = normalizeName(
         getFirstValue(row, PLAYER_NAME_KEYS) ?? "",
       );
       if (!candidateName || candidateName !== normalizedPlayer) {
