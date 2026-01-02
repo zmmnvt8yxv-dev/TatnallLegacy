@@ -1,411 +1,223 @@
 #!/usr/bin/env python3
-# Generates data/raw/2025.json from Sleeper
-import json, math, os, time
+import argparse
+import json
+import os
+import sys
+import time
 from pathlib import Path
-from collections import defaultdict
-import requests
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
 
-YEAR = 2025
-SLEEPER_LEAGUE_ID = os.getenv("SLEEPER_LEAG_ID", os.getenv("SLEEPER_LEAGUE_ID", "1262418074540195841"))
+API_BASE = "https://api.sleeper.app/v1"
 
-BASE = "https://api.sleeper.app/v1"
-S = requests.Session()
-S.headers.update({"User-Agent": "tatnall-legacy/1.2"})
 
-# ---------- core http ----------
-def get(url):
-    r = S.get(url, timeout=30)
-    r.raise_for_status()
-    return r.json()
-
-# ---------- league core ----------
-def load_core(league_id):
-    users = get(f"{BASE}/league/{league_id}/users")
-    rosters = get(f"{BASE}/league/{league_id}/rosters")
-
-    users_out = []
-    u_by_id = {}
-    for u in users:
-        name = u.get("display_name") or u.get("username") or f"user_{u.get('user_id')}"
-        team_nick = (u.get("metadata") or {}).get("team_name")
-        u_by_id[u["user_id"]] = {"name": name, "team_nick": team_nick}
-        users_out.append({"user_id": u["user_id"], "display_name": name})
-
-    r_by_id = {}
-    for r in rosters:
-        owner_id = r.get("owner_id")
-        meta = r.get("metadata") or {}
-        rteam = meta.get("team_name") or meta.get("nickname")
-        fallback = None
-        if owner_id and owner_id in u_by_id:
-            fallback = u_by_id[owner_id]["team_nick"] or u_by_id[owner_id]["name"]
-        r_by_id[r["roster_id"]] = {
-            "owner_id": owner_id,
-            "owner_name": u_by_id.get(owner_id, {}).get("name", "Unknown"),
-            "team_name": rteam or fallback or f"Roster {r['roster_id']}",
-        }
-
-    return r_by_id, users_out, rosters
-
-def discover_weeks(league_id, max_weeks=22):
-    weeks = []
-    for w in range(1, max_weeks + 1):
+def http_get_json(url: str, retries: int = 4, backoff: float = 0.75):
+    last_err = None
+    for i in range(retries + 1):
         try:
-            arr = get(f"{BASE}/league/{league_id}/matchups/{w}")
-        except requests.HTTPError as e:
-            if e.response is not None and e.response.status_code == 404:
-                break
+            req = Request(url, headers={"User-Agent": "TatnallLegacy/1.0"})
+            with urlopen(req, timeout=30) as r:
+                data = r.read().decode("utf-8")
+            return json.loads(data)
+        except (HTTPError, URLError, TimeoutError, json.JSONDecodeError) as e:
+            last_err = e
+            if i < retries:
+                time.sleep(backoff * (2 ** i))
+                continue
             raise
-        if not arr:
-            break
-        weeks.append(w)
-    return weeks
+    raise last_err
 
-def is_future_zero_zero(a_pts, b_pts):
-    return YEAR == 2025 and float(a_pts or 0) == 0.0 and float(b_pts or 0) == 0.0
 
-# ---------- standings + matchups ----------
-def build_matchups_and_stats(league_id, r_by_id):
-    weeks = discover_weeks(league_id)
-    matchups = []
-    pf = defaultdict(float)
-    pa = defaultdict(float)
-    wl = defaultdict(lambda: [0, 0, 0])  # wins, losses, ties
+def safe_float(x):
+    try:
+        return float(x)
+    except Exception:
+        return 0.0
 
-    for w in weeks:
-        wk = get(f"{BASE}/league/{league_id}/matchups/{w}")
-        by_mid = defaultdict(list)
-        for row in wk:
-            if "roster_id" in row:
-                by_mid[row.get("matchup_id")].append(row)
 
-        for _, rows in by_mid.items():
-            if len(rows) < 2:
-                r = rows[0]
-                rid = r["roster_id"]
-                pts = float(r.get("points") or 0)
-                matchups.append(
-                    {
-                        "week": w,
-                        "home_team": r_by_id.get(rid, {}).get("team_name"),
-                        "home_score": pts,
-                        "away_team": None,
-                        "away_score": None,
-                        "is_playoff": bool(r.get("playoff")),
-                    }
-                )
-                continue
+def compute_points(entry: dict) -> float:
+    if isinstance(entry, dict):
+        if entry.get("points") is not None:
+            return safe_float(entry.get("points"))
+        sp = entry.get("starters_points") or []
+        if isinstance(sp, list):
+            return float(sum(v for v in sp if isinstance(v, (int, float))))
+    return 0.0
 
-            rows.sort(key=lambda x: float(x.get("points") or 0), reverse=True)
-            a, b = rows[0], rows[1]
-            a_id, b_id = a["roster_id"], b["roster_id"]
-            a_pts, b_pts = float(a.get("points") or 0), float(b.get("points") or 0)
 
-            if a_id <= b_id:
-                home, away = a, b
-                h_pts, a_pts2 = a_pts, b_pts
-            else:
-                home, away = b, a
-                h_pts, a_pts2 = b_pts, a_pts
+def ensure_dirs():
+    Path("data").mkdir(parents=True, exist_ok=True)
+    Path("public/data").mkdir(parents=True, exist_ok=True)
 
-            matchups.append(
-                {
-                    "week": w,
-                    "home_team": r_by_id.get(home["roster_id"], {}).get("team_name"),
-                    "home_score": float(h_pts),
-                    "away_team": r_by_id.get(away["roster_id"], {}).get("team_name"),
-                    "away_score": float(a_pts2),
-                    "is_playoff": bool(home.get("playoff") or away.get("playoff")),
-                }
-            )
 
-            if is_future_zero_zero(a_pts, b_pts):
-                continue
+def build_maps(users, rosters):
+    user_by_id = {}
+    for u in users or []:
+        if isinstance(u, dict) and u.get("user_id"):
+            user_by_id[u["user_id"]] = u
 
-            pf[a_id] += a_pts
-            pf[b_id] += b_pts
-            pa[a_id] += b_pts
-            pa[b_id] += a_pts
-            if a_pts > b_pts:
-                wl[a_id][0] += 1
-                wl[b_id][1] += 1
-            elif a_pts < b_pts:
-                wl[b_id][0] += 1
-                wl[a_id][1] += 1
-            else:
-                wl[a_id][2] += 1
-                wl[b_id][2] += 1
-
-    return matchups, pf, pa, wl, weeks
-
-# ---------- player index ----------
-def players_index():
-    data = get("https://api.sleeper.app/v1/players/nfl")
-    name, team, pos = {}, {}, {}
-    for pid, p in data.items():
-        nm = (
-            p.get("full_name")
-            or (f"{p.get('first_name','').strip()} {p.get('last_name','').strip()}".strip())
-            or p.get("last_name")
-            or pid
-        )
-        name[pid] = nm
-        team[pid] = p.get("team")
-        pos[pid] = p.get("position")
-    return name, team, pos
-
-# ---------- legacy transactions ----------
-def build_transactions(league_id, r_by_id, weeks, name_map):
-    txns = []
-    for w in weeks:
-        arr = get(f"{BASE}/league/{league_id}/transactions/{w}") or []
-        if not arr:
+    roster_by_id = {}
+    roster_owner = {}
+    roster_team_name = {}
+    for r in rosters or []:
+        if not isinstance(r, dict):
             continue
-        for t in arr:
-            entries = []
-            rid_fallback = None
-            if isinstance(t.get("roster_ids"), list) and t["roster_ids"]:
-                rid_fallback = t["roster_ids"][0]
-            for pid, rid2 in (t.get("adds") or {}).items():
-                team_name2 = r_by_id.get(rid2, {}).get("team_name") or r_by_id.get(rid_fallback, {}).get("team_name")
-                entries.append({"type": "ADD", "team": team_name2, "player": name_map.get(pid, pid), "faab": t.get("waiver_bid")})
-            for pid, rid2 in (t.get("drops") or {}).items():
-                team_name2 = r_by_id.get(rid2, {}).get("team_name") or r_by_id.get(rid_fallback, {}).get("team_name")
-                entries.append({"type": "DROP", "team": team_name2, "player": name_map.get(pid, pid), "faab": None})
-            if t.get("type") == "trade":
-                for pid in (t.get("adds") or {}).keys():
-                    entries.append({"type": "TRADE", "team": r_by_id.get(rid_fallback, {}).get("team_name"), "player": name_map.get(pid, pid), "faab": None})
-            if entries:
-                txns.append({"date": f"Week {w}", "entries": entries})
-    return txns
+        rid = r.get("roster_id")
+        if rid is None:
+            continue
+        roster_by_id[rid] = r
+        roster_owner[rid] = r.get("owner_id")
+        md = r.get("metadata") or {}
+        tn = md.get("team_name") if isinstance(md, dict) else None
+        roster_team_name[rid] = tn
+    return user_by_id, roster_by_id, roster_owner, roster_team_name
 
-# ---------- draft table for legacy UI ----------
-def build_draft(league_id, r_by_id, name_map, team_map):
-    drafts = get(f"{BASE}/league/{league_id}/drafts") or []
-    if not drafts:
-        return []
-    drafts.sort(key=lambda d: d.get("created", 0), reverse=True)
-    draft_id = drafts[0]["draft_id"]
-    picks = get(f"{BASE}/draft/{draft_id}/picks") or []
-    out = []
-    for p in picks:
-        pid = p.get("player_id")
-        out.append(
-            {
-                "round": p.get("round"),
-                "overall": p.get("pick_no"),
-                "team": r_by_id.get(p.get("roster_id"), {}).get("team_name"),
-                "player": (name_map.get(pid) or pid),
-                "player_nfl": team_map.get(pid),
-                "keeper": bool(p.get("is_keeper")),
-            }
-        )
-    out.sort(key=lambda x: (x.get("overall") or 0))
-    return out
 
-def build_teams(r_by_id, pf, pa, wl):
-    teams = []
-    order = sorted(r_by_id.keys(), key=lambda rid: (wl[rid][0], pf[rid]), reverse=True)
-    rank_by_rid = {rid: i + 1 for i, rid in enumerate(order)}
-    for rid, meta in r_by_id.items():
-        w, l, t = wl[rid]
-        record = f"{w}-{l}-{t}" if t else f"{w}-{l}"
-        teams.append(
-            {
-                "team_id": rid,
-                "team_name": meta["team_name"],
-                "owner": meta["owner_name"],
-                "record": record,
-                "points_for": round(pf[rid], 2),
-                "points_against": round(pa[rid], 2),
-                "regular_season_rank": rank_by_rid.get(rid),
-                "final_rank": None,
-            }
-        )
-    teams.sort(key=lambda t: (t.get("regular_season_rank") or math.inf, t["team_name"]))
-    return teams
+def fetch_week_matchups(league_id: str, week: int):
+    url = f"{API_BASE}/league/{league_id}/matchups/{week}"
+    return http_get_json(url)
 
-# ---------- NEW: data for app ----------
-def draft_day_roster(league_id):
-    drafts = get(f"{BASE}/league/{league_id}/drafts") or []
-    if not drafts:
-        return {}, None, []
-    drafts.sort(key=lambda d: d.get("created", 0), reverse=True)
-    draft_id = drafts[0]["draft_id"]
-    picks = get(f"{BASE}/draft/{draft_id}/picks") or []
-    by_r = defaultdict(list)
-    for p in picks:
-        rid = p.get("roster_id")
-        pid = p.get("player_id")
-        if rid and pid:
-            by_r[str(rid)].append(pid)
-    return dict(by_r), draft_id, picks
 
-def current_roster(rosters):
-    by_r = defaultdict(list)
-    for r in rosters:
-        rid = r["roster_id"]
-        for pid in (r.get("players") or []):
-            by_r[str(rid)].append(pid)
-    return dict(by_r)
+def pair_games_for_week(week: int, week_entries: list, roster_owner, user_by_id, roster_team_name):
+    by_matchup = {}
+    for e in week_entries:
+        if not isinstance(e, dict):
+            continue
+        mid = e.get("matchup_id")
+        rid = e.get("roster_id")
+        if mid is None or rid is None:
+            continue
+        pts = compute_points(e)
+        owner_id = roster_owner.get(rid)
+        user = user_by_id.get(owner_id, {}) if owner_id else {}
+        team_name = roster_team_name.get(rid) or user.get("display_name") or user.get("username") or str(owner_id or rid)
 
-def player_points(league_id, weeks):
-    by_week = {}
-    for w in weeks:
-        m = get(f"{BASE}/league/{league_id}/matchups/{w}")
-        pts = {}
-        for row in m:
-            for pid, ppts in (row.get("players_points") or {}).items():
-                pts[pid] = pts.get(pid, 0.0) + float(ppts or 0.0)
-        by_week[str(w)] = pts
-    cumulative = defaultdict(float)
-    for wk, mp in by_week.items():
-        for pid, val in mp.items():
-            cumulative[pid] += float(val or 0.0)
-    return by_week, dict(cumulative), len(weeks)
-
-def fetch_raw_transactions(league_id, weeks, tail_extra=6):
-    raw = []
-    last_wk = weeks[-1] if weeks else 1
-    for w in range(1, last_wk + tail_extra + 1):
-        arr = get(f"{BASE}/league/{league_id}/transactions/{w}") or []
-        for t in arr:
-            if t.get("status") != "complete":
-                continue
-            entry = {
-                "transaction_id": t.get("transaction_id"),
-                "type": t.get("type"),
-                "executed": t.get("executed") or t.get("created"),
-                "week": w,
-                "adds": t.get("adds") or {},
-                "drops": t.get("drops") or {},
-                "roster_ids": t.get("roster_ids") or [],
-            }
-            raw.append(entry)
-    raw.sort(key=lambda x: x["executed"] or 0)
-    return raw
-
-def build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, points_by_week, weeks_complete):
-    ownership = {}
-    hist = defaultdict(list)  # (pid,rid)->list of events
-    for rid, plist in draft_map.items():
-        for pid in plist:
-            ownership[pid] = int(rid)
-            hist[(pid, int(rid))].append({"method": "draft", "week": 1})
-
-    def points_after_week(pid, wk_inclusive):
-        total = 0.0
-        for wk in range(max(1, wk_inclusive), weeks_complete + 1):
-            total += float(points_by_week.get(str(wk), {}).get(pid, 0.0))
-        return total
-
-    trade_evals = []
-    for tx in raw_txs:
-        ttype = tx["type"]
-        ro_in = defaultdict(list)
-        ro_out = defaultdict(list)
-        for pid, rid in tx["adds"].items():
-            ro_in[int(rid)].append(pid)
-        for pid, rid in tx["drops"].items():
-            ro_out[int(rid)].append(pid)
-
-        for rid, pids in ro_in.items():
-            for pid in pids:
-                prev = ownership.get(pid)
-                if prev == rid:
-                    continue
-                method = "trade" if ttype == "trade" else ("waivers" if ttype == "waiver" else "fa")
-                hist[(pid, rid)].append({"method": method, "week": tx["week"], "from_roster_id": prev, "tx_id": tx["transaction_id"]})
-                ownership[pid] = rid
-
-        if ttype == "trade":
-            per_roster = []
-            for rid in sorted(set(ro_in.keys()) | set(ro_out.keys())):
-                players_in = ro_in.get(rid, [])
-                players_out = ro_out.get(rid, [])
-                pts_in = sum(points_after_week(p, tx["week"]) for p in players_in)
-                pts_out = sum(points_after_week(p, tx["week"]) for p in players_out)
-                net = pts_in - pts_out
-                scale = 100.0
-                score = int(round(50 + 50 * math.tanh(net / scale)))
-                per_roster.append(
-                    {
-                        "roster_id": rid,
-                        "team_name": r_by_id.get(rid, {}).get("team_name"),
-                        "players_in": players_in,
-                        "players_out": players_out,
-                        "net_points_after": round(net, 2),
-                        "score_0_to_100": score,
-                    }
-                )
-            trade_evals.append({"tx_id": tx["transaction_id"], "week": tx["week"], "executed": tx["executed"], "per_roster": per_roster})
-
-    acquisitions = []
-    for (pid, rid), h in hist.items():
-        acquisitions.append({"player_id": pid, "roster_id": rid, "obtained": h[0], "history": h})
-
-    return acquisitions, trade_evals
-
-# ---------- driver ----------
-def main():
-    root = Path(__file__).resolve().parent
-    data_dir = root / "data" / "raw"
-    data_dir.mkdir(exist_ok=True)
-
-    r_by_id, users_out, rosters_raw = load_core(SLEEPER_LEAGUE_ID)
-    matchups, pf, pa, wl, weeks = build_matchups_and_stats(SLEEPER_LEAGUE_ID, r_by_id)
-    name_map, nfl_team_map, pos_map = players_index()
-
-    transactions = build_transactions(SLEEPER_LEAGUE_ID, r_by_id, weeks, name_map)
-    draft_table = build_draft(SLEEPER_LEAGUE_ID, r_by_id, name_map, nfl_team_map)
-    teams = build_teams(r_by_id, pf, pa, wl)
-
-    draft_map, draft_id, raw_picks = draft_day_roster(SLEEPER_LEAGUE_ID)
-    current_map = current_roster(rosters_raw)
-    by_week_pts, cumulative_pts, weeks_complete = player_points(SLEEPER_LEAGUE_ID, weeks)
-    raw_txs = fetch_raw_transactions(SLEEPER_LEAGUE_ID, weeks)
-    acquisitions, trade_evals = build_acquisitions_and_scores(r_by_id, draft_map, raw_txs, by_week_pts, weeks_complete)
-
-    # player index compact
-    # Build one set via set-unions (never list | set)
-    all_pids = set(cumulative_pts)
-    all_pids |= {p for lst in draft_map.values() for p in lst}
-    all_pids |= {p for lst in current_map.values() for p in lst}
-
-    player_index = {}
-    for pid in all_pids:
-        player_index[pid] = {
-            "full_name": name_map.get(pid, pid),
-            "team": nfl_team_map.get(pid),
-            "pos": pos_map.get(pid),
+        row = {
+            "week": week,
+            "matchup_id": mid,
+            "roster_id": rid,
+            "owner_id": owner_id,
+            "username": user.get("username"),
+            "display_name": user.get("display_name"),
+            "team_name": team_name,
+            "points": round(float(pts), 2),
         }
+        by_matchup.setdefault(mid, []).append(row)
+
+    games = []
+    for mid, rows in sorted(by_matchup.items(), key=lambda kv: (kv[0] is None, kv[0])):
+        rows_sorted = sorted(rows, key=lambda r: r.get("points", 0.0), reverse=True)
+        home = rows_sorted[0] if rows_sorted else None
+        away = rows_sorted[1] if len(rows_sorted) > 1 else None
+
+        game = {
+            "week": week,
+            "matchup_id": mid,
+            "home_team": home.get("team_name") if home else None,
+            "away_team": away.get("team_name") if away else None,
+            "home_roster_id": home.get("roster_id") if home else None,
+            "away_roster_id": away.get("roster_id") if away else None,
+            "home_owner_id": home.get("owner_id") if home else None,
+            "away_owner_id": away.get("owner_id") if away else None,
+            "home_score": home.get("points") if home else None,
+            "away_score": away.get("points") if away else None,
+            "entries": rows_sorted,
+        }
+        games.append(game)
+
+    return games
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--league-id", default=os.getenv("LEAGUE_ID", "").strip(), help="Sleeper league id")
+    ap.add_argument("--season", type=int, default=int(os.getenv("SEASON", "2025")), help="Season year (e.g. 2025)")
+    ap.add_argument("--weeks", type=int, default=int(os.getenv("WEEKS", "18")), help="Max weeks to attempt (default 18)")
+    ap.add_argument("--min-week", type=int, default=int(os.getenv("MIN_WEEK", "1")))
+    ap.add_argument("--max-week", type=int, default=0, help="Override max week (0 = use --weeks)")
+    ap.add_argument("--only-week", type=int, default=0, help="Fetch only this week")
+    ap.add_argument("--debug", action="store_true")
+    args = ap.parse_args()
+
+    if not args.league_id:
+        print("ERROR: missing --league-id (or LEAGUE_ID env var)", file=sys.stderr)
+        sys.exit(2)
+
+    ensure_dirs()
+
+    league = http_get_json(f"{API_BASE}/league/{args.league_id}")
+    users = http_get_json(f"{API_BASE}/league/{args.league_id}/users")
+    rosters = http_get_json(f"{API_BASE}/league/{args.league_id}/rosters")
+
+    user_by_id, roster_by_id, roster_owner, roster_team_name = build_maps(users, rosters)
+
+    max_week = args.max_week if args.max_week and args.max_week > 0 else args.weeks
+    week_list = [args.only_week] if args.only_week and args.only_week > 0 else list(range(args.min_week, max_week + 1))
+
+    all_games = []
+    all_entries = []
+
+    for w in week_list:
+        try:
+            raw = fetch_week_matchups(args.league_id, w)
+        except HTTPError as e:
+            if args.debug:
+                print(f"week {w}: HTTPError {e}", file=sys.stderr)
+            continue
+        except Exception as e:
+            if args.debug:
+                print(f"week {w}: error {e}", file=sys.stderr)
+            continue
+
+        if not isinstance(raw, list) or len(raw) == 0:
+            continue
+
+        for e in raw:
+            if not isinstance(e, dict):
+                continue
+            rid = e.get("roster_id")
+            mid = e.get("matchup_id")
+            pts = compute_points(e)
+            owner_id = roster_owner.get(rid)
+            user = user_by_id.get(owner_id, {}) if owner_id else {}
+            team_name = roster_team_name.get(rid) or user.get("display_name") or user.get("username") or str(owner_id or rid)
+
+            entry = {
+                "week": w,
+                "matchup_id": mid,
+                "roster_id": rid,
+                "owner_id": owner_id,
+                "username": user.get("username"),
+                "display_name": user.get("display_name"),
+                "team_name": team_name,
+                "points": round(float(pts), 2),
+            }
+            all_entries.append(entry)
+
+        games = pair_games_for_week(w, raw, roster_owner, user_by_id, roster_team_name)
+        all_games.extend(games)
 
     out = {
-        "year": YEAR,
-        "teams": teams,
-        "matchups": matchups,
-        "transactions": transactions,
-        "draft": draft_table,
-        "supplemental": {
-            "users": users_out,
-            "player_index": player_index,
-            "draft_day_roster": draft_map,
-            "current_roster": current_map,
-            "raw_transactions": raw_txs,
-            "player_points": {
-                "by_week": by_week_pts,
-                "cumulative": cumulative_pts,
-                "weeks_complete": weeks_complete,
-            },
-            "acquisitions": acquisitions,
-            "trade_evals": trade_evals,
-            "draft_id": draft_id,
-        },
-        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "league_id": SLEEPER_LEAGUE_ID,
+        "season": args.season,
+        "league_id": args.league_id,
+        "league_name": league.get("name") if isinstance(league, dict) else None,
+        "users": users,
+        "rosters": rosters,
+        "matchups": all_games,
+        "entries": all_entries,
+        "generated_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "schema": "tatnalllegacy.sleeper.season.v2",
     }
 
-    (data_dir / f"{YEAR}.json").write_text(json.dumps(out, indent=2))
+    payload = json.dumps(out, ensure_ascii=False, separators=(",", ":"))
+    Path(f"data/{args.season}.json").write_text(payload, encoding="utf-8")
+    Path(f"public/data/{args.season}.json").write_text(payload, encoding="utf-8")
+
+    w17 = [e for e in all_entries if isinstance(e, dict) and e.get("week") == 17]
+    vals = sorted([round(float(e.get("points") or 0), 2) for e in w17], reverse=True)
+    print(f"wrote data/{args.season}.json and public/data/{args.season}.json")
+    print("week17_points_sorted_desc", vals)
+
 
 if __name__ == "__main__":
     main()
