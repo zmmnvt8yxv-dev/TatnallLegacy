@@ -1,15 +1,12 @@
-name: Generate Sleeper 2025 JSON
+name: Sleeper 2025 JSON
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 13 * * 2"
-  workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,16 +15,15 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Generate JSON
-        env:
-          LEAGUE_ID: ${{ secrets.LEAGUE_ID }}
+      - name: Generate 2025 JSON
         run: |
-          python sleeper_2025_to_json.py --league-id "$LEAGUE_ID" --season 2025 --weeks 18
+          python -V
+          python TatnallLegacy/sleeper_2025_to_json.py --league-id 1262418074540195841 --season 2025 --weeks 18
 
-      - name: Commit & push if changed
+      - name: Commit public/data/2025.json
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/2025.json public/data/2025.json
-          git diff --cached --quiet || git commit -m "Update Sleeper 2025 data"
+          git add public/data/2025.json
+          git commit -m "Update 2025 Sleeper data" || exit 0
           git push
