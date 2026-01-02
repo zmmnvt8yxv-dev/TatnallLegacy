@@ -1,0 +1,16 @@
+{
+  "name": "TatnallLegacy",
+  "short_name": "TatnallLegacy",
+  "start_url": "/TatnallLegacy/",
+  "scope": "/TatnallLegacy/",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "icons": [
+    {
+      "src": "/TatnallLegacy/sleeper-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
