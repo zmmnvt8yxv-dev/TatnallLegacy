@@ -21,8 +21,6 @@ jobs:
       - name: Generate JSON
         env:
           LEAGUE_ID: ${{ secrets.LEAGUE_ID }}
-          SEASON: "2025"
-          WEEKS: "18"
         run: |
           python sleeper_2025_to_json.py --league-id "$LEAGUE_ID" --season 2025 --weeks 18
 
