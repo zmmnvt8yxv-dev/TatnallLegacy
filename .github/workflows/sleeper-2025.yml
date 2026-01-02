@@ -18,12 +18,12 @@ jobs:
       - name: Generate 2025 JSON
         run: |
           python -V
-          python TatnallLegacy/sleeper_2025_to_json.py --league-id 1262418074540195841 --season 2025 --weeks 18
+          python sleeper_2025_to_json.py --league-id 1262418074540195841 --season 2025 --weeks 18
 
-      - name: Commit public/data/2025.json
+      - name: Commit updated JSON
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/data/2025.json
+          git add public/data/2025.json data/2025.json || true
           git commit -m "Update 2025 Sleeper data" || exit 0
           git push
