@@ -4,6 +4,81 @@ import { createRoot } from "react-dom/client";
 const BASE = import.meta.env.BASE_URL || "/";
 
 async function fetchJson(path) {
+
+  // --- Lookup maps (team + player display) ---
+  const [teamsByKey, setTeamsByKey] = React.useState({});
+  const [playersByUid, setPlayersByUid] = React.useState({});
+  const [uidToSleeper, setUidToSleeper] = React.useState({});
+
+  React.useEffect(() => {
+    if (!manifest) return;
+    (async () => {
+      try {
+        const teamsUrl = `${BASE_URL}${manifest.teams}`;
+        const playersUrl = `${BASE_URL}${manifest.players}`;
+        const idsUrl = `${BASE_URL}${manifest.player_ids}`;
+
+        const [teams, players, ids] = await Promise.all([
+          fetch(teamsUrl).then(r => r.json()),
+          fetch(playersUrl).then(r => r.json()),
+          fetch(idsUrl).then(r => r.json()),
+        ]);
+
+        // teams -> map(team_key -> name)
+        const tMap = {};
+        if (Array.isArray(teams)) {
+          for (const t of teams) {
+            const k = t.team_key || t.key || t.roster_key;
+            const n = t.name || t.team_name || t.display_name;
+            if (k && n) tMap[k] = n;
+          }
+        } else if (teams && typeof teams === "object") {
+          for (const [k,v] of Object.entries(teams)) {
+            if (typeof v === "string") tMap[k] = v;
+            else if (v && typeof v === "object") tMap[k] = v.name || v.team_name || v.display_name || k;
+          }
+        }
+        setTeamsByKey(tMap);
+
+        // players -> map(player_uid -> full_name)
+        const pMap = {};
+        if (Array.isArray(players)) {
+          for (const pl of players) {
+            if (pl && pl.player_uid && pl.full_name) pMap[pl.player_uid] = pl.full_name;
+          }
+        }
+        setPlayersByUid(pMap);
+
+        // player_ids -> map(player_uid -> sleeper numeric id)
+        const idMap = {};
+        if (Array.isArray(ids)) {
+          for (const row of ids) {
+            if (row && row.player_uid && row.id_type === "sleeper" && row.id_value != null) {
+              idMap[row.player_uid] = String(row.id_value);
+            }
+          }
+        }
+        setUidToSleeper(idMap);
+      } catch (e) {
+        console.error("lookup fetch failed", e);
+      }
+    })();
+  }, [manifest]);
+
+  function displayTeam(team_key) {
+    if (!team_key) return "—";
+    return teamsByKey[team_key] || team_key;
+  }
+
+  function displayPlayer(uid) {
+    if (!uid) return "—";
+    const name = playersByUid[uid];
+    if (name && name !== "UNK" && !/^[0-9]+$/.test(String(name).trim())) return name;
+    const sid = uidToSleeper[uid];
+    if (sid) return "sleeper:" + sid;
+    return uid;
+  }
+
   const url = new URL(path.replace(/^\//, ""), new URL(BASE, window.location.href));
   const res = await fetch(url.toString(), { cache: "no-store" });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText} ${url.pathname}`);
