@@ -96,6 +96,63 @@ function buildNameBySleeperId(playersJson, playerIdsJson){
 }
 
 function App(){
+
+/* MATCHUPS_VIEW_START */
+function MatchupsView({ season, week, base, teamsByKey }) {
+  const [rows,setRows]=React.useState(null);
+  const [err,setErr]=React.useState(null);
+
+  React.useEffect(()=>{
+    let alive=true;
+    (async()=>{
+      try{
+        setErr(null); setRows(null);
+        const url = base + "data/matchups_2025.json";
+        const r = await fetch(url);
+        if(!r.ok) throw new Error("matchups fetch "+r.status+" "+url);
+        const j = await r.json();
+        if(!alive) return;
+        setRows(Array.isArray(j)? j : (j.matchups||j.data||[]));
+      }catch(e){ if(alive) setErr(String(e)); }
+    })();
+    return ()=>{ alive=false; };
+  },[season,base]);
+
+  const wk = Number(week||1);
+  const list = (rows||[]).filter(x=>Number(x.week||x.matchup_week||x.w)==wk);
+
+  return React.createElement("div", {style:{marginTop:16}},
+    React.createElement("h3", null, "Matchups (Week "+wk+")"),
+    err ? React.createElement("pre", null, err) :
+    !rows ? React.createElement("div", null, "Loading matchups…") :
+    React.createElement("table", {style:{borderCollapse:"collapse", width:"100%"}},
+      React.createElement("thead", null,
+        React.createElement("tr", null,
+          ["matchup_id","team","opponent","points"].map(h=>React.createElement("th",{key:h,style:{textAlign:"left",borderBottom:"1px solid #ddd",padding:"6px"}},h))
+        )
+      ),
+      React.createElement("tbody", null,
+        list.map((m,i)=>{
+          const mid = m.matchup_id ?? m.matchupId ?? m.id ?? "";
+          const tk  = m.team_key ?? m.teamKey ?? m.team ?? "";
+          const ok  = m.opp_team_key ?? m.opponent_key ?? m.opponent ?? "";
+          const pts = m.points ?? m.score ?? "";
+          const tname = teamsByKey?.get(tk) || tk || "UNK";
+          const oname = teamsByKey?.get(ok) || ok || "UNK";
+          return React.createElement("tr",{key:i},
+            React.createElement("td",{style:{padding:"6px",borderBottom:"1px solid #f0f0f0"}},String(mid)),
+            React.createElement("td",{style:{padding:"6px",borderBottom:"1px solid #f0f0f0"}},String(tname)),
+            React.createElement("td",{style:{padding:"6px",borderBottom:"1px solid #f0f0f0"}},String(oname)),
+            React.createElement("td",{style:{padding:"6px",borderBottom:"1px solid #f0f0f0"}},String(pts))
+          );
+        })
+      )
+    )
+  );
+}
+/* MATCHUPS_VIEW_END */
+
+
   const [manifest,setManifest] = React.useState(null);
   const [season,setSeason] = React.useState(null);
   const [week,setWeek] = React.useState(1);
@@ -271,6 +328,7 @@ function App(){
     err ? React.createElement("pre", {style:{whiteSpace:"pre-wrap",background:"#111",color:"#eee",padding:12,borderRadius:8}}, err) : null,
 
     React.createElement("h2", null, "Derived view"),
+      React.createElement(MatchupsView, { season, week, base, teamsByKey }),
     derived
       ? React.createElement("div", {style:{display:"grid",gap:12}},
           React.createElement("div", {style:{display:"grid",gridTemplateColumns:"repeat(3, minmax(0, 1fr))",gap:12}},
