@@ -7,10 +7,7 @@
   "background_color": "#0b1220",
   "theme_color": "#0b1220",
   "icons": [
-    {
-      "src": "/TatnallLegacy/sleeper-logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
-    }
+    { "src": "/TatnallLegacy/sleeper-logo.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/TatnallLegacy/sleeper-logo.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
