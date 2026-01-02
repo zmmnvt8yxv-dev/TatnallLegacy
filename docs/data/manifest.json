@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "generated_at": "2026-01-02T04:41:26+00:00",
+  "seasons": [
+    2025
+  ],
+  "lineups": {
+    "2025": "data/lineups-2025.json"
+  },
+  "matchups": {
+    "2025": "data/matchups_2025.json"
+  },
+  "teams": "data/teams.json",
+  "players": "data/players.json",
+  "player_ids": "data/player_ids.json"
+}
