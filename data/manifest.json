@@ -1,17 +1,16 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-01-01T14:40:08.714984+00:00",
-  "years": [
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
+  "generated_at": "2026-01-02T04:41:26+00:00",
+  "seasons": [
     2025
-  ]
+  ],
+  "lineups": {
+    "2025": "data/lineups-2025.json"
+  },
+  "matchups": {
+    "2025": "data/matchups_2025.json"
+  },
+  "teams": "data/teams.json",
+  "players": "data/players.json",
+  "player_ids": "data/player_ids.json"
 }
