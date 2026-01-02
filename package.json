@@ -1,0 +1,13 @@
+{
+  "name": "tatnalllegacy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --strictPort --port 4173 --host"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

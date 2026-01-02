@@ -1,13 +1,4 @@
 {
-  "name": "TatnallLegacy",
-  "short_name": "TatnallLegacy",
-  "start_url": "/TatnallLegacy/",
-  "scope": "/TatnallLegacy/",
-  "display": "standalone",
-  "background_color": "#0b1220",
-  "theme_color": "#0b1220",
-  "icons": [
-    { "src": "/TatnallLegacy/sleeper-logo.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/TatnallLegacy/sleeper-logo.png", "sizes": "512x512", "type": "image/png" }
-  ]
+  "seasons": [],
+  "generated_at": "2026-01-02T04:00:43Z"
 }
