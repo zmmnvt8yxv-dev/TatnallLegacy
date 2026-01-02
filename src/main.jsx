@@ -1,65 +1,59 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 
-const BASE_URL = import.meta.env.BASE_URL || "/";
-
-function joinUrl(path) {
-  return new URL(path.replace(/^\//, ""), window.location.origin + BASE_URL).toString();
-}
+const BASE = import.meta.env.BASE_URL || "/";
 
 async function fetchJson(path) {
-  const res = await fetch(joinUrl(path), { cache: "no-store" });
-  if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${path}`);
+  const url = new URL(path.replace(/^\//, ""), new URL(BASE, window.location.href));
+  const res = await fetch(url.toString(), { cache: "no-store" });
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText} ${url.pathname}`);
   return res.json();
 }
 
-function toNum(x, fallback = 0) {
-  const n = Number(x);
-  return Number.isFinite(n) ? n : fallback;
-}
-
-function Progress({ label, done, total }) {
-  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+function LoadingBar({ pct, label }) {
   return (
-    <div style={{ margin: "12px 0", padding: 12, border: "1px solid #ddd", borderRadius: 10 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-        <div style={{ fontWeight: 600 }}>{label}</div>
-        <div style={{ fontVariantNumeric: "tabular-nums" }}>{pct}%</div>
+    <div style={{ maxWidth: 760, margin: "24px auto", padding: 16, fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+        <div>{label}</div>
+        <div>{pct}%</div>
       </div>
-      <div style={{ height: 10, background: "#f2f2f2", borderRadius: 999, overflow: "hidden", marginTop: 10 }}>
-        <div style={{ width: `${pct}%`, height: "100%", background: "#111" }} />
+      <div style={{ height: 10, background: "#eee", borderRadius: 8, overflow: "hidden" }}>
+        <div style={{ height: 10, width: `${pct}%`, background: "#111" }} />
       </div>
     </div>
   );
 }
 
 function App() {
+  const [loading, setLoading] = useState({ pct: 0, label: "Boot" });
+  const [err, setErr] = useState("");
+
   const [manifest, setManifest] = useState(null);
-  const [teams, setTeams] = useState(null);
-  const [players, setPlayers] = useState(null);
-  const [playerIds, setPlayerIds] = useState(null);
-  const [lineups, setLineups] = useState(null);
 
   const [season, setSeason] = useState(2025);
   const [week, setWeek] = useState(1);
-  const [teamKey, setTeamKey] = useState("");
 
-  const [loadingStep, setLoadingStep] = useState({ label: "Idle", done: 0, total: 1 });
-  const [err, setErr] = useState("");
+  const [lineups, setLineups] = useState([]);
+  const [teams, setTeams] = useState([]);
+  const [players, setPlayers] = useState([]);
+  const [playerIds, setPlayerIds] = useState([]);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
         setErr("");
-        setLoadingStep({ label: "Loading manifest.json", done: 0, total: 1 });
+        setLoading({ pct: 5, label: "Load manifest" });
         const m = await fetchJson("data/manifest.json");
         if (cancelled) return;
         setManifest(m);
-        const seasons = (m.seasons || []).map((x) => toNum(x)).filter(Boolean);
-        if (seasons.length) setSeason(seasons[seasons.length - 1]);
-        setLoadingStep({ label: "Loading teams/players/player_ids", done: 0, total: 3 });
-        const [t, p, ids] = await Promise.all([
+
+        const seasons = Array.isArray(m.seasons) ? m.seasons.slice().sort((a, b) => a - b) : [];
+        const defaultSeason = seasons.includes(2025) ? 2025 : (seasons[seasons.length - 1] ?? 2025);
+        setSeason(defaultSeason);
+
+        setLoading({ pct: 20, label: "Load teams / players / ids" });
+        const [t, p, pid] = await Promise.all([
           fetchJson(m.teams || "data/teams.json"),
           fetchJson(m.players || "data/players.json"),
           fetchJson(m.player_ids || "data/player_ids.json"),
@@ -67,10 +61,19 @@ function App() {
         if (cancelled) return;
         setTeams(t);
         setPlayers(p);
-        setPlayerIds(ids);
-        setLoadingStep({ label: "Ready", done: 1, total: 1 });
+        setPlayerIds(pid);
+
+        setLoading({ pct: 50, label: "Load lineups" });
+        const luPath =
+          (m.lineups && (m.lineups[String(defaultSeason)] || m.lineups[defaultSeason])) ||
+          `data/lineups-${defaultSeason}.json`;
+        const lu = await fetchJson(luPath);
+        if (cancelled) return;
+        setLineups(Array.isArray(lu) ? lu : []);
+        setLoading({ pct: 100, label: "Ready" });
       } catch (e) {
-        if (!cancelled) setErr(String(e?.message || e));
+        if (cancelled) return;
+        setErr(String(e?.message || e));
       }
     })();
     return () => {
@@ -80,223 +83,199 @@ function App() {
 
   useEffect(() => {
     let cancelled = false;
+    if (!manifest) return;
     (async () => {
-      if (!manifest) return;
       try {
         setErr("");
-        const path = manifest?.lineups?.[String(season)] || `data/lineups-${season}.json`;
-        setLoadingStep({ label: `Loading ${path}`, done: 0, total: 1 });
-        const l = await fetchJson(path);
+        setLoading({ pct: 35, label: `Load lineups for ${season}` });
+        const luPath =
+          (manifest.lineups && (manifest.lineups[String(season)] || manifest.lineups[season])) ||
+          `data/lineups-${season}.json`;
+        const lu = await fetchJson(luPath);
         if (cancelled) return;
-        setLineups(l);
-        setLoadingStep({ label: "Ready", done: 1, total: 1 });
+        const arr = Array.isArray(lu) ? lu : [];
+        setLineups(arr);
+
+        const weeks = [...new Set(arr.map(r => Number(r.week)).filter(n => Number.isFinite(n)))].sort((a, b) => a - b);
+        const nextWeek = weeks.includes(week) ? week : (weeks[0] ?? 1);
+        setWeek(nextWeek);
+
+        setLoading({ pct: 100, label: "Ready" });
       } catch (e) {
-        if (!cancelled) setErr(String(e?.message || e));
+        if (cancelled) return;
+        setErr(String(e?.message || e));
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [manifest, season]);
+  }, [season]);
 
   const maps = useMemo(() => {
-    const teamKeyToName = new Map();
-
-    const addTeam = (k, n) => {
-      if (typeof k === "string" && k && typeof n === "string" && n) teamKeyToName.set(k, n);
-    };
-
-    if (Array.isArray(teams)) {
-      for (const r of teams) {
-        addTeam(r.team_key ?? r.teamKey ?? r.key, r.team_name ?? r.teamName ?? r.name);
-      }
-    } else if (teams && typeof teams === "object") {
-      for (const [k, v] of Object.entries(teams)) {
-        if (typeof v === "string") addTeam(k, v);
-        else if (v && typeof v === "object") addTeam(k, v.team_name ?? v.teamName ?? v.name ?? v.label);
+    const uidToSleeper = new Map();
+    for (const row of Array.isArray(playerIds) ? playerIds : []) {
+      if (!row) continue;
+      if (row.id_type === "sleeper" && row.player_uid && row.id_value) {
+        uidToSleeper.set(String(row.player_uid), String(row.id_value));
       }
     }
 
     const uidToName = new Map();
-    if (Array.isArray(players)) {
-      for (const p of players) {
-        const uid = p?.player_uid;
-        const name = p?.full_name;
-        if (typeof uid === "string" && uid && typeof name === "string" && name && !/^\d+$/.test(name.trim())) {
-          uidToName.set(uid, name);
+    for (const row of Array.isArray(players) ? players : []) {
+      if (!row) continue;
+      const uid = row.player_uid ? String(row.player_uid) : "";
+      const name = row.full_name ? String(row.full_name) : "";
+      if (uid && name && !/^\d+$/.test(name.trim())) uidToName.set(uid, name);
+    }
+
+    const teamKeyToName = new Map();
+    if (Array.isArray(teams)) {
+      for (const row of teams) {
+        if (!row) continue;
+        const key = row.team_key ?? row.roster_key ?? row.key;
+        const name = row.team_name ?? row.name ?? row.display_name ?? row.owner_name;
+        if (key && name) teamKeyToName.set(String(key), String(name));
+      }
+    } else if (teams && typeof teams === "object") {
+      for (const [k, v] of Object.entries(teams)) {
+        if (typeof v === "string") teamKeyToName.set(String(k), v);
+        else if (v && typeof v === "object") {
+          const name = v.team_name ?? v.name ?? v.display_name ?? v.owner_name;
+          if (name) teamKeyToName.set(String(k), String(name));
         }
       }
     }
 
-    const uidToSleeper = new Map();
-    if (Array.isArray(playerIds)) {
-      for (const r of playerIds) {
-        if (r?.id_type === "sleeper" && typeof r?.player_uid === "string" && typeof r?.id_value === "string") {
-          uidToSleeper.set(r.player_uid, r.id_value);
-        }
-      }
-    }
+    return { uidToSleeper, uidToName, teamKeyToName };
+  }, [players, playerIds, teams]);
 
-    return { teamKeyToName, uidToName, uidToSleeper };
-  }, [teams, players, playerIds]);
-
-  const seasonWeeks = useMemo(() => {
-    if (!Array.isArray(lineups)) return [];
-    const s = new Set();
-    for (const r of lineups) s.add(toNum(r?.week, 0));
-    return [...s].filter(Boolean).sort((a, b) => a - b);
+  const weeks = useMemo(() => {
+    const ws = [...new Set(lineups.map(r => Number(r.week)).filter(n => Number.isFinite(n)))].sort((a, b) => a - b);
+    return ws.length ? ws : [1];
   }, [lineups]);
 
-  useEffect(() => {
-    if (!seasonWeeks.length) return;
-    if (!seasonWeeks.includes(week)) setWeek(seasonWeeks[0]);
-  }, [seasonWeeks]);
-
-  const weekRows = useMemo(() => {
-    if (!Array.isArray(lineups)) return [];
-    const w = toNum(week, 0);
-    return lineups.filter((r) => toNum(r?.week, 0) === w);
+  const startersForWeek = useMemo(() => {
+    const w = Number(week);
+    return lineups.filter(r => Number(r.week) === w && (r.is_starter === true || r.slot === "STARTER"));
   }, [lineups, week]);
 
-  const starterRows = useMemo(() => {
-    return weekRows.filter((r) => !!r?.is_starter);
-  }, [weekRows]);
-
-  const teamsForWeek = useMemo(() => {
-    const set = new Set();
-    for (const r of starterRows) if (typeof r?.team_key === "string" && r.team_key) set.add(r.team_key);
-    return [...set].sort();
-  }, [starterRows]);
-
-  useEffect(() => {
-    if (!teamsForWeek.length) return;
-    if (!teamKey || !teamsForWeek.includes(teamKey)) setTeamKey(teamsForWeek[0]);
-  }, [teamsForWeek]);
-
-  const starterDetail = useMemo(() => {
-    const rows = starterRows.filter((r) => r?.team_key === teamKey);
-    const out = rows.map((r) => {
-      const uid = r?.player_uid;
-      const name = maps.uidToName.get(uid) || (maps.uidToSleeper.get(uid) ? `sleeper:${maps.uidToSleeper.get(uid)}` : String(uid || ""));
-      const slot = String(r?.slot || "");
-      return {
-        slot,
-        player: name,
-        points: toNum(r?.points, 0),
-        proj_points: toNum(r?.proj_points, 0),
-      };
-    });
-    out.sort((a, b) => b.points - a.points);
-    return out;
-  }, [starterRows, teamKey, maps]);
-
-  const teamLabel = useMemo(() => {
-    const name = maps.teamKeyToName.get(teamKey);
-    if (name) return name;
-    if (!teamKey) return "";
-    const last = teamKey.split(":").slice(-1)[0];
-    if (/^\d+$/.test(last)) return `Roster ${last}`;
-    return teamKey;
-  }, [teamKey, maps]);
-
-  const derived = useMemo(() => {
-    const byTeam = new Map();
-    for (const r of starterRows) {
-      const tk = r?.team_key;
-      if (typeof tk !== "string" || !tk) continue;
-      const cur = byTeam.get(tk) || { starters: 0, points: 0, proj_points: 0 };
-      cur.starters += 1;
-      cur.points += toNum(r?.points, 0);
-      cur.proj_points += toNum(r?.proj_points, 0);
-      byTeam.set(tk, cur);
+  const startersRows = useMemo(() => {
+    const rows = [];
+    for (const r of startersForWeek) {
+      const uid = r.player_uid ? String(r.player_uid) : "";
+      const sleeperId = maps.uidToSleeper.get(uid) || "";
+      const name = maps.uidToName.get(uid) || (sleeperId ? "" : "");
+      const displayPlayer = name || (sleeperId ? "Unknown player" : "Unknown player");
+      const teamName = maps.teamKeyToName.get(String(r.team_key || "")) || "Unknown team";
+      rows.push({
+        teamName,
+        slot: r.slot && r.slot !== "UNK" ? String(r.slot) : "STARTER",
+        player: displayPlayer,
+        points: Number(r.points) || 0,
+        proj: Number(r.proj_points) || 0,
+      });
     }
-    const rows = [...byTeam.entries()].map(([tk, v]) => ({
-      team_key: tk,
-      team: maps.teamKeyToName.get(tk) || tk,
-      starters: v.starters,
-      points: Math.round(v.points * 100) / 100,
-      proj_points: Math.round(v.proj_points * 100) / 100,
-    }));
-    rows.sort((a, b) => b.points - a.points);
     return rows;
-  }, [starterRows, maps]);
+  }, [startersForWeek, maps]);
 
-  const seasonsList = useMemo(() => {
-    const s = (manifest?.seasons || []).map((x) => toNum(x)).filter(Boolean);
-    return s.length ? s : [2025];
-  }, [manifest]);
+  const teamLeaderboard = useMemo(() => {
+    const byTeam = new Map();
+    for (const r of startersForWeek) {
+      const teamName = maps.teamKeyToName.get(String(r.team_key || "")) || "Unknown team";
+      const cur = byTeam.get(teamName) || { team: teamName, starters: 0, points: 0, proj: 0 };
+      cur.starters += 1;
+      cur.points += Number(r.points) || 0;
+      cur.proj += Number(r.proj_points) || 0;
+      byTeam.set(teamName, cur);
+    }
+    return [...byTeam.values()].sort((a, b) => b.points - a.points);
+  }, [startersForWeek, maps]);
+
+  if (err) {
+    return (
+      <div style={{ maxWidth: 860, margin: "24px auto", padding: 16, fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial" }}>
+        <div style={{ fontSize: 18, fontWeight: 700, marginBottom: 8 }}>TatnallLegacy</div>
+        <div style={{ color: "#b00020", whiteSpace: "pre-wrap" }}>{err}</div>
+      </div>
+    );
+  }
+
+  if (!manifest || loading.pct < 100) return <LoadingBar pct={loading.pct} label={loading.label} />;
 
   return (
-    <div style={{ fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial", padding: 18, maxWidth: 1100, margin: "0 auto" }}>
-      <h1 style={{ margin: "0 0 8px" }}>TatnallLegacy</h1>
-      <div style={{ color: "#444", marginBottom: 16 }}>BASE_URL: {BASE_URL}</div>
+    <div style={{ maxWidth: 1100, margin: "24px auto", padding: 16, fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial" }}>
+      <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 6 }}>TatnallLegacy</div>
+      <div style={{ marginBottom: 14, opacity: 0.8 }}>BASE_URL: {BASE}</div>
 
-      {err ? (
-        <div style={{ padding: 12, background: "#fff3f3", border: "1px solid #ffd1d1", borderRadius: 10, marginBottom: 12, color: "#900" }}>
-          {err}
+      <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "end", marginBottom: 14 }}>
+        <div>
+          <div style={{ fontSize: 12, opacity: 0.7, marginBottom: 6 }}>Season</div>
+          <select value={season} onChange={e => setSeason(Number(e.target.value))} style={{ padding: "8px 10px" }}>
+            {(manifest.seasons || [2025]).map(s => (
+              <option key={String(s)} value={s}>{s}</option>
+            ))}
+          </select>
         </div>
-      ) : null}
 
-      <Progress label={loadingStep.label} done={loadingStep.done} total={loadingStep.total} />
-
-      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", marginBottom: 16 }}>
-        <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <span style={{ width: 60 }}>Season</span>
-          <select value={season} onChange={(e) => setSeason(toNum(e.target.value, season))}>
-            {seasonsList.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
+        <div>
+          <div style={{ fontSize: 12, opacity: 0.7, marginBottom: 6 }}>Week</div>
+          <select value={week} onChange={e => setWeek(Number(e.target.value))} style={{ padding: "8px 10px" }}>
+            {weeks.map(w => (
+              <option key={String(w)} value={w}>{w}</option>
             ))}
           </select>
-        </label>
+        </div>
 
-        <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <span style={{ width: 60 }}>Week</span>
-          <select value={week} onChange={(e) => setWeek(toNum(e.target.value, week))} disabled={!seasonWeeks.length}>
-            {seasonWeeks.map((w) => (
-              <option key={w} value={w}>
-                {w}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <span style={{ width: 60 }}>Team</span>
-          <select value={teamKey} onChange={(e) => setTeamKey(e.target.value)} disabled={!teamsForWeek.length}>
-            {teamsForWeek.map((tk) => (
-              <option key={tk} value={tk}>
-                {maps.teamKeyToName.get(tk) || tk}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div style={{ marginLeft: "auto", fontSize: 12, opacity: 0.7 }}>
+          Lineups loaded: {lineups.length.toLocaleString()}
+        </div>
       </div>
 
-      <div style={{ marginBottom: 18, padding: 12, border: "1px solid #ddd", borderRadius: 10 }}>
-        <div style={{ fontWeight: 700, marginBottom: 10 }}>Derived view</div>
-        <div style={{ color: "#444", marginBottom: 10 }}>
-          Total starter rows (week {week}): {starterRows.length} · Teams active: {teamsForWeek.length}
-        </div>
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ borderCollapse: "collapse", width: "100%" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 16 }}>
+        <div style={{ border: "1px solid #eee", borderRadius: 12, padding: 14 }}>
+          <div style={{ fontWeight: 800, marginBottom: 8 }}>Top teams by starter points (Week {week})</div>
+          <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr>
-                {["team", "starters", "points", "proj_points"].map((h) => (
-                  <th key={h} style={{ textAlign: "left", borderBottom: "1px solid #eee", padding: "8px 6px", fontSize: 12, color: "#555" }}>
-                    {h}
-                  </th>
-                ))}
+                <th style={{ textAlign: "left", padding: "8px 6px", borderBottom: "1px solid #eee" }}>team</th>
+                <th style={{ textAlign: "right", padding: "8px 6px", borderBottom: "1px solid #eee" }}>starters</th>
+                <th style={{ textAlign: "right", padding: "8px 6px", borderBottom: "1px solid #eee" }}>points</th>
+                <th style={{ textAlign: "right", padding: "8px 6px", borderBottom: "1px solid #eee" }}>proj_points</th>
               </tr>
             </thead>
             <tbody>
-              {derived.map((r) => (
-                <tr key={r.team_key}>
-                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.team}</td>
-                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.starters}</td>
-                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.points}</td>
-                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.proj_points}</td>
+              {teamLeaderboard.map((r, i) => (
+                <tr key={r.team}>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{i + 1}. {r.team}</td>
+                  <td style={{ padding: "8px 6px", textAlign: "right", borderBottom: "1px solid #f3f3f3" }}>{r.starters}</td>
+                  <td style={{ padding: "8px 6px", textAlign: "right", borderBottom: "1px solid #f3f3f3" }}>{r.points.toFixed(2)}</td>
+                  <td style={{ padding: "8px 6px", textAlign: "right", borderBottom: "1px solid #f3f3f3" }}>{r.proj.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div style={{ border: "1px solid #eee", borderRadius: 12, padding: 14 }}>
+          <div style={{ fontWeight: 800, marginBottom: 8 }}>Starters detail (Week {week})</div>
+          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <thead>
+              <tr>
+                <th style={{ textAlign: "left", padding: "8px 6px", borderBottom: "1px solid #eee" }}>team</th>
+                <th style={{ textAlign: "left", padding: "8px 6px", borderBottom: "1px solid #eee" }}>slot</th>
+                <th style={{ textAlign: "left", padding: "8px 6px", borderBottom: "1px solid #eee" }}>player</th>
+                <th style={{ textAlign: "right", padding: "8px 6px", borderBottom: "1px solid #eee" }}>points</th>
+                <th style={{ textAlign: "right", padding: "8px 6px", borderBottom: "1px solid #eee" }}>proj_points</th>
+              </tr>
+            </thead>
+            <tbody>
+              {startersRows.map((r, idx) => (
+                <tr key={`${r.teamName}-${r.player}-${idx}`}>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.teamName}</td>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.slot}</td>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.player}</td>
+                  <td style={{ padding: "8px 6px", textAlign: "right", borderBottom: "1px solid #f3f3f3" }}>{r.points.toFixed(2)}</td>
+                  <td style={{ padding: "8px 6px", textAlign: "right", borderBottom: "1px solid #f3f3f3" }}>{r.proj.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>
@@ -304,44 +283,8 @@ function App() {
         </div>
       </div>
 
-      <div style={{ padding: 12, border: "1px solid #ddd", borderRadius: 10 }}>
-        <div style={{ fontWeight: 700, marginBottom: 10 }}>Starters detail (Week {week})</div>
-        <div style={{ color: "#444", marginBottom: 10 }}>Team: {teamLabel}</div>
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ borderCollapse: "collapse", width: "100%" }}>
-            <thead>
-              <tr>
-                {["slot", "player", "points", "proj_points"].map((h) => (
-                  <th key={h} style={{ textAlign: "left", borderBottom: "1px solid #eee", padding: "8px 6px", fontSize: 12, color: "#555" }}>
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {starterDetail.map((r, idx) => (
-                <tr key={`${r.player}-${idx}`}>
-                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.slot || "-"}</td>
-                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.player || "-"}</td>
-                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.points}</td>
-                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.proj_points}</td>
-                </tr>
-              ))}
-              {!starterDetail.length ? (
-                <tr>
-                  <td colSpan={4} style={{ padding: "10px 6px", color: "#777" }}>
-                    No starters found for selected week/team.
-                  </td>
-                </tr>
-              ) : null}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div style={{ marginTop: 18, padding: 12, border: "1px dashed #ddd", borderRadius: 10 }}>
-        <div style={{ fontWeight: 700, marginBottom: 8 }}>Debug: manifest</div>
-        <pre style={{ margin: 0, whiteSpace: "pre-wrap" }}>{manifest ? JSON.stringify(manifest, null, 2) : "loading..."}</pre>
+      <div style={{ marginTop: 16, fontSize: 12, opacity: 0.6 }}>
+        Debug: manifest loaded from {BASE}data/manifest.json
       </div>
     </div>
   );
