@@ -1,378 +1,350 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 
-const BASE = import.meta.env.BASE_URL;
+const BASE_URL = import.meta.env.BASE_URL || "/";
 
-async function fetchJson(relPath){
-  const r = await fetch(BASE + relPath);
-  if(!r.ok) throw new Error(`${relPath} fetch failed: ${r.status}`);
-  return r.json();
+function joinUrl(path) {
+  return new URL(path.replace(/^\//, ""), window.location.origin + BASE_URL).toString();
 }
 
-function toNum(v){
-  if(typeof v === "number") return v;
-  if(typeof v === "string"){
-    const s=v.trim();
-    if(!s) return 0;
-    const n=Number(s);
-    return Number.isFinite(n) ? n : 0;
-  }
-  return 0;
+async function fetchJson(path) {
+  const res = await fetch(joinUrl(path), { cache: "no-store" });
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${path}`);
+  return res.json();
 }
 
-function sumPoints(rows, key){
-  let s = 0;
-  for(const r of rows) s += toNum(r?.[key]);
-  return Math.round(s * 100) / 100;
+function toNum(x, fallback = 0) {
+  const n = Number(x);
+  return Number.isFinite(n) ? n : fallback;
 }
 
-function buildTeamMap(teamsJson){
-  const m = new Map();
-  const add = (team_key, label)=>{
-    if(!team_key) return;
-    const k=String(team_key);
-    if(!m.has(k) && label) m.set(k, String(label));
-  };
-
-  if(Array.isArray(teamsJson)){
-    for(const t of teamsJson){
-      add(t.team_key ?? t.teamKey ?? t.key, t.team_name ?? t.teamName ?? t.name ?? t.display_name ?? t.displayName ?? t.owner_name);
-    }
-    return m;
-  }
-
-  if(teamsJson && typeof teamsJson === "object"){
-    for(const [k,v] of Object.entries(teamsJson)){
-      if(v && typeof v === "object"){
-        add(v.team_key ?? v.teamKey ?? k, v.team_name ?? v.teamName ?? v.name ?? v.display_name ?? v.displayName ?? v.owner_name);
-      } else if(v) {
-        add(k, v);
-      }
-    }
-  }
-
-  return m;
-}
-
-function buildNameBySleeperId(playersJson, playerIdsJson){
-  const uidToSleeper = new Map();
-  if(Array.isArray(playerIdsJson)){
-    for(const r of playerIdsJson){
-      if(r?.id_type === "sleeper" && r?.player_uid && r?.id_value != null){
-        uidToSleeper.set(String(r.player_uid), String(r.id_value));
-      }
-    }
-  }
-
-  const nameBySleeper = new Map();
-  const nameOf = (p)=>{
-    const full = p.full_name ?? p.fullName ?? p.name ?? p.player_name ?? p.playerName;
-    const first = p.first_name ?? p.firstName;
-    const last = p.last_name ?? p.lastName;
-    const pos = p.position ?? p.pos;
-    const team = p.team ?? p.nfl_team ?? p.team_abbr;
-
-    let n = null;
-    if(typeof full === "string" && full.trim() !== "" && !/^\d+$/.test(full.trim())) n = full.trim();
-    if(!n && (first || last)) n = [first,last].filter(Boolean).join(" ");
-    if(!n) return null;
-
-    const suffix = [team,pos].filter(Boolean).join(" ");
-    return suffix ? `${n} (${suffix})` : n;
-  };
-
-  if(Array.isArray(playersJson)){
-    for(const p of playersJson){
-      const uid = p?.player_uid;
-      if(!uid) continue;
-      const sid = uidToSleeper.get(String(uid));
-      if(!sid) continue;
-      const nm = nameOf(p);
-      if(nm) nameBySleeper.set(String(sid), nm);
-    }
-  }
-
-  return nameBySleeper;
-}
-
-function App(){
-
-/* MATCHUPS_VIEW_START */
-function MatchupsView({ season, week, base, teamsByKey }) {
-  const [rows,setRows]=React.useState(null);
-  const [err,setErr]=React.useState(null);
-
-  React.useEffect(()=>{
-    let alive=true;
-    (async()=>{
-      try{
-        setErr(null); setRows(null);
-        const url = base + "data/matchups_2025.json";
-        const r = await fetch(url);
-        if(!r.ok) throw new Error("matchups fetch "+r.status+" "+url);
-        const j = await r.json();
-        if(!alive) return;
-        setRows(Array.isArray(j)? j : (j.matchups||j.data||[]));
-      }catch(e){ if(alive) setErr(String(e)); }
-    })();
-    return ()=>{ alive=false; };
-  },[season,base]);
-
-  const wk = Number(week||1);
-  const list = (rows||[]).filter(x=>Number(x.week||x.matchup_week||x.w)==wk);
-
-  return React.createElement("div", {style:{marginTop:16}},
-    React.createElement("h3", null, "Matchups (Week "+wk+")"),
-    err ? React.createElement("pre", null, err) :
-    !rows ? React.createElement("div", null, "Loading matchups…") :
-    React.createElement("table", {style:{borderCollapse:"collapse", width:"100%"}},
-      React.createElement("thead", null,
-        React.createElement("tr", null,
-          ["matchup_id","team","opponent","points"].map(h=>React.createElement("th",{key:h,style:{textAlign:"left",borderBottom:"1px solid #ddd",padding:"6px"}},h))
-        )
-      ),
-      React.createElement("tbody", null,
-        list.map((m,i)=>{
-          const mid = m.matchup_id ?? m.matchupId ?? m.id ?? "";
-          const tk  = m.team_key ?? m.teamKey ?? m.team ?? "";
-          const ok  = m.opp_team_key ?? m.opponent_key ?? m.opponent ?? "";
-          const pts = m.points ?? m.score ?? "";
-          const tname = teamsByKey?.get(tk) || tk || "UNK";
-          const oname = teamsByKey?.get(ok) || ok || "UNK";
-          return React.createElement("tr",{key:i},
-            React.createElement("td",{style:{padding:"6px",borderBottom:"1px solid #f0f0f0"}},String(mid)),
-            React.createElement("td",{style:{padding:"6px",borderBottom:"1px solid #f0f0f0"}},String(tname)),
-            React.createElement("td",{style:{padding:"6px",borderBottom:"1px solid #f0f0f0"}},String(oname)),
-            React.createElement("td",{style:{padding:"6px",borderBottom:"1px solid #f0f0f0"}},String(pts))
-          );
-        })
-      )
-    )
+function Progress({ label, done, total }) {
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  return (
+    <div style={{ margin: "12px 0", padding: 12, border: "1px solid #ddd", borderRadius: 10 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+        <div style={{ fontWeight: 600 }}>{label}</div>
+        <div style={{ fontVariantNumeric: "tabular-nums" }}>{pct}%</div>
+      </div>
+      <div style={{ height: 10, background: "#f2f2f2", borderRadius: 999, overflow: "hidden", marginTop: 10 }}>
+        <div style={{ width: `${pct}%`, height: "100%", background: "#111" }} />
+      </div>
+    </div>
   );
 }
-/* MATCHUPS_VIEW_END */
 
+function App() {
+  const [manifest, setManifest] = useState(null);
+  const [teams, setTeams] = useState(null);
+  const [players, setPlayers] = useState(null);
+  const [playerIds, setPlayerIds] = useState(null);
+  const [lineups, setLineups] = useState(null);
 
-  const [manifest,setManifest] = React.useState(null);
-  const [season,setSeason] = React.useState(null);
-  const [week,setWeek] = React.useState(1);
+  const [season, setSeason] = useState(2025);
+  const [week, setWeek] = useState(1);
+  const [teamKey, setTeamKey] = useState("");
 
-  const [lineups,setLineups] = React.useState(null);
-  const [teamsMap,setTeamsMap] = React.useState(new Map());
-  const [nameBySleeper,setNameBySleeper] = React.useState(new Map());
+  const [loadingStep, setLoadingStep] = useState({ label: "Idle", done: 0, total: 1 });
+  const [err, setErr] = useState("");
 
-  const [selectedTeam,setSelectedTeam] = React.useState("");
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        setErr("");
+        setLoadingStep({ label: "Loading manifest.json", done: 0, total: 1 });
+        const m = await fetchJson("data/manifest.json");
+        if (cancelled) return;
+        setManifest(m);
+        const seasons = (m.seasons || []).map((x) => toNum(x)).filter(Boolean);
+        if (seasons.length) setSeason(seasons[seasons.length - 1]);
+        setLoadingStep({ label: "Loading teams/players/player_ids", done: 0, total: 3 });
+        const [t, p, ids] = await Promise.all([
+          fetchJson(m.teams || "data/teams.json"),
+          fetchJson(m.players || "data/players.json"),
+          fetchJson(m.player_ids || "data/player_ids.json"),
+        ]);
+        if (cancelled) return;
+        setTeams(t);
+        setPlayers(p);
+        setPlayerIds(ids);
+        setLoadingStep({ label: "Ready", done: 1, total: 1 });
+      } catch (e) {
+        if (!cancelled) setErr(String(e?.message || e));
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  const [err,setErr] = React.useState(null);
-  const [loading,setLoading] = React.useState(true);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      if (!manifest) return;
+      try {
+        setErr("");
+        const path = manifest?.lineups?.[String(season)] || `data/lineups-${season}.json`;
+        setLoadingStep({ label: `Loading ${path}`, done: 0, total: 1 });
+        const l = await fetchJson(path);
+        if (cancelled) return;
+        setLineups(l);
+        setLoadingStep({ label: "Ready", done: 1, total: 1 });
+      } catch (e) {
+        if (!cancelled) setErr(String(e?.message || e));
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [manifest, season]);
 
-  React.useEffect(()=>{(async()=>{
-    try{
-      const m = await fetchJson("data/manifest.json");
-      setManifest(m);
-      const s = (m.seasons && m.seasons.length) ? m.seasons[m.seasons.length - 1] : 2025;
-      setSeason(s);
-      setLoading(false);
-    }catch(e){
-      setErr(String(e));
-      setLoading(false);
+  const maps = useMemo(() => {
+    const teamKeyToName = new Map();
+
+    const addTeam = (k, n) => {
+      if (typeof k === "string" && k && typeof n === "string" && n) teamKeyToName.set(k, n);
+    };
+
+    if (Array.isArray(teams)) {
+      for (const r of teams) {
+        addTeam(r.team_key ?? r.teamKey ?? r.key, r.team_name ?? r.teamName ?? r.name);
+      }
+    } else if (teams && typeof teams === "object") {
+      for (const [k, v] of Object.entries(teams)) {
+        if (typeof v === "string") addTeam(k, v);
+        else if (v && typeof v === "object") addTeam(k, v.team_name ?? v.teamName ?? v.name ?? v.label);
+      }
     }
-  })()},[]);
 
-  React.useEffect(()=>{(async()=>{
-    try{
-      const t = await fetchJson("data/teams.json");
-      setTeamsMap(buildTeamMap(t));
-    }catch(_){
-      setTeamsMap(new Map());
-    }
-  })()},[]);
-
-  React.useEffect(()=>{(async()=>{
-    try{
-      const [p, ids] = await Promise.all([
-        fetchJson("data/players.json"),
-        fetchJson("data/player_ids.json")
-      ]);
-      setNameBySleeper(buildNameBySleeperId(p, ids));
-    }catch(_){
-      setNameBySleeper(new Map());
-    }
-  })()},[]);
-
-  React.useEffect(()=>{(async()=>{
-    if(!season) return;
-    setErr(null);
-    setLineups(null);
-    try{
-      const candidates = [
-        `data/lineups-${season}.json`
-      ];
-      let lastErr=null;
-      for(const c of candidates){
-        try{
-          const j = await fetchJson(c);
-          setLineups(j);
-          return;
-        }catch(e){
-          lastErr=e;
+    const uidToName = new Map();
+    if (Array.isArray(players)) {
+      for (const p of players) {
+        const uid = p?.player_uid;
+        const name = p?.full_name;
+        if (typeof uid === "string" && uid && typeof name === "string" && name && !/^\d+$/.test(name.trim())) {
+          uidToName.set(uid, name);
         }
       }
-      throw lastErr || new Error("no lineup file matched");
-    }catch(e){
-      setErr(String(e));
-    }
-  })()},[season]);
-
-  const derived = React.useMemo(()=>{
-    if(!Array.isArray(lineups)) return null;
-
-    const weeks = Array.from(new Set(lineups.map(r=>Number(r.week)).filter(n=>Number.isFinite(n)))).sort((a,b)=>a-b);
-    const safeWeek = weeks.includes(week) ? week : (weeks[0] ?? 1);
-
-    const weekRows = lineups.filter(r=>Number(r.week)===safeWeek);
-    const isStarter = (r)=> (r.is_starter===true || r.is_starter===1 || r.is_starter==="1");
-
-    const starters = weekRows.filter(isStarter);
-    const teamKeys = Array.from(new Set(weekRows.map(r=>String(r.team_key)))).sort();
-
-    const rowsByTeam = new Map();
-    for(const t of teamKeys) rowsByTeam.set(t, []);
-    for(const r of starters){
-      const k=String(r.team_key);
-      if(!rowsByTeam.has(k)) rowsByTeam.set(k, []);
-      rowsByTeam.get(k).push(r);
     }
 
-    const teams = teamKeys.map(team_key=>{
-      const rows = rowsByTeam.get(team_key) || [];
+    const uidToSleeper = new Map();
+    if (Array.isArray(playerIds)) {
+      for (const r of playerIds) {
+        if (r?.id_type === "sleeper" && typeof r?.player_uid === "string" && typeof r?.id_value === "string") {
+          uidToSleeper.set(r.player_uid, r.id_value);
+        }
+      }
+    }
+
+    return { teamKeyToName, uidToName, uidToSleeper };
+  }, [teams, players, playerIds]);
+
+  const seasonWeeks = useMemo(() => {
+    if (!Array.isArray(lineups)) return [];
+    const s = new Set();
+    for (const r of lineups) s.add(toNum(r?.week, 0));
+    return [...s].filter(Boolean).sort((a, b) => a - b);
+  }, [lineups]);
+
+  useEffect(() => {
+    if (!seasonWeeks.length) return;
+    if (!seasonWeeks.includes(week)) setWeek(seasonWeeks[0]);
+  }, [seasonWeeks]);
+
+  const weekRows = useMemo(() => {
+    if (!Array.isArray(lineups)) return [];
+    const w = toNum(week, 0);
+    return lineups.filter((r) => toNum(r?.week, 0) === w);
+  }, [lineups, week]);
+
+  const starterRows = useMemo(() => {
+    return weekRows.filter((r) => !!r?.is_starter);
+  }, [weekRows]);
+
+  const teamsForWeek = useMemo(() => {
+    const set = new Set();
+    for (const r of starterRows) if (typeof r?.team_key === "string" && r.team_key) set.add(r.team_key);
+    return [...set].sort();
+  }, [starterRows]);
+
+  useEffect(() => {
+    if (!teamsForWeek.length) return;
+    if (!teamKey || !teamsForWeek.includes(teamKey)) setTeamKey(teamsForWeek[0]);
+  }, [teamsForWeek]);
+
+  const starterDetail = useMemo(() => {
+    const rows = starterRows.filter((r) => r?.team_key === teamKey);
+    const out = rows.map((r) => {
+      const uid = r?.player_uid;
+      const name = maps.uidToName.get(uid) || (maps.uidToSleeper.get(uid) ? `sleeper:${maps.uidToSleeper.get(uid)}` : String(uid || ""));
+      const slot = String(r?.slot || "");
       return {
-        team_key,
-        team_label: teamsMap.get(team_key) || team_key,
-        starters: rows.length,
-        points: sumPoints(rows,"points"),
-        proj_points: sumPoints(rows,"proj_points")
+        slot,
+        player: name,
+        points: toNum(r?.points, 0),
+        proj_points: toNum(r?.proj_points, 0),
       };
-    }).sort((a,b)=> (b.points - a.points) || (b.proj_points - a.proj_points));
+    });
+    out.sort((a, b) => b.points - a.points);
+    return out;
+  }, [starterRows, teamKey, maps]);
 
-    return {
-      weeks,
-      week: safeWeek,
-      total_rows: lineups.length,
-      week_rows: weekRows.length,
-      teams_active: teamKeys.length,
-      teams_sorted: teams,
-      starters_by_team: rowsByTeam
-    };
-  },[lineups,week,teamsMap]);
+  const teamLabel = useMemo(() => {
+    const name = maps.teamKeyToName.get(teamKey);
+    if (name) return name;
+    if (!teamKey) return "";
+    const last = teamKey.split(":").slice(-1)[0];
+    if (/^\d+$/.test(last)) return `Roster ${last}`;
+    return teamKey;
+  }, [teamKey, maps]);
 
-  React.useEffect(()=>{
-    if(!derived?.weeks?.length) return;
-    if(!derived.weeks.includes(week)) setWeek(derived.weeks[0]);
-  },[derived]);
+  const derived = useMemo(() => {
+    const byTeam = new Map();
+    for (const r of starterRows) {
+      const tk = r?.team_key;
+      if (typeof tk !== "string" || !tk) continue;
+      const cur = byTeam.get(tk) || { starters: 0, points: 0, proj_points: 0 };
+      cur.starters += 1;
+      cur.points += toNum(r?.points, 0);
+      cur.proj_points += toNum(r?.proj_points, 0);
+      byTeam.set(tk, cur);
+    }
+    const rows = [...byTeam.entries()].map(([tk, v]) => ({
+      team_key: tk,
+      team: maps.teamKeyToName.get(tk) || tk,
+      starters: v.starters,
+      points: Math.round(v.points * 100) / 100,
+      proj_points: Math.round(v.proj_points * 100) / 100,
+    }));
+    rows.sort((a, b) => b.points - a.points);
+    return rows;
+  }, [starterRows, maps]);
 
-  React.useEffect(()=>{
-    if(!derived?.teams_sorted?.length) return;
-    if(selectedTeam && derived.teams_sorted.some(t=>t.team_key===selectedTeam)) return;
-    setSelectedTeam(derived.teams_sorted[0].team_key);
-  },[derived]);
+  const seasonsList = useMemo(() => {
+    const s = (manifest?.seasons || []).map((x) => toNum(x)).filter(Boolean);
+    return s.length ? s : [2025];
+  }, [manifest]);
 
-  const selectedTeamRows = React.useMemo(()=>{
-    if(!derived || !selectedTeam) return [];
-    const rows = derived.starters_by_team.get(String(selectedTeam)) || [];
+  return (
+    <div style={{ fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Arial", padding: 18, maxWidth: 1100, margin: "0 auto" }}>
+      <h1 style={{ margin: "0 0 8px" }}>TatnallLegacy</h1>
+      <div style={{ color: "#444", marginBottom: 16 }}>BASE_URL: {BASE_URL}</div>
 
-    const displayPlayer = (player_uid)=>{
-      const raw = player_uid == null ? "" : String(player_uid);
-      if(raw === "") return "UNKNOWN";
-      const named = nameBySleeper.get(raw);
-      if(named) return named;
-      if(/^\d+$/.test(raw)) return `sleeper:${raw}`;
-      return raw;
-    };
+      {err ? (
+        <div style={{ padding: 12, background: "#fff3f3", border: "1px solid #ffd1d1", borderRadius: 10, marginBottom: 12, color: "#900" }}>
+          {err}
+        </div>
+      ) : null}
 
-    return rows
-      .map(r=>({
-        slot: r.slot ?? "UNK",
-        player: displayPlayer(r.player_uid),
-        points: toNum(r.points),
-        proj_points: toNum(r.proj_points)
-      }))
-      .sort((a,b)=> (b.points - a.points) || (String(a.slot).localeCompare(String(b.slot))));
-  },[derived,selectedTeam,nameBySleeper]);
+      <Progress label={loadingStep.label} done={loadingStep.done} total={loadingStep.total} />
 
-  if(loading) return React.createElement("div", {style:{fontFamily:"system-ui",padding:16}}, "Loading…");
-  if(err && !manifest) return React.createElement("pre", {style:{padding:16,whiteSpace:"pre-wrap"}}, err);
+      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", marginBottom: 16 }}>
+        <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <span style={{ width: 60 }}>Season</span>
+          <select value={season} onChange={(e) => setSeason(toNum(e.target.value, season))}>
+            {seasonsList.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+        </label>
 
-  return React.createElement("div", {style:{fontFamily:"system-ui",padding:16,maxWidth:1150}},
-    React.createElement("h1", null, "TatnallLegacy"),
-    React.createElement("div", {style:{marginBottom:12,opacity:0.8}}, "BASE_URL: " + BASE),
+        <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <span style={{ width: 60 }}>Week</span>
+          <select value={week} onChange={(e) => setWeek(toNum(e.target.value, week))} disabled={!seasonWeeks.length}>
+            {seasonWeeks.map((w) => (
+              <option key={w} value={w}>
+                {w}
+              </option>
+            ))}
+          </select>
+        </label>
 
-    React.createElement("div", {style:{display:"flex",gap:12,alignItems:"center",flexWrap:"wrap",marginBottom:16}},
-      React.createElement("label", null, "Season"),
-      React.createElement("select", { value: season || "", onChange: (e)=>setSeason(Number(e.target.value)) },
-        (manifest?.seasons || []).map(s => React.createElement("option", {key:s, value:s}, String(s)))
-      ),
-      React.createElement("label", null, "Week"),
-      React.createElement("select", {
-        value: week,
-        onChange: (e)=>setWeek(Number(e.target.value)),
-        disabled: !(derived?.weeks?.length)
-      },
-        (derived?.weeks || [1]).map(w => React.createElement("option", {key:w, value:w}, String(w)))
-      ),
-      React.createElement("span", {style:{opacity:0.8}},
-        lineups ? `Lineups loaded (${Array.isArray(lineups)?lineups.length:0})` : "Loading lineups…"
-      )
-    ),
+        <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <span style={{ width: 60 }}>Team</span>
+          <select value={teamKey} onChange={(e) => setTeamKey(e.target.value)} disabled={!teamsForWeek.length}>
+            {teamsForWeek.map((tk) => (
+              <option key={tk} value={tk}>
+                {maps.teamKeyToName.get(tk) || tk}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
 
-    err ? React.createElement("pre", {style:{whiteSpace:"pre-wrap",background:"#111",color:"#eee",padding:12,borderRadius:8}}, err) : null,
+      <div style={{ marginBottom: 18, padding: 12, border: "1px solid #ddd", borderRadius: 10 }}>
+        <div style={{ fontWeight: 700, marginBottom: 10 }}>Derived view</div>
+        <div style={{ color: "#444", marginBottom: 10 }}>
+          Total starter rows (week {week}): {starterRows.length} · Teams active: {teamsForWeek.length}
+        </div>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ borderCollapse: "collapse", width: "100%" }}>
+            <thead>
+              <tr>
+                {["team", "starters", "points", "proj_points"].map((h) => (
+                  <th key={h} style={{ textAlign: "left", borderBottom: "1px solid #eee", padding: "8px 6px", fontSize: 12, color: "#555" }}>
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {derived.map((r) => (
+                <tr key={r.team_key}>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.team}</td>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.starters}</td>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.points}</td>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.proj_points}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-    React.createElement("h2", null, "Derived view"),
-      React.createElement(MatchupsView, { season, week, base, teamsByKey }),
-    derived
-      ? React.createElement("div", {style:{display:"grid",gap:12}},
-          React.createElement("div", {style:{display:"grid",gridTemplateColumns:"repeat(3, minmax(0, 1fr))",gap:12}},
-            React.createElement("div", {style:{background:"#f4f4f4",padding:12,borderRadius:8}}, `Total rows: ${derived.total_rows}`),
-            React.createElement("div", {style:{background:"#f4f4f4",padding:12,borderRadius:8}}, `Week ${derived.week} rows: ${derived.week_rows}`),
-            React.createElement("div", {style:{background:"#f4f4f4",padding:12,borderRadius:8}}, `Teams active: ${derived.teams_active}`)
-          ),
+      <div style={{ padding: 12, border: "1px solid #ddd", borderRadius: 10 }}>
+        <div style={{ fontWeight: 700, marginBottom: 10 }}>Starters detail (Week {week})</div>
+        <div style={{ color: "#444", marginBottom: 10 }}>Team: {teamLabel}</div>
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ borderCollapse: "collapse", width: "100%" }}>
+            <thead>
+              <tr>
+                {["slot", "player", "points", "proj_points"].map((h) => (
+                  <th key={h} style={{ textAlign: "left", borderBottom: "1px solid #eee", padding: "8px 6px", fontSize: 12, color: "#555" }}>
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {starterDetail.map((r, idx) => (
+                <tr key={`${r.player}-${idx}`}>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.slot || "-"}</td>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.player || "-"}</td>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.points}</td>
+                  <td style={{ padding: "8px 6px", borderBottom: "1px solid #f3f3f3" }}>{r.proj_points}</td>
+                </tr>
+              ))}
+              {!starterDetail.length ? (
+                <tr>
+                  <td colSpan={4} style={{ padding: "10px 6px", color: "#777" }}>
+                    No starters found for selected week/team.
+                  </td>
+                </tr>
+              ) : null}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-          React.createElement("div", {style:{background:"#f4f4f4",padding:12,borderRadius:8}},
-            React.createElement("div", {style:{display:"flex",gap:12,alignItems:"center",flexWrap:"wrap",marginBottom:8}},
-              React.createElement("div", {style:{fontWeight:700}}, `Starters detail (Week ${derived.week})`),
-              React.createElement("label", null, "Team"),
-              React.createElement("select", { value: selectedTeam, onChange: (e)=>setSelectedTeam(e.target.value) },
-                derived.teams_sorted.map(t =>
-                  React.createElement("option", {key:t.team_key, value:t.team_key}, t.team_label)
-                )
-              )
-            ),
-            React.createElement("table", {style:{width:"100%",borderCollapse:"collapse"}},
-              React.createElement("thead", null,
-                React.createElement("tr", null,
-                  ["slot","player","points","proj_points"].map(h =>
-                    React.createElement("th", {key:h, style:{textAlign:"left",padding:"6px 8px",borderBottom:"1px solid #ddd"}}, h)
-                  )
-                )
-              ),
-              React.createElement("tbody", null,
-                selectedTeamRows.map((r,idx)=>
-                  React.createElement("tr", {key:idx},
-                    React.createElement("td", {style:{padding:"6px 8px",borderBottom:"1px solid #eee"}}, String(r.slot)),
-                    React.createElement("td", {style:{padding:"6px 8px",borderBottom:"1px solid #eee"}}, r.player),
-                    React.createElement("td", {style:{padding:"6px 8px",borderBottom:"1px solid #eee"}}, String(r.points)),
-                    React.createElement("td", {style:{padding:"6px 8px",borderBottom:"1px solid #eee"}}, String(r.proj_points))
-                  )
-                )
-              )
-            ),
-            React.createElement("div", {style:{marginTop:10,opacity:0.7,fontSize:12}},
-              "If names still show as sleeper:<id>, players.json is missing real names for those ids; fix ingest later. UI wiring is correct."
-            )
-          )
-        )
-      : React.createElement("div", null, "No data yet")
+      <div style={{ marginTop: 18, padding: 12, border: "1px dashed #ddd", borderRadius: 10 }}>
+        <div style={{ fontWeight: 700, marginBottom: 8 }}>Debug: manifest</div>
+        <pre style={{ margin: 0, whiteSpace: "pre-wrap" }}>{manifest ? JSON.stringify(manifest, null, 2) : "loading..."}</pre>
+      </div>
+    </div>
   );
 }
 
-createRoot(document.getElementById("root")).render(React.createElement(App));
+createRoot(document.getElementById("root")).render(<App />);
