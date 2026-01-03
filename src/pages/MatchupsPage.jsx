@@ -5,19 +5,20 @@ import LoadingState from "../components/LoadingState.jsx";
 import Modal from "../components/Modal.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
-import { resolvePlayerName } from "../lib/playerName.js";
+import { resolvePlayerDisplay } from "../lib/playerName.js";
 import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
 import { resolveOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 
 export default function MatchupsPage() {
-  const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
+  const { manifest, loading, error, playerIndex, teams } = useDataContext();
   const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("");
   const [weekData, setWeekData] = useState(null);
   const [activeMatchup, setActiveMatchup] = useState(null);
   const [activePlayer, setActivePlayer] = useState(null);
+  const isDev = import.meta.env.DEV;
 
   const availableWeeks = useMemo(() => {
     if (!season) return [];
@@ -52,15 +53,54 @@ export default function MatchupsPage() {
   const matchups = weekData?.matchups || [];
   const lineups = weekData?.lineups || [];
 
-  const buildRoster = (teamName) => {
-    const rows = lineups.filter((row) => String(row.team) === String(teamName));
+  const teamsByRosterId = useMemo(() => {
+    const map = new Map();
+    for (const team of teams || []) {
+      if (season && Number(team?.season) !== Number(season)) continue;
+      const key = team?.roster_id ?? team?.team_id;
+      if (key == null) continue;
+      const name = team?.display_name || team?.team_name || team?.name;
+      if (name) map.set(String(key), name);
+    }
+    return map;
+  }, [teams, season]);
+
+  const getLineupTeamKeys = (matchup, side) => {
+    const keys = new Set();
+    const teamValue = side === "home" ? matchup?.home_team : matchup?.away_team;
+    const rosterId = side === "home" ? matchup?.home_roster_id : matchup?.away_roster_id;
+    if (teamValue) keys.add(String(teamValue));
+    if (rosterId != null) {
+      const rosterName = teamsByRosterId.get(String(rosterId));
+      if (rosterName) keys.add(String(rosterName));
+    }
+    for (const entry of matchup?.entries || []) {
+      const matchesRoster = rosterId != null && String(entry?.roster_id) === String(rosterId);
+      if (matchesRoster || rosterId == null) {
+        for (const value of [entry?.display_name, entry?.team_name, entry?.username]) {
+          if (value) keys.add(String(value));
+        }
+      }
+    }
+    return keys;
+  };
+
+  const getMatchupLabel = (matchup, side) => {
+    const teamValue = side === "home" ? matchup?.home_team : matchup?.away_team;
+    const rosterId = side === "home" ? matchup?.home_roster_id : matchup?.away_roster_id;
+    const rosterName = rosterId != null ? teamsByRosterId.get(String(rosterId)) : null;
+    return rosterName || teamValue || (side === "home" ? "Home" : "Away");
+  };
+
+  const buildRoster = (teamKeys) => {
+    const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
     const mapped = rows.map((row) => {
-      const uid = playerIdLookup.bySleeper.get(String(row.player_id));
-      const player = uid ? playerIdLookup.byUid.get(uid) : null;
+      const display = resolvePlayerDisplay(row.player_id, { row, playerIndex });
       return {
         ...row,
-        displayName: resolvePlayerName(row, playerIndex),
-        position: player?.position || "—",
+        displayName: display.name,
+        position: display.position,
+        nflTeam: display.team,
       };
     });
     const totals = mapped.reduce(
@@ -82,15 +122,33 @@ export default function MatchupsPage() {
   const activeRoster = useMemo(() => {
     if (!activeMatchup) return null;
     return {
-      home: buildRoster(activeMatchup.home_team),
-      away: buildRoster(activeMatchup.away_team),
+      home: buildRoster(getLineupTeamKeys(activeMatchup, "home")),
+      away: buildRoster(getLineupTeamKeys(activeMatchup, "away")),
     };
-  }, [activeMatchup, lineups]);
+  }, [activeMatchup, lineups, playerIndex, teamsByRosterId]);
 
   if (loading) return <LoadingState label="Loading matchups..." />;
   if (error) return <ErrorState message={error} />;
 
   const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
+
+  const diagnostics = useMemo(() => {
+    if (!isDev || !weekData) return null;
+    let resolvedNames = 0;
+    let missingIds = 0;
+    const starters = lineups.filter((row) => row.started).length;
+    for (const row of lineups) {
+      if (!row.player_id && !row.sleeper_id && !row.gsis_id && !row.espn_id) missingIds += 1;
+      const display = resolvePlayerDisplay(row.player_id, { row, playerIndex });
+      if (display.name && display.name !== "(Unknown Player)") resolvedNames += 1;
+    }
+    return {
+      total: lineups.length,
+      starters,
+      resolvedNames,
+      missingIds,
+    };
+  }, [isDev, weekData, lineups, playerIndex]);
 
   return (
     <>
@@ -123,13 +181,25 @@ export default function MatchupsPage() {
         <div className="tag">Matchups loaded: {matchups.length || 0}</div>
       </section>
 
+      {diagnostics ? (
+        <section className="section-card">
+          <h2 className="section-title">Diagnostics (DEV)</h2>
+          <div className="flex-row">
+            <div className="tag">Lineups: {diagnostics.total}</div>
+            <div className="tag">Starters loaded: {diagnostics.starters}</div>
+            <div className="tag">Resolved names: {diagnostics.resolvedNames}</div>
+            <div className="tag">Missing player ids: {diagnostics.missingIds}</div>
+          </div>
+        </section>
+      ) : null}
+
       {matchups.length ? (
         <section className="matchup-grid">
           {matchups.map((matchup) => {
             const homeWin = matchup.home_score > matchup.away_score;
             const awayWin = matchup.away_score > matchup.home_score;
-            const homeLabel = ownerLabel(matchup.home_team, matchup.home_team || "Home");
-            const awayLabel = ownerLabel(matchup.away_team, matchup.away_team || "Away");
+            const homeLabel = ownerLabel(getMatchupLabel(matchup, "home"), matchup.home_team || "Home");
+            const awayLabel = ownerLabel(getMatchupLabel(matchup, "away"), matchup.away_team || "Away");
             return (
               <div key={matchup.matchup_id} className="matchup-card">
                 <div className="matchup-row">
@@ -162,10 +232,10 @@ export default function MatchupsPage() {
         isOpen={Boolean(activeMatchup)}
         title={
           activeMatchup
-            ? `Week ${week} · ${ownerLabel(activeMatchup.home_team, activeMatchup.home_team)} vs ${ownerLabel(
-                activeMatchup.away_team,
-                activeMatchup.away_team,
-              )}`
+            ? `Week ${week} · ${ownerLabel(
+                getMatchupLabel(activeMatchup, "home"),
+                activeMatchup.home_team,
+              )} vs ${ownerLabel(getMatchupLabel(activeMatchup, "away"), activeMatchup.away_team)}`
             : "Matchup"
         }
         onClose={() => setActiveMatchup(null)}
@@ -173,8 +243,8 @@ export default function MatchupsPage() {
         {activeMatchup && activeRoster ? (
           <div className="detail-grid">
             {[
-              { label: activeMatchup.home_team, roster: activeRoster.home },
-              { label: activeMatchup.away_team, roster: activeRoster.away },
+              { label: getMatchupLabel(activeMatchup, "home"), roster: activeRoster.home },
+              { label: getMatchupLabel(activeMatchup, "away"), roster: activeRoster.away },
             ].map(({ label, roster }) => (
               <div key={label} className="section-card">
                 <h3 className="section-title">{ownerLabel(label, label)}</h3>
@@ -203,11 +273,19 @@ export default function MatchupsPage() {
                     </thead>
                     <tbody>
                       {roster.rows.map((row, idx) => (
-                        <tr key={`${row.player_id}-${idx}`}>
+                        <tr key={`${row.player_id || row.player}-${idx}`}>
                           <td>
-                            <button type="button" className="link-button" onClick={() => setActivePlayer(row.player_id)}>
-                              {row.displayName}
-                            </button>
+                            {row.player_id ? (
+                              <button
+                                type="button"
+                                className="link-button"
+                                onClick={() => setActivePlayer(row.player_id)}
+                              >
+                                {row.displayName}
+                              </button>
+                            ) : (
+                              row.displayName
+                            )}
                           </td>
                           <td>{row.position}</td>
                           <td>{row.started ? "Yes" : "No"}</td>
@@ -234,15 +312,13 @@ export default function MatchupsPage() {
       >
         {activePlayer ? (
           (() => {
-            const uid = playerIdLookup.bySleeper.get(String(activePlayer));
-            const player = uid ? playerIdLookup.byUid.get(uid) : null;
-            const resolvedName = resolvePlayerName({ player_id: activePlayer }, playerIndex);
+            const display = resolvePlayerDisplay(activePlayer, { row: { player_id: activePlayer }, playerIndex });
             return (
               <div className="section-card">
-                <h3 className="section-title">{player?.full_name || resolvedName}</h3>
+                <h3 className="section-title">{display.name}</h3>
                 <div className="flex-row">
-                  <div className="tag">Position: {player?.position || "—"}</div>
-                  <div className="tag">NFL Team: {player?.nfl_team || "—"}</div>
+                  <div className="tag">Position: {display.position}</div>
+                  <div className="tag">NFL Team: {display.team}</div>
                 </div>
                 <p>Open the full player profile for weekly WAR, z-scores, and career summaries.</p>
                 <Link to={`/players/${activePlayer}`} className="tag" onClick={() => setActivePlayer(null)}>
