@@ -16,3 +16,21 @@ pnpm-debug.log*
 
 # OS / editor
 .DS_Store
+
+# -------------------------
+# Generated data (DO NOT COMMIT)
+# -------------------------
+data_raw/**/*.parquet
+data_raw/**/*.csv
+
+# -------------------------
+# Python / virtual env
+# -------------------------
+.venv/
+__pycache__/
+*.pyc
+
+# -------------------------
+# Backups / temp
+# -------------------------
+scripts_backup_week18_cut/
