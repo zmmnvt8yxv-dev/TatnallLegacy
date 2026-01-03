@@ -4,6 +4,7 @@ import LoadingState from "../components/LoadingState.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadTransactions } from "../data/loader.js";
 import { filterRegularSeasonWeeks } from "../utils/format.js";
+import { resolveOwnerName } from "../utils/owners.js";
 
 export default function TransactionsPage() {
   const { manifest, loading, error } = useDataContext();
@@ -67,6 +68,8 @@ export default function TransactionsPage() {
   if (loading) return <LoadingState label="Loading transactions..." />;
   if (error) return <ErrorState message={error} />;
 
+  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
+
   return (
     <>
       <section>
@@ -122,7 +125,7 @@ export default function TransactionsPage() {
                   <td>{entry.week ?? "—"}</td>
                   <td>
                     <button type="button" className="tag" onClick={() => setTeamFilter(entry.team)}>
-                      {entry.team || "Unknown"}
+                      {ownerLabel(entry.team, entry.team || "Unknown")}
                     </button>
                   </td>
                   <td>{entry.type}</td>
@@ -152,7 +155,7 @@ export default function TransactionsPage() {
               <tbody>
                 {totalsByTeam.map((row) => (
                   <tr key={row.team}>
-                    <td>{row.team}</td>
+                    <td>{ownerLabel(row.team, row.team)}</td>
                     <td>{row.adds}</td>
                     <td>{row.drops}</td>
                     <td>{row.trades}</td>
@@ -169,13 +172,16 @@ export default function TransactionsPage() {
           {recordHighlights ? (
             <ul>
               <li>
-                Most adds: {recordHighlights.mostAdds.team} ({recordHighlights.mostAdds.adds})
+                Most adds: {ownerLabel(recordHighlights.mostAdds.team, recordHighlights.mostAdds.team)} (
+                {recordHighlights.mostAdds.adds})
               </li>
               <li>
-                Most drops: {recordHighlights.mostDrops.team} ({recordHighlights.mostDrops.drops})
+                Most drops: {ownerLabel(recordHighlights.mostDrops.team, recordHighlights.mostDrops.team)} (
+                {recordHighlights.mostDrops.drops})
               </li>
               <li>
-                Most trades: {recordHighlights.mostTrades.team} ({recordHighlights.mostTrades.trades})
+                Most trades: {ownerLabel(recordHighlights.mostTrades.team, recordHighlights.mostTrades.team)} (
+                {recordHighlights.mostTrades.trades})
               </li>
             </ul>
           ) : (

@@ -179,10 +179,7 @@ function buildSleeperNameMaps(users, rosters){
   const userById = new Map(users.map(u => [u.user_id, u]));
   const rosterById = new Map(rosters.map(r => [r.roster_id, r]));
   function teamLabelFromRoster(roster){
-    if (!roster) return "Unknown";
-    const u = userById.get(roster.owner_id) || {};
-    const nick = (u.metadata && (u.metadata.team_name || u.metadata.nickname)) || u.display_name;
-    return nick || `Team ${roster.roster_id}`;
+    return resolveOwnerFromRoster(roster, userById);
   }
   return { userById, rosterById, teamLabelFromRoster };
 }
@@ -912,12 +909,7 @@ async function renderLiveMatchupDetail(mid){
       return;
     }
 
-    const rosterLabel = (roster) => {
-      if (!roster) return "—";
-      const u = userById.get(roster.owner_id);
-      const custom = (u?.metadata?.team_name || u?.metadata?.nickname);
-      return custom || u?.display_name || `Roster ${roster.roster_id}`;
-    };
+    const rosterLabel = (roster) => resolveOwnerFromRoster(roster, userById) || "—";
 
     const A = pair[0]; const B = pair[1] || null;
     const rosterA = rosterById.get(A.roster_id);

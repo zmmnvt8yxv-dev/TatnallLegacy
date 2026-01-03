@@ -9,6 +9,7 @@ import { useDataContext } from "../data/DataContext.jsx";
 import { loadAllTime, loadMetricsSummary, loadSeasonSummary, loadTransactions } from "../data/loader.js";
 import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
+import { resolveOwnerName } from "../utils/owners.js";
 
 function getLatestSeason(manifest) {
   const seasons = (manifest?.seasons || []).map(Number).filter(Number.isFinite);
@@ -121,9 +122,10 @@ export default function SummaryPage() {
   if (loading) return <LoadingState label="Loading league snapshot..." />;
   if (error) return <ErrorState message={error} />;
 
+  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
   const statusLabel = inSeason ? "In Season" : `Offseason (last season: ${latestSeason ?? "—"})`;
   const championLabel = champion
-    ? `${champion.team} (${champion.wins}-${champion.losses})`
+    ? `${ownerLabel(champion.team, champion.team)} (${champion.wins}-${champion.losses})`
     : "Champion not available";
   const championNote = champion
     ? "Regular-season leader based on available standings."
@@ -185,10 +187,12 @@ export default function SummaryPage() {
           {transactionTotals ? (
             <div className="flex-row">
               <div className="tag">
-                Most adds: {transactionTotals.mostAdds?.team || "—"} ({transactionTotals.mostAdds?.adds || 0})
+                Most adds: {ownerLabel(transactionTotals.mostAdds?.team, transactionTotals.mostAdds?.team || "—")} (
+                {transactionTotals.mostAdds?.adds || 0})
               </div>
               <div className="tag">
-                Most drops: {transactionTotals.mostDrops?.team || "—"} ({transactionTotals.mostDrops?.drops || 0})
+                Most drops: {ownerLabel(transactionTotals.mostDrops?.team, transactionTotals.mostDrops?.team || "—")} (
+                {transactionTotals.mostDrops?.drops || 0})
               </div>
               <div className="tag">Trades logged: {transactionTotals.totalTrades}</div>
             </div>
