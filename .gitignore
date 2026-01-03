@@ -1,7 +1,9 @@
 # Build outputs
 dist/
-docs/
 assets/
+!docs/assets/
+!docs/assets/css/
+!docs/assets/css/style.scss
 _deploy/
 build/
 

@@ -1,0 +1,624 @@
+{
+  "season": 2022,
+  "teams": [
+    {
+      "team_id": 1,
+      "team_name": "King of  December",
+      "owner": "sdmarvin713",
+      "record": "11-3",
+      "points_for": 2221.3,
+      "points_against": 1909.72,
+      "regular_season_rank": 2,
+      "final_rank": null,
+      "owners": [
+        {
+          "displayName": "sdmarvin713",
+          "firstName": "Carl",
+          "id": "{32C77D09-4BAE-4A0E-A1D8-0A710B6B4D14}",
+          "lastName": "Marvin",
+          "notificationSettings": [
+            {
+              "enabled": true,
+              "id": "f7ac9218-4d9a-39ca-9cc8-3ae233abafce",
+              "type": "TEAM_PLAYER_INJURY"
+            },
+            {
+              "enabled": true,
+              "id": "fd79994d-cb52-3fd5-b48a-a2cfcb837e79",
+              "type": "TEAM_PLAYER_AVAILABILITY"
+            },
+            {
+              "enabled": true,
+              "id": "786369d1-ce6c-3933-ac34-5a2da9d3c651",
+              "type": "TEAM_PLAYER_NEWS"
+            },
+            {
+              "enabled": true,
+              "id": "94a99204-a2f1-3d82-a359-83ed3634203e",
+              "type": "TEAM_PLAYER_STARTBENCH"
+            },
+            {
+              "enabled": true,
+              "id": "98ad1c52-e070-3e02-903b-2dd5671cfa4f",
+              "type": "TEAM_TRADE_OFFER"
+            },
+            {
+              "enabled": true,
+              "id": "12d23e8c-b19e-3666-81dc-4fe1b82a7b10",
+              "type": "DRAFT"
+            },
+            {
+              "enabled": true,
+              "id": "858a0510-74b4-3400-b6cd-8a9b80e9fe27",
+              "type": "TEAM_MATCHUP_SCORE"
+            },
+            {
+              "enabled": true,
+              "id": "71168a3f-b93b-3c7b-8dca-93332435d154",
+              "type": "KEY_STAT_UPDATE"
+            },
+            {
+              "enabled": true,
+              "id": "90b335f8-d5c4-3ff1-8602-1c6b970b050b",
+              "type": "REDZONE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team_id": 2,
+      "team_name": "Team Downs",
+      "owner": "John.downs123",
+      "record": "3-11",
+      "points_for": 1824.26,
+      "points_against": 2036.22,
+      "regular_season_rank": 7,
+      "final_rank": null,
+      "owners": [
+        {
+          "displayName": "John.downs123",
+          "firstName": "John",
+          "id": "{ED86A238-7B41-4E77-86A2-387B41BE773A}",
+          "lastName": "Downs",
+          "notificationSettings": [
+            {
+              "enabled": true,
+              "id": "852c164f-e8bf-36ff-9242-488fa3cebd17",
+              "type": "TEAM_PLAYER_INJURY"
+            },
+            {
+              "enabled": true,
+              "id": "7a3e5b3b-883b-33fb-b5dc-30ce00edada8",
+              "type": "TEAM_PLAYER_AVAILABILITY"
+            },
+            {
+              "enabled": true,
+              "id": "b5f224d5-e752-363e-8a5a-a47d3b2fbbfc",
+              "type": "TEAM_PLAYER_NEWS"
+            },
+            {
+              "enabled": true,
+              "id": "71c85f01-b966-3aa2-bca6-333910a113c1",
+              "type": "TEAM_PLAYER_STARTBENCH"
+            },
+            {
+              "enabled": true,
+              "id": "a575ae99-de84-31c5-ae37-681c9ebefa9a",
+              "type": "TEAM_TRADE_OFFER"
+            },
+            {
+              "enabled": true,
+              "id": "a7ec6cc0-e7c6-3f42-8504-607963dc5f6c",
+              "type": "DRAFT"
+            },
+            {
+              "enabled": true,
+              "id": "199a30d9-f3cf-3eb6-affa-140d1727551b",
+              "type": "TEAM_MATCHUP_SCORE"
+            },
+            {
+              "enabled": true,
+              "id": "b97fc365-b35d-3e4f-948d-406b2d701d1e",
+              "type": "KEY_STAT_UPDATE"
+            },
+            {
+              "enabled": true,
+              "id": "209817dc-cbcf-32e6-8464-63603387fd04",
+              "type": "REDZONE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team_id": 3,
+      "team_name": "Harder Kulm",
+      "owner": "Edward3864",
+      "record": "8-6",
+      "points_for": 2110.66,
+      "points_against": 1995.48,
+      "regular_season_rank": 3,
+      "final_rank": null,
+      "owners": [
+        {
+          "displayName": "Edward3864",
+          "firstName": "Edward",
+          "id": "{D6C6DA64-7369-44C6-86DA-64736964C634}",
+          "lastName": "Saad",
+          "notificationSettings": [
+            {
+              "enabled": true,
+              "id": "9e34034f-7c98-3604-82ee-8b7844ca5d72",
+              "type": "TEAM_PLAYER_INJURY"
+            },
+            {
+              "enabled": true,
+              "id": "f2379deb-667d-3a87-82bb-b55f19bbcedd",
+              "type": "TEAM_PLAYER_AVAILABILITY"
+            },
+            {
+              "enabled": true,
+              "id": "6469412f-d027-364e-920b-6e596285e78b",
+              "type": "TEAM_PLAYER_NEWS"
+            },
+            {
+              "enabled": true,
+              "id": "41befa5e-02c5-3163-80d2-bc23e4020210",
+              "type": "TEAM_PLAYER_STARTBENCH"
+            },
+            {
+              "enabled": true,
+              "id": "d8901aa0-4aa9-3f7f-9281-2220bf1e624d",
+              "type": "TEAM_TRADE_OFFER"
+            },
+            {
+              "enabled": true,
+              "id": "1c02750d-3eab-3dc1-8771-da1f9cfaebf4",
+              "type": "DRAFT"
+            },
+            {
+              "enabled": true,
+              "id": "9fe04c7d-d662-32ae-a46b-60c79fcf31f6",
+              "type": "TEAM_MATCHUP_SCORE"
+            },
+            {
+              "enabled": true,
+              "id": "7dc3bec8-aa5d-3445-98f2-61515775211b",
+              "type": "KEY_STAT_UPDATE"
+            },
+            {
+              "enabled": true,
+              "id": "ebff5db6-558b-3157-b0b1-6cb953fb0d9a",
+              "type": "REDZONE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team_id": 4,
+      "team_name": "King of January",
+      "owner": "connerandfinn",
+      "record": "7-7",
+      "points_for": 1977.98,
+      "points_against": 1911.24,
+      "regular_season_rank": 5,
+      "final_rank": 1,
+      "owners": [
+        {
+          "displayName": "connerandfinn",
+          "firstName": "Conner",
+          "id": "{68A1A8C5-2E56-4A19-A60D-D7BB78512169}",
+          "lastName": "Malley",
+          "notificationSettings": [
+            {
+              "enabled": true,
+              "id": "010f7555-c8e9-3381-914a-e7ecb53e14d4",
+              "type": "TEAM_PLAYER_INJURY"
+            },
+            {
+              "enabled": true,
+              "id": "a9192d85-9b2c-374d-9419-9451c625e38d",
+              "type": "TEAM_PLAYER_AVAILABILITY"
+            },
+            {
+              "enabled": true,
+              "id": "afd71adb-5a2e-3f7e-9aec-e17c8c757aaa",
+              "type": "TEAM_PLAYER_NEWS"
+            },
+            {
+              "enabled": true,
+              "id": "d4dbfa37-d0fa-3f99-a1d7-c9382a4cc897",
+              "type": "TEAM_PLAYER_STARTBENCH"
+            },
+            {
+              "enabled": true,
+              "id": "6010b22f-f3b7-3025-a452-6df6a9304f2e",
+              "type": "TEAM_TRADE_OFFER"
+            },
+            {
+              "enabled": true,
+              "id": "984067f4-b4e6-3794-a47c-f260467ca92b",
+              "type": "DRAFT"
+            },
+            {
+              "enabled": true,
+              "id": "dc2ded00-dd61-3607-8bba-8f4bb91092ab",
+              "type": "TEAM_MATCHUP_SCORE"
+            },
+            {
+              "enabled": true,
+              "id": "05eb0dc9-c9d4-3d3a-8f6e-a0c19f6562f3",
+              "type": "KEY_STAT_UPDATE"
+            },
+            {
+              "enabled": true,
+              "id": "f526c8a9-6647-3722-9912-9a65987e5adb",
+              "type": "REDZONE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team_id": 5,
+      "team_name": "Team Hanrahan",
+      "owner": "bhanrahan7",
+      "record": "2-12",
+      "points_for": 1494.22,
+      "points_against": 1953.72,
+      "regular_season_rank": 8,
+      "final_rank": null,
+      "owners": [
+        {
+          "displayName": "bhanrahan7",
+          "firstName": "Brendan",
+          "id": "{29BF7227-B3CA-4FFD-830F-93443771ED0E}",
+          "lastName": "Hanrahan",
+          "notificationSettings": [
+            {
+              "enabled": true,
+              "id": "d6746411-9616-316d-8daa-a92dd8e411a7",
+              "type": "TEAM_PLAYER_INJURY"
+            },
+            {
+              "enabled": true,
+              "id": "acb9a839-bdb6-3c9a-98ec-4e5623f535fa",
+              "type": "TEAM_PLAYER_AVAILABILITY"
+            },
+            {
+              "enabled": true,
+              "id": "4c4db294-2cde-3702-a685-f7c940b78ef9",
+              "type": "TEAM_PLAYER_NEWS"
+            },
+            {
+              "enabled": true,
+              "id": "5dfea385-e613-3c74-b2fe-91e18d0b289b",
+              "type": "TEAM_PLAYER_STARTBENCH"
+            },
+            {
+              "enabled": true,
+              "id": "cb26b91a-456a-3fc5-b478-2788e30102fa",
+              "type": "TEAM_TRADE_OFFER"
+            },
+            {
+              "enabled": true,
+              "id": "ac602367-a295-3ebf-b852-cb6dda0109fc",
+              "type": "DRAFT"
+            },
+            {
+              "enabled": true,
+              "id": "53470630-091e-3003-bf10-ae5539834eae",
+              "type": "TEAM_MATCHUP_SCORE"
+            },
+            {
+              "enabled": true,
+              "id": "aac5295c-4434-3a8b-8052-c7f9c59c1bbe",
+              "type": "KEY_STAT_UPDATE"
+            },
+            {
+              "enabled": true,
+              "id": "cd6d7d0b-f543-313e-8ab8-2f79ac1bf4d4",
+              "type": "REDZONE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team_id": 6,
+      "team_name": "Emergency Room",
+      "owner": "Jefe6700",
+      "record": "11-3",
+      "points_for": 2267.96,
+      "points_against": 2017.88,
+      "regular_season_rank": 1,
+      "final_rank": null,
+      "owners": [
+        {
+          "displayName": "Jefe6700",
+          "firstName": "Jeffrey",
+          "id": "{626214E1-C295-402C-A214-E1C295902C88}",
+          "lastName": "Crossland",
+          "notificationSettings": [
+            {
+              "enabled": true,
+              "id": "4777b183-2d66-3f24-a534-6ed6721c994b",
+              "type": "TEAM_PLAYER_INJURY"
+            },
+            {
+              "enabled": true,
+              "id": "42c749fc-233a-3096-b5b1-2befaada23ef",
+              "type": "TEAM_PLAYER_AVAILABILITY"
+            },
+            {
+              "enabled": true,
+              "id": "dfa76d14-4cc4-3580-888e-624e1d3ace74",
+              "type": "TEAM_PLAYER_NEWS"
+            },
+            {
+              "enabled": true,
+              "id": "c728df00-0c20-3fad-b286-71713c555074",
+              "type": "TEAM_PLAYER_STARTBENCH"
+            },
+            {
+              "enabled": true,
+              "id": "ab27f716-9946-30a8-b2b8-3262efddc2ea",
+              "type": "TEAM_TRADE_OFFER"
+            },
+            {
+              "enabled": true,
+              "id": "797beeb8-07fa-3bc5-8e5f-b0f5428ac3b1",
+              "type": "DRAFT"
+            },
+            {
+              "enabled": true,
+              "id": "e900bef9-d5f7-347d-a54f-47be55c6c1b2",
+              "type": "TEAM_MATCHUP_SCORE"
+            },
+            {
+              "enabled": true,
+              "id": "3be7baf0-6959-384d-92f5-0e3c74a6b83b",
+              "type": "KEY_STAT_UPDATE"
+            },
+            {
+              "enabled": true,
+              "id": "3114ee73-c884-3885-9fdb-ca1bf36e7c46",
+              "type": "REDZONE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team_id": 7,
+      "team_name": "Only i can say The N word",
+      "owner": "jdunca5228572",
+      "record": "6-8",
+      "points_for": 1792.2800000000002,
+      "points_against": 1964.3,
+      "regular_season_rank": 6,
+      "final_rank": null,
+      "owners": [
+        {
+          "displayName": "jdunca5228572",
+          "firstName": "jared",
+          "id": "{8486E9CC-9753-4A5F-84CB-6C20B865800F}",
+          "lastName": "duncan",
+          "notificationSettings": [
+            {
+              "enabled": true,
+              "id": "ca1c9e75-5346-3dd5-9677-ea6ad25f29e0",
+              "type": "TEAM_PLAYER_INJURY"
+            },
+            {
+              "enabled": true,
+              "id": "95791df5-fdde-358f-b8d4-beb9dbb7e5cc",
+              "type": "TEAM_PLAYER_AVAILABILITY"
+            },
+            {
+              "enabled": true,
+              "id": "81bc11ff-1a87-38a3-8a30-4cb52f11d5c8",
+              "type": "TEAM_PLAYER_NEWS"
+            },
+            {
+              "enabled": true,
+              "id": "4911fbbc-26dd-3f93-905a-57dac187889f",
+              "type": "TEAM_PLAYER_STARTBENCH"
+            },
+            {
+              "enabled": true,
+              "id": "43fefe1e-e0e1-34ea-afcb-0e1c3eaa3490",
+              "type": "TEAM_TRADE_OFFER"
+            },
+            {
+              "enabled": true,
+              "id": "71fd03b5-d1a3-33ce-877a-30236a31c04d",
+              "type": "DRAFT"
+            },
+            {
+              "enabled": true,
+              "id": "1ef8c3c6-f3e9-312b-830b-4d04a32fe3ef",
+              "type": "TEAM_MATCHUP_SCORE"
+            },
+            {
+              "enabled": true,
+              "id": "a039c342-452d-307d-9423-6df411e0f077",
+              "type": "KEY_STAT_UPDATE"
+            },
+            {
+              "enabled": true,
+              "id": "f888b402-5427-327b-bc2a-79a99096e47c",
+              "type": "REDZONE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team_id": 8,
+      "team_name": "Pompano Beach Sniper Gang",
+      "owner": "espn92085473",
+      "record": "8-6",
+      "points_for": 2105.5399999999995,
+      "points_against": 2005.64,
+      "regular_season_rank": 4,
+      "final_rank": null,
+      "owners": [
+        {
+          "displayName": "espn92085473",
+          "firstName": "Roy",
+          "id": "{DB480AF7-0202-4D27-9E9E-066C3D10A1B0}",
+          "lastName": "Lee",
+          "notificationSettings": [
+            {
+              "enabled": true,
+              "id": "e7a2e328-f6ac-34ea-bacd-555c4f28e273",
+              "type": "TEAM_PLAYER_INJURY"
+            },
+            {
+              "enabled": true,
+              "id": "316e2aaa-a521-390b-b916-7c850a854d87",
+              "type": "TEAM_PLAYER_AVAILABILITY"
+            },
+            {
+              "enabled": true,
+              "id": "48e9ff1b-4a0a-3085-979d-6839fb3a9771",
+              "type": "TEAM_PLAYER_NEWS"
+            },
+            {
+              "enabled": true,
+              "id": "0218d9e7-bd7e-3789-bf51-dabfbbf77fb3",
+              "type": "TEAM_PLAYER_STARTBENCH"
+            },
+            {
+              "enabled": true,
+              "id": "68eb370f-f69a-3e7f-8507-ff1e8204b817",
+              "type": "TEAM_TRADE_OFFER"
+            },
+            {
+              "enabled": true,
+              "id": "7b3754a9-1c12-382e-b3fd-c16d97e81be6",
+              "type": "DRAFT"
+            },
+            {
+              "enabled": true,
+              "id": "90ac250d-dbd4-3518-97d9-b7c7a814720a",
+              "type": "TEAM_MATCHUP_SCORE"
+            },
+            {
+              "enabled": true,
+              "id": "b805b29a-ef13-35b9-97d9-43143f86e0a9",
+              "type": "KEY_STAT_UPDATE"
+            },
+            {
+              "enabled": true,
+              "id": "1318588b-7a56-3ba2-84d4-3c6bc8064ddb",
+              "type": "REDZONE"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "weeks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "standings": [
+    {
+      "team": "King of  December",
+      "wins": 12,
+      "losses": 6,
+      "ties": 0,
+      "points_for": 466.36,
+      "points_against": 644.0999999999999
+    },
+    {
+      "team": "Team Downs",
+      "wins": 11,
+      "losses": 7,
+      "ties": 0,
+      "points_for": 1311.9999999999998,
+      "points_against": 1116.1000000000001
+    },
+    {
+      "team": "Emergency Room",
+      "wins": 10,
+      "losses": 8,
+      "ties": 0,
+      "points_for": 421.58000000000004,
+      "points_against": 681.22
+    },
+    {
+      "team": "Pompano Beach Sniper Gang",
+      "wins": 9,
+      "losses": 7,
+      "ties": 2,
+      "points_for": 409.44000000000005,
+      "points_against": 405.40000000000003
+    },
+    {
+      "team": "Team Hanrahan",
+      "wins": 9,
+      "losses": 9,
+      "ties": 0,
+      "points_for": 1503.54,
+      "points_against": 1156.12
+    },
+    {
+      "team": "Only i can say The N word",
+      "wins": 7,
+      "losses": 9,
+      "ties": 2,
+      "points_for": 570.74,
+      "points_against": 616.96
+    },
+    {
+      "team": "Harder Kulm",
+      "wins": 7,
+      "losses": 11,
+      "ties": 0,
+      "points_for": 923.34,
+      "points_against": 507.24
+    },
+    {
+      "team": "King of January",
+      "wins": 6,
+      "losses": 12,
+      "ties": 0,
+      "points_for": 373.76000000000005,
+      "points_against": 818.8199999999998
+    },
+    {
+      "team": "Away",
+      "wins": 0,
+      "losses": 2,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 34.8
+    }
+  ],
+  "playerSeasonTotals": [],
+  "totals": {
+    "matchups": 73,
+    "lineups": 144
+  }
+}

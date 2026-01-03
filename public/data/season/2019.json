@@ -1,0 +1,182 @@
+{
+  "season": 2019,
+  "teams": [
+    {
+      "team_id": 1,
+      "team_name": "The Champ",
+      "owner": "sdmarvin713",
+      "record": "8-5",
+      "points_for": 1923.0,
+      "points_against": 1889.0,
+      "regular_season_rank": 3,
+      "final_rank": 6
+    },
+    {
+      "team_id": 2,
+      "team_name": "Team Downs",
+      "owner": "John.downs123",
+      "record": "3-10",
+      "points_for": 1684.0,
+      "points_against": 1935.0,
+      "regular_season_rank": 8,
+      "final_rank": 8
+    },
+    {
+      "team_id": 3,
+      "team_name": "Valar Morghulis",
+      "owner": "Edward3864",
+      "record": "7-6",
+      "points_for": 1865.0,
+      "points_against": 1835.0,
+      "regular_season_rank": 2,
+      "final_rank": 4
+    },
+    {
+      "team_id": 4,
+      "team_name": "Team Malley",
+      "owner": "connerandfinn",
+      "record": "8-5",
+      "points_for": 1903.0,
+      "points_against": 1888.0,
+      "regular_season_rank": 4,
+      "final_rank": 3
+    },
+    {
+      "team_id": 5,
+      "team_name": "Team Blow me ",
+      "owner": "jksheehy",
+      "record": "6-7",
+      "points_for": 1870.0,
+      "points_against": 1835.0,
+      "regular_season_rank": 6,
+      "final_rank": 2
+    },
+    {
+      "team_id": 6,
+      "team_name": "Dear Lord Please",
+      "owner": "Jefe6700",
+      "record": "8-5",
+      "points_for": 1940.0,
+      "points_against": 1807.0,
+      "regular_season_rank": 1,
+      "final_rank": 1
+    },
+    {
+      "team_id": 7,
+      "team_name": "Big Dick Bandito",
+      "owner": "jdunca5228572",
+      "record": "5-8",
+      "points_for": 1758.0,
+      "points_against": 1838.0,
+      "regular_season_rank": 7,
+      "final_rank": 7
+    },
+    {
+      "team_id": 8,
+      "team_name": "Golden Taint",
+      "owner": "mattmaloy99",
+      "record": "7-6",
+      "points_for": 1815.0,
+      "points_against": 1731.0,
+      "regular_season_rank": 5,
+      "final_rank": 5
+    }
+  ],
+  "weeks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "standings": [
+    {
+      "team": "Dear Lord Please",
+      "wins": 11,
+      "losses": 5,
+      "ties": 0,
+      "points_for": 2348.0,
+      "points_against": 2068.0
+    },
+    {
+      "team": "Team Malley",
+      "wins": 10,
+      "losses": 6,
+      "ties": 0,
+      "points_for": 2396.0,
+      "points_against": 2324.0
+    },
+    {
+      "team": "Golden Taint",
+      "wins": 9,
+      "losses": 7,
+      "ties": 0,
+      "points_for": 2277.0,
+      "points_against": 2227.0
+    },
+    {
+      "team": "Big Dick Bandito",
+      "wins": 8,
+      "losses": 8,
+      "ties": 0,
+      "points_for": 2254.0,
+      "points_against": 2200.0
+    },
+    {
+      "team": "The Champ",
+      "wins": 8,
+      "losses": 8,
+      "ties": 0,
+      "points_for": 2329.0,
+      "points_against": 2351.0
+    },
+    {
+      "team": "Team Blow me ",
+      "wins": 8,
+      "losses": 8,
+      "ties": 0,
+      "points_for": 2301.0,
+      "points_against": 2236.0
+    },
+    {
+      "team": "Valar Morghulis",
+      "wins": 8,
+      "losses": 8,
+      "ties": 0,
+      "points_for": 2235.0,
+      "points_against": 2133.0
+    },
+    {
+      "team": "Team Downs",
+      "wins": 3,
+      "losses": 13,
+      "ties": 0,
+      "points_for": 2046.0,
+      "points_against": 2431.0
+    },
+    {
+      "team": "Away",
+      "wins": 0,
+      "losses": 2,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 216.0
+    }
+  ],
+  "playerSeasonTotals": [],
+  "totals": {
+    "matchups": 65,
+    "lineups": 0
+  }
+}
