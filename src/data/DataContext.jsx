@@ -1,6 +1,20 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { buildPlayerIndex } from "../lib/playerName.js";
-import { loadCoreData, loadManifest } from "./loader.js";
+import {
+  loadAllTime,
+  loadBoomBustMetrics,
+  loadCoreData,
+  loadManifest,
+  loadMetricsSummary,
+  loadPlayerStatsCareer,
+  loadPlayerStatsSeason,
+  loadPlayerStatsWeekly,
+  loadSeasonMetrics,
+  loadSeasonSummary,
+  loadTransactions,
+  loadWeekData,
+  loadWeeklyMetrics,
+} from "./loader.js";
 
 const DataContext = createContext(null);
 
@@ -9,6 +23,7 @@ export function DataProvider({ children }) {
   const [core, setCore] = useState({ players: [], playerIds: [], teams: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [preloadDone, setPreloadDone] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -32,6 +47,52 @@ export function DataProvider({ children }) {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    if (!manifest || preloadDone) return undefined;
+    const seasons = (manifest?.seasons || []).slice();
+    const weeksBySeason = manifest?.weeksBySeason || {};
+    (async () => {
+      try {
+        await loadAllTime();
+        await loadMetricsSummary();
+        await loadBoomBustMetrics();
+        await loadPlayerStatsCareer();
+        await Promise.allSettled(
+          seasons.map((season) => loadSeasonSummary(season)),
+        );
+        await Promise.allSettled(
+          seasons.map((season) => loadTransactions(season)),
+        );
+        await Promise.allSettled(
+          seasons.map((season) => loadSeasonMetrics(season)),
+        );
+        await Promise.allSettled(
+          seasons.map((season) => loadWeeklyMetrics(season)),
+        );
+        await Promise.allSettled(
+          seasons.map((season) => loadPlayerStatsSeason(season)),
+        );
+        await Promise.allSettled(
+          seasons.map((season) => loadPlayerStatsWeekly(season)),
+        );
+        await Promise.allSettled(
+          seasons.flatMap((season) => {
+            const weeks = weeksBySeason[String(season)] || [];
+            return weeks.map((week) => loadWeekData(season, week));
+          }),
+        );
+      } catch (err) {
+        console.error("DATA_PRELOAD_ERROR", err);
+      } finally {
+        if (active) setPreloadDone(true);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [manifest, preloadDone]);
 
   const playerIdLookup = useMemo(() => {
     const bySleeper = new Map();
