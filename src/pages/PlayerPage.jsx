@@ -12,6 +12,7 @@ import {
   loadWeekData,
   loadWeeklyMetrics,
 } from "../data/loader.js";
+import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 
 const TABS = ["Overview", "Seasons", "Weekly Log", "Boom/Bust"];
@@ -28,7 +29,7 @@ const THRESHOLDS = {
 
 export default function PlayerPage() {
   const { playerId } = useParams();
-  const { manifest, loading, error, playerIdLookup } = useDataContext();
+  const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [seasonSummaries, setSeasonSummaries] = useState([]);
   const [metricsSeasonSummaries, setMetricsSeasonSummaries] = useState([]);
@@ -122,6 +123,10 @@ export default function PlayerPage() {
     const info = uid ? playerIdLookup.byUid.get(uid) : null;
     return info || null;
   }, [playerIdLookup, playerId]);
+
+  const resolvedName = useMemo(() => {
+    return resolvePlayerName({ ...playerInfo, player_id: playerId }, playerIndex);
+  }, [playerInfo, playerId, playerIndex]);
 
   const seasonStats = useMemo(() => {
     const stats = [];
@@ -296,7 +301,7 @@ export default function PlayerPage() {
   return (
     <>
       <section>
-        <h1 className="page-title">{playerInfo?.full_name || `Player ${playerId}`}</h1>
+        <h1 className="page-title">{playerInfo?.full_name || resolvedName}</h1>
         <p className="page-subtitle">
           {playerInfo?.position || "Position —"} · {playerInfo?.nfl_team || "Team —"}
         </p>

@@ -5,13 +5,14 @@ import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
+import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { resolveOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 
 export default function MatchupDetailPage() {
   const { season, week, matchupId } = useParams();
-  const { loading, error, playerIdLookup } = useDataContext();
+  const { loading, error, playerIdLookup, playerIndex } = useDataContext();
   const [weekData, setWeekData] = useState(null);
   const [search, setSearch] = useState("");
 
@@ -45,7 +46,7 @@ export default function MatchupDetailPage() {
       const player = getPlayerInfo(row.player_id);
       return {
         ...row,
-        displayName: player?.full_name || row.player || row.player_id,
+        displayName: resolvePlayerName(row, playerIndex),
         position: player?.position || "—",
       };
     });

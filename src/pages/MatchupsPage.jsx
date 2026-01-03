@@ -5,12 +5,13 @@ import LoadingState from "../components/LoadingState.jsx";
 import Modal from "../components/Modal.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
+import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
 import { resolveOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 
 export default function MatchupsPage() {
-  const { manifest, loading, error, playerIdLookup } = useDataContext();
+  const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
   const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("");
@@ -58,7 +59,7 @@ export default function MatchupsPage() {
       const player = uid ? playerIdLookup.byUid.get(uid) : null;
       return {
         ...row,
-        displayName: player?.full_name || row.player || row.player_id,
+        displayName: resolvePlayerName(row, playerIndex),
         position: player?.position || "—",
       };
     });
@@ -235,9 +236,10 @@ export default function MatchupsPage() {
           (() => {
             const uid = playerIdLookup.bySleeper.get(String(activePlayer));
             const player = uid ? playerIdLookup.byUid.get(uid) : null;
+            const resolvedName = resolvePlayerName({ player_id: activePlayer }, playerIndex);
             return (
               <div className="section-card">
-                <h3 className="section-title">{player?.full_name || `Player ${activePlayer}`}</h3>
+                <h3 className="section-title">{player?.full_name || resolvedName}</h3>
                 <div className="flex-row">
                   <div className="tag">Position: {player?.position || "—"}</div>
                   <div className="tag">NFL Team: {player?.nfl_team || "—"}</div>
