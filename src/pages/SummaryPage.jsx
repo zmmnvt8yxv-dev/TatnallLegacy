@@ -6,7 +6,7 @@ import NavigationCard from "../components/NavigationCard.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import StatCard from "../components/StatCard.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { loadAllTime, loadSeasonSummary, loadTransactions } from "../data/loader.js";
+import { loadAllTime, loadMetricsSummary, loadSeasonSummary, loadTransactions } from "../data/loader.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 
 function getLatestSeason(manifest) {
@@ -20,6 +20,7 @@ export default function SummaryPage() {
   const [seasonSummary, setSeasonSummary] = useState(null);
   const [allTime, setAllTime] = useState(null);
   const [transactions, setTransactions] = useState(null);
+  const [metricsSummary, setMetricsSummary] = useState(null);
   const [playerSearch, setPlayerSearch] = useState("");
   const [weeklySearch, setWeeklySearch] = useState("");
 
@@ -45,6 +46,16 @@ export default function SummaryPage() {
     let active = true;
     loadAllTime().then((payload) => {
       if (active) setAllTime(payload);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    loadMetricsSummary().then((payload) => {
+      if (active) setMetricsSummary(payload);
     });
     return () => {
       active = false;
@@ -274,6 +285,67 @@ export default function SummaryPage() {
           </table>
         ) : (
           <div>No career leaderboard data available.</div>
+        )}
+      </section>
+
+      <section className="section-card">
+        <h2 className="section-title">Advanced Metrics Highlights</h2>
+        {!metricsSummary ? (
+          <div>No advanced metrics available. Run <code>npm run build:data</code> to generate WAR and z-score stats.</div>
+        ) : (
+          <div className="detail-grid">
+            <div className="section-card">
+              <h3 className="section-title">Top Weekly WAR</h3>
+              {metricsSummary.topWeeklyWar?.length ? (
+                <ul>
+                  {metricsSummary.topWeeklyWar.map((row) => (
+                    <li
+                      key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
+                    >
+                      {row.player_name || row.display_name || row.player_id} — Week {row.week} {row.season} (
+                      {formatPoints(row.war_rep)}){" "}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div>No weekly WAR data available.</div>
+              )}
+            </div>
+            <div className="section-card">
+              <h3 className="section-title">Best Weekly Z-Scores</h3>
+              {metricsSummary.topWeeklyZ?.length ? (
+                <ul>
+                  {metricsSummary.topWeeklyZ.map((row) => (
+                    <li
+                      key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
+                    >
+                      {row.player_name || row.display_name || row.player_id} — Week {row.week} {row.season} (
+                      {safeNumber(row.pos_week_z).toFixed(2)})
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div>No weekly z-score data available.</div>
+              )}
+            </div>
+            <div className="section-card">
+              <h3 className="section-title">Top WAR Seasons</h3>
+              {metricsSummary.topSeasonWar?.length ? (
+                <ul>
+                  {metricsSummary.topSeasonWar.map((row) => (
+                    <li
+                      key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}`}
+                    >
+                      {row.player_name || row.display_name || row.player_id} — {row.season} (
+                      {formatPoints(row.war_rep)})
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div>No season WAR data available.</div>
+              )}
+            </div>
+          </div>
         )}
       </section>
 

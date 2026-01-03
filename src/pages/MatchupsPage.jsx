@@ -2,16 +2,20 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
+import Modal from "../components/Modal.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
-import { formatPoints, filterRegularSeasonWeeks } from "../utils/format.js";
+import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
+import { positionSort } from "../utils/positions.js";
 
 export default function MatchupsPage() {
-  const { manifest, loading, error } = useDataContext();
+  const { manifest, loading, error, playerIdLookup } = useDataContext();
   const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("");
   const [weekData, setWeekData] = useState(null);
+  const [activeMatchup, setActiveMatchup] = useState(null);
+  const [activePlayer, setActivePlayer] = useState(null);
 
   const availableWeeks = useMemo(() => {
     if (!season) return [];
@@ -38,7 +42,48 @@ export default function MatchupsPage() {
     };
   }, [season, week]);
 
+  useEffect(() => {
+    setActiveMatchup(null);
+    setActivePlayer(null);
+  }, [season, week]);
+
   const matchups = weekData?.matchups || [];
+  const lineups = weekData?.lineups || [];
+
+  const buildRoster = (teamName) => {
+    const rows = lineups.filter((row) => String(row.team) === String(teamName));
+    const mapped = rows.map((row) => {
+      const uid = playerIdLookup.bySleeper.get(String(row.player_id));
+      const player = uid ? playerIdLookup.byUid.get(uid) : null;
+      return {
+        ...row,
+        displayName: player?.full_name || row.player || row.player_id,
+        position: player?.position || "—",
+      };
+    });
+    const totals = mapped.reduce(
+      (acc, row) => {
+        acc.points += safeNumber(row.points);
+        acc.starters += row.started ? 1 : 0;
+        return acc;
+      },
+      { points: 0, starters: 0 },
+    );
+    const positionalTotals = mapped.reduce((acc, row) => {
+      const position = row.position || "—";
+      acc[position] = (acc[position] || 0) + safeNumber(row.points);
+      return acc;
+    }, {});
+    return { rows: mapped, totals, positionalTotals };
+  };
+
+  const activeRoster = useMemo(() => {
+    if (!activeMatchup) return null;
+    return {
+      home: buildRoster(activeMatchup.home_team),
+      away: buildRoster(activeMatchup.away_team),
+    };
+  }, [activeMatchup, lineups]);
 
   if (loading) return <LoadingState label="Loading matchups..." />;
   if (error) return <ErrorState message={error} />;
@@ -91,9 +136,14 @@ export default function MatchupsPage() {
                   <span className="pill">{awayWin ? "Winner" : homeWin ? "—" : "Tie"}</span>
                   <span>{formatPoints(matchup.away_score)}</span>
                 </div>
-                <Link to={`/matchups/${season}/${week}/${matchup.matchup_id}`} className="tag">
-                  View matchup →
-                </Link>
+                <div className="flex-row">
+                  <button type="button" className="tag" onClick={() => setActiveMatchup(matchup)}>
+                    Quick view →
+                  </button>
+                  <Link to={`/matchups/${season}/${week}/${matchup.matchup_id}`} className="tag">
+                    Full matchup →
+                  </Link>
+                </div>
               </div>
             );
           })}
@@ -101,6 +151,99 @@ export default function MatchupsPage() {
       ) : (
         <div className="section-card">No matchups available for this week.</div>
       )}
+
+      <Modal
+        isOpen={Boolean(activeMatchup)}
+        title={
+          activeMatchup
+            ? `Week ${week} · ${activeMatchup.home_team} vs ${activeMatchup.away_team}`
+            : "Matchup"
+        }
+        onClose={() => setActiveMatchup(null)}
+      >
+        {activeMatchup && activeRoster ? (
+          <div className="detail-grid">
+            {[{ label: activeMatchup.home_team, roster: activeRoster.home }, { label: activeMatchup.away_team, roster: activeRoster.away }].map(
+              ({ label, roster }) => (
+                <div key={label} className="section-card">
+                  <h3 className="section-title">{label}</h3>
+                  <div className="flex-row">
+                    <div className="tag">Team total: {formatPoints(roster.totals.points)}</div>
+                    <div className="tag">Starters tracked: {roster.totals.starters}</div>
+                  </div>
+                  <div className="flex-row">
+                    {Object.entries(roster.positionalTotals)
+                      .sort(([a], [b]) => positionSort(a, b))
+                      .map(([position, total]) => (
+                        <div key={position} className="tag">
+                          {position}: {formatPoints(total)}
+                        </div>
+                      ))}
+                  </div>
+                  {roster.rows.length ? (
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th>Player</th>
+                          <th>Pos</th>
+                          <th>Starter</th>
+                          <th>Points</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {roster.rows.map((row, idx) => (
+                          <tr key={`${row.player_id}-${idx}`}>
+                            <td>
+                              <button type="button" className="link-button" onClick={() => setActivePlayer(row.player_id)}>
+                                {row.displayName}
+                              </button>
+                            </td>
+                            <td>{row.position}</td>
+                            <td>{row.started ? "Yes" : "No"}</td>
+                            <td>{formatPoints(row.points)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  ) : (
+                    <div>No roster data available for this team.</div>
+                  )}
+                </div>
+              ),
+            )}
+          </div>
+        ) : (
+          <div>No matchup details available.</div>
+        )}
+      </Modal>
+
+      <Modal
+        isOpen={Boolean(activePlayer)}
+        title="Player Profile"
+        onClose={() => setActivePlayer(null)}
+      >
+        {activePlayer ? (
+          (() => {
+            const uid = playerIdLookup.bySleeper.get(String(activePlayer));
+            const player = uid ? playerIdLookup.byUid.get(uid) : null;
+            return (
+              <div className="section-card">
+                <h3 className="section-title">{player?.full_name || `Player ${activePlayer}`}</h3>
+                <div className="flex-row">
+                  <div className="tag">Position: {player?.position || "—"}</div>
+                  <div className="tag">NFL Team: {player?.nfl_team || "—"}</div>
+                </div>
+                <p>Open the full player profile for weekly WAR, z-scores, and career summaries.</p>
+                <Link to={`/players/${activePlayer}`} className="tag" onClick={() => setActivePlayer(null)}>
+                  View full profile →
+                </Link>
+              </div>
+            );
+          })()
+        ) : (
+          <div>No player selected.</div>
+        )}
+      </Modal>
     </>
   );
 }

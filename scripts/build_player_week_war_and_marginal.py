@@ -15,21 +15,16 @@ OUT_CAREER = Path("data_raw/master/player_career_fantasy_2015_2025_with_war.parq
 PTS_COL = "fantasy_points_custom_week_with_bonus"
 
 # --- Starter cutoffs for "replacement"/starter pool ---
-# IMPORTANT: adjust to your league format.
-# If you start 2QB / 3RB / 3WR / 1TE / 1FLEX, the real weekly starter pools are bigger.
-# This is a sane default for a generic league:
+# League format: 8 teams, 2QB + 3RB + 3WR + 2 FLEX + 2 TE + 1 DEF + 1 K
+# Replacement baselines assume fixed starters (flex handled separately in analysis).
 STARTER_CUTOFF = {
-    "QB": 12,
+    "QB": 16,
     "RB": 24,
     "WR": 24,
-    "TE": 12,
-    "K": 12,
-    "DEF": 12,
+    "TE": 16,
+    "K": 8,
+    "DEF": 8,
 }
-
-# If you want YOUR league-ish defaults (2QB / 3RB / 3WR / 1TE / 1FLEX):
-# (This assumes 12 teams and that FLEX is mostly RB/WR.)
-# STARTER_CUTOFF = {"QB": 24, "RB": 48, "WR": 48, "TE": 12, "K": 12, "DEF": 12}
 
 
 def _prep_active_weeks(df: pd.DataFrame) -> pd.DataFrame:
