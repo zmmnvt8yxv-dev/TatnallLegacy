@@ -1,0 +1,112 @@
+{
+  "season": 2022,
+  "week": 4,
+  "matchups": [
+    {
+      "week": 4,
+      "home_team": "Only i can say The N word",
+      "home_score": 13.4,
+      "away_team": "Team Downs",
+      "away_score": 14.2,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Pompano Beach Sniper Gang",
+      "home_score": 22.7,
+      "away_team": "Harder Kulm",
+      "away_score": 7.4,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "Team Hanrahan",
+      "home_score": 2.3,
+      "away_team": "Emergency Room",
+      "away_score": 16.8,
+      "is_playoff": false
+    },
+    {
+      "week": 4,
+      "home_team": "King of  December",
+      "home_score": 28.9,
+      "away_team": "King of January",
+      "away_score": 8.6,
+      "is_playoff": false
+    }
+  ],
+  "lineups": [
+    {
+      "week": 4,
+      "team": "Only i can say The N word",
+      "player": "Joe Mixon",
+      "player_nfl": "CIN",
+      "points": 13.4,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 4,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": "LAR",
+      "points": 14.2,
+      "slot": "WR",
+      "started": true
+    },
+    {
+      "week": 4,
+      "team": "Pompano Beach Sniper Gang",
+      "player": "Derrick Henry",
+      "player_nfl": "TEN",
+      "points": 22.7,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 4,
+      "team": "Harder Kulm",
+      "player": "Najee Harris",
+      "player_nfl": "PIT",
+      "points": 7.4,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 4,
+      "team": "Team Hanrahan",
+      "player": "Jonathan Taylor",
+      "player_nfl": "IND",
+      "points": 2.3,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 4,
+      "team": "Emergency Room",
+      "player": "Christian McCaffrey",
+      "player_nfl": "SF",
+      "points": 16.8,
+      "slot": "RB/WR/TE",
+      "started": true
+    },
+    {
+      "week": 4,
+      "team": "King of  December",
+      "player": "Austin Ekeler",
+      "player_nfl": "LAC",
+      "points": 28.9,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 4,
+      "team": "King of January",
+      "player": "Dalvin Cook",
+      "player_nfl": "MIN",
+      "points": 8.6,
+      "slot": "RB",
+      "started": true
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "season": 2022,
+  "week": 3,
+  "matchups": [
+    {
+      "week": 3,
+      "home_team": "King of  December",
+      "home_score": 5.3,
+      "away_team": "Only i can say The N word",
+      "away_score": 3.8,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Team Hanrahan",
+      "home_score": 9.1,
+      "away_team": "Pompano Beach Sniper Gang",
+      "away_score": 20.3,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "King of January",
+      "home_score": 13.6,
+      "away_team": "Team Downs",
+      "away_score": 12.4,
+      "is_playoff": false
+    },
+    {
+      "week": 3,
+      "home_team": "Emergency Room",
+      "home_score": 13.5,
+      "away_team": "Harder Kulm",
+      "away_score": 10.1,
+      "is_playoff": false
+    }
+  ],
+  "lineups": [
+    {
+      "week": 3,
+      "team": "King of  December",
+      "player": "Austin Ekeler",
+      "player_nfl": "LAC",
+      "points": 5.3,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 3,
+      "team": "Only i can say The N word",
+      "player": "Joe Mixon",
+      "player_nfl": "CIN",
+      "points": 3.8,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 3,
+      "team": "Team Hanrahan",
+      "player": "Jonathan Taylor",
+      "player_nfl": "IND",
+      "points": 9.1,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 3,
+      "team": "Pompano Beach Sniper Gang",
+      "player": "Derrick Henry",
+      "player_nfl": "TEN",
+      "points": 20.3,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 3,
+      "team": "King of January",
+      "player": "Dalvin Cook",
+      "player_nfl": "MIN",
+      "points": 13.6,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 3,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": "LAR",
+      "points": 12.4,
+      "slot": "WR",
+      "started": true
+    },
+    {
+      "week": 3,
+      "team": "Emergency Room",
+      "player": "Christian McCaffrey",
+      "player_nfl": "SF",
+      "points": 13.5,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 3,
+      "team": "Harder Kulm",
+      "player": "Najee Harris",
+      "player_nfl": "PIT",
+      "points": 10.1,
+      "slot": "RB",
+      "started": true
+    }
+  ]
+}

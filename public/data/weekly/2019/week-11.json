@@ -1,0 +1,39 @@
+{
+  "season": 2019,
+  "week": 11,
+  "matchups": [
+    {
+      "week": 11,
+      "home_team": "The Champ",
+      "home_score": 123.0,
+      "away_team": "Team Downs",
+      "away_score": 102.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Big Dick Bandito",
+      "home_score": 139.0,
+      "away_team": "Team Malley",
+      "away_score": 144.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Dear Lord Please",
+      "home_score": 103.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 135.0,
+      "is_playoff": false
+    },
+    {
+      "week": 11,
+      "home_team": "Team Blow me ",
+      "home_score": 156.0,
+      "away_team": "Golden Taint",
+      "away_score": 144.0,
+      "is_playoff": false
+    }
+  ],
+  "lineups": []
+}
