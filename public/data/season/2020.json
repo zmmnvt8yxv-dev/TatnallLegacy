@@ -1,0 +1,176 @@
+{
+  "season": 2020,
+  "teams": [
+    {
+      "team_name": "The King",
+      "owner": "stephen marvin",
+      "record": "10-2-1",
+      "points_for": 2001.0,
+      "points_against": 1746.0,
+      "regular_season_rank": 1,
+      "final_rank": 1
+    },
+    {
+      "team_name": "Team Downs",
+      "owner": "John Downs",
+      "record": "9-4",
+      "points_for": 2016.0,
+      "points_against": 1777.0,
+      "regular_season_rank": 2,
+      "final_rank": 3
+    },
+    {
+      "team_name": "Valar Morghulis",
+      "owner": "Edward Saad",
+      "record": "4-9",
+      "points_for": 1652.0,
+      "points_against": 1828.0,
+      "regular_season_rank": 8,
+      "final_rank": 8
+    },
+    {
+      "team_name": "Team Malley",
+      "owner": "Conner Malley",
+      "record": "5-8",
+      "points_for": 1832.0,
+      "points_against": 1892.0,
+      "regular_season_rank": 6,
+      "final_rank": 2
+    },
+    {
+      "team_name": "Team jack",
+      "owner": "Jack Sheehy",
+      "record": "5-7-1",
+      "points_for": 1861.0,
+      "points_against": 1940.0,
+      "regular_season_rank": 5,
+      "final_rank": 5
+    },
+    {
+      "team_name": "Fuck My Alarm",
+      "owner": "Jeffrey Crossland",
+      "record": "5-8",
+      "points_for": 1704.0,
+      "points_against": 1934.0,
+      "regular_season_rank": 7,
+      "final_rank": 7
+    },
+    {
+      "team_name": "Big Dick Bandito",
+      "owner": "jared duncan",
+      "record": "6-7",
+      "points_for": 1827.0,
+      "points_against": 1893.0,
+      "regular_season_rank": 4,
+      "final_rank": 4
+    },
+    {
+      "team_name": "Golden Taint",
+      "owner": "Matt Maloy",
+      "record": "7-6",
+      "points_for": 1933.0,
+      "points_against": 1816.0,
+      "regular_season_rank": 3,
+      "final_rank": 6
+    }
+  ],
+  "weeks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "standings": [
+    {
+      "team": "The King",
+      "wins": 13,
+      "losses": 2,
+      "ties": 1,
+      "points_for": 2611.0,
+      "points_against": 1981.0
+    },
+    {
+      "team": "Team Downs",
+      "wins": 11,
+      "losses": 5,
+      "ties": 0,
+      "points_for": 2499.0,
+      "points_against": 2061.0
+    },
+    {
+      "team": "Golden Taint",
+      "wins": 8,
+      "losses": 8,
+      "ties": 0,
+      "points_for": 2421.0,
+      "points_against": 2293.0
+    },
+    {
+      "team": "Big Dick Bandito",
+      "wins": 7,
+      "losses": 9,
+      "ties": 0,
+      "points_for": 2213.0,
+      "points_against": 2409.0
+    },
+    {
+      "team": "Fuck My Alarm",
+      "wins": 7,
+      "losses": 9,
+      "ties": 0,
+      "points_for": 2092.0,
+      "points_against": 2300.0
+    },
+    {
+      "team": "Team Malley",
+      "wins": 7,
+      "losses": 9,
+      "ties": 0,
+      "points_for": 2298.0,
+      "points_against": 2395.0
+    },
+    {
+      "team": "Team jack",
+      "wins": 6,
+      "losses": 9,
+      "ties": 1,
+      "points_for": 2270.0,
+      "points_against": 2418.0
+    },
+    {
+      "team": "Valar Morghulis",
+      "wins": 5,
+      "losses": 11,
+      "ties": 0,
+      "points_for": 2018.0,
+      "points_against": 2216.0
+    },
+    {
+      "team": "Away",
+      "wins": 0,
+      "losses": 2,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 349.0
+    }
+  ],
+  "playerSeasonTotals": [],
+  "totals": {
+    "matchups": 65,
+    "lineups": 3000
+  }
+}

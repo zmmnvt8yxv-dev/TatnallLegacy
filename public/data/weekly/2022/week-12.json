@@ -1,0 +1,112 @@
+{
+  "season": 2022,
+  "week": 12,
+  "matchups": [
+    {
+      "week": 12,
+      "home_team": "Pompano Beach Sniper Gang",
+      "home_score": 11.7,
+      "away_team": "Team Downs",
+      "away_score": 133.26,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Team Hanrahan",
+      "home_score": 126.96,
+      "away_team": "Harder Kulm",
+      "away_score": 4.3,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "King of  December",
+      "home_score": 14.0,
+      "away_team": "Emergency Room",
+      "away_score": 4.9,
+      "is_playoff": false
+    },
+    {
+      "week": 12,
+      "home_team": "Only i can say The N word",
+      "home_score": 145.46,
+      "away_team": "King of January",
+      "away_score": 5.6,
+      "is_playoff": false
+    }
+  ],
+  "lineups": [
+    {
+      "week": 12,
+      "team": "Pompano Beach Sniper Gang",
+      "player": "Derrick Henry",
+      "player_nfl": "TEN",
+      "points": 11.7,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 12,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": "LAR",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 12,
+      "team": "Team Hanrahan",
+      "player": "Javonte Williams",
+      "player_nfl": "DEN",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 12,
+      "team": "Harder Kulm",
+      "player": "Deebo Samuel",
+      "player_nfl": "SF",
+      "points": 4.3,
+      "slot": "WR",
+      "started": true
+    },
+    {
+      "week": 12,
+      "team": "King of  December",
+      "player": "Austin Ekeler",
+      "player_nfl": "LAC",
+      "points": 14.0,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 12,
+      "team": "Emergency Room",
+      "player": "Christian McCaffrey",
+      "player_nfl": "SF",
+      "points": 4.9,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 12,
+      "team": "Only i can say The N word",
+      "player": "Joe Mixon",
+      "player_nfl": "CIN",
+      "points": 0.0,
+      "slot": "BE",
+      "started": false
+    },
+    {
+      "week": 12,
+      "team": "King of January",
+      "player": "Dalvin Cook",
+      "player_nfl": "MIN",
+      "points": 5.6,
+      "slot": "RB",
+      "started": true
+    }
+  ]
+}

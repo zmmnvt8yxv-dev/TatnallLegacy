@@ -1,0 +1,112 @@
+{
+  "season": 2022,
+  "week": 9,
+  "matchups": [
+    {
+      "week": 9,
+      "home_team": "Team Hanrahan",
+      "home_score": 93.8,
+      "away_team": "Only i can say The N word",
+      "away_score": 53.1,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Pompano Beach Sniper Gang",
+      "home_score": 25.5,
+      "away_team": "King of  December",
+      "away_score": 17.1,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Emergency Room",
+      "home_score": 126.82,
+      "away_team": "Team Downs",
+      "away_score": 22.8,
+      "is_playoff": false
+    },
+    {
+      "week": 9,
+      "home_team": "Harder Kulm",
+      "home_score": 158.1,
+      "away_team": "King of January",
+      "away_score": 11.6,
+      "is_playoff": false
+    }
+  ],
+  "lineups": [
+    {
+      "week": 9,
+      "team": "Team Hanrahan",
+      "player": "Javonte Williams",
+      "player_nfl": "DEN",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 9,
+      "team": "Only i can say The N word",
+      "player": "Joe Mixon",
+      "player_nfl": "CIN",
+      "points": 53.1,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 9,
+      "team": "Pompano Beach Sniper Gang",
+      "player": "Derrick Henry",
+      "player_nfl": "TEN",
+      "points": 25.5,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 9,
+      "team": "King of  December",
+      "player": "Austin Ekeler",
+      "player_nfl": "LAC",
+      "points": 17.1,
+      "slot": "RB/WR/TE",
+      "started": true
+    },
+    {
+      "week": 9,
+      "team": "Emergency Room",
+      "player": "Christian McCaffrey",
+      "player_nfl": "SF",
+      "points": 0.0,
+      "slot": "BE",
+      "started": false
+    },
+    {
+      "week": 9,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": "LAR",
+      "points": 22.8,
+      "slot": "WR",
+      "started": true
+    },
+    {
+      "week": 9,
+      "team": "Harder Kulm",
+      "player": "Deebo Samuel",
+      "player_nfl": "SF",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 9,
+      "team": "King of January",
+      "player": "Dalvin Cook",
+      "player_nfl": "MIN",
+      "points": 11.6,
+      "slot": "RB",
+      "started": true
+    }
+  ]
+}

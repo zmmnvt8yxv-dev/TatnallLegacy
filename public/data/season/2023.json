@@ -1,0 +1,176 @@
+{
+  "season": 2023,
+  "teams": [
+    {
+      "team_name": "Federal Burrow of Investigation",
+      "owner": "Carl Marvin",
+      "record": "4-10",
+      "points_for": 1846.56,
+      "points_against": 2187.64,
+      "regular_season_rank": 8,
+      "final_rank": 7
+    },
+    {
+      "team_name": "Team Downs",
+      "owner": "John Downs",
+      "record": "8-6",
+      "points_for": 1971.78,
+      "points_against": 1924.22,
+      "regular_season_rank": 4,
+      "final_rank": 4
+    },
+    {
+      "team_name": "Harder Kulm",
+      "owner": "Edward Saad",
+      "record": "7-7",
+      "points_for": 1929.42,
+      "points_against": 1908.2,
+      "regular_season_rank": 5,
+      "final_rank": 6
+    },
+    {
+      "team_name": "Wish I had CMC",
+      "owner": "Conner Malley",
+      "record": "6-8",
+      "points_for": 2182.28,
+      "points_against": 2088.44,
+      "regular_season_rank": 6,
+      "final_rank": 5
+    },
+    {
+      "team_name": "Insane in the Achane ",
+      "owner": "Samuel Kirby",
+      "record": "8-6",
+      "points_for": 2060.16,
+      "points_against": 2077.44,
+      "regular_season_rank": 3,
+      "final_rank": 3
+    },
+    {
+      "team_name": "Emergency Room",
+      "owner": "Jeffrey Crossland",
+      "record": "9-5",
+      "points_for": 1895.02,
+      "points_against": 1801.88,
+      "regular_season_rank": 2,
+      "final_rank": 2
+    },
+    {
+      "team_name": "Only i can say The N word",
+      "owner": "jared duncan",
+      "record": "5-9",
+      "points_for": 2023.76,
+      "points_against": 2119.96,
+      "regular_season_rank": 7,
+      "final_rank": 8
+    },
+    {
+      "team_name": "Sniper Gang - 1800 Block",
+      "owner": "Roy Lee",
+      "record": "9-5",
+      "points_for": 2111.1,
+      "points_against": 1912.3,
+      "regular_season_rank": 1,
+      "final_rank": 1
+    }
+  ],
+  "weeks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "standings": [
+    {
+      "team": "Sniper Gang - 1800 Block",
+      "wins": 13,
+      "losses": 5,
+      "ties": 0,
+      "points_for": 2763.5,
+      "points_against": 2287.26
+    },
+    {
+      "team": "Insane in the Achane ",
+      "wins": 11,
+      "losses": 7,
+      "ties": 0,
+      "points_for": 2737.2400000000007,
+      "points_against": 2702.92
+    },
+    {
+      "team": "Emergency Room",
+      "wins": 11,
+      "losses": 7,
+      "ties": 0,
+      "points_for": 2452.52,
+      "points_against": 2278.6199999999994
+    },
+    {
+      "team": "Team Downs",
+      "wins": 9,
+      "losses": 9,
+      "ties": 0,
+      "points_for": 2575.56,
+      "points_against": 2580.5199999999995
+    },
+    {
+      "team": "Wish I had CMC",
+      "wins": 9,
+      "losses": 9,
+      "ties": 0,
+      "points_for": 2859.6600000000003,
+      "points_against": 2561.02
+    },
+    {
+      "team": "Federal Burrow of Investigation",
+      "wins": 8,
+      "losses": 10,
+      "ties": 0,
+      "points_for": 2460.54,
+      "points_against": 2693.42
+    },
+    {
+      "team": "Harder Kulm",
+      "wins": 7,
+      "losses": 11,
+      "ties": 0,
+      "points_for": 2356.44,
+      "points_against": 2640.0
+    },
+    {
+      "team": "Only i can say The N word",
+      "wins": 5,
+      "losses": 13,
+      "ties": 0,
+      "points_for": 2529.54,
+      "points_against": 2733.94
+    },
+    {
+      "team": "Away",
+      "wins": 0,
+      "losses": 2,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 257.3
+    }
+  ],
+  "playerSeasonTotals": [],
+  "totals": {
+    "matchups": 73,
+    "lineups": 2921
+  }
+}

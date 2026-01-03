@@ -1,0 +1,1230 @@
+{
+  "season": 2020,
+  "week": 10,
+  "matchups": [
+    {
+      "week": 10,
+      "home_team": "The King",
+      "home_score": 120.0,
+      "away_team": "Team jack",
+      "away_score": 110.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Big Dick Bandito",
+      "home_score": 116.0,
+      "away_team": "Fuck My Alarm",
+      "away_score": 104.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team Downs",
+      "home_score": 168.0,
+      "away_team": "Golden Taint",
+      "away_score": 147.0,
+      "is_playoff": false
+    },
+    {
+      "week": 10,
+      "home_team": "Team Malley",
+      "home_score": 96.0,
+      "away_team": "Valar Morghulis",
+      "away_score": 158.0,
+      "is_playoff": false
+    }
+  ],
+  "lineups": [
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Dalvin Cook",
+      "points": 10.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Miles Sanders",
+      "points": 11.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Mike Evans",
+      "points": 13.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Allen Robinson II",
+      "points": 4.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Calvin Ridley",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Jonathan Taylor",
+      "points": 3.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Raheem Mostert",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "David Montgomery",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Darren Waller",
+      "points": 3.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Kareem Hunt",
+      "points": 14.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Carson Wentz",
+      "points": 8.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Justin Jackson",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Tom Brady",
+      "points": 33.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Brandon McManus",
+      "points": 8.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Mike Williams",
+      "points": 3.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Rex Burkhead",
+      "points": 18.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Curtis Samuel",
+      "points": 0.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Bears D/ST",
+      "points": 10.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Kenny Golladay",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Joe Burrow",
+      "points": 12.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Le'Veon Bell",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Mark Ingram II",
+      "points": 2.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "The King",
+      "player": "Jakobi Meyers",
+      "points": 9.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Aaron Jones",
+      "points": 8.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Austin Ekeler",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Adam Thielen",
+      "points": 16.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Russell Wilson",
+      "points": 9.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Marvin Jones Jr.",
+      "points": 15.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Julian Edelman",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Tevin Coleman",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Ravens D/ST",
+      "points": 1.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "John Brown",
+      "points": 7.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Mike Davis",
+      "points": 4.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Damien Harris",
+      "points": 14.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Noah Fant",
+      "points": 1.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Antonio Brown",
+      "points": 6.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Rob Gronkowski",
+      "points": 11.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Davante Adams",
+      "points": 10.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Deshaun Watson",
+      "points": 13.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Leonard Fournette",
+      "points": 2.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Matt Prater",
+      "points": 16.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Patriots D/ST",
+      "points": 4.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Dallas Goedert",
+      "points": 3.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team jack",
+      "player": "Darius Slayton",
+      "points": 9.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Nick Chubb",
+      "points": 20.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Michael Thomas",
+      "points": 2.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "George Kittle",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Chris Carson",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Tyler Lockett",
+      "points": 6.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Todd Gurley II",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Terry McLaurin",
+      "points": 9.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "DeVante Parker",
+      "points": 3.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Aaron Rodgers",
+      "points": 29.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Alexander Mattison",
+      "points": 0.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Robby Anderson",
+      "points": 2.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Justin Herbert",
+      "points": 20.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "T.J. Hockenson",
+      "points": 1.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Matt Breida",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Jordan Howard",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "DeeJay Dallas",
+      "points": 2.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Packers D/ST",
+      "points": 7.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Jason Sanders",
+      "points": 13.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Duke Johnson",
+      "points": 5.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Derek Carr",
+      "points": 7.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Big Dick Bandito",
+      "player": "Sterling Shepard",
+      "points": 4.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Christian McCaffrey",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Kenyan Drake",
+      "points": 10.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Joe Mixon",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "DJ Moore",
+      "points": 15.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "JuJu Smith-Schuster",
+      "points": 13.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Robert Woods",
+      "points": 3.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "James Conner",
+      "points": 4.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Keenan Allen",
+      "points": 9.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Jarvis Landry",
+      "points": 2.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Tyler Boyd",
+      "points": 4.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "J.K. Dobbins",
+      "points": 1.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Latavius Murray",
+      "points": 5.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Cam Newton",
+      "points": 16.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Ryan Tannehill",
+      "points": 9.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Colts D/ST",
+      "points": 12.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Jonnu Smith",
+      "points": 7.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Randy Bullock",
+      "points": 4.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Gardner Minshew II",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Giovani Bernard",
+      "points": 4.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Emmanuel Sanders",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Zack Moss",
+      "points": 2.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Fuck My Alarm",
+      "player": "Kalen Ballage",
+      "points": 9.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Alvin Kamara",
+      "points": 27.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "DeAndre Hopkins",
+      "points": 21.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Travis Kelce",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Patrick Mahomes",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "points": 5.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Ronald Jones II",
+      "points": 27.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "DJ Chark Jr.",
+      "points": 5.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Jamison Crowder",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Josh Allen",
+      "points": 25.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "CeeDee Lamb",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Steelers D/ST",
+      "points": 11.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Sony Michel",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Jamaal Williams",
+      "points": 5.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Chase Edmonds",
+      "points": 7.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Tee Higgins",
+      "points": 17.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Younghoe Koo",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Drew Lock",
+      "points": 6.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Austin Hooper",
+      "points": 1.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "Mason Crosby",
+      "points": 6.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Downs",
+      "player": "J.D. McKissic",
+      "points": 10.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Derrick Henry",
+      "points": 12.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Josh Jacobs",
+      "points": 27.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Chris Godwin",
+      "points": 9.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Amari Cooper",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Mark Andrews",
+      "points": 6.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Melvin Gordon III",
+      "points": 4.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Kyler Murray",
+      "points": 30.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Stefon Diggs",
+      "points": 15.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Dak Prescott",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Marquise Brown",
+      "points": 1.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Jerry Jeudy",
+      "points": 6.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Jalen Reagor",
+      "points": 4.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Jared Goff",
+      "points": 12.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Wil Lutz",
+      "points": 10.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Myles Gaskin",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Robert Tonyan",
+      "points": 3.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Chase Claypool",
+      "points": 17.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Travis Fulgham",
+      "points": 0.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Teddy Bridgewater",
+      "points": 18.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Washington D/ST",
+      "points": -1.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Golden Taint",
+      "player": "Wayne Gallman",
+      "points": 17.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Saquon Barkley",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Lamar Jackson",
+      "points": 20.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "DK Metcalf",
+      "points": 2.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Devin Singletary",
+      "points": 1.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Deebo Samuel",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Darrell Henderson Jr.",
+      "points": 8.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Henry Ruggs III",
+      "points": 3.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Justin Tucker",
+      "points": 5.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "James Robinson",
+      "points": 12.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Devonta Freeman",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Justin Jefferson",
+      "points": 15.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Tyreek Hill",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Tua Tagovailoa",
+      "points": 14.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Corey Davis",
+      "points": 6.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "A.J. Brown",
+      "points": 2.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Ezekiel Elliott",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Drew Brees",
+      "points": 7.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Dez Bryant",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Eagles D/ST",
+      "points": 2.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Hunter Henry",
+      "points": 9.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Team Malley",
+      "player": "Richie James",
+      "points": 0.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Clyde Edwards-Helaire",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "David Johnson",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Will Fuller V",
+      "points": 3.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Brandin Cooks",
+      "points": 3.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Matt Ryan",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Antonio Gibson",
+      "points": 18.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Parris Campbell",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "D'Andre Swift",
+      "points": 20.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Jerick McKinnon",
+      "points": 4.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Daniel Carlson",
+      "points": 15.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Julio Jones",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Phillip Lindsay",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Brandon Aiyuk",
+      "points": 13.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Matthew Stafford",
+      "points": 25.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Evan Engram",
+      "points": 1.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Danny Amendola",
+      "points": 1.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "A.J. Green",
+      "points": 0.0,
+      "started": false
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Giants D/ST",
+      "points": 4.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Christian Kirk",
+      "points": 2.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Ben Roethlisberger",
+      "points": 31.0,
+      "started": true
+    },
+    {
+      "week": 10,
+      "team": "Valar Morghulis",
+      "player": "Diontae Johnson",
+      "points": 19.0,
+      "started": true
+    }
+  ]
+}

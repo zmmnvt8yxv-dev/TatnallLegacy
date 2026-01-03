@@ -1,0 +1,120 @@
+{
+  "season": 2022,
+  "week": 15,
+  "matchups": [
+    {
+      "week": 15,
+      "home_team": "Emergency Room",
+      "home_score": 21.8,
+      "away_team": null,
+      "away_score": 0.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Pompano Beach Sniper Gang",
+      "home_score": 24.3,
+      "away_team": "King of January",
+      "away_score": 25.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Harder Kulm",
+      "home_score": 180.88,
+      "away_team": "Only i can say The N word",
+      "away_score": 5.4,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "King of  December",
+      "home_score": 13.0,
+      "away_team": null,
+      "away_score": 0.0,
+      "is_playoff": true
+    },
+    {
+      "week": 15,
+      "home_team": "Team Downs",
+      "home_score": 93.24,
+      "away_team": "Team Hanrahan",
+      "away_score": 138.88,
+      "is_playoff": true
+    }
+  ],
+  "lineups": [
+    {
+      "week": 15,
+      "team": "Emergency Room",
+      "player": "Christian McCaffrey",
+      "player_nfl": "SF",
+      "points": 21.8,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 15,
+      "team": "Pompano Beach Sniper Gang",
+      "player": "Derrick Henry",
+      "player_nfl": "TEN",
+      "points": 24.3,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 15,
+      "team": "King of January",
+      "player": "Dalvin Cook",
+      "player_nfl": "MIN",
+      "points": 25.0,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 15,
+      "team": "Harder Kulm",
+      "player": "Deebo Samuel",
+      "player_nfl": "SF",
+      "points": 0.0,
+      "slot": "BE",
+      "started": false
+    },
+    {
+      "week": 15,
+      "team": "Only i can say The N word",
+      "player": "Joe Mixon",
+      "player_nfl": "CIN",
+      "points": 5.4,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 15,
+      "team": "King of  December",
+      "player": "Austin Ekeler",
+      "player_nfl": "LAC",
+      "points": 13.0,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 15,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": "LAR",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 15,
+      "team": "Team Hanrahan",
+      "player": "Javonte Williams",
+      "player_nfl": "DEN",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    }
+  ]
+}

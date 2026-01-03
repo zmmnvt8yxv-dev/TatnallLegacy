@@ -1,0 +1,976 @@
+{
+  "season": 2025,
+  "week": 4,
+  "matchups": [
+    {
+      "away_owner_id": "1262431325780979712",
+      "away_roster_id": 4,
+      "away_score": 132.42,
+      "away_team": "conner27lax",
+      "entries": [
+        {
+          "display_name": "cmarvin713",
+          "matchup_id": 1,
+          "owner_id": "866330097534279680",
+          "points": 174.34,
+          "roster_id": 1,
+          "team_name": "cmarvin713",
+          "username": null,
+          "week": 4
+        },
+        {
+          "display_name": "conner27lax",
+          "matchup_id": 1,
+          "owner_id": "1262431325780979712",
+          "points": 132.42,
+          "roster_id": 4,
+          "team_name": "conner27lax",
+          "username": null,
+          "week": 4
+        }
+      ],
+      "home_owner_id": "866330097534279680",
+      "home_roster_id": 1,
+      "home_score": 174.34,
+      "home_team": "cmarvin713",
+      "matchup_id": 1,
+      "week": 4
+    },
+    {
+      "away_owner_id": "1262441208882397184",
+      "away_roster_id": 5,
+      "away_score": 149.44,
+      "away_team": "roylee6",
+      "entries": [
+        {
+          "display_name": "Junktion",
+          "matchup_id": 2,
+          "owner_id": "1262993751630938112",
+          "points": 166.68,
+          "roster_id": 8,
+          "team_name": "Junktion",
+          "username": null,
+          "week": 4
+        },
+        {
+          "display_name": "roylee6",
+          "matchup_id": 2,
+          "owner_id": "1262441208882397184",
+          "points": 149.44,
+          "roster_id": 5,
+          "team_name": "roylee6",
+          "username": null,
+          "week": 4
+        }
+      ],
+      "home_owner_id": "1262993751630938112",
+      "home_roster_id": 8,
+      "home_score": 166.68,
+      "home_team": "Junktion",
+      "matchup_id": 2,
+      "week": 4
+    },
+    {
+      "away_owner_id": "725035808507097088",
+      "away_roster_id": 6,
+      "away_score": 195.9,
+      "away_team": "PhillyPhilly709",
+      "entries": [
+        {
+          "display_name": "LbmBets",
+          "matchup_id": 3,
+          "owner_id": "925111291306483712",
+          "points": 199.1,
+          "roster_id": 3,
+          "team_name": "LbmBets",
+          "username": null,
+          "week": 4
+        },
+        {
+          "display_name": "PhillyPhilly709",
+          "matchup_id": 3,
+          "owner_id": "725035808507097088",
+          "points": 195.9,
+          "roster_id": 6,
+          "team_name": "PhillyPhilly709",
+          "username": null,
+          "week": 4
+        }
+      ],
+      "home_owner_id": "925111291306483712",
+      "home_roster_id": 3,
+      "home_score": 199.1,
+      "home_team": "LbmBets",
+      "matchup_id": 3,
+      "week": 4
+    },
+    {
+      "away_owner_id": "1075987804573880320",
+      "away_roster_id": 7,
+      "away_score": 186.38,
+      "away_team": "downsliquidity",
+      "entries": [
+        {
+          "display_name": "jawnwick13",
+          "matchup_id": 4,
+          "owner_id": "1262429321784459264",
+          "points": 186.66,
+          "roster_id": 2,
+          "team_name": "jawnwick13",
+          "username": null,
+          "week": 4
+        },
+        {
+          "display_name": "downsliquidity",
+          "matchup_id": 4,
+          "owner_id": "1075987804573880320",
+          "points": 186.38,
+          "roster_id": 7,
+          "team_name": "downsliquidity",
+          "username": null,
+          "week": 4
+        }
+      ],
+      "home_owner_id": "1262429321784459264",
+      "home_roster_id": 2,
+      "home_score": 186.66,
+      "home_team": "jawnwick13",
+      "matchup_id": 4,
+      "week": 4
+    }
+  ],
+  "lineups": [
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "4892",
+      "player": "4892",
+      "started": true,
+      "points": 23.86
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "6804",
+      "player": "6804",
+      "started": true,
+      "points": 28.28
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "11584",
+      "player": "11584",
+      "started": true,
+      "points": 27.0
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "8150",
+      "player": "8150",
+      "started": true,
+      "points": 8.9
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "11589",
+      "player": "11589",
+      "started": true,
+      "points": 7.9
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "9997",
+      "player": "9997",
+      "started": true,
+      "points": 10.9
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "9488",
+      "player": "9488",
+      "started": true,
+      "points": 11.0
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "2133",
+      "player": "2133",
+      "started": true,
+      "points": 13.6
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "8130",
+      "player": "8130",
+      "started": true,
+      "points": 8.7
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "9224",
+      "player": "9224",
+      "started": true,
+      "points": 8.6
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "5045",
+      "player": "5045",
+      "started": true,
+      "points": 16.6
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "8259",
+      "player": "8259",
+      "started": true,
+      "points": 5.0
+    },
+    {
+      "week": 4,
+      "team": "💍💍💍",
+      "player_id": "MIN",
+      "player": "MIN",
+      "started": true,
+      "points": 4.0
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "6797",
+      "player": "6797",
+      "started": true,
+      "points": 14.52
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "7591",
+      "player": "7591",
+      "started": true,
+      "points": 28.14
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "9221",
+      "player": "9221",
+      "started": true,
+      "points": 16.7
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "12507",
+      "player": "12507",
+      "started": true,
+      "points": 29.0
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "8151",
+      "player": "8151",
+      "started": true,
+      "points": 11.5
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "6783",
+      "player": "6783",
+      "started": true,
+      "points": 6.3
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "8137",
+      "player": "8137",
+      "started": true,
+      "points": 31.4
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "8148",
+      "player": "8148",
+      "started": true,
+      "points": 4.7
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "11604",
+      "player": "11604",
+      "started": true,
+      "points": 7.1
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "8408",
+      "player": "8408",
+      "started": true,
+      "points": 8.7
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "12529",
+      "player": "12529",
+      "started": true,
+      "points": 11.6
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "11786",
+      "player": "11786",
+      "started": true,
+      "points": 7.0
+    },
+    {
+      "week": 4,
+      "team": "Only I can say the N-word",
+      "player_id": "DEN",
+      "player": "DEN",
+      "started": true,
+      "points": 10.0
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "8183",
+      "player": "8183",
+      "started": true,
+      "points": 21.66
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "11563",
+      "player": "11563",
+      "started": true,
+      "points": 28.74
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "6813",
+      "player": "6813",
+      "started": true,
+      "points": 12.1
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "7594",
+      "player": "7594",
+      "started": true,
+      "points": 8.4
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "9226",
+      "player": "9226",
+      "started": true,
+      "points": 16.6
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "7569",
+      "player": "7569",
+      "started": true,
+      "points": 9.9
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "9493",
+      "player": "9493",
+      "started": true,
+      "points": 31.5
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "8112",
+      "player": "8112",
+      "started": true,
+      "points": 23.0
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "9484",
+      "player": "9484",
+      "started": true,
+      "points": 8.1
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "7588",
+      "player": "7588",
+      "started": true,
+      "points": 17.5
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "11638",
+      "player": "11638",
+      "started": true,
+      "points": 6.6
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "1945",
+      "player": "1945",
+      "started": true,
+      "points": 3.0
+    },
+    {
+      "week": 4,
+      "team": "Insane in The Achane ",
+      "player_id": "HOU",
+      "player": "HOU",
+      "started": true,
+      "points": 12.0
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "6904",
+      "player": "6904",
+      "started": true,
+      "points": 19.4
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "12522",
+      "player": "12522",
+      "started": true,
+      "points": 5.52
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "9509",
+      "player": "9509",
+      "started": true,
+      "points": 28.1
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "4866",
+      "player": "4866",
+      "started": true,
+      "points": 15.4
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "5967",
+      "player": "5967",
+      "started": true,
+      "points": 9.1
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "7090",
+      "player": "7090",
+      "started": true,
+      "points": 2.0
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "12514",
+      "player": "12514",
+      "started": true,
+      "points": 22.1
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "5947",
+      "player": "5947",
+      "started": true,
+      "points": 5.0
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "1466",
+      "player": "1466",
+      "started": true,
+      "points": 7.3
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "12506",
+      "player": "12506",
+      "started": true,
+      "points": 3.5
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "6806",
+      "player": "6806",
+      "started": true,
+      "points": 13.0
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "5095",
+      "player": "5095",
+      "started": true,
+      "points": 5.0
+    },
+    {
+      "week": 4,
+      "team": "Team Cancun",
+      "player_id": "BAL",
+      "player": "BAL",
+      "started": true,
+      "points": -3.0
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "4984",
+      "player": "4984",
+      "started": true,
+      "points": 26.86
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "4881",
+      "player": "4881",
+      "started": true,
+      "points": 11.68
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "4034",
+      "player": "4034",
+      "started": true,
+      "points": 23.1
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "8155",
+      "player": "8155",
+      "started": true,
+      "points": 13.6
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "7611",
+      "player": "7611",
+      "started": true,
+      "points": 4.6
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "11632",
+      "player": "11632",
+      "started": true,
+      "points": 3.0
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "5859",
+      "player": "5859",
+      "started": true,
+      "points": 1.7
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "5872",
+      "player": "5872",
+      "started": true,
+      "points": 17.1
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "3214",
+      "player": "3214",
+      "started": true,
+      "points": 10.9
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "6819",
+      "player": "6819",
+      "started": true,
+      "points": 12.6
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "7526",
+      "player": "7526",
+      "started": true,
+      "points": 6.3
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "12185",
+      "player": "12185",
+      "started": true,
+      "points": 10.0
+    },
+    {
+      "week": 4,
+      "team": "FantasyGPT 2.5",
+      "player_id": "BUF",
+      "player": "BUF",
+      "started": true,
+      "points": 8.0
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "4046",
+      "player": "4046",
+      "started": true,
+      "points": 27.3
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "5849",
+      "player": "5849",
+      "started": true,
+      "points": 18.1
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "5850",
+      "player": "5850",
+      "started": true,
+      "points": 29.7
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "5892",
+      "player": "5892",
+      "started": true,
+      "points": 1.2
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "7543",
+      "player": "7543",
+      "started": true,
+      "points": 22.0
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "6794",
+      "player": "6794",
+      "started": true,
+      "points": 19.6
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "8146",
+      "player": "8146",
+      "started": true,
+      "points": 17.2
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "7547",
+      "player": "7547",
+      "started": true,
+      "points": 22.5
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "7002",
+      "player": "7002",
+      "started": true,
+      "points": 4.3
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "12526",
+      "player": "12526",
+      "started": true,
+      "points": 8.2
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "9754",
+      "player": "9754",
+      "started": true,
+      "points": 19.8
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "6528",
+      "player": "6528",
+      "started": true,
+      "points": -4.0
+    },
+    {
+      "week": 4,
+      "team": "“Feels Different This Yr”",
+      "player_id": "NE",
+      "player": "NE",
+      "started": true,
+      "points": 10.0
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "11564",
+      "player": "11564",
+      "started": true,
+      "points": 23.22
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "3294",
+      "player": "3294",
+      "started": true,
+      "points": 32.96
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "8138",
+      "player": "8138",
+      "started": true,
+      "points": 23.0
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "12512",
+      "player": "12512",
+      "started": true,
+      "points": 19.5
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "4988",
+      "player": "4988",
+      "started": true,
+      "points": 7.2
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "7564",
+      "player": "7564",
+      "started": true,
+      "points": 4.8
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "3321",
+      "player": "3321",
+      "started": true,
+      "points": 9.7
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "11635",
+      "player": "11635",
+      "started": true,
+      "points": 1.6
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "12518",
+      "player": "12518",
+      "started": true,
+      "points": 15.8
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "5846",
+      "player": "5846",
+      "started": true,
+      "points": 25.1
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "8144",
+      "player": "8144",
+      "started": true,
+      "points": 8.5
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "17",
+      "player": "17",
+      "started": true,
+      "points": 7.0
+    },
+    {
+      "week": 4,
+      "team": "Dak Shots",
+      "player_id": "LAC",
+      "player": "LAC",
+      "started": true,
+      "points": 8.0
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "421",
+      "player": "421",
+      "started": true,
+      "points": 31.4
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "11560",
+      "player": "11560",
+      "started": true,
+      "points": 12.78
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "3198",
+      "player": "3198",
+      "started": true,
+      "points": 6.8
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "12527",
+      "player": "12527",
+      "started": true,
+      "points": 36.5
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "4035",
+      "player": "4035",
+      "started": true,
+      "points": 9.2
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "11631",
+      "player": "11631",
+      "started": true,
+      "points": 8.1
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "11620",
+      "player": "11620",
+      "started": true,
+      "points": 14.9
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "12499",
+      "player": "12499",
+      "started": true,
+      "points": 5.4
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "10859",
+      "player": "10859",
+      "started": true,
+      "points": 5.4
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "12481",
+      "player": "12481",
+      "started": true,
+      "points": 12.0
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "10213",
+      "player": "10213",
+      "started": true,
+      "points": 3.2
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "11533",
+      "player": "11533",
+      "started": true,
+      "points": 8.0
+    },
+    {
+      "week": 4,
+      "team": "Nine-1-1",
+      "player_id": "PHI",
+      "player": "PHI",
+      "started": true,
+      "points": 13.0
+    }
+  ]
+}

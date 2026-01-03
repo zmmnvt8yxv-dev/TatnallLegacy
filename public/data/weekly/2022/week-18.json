@@ -1,0 +1,112 @@
+{
+  "season": 2022,
+  "week": 18,
+  "matchups": [
+    {
+      "week": 18,
+      "home_team": "King of  December",
+      "home_score": 32.1,
+      "away_team": "King of January",
+      "away_score": 4.4,
+      "is_playoff": true
+    },
+    {
+      "week": 18,
+      "home_team": "Emergency Room",
+      "home_score": 27.3,
+      "away_team": "Harder Kulm",
+      "away_score": 113.22,
+      "is_playoff": true
+    },
+    {
+      "week": 18,
+      "home_team": "Pompano Beach Sniper Gang",
+      "home_score": 0.0,
+      "away_team": "Only i can say The N word",
+      "away_score": 0.0,
+      "is_playoff": true
+    },
+    {
+      "week": 18,
+      "home_team": "Team Downs",
+      "home_score": 152.26,
+      "away_team": "Team Hanrahan",
+      "away_score": 98.7,
+      "is_playoff": true
+    }
+  ],
+  "lineups": [
+    {
+      "week": 18,
+      "team": "King of  December",
+      "player": "Austin Ekeler",
+      "player_nfl": "LAC",
+      "points": 32.1,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 18,
+      "team": "King of January",
+      "player": "Dalvin Cook",
+      "player_nfl": "MIN",
+      "points": 4.4,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 18,
+      "team": "Emergency Room",
+      "player": "Christian McCaffrey",
+      "player_nfl": "SF",
+      "points": 27.3,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 18,
+      "team": "Harder Kulm",
+      "player": "Deebo Samuel",
+      "player_nfl": "SF",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 18,
+      "team": "Pompano Beach Sniper Gang",
+      "player": "Derrick Henry",
+      "player_nfl": "TEN",
+      "points": 0.0,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 18,
+      "team": "Only i can say The N word",
+      "player": "Joe Mixon",
+      "player_nfl": "CIN",
+      "points": 0.0,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 18,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": "LAR",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 18,
+      "team": "Team Hanrahan",
+      "player": "Javonte Williams",
+      "player_nfl": "DEN",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "season": 2024,
+  "teams": [
+    {
+      "team_name": "King of December 💍💍💍",
+      "owner": "Carl Marvin",
+      "record": "11-3",
+      "points_for": 2328.86,
+      "points_against": 2086.64,
+      "regular_season_rank": 1,
+      "final_rank": 2
+    },
+    {
+      "team_name": "Tugg Speedman",
+      "owner": "John Downs",
+      "record": "6-8",
+      "points_for": 2231.14,
+      "points_against": 2399.28,
+      "regular_season_rank": 5,
+      "final_rank": 5
+    },
+    {
+      "team_name": "MaHomelander",
+      "owner": "Edward Saad",
+      "record": "6-8",
+      "points_for": 2272.1,
+      "points_against": 2315.74,
+      "regular_season_rank": 4,
+      "final_rank": 3
+    },
+    {
+      "team_name": "Team Malley",
+      "owner": "Conner Malley",
+      "record": "9-5",
+      "points_for": 2609.34,
+      "points_against": 2338.9,
+      "regular_season_rank": 3,
+      "final_rank": 1
+    },
+    {
+      "team_name": "Insane in the Achane ",
+      "owner": "Samuel Kirby",
+      "record": "10-4",
+      "points_for": 2499.04,
+      "points_against": 2197.68,
+      "regular_season_rank": 2,
+      "final_rank": 4
+    },
+    {
+      "team_name": "Emergency Room",
+      "owner": "Jeffrey Crossland",
+      "record": "5-9",
+      "points_for": 2157.6,
+      "points_against": 2344.5,
+      "regular_season_rank": 7,
+      "final_rank": 7
+    },
+    {
+      "team_name": "Make-A-Wish-Kid",
+      "owner": "jared duncan",
+      "record": "5-9",
+      "points_for": 2293.48,
+      "points_against": 2523.2,
+      "regular_season_rank": 6,
+      "final_rank": 6
+    },
+    {
+      "team_name": "Mayo Clinic",
+      "owner": "Roy Lee",
+      "record": "4-10",
+      "points_for": 2087.82,
+      "points_against": 2273.44,
+      "regular_season_rank": 8,
+      "final_rank": 8
+    }
+  ],
+  "weeks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "standings": [
+    {
+      "team": "King of December 💍💍💍",
+      "wins": 13,
+      "losses": 5,
+      "ties": 0,
+      "points_for": 3105.52,
+      "points_against": 2699.7799999999997
+    },
+    {
+      "team": "Team Malley",
+      "wins": 13,
+      "losses": 5,
+      "ties": 0,
+      "points_for": 3378.8399999999997,
+      "points_against": 2980.3199999999997
+    },
+    {
+      "team": "Insane in the Achane ",
+      "wins": 10,
+      "losses": 7,
+      "ties": 1,
+      "points_for": 2868.2400000000007,
+      "points_against": 2629.0799999999995
+    },
+    {
+      "team": "MaHomelander",
+      "wins": 9,
+      "losses": 9,
+      "ties": 0,
+      "points_for": 2891.6,
+      "points_against": 2882.7400000000007
+    },
+    {
+      "team": "Emergency Room",
+      "wins": 9,
+      "losses": 9,
+      "ties": 0,
+      "points_for": 2987.3999999999996,
+      "points_against": 2961.7999999999997
+    },
+    {
+      "team": "Tugg Speedman",
+      "wins": 8,
+      "losses": 10,
+      "ties": 0,
+      "points_for": 2892.7000000000003,
+      "points_against": 3007.0600000000004
+    },
+    {
+      "team": "Make-A-Wish-Kid",
+      "wins": 6,
+      "losses": 12,
+      "ties": 0,
+      "points_for": 2855.9200000000005,
+      "points_against": 3196.9599999999996
+    },
+    {
+      "team": "Mayo Clinic",
+      "wins": 4,
+      "losses": 14,
+      "ties": 0,
+      "points_for": 2705.12,
+      "points_against": 3103.2400000000002
+    },
+    {
+      "team": "Away",
+      "wins": 0,
+      "losses": 1,
+      "ties": 1,
+      "points_for": 0.0,
+      "points_against": 224.36
+    }
+  ],
+  "playerSeasonTotals": [],
+  "totals": {
+    "matchups": 73,
+    "lineups": 2938
+  }
+}

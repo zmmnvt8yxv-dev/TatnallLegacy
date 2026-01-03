@@ -1,0 +1,112 @@
+{
+  "season": 2022,
+  "week": 8,
+  "matchups": [
+    {
+      "week": 8,
+      "home_team": "Only i can say The N word",
+      "home_score": 5.9,
+      "away_team": "Pompano Beach Sniper Gang",
+      "away_score": 38.8,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Team Hanrahan",
+      "home_score": 115.56,
+      "away_team": "King of  December",
+      "away_score": 167.56,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Team Downs",
+      "home_score": 14.9,
+      "away_team": "Harder Kulm",
+      "away_score": 148.7,
+      "is_playoff": false
+    },
+    {
+      "week": 8,
+      "home_team": "Emergency Room",
+      "home_score": 32.26,
+      "away_team": "King of January",
+      "away_score": 22.1,
+      "is_playoff": false
+    }
+  ],
+  "lineups": [
+    {
+      "week": 8,
+      "team": "Only i can say The N word",
+      "player": "Joe Mixon",
+      "player_nfl": "CIN",
+      "points": 5.9,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 8,
+      "team": "Pompano Beach Sniper Gang",
+      "player": "Derrick Henry",
+      "player_nfl": "TEN",
+      "points": 38.8,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 8,
+      "team": "Team Hanrahan",
+      "player": "Javonte Williams",
+      "player_nfl": "DEN",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 8,
+      "team": "King of  December",
+      "player": "Austin Ekeler",
+      "player_nfl": "LAC",
+      "points": 0.0,
+      "slot": "BE",
+      "started": false
+    },
+    {
+      "week": 8,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": "LAR",
+      "points": 14.9,
+      "slot": "WR",
+      "started": true
+    },
+    {
+      "week": 8,
+      "team": "Harder Kulm",
+      "player": "Deebo Samuel",
+      "player_nfl": "SF",
+      "points": 0.0,
+      "slot": "BE",
+      "started": false
+    },
+    {
+      "week": 8,
+      "team": "Emergency Room",
+      "player": "Christian McCaffrey",
+      "player_nfl": "SF",
+      "points": 32.26,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 8,
+      "team": "King of January",
+      "player": "Dalvin Cook",
+      "player_nfl": "MIN",
+      "points": 22.1,
+      "slot": "RB",
+      "started": true
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "season": 2022,
+  "week": 13,
+  "matchups": [
+    {
+      "week": 13,
+      "home_team": "Team Downs",
+      "home_score": 133.2,
+      "away_team": "Team Hanrahan",
+      "away_score": 99.64,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Harder Kulm",
+      "home_score": 6.3,
+      "away_team": "King of  December",
+      "away_score": 8.2,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "Emergency Room",
+      "home_score": 20.6,
+      "away_team": "Only i can say The N word",
+      "away_score": 165.82,
+      "is_playoff": false
+    },
+    {
+      "week": 13,
+      "home_team": "King of January",
+      "home_score": 14.3,
+      "away_team": "Pompano Beach Sniper Gang",
+      "away_score": 3.8,
+      "is_playoff": false
+    }
+  ],
+  "lineups": [
+    {
+      "week": 13,
+      "team": "Team Downs",
+      "player": "Cooper Kupp",
+      "player_nfl": "LAR",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 13,
+      "team": "Team Hanrahan",
+      "player": "Javonte Williams",
+      "player_nfl": "DEN",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 13,
+      "team": "Harder Kulm",
+      "player": "Deebo Samuel",
+      "player_nfl": "SF",
+      "points": 6.3,
+      "slot": "WR",
+      "started": true
+    },
+    {
+      "week": 13,
+      "team": "King of  December",
+      "player": "Austin Ekeler",
+      "player_nfl": "LAC",
+      "points": 8.2,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 13,
+      "team": "Emergency Room",
+      "player": "Christian McCaffrey",
+      "player_nfl": "SF",
+      "points": 20.6,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 13,
+      "team": "Only i can say The N word",
+      "player": "Joe Mixon",
+      "player_nfl": "CIN",
+      "points": 0.0,
+      "slot": "IR",
+      "started": false
+    },
+    {
+      "week": 13,
+      "team": "King of January",
+      "player": "Dalvin Cook",
+      "player_nfl": "MIN",
+      "points": 14.3,
+      "slot": "RB",
+      "started": true
+    },
+    {
+      "week": 13,
+      "team": "Pompano Beach Sniper Gang",
+      "player": "Derrick Henry",
+      "player_nfl": "TEN",
+      "points": 3.8,
+      "slot": "RB",
+      "started": true
+    }
+  ]
+}
