@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { buildPlayerIndex } from "../lib/playerName.js";
 import { loadCoreData, loadManifest } from "./loader.js";
 
 const DataContext = createContext(null);
@@ -46,6 +47,10 @@ export function DataProvider({ children }) {
     return { bySleeper, byUid };
   }, [core.players, core.playerIds]);
 
+  const playerIndex = useMemo(() => {
+    return buildPlayerIndex({ players: core.players, playerIds: core.playerIds });
+  }, [core.players, core.playerIds]);
+
   const value = useMemo(
     () => ({
       manifest,
@@ -53,10 +58,11 @@ export function DataProvider({ children }) {
       playerIds: core.playerIds,
       teams: core.teams,
       playerIdLookup,
+      playerIndex,
       loading,
       error,
     }),
-    [manifest, core, playerIdLookup, loading, error],
+    [manifest, core, playerIdLookup, playerIndex, loading, error],
   );
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

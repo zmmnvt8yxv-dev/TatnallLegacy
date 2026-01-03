@@ -7,6 +7,7 @@ import SearchBar from "../components/SearchBar.jsx";
 import StatCard from "../components/StatCard.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadAllTime, loadMetricsSummary, loadSeasonSummary, loadTransactions } from "../data/loader.js";
+import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 
 function getLatestSeason(manifest) {
@@ -16,7 +17,7 @@ function getLatestSeason(manifest) {
 }
 
 export default function SummaryPage() {
-  const { manifest, loading, error, playerIdLookup } = useDataContext();
+  const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
   const [seasonSummary, setSeasonSummary] = useState(null);
   const [allTime, setAllTime] = useState(null);
   const [transactions, setTransactions] = useState(null);
@@ -103,9 +104,9 @@ export default function SummaryPage() {
     const query = weeklySearch.toLowerCase().trim();
     return entries.filter((row) => {
       if (!query) return true;
-      return String(row.player_name || row.player_id).toLowerCase().includes(query);
+      return resolvePlayerName(row, playerIndex).toLowerCase().includes(query);
     });
-  }, [allTime, weeklySearch]);
+  }, [allTime, weeklySearch, playerIndex]);
 
   const careerLeaders = useMemo(() => {
     const entries = allTime?.careerLeaders || [];
@@ -113,9 +114,9 @@ export default function SummaryPage() {
     const query = playerSearch.toLowerCase().trim();
     return entries.filter((row) => {
       if (!query) return true;
-      return String(row.player_name || row.player_id).toLowerCase().includes(query);
+      return resolvePlayerName(row, playerIndex).toLowerCase().includes(query);
     });
-  }, [allTime, playerSearch]);
+  }, [allTime, playerSearch, playerIndex]);
 
   if (loading) return <LoadingState label="Loading league snapshot..." />;
   if (error) return <ErrorState message={error} />;
@@ -133,6 +134,8 @@ export default function SummaryPage() {
     if (!uid) return null;
     return playerIdLookup.byUid.get(uid);
   };
+
+  const getPlayerName = (row) => resolvePlayerName(row, playerIndex);
 
   return (
     <>
@@ -231,11 +234,12 @@ export default function SummaryPage() {
             <tbody>
               {topWeekly.map((row) => {
                 const player = playerFromSleeper(row.player_id);
+                const playerName = getPlayerName(row) || player?.full_name;
                 return (
                   <tr key={`${row.player_id}-${row.season}-${row.week}`}>
                     <td>
                       <Link to={`/players/${row.player_id}`}>
-                        {row.player_name || player?.full_name || row.player_id}
+                        {playerName}
                       </Link>
                     </td>
                     <td>{row.season}</td>
@@ -268,11 +272,12 @@ export default function SummaryPage() {
             <tbody>
               {careerLeaders.map((row) => {
                 const player = playerFromSleeper(row.player_id);
+                const playerName = getPlayerName(row) || player?.full_name;
                 return (
                   <tr key={row.player_id}>
                     <td>
                       <Link to={`/players/${row.player_id}`}>
-                        {row.player_name || player?.full_name || row.player_id}
+                        {playerName}
                       </Link>
                     </td>
                     <td>{row.seasons}</td>
@@ -302,7 +307,7 @@ export default function SummaryPage() {
                     <li
                       key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
                     >
-                      {row.player_name || row.display_name || row.player_id} — Week {row.week} {row.season} (
+                      {getPlayerName(row)} — Week {row.week} {row.season} (
                       {formatPoints(row.war_rep)}){" "}
                     </li>
                   ))}
@@ -319,7 +324,7 @@ export default function SummaryPage() {
                     <li
                       key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
                     >
-                      {row.player_name || row.display_name || row.player_id} — Week {row.week} {row.season} (
+                      {getPlayerName(row)} — Week {row.week} {row.season} (
                       {safeNumber(row.pos_week_z).toFixed(2)})
                     </li>
                   ))}
@@ -336,7 +341,7 @@ export default function SummaryPage() {
                     <li
                       key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}`}
                     >
-                      {row.player_name || row.display_name || row.player_id} — {row.season} (
+                      {getPlayerName(row)} — {row.season} (
                       {formatPoints(row.war_rep)})
                     </li>
                   ))}
