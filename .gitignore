@@ -23,6 +23,7 @@ pnpm-debug.log*
 # Generated data (DO NOT COMMIT)
 # -------------------------
 data_raw/
+data/espn-transactions-*.json
 ingest_cache/
 audit/
 *.parquet
