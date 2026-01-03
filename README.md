@@ -14,6 +14,7 @@
    npm run build:data
    ```
    This writes app-ready JSON to `public/data/` and updates `public/data/manifest.json`.
+   Rerun this after updating any `data_raw/` exports so the frontend has the latest datasets.
 
 ### Install dependencies
 ```bash

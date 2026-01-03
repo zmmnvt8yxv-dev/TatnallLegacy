@@ -1,5 +1,7 @@
 import { safeUrl } from "../lib/url.js";
 
+const IS_DEV = import.meta.env.DEV;
+
 const cache = new Map();
 
 function getCached(key) {
@@ -16,6 +18,41 @@ function resolvePath(template, params = {}) {
   return template.replace(/\{(\w+)\}/g, (_, key) => String(params[key] ?? ""));
 }
 
+function logDev(message, details) {
+  if (!IS_DEV) return;
+  if (details) {
+    console.info(message, details);
+    return;
+  }
+  console.info(message);
+}
+
+function logMissingKeys(context, payload, keys) {
+  if (!IS_DEV) return;
+  const missing = keys.filter((key) => payload?.[key] == null);
+  if (missing.length) {
+    console.warn("DATA_MISSING_KEYS", { context, missing });
+  }
+}
+
+function requireManifestPath(manifest, key) {
+  const path = manifest?.paths?.[key];
+  if (!path) {
+    logDev("DATA_MISSING_KEY", { context: "manifest.paths", key });
+    throw new Error(`Missing manifest path: ${key}`);
+  }
+  return path;
+}
+
+function optionalManifestPath(manifest, key) {
+  const path = manifest?.paths?.[key];
+  if (!path) {
+    logDev("DATA_MISSING_KEY", { context: "manifest.paths", key });
+    return null;
+  }
+  return path;
+}
+
 async function fetchJson(path, { optional = false } = {}) {
   const url = safeUrl(path);
   const response = await fetch(url, { cache: "no-store" });
@@ -25,7 +62,9 @@ async function fetchJson(path, { optional = false } = {}) {
     }
     throw new Error(`${response.status} ${response.statusText} (${url})`);
   }
-  return response.json();
+  const payload = await response.json();
+  logDev("DATA_FILE_OK", { url });
+  return payload;
 }
 
 export async function loadManifest() {
@@ -33,6 +72,11 @@ export async function loadManifest() {
     const cached = getCached("manifest");
     if (cached) return cached;
     const manifest = await fetchJson("data/manifest.json");
+    logMissingKeys("manifest", manifest, ["seasons", "weeksBySeason", "paths"]);
+    logDev("DATA_MANIFEST_OK", {
+      seasons: Array.isArray(manifest?.seasons) ? manifest.seasons.length : 0,
+      pathKeys: Object.keys(manifest?.paths || {}).length,
+    });
     return setCached("manifest", manifest);
   } catch (err) {
     console.error("DATA_LOAD_ERROR", { url: "data/manifest.json", err });
@@ -48,9 +92,9 @@ export async function loadCoreData() {
     const cached = getCached("core");
     if (cached) return cached;
     const manifest = await loadManifest();
-    playersPath = manifest?.paths?.players || "data/players.json";
-    playerIdsPath = manifest?.paths?.playerIds || "data/player_ids.json";
-    teamsPath = manifest?.paths?.teams || "data/teams.json";
+    playersPath = requireManifestPath(manifest, "players");
+    playerIdsPath = requireManifestPath(manifest, "playerIds");
+    teamsPath = requireManifestPath(manifest, "teams");
     const [players, playerIds, teams] = await Promise.all([
       fetchJson(playersPath),
       fetchJson(playerIdsPath),
@@ -77,7 +121,7 @@ export async function loadSeasonSummary(season) {
     const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
-    path = resolvePath(manifest?.paths?.seasonSummary, { season });
+    path = resolvePath(requireManifestPath(manifest, "seasonSummary"), { season });
     if (!path) return null;
     const payload = await fetchJson(path);
     return setCached(key, payload);
@@ -94,9 +138,22 @@ export async function loadWeekData(season, week) {
     const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
-    path = resolvePath(manifest?.paths?.weeklyChunk, { season, week });
+    path = resolvePath(requireManifestPath(manifest, "weeklyChunk"), { season, week });
     if (!path) return null;
     const payload = await fetchJson(path);
+    const matchups = Array.isArray(payload?.matchups) ? payload.matchups : null;
+    const lineups = Array.isArray(payload?.lineups) ? payload.lineups : null;
+    const rosterCount = lineups
+      ? new Set(lineups.map((row) => String(row?.team ?? ""))).size
+      : 0;
+    logMissingKeys(`weeklyChunk:${season}:${week}`, payload, ["matchups", "lineups"]);
+    logDev("DATA_WEEK_COUNTS", {
+      season,
+      week,
+      matchups: matchups ? matchups.length : 0,
+      lineups: lineups ? lineups.length : 0,
+      rosters: rosterCount,
+    });
     return setCached(key, payload);
   } catch (err) {
     console.error("DATA_LOAD_ERROR", { url: path || `weeklyChunk:${season}:${week}`, err });
@@ -111,7 +168,7 @@ export async function loadTransactions(season) {
     const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
-    path = resolvePath(manifest?.paths?.transactions, { season });
+    path = resolvePath(requireManifestPath(manifest, "transactions"), { season });
     if (!path) return null;
     const payload = await fetchJson(path);
     return setCached(key, payload);
@@ -127,12 +184,67 @@ export async function loadAllTime() {
     const cached = getCached("allTime");
     if (cached) return cached;
     const manifest = await loadManifest();
-    path = manifest?.paths?.allTime;
+    path = requireManifestPath(manifest, "allTime");
     if (!path) return null;
     const payload = await fetchJson(path);
     return setCached("allTime", payload);
   } catch (err) {
     console.error("DATA_LOAD_ERROR", { url: path || "allTime", err });
+    throw err;
+  }
+}
+
+export async function loadPlayerStatsWeekly(season) {
+  const key = `playerStatsWeekly:${season}`;
+  let path;
+  try {
+    const cached = getCached(key);
+    if (cached) return cached;
+    const manifest = await loadManifest();
+    const template = optionalManifestPath(manifest, "playerStatsWeekly");
+    path = template ? resolvePath(template, { season }) : null;
+    if (!path) return null;
+    const payload = await fetchJson(path, { optional: true });
+    if (!payload) return null;
+    return setCached(key, payload);
+  } catch (err) {
+    console.error("DATA_LOAD_ERROR", { url: path || `playerStatsWeekly:${season}`, err });
+    throw err;
+  }
+}
+
+export async function loadPlayerStatsSeason(season) {
+  const key = `playerStatsSeason:${season}`;
+  let path;
+  try {
+    const cached = getCached(key);
+    if (cached) return cached;
+    const manifest = await loadManifest();
+    const template = optionalManifestPath(manifest, "playerStatsSeason");
+    path = template ? resolvePath(template, { season }) : null;
+    if (!path) return null;
+    const payload = await fetchJson(path, { optional: true });
+    if (!payload) return null;
+    return setCached(key, payload);
+  } catch (err) {
+    console.error("DATA_LOAD_ERROR", { url: path || `playerStatsSeason:${season}`, err });
+    throw err;
+  }
+}
+
+export async function loadPlayerStatsCareer() {
+  let path;
+  try {
+    const cached = getCached("playerStatsCareer");
+    if (cached) return cached;
+    const manifest = await loadManifest();
+    path = optionalManifestPath(manifest, "playerStatsCareer");
+    if (!path) return null;
+    const payload = await fetchJson(path, { optional: true });
+    if (!payload) return null;
+    return setCached("playerStatsCareer", payload);
+  } catch (err) {
+    console.error("DATA_LOAD_ERROR", { url: path || "playerStatsCareer", err });
     throw err;
   }
 }
@@ -143,7 +255,8 @@ export async function loadMetricsSummary() {
     const cached = getCached("metricsSummary");
     if (cached) return cached;
     const manifest = await loadManifest();
-    path = manifest?.paths?.metricsSummary || "data/player_metrics/summary.json";
+    path = optionalManifestPath(manifest, "metricsSummary");
+    if (!path) return null;
     const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached("metricsSummary", payload);
@@ -160,9 +273,8 @@ export async function loadWeeklyMetrics(season) {
     const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
-    path =
-      resolvePath(manifest?.paths?.playerMetricsWeekly, { season }) ||
-      `data/player_metrics/weekly/${season}.json`;
+    const template = optionalManifestPath(manifest, "playerMetricsWeekly");
+    path = template ? resolvePath(template, { season }) : null;
     if (!path) return null;
     const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
@@ -180,9 +292,8 @@ export async function loadSeasonMetrics(season) {
     const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
-    path =
-      resolvePath(manifest?.paths?.playerMetricsSeason, { season }) ||
-      `data/player_metrics/season/${season}.json`;
+    const template = optionalManifestPath(manifest, "playerMetricsSeason");
+    path = template ? resolvePath(template, { season }) : null;
     if (!path) return null;
     const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
@@ -199,7 +310,8 @@ export async function loadCareerMetrics() {
     const cached = getCached("careerMetrics");
     if (cached) return cached;
     const manifest = await loadManifest();
-    path = manifest?.paths?.playerMetricsCareer || "data/player_metrics/career.json";
+    path = optionalManifestPath(manifest, "playerMetricsCareer");
+    if (!path) return null;
     const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached("careerMetrics", payload);
@@ -215,7 +327,8 @@ export async function loadBoomBustMetrics() {
     const cached = getCached("boomBustMetrics");
     if (cached) return cached;
     const manifest = await loadManifest();
-    path = manifest?.paths?.playerMetricsBoomBust || "data/player_metrics/boom_bust.json";
+    path = optionalManifestPath(manifest, "playerMetricsBoomBust");
+    if (!path) return null;
     const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached("boomBustMetrics", payload);

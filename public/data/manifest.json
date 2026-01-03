@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-01-03T17:11:03.441128+00:00",
+  "generatedAt": "2026-01-03T18:35:34.448153+00:00",
   "seasons": [
     2015,
     2016,
@@ -15,44 +15,6 @@
     2025
   ],
   "weeksBySeason": {
-    "2019": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16
-    ],
-    "2024": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18
-    ],
     "2022": [
       1,
       2,
@@ -91,7 +53,7 @@
       15,
       16
     ],
-    "2016": [
+    "2015": [
       1,
       2,
       3,
@@ -108,6 +70,64 @@
       14,
       15,
       16
+    ],
+    "2019": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "2023": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "2024": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
     ],
     "2025": [
       1,
@@ -149,6 +169,24 @@
       17,
       18
     ],
+    "2016": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
     "2017": [
       1,
       2,
@@ -186,44 +224,6 @@
       16,
       17,
       18
-    ],
-    "2015": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16
-    ],
-    "2023": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18
     ]
   },
   "paths": {
@@ -234,6 +234,9 @@
     "weeklyChunk": "data/weekly/{season}/week-{week}.json",
     "transactions": "data/transactions/{season}.json",
     "allTime": "data/all_time.json",
+    "playerStatsWeekly": "data/player_stats/weekly/{season}.json",
+    "playerStatsSeason": "data/player_stats/season/{season}.json",
+    "playerStatsCareer": "data/player_stats/career.json",
     "metricsSummary": "data/player_metrics/summary.json",
     "playerMetricsWeekly": "data/player_metrics/weekly/{season}.json",
     "playerMetricsSeason": "data/player_metrics/season/{season}.json",
@@ -242,14 +245,6 @@
   },
   "counts": {
     "seasonSummary": {
-      "2019": {
-        "matchups": 65,
-        "lineups": 0
-      },
-      "2024": {
-        "matchups": 73,
-        "lineups": 2938
-      },
       "2022": {
         "matchups": 73,
         "lineups": 144
@@ -258,9 +253,21 @@
         "matchups": 65,
         "lineups": 0
       },
-      "2016": {
+      "2015": {
         "matchups": 65,
         "lineups": 0
+      },
+      "2019": {
+        "matchups": 65,
+        "lineups": 0
+      },
+      "2023": {
+        "matchups": 73,
+        "lineups": 2921
+      },
+      "2024": {
+        "matchups": 73,
+        "lineups": 2938
       },
       "2025": {
         "matchups": 64,
@@ -270,6 +277,10 @@
         "matchups": 65,
         "lineups": 3000
       },
+      "2016": {
+        "matchups": 65,
+        "lineups": 0
+      },
       "2017": {
         "matchups": 65,
         "lineups": 0
@@ -277,17 +288,215 @@
       "2021": {
         "matchups": 73,
         "lineups": 2905
-      },
-      "2015": {
-        "matchups": 65,
-        "lineups": 0
-      },
-      "2023": {
-        "matchups": 73,
-        "lineups": 2921
       }
     },
     "weekly": {
+      "2022": {
+        "1": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "2": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "3": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "4": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "5": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "6": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "7": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "8": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "9": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "10": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "11": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "12": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "13": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "14": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "15": {
+          "matchups": 5,
+          "lineups": 8
+        },
+        "16": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "17": {
+          "matchups": 4,
+          "lineups": 8
+        },
+        "18": {
+          "matchups": 4,
+          "lineups": 8
+        }
+      },
+      "2018": {
+        "1": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "2": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "3": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "4": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "5": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "6": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "7": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "8": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "9": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "10": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "11": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "12": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "13": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "14": {
+          "matchups": 5,
+          "lineups": 0
+        },
+        "15": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "16": {
+          "matchups": 4,
+          "lineups": 0
+        }
+      },
+      "2015": {
+        "1": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "2": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "3": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "4": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "5": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "6": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "7": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "8": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "9": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "10": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "11": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "12": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "13": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "14": {
+          "matchups": 5,
+          "lineups": 0
+        },
+        "15": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "16": {
+          "matchups": 4,
+          "lineups": 0
+        }
+      },
       "2019": {
         "1": {
           "matchups": 4,
@@ -352,6 +561,80 @@
         "16": {
           "matchups": 4,
           "lineups": 0
+        }
+      },
+      "2023": {
+        "1": {
+          "matchups": 4,
+          "lineups": 159
+        },
+        "2": {
+          "matchups": 4,
+          "lineups": 160
+        },
+        "3": {
+          "matchups": 4,
+          "lineups": 161
+        },
+        "4": {
+          "matchups": 4,
+          "lineups": 158
+        },
+        "5": {
+          "matchups": 4,
+          "lineups": 162
+        },
+        "6": {
+          "matchups": 4,
+          "lineups": 163
+        },
+        "7": {
+          "matchups": 4,
+          "lineups": 165
+        },
+        "8": {
+          "matchups": 4,
+          "lineups": 162
+        },
+        "9": {
+          "matchups": 4,
+          "lineups": 163
+        },
+        "10": {
+          "matchups": 4,
+          "lineups": 164
+        },
+        "11": {
+          "matchups": 4,
+          "lineups": 162
+        },
+        "12": {
+          "matchups": 4,
+          "lineups": 163
+        },
+        "13": {
+          "matchups": 4,
+          "lineups": 165
+        },
+        "14": {
+          "matchups": 4,
+          "lineups": 163
+        },
+        "15": {
+          "matchups": 5,
+          "lineups": 164
+        },
+        "16": {
+          "matchups": 4,
+          "lineups": 163
+        },
+        "17": {
+          "matchups": 4,
+          "lineups": 162
+        },
+        "18": {
+          "matchups": 4,
+          "lineups": 162
         }
       },
       "2024": {
@@ -426,212 +709,6 @@
         "18": {
           "matchups": 4,
           "lineups": 165
-        }
-      },
-      "2022": {
-        "1": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "2": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "3": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "4": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "5": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "6": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "7": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "8": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "9": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "10": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "11": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "12": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "13": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "14": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "15": {
-          "matchups": 5,
-          "lineups": 8
-        },
-        "16": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "17": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "18": {
-          "matchups": 4,
-          "lineups": 8
-        }
-      },
-      "2018": {
-        "1": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "2": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "3": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "4": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "5": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "6": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "7": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "8": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "9": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "10": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "11": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "12": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "13": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "14": {
-          "matchups": 5,
-          "lineups": 0
-        },
-        "15": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "16": {
-          "matchups": 4,
-          "lineups": 0
-        }
-      },
-      "2016": {
-        "1": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "2": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "3": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "4": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "5": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "6": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "7": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "8": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "9": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "10": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "11": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "12": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "13": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "14": {
-          "matchups": 5,
-          "lineups": 0
-        },
-        "15": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "16": {
-          "matchups": 4,
-          "lineups": 0
         }
       },
       "2025": {
@@ -782,6 +859,72 @@
           "lineups": 165
         }
       },
+      "2016": {
+        "1": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "2": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "3": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "4": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "5": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "6": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "7": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "8": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "9": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "10": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "11": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "12": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "13": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "14": {
+          "matchups": 5,
+          "lineups": 0
+        },
+        "15": {
+          "matchups": 4,
+          "lineups": 0
+        },
+        "16": {
+          "matchups": 4,
+          "lineups": 0
+        }
+      },
       "2017": {
         "1": {
           "matchups": 4,
@@ -920,146 +1063,6 @@
         "18": {
           "matchups": 4,
           "lineups": 160
-        }
-      },
-      "2015": {
-        "1": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "2": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "3": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "4": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "5": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "6": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "7": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "8": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "9": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "10": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "11": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "12": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "13": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "14": {
-          "matchups": 5,
-          "lineups": 0
-        },
-        "15": {
-          "matchups": 4,
-          "lineups": 0
-        },
-        "16": {
-          "matchups": 4,
-          "lineups": 0
-        }
-      },
-      "2023": {
-        "1": {
-          "matchups": 4,
-          "lineups": 159
-        },
-        "2": {
-          "matchups": 4,
-          "lineups": 160
-        },
-        "3": {
-          "matchups": 4,
-          "lineups": 161
-        },
-        "4": {
-          "matchups": 4,
-          "lineups": 158
-        },
-        "5": {
-          "matchups": 4,
-          "lineups": 162
-        },
-        "6": {
-          "matchups": 4,
-          "lineups": 163
-        },
-        "7": {
-          "matchups": 4,
-          "lineups": 165
-        },
-        "8": {
-          "matchups": 4,
-          "lineups": 162
-        },
-        "9": {
-          "matchups": 4,
-          "lineups": 163
-        },
-        "10": {
-          "matchups": 4,
-          "lineups": 164
-        },
-        "11": {
-          "matchups": 4,
-          "lineups": 162
-        },
-        "12": {
-          "matchups": 4,
-          "lineups": 163
-        },
-        "13": {
-          "matchups": 4,
-          "lineups": 165
-        },
-        "14": {
-          "matchups": 4,
-          "lineups": 163
-        },
-        "15": {
-          "matchups": 5,
-          "lineups": 164
-        },
-        "16": {
-          "matchups": 4,
-          "lineups": 163
-        },
-        "17": {
-          "matchups": 4,
-          "lineups": 162
-        },
-        "18": {
-          "matchups": 4,
-          "lineups": 162
         }
       }
     }

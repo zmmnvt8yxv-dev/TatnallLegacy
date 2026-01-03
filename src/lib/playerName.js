@@ -29,6 +29,27 @@ function getIdEntries(row) {
   ];
 }
 
+function resolvePlayerFromIndex(playerIndex, candidates) {
+  if (!playerIndex) return null;
+  for (const { key, value } of candidates) {
+    if (!value) continue;
+    const lookup = playerIndex[key];
+    if (!lookup) continue;
+    const entry = lookup.get(String(value));
+    if (entry) return entry;
+  }
+  return null;
+}
+
+function getSleeperEntry(sleeperPlayers, playerId) {
+  if (!sleeperPlayers || !playerId) return null;
+  if (sleeperPlayers instanceof Map) return sleeperPlayers.get(String(playerId)) || null;
+  if (Array.isArray(sleeperPlayers)) {
+    return sleeperPlayers.find((entry) => String(entry?.player_id) === String(playerId)) || null;
+  }
+  return sleeperPlayers[String(playerId)] || null;
+}
+
 export function resolvePlayerName(row, playerIndex) {
   if (!row) return "(Unknown Player)";
   const directName = row.display_name || row.player_name || row.player;
@@ -45,6 +66,34 @@ export function resolvePlayerName(row, playerIndex) {
   }
   if (row.player_id) return "(Unknown Player)";
   return "(Unknown Player)";
+}
+
+export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayers } = {}) {
+  const effectiveRow = row || {};
+  const directName = effectiveRow.display_name || effectiveRow.player_name || effectiveRow.player;
+  const candidates = [
+    { key: "player_id", value: effectiveRow.player_id || playerId },
+    { key: "sleeper_id", value: effectiveRow.sleeper_id || playerId },
+    { key: "gsis_id", value: effectiveRow.gsis_id },
+    { key: "espn_id", value: effectiveRow.espn_id },
+  ];
+  const player = resolvePlayerFromIndex(playerIndex, candidates);
+  const sleeperEntry = getSleeperEntry(sleeperPlayers, effectiveRow.player_id || playerId);
+  const resolvedName = directName && !looksLikeId(directName) ? directName : resolveNameFromEntry(player);
+  const fallbackName = resolveNameFromEntry(sleeperEntry);
+  return {
+    name: resolvedName || fallbackName || "(Unknown Player)",
+    headshotUrl:
+      player?.headshot_url ||
+      player?.headshotUrl ||
+      player?.headshot ||
+      sleeperEntry?.headshot_url ||
+      sleeperEntry?.headshotUrl ||
+      sleeperEntry?.headshot ||
+      null,
+    position: player?.position || sleeperEntry?.position || effectiveRow.position || "—",
+    team: player?.nfl_team || sleeperEntry?.team || sleeperEntry?.nfl_team || effectiveRow.nfl_team || "—",
+  };
 }
 
 export function buildPlayerIndex({ players = [], playerIds = [] } = {}) {
