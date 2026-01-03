@@ -1,21 +1,38 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadSeasonSummary } from "../data/loader.js";
 import { formatPoints } from "../utils/format.js";
-import { resolveOwnerName } from "../utils/owners.js";
+import { normalizeOwnerName } from "../utils/owners.js";
 
 export default function StandingsPage() {
   const { manifest, loading, error } = useDataContext();
+  const [searchParams, setSearchParams] = useSearchParams();
   const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
   const [season, setSeason] = useState(seasons[0] || "");
   const [seasonSummary, setSeasonSummary] = useState(null);
   const [allSummaries, setAllSummaries] = useState([]);
 
   useEffect(() => {
-    if (!season && seasons.length) setSeason(seasons[0]);
-  }, [seasons, season]);
+    if (!seasons.length) return;
+    const param = Number(searchParams.get("season"));
+    if (Number.isFinite(param) && seasons.includes(param)) {
+      if (param !== season) setSeason(param);
+    } else if (!season) {
+      setSeason(seasons[0]);
+    }
+  }, [seasons, season, searchParams]);
+
+  useEffect(() => {
+    if (!season) return;
+    const seasonValue = String(season);
+    if ((searchParams.get("season") || "") === seasonValue) return;
+    const next = new URLSearchParams(searchParams);
+    next.set("season", seasonValue);
+    setSearchParams(next, { replace: true });
+  }, [season, searchParams, setSearchParams]);
 
   useEffect(() => {
     let active = true;
@@ -60,7 +77,7 @@ export default function StandingsPage() {
   if (error) return <ErrorState message={error} />;
 
   const standings = seasonSummary?.standings || [];
-  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
+  const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
 
   return (
     <>

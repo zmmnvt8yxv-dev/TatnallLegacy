@@ -27,6 +27,19 @@ def is_regular_season(week):
   return 1 <= week_num <= 18
 
 
+def looks_like_id(value):
+  if value is None:
+    return False
+  text = str(value).strip()
+  if not text:
+    return False
+  if text.isdigit():
+    return True
+  if text.startswith("00-") and text.replace("-", "").isdigit():
+    return True
+  return False
+
+
 def build_standings(matchups):
   standings = {}
   for matchup in matchups:
@@ -90,6 +103,96 @@ def build_transactions(seasons):
             "created": trade.get("created"),
           }
         )
+
+  for season in seasons:
+    season_path = DATA_DIR / f"{season}.json"
+    if not season_path.exists():
+      continue
+    payload = read_json(season_path)
+    teams = payload.get("teams", [])
+    roster_name_by_id = {}
+    for team in teams:
+      roster_id = team.get("roster_id") or team.get("team_id")
+      if roster_id is None:
+        continue
+      name = team.get("display_name") or team.get("team_name") or team.get("name")
+      if name:
+        roster_name_by_id[str(roster_id)] = name
+
+    for txn in payload.get("transactions", []) or []:
+      week = txn.get("week")
+      if not is_regular_season(week):
+        continue
+      roster_id = txn.get("roster_id") or txn.get("rosterId") or txn.get("team_id")
+      team_name = roster_name_by_id.get(str(roster_id)) if roster_id is not None else None
+      team_name = team_name or txn.get("team") or txn.get("owner") or "Unknown"
+      created = txn.get("created") or txn.get("created_at") or txn.get("status_updated")
+
+      def normalize_player_list(value):
+        if not value:
+          return []
+        if isinstance(value, dict):
+          return [str(item) for item in value.values()]
+        if isinstance(value, list):
+          return [str(item) for item in value]
+        return [str(value)]
+
+      def format_players(value):
+        players = []
+        for name in normalize_player_list(value):
+          if not name:
+            continue
+          if looks_like_id(name):
+            players.append("(Unknown Player)")
+          else:
+            players.append(name)
+        return ", ".join(players) if players else "(Unknown Player)"
+
+      txn_type = (txn.get("type") or txn.get("transaction_type") or "").lower()
+      adds = txn.get("adds") or txn.get("add")
+      drops = txn.get("drops") or txn.get("drop")
+      if txn_type == "trade":
+        summary = txn.get("summary") or "Trade completed."
+        transactions_by_season.setdefault(season, []).append(
+          {
+            "id": f"{txn.get('id')}-trade",
+            "season": season,
+            "week": week,
+            "type": "trade",
+            "team": team_name,
+            "summary": summary,
+            "created": created,
+          }
+        )
+        continue
+
+      if adds:
+        summary = f"Added: {format_players(adds)}"
+        transactions_by_season.setdefault(season, []).append(
+          {
+            "id": f"{txn.get('id')}-add",
+            "season": season,
+            "week": week,
+            "type": "add",
+            "team": team_name,
+            "summary": summary,
+            "created": created,
+          }
+        )
+      if drops:
+        summary = f"Dropped: {format_players(drops)}"
+        transactions_by_season.setdefault(season, []).append(
+          {
+            "id": f"{txn.get('id')}-drop",
+            "season": season,
+            "week": week,
+            "type": "drop",
+            "team": team_name,
+            "summary": summary,
+            "created": created,
+          }
+        )
+
   for season, entries in transactions_by_season.items():
     write_json(OUTPUT_DIR / "transactions" / f"{season}.json", {"season": season, "entries": entries})
 

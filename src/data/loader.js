@@ -171,6 +171,9 @@ export async function loadTransactions(season) {
     path = resolvePath(requireManifestPath(manifest, "transactions"), { season });
     if (!path) return null;
     const payload = await fetchJson(path);
+    if (payload && typeof payload === "object") {
+      payload.__meta = { path };
+    }
     return setCached(key, payload);
   } catch (err) {
     console.error("DATA_LOAD_ERROR", { url: path || `transactions:${season}`, err });

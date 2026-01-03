@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import Modal from "../components/Modal.jsx";
@@ -7,11 +7,12 @@ import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
 import { resolvePlayerDisplay } from "../lib/playerName.js";
 import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
-import { resolveOwnerName } from "../utils/owners.js";
+import { normalizeOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 
 export default function MatchupsPage() {
   const { manifest, loading, error, playerIndex, teams } = useDataContext();
+  const [searchParams, setSearchParams] = useSearchParams();
   const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("");
@@ -27,12 +28,40 @@ export default function MatchupsPage() {
   }, [manifest, season]);
 
   useEffect(() => {
-    if (!season && seasons.length) setSeason(seasons[0]);
-  }, [seasons, season]);
+    if (!seasons.length) return;
+    const param = Number(searchParams.get("season"));
+    if (Number.isFinite(param) && seasons.includes(param)) {
+      if (param !== season) setSeason(param);
+    } else if (!season) {
+      setSeason(seasons[0]);
+    }
+  }, [seasons, season, searchParams]);
 
   useEffect(() => {
-    if (!week && availableWeeks.length) setWeek(availableWeeks[0]);
-  }, [availableWeeks, week]);
+    if (!availableWeeks.length) return;
+    const param = Number(searchParams.get("week"));
+    if (Number.isFinite(param) && availableWeeks.includes(param)) {
+      if (param !== Number(week)) setWeek(param);
+      return;
+    }
+    if (!week || !availableWeeks.includes(Number(week))) {
+      setWeek(availableWeeks[0]);
+    }
+  }, [availableWeeks, week, searchParams]);
+
+  useEffect(() => {
+    if (!season) return;
+    const next = new URLSearchParams(searchParams);
+    const seasonValue = String(season);
+    const weekValue = week ? String(week) : "";
+    const currentSeason = searchParams.get("season") || "";
+    const currentWeek = searchParams.get("week") || "";
+    if (currentSeason === seasonValue && currentWeek === weekValue) return;
+    next.set("season", seasonValue);
+    if (weekValue) next.set("week", weekValue);
+    else next.delete("week");
+    setSearchParams(next, { replace: true });
+  }, [season, week, searchParams, setSearchParams]);
 
   useEffect(() => {
     let active = true;
@@ -130,7 +159,7 @@ export default function MatchupsPage() {
   if (loading) return <LoadingState label="Loading matchups..." />;
   if (error) return <ErrorState message={error} />;
 
-  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
+  const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
 
   const diagnostics = useMemo(() => {
     if (!isDev || !weekData) return null;

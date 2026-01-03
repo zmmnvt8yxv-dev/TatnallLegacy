@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
@@ -29,6 +29,7 @@ const THRESHOLDS = {
 
 export default function PlayerPage() {
   const { playerId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [seasonSummaries, setSeasonSummaries] = useState([]);
@@ -43,8 +44,33 @@ export default function PlayerPage() {
   const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
 
   useEffect(() => {
-    if (!selectedSeason && seasons.length) setSelectedSeason(seasons[0]);
-  }, [seasons, selectedSeason]);
+    if (!seasons.length) return;
+    const param = Number(searchParams.get("season"));
+    if (Number.isFinite(param) && seasons.includes(param)) {
+      if (param !== Number(selectedSeason)) setSelectedSeason(param);
+    } else if (!selectedSeason) {
+      setSelectedSeason(seasons[0]);
+    }
+  }, [seasons, selectedSeason, searchParams]);
+
+  useEffect(() => {
+    const param = searchParams.get("tab");
+    if (param && TABS.includes(param) && param !== activeTab) {
+      setActiveTab(param);
+    }
+  }, [searchParams, activeTab]);
+
+  useEffect(() => {
+    if (!selectedSeason) return;
+    const next = new URLSearchParams(searchParams);
+    const seasonValue = String(selectedSeason);
+    const currentSeason = searchParams.get("season") || "";
+    const currentTab = searchParams.get("tab") || "";
+    if (currentSeason === seasonValue && currentTab === activeTab) return;
+    next.set("season", seasonValue);
+    if (activeTab) next.set("tab", activeTab);
+    setSearchParams(next, { replace: true });
+  }, [selectedSeason, activeTab, searchParams, setSearchParams]);
 
   useEffect(() => {
     let active = true;

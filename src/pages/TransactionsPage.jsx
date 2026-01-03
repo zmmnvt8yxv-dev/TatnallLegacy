@@ -4,15 +4,19 @@ import LoadingState from "../components/LoadingState.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadTransactions } from "../data/loader.js";
 import { filterRegularSeasonWeeks } from "../utils/format.js";
-import { resolveOwnerName } from "../utils/owners.js";
+import { normalizeOwnerName } from "../utils/owners.js";
+import { useSearchParams } from "react-router-dom";
 
 export default function TransactionsPage() {
   const { manifest, loading, error } = useDataContext();
+  const [searchParams, setSearchParams] = useSearchParams();
   const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("all");
+  const [typeFilter, setTypeFilter] = useState("all");
   const [teamFilter, setTeamFilter] = useState("");
   const [transactions, setTransactions] = useState(null);
+  const isDev = import.meta.env.DEV;
 
   const availableWeeks = useMemo(() => {
     if (!season) return [];
@@ -21,8 +25,71 @@ export default function TransactionsPage() {
   }, [manifest, season]);
 
   useEffect(() => {
-    if (!season && seasons.length) setSeason(seasons[0]);
-  }, [seasons, season]);
+    if (!seasons.length) return;
+    const param = Number(searchParams.get("season"));
+    if (Number.isFinite(param) && seasons.includes(param)) {
+      if (param !== season) setSeason(param);
+    } else if (!season) {
+      setSeason(seasons[0]);
+    }
+  }, [seasons, season, searchParams]);
+
+  useEffect(() => {
+    const param = searchParams.get("week") || "all";
+    if (param === "all" || param === "") {
+      if (week !== "all") setWeek("all");
+      return;
+    }
+    const parsed = Number(param);
+    if (Number.isFinite(parsed) && parsed !== Number(week)) {
+      setWeek(parsed);
+    }
+  }, [searchParams, week]);
+
+  useEffect(() => {
+    const param = searchParams.get("type") || "all";
+    if (param !== typeFilter) setTypeFilter(param);
+  }, [searchParams, typeFilter]);
+
+  useEffect(() => {
+    const param = searchParams.get("team") || "";
+    if (param !== teamFilter) setTeamFilter(param);
+  }, [searchParams, teamFilter]);
+
+  useEffect(() => {
+    if (!availableWeeks.length) return;
+    if (week === "all") return;
+    const numericWeek = Number(week);
+    if (!Number.isFinite(numericWeek) || !availableWeeks.includes(numericWeek)) {
+      setWeek("all");
+    }
+  }, [availableWeeks, week]);
+
+  useEffect(() => {
+    if (!season) return;
+    const next = new URLSearchParams(searchParams);
+    const seasonValue = String(season);
+    const weekValue = week === "all" ? "all" : String(week);
+    const currentSeason = searchParams.get("season") || "";
+    const currentWeek = searchParams.get("week") || "all";
+    const currentType = searchParams.get("type") || "all";
+    const currentTeam = searchParams.get("team") || "";
+    if (
+      currentSeason === seasonValue &&
+      currentWeek === weekValue &&
+      currentType === typeFilter &&
+      currentTeam === teamFilter
+    ) {
+      return;
+    }
+    next.set("season", seasonValue);
+    next.set("week", weekValue);
+    if (typeFilter && typeFilter !== "all") next.set("type", typeFilter);
+    else next.delete("type");
+    if (teamFilter) next.set("team", teamFilter);
+    else next.delete("team");
+    setSearchParams(next, { replace: true });
+  }, [season, week, typeFilter, teamFilter, searchParams, setSearchParams]);
 
   useEffect(() => {
     let active = true;
@@ -38,16 +105,19 @@ export default function TransactionsPage() {
   const entries = useMemo(() => {
     const list = transactions?.entries || [];
     return list.filter((entry) => {
+      const entryWeek = Number(entry.week);
+      if (Number.isFinite(entryWeek) && (entryWeek < 1 || entryWeek > 18)) return false;
       if (week !== "all" && Number(entry.week) !== Number(week)) return false;
-      if (teamFilter && String(entry.team) !== String(teamFilter)) return false;
+      if (typeFilter !== "all" && entry.type !== typeFilter) return false;
+      if (teamFilter && normalizeOwnerName(entry.team) !== teamFilter) return false;
       return true;
     });
-  }, [transactions, week, teamFilter]);
+  }, [transactions, week, typeFilter, teamFilter]);
 
   const totalsByTeam = useMemo(() => {
     const totals = new Map();
     for (const entry of transactions?.entries || []) {
-      const team = entry?.team || "Unknown";
+      const team = normalizeOwnerName(entry?.team) || "Unknown";
       const cur = totals.get(team) || { team, adds: 0, drops: 0, trades: 0 };
       if (entry?.type === "trade") cur.trades += 1;
       if (entry?.type === "add") cur.adds += 1;
@@ -68,7 +138,50 @@ export default function TransactionsPage() {
   if (loading) return <LoadingState label="Loading transactions..." />;
   if (error) return <ErrorState message={error} />;
 
-  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
+  const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+
+  const teamOptions = useMemo(() => {
+    const set = new Set();
+    for (const entry of transactions?.entries || []) {
+      const label = normalizeOwnerName(entry?.team);
+      if (label) set.add(label);
+    }
+    return Array.from(set).sort();
+  }, [transactions]);
+
+  const filteredCounts = useMemo(() => {
+    const counts = { add: 0, drop: 0, trade: 0 };
+    for (const entry of entries) {
+      if (entry?.type === "add") counts.add += 1;
+      if (entry?.type === "drop") counts.drop += 1;
+      if (entry?.type === "trade") counts.trade += 1;
+    }
+    return counts;
+  }, [entries]);
+
+  const diagnostics = useMemo(() => {
+    if (!isDev || !transactions?.entries) return null;
+    const rows = transactions.entries;
+    const byType = { add: [], drop: [], trade: [] };
+    for (const row of rows) {
+      if (row?.type === "add") byType.add.push(row);
+      if (row?.type === "drop") byType.drop.push(row);
+      if (row?.type === "trade") byType.trade.push(row);
+    }
+    return {
+      source: transactions?.__meta?.path || "unknown",
+      counts: {
+        add: byType.add.length,
+        drop: byType.drop.length,
+        trade: byType.trade.length,
+      },
+      samples: {
+        add: byType.add.slice(0, 3),
+        drop: byType.drop.slice(0, 3),
+        trade: byType.trade.slice(0, 3),
+      },
+    };
+  }, [isDev, transactions]);
 
   return (
     <>
@@ -99,13 +212,67 @@ export default function TransactionsPage() {
             ))}
           </select>
         </div>
+        <div>
+          <label>Type</label>
+          <select value={typeFilter} onChange={(event) => setTypeFilter(event.target.value)}>
+            <option value="all">All types</option>
+            <option value="trade">Trade</option>
+            <option value="add">Add</option>
+            <option value="drop">Drop</option>
+          </select>
+        </div>
+        <div>
+          <label>Team</label>
+          <select value={teamFilter} onChange={(event) => setTeamFilter(event.target.value)}>
+            <option value="">All teams</option>
+            {teamOptions.map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="tag">Entries: {entries.length}</div>
-        {teamFilter ? (
-          <button type="button" className="tag" onClick={() => setTeamFilter("")}>
-            Clear team filter
+        <div className="tag">
+          Trades: {filteredCounts.trade} · Adds: {filteredCounts.add} · Drops: {filteredCounts.drop}
+        </div>
+        {teamFilter || typeFilter !== "all" || week !== "all" ? (
+          <button
+            type="button"
+            className="tag"
+            onClick={() => {
+              setTeamFilter("");
+              setTypeFilter("all");
+              setWeek("all");
+            }}
+          >
+            Clear filters
           </button>
         ) : null}
       </section>
+
+      {diagnostics ? (
+        <section className="section-card">
+          <h2 className="section-title">Diagnostics (DEV)</h2>
+          <div className="flex-row">
+            <div className="tag">Source: {diagnostics.source}</div>
+            <div className="tag">
+              Adds: {diagnostics.counts.add} · Drops: {diagnostics.counts.drop} · Trades: {diagnostics.counts.trade}
+            </div>
+          </div>
+          <pre className="code-block">
+            {JSON.stringify(
+              {
+                add: diagnostics.samples.add,
+                drop: diagnostics.samples.drop,
+                trade: diagnostics.samples.trade,
+              },
+              null,
+              2,
+            )}
+          </pre>
+        </section>
+      ) : null}
 
       <section className="section-card">
         <h2 className="section-title">Recent Transactions</h2>
@@ -124,7 +291,11 @@ export default function TransactionsPage() {
                 <tr key={entry.id}>
                   <td>{entry.week ?? "—"}</td>
                   <td>
-                    <button type="button" className="tag" onClick={() => setTeamFilter(entry.team)}>
+                    <button
+                      type="button"
+                      className="tag"
+                      onClick={() => setTeamFilter(normalizeOwnerName(entry.team))}
+                    >
                       {ownerLabel(entry.team, entry.team || "Unknown")}
                     </button>
                   </td>

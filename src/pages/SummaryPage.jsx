@@ -9,7 +9,7 @@ import { useDataContext } from "../data/DataContext.jsx";
 import { loadAllTime, loadMetricsSummary, loadSeasonSummary, loadTransactions } from "../data/loader.js";
 import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
-import { resolveOwnerName } from "../utils/owners.js";
+import { normalizeOwnerName } from "../utils/owners.js";
 
 function getLatestSeason(manifest) {
   const seasons = (manifest?.seasons || []).map(Number).filter(Number.isFinite);
@@ -122,7 +122,7 @@ export default function SummaryPage() {
   if (loading) return <LoadingState label="Loading league snapshot..." />;
   if (error) return <ErrorState message={error} />;
 
-  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
+  const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
   const statusLabel = inSeason ? "In Season" : `Offseason (last season: ${latestSeason ?? "—"})`;
   const championLabel = champion
     ? `${ownerLabel(champion.team, champion.team)} (${champion.wins}-${champion.losses})`

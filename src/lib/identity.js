@@ -37,7 +37,8 @@ export const OWNER_ALIASES = {
   "bhanrahan7": "Brendan Hanrahan",
 };
 
-const PUNCTUATION_REGEX = /[.,'\"]/g;
+const PUNCTUATION_REGEX = /[.,'"]/g;
+const UNDERSCORE_REGEX = /[_]+/g;
 const WHITESPACE_REGEX = /\s+/g;
 
 function titleCase(input) {
@@ -60,24 +61,35 @@ export function normalizeKey(value) {
     if (!raw) return "";
     const ascii = raw.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     const collapsed = ascii.replace(WHITESPACE_REGEX, " ").trim();
-    if (collapsed.includes("@")) {
-      return collapsed.toLowerCase();
-    }
-    const stripped = collapsed.replace(PUNCTUATION_REGEX, " ").replace(WHITESPACE_REGEX, " ").trim();
+    const noEmail = collapsed.includes("@") ? collapsed.split("@")[0] : collapsed;
+    const stripped = noEmail
+      .replace(UNDERSCORE_REGEX, " ")
+      .replace(PUNCTUATION_REGEX, " ")
+      .replace(WHITESPACE_REGEX, " ")
+      .trim();
     return stripped.toLowerCase();
   } catch {
     return "";
   }
 }
 
-export function resolveOwnerName(input) {
+export function normalizeOwnerName(input) {
   try {
-    if (!input) return "";
-    const key = normalizeKey(input);
-    return OWNER_ALIASES[key] || titleCase(String(input));
+    if (input === null || input === undefined) return "";
+    const raw =
+      typeof input === "string"
+        ? input
+        : input?.name || input?.nickname || input?.display_name || input?.team_name || input?.owner || "";
+    if (!raw) return "";
+    const key = normalizeKey(raw);
+    return OWNER_ALIASES[key] || titleCase(String(raw));
   } catch {
     return "";
   }
+}
+
+export function resolveOwnerName(input) {
+  return normalizeOwnerName(input);
 }
 
 export function resolveOwnerFromRoster(roster, usersById) {
@@ -96,7 +108,7 @@ export function resolveOwnerFromRoster(roster, usersById) {
       const id = String(candidate);
       const user = usersById?.get ? usersById.get(id) : usersById?.[id];
       const raw = user?.display_name || user?.username || user?.name || user?.email || candidate;
-      const resolved = resolveOwnerName(raw);
+      const resolved = normalizeOwnerName(raw);
       if (resolved) return resolved;
     }
     return "";

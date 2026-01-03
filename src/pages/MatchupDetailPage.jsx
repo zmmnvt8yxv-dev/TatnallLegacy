@@ -7,7 +7,7 @@ import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
 import { resolvePlayerDisplay } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
-import { resolveOwnerName } from "../utils/owners.js";
+import { normalizeOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 
 export default function MatchupDetailPage() {
@@ -117,7 +117,7 @@ export default function MatchupDetailPage() {
 
   const homeRoster = buildRoster(getLineupTeamKeys(matchup.home_team, matchup.home_roster_id));
   const awayRoster = buildRoster(getLineupTeamKeys(matchup.away_team, matchup.away_roster_id));
-  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
+  const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
 
   return (
     <>
