@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 OUTPUT_DIR = ROOT / "public" / "data"
+PLAYER_DATA_DIR = ROOT / "public" / "data"
 
 
 def read_json(path: Path):
@@ -78,7 +79,31 @@ def build_standings(matchups):
   return sorted(standings.values(), key=lambda row: (-row["wins"], row["losses"]))
 
 
+def build_player_name_lookup():
+  players_path = PLAYER_DATA_DIR / "players.json"
+  player_ids_path = PLAYER_DATA_DIR / "player_ids.json"
+  if not players_path.exists() or not player_ids_path.exists():
+    return {}
+  players = read_json(players_path)
+  player_ids = read_json(player_ids_path)
+  by_uid = {}
+  for player in players:
+    if player.get("player_uid"):
+      by_uid[str(player["player_uid"])] = player
+  sleeper_to_uid = {}
+  for entry in player_ids:
+    if entry.get("id_type") == "sleeper" and entry.get("id_value") and entry.get("player_uid"):
+      sleeper_to_uid[str(entry["id_value"])] = str(entry["player_uid"])
+  sleeper_to_name = {}
+  for sleeper_id, uid in sleeper_to_uid.items():
+    player = by_uid.get(uid)
+    if player and player.get("full_name"):
+      sleeper_to_name[sleeper_id] = player["full_name"]
+  return sleeper_to_name
+
+
 def build_transactions(seasons):
+  player_name_lookup = build_player_name_lookup()
   transactions_by_season = {season: [] for season in seasons}
   for trades_path in DATA_DIR.glob("trades-*.json"):
     season_str = trades_path.stem.replace("trades-", "")
@@ -192,6 +217,78 @@ def build_transactions(seasons):
             "created": created,
           }
         )
+
+    sleeper_txn_path = DATA_DIR / f"transactions-{season}.json"
+    if sleeper_txn_path.exists():
+      sleeper_payload = read_json(sleeper_txn_path)
+      for txn in sleeper_payload.get("transactions", []) or []:
+        week = txn.get("week")
+        if not is_regular_season(week):
+          continue
+        roster_ids = txn.get("roster_ids") or []
+        adds = txn.get("adds") or {}
+        drops = txn.get("drops") or {}
+        txn_id = txn.get("transaction_id") or txn.get("id") or f"{season}-{week}"
+        created = txn.get("created") or txn.get("created_at")
+        txn_type = (txn.get("type") or "").lower()
+
+        def resolve_player_name(player_id):
+          if not player_id:
+            return "(Unknown Player)"
+          if looks_like_id(player_id):
+            return player_name_lookup.get(str(player_id)) or "(Unknown Player)"
+          return str(player_id)
+
+        def format_player_ids(ids):
+          names = [resolve_player_name(pid) for pid in ids]
+          return ", ".join([name for name in names if name]) if names else "(Unknown Player)"
+
+        if txn_type == "trade":
+          for roster_id in roster_ids:
+            team_name = roster_name_by_id.get(str(roster_id), f"Roster {roster_id}")
+            received = [pid for pid, rid in adds.items() if str(rid) == str(roster_id)]
+            sent = [pid for pid, rid in drops.items() if str(rid) == str(roster_id)]
+            summary = f"Received: {format_player_ids(received)} | Sent: {format_player_ids(sent)}"
+            transactions_by_season.setdefault(season, []).append(
+              {
+                "id": f"{txn_id}-trade-{roster_id}",
+                "season": season,
+                "week": week,
+                "type": "trade",
+                "team": team_name,
+                "summary": summary,
+                "created": created,
+              }
+            )
+        else:
+          for player_id, roster_id in adds.items():
+            team_name = roster_name_by_id.get(str(roster_id), f"Roster {roster_id}")
+            summary = f"Added: {resolve_player_name(player_id)}"
+            transactions_by_season.setdefault(season, []).append(
+              {
+                "id": f"{txn_id}-add-{roster_id}-{player_id}",
+                "season": season,
+                "week": week,
+                "type": "add",
+                "team": team_name,
+                "summary": summary,
+                "created": created,
+              }
+            )
+          for player_id, roster_id in drops.items():
+            team_name = roster_name_by_id.get(str(roster_id), f"Roster {roster_id}")
+            summary = f"Dropped: {resolve_player_name(player_id)}"
+            transactions_by_season.setdefault(season, []).append(
+              {
+                "id": f"{txn_id}-drop-{roster_id}-{player_id}",
+                "season": season,
+                "week": week,
+                "type": "drop",
+                "team": team_name,
+                "summary": summary,
+                "created": created,
+              }
+            )
 
   for season, entries in transactions_by_season.items():
     write_json(OUTPUT_DIR / "transactions" / f"{season}.json", {"season": season, "entries": entries})
