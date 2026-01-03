@@ -57,6 +57,11 @@ def main():
       "weeklyChunk": "data/weekly/{season}/week-{week}.json",
       "transactions": "data/transactions/{season}.json",
       "allTime": "data/all_time.json",
+      "metricsSummary": "data/player_metrics/summary.json",
+      "playerMetricsWeekly": "data/player_metrics/weekly/{season}.json",
+      "playerMetricsSeason": "data/player_metrics/season/{season}.json",
+      "playerMetricsCareer": "data/player_metrics/career.json",
+      "playerMetricsBoomBust": "data/player_metrics/boom_bust.json",
     },
     "counts": counts,
   }

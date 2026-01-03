@@ -22,8 +22,12 @@ pnpm-debug.log*
 # -------------------------
 # Generated data (DO NOT COMMIT)
 # -------------------------
-data_raw/**/*.parquet
-data_raw/**/*.csv
+data_raw/
+ingest_cache/
+audit/
+*.parquet
+*.csv
+*.bak
 
 # -------------------------
 # Python / virtual env

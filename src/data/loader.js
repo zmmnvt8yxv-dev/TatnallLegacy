@@ -16,10 +16,13 @@ function resolvePath(template, params = {}) {
   return template.replace(/\{(\w+)\}/g, (_, key) => String(params[key] ?? ""));
 }
 
-async function fetchJson(path) {
+async function fetchJson(path, { optional = false } = {}) {
   const url = new URL(path.replace(/^\//, ""), new URL(BASE_URL, window.location.href));
   const response = await fetch(url.toString(), { cache: "no-store" });
   if (!response.ok) {
+    if (optional && response.status === 404) {
+      return null;
+    }
     throw new Error(`${response.status} ${response.statusText} (${url.pathname})`);
   }
   return response.json();
@@ -88,4 +91,62 @@ export async function loadAllTime() {
   if (!path) return null;
   const payload = await fetchJson(path);
   return setCached("allTime", payload);
+}
+
+export async function loadMetricsSummary() {
+  const cached = getCached("metricsSummary");
+  if (cached) return cached;
+  const manifest = await loadManifest();
+  const path = manifest?.paths?.metricsSummary || "data/player_metrics/summary.json";
+  const payload = await fetchJson(path, { optional: true });
+  if (!payload) return null;
+  return setCached("metricsSummary", payload);
+}
+
+export async function loadWeeklyMetrics(season) {
+  const key = `weeklyMetrics:${season}`;
+  const cached = getCached(key);
+  if (cached) return cached;
+  const manifest = await loadManifest();
+  const path =
+    resolvePath(manifest?.paths?.playerMetricsWeekly, { season }) ||
+    `data/player_metrics/weekly/${season}.json`;
+  if (!path) return null;
+  const payload = await fetchJson(path, { optional: true });
+  if (!payload) return null;
+  return setCached(key, payload);
+}
+
+export async function loadSeasonMetrics(season) {
+  const key = `seasonMetrics:${season}`;
+  const cached = getCached(key);
+  if (cached) return cached;
+  const manifest = await loadManifest();
+  const path =
+    resolvePath(manifest?.paths?.playerMetricsSeason, { season }) ||
+    `data/player_metrics/season/${season}.json`;
+  if (!path) return null;
+  const payload = await fetchJson(path, { optional: true });
+  if (!payload) return null;
+  return setCached(key, payload);
+}
+
+export async function loadCareerMetrics() {
+  const cached = getCached("careerMetrics");
+  if (cached) return cached;
+  const manifest = await loadManifest();
+  const path = manifest?.paths?.playerMetricsCareer || "data/player_metrics/career.json";
+  const payload = await fetchJson(path, { optional: true });
+  if (!payload) return null;
+  return setCached("careerMetrics", payload);
+}
+
+export async function loadBoomBustMetrics() {
+  const cached = getCached("boomBustMetrics");
+  if (cached) return cached;
+  const manifest = await loadManifest();
+  const path = manifest?.paths?.playerMetricsBoomBust || "data/player_metrics/boom_bust.json";
+  const payload = await fetchJson(path, { optional: true });
+  if (!payload) return null;
+  return setCached("boomBustMetrics", payload);
 }
