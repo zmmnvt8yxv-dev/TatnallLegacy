@@ -1,0 +1,286 @@
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT / "data_raw" / "master"
+OUTPUT_DIR = ROOT / "public" / "data" / "player_stats"
+PLAYER_IDS_PATH = ROOT / "public" / "data" / "player_ids.json"
+
+
+def read_json(path: Path):
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def write_json(path: Path, payload):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2)
+
+
+def find_source(basenames: list[str]) -> Path | None:
+    for base in basenames:
+        for ext in (".csv", ".parquet"):
+            path = DATA_DIR / f"{base}{ext}"
+            if path.exists():
+                return path
+    return None
+
+
+def read_table(path: Path) -> pd.DataFrame:
+    if path.suffix == ".parquet":
+        return pd.read_parquet(path)
+    return pd.read_csv(path)
+
+
+def pick_first_column(df: pd.DataFrame, options: list[str]) -> str | None:
+    for name in options:
+        if name in df.columns:
+            return name
+    return None
+
+
+def filter_regular_season(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    df["week"] = pd.to_numeric(df.get("week"), errors="coerce")
+    df["season"] = pd.to_numeric(df.get("season"), errors="coerce")
+    df = df[df["week"].between(1, 18)]
+    if "season_type" in df.columns:
+        season_type = df["season_type"].astype(str).str.upper()
+        df = df[season_type.isin({"REG", "REGULAR", "REGULAR_SEASON"}) | season_type.str.contains("REG")]
+    return df.dropna(subset=["season", "week"])
+
+
+def filter_regular_season_rows(df: pd.DataFrame) -> pd.DataFrame:
+    if "season_type" not in df.columns:
+        return df
+    season_type = df["season_type"].astype(str).str.upper()
+    return df[season_type.isin({"REG", "REGULAR", "REGULAR_SEASON"}) | season_type.str.contains("REG")]
+
+
+def build_id_maps():
+    if not PLAYER_IDS_PATH.exists():
+        return {}
+    payload = read_json(PLAYER_IDS_PATH)
+    by_uid: dict[str, dict[str, str]] = {}
+    for entry in payload:
+        uid = entry.get("player_uid")
+        id_type = entry.get("id_type")
+        id_value = entry.get("id_value")
+        if not uid or not id_type or not id_value:
+            continue
+        by_uid.setdefault(uid, {})[id_type] = str(id_value)
+    gsis_to_sleeper = {}
+    for uid, ids in by_uid.items():
+        gsis = ids.get("gsis")
+        sleeper = ids.get("sleeper")
+        if gsis and sleeper:
+            gsis_to_sleeper[gsis] = sleeper
+    return {
+        "gsis_to_sleeper": gsis_to_sleeper,
+    }
+
+
+def attach_ids(df: pd.DataFrame, id_maps: dict) -> pd.DataFrame:
+    df = df.copy()
+    if "gsis_id" not in df.columns and "player_id" in df.columns:
+        df["gsis_id"] = df["player_id"]
+    if "gsis_id" not in df.columns:
+        df["gsis_id"] = None
+    gsis_to_sleeper = id_maps.get("gsis_to_sleeper", {})
+    if "sleeper_id" in df.columns:
+        df["sleeper_id"] = df["sleeper_id"].where(df["sleeper_id"].notna(), df["gsis_id"].map(gsis_to_sleeper))
+    else:
+        df["sleeper_id"] = df["gsis_id"].map(gsis_to_sleeper)
+    df["player_id"] = df["sleeper_id"].where(df["sleeper_id"].notna(), df["gsis_id"])
+    for col in ("sleeper_id", "gsis_id", "player_id"):
+        if col in df.columns:
+            df[col] = df[col].apply(normalize_id_value)
+    return df
+
+
+def normalize_id_value(value):
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return None
+    if isinstance(value, float) and value.is_integer():
+        return str(int(value))
+    return str(value)
+
+
+def build_weekly(weekly: pd.DataFrame):
+    weekly = filter_regular_season(weekly)
+    name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"]) or "display_name"
+    position_col = pick_first_column(weekly, ["position", "position_group"]) or "position"
+    team_col = pick_first_column(weekly, ["team", "recent_team", "nfl_team"]) or "team"
+    points_col = pick_first_column(
+        weekly,
+        [
+            "fantasy_points_custom_week_with_bonus",
+            "fantasy_points_custom_week",
+            "fantasy_points_custom",
+            "fantasy_points",
+        ],
+    )
+    war_col = pick_first_column(weekly, ["war_rep_week_all", "war_rep_week_starters", "war_rep"]) or "war_rep"
+    delta_col = pick_first_column(
+        weekly, ["delta_to_next_week_all", "delta_to_next_week_starters", "delta_to_next"]
+    ) or "delta_to_next"
+
+    weekly["display_name"] = weekly[name_col].fillna("Unknown")
+    weekly["position"] = weekly[position_col].astype(str).str.upper()
+    weekly["team"] = weekly.get(team_col).fillna("—")
+    weekly["points"] = pd.to_numeric(weekly[points_col], errors="coerce").fillna(0.0) if points_col else 0.0
+    weekly["war_rep"] = pd.to_numeric(weekly.get(war_col), errors="coerce")
+    weekly["delta_to_next"] = pd.to_numeric(weekly.get(delta_col), errors="coerce")
+
+    fields = [
+        "season",
+        "week",
+        "display_name",
+        "position",
+        "team",
+        "points",
+        "war_rep",
+        "delta_to_next",
+        "pos_week_z",
+        "sleeper_id",
+        "gsis_id",
+        "player_id",
+    ]
+    fields = [field for field in fields if field in weekly.columns]
+
+    seasons = sorted(weekly["season"].dropna().unique().astype(int).tolist())
+    for season in seasons:
+        season_rows = weekly[weekly["season"] == season].copy()
+        season_rows = season_rows.sort_values(["week", "points"], ascending=[True, False])
+        write_json(
+            OUTPUT_DIR / "weekly" / f"{season}.json",
+            {"season": int(season), "rows": season_rows[fields].to_dict(orient="records")},
+        )
+    return seasons
+
+
+def build_season(season_df: pd.DataFrame):
+    season_df = season_df.copy()
+    season_df["season"] = pd.to_numeric(season_df.get("season"), errors="coerce")
+    season_df = season_df.dropna(subset=["season"])
+    season_df = filter_regular_season_rows(season_df)
+
+    fields = [
+        "season",
+        "display_name",
+        "position",
+        "team",
+        "games",
+        "fantasy_points_custom",
+        "fantasy_points_custom_pg",
+        "war_rep",
+        "war_rep_pg",
+        "delta_to_next",
+        "delta_to_next_pg",
+        "sleeper_id",
+        "gsis_id",
+        "player_id",
+    ]
+    fields = [field for field in fields if field in season_df.columns]
+    seasons = sorted(season_df["season"].dropna().unique().astype(int).tolist())
+    for season in seasons:
+        rows = season_df[season_df["season"] == season].copy()
+        write_json(
+            OUTPUT_DIR / "season" / f"{season}.json",
+            {"season": int(season), "rows": rows[fields].to_dict(orient="records")},
+        )
+
+
+def build_career(career_df: pd.DataFrame):
+    fields = [
+        "display_name",
+        "position",
+        "games",
+        "seasons",
+        "fantasy_points_custom",
+        "fantasy_points_custom_pg",
+        "war_rep",
+        "war_rep_pg",
+        "delta_to_next",
+        "delta_to_next_pg",
+        "sleeper_id",
+        "gsis_id",
+        "player_id",
+    ]
+    fields = [field for field in fields if field in career_df.columns]
+    write_json(OUTPUT_DIR / "career.json", {"rows": career_df[fields].to_dict(orient="records")})
+
+
+def main() -> None:
+    weekly_source = find_source(["player_week_fantasy_2015_2025_with_war"])
+    season_source = find_source(["player_season_fantasy_2015_2025_with_war"])
+    career_source = find_source(["player_career_fantasy_2015_2025_with_war"])
+
+    if not weekly_source:
+        print("No weekly fantasy WAR source found in data_raw/master. Skipping player stats export.")
+        return
+
+    weekly = read_table(weekly_source)
+    id_maps = build_id_maps()
+    weekly = attach_ids(weekly, id_maps)
+    seasons = build_weekly(weekly)
+
+    if season_source:
+        season_df = read_table(season_source)
+    else:
+        season_df = weekly.groupby(["player_id", "season"], as_index=False).agg(
+            display_name=("display_name", "first"),
+            position=("position", "first"),
+            team=("team", "first"),
+            games=("week", "nunique"),
+            fantasy_points_custom=("points", "sum"),
+            fantasy_points_custom_pg=("points", "mean"),
+            war_rep=("war_rep", "sum"),
+            war_rep_pg=("war_rep", "mean"),
+            delta_to_next=("delta_to_next", "sum"),
+            delta_to_next_pg=("delta_to_next", "mean"),
+            sleeper_id=("sleeper_id", "first"),
+            gsis_id=("gsis_id", "first"),
+        )
+    season_df = attach_ids(season_df, id_maps)
+    build_season(season_df)
+
+    if career_source:
+        career_df = read_table(career_source)
+    else:
+        career_df = season_df.groupby("player_id", as_index=False).agg(
+            display_name=("display_name", "first"),
+            position=("position", "first"),
+            games=("games", "sum"),
+            seasons=("season", "nunique"),
+            fantasy_points_custom=("fantasy_points_custom", "sum"),
+            fantasy_points_custom_pg=("fantasy_points_custom", "mean"),
+            war_rep=("war_rep", "sum"),
+            war_rep_pg=("war_rep", "mean"),
+            delta_to_next=("delta_to_next", "sum"),
+            delta_to_next_pg=("delta_to_next", "mean"),
+            sleeper_id=("sleeper_id", "first"),
+            gsis_id=("gsis_id", "first"),
+        )
+    career_df = attach_ids(career_df, id_maps)
+    build_career(career_df)
+
+    summary = {"generatedAt": datetime.now(timezone.utc).isoformat(), "seasons": seasons}
+    write_json(OUTPUT_DIR / "summary.json", summary)
+
+    print("=== PLAYER STATS EXPORTED ===")
+    print("Weekly source:", weekly_source)
+    if season_source:
+        print("Season source:", season_source)
+    if career_source:
+        print("Career source:", career_source)
+
+
+if __name__ == "__main__":
+    main()

@@ -6,11 +6,11 @@ import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import {
   loadBoomBustMetrics,
-  loadCareerMetrics,
-  loadSeasonMetrics,
+  loadPlayerStatsCareer,
+  loadPlayerStatsSeason,
+  loadPlayerStatsWeekly,
   loadSeasonSummary,
   loadWeekData,
-  loadWeeklyMetrics,
 } from "../data/loader.js";
 import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
@@ -32,11 +32,11 @@ export default function PlayerPage() {
   const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [seasonSummaries, setSeasonSummaries] = useState([]);
-  const [metricsSeasonSummaries, setMetricsSeasonSummaries] = useState([]);
+  const [statsSeasonSummaries, setStatsSeasonSummaries] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState("");
   const [weeklyRows, setWeeklyRows] = useState([]);
-  const [metricsWeeklyRows, setMetricsWeeklyRows] = useState([]);
-  const [careerMetrics, setCareerMetrics] = useState([]);
+  const [statsWeeklyRows, setStatsWeeklyRows] = useState([]);
+  const [careerStats, setCareerStats] = useState([]);
   const [boomBustMetrics, setBoomBustMetrics] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -60,8 +60,8 @@ export default function PlayerPage() {
   useEffect(() => {
     let active = true;
     if (!seasons.length) return undefined;
-    Promise.all(seasons.map((season) => loadSeasonMetrics(season))).then((payloads) => {
-      if (active) setMetricsSeasonSummaries(payloads.filter(Boolean));
+    Promise.all(seasons.map((season) => loadPlayerStatsSeason(season))).then((payloads) => {
+      if (active) setStatsSeasonSummaries(payloads.filter(Boolean));
     });
     return () => {
       active = false;
@@ -70,9 +70,9 @@ export default function PlayerPage() {
 
   useEffect(() => {
     let active = true;
-    loadCareerMetrics().then((payload) => {
-      if (active && payload?.rows) setCareerMetrics(payload.rows);
-      if (active && Array.isArray(payload)) setCareerMetrics(payload);
+    loadPlayerStatsCareer().then((payload) => {
+      if (active && payload?.rows) setCareerStats(payload.rows);
+      if (active && Array.isArray(payload)) setCareerStats(payload);
     });
     loadBoomBustMetrics().then((payload) => {
       if (active && payload?.rows) setBoomBustMetrics(payload.rows);
@@ -108,10 +108,10 @@ export default function PlayerPage() {
   useEffect(() => {
     let active = true;
     if (!selectedSeason) return undefined;
-    loadWeeklyMetrics(selectedSeason).then((payload) => {
+    loadPlayerStatsWeekly(selectedSeason).then((payload) => {
       if (!active) return;
       const rows = payload?.rows || payload || [];
-      setMetricsWeeklyRows(rows);
+      setStatsWeeklyRows(rows);
     });
     return () => {
       active = false;
@@ -130,8 +130,8 @@ export default function PlayerPage() {
 
   const seasonStats = useMemo(() => {
     const stats = [];
-    const hasMetrics = metricsSeasonSummaries.length > 0;
-    const summaries = hasMetrics ? metricsSeasonSummaries : seasonSummaries;
+    const hasStats = statsSeasonSummaries.length > 0;
+    const summaries = hasStats ? statsSeasonSummaries : seasonSummaries;
     for (const summary of summaries) {
       const rows = summary?.rows || summary?.playerSeasonTotals || [];
       const row = rows.find((item) => {
@@ -149,11 +149,11 @@ export default function PlayerPage() {
       }
     }
     return stats.sort((a, b) => b.season - a.season);
-  }, [metricsSeasonSummaries, seasonSummaries, playerId]);
+  }, [statsSeasonSummaries, seasonSummaries, playerId]);
 
   const careerTotals = useMemo(() => {
-    if (careerMetrics.length) {
-      const row = careerMetrics.find((item) => {
+    if (careerStats.length) {
+      const row = careerStats.find((item) => {
         const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id].map((value) => String(value || ""));
         return ids.includes(String(playerId));
       });
@@ -178,7 +178,7 @@ export default function PlayerPage() {
       },
       { points: 0, games: 0, seasons: 0, war: 0, delta: 0 },
     );
-  }, [seasonStats, careerMetrics, playerId]);
+  }, [seasonStats, careerStats, playerId]);
 
   const matchesPlayer = (row) => {
     const targetId = String(playerId);
@@ -191,13 +191,13 @@ export default function PlayerPage() {
   };
 
   const normalizedMetrics = useMemo(() => {
-    if (!metricsWeeklyRows.length) return [];
-    const hasWar = metricsWeeklyRows.some((row) => row.war_rep != null);
-    const hasDelta = metricsWeeklyRows.some((row) => row.delta_to_next != null);
-    if (hasWar && hasDelta) return metricsWeeklyRows;
+    if (!statsWeeklyRows.length) return [];
+    const hasWar = statsWeeklyRows.some((row) => row.war_rep != null);
+    const hasDelta = statsWeeklyRows.some((row) => row.delta_to_next != null);
+    if (hasWar && hasDelta) return statsWeeklyRows;
     const cutoffs = { QB: 16, RB: 24, WR: 24, TE: 16, K: 8, DEF: 8 };
     const grouped = new Map();
-    const rows = metricsWeeklyRows.map((row) => ({
+    const rows = statsWeeklyRows.map((row) => ({
       ...row,
       points: safeNumber(row.points ?? row.fantasy_points_custom_week ?? row.fantasy_points_custom),
       position: String(row.position || "").toUpperCase(),
@@ -220,7 +220,7 @@ export default function PlayerPage() {
       });
     }
     return rows;
-  }, [metricsWeeklyRows]);
+  }, [statsWeeklyRows]);
 
   const metricsForPlayer = useMemo(() => {
     return normalizedMetrics.filter(matchesPlayer);
@@ -294,7 +294,7 @@ export default function PlayerPage() {
     return { top: boomBust.topWeeks || [], bottom: boomBust.bottomWeeks || [] };
   }, [boomBust]);
 
-  if (loading && !seasonSummaries.length && !metricsSeasonSummaries.length)
+  if (loading && !seasonSummaries.length && !statsSeasonSummaries.length)
     return <LoadingState label="Loading player profile..." />;
   if (error) return <ErrorState message={error} />;
 

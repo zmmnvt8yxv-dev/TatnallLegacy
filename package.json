@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:data": "python scripts/build_site_weekly_chunks.py && python scripts/build_public_player_metrics.py && python scripts/build_site_data_manifest.py",
+    "build:data": "python scripts/build_site_weekly_chunks.py && python scripts/build_public_player_stats.py && python scripts/build_public_player_metrics.py && python scripts/build_site_data_manifest.py",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --strictPort --port 4173 --host"
