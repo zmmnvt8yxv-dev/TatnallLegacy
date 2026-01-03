@@ -1,3 +1,5 @@
+import { resolveOwnerName } from "./src/lib/identity.js";
+
 // ==============================
 // Tatnall Legacy — app.js (unified safe schema, fixed)
 // ==============================
@@ -138,20 +140,6 @@ function labelOfPlayer(pid, players){
   return nm + suffix;
 }
 
-// ---------- Owner normalization ----------
-function titleCaseName(s) {
-  const lowerParticles = new Set(["de", "del", "da", "di", "van", "von", "la", "le"]);
-  return String(s || "")
-    .trim()
-    .split(/\s+/)
-    .map((w, i) => {
-      const wl = w.toLowerCase();
-      if (i > 0 && lowerParticles.has(wl)) return wl;
-      return wl.charAt(0).toUpperCase() + wl.slice(1);
-    })
-    .join(" ");
-}
-
 // ---------- Sleeper Live Scoreboard ----------
 const SLEEPER_LEAGUE_ID = "1262418074540195841";   // ← put your real league ID here
 const LIVE_POLL_MS = 20000;
@@ -282,25 +270,7 @@ function renderSleeperLiveOnce(wrap, { week, users, rosters, matchups }){
 }
 
 // ---------- all-years / members / draft (unchanged from your version) ----------
-const OWNER_ALIASES = {
-  "carl marvin": "Carl Marvin","cmarvin713": "Carl Marvin","sdmarvin713": "Carl Marvin","stephen marvin": "Carl Marvin",
-  "conner malley": "Conner Malley","conner27lax": "Conner Malley","connerandfinn": "Conner Malley",
-  "jared duncan": "Jared Duncan","jawnwick13": "Jared Duncan","jdunca5228572": "Jared Duncan",
-  "jeff crossland": "Jeff Crossland","jeffrey crossland": "Jeff Crossland","jefe6700": "Jeff Crossland","junktion": "Jeff Crossland",
-  "john downs": "John Downs","john downs123": "John Downs","downsliquidity": "John Downs",
-  "roy lee": "Roy Lee","roylee6": "Roy Lee","espn92085473": "Roy Lee",
-  "edward saad": "Edward Saad","edward3864": "Edward Saad","phillyphilly709": "Edward Saad",
-  "jalen del rosario": "Jalen Del Rosario","jalendelrosario": "Jalen Del Rosario","jalendelrosario@comcast.net": "Jalen Del Rosario",
-  "jack sheehy": "Jackie Sheehy","jksheehy": "Jackie Sheehy",
-  "samuel kirby": "Samuel Kirby","lbmbets": "Samuel Kirby",
-  "max hardin": "Max Hardin","mhardi5674696": "Max Hardin",
-  "matt maloy": "Matt Maloy","mattmaloy99": "Matt Maloy",
-  "brendan hanrahan": "Brendan Hanrahan","bhanrahan7": "Brendan Hanrahan"
-};
-function canonicalOwner(raw){ if (raw===null||raw===undefined) return ""; if (typeof raw!=="string"){const guess=raw.name||raw.nickname||raw.display_name||raw.team_name||raw.owner||""; if (typeof guess!=="string") return ""; raw=guess;}
-  let n=raw.trim(); if(!n) return ""; if(n.includes("@")) n=n.split("@")[0]; n=n.replace(/[._]+/g," ").replace(/\s+/g," ").trim();
-  const key=n.toLowerCase(); if (OWNER_ALIASES[key]) return OWNER_ALIASES[key]; if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n); return n;}
-function collectOwners(seasons){ const owners=new Set(); for(const s of seasons||[]){ for(const t of s.teams||[]){ const raw=(t.owner??t.team_name??""); const canon=canonicalOwner(raw); if(canon) owners.add(canon);} }
+function collectOwners(seasons){ const owners=new Set(); for(const s of seasons||[]){ for(const t of s.teams||[]){ const raw=(t.owner??t.display_name??t.username??t.team_name??""); const canon=resolveOwnerName(raw); if(canon) owners.add(canon);} }
   return [...owners].sort((a,b)=>a.localeCompare(b,undefined,{sensitivity:"base"})); }
 
 let ALL_SEASONS = null;
@@ -326,8 +296,8 @@ function is2025FutureZeroZero(season, m){
 }
 function aggregateMember(owner, seasons){
   let wins=0, losses=0, ties=0, games=0; let most=-Infinity, least=Infinity; let champs=0;
-  for(const s of seasons){ const ownerByTeam=new Map(); (s.teams||[]).forEach(t=>{ const raw=(t.owner??t.team_name??""); ownerByTeam.set(t.team_name, canonicalOwner(raw)); });
-    const champTeam=(s.teams||[]).find(t=>t.final_rank===1); if (champTeam){ const raw=(champTeam.owner??champTeam.team_name??""); if (canonicalOwner(raw)===owner) champs++; }
+  for(const s of seasons){ const ownerByTeam=new Map(); (s.teams||[]).forEach(t=>{ const raw=(t.owner??t.display_name??t.username??t.team_name??""); ownerByTeam.set(t.team_name, resolveOwnerName(raw)); });
+    const champTeam=(s.teams||[]).find(t=>t.final_rank===1); if (champTeam){ const raw=(champTeam.owner??champTeam.display_name??champTeam.username??champTeam.team_name??""); if (resolveOwnerName(raw)===owner) champs++; }
     for(const m of (s.matchups||[])){ if(is2025FutureZeroZero(s,m)) continue; const hPts=Number(m.home_score||0), aPts=Number(m.away_score||0);
       if(m.home_team && ownerByTeam.get(m.home_team)===owner){ games++; if(hPts>aPts) wins++; else if(hPts<aPts) losses++; else ties++; if(hPts>most) most=hPts; if(hPts<least) least=hPts; }
       if(m.away_team && ownerByTeam.get(m.away_team)===owner){ games++; if(aPts>hPts) wins++; else if(aPts<hPts) losses++; else ties++; if(aPts>most) most=aPts; if(aPts<least) least=aPts; } } }
@@ -486,7 +456,7 @@ function renderTeams(teams){
     const record = parseRecord(t.record);
     return {
       team_name: t.team_name || "—",
-      owner: canonicalOwner(t.owner ?? t.team_name ?? ""),
+      owner: resolveOwnerName(t.owner ?? t.display_name ?? t.username ?? t.team_name ?? ""),
       wins: record.wins,
       losses: record.losses,
       ties: record.ties,
@@ -710,8 +680,8 @@ function renderDraft(draft){
 function teamOwnerMap(season){
   const m = new Map();
   (season.teams||[]).forEach(t=>{
-    const raw = (t.owner ?? t.team_name ?? "");
-    m.set(t.team_name, canonicalOwner(raw));
+    const raw = (t.owner ?? t.display_name ?? t.username ?? t.team_name ?? "");
+    m.set(t.team_name, resolveOwnerName(raw));
   });
   return m;
 }
@@ -799,7 +769,7 @@ function computePlayerStartStats(seasons){
     const teams = s.teams || [];
     const lineups = s.lineups || [];
     const ownerByTeam = new Map();
-    for (const t of teams){ const rawOwner = (t.owner ?? t.team_name ?? ""); ownerByTeam.set(t.team_name, canonicalOwner(rawOwner)); }
+    for (const t of teams){ const rawOwner = (t.owner ?? t.display_name ?? t.username ?? t.team_name ?? ""); ownerByTeam.set(t.team_name, resolveOwnerName(rawOwner)); }
     for (const r of lineups){
       if (!r || !r.started) continue;
       const player = String(r.player || "").trim(); if (!player) continue;
