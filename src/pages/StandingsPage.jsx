@@ -4,6 +4,7 @@ import LoadingState from "../components/LoadingState.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadSeasonSummary } from "../data/loader.js";
 import { formatPoints } from "../utils/format.js";
+import { resolveOwnerName } from "../utils/owners.js";
 
 export default function StandingsPage() {
   const { manifest, loading, error } = useDataContext();
@@ -59,6 +60,7 @@ export default function StandingsPage() {
   if (error) return <ErrorState message={error} />;
 
   const standings = seasonSummary?.standings || [];
+  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
 
   return (
     <>
@@ -98,7 +100,7 @@ export default function StandingsPage() {
             <tbody>
               {standings.map((row) => (
                 <tr key={row.team}>
-                  <td>{row.team}</td>
+                  <td>{ownerLabel(row.team, row.team)}</td>
                   <td>{row.wins}</td>
                   <td>{row.losses}</td>
                   <td>{row.ties}</td>
@@ -130,7 +132,7 @@ export default function StandingsPage() {
             <tbody>
               {allTime.map((row) => (
                 <tr key={row.team}>
-                  <td>{row.team}</td>
+                  <td>{ownerLabel(row.team, row.team)}</td>
                   <td>{row.wins}</td>
                   <td>{row.losses}</td>
                   <td>{row.ties}</td>

@@ -191,10 +191,7 @@ function buildSleeperNameMaps(users, rosters){
   const userById = new Map(users.map(u => [u.user_id, u]));
   const rosterById = new Map(rosters.map(r => [r.roster_id, r]));
   function teamLabelFromRoster(roster){
-    if (!roster) return "Unknown";
-    const u = userById.get(roster.owner_id) || {};
-    const nick = (u.metadata && (u.metadata.team_name || u.metadata.nickname)) || u.display_name;
-    return nick || `Team ${roster.roster_id}`;
+    return resolveOwnerFromRoster(roster, userById);
   }
   return { userById, rosterById, teamLabelFromRoster };
 }
@@ -297,9 +294,16 @@ const OWNER_ALIASES = {
   "matt maloy": "Matt Maloy","mattmaloy99": "Matt Maloy",
   "brendan hanrahan": "Brendan Hanrahan","bhanrahan7": "Brendan Hanrahan"
 };
-function canonicalOwner(raw){ if (raw===null||raw===undefined) return ""; if (typeof raw!=="string"){const guess=raw.name||raw.nickname||raw.display_name||raw.team_name||raw.owner||""; if (typeof guess!=="string") return ""; raw=guess;}
+function resolveOwnerName(raw){ if (raw===null||raw===undefined) return ""; if (typeof raw!=="string"){const guess=raw.name||raw.nickname||raw.display_name||raw.team_name||raw.owner||""; if (typeof guess!=="string") return ""; raw=guess;}
   let n=raw.trim(); if(!n) return ""; if(n.includes("@")) n=n.split("@")[0]; n=n.replace(/[._]+/g," ").replace(/\s+/g," ").trim();
   const key=n.toLowerCase(); if (OWNER_ALIASES[key]) return OWNER_ALIASES[key]; if (/^[a-zA-Z][a-zA-Z\s.'-]*$/.test(n)) return titleCaseName(n); return n;}
+const canonicalOwner = resolveOwnerName;
+function resolveOwnerFromRoster(roster, userById){
+  if (!roster) return "Unknown";
+  const u = userById?.get ? userById.get(roster.owner_id) : null;
+  const raw = (u?.metadata?.team_name || u?.metadata?.nickname || u?.display_name || roster.display_name || roster.username || roster.team_name || roster.owner_id || roster.user_id || `Roster ${roster.roster_id}`);
+  return resolveOwnerName(raw);
+}
 function collectOwners(seasons){ const owners=new Set(); for(const s of seasons||[]){ for(const t of s.teams||[]){ const raw=(t.owner??t.team_name??""); const canon=canonicalOwner(raw); if(canon) owners.add(canon);} }
   return [...owners].sort((a,b)=>a.localeCompare(b,undefined,{sensitivity:"base"})); }
 
@@ -942,12 +946,7 @@ async function renderLiveMatchupDetail(mid){
       return;
     }
 
-    const rosterLabel = (roster) => {
-      if (!roster) return "—";
-      const u = userById.get(roster.owner_id);
-      const custom = (u?.metadata?.team_name || u?.metadata?.nickname);
-      return custom || u?.display_name || `Roster ${roster.roster_id}`;
-    };
+    const rosterLabel = (roster) => resolveOwnerFromRoster(roster, userById) || "—";
 
     const A = pair[0]; const B = pair[1] || null;
     const rosterA = rosterById.get(A.roster_id);

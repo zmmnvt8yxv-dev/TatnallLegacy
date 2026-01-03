@@ -6,6 +6,7 @@ import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
+import { resolveOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 
 export default function MatchupDetailPage() {
@@ -85,12 +86,14 @@ export default function MatchupDetailPage() {
 
   const homeRoster = buildRoster(matchup.home_team);
   const awayRoster = buildRoster(matchup.away_team);
+  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
 
   return (
     <>
       <section>
         <h1 className="page-title">
-          Week {week} Matchup: {matchup.home_team} vs {matchup.away_team}
+          Week {week} Matchup: {ownerLabel(matchup.home_team, matchup.home_team)} vs{" "}
+          {ownerLabel(matchup.away_team, matchup.away_team)}
         </h1>
         <p className="page-subtitle">
           Matchup ID {matchupId} · {season} season
@@ -105,7 +108,7 @@ export default function MatchupDetailPage() {
         {[{ label: matchup.home_team, roster: homeRoster }, { label: matchup.away_team, roster: awayRoster }].map(
           ({ label, roster }) => (
             <div key={label} className="section-card">
-              <h2 className="section-title">{label}</h2>
+              <h2 className="section-title">{ownerLabel(label, label)}</h2>
               <div className="flex-row">
                 <div className="tag">Team total: {formatPoints(roster.totals.points)}</div>
                 <div className="tag">Starters tracked: {roster.totals.starters}</div>

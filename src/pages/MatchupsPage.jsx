@@ -6,6 +6,7 @@ import Modal from "../components/Modal.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
 import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
+import { resolveOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 
 export default function MatchupsPage() {
@@ -88,6 +89,8 @@ export default function MatchupsPage() {
   if (loading) return <LoadingState label="Loading matchups..." />;
   if (error) return <ErrorState message={error} />;
 
+  const ownerLabel = (value, fallback = "—") => resolveOwnerName(value) || fallback;
+
   return (
     <>
       <section>
@@ -124,15 +127,17 @@ export default function MatchupsPage() {
           {matchups.map((matchup) => {
             const homeWin = matchup.home_score > matchup.away_score;
             const awayWin = matchup.away_score > matchup.home_score;
+            const homeLabel = ownerLabel(matchup.home_team, matchup.home_team || "Home");
+            const awayLabel = ownerLabel(matchup.away_team, matchup.away_team || "Away");
             return (
               <div key={matchup.matchup_id} className="matchup-card">
                 <div className="matchup-row">
-                  <strong>{matchup.home_team || "Home"}</strong>
+                  <strong>{homeLabel}</strong>
                   <span className="pill">{homeWin ? "Winner" : awayWin ? "—" : "Tie"}</span>
                   <span>{formatPoints(matchup.home_score)}</span>
                 </div>
                 <div className="matchup-row">
-                  <strong>{matchup.away_team || "Away"}</strong>
+                  <strong>{awayLabel}</strong>
                   <span className="pill">{awayWin ? "Winner" : homeWin ? "—" : "Tie"}</span>
                   <span>{formatPoints(matchup.away_score)}</span>
                 </div>
@@ -156,61 +161,65 @@ export default function MatchupsPage() {
         isOpen={Boolean(activeMatchup)}
         title={
           activeMatchup
-            ? `Week ${week} · ${activeMatchup.home_team} vs ${activeMatchup.away_team}`
+            ? `Week ${week} · ${ownerLabel(activeMatchup.home_team, activeMatchup.home_team)} vs ${ownerLabel(
+                activeMatchup.away_team,
+                activeMatchup.away_team,
+              )}`
             : "Matchup"
         }
         onClose={() => setActiveMatchup(null)}
       >
         {activeMatchup && activeRoster ? (
           <div className="detail-grid">
-            {[{ label: activeMatchup.home_team, roster: activeRoster.home }, { label: activeMatchup.away_team, roster: activeRoster.away }].map(
-              ({ label, roster }) => (
-                <div key={label} className="section-card">
-                  <h3 className="section-title">{label}</h3>
-                  <div className="flex-row">
-                    <div className="tag">Team total: {formatPoints(roster.totals.points)}</div>
-                    <div className="tag">Starters tracked: {roster.totals.starters}</div>
-                  </div>
-                  <div className="flex-row">
-                    {Object.entries(roster.positionalTotals)
-                      .sort(([a], [b]) => positionSort(a, b))
-                      .map(([position, total]) => (
-                        <div key={position} className="tag">
-                          {position}: {formatPoints(total)}
-                        </div>
-                      ))}
-                  </div>
-                  {roster.rows.length ? (
-                    <table className="table">
-                      <thead>
-                        <tr>
-                          <th>Player</th>
-                          <th>Pos</th>
-                          <th>Starter</th>
-                          <th>Points</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {roster.rows.map((row, idx) => (
-                          <tr key={`${row.player_id}-${idx}`}>
-                            <td>
-                              <button type="button" className="link-button" onClick={() => setActivePlayer(row.player_id)}>
-                                {row.displayName}
-                              </button>
-                            </td>
-                            <td>{row.position}</td>
-                            <td>{row.started ? "Yes" : "No"}</td>
-                            <td>{formatPoints(row.points)}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  ) : (
-                    <div>No roster data available for this team.</div>
-                  )}
+            {[
+              { label: activeMatchup.home_team, roster: activeRoster.home },
+              { label: activeMatchup.away_team, roster: activeRoster.away },
+            ].map(({ label, roster }) => (
+              <div key={label} className="section-card">
+                <h3 className="section-title">{ownerLabel(label, label)}</h3>
+                <div className="flex-row">
+                  <div className="tag">Team total: {formatPoints(roster.totals.points)}</div>
+                  <div className="tag">Starters tracked: {roster.totals.starters}</div>
                 </div>
-              ),
-            )}
+                <div className="flex-row">
+                  {Object.entries(roster.positionalTotals)
+                    .sort(([a], [b]) => positionSort(a, b))
+                    .map(([position, total]) => (
+                      <div key={position} className="tag">
+                        {position}: {formatPoints(total)}
+                      </div>
+                    ))}
+                </div>
+                {roster.rows.length ? (
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>Player</th>
+                        <th>Pos</th>
+                        <th>Starter</th>
+                        <th>Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {roster.rows.map((row, idx) => (
+                        <tr key={`${row.player_id}-${idx}`}>
+                          <td>
+                            <button type="button" className="link-button" onClick={() => setActivePlayer(row.player_id)}>
+                              {row.displayName}
+                            </button>
+                          </td>
+                          <td>{row.position}</td>
+                          <td>{row.started ? "Yes" : "No"}</td>
+                          <td>{formatPoints(row.points)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                ) : (
+                  <div>No roster data available for this team.</div>
+                )}
+              </div>
+            ))}
           </div>
         ) : (
           <div>No matchup details available.</div>
