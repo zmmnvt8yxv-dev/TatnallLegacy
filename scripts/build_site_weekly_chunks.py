@@ -104,6 +104,7 @@ def build_player_name_lookup():
 
 def build_transactions(seasons):
   player_name_lookup = build_player_name_lookup()
+  sources_by_season = {season: [] for season in seasons}
   transactions_by_season = {season: [] for season in seasons}
   for trades_path in DATA_DIR.glob("trades-*.json"):
     season_str = trades_path.stem.replace("trades-", "")
@@ -111,6 +112,7 @@ def build_transactions(seasons):
       season = int(season_str)
     except ValueError:
       continue
+    sources_by_season.setdefault(season, []).append(trades_path.name)
     payload = read_json(trades_path)
     for trade in payload.get("trades", []):
       for party in trade.get("parties", []):
@@ -220,6 +222,7 @@ def build_transactions(seasons):
 
     sleeper_txn_path = DATA_DIR / f"transactions-{season}.json"
     if sleeper_txn_path.exists():
+      sources_by_season.setdefault(season, []).append(sleeper_txn_path.name)
       sleeper_payload = read_json(sleeper_txn_path)
       for txn in sleeper_payload.get("transactions", []) or []:
         week = txn.get("week")
@@ -290,8 +293,125 @@ def build_transactions(seasons):
               }
             )
 
+    espn_txn_path = DATA_DIR / f"espn-transactions-{season}.json"
+    espn_raw_path = ROOT / "data_raw" / "espn_transactions" / f"transactions_{season}.json"
+    espn_payload = None
+    if espn_raw_path.exists():
+      sources_by_season.setdefault(season, []).append(f"data_raw/espn_transactions/{espn_raw_path.name}")
+      espn_payload = read_json(espn_raw_path)
+    elif espn_txn_path.exists():
+      sources_by_season.setdefault(season, []).append(espn_txn_path.name)
+      espn_payload = read_json(espn_txn_path)
+
+    if espn_payload:
+      teams = espn_payload.get("teams", [])
+      members = espn_payload.get("members", [])
+      member_by_id = {member.get("id"): member for member in members if member.get("id")}
+      espn_team_name_by_id = {}
+      for team in teams:
+        team_id = team.get("id")
+        if team_id is None:
+          continue
+        name = team.get("name")
+        if not name:
+          location = team.get("location") or ""
+          nickname = team.get("nickname") or ""
+          name = f"{location} {nickname}".strip()
+        if not name:
+          owners = team.get("owners") or []
+          if owners:
+            owner = member_by_id.get(owners[0], {})
+            name = owner.get("displayName") or owner.get("firstName")
+        if not name:
+          name = f"Team {team_id}"
+        espn_team_name_by_id[str(team_id)] = name
+
+      def espn_player_name(item):
+        player = item.get("playerPoolEntry", {}).get("player", {}) if item else {}
+        name = player.get("fullName") or player.get("displayName")
+        if name:
+          return name
+        player_id = item.get("playerId") if item else None
+        if not player_id:
+          return "(Unknown Player)"
+        if looks_like_id(player_id):
+          return "(Unknown Player)"
+        return str(player_id)
+
+      for txn in espn_payload.get("transactions", []) or []:
+        week = txn.get("scoringPeriodId") or txn.get("matchupPeriodId") or txn.get("week")
+        if not is_regular_season(week):
+          continue
+        txn_type = str(txn.get("type") or "").upper()
+        txn_id = txn.get("id") or f"espn-{season}-{week}"
+        items = txn.get("items") or []
+
+        if txn_type == "TRADE":
+          adds_by_team = {}
+          drops_by_team = {}
+          for item in items:
+            item_type = str(item.get("type") or "").upper()
+            to_team = item.get("toTeamId")
+            from_team = item.get("fromTeamId")
+            name = espn_player_name(item)
+            if to_team is not None:
+              adds_by_team.setdefault(str(to_team), []).append(name)
+            if from_team is not None:
+              drops_by_team.setdefault(str(from_team), []).append(name)
+          team_ids = set(adds_by_team.keys()) | set(drops_by_team.keys())
+          for team_id in team_ids:
+            received = ", ".join(adds_by_team.get(team_id, [])) or "None"
+            sent = ", ".join(drops_by_team.get(team_id, [])) or "None"
+            transactions_by_season.setdefault(season, []).append(
+              {
+                "id": f"{txn_id}-trade-{team_id}",
+                "season": season,
+                "week": week,
+                "type": "trade",
+                "team": espn_team_name_by_id.get(team_id, f"Team {team_id}"),
+                "summary": f"Received: {received} | Sent: {sent}",
+                "created": txn.get("proposedDate"),
+              }
+            )
+          continue
+
+        for item in items:
+          item_type = str(item.get("type") or "").upper()
+          team_id = item.get("teamId") or item.get("toTeamId") or item.get("fromTeamId")
+          if team_id is None:
+            continue
+          team_name = espn_team_name_by_id.get(str(team_id), f"Team {team_id}")
+          if item_type == "ADD":
+            transactions_by_season.setdefault(season, []).append(
+              {
+                "id": f"{txn_id}-add-{team_id}-{item.get('playerId')}",
+                "season": season,
+                "week": week,
+                "type": "add",
+                "team": team_name,
+                "summary": f"Added: {espn_player_name(item)}",
+                "created": txn.get("proposedDate"),
+              }
+            )
+          elif item_type == "DROP":
+            transactions_by_season.setdefault(season, []).append(
+              {
+                "id": f"{txn_id}-drop-{team_id}-{item.get('playerId')}",
+                "season": season,
+                "week": week,
+                "type": "drop",
+                "team": team_name,
+                "summary": f"Dropped: {espn_player_name(item)}",
+                "created": txn.get("proposedDate"),
+              }
+            )
+
   for season, entries in transactions_by_season.items():
-    write_json(OUTPUT_DIR / "transactions" / f"{season}.json", {"season": season, "entries": entries})
+    sources = sources_by_season.get(season, [])
+    write_json(
+      OUTPUT_DIR / "transactions" / f"{season}.json",
+      {"season": season, "entries": entries, "sources": sources},
+    )
 
 
 def main():

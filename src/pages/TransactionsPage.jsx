@@ -170,6 +170,7 @@ export default function TransactionsPage() {
     }
     return {
       source: transactions?.__meta?.path || "unknown",
+      sources: transactions?.sources || [],
       counts: {
         add: byType.add.length,
         drop: byType.drop.length,
@@ -259,6 +260,9 @@ export default function TransactionsPage() {
             <div className="tag">
               Adds: {diagnostics.counts.add} · Drops: {diagnostics.counts.drop} · Trades: {diagnostics.counts.trade}
             </div>
+            {diagnostics.sources.length ? (
+              <div className="tag">Inputs: {diagnostics.sources.join(", ")}</div>
+            ) : null}
           </div>
           <pre className="code-block">
             {JSON.stringify(
