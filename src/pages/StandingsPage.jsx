@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
@@ -11,6 +11,7 @@ export default function StandingsPage() {
   const { manifest, loading, error } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
+  const lastAppliedQueryRef = useRef(searchParamsString);
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
   const [seasonSummary, setSeasonSummary] = useState(null);
@@ -27,12 +28,18 @@ export default function StandingsPage() {
   }, [seasons, season, searchParamsString]);
 
   useEffect(() => {
+    lastAppliedQueryRef.current = searchParamsString;
+  }, [searchParamsString]);
+
+  useEffect(() => {
     if (!season) return;
     const seasonValue = String(season);
     if ((searchParams.get("season") || "") === seasonValue) return;
     const next = new URLSearchParams(searchParams);
     next.set("season", seasonValue);
-    if (next.toString() === searchParamsString) return;
+    const nextQuery = next.toString();
+    if (nextQuery === lastAppliedQueryRef.current) return;
+    lastAppliedQueryRef.current = nextQuery;
     setSearchParams(next, { replace: true });
   }, [season, searchParamsString, setSearchParams]);
 

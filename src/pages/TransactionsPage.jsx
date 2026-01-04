@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
@@ -11,6 +11,7 @@ export default function TransactionsPage() {
   const { manifest, loading, error } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
+  const lastAppliedQueryRef = useRef(searchParamsString);
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("all");
@@ -34,6 +35,10 @@ export default function TransactionsPage() {
       setSeason(seasons[0]);
     }
   }, [seasons, season, searchParamsString]);
+
+  useEffect(() => {
+    lastAppliedQueryRef.current = searchParamsString;
+  }, [searchParamsString]);
 
   useEffect(() => {
     const param = searchParams.get("week") || "all";
@@ -89,7 +94,9 @@ export default function TransactionsPage() {
     else next.delete("type");
     if (teamFilter) next.set("team", teamFilter);
     else next.delete("team");
-    if (next.toString() === searchParamsString) return;
+    const nextQuery = next.toString();
+    if (nextQuery === lastAppliedQueryRef.current) return;
+    lastAppliedQueryRef.current = nextQuery;
     setSearchParams(next, { replace: true });
   }, [season, week, typeFilter, teamFilter, searchParamsString, setSearchParams]);
 

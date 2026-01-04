@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
@@ -31,6 +31,7 @@ export default function PlayerPage() {
   const { playerId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
+  const lastAppliedQueryRef = useRef(searchParamsString);
   const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [seasonSummaries, setSeasonSummaries] = useState([]);
@@ -55,6 +56,10 @@ export default function PlayerPage() {
   }, [seasons, selectedSeason, searchParamsString]);
 
   useEffect(() => {
+    lastAppliedQueryRef.current = searchParamsString;
+  }, [searchParamsString]);
+
+  useEffect(() => {
     const param = searchParams.get("tab");
     if (param && TABS.includes(param) && param !== activeTab) {
       setActiveTab(param);
@@ -70,7 +75,9 @@ export default function PlayerPage() {
     if (currentSeason === seasonValue && currentTab === activeTab) return;
     next.set("season", seasonValue);
     if (activeTab) next.set("tab", activeTab);
-    if (next.toString() === searchParamsString) return;
+    const nextQuery = next.toString();
+    if (nextQuery === lastAppliedQueryRef.current) return;
+    lastAppliedQueryRef.current = nextQuery;
     setSearchParams(next, { replace: true });
   }, [selectedSeason, activeTab, searchParamsString, setSearchParams]);
 
