@@ -62,6 +62,13 @@ async function fetchJson(path, { optional = false } = {}) {
     }
     throw new Error(`${response.status} ${response.statusText} (${url})`);
   }
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    if (optional) {
+      return null;
+    }
+    throw new Error(`Non-JSON response (${contentType || "unknown"}) (${url})`);
+  }
   const payload = await response.json();
   logDev("DATA_FILE_OK", { url });
   return payload;
