@@ -280,6 +280,8 @@ def build_full_stats(weekly: pd.DataFrame):
         "rushing_fumbles_lost",
         "receiving_fumbles_lost",
         "sack_fumbles_lost",
+        "fantasy_points",
+        "fantasy_points_ppr",
         "fantasy_points_custom_week",
         "fantasy_points_custom_week_with_bonus",
         "pos_week_z",
@@ -373,6 +375,12 @@ def main() -> None:
     weekly_source = find_source(["player_week_fantasy_2015_2025_with_war"])
     season_source = find_source(["player_season_fantasy_2015_2025_with_war"])
     career_source = find_source(["player_career_fantasy_2015_2025_with_war"])
+    full_stats_source = find_source(
+        [
+            "player_stats_2015_2025_players_only",
+            "player_stats_2015_2025_with_master",
+        ]
+    )
 
     if not weekly_source:
         print("No weekly fantasy WAR source found in data_raw/master. Skipping player stats export.")
@@ -387,7 +395,12 @@ def main() -> None:
         if "season" in weekly.columns and "week" in weekly.columns
         else {}
     )
-    build_full_stats(weekly)
+    if full_stats_source:
+        full_stats = read_table(full_stats_source)
+        full_stats = attach_ids(full_stats, id_maps)
+        build_full_stats(full_stats)
+    else:
+        build_full_stats(weekly)
 
     if season_source:
         season_df = read_table(season_source)

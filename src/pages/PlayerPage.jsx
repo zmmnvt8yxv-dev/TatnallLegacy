@@ -858,7 +858,13 @@ export default function PlayerPage() {
                       <td>{row.receptions ?? "—"}</td>
                       <td>{row.receiving_yards ?? "—"}</td>
                       <td>{row.receiving_tds ?? "—"}</td>
-                      <td>{row.fantasy_points_custom_week_with_bonus ?? row.fantasy_points_custom_week ?? "—"}</td>
+                      <td>
+                        {row.fantasy_points_custom_week_with_bonus ??
+                          row.fantasy_points_custom_week ??
+                          row.fantasy_points_ppr ??
+                          row.fantasy_points ??
+                          "—"}
+                      </td>
                     </tr>
                   ))}
                   {fullStatsVirtual.bottomPadding ? (
