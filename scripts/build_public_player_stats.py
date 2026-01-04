@@ -108,7 +108,7 @@ def build_id_maps():
                 first = row.get("first_name")
                 last = row.get("last_name")
                 if isinstance(first, str) and isinstance(last, str):
-                    name = f\"{first} {last}\".strip()
+                    name = f"{first} {last}".strip()
             key = normalize_name(name)
             if key and key not in name_to_sleeper:
                 name_to_sleeper[key] = str(sleeper_id)
