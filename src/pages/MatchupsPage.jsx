@@ -20,7 +20,6 @@ export default function MatchupsPage() {
   const [week, setWeek] = useState("");
   const [weekData, setWeekData] = useState(null);
   const [activeMatchup, setActiveMatchup] = useState(null);
-  const [activePlayer, setActivePlayer] = useState(null);
   const isDev = import.meta.env.DEV;
 
   const availableWeeks = useMemo(() => {
@@ -106,7 +105,6 @@ export default function MatchupsPage() {
 
   useEffect(() => {
     setActiveMatchup(null);
-    setActivePlayer(null);
   }, [season, week]);
 
   const matchups = weekData?.matchups || [];
@@ -154,7 +152,7 @@ export default function MatchupsPage() {
   const buildRoster = (teamKeys) => {
     const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
     const mapped = rows.map((row) => {
-      const display = resolvePlayerDisplay(row.player_id, { row, playerIndex });
+      const display = resolvePlayerDisplay(row.player_id, { playerIndex });
       return {
         ...row,
         displayName: display.name,
@@ -198,7 +196,7 @@ export default function MatchupsPage() {
     const starters = lineups.filter((row) => row.started).length;
     for (const row of lineups) {
       if (!row.player_id && !row.sleeper_id && !row.gsis_id && !row.espn_id) missingIds += 1;
-      const display = resolvePlayerDisplay(row.player_id, { row, playerIndex });
+      const display = resolvePlayerDisplay(row.player_id, { playerIndex });
       if (display.name && display.name !== "(Unknown Player)") resolvedNames += 1;
     }
     return {
@@ -335,13 +333,9 @@ export default function MatchupsPage() {
                         <tr key={`${row.player_id || row.player}-${idx}`}>
                           <td>
                             {row.player_id ? (
-                              <button
-                                type="button"
-                                className="link-button"
-                                onClick={() => setActivePlayer(row.player_id)}
-                              >
+                              <Link className="link-button" to={`/players/${row.player_id}`}>
                                 {row.displayName}
-                              </button>
+                              </Link>
                             ) : (
                               row.displayName
                             )}
@@ -364,32 +358,6 @@ export default function MatchupsPage() {
         )}
       </Modal>
 
-      <Modal
-        isOpen={Boolean(activePlayer)}
-        title="Player Profile"
-        onClose={() => setActivePlayer(null)}
-      >
-        {activePlayer ? (
-          (() => {
-            const display = resolvePlayerDisplay(activePlayer, { row: { player_id: activePlayer }, playerIndex });
-            return (
-              <div className="section-card">
-                <h3 className="section-title">{display.name}</h3>
-                <div className="flex-row">
-                  <div className="tag">Position: {display.position}</div>
-                  <div className="tag">NFL Team: {display.team}</div>
-                </div>
-                <p>Open the full player profile for weekly WAR, z-scores, and career summaries.</p>
-                <Link to={`/players/${activePlayer}`} className="tag" onClick={() => setActivePlayer(null)}>
-                  View full profile →
-                </Link>
-              </div>
-            );
-          })()
-        ) : (
-          <div>No player selected.</div>
-        )}
-      </Modal>
     </>
   );
 }
