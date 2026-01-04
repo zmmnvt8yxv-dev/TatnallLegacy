@@ -164,7 +164,7 @@ def normalize_name(value):
 
 def build_weekly(weekly: pd.DataFrame):
     weekly = filter_regular_season(weekly)
-    name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"]) or "display_name"
+    name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"])
     position_col = pick_first_column(weekly, ["position", "position_group"]) or "position"
     team_col = pick_first_column(weekly, ["team", "recent_team", "nfl_team"]) or "team"
     points_col = pick_first_column(
@@ -181,7 +181,17 @@ def build_weekly(weekly: pd.DataFrame):
         weekly, ["delta_to_next_week_all", "delta_to_next_week_starters", "delta_to_next"]
     ) or "delta_to_next"
 
-    weekly["display_name"] = weekly[name_col].fillna("Unknown")
+    if name_col:
+        weekly["display_name"] = weekly[name_col].fillna("Unknown")
+    elif "first_name" in weekly.columns or "last_name" in weekly.columns:
+        weekly["display_name"] = (
+            weekly.get("first_name", "").fillna("").astype(str).str.strip()
+            + " "
+            + weekly.get("last_name", "").fillna("").astype(str).str.strip()
+        ).str.strip()
+        weekly.loc[weekly["display_name"] == "", "display_name"] = "Unknown"
+    else:
+        weekly["display_name"] = "Unknown"
     weekly["position"] = weekly[position_col].astype(str).str.upper()
     weekly["team"] = weekly.get(team_col).fillna("—")
     weekly["points"] = pd.to_numeric(weekly[points_col], errors="coerce").fillna(0.0) if points_col else 0.0
@@ -217,10 +227,20 @@ def build_weekly(weekly: pd.DataFrame):
 
 def build_full_stats(weekly: pd.DataFrame):
     weekly = filter_regular_season(weekly)
-    name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"]) or "display_name"
+    name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"])
     position_col = pick_first_column(weekly, ["position", "position_group"]) or "position"
     team_col = pick_first_column(weekly, ["team", "recent_team", "nfl_team"]) or "team"
-    weekly["display_name"] = weekly[name_col].fillna("Unknown")
+    if name_col:
+        weekly["display_name"] = weekly[name_col].fillna("Unknown")
+    elif "first_name" in weekly.columns or "last_name" in weekly.columns:
+        weekly["display_name"] = (
+            weekly.get("first_name", "").fillna("").astype(str).str.strip()
+            + " "
+            + weekly.get("last_name", "").fillna("").astype(str).str.strip()
+        ).str.strip()
+        weekly.loc[weekly["display_name"] == "", "display_name"] = "Unknown"
+    else:
+        weekly["display_name"] = "Unknown"
     weekly["position"] = weekly[position_col].astype(str).str.upper()
     weekly["team"] = weekly.get(team_col).fillna("—")
     fields = [
