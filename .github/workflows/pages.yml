@@ -35,6 +35,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install Python dependencies
+        run: pip install pandas pyarrow requests
+
       - name: Install dependencies
         run: npm ci
 
