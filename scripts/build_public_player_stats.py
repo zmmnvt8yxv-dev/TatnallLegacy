@@ -196,7 +196,10 @@ def build_weekly(weekly: pd.DataFrame):
         weekly["position"] = weekly[position_col].astype(str).str.upper()
     else:
         weekly["position"] = "—"
-    weekly["team"] = weekly.get(team_col).fillna("—")
+    if team_col and team_col in weekly.columns:
+        weekly["team"] = weekly[team_col].fillna("—")
+    else:
+        weekly["team"] = "—"
     weekly["points"] = pd.to_numeric(weekly[points_col], errors="coerce").fillna(0.0) if points_col else 0.0
     weekly["war_rep"] = pd.to_numeric(weekly.get(war_col), errors="coerce")
     weekly["delta_to_next"] = pd.to_numeric(weekly.get(delta_col), errors="coerce")
@@ -248,7 +251,10 @@ def build_full_stats(weekly: pd.DataFrame):
         weekly["position"] = weekly[position_col].astype(str).str.upper()
     else:
         weekly["position"] = "—"
-    weekly["team"] = weekly.get(team_col).fillna("—")
+    if team_col and team_col in weekly.columns:
+        weekly["team"] = weekly[team_col].fillna("—")
+    else:
+        weekly["team"] = "—"
     fields = [
         "season",
         "week",
