@@ -9,6 +9,8 @@ DATA_DIR = ROOT / "data"
 OUTPUT_DIR = ROOT / "public" / "data"
 PLAYER_DATA_DIR = ROOT / "public" / "data"
 SLEEPER_PLAYERS_PATH = ROOT / "data_raw" / "sleeper" / "players_flat.csv"
+MASTER_PLAYERS_PATH = ROOT / "data_raw" / "master" / "players_master_nflverse_espn_sleeper.csv"
+ESPN_PLAYERS_INDEX_PATH = ROOT / "data_raw" / "espn_players_index.csv"
 
 
 def read_json(path: Path):
@@ -19,8 +21,14 @@ def load_sleeper_player_maps():
   gsis_to_sleeper = {}
   espn_to_sleeper = {}
   name_to_sleeper = {}
+  espn_to_name = {}
   if not SLEEPER_PLAYERS_PATH.exists():
-    return {"gsis_to_sleeper": gsis_to_sleeper, "espn_to_sleeper": espn_to_sleeper, "name_to_sleeper": name_to_sleeper}
+    return {
+      "gsis_to_sleeper": gsis_to_sleeper,
+      "espn_to_sleeper": espn_to_sleeper,
+      "name_to_sleeper": name_to_sleeper,
+      "espn_to_name": espn_to_name,
+    }
   with SLEEPER_PLAYERS_PATH.open("r", encoding="utf-8") as handle:
     reader = csv.DictReader(handle)
     for row in reader:
@@ -39,10 +47,40 @@ def load_sleeper_player_maps():
         key = normalize_name(full_name)
         if key and key not in name_to_sleeper:
           name_to_sleeper[key] = str(sleeper_id)
+  if MASTER_PLAYERS_PATH.exists():
+    with MASTER_PLAYERS_PATH.open("r", encoding="utf-8") as handle:
+      reader = csv.DictReader(handle)
+      for row in reader:
+        sleeper_id = (row.get("sleeper_id") or row.get("sleeper_player_id") or "").strip()
+        if not sleeper_id:
+          continue
+        espn_id = (
+          row.get("espn_id_str")
+          or row.get("espn_id_y")
+          or row.get("espn_id_x")
+          or row.get("espn_id")
+        )
+        espn_id = normalize_numeric_id(espn_id)
+        if espn_id and espn_id not in espn_to_sleeper:
+          espn_to_sleeper[espn_id] = sleeper_id
+        name_norm = (row.get("sleeper_name_norm") or "").strip()
+        if not name_norm:
+          name_norm = normalize_name(row.get("sleeper_full_name") or row.get("display_name") or "")
+        if name_norm and name_norm not in name_to_sleeper:
+          name_to_sleeper[name_norm] = sleeper_id
+  if ESPN_PLAYERS_INDEX_PATH.exists():
+    with ESPN_PLAYERS_INDEX_PATH.open("r", encoding="utf-8") as handle:
+      reader = csv.DictReader(handle)
+      for row in reader:
+        espn_id = normalize_numeric_id(row.get("espn_id"))
+        display_name = (row.get("display_name") or "").strip()
+        if espn_id and display_name and espn_id not in espn_to_name:
+          espn_to_name[espn_id] = display_name
   return {
     "gsis_to_sleeper": gsis_to_sleeper,
     "espn_to_sleeper": espn_to_sleeper,
     "name_to_sleeper": name_to_sleeper,
+    "espn_to_name": espn_to_name,
   }
 
 def normalize_name(value):
@@ -160,7 +198,12 @@ def build_transactions(seasons, sleeper_maps=None):
   player_name_lookup = build_player_name_lookup()
   sources_by_season = {season: [] for season in seasons}
   transactions_by_season = {season: [] for season in seasons}
-  sleeper_maps = sleeper_maps or {"gsis_to_sleeper": {}, "espn_to_sleeper": {}, "name_to_sleeper": {}}
+  sleeper_maps = sleeper_maps or {
+    "gsis_to_sleeper": {},
+    "espn_to_sleeper": {},
+    "name_to_sleeper": {},
+    "espn_to_name": {},
+  }
   for trades_path in DATA_DIR.glob("trades-*.json"):
     season_str = trades_path.stem.replace("trades-", "")
     try:
@@ -417,9 +460,16 @@ def build_transactions(seasons, sleeper_maps=None):
           first = player.get("firstName") or ""
           last = player.get("lastName") or ""
           name = f"{first} {last}".strip() or None
+        if not name:
+          raw_id = normalize_numeric_id(item.get("playerId") if item else None)
+          if raw_id:
+            name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id))
         sleeper_id = espn_player_id(item)
         if sleeper_id:
           name = player_name_lookup.get(str(sleeper_id)) or name
+        if not sleeper_id and name:
+          key = normalize_name(name)
+          sleeper_id = sleeper_maps.get("name_to_sleeper", {}).get(key)
         if not name:
           name = "(Unknown Player)"
         return sleeper_id, name
