@@ -300,11 +300,24 @@ def build_full_stats(weekly: pd.DataFrame):
         )
 
 
-def build_season(season_df: pd.DataFrame):
+def build_season(season_df: pd.DataFrame, expected_games: dict[int, int] | None = None):
     season_df = season_df.copy()
     season_df["season"] = pd.to_numeric(season_df.get("season"), errors="coerce")
     season_df = season_df.dropna(subset=["season"])
     season_df = filter_regular_season_rows(season_df)
+
+    expected_games = expected_games or {}
+    if "games" in season_df.columns:
+        season_df["games_possible"] = season_df["season"].apply(
+            lambda season: int(expected_games.get(int(season), 17))
+        )
+        season_df["games_missed"] = (season_df["games_possible"] - season_df["games"]).clip(lower=0)
+        season_df["availability_ratio"] = (
+            season_df["games"] / season_df["games_possible"].where(season_df["games_possible"] > 0, 1)
+        )
+        season_df["availability_flag"] = season_df["availability_ratio"].apply(
+            lambda value: "limited" if value < 0.7 else "full"
+        )
 
     fields = [
         "season",
@@ -312,6 +325,10 @@ def build_season(season_df: pd.DataFrame):
         "position",
         "team",
         "games",
+        "games_possible",
+        "games_missed",
+        "availability_ratio",
+        "availability_flag",
         "fantasy_points_custom",
         "fantasy_points_custom_pg",
         "war_rep",
@@ -365,6 +382,11 @@ def main() -> None:
     id_maps = build_id_maps()
     weekly = attach_ids(weekly, id_maps)
     seasons = build_weekly(weekly)
+    expected_games = (
+        weekly.groupby("season")["week"].max().dropna().astype(int).to_dict()
+        if "season" in weekly.columns and "week" in weekly.columns
+        else {}
+    )
     build_full_stats(weekly)
 
     if season_source:
@@ -385,7 +407,7 @@ def main() -> None:
             gsis_id=("gsis_id", "first"),
         )
     season_df = attach_ids(season_df, id_maps)
-    build_season(season_df)
+    build_season(season_df, expected_games)
 
     if career_source:
         career_df = read_table(career_source)

@@ -22,8 +22,8 @@ function resolveNameFromEntry(entry) {
 function getIdEntries(row) {
   if (!row) return [];
   return [
-    { key: "gsis_id", value: row.gsis_id },
     { key: "sleeper_id", value: row.sleeper_id },
+    { key: "gsis_id", value: row.gsis_id },
     { key: "espn_id", value: row.espn_id },
     { key: "player_id", value: row.player_id },
   ];
@@ -73,10 +73,10 @@ export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayer
   const directName =
     effectiveRow.display_name || effectiveRow.player_display_name || effectiveRow.player_name || effectiveRow.player;
   const candidates = [
-    { key: "player_id", value: effectiveRow.player_id || playerId },
     { key: "sleeper_id", value: effectiveRow.sleeper_id || playerId },
     { key: "gsis_id", value: effectiveRow.gsis_id },
     { key: "espn_id", value: effectiveRow.espn_id },
+    { key: "player_id", value: effectiveRow.player_id || playerId },
   ];
   const player = resolvePlayerFromIndex(playerIndex, candidates);
   const sleeperEntry = getSleeperEntry(sleeperPlayers, effectiveRow.player_id || playerId);

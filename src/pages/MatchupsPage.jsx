@@ -5,10 +5,12 @@ import LoadingState from "../components/LoadingState.jsx";
 import Modal from "../components/Modal.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
+import SearchBar from "../components/SearchBar.jsx";
 import { resolvePlayerDisplay } from "../lib/playerName.js";
 import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
+import { readStorage, writeStorage } from "../utils/persistence.js";
 
 export default function MatchupsPage() {
   const { manifest, loading, error, playerIndex, teams } = useDataContext();
@@ -20,6 +22,8 @@ export default function MatchupsPage() {
   const [week, setWeek] = useState("");
   const [weekData, setWeekData] = useState(null);
   const [activeMatchup, setActiveMatchup] = useState(null);
+  const [teamQuery, setTeamQuery] = useState("");
+  const MATCHUPS_PREF_KEY = "tatnall-pref-matchups";
   const isDev = import.meta.env.DEV;
 
   const availableWeeks = useMemo(() => {
@@ -32,15 +36,24 @@ export default function MatchupsPage() {
     if (!seasons.length || !manifest) return;
     if (didInitRef.current) return;
     const params = new URLSearchParams(searchParams);
+    const stored = readStorage(MATCHUPS_PREF_KEY, {});
+    const storedSeason = Number(stored?.season);
+    const storedWeek = Number(stored?.week);
     const paramSeason = Number(searchParams.get("season"));
-    const nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    let nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    if (!searchParams.get("season") && Number.isFinite(storedSeason) && seasons.includes(storedSeason)) {
+      nextSeason = storedSeason;
+    }
     const weeksForSeason = manifest?.weeksBySeason?.[String(nextSeason)] || [];
     const regularWeeks = filterRegularSeasonWeeks(weeksForSeason.map((value) => ({ week: value }))).map(
       (row) => row.week,
     );
     const paramWeek = Number(searchParams.get("week"));
-    const nextWeek =
+    let nextWeek =
       Number.isFinite(paramWeek) && regularWeeks.includes(paramWeek) ? paramWeek : regularWeeks[0] || "";
+    if (!searchParams.get("week") && Number.isFinite(storedWeek) && regularWeeks.includes(storedWeek)) {
+      nextWeek = storedWeek;
+    }
     setSeason(nextSeason);
     if (nextWeek) setWeek(nextWeek);
     let changed = false;
@@ -53,6 +66,7 @@ export default function MatchupsPage() {
       changed = true;
     }
     if (changed) setSearchParams(params, { replace: true });
+    writeStorage(MATCHUPS_PREF_KEY, { season: nextSeason, week: nextWeek });
     didInitRef.current = true;
   }, [seasons, manifest, searchParams, setSearchParams]);
 
@@ -74,6 +88,7 @@ export default function MatchupsPage() {
     if (nextWeek) params.set("week", String(nextWeek));
     else params.delete("week");
     setSearchParams(params, { replace: true });
+    writeStorage(MATCHUPS_PREF_KEY, { season: nextSeason, week: nextWeek });
   };
 
   const handleSeasonChange = (value) => {
@@ -188,6 +203,16 @@ export default function MatchupsPage() {
   if (error) return <ErrorState message={error} />;
 
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+  const query = teamQuery.trim().toLowerCase();
+
+  const filteredMatchups = useMemo(() => {
+    if (!query) return matchups;
+    return matchups.filter((matchup) => {
+      const homeLabel = ownerLabel(getMatchupLabel(matchup, "home"), matchup.home_team || "Home");
+      const awayLabel = ownerLabel(getMatchupLabel(matchup, "away"), matchup.away_team || "Away");
+      return homeLabel.toLowerCase().includes(query) || awayLabel.toLowerCase().includes(query);
+    });
+  }, [matchups, ownerLabel, query]);
 
   const diagnostics = useMemo(() => {
     if (!isDev || !weekData) return null;
@@ -214,7 +239,7 @@ export default function MatchupsPage() {
         <p className="page-subtitle">Filter by season and week, then open a matchup to see roster details.</p>
       </section>
 
-      <section className="section-card filters">
+      <section className="section-card filters filters--sticky">
         <div>
           <label>Season</label>
           <select value={season} onChange={(event) => handleSeasonChange(event.target.value)}>
@@ -235,6 +260,10 @@ export default function MatchupsPage() {
             ))}
           </select>
         </div>
+        <div>
+          <label>Team</label>
+          <SearchBar value={teamQuery} onChange={setTeamQuery} placeholder="Filter by team..." />
+        </div>
         <div className="tag">Matchups loaded: {matchups.length || 0}</div>
       </section>
 
@@ -250,9 +279,9 @@ export default function MatchupsPage() {
         </section>
       ) : null}
 
-      {matchups.length ? (
+      {filteredMatchups.length ? (
         <section className="matchup-grid">
-          {matchups.map((matchup) => {
+          {filteredMatchups.map((matchup) => {
             const homeWin = matchup.home_score > matchup.away_score;
             const awayWin = matchup.away_score > matchup.home_score;
             const homeLabel = ownerLabel(getMatchupLabel(matchup, "home"), matchup.home_team || "Home");
@@ -319,34 +348,36 @@ export default function MatchupsPage() {
                     ))}
                 </div>
                 {roster.rows.length ? (
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th>Player</th>
-                        <th>Pos</th>
-                        <th>Starter</th>
-                        <th>Points</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {roster.rows.map((row, idx) => (
-                        <tr key={`${row.player_id || row.player}-${idx}`}>
-                          <td>
-                            {row.player_id ? (
-                              <Link className="link-button" to={`/players/${row.player_id}`}>
-                                {row.displayName}
-                              </Link>
-                            ) : (
-                              row.displayName
-                            )}
-                          </td>
-                          <td>{row.position}</td>
-                          <td>{row.started ? "Yes" : "No"}</td>
-                          <td>{formatPoints(row.points)}</td>
+                  <div className="table-wrap">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th>Player</th>
+                          <th>Pos</th>
+                          <th>Starter</th>
+                          <th>Points</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {roster.rows.map((row, idx) => (
+                          <tr key={`${row.player_id || row.player}-${idx}`}>
+                            <td>
+                              {row.player_id ? (
+                                <Link className="link-button" to={`/players/${row.player_id}`}>
+                                  {row.displayName}
+                                </Link>
+                              ) : (
+                                row.displayName
+                              )}
+                            </td>
+                            <td>{row.position}</td>
+                            <td>{row.started ? "Yes" : "No"}</td>
+                            <td>{formatPoints(row.points)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 ) : (
                   <div>No roster data available for this team.</div>
                 )}

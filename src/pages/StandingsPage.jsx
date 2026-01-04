@@ -2,10 +2,13 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
+import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadSeasonSummary } from "../data/loader.js";
 import { formatPoints } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
+import { useFavorites } from "../utils/useFavorites.js";
+import { readStorage, writeStorage } from "../utils/persistence.js";
 
 export default function StandingsPage() {
   const { manifest, loading, error } = useDataContext();
@@ -16,6 +19,9 @@ export default function StandingsPage() {
   const [season, setSeason] = useState(seasons[0] || "");
   const [seasonSummary, setSeasonSummary] = useState(null);
   const [allSummaries, setAllSummaries] = useState([]);
+  const [teamQuery, setTeamQuery] = useState("");
+  const { favorites, toggleTeam } = useFavorites();
+  const STANDINGS_PREF_KEY = "tatnall-pref-standings";
 
   useEffect(() => {
     if (!seasons.length) return;
@@ -29,8 +35,13 @@ export default function StandingsPage() {
     if (!seasons.length) return;
     if (didInitRef.current) return;
     const params = new URLSearchParams(searchParams);
+    const stored = readStorage(STANDINGS_PREF_KEY, {});
+    const storedSeason = Number(stored?.season);
     const paramSeason = Number(searchParams.get("season"));
-    const nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    let nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    if (!searchParams.get("season") && Number.isFinite(storedSeason) && seasons.includes(storedSeason)) {
+      nextSeason = storedSeason;
+    }
     setSeason(nextSeason);
     if (!searchParams.get("season")) {
       params.set("season", String(nextSeason));
@@ -45,6 +56,7 @@ export default function StandingsPage() {
     const params = new URLSearchParams(searchParams);
     params.set("season", String(nextSeason));
     setSearchParams(params, { replace: true });
+    writeStorage(STANDINGS_PREF_KEY, { season: nextSeason });
   };
 
   useEffect(() => {
@@ -69,12 +81,30 @@ export default function StandingsPage() {
     };
   }, [seasons]);
 
+  const seasonOwners = useMemo(() => {
+    const mapping = new Map();
+    for (const team of seasonSummary?.teams || []) {
+      const ownerName = normalizeOwnerName(team.owner || team.display_name || team.username || team.team_name);
+      if (ownerName) {
+        mapping.set(team.team_name, ownerName);
+      }
+    }
+    return mapping;
+  }, [seasonSummary]);
+
   const allTime = useMemo(() => {
     const totals = new Map();
     for (const summary of allSummaries) {
+      const ownerByTeam = new Map();
+      for (const team of summary?.teams || []) {
+        const ownerName = normalizeOwnerName(team.owner || team.display_name || team.username || team.team_name);
+        if (ownerName) {
+          ownerByTeam.set(team.team_name, ownerName);
+        }
+      }
       for (const row of summary?.standings || []) {
-        const normalizedTeam = normalizeOwnerName(row.team) || row.team;
-        const key = normalizedTeam || row.team;
+        const ownerName = ownerByTeam.get(row.team) || normalizeOwnerName(row.team) || row.team;
+        const key = ownerName || row.team;
         const cur = totals.get(key) || {
           team: key,
           wins: 0,
@@ -99,6 +129,18 @@ export default function StandingsPage() {
 
   const standings = seasonSummary?.standings || [];
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+  const query = teamQuery.trim().toLowerCase();
+  const filteredStandings = useMemo(() => {
+    if (!query) return standings;
+    return standings.filter((row) =>
+      ownerLabel(seasonOwners.get(row.team) || row.team, row.team).toLowerCase().includes(query),
+    );
+  }, [standings, ownerLabel, query, seasonOwners]);
+
+  const filteredAllTime = useMemo(() => {
+    if (!query) return allTime;
+    return allTime.filter((row) => ownerLabel(row.team, row.team).toLowerCase().includes(query));
+  }, [allTime, ownerLabel, query]);
 
   return (
     <>
@@ -107,7 +149,7 @@ export default function StandingsPage() {
         <p className="page-subtitle">Season standings plus all-time franchise performance.</p>
       </section>
 
-      <section className="section-card filters">
+      <section className="section-card filters filters--sticky">
         <div>
           <label>Season</label>
           <select value={season} onChange={(event) => handleSeasonChange(event.target.value)}>
@@ -118,36 +160,59 @@ export default function StandingsPage() {
             ))}
           </select>
         </div>
+        <div>
+          <label>Team</label>
+          <SearchBar value={teamQuery} onChange={setTeamQuery} placeholder="Filter by team..." />
+        </div>
         <div className="tag">Teams: {standings.length || 0}</div>
       </section>
 
       <section className="section-card">
         <h2 className="section-title">Season Standings</h2>
-        {standings.length ? (
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Team</th>
-                <th>W</th>
-                <th>L</th>
-                <th>T</th>
-                <th>PF</th>
-                <th>PA</th>
-              </tr>
-            </thead>
-            <tbody>
-              {standings.map((row) => (
-                <tr key={row.team}>
-                  <td>{ownerLabel(row.team, row.team)}</td>
-                  <td>{row.wins}</td>
-                  <td>{row.losses}</td>
-                  <td>{row.ties}</td>
-                  <td>{formatPoints(row.points_for)}</td>
-                  <td>{formatPoints(row.points_against)}</td>
+        {filteredStandings.length ? (
+          <div className="table-wrap">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>W</th>
+                  <th>L</th>
+                  <th>T</th>
+                  <th>PF</th>
+                  <th>PA</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredStandings.map((row) => (
+                  <tr key={row.team}>
+                  <td>
+                    <div className="flex-row">
+                      <button
+                        type="button"
+                        className={`favorite-button ${
+                          favorites.teams.includes(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))
+                            ? "active"
+                            : ""
+                        }`}
+                        onClick={() =>
+                          toggleTeam(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))
+                        }
+                      >
+                        Fav
+                      </button>
+                      <span>{ownerLabel(seasonOwners.get(row.team) || row.team, row.team)}</span>
+                    </div>
+                  </td>
+                    <td>{row.wins}</td>
+                    <td>{row.losses}</td>
+                    <td>{row.ties}</td>
+                    <td>{formatPoints(row.points_for)}</td>
+                    <td>{formatPoints(row.points_against)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         ) : (
           <div>No standings data available for this season.</div>
         )}
@@ -155,31 +220,44 @@ export default function StandingsPage() {
 
       <section className="section-card">
         <h2 className="section-title">All-Time Franchise Summary</h2>
-        {allTime.length ? (
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Team</th>
-                <th>W</th>
-                <th>L</th>
-                <th>T</th>
-                <th>PF</th>
-                <th>PA</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allTime.map((row) => (
-                <tr key={row.team}>
-                  <td>{ownerLabel(row.team, row.team)}</td>
-                  <td>{row.wins}</td>
-                  <td>{row.losses}</td>
-                  <td>{row.ties}</td>
-                  <td>{formatPoints(row.points_for)}</td>
-                  <td>{formatPoints(row.points_against)}</td>
+        {filteredAllTime.length ? (
+          <div className="table-wrap">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>W</th>
+                  <th>L</th>
+                  <th>T</th>
+                  <th>PF</th>
+                  <th>PA</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredAllTime.map((row) => (
+                  <tr key={row.team}>
+                  <td>
+                    <div className="flex-row">
+                      <button
+                        type="button"
+                        className={`favorite-button ${favorites.teams.includes(ownerLabel(row.team, row.team)) ? "active" : ""}`}
+                        onClick={() => toggleTeam(ownerLabel(row.team, row.team))}
+                      >
+                        Fav
+                      </button>
+                      <span>{ownerLabel(row.team, row.team)}</span>
+                    </div>
+                  </td>
+                    <td>{row.wins}</td>
+                    <td>{row.losses}</td>
+                    <td>{row.ties}</td>
+                    <td>{formatPoints(row.points_for)}</td>
+                    <td>{formatPoints(row.points_against)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         ) : (
           <div>No historical standings data available.</div>
         )}

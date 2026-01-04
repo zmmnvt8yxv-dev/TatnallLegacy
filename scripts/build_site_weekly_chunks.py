@@ -209,8 +209,11 @@ def load_espn_lineups(season, week):
 def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup):
   normalized = []
   for row in lineups or []:
-    espn_id = normalize_numeric_id(row.get("player_id"))
+    raw_id = row.get("player_id")
+    espn_id = normalize_numeric_id(raw_id)
     next_row = dict(row)
+    next_row["source"] = "espn"
+    next_row["source_player_id"] = raw_id
     if espn_id:
       next_row["espn_id"] = espn_id
     defense = defense_from_espn_id(espn_id)
@@ -230,6 +233,36 @@ def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup):
     if not player_name and espn_id:
       player_name = f"ESPN Player {espn_id}"
     next_row["player"] = player_name or next_row.get("player") or "(Unknown Player)"
+    normalized.append(next_row)
+  return normalized
+
+
+def normalize_lineups(lineups, sleeper_maps, player_name_lookup, source="league"):
+  normalized = []
+  for row in lineups or []:
+    next_row = dict(row)
+    raw_id = row.get("player_id")
+    next_row["source"] = row.get("source") or source
+    next_row["source_player_id"] = raw_id
+    sleeper_id = None
+    gsis_id = str(raw_id).strip() if raw_id else None
+    if gsis_id and gsis_id in sleeper_maps.get("gsis_to_sleeper", {}):
+      sleeper_id = sleeper_maps["gsis_to_sleeper"].get(gsis_id)
+      next_row["gsis_id"] = gsis_id
+    espn_id = normalize_numeric_id(raw_id)
+    if not sleeper_id and espn_id and espn_id in sleeper_maps.get("espn_to_sleeper", {}):
+      sleeper_id = sleeper_maps["espn_to_sleeper"].get(espn_id)
+      next_row["espn_id"] = espn_id
+    defense = defense_from_espn_id(espn_id)
+    if defense:
+      next_row["player_id"] = defense["id"]
+      next_row["player"] = defense["name"]
+      normalized.append(next_row)
+      continue
+    if sleeper_id:
+      next_row["player_id"] = sleeper_id
+      if not next_row.get("player"):
+        next_row["player"] = player_name_lookup.get(str(sleeper_id))
     normalized.append(next_row)
   return normalized
 
@@ -336,9 +369,32 @@ def build_transactions(seasons, sleeper_maps=None):
     payload = read_json(trades_path)
     for trade in payload.get("trades", []):
       for party in trade.get("parties", []):
-        gained = ", ".join([player.get("name", "Unknown") for player in party.get("gained_players", [])])
-        sent = ", ".join([player.get("name", "Unknown") for player in party.get("sent_players", [])])
+        gained_players = party.get("gained_players", []) or []
+        sent_players = party.get("sent_players", []) or []
+        gained = ", ".join([player.get("name", "Unknown") for player in gained_players])
+        sent = ", ".join([player.get("name", "Unknown") for player in sent_players])
         summary = f"Received: {gained or 'None'} | Sent: {sent or 'None'}"
+        players = []
+        for player in gained_players:
+          pid = player.get("id")
+          players.append(
+            {
+              "id": pid,
+              "name": player.get("name", "Unknown"),
+              "action": "received",
+              "id_type": "sleeper" if looks_like_id(pid) else "name",
+            }
+          )
+        for player in sent_players:
+          pid = player.get("id")
+          players.append(
+            {
+              "id": pid,
+              "name": player.get("name", "Unknown"),
+              "action": "sent",
+              "id_type": "sleeper" if looks_like_id(pid) else "name",
+            }
+          )
         transactions_by_season.setdefault(season, []).append(
           {
             "id": f"{trade.get('id')}-{party.get('roster_id')}",
@@ -349,6 +405,7 @@ def build_transactions(seasons, sleeper_maps=None):
             "team": party.get("team"),
             "summary": summary,
             "created": trade.get("created"),
+            "players": players,
             "source": "sleeper_trades",
           }
         )
@@ -493,6 +550,11 @@ def build_transactions(seasons, sleeper_maps=None):
             received = [pid for pid, rid in adds.items() if str(rid) == str(roster_id)]
             sent = [pid for pid, rid in drops.items() if str(rid) == str(roster_id)]
             summary = f"Received: {format_player_ids(received)} | Sent: {format_player_ids(sent)}"
+            players = []
+            for pid in received:
+              players.append({"id": pid, "name": resolve_player_name(pid), "action": "received", "id_type": "sleeper"})
+            for pid in sent:
+              players.append({"id": pid, "name": resolve_player_name(pid), "action": "sent", "id_type": "sleeper"})
             transactions_by_season.setdefault(season, []).append(
               {
                 "id": f"{txn_id}-trade-{roster_id}",
@@ -503,6 +565,7 @@ def build_transactions(seasons, sleeper_maps=None):
                 "summary": summary,
                 "created": created,
                 "source": "sleeper_transactions_api",
+                "players": players,
               }
             )
         else:
@@ -519,6 +582,14 @@ def build_transactions(seasons, sleeper_maps=None):
                 "summary": summary,
                 "created": created,
                 "source": "sleeper_transactions_api",
+                "players": [
+                  {
+                    "id": player_id,
+                    "name": resolve_player_name(player_id),
+                    "action": "add",
+                    "id_type": "sleeper",
+                  }
+                ],
               }
             )
           for player_id, roster_id in drops.items():
@@ -534,6 +605,14 @@ def build_transactions(seasons, sleeper_maps=None):
                 "summary": summary,
                 "created": created,
                 "source": "sleeper_transactions_api",
+                "players": [
+                  {
+                    "id": player_id,
+                    "name": resolve_player_name(player_id),
+                    "action": "drop",
+                    "id_type": "sleeper",
+                  }
+                ],
               }
             )
 
@@ -606,34 +685,35 @@ def build_transactions(seasons, sleeper_maps=None):
         key = normalize_name(name)
         return sleeper_maps.get("name_to_sleeper", {}).get(key)
 
-      def resolve_espn_player(item):
-        player = item.get("playerPoolEntry", {}).get("player", {}) if item else {}
-        name = player.get("fullName") or player.get("displayName")
+  def resolve_espn_player(item):
+    player = item.get("playerPoolEntry", {}).get("player", {}) if item else {}
+    name = player.get("fullName") or player.get("displayName")
         if not name:
           first = player.get("firstName") or ""
           last = player.get("lastName") or ""
           name = f"{first} {last}".strip() or None
-        if not name:
-          raw_id = normalize_numeric_id(item.get("playerId") if item else None)
-          if raw_id:
-            name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id))
-        if not name:
-          defense = defense_from_espn_id(item.get("playerId") if item else None)
-          if defense:
-            return defense["id"], defense["name"]
-        sleeper_id = espn_player_id(item)
-        if sleeper_id:
-          name = player_name_lookup.get(str(sleeper_id)) or name
-        if not sleeper_id and name:
-          key = normalize_name(name)
-          sleeper_id = sleeper_maps.get("name_to_sleeper", {}).get(key)
-        if not name:
-          raw_id = normalize_numeric_id(item.get("playerId") if item else None)
-          if raw_id:
-            name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id)) or f"ESPN Player {raw_id}"
-        if not name:
-          name = "(Unknown Player)"
-        return sleeper_id, name
+    if not name:
+      raw_id = normalize_numeric_id(item.get("playerId") if item else None)
+      if raw_id:
+        name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id))
+    if not name:
+      defense = defense_from_espn_id(item.get("playerId") if item else None)
+      if defense:
+        return defense["id"], defense["name"], "defense", item.get("playerId")
+    sleeper_id = espn_player_id(item)
+    if sleeper_id:
+      name = player_name_lookup.get(str(sleeper_id)) or name
+    if not sleeper_id and name:
+      key = normalize_name(name)
+      sleeper_id = sleeper_maps.get("name_to_sleeper", {}).get(key)
+    if not name:
+      raw_id = normalize_numeric_id(item.get("playerId") if item else None)
+      if raw_id:
+        name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id)) or f"ESPN Player {raw_id}"
+    if not name:
+      name = "(Unknown Player)"
+    id_type = "sleeper" if sleeper_id else "espn"
+    return sleeper_id or normalize_numeric_id(item.get("playerId") if item else None), name, id_type, item.get("playerId")
 
       for txn in espn_payload.get("transactions", []) or []:
         week = txn.get("scoringPeriodId") or txn.get("matchupPeriodId") or txn.get("week")
@@ -650,11 +730,15 @@ def build_transactions(seasons, sleeper_maps=None):
             item_type = str(item.get("type") or "").upper()
             to_team = item.get("toTeamId")
             from_team = item.get("fromTeamId")
-            pid, name = resolve_espn_player(item)
+            pid, name, id_type, source_id = resolve_espn_player(item)
             if to_team is not None:
-              adds_by_team.setdefault(str(to_team), []).append({"id": pid, "name": name})
+              adds_by_team.setdefault(str(to_team), []).append(
+                {"id": pid, "name": name, "id_type": id_type, "source_player_id": source_id}
+              )
             if from_team is not None:
-              drops_by_team.setdefault(str(from_team), []).append({"id": pid, "name": name})
+              drops_by_team.setdefault(str(from_team), []).append(
+                {"id": pid, "name": name, "id_type": id_type, "source_player_id": source_id}
+              )
           team_ids = set(adds_by_team.keys()) | set(drops_by_team.keys())
           for team_id in team_ids:
             received_names = [row["name"] for row in adds_by_team.get(team_id, [])]
@@ -663,9 +747,25 @@ def build_transactions(seasons, sleeper_maps=None):
             sent = ", ".join(sent_names) or "None"
             players = []
             for row in adds_by_team.get(team_id, []):
-              players.append({"id": row["id"], "name": row["name"], "action": "received"})
+              players.append(
+                {
+                  "id": row["id"],
+                  "name": row["name"],
+                  "action": "received",
+                  "id_type": row.get("id_type"),
+                  "source_player_id": row.get("source_player_id"),
+                }
+              )
             for row in drops_by_team.get(team_id, []):
-              players.append({"id": row["id"], "name": row["name"], "action": "sent"})
+              players.append(
+                {
+                  "id": row["id"],
+                  "name": row["name"],
+                  "action": "sent",
+                  "id_type": row.get("id_type"),
+                  "source_player_id": row.get("source_player_id"),
+                }
+              )
             transactions_by_season.setdefault(season, []).append(
               {
                 "id": f"{txn_id}-trade-{team_id}",
@@ -676,6 +776,7 @@ def build_transactions(seasons, sleeper_maps=None):
                 "summary": f"Received: {received} | Sent: {sent}",
                 "created": txn.get("proposedDate"),
                 "players": players,
+                "source": "espn_transactions",
               }
             )
           continue
@@ -687,7 +788,7 @@ def build_transactions(seasons, sleeper_maps=None):
             continue
           team_name = espn_team_name_by_id.get(str(team_id), f"Team {team_id}")
           if item_type == "ADD":
-            pid, name = resolve_espn_player(item)
+            pid, name, id_type, source_id = resolve_espn_player(item)
             transactions_by_season.setdefault(season, []).append(
               {
                 "id": f"{txn_id}-add-{team_id}-{item.get('playerId')}",
@@ -697,11 +798,20 @@ def build_transactions(seasons, sleeper_maps=None):
                 "team": team_name,
                 "summary": f"Added: {name}",
                 "created": txn.get("proposedDate"),
-                "players": [{"id": pid, "name": name, "action": "add"}],
+                "players": [
+                  {
+                    "id": pid,
+                    "name": name,
+                    "action": "add",
+                    "id_type": id_type,
+                    "source_player_id": source_id,
+                  }
+                ],
+                "source": "espn_transactions",
               }
             )
           elif item_type == "DROP":
-            pid, name = resolve_espn_player(item)
+            pid, name, id_type, source_id = resolve_espn_player(item)
             transactions_by_season.setdefault(season, []).append(
               {
                 "id": f"{txn_id}-drop-{team_id}-{item.get('playerId')}",
@@ -711,7 +821,16 @@ def build_transactions(seasons, sleeper_maps=None):
                 "team": team_name,
                 "summary": f"Dropped: {name}",
                 "created": txn.get("proposedDate"),
-                "players": [{"id": pid, "name": name, "action": "drop"}],
+                "players": [
+                  {
+                    "id": pid,
+                    "name": name,
+                    "action": "drop",
+                    "id_type": id_type,
+                    "source_player_id": source_id,
+                  }
+                ],
+                "source": "espn_transactions",
               }
             )
 
@@ -742,7 +861,8 @@ def main():
         continue
     season = int(season_value)
     seasons.append(season)
-    lineups = [row for row in payload.get("lineups", []) if is_regular_season(row.get("week"))]
+    raw_lineups = [row for row in payload.get("lineups", []) if is_regular_season(row.get("week"))]
+    lineups = normalize_lineups(raw_lineups, sleeper_maps, player_name_lookup, source="league")
     matchups = [row for row in payload.get("matchups", []) if is_regular_season(row.get("week"))]
     teams = payload.get("teams", [])
     weeks = sorted({int(row.get("week")) for row in lineups + matchups if is_regular_season(row.get("week"))})

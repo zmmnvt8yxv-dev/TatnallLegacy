@@ -5,6 +5,8 @@ import { useDataContext } from "../data/DataContext.jsx";
 import { loadTransactions } from "../data/loader.js";
 import { filterRegularSeasonWeeks } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
+import { useVirtualRows } from "../utils/useVirtualRows.js";
+import { readStorage, writeStorage } from "../utils/persistence.js";
 import { Link, useSearchParams } from "react-router-dom";
 
 export default function TransactionsPage() {
@@ -19,6 +21,7 @@ export default function TransactionsPage() {
   const [teamFilter, setTeamFilter] = useState("");
   const [transactions, setTransactions] = useState(null);
   const isDev = import.meta.env.DEV;
+  const TRANSACTIONS_PREF_KEY = "tatnall-pref-transactions";
 
   const availableWeeks = useMemo(() => {
     if (!season) return [];
@@ -51,22 +54,36 @@ export default function TransactionsPage() {
     if (!seasons.length || !manifest) return;
     if (didInitRef.current) return;
     const params = new URLSearchParams(searchParams);
+    const stored = readStorage(TRANSACTIONS_PREF_KEY, {});
+    const storedSeason = Number(stored?.season);
+    const storedWeek = stored?.week ?? "all";
+    const storedType = stored?.type ?? "all";
+    const storedTeam = stored?.team ?? "";
     const paramSeason = Number(searchParams.get("season"));
-    const nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    let nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    if (!searchParams.get("season") && Number.isFinite(storedSeason) && seasons.includes(storedSeason)) {
+      nextSeason = storedSeason;
+    }
     const weeksForSeason = manifest?.weeksBySeason?.[String(nextSeason)] || [];
     const regularWeeks = filterRegularSeasonWeeks(weeksForSeason.map((value) => ({ week: value }))).map(
       (row) => row.week,
     );
     const paramWeekRaw = searchParams.get("week") || "all";
     const paramWeek = Number(paramWeekRaw);
-    const nextWeek =
+    let nextWeek =
       paramWeekRaw === "all" || paramWeekRaw === ""
         ? "all"
         : Number.isFinite(paramWeek) && regularWeeks.includes(paramWeek)
           ? paramWeek
           : "all";
-    const nextType = searchParams.get("type") || "all";
-    const nextTeam = searchParams.get("team") || "";
+    if (!searchParams.get("week") && storedWeek !== "all") {
+      const storedWeekNumber = Number(storedWeek);
+      if (Number.isFinite(storedWeekNumber) && regularWeeks.includes(storedWeekNumber)) {
+        nextWeek = storedWeekNumber;
+      }
+    }
+    const nextType = searchParams.get("type") || storedType || "all";
+    const nextTeam = searchParams.get("team") || storedTeam || "";
     setSeason(nextSeason);
     setWeek(nextWeek);
     setTypeFilter(nextType);
@@ -81,6 +98,12 @@ export default function TransactionsPage() {
       changed = true;
     }
     if (changed) setSearchParams(params, { replace: true });
+    writeStorage(TRANSACTIONS_PREF_KEY, {
+      season: nextSeason,
+      week: nextWeek,
+      type: nextType,
+      team: nextTeam,
+    });
     didInitRef.current = true;
   }, [seasons, manifest, searchParams, setSearchParams]);
 
@@ -102,6 +125,12 @@ export default function TransactionsPage() {
     if (nextTeam) params.set("team", nextTeam);
     else params.delete("team");
     setSearchParams(params, { replace: true });
+    writeStorage(TRANSACTIONS_PREF_KEY, {
+      season: nextSeason,
+      week: nextWeek,
+      type: nextType,
+      team: nextTeam,
+    });
   };
 
   const handleSeasonChange = (value) => {
@@ -174,6 +203,8 @@ export default function TransactionsPage() {
   if (error) return <ErrorState message={error} />;
 
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+  const virtualEntries = useVirtualRows({ itemCount: entries.length, rowHeight: 46 });
+  const visibleEntries = entries.slice(virtualEntries.start, virtualEntries.end);
 
   const teamOptions = useMemo(() => {
     const set = new Set();
@@ -239,7 +270,7 @@ export default function TransactionsPage() {
         <p className="page-subtitle">Track trades, adds, and drops by season and week.</p>
       </section>
 
-      <section className="section-card filters">
+      <section className="section-card filters filters--sticky">
         <div>
           <label>Season</label>
           <select value={season} onChange={(event) => handleSeasonChange(event.target.value)}>
@@ -329,52 +360,66 @@ export default function TransactionsPage() {
       <section className="section-card">
         <h2 className="section-title">Recent Transactions</h2>
         {entries.length ? (
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Week</th>
-                <th>Team</th>
-                <th>Type</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {entries.map((entry) => (
-                <tr key={entry.id}>
-                  <td>{entry.week ?? "—"}</td>
-                  <td>
-                    <button
-                      type="button"
-                      className="tag"
-                      onClick={() => setTeamFilter(normalizeOwnerName(entry.team))}
-                    >
-                      {ownerLabel(entry.team, entry.team || "Unknown")}
-                    </button>
-                  </td>
-                  <td>{entry.type}</td>
-                  <td>
-                    {entry.players?.length ? (
-                      <div>
-                        {entry.type === "trade" ? (
-                          <span>
-                            Received: {renderPlayerLinks(entry.players.filter((player) => player?.action === "received"))}
-                            {" | "}Sent: {renderPlayerLinks(entry.players.filter((player) => player?.action === "sent"))}
-                          </span>
-                        ) : (
-                          <span>
-                            {entry.type === "add" ? "Added: " : entry.type === "drop" ? "Dropped: " : "Updated: "}
-                            {renderPlayerLinks(entry.players)}
-                          </span>
-                        )}
-                      </div>
-                    ) : (
-                      <div>{entry.summary || "No details"}</div>
-                    )}
-                  </td>
+          <div className="table-wrap virtual-table" ref={virtualEntries.containerRef}>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Week</th>
+                  <th>Team</th>
+                  <th>Type</th>
+                  <th>Details</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {virtualEntries.topPadding ? (
+                  <tr className="table-virtual-spacer" aria-hidden="true">
+                    <td colSpan={4} style={{ height: virtualEntries.topPadding }} />
+                  </tr>
+                ) : null}
+                {visibleEntries.map((entry) => (
+                  <tr key={entry.id}>
+                    <td>{entry.week ?? "—"}</td>
+                    <td>
+                      <button
+                        type="button"
+                        className="tag"
+                        onClick={() => setTeamFilter(normalizeOwnerName(entry.team))}
+                      >
+                        {ownerLabel(entry.team, entry.team || "Unknown")}
+                      </button>
+                    </td>
+                    <td>{entry.type}</td>
+                    <td>
+                      {entry.players?.length ? (
+                        <div>
+                          {entry.type === "trade" ? (
+                            <span>
+                              Received:{" "}
+                              {renderPlayerLinks(entry.players.filter((player) => player?.action === "received"))}
+                              {" | "}Sent:{" "}
+                              {renderPlayerLinks(entry.players.filter((player) => player?.action === "sent"))}
+                            </span>
+                          ) : (
+                            <span>
+                              {entry.type === "add" ? "Added: " : entry.type === "drop" ? "Dropped: " : "Updated: "}
+                              {renderPlayerLinks(entry.players)}
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        <div>{entry.summary || "No details"}</div>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+                {virtualEntries.bottomPadding ? (
+                  <tr className="table-virtual-spacer" aria-hidden="true">
+                    <td colSpan={4} style={{ height: virtualEntries.bottomPadding }} />
+                  </tr>
+                ) : null}
+              </tbody>
+            </table>
+          </div>
         ) : (
           <div>No transaction data available for this season.</div>
         )}
@@ -384,26 +429,28 @@ export default function TransactionsPage() {
         <div className="section-card">
           <h2 className="section-title">Season Totals by Team</h2>
           {totalsByTeam.length ? (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Team</th>
-                  <th>Adds</th>
-                  <th>Drops</th>
-                  <th>Trades</th>
-                </tr>
-              </thead>
-              <tbody>
-                {totalsByTeam.map((row) => (
-                  <tr key={row.team}>
-                    <td>{ownerLabel(row.team, row.team)}</td>
-                    <td>{row.adds}</td>
-                    <td>{row.drops}</td>
-                    <td>{row.trades}</td>
+            <div className="table-wrap">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Team</th>
+                    <th>Adds</th>
+                    <th>Drops</th>
+                    <th>Trades</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {totalsByTeam.map((row) => (
+                    <tr key={row.team}>
+                      <td>{ownerLabel(row.team, row.team)}</td>
+                      <td>{row.adds}</td>
+                      <td>{row.drops}</td>
+                      <td>{row.trades}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <div>No team totals available.</div>
           )}

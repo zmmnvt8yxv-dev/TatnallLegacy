@@ -17,8 +17,12 @@ import {
 } from "../data/loader.js";
 import { resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
+import { useVirtualRows } from "../utils/useVirtualRows.js";
+import { useFavorites } from "../utils/useFavorites.js";
+import { readStorage, writeStorage } from "../utils/persistence.js";
 
 const TABS = ["Overview", "Seasons", "Weekly Log", "Full Stats", "Boom/Bust"];
+const PLAYER_PREF_KEY = "tatnall-pref-player";
 
 const THRESHOLDS = {
   QB: 20,
@@ -58,6 +62,8 @@ export default function PlayerPage() {
   const [seasonMetrics, setSeasonMetrics] = useState([]);
   const [careerMetrics, setCareerMetrics] = useState([]);
   const [search, setSearch] = useState("");
+  const { favorites, togglePlayer } = useFavorites();
+  const isFavorite = favorites.players.includes(String(playerId));
 
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
 
@@ -77,10 +83,19 @@ export default function PlayerPage() {
     if (!seasons.length) return;
     if (didInitRef.current) return;
     const params = new URLSearchParams(searchParams);
+    const stored = readStorage(PLAYER_PREF_KEY, {});
+    const storedSeason = Number(stored?.season);
+    const storedTab = stored?.tab;
     const paramSeason = Number(searchParams.get("season"));
-    const nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    let nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    if (!searchParams.get("season") && Number.isFinite(storedSeason) && seasons.includes(storedSeason)) {
+      nextSeason = storedSeason;
+    }
     const paramTab = searchParams.get("tab");
-    const nextTab = paramTab && TABS.includes(paramTab) ? paramTab : TABS[0];
+    let nextTab = paramTab && TABS.includes(paramTab) ? paramTab : TABS[0];
+    if (!searchParams.get("tab") && storedTab && TABS.includes(storedTab)) {
+      nextTab = storedTab;
+    }
     setSelectedSeason(nextSeason);
     setActiveTab(nextTab);
     let changed = false;
@@ -102,6 +117,7 @@ export default function PlayerPage() {
     if (nextTab) params.set("tab", nextTab);
     else params.delete("tab");
     setSearchParams(params, { replace: true });
+    writeStorage(PLAYER_PREF_KEY, { season: nextSeason, tab: nextTab });
   };
 
   const handleTabChange = (value) => {
@@ -307,6 +323,9 @@ export default function PlayerPage() {
           positionRank,
           points: row.points ?? row.fantasy_points_custom ?? row.fantasy_points_custom_week,
           games: row.games ?? row.games_played,
+          gamesPossible: row.games_possible,
+          availabilityFlag: row.availability_flag,
+          availabilityRatio: row.availability_ratio,
           war: row.war_rep ?? row.war_rep_season,
           delta: row.delta_to_next ?? row.delta_to_next_season,
         });
@@ -458,6 +477,11 @@ export default function PlayerPage() {
     return fullStatsRows.filter(matchesPlayer);
   }, [fullStatsRows, playerId, playerInfo]);
 
+  const weeklyVirtual = useVirtualRows({ itemCount: filteredWeeklyRows.length, rowHeight: 46 });
+  const visibleWeeklyRows = filteredWeeklyRows.slice(weeklyVirtual.start, weeklyVirtual.end);
+  const fullStatsVirtual = useVirtualRows({ itemCount: filteredFullStatsRows.length, rowHeight: 46 });
+  const visibleFullStatsRows = filteredFullStatsRows.slice(fullStatsVirtual.start, fullStatsVirtual.end);
+
   useEffect(() => {
     let active = true;
     if (!seasons.length) return undefined;
@@ -537,6 +561,15 @@ export default function PlayerPage() {
       .sort((a, b) => b.season - a.season);
   }, [careerWeeklyRows]);
 
+  const consistencyLabel = useMemo(() => {
+    if (boomBustFromMetrics?.consistency_label) return boomBustFromMetrics.consistency_label;
+    const stdDev = boomBust?.stdDev;
+    if (stdDev == null) return null;
+    if (stdDev <= 6) return "High";
+    if (stdDev <= 10) return "Medium";
+    return "Low";
+  }, [boomBustFromMetrics, boomBust]);
+
   const warDefinitions = (
     <div className="section-card">
       <h3 className="section-title">WAR Definitions</h3>
@@ -576,6 +609,13 @@ export default function PlayerPage() {
             <p className="page-subtitle">
               {displayPosition} · {displayTeam}
             </p>
+            <button
+              type="button"
+              className={`favorite-button ${isFavorite ? "active" : ""}`}
+              onClick={() => togglePlayer(playerId)}
+            >
+              {isFavorite ? "Favorited" : "Add Favorite"}
+            </button>
           </div>
         </div>
         <div className="flex-row">
@@ -662,30 +702,38 @@ export default function PlayerPage() {
         <section className="section-card">
           <h2 className="section-title">Season-by-Season Totals</h2>
           {seasonStats.length ? (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Season</th>
+            <div className="table-wrap">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Season</th>
                   <th>Games</th>
+                  <th>Avail</th>
                   <th>Total Points</th>
                   <th>Pos Rank</th>
                   <th>WAR</th>
                   <th>Delta</th>
-                </tr>
-              </thead>
-              <tbody>
-                {seasonStats.map((row) => (
-                  <tr key={row.season}>
+                  </tr>
+                </thead>
+                <tbody>
+                  {seasonStats.map((row) => (
+                    <tr key={row.season}>
                     <td>{row.season}</td>
                     <td>{row.games}</td>
+                    <td>
+                      {row.gamesPossible
+                        ? `${row.availabilityFlag === "limited" ? "Limited" : "Full"} (${row.games}/${row.gamesPossible})`
+                        : "—"}
+                    </td>
                     <td>{formatPoints(row.points)}</td>
-                    <td>{row.position && row.positionRank ? `${row.position}${row.positionRank}` : "—"}</td>
-                    <td>{formatPoints(row.war)}</td>
-                    <td>{formatPoints(row.delta)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                      <td>{row.position && row.positionRank ? `${row.position}${row.positionRank}` : "—"}</td>
+                      <td>{formatPoints(row.war)}</td>
+                      <td>{formatPoints(row.delta)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <div>No season totals available for this player.</div>
           )}
@@ -694,7 +742,7 @@ export default function PlayerPage() {
 
       {activeTab === "Weekly Log" && (
         <section className="section-card">
-          <div className="filters">
+          <div className="filters filters--sticky">
             <div>
               <label>Season</label>
               <select value={selectedSeason} onChange={(event) => handleSeasonChange(event.target.value)}>
@@ -708,36 +756,48 @@ export default function PlayerPage() {
             <SearchBar value={search} onChange={setSearch} placeholder="Filter by team..." />
           </div>
           {weeklyDisplayRows.length ? (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Week</th>
-                  <th>NFL Team</th>
-                  <th>Fantasy Team</th>
-                  <th>Starter</th>
-                  <th>Points</th>
-                  <th>Z-Score</th>
-                  <th>WAR</th>
-                  <th>Delta</th>
-                  <th>Pos Rank</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredWeeklyRows.map((row, idx) => (
-                  <tr key={`${row.week}-${idx}`}>
-                    <td>{row.week}</td>
-                    <td>{row.nflTeam || "—"}</td>
-                    <td>{row.fantasyTeam || "—"}</td>
-                    <td>{row.started ? "Yes" : "—"}</td>
-                    <td>{formatPoints(row.points)}</td>
-                    <td>{row.pos_week_z ? safeNumber(row.pos_week_z).toFixed(2) : "—"}</td>
-                    <td>{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
-                    <td>{row.delta_to_next != null ? formatPoints(row.delta_to_next) : "—"}</td>
-                    <td>{row.position && row.pos_week_rank ? `${row.position}${row.pos_week_rank}` : "—"}</td>
+            <div className="table-wrap virtual-table" ref={weeklyVirtual.containerRef}>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Week</th>
+                    <th>NFL Team</th>
+                    <th>Fantasy Team</th>
+                    <th>Starter</th>
+                    <th>Points</th>
+                    <th>Z-Score</th>
+                    <th>WAR</th>
+                    <th>Delta</th>
+                    <th>Pos Rank</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {weeklyVirtual.topPadding ? (
+                    <tr className="table-virtual-spacer" aria-hidden="true">
+                      <td colSpan={9} style={{ height: weeklyVirtual.topPadding }} />
+                    </tr>
+                  ) : null}
+                  {visibleWeeklyRows.map((row, idx) => (
+                    <tr key={`${row.week}-${idx}`}>
+                      <td>{row.week}</td>
+                      <td>{row.nflTeam || "—"}</td>
+                      <td>{row.fantasyTeam || "—"}</td>
+                      <td>{row.started ? "Yes" : "—"}</td>
+                      <td>{formatPoints(row.points)}</td>
+                      <td>{row.pos_week_z ? safeNumber(row.pos_week_z).toFixed(2) : "—"}</td>
+                      <td>{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
+                      <td>{row.delta_to_next != null ? formatPoints(row.delta_to_next) : "—"}</td>
+                      <td>{row.position && row.pos_week_rank ? `${row.position}${row.pos_week_rank}` : "—"}</td>
+                    </tr>
+                  ))}
+                  {weeklyVirtual.bottomPadding ? (
+                    <tr className="table-virtual-spacer" aria-hidden="true">
+                      <td colSpan={9} style={{ height: weeklyVirtual.bottomPadding }} />
+                    </tr>
+                  ) : null}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <div>No weekly data available for this season.</div>
           )}
@@ -746,7 +806,7 @@ export default function PlayerPage() {
 
       {activeTab === "Full Stats" && (
         <section className="section-card">
-          <div className="filters">
+          <div className="filters filters--sticky">
             <div>
               <label>Season</label>
               <select value={selectedSeason} onChange={(event) => handleSeasonChange(event.target.value)}>
@@ -759,29 +819,35 @@ export default function PlayerPage() {
             </div>
           </div>
           {filteredFullStatsRows.length ? (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Season</th>
-                  <th>Week</th>
-                  <th>Team</th>
-                  <th>Opp</th>
-                  <th>Pass Yds</th>
-                  <th>Pass TD</th>
-                  <th>INT</th>
-                  <th>Rush Yds</th>
-                  <th>Rush TD</th>
-                  <th>Rec</th>
-                  <th>Rec Yds</th>
-                  <th>Rec TD</th>
-                  <th>Pts</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredFullStatsRows.map((row, idx) => (
-                  <tr key={`${row.week}-${idx}`}>
-                    <td>{row.season || selectedSeason}</td>
-                    <td>{row.week}</td>
+            <div className="table-wrap virtual-table" ref={fullStatsVirtual.containerRef}>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Season</th>
+                    <th>Week</th>
+                    <th>Team</th>
+                    <th>Opp</th>
+                    <th>Pass Yds</th>
+                    <th>Pass TD</th>
+                    <th>INT</th>
+                    <th>Rush Yds</th>
+                    <th>Rush TD</th>
+                    <th>Rec</th>
+                    <th>Rec Yds</th>
+                    <th>Rec TD</th>
+                    <th>Pts</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {fullStatsVirtual.topPadding ? (
+                    <tr className="table-virtual-spacer" aria-hidden="true">
+                      <td colSpan={13} style={{ height: fullStatsVirtual.topPadding }} />
+                    </tr>
+                  ) : null}
+                  {visibleFullStatsRows.map((row, idx) => (
+                    <tr key={`${row.week}-${idx}`}>
+                      <td>{row.season || selectedSeason}</td>
+                      <td>{row.week}</td>
                       <td>{row.team || "—"}</td>
                       <td>{row.opponent_team || "—"}</td>
                       <td>{row.passing_yards ?? "—"}</td>
@@ -793,10 +859,16 @@ export default function PlayerPage() {
                       <td>{row.receiving_yards ?? "—"}</td>
                       <td>{row.receiving_tds ?? "—"}</td>
                       <td>{row.fantasy_points_custom_week_with_bonus ?? row.fantasy_points_custom_week ?? "—"}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    </tr>
+                  ))}
+                  {fullStatsVirtual.bottomPadding ? (
+                    <tr className="table-virtual-spacer" aria-hidden="true">
+                      <td colSpan={13} style={{ height: fullStatsVirtual.bottomPadding }} />
+                    </tr>
+                  ) : null}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <div>No full stat rows available for this player in the selected season.</div>
           )}
@@ -812,6 +884,7 @@ export default function PlayerPage() {
                 <div className="tag">
                   Std dev: {formatPoints(boomBustFromMetrics?.fp_std ?? boomBust?.stdDev)}
                 </div>
+                {consistencyLabel ? <div className="tag">Consistency: {consistencyLabel}</div> : null}
                 <div className="tag">
                   % weeks ≥ {boomBust?.threshold ?? THRESHOLDS.default} pts:{" "}
                   {(boomBustFromMetrics?.boom_pct

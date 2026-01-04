@@ -2,10 +2,12 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
+import DeferredSection from "../components/DeferredSection.jsx";
 import NavigationCard from "../components/NavigationCard.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import StatCard from "../components/StatCard.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
+import { useFavorites } from "../utils/useFavorites.js";
 import {
   loadAllTime,
   loadMetricsSummary,
@@ -31,8 +33,12 @@ export default function SummaryPage() {
   const [transactions, setTransactions] = useState(null);
   const [metricsSummary, setMetricsSummary] = useState(null);
   const [boomBust, setBoomBust] = useState(null);
+  const [loadHistory, setLoadHistory] = useState(false);
+  const [loadMetrics, setLoadMetrics] = useState(false);
+  const [loadBoomBust, setLoadBoomBust] = useState(false);
   const [playerSearch, setPlayerSearch] = useState("");
   const [weeklySearch, setWeeklySearch] = useState("");
+  const { favorites } = useFavorites();
 
   const latestSeason = getLatestSeason(manifest);
   const seasonWeeks = latestSeason ? manifest?.weeksBySeason?.[String(latestSeason)] || [] : [];
@@ -54,26 +60,29 @@ export default function SummaryPage() {
 
   useEffect(() => {
     let active = true;
+    if (!loadHistory) return undefined;
     loadAllTime().then((payload) => {
       if (active) setAllTime(payload);
     });
     return () => {
       active = false;
     };
-  }, []);
+  }, [loadHistory]);
 
   useEffect(() => {
     let active = true;
+    if (!loadMetrics) return undefined;
     loadMetricsSummary().then((payload) => {
       if (active) setMetricsSummary(payload);
     });
     return () => {
       active = false;
     };
-  }, []);
+  }, [loadMetrics]);
 
   useEffect(() => {
     let active = true;
+    if (!loadBoomBust) return undefined;
     loadPlayerMetricsBoomBust()
       .then((payload) => {
         if (active) setBoomBust(payload);
@@ -84,7 +93,7 @@ export default function SummaryPage() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [loadBoomBust]);
 
   const champion = useMemo(() => {
     const standings = seasonSummary?.standings || [];
@@ -152,6 +161,8 @@ export default function SummaryPage() {
   const championNote = champion
     ? "Regular-season leader based on available standings."
     : "Standings or playoff data missing for this season.";
+  const allTimePending = loadHistory && !allTime;
+  const metricsPending = loadMetrics && !metricsSummary;
 
   const playerFromSleeper = (playerId) => {
     const uid = playerIdLookup.bySleeper.get(String(playerId));
@@ -160,6 +171,14 @@ export default function SummaryPage() {
   };
 
   const getPlayerName = (row) => resolvePlayerName(row, playerIndex);
+  const favoritePlayers = useMemo(
+    () =>
+      favorites.players.map((id) => ({
+        id,
+        name: resolvePlayerName({ player_id: id }, playerIndex),
+      })),
+    [favorites.players, playerIndex],
+  );
 
   return (
     <>
@@ -183,6 +202,42 @@ export default function SummaryPage() {
           value={transactionTotals ? transactionTotals.totalTrades : "No data"}
           subtext="Latest season trades"
         />
+      </section>
+
+      <section className="section-card">
+        <h2 className="section-title">Your Favorites</h2>
+        {favoritePlayers.length || favorites.teams.length ? (
+          <>
+            {favoritePlayers.length ? (
+              <>
+                <div className="stat-label">Players</div>
+                <div className="favorite-list">
+                  {favoritePlayers.map((player) => (
+                    <Link key={player.id} to={`/players/${player.id}`} className="tag">
+                      {player.name}
+                    </Link>
+                  ))}
+                </div>
+              </>
+            ) : null}
+            {favorites.teams.length ? (
+              <>
+                <div className="stat-label" style={{ marginTop: 12 }}>
+                  Teams
+                </div>
+                <div className="favorite-list">
+                  {favorites.teams.map((team) => (
+                    <span key={team} className="tag">
+                      {ownerLabel(team, team)}
+                    </span>
+                  ))}
+                </div>
+              </>
+            ) : null}
+          </>
+        ) : (
+          <div>No favorites yet. Add a player or team to see them here.</div>
+        )}
       </section>
 
       <section className="card-grid">
@@ -222,164 +277,199 @@ export default function SummaryPage() {
             <div>No transaction data available for this season.</div>
           )}
         </div>
-        <div className="section-card">
-          <h2 className="section-title">All-Time Records</h2>
-          <div className="flex-row">
-            <div className="tag">Weekly points leaderboard (custom points)</div>
-            <div className="tag">Career fantasy totals</div>
-          </div>
-          {!allTime ? (
-            <div>No all-time data available.</div>
-          ) : (
+        <DeferredSection
+          onVisible={() => setLoadHistory(true)}
+          placeholder={<div className="section-card">Loading all-time records…</div>}
+        >
+          <div className="section-card">
+            <h2 className="section-title">All-Time Records</h2>
             <div className="flex-row">
-              <Link to="/matchups" className="tag">
-                Explore weekly matchups →
-              </Link>
-              <Link to="/standings" className="tag">
-                View franchise history →
-              </Link>
+              <div className="tag">Weekly points leaderboard (custom points)</div>
+              <div className="tag">Career fantasy totals</div>
+            </div>
+            {allTimePending ? (
+              <div>Loading all-time data…</div>
+            ) : !allTime ? (
+              <div>No all-time data available.</div>
+            ) : (
+              <div className="flex-row">
+                <Link to="/matchups" className="tag">
+                  Explore weekly matchups →
+                </Link>
+                <Link to="/standings" className="tag">
+                  View franchise history →
+                </Link>
+              </div>
+            )}
+          </div>
+        </DeferredSection>
+      </section>
+
+      <DeferredSection
+        onVisible={() => setLoadHistory(true)}
+        placeholder={<div className="section-card">Loading weekly leaders…</div>}
+      >
+        <section className="section-card">
+          <h2 className="section-title">Best Weekly Performances (Top 10)</h2>
+          <SearchBar value={weeklySearch} onChange={setWeeklySearch} placeholder="Search weekly leaders..." />
+          {allTimePending ? (
+            <div>Loading weekly leaders…</div>
+          ) : topWeekly.length ? (
+            <div className="table-wrap">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>Season</th>
+                    <th>Week</th>
+                    <th>Team</th>
+                    <th>Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {topWeekly.map((row) => {
+                    const player = playerFromSleeper(row.player_id);
+                    const playerName = getPlayerName(row) || player?.full_name;
+                    return (
+                      <tr key={`${row.player_id}-${row.season}-${row.week}`}>
+                        <td>
+                          <Link to={`/players/${row.player_id}`}>{playerName}</Link>
+                        </td>
+                        <td>{row.season}</td>
+                        <td>{row.week}</td>
+                        <td>{row.team || "—"}</td>
+                        <td>{formatPoints(row.points)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div>No weekly performance data available.</div>
+          )}
+        </section>
+      </DeferredSection>
+
+      <DeferredSection
+        onVisible={() => setLoadHistory(true)}
+        placeholder={<div className="section-card">Loading career leaders…</div>}
+      >
+        <section className="section-card">
+          <h2 className="section-title">Career Fantasy Leaders</h2>
+          <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search career leaders..." />
+          {allTimePending ? (
+            <div>Loading career leaders…</div>
+          ) : careerLeaders.length ? (
+            <div className="table-wrap">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>Seasons</th>
+                    <th>Games</th>
+                    <th>Total Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {careerLeaders.map((row) => {
+                    const player = playerFromSleeper(row.player_id);
+                    const playerName = getPlayerName(row) || player?.full_name;
+                    return (
+                      <tr key={row.player_id}>
+                        <td>
+                          <Link to={`/players/${row.player_id}`}>{playerName}</Link>
+                        </td>
+                        <td>{row.seasons}</td>
+                        <td>{row.games}</td>
+                        <td>{formatPoints(row.points)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div>No career leaderboard data available.</div>
+          )}
+        </section>
+      </DeferredSection>
+
+      <DeferredSection
+        onVisible={() => setLoadMetrics(true)}
+        placeholder={<div className="section-card">Loading advanced metrics…</div>}
+      >
+        <section className="section-card">
+          <h2 className="section-title">Advanced Metrics Highlights</h2>
+          {metricsPending ? (
+            <div>Loading advanced metrics…</div>
+          ) : !metricsSummary ? (
+            <div>
+              No advanced metrics available. Run <code>npm run build:data</code> to generate WAR and z-score stats.
+            </div>
+          ) : (
+            <div className="detail-grid">
+              <div className="section-card">
+                <h3 className="section-title">Top Weekly WAR</h3>
+                {metricsSummary.topWeeklyWar?.length ? (
+                  <ul>
+                    {metricsSummary.topWeeklyWar.map((row) => (
+                      <li
+                        key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
+                      >
+                        {getPlayerName(row)} — Week {row.week} {row.season} ({formatPoints(row.war_rep)})
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div>No weekly WAR data available.</div>
+                )}
+              </div>
+              <div className="section-card">
+                <h3 className="section-title">Best Weekly Z-Scores</h3>
+                {metricsSummary.topWeeklyZ?.length ? (
+                  <ul>
+                    {metricsSummary.topWeeklyZ.map((row) => (
+                      <li
+                        key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
+                      >
+                        {getPlayerName(row)} — Week {row.week} {row.season} ({safeNumber(row.pos_week_z).toFixed(2)})
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div>No weekly z-score data available.</div>
+                )}
+              </div>
+              <div className="section-card">
+                <h3 className="section-title">Top WAR Seasons</h3>
+                {metricsSummary.topSeasonWar?.length ? (
+                  <ul>
+                    {metricsSummary.topSeasonWar.map((row) => (
+                      <li
+                        key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}`}
+                      >
+                        {getPlayerName(row)} — {row.season} ({formatPoints(row.war_rep)})
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div>No season WAR data available.</div>
+                )}
+              </div>
             </div>
           )}
-        </div>
-      </section>
-
-      <section className="section-card">
-        <h2 className="section-title">Best Weekly Performances (Top 10)</h2>
-        <SearchBar value={weeklySearch} onChange={setWeeklySearch} placeholder="Search weekly leaders..." />
-        {topWeekly.length ? (
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Player</th>
-                <th>Season</th>
-                <th>Week</th>
-                <th>Team</th>
-                <th>Points</th>
-              </tr>
-            </thead>
-            <tbody>
-              {topWeekly.map((row) => {
-                const player = playerFromSleeper(row.player_id);
-                const playerName = getPlayerName(row) || player?.full_name;
-                return (
-                  <tr key={`${row.player_id}-${row.season}-${row.week}`}>
-                    <td>
-                      <Link to={`/players/${row.player_id}`}>
-                        {playerName}
-                      </Link>
-                    </td>
-                    <td>{row.season}</td>
-                    <td>{row.week}</td>
-                    <td>{row.team || "—"}</td>
-                    <td>{formatPoints(row.points)}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        ) : (
-          <div>No weekly performance data available.</div>
-        )}
-      </section>
-
-      <section className="section-card">
-        <h2 className="section-title">Career Fantasy Leaders</h2>
-        <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search career leaders..." />
-        {careerLeaders.length ? (
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Player</th>
-                <th>Seasons</th>
-                <th>Games</th>
-                <th>Total Points</th>
-              </tr>
-            </thead>
-            <tbody>
-              {careerLeaders.map((row) => {
-                const player = playerFromSleeper(row.player_id);
-                const playerName = getPlayerName(row) || player?.full_name;
-                return (
-                  <tr key={row.player_id}>
-                    <td>
-                      <Link to={`/players/${row.player_id}`}>
-                        {playerName}
-                      </Link>
-                    </td>
-                    <td>{row.seasons}</td>
-                    <td>{row.games}</td>
-                    <td>{formatPoints(row.points)}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        ) : (
-          <div>No career leaderboard data available.</div>
-        )}
-      </section>
-
-      <section className="section-card">
-        <h2 className="section-title">Advanced Metrics Highlights</h2>
-        {!metricsSummary ? (
-          <div>No advanced metrics available. Run <code>npm run build:data</code> to generate WAR and z-score stats.</div>
-        ) : (
-          <div className="detail-grid">
-            <div className="section-card">
-              <h3 className="section-title">Top Weekly WAR</h3>
-              {metricsSummary.topWeeklyWar?.length ? (
-                <ul>
-                  {metricsSummary.topWeeklyWar.map((row) => (
-                    <li
-                      key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
-                    >
-                      {getPlayerName(row)} — Week {row.week} {row.season} (
-                      {formatPoints(row.war_rep)}){" "}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div>No weekly WAR data available.</div>
-              )}
-            </div>
-            <div className="section-card">
-              <h3 className="section-title">Best Weekly Z-Scores</h3>
-              {metricsSummary.topWeeklyZ?.length ? (
-                <ul>
-                  {metricsSummary.topWeeklyZ.map((row) => (
-                    <li
-                      key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
-                    >
-                      {getPlayerName(row)} — Week {row.week} {row.season} (
-                      {safeNumber(row.pos_week_z).toFixed(2)})
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div>No weekly z-score data available.</div>
-              )}
-            </div>
-            <div className="section-card">
-              <h3 className="section-title">Top WAR Seasons</h3>
-              {metricsSummary.topSeasonWar?.length ? (
-                <ul>
-                  {metricsSummary.topSeasonWar.map((row) => (
-                    <li
-                      key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}`}
-                    >
-                      {getPlayerName(row)} — {row.season} (
-                      {formatPoints(row.war_rep)})
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div>No season WAR data available.</div>
-              )}
-            </div>
-          </div>
-        )}
-      </section>
-      <LocalStatAssistant allTime={allTime} boomBust={boomBust} playerIndex={playerIndex} />
+        </section>
+      </DeferredSection>
+      <DeferredSection
+        onVisible={() => {
+          setLoadHistory(true);
+          setLoadBoomBust(true);
+        }}
+        placeholder={<div className="section-card">Loading stat assistant…</div>}
+      >
+        <LocalStatAssistant allTime={allTime} boomBust={boomBust} playerIndex={playerIndex} />
+      </DeferredSection>
 
       <section className="section-card">
         <h2 className="section-title">Data Coverage Notes</h2>

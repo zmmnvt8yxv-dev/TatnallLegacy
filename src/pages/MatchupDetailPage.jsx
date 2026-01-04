@@ -131,7 +131,7 @@ export default function MatchupDetailPage() {
         </p>
       </section>
 
-      <section className="section-card">
+      <section className="section-card filters filters--sticky">
         <SearchBar value={search} onChange={setSearch} placeholder="Search players in this matchup..." />
       </section>
 
@@ -157,32 +157,34 @@ export default function MatchupDetailPage() {
                   ))}
               </div>
               {roster.rows.length ? (
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Player</th>
-                      <th>Pos</th>
-                      <th>Starter</th>
-                      <th>Points</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {roster.rows.map((row, idx) => (
-                      <tr key={`${row.player_id || row.player}-${idx}`}>
-                        <td>
-                          {row.player_id ? (
-                            <Link to={`/players/${row.player_id}`}>{row.displayName}</Link>
-                          ) : (
-                            row.displayName
-                          )}
-                        </td>
-                        <td>{row.position}</td>
-                        <td>{row.started ? "Yes" : "No"}</td>
-                        <td>{formatPoints(row.points)}</td>
+                <div className="table-wrap">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>Player</th>
+                        <th>Pos</th>
+                        <th>Starter</th>
+                        <th>Points</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {roster.rows.map((row, idx) => (
+                        <tr key={`${row.player_id || row.player}-${idx}`}>
+                          <td>
+                            {row.player_id ? (
+                              <Link to={`/players/${row.player_id}`}>{row.displayName}</Link>
+                            ) : (
+                              row.displayName
+                            )}
+                          </td>
+                          <td>{row.position}</td>
+                          <td>{row.started ? "Yes" : "No"}</td>
+                          <td>{formatPoints(row.points)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               ) : (
                 <div>No roster data available for this team.</div>
               )}

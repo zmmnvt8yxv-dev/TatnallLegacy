@@ -106,15 +106,15 @@ export async function loadCoreData() {
     const cached = getCached("core");
     if (cached) return cached;
     const manifest = await loadManifest();
-    playersPath = requireManifestPath(manifest, "players");
-    playerIdsPath = requireManifestPath(manifest, "playerIds");
-    teamsPath = requireManifestPath(manifest, "teams");
+    playersPath = optionalManifestPath(manifest, "players");
+    playerIdsPath = optionalManifestPath(manifest, "playerIds");
+    teamsPath = optionalManifestPath(manifest, "teams");
     const [players, playerIds, teams] = await Promise.all([
-      fetchJson(playersPath),
-      fetchJson(playerIdsPath),
-      fetchJson(teamsPath),
+      playersPath ? fetchJson(playersPath, { optional: true }) : Promise.resolve([]),
+      playerIdsPath ? fetchJson(playerIdsPath, { optional: true }) : Promise.resolve([]),
+      teamsPath ? fetchJson(teamsPath, { optional: true }) : Promise.resolve([]),
     ]);
-    return setCached("core", { players, playerIds, teams });
+    return setCached("core", { players: players || [], playerIds: playerIds || [], teams: teams || [] });
   } catch (err) {
     console.error("DATA_LOAD_ERROR", {
       url: {
@@ -124,7 +124,7 @@ export async function loadCoreData() {
       },
       err,
     });
-    throw err;
+    return setCached("core", { players: [], playerIds: [], teams: [] });
   }
 }
 
@@ -182,16 +182,18 @@ export async function loadTransactions(season) {
     const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
-    path = resolvePath(requireManifestPath(manifest, "transactions"), { season });
+    const template = optionalManifestPath(manifest, "transactions");
+    path = template ? resolvePath(template, { season }) : null;
     if (!path) return null;
-    const payload = await fetchJson(path);
+    const payload = await fetchJson(path, { optional: true });
+    if (!payload) return null;
     if (payload && typeof payload === "object") {
       payload.__meta = { path };
     }
     return setCached(key, payload);
   } catch (err) {
     console.error("DATA_LOAD_ERROR", { url: path || `transactions:${season}`, err });
-    throw err;
+    return null;
   }
 }
 
