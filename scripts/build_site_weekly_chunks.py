@@ -502,6 +502,7 @@ def build_transactions(seasons, sleeper_maps=None):
                 "team": team_name,
                 "summary": summary,
                 "created": created,
+                "source": "sleeper_transactions_api",
               }
             )
         else:
@@ -517,6 +518,7 @@ def build_transactions(seasons, sleeper_maps=None):
                 "team": team_name,
                 "summary": summary,
                 "created": created,
+                "source": "sleeper_transactions_api",
               }
             )
           for player_id, roster_id in drops.items():
@@ -531,8 +533,16 @@ def build_transactions(seasons, sleeper_maps=None):
                 "team": team_name,
                 "summary": summary,
                 "created": created,
+                "source": "sleeper_transactions_api",
               }
             )
+
+      filtered = []
+      for entry in transactions_by_season.get(season, []):
+        if entry.get("source") == "sleeper_trades":
+          continue
+        filtered.append(entry)
+      transactions_by_season[season] = filtered
 
     espn_txn_path = DATA_DIR / f"espn-transactions-{season}.json"
     espn_raw_path = ROOT / "data_raw" / "espn_transactions" / f"transactions_{season}.json"
