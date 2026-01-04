@@ -342,12 +342,14 @@ def build_transactions(seasons, sleeper_maps=None):
         transactions_by_season.setdefault(season, []).append(
           {
             "id": f"{trade.get('id')}-{party.get('roster_id')}",
+            "trade_id": trade.get("id"),
             "season": season,
             "week": trade.get("week"),
             "type": "trade",
             "team": party.get("team"),
             "summary": summary,
             "created": trade.get("created"),
+            "source": "sleeper_trades",
           }
         )
 
@@ -366,6 +368,7 @@ def build_transactions(seasons, sleeper_maps=None):
       if name:
         roster_name_by_id[str(roster_id)] = name
 
+    season_trade_ids = set()
     for txn in payload.get("transactions", []) or []:
       week = txn.get("week")
       if not is_regular_season(week):
@@ -399,16 +402,21 @@ def build_transactions(seasons, sleeper_maps=None):
       adds = txn.get("adds") or txn.get("add")
       drops = txn.get("drops") or txn.get("drop")
       if txn_type == "trade":
+        trade_id = txn.get("id")
+        if trade_id is not None:
+          season_trade_ids.add(str(trade_id))
         summary = txn.get("summary") or "Trade completed."
         transactions_by_season.setdefault(season, []).append(
           {
             "id": f"{txn.get('id')}-trade",
+            "trade_id": txn.get("id"),
             "season": season,
             "week": week,
             "type": "trade",
             "team": team_name,
             "summary": summary,
             "created": created,
+            "source": "sleeper_transactions",
           }
         )
         continue
@@ -418,6 +426,7 @@ def build_transactions(seasons, sleeper_maps=None):
         transactions_by_season.setdefault(season, []).append(
           {
             "id": f"{txn.get('id')}-add",
+            "source": "sleeper_transactions",
             "season": season,
             "week": week,
             "type": "add",
@@ -431,6 +440,7 @@ def build_transactions(seasons, sleeper_maps=None):
         transactions_by_season.setdefault(season, []).append(
           {
             "id": f"{txn.get('id')}-drop",
+            "source": "sleeper_transactions",
             "season": season,
             "week": week,
             "type": "drop",
@@ -439,6 +449,17 @@ def build_transactions(seasons, sleeper_maps=None):
             "created": created,
           }
         )
+
+    if season_trade_ids:
+      filtered = []
+      for entry in transactions_by_season.get(season, []):
+        if entry.get("type") != "trade":
+          filtered.append(entry)
+          continue
+        if entry.get("source") == "sleeper_trades" and str(entry.get("trade_id")) in season_trade_ids:
+          continue
+        filtered.append(entry)
+      transactions_by_season[season] = filtered
 
     sleeper_txn_path = DATA_DIR / f"transactions-{season}.json"
     if sleeper_txn_path.exists():
