@@ -382,7 +382,6 @@ export default function PlayerPage() {
     if (!statsWeeklyRows.length) return [];
     const hasWar = statsWeeklyRows.some((row) => row.war_rep != null);
     const hasDelta = statsWeeklyRows.some((row) => row.delta_to_next != null);
-    if (hasWar && hasDelta) return statsWeeklyRows;
     const cutoffs = { QB: 16, RB: 24, WR: 24, TE: 16, K: 8, DEF: 8 };
     const grouped = new Map();
     const rows = statsWeeklyRows.map((row) => ({
@@ -402,9 +401,9 @@ export default function PlayerPage() {
       const baseline = baselineIndex != null ? safeNumber(group[baselineIndex].points) : 0;
       group.forEach((row, index) => {
         const nextPoints = group[index + 1] ? safeNumber(group[index + 1].points) : 0;
-        row.delta_to_next = row.delta_to_next ?? row.points - nextPoints;
+        if (!hasDelta) row.delta_to_next = row.delta_to_next ?? row.points - nextPoints;
         row.replacement_baseline = row.replacement_baseline ?? baseline;
-        row.war_rep = row.war_rep ?? row.points - baseline;
+        if (!hasWar) row.war_rep = row.war_rep ?? row.points - baseline;
         row.pos_week_rank = row.pos_week_rank ?? index + 1;
       });
     }
