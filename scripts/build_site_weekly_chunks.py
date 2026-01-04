@@ -12,6 +12,76 @@ SLEEPER_PLAYERS_PATH = ROOT / "data_raw" / "sleeper" / "players_flat.csv"
 MASTER_PLAYERS_PATH = ROOT / "data_raw" / "master" / "players_master_nflverse_espn_sleeper.csv"
 ESPN_PLAYERS_INDEX_PATH = ROOT / "data_raw" / "espn_players_index.csv"
 
+ESPN_TEAM_ID_TO_ABBR = {
+  1: "ATL",
+  2: "BUF",
+  3: "CHI",
+  4: "CIN",
+  5: "CLE",
+  6: "DAL",
+  7: "DEN",
+  8: "DET",
+  9: "GB",
+  10: "TEN",
+  11: "IND",
+  12: "KC",
+  13: "LV",
+  14: "LAR",
+  15: "MIA",
+  16: "MIN",
+  17: "NE",
+  18: "NO",
+  19: "NYG",
+  20: "NYJ",
+  21: "PHI",
+  22: "ARI",
+  23: "PIT",
+  24: "LAC",
+  25: "SF",
+  26: "SEA",
+  27: "TB",
+  28: "WSH",
+  29: "CAR",
+  30: "JAX",
+  33: "BAL",
+  34: "HOU",
+}
+
+ESPN_TEAM_ABBR_TO_NAME = {
+  "ARI": "CARDINALS",
+  "ATL": "FALCONS",
+  "BAL": "RAVENS",
+  "BUF": "BILLS",
+  "CAR": "PANTHERS",
+  "CHI": "BEARS",
+  "CIN": "BENGALS",
+  "CLE": "BROWNS",
+  "DAL": "COWBOYS",
+  "DEN": "BRONCOS",
+  "DET": "LIONS",
+  "GB": "PACKERS",
+  "HOU": "TEXANS",
+  "IND": "COLTS",
+  "JAX": "JAGUARS",
+  "KC": "CHIEFS",
+  "LAC": "CHARGERS",
+  "LAR": "RAMS",
+  "LV": "RAIDERS",
+  "MIA": "DOLPHINS",
+  "MIN": "VIKINGS",
+  "NE": "PATRIOTS",
+  "NO": "SAINTS",
+  "NYG": "GIANTS",
+  "NYJ": "JETS",
+  "PHI": "EAGLES",
+  "PIT": "STEELERS",
+  "SEA": "SEAHAWKS",
+  "SF": "49ERS",
+  "TB": "BUCCANEERS",
+  "TEN": "TITANS",
+  "WSH": "COMMANDERS",
+}
+
 
 def read_json(path: Path):
   with path.open("r", encoding="utf-8") as handle:
@@ -104,6 +174,22 @@ def normalize_numeric_id(value):
   if text.endswith(".0") and text.replace(".", "", 1).isdigit():
     return text[:-2]
   return text
+
+def defense_from_espn_id(value):
+  text = normalize_numeric_id(value)
+  if not text or not str(text).lstrip("-").isdigit():
+    return None
+  try:
+    num = int(text)
+  except ValueError:
+    return None
+  if num >= 0:
+    return None
+  team_id = abs(num) - 16000
+  abbr = ESPN_TEAM_ID_TO_ABBR.get(team_id)
+  if not abbr:
+    return None
+  return {"id": abbr, "name": ESPN_TEAM_ABBR_TO_NAME.get(abbr, abbr)}
 
 
 def write_json(path: Path, payload):
@@ -464,6 +550,10 @@ def build_transactions(seasons, sleeper_maps=None):
           raw_id = normalize_numeric_id(item.get("playerId") if item else None)
           if raw_id:
             name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id))
+        if not name:
+          defense = defense_from_espn_id(item.get("playerId") if item else None)
+          if defense:
+            return defense["id"], defense["name"]
         sleeper_id = espn_player_id(item)
         if sleeper_id:
           name = player_name_lookup.get(str(sleeper_id)) or name

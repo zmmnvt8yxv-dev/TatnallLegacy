@@ -219,6 +219,19 @@ export default function TransactionsPage() {
     };
   }, [isDev, transactions]);
 
+  const renderPlayerLinks = (players) =>
+    players
+      .map((player, index) =>
+        player?.id ? (
+          <Link key={`${player.id}-${index}`} to={`/players/${player.id}`} className="link-button">
+            {player.name || player.id}
+          </Link>
+        ) : (
+          <span key={`${player.name}-${index}`}>{player.name || "Unknown"}</span>
+        ),
+      )
+      .reduce((prev, curr) => (prev === null ? [curr] : [prev, ", ", curr]), null);
+
   return (
     <>
       <section>
@@ -340,20 +353,23 @@ export default function TransactionsPage() {
                   </td>
                   <td>{entry.type}</td>
                   <td>
-                    <div>{entry.summary || "No details"}</div>
                     {entry.players?.length ? (
-                      <div className="subtle-text">
-                        {entry.players.map((player, index) =>
-                          player?.id ? (
-                            <Link key={`${player.id}-${index}`} to={`/players/${player.id}`} className="link-button">
-                              {player.name || player.id}
-                            </Link>
-                          ) : (
-                            <span key={`${player.name}-${index}`}>{player.name || "Unknown"}</span>
-                          ),
+                      <div>
+                        {entry.type === "trade" ? (
+                          <span>
+                            Received: {renderPlayerLinks(entry.players.filter((player) => player?.action === "received"))}
+                            {" | "}Sent: {renderPlayerLinks(entry.players.filter((player) => player?.action === "sent"))}
+                          </span>
+                        ) : (
+                          <span>
+                            {entry.type === "add" ? "Added: " : entry.type === "drop" ? "Dropped: " : "Updated: "}
+                            {renderPlayerLinks(entry.players)}
+                          </span>
                         )}
                       </div>
-                    ) : null}
+                    ) : (
+                      <div>{entry.summary || "No details"}</div>
+                    )}
                   </td>
                 </tr>
               ))}
