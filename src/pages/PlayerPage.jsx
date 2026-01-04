@@ -27,6 +27,15 @@ const THRESHOLDS = {
   default: 15,
 };
 
+const normalizeName = (value) => {
+  if (!value) return "";
+  return String(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9\\s]/g, " ")
+    .replace(/\\s+/g, " ")
+    .trim();
+};
+
 export default function PlayerPage() {
   const { playerId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -187,9 +196,14 @@ export default function PlayerPage() {
     const summaries = hasStats ? statsSeasonSummaries : seasonSummaries;
     for (const summary of summaries) {
       const rows = summary?.rows || summary?.playerSeasonTotals || [];
+      const targetIds = String(playerId);
+      const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
       const row = rows.find((item) => {
         const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id].map((value) => String(value || ""));
-        return ids.includes(String(playerId));
+        if (ids.includes(targetIds)) return true;
+        if (!targetNames.length) return false;
+        const name = normalizeName(item?.display_name || item?.player_display_name || item?.player_name);
+        return name && targetNames.includes(name);
       });
       if (row) {
         stats.push({
@@ -206,9 +220,14 @@ export default function PlayerPage() {
 
   const careerTotals = useMemo(() => {
     if (careerStats.length) {
+      const targetIds = String(playerId);
+      const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
       const row = careerStats.find((item) => {
         const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id].map((value) => String(value || ""));
-        return ids.includes(String(playerId));
+        if (ids.includes(targetIds)) return true;
+        if (!targetNames.length) return false;
+        const name = normalizeName(item?.display_name || item?.player_display_name || item?.player_name);
+        return name && targetNames.includes(name);
       });
       if (row) {
         return {
