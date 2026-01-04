@@ -217,6 +217,12 @@ def build_weekly(weekly: pd.DataFrame):
 
 def build_full_stats(weekly: pd.DataFrame):
     weekly = filter_regular_season(weekly)
+    name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"]) or "display_name"
+    position_col = pick_first_column(weekly, ["position", "position_group"]) or "position"
+    team_col = pick_first_column(weekly, ["team", "recent_team", "nfl_team"]) or "team"
+    weekly["display_name"] = weekly[name_col].fillna("Unknown")
+    weekly["position"] = weekly[position_col].astype(str).str.upper()
+    weekly["team"] = weekly.get(team_col).fillna("—")
     fields = [
         "season",
         "week",

@@ -349,6 +349,11 @@ export default function PlayerPage() {
     return weeklyDisplayRows.filter((row) => String(row.team || "").toLowerCase().includes(query));
   }, [weeklyDisplayRows, search]);
 
+  const filteredFullStatsRows = useMemo(() => {
+    if (!fullStatsRows.length) return [];
+    return fullStatsRows.filter(matchesPlayer);
+  }, [fullStatsRows, playerId, playerInfo]);
+
   const boomBust = useMemo(() => {
     const rows = weeklyDisplayRows;
     if (!rows.length) return null;
@@ -554,10 +559,11 @@ export default function PlayerPage() {
               </select>
             </div>
           </div>
-          {fullStatsRows.length ? (
+          {filteredFullStatsRows.length ? (
             <table className="table">
               <thead>
                 <tr>
+                  <th>Season</th>
                   <th>Week</th>
                   <th>Team</th>
                   <th>Opp</th>
@@ -573,11 +579,10 @@ export default function PlayerPage() {
                 </tr>
               </thead>
               <tbody>
-                {fullStatsRows
-                  .filter(matchesPlayer)
-                  .map((row, idx) => (
-                    <tr key={`${row.week}-${idx}`}>
-                      <td>{row.week}</td>
+                {filteredFullStatsRows.map((row, idx) => (
+                  <tr key={`${row.week}-${idx}`}>
+                    <td>{row.season || selectedSeason}</td>
+                    <td>{row.week}</td>
                       <td>{row.team || "—"}</td>
                       <td>{row.opponent_team || "—"}</td>
                       <td>{row.passing_yards ?? "—"}</td>
@@ -589,12 +594,12 @@ export default function PlayerPage() {
                       <td>{row.receiving_yards ?? "—"}</td>
                       <td>{row.receiving_tds ?? "—"}</td>
                       <td>{row.fantasy_points_custom_week_with_bonus ?? row.fantasy_points_custom_week ?? "—"}</td>
-                    </tr>
-                  ))}
+                  </tr>
+                ))}
               </tbody>
             </table>
           ) : (
-            <div>No full stat rows available for this season.</div>
+            <div>No full stat rows available for this player in the selected season.</div>
           )}
         </section>
       )}
