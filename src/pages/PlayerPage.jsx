@@ -267,6 +267,10 @@ export default function PlayerPage() {
     return resolvePlayerDisplay(playerId, { row: playerInfoWithStats, playerIndex });
   }, [playerId, playerInfoWithStats, playerIndex]);
 
+  const displayName = playerDisplay.name || resolvedName;
+  const displayPosition = playerDisplay.position || playerInfo?.position || "Position —";
+  const displayTeam = playerDisplay.team || playerInfo?.nfl_team || "Team —";
+
   const seasonStats = useMemo(() => {
     const stats = [];
     const hasStats = statsSeasonSummaries.length > 0;
@@ -512,14 +516,14 @@ export default function PlayerPage() {
             <img
               className="player-headshot"
               src={playerDisplay.headshotUrl}
-              alt={`${playerDisplay.name || resolvedName} headshot`}
+              alt={`${displayName} headshot`}
               loading="lazy"
             />
           ) : null}
           <div>
-            <h1 className="page-title">{playerInfo?.full_name || resolvedName}</h1>
+            <h1 className="page-title">{displayName}</h1>
             <p className="page-subtitle">
-              {playerInfo?.position || "Position —"} · {playerInfo?.nfl_team || "Team —"}
+              {displayPosition} · {displayTeam}
             </p>
           </div>
         </div>
