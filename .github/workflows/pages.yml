@@ -41,7 +41,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check data sources
+        id: data_sources
+        run: |
+          if ls data_raw/master/*.csv data_raw/master/*.parquet >/dev/null 2>&1; then
+            echo "has_data=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_data=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build data
+        if: steps.data_sources.outputs.has_data == 'true'
         run: npm run build:data
 
       - name: Build site
