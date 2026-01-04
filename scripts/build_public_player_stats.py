@@ -11,6 +11,7 @@ DATA_DIR = ROOT / "data_raw" / "master"
 OUTPUT_DIR = ROOT / "public" / "data" / "player_stats"
 PLAYER_IDS_PATH = ROOT / "public" / "data" / "player_ids.json"
 PLAYERS_PATH = ROOT / "public" / "data" / "players.json"
+SLEEPER_PLAYERS_PATH = ROOT / "data_raw" / "sleeper" / "players_flat.csv"
 
 
 def read_json(path: Path):
@@ -96,6 +97,21 @@ def build_id_maps():
             key = normalize_name(name)
             if key and key not in name_to_sleeper:
                 name_to_sleeper[key] = sleeper
+    if SLEEPER_PLAYERS_PATH.exists():
+        sleeper_df = pd.read_csv(SLEEPER_PLAYERS_PATH)
+        for _, row in sleeper_df.iterrows():
+            sleeper_id = row.get("player_id")
+            if pd.isna(sleeper_id):
+                continue
+            name = row.get("full_name")
+            if not name or pd.isna(name):
+                first = row.get("first_name")
+                last = row.get("last_name")
+                if isinstance(first, str) and isinstance(last, str):
+                    name = f\"{first} {last}\".strip()
+            key = normalize_name(name)
+            if key and key not in name_to_sleeper:
+                name_to_sleeper[key] = str(sleeper_id)
     return {
         "gsis_to_sleeper": gsis_to_sleeper,
         "name_to_sleeper": name_to_sleeper,
