@@ -42,10 +42,17 @@ jobs:
         run: npm ci
 
       - name: Fetch data_raw from data repo
+        id: datarepo
         run: |
+          set +e
           GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --branch main https://github.com/zmmnvt8yxv-dev/datarepo.git /tmp/datarepo
-          rm -rf data_raw
-          cp -R /tmp/datarepo/data_raw ./data_raw
+          if [ -d /tmp/datarepo/data_raw ]; then
+            rm -rf data_raw
+            cp -R /tmp/datarepo/data_raw ./data_raw
+            echo "datarepo_ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "datarepo_ok=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Check data sources
         id: data_sources
@@ -55,6 +62,10 @@ jobs:
           else
             echo "has_data=false" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Build transactions fallback
+        if: steps.data_sources.outputs.has_data == 'false'
+        run: python3 scripts/build_site_weekly_chunks.py
 
       - name: Build data
         if: steps.data_sources.outputs.has_data == 'true'
