@@ -10,6 +10,8 @@ import {
   loadPlayerStatsFull,
   loadPlayerStatsSeason,
   loadPlayerStatsWeekly,
+  loadCareerMetrics,
+  loadSeasonMetrics,
   loadSeasonSummary,
   loadWeekData,
 } from "../data/loader.js";
@@ -52,6 +54,8 @@ export default function PlayerPage() {
   const [fullStatsRows, setFullStatsRows] = useState([]);
   const [careerStats, setCareerStats] = useState([]);
   const [boomBustMetrics, setBoomBustMetrics] = useState([]);
+  const [seasonMetrics, setSeasonMetrics] = useState([]);
+  const [careerMetrics, setCareerMetrics] = useState([]);
   const [search, setSearch] = useState("");
 
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
@@ -141,6 +145,31 @@ export default function PlayerPage() {
     loadBoomBustMetrics().then((payload) => {
       if (active && payload?.rows) setBoomBustMetrics(payload.rows);
       if (active && Array.isArray(payload)) setBoomBustMetrics(payload);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    if (!selectedSeason) return undefined;
+    loadSeasonMetrics(selectedSeason).then((payload) => {
+      if (!active) return;
+      const rows = payload?.rows || payload || [];
+      setSeasonMetrics(rows);
+    });
+    return () => {
+      active = false;
+    };
+  }, [selectedSeason]);
+
+  useEffect(() => {
+    let active = true;
+    loadCareerMetrics().then((payload) => {
+      if (!active) return;
+      const rows = payload?.rows || payload || [];
+      setCareerMetrics(rows);
     });
     return () => {
       active = false;
@@ -280,6 +309,24 @@ export default function PlayerPage() {
     }
     return false;
   };
+
+  const findMetricsRow = (rows) => {
+    if (!rows?.length) return null;
+    const targetIds = String(playerId);
+    const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
+    return (
+      rows.find((item) => {
+        const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id].map((value) => String(value || ""));
+        if (ids.includes(targetIds)) return true;
+        if (!targetNames.length) return false;
+        const name = normalizeName(item?.display_name || item?.player_display_name || item?.player_name);
+        return name && targetNames.includes(name);
+      }) || null
+    );
+  };
+
+  const seasonEfficiency = useMemo(() => findMetricsRow(seasonMetrics), [seasonMetrics, playerId, playerInfo, resolvedName]);
+  const careerEfficiency = useMemo(() => findMetricsRow(careerMetrics), [careerMetrics, playerId, playerInfo, resolvedName]);
 
   const normalizedMetrics = useMemo(() => {
     if (!statsWeeklyRows.length) return [];
@@ -481,8 +528,33 @@ export default function PlayerPage() {
             <div>No season totals available for this player.</div>
           )}
           <div className="section-card">
-            <h3 className="section-title">Efficiency</h3>
-            <p>No efficiency data available for this player in the current exports.</p>
+            <h3 className="section-title">Efficiency (Per Game)</h3>
+            {seasonEfficiency || careerEfficiency ? (
+              <div className="card-grid">
+                {seasonEfficiency ? (
+                  <div className="stat-card">
+                    <div className="stat-label">Season {selectedSeason}</div>
+                    <div className="stat-value">{formatPoints(seasonEfficiency.points_pg)}</div>
+                    <div className="stat-subtext">
+                      WAR/pg {formatPoints(seasonEfficiency.war_rep_pg)} · Delta/pg{" "}
+                      {formatPoints(seasonEfficiency.delta_to_next_pg)}
+                    </div>
+                  </div>
+                ) : null}
+                {careerEfficiency ? (
+                  <div className="stat-card">
+                    <div className="stat-label">Career</div>
+                    <div className="stat-value">{formatPoints(careerEfficiency.points_pg)}</div>
+                    <div className="stat-subtext">
+                      WAR/pg {formatPoints(careerEfficiency.war_rep_pg)} · Delta/pg{" "}
+                      {formatPoints(careerEfficiency.delta_to_next_pg)}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <p>No efficiency data available for this player in the current exports.</p>
+            )}
           </div>
         </section>
       )}
