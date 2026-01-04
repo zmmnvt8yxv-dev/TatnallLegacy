@@ -69,9 +69,16 @@ async function fetchJson(path, { optional = false } = {}) {
     }
     throw new Error(`Non-JSON response (${contentType || "unknown"}) (${url})`);
   }
-  const payload = await response.json();
-  logDev("DATA_FILE_OK", { url });
-  return payload;
+  try {
+    const payload = await response.json();
+    logDev("DATA_FILE_OK", { url });
+    return payload;
+  } catch (err) {
+    if (optional) {
+      return null;
+    }
+    throw err;
+  }
 }
 
 export async function loadManifest() {
