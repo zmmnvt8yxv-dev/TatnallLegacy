@@ -198,6 +198,14 @@ def write_json(path: Path, payload):
     json.dump(payload, handle, ensure_ascii=False, indent=2)
 
 
+def load_espn_lineups(season, week):
+  candidate = ROOT / "data_raw" / "espn_lineups" / str(season) / f"week-{week}.json"
+  if not candidate.exists():
+    return []
+  payload = read_json(candidate)
+  return payload.get("lineups", []) or []
+
+
 def is_regular_season(week):
   try:
     week_num = int(week)
@@ -678,6 +686,10 @@ def main():
     for week in weeks:
       week_matchups = [row for row in matchups if int(row.get("week")) == week]
       week_lineups = [row for row in lineups if int(row.get("week")) == week]
+      if not week_lineups:
+        espn_lineups = load_espn_lineups(season, week)
+        if espn_lineups:
+          week_lineups = espn_lineups
       write_json(
         OUTPUT_DIR / "weekly" / str(season) / f"week-{week}.json",
         {"season": season, "week": week, "matchups": week_matchups, "lineups": week_lineups},
