@@ -501,7 +501,27 @@ def main():
       )
 
   top_weekly = sorted(all_time_weekly, key=lambda item: item["points"], reverse=True)[:10]
-  career_leaders = sorted(career_totals.values(), key=lambda item: item["points"], reverse=True)[:25]
+  career_stats_path = OUTPUT_DIR / "player_stats" / "career.json"
+  if career_stats_path.exists():
+    career_payload = read_json(career_stats_path)
+    career_rows = career_payload.get("rows", []) if isinstance(career_payload, dict) else []
+    normalized = []
+    for row in career_rows:
+      player_id = row.get("player_id") or row.get("sleeper_id") or row.get("gsis_id")
+      if not player_id:
+        continue
+      normalized.append(
+        {
+          "player_id": str(player_id),
+          "display_name": row.get("display_name") or row.get("player_display_name") or row.get("player_name"),
+          "points": float(row.get("points") or row.get("fantasy_points_custom") or 0),
+          "games": int(row.get("games") or row.get("games_played") or 0),
+          "seasons": int(row.get("seasons") or row.get("seasons_played") or 0),
+        }
+      )
+    career_leaders = sorted(normalized, key=lambda item: item["points"], reverse=True)[:25]
+  else:
+    career_leaders = sorted(career_totals.values(), key=lambda item: item["points"], reverse=True)[:25]
 
   all_time_payload = {
     "generatedAt": datetime.now(timezone.utc).isoformat(),
