@@ -17,22 +17,30 @@ def read_json(path: Path):
 
 def load_sleeper_player_maps():
   gsis_to_sleeper = {}
+  espn_to_sleeper = {}
   name_to_sleeper = {}
   if not SLEEPER_PLAYERS_PATH.exists():
-    return {"gsis_to_sleeper": gsis_to_sleeper, "name_to_sleeper": name_to_sleeper}
+    return {"gsis_to_sleeper": gsis_to_sleeper, "espn_to_sleeper": espn_to_sleeper, "name_to_sleeper": name_to_sleeper}
   with SLEEPER_PLAYERS_PATH.open("r", encoding="utf-8") as handle:
     reader = csv.DictReader(handle)
     for row in reader:
       sleeper_id = row.get("player_id")
       gsis_id = row.get("gsis_id")
+      espn_id = row.get("espn_id")
       full_name = row.get("full_name") or f"{row.get('first_name') or ''} {row.get('last_name') or ''}".strip()
       if gsis_id and sleeper_id:
         gsis_to_sleeper[str(gsis_id)] = str(sleeper_id)
+      if espn_id and sleeper_id:
+        espn_to_sleeper[str(espn_id)] = str(sleeper_id)
       if full_name and sleeper_id:
         key = normalize_name(full_name)
         if key and key not in name_to_sleeper:
           name_to_sleeper[key] = str(sleeper_id)
-  return {"gsis_to_sleeper": gsis_to_sleeper, "name_to_sleeper": name_to_sleeper}
+  return {
+    "gsis_to_sleeper": gsis_to_sleeper,
+    "espn_to_sleeper": espn_to_sleeper,
+    "name_to_sleeper": name_to_sleeper,
+  }
 
 def normalize_name(value):
   if value is None:
@@ -67,7 +75,7 @@ def looks_like_id(value):
   text = str(value).strip()
   if not text:
     return False
-  if text.isdigit():
+  if text.lstrip("-").isdigit():
     return True
   if text.startswith("00-") and text.replace("-", "").isdigit():
     return True
@@ -139,7 +147,7 @@ def build_transactions(seasons, sleeper_maps=None):
   player_name_lookup = build_player_name_lookup()
   sources_by_season = {season: [] for season in seasons}
   transactions_by_season = {season: [] for season in seasons}
-  sleeper_maps = sleeper_maps or {"gsis_to_sleeper": {}, "name_to_sleeper": {}}
+  sleeper_maps = sleeper_maps or {"gsis_to_sleeper": {}, "espn_to_sleeper": {}, "name_to_sleeper": {}}
   for trades_path in DATA_DIR.glob("trades-*.json"):
     season_str = trades_path.stem.replace("trades-", "")
     try:
@@ -363,17 +371,27 @@ def build_transactions(seasons, sleeper_maps=None):
       def espn_player_name(item):
         player = item.get("playerPoolEntry", {}).get("player", {}) if item else {}
         name = player.get("fullName") or player.get("displayName")
+        if not name:
+          first = player.get("firstName") or ""
+          last = player.get("lastName") or ""
+          name = f"{first} {last}".strip() or None
         if name:
           return name
-        player_id = item.get("playerId") if item else None
-        if not player_id:
-          return "(Unknown Player)"
-        if looks_like_id(player_id):
-          return "(Unknown Player)"
-        return str(player_id)
+        return "(Unknown Player)"
 
       def espn_player_id(item):
         player = item.get("playerPoolEntry", {}).get("player", {}) if item else {}
+        espn_id = player.get("id") or player.get("playerId") or item.get("playerId")
+        if espn_id is not None:
+          espn_key = str(espn_id)
+          sleeper_id = sleeper_maps.get("espn_to_sleeper", {}).get(espn_key)
+          if sleeper_id:
+            return sleeper_id
+          if espn_key.lstrip("-").isdigit():
+            normalized = str(abs(int(espn_key)))
+            sleeper_id = sleeper_maps.get("espn_to_sleeper", {}).get(normalized)
+            if sleeper_id:
+              return sleeper_id
         gsis_id = player.get("gsisId") or player.get("gsis_id") or item.get("playerId")
         sleeper_id = sleeper_maps.get("gsis_to_sleeper", {}).get(str(gsis_id)) if gsis_id else None
         if sleeper_id:
@@ -390,7 +408,7 @@ def build_transactions(seasons, sleeper_maps=None):
         txn_id = txn.get("id") or f"espn-{season}-{week}"
         items = txn.get("items") or []
 
-        if txn_type == "TRADE":
+        if txn_type.startswith("TRADE"):
           adds_by_team = {}
           drops_by_team = {}
           for item in items:
