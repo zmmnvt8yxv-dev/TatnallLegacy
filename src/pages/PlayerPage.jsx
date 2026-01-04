@@ -254,8 +254,23 @@ export default function PlayerPage() {
         return name && targetNames.includes(name);
       });
       if (row) {
+        const position = row.position || playerInfo?.position || "—";
+        const positionRows = rows.filter((item) => {
+          const pos = item?.position || "";
+          return String(pos).toUpperCase() === String(position).toUpperCase();
+        });
+        const ranked = positionRows
+          .map((item) => ({
+            ids: [item?.sleeper_id, item?.player_id, item?.gsis_id].map((value) => String(value || "")),
+            points: safeNumber(item?.points ?? item?.fantasy_points_custom ?? item?.fantasy_points_custom_week),
+          }))
+          .sort((a, b) => b.points - a.points);
+        const rankIndex = ranked.findIndex((item) => item.ids.includes(targetIds));
+        const positionRank = rankIndex >= 0 ? rankIndex + 1 : null;
         stats.push({
           season: summary.season,
+          position,
+          positionRank,
           points: row.points ?? row.fantasy_points_custom ?? row.fantasy_points_custom_week,
           games: row.games ?? row.games_played,
           war: row.war_rep ?? row.war_rep_season,
@@ -264,7 +279,7 @@ export default function PlayerPage() {
       }
     }
     return stats.sort((a, b) => b.season - a.season);
-  }, [statsSeasonSummaries, seasonSummaries, playerId]);
+  }, [statsSeasonSummaries, seasonSummaries, playerId, playerInfo, resolvedName]);
 
   const careerTotals = useMemo(() => {
     if (careerStats.length) {
@@ -569,6 +584,7 @@ export default function PlayerPage() {
                   <th>Season</th>
                   <th>Games</th>
                   <th>Total Points</th>
+                  <th>Pos Rank</th>
                   <th>WAR</th>
                   <th>Delta</th>
                 </tr>
@@ -579,6 +595,7 @@ export default function PlayerPage() {
                     <td>{row.season}</td>
                     <td>{row.games}</td>
                     <td>{formatPoints(row.points)}</td>
+                    <td>{row.position && row.positionRank ? `${row.position}${row.positionRank}` : "—"}</td>
                     <td>{formatPoints(row.war)}</td>
                     <td>{formatPoints(row.delta)}</td>
                   </tr>
