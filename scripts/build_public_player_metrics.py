@@ -125,11 +125,20 @@ def main() -> None:
             "fantasy_points_custom_week",
             "fantasy_points_custom",
             "fantasy_points",
+            "points",
+            "fantasy_points_ppr",
         ],
     )
 
     if not points_col:
-        raise SystemExit("No weekly fantasy points column found for player metrics export.")
+        print("No weekly fantasy points column found for player metrics export.")
+        boom_path = OUTPUT_DIR / "boom_bust.json"
+        summary_path = OUTPUT_DIR / "summary.json"
+        if not boom_path.exists():
+            write_json(boom_path, {"rows": []})
+        if not summary_path.exists():
+            write_json(summary_path, {"generatedAt": datetime.now(timezone.utc).isoformat(), "seasons": []})
+        return
 
     weekly["points"] = pd.to_numeric(weekly[points_col], errors="coerce").fillna(0.0)
     if position_col:
