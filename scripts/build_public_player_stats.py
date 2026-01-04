@@ -165,7 +165,7 @@ def normalize_name(value):
 def build_weekly(weekly: pd.DataFrame):
     weekly = filter_regular_season(weekly)
     name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"])
-    position_col = pick_first_column(weekly, ["position", "position_group"]) or "position"
+    position_col = pick_first_column(weekly, ["position", "position_group"])
     team_col = pick_first_column(weekly, ["team", "recent_team", "nfl_team"]) or "team"
     points_col = pick_first_column(
         weekly,
@@ -192,7 +192,10 @@ def build_weekly(weekly: pd.DataFrame):
         weekly.loc[weekly["display_name"] == "", "display_name"] = "Unknown"
     else:
         weekly["display_name"] = "Unknown"
-    weekly["position"] = weekly[position_col].astype(str).str.upper()
+    if position_col:
+        weekly["position"] = weekly[position_col].astype(str).str.upper()
+    else:
+        weekly["position"] = "—"
     weekly["team"] = weekly.get(team_col).fillna("—")
     weekly["points"] = pd.to_numeric(weekly[points_col], errors="coerce").fillna(0.0) if points_col else 0.0
     weekly["war_rep"] = pd.to_numeric(weekly.get(war_col), errors="coerce")
@@ -228,7 +231,7 @@ def build_weekly(weekly: pd.DataFrame):
 def build_full_stats(weekly: pd.DataFrame):
     weekly = filter_regular_season(weekly)
     name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"])
-    position_col = pick_first_column(weekly, ["position", "position_group"]) or "position"
+    position_col = pick_first_column(weekly, ["position", "position_group"])
     team_col = pick_first_column(weekly, ["team", "recent_team", "nfl_team"]) or "team"
     if name_col:
         weekly["display_name"] = weekly[name_col].fillna("Unknown")
@@ -241,7 +244,10 @@ def build_full_stats(weekly: pd.DataFrame):
         weekly.loc[weekly["display_name"] == "", "display_name"] = "Unknown"
     else:
         weekly["display_name"] = "Unknown"
-    weekly["position"] = weekly[position_col].astype(str).str.upper()
+    if position_col:
+        weekly["position"] = weekly[position_col].astype(str).str.upper()
+    else:
+        weekly["position"] = "—"
     weekly["team"] = weekly.get(team_col).fillna("—")
     fields = [
         "season",
