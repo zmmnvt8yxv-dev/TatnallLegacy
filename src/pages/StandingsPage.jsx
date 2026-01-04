@@ -73,8 +73,16 @@ export default function StandingsPage() {
     const totals = new Map();
     for (const summary of allSummaries) {
       for (const row of summary?.standings || []) {
-        const key = row.team;
-        const cur = totals.get(key) || { team: key, wins: 0, losses: 0, ties: 0, points_for: 0, points_against: 0 };
+        const normalizedTeam = normalizeOwnerName(row.team) || row.team;
+        const key = normalizedTeam || row.team;
+        const cur = totals.get(key) || {
+          team: key,
+          wins: 0,
+          losses: 0,
+          ties: 0,
+          points_for: 0,
+          points_against: 0,
+        };
         cur.wins += row.wins;
         cur.losses += row.losses;
         cur.ties += row.ties;
