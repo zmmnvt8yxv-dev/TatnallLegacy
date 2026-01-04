@@ -10,7 +10,8 @@ import { normalizeOwnerName } from "../utils/owners.js";
 export default function StandingsPage() {
   const { manifest, loading, error } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
-  const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
+  const searchParamsString = searchParams.toString();
+  const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
   const [seasonSummary, setSeasonSummary] = useState(null);
   const [allSummaries, setAllSummaries] = useState([]);
@@ -23,7 +24,7 @@ export default function StandingsPage() {
     } else if (!season) {
       setSeason(seasons[0]);
     }
-  }, [seasons, season, searchParams]);
+  }, [seasons, season, searchParamsString]);
 
   useEffect(() => {
     if (!season) return;
@@ -31,8 +32,9 @@ export default function StandingsPage() {
     if ((searchParams.get("season") || "") === seasonValue) return;
     const next = new URLSearchParams(searchParams);
     next.set("season", seasonValue);
+    if (next.toString() === searchParamsString) return;
     setSearchParams(next, { replace: true });
-  }, [season, searchParams, setSearchParams]);
+  }, [season, searchParamsString, setSearchParams]);
 
   useEffect(() => {
     let active = true;

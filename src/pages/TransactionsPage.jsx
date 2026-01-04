@@ -10,7 +10,8 @@ import { useSearchParams } from "react-router-dom";
 export default function TransactionsPage() {
   const { manifest, loading, error } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
-  const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
+  const searchParamsString = searchParams.toString();
+  const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
@@ -32,7 +33,7 @@ export default function TransactionsPage() {
     } else if (!season) {
       setSeason(seasons[0]);
     }
-  }, [seasons, season, searchParams]);
+  }, [seasons, season, searchParamsString]);
 
   useEffect(() => {
     const param = searchParams.get("week") || "all";
@@ -44,17 +45,17 @@ export default function TransactionsPage() {
     if (Number.isFinite(parsed) && parsed !== Number(week)) {
       setWeek(parsed);
     }
-  }, [searchParams, week]);
+  }, [searchParamsString, week]);
 
   useEffect(() => {
     const param = searchParams.get("type") || "all";
     if (param !== typeFilter) setTypeFilter(param);
-  }, [searchParams, typeFilter]);
+  }, [searchParamsString, typeFilter]);
 
   useEffect(() => {
     const param = searchParams.get("team") || "";
     if (param !== teamFilter) setTeamFilter(param);
-  }, [searchParams, teamFilter]);
+  }, [searchParamsString, teamFilter]);
 
   useEffect(() => {
     if (!availableWeeks.length) return;
@@ -88,8 +89,9 @@ export default function TransactionsPage() {
     else next.delete("type");
     if (teamFilter) next.set("team", teamFilter);
     else next.delete("team");
+    if (next.toString() === searchParamsString) return;
     setSearchParams(next, { replace: true });
-  }, [season, week, typeFilter, teamFilter, searchParams, setSearchParams]);
+  }, [season, week, typeFilter, teamFilter, searchParamsString, setSearchParams]);
 
   useEffect(() => {
     let active = true;

@@ -98,6 +98,12 @@ def main() -> None:
 
     if not weekly_source:
         print("No weekly fantasy source found in data_raw/master. Skipping player metrics export.")
+        boom_path = OUTPUT_DIR / "boom_bust.json"
+        summary_path = OUTPUT_DIR / "summary.json"
+        if not boom_path.exists():
+            write_json(boom_path, {"rows": []})
+        if not summary_path.exists():
+            write_json(summary_path, {"generatedAt": datetime.now(timezone.utc).isoformat(), "seasons": []})
         return
 
     weekly = read_table(weekly_source)

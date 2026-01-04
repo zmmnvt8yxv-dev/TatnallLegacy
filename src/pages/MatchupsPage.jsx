@@ -13,7 +13,8 @@ import { positionSort } from "../utils/positions.js";
 export default function MatchupsPage() {
   const { manifest, loading, error, playerIndex, teams } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
-  const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
+  const searchParamsString = searchParams.toString();
+  const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("");
   const [weekData, setWeekData] = useState(null);
@@ -35,7 +36,7 @@ export default function MatchupsPage() {
     } else if (!season) {
       setSeason(seasons[0]);
     }
-  }, [seasons, season, searchParams]);
+  }, [seasons, season, searchParamsString]);
 
   useEffect(() => {
     if (!availableWeeks.length) return;
@@ -47,7 +48,7 @@ export default function MatchupsPage() {
     if (!week || !availableWeeks.includes(Number(week))) {
       setWeek(availableWeeks[0]);
     }
-  }, [availableWeeks, week, searchParams]);
+  }, [availableWeeks, week, searchParamsString]);
 
   useEffect(() => {
     if (!season) return;
@@ -60,8 +61,9 @@ export default function MatchupsPage() {
     next.set("season", seasonValue);
     if (weekValue) next.set("week", weekValue);
     else next.delete("week");
+    if (next.toString() === searchParamsString) return;
     setSearchParams(next, { replace: true });
-  }, [season, week, searchParams, setSearchParams]);
+  }, [season, week, searchParamsString, setSearchParams]);
 
   useEffect(() => {
     let active = true;

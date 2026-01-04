@@ -30,6 +30,7 @@ const THRESHOLDS = {
 export default function PlayerPage() {
   const { playerId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  const searchParamsString = searchParams.toString();
   const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [seasonSummaries, setSeasonSummaries] = useState([]);
@@ -41,7 +42,7 @@ export default function PlayerPage() {
   const [boomBustMetrics, setBoomBustMetrics] = useState([]);
   const [search, setSearch] = useState("");
 
-  const seasons = (manifest?.seasons || []).slice().sort((a, b) => b - a);
+  const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
 
   useEffect(() => {
     if (!seasons.length) return;
@@ -51,14 +52,14 @@ export default function PlayerPage() {
     } else if (!selectedSeason) {
       setSelectedSeason(seasons[0]);
     }
-  }, [seasons, selectedSeason, searchParams]);
+  }, [seasons, selectedSeason, searchParamsString]);
 
   useEffect(() => {
     const param = searchParams.get("tab");
     if (param && TABS.includes(param) && param !== activeTab) {
       setActiveTab(param);
     }
-  }, [searchParams, activeTab]);
+  }, [searchParamsString, activeTab]);
 
   useEffect(() => {
     if (!selectedSeason) return;
@@ -69,8 +70,9 @@ export default function PlayerPage() {
     if (currentSeason === seasonValue && currentTab === activeTab) return;
     next.set("season", seasonValue);
     if (activeTab) next.set("tab", activeTab);
+    if (next.toString() === searchParamsString) return;
     setSearchParams(next, { replace: true });
-  }, [selectedSeason, activeTab, searchParams, setSearchParams]);
+  }, [selectedSeason, activeTab, searchParamsString, setSearchParams]);
 
   useEffect(() => {
     let active = true;
