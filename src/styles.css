@@ -283,6 +283,35 @@ a {
   gap: 16px;
 }
 
+.chat-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.chat-log {
+  display: grid;
+  gap: 12px;
+}
+
+.chat-entry {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  background: #f8fafc;
+}
+
+.chat-question {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.chat-answer-title {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
 .link-button {
   background: none;
   border: none;

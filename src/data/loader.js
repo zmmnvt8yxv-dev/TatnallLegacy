@@ -197,6 +197,25 @@ export async function loadAllTime() {
   }
 }
 
+export async function loadPlayerMetricsBoomBust() {
+  const key = "playerMetricsBoomBust";
+  let path;
+  try {
+    const cached = getCached(key);
+    if (cached) return cached;
+    const manifest = await loadManifest();
+    const template = optionalManifestPath(manifest, "playerMetricsBoomBust");
+    path = template ? resolvePath(template) : null;
+    if (!path) return null;
+    const payload = await fetchJson(path, { optional: true });
+    if (!payload) return null;
+    return setCached(key, payload);
+  } catch (err) {
+    console.error("DATA_LOAD_ERROR", { url: path || "playerMetricsBoomBust", err });
+    throw err;
+  }
+}
+
 export async function loadPlayerStatsWeekly(season) {
   const key = `playerStatsWeekly:${season}`;
   let path;
