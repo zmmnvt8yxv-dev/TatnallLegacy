@@ -11,7 +11,7 @@ export default function TransactionsPage() {
   const { manifest, loading, error } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
-  const lastAppliedQueryRef = useRef(searchParamsString);
+  const didInitRef = useRef(false);
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("all");
@@ -28,39 +28,61 @@ export default function TransactionsPage() {
 
   useEffect(() => {
     if (!seasons.length) return;
-    const param = Number(searchParams.get("season"));
-    if (Number.isFinite(param) && seasons.includes(param)) {
-      if (param !== season) setSeason(param);
-    } else if (!season) {
-      setSeason(seasons[0]);
+    const paramSeason = Number(searchParams.get("season"));
+    if (Number.isFinite(paramSeason) && paramSeason !== Number(season) && seasons.includes(paramSeason)) {
+      setSeason(paramSeason);
     }
-  }, [seasons, season, searchParamsString]);
-
-  useEffect(() => {
-    lastAppliedQueryRef.current = searchParamsString;
-  }, [searchParamsString]);
-
-  useEffect(() => {
-    const param = searchParams.get("week") || "all";
-    if (param === "all" || param === "") {
-      if (week !== "all") setWeek("all");
-      return;
+    const paramWeekRaw = searchParams.get("week") || "all";
+    if (paramWeekRaw === "all" && week !== "all") {
+      setWeek("all");
+    } else if (paramWeekRaw !== "all") {
+      const parsed = Number(paramWeekRaw);
+      if (Number.isFinite(parsed) && parsed !== Number(week)) {
+        setWeek(parsed);
+      }
     }
-    const parsed = Number(param);
-    if (Number.isFinite(parsed) && parsed !== Number(week)) {
-      setWeek(parsed);
+    const paramType = searchParams.get("type") || "all";
+    if (paramType !== typeFilter) setTypeFilter(paramType);
+    const paramTeam = searchParams.get("team") || "";
+    if (paramTeam !== teamFilter) setTeamFilter(paramTeam);
+  }, [searchParamsString, seasons, season, week, typeFilter, teamFilter]);
+
+  useEffect(() => {
+    if (!seasons.length || !manifest) return;
+    if (didInitRef.current) return;
+    const params = new URLSearchParams(searchParams);
+    const paramSeason = Number(searchParams.get("season"));
+    const nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    const weeksForSeason = manifest?.weeksBySeason?.[String(nextSeason)] || [];
+    const regularWeeks = filterRegularSeasonWeeks(weeksForSeason.map((value) => ({ week: value }))).map(
+      (row) => row.week,
+    );
+    const paramWeekRaw = searchParams.get("week") || "all";
+    const paramWeek = Number(paramWeekRaw);
+    const nextWeek =
+      paramWeekRaw === "all" || paramWeekRaw === ""
+        ? "all"
+        : Number.isFinite(paramWeek) && regularWeeks.includes(paramWeek)
+          ? paramWeek
+          : "all";
+    const nextType = searchParams.get("type") || "all";
+    const nextTeam = searchParams.get("team") || "";
+    setSeason(nextSeason);
+    setWeek(nextWeek);
+    setTypeFilter(nextType);
+    setTeamFilter(nextTeam);
+    let changed = false;
+    if (!searchParams.get("season") && nextSeason) {
+      params.set("season", String(nextSeason));
+      changed = true;
     }
-  }, [searchParamsString, week]);
-
-  useEffect(() => {
-    const param = searchParams.get("type") || "all";
-    if (param !== typeFilter) setTypeFilter(param);
-  }, [searchParamsString, typeFilter]);
-
-  useEffect(() => {
-    const param = searchParams.get("team") || "";
-    if (param !== teamFilter) setTeamFilter(param);
-  }, [searchParamsString, teamFilter]);
+    if (!searchParams.get("week")) {
+      params.set("week", nextWeek === "all" ? "all" : String(nextWeek));
+      changed = true;
+    }
+    if (changed) setSearchParams(params, { replace: true });
+    didInitRef.current = true;
+  }, [seasons, manifest, searchParams, setSearchParams]);
 
   useEffect(() => {
     if (!availableWeeks.length) return;
@@ -71,34 +93,38 @@ export default function TransactionsPage() {
     }
   }, [availableWeeks, week]);
 
-  useEffect(() => {
-    if (!season) return;
-    const next = new URLSearchParams(searchParams);
-    const seasonValue = String(season);
-    const weekValue = week === "all" ? "all" : String(week);
-    const currentSeason = searchParams.get("season") || "";
-    const currentWeek = searchParams.get("week") || "all";
-    const currentType = searchParams.get("type") || "all";
-    const currentTeam = searchParams.get("team") || "";
-    if (
-      currentSeason === seasonValue &&
-      currentWeek === weekValue &&
-      currentType === typeFilter &&
-      currentTeam === teamFilter
-    ) {
-      return;
-    }
-    next.set("season", seasonValue);
-    next.set("week", weekValue);
-    if (typeFilter && typeFilter !== "all") next.set("type", typeFilter);
-    else next.delete("type");
-    if (teamFilter) next.set("team", teamFilter);
-    else next.delete("team");
-    const nextQuery = next.toString();
-    if (nextQuery === lastAppliedQueryRef.current) return;
-    lastAppliedQueryRef.current = nextQuery;
-    setSearchParams(next, { replace: true });
-  }, [season, week, typeFilter, teamFilter, searchParamsString, setSearchParams]);
+  const updateSearchParams = (nextSeason, nextWeek, nextType, nextTeam) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("season", String(nextSeason));
+    params.set("week", nextWeek === "all" ? "all" : String(nextWeek));
+    if (nextType && nextType !== "all") params.set("type", nextType);
+    else params.delete("type");
+    if (nextTeam) params.set("team", nextTeam);
+    else params.delete("team");
+    setSearchParams(params, { replace: true });
+  };
+
+  const handleSeasonChange = (value) => {
+    const nextSeason = Number(value);
+    setSeason(nextSeason);
+    updateSearchParams(nextSeason, week, typeFilter, teamFilter);
+  };
+
+  const handleWeekChange = (value) => {
+    const nextWeek = value === "all" ? "all" : Number(value);
+    setWeek(nextWeek);
+    updateSearchParams(season, nextWeek, typeFilter, teamFilter);
+  };
+
+  const handleTypeChange = (value) => {
+    setTypeFilter(value);
+    updateSearchParams(season, week, value, teamFilter);
+  };
+
+  const handleTeamChange = (value) => {
+    setTeamFilter(value);
+    updateSearchParams(season, week, typeFilter, value);
+  };
 
   useEffect(() => {
     let active = true;
@@ -203,7 +229,7 @@ export default function TransactionsPage() {
       <section className="section-card filters">
         <div>
           <label>Season</label>
-          <select value={season} onChange={(event) => setSeason(Number(event.target.value))}>
+          <select value={season} onChange={(event) => handleSeasonChange(event.target.value)}>
             {seasons.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -213,7 +239,7 @@ export default function TransactionsPage() {
         </div>
         <div>
           <label>Week</label>
-          <select value={week} onChange={(event) => setWeek(event.target.value)}>
+          <select value={week} onChange={(event) => handleWeekChange(event.target.value)}>
             <option value="all">All weeks</option>
             {availableWeeks.map((value) => (
               <option key={value} value={value}>
@@ -224,7 +250,7 @@ export default function TransactionsPage() {
         </div>
         <div>
           <label>Type</label>
-          <select value={typeFilter} onChange={(event) => setTypeFilter(event.target.value)}>
+          <select value={typeFilter} onChange={(event) => handleTypeChange(event.target.value)}>
             <option value="all">All types</option>
             <option value="trade">Trade</option>
             <option value="add">Add</option>
@@ -233,7 +259,7 @@ export default function TransactionsPage() {
         </div>
         <div>
           <label>Team</label>
-          <select value={teamFilter} onChange={(event) => setTeamFilter(event.target.value)}>
+          <select value={teamFilter} onChange={(event) => handleTeamChange(event.target.value)}>
             <option value="">All teams</option>
             {teamOptions.map((value) => (
               <option key={value} value={value}>

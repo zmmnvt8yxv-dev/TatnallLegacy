@@ -14,7 +14,7 @@ export default function MatchupsPage() {
   const { manifest, loading, error, playerIndex, teams } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
-  const lastAppliedQueryRef = useRef(searchParamsString);
+  const didInitRef = useRef(false);
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("");
@@ -30,18 +30,32 @@ export default function MatchupsPage() {
   }, [manifest, season]);
 
   useEffect(() => {
-    if (!seasons.length) return;
-    const param = Number(searchParams.get("season"));
-    if (Number.isFinite(param) && seasons.includes(param)) {
-      if (param !== season) setSeason(param);
-    } else if (!season) {
-      setSeason(seasons[0]);
+    if (!seasons.length || !manifest) return;
+    if (didInitRef.current) return;
+    const params = new URLSearchParams(searchParams);
+    const paramSeason = Number(searchParams.get("season"));
+    const nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    const weeksForSeason = manifest?.weeksBySeason?.[String(nextSeason)] || [];
+    const regularWeeks = filterRegularSeasonWeeks(weeksForSeason.map((value) => ({ week: value }))).map(
+      (row) => row.week,
+    );
+    const paramWeek = Number(searchParams.get("week"));
+    const nextWeek =
+      Number.isFinite(paramWeek) && regularWeeks.includes(paramWeek) ? paramWeek : regularWeeks[0] || "";
+    setSeason(nextSeason);
+    if (nextWeek) setWeek(nextWeek);
+    let changed = false;
+    if (!searchParams.get("season") && nextSeason) {
+      params.set("season", String(nextSeason));
+      changed = true;
     }
-  }, [seasons, season, searchParamsString]);
-
-  useEffect(() => {
-    lastAppliedQueryRef.current = searchParamsString;
-  }, [searchParamsString]);
+    if (!searchParams.get("week") && nextWeek) {
+      params.set("week", String(nextWeek));
+      changed = true;
+    }
+    if (changed) setSearchParams(params, { replace: true });
+    didInitRef.current = true;
+  }, [seasons, manifest, searchParams, setSearchParams]);
 
   useEffect(() => {
     if (!availableWeeks.length) return;
@@ -55,22 +69,29 @@ export default function MatchupsPage() {
     }
   }, [availableWeeks, week, searchParamsString]);
 
-  useEffect(() => {
-    if (!season) return;
-    const next = new URLSearchParams(searchParams);
-    const seasonValue = String(season);
-    const weekValue = week ? String(week) : "";
-    const currentSeason = searchParams.get("season") || "";
-    const currentWeek = searchParams.get("week") || "";
-    if (currentSeason === seasonValue && currentWeek === weekValue) return;
-    next.set("season", seasonValue);
-    if (weekValue) next.set("week", weekValue);
-    else next.delete("week");
-    const nextQuery = next.toString();
-    if (nextQuery === lastAppliedQueryRef.current) return;
-    lastAppliedQueryRef.current = nextQuery;
-    setSearchParams(next, { replace: true });
-  }, [season, week, searchParamsString, setSearchParams]);
+  const updateSearchParams = (nextSeason, nextWeek) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("season", String(nextSeason));
+    if (nextWeek) params.set("week", String(nextWeek));
+    else params.delete("week");
+    setSearchParams(params, { replace: true });
+  };
+
+  const handleSeasonChange = (value) => {
+    const nextSeason = Number(value);
+    setSeason(nextSeason);
+    const weeksForSeason = manifest?.weeksBySeason?.[String(nextSeason)] || [];
+    const regularWeeks = filterRegularSeasonWeeks(weeksForSeason.map((w) => ({ week: w }))).map((row) => row.week);
+    const nextWeek = regularWeeks.includes(Number(week)) ? Number(week) : regularWeeks[0] || "";
+    setWeek(nextWeek);
+    updateSearchParams(nextSeason, nextWeek);
+  };
+
+  const handleWeekChange = (value) => {
+    const nextWeek = Number(value);
+    setWeek(nextWeek);
+    updateSearchParams(season, nextWeek);
+  };
 
   useEffect(() => {
     let active = true;
@@ -198,7 +219,7 @@ export default function MatchupsPage() {
       <section className="section-card filters">
         <div>
           <label>Season</label>
-          <select value={season} onChange={(event) => setSeason(Number(event.target.value))}>
+          <select value={season} onChange={(event) => handleSeasonChange(event.target.value)}>
             {seasons.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -208,7 +229,7 @@ export default function MatchupsPage() {
         </div>
         <div>
           <label>Week</label>
-          <select value={week} onChange={(event) => setWeek(Number(event.target.value))}>
+          <select value={week} onChange={(event) => handleWeekChange(event.target.value)}>
             {availableWeeks.map((value) => (
               <option key={value} value={value}>
                 Week {value}

@@ -11,7 +11,7 @@ export default function StandingsPage() {
   const { manifest, loading, error } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
-  const lastAppliedQueryRef = useRef(searchParamsString);
+  const didInitRef = useRef(false);
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
   const [seasonSummary, setSeasonSummary] = useState(null);
@@ -19,29 +19,33 @@ export default function StandingsPage() {
 
   useEffect(() => {
     if (!seasons.length) return;
-    const param = Number(searchParams.get("season"));
-    if (Number.isFinite(param) && seasons.includes(param)) {
-      if (param !== season) setSeason(param);
-    } else if (!season) {
-      setSeason(seasons[0]);
+    const paramSeason = Number(searchParams.get("season"));
+    if (Number.isFinite(paramSeason) && seasons.includes(paramSeason) && paramSeason !== Number(season)) {
+      setSeason(paramSeason);
     }
-  }, [seasons, season, searchParamsString]);
+  }, [searchParamsString, seasons, season]);
 
   useEffect(() => {
-    lastAppliedQueryRef.current = searchParamsString;
-  }, [searchParamsString]);
+    if (!seasons.length) return;
+    if (didInitRef.current) return;
+    const params = new URLSearchParams(searchParams);
+    const paramSeason = Number(searchParams.get("season"));
+    const nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    setSeason(nextSeason);
+    if (!searchParams.get("season")) {
+      params.set("season", String(nextSeason));
+      setSearchParams(params, { replace: true });
+    }
+    didInitRef.current = true;
+  }, [seasons, searchParams, setSearchParams]);
 
-  useEffect(() => {
-    if (!season) return;
-    const seasonValue = String(season);
-    if ((searchParams.get("season") || "") === seasonValue) return;
-    const next = new URLSearchParams(searchParams);
-    next.set("season", seasonValue);
-    const nextQuery = next.toString();
-    if (nextQuery === lastAppliedQueryRef.current) return;
-    lastAppliedQueryRef.current = nextQuery;
-    setSearchParams(next, { replace: true });
-  }, [season, searchParamsString, setSearchParams]);
+  const handleSeasonChange = (value) => {
+    const nextSeason = Number(value);
+    setSeason(nextSeason);
+    const params = new URLSearchParams(searchParams);
+    params.set("season", String(nextSeason));
+    setSearchParams(params, { replace: true });
+  };
 
   useEffect(() => {
     let active = true;
@@ -98,7 +102,7 @@ export default function StandingsPage() {
       <section className="section-card filters">
         <div>
           <label>Season</label>
-          <select value={season} onChange={(event) => setSeason(Number(event.target.value))}>
+          <select value={season} onChange={(event) => handleSeasonChange(event.target.value)}>
             {seasons.map((value) => (
               <option key={value} value={value}>
                 {value}

@@ -31,7 +31,7 @@ export default function PlayerPage() {
   const { playerId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
-  const lastAppliedQueryRef = useRef(searchParamsString);
+  const didInitRef = useRef(false);
   const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [seasonSummaries, setSeasonSummaries] = useState([]);
@@ -47,39 +47,57 @@ export default function PlayerPage() {
 
   useEffect(() => {
     if (!seasons.length) return;
-    const param = Number(searchParams.get("season"));
-    if (Number.isFinite(param) && seasons.includes(param)) {
-      if (param !== Number(selectedSeason)) setSelectedSeason(param);
-    } else if (!selectedSeason) {
-      setSelectedSeason(seasons[0]);
+    const paramSeason = Number(searchParams.get("season"));
+    if (Number.isFinite(paramSeason) && seasons.includes(paramSeason) && paramSeason !== Number(selectedSeason)) {
+      setSelectedSeason(paramSeason);
     }
-  }, [seasons, selectedSeason, searchParamsString]);
-
-  useEffect(() => {
-    lastAppliedQueryRef.current = searchParamsString;
-  }, [searchParamsString]);
-
-  useEffect(() => {
-    const param = searchParams.get("tab");
-    if (param && TABS.includes(param) && param !== activeTab) {
-      setActiveTab(param);
+    const paramTab = searchParams.get("tab");
+    if (paramTab && TABS.includes(paramTab) && paramTab !== activeTab) {
+      setActiveTab(paramTab);
     }
-  }, [searchParamsString, activeTab]);
+  }, [searchParamsString, seasons, selectedSeason, activeTab]);
 
   useEffect(() => {
-    if (!selectedSeason) return;
-    const next = new URLSearchParams(searchParams);
-    const seasonValue = String(selectedSeason);
-    const currentSeason = searchParams.get("season") || "";
-    const currentTab = searchParams.get("tab") || "";
-    if (currentSeason === seasonValue && currentTab === activeTab) return;
-    next.set("season", seasonValue);
-    if (activeTab) next.set("tab", activeTab);
-    const nextQuery = next.toString();
-    if (nextQuery === lastAppliedQueryRef.current) return;
-    lastAppliedQueryRef.current = nextQuery;
-    setSearchParams(next, { replace: true });
-  }, [selectedSeason, activeTab, searchParamsString, setSearchParams]);
+    if (!seasons.length) return;
+    if (didInitRef.current) return;
+    const params = new URLSearchParams(searchParams);
+    const paramSeason = Number(searchParams.get("season"));
+    const nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
+    const paramTab = searchParams.get("tab");
+    const nextTab = paramTab && TABS.includes(paramTab) ? paramTab : TABS[0];
+    setSelectedSeason(nextSeason);
+    setActiveTab(nextTab);
+    let changed = false;
+    if (!searchParams.get("season") && nextSeason) {
+      params.set("season", String(nextSeason));
+      changed = true;
+    }
+    if (!searchParams.get("tab") && nextTab) {
+      params.set("tab", nextTab);
+      changed = true;
+    }
+    if (changed) setSearchParams(params, { replace: true });
+    didInitRef.current = true;
+  }, [seasons, searchParams, setSearchParams]);
+
+  const updateSearchParams = (nextSeason, nextTab) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("season", String(nextSeason));
+    if (nextTab) params.set("tab", nextTab);
+    else params.delete("tab");
+    setSearchParams(params, { replace: true });
+  };
+
+  const handleTabChange = (value) => {
+    setActiveTab(value);
+    updateSearchParams(selectedSeason || seasons[0], value);
+  };
+
+  const handleSeasonChange = (value) => {
+    const nextSeason = Number(value);
+    setSelectedSeason(nextSeason);
+    updateSearchParams(nextSeason, activeTab);
+  };
 
   useEffect(() => {
     let active = true;
@@ -352,7 +370,7 @@ export default function PlayerPage() {
             key={tab}
             type="button"
             className={`tag ${activeTab === tab ? "active" : ""}`}
-            onClick={() => setActiveTab(tab)}
+            onClick={() => handleTabChange(tab)}
           >
             {tab}
           </button>
@@ -432,7 +450,7 @@ export default function PlayerPage() {
           <div className="filters">
             <div>
               <label>Season</label>
-              <select value={selectedSeason} onChange={(event) => setSelectedSeason(Number(event.target.value))}>
+              <select value={selectedSeason} onChange={(event) => handleSeasonChange(event.target.value)}>
                 {seasons.map((season) => (
                   <option key={season} value={season}>
                     {season}
