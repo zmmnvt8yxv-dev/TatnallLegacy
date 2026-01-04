@@ -34,3 +34,7 @@ npm run build
 ### GitHub Pages
 The app is configured for the `/TatnallLegacy/` subpath (see `vite.config.ts`). All data fetches use
 `import.meta.env.BASE_URL`, so deployments under GitHub Pages should work without path changes.
+
+### Deployment automation
+- GitHub Actions deploys from `main` on push, every 4 hours, or manual run.
+- Workflow: `.github/workflows/pages.yml`
