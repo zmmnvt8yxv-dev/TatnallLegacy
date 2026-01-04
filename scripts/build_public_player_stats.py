@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data_raw" / "master"
 OUTPUT_DIR = ROOT / "public" / "data" / "player_stats"
 PLAYER_IDS_PATH = ROOT / "public" / "data" / "player_ids.json"
+PLAYERS_PATH = ROOT / "public" / "data" / "players.json"
 
 
 def read_json(path: Path):
@@ -81,8 +82,23 @@ def build_id_maps():
         sleeper = ids.get("sleeper")
         if gsis and sleeper:
             gsis_to_sleeper[gsis] = sleeper
+    name_to_sleeper = {}
+    if PLAYERS_PATH.exists():
+        players = read_json(PLAYERS_PATH)
+        for player in players:
+            uid = player.get("player_uid")
+            name = player.get("full_name")
+            if not uid or not name:
+                continue
+            sleeper = by_uid.get(uid, {}).get("sleeper")
+            if not sleeper:
+                continue
+            key = normalize_name(name)
+            if key and key not in name_to_sleeper:
+                name_to_sleeper[key] = sleeper
     return {
         "gsis_to_sleeper": gsis_to_sleeper,
+        "name_to_sleeper": name_to_sleeper,
     }
 
 
@@ -97,6 +113,11 @@ def attach_ids(df: pd.DataFrame, id_maps: dict) -> pd.DataFrame:
         df["sleeper_id"] = df["sleeper_id"].where(df["sleeper_id"].notna(), df["gsis_id"].map(gsis_to_sleeper))
     else:
         df["sleeper_id"] = df["gsis_id"].map(gsis_to_sleeper)
+    name_to_sleeper = id_maps.get("name_to_sleeper", {})
+    name_col = pick_first_column(df, ["display_name", "player_display_name", "player_name"])
+    if name_col:
+        resolved = df[name_col].apply(lambda value: name_to_sleeper.get(normalize_name(value)))
+        df["sleeper_id"] = df["sleeper_id"].where(df["sleeper_id"].notna(), resolved)
     df["player_id"] = df["sleeper_id"].where(df["sleeper_id"].notna(), df["gsis_id"])
     for col in ("sleeper_id", "gsis_id", "player_id"):
         if col in df.columns:
@@ -110,6 +131,19 @@ def normalize_id_value(value):
     if isinstance(value, float) and value.is_integer():
         return str(int(value))
     return str(value)
+
+
+def normalize_name(value):
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return ""
+    text = str(value).strip().lower()
+    if not text:
+        return ""
+    cleaned = []
+    for ch in text:
+        if ch.isalnum() or ch.isspace():
+            cleaned.append(ch)
+    return " ".join("".join(cleaned).split())
 
 
 def build_weekly(weekly: pd.DataFrame):
