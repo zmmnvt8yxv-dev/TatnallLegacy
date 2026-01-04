@@ -130,6 +130,15 @@ a {
   gap: 12px;
 }
 
+.player-headshot {
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
 .filters {
   display: flex;
   flex-wrap: wrap;

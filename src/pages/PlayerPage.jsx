@@ -13,7 +13,7 @@ import {
   loadSeasonSummary,
   loadWeekData,
 } from "../data/loader.js";
-import { resolvePlayerName } from "../lib/playerName.js";
+import { resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 
 const TABS = ["Overview", "Seasons", "Weekly Log", "Full Stats", "Boom/Bust"];
@@ -204,6 +204,10 @@ export default function PlayerPage() {
   const resolvedName = useMemo(() => {
     return resolvePlayerName({ ...playerInfo, player_id: playerId }, playerIndex);
   }, [playerInfo, playerId, playerIndex]);
+
+  const playerDisplay = useMemo(() => {
+    return resolvePlayerDisplay(playerId, { row: playerInfo, playerIndex });
+  }, [playerId, playerInfo, playerIndex]);
 
   const seasonStats = useMemo(() => {
     const stats = [];
@@ -412,10 +416,22 @@ export default function PlayerPage() {
   return (
     <>
       <section>
-        <h1 className="page-title">{playerInfo?.full_name || resolvedName}</h1>
-        <p className="page-subtitle">
-          {playerInfo?.position || "Position —"} · {playerInfo?.nfl_team || "Team —"}
-        </p>
+        <div className="flex-row">
+          {playerDisplay?.headshotUrl ? (
+            <img
+              className="player-headshot"
+              src={playerDisplay.headshotUrl}
+              alt={`${playerDisplay.name || resolvedName} headshot`}
+              loading="lazy"
+            />
+          ) : null}
+          <div>
+            <h1 className="page-title">{playerInfo?.full_name || resolvedName}</h1>
+            <p className="page-subtitle">
+              {playerInfo?.position || "Position —"} · {playerInfo?.nfl_team || "Team —"}
+            </p>
+          </div>
+        </div>
         <div className="flex-row">
           <div className="tag">Player ID: {playerId}</div>
           <div className="tag">Teams played for: {teamHistory.join(", ") || "No data"}</div>
