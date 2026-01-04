@@ -405,6 +405,7 @@ export default function PlayerPage() {
         row.delta_to_next = row.delta_to_next ?? row.points - nextPoints;
         row.replacement_baseline = row.replacement_baseline ?? baseline;
         row.war_rep = row.war_rep ?? row.points - baseline;
+        row.pos_week_rank = row.pos_week_rank ?? index + 1;
       });
     }
     return rows;
@@ -426,12 +427,15 @@ export default function PlayerPage() {
         return {
           season: metrics?.season || lineup?.season || selectedSeason,
           week,
-          team: metrics?.team || lineup?.team || "—",
+          nflTeam: metrics?.team || "—",
+          fantasyTeam: lineup?.team || "—",
           started: lineup?.started,
           points: metrics?.points ?? metrics?.fantasy_points_custom_week ?? lineup?.points,
           pos_week_z: metrics?.pos_week_z,
           war_rep: metrics?.war_rep,
           delta_to_next: metrics?.delta_to_next,
+          position: metrics?.position,
+          pos_week_rank: metrics?.pos_week_rank,
         };
       });
   }, [weeklyRows, metricsForPlayer, selectedSeason]);
@@ -439,7 +443,7 @@ export default function PlayerPage() {
   const teamHistory = useMemo(() => {
     const teams = new Set();
     for (const row of weeklyDisplayRows) {
-      if (row.team) teams.add(row.team);
+      if (row.nflTeam) teams.add(row.nflTeam);
     }
     return Array.from(teams);
   }, [weeklyDisplayRows]);
@@ -447,7 +451,7 @@ export default function PlayerPage() {
   const filteredWeeklyRows = useMemo(() => {
     const query = search.toLowerCase().trim();
     if (!query) return weeklyDisplayRows;
-    return weeklyDisplayRows.filter((row) => String(row.team || "").toLowerCase().includes(query));
+    return weeklyDisplayRows.filter((row) => String(row.nflTeam || "").toLowerCase().includes(query));
   }, [weeklyDisplayRows, search]);
 
   const filteredFullStatsRows = useMemo(() => {
@@ -709,24 +713,28 @@ export default function PlayerPage() {
               <thead>
                 <tr>
                   <th>Week</th>
-                  <th>Team</th>
+                  <th>NFL Team</th>
+                  <th>Fantasy Team</th>
                   <th>Starter</th>
                   <th>Points</th>
                   <th>Z-Score</th>
                   <th>WAR</th>
                   <th>Delta</th>
+                  <th>Pos Rank</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredWeeklyRows.map((row, idx) => (
                   <tr key={`${row.week}-${idx}`}>
                     <td>{row.week}</td>
-                    <td>{row.team || "—"}</td>
+                    <td>{row.nflTeam || "—"}</td>
+                    <td>{row.fantasyTeam || "—"}</td>
                     <td>{row.started ? "Yes" : "—"}</td>
                     <td>{formatPoints(row.points)}</td>
                     <td>{row.pos_week_z ? safeNumber(row.pos_week_z).toFixed(2) : "—"}</td>
                     <td>{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
                     <td>{row.delta_to_next != null ? formatPoints(row.delta_to_next) : "—"}</td>
+                    <td>{row.position && row.pos_week_rank ? `${row.position}${row.pos_week_rank}` : "—"}</td>
                   </tr>
                 ))}
               </tbody>
