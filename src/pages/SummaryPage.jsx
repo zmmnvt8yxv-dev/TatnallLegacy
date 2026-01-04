@@ -150,6 +150,15 @@ export default function SummaryPage() {
     });
   }, [allTime, playerSearch, playerIndex]);
 
+  const favoritePlayers = useMemo(
+    () =>
+      favorites.players.map((id) => ({
+        id,
+        name: resolvePlayerName({ player_id: id }, playerIndex),
+      })),
+    [favorites.players, playerIndex],
+  );
+
   if (loading) return <LoadingState label="Loading league snapshot..." />;
   if (error) return <ErrorState message={error} />;
 
@@ -171,14 +180,6 @@ export default function SummaryPage() {
   };
 
   const getPlayerName = (row) => resolvePlayerName(row, playerIndex);
-  const favoritePlayers = useMemo(
-    () =>
-      favorites.players.map((id) => ({
-        id,
-        name: resolvePlayerName({ player_id: id }, playerIndex),
-      })),
-    [favorites.players, playerIndex],
-  );
 
   return (
     <>
