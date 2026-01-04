@@ -42,7 +42,13 @@ def find_source(basenames: list[str]) -> Path | None:
 
 def read_table(path: Path) -> pd.DataFrame:
     if path.suffix == ".parquet":
-        return pd.read_parquet(path)
+        try:
+            return pd.read_parquet(path)
+        except Exception:
+            csv_path = path.with_suffix(".csv")
+            if csv_path.exists():
+                return pd.read_csv(csv_path)
+            raise
     return pd.read_csv(path)
 
 
@@ -109,9 +115,9 @@ def main() -> None:
     weekly = read_table(weekly_source)
     weekly = filter_regular_season(weekly)
 
-    name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"]) or "display_name"
-    position_col = pick_first_column(weekly, ["position", "position_group"]) or "position"
-    team_col = pick_first_column(weekly, ["team", "recent_team", "nfl_team"]) or "team"
+    name_col = pick_first_column(weekly, ["display_name", "player_display_name", "player_name"])
+    position_col = pick_first_column(weekly, ["position", "position_group"])
+    team_col = pick_first_column(weekly, ["team", "recent_team", "nfl_team"])
     points_col = pick_first_column(
         weekly,
         [
@@ -126,9 +132,25 @@ def main() -> None:
         raise SystemExit("No weekly fantasy points column found for player metrics export.")
 
     weekly["points"] = pd.to_numeric(weekly[points_col], errors="coerce").fillna(0.0)
-    weekly["position"] = weekly[position_col].astype(str).str.upper()
-    weekly["display_name"] = weekly[name_col].fillna("Unknown")
-    weekly["team"] = weekly.get(team_col).fillna("—")
+    if position_col:
+        weekly["position"] = weekly[position_col].astype(str).str.upper()
+    else:
+        weekly["position"] = "—"
+    if name_col:
+        weekly["display_name"] = weekly[name_col].fillna("Unknown")
+    elif "first_name" in weekly.columns or "last_name" in weekly.columns:
+        weekly["display_name"] = (
+            weekly.get("first_name", "").fillna("").astype(str).str.strip()
+            + " "
+            + weekly.get("last_name", "").fillna("").astype(str).str.strip()
+        ).str.strip()
+        weekly.loc[weekly["display_name"] == "", "display_name"] = "Unknown"
+    else:
+        weekly["display_name"] = "Unknown"
+    if team_col and team_col in weekly.columns:
+        weekly["team"] = weekly[team_col].fillna("—")
+    else:
+        weekly["team"] = "—"
 
     weekly = add_war_and_delta(weekly, "points")
 
