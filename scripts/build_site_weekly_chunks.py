@@ -206,6 +206,34 @@ def load_espn_lineups(season, week):
   return payload.get("lineups", []) or []
 
 
+def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup):
+  normalized = []
+  for row in lineups or []:
+    espn_id = normalize_numeric_id(row.get("player_id"))
+    next_row = dict(row)
+    if espn_id:
+      next_row["espn_id"] = espn_id
+    defense = defense_from_espn_id(espn_id)
+    if defense:
+      next_row["player_id"] = defense["id"]
+      next_row["player"] = defense["name"]
+      normalized.append(next_row)
+      continue
+    sleeper_id = sleeper_maps.get("espn_to_sleeper", {}).get(str(espn_id)) if espn_id else None
+    if sleeper_id:
+      next_row["player_id"] = sleeper_id
+    player_name = None
+    if sleeper_id:
+      player_name = player_name_lookup.get(str(sleeper_id))
+    if not player_name and espn_id:
+      player_name = sleeper_maps.get("espn_to_name", {}).get(str(espn_id))
+    if not player_name and espn_id:
+      player_name = f"ESPN Player {espn_id}"
+    next_row["player"] = player_name or next_row.get("player") or "(Unknown Player)"
+    normalized.append(next_row)
+  return normalized
+
+
 def is_regular_season(week):
   try:
     week_num = int(week)
@@ -569,6 +597,10 @@ def build_transactions(seasons, sleeper_maps=None):
           key = normalize_name(name)
           sleeper_id = sleeper_maps.get("name_to_sleeper", {}).get(key)
         if not name:
+          raw_id = normalize_numeric_id(item.get("playerId") if item else None)
+          if raw_id:
+            name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id)) or f"ESPN Player {raw_id}"
+        if not name:
           name = "(Unknown Player)"
         return sleeper_id, name
 
@@ -665,6 +697,7 @@ def main():
   all_time_weekly = []
   season_totals = []
   sleeper_maps = load_sleeper_player_maps()
+  player_name_lookup = build_player_name_lookup()
 
   for season_path in DATA_DIR.glob("20*.json"):
     payload = read_json(season_path)
@@ -682,6 +715,7 @@ def main():
     matchups = [row for row in payload.get("matchups", []) if is_regular_season(row.get("week"))]
     teams = payload.get("teams", [])
     weeks = sorted({int(row.get("week")) for row in lineups + matchups if is_regular_season(row.get("week"))})
+    effective_lineups = list(lineups)
 
     for week in weeks:
       week_matchups = [row for row in matchups if int(row.get("week")) == week]
@@ -689,14 +723,15 @@ def main():
       if not week_lineups:
         espn_lineups = load_espn_lineups(season, week)
         if espn_lineups:
-          week_lineups = espn_lineups
+          week_lineups = normalize_espn_lineups(espn_lineups, sleeper_maps, player_name_lookup)
+          effective_lineups.extend(week_lineups)
       write_json(
         OUTPUT_DIR / "weekly" / str(season) / f"week-{week}.json",
         {"season": season, "week": week, "matchups": week_matchups, "lineups": week_lineups},
       )
 
     player_totals = {}
-    for row in lineups:
+    for row in effective_lineups:
       player_id = str(row.get("player_id"))
       if not player_id or player_id == "None":
         continue
