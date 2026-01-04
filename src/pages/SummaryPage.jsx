@@ -75,9 +75,13 @@ export default function SummaryPage() {
 
   useEffect(() => {
     let active = true;
-    loadPlayerMetricsBoomBust().then((payload) => {
-      if (active) setBoomBust(payload);
-    });
+    loadPlayerMetricsBoomBust()
+      .then((payload) => {
+        if (active) setBoomBust(payload);
+      })
+      .catch(() => {
+        if (active) setBoomBust(null);
+      });
     return () => {
       active = false;
     };

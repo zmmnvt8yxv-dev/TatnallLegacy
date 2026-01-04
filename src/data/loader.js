@@ -212,7 +212,7 @@ export async function loadPlayerMetricsBoomBust() {
     return setCached(key, payload);
   } catch (err) {
     console.error("DATA_LOAD_ERROR", { url: path || "playerMetricsBoomBust", err });
-    throw err;
+    return null;
   }
 }
 
