@@ -58,6 +58,7 @@ def main():
       "transactions": "data/transactions/{season}.json",
       "allTime": "data/all_time.json",
       "playerStatsWeekly": "data/player_stats/weekly/{season}.json",
+      "playerStatsFull": "data/player_stats/full/{season}.json",
       "playerStatsSeason": "data/player_stats/season/{season}.json",
       "playerStatsCareer": "data/player_stats/career.json",
       "metricsSummary": "data/player_metrics/summary.json",

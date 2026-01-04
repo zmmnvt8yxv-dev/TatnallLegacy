@@ -7,6 +7,7 @@ import { useDataContext } from "../data/DataContext.jsx";
 import {
   loadBoomBustMetrics,
   loadPlayerStatsCareer,
+  loadPlayerStatsFull,
   loadPlayerStatsSeason,
   loadPlayerStatsWeekly,
   loadSeasonSummary,
@@ -15,7 +16,7 @@ import {
 import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 
-const TABS = ["Overview", "Seasons", "Weekly Log", "Boom/Bust"];
+const TABS = ["Overview", "Seasons", "Weekly Log", "Full Stats", "Boom/Bust"];
 
 const THRESHOLDS = {
   QB: 20,
@@ -48,6 +49,7 @@ export default function PlayerPage() {
   const [selectedSeason, setSelectedSeason] = useState("");
   const [weeklyRows, setWeeklyRows] = useState([]);
   const [statsWeeklyRows, setStatsWeeklyRows] = useState([]);
+  const [fullStatsRows, setFullStatsRows] = useState([]);
   const [careerStats, setCareerStats] = useState([]);
   const [boomBustMetrics, setBoomBustMetrics] = useState([]);
   const [search, setSearch] = useState("");
@@ -174,6 +176,19 @@ export default function PlayerPage() {
       if (!active) return;
       const rows = payload?.rows || payload || [];
       setStatsWeeklyRows(rows);
+    });
+    return () => {
+      active = false;
+    };
+  }, [selectedSeason]);
+
+  useEffect(() => {
+    let active = true;
+    if (!selectedSeason) return undefined;
+    loadPlayerStatsFull(selectedSeason).then((payload) => {
+      if (!active) return;
+      const rows = payload?.rows || payload || [];
+      setFullStatsRows(rows);
     });
     return () => {
       active = false;
@@ -308,6 +323,7 @@ export default function PlayerPage() {
         const lineup = lineupByWeek.get(week);
         const metrics = metricsByWeek.get(week);
         return {
+          season: metrics?.season || lineup?.season || selectedSeason,
           week,
           team: metrics?.team || lineup?.team || "—",
           started: lineup?.started,
@@ -317,7 +333,7 @@ export default function PlayerPage() {
           delta_to_next: metrics?.delta_to_next,
         };
       });
-  }, [weeklyRows, metricsForPlayer]);
+  }, [weeklyRows, metricsForPlayer, selectedSeason]);
 
   const teamHistory = useMemo(() => {
     const teams = new Set();
@@ -365,6 +381,18 @@ export default function PlayerPage() {
     if (!boomBust) return { top: [], bottom: [] };
     return { top: boomBust.topWeeks || [], bottom: boomBust.bottomWeeks || [] };
   }, [boomBust]);
+
+  const warDefinitions = (
+    <div className="section-card">
+      <h3 className="section-title">WAR Definitions</h3>
+      <p>
+        <strong>Replacement-level WAR</strong> is your weekly points minus a replacement baseline for your position.
+        In this league, baselines assume 8 teams (2QB, 3RB, 3WR, 2TE).{" "}
+        <strong>Delta to next guy</strong> is the margin to the next best player at the same position in a given week.
+        These values appear when weekly metrics exports are provided.
+      </p>
+    </div>
+  );
 
   if (loading && !seasonSummaries.length && !statsSeasonSummaries.length)
     return <LoadingState label="Loading player profile..." />;
@@ -512,6 +540,65 @@ export default function PlayerPage() {
         </section>
       )}
 
+      {activeTab === "Full Stats" && (
+        <section className="section-card">
+          <div className="filters">
+            <div>
+              <label>Season</label>
+              <select value={selectedSeason} onChange={(event) => handleSeasonChange(event.target.value)}>
+                {seasons.map((season) => (
+                  <option key={season} value={season}>
+                    {season}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          {fullStatsRows.length ? (
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Week</th>
+                  <th>Team</th>
+                  <th>Opp</th>
+                  <th>Pass Yds</th>
+                  <th>Pass TD</th>
+                  <th>INT</th>
+                  <th>Rush Yds</th>
+                  <th>Rush TD</th>
+                  <th>Rec</th>
+                  <th>Rec Yds</th>
+                  <th>Rec TD</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                {fullStatsRows
+                  .filter(matchesPlayer)
+                  .map((row, idx) => (
+                    <tr key={`${row.week}-${idx}`}>
+                      <td>{row.week}</td>
+                      <td>{row.team || "—"}</td>
+                      <td>{row.opponent_team || "—"}</td>
+                      <td>{row.passing_yards ?? "—"}</td>
+                      <td>{row.passing_tds ?? "—"}</td>
+                      <td>{row.passing_interceptions ?? "—"}</td>
+                      <td>{row.rushing_yards ?? "—"}</td>
+                      <td>{row.rushing_tds ?? "—"}</td>
+                      <td>{row.receptions ?? "—"}</td>
+                      <td>{row.receiving_yards ?? "—"}</td>
+                      <td>{row.receiving_tds ?? "—"}</td>
+                      <td>{row.fantasy_points_custom_week_with_bonus ?? row.fantasy_points_custom_week ?? "—"}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          ) : (
+            <div>No full stat rows available for this season.</div>
+          )}
+        </section>
+      )}
+
       {activeTab === "Boom/Bust" && (
         <section className="section-card">
           <h2 className="section-title">Boom / Bust Summary</h2>
@@ -536,7 +623,7 @@ export default function PlayerPage() {
                   <ul>
                     {boomBustWeeks.top.map((row, idx) => (
                       <li key={`top-${idx}`}>
-                        Week {row.week} ({row.season}) — {formatPoints(row.points)} pts
+                        Week {row.week} ({row.season || selectedSeason}) — {formatPoints(row.points)} pts
                       </li>
                     ))}
                   </ul>
@@ -546,20 +633,11 @@ export default function PlayerPage() {
                   <ul>
                     {boomBustWeeks.bottom.map((row, idx) => (
                       <li key={`bottom-${idx}`}>
-                        Week {row.week} ({row.season}) — {formatPoints(row.points)} pts
+                        Week {row.week} ({row.season || selectedSeason}) — {formatPoints(row.points)} pts
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
-              <div className="section-card">
-                <h3 className="section-title">WAR Definitions</h3>
-                <p>
-                  <strong>Replacement-level WAR</strong> is your weekly points minus a replacement baseline for your
-                  position. In this league, baselines assume 8 teams (2QB, 3RB, 3WR, 2TE).{" "}
-                  <strong>Delta to next guy</strong> is the margin to the next best player at the same position in a
-                  given week. These values appear when weekly metrics exports are provided.
-                </p>
               </div>
             </>
           ) : (
@@ -567,6 +645,8 @@ export default function PlayerPage() {
           )}
         </section>
       )}
+
+      {warDefinitions}
     </>
   );
 }

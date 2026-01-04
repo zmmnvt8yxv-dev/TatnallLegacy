@@ -215,6 +215,53 @@ def build_weekly(weekly: pd.DataFrame):
     return seasons
 
 
+def build_full_stats(weekly: pd.DataFrame):
+    weekly = filter_regular_season(weekly)
+    fields = [
+        "season",
+        "week",
+        "display_name",
+        "position",
+        "team",
+        "opponent_team",
+        "attempts",
+        "completions",
+        "passing_yards",
+        "passing_tds",
+        "passing_interceptions",
+        "passing_2pt_conversions",
+        "carries",
+        "rushing_yards",
+        "rushing_tds",
+        "rushing_2pt_conversions",
+        "receptions",
+        "targets",
+        "receiving_yards",
+        "receiving_tds",
+        "receiving_2pt_conversions",
+        "rushing_fumbles_lost",
+        "receiving_fumbles_lost",
+        "sack_fumbles_lost",
+        "fantasy_points_custom_week",
+        "fantasy_points_custom_week_with_bonus",
+        "pos_week_z",
+        "war_rep",
+        "delta_to_next",
+        "sleeper_id",
+        "gsis_id",
+        "player_id",
+    ]
+    fields = [field for field in fields if field in weekly.columns]
+    seasons = sorted(weekly["season"].dropna().unique().astype(int).tolist())
+    for season in seasons:
+        season_rows = weekly[weekly["season"] == season].copy()
+        season_rows = season_rows.sort_values(["week"], ascending=[True])
+        write_json(
+            OUTPUT_DIR / "full" / f"{season}.json",
+            {"season": int(season), "rows": season_rows[fields].to_dict(orient="records")},
+        )
+
+
 def build_season(season_df: pd.DataFrame):
     season_df = season_df.copy()
     season_df["season"] = pd.to_numeric(season_df.get("season"), errors="coerce")
@@ -280,6 +327,7 @@ def main() -> None:
     id_maps = build_id_maps()
     weekly = attach_ids(weekly, id_maps)
     seasons = build_weekly(weekly)
+    build_full_stats(weekly)
 
     if season_source:
         season_df = read_table(season_source)

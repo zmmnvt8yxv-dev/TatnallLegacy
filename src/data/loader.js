@@ -216,6 +216,25 @@ export async function loadPlayerStatsWeekly(season) {
   }
 }
 
+export async function loadPlayerStatsFull(season) {
+  const key = `playerStatsFull:${season}`;
+  let path;
+  try {
+    const cached = getCached(key);
+    if (cached) return cached;
+    const manifest = await loadManifest();
+    const template = optionalManifestPath(manifest, "playerStatsFull");
+    path = template ? resolvePath(template, { season }) : null;
+    if (!path) return null;
+    const payload = await fetchJson(path, { optional: true });
+    if (!payload) return null;
+    return setCached(key, payload);
+  } catch (err) {
+    console.error("DATA_LOAD_ERROR", { url: path || `playerStatsFull:${season}`, err });
+    throw err;
+  }
+}
+
 export async function loadPlayerStatsSeason(season) {
   const key = `playerStatsSeason:${season}`;
   let path;
