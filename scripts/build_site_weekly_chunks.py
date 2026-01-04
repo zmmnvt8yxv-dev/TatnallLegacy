@@ -685,35 +685,40 @@ def build_transactions(seasons, sleeper_maps=None):
         key = normalize_name(name)
         return sleeper_maps.get("name_to_sleeper", {}).get(key)
 
-  def resolve_espn_player(item):
-    player = item.get("playerPoolEntry", {}).get("player", {}) if item else {}
-    name = player.get("fullName") or player.get("displayName")
+      def resolve_espn_player(item):
+        player = item.get("playerPoolEntry", {}).get("player", {}) if item else {}
+        name = player.get("fullName") or player.get("displayName")
         if not name:
           first = player.get("firstName") or ""
           last = player.get("lastName") or ""
           name = f"{first} {last}".strip() or None
-    if not name:
-      raw_id = normalize_numeric_id(item.get("playerId") if item else None)
-      if raw_id:
-        name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id))
-    if not name:
-      defense = defense_from_espn_id(item.get("playerId") if item else None)
-      if defense:
-        return defense["id"], defense["name"], "defense", item.get("playerId")
-    sleeper_id = espn_player_id(item)
-    if sleeper_id:
-      name = player_name_lookup.get(str(sleeper_id)) or name
-    if not sleeper_id and name:
-      key = normalize_name(name)
-      sleeper_id = sleeper_maps.get("name_to_sleeper", {}).get(key)
-    if not name:
-      raw_id = normalize_numeric_id(item.get("playerId") if item else None)
-      if raw_id:
-        name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id)) or f"ESPN Player {raw_id}"
-    if not name:
-      name = "(Unknown Player)"
-    id_type = "sleeper" if sleeper_id else "espn"
-    return sleeper_id or normalize_numeric_id(item.get("playerId") if item else None), name, id_type, item.get("playerId")
+        if not name:
+          raw_id = normalize_numeric_id(item.get("playerId") if item else None)
+          if raw_id:
+            name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id))
+        if not name:
+          defense = defense_from_espn_id(item.get("playerId") if item else None)
+          if defense:
+            return defense["id"], defense["name"], "defense", item.get("playerId")
+        sleeper_id = espn_player_id(item)
+        if sleeper_id:
+          name = player_name_lookup.get(str(sleeper_id)) or name
+        if not sleeper_id and name:
+          key = normalize_name(name)
+          sleeper_id = sleeper_maps.get("name_to_sleeper", {}).get(key)
+        if not name:
+          raw_id = normalize_numeric_id(item.get("playerId") if item else None)
+          if raw_id:
+            name = sleeper_maps.get("espn_to_name", {}).get(str(raw_id)) or f"ESPN Player {raw_id}"
+        if not name:
+          name = "(Unknown Player)"
+        id_type = "sleeper" if sleeper_id else "espn"
+        return (
+          sleeper_id or normalize_numeric_id(item.get("playerId") if item else None),
+          name,
+          id_type,
+          item.get("playerId"),
+        )
 
       for txn in espn_payload.get("transactions", []) or []:
         week = txn.get("scoringPeriodId") or txn.get("matchupPeriodId") or txn.get("week")
