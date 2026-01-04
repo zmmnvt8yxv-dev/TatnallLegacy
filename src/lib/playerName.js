@@ -81,6 +81,11 @@ export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayer
   const sleeperEntry = getSleeperEntry(sleeperPlayers, effectiveRow.player_id || playerId);
   const resolvedName = directName && !looksLikeId(directName) ? directName : resolveNameFromEntry(player);
   const fallbackName = resolveNameFromEntry(sleeperEntry);
+  const sleeperIdCandidate = effectiveRow.sleeper_id || effectiveRow.player_id || playerId;
+  const sleeperHeadshot =
+    sleeperIdCandidate && /^\d+$/.test(String(sleeperIdCandidate))
+      ? `https://sleepercdn.com/content/nfl/players/${sleeperIdCandidate}.jpg`
+      : null;
   return {
     name: resolvedName || fallbackName || "(Unknown Player)",
     headshotUrl:
@@ -90,6 +95,7 @@ export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayer
       sleeperEntry?.headshot_url ||
       sleeperEntry?.headshotUrl ||
       sleeperEntry?.headshot ||
+      sleeperHeadshot ||
       null,
     position: player?.position || sleeperEntry?.position || effectiveRow.position || "—",
     team: player?.nfl_team || sleeperEntry?.team || sleeperEntry?.nfl_team || effectiveRow.nfl_team || "—",
