@@ -199,9 +199,6 @@ export default function TransactionsPage() {
     return { mostAdds, mostDrops, mostTrades };
   }, [totalsByTeam]);
 
-  if (loading) return <LoadingState label="Loading transactions..." />;
-  if (error) return <ErrorState message={error} />;
-
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
   const virtualEntries = useVirtualRows({ itemCount: entries.length, rowHeight: 46 });
   const visibleEntries = entries.slice(virtualEntries.start, virtualEntries.end);
@@ -249,6 +246,9 @@ export default function TransactionsPage() {
       },
     };
   }, [isDev, transactions]);
+
+  if (loading) return <LoadingState label="Loading transactions..." />;
+  if (error) return <ErrorState message={error} />;
 
   const renderPlayerLinks = (players) =>
     players

@@ -199,9 +199,6 @@ export default function MatchupsPage() {
     };
   }, [activeMatchup, lineups, playerIndex, teamsByRosterId]);
 
-  if (loading) return <LoadingState label="Loading matchups..." />;
-  if (error) return <ErrorState message={error} />;
-
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
   const query = teamQuery.trim().toLowerCase();
 
@@ -231,6 +228,9 @@ export default function MatchupsPage() {
       missingIds,
     };
   }, [isDev, weekData, lineups, playerIndex]);
+
+  if (loading) return <LoadingState label="Loading matchups..." />;
+  if (error) return <ErrorState message={error} />;
 
   return (
     <>

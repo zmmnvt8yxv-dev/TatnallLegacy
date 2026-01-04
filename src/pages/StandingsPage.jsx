@@ -124,9 +124,6 @@ export default function StandingsPage() {
     return Array.from(totals.values()).sort((a, b) => b.wins - a.wins);
   }, [allSummaries]);
 
-  if (loading) return <LoadingState label="Loading standings..." />;
-  if (error) return <ErrorState message={error} />;
-
   const standings = seasonSummary?.standings || [];
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
   const query = teamQuery.trim().toLowerCase();
@@ -141,6 +138,9 @@ export default function StandingsPage() {
     if (!query) return allTime;
     return allTime.filter((row) => ownerLabel(row.team, row.team).toLowerCase().includes(query));
   }, [allTime, ownerLabel, query]);
+
+  if (loading) return <LoadingState label="Loading standings..." />;
+  if (error) return <ErrorState message={error} />;
 
   return (
     <>
