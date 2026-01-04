@@ -15,7 +15,7 @@ import {
 } from "../data/loader.js";
 import LocalStatAssistant from "../components/LocalStatAssistant.jsx";
 import { resolvePlayerName } from "../lib/playerName.js";
-import { formatPoints } from "../utils/format.js";
+import { formatPoints, safeNumber } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 
 function getLatestSeason(manifest) {
