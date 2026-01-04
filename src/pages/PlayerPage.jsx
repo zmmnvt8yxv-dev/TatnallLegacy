@@ -51,6 +51,7 @@ export default function PlayerPage() {
   const [selectedSeason, setSelectedSeason] = useState("");
   const [weeklyRows, setWeeklyRows] = useState([]);
   const [statsWeeklyRows, setStatsWeeklyRows] = useState([]);
+  const [careerWeeklyRows, setCareerWeeklyRows] = useState([]);
   const [fullStatsRows, setFullStatsRows] = useState([]);
   const [careerStats, setCareerStats] = useState([]);
   const [boomBustMetrics, setBoomBustMetrics] = useState([]);
@@ -352,9 +353,10 @@ export default function PlayerPage() {
     const targetId = String(playerId);
     const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id].map((value) => String(value || ""));
     if (ids.includes(targetId)) return true;
-    if (playerInfo?.full_name && row?.display_name) {
-      return String(row.display_name).toLowerCase() === String(playerInfo.full_name).toLowerCase();
-    }
+    const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
+    if (!targetNames.length) return false;
+    const name = normalizeName(row?.display_name || row?.player_display_name || row?.player_name);
+    return name && targetNames.includes(name);
     return false;
   };
 
@@ -453,8 +455,33 @@ export default function PlayerPage() {
     return fullStatsRows.filter(matchesPlayer);
   }, [fullStatsRows, playerId, playerInfo]);
 
+  useEffect(() => {
+    let active = true;
+    if (!seasons.length) return undefined;
+    Promise.all(seasons.map((season) => loadPlayerStatsWeekly(season))).then((payloads) => {
+      if (!active) return;
+      const rows = [];
+      for (const payload of payloads) {
+        const seasonRows = payload?.rows || payload || [];
+        for (const row of seasonRows) {
+          const week = Number(row?.week);
+          if (!Number.isFinite(week) || week < 1 || week > 18) continue;
+          if (!matchesPlayer(row)) continue;
+          rows.push({
+            ...row,
+            points: safeNumber(row.points ?? row.fantasy_points_custom_week ?? row.fantasy_points_custom),
+          });
+        }
+      }
+      setCareerWeeklyRows(rows);
+    });
+    return () => {
+      active = false;
+    };
+  }, [seasons, playerId, playerInfo, resolvedName]);
+
   const boomBust = useMemo(() => {
-    const rows = weeklyDisplayRows;
+    const rows = careerWeeklyRows.length ? careerWeeklyRows : weeklyDisplayRows;
     if (!rows.length) return null;
     const points = rows.map((row) => safeNumber(row.points));
     const mean = points.reduce((sum, value) => sum + value, 0) / points.length;
@@ -471,7 +498,7 @@ export default function PlayerPage() {
       topWeeks: sorted.slice(0, 5),
       bottomWeeks: sorted.slice(-5).reverse(),
     };
-  }, [weeklyDisplayRows, playerInfo]);
+  }, [careerWeeklyRows, weeklyDisplayRows, playerInfo]);
 
   const boomBustFromMetrics = useMemo(() => {
     if (!boomBustMetrics.length) return null;
@@ -485,6 +512,27 @@ export default function PlayerPage() {
     if (!boomBust) return { top: [], bottom: [] };
     return { top: boomBust.topWeeks || [], bottom: boomBust.bottomWeeks || [] };
   }, [boomBust]);
+
+  const boomBustBySeason = useMemo(() => {
+    if (!careerWeeklyRows.length) return [];
+    const grouped = new Map();
+    for (const row of careerWeeklyRows) {
+      const season = row?.season;
+      if (!season) continue;
+      if (!grouped.has(season)) grouped.set(season, []);
+      grouped.get(season).push(row);
+    }
+    return Array.from(grouped.entries())
+      .map(([season, rows]) => {
+        const sorted = rows.slice().sort((a, b) => safeNumber(b.points) - safeNumber(a.points));
+        return {
+          season,
+          top: sorted.slice(0, 3),
+          bottom: sorted.slice(-3).reverse(),
+        };
+      })
+      .sort((a, b) => b.season - a.season);
+  }, [careerWeeklyRows]);
 
   const warDefinitions = (
     <div className="section-card">
@@ -788,6 +836,34 @@ export default function PlayerPage() {
                   </ul>
                 </div>
               </div>
+              {boomBustBySeason.length ? (
+                <div className="section-card">
+                  <h3 className="section-title">Season Breakouts</h3>
+                  {boomBustBySeason.map((season) => (
+                    <div key={season.season} className="subtle-text" style={{ marginBottom: "12px" }}>
+                      <strong>{season.season}</strong>
+                      <div>
+                        Top weeks:{" "}
+                        {season.top.map((row, idx) => (
+                          <span key={`season-top-${season.season}-${idx}`}>
+                            Week {row.week} ({formatPoints(row.points)} pts)
+                            {idx < season.top.length - 1 ? ", " : ""}
+                          </span>
+                        ))}
+                      </div>
+                      <div>
+                        Bottom weeks:{" "}
+                        {season.bottom.map((row, idx) => (
+                          <span key={`season-bottom-${season.season}-${idx}`}>
+                            Week {row.week} ({formatPoints(row.points)} pts)
+                            {idx < season.bottom.length - 1 ? ", " : ""}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
             </>
           ) : (
             <div>No weekly data available to compute boom/bust metrics.</div>
