@@ -41,6 +41,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Fetch data_raw from data repo
+        run: |
+          git clone --depth 1 --branch main https://github.com/zmmnvt8yxv-dev/datarepo.git /tmp/datarepo
+          rm -rf data_raw
+          cp -R /tmp/datarepo/data_raw ./data_raw
+
       - name: Check data sources
         id: data_sources
         run: |
