@@ -532,18 +532,16 @@ def build_transactions(seasons, sleeper_maps=None):
         team_id = team.get("id")
         if team_id is None:
           continue
-        owners = team.get("owners") or []
-        owner_name = None
-        if owners:
-          owner = member_by_id.get(owners[0], {})
-          owner_name = owner.get("displayName") or owner.get("firstName") or owner.get("lastName")
-        name = owner_name
-        if not name:
-          name = team.get("name")
+        name = team.get("name")
         if not name:
           location = team.get("location") or ""
           nickname = team.get("nickname") or ""
           name = f"{location} {nickname}".strip()
+        if not name:
+          owners = team.get("owners") or []
+          if owners:
+            owner = member_by_id.get(owners[0], {})
+            name = owner.get("displayName") or owner.get("firstName")
         if not name:
           name = f"Team {team_id}"
         espn_team_name_by_id[str(team_id)] = name
