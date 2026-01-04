@@ -230,13 +230,42 @@ export default function PlayerPage() {
     return info || null;
   }, [playerIdLookup, playerId]);
 
+  const statsNameRow = useMemo(() => {
+    const targetId = String(playerId);
+    const tryFind = (rows) =>
+      rows.find((row) => {
+        const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id].map((value) => String(value || ""));
+        return ids.includes(targetId);
+      }) || null;
+    if (statsWeeklyRows.length) return tryFind(statsWeeklyRows);
+    if (fullStatsRows.length) return tryFind(fullStatsRows);
+    for (const summary of statsSeasonSummaries) {
+      const rows = summary?.rows || [];
+      const match = tryFind(rows);
+      if (match) return match;
+    }
+    return null;
+  }, [playerId, statsWeeklyRows, fullStatsRows, statsSeasonSummaries]);
+
+  const playerInfoWithStats = useMemo(() => {
+    if (!statsNameRow) return playerInfo || { player_id: playerId };
+    return {
+      player_id: playerId,
+      sleeper_id: statsNameRow.sleeper_id || playerInfo?.sleeper_id || playerId,
+      display_name: statsNameRow.display_name || statsNameRow.player_display_name || playerInfo?.full_name,
+      position: playerInfo?.position || statsNameRow.position,
+      nfl_team: playerInfo?.nfl_team || statsNameRow.team,
+      ...playerInfo,
+    };
+  }, [statsNameRow, playerInfo, playerId]);
+
   const resolvedName = useMemo(() => {
-    return resolvePlayerName({ ...playerInfo, player_id: playerId }, playerIndex);
-  }, [playerInfo, playerId, playerIndex]);
+    return resolvePlayerName(playerInfoWithStats, playerIndex);
+  }, [playerInfoWithStats, playerIndex]);
 
   const playerDisplay = useMemo(() => {
-    return resolvePlayerDisplay(playerId, { row: playerInfo, playerIndex });
-  }, [playerId, playerInfo, playerIndex]);
+    return resolvePlayerDisplay(playerId, { row: playerInfoWithStats, playerIndex });
+  }, [playerId, playerInfoWithStats, playerIndex]);
 
   const seasonStats = useMemo(() => {
     const stats = [];

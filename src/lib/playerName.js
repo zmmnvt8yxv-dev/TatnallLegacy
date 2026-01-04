@@ -52,7 +52,7 @@ function getSleeperEntry(sleeperPlayers, playerId) {
 
 export function resolvePlayerName(row, playerIndex) {
   if (!row) return "(Unknown Player)";
-  const directName = row.display_name || row.player_name || row.player;
+  const directName = row.display_name || row.player_display_name || row.player_name || row.player;
   if (directName && !looksLikeId(directName)) return directName;
   if (playerIndex) {
     for (const { key, value } of getIdEntries(row)) {
@@ -70,7 +70,8 @@ export function resolvePlayerName(row, playerIndex) {
 
 export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayers } = {}) {
   const effectiveRow = row || {};
-  const directName = effectiveRow.display_name || effectiveRow.player_name || effectiveRow.player;
+  const directName =
+    effectiveRow.display_name || effectiveRow.player_display_name || effectiveRow.player_name || effectiveRow.player;
   const candidates = [
     { key: "player_id", value: effectiveRow.player_id || playerId },
     { key: "sleeper_id", value: effectiveRow.sleeper_id || playerId },
