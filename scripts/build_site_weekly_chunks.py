@@ -1,3 +1,4 @@
+import csv
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -7,11 +8,43 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 OUTPUT_DIR = ROOT / "public" / "data"
 PLAYER_DATA_DIR = ROOT / "public" / "data"
+SLEEPER_PLAYERS_PATH = ROOT / "data_raw" / "sleeper" / "players_flat.csv"
 
 
 def read_json(path: Path):
   with path.open("r", encoding="utf-8") as handle:
     return json.load(handle)
+
+def load_sleeper_player_maps():
+  gsis_to_sleeper = {}
+  name_to_sleeper = {}
+  if not SLEEPER_PLAYERS_PATH.exists():
+    return {"gsis_to_sleeper": gsis_to_sleeper, "name_to_sleeper": name_to_sleeper}
+  with SLEEPER_PLAYERS_PATH.open("r", encoding="utf-8") as handle:
+    reader = csv.DictReader(handle)
+    for row in reader:
+      sleeper_id = row.get("player_id")
+      gsis_id = row.get("gsis_id")
+      full_name = row.get("full_name") or f"{row.get('first_name') or ''} {row.get('last_name') or ''}".strip()
+      if gsis_id and sleeper_id:
+        gsis_to_sleeper[str(gsis_id)] = str(sleeper_id)
+      if full_name and sleeper_id:
+        key = normalize_name(full_name)
+        if key and key not in name_to_sleeper:
+          name_to_sleeper[key] = str(sleeper_id)
+  return {"gsis_to_sleeper": gsis_to_sleeper, "name_to_sleeper": name_to_sleeper}
+
+def normalize_name(value):
+  if value is None:
+    return ""
+  text = str(value).strip().lower()
+  if not text:
+    return ""
+  cleaned = []
+  for ch in text:
+    if ch.isalnum() or ch.isspace():
+      cleaned.append(ch)
+  return " ".join("".join(cleaned).split())
 
 
 def write_json(path: Path, payload):
@@ -102,10 +135,11 @@ def build_player_name_lookup():
   return sleeper_to_name
 
 
-def build_transactions(seasons):
+def build_transactions(seasons, sleeper_maps=None):
   player_name_lookup = build_player_name_lookup()
   sources_by_season = {season: [] for season in seasons}
   transactions_by_season = {season: [] for season in seasons}
+  sleeper_maps = sleeper_maps or {"gsis_to_sleeper": {}, "name_to_sleeper": {}}
   for trades_path in DATA_DIR.glob("trades-*.json"):
     season_str = trades_path.stem.replace("trades-", "")
     try:
@@ -338,6 +372,16 @@ def build_transactions(seasons):
           return "(Unknown Player)"
         return str(player_id)
 
+      def espn_player_id(item):
+        player = item.get("playerPoolEntry", {}).get("player", {}) if item else {}
+        gsis_id = player.get("gsisId") or player.get("gsis_id") or item.get("playerId")
+        sleeper_id = sleeper_maps.get("gsis_to_sleeper", {}).get(str(gsis_id)) if gsis_id else None
+        if sleeper_id:
+          return sleeper_id
+        name = player.get("fullName") or player.get("displayName") or espn_player_name(item)
+        key = normalize_name(name)
+        return sleeper_maps.get("name_to_sleeper", {}).get(key)
+
       for txn in espn_payload.get("transactions", []) or []:
         week = txn.get("scoringPeriodId") or txn.get("matchupPeriodId") or txn.get("week")
         if not is_regular_season(week):
@@ -354,14 +398,22 @@ def build_transactions(seasons):
             to_team = item.get("toTeamId")
             from_team = item.get("fromTeamId")
             name = espn_player_name(item)
+            pid = espn_player_id(item)
             if to_team is not None:
-              adds_by_team.setdefault(str(to_team), []).append(name)
+              adds_by_team.setdefault(str(to_team), []).append({"id": pid, "name": name})
             if from_team is not None:
-              drops_by_team.setdefault(str(from_team), []).append(name)
+              drops_by_team.setdefault(str(from_team), []).append({"id": pid, "name": name})
           team_ids = set(adds_by_team.keys()) | set(drops_by_team.keys())
           for team_id in team_ids:
-            received = ", ".join(adds_by_team.get(team_id, [])) or "None"
-            sent = ", ".join(drops_by_team.get(team_id, [])) or "None"
+            received_names = [row["name"] for row in adds_by_team.get(team_id, [])]
+            sent_names = [row["name"] for row in drops_by_team.get(team_id, [])]
+            received = ", ".join(received_names) or "None"
+            sent = ", ".join(sent_names) or "None"
+            players = []
+            for row in adds_by_team.get(team_id, []):
+              players.append({"id": row["id"], "name": row["name"], "action": "received"})
+            for row in drops_by_team.get(team_id, []):
+              players.append({"id": row["id"], "name": row["name"], "action": "sent"})
             transactions_by_season.setdefault(season, []).append(
               {
                 "id": f"{txn_id}-trade-{team_id}",
@@ -371,6 +423,7 @@ def build_transactions(seasons):
                 "team": espn_team_name_by_id.get(team_id, f"Team {team_id}"),
                 "summary": f"Received: {received} | Sent: {sent}",
                 "created": txn.get("proposedDate"),
+                "players": players,
               }
             )
           continue
@@ -382,6 +435,7 @@ def build_transactions(seasons):
             continue
           team_name = espn_team_name_by_id.get(str(team_id), f"Team {team_id}")
           if item_type == "ADD":
+            pid = espn_player_id(item)
             transactions_by_season.setdefault(season, []).append(
               {
                 "id": f"{txn_id}-add-{team_id}-{item.get('playerId')}",
@@ -391,9 +445,11 @@ def build_transactions(seasons):
                 "team": team_name,
                 "summary": f"Added: {espn_player_name(item)}",
                 "created": txn.get("proposedDate"),
+                "players": [{"id": pid, "name": espn_player_name(item), "action": "add"}],
               }
             )
           elif item_type == "DROP":
+            pid = espn_player_id(item)
             transactions_by_season.setdefault(season, []).append(
               {
                 "id": f"{txn_id}-drop-{team_id}-{item.get('playerId')}",
@@ -403,6 +459,7 @@ def build_transactions(seasons):
                 "team": team_name,
                 "summary": f"Dropped: {espn_player_name(item)}",
                 "created": txn.get("proposedDate"),
+                "players": [{"id": pid, "name": espn_player_name(item), "action": "drop"}],
               }
             )
 
@@ -418,6 +475,7 @@ def main():
   seasons = []
   all_time_weekly = []
   season_totals = []
+  sleeper_maps = load_sleeper_player_maps()
 
   for season_path in DATA_DIR.glob("20*.json"):
     payload = read_json(season_path)
@@ -476,7 +534,7 @@ def main():
     write_json(OUTPUT_DIR / "season" / f"{season}.json", season_summary)
 
   seasons = sorted(set(seasons))
-  build_transactions(seasons)
+  build_transactions(seasons, sleeper_maps=sleeper_maps)
 
   career_totals = {}
   season_leaders = []

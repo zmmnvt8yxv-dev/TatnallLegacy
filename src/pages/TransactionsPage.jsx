@@ -5,7 +5,7 @@ import { useDataContext } from "../data/DataContext.jsx";
 import { loadTransactions } from "../data/loader.js";
 import { filterRegularSeasonWeeks } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function TransactionsPage() {
   const { manifest, loading, error } = useDataContext();
@@ -339,7 +339,22 @@ export default function TransactionsPage() {
                     </button>
                   </td>
                   <td>{entry.type}</td>
-                  <td>{entry.summary || "No details"}</td>
+                  <td>
+                    <div>{entry.summary || "No details"}</div>
+                    {entry.players?.length ? (
+                      <div className="subtle-text">
+                        {entry.players.map((player, index) =>
+                          player?.id ? (
+                            <Link key={`${player.id}-${index}`} to={`/players/${player.id}`} className="link-button">
+                              {player.name || player.id}
+                            </Link>
+                          ) : (
+                            <span key={`${player.name}-${index}`}>{player.name || "Unknown"}</span>
+                          ),
+                        )}
+                      </div>
+                    ) : null}
+                  </td>
                 </tr>
               ))}
             </tbody>
