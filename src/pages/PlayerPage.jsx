@@ -396,6 +396,12 @@ export default function PlayerPage() {
         <strong>Delta to next guy</strong> is the margin to the next best player at the same position in a given week.
         These values appear when weekly metrics exports are provided.
       </p>
+      <p>
+        <strong>Baseline examples (weekly):</strong> The baseline is the points scored by the last starter in the
+        league at each position. With 8 teams, that means QB16, RB24, WR24, TE16, K8, and DEF8. Example: if the QB16
+        scored 14.2 points in Week 6, then every QB’s replacement baseline that week is 14.2, so a QB scoring 22.5 has
+        WAR of 8.3.
+      </p>
     </div>
   );
 
