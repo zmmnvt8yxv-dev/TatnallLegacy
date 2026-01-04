@@ -1,5 +1,5 @@
-import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import Layout from "./components/Layout.jsx";
 import SummaryPage from "./pages/SummaryPage.jsx";
@@ -8,10 +8,27 @@ import MatchupDetailPage from "./pages/MatchupDetailPage.jsx";
 import PlayerPage from "./pages/PlayerPage.jsx";
 import TransactionsPage from "./pages/TransactionsPage.jsx";
 import StandingsPage from "./pages/StandingsPage.jsx";
+import { initAnalytics, trackPageView } from "./utils/analytics.js";
+
+function AnalyticsListener() {
+  const location = useLocation();
+
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
+    const path = `${location.pathname}${location.search}${location.hash}`;
+    trackPageView(path);
+  }, [location.hash, location.pathname, location.search]);
+
+  return null;
+}
 
 export default function App() {
   return (
     <ErrorBoundary>
+      <AnalyticsListener />
       <Layout>
         <Routes>
           <Route path="/" element={<SummaryPage />} />

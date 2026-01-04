@@ -20,6 +20,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VITE_GA4_ID: "G-9ZLDDCY17X"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
