@@ -67,52 +67,6 @@ export default function PlayerPage() {
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const paramName = searchParams.get("name") || "";
 
-  useEffect(() => {
-    if (!seasons.length) return;
-    const options = availableSeasons.length ? availableSeasons : seasons;
-    const paramSeason = Number(searchParams.get("season"));
-    if (Number.isFinite(paramSeason) && options.includes(paramSeason) && paramSeason !== Number(selectedSeason)) {
-      setSelectedSeason(paramSeason);
-    }
-    const paramTab = searchParams.get("tab");
-    if (paramTab && TABS.includes(paramTab) && paramTab !== activeTab) {
-      setActiveTab(paramTab);
-    }
-  }, [searchParamsString, seasons, selectedSeason, activeTab, availableSeasons]);
-
-  useEffect(() => {
-    if (!seasons.length) return;
-    if (didInitRef.current) return;
-    const params = new URLSearchParams(searchParams);
-    const stored = readStorage(PLAYER_PREF_KEY, {});
-    const storedSeason = Number(stored?.season);
-    const storedTab = stored?.tab;
-    const paramSeason = Number(searchParams.get("season"));
-    const options = availableSeasons.length ? availableSeasons : seasons;
-    let nextSeason = Number.isFinite(paramSeason) && options.includes(paramSeason) ? paramSeason : options[0];
-    if (!searchParams.get("season") && Number.isFinite(storedSeason) && options.includes(storedSeason)) {
-      nextSeason = storedSeason;
-    }
-    const paramTab = searchParams.get("tab");
-    let nextTab = paramTab && TABS.includes(paramTab) ? paramTab : TABS[0];
-    if (!searchParams.get("tab") && storedTab && TABS.includes(storedTab)) {
-      nextTab = storedTab;
-    }
-    setSelectedSeason(nextSeason);
-    setActiveTab(nextTab);
-    let changed = false;
-    if (!searchParams.get("season") && nextSeason) {
-      params.set("season", String(nextSeason));
-      changed = true;
-    }
-    if (!searchParams.get("tab") && nextTab) {
-      params.set("tab", nextTab);
-      changed = true;
-    }
-    if (changed) setSearchParams(params, { replace: true });
-    didInitRef.current = true;
-  }, [seasons, searchParams, setSearchParams, availableSeasons]);
-
   const updateSearchParams = (nextSeason, nextTab) => {
     const params = new URLSearchParams(searchParams);
     params.set("season", String(nextSeason));
@@ -444,6 +398,52 @@ export default function PlayerPage() {
       updateSearchParams(nextSeason, activeTab);
     }
   }, [seasonOptions]);
+
+  useEffect(() => {
+    if (!seasons.length) return;
+    const options = availableSeasons.length ? availableSeasons : seasons;
+    const paramSeason = Number(searchParams.get("season"));
+    if (Number.isFinite(paramSeason) && options.includes(paramSeason) && paramSeason !== Number(selectedSeason)) {
+      setSelectedSeason(paramSeason);
+    }
+    const paramTab = searchParams.get("tab");
+    if (paramTab && TABS.includes(paramTab) && paramTab !== activeTab) {
+      setActiveTab(paramTab);
+    }
+  }, [searchParamsString, seasons, selectedSeason, activeTab, availableSeasons]);
+
+  useEffect(() => {
+    if (!seasons.length) return;
+    if (didInitRef.current) return;
+    const params = new URLSearchParams(searchParams);
+    const stored = readStorage(PLAYER_PREF_KEY, {});
+    const storedSeason = Number(stored?.season);
+    const storedTab = stored?.tab;
+    const paramSeason = Number(searchParams.get("season"));
+    const options = availableSeasons.length ? availableSeasons : seasons;
+    let nextSeason = Number.isFinite(paramSeason) && options.includes(paramSeason) ? paramSeason : options[0];
+    if (!searchParams.get("season") && Number.isFinite(storedSeason) && options.includes(storedSeason)) {
+      nextSeason = storedSeason;
+    }
+    const paramTab = searchParams.get("tab");
+    let nextTab = paramTab && TABS.includes(paramTab) ? paramTab : TABS[0];
+    if (!searchParams.get("tab") && storedTab && TABS.includes(storedTab)) {
+      nextTab = storedTab;
+    }
+    setSelectedSeason(nextSeason);
+    setActiveTab(nextTab);
+    let changed = false;
+    if (!searchParams.get("season") && nextSeason) {
+      params.set("season", String(nextSeason));
+      changed = true;
+    }
+    if (!searchParams.get("tab") && nextTab) {
+      params.set("tab", nextTab);
+      changed = true;
+    }
+    if (changed) setSearchParams(params, { replace: true });
+    didInitRef.current = true;
+  }, [seasons, searchParams, setSearchParams, availableSeasons]);
 
   const findMetricsRow = (rows) => {
     if (!rows?.length) return null;
