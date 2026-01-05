@@ -44,6 +44,7 @@ export default function PlayerPage() {
   const searchParamsString = searchParams.toString();
   const didInitRef = useRef(false);
   const { manifest, loading, error, playerIdLookup, playerIndex, espnNameMap } = useDataContext();
+  const isDev = import.meta.env.DEV;
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [seasonSummaries, setSeasonSummaries] = useState([]);
   const [statsSeasonSummaries, setStatsSeasonSummaries] = useState([]);
@@ -66,6 +67,7 @@ export default function PlayerPage() {
   const resolvedPlayerId = canonicalPlayerId || String(playerId);
   const isFavorite = favorites.players.includes(String(resolvedPlayerId));
   const formatAmount = (entry) => {
+    if (Number(selectedSeason) !== 2025) return "—";
     if (entry?.type !== "add" && entry?.type !== "trade") return "—";
     const numeric = Number(entry?.amount);
     if (!Number.isFinite(numeric)) return "—";
@@ -91,7 +93,8 @@ export default function PlayerPage() {
 
   const handleTabChange = (value) => {
     setActiveTab(value);
-    updateSearchParams(selectedSeason || seasonOptions[0], value);
+    const fallbackSeason = selectedSeason || seasonOptions[0];
+    if (fallbackSeason) updateSearchParams(fallbackSeason, value);
   };
 
   const handleSeasonChange = (value) => {
@@ -286,6 +289,9 @@ export default function PlayerPage() {
   }, [playerTransactions, targetIds, targetNames]);
 
   const keeperInfo = useMemo(() => {
+    if (Number(selectedSeason) !== 2025) {
+      return { base: null, value: 5, note: "Keeper value is tracked for 2025 adds only" };
+    }
     const addsWithAmount = transactionHistory.filter(
       (entry) => entry?.type === "add" && Number.isFinite(Number(entry?.amount)),
     );
@@ -360,6 +366,27 @@ export default function PlayerPage() {
   const displayName = playerDisplay.name || resolvedName;
   const displayPosition = playerDisplay.position || playerInfo?.position || "Position —";
   const displayTeam = playerDisplay.team || playerInfo?.nfl_team || "Team —";
+
+  useEffect(() => {
+    if (!isDev) return;
+    if (!availableSeasons.length && seasons.length) {
+      console.warn("PLAYER_PROFILE_WARNING: no available seasons for player", {
+        playerId: resolvedPlayerId,
+        name: displayName,
+      });
+    }
+  }, [isDev, availableSeasons, seasons, resolvedPlayerId, displayName]);
+
+  useEffect(() => {
+    if (!isDev || !selectedSeason) return;
+    if (!statsWeeklyRows.length && !weeklyRows.length && !fullStatsRows.length) {
+      console.warn("PLAYER_PROFILE_WARNING: no stats rows for season", {
+        playerId: resolvedPlayerId,
+        season: selectedSeason,
+        name: displayName,
+      });
+    }
+  }, [isDev, selectedSeason, statsWeeklyRows, weeklyRows, fullStatsRows, resolvedPlayerId, displayName]);
 
   const seasonStats = useMemo(() => {
     const stats = [];
@@ -452,18 +479,31 @@ export default function PlayerPage() {
   };
 
   const availableSeasons = useMemo(() => {
-    if (!statsSeasonSummaries.length) return seasons;
     const seen = new Set();
     for (const summary of statsSeasonSummaries) {
       const rows = summary?.rows || [];
       if (!rows.length) continue;
-      if (rows.some(matchesPlayer)) {
-        const seasonValue = Number(summary?.season);
+      if (!rows.some(matchesPlayer)) continue;
+      const seasonValue = Number(summary?.season);
+      if (Number.isFinite(seasonValue)) seen.add(seasonValue);
+    }
+    if (!seen.size && careerWeeklyRows.length) {
+      for (const row of careerWeeklyRows) {
+        if (!matchesPlayer(row)) continue;
+        const seasonValue = Number(row?.season);
         if (Number.isFinite(seasonValue)) seen.add(seasonValue);
       }
     }
-    return Array.from(seen).sort((a, b) => b - a) || seasons;
-  }, [statsSeasonSummaries, seasons, targetIds, targetNames]);
+    if (!seen.size && statsWeeklyRows.length) {
+      for (const row of statsWeeklyRows) {
+        if (!matchesPlayer(row)) continue;
+        const seasonValue = Number(row?.season);
+        if (Number.isFinite(seasonValue)) seen.add(seasonValue);
+      }
+    }
+    if (!seen.size) return seasons;
+    return Array.from(seen).sort((a, b) => b - a);
+  }, [statsSeasonSummaries, careerWeeklyRows, statsWeeklyRows, seasons, targetIds, targetNames]);
 
   const seasonOptions = useMemo(
     () => (availableSeasons.length ? availableSeasons : seasons),
@@ -477,7 +517,7 @@ export default function PlayerPage() {
       setSelectedSeason(nextSeason);
       updateSearchParams(nextSeason, activeTab);
     }
-  }, [seasonOptions]);
+  }, [seasonOptions, selectedSeason, activeTab]);
 
   useEffect(() => {
     if (!seasons.length) return;
@@ -524,6 +564,7 @@ export default function PlayerPage() {
     if (changed) setSearchParams(params, { replace: true });
     didInitRef.current = true;
   }, [seasons, searchParams, setSearchParams, availableSeasons]);
+
 
   const findMetricsRow = (rows) => {
     if (!rows?.length) return null;
@@ -627,11 +668,19 @@ export default function PlayerPage() {
         addTeam(row.club);
       }
     }
+    for (const row of careerWeeklyRows) {
+      if (!matchesPlayer(row)) continue;
+      addTeam(row.team);
+      addTeam(row.nfl_team);
+      addTeam(row.team_abbr);
+      addTeam(row.team_abbrev);
+      addTeam(row.club);
+    }
     for (const row of weeklyDisplayRows) {
       addTeam(row.nflTeam);
     }
     return Array.from(teams).sort((a, b) => a.localeCompare(b));
-  }, [statsSeasonSummaries, weeklyDisplayRows, targetIds, targetNames]);
+  }, [statsSeasonSummaries, careerWeeklyRows, weeklyDisplayRows, targetIds, targetNames]);
 
   const filteredWeeklyRows = useMemo(() => {
     const query = search.toLowerCase().trim();

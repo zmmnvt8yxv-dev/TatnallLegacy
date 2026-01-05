@@ -210,7 +210,9 @@ export default function TransactionsPage() {
   }, [totalsByTeam]);
 
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+  const showAmount = Number(season) === 2025;
   const formatAmount = (entry) => {
+    if (!showAmount) return "—";
     if (entry?.type !== "add" && entry?.type !== "trade") return "—";
     const value = entry?.amount;
     const numeric = Number(value);
@@ -414,14 +416,14 @@ export default function TransactionsPage() {
                   <th>Week</th>
                   <th>Team</th>
                   <th>Type</th>
-                  <th>Amount</th>
+                  {showAmount ? <th>Amount</th> : null}
                   <th>Details</th>
                 </tr>
               </thead>
               <tbody>
                 {virtualEntries.topPadding ? (
                   <tr className="table-virtual-spacer" aria-hidden="true">
-                    <td colSpan={5} style={{ height: virtualEntries.topPadding }} />
+                    <td colSpan={showAmount ? 5 : 4} style={{ height: virtualEntries.topPadding }} />
                   </tr>
                 ) : null}
                 {visibleEntries.map((entry) => (
@@ -437,7 +439,7 @@ export default function TransactionsPage() {
                       </button>
                     </td>
                     <td>{entry.type}</td>
-                    <td>{formatAmount(entry)}</td>
+                    {showAmount ? <td>{formatAmount(entry)}</td> : null}
                     <td>
                       {entry.players?.length ? (
                         <div>
@@ -463,7 +465,7 @@ export default function TransactionsPage() {
                 ))}
                 {virtualEntries.bottomPadding ? (
                   <tr className="table-virtual-spacer" aria-hidden="true">
-                    <td colSpan={5} style={{ height: virtualEntries.bottomPadding }} />
+                    <td colSpan={showAmount ? 5 : 4} style={{ height: virtualEntries.bottomPadding }} />
                   </tr>
                 ) : null}
               </tbody>
