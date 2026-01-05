@@ -25,12 +25,14 @@ def write_json(path: Path, payload):
         json.dump(payload, handle, ensure_ascii=False, indent=2)
 
 
-def find_source(basenames: list[str]) -> Path | None:
+def find_source(basenames: list[str], search_dirs: list[Path] | None = None) -> Path | None:
+    dirs = search_dirs or [DATA_DIR]
     for base in basenames:
         for ext in (".csv", ".parquet"):
-            path = DATA_DIR / f"{base}{ext}"
-            if path.exists():
-                return path
+            for directory in dirs:
+                path = directory / f"{base}{ext}"
+                if path.exists():
+                    return path
     return None
 
 
@@ -255,6 +257,25 @@ def build_full_stats(weekly: pd.DataFrame):
         weekly["team"] = weekly[team_col].fillna("—")
     else:
         weekly["team"] = "—"
+    if "attempts" not in weekly.columns and "passing_attempts" in weekly.columns:
+        weekly["attempts"] = weekly["passing_attempts"]
+    if "completions" not in weekly.columns and "passing_completions" in weekly.columns:
+        weekly["completions"] = weekly["passing_completions"]
+    if "carries" not in weekly.columns and "rushing_attempts" in weekly.columns:
+        weekly["carries"] = weekly["rushing_attempts"]
+    if "targets" not in weekly.columns and "receiving_targets" in weekly.columns:
+        weekly["targets"] = weekly["receiving_targets"]
+    if "opponent_team" not in weekly.columns:
+        for alt in ("opponent", "opponent_team", "opp_team"):
+            if alt in weekly.columns:
+                weekly["opponent_team"] = weekly[alt]
+                break
+    if "rushing_fumbles_lost" not in weekly.columns and "fumbles_lost" in weekly.columns:
+        weekly["rushing_fumbles_lost"] = weekly["fumbles_lost"]
+    if "receiving_fumbles_lost" not in weekly.columns and "fumbles_lost" in weekly.columns:
+        weekly["receiving_fumbles_lost"] = weekly["fumbles_lost"]
+    if "fantasy_points_ppr" not in weekly.columns and "fantasy_points" in weekly.columns:
+        weekly["fantasy_points_ppr"] = weekly["fantasy_points"]
     fields = [
         "season",
         "week",
@@ -395,11 +416,19 @@ def main() -> None:
         [
             "player_stats_2015_2025_players_only",
             "player_stats_2015_2025_with_master",
-        ]
+        ],
+        search_dirs=[DATA_DIR, ROOT / "data_raw" / "nflverse_stats"],
     )
 
     if not weekly_source:
-        print("No weekly fantasy WAR source found in data_raw/master. Skipping player stats export.")
+        if full_stats_source:
+            print("No weekly fantasy WAR source found in data_raw/master. Building full stats only.")
+            id_maps = build_id_maps()
+            full_stats = read_table(full_stats_source)
+            full_stats = attach_ids(full_stats, id_maps)
+            build_full_stats(full_stats)
+        else:
+            print("No weekly fantasy WAR source found in data_raw/master. Skipping player stats export.")
         return
 
     weekly = read_table(weekly_source)
