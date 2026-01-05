@@ -71,6 +71,11 @@ export default function PlayerPage() {
     if (!Number.isFinite(numeric)) return "—";
     return `$${numeric}`;
   };
+  const formatDollarValue = (value) => {
+    const numeric = Number(value);
+    if (!Number.isFinite(numeric)) return "—";
+    return `$${numeric}`;
+  };
 
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const paramName = searchParams.get("name") || "";
@@ -279,6 +284,18 @@ export default function PlayerPage() {
       return String(a.id || "").localeCompare(String(b.id || ""));
     });
   }, [playerTransactions, targetIds, targetNames]);
+
+  const keeperInfo = useMemo(() => {
+    const addsWithAmount = transactionHistory.filter(
+      (entry) => entry?.type === "add" && Number.isFinite(Number(entry?.amount)),
+    );
+    if (!addsWithAmount.length) {
+      return { base: null, value: 5, note: "No add value on record; using $5" };
+    }
+    const latest = addsWithAmount[0];
+    const base = Number(latest.amount);
+    return { base, value: base + 5, note: `Last add ${formatDollarValue(base)} + $5` };
+  }, [transactionHistory]);
 
   const formatTransactionDetails = (entry) => {
     if (!entry?.players?.length) return entry?.summary || "No details";
@@ -907,8 +924,13 @@ export default function PlayerPage() {
       {activeTab === "Overview" && (
         <section className="section-card">
           <h2 className="section-title">Career Overview</h2>
-          {seasonStats.length ? (
-            <div className="card-grid">
+          <div className="card-grid">
+            <div className="stat-card">
+              <div className="stat-label">Keeper Value</div>
+              <div className="stat-value">{formatDollarValue(keeperInfo.value)}</div>
+              <div className="stat-subtext">{keeperInfo.note}</div>
+            </div>
+            {seasonStats.length ? (
               <div className="stat-card">
                 <div className="stat-label">Seasons</div>
                 <div className="stat-value">{careerTotals.seasons}</div>
@@ -929,10 +951,11 @@ export default function PlayerPage() {
                 <div className="stat-label">Delta to Next</div>
                 <div className="stat-value">{formatPoints(careerTotals.delta)}</div>
               </div>
-            </div>
-          ) : (
+            ) : null}
+          </div>
+          {!seasonStats.length ? (
             <div>No season totals available for this player.</div>
-          )}
+          ) : null}
           <div className="section-card">
             <h3 className="section-title">Efficiency (Per Game)</h3>
             {seasonEfficiency || careerEfficiency ? (
