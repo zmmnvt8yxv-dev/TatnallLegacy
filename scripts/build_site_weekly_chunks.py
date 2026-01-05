@@ -93,31 +93,25 @@ def load_sleeper_player_maps():
   espn_to_sleeper = {}
   name_to_sleeper = {}
   espn_to_name = {}
-  if not SLEEPER_PLAYERS_PATH.exists():
-    return {
-      "gsis_to_sleeper": gsis_to_sleeper,
-      "espn_to_sleeper": espn_to_sleeper,
-      "name_to_sleeper": name_to_sleeper,
-      "espn_to_name": espn_to_name,
-    }
-  with SLEEPER_PLAYERS_PATH.open("r", encoding="utf-8") as handle:
-    reader = csv.DictReader(handle)
-    for row in reader:
-      sleeper_id = row.get("player_id")
-      gsis_id = (row.get("gsis_id") or "").strip()
-      espn_id = normalize_numeric_id(row.get("espn_id"))
-      full_name = row.get("full_name") or f"{row.get('first_name') or ''} {row.get('last_name') or ''}".strip()
-      if gsis_id and sleeper_id:
-        gsis_to_sleeper[str(gsis_id)] = str(sleeper_id)
-      if espn_id and sleeper_id:
-        espn_to_sleeper[str(espn_id)] = str(sleeper_id)
-      name_norm = (row.get("name_norm") or "").strip()
-      if name_norm and sleeper_id and name_norm not in name_to_sleeper:
-        name_to_sleeper[name_norm] = str(sleeper_id)
-      if full_name and sleeper_id:
-        key = normalize_name(full_name)
-        if key and key not in name_to_sleeper:
-          name_to_sleeper[key] = str(sleeper_id)
+  if SLEEPER_PLAYERS_PATH.exists():
+    with SLEEPER_PLAYERS_PATH.open("r", encoding="utf-8") as handle:
+      reader = csv.DictReader(handle)
+      for row in reader:
+        sleeper_id = row.get("player_id")
+        gsis_id = (row.get("gsis_id") or "").strip()
+        espn_id = normalize_numeric_id(row.get("espn_id"))
+        full_name = row.get("full_name") or f"{row.get('first_name') or ''} {row.get('last_name') or ''}".strip()
+        if gsis_id and sleeper_id:
+          gsis_to_sleeper[str(gsis_id)] = str(sleeper_id)
+        if espn_id and sleeper_id:
+          espn_to_sleeper[str(espn_id)] = str(sleeper_id)
+        name_norm = (row.get("name_norm") or "").strip()
+        if name_norm and sleeper_id and name_norm not in name_to_sleeper:
+          name_to_sleeper[name_norm] = str(sleeper_id)
+        if full_name and sleeper_id:
+          key = normalize_name(full_name)
+          if key and key not in name_to_sleeper:
+            name_to_sleeper[key] = str(sleeper_id)
   if MASTER_PLAYERS_PATH.exists():
     with MASTER_PLAYERS_PATH.open("r", encoding="utf-8") as handle:
       reader = csv.DictReader(handle)
