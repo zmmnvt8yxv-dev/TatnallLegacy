@@ -416,6 +416,7 @@ def main() -> None:
         [
             "player_stats_2015_2025_players_only",
             "player_stats_2015_2025_with_master",
+            "player_stats_2015_2025",
         ],
         search_dirs=[DATA_DIR, ROOT / "data_raw" / "nflverse_stats"],
     )
