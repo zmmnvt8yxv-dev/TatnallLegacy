@@ -55,6 +55,13 @@ jobs:
           else
             echo "datarepo_ok=false" >> "$GITHUB_OUTPUT"
           fi
+      - name: Copy prebuilt full player stats
+        run: |
+          if [ -d /tmp/datarepo/public/data/player_stats/full ]; then
+            mkdir -p public/data/player_stats
+            rm -rf public/data/player_stats/full
+            cp -R /tmp/datarepo/public/data/player_stats/full public/data/player_stats/full
+          fi
 
       - name: Check data sources
         id: data_sources
@@ -72,6 +79,9 @@ jobs:
       - name: Build data
         if: steps.data_sources.outputs.has_data == 'true'
         run: npm run build:data
+
+      - name: Refresh manifest
+        run: python3 scripts/build_site_data_manifest.py
 
       - name: Build site
         run: npm run build
