@@ -2,74 +2,6 @@
   "season": 2022,
   "entries": [
     {
-      "id": "91412fd2-2007-4673-9116-f57335cf35fb-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Michael Pittman Jr., Joe Burrow, Kyle Pitts Sr. | Sent: Kirk Cousins, T.J. Hockenson, Ezekiel Elliott, Gabe Davis, Brandon Aiyuk",
-      "created": 1660861501680,
-      "players": [
-        {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035687
-        },
-        {
-          "id": "3915511",
-          "name": "Joe Burrow",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3915511
-        },
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "14880",
-          "name": "Kirk Cousins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14880
-        },
-        {
-          "id": "4036133",
-          "name": "T.J. Hockenson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4036133
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "4243537",
-          "name": "Gabe Davis",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4243537
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "91412fd2-2007-4673-9116-f57335cf35fb-trade-4",
       "season": 2022,
       "week": 1,
@@ -133,6 +65,74 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4360248
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "91412fd2-2007-4673-9116-f57335cf35fb-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Michael Pittman Jr., Joe Burrow, Kyle Pitts Sr. | Sent: Kirk Cousins, T.J. Hockenson, Ezekiel Elliott, Gabe Davis, Brandon Aiyuk",
+      "created": 1660861501680,
+      "players": [
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "3915511",
+          "name": "Joe Burrow",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915511
+        },
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "14880",
+          "name": "Kirk Cousins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14880
+        },
+        {
+          "id": "4036133",
+          "name": "T.J. Hockenson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4036133
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "4243537",
+          "name": "Gabe Davis",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4243537
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
         }
       ],
       "source": "espn_transactions"
@@ -247,32 +247,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "93fa417f-0a7b-4bc5-b2ec-137ec53aee09-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Deshaun Watson | Sent: Brandon Aiyuk",
-      "created": 1660851522368,
-      "players": [
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "93fa417f-0a7b-4bc5-b2ec-137ec53aee09-trade-4",
       "season": 2022,
       "week": 1,
@@ -294,6 +268,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122840
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "93fa417f-0a7b-4bc5-b2ec-137ec53aee09-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Deshaun Watson | Sent: Brandon Aiyuk",
+      "created": 1660851522368,
+      "players": [
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122840
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
         }
       ],
       "source": "espn_transactions"
@@ -337,39 +337,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "11ec8ed9-dc12-43fd-94a9-18ad3c9924e6-trade-1",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "King of  December",
-      "summary": "Received: Melvin Gordon III, Isaiah McKenzie | Sent: AJ Dillon",
-      "created": 1662471699395,
-      "players": [
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3128724",
-          "name": "Isaiah McKenzie",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128724
-        },
-        {
-          "id": "4239934",
-          "name": "AJ Dillon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "11ec8ed9-dc12-43fd-94a9-18ad3c9924e6-trade-4",
       "season": 2022,
       "week": 1,
@@ -398,6 +365,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3128724
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "11ec8ed9-dc12-43fd-94a9-18ad3c9924e6-trade-1",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "King of  December",
+      "summary": "Received: Melvin Gordon III, Isaiah McKenzie | Sent: AJ Dillon",
+      "created": 1662471699395,
+      "players": [
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3128724",
+          "name": "Isaiah McKenzie",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128724
+        },
+        {
+          "id": "4239934",
+          "name": "AJ Dillon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239934
         }
       ],
       "source": "espn_transactions"
@@ -441,39 +441,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "792fc9f6-bd09-44b6-96d9-76ed3e0a9983-trade-1",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "King of  December",
-      "summary": "Received: Melvin Gordon III, Isaiah McKenzie | Sent: AJ Dillon",
-      "created": 1662644461556,
-      "players": [
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3128724",
-          "name": "Isaiah McKenzie",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128724
-        },
-        {
-          "id": "4239934",
-          "name": "AJ Dillon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "792fc9f6-bd09-44b6-96d9-76ed3e0a9983-trade-4",
       "season": 2022,
       "week": 1,
@@ -502,6 +469,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3128724
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "792fc9f6-bd09-44b6-96d9-76ed3e0a9983-trade-1",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "King of  December",
+      "summary": "Received: Melvin Gordon III, Isaiah McKenzie | Sent: AJ Dillon",
+      "created": 1662644461556,
+      "players": [
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3128724",
+          "name": "Isaiah McKenzie",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128724
+        },
+        {
+          "id": "4239934",
+          "name": "AJ Dillon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239934
         }
       ],
       "source": "espn_transactions"
@@ -540,60 +540,6 @@
           "action": "drop",
           "id_type": "defense",
           "source_player_id": -16005
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "51f862f2-0192-48c6-a75e-dccb616b0b74-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Kyle Pitts Sr., Michael Pittman Jr. | Sent: Allen Robinson, T.J. Hockenson, Gabe Davis, Mike Williams",
-      "created": 1660498510614,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035687
-        },
-        {
-          "id": "16799",
-          "name": "Allen Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16799
-        },
-        {
-          "id": "4036133",
-          "name": "T.J. Hockenson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4036133
-        },
-        {
-          "id": "4243537",
-          "name": "Gabe Davis",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4243537
-        },
-        {
-          "id": "3045138",
-          "name": "Mike Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3045138
         }
       ],
       "source": "espn_transactions"
@@ -648,6 +594,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4035687
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "51f862f2-0192-48c6-a75e-dccb616b0b74-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Kyle Pitts Sr., Michael Pittman Jr. | Sent: Allen Robinson, T.J. Hockenson, Gabe Davis, Mike Williams",
+      "created": 1660498510614,
+      "players": [
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "16799",
+          "name": "Allen Robinson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16799
+        },
+        {
+          "id": "4036133",
+          "name": "T.J. Hockenson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4036133
+        },
+        {
+          "id": "4243537",
+          "name": "Gabe Davis",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4243537
+        },
+        {
+          "id": "3045138",
+          "name": "Mike Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3045138
         }
       ],
       "source": "espn_transactions"
@@ -781,60 +781,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3e969b22-f6ba-491b-96b8-319df923cd12-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Melvin Gordon III, Joe Burrow, Michael Pittman Jr. | Sent: Aaron Rodgers, D'Andre Swift, Brandon Aiyuk",
-      "created": 1660688560655,
-      "players": [
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3915511",
-          "name": "Joe Burrow",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3915511
-        },
-        {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035687
-        },
-        {
-          "id": "8439",
-          "name": "Aaron Rodgers",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 8439
-        },
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4259545
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "3e969b22-f6ba-491b-96b8-319df923cd12-trade-4",
       "season": 2022,
       "week": 1,
@@ -884,6 +830,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4035687
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "3e969b22-f6ba-491b-96b8-319df923cd12-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Melvin Gordon III, Joe Burrow, Michael Pittman Jr. | Sent: Aaron Rodgers, D'Andre Swift, Brandon Aiyuk",
+      "created": 1660688560655,
+      "players": [
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3915511",
+          "name": "Joe Burrow",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915511
+        },
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "8439",
+          "name": "Aaron Rodgers",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 8439
+        },
+        {
+          "id": "4259545",
+          "name": "D'Andre Swift",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4259545
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
         }
       ],
       "source": "espn_transactions"
@@ -965,32 +965,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "705469d6-5b4f-47a3-9df8-0eab0c055f01-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Deshaun Watson | Sent: Jameson Williams",
-      "created": 1660933896844,
-      "players": [
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "705469d6-5b4f-47a3-9df8-0eab0c055f01-trade-4",
       "season": 2022,
       "week": 1,
@@ -1017,69 +991,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "abd29087-0507-4bba-a91c-ff8002536c0c-trade-5",
+      "id": "705469d6-5b4f-47a3-9df8-0eab0c055f01-trade-5",
       "season": 2022,
       "week": 1,
       "type": "trade",
       "team": "Team Hanrahan",
-      "summary": "Received: Michael Pittman Jr., Joe Burrow, Kyle Pitts Sr. | Sent: Kirk Cousins, T.J. Hockenson, Ezekiel Elliott, Gabe Davis, Brandon Aiyuk",
-      "created": 1660688953523,
+      "summary": "Received: Deshaun Watson | Sent: Jameson Williams",
+      "created": 1660933896844,
       "players": [
         {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
+          "id": "3122840",
+          "name": "Deshaun Watson",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4035687
+          "source_player_id": 3122840
         },
         {
-          "id": "3915511",
-          "name": "Joe Burrow",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3915511
-        },
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "14880",
-          "name": "Kirk Cousins",
+          "id": "4426388",
+          "name": "Jameson Williams",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 14880
-        },
-        {
-          "id": "4036133",
-          "name": "T.J. Hockenson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4036133
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "4243537",
-          "name": "Gabe Davis",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4243537
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
+          "source_player_id": 4426388
         }
       ],
       "source": "espn_transactions"
@@ -1148,6 +1080,74 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4360248
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "abd29087-0507-4bba-a91c-ff8002536c0c-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Michael Pittman Jr., Joe Burrow, Kyle Pitts Sr. | Sent: Kirk Cousins, T.J. Hockenson, Ezekiel Elliott, Gabe Davis, Brandon Aiyuk",
+      "created": 1660688953523,
+      "players": [
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "3915511",
+          "name": "Joe Burrow",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915511
+        },
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "14880",
+          "name": "Kirk Cousins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14880
+        },
+        {
+          "id": "4036133",
+          "name": "T.J. Hockenson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4036133
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "4243537",
+          "name": "Gabe Davis",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4243537
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
         }
       ],
       "source": "espn_transactions"
@@ -1267,81 +1267,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ad3b226f-0737-40cb-9441-26fbf439b87f-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Kyle Pitts Sr., Dalvin Cook, Alexander Mattison | Sent: Gabe Davis, Jameson Williams, T.J. Hockenson, Brandon Aiyuk, Ezekiel Elliott, Diontae Johnson",
-      "created": 1661054758573,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4048244",
-          "name": "Alexander Mattison",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4048244
-        },
-        {
-          "id": "4243537",
-          "name": "Gabe Davis",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4243537
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "4036133",
-          "name": "T.J. Hockenson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4036133
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ad3b226f-0737-40cb-9441-26fbf439b87f-trade-4",
       "season": 2022,
       "week": 1,
@@ -1417,6 +1342,81 @@
       "source": "espn_transactions"
     },
     {
+      "id": "ad3b226f-0737-40cb-9441-26fbf439b87f-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Kyle Pitts Sr., Dalvin Cook, Alexander Mattison | Sent: Gabe Davis, Jameson Williams, T.J. Hockenson, Brandon Aiyuk, Ezekiel Elliott, Diontae Johnson",
+      "created": 1661054758573,
+      "players": [
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4048244",
+          "name": "Alexander Mattison",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4048244
+        },
+        {
+          "id": "4243537",
+          "name": "Gabe Davis",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4243537
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
+        },
+        {
+          "id": "4036133",
+          "name": "T.J. Hockenson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4036133
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "996a570c-7ec6-4c74-9c67-e0f2afbde185-add-3-4372485",
       "season": 2022,
       "week": 1,
@@ -1431,53 +1431,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 4372485
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "545df207-8a3c-45d4-a8fb-a0a4018b1a18-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Michael Pittman Jr., Joe Burrow | Sent: Jameson Williams, Ezekiel Elliott, Kirk Cousins",
-      "created": 1660680589667,
-      "players": [
-        {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035687
-        },
-        {
-          "id": "3915511",
-          "name": "Joe Burrow",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3915511
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "14880",
-          "name": "Kirk Cousins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14880
         }
       ],
       "source": "espn_transactions"
@@ -1525,6 +1478,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3915511
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "545df207-8a3c-45d4-a8fb-a0a4018b1a18-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Michael Pittman Jr., Joe Burrow | Sent: Jameson Williams, Ezekiel Elliott, Kirk Cousins",
+      "created": 1660680589667,
+      "players": [
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "3915511",
+          "name": "Joe Burrow",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915511
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "14880",
+          "name": "Kirk Cousins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14880
         }
       ],
       "source": "espn_transactions"
@@ -1663,32 +1663,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "f19e9c49-1c54-412e-bca3-2507b25013d1-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Deshaun Watson | Sent: Brandon Aiyuk",
-      "created": 1660851480143,
-      "players": [
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "f19e9c49-1c54-412e-bca3-2507b25013d1-trade-4",
       "season": 2022,
       "week": 1,
@@ -1710,6 +1684,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122840
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "f19e9c49-1c54-412e-bca3-2507b25013d1-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Deshaun Watson | Sent: Brandon Aiyuk",
+      "created": 1660851480143,
+      "players": [
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122840
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
         }
       ],
       "source": "espn_transactions"
@@ -1810,60 +1810,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fc13c247-6f6e-4d37-b1b0-6c0e49f8d6a4-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Kyle Pitts Sr., Michael Pittman Jr. | Sent: Allen Robinson, T.J. Hockenson, Gabe Davis, Mike Williams",
-      "created": 1660498273263,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035687
-        },
-        {
-          "id": "16799",
-          "name": "Allen Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16799
-        },
-        {
-          "id": "4036133",
-          "name": "T.J. Hockenson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4036133
-        },
-        {
-          "id": "4243537",
-          "name": "Gabe Davis",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4243537
-        },
-        {
-          "id": "3045138",
-          "name": "Mike Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3045138
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "fc13c247-6f6e-4d37-b1b0-6c0e49f8d6a4-trade-4",
       "season": 2022,
       "week": 1,
@@ -1918,13 +1864,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ff1a3a69-1dce-49da-a46a-f0711d5603e0-trade-5",
+      "id": "fc13c247-6f6e-4d37-b1b0-6c0e49f8d6a4-trade-5",
       "season": 2022,
       "week": 1,
       "type": "trade",
       "team": "Team Hanrahan",
-      "summary": "Received: Kyle Pitts Sr., Dalvin Cook, Alexander Mattison | Sent: Gabe Davis, Jameson Williams, T.J. Hockenson, Brandon Aiyuk, Ezekiel Elliott, Diontae Johnson",
-      "created": 1660940202357,
+      "summary": "Received: Kyle Pitts Sr., Michael Pittman Jr. | Sent: Allen Robinson, T.J. Hockenson, Gabe Davis, Mike Williams",
+      "created": 1660498273263,
       "players": [
         {
           "id": "4360248",
@@ -1934,32 +1880,18 @@
           "source_player_id": 4360248
         },
         {
-          "id": "3116593",
-          "name": "Dalvin Cook",
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3116593
+          "source_player_id": 4035687
         },
         {
-          "id": "4048244",
-          "name": "Alexander Mattison",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4048244
-        },
-        {
-          "id": "4243537",
-          "name": "Gabe Davis",
+          "id": "16799",
+          "name": "Allen Robinson",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4243537
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
+          "source_player_id": 16799
         },
         {
           "id": "4036133",
@@ -1969,25 +1901,18 @@
           "source_player_id": 4036133
         },
         {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
+          "id": "4243537",
+          "name": "Gabe Davis",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4360438
+          "source_player_id": 4243537
         },
         {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
+          "id": "3045138",
+          "name": "Mike Williams",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
+          "source_player_id": 3045138
         }
       ],
       "source": "espn_transactions"
@@ -2068,20 +1993,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "f6d9dde8-3bc1-48d4-9528-b02318eaf1fb-trade-5",
+      "id": "ff1a3a69-1dce-49da-a46a-f0711d5603e0-trade-5",
       "season": 2022,
       "week": 1,
       "type": "trade",
       "team": "Team Hanrahan",
-      "summary": "Received: Deshaun Watson | Sent: Jameson Williams",
-      "created": 1660931882628,
+      "summary": "Received: Kyle Pitts Sr., Dalvin Cook, Alexander Mattison | Sent: Gabe Davis, Jameson Williams, T.J. Hockenson, Brandon Aiyuk, Ezekiel Elliott, Diontae Johnson",
+      "created": 1660940202357,
       "players": [
         {
-          "id": "3122840",
-          "name": "Deshaun Watson",
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3122840
+          "source_player_id": 4360248
+        },
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4048244",
+          "name": "Alexander Mattison",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4048244
+        },
+        {
+          "id": "4243537",
+          "name": "Gabe Davis",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4243537
         },
         {
           "id": "4426388",
@@ -2089,6 +2035,34 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4426388
+        },
+        {
+          "id": "4036133",
+          "name": "T.J. Hockenson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4036133
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
         }
       ],
       "source": "espn_transactions"
@@ -2120,6 +2094,32 @@
       "source": "espn_transactions"
     },
     {
+      "id": "f6d9dde8-3bc1-48d4-9528-b02318eaf1fb-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Deshaun Watson | Sent: Jameson Williams",
+      "created": 1660931882628,
+      "players": [
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122840
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "b42341b8-ae82-4247-8ea8-b47638bb8936-add-5-4036348",
       "season": 2022,
       "week": 1,
@@ -2134,53 +2134,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 4036348
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "577fe682-3251-42f1-bb7b-b0de70efc26d-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Kyle Pitts Sr., DeAndre Hopkins | Sent: Jameson Williams, T.J. Hockenson, Diontae Johnson",
-      "created": 1660941238000,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15795
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "4036133",
-          "name": "T.J. Hockenson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4036133
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
         }
       ],
       "source": "espn_transactions"
@@ -2233,27 +2186,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3f55c955-d126-46e5-8a6f-fbf339b85b81-trade-5",
+      "id": "577fe682-3251-42f1-bb7b-b0de70efc26d-trade-5",
       "season": 2022,
       "week": 1,
       "type": "trade",
       "team": "Team Hanrahan",
-      "summary": "Received: Michael Pittman Jr., Joe Burrow | Sent: Jameson Williams, Ezekiel Elliott, Kirk Cousins",
-      "created": 1660688343870,
+      "summary": "Received: Kyle Pitts Sr., DeAndre Hopkins | Sent: Jameson Williams, T.J. Hockenson, Diontae Johnson",
+      "created": 1660941238000,
       "players": [
         {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4035687
+          "source_player_id": 4360248
         },
         {
-          "id": "3915511",
-          "name": "Joe Burrow",
+          "id": "15795",
+          "name": "DeAndre Hopkins",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3915511
+          "source_player_id": 15795
         },
         {
           "id": "4426388",
@@ -2263,18 +2216,18 @@
           "source_player_id": 4426388
         },
         {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
+          "id": "4036133",
+          "name": "T.J. Hockenson",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3051392
+          "source_player_id": 4036133
         },
         {
-          "id": "14880",
-          "name": "Kirk Cousins",
+          "id": "3932905",
+          "name": "Diontae Johnson",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 14880
+          "source_player_id": 3932905
         }
       ],
       "source": "espn_transactions"
@@ -2327,6 +2280,53 @@
       "source": "espn_transactions"
     },
     {
+      "id": "3f55c955-d126-46e5-8a6f-fbf339b85b81-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Michael Pittman Jr., Joe Burrow | Sent: Jameson Williams, Ezekiel Elliott, Kirk Cousins",
+      "created": 1660688343870,
+      "players": [
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "3915511",
+          "name": "Joe Burrow",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915511
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "14880",
+          "name": "Kirk Cousins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14880
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "e83375b2-c4d8-4b60-9f6e-356e009765ae-add-7-3051738",
       "season": 2022,
       "week": 1,
@@ -2360,60 +2360,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 4040980
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "157c5bbf-2b9f-4826-8714-73f8bcf18055-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Melvin Gordon III, Joe Burrow, Michael Pittman Jr. | Sent: Aaron Rodgers, D'Andre Swift, Brandon Aiyuk",
-      "created": 1660688797952,
-      "players": [
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3915511",
-          "name": "Joe Burrow",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3915511
-        },
-        {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035687
-        },
-        {
-          "id": "8439",
-          "name": "Aaron Rodgers",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 8439
-        },
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4259545
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
         }
       ],
       "source": "espn_transactions"
@@ -2468,6 +2414,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4035687
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "157c5bbf-2b9f-4826-8714-73f8bcf18055-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Melvin Gordon III, Joe Burrow, Michael Pittman Jr. | Sent: Aaron Rodgers, D'Andre Swift, Brandon Aiyuk",
+      "created": 1660688797952,
+      "players": [
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3915511",
+          "name": "Joe Burrow",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915511
+        },
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "8439",
+          "name": "Aaron Rodgers",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 8439
+        },
+        {
+          "id": "4259545",
+          "name": "D'Andre Swift",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4259545
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
         }
       ],
       "source": "espn_transactions"
@@ -2587,53 +2587,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "92c44717-ddbb-4cb4-8819-a3c33f740f17-trade-5",
-      "season": 2022,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Kyle Pitts Sr., DeAndre Hopkins | Sent: Jameson Williams, T.J. Hockenson, Diontae Johnson",
-      "created": 1660941082637,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15795
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "4036133",
-          "name": "T.J. Hockenson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4036133
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "92c44717-ddbb-4cb4-8819-a3c33f740f17-trade-4",
       "season": 2022,
       "week": 1,
@@ -2676,6 +2629,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15795
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "92c44717-ddbb-4cb4-8819-a3c33f740f17-trade-5",
+      "season": 2022,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Kyle Pitts Sr., DeAndre Hopkins | Sent: Jameson Williams, T.J. Hockenson, Diontae Johnson",
+      "created": 1660941082637,
+      "players": [
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "15795",
+          "name": "DeAndre Hopkins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15795
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
+        },
+        {
+          "id": "4036133",
+          "name": "T.J. Hockenson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4036133
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
         }
       ],
       "source": "espn_transactions"
@@ -4353,46 +4353,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "13a821ad-a124-4013-86b6-861d5aa6f839-trade-7",
-      "season": 2022,
-      "week": 3,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: JuJu Smith-Schuster, Jeff Wilson Jr. | Sent: Kareem Hunt, Alvin Kamara",
-      "created": 1664024223212,
-      "players": [
-        {
-          "id": "3120348",
-          "name": "JuJu Smith-Schuster",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3120348
-        },
-        {
-          "id": "3122976",
-          "name": "Jeff Wilson Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122976
-        },
-        {
-          "id": "3059915",
-          "name": "Kareem Hunt",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3059915
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "13a821ad-a124-4013-86b6-861d5aa6f839-trade-4",
       "season": 2022,
       "week": 3,
@@ -4428,6 +4388,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122976
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "13a821ad-a124-4013-86b6-861d5aa6f839-trade-7",
+      "season": 2022,
+      "week": 3,
+      "type": "trade",
+      "team": "Only i can say The N word",
+      "summary": "Received: JuJu Smith-Schuster, Jeff Wilson Jr. | Sent: Kareem Hunt, Alvin Kamara",
+      "created": 1664024223212,
+      "players": [
+        {
+          "id": "3120348",
+          "name": "JuJu Smith-Schuster",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3120348
+        },
+        {
+          "id": "3122976",
+          "name": "Jeff Wilson Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122976
+        },
+        {
+          "id": "3059915",
+          "name": "Kareem Hunt",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3059915
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
         }
       ],
       "source": "espn_transactions"
@@ -4660,46 +4660,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "8a7b7b3e-982f-449e-b052-5275f07ca0c9-trade-7",
-      "season": 2022,
-      "week": 3,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: JuJu Smith-Schuster, Jeff Wilson Jr. | Sent: Kareem Hunt, Alvin Kamara",
-      "created": 1663851457901,
-      "players": [
-        {
-          "id": "3120348",
-          "name": "JuJu Smith-Schuster",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3120348
-        },
-        {
-          "id": "3122976",
-          "name": "Jeff Wilson Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122976
-        },
-        {
-          "id": "3059915",
-          "name": "Kareem Hunt",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3059915
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "8a7b7b3e-982f-449e-b052-5275f07ca0c9-trade-4",
       "season": 2022,
       "week": 3,
@@ -4735,6 +4695,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122976
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "8a7b7b3e-982f-449e-b052-5275f07ca0c9-trade-7",
+      "season": 2022,
+      "week": 3,
+      "type": "trade",
+      "team": "Only i can say The N word",
+      "summary": "Received: JuJu Smith-Schuster, Jeff Wilson Jr. | Sent: Kareem Hunt, Alvin Kamara",
+      "created": 1663851457901,
+      "players": [
+        {
+          "id": "3120348",
+          "name": "JuJu Smith-Schuster",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3120348
+        },
+        {
+          "id": "3122976",
+          "name": "Jeff Wilson Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122976
+        },
+        {
+          "id": "3059915",
+          "name": "Kareem Hunt",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3059915
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
         }
       ],
       "source": "espn_transactions"
@@ -4933,39 +4933,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "687f18b3-779e-49f8-bfd6-9d28f5fb3930-trade-1",
-      "season": 2022,
-      "week": 4,
-      "type": "trade",
-      "team": "King of  December",
-      "summary": "Received: Joe Burrow | Sent: Jamaal Williams, Justin Fields",
-      "created": 1664306856168,
-      "players": [
-        {
-          "id": "3915511",
-          "name": "Joe Burrow",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3915511
-        },
-        {
-          "id": "2980453",
-          "name": "Jamaal Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2980453
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "687f18b3-779e-49f8-bfd6-9d28f5fb3930-trade-4",
       "season": 2022,
       "week": 4,
@@ -4994,6 +4961,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3915511
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "687f18b3-779e-49f8-bfd6-9d28f5fb3930-trade-1",
+      "season": 2022,
+      "week": 4,
+      "type": "trade",
+      "team": "King of  December",
+      "summary": "Received: Joe Burrow | Sent: Jamaal Williams, Justin Fields",
+      "created": 1664306856168,
+      "players": [
+        {
+          "id": "3915511",
+          "name": "Joe Burrow",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915511
+        },
+        {
+          "id": "2980453",
+          "name": "Jamaal Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2980453
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
         }
       ],
       "source": "espn_transactions"
@@ -5155,60 +5155,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7aebc5fe-d34f-4ae0-b68e-9f05404ec868-trade-1",
-      "season": 2022,
-      "week": 4,
-      "type": "trade",
-      "team": "King of  December",
-      "summary": "Received: Dalvin Cook, Alexander Mattison, Melvin Gordon III | Sent: James Conner, AJ Dillon, Mark Andrews",
-      "created": 1664405001677,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4048244",
-          "name": "Alexander Mattison",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4048244
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3045147",
-          "name": "James Conner",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3045147
-        },
-        {
-          "id": "4239934",
-          "name": "AJ Dillon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239934
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7aebc5fe-d34f-4ae0-b68e-9f05404ec868-trade-4",
       "season": 2022,
       "week": 4,
@@ -5258,6 +5204,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2576434
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7aebc5fe-d34f-4ae0-b68e-9f05404ec868-trade-1",
+      "season": 2022,
+      "week": 4,
+      "type": "trade",
+      "team": "King of  December",
+      "summary": "Received: Dalvin Cook, Alexander Mattison, Melvin Gordon III | Sent: James Conner, AJ Dillon, Mark Andrews",
+      "created": 1664405001677,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4048244",
+          "name": "Alexander Mattison",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4048244
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3045147",
+          "name": "James Conner",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3045147
+        },
+        {
+          "id": "4239934",
+          "name": "AJ Dillon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239934
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
         }
       ],
       "source": "espn_transactions"
@@ -5395,60 +5395,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "47705262-0883-4c82-8808-cb6e4d5202bf-trade-1",
-      "season": 2022,
-      "week": 4,
-      "type": "trade",
-      "team": "King of  December",
-      "summary": "Received: Dalvin Cook, Alexander Mattison, Melvin Gordon III | Sent: James Conner, AJ Dillon, Mark Andrews",
-      "created": 1664577781121,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4048244",
-          "name": "Alexander Mattison",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4048244
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3045147",
-          "name": "James Conner",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3045147
-        },
-        {
-          "id": "4239934",
-          "name": "AJ Dillon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239934
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "47705262-0883-4c82-8808-cb6e4d5202bf-trade-4",
       "season": 2022,
       "week": 4,
@@ -5498,6 +5444,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2576434
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "47705262-0883-4c82-8808-cb6e4d5202bf-trade-1",
+      "season": 2022,
+      "week": 4,
+      "type": "trade",
+      "team": "King of  December",
+      "summary": "Received: Dalvin Cook, Alexander Mattison, Melvin Gordon III | Sent: James Conner, AJ Dillon, Mark Andrews",
+      "created": 1664577781121,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4048244",
+          "name": "Alexander Mattison",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4048244
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3045147",
+          "name": "James Conner",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3045147
+        },
+        {
+          "id": "4239934",
+          "name": "AJ Dillon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239934
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
         }
       ],
       "source": "espn_transactions"
@@ -5909,39 +5909,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "742a2809-ba6c-41af-b6c1-0f49dff19175-trade-1",
-      "season": 2022,
-      "week": 4,
-      "type": "trade",
-      "team": "King of  December",
-      "summary": "Received: Joe Burrow | Sent: Jamaal Williams, Justin Fields",
-      "created": 1664405013401,
-      "players": [
-        {
-          "id": "3915511",
-          "name": "Joe Burrow",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3915511
-        },
-        {
-          "id": "2980453",
-          "name": "Jamaal Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2980453
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "742a2809-ba6c-41af-b6c1-0f49dff19175-trade-4",
       "season": 2022,
       "week": 4,
@@ -5970,6 +5937,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3915511
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "742a2809-ba6c-41af-b6c1-0f49dff19175-trade-1",
+      "season": 2022,
+      "week": 4,
+      "type": "trade",
+      "team": "King of  December",
+      "summary": "Received: Joe Burrow | Sent: Jamaal Williams, Justin Fields",
+      "created": 1664405013401,
+      "players": [
+        {
+          "id": "3915511",
+          "name": "Joe Burrow",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915511
+        },
+        {
+          "id": "2980453",
+          "name": "Jamaal Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2980453
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
         }
       ],
       "source": "espn_transactions"
@@ -6069,32 +6069,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b8e89481-d0cd-439a-a08a-330843db9d52-trade-5",
-      "season": 2022,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: None | Sent: Allen Robinson, Antonio Brown",
-      "created": 1665086358469,
-      "players": [
-        {
-          "id": "16799",
-          "name": "Allen Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16799
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b8e89481-d0cd-439a-a08a-330843db9d52-trade-0",
       "season": 2022,
       "week": 5,
@@ -6114,6 +6088,32 @@
           "id": "13934",
           "name": "Antonio Brown",
           "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13934
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b8e89481-d0cd-439a-a08a-330843db9d52-trade-5",
+      "season": 2022,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: None | Sent: Allen Robinson, Antonio Brown",
+      "created": 1665086358469,
+      "players": [
+        {
+          "id": "16799",
+          "name": "Allen Robinson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16799
+        },
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "sent",
           "id_type": "espn",
           "source_player_id": 13934
         }
@@ -6367,60 +6367,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7760bf89-9e4e-4009-a72d-1f21ea874e79-trade-7",
-      "season": 2022,
-      "week": 5,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: Drake London, Matthew Stafford, Jeff Wilson Jr. | Sent: Tom Brady, Keenan Allen, J.K. Dobbins",
-      "created": 1665425488080,
-      "players": [
-        {
-          "id": "4426502",
-          "name": "Drake London",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426502
-        },
-        {
-          "id": "12483",
-          "name": "Matthew Stafford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12483
-        },
-        {
-          "id": "3122976",
-          "name": "Jeff Wilson Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122976
-        },
-        {
-          "id": "2330",
-          "name": "Tom Brady",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2330
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "4241985",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241985
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7760bf89-9e4e-4009-a72d-1f21ea874e79-trade-4",
       "season": 2022,
       "week": 5,
@@ -6470,6 +6416,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122976
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7760bf89-9e4e-4009-a72d-1f21ea874e79-trade-7",
+      "season": 2022,
+      "week": 5,
+      "type": "trade",
+      "team": "Only i can say The N word",
+      "summary": "Received: Drake London, Matthew Stafford, Jeff Wilson Jr. | Sent: Tom Brady, Keenan Allen, J.K. Dobbins",
+      "created": 1665425488080,
+      "players": [
+        {
+          "id": "4426502",
+          "name": "Drake London",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426502
+        },
+        {
+          "id": "12483",
+          "name": "Matthew Stafford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12483
+        },
+        {
+          "id": "3122976",
+          "name": "Jeff Wilson Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122976
+        },
+        {
+          "id": "2330",
+          "name": "Tom Brady",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2330
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
+        },
+        {
+          "id": "4241985",
+          "name": "J.K. Dobbins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241985
         }
       ],
       "source": "espn_transactions"
@@ -6646,53 +6646,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "aa53fd11-28f0-4283-b65a-4308580cef2b-trade-5",
-      "season": 2022,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: Matthew Stafford, Jeff Wilson Jr., JuJu Smith-Schuster | Sent: Lamar Jackson, Ezekiel Elliott",
-      "created": 1665371161834,
-      "players": [
-        {
-          "id": "12483",
-          "name": "Matthew Stafford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12483
-        },
-        {
-          "id": "3122976",
-          "name": "Jeff Wilson Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122976
-        },
-        {
-          "id": "3120348",
-          "name": "JuJu Smith-Schuster",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3120348
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "aa53fd11-28f0-4283-b65a-4308580cef2b-trade-4",
       "season": 2022,
       "week": 5,
@@ -6740,51 +6693,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "2d1ee180-707b-41ba-9d2e-87c69500a3d4-add-8-4373626",
-      "season": 2022,
-      "week": 5,
-      "type": "add",
-      "team": "Pompano Beach Sniper Gang",
-      "summary": "Added: Tyler Allgeier",
-      "created": 1664985604050,
-      "players": [
-        {
-          "id": "4373626",
-          "name": "Tyler Allgeier",
-          "action": "add",
-          "id_type": "espn",
-          "source_player_id": 4373626
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "2d1ee180-707b-41ba-9d2e-87c69500a3d4-drop-8-4039359",
-      "season": 2022,
-      "week": 5,
-      "type": "drop",
-      "team": "Pompano Beach Sniper Gang",
-      "summary": "Dropped: Darrell Henderson Jr.",
-      "created": 1664985604050,
-      "players": [
-        {
-          "id": "4039359",
-          "name": "Darrell Henderson Jr.",
-          "action": "drop",
-          "id_type": "espn",
-          "source_player_id": 4039359
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "e89940c9-c4a4-4a10-b0e8-c55d7f4ad957-trade-5",
+      "id": "aa53fd11-28f0-4283-b65a-4308580cef2b-trade-5",
       "season": 2022,
       "week": 5,
       "type": "trade",
       "team": "Team Hanrahan",
       "summary": "Received: Matthew Stafford, Jeff Wilson Jr., JuJu Smith-Schuster | Sent: Lamar Jackson, Ezekiel Elliott",
-      "created": 1665198368274,
+      "created": 1665371161834,
       "players": [
         {
           "id": "12483",
@@ -6820,6 +6735,44 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3051392
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "2d1ee180-707b-41ba-9d2e-87c69500a3d4-add-8-4373626",
+      "season": 2022,
+      "week": 5,
+      "type": "add",
+      "team": "Pompano Beach Sniper Gang",
+      "summary": "Added: Tyler Allgeier",
+      "created": 1664985604050,
+      "players": [
+        {
+          "id": "4373626",
+          "name": "Tyler Allgeier",
+          "action": "add",
+          "id_type": "espn",
+          "source_player_id": 4373626
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "2d1ee180-707b-41ba-9d2e-87c69500a3d4-drop-8-4039359",
+      "season": 2022,
+      "week": 5,
+      "type": "drop",
+      "team": "Pompano Beach Sniper Gang",
+      "summary": "Dropped: Darrell Henderson Jr.",
+      "created": 1664985604050,
+      "players": [
+        {
+          "id": "4039359",
+          "name": "Darrell Henderson Jr.",
+          "action": "drop",
+          "id_type": "espn",
+          "source_player_id": 4039359
         }
       ],
       "source": "espn_transactions"
@@ -6867,6 +6820,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3120348
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e89940c9-c4a4-4a10-b0e8-c55d7f4ad957-trade-5",
+      "season": 2022,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: Matthew Stafford, Jeff Wilson Jr., JuJu Smith-Schuster | Sent: Lamar Jackson, Ezekiel Elliott",
+      "created": 1665198368274,
+      "players": [
+        {
+          "id": "12483",
+          "name": "Matthew Stafford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12483
+        },
+        {
+          "id": "3122976",
+          "name": "Jeff Wilson Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122976
+        },
+        {
+          "id": "3120348",
+          "name": "JuJu Smith-Schuster",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3120348
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3916387
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
         }
       ],
       "source": "espn_transactions"
@@ -7313,60 +7313,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3c72926f-a0df-418f-8ae3-9fbb129c7192-trade-7",
-      "season": 2022,
-      "week": 5,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: Drake London, Matthew Stafford, Jeff Wilson Jr. | Sent: Tom Brady, Keenan Allen, J.K. Dobbins",
-      "created": 1665512016479,
-      "players": [
-        {
-          "id": "4426502",
-          "name": "Drake London",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426502
-        },
-        {
-          "id": "12483",
-          "name": "Matthew Stafford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12483
-        },
-        {
-          "id": "3122976",
-          "name": "Jeff Wilson Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122976
-        },
-        {
-          "id": "2330",
-          "name": "Tom Brady",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2330
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "4241985",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241985
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "3c72926f-a0df-418f-8ae3-9fbb129c7192-trade-4",
       "season": 2022,
       "week": 5,
@@ -7416,6 +7362,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122976
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "3c72926f-a0df-418f-8ae3-9fbb129c7192-trade-7",
+      "season": 2022,
+      "week": 5,
+      "type": "trade",
+      "team": "Only i can say The N word",
+      "summary": "Received: Drake London, Matthew Stafford, Jeff Wilson Jr. | Sent: Tom Brady, Keenan Allen, J.K. Dobbins",
+      "created": 1665512016479,
+      "players": [
+        {
+          "id": "4426502",
+          "name": "Drake London",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426502
+        },
+        {
+          "id": "12483",
+          "name": "Matthew Stafford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12483
+        },
+        {
+          "id": "3122976",
+          "name": "Jeff Wilson Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122976
+        },
+        {
+          "id": "2330",
+          "name": "Tom Brady",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2330
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
+        },
+        {
+          "id": "4241985",
+          "name": "J.K. Dobbins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241985
         }
       ],
       "source": "espn_transactions"
@@ -9079,60 +9079,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "555d0521-31f6-488b-a29c-be4c501d0bf5-trade-7",
-      "season": 2022,
-      "week": 7,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: Najee Harris, David Njoku, Ja'Marr Chase | Sent: George Kittle, Tyreek Hill, J.K. Dobbins",
-      "created": 1666215630559,
-      "players": [
-        {
-          "id": "4241457",
-          "name": "Najee Harris",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241457
-        },
-        {
-          "id": "3123076",
-          "name": "David Njoku",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3123076
-        },
-        {
-          "id": "4362628",
-          "name": "Ja'Marr Chase",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4362628
-        },
-        {
-          "id": "3040151",
-          "name": "George Kittle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3040151
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        },
-        {
-          "id": "4241985",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241985
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "555d0521-31f6-488b-a29c-be4c501d0bf5-trade-4",
       "season": 2022,
       "week": 7,
@@ -9182,6 +9128,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4362628
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "555d0521-31f6-488b-a29c-be4c501d0bf5-trade-7",
+      "season": 2022,
+      "week": 7,
+      "type": "trade",
+      "team": "Only i can say The N word",
+      "summary": "Received: Najee Harris, David Njoku, Ja'Marr Chase | Sent: George Kittle, Tyreek Hill, J.K. Dobbins",
+      "created": 1666215630559,
+      "players": [
+        {
+          "id": "4241457",
+          "name": "Najee Harris",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241457
+        },
+        {
+          "id": "3123076",
+          "name": "David Njoku",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3123076
+        },
+        {
+          "id": "4362628",
+          "name": "Ja'Marr Chase",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4362628
+        },
+        {
+          "id": "3040151",
+          "name": "George Kittle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3040151
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116406
+        },
+        {
+          "id": "4241985",
+          "name": "J.K. Dobbins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241985
         }
       ],
       "source": "espn_transactions"
@@ -9396,60 +9396,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "8fe64893-381d-4c0d-ada4-f0db23c171c7-trade-7",
-      "season": 2022,
-      "week": 7,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: Najee Harris, David Njoku, Ja'Marr Chase | Sent: George Kittle, Tyreek Hill, J.K. Dobbins",
-      "created": 1666215576523,
-      "players": [
-        {
-          "id": "4241457",
-          "name": "Najee Harris",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241457
-        },
-        {
-          "id": "3123076",
-          "name": "David Njoku",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3123076
-        },
-        {
-          "id": "4362628",
-          "name": "Ja'Marr Chase",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4362628
-        },
-        {
-          "id": "3040151",
-          "name": "George Kittle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3040151
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        },
-        {
-          "id": "4241985",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241985
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "8fe64893-381d-4c0d-ada4-f0db23c171c7-trade-4",
       "season": 2022,
       "week": 7,
@@ -9499,6 +9445,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4362628
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "8fe64893-381d-4c0d-ada4-f0db23c171c7-trade-7",
+      "season": 2022,
+      "week": 7,
+      "type": "trade",
+      "team": "Only i can say The N word",
+      "summary": "Received: Najee Harris, David Njoku, Ja'Marr Chase | Sent: George Kittle, Tyreek Hill, J.K. Dobbins",
+      "created": 1666215576523,
+      "players": [
+        {
+          "id": "4241457",
+          "name": "Najee Harris",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241457
+        },
+        {
+          "id": "3123076",
+          "name": "David Njoku",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3123076
+        },
+        {
+          "id": "4362628",
+          "name": "Ja'Marr Chase",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4362628
+        },
+        {
+          "id": "3040151",
+          "name": "George Kittle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3040151
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116406
+        },
+        {
+          "id": "4241985",
+          "name": "J.K. Dobbins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241985
         }
       ],
       "source": "espn_transactions"
@@ -10658,53 +10658,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "414f6c84-fdba-400f-b0c7-b545ae6837e8-trade-5",
-      "season": 2022,
-      "week": 9,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: JuJu Smith-Schuster, Melvin Gordon III, Matthew Stafford | Sent: Lamar Jackson, Tee Higgins",
-      "created": 1667674597338,
-      "players": [
-        {
-          "id": "3120348",
-          "name": "JuJu Smith-Schuster",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3120348
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "12483",
-          "name": "Matthew Stafford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12483
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "414f6c84-fdba-400f-b0c7-b545ae6837e8-trade-4",
       "season": 2022,
       "week": 9,
@@ -10747,6 +10700,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 12483
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "414f6c84-fdba-400f-b0c7-b545ae6837e8-trade-5",
+      "season": 2022,
+      "week": 9,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: JuJu Smith-Schuster, Melvin Gordon III, Matthew Stafford | Sent: Lamar Jackson, Tee Higgins",
+      "created": 1667674597338,
+      "players": [
+        {
+          "id": "3120348",
+          "name": "JuJu Smith-Schuster",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3120348
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "12483",
+          "name": "Matthew Stafford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12483
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3916387
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -10828,39 +10828,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3ca1feae-30e6-4e1d-87d3-352d5ded479e-trade-1",
-      "season": 2022,
-      "week": 9,
-      "type": "trade",
-      "team": "King of  December",
-      "summary": "Received: DeAndre Hopkins | Sent: Chris Godwin Jr., Geno Smith",
-      "created": 1667945461870,
-      "players": [
-        {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15795
-        },
-        {
-          "id": "3116165",
-          "name": "Chris Godwin Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116165
-        },
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15864
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "3ca1feae-30e6-4e1d-87d3-352d5ded479e-trade-4",
       "season": 2022,
       "week": 9,
@@ -10889,6 +10856,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15795
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "3ca1feae-30e6-4e1d-87d3-352d5ded479e-trade-1",
+      "season": 2022,
+      "week": 9,
+      "type": "trade",
+      "team": "King of  December",
+      "summary": "Received: DeAndre Hopkins | Sent: Chris Godwin Jr., Geno Smith",
+      "created": 1667945461870,
+      "players": [
+        {
+          "id": "15795",
+          "name": "DeAndre Hopkins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15795
+        },
+        {
+          "id": "3116165",
+          "name": "Chris Godwin Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116165
+        },
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15864
         }
       ],
       "source": "espn_transactions"
@@ -11198,53 +11198,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d37af92b-7626-4aed-b115-b3cd12b16366-trade-5",
-      "season": 2022,
-      "week": 9,
-      "type": "trade",
-      "team": "Team Hanrahan",
-      "summary": "Received: JuJu Smith-Schuster, Melvin Gordon III, Matthew Stafford | Sent: Lamar Jackson, Tee Higgins",
-      "created": 1667847362969,
-      "players": [
-        {
-          "id": "3120348",
-          "name": "JuJu Smith-Schuster",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3120348
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "12483",
-          "name": "Matthew Stafford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12483
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d37af92b-7626-4aed-b115-b3cd12b16366-trade-4",
       "season": 2022,
       "week": 9,
@@ -11287,6 +11240,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 12483
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d37af92b-7626-4aed-b115-b3cd12b16366-trade-5",
+      "season": 2022,
+      "week": 9,
+      "type": "trade",
+      "team": "Team Hanrahan",
+      "summary": "Received: JuJu Smith-Schuster, Melvin Gordon III, Matthew Stafford | Sent: Lamar Jackson, Tee Higgins",
+      "created": 1667847362969,
+      "players": [
+        {
+          "id": "3120348",
+          "name": "JuJu Smith-Schuster",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3120348
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "12483",
+          "name": "Matthew Stafford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12483
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3916387
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -11672,39 +11672,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7950e37d-bab8-48bc-960a-2e472873a2f1-trade-1",
-      "season": 2022,
-      "week": 9,
-      "type": "trade",
-      "team": "King of  December",
-      "summary": "Received: DeAndre Hopkins | Sent: Chris Godwin Jr., Geno Smith",
-      "created": 1667772712859,
-      "players": [
-        {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15795
-        },
-        {
-          "id": "3116165",
-          "name": "Chris Godwin Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116165
-        },
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15864
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7950e37d-bab8-48bc-960a-2e472873a2f1-trade-4",
       "season": 2022,
       "week": 9,
@@ -11733,6 +11700,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15795
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7950e37d-bab8-48bc-960a-2e472873a2f1-trade-1",
+      "season": 2022,
+      "week": 9,
+      "type": "trade",
+      "team": "King of  December",
+      "summary": "Received: DeAndre Hopkins | Sent: Chris Godwin Jr., Geno Smith",
+      "created": 1667772712859,
+      "players": [
+        {
+          "id": "15795",
+          "name": "DeAndre Hopkins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15795
+        },
+        {
+          "id": "3116165",
+          "name": "Chris Godwin Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116165
+        },
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15864
         }
       ],
       "source": "espn_transactions"
@@ -12988,6 +12988,46 @@
       "source": "espn_transactions"
     },
     {
+      "id": "8bf66a30-3787-4453-972d-2c6b5fbe0acf-trade-4",
+      "season": 2022,
+      "week": 11,
+      "type": "trade",
+      "team": "King of January",
+      "summary": "Received: Courtland Sutton, Jamaal Williams | Sent: Amon-Ra St. Brown, Kenyan Drake",
+      "created": 1668797733726,
+      "players": [
+        {
+          "id": "3128429",
+          "name": "Courtland Sutton",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128429
+        },
+        {
+          "id": "2980453",
+          "name": "Jamaal Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2980453
+        },
+        {
+          "id": "4374302",
+          "name": "Amon-Ra St. Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4374302
+        },
+        {
+          "id": "2979843",
+          "name": "Kenyan Drake",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2979843
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "8bf66a30-3787-4453-972d-2c6b5fbe0acf-trade-0",
       "season": 2022,
       "week": 11,
@@ -13035,46 +13075,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2980453
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "8bf66a30-3787-4453-972d-2c6b5fbe0acf-trade-4",
-      "season": 2022,
-      "week": 11,
-      "type": "trade",
-      "team": "King of January",
-      "summary": "Received: Courtland Sutton, Jamaal Williams | Sent: Amon-Ra St. Brown, Kenyan Drake",
-      "created": 1668797733726,
-      "players": [
-        {
-          "id": "3128429",
-          "name": "Courtland Sutton",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128429
-        },
-        {
-          "id": "2980453",
-          "name": "Jamaal Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2980453
-        },
-        {
-          "id": "4374302",
-          "name": "Amon-Ra St. Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4374302
-        },
-        {
-          "id": "2979843",
-          "name": "Kenyan Drake",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2979843
         }
       ],
       "source": "espn_transactions"
@@ -13753,6 +13753,46 @@
       "source": "espn_transactions"
     },
     {
+      "id": "bca1dc23-1303-494c-8dfd-4b99d7692bb0-trade-4",
+      "season": 2022,
+      "week": 12,
+      "type": "trade",
+      "team": "King of January",
+      "summary": "Received: Courtland Sutton, Jamaal Williams | Sent: Amon-Ra St. Brown, Kenyan Drake",
+      "created": 1669104030067,
+      "players": [
+        {
+          "id": "3128429",
+          "name": "Courtland Sutton",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128429
+        },
+        {
+          "id": "2980453",
+          "name": "Jamaal Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2980453
+        },
+        {
+          "id": "4374302",
+          "name": "Amon-Ra St. Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4374302
+        },
+        {
+          "id": "2979843",
+          "name": "Kenyan Drake",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2979843
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "bca1dc23-1303-494c-8dfd-4b99d7692bb0-trade-0",
       "season": 2022,
       "week": 12,
@@ -13800,46 +13840,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2980453
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "bca1dc23-1303-494c-8dfd-4b99d7692bb0-trade-4",
-      "season": 2022,
-      "week": 12,
-      "type": "trade",
-      "team": "King of January",
-      "summary": "Received: Courtland Sutton, Jamaal Williams | Sent: Amon-Ra St. Brown, Kenyan Drake",
-      "created": 1669104030067,
-      "players": [
-        {
-          "id": "3128429",
-          "name": "Courtland Sutton",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128429
-        },
-        {
-          "id": "2980453",
-          "name": "Jamaal Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2980453
-        },
-        {
-          "id": "4374302",
-          "name": "Amon-Ra St. Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4374302
-        },
-        {
-          "id": "2979843",
-          "name": "Kenyan Drake",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2979843
         }
       ],
       "source": "espn_transactions"
@@ -14168,46 +14168,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0a06610e-a978-40a1-9639-6ca060ea535f-trade-7",
-      "season": 2022,
-      "week": 13,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: Jamaal Williams, Joshua Palmer | Sent: J.K. Dobbins, Tyreek Hill",
-      "created": 1669742422437,
-      "players": [
-        {
-          "id": "2980453",
-          "name": "Jamaal Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2980453
-        },
-        {
-          "id": "4242433",
-          "name": "Joshua Palmer",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4242433
-        },
-        {
-          "id": "4241985",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241985
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "0a06610e-a978-40a1-9639-6ca060ea535f-trade-4",
       "season": 2022,
       "week": 13,
@@ -14243,6 +14203,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4242433
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "0a06610e-a978-40a1-9639-6ca060ea535f-trade-7",
+      "season": 2022,
+      "week": 13,
+      "type": "trade",
+      "team": "Only i can say The N word",
+      "summary": "Received: Jamaal Williams, Joshua Palmer | Sent: J.K. Dobbins, Tyreek Hill",
+      "created": 1669742422437,
+      "players": [
+        {
+          "id": "2980453",
+          "name": "Jamaal Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2980453
+        },
+        {
+          "id": "4242433",
+          "name": "Joshua Palmer",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4242433
+        },
+        {
+          "id": "4241985",
+          "name": "J.K. Dobbins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241985
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116406
         }
       ],
       "source": "espn_transactions"
@@ -14494,46 +14494,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "276d6142-aa77-4e5f-9c13-4c89abde2f63-trade-7",
-      "season": 2022,
-      "week": 13,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: Jamaal Williams, Joshua Palmer | Sent: J.K. Dobbins, Tyreek Hill",
-      "created": 1669915202026,
-      "players": [
-        {
-          "id": "2980453",
-          "name": "Jamaal Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2980453
-        },
-        {
-          "id": "4242433",
-          "name": "Joshua Palmer",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4242433
-        },
-        {
-          "id": "4241985",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241985
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "276d6142-aa77-4e5f-9c13-4c89abde2f63-trade-4",
       "season": 2022,
       "week": 13,
@@ -14569,6 +14529,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4242433
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "276d6142-aa77-4e5f-9c13-4c89abde2f63-trade-7",
+      "season": 2022,
+      "week": 13,
+      "type": "trade",
+      "team": "Only i can say The N word",
+      "summary": "Received: Jamaal Williams, Joshua Palmer | Sent: J.K. Dobbins, Tyreek Hill",
+      "created": 1669915202026,
+      "players": [
+        {
+          "id": "2980453",
+          "name": "Jamaal Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2980453
+        },
+        {
+          "id": "4242433",
+          "name": "Joshua Palmer",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4242433
+        },
+        {
+          "id": "4241985",
+          "name": "J.K. Dobbins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241985
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116406
         }
       ],
       "source": "espn_transactions"

@@ -2187,39 +2187,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a65f57c3-0263-4468-90d0-a3993a57becf-trade-7",
-      "season": 2019,
-      "week": 1,
-      "type": "trade",
-      "team": "Big Dick Bandito",
-      "summary": "Received: Lamar Miller, Curtis Samuel | Sent: Aaron Jones Sr.",
-      "created": 1566572252916,
-      "players": [
-        {
-          "id": "14886",
-          "name": "Lamar Miller",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 14886
-        },
-        {
-          "id": "3121427",
-          "name": "Curtis Samuel",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3121427
-        },
-        {
-          "id": "3042519",
-          "name": "Aaron Jones Sr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3042519
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a65f57c3-0263-4468-90d0-a3993a57becf-trade-3",
       "season": 2019,
       "week": 1,
@@ -2248,6 +2215,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3121427
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a65f57c3-0263-4468-90d0-a3993a57becf-trade-7",
+      "season": 2019,
+      "week": 1,
+      "type": "trade",
+      "team": "Big Dick Bandito",
+      "summary": "Received: Lamar Miller, Curtis Samuel | Sent: Aaron Jones Sr.",
+      "created": 1566572252916,
+      "players": [
+        {
+          "id": "14886",
+          "name": "Lamar Miller",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14886
+        },
+        {
+          "id": "3121427",
+          "name": "Curtis Samuel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3121427
+        },
+        {
+          "id": "3042519",
+          "name": "Aaron Jones Sr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3042519
         }
       ],
       "source": "espn_transactions"
@@ -4139,32 +4139,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "04053236-08f1-4b5b-b9e9-039ed69baf73-trade-5",
-      "season": 2019,
-      "week": 2,
-      "type": "trade",
-      "team": "Team Blow me ",
-      "summary": "Received: Latavius Murray | Sent: Carlos Hyde",
-      "created": 1568138065539,
-      "players": [
-        {
-          "id": "15920",
-          "name": "Latavius Murray",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15920
-        },
-        {
-          "id": "16777",
-          "name": "Carlos Hyde",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16777
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "04053236-08f1-4b5b-b9e9-039ed69baf73-trade-3",
       "season": 2019,
       "week": 2,
@@ -4186,6 +4160,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15920
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "04053236-08f1-4b5b-b9e9-039ed69baf73-trade-5",
+      "season": 2019,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Blow me ",
+      "summary": "Received: Latavius Murray | Sent: Carlos Hyde",
+      "created": 1568138065539,
+      "players": [
+        {
+          "id": "15920",
+          "name": "Latavius Murray",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15920
+        },
+        {
+          "id": "16777",
+          "name": "Carlos Hyde",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16777
         }
       ],
       "source": "espn_transactions"
@@ -4941,46 +4941,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "8a4f0687-b1e2-4e58-b358-0f516af3f5a4-trade-1",
-      "season": 2019,
-      "week": 3,
-      "type": "trade",
-      "team": "The Champ",
-      "summary": "Received: Jason Witten, Josh Gordon | Sent: Mark Andrews, John Ross",
-      "created": 1569183755963,
-      "players": [
-        {
-          "id": "4527",
-          "name": "Jason Witten",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4527
-        },
-        {
-          "id": "15705",
-          "name": "Josh Gordon",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15705
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "3052177",
-          "name": "John Ross",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3052177
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "8a4f0687-b1e2-4e58-b358-0f516af3f5a4-trade-4",
       "season": 2019,
       "week": 3,
@@ -5016,6 +4976,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15705
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "8a4f0687-b1e2-4e58-b358-0f516af3f5a4-trade-1",
+      "season": 2019,
+      "week": 3,
+      "type": "trade",
+      "team": "The Champ",
+      "summary": "Received: Jason Witten, Josh Gordon | Sent: Mark Andrews, John Ross",
+      "created": 1569183755963,
+      "players": [
+        {
+          "id": "4527",
+          "name": "Jason Witten",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4527
+        },
+        {
+          "id": "15705",
+          "name": "Josh Gordon",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15705
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
+        },
+        {
+          "id": "3052177",
+          "name": "John Ross",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3052177
         }
       ],
       "source": "espn_transactions"
@@ -6006,46 +6006,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "9ddced1e-053d-4d32-a8b5-fa7bc9ebc525-trade-1",
-      "season": 2019,
-      "week": 3,
-      "type": "trade",
-      "team": "The Champ",
-      "summary": "Received: Jason Witten, Josh Gordon | Sent: Mark Andrews, John Ross",
-      "created": 1569252345087,
-      "players": [
-        {
-          "id": "4527",
-          "name": "Jason Witten",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4527
-        },
-        {
-          "id": "15705",
-          "name": "Josh Gordon",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15705
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "3052177",
-          "name": "John Ross",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3052177
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "9ddced1e-053d-4d32-a8b5-fa7bc9ebc525-trade-4",
       "season": 2019,
       "week": 3,
@@ -6081,6 +6041,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15705
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "9ddced1e-053d-4d32-a8b5-fa7bc9ebc525-trade-1",
+      "season": 2019,
+      "week": 3,
+      "type": "trade",
+      "team": "The Champ",
+      "summary": "Received: Jason Witten, Josh Gordon | Sent: Mark Andrews, John Ross",
+      "created": 1569252345087,
+      "players": [
+        {
+          "id": "4527",
+          "name": "Jason Witten",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4527
+        },
+        {
+          "id": "15705",
+          "name": "Josh Gordon",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15705
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
+        },
+        {
+          "id": "3052177",
+          "name": "John Ross",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3052177
         }
       ],
       "source": "espn_transactions"
@@ -9285,20 +9285,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fccccb04-9d78-4ff9-9460-2c74c9376371-trade-0",
+      "id": "fccccb04-9d78-4ff9-9460-2c74c9376371-trade-4",
       "season": 2019,
       "week": 5,
       "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: DK Metcalf | Sent: None",
+      "team": "Team Malley",
+      "summary": "Received: Tyrell Williams | Sent: Devin Singletary, Robert Woods",
       "created": 1570110433676,
       "players": [
         {
-          "id": "4047650",
-          "name": "DK Metcalf",
+          "id": "2587819",
+          "name": "Tyrell Williams",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4047650
+          "source_player_id": 2587819
+        },
+        {
+          "id": "4040761",
+          "name": "Devin Singletary",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4040761
+        },
+        {
+          "id": "15880",
+          "name": "Robert Woods",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15880
         }
       ],
       "source": "espn_transactions"
@@ -9344,34 +9358,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fccccb04-9d78-4ff9-9460-2c74c9376371-trade-4",
+      "id": "fccccb04-9d78-4ff9-9460-2c74c9376371-trade-0",
       "season": 2019,
       "week": 5,
       "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Tyrell Williams | Sent: Devin Singletary, Robert Woods",
+      "team": "Team 0",
+      "summary": "Received: DK Metcalf | Sent: None",
       "created": 1570110433676,
       "players": [
         {
-          "id": "2587819",
-          "name": "Tyrell Williams",
+          "id": "4047650",
+          "name": "DK Metcalf",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 2587819
-        },
-        {
-          "id": "4040761",
-          "name": "Devin Singletary",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4040761
-        },
-        {
-          "id": "15880",
-          "name": "Robert Woods",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15880
+          "source_player_id": 4047650
         }
       ],
       "source": "espn_transactions"
@@ -9595,32 +9595,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7cb23cb5-bbb9-4823-9625-c3d71b240b69-trade-6",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Dear Lord Please",
-      "summary": "Received: Frank Gore | Sent: Matthew Stafford",
-      "created": 1570045360034,
-      "players": [
-        {
-          "id": "8479",
-          "name": "Frank Gore",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 8479
-        },
-        {
-          "id": "12483",
-          "name": "Matthew Stafford",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12483
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7cb23cb5-bbb9-4823-9625-c3d71b240b69-trade-8",
       "season": 2019,
       "week": 5,
@@ -9647,34 +9621,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b1af69dc-7644-4233-8120-b4a5f9f6c17a-trade-1",
+      "id": "7cb23cb5-bbb9-4823-9625-c3d71b240b69-trade-6",
       "season": 2019,
       "week": 5,
       "type": "trade",
-      "team": "The Champ",
-      "summary": "Received: Davante Adams, LeSean McCoy | Sent: Le'Veon Bell",
-      "created": 1570373939193,
+      "team": "Dear Lord Please",
+      "summary": "Received: Frank Gore | Sent: Matthew Stafford",
+      "created": 1570045360034,
       "players": [
         {
-          "id": "16800",
-          "name": "Davante Adams",
+          "id": "8479",
+          "name": "Frank Gore",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 16800
+          "source_player_id": 8479
         },
         {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "15825",
-          "name": "Le'Veon Bell",
+          "id": "12483",
+          "name": "Matthew Stafford",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 15825
+          "source_player_id": 12483
         }
       ],
       "source": "espn_transactions"
@@ -9708,6 +9675,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 12514
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b1af69dc-7644-4233-8120-b4a5f9f6c17a-trade-1",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "The Champ",
+      "summary": "Received: Davante Adams, LeSean McCoy | Sent: Le'Veon Bell",
+      "created": 1570373939193,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "15825",
+          "name": "Le'Veon Bell",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15825
         }
       ],
       "source": "espn_transactions"
@@ -9846,39 +9846,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "820166ec-7dc0-4aa8-af52-24a210d86895-trade-1",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "The Champ",
-      "summary": "Received: Davante Adams, LeSean McCoy | Sent: Le'Veon Bell",
-      "created": 1570546561035,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "15825",
-          "name": "Le'Veon Bell",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15825
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "820166ec-7dc0-4aa8-af52-24a210d86895-trade-4",
       "season": 2019,
       "week": 5,
@@ -9907,6 +9874,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 12514
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "820166ec-7dc0-4aa8-af52-24a210d86895-trade-1",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "The Champ",
+      "summary": "Received: Davante Adams, LeSean McCoy | Sent: Le'Veon Bell",
+      "created": 1570546561035,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "15825",
+          "name": "Le'Veon Bell",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15825
         }
       ],
       "source": "espn_transactions"
@@ -10936,20 +10936,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-0",
+      "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-4",
       "season": 2019,
       "week": 5,
       "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: DK Metcalf | Sent: None",
+      "team": "Team Malley",
+      "summary": "Received: Tyrell Williams | Sent: Devin Singletary, Robert Woods",
       "created": 1570128879411,
       "players": [
         {
-          "id": "4047650",
-          "name": "DK Metcalf",
+          "id": "2587819",
+          "name": "Tyrell Williams",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4047650
+          "source_player_id": 2587819
+        },
+        {
+          "id": "4040761",
+          "name": "Devin Singletary",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4040761
+        },
+        {
+          "id": "15880",
+          "name": "Robert Woods",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15880
         }
       ],
       "source": "espn_transactions"
@@ -10995,34 +11009,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-4",
+      "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-0",
       "season": 2019,
       "week": 5,
       "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Tyrell Williams | Sent: Devin Singletary, Robert Woods",
+      "team": "Team 0",
+      "summary": "Received: DK Metcalf | Sent: None",
       "created": 1570128879411,
       "players": [
         {
-          "id": "2587819",
-          "name": "Tyrell Williams",
+          "id": "4047650",
+          "name": "DK Metcalf",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 2587819
-        },
-        {
-          "id": "4040761",
-          "name": "Devin Singletary",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4040761
-        },
-        {
-          "id": "15880",
-          "name": "Robert Woods",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15880
+          "source_player_id": 4047650
         }
       ],
       "source": "espn_transactions"
@@ -15574,39 +15574,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "75db0dba-3f8b-4062-b2fb-4c1248c6c8fe-trade-7",
-      "season": 2019,
-      "week": 8,
-      "type": "trade",
-      "team": "Big Dick Bandito",
-      "summary": "Received: Dalvin Cook | Sent: Devonta Freeman, Matt Breida",
-      "created": 1571845510700,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "16944",
-          "name": "Devonta Freeman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16944
-        },
-        {
-          "id": "3049916",
-          "name": "Matt Breida",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3049916
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "75db0dba-3f8b-4062-b2fb-4c1248c6c8fe-trade-4",
       "season": 2019,
       "week": 8,
@@ -15635,6 +15602,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116593
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "75db0dba-3f8b-4062-b2fb-4c1248c6c8fe-trade-7",
+      "season": 2019,
+      "week": 8,
+      "type": "trade",
+      "team": "Big Dick Bandito",
+      "summary": "Received: Dalvin Cook | Sent: Devonta Freeman, Matt Breida",
+      "created": 1571845510700,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "16944",
+          "name": "Devonta Freeman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16944
+        },
+        {
+          "id": "3049916",
+          "name": "Matt Breida",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3049916
         }
       ],
       "source": "espn_transactions"
@@ -16172,39 +16172,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d8324a9f-50fb-499e-860e-f03551c3e430-trade-7",
-      "season": 2019,
-      "week": 8,
-      "type": "trade",
-      "team": "Big Dick Bandito",
-      "summary": "Received: Dalvin Cook | Sent: Devonta Freeman, Matt Breida",
-      "created": 1571845892694,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "16944",
-          "name": "Devonta Freeman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16944
-        },
-        {
-          "id": "3049916",
-          "name": "Matt Breida",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3049916
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d8324a9f-50fb-499e-860e-f03551c3e430-trade-4",
       "season": 2019,
       "week": 8,
@@ -16233,6 +16200,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116593
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d8324a9f-50fb-499e-860e-f03551c3e430-trade-7",
+      "season": 2019,
+      "week": 8,
+      "type": "trade",
+      "team": "Big Dick Bandito",
+      "summary": "Received: Dalvin Cook | Sent: Devonta Freeman, Matt Breida",
+      "created": 1571845892694,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "16944",
+          "name": "Devonta Freeman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16944
+        },
+        {
+          "id": "3049916",
+          "name": "Matt Breida",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3049916
         }
       ],
       "source": "espn_transactions"
@@ -18343,39 +18343,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "bdc616bf-3e90-41f8-b5ca-ca8d56be088e-trade-5",
-      "season": 2019,
-      "week": 10,
-      "type": "trade",
-      "team": "Team Blow me ",
-      "summary": "Received: Adrian Peterson, Tyrell Williams | Sent: Michael Thomas",
-      "created": 1573160281268,
-      "players": [
-        {
-          "id": "10452",
-          "name": "Adrian Peterson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 10452
-        },
-        {
-          "id": "2587819",
-          "name": "Tyrell Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2587819
-        },
-        {
-          "id": "2976316",
-          "name": "Michael Thomas",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976316
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "bdc616bf-3e90-41f8-b5ca-ca8d56be088e-trade-4",
       "season": 2019,
       "week": 10,
@@ -18404,6 +18371,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2587819
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "bdc616bf-3e90-41f8-b5ca-ca8d56be088e-trade-5",
+      "season": 2019,
+      "week": 10,
+      "type": "trade",
+      "team": "Team Blow me ",
+      "summary": "Received: Adrian Peterson, Tyrell Williams | Sent: Michael Thomas",
+      "created": 1573160281268,
+      "players": [
+        {
+          "id": "10452",
+          "name": "Adrian Peterson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 10452
+        },
+        {
+          "id": "2587819",
+          "name": "Tyrell Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2587819
+        },
+        {
+          "id": "2976316",
+          "name": "Michael Thomas",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976316
         }
       ],
       "source": "espn_transactions"
@@ -19016,39 +19016,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0939361a-66d2-486d-9061-bb7e7966cfeb-trade-5",
-      "season": 2019,
-      "week": 10,
-      "type": "trade",
-      "team": "Team Blow me ",
-      "summary": "Received: Adrian Peterson, Tyrell Williams | Sent: Michael Thomas",
-      "created": 1572987518287,
-      "players": [
-        {
-          "id": "10452",
-          "name": "Adrian Peterson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 10452
-        },
-        {
-          "id": "2587819",
-          "name": "Tyrell Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2587819
-        },
-        {
-          "id": "2976316",
-          "name": "Michael Thomas",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976316
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "0939361a-66d2-486d-9061-bb7e7966cfeb-trade-4",
       "season": 2019,
       "week": 10,
@@ -19077,6 +19044,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2587819
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "0939361a-66d2-486d-9061-bb7e7966cfeb-trade-5",
+      "season": 2019,
+      "week": 10,
+      "type": "trade",
+      "team": "Team Blow me ",
+      "summary": "Received: Adrian Peterson, Tyrell Williams | Sent: Michael Thomas",
+      "created": 1572987518287,
+      "players": [
+        {
+          "id": "10452",
+          "name": "Adrian Peterson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 10452
+        },
+        {
+          "id": "2587819",
+          "name": "Tyrell Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2587819
+        },
+        {
+          "id": "2976316",
+          "name": "Michael Thomas",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976316
         }
       ],
       "source": "espn_transactions"
@@ -21100,46 +21100,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1e6f9386-ee58-4b13-a740-ac0167e34b9f-trade-5",
-      "season": 2019,
-      "week": 12,
-      "type": "trade",
-      "team": "Team Blow me ",
-      "summary": "Received: Dalvin Cook, Hollywood Brown | Sent: Michael Thomas, Carlos Hyde",
-      "created": 1574189643070,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        },
-        {
-          "id": "2976316",
-          "name": "Michael Thomas",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976316
-        },
-        {
-          "id": "16777",
-          "name": "Carlos Hyde",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16777
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "1e6f9386-ee58-4b13-a740-ac0167e34b9f-trade-4",
       "season": 2019,
       "week": 12,
@@ -21180,34 +21140,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0892d74d-cb61-43a2-8389-349946161532-trade-7",
+      "id": "1e6f9386-ee58-4b13-a740-ac0167e34b9f-trade-5",
       "season": 2019,
       "week": 12,
       "type": "trade",
-      "team": "Big Dick Bandito",
-      "summary": "Received: Courtland Sutton, Damien Williams | Sent: Todd Gurley",
-      "created": 1574364196399,
+      "team": "Team Blow me ",
+      "summary": "Received: Dalvin Cook, Hollywood Brown | Sent: Michael Thomas, Carlos Hyde",
+      "created": 1574189643070,
       "players": [
         {
-          "id": "3128429",
-          "name": "Courtland Sutton",
+          "id": "3116593",
+          "name": "Dalvin Cook",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3128429
+          "source_player_id": 3116593
         },
         {
-          "id": "17359",
-          "name": "Damien Williams",
+          "id": "4241372",
+          "name": "Hollywood Brown",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 17359
+          "source_player_id": 4241372
         },
         {
-          "id": "2977644",
-          "name": "Todd Gurley",
+          "id": "2976316",
+          "name": "Michael Thomas",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 2977644
+          "source_player_id": 2976316
+        },
+        {
+          "id": "16777",
+          "name": "Carlos Hyde",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16777
         }
       ],
       "source": "espn_transactions"
@@ -21241,6 +21208,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 17359
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "0892d74d-cb61-43a2-8389-349946161532-trade-7",
+      "season": 2019,
+      "week": 12,
+      "type": "trade",
+      "team": "Big Dick Bandito",
+      "summary": "Received: Courtland Sutton, Damien Williams | Sent: Todd Gurley",
+      "created": 1574364196399,
+      "players": [
+        {
+          "id": "3128429",
+          "name": "Courtland Sutton",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128429
+        },
+        {
+          "id": "17359",
+          "name": "Damien Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 17359
+        },
+        {
+          "id": "2977644",
+          "name": "Todd Gurley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2977644
         }
       ],
       "source": "espn_transactions"
@@ -21417,46 +21417,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "4e3d94ce-9802-4237-bf00-655b62be0404-trade-5",
-      "season": 2019,
-      "week": 12,
-      "type": "trade",
-      "team": "Team Blow me ",
-      "summary": "Received: Dalvin Cook, Hollywood Brown | Sent: Michael Thomas, Carlos Hyde",
-      "created": 1574189834692,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        },
-        {
-          "id": "2976316",
-          "name": "Michael Thomas",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976316
-        },
-        {
-          "id": "16777",
-          "name": "Carlos Hyde",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16777
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "4e3d94ce-9802-4237-bf00-655b62be0404-trade-4",
       "season": 2019,
       "week": 12,
@@ -21492,6 +21452,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241372
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "4e3d94ce-9802-4237-bf00-655b62be0404-trade-5",
+      "season": 2019,
+      "week": 12,
+      "type": "trade",
+      "team": "Team Blow me ",
+      "summary": "Received: Dalvin Cook, Hollywood Brown | Sent: Michael Thomas, Carlos Hyde",
+      "created": 1574189834692,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241372
+        },
+        {
+          "id": "2976316",
+          "name": "Michael Thomas",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976316
+        },
+        {
+          "id": "16777",
+          "name": "Carlos Hyde",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16777
         }
       ],
       "source": "espn_transactions"
