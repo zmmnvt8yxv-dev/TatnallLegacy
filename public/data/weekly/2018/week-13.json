@@ -42,6 +42,7 @@
       "player_id": "2576434",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2576434",
       "espn_id": "2576434",
@@ -53,10 +54,13 @@
       "player_id": "2976316",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2976316",
       "espn_id": "2976316",
-      "player": "Michael Thomas"
+      "player": "Michael Thomas",
+      "position": "WR",
+      "nfl_team": "NO"
     },
     {
       "week": 13,
@@ -64,10 +68,13 @@
       "player_id": "3117251",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3117251",
       "espn_id": "3117251",
-      "player": "Christian McCaffrey"
+      "player": "Christian McCaffrey",
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 13,
@@ -75,10 +82,13 @@
       "player_id": "3120348",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3120348",
       "espn_id": "3120348",
-      "player": "JuJu Smith-Schuster"
+      "player": "JuJu Smith-Schuster",
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 13,
@@ -86,10 +96,13 @@
       "player_id": "5536",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "5536",
       "espn_id": "5536",
-      "player": "Ben Roethlisberger"
+      "player": "Ben Roethlisberger",
+      "position": "QB",
+      "nfl_team": "PIT"
     },
     {
       "week": 13,
@@ -97,10 +110,13 @@
       "player_id": "3049916",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3049916",
       "espn_id": "3049916",
-      "player": "Matt Breida"
+      "player": "Matt Breida",
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 13,
@@ -108,10 +124,13 @@
       "player_id": "3040151",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3040151",
       "espn_id": "3040151",
-      "player": "George Kittle"
+      "player": "George Kittle",
+      "position": "TE",
+      "nfl_team": "SF"
     },
     {
       "week": 13,
@@ -119,10 +138,13 @@
       "player_id": "2974858",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2974858",
       "espn_id": "2974858",
-      "player": "Kenny Golladay"
+      "player": "Kenny Golladay",
+      "position": "WR",
+      "nfl_team": "DET"
     },
     {
       "week": 13,
@@ -130,10 +152,13 @@
       "player_id": "3066158",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3066158",
       "espn_id": "3066158",
-      "player": "Tarik Cohen"
+      "player": "Tarik Cohen",
+      "position": "RB",
+      "nfl_team": "CHI"
     },
     {
       "week": 13,
@@ -141,10 +166,13 @@
       "player_id": "3125116",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3125116",
       "espn_id": "3125116",
-      "player": "D'Onta Foreman"
+      "player": "D'Onta Foreman",
+      "position": "RB",
+      "nfl_team": "HOU"
     },
     {
       "week": 13,
@@ -152,10 +180,13 @@
       "player_id": "3042778",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3042778",
       "espn_id": "3042778",
-      "player": "Corey Davis"
+      "player": "Corey Davis",
+      "position": "WR",
+      "nfl_team": "TEN"
     },
     {
       "week": 13,
@@ -163,10 +194,13 @@
       "player_id": "14993",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14993",
       "espn_id": "14993",
-      "player": "Greg Zuerlein"
+      "player": "Greg Zuerlein",
+      "position": "K",
+      "nfl_team": "LA"
     },
     {
       "week": 13,
@@ -174,10 +208,13 @@
       "player_id": "3046779",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3046779",
       "espn_id": "3046779",
-      "player": "Jared Goff"
+      "player": "Jared Goff",
+      "position": "QB",
+      "nfl_team": "LA"
     },
     {
       "week": 13,
@@ -185,10 +222,13 @@
       "player_id": "14221",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14221",
       "espn_id": "14221",
-      "player": "Doug Baldwin"
+      "player": "Doug Baldwin",
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 13,
@@ -196,10 +236,13 @@
       "player_id": "3128720",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3128720",
       "espn_id": "3128720",
-      "player": "Nick Chubb"
+      "player": "Nick Chubb",
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 13,
@@ -207,10 +250,13 @@
       "player_id": "BAL",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16033",
       "espn_id": "-16033",
-      "player": "RAVENS"
+      "player": "RAVENS",
+      "position": "DEF",
+      "nfl_team": "BAL"
     },
     {
       "week": 13,
@@ -218,10 +264,13 @@
       "player_id": "GB",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16009",
       "espn_id": "-16009",
-      "player": "PACKERS"
+      "player": "PACKERS",
+      "position": "DEF",
+      "nfl_team": "GB"
     },
     {
       "week": 13,
@@ -229,10 +278,13 @@
       "player_id": "16020",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16020",
       "espn_id": "16020",
-      "player": "Spencer Ware"
+      "player": "Spencer Ware",
+      "position": "RB",
+      "nfl_team": "KC"
     },
     {
       "week": 13,
@@ -240,10 +292,13 @@
       "player_id": "3116136",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3116136",
       "espn_id": "3116136",
-      "player": "Justin Jackson"
+      "player": "Justin Jackson",
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 13,
@@ -251,10 +306,13 @@
       "player_id": "2977644",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2977644",
       "espn_id": "2977644",
-      "player": "Todd Gurley"
+      "player": "Todd Gurley",
+      "position": "RB",
+      "nfl_team": "LA"
     },
     {
       "week": 13,
@@ -262,10 +320,13 @@
       "player_id": "8439",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "8439",
       "espn_id": "8439",
-      "player": "Aaron Rodgers"
+      "player": "Aaron Rodgers",
+      "position": "QB",
+      "nfl_team": "GB"
     },
     {
       "week": 13,
@@ -273,10 +334,13 @@
       "player_id": "14880",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14880",
       "espn_id": "14880",
-      "player": "Kirk Cousins"
+      "player": "Kirk Cousins",
+      "position": "QB",
+      "nfl_team": "MIN"
     },
     {
       "week": 13,
@@ -284,10 +348,13 @@
       "player_id": "3060022",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3060022",
       "espn_id": "3060022",
-      "player": "Jordan Howard"
+      "player": "Jordan Howard",
+      "position": "RB",
+      "nfl_team": "CHI"
     },
     {
       "week": 13,
@@ -295,10 +362,13 @@
       "player_id": "16800",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16800",
       "espn_id": "16800",
-      "player": "Davante Adams"
+      "player": "Davante Adams",
+      "position": "WR",
+      "nfl_team": "GB"
     },
     {
       "week": 13,
@@ -306,10 +376,13 @@
       "player_id": "2976212",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2976212",
       "espn_id": "2976212",
-      "player": "Stefon Diggs"
+      "player": "Stefon Diggs",
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 13,
@@ -317,10 +390,13 @@
       "player_id": "2977609",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2977609",
       "espn_id": "2977609",
-      "player": "Devin Funchess"
+      "player": "Devin Funchess",
+      "position": "WR",
+      "nfl_team": "CAR"
     },
     {
       "week": 13,
@@ -328,10 +404,13 @@
       "player_id": "15835",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "15835",
       "espn_id": "15835",
-      "player": "Zach Ertz"
+      "player": "Zach Ertz",
+      "position": "TE",
+      "nfl_team": "PHI"
     },
     {
       "week": 13,
@@ -339,10 +418,13 @@
       "player_id": "14198",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14198",
       "espn_id": "14198",
-      "player": "Dion Lewis"
+      "player": "Dion Lewis",
+      "position": "RB",
+      "nfl_team": "TEN"
     },
     {
       "week": 13,
@@ -350,10 +432,13 @@
       "player_id": "DEN",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16007",
       "espn_id": "-16007",
-      "player": "BRONCOS"
+      "player": "BRONCOS",
+      "position": "DEF",
+      "nfl_team": "DEN"
     },
     {
       "week": 13,
@@ -361,10 +446,13 @@
       "player_id": "9704",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "9704",
       "espn_id": "9704",
-      "player": "Stephen Gostkowski"
+      "player": "Stephen Gostkowski",
+      "position": "K",
+      "nfl_team": "NE"
     },
     {
       "week": 13,
@@ -372,10 +460,13 @@
       "player_id": "10452",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "10452",
       "espn_id": "10452",
-      "player": "Adrian Peterson"
+      "player": "Adrian Peterson",
+      "position": "RB",
+      "nfl_team": "WAS"
     },
     {
       "week": 13,
@@ -383,10 +474,13 @@
       "player_id": "15705",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "15705",
       "espn_id": "15705",
-      "player": "Josh Gordon"
+      "player": "Josh Gordon",
+      "position": "WR",
+      "nfl_team": "NE"
     },
     {
       "week": 13,
@@ -394,10 +488,13 @@
       "player_id": "16790",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16790",
       "espn_id": "16790",
-      "player": "Jarvis Landry"
+      "player": "Jarvis Landry",
+      "position": "WR",
+      "nfl_team": "CLE"
     },
     {
       "week": 13,
@@ -405,10 +502,13 @@
       "player_id": "16804",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16804",
       "espn_id": "16804",
-      "player": "John Brown"
+      "player": "John Brown",
+      "position": "WR",
+      "nfl_team": "BAL"
     },
     {
       "week": 13,
@@ -416,10 +516,13 @@
       "player_id": "1097",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "1097",
       "espn_id": "1097",
-      "player": "Adam Vinatieri"
+      "player": "Adam Vinatieri",
+      "position": "K",
+      "nfl_team": "IND"
     },
     {
       "week": 13,
@@ -427,10 +530,13 @@
       "player_id": "2508176",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2508176",
       "espn_id": "2508176",
-      "player": "David Johnson"
+      "player": "David Johnson",
+      "position": "RB",
+      "nfl_team": "ARI"
     },
     {
       "week": 13,
@@ -438,10 +544,13 @@
       "player_id": "12514",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "12514",
       "espn_id": "12514",
-      "player": "LeSean McCoy"
+      "player": "LeSean McCoy",
+      "position": "RB",
+      "nfl_team": "BUF"
     },
     {
       "week": 13,
@@ -449,10 +558,13 @@
       "player_id": "2573079",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2573079",
       "espn_id": "2573079",
-      "player": "Carson Wentz"
+      "player": "Carson Wentz",
+      "position": "QB",
+      "nfl_team": "PHI"
     },
     {
       "week": 13,
@@ -460,10 +572,13 @@
       "player_id": "3055899",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3055899",
       "espn_id": "3055899",
-      "player": "Harrison Butker"
+      "player": "Harrison Butker",
+      "position": "K",
+      "nfl_team": "KC"
     },
     {
       "week": 13,
@@ -471,10 +586,13 @@
       "player_id": "3116593",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3116593",
       "espn_id": "3116593",
-      "player": "Dalvin Cook"
+      "player": "Dalvin Cook",
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 13,
@@ -482,10 +600,13 @@
       "player_id": "3045144",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3045144",
       "espn_id": "3045144",
-      "player": "Tyler Boyd"
+      "player": "Tyler Boyd",
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 13,
@@ -493,10 +614,13 @@
       "player_id": "12649",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "12649",
       "espn_id": "12649",
-      "player": "Julian Edelman"
+      "player": "Julian Edelman",
+      "position": "WR",
+      "nfl_team": "NE"
     },
     {
       "week": 13,
@@ -504,10 +628,13 @@
       "player_id": "2979843",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2979843",
       "espn_id": "2979843",
-      "player": "Kenyan Drake"
+      "player": "Kenyan Drake",
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 13,
@@ -515,10 +642,13 @@
       "player_id": "17133",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "17133",
       "espn_id": "17133",
-      "player": "Isaiah Crowell"
+      "player": "Isaiah Crowell",
+      "position": "RB",
+      "nfl_team": "NYJ"
     },
     {
       "week": 13,
@@ -526,10 +656,13 @@
       "player_id": "14912",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14912",
       "espn_id": "14912",
-      "player": "Alshon Jeffery"
+      "player": "Alshon Jeffery",
+      "position": "WR",
+      "nfl_team": "PHI"
     },
     {
       "week": 13,
@@ -537,10 +670,13 @@
       "player_id": "3043078",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3043078",
       "espn_id": "3043078",
-      "player": "Derrick Henry"
+      "player": "Derrick Henry",
+      "position": "RB",
+      "nfl_team": "TEN"
     },
     {
       "week": 13,
@@ -548,10 +684,13 @@
       "player_id": "3115306",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3115306",
       "espn_id": "3115306",
-      "player": "Josh Reynolds"
+      "player": "Josh Reynolds",
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 13,
@@ -559,10 +698,13 @@
       "player_id": "2969939",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2969939",
       "espn_id": "2969939",
-      "player": "Jameis Winston"
+      "player": "Jameis Winston",
+      "position": "QB",
+      "nfl_team": "TB"
     },
     {
       "week": 13,
@@ -570,10 +712,13 @@
       "player_id": "17453",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "17453",
       "espn_id": "17453",
-      "player": "Cameron Brate"
+      "player": "Cameron Brate",
+      "position": "TE",
+      "nfl_team": "TB"
     },
     {
       "week": 13,
@@ -581,10 +726,13 @@
       "player_id": "WSH",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16028",
       "espn_id": "-16028",
-      "player": "COMMANDERS"
+      "player": "COMMANDERS",
+      "position": "DEF",
+      "nfl_team": "WSH"
     },
     {
       "week": 13,
@@ -592,10 +740,13 @@
       "player_id": "3128451",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3128451",
       "espn_id": "3128451",
-      "player": "Tre'Quan Smith"
+      "player": "Tre'Quan Smith",
+      "position": "WR",
+      "nfl_team": "NO"
     },
     {
       "week": 13,
@@ -603,10 +754,13 @@
       "player_id": "4512",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "4512",
       "espn_id": "4512",
-      "player": "Anquan Boldin"
+      "player": "Anquan Boldin",
+      "position": "WR",
+      "nfl_team": "SF"
     },
     {
       "week": 13,
@@ -614,10 +768,13 @@
       "player_id": "2580",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2580",
       "espn_id": "2580",
-      "player": "Drew Brees"
+      "player": "Drew Brees",
+      "position": "QB",
+      "nfl_team": "NO"
     },
     {
       "week": 13,
@@ -625,10 +782,13 @@
       "player_id": "14874",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14874",
       "espn_id": "14874",
-      "player": "Andrew Luck"
+      "player": "Andrew Luck",
+      "position": "QB",
+      "nfl_team": "IND"
     },
     {
       "week": 13,
@@ -636,10 +796,13 @@
       "player_id": "3929630",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3929630",
       "espn_id": "3929630",
-      "player": "Saquon Barkley"
+      "player": "Saquon Barkley",
+      "position": "RB",
+      "nfl_team": "NYG"
     },
     {
       "week": 13,
@@ -647,10 +810,13 @@
       "player_id": "15880",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "15880",
       "espn_id": "15880",
-      "player": "Robert Woods"
+      "player": "Robert Woods",
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 13,
@@ -658,10 +824,13 @@
       "player_id": "2976592",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2976592",
       "espn_id": "2976592",
-      "player": "Sterling Shepard"
+      "player": "Sterling Shepard",
+      "position": "WR",
+      "nfl_team": "NYG"
     },
     {
       "week": 13,
@@ -669,10 +838,13 @@
       "player_id": "17437",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "17437",
       "espn_id": "17437",
-      "player": "Taylor Gabriel"
+      "player": "Taylor Gabriel",
+      "position": "WR",
+      "nfl_team": "CHI"
     },
     {
       "week": 13,
@@ -680,10 +852,13 @@
       "player_id": "2985659",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2985659",
       "espn_id": "2985659",
-      "player": "Wil Lutz"
+      "player": "Wil Lutz",
+      "position": "K",
+      "nfl_team": "NO"
     },
     {
       "week": 13,
@@ -691,10 +866,13 @@
       "player_id": "3919596",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3919596",
       "espn_id": "3919596",
-      "player": "Chris Carson"
+      "player": "Chris Carson",
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 13,
@@ -702,10 +880,13 @@
       "player_id": "3925357",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3925357",
       "espn_id": "3925357",
-      "player": "Calvin Ridley"
+      "player": "Calvin Ridley",
+      "position": "WR",
+      "nfl_team": "ATL"
     },
     {
       "week": 13,
@@ -713,10 +894,13 @@
       "player_id": "16799",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16799",
       "espn_id": "16799",
-      "player": "Allen Robinson"
+      "player": "Allen Robinson",
+      "position": "WR",
+      "nfl_team": "CHI"
     },
     {
       "week": 13,
@@ -724,10 +908,13 @@
       "player_id": "KC",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16012",
       "espn_id": "-16012",
-      "player": "CHIEFS"
+      "player": "CHIEFS",
+      "position": "DEF",
+      "nfl_team": "KC"
     },
     {
       "week": 13,
@@ -735,10 +922,13 @@
       "player_id": "13295",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "13295",
       "espn_id": "13295",
-      "player": "Emmanuel Sanders"
+      "player": "Emmanuel Sanders",
+      "position": "WR",
+      "nfl_team": "DEN"
     },
     {
       "week": 13,
@@ -746,10 +936,13 @@
       "player_id": "14886",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14886",
       "espn_id": "14886",
-      "player": "Lamar Miller"
+      "player": "Lamar Miller",
+      "position": "RB",
+      "nfl_team": "HOU"
     },
     {
       "week": 13,
@@ -757,10 +950,13 @@
       "player_id": "LAC",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16024",
       "espn_id": "-16024",
-      "player": "CHARGERS"
+      "player": "CHARGERS",
+      "position": "DEF",
+      "nfl_team": "LAC"
     },
     {
       "week": 13,
@@ -768,10 +964,13 @@
       "player_id": "16946",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16946",
       "espn_id": "16946",
-      "player": "Bruce Ellington"
+      "player": "Bruce Ellington",
+      "position": "WR",
+      "nfl_team": "DET"
     },
     {
       "week": 13,
@@ -779,10 +978,13 @@
       "player_id": "13983",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "13983",
       "espn_id": "13983",
-      "player": "A.J. Green"
+      "player": "A.J. Green",
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 13,
@@ -790,10 +992,13 @@
       "player_id": "3043275",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3043275",
       "espn_id": "3043275",
-      "player": "Austin Hooper"
+      "player": "Austin Hooper",
+      "position": "TE",
+      "nfl_team": "ATL"
     },
     {
       "week": 13,
@@ -801,10 +1006,13 @@
       "player_id": "3059915",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3059915",
       "espn_id": "3059915",
-      "player": "Kareem Hunt"
+      "player": "Kareem Hunt",
+      "position": "RB",
+      "nfl_team": "KC"
     },
     {
       "week": 13,
@@ -812,10 +1020,13 @@
       "player_id": "13229",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "13229",
       "espn_id": "13229",
-      "player": "Rob Gronkowski"
+      "player": "Rob Gronkowski",
+      "position": "TE",
+      "nfl_team": "NE"
     },
     {
       "week": 13,
@@ -823,10 +1034,13 @@
       "player_id": "3116406",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3116406",
       "espn_id": "3116406",
-      "player": "Tyreek Hill"
+      "player": "Tyreek Hill",
+      "position": "WR",
+      "nfl_team": "KC"
     },
     {
       "week": 13,
@@ -834,10 +1048,13 @@
       "player_id": "2330",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2330",
       "espn_id": "2330",
-      "player": "Tom Brady"
+      "player": "Tom Brady",
+      "position": "QB",
+      "nfl_team": "NE"
     },
     {
       "week": 13,
@@ -845,10 +1062,13 @@
       "player_id": "13217",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "13217",
       "espn_id": "13217",
-      "player": "Golden Tate"
+      "player": "Golden Tate",
+      "position": "WR",
+      "nfl_team": "PHI"
     },
     {
       "week": 13,
@@ -856,10 +1076,13 @@
       "player_id": "13994",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "13994",
       "espn_id": "13994",
-      "player": "Cam Newton"
+      "player": "Cam Newton",
+      "position": "QB",
+      "nfl_team": "CAR"
     },
     {
       "week": 13,
@@ -867,10 +1090,13 @@
       "player_id": "16725",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16725",
       "espn_id": "16725",
-      "player": "Sammy Watkins"
+      "player": "Sammy Watkins",
+      "position": "WR",
+      "nfl_team": "KC"
     },
     {
       "week": 13,
@@ -878,10 +1104,13 @@
       "player_id": "3054850",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3054850",
       "espn_id": "3054850",
-      "player": "Alvin Kamara"
+      "player": "Alvin Kamara",
+      "position": "RB",
+      "nfl_team": "NO"
     },
     {
       "week": 13,
@@ -889,10 +1118,13 @@
       "player_id": "16737",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16737",
       "espn_id": "16737",
-      "player": "Mike Evans"
+      "player": "Mike Evans",
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 13,
@@ -900,10 +1132,13 @@
       "player_id": "16913",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16913",
       "espn_id": "16913",
-      "player": "James White"
+      "player": "James White",
+      "position": "RB",
+      "nfl_team": "NE"
     },
     {
       "week": 13,
@@ -911,10 +1146,13 @@
       "player_id": "15860",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "15860",
       "espn_id": "15860",
-      "player": "Jordan Reed"
+      "player": "Jordan Reed",
+      "position": "TE",
+      "nfl_team": "WAS"
     },
     {
       "week": 13,
@@ -922,10 +1160,13 @@
       "player_id": "10636",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "10636",
       "espn_id": "10636",
-      "player": "Mason Crosby"
+      "player": "Mason Crosby",
+      "position": "K",
+      "nfl_team": "GB"
     },
     {
       "week": 13,
@@ -933,10 +1174,13 @@
       "player_id": "3025433",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3025433",
       "espn_id": "3025433",
-      "player": "Mike Davis"
+      "player": "Mike Davis",
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 13,
@@ -944,10 +1188,13 @@
       "player_id": "MIN",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16016",
       "espn_id": "-16016",
-      "player": "VIKINGS"
+      "player": "VIKINGS",
+      "position": "DEF",
+      "nfl_team": "MIN"
     },
     {
       "week": 13,
@@ -955,10 +1202,13 @@
       "player_id": "3932420",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3932420",
       "espn_id": "3932420",
-      "player": "Josh Adams"
+      "player": "Josh Adams",
+      "position": "RB",
+      "nfl_team": "PHI"
     },
     {
       "week": 13,
@@ -966,10 +1216,13 @@
       "player_id": "2577417",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2577417",
       "espn_id": "2577417",
-      "player": "Dak Prescott"
+      "player": "Dak Prescott",
+      "position": "QB",
+      "nfl_team": "DAL"
     },
     {
       "week": 13,
@@ -977,10 +1230,13 @@
       "player_id": "MIA",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16015",
       "espn_id": "-16015",
-      "player": "DOLPHINS"
+      "player": "DOLPHINS",
+      "position": "DEF",
+      "nfl_team": "MIA"
     },
     {
       "week": 13,
@@ -988,10 +1244,13 @@
       "player_id": "3115364",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3115364",
       "espn_id": "3115364",
-      "player": "Leonard Fournette"
+      "player": "Leonard Fournette",
+      "position": "RB",
+      "nfl_team": "JAX"
     },
     {
       "week": 13,
@@ -999,10 +1258,13 @@
       "player_id": "15795",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "15795",
       "espn_id": "15795",
-      "player": "DeAndre Hopkins"
+      "player": "DeAndre Hopkins",
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 13,
@@ -1010,10 +1272,13 @@
       "player_id": "3128721",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3128721",
       "espn_id": "3128721",
-      "player": "Sony Michel"
+      "player": "Sony Michel",
+      "position": "RB",
+      "nfl_team": "NE"
     },
     {
       "week": 13,
@@ -1021,10 +1286,13 @@
       "player_id": "16731",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16731",
       "espn_id": "16731",
-      "player": "Brandin Cooks"
+      "player": "Brandin Cooks",
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 13,
@@ -1032,10 +1300,13 @@
       "player_id": "3916925",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3916925",
       "espn_id": "3916925",
-      "player": "Kerryon Johnson"
+      "player": "Kerryon Johnson",
+      "position": "RB",
+      "nfl_team": "DET"
     },
     {
       "week": 13,
@@ -1043,10 +1314,13 @@
       "player_id": "3139477",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3139477",
       "espn_id": "3139477",
-      "player": "Patrick Mahomes"
+      "player": "Patrick Mahomes",
+      "position": "QB",
+      "nfl_team": "KC"
     },
     {
       "week": 13,
@@ -1054,10 +1328,13 @@
       "player_id": "3052117",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3052117",
       "espn_id": "3052117",
-      "player": "Phillip Lindsay"
+      "player": "Phillip Lindsay",
+      "position": "RB",
+      "nfl_team": "DEN"
     },
     {
       "week": 13,
@@ -1065,10 +1342,13 @@
       "player_id": "CHI",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16003",
       "espn_id": "-16003",
-      "player": "BEARS"
+      "player": "BEARS",
+      "position": "DEF",
+      "nfl_team": "CHI"
     },
     {
       "week": 13,
@@ -1076,10 +1356,13 @@
       "player_id": "3039707",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3039707",
       "espn_id": "3039707",
-      "player": "Mitchell Trubisky"
+      "player": "Mitchell Trubisky",
+      "position": "QB",
+      "nfl_team": "CHI"
     },
     {
       "week": 13,
@@ -1087,10 +1370,13 @@
       "player_id": "10475",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "10475",
       "espn_id": "10475",
-      "player": "Greg Olsen"
+      "player": "Greg Olsen",
+      "position": "TE",
+      "nfl_team": "CAR"
     },
     {
       "week": 13,
@@ -1098,10 +1384,13 @@
       "player_id": "3051926",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3051926",
       "espn_id": "3051926",
-      "player": "Gus Edwards"
+      "player": "Gus Edwards",
+      "position": "RB",
+      "nfl_team": "BAL"
     },
     {
       "week": 13,
@@ -1109,10 +1398,13 @@
       "player_id": "3916387",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3916387",
       "espn_id": "3916387",
-      "player": "Lamar Jackson"
+      "player": "Lamar Jackson",
+      "position": "QB",
+      "nfl_team": "BAL"
     },
     {
       "week": 13,
@@ -1120,10 +1412,13 @@
       "player_id": "3915416",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3915416",
       "espn_id": "3915416",
-      "player": "DJ Moore"
+      "player": "DJ Moore",
+      "position": "WR",
+      "nfl_team": "CAR"
     },
     {
       "week": 13,
@@ -1131,10 +1426,13 @@
       "player_id": "14924",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14924",
       "espn_id": "14924",
-      "player": "T.Y. Hilton"
+      "player": "T.Y. Hilton",
+      "position": "WR",
+      "nfl_team": "IND"
     },
     {
       "week": 13,
@@ -1142,10 +1440,13 @@
       "player_id": "2976516",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2976516",
       "espn_id": "2976516",
-      "player": "T.J. Yeldon"
+      "player": "T.J. Yeldon",
+      "position": "RB",
+      "nfl_team": "JAX"
     },
     {
       "week": 13,
@@ -1153,10 +1454,13 @@
       "player_id": "16777",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16777",
       "espn_id": "16777",
-      "player": "Carlos Hyde"
+      "player": "Carlos Hyde",
+      "position": "RB",
+      "nfl_team": "JAX"
     },
     {
       "week": 13,
@@ -1164,6 +1468,7 @@
       "player_id": "3123052",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3123052",
       "espn_id": "3123052",
@@ -1175,10 +1480,13 @@
       "player_id": "JAX",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16030",
       "espn_id": "-16030",
-      "player": "JAGUARS"
+      "player": "JAGUARS",
+      "position": "DEF",
+      "nfl_team": "JAX"
     },
     {
       "week": 13,
@@ -1186,10 +1494,13 @@
       "player_id": "13934",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "13934",
       "espn_id": "13934",
-      "player": "Antonio Brown"
+      "player": "Antonio Brown",
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 13,
@@ -1197,10 +1508,13 @@
       "player_id": "13982",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "13982",
       "espn_id": "13982",
-      "player": "Julio Jones"
+      "player": "Julio Jones",
+      "position": "WR",
+      "nfl_team": "ATL"
     },
     {
       "week": 13,
@@ -1208,10 +1522,13 @@
       "player_id": "16944",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16944",
       "espn_id": "16944",
-      "player": "Devonta Freeman"
+      "player": "Devonta Freeman",
+      "position": "RB",
+      "nfl_team": "ATL"
     },
     {
       "week": 13,
@@ -1219,10 +1536,13 @@
       "player_id": "3116385",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3116385",
       "espn_id": "3116385",
-      "player": "Joe Mixon"
+      "player": "Joe Mixon",
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 13,
@@ -1230,10 +1550,13 @@
       "player_id": "15847",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "15847",
       "espn_id": "15847",
-      "player": "Travis Kelce"
+      "player": "Travis Kelce",
+      "position": "TE",
+      "nfl_team": "KC"
     },
     {
       "week": 13,
@@ -1241,10 +1564,13 @@
       "player_id": "14881",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14881",
       "espn_id": "14881",
-      "player": "Russell Wilson"
+      "player": "Russell Wilson",
+      "position": "QB",
+      "nfl_team": "SEA"
     },
     {
       "week": 13,
@@ -1252,10 +1578,13 @@
       "player_id": "15683",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "15683",
       "espn_id": "15683",
-      "player": "Justin Tucker"
+      "player": "Justin Tucker",
+      "position": "K",
+      "nfl_team": "BAL"
     },
     {
       "week": 13,
@@ -1263,10 +1592,13 @@
       "player_id": "11283",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "11283",
       "espn_id": "11283",
-      "player": "DeSean Jackson"
+      "player": "DeSean Jackson",
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 13,
@@ -1274,10 +1606,13 @@
       "player_id": "2979477",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2979477",
       "espn_id": "2979477",
-      "player": "Tevin Coleman"
+      "player": "Tevin Coleman",
+      "position": "RB",
+      "nfl_team": "ATL"
     },
     {
       "week": 13,
@@ -1285,10 +1620,13 @@
       "player_id": "11237",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "11237",
       "espn_id": "11237",
-      "player": "Matt Ryan"
+      "player": "Matt Ryan",
+      "position": "QB",
+      "nfl_team": "ATL"
     },
     {
       "week": 13,
@@ -1296,10 +1634,13 @@
       "player_id": "3045147",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3045147",
       "espn_id": "3045147",
-      "player": "James Conner"
+      "player": "James Conner",
+      "position": "RB",
+      "nfl_team": "PIT"
     },
     {
       "week": 13,
@@ -1307,10 +1648,13 @@
       "player_id": "3139605",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3139605",
       "espn_id": "3139605",
-      "player": "Marlon Mack"
+      "player": "Marlon Mack",
+      "position": "RB",
+      "nfl_team": "IND"
     },
     {
       "week": 13,
@@ -1318,10 +1662,13 @@
       "player_id": "LAR",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16014",
       "espn_id": "-16014",
-      "player": "RAMS"
+      "player": "RAMS",
+      "position": "DEF",
+      "nfl_team": "LAR"
     },
     {
       "week": 13,
@@ -1329,10 +1676,13 @@
       "player_id": "8479",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "8479",
       "espn_id": "8479",
-      "player": "Frank Gore"
+      "player": "Frank Gore",
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 13,
@@ -1340,10 +1690,13 @@
       "player_id": "16732",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16732",
       "espn_id": "16732",
-      "player": "Eric Ebron"
+      "player": "Eric Ebron",
+      "position": "TE",
+      "nfl_team": "IND"
     },
     {
       "week": 13,
@@ -1351,10 +1704,13 @@
       "player_id": "3139925",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3139925",
       "espn_id": "3139925",
-      "player": "Rashaad Penny"
+      "player": "Rashaad Penny",
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 13,
@@ -1362,10 +1718,13 @@
       "player_id": "2577327",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2577327",
       "espn_id": "2577327",
-      "player": "Tyler Lockett"
+      "player": "Tyler Lockett",
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 13,
@@ -1373,10 +1732,13 @@
       "player_id": "3916430",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3916430",
       "espn_id": "3916430",
-      "player": "Nyheim Hines"
+      "player": "Nyheim Hines",
+      "position": "RB",
+      "nfl_team": "IND"
     },
     {
       "week": 13,
@@ -1384,10 +1746,13 @@
       "player_id": "17359",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "17359",
       "espn_id": "17359",
-      "player": "Damien Williams"
+      "player": "Damien Williams",
+      "position": "RB",
+      "nfl_team": "KC"
     },
     {
       "week": 13,
@@ -1395,10 +1760,13 @@
       "player_id": "3051392",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3051392",
       "espn_id": "3051392",
-      "player": "Ezekiel Elliott"
+      "player": "Ezekiel Elliott",
+      "position": "RB",
+      "nfl_team": "DAL"
     },
     {
       "week": 13,
@@ -1406,10 +1774,13 @@
       "player_id": "16733",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16733",
       "espn_id": "16733",
-      "player": "Odell Beckham Jr."
+      "player": "Odell Beckham Jr.",
+      "position": "WR",
+      "nfl_team": "NYG"
     },
     {
       "week": 13,
@@ -1417,10 +1788,13 @@
       "player_id": "15818",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "15818",
       "espn_id": "15818",
-      "player": "Keenan Allen"
+      "player": "Keenan Allen",
+      "position": "WR",
+      "nfl_team": "LAC"
     },
     {
       "week": 13,
@@ -1428,10 +1802,13 @@
       "player_id": "16460",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "16460",
       "espn_id": "16460",
-      "player": "Adam Thielen"
+      "player": "Adam Thielen",
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 13,
@@ -1439,10 +1816,13 @@
       "player_id": "3122840",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3122840",
       "espn_id": "3122840",
-      "player": "Deshaun Watson"
+      "player": "Deshaun Watson",
+      "position": "QB",
+      "nfl_team": "HOU"
     },
     {
       "week": 13,
@@ -1450,10 +1830,13 @@
       "player_id": "10456",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "10456",
       "espn_id": "10456",
-      "player": "Marshawn Lynch"
+      "player": "Marshawn Lynch",
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 13,
@@ -1461,10 +1844,13 @@
       "player_id": "13216",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "13216",
       "espn_id": "13216",
-      "player": "Demaryius Thomas"
+      "player": "Demaryius Thomas",
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 13,
@@ -1472,6 +1858,7 @@
       "player_id": "13981",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "13981",
       "espn_id": "13981",
@@ -1483,6 +1870,7 @@
       "player_id": "3042519",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3042519",
       "espn_id": "3042519",
@@ -1494,10 +1882,13 @@
       "player_id": "5529",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "5529",
       "espn_id": "5529",
-      "player": "Philip Rivers"
+      "player": "Philip Rivers",
+      "position": "QB",
+      "nfl_team": "LAC"
     },
     {
       "week": 13,
@@ -1505,10 +1896,13 @@
       "player_id": "3051902",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3051902",
       "espn_id": "3051902",
-      "player": "Peyton Barber"
+      "player": "Peyton Barber",
+      "position": "RB",
+      "nfl_team": "TB"
     },
     {
       "week": 13,
@@ -1516,10 +1910,13 @@
       "player_id": "HOU",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "-16034",
       "espn_id": "-16034",
-      "player": "TEXANS"
+      "player": "TEXANS",
+      "position": "DEF",
+      "nfl_team": "HOU"
     },
     {
       "week": 13,
@@ -1527,10 +1924,13 @@
       "player_id": "14885",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "14885",
       "espn_id": "14885",
-      "player": "Doug Martin"
+      "player": "Doug Martin",
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 13,
@@ -1538,10 +1938,13 @@
       "player_id": "2976499",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2976499",
       "espn_id": "2976499",
-      "player": "Amari Cooper"
+      "player": "Amari Cooper",
+      "position": "WR",
+      "nfl_team": "DAL"
     },
     {
       "week": 13,
@@ -1549,10 +1952,13 @@
       "player_id": "3052587",
       "started": false,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3052587",
       "espn_id": "3052587",
-      "player": "Baker Mayfield"
+      "player": "Baker Mayfield",
+      "position": "QB",
+      "nfl_team": "CLE"
     },
     {
       "week": 13,
@@ -1560,10 +1966,13 @@
       "player_id": "2971573",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "2971573",
       "espn_id": "2971573",
-      "player": "Ka'imi Fairbairn"
+      "player": "Ka'imi Fairbairn",
+      "position": "K",
+      "nfl_team": "HOU"
     },
     {
       "week": 13,
@@ -1571,10 +1980,13 @@
       "player_id": "3068267",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "3068267",
       "espn_id": "3068267",
-      "player": "Austin Ekeler"
+      "player": "Austin Ekeler",
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 13,
@@ -1582,10 +1994,13 @@
       "player_id": "12537",
       "started": true,
       "points": null,
+      "season": 2018,
       "source": "espn",
       "source_player_id": "12537",
       "espn_id": "12537",
-      "player": "Jared Cook"
+      "player": "Jared Cook",
+      "position": "TE",
+      "nfl_team": "LV"
     }
   ]
 }

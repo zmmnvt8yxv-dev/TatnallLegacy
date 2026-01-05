@@ -42,8 +42,11 @@
       "player": "Dalvin Cook",
       "points": 23.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 15,
@@ -51,8 +54,11 @@
       "player": "Miles Sanders",
       "points": 8.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PHI"
     },
     {
       "week": 15,
@@ -60,6 +66,7 @@
       "player": "Allen Robinson II",
       "points": 8.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -69,8 +76,11 @@
       "player": "Calvin Ridley",
       "points": 24.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ATL"
     },
     {
       "week": 15,
@@ -78,8 +88,11 @@
       "player": "Raheem Mostert",
       "points": 6.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 15,
@@ -87,8 +100,11 @@
       "player": "David Montgomery",
       "points": 29.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CHI"
     },
     {
       "week": 15,
@@ -96,8 +112,11 @@
       "player": "Darren Waller",
       "points": 23.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "LV"
     },
     {
       "week": 15,
@@ -105,8 +124,11 @@
       "player": "Tom Brady",
       "points": 26.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "TB"
     },
     {
       "week": 15,
@@ -114,8 +136,11 @@
       "player": "Brandon McManus",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "DEN"
     },
     {
       "week": 15,
@@ -123,8 +148,11 @@
       "player": "Curtis Samuel",
       "points": 4.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CAR"
     },
     {
       "week": 15,
@@ -132,8 +160,11 @@
       "player": "Kenny Golladay",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DET"
     },
     {
       "week": 15,
@@ -141,8 +172,11 @@
       "player": "Christian McCaffrey",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 15,
@@ -150,8 +184,11 @@
       "player": "J.K. Dobbins",
       "points": 13.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BAL"
     },
     {
       "week": 15,
@@ -159,8 +196,11 @@
       "player": "A.J. Brown",
       "points": 10.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TEN"
     },
     {
       "week": 15,
@@ -168,8 +208,11 @@
       "player": "Jared Goff",
       "points": 14.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LA"
     },
     {
       "week": 15,
@@ -177,8 +220,11 @@
       "player": "Cam Akers",
       "points": 6.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LA"
     },
     {
       "week": 15,
@@ -186,6 +232,7 @@
       "player": "Rams D/ST",
       "points": 4.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -195,6 +242,7 @@
       "player": "Ravens D/ST",
       "points": 12.0,
       "started": false,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -204,8 +252,11 @@
       "player": "Jalen Hurts",
       "points": 39.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "PHI"
     },
     {
       "week": 15,
@@ -213,6 +264,7 @@
       "player": "Jeff Wilson Jr.",
       "points": 12.0,
       "started": false,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -222,8 +274,11 @@
       "player": "Harrison Butker",
       "points": 6.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "KC"
     },
     {
       "week": 15,
@@ -231,8 +286,11 @@
       "player": "Tony Pollard",
       "points": 25.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DAL"
     },
     {
       "week": 15,
@@ -240,8 +298,11 @@
       "player": "Nick Chubb",
       "points": 12.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 15,
@@ -249,8 +310,11 @@
       "player": "Michael Thomas",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NO"
     },
     {
       "week": 15,
@@ -258,8 +322,11 @@
       "player": "George Kittle",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "SF"
     },
     {
       "week": 15,
@@ -267,8 +334,11 @@
       "player": "Chris Carson",
       "points": 6.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 15,
@@ -276,8 +346,11 @@
       "player": "Tyler Lockett",
       "points": 3.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 15,
@@ -285,6 +358,7 @@
       "player": "Todd Gurley II",
       "points": 1.0,
       "started": false,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -294,8 +368,11 @@
       "player": "Terry McLaurin",
       "points": 7.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "WAS"
     },
     {
       "week": 15,
@@ -303,8 +380,11 @@
       "player": "DeVante Parker",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIA"
     },
     {
       "week": 15,
@@ -312,8 +392,11 @@
       "player": "Aaron Rodgers",
       "points": 17.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "GB"
     },
     {
       "week": 15,
@@ -321,8 +404,11 @@
       "player": "Alexander Mattison",
       "points": 1.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 15,
@@ -330,6 +416,7 @@
       "player": "Robby Anderson",
       "points": 2.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -339,8 +426,11 @@
       "player": "Justin Herbert",
       "points": 29.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LAC"
     },
     {
       "week": 15,
@@ -348,8 +438,11 @@
       "player": "T.J. Hockenson",
       "points": -1.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "DET"
     },
     {
       "week": 15,
@@ -357,8 +450,11 @@
       "player": "Jason Sanders",
       "points": 2.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "MIA"
     },
     {
       "week": 15,
@@ -366,8 +462,11 @@
       "player": "Carlos Hyde",
       "points": 13.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 15,
@@ -375,8 +474,11 @@
       "player": "Taysom Hill",
       "points": 6.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "NO"
     },
     {
       "week": 15,
@@ -384,8 +486,11 @@
       "player": "Cole Beasley",
       "points": 13.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BUF"
     },
     {
       "week": 15,
@@ -393,8 +498,11 @@
       "player": "Devontae Booker",
       "points": 1.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 15,
@@ -402,8 +510,11 @@
       "player": "Mike Davis",
       "points": 5.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 15,
@@ -411,6 +522,7 @@
       "player": "Bills D/ST",
       "points": 13.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -420,8 +532,11 @@
       "player": "Emmanuel Sanders",
       "points": 7.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NO"
     },
     {
       "week": 15,
@@ -429,8 +544,11 @@
       "player": "Chad Hansen",
       "points": 11.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 15,
@@ -438,8 +556,11 @@
       "player": "Alvin Kamara",
       "points": 15.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NO"
     },
     {
       "week": 15,
@@ -447,8 +568,11 @@
       "player": "DeAndre Hopkins",
       "points": 22.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ARI"
     },
     {
       "week": 15,
@@ -456,8 +580,11 @@
       "player": "Travis Kelce",
       "points": 14.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "KC"
     },
     {
       "week": 15,
@@ -465,8 +592,11 @@
       "player": "Patrick Mahomes",
       "points": 25.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "KC"
     },
     {
       "week": 15,
@@ -474,8 +604,11 @@
       "player": "Cooper Kupp",
       "points": 3.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 15,
@@ -483,6 +616,7 @@
       "player": "Ronald Jones II",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -492,6 +626,7 @@
       "player": "DJ Chark Jr.",
       "points": 5.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -501,8 +636,11 @@
       "player": "Jamison Crowder",
       "points": 6.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NYJ"
     },
     {
       "week": 15,
@@ -510,8 +648,11 @@
       "player": "Josh Allen",
       "points": 39.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "BUF"
     },
     {
       "week": 15,
@@ -519,8 +660,11 @@
       "player": "CeeDee Lamb",
       "points": 8.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DAL"
     },
     {
       "week": 15,
@@ -528,6 +672,7 @@
       "player": "Steelers D/ST",
       "points": 4.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -537,8 +682,11 @@
       "player": "Jamaal Williams",
       "points": 1.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "GB"
     },
     {
       "week": 15,
@@ -546,8 +694,11 @@
       "player": "Chase Edmonds",
       "points": 11.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ARI"
     },
     {
       "week": 15,
@@ -555,8 +706,11 @@
       "player": "Tee Higgins",
       "points": 3.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 15,
@@ -564,8 +718,11 @@
       "player": "Younghoe Koo",
       "points": 11.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "ATL"
     },
     {
       "week": 15,
@@ -573,8 +730,11 @@
       "player": "Jarvis Landry",
       "points": 12.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CLE"
     },
     {
       "week": 15,
@@ -582,8 +742,11 @@
       "player": "Keke Coutee",
       "points": 9.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 15,
@@ -591,8 +754,11 @@
       "player": "Salvon Ahmed",
       "points": 22.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 15,
@@ -600,8 +766,11 @@
       "player": "Sony Michel",
       "points": 7.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NE"
     },
     {
       "week": 15,
@@ -609,8 +778,11 @@
       "player": "Lamar Jackson",
       "points": 28.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "CB",
+      "nfl_team": "NYJ"
     },
     {
       "week": 15,
@@ -618,8 +790,11 @@
       "player": "DK Metcalf",
       "points": 4.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 15,
@@ -627,8 +802,11 @@
       "player": "Devin Singletary",
       "points": 15.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BUF"
     },
     {
       "week": 15,
@@ -636,6 +814,7 @@
       "player": "Deebo Samuel",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -645,8 +824,11 @@
       "player": "Justin Tucker",
       "points": 9.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "BAL"
     },
     {
       "week": 15,
@@ -654,8 +836,11 @@
       "player": "James Robinson",
       "points": 10.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "JAX"
     },
     {
       "week": 15,
@@ -663,8 +848,11 @@
       "player": "Devonta Freeman",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NYG"
     },
     {
       "week": 15,
@@ -672,8 +860,11 @@
       "player": "Justin Jefferson",
       "points": 12.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 15,
@@ -681,8 +872,11 @@
       "player": "Tyreek Hill",
       "points": 11.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "KC"
     },
     {
       "week": 15,
@@ -690,8 +884,11 @@
       "player": "Tua Tagovailoa",
       "points": 17.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "MIA"
     },
     {
       "week": 15,
@@ -699,8 +896,11 @@
       "player": "Corey Davis",
       "points": 21.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TEN"
     },
     {
       "week": 15,
@@ -708,8 +908,11 @@
       "player": "Ezekiel Elliott",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DAL"
     },
     {
       "week": 15,
@@ -717,8 +920,11 @@
       "player": "Drew Brees",
       "points": 19.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "NO"
     },
     {
       "week": 15,
@@ -726,8 +932,11 @@
       "player": "Jonathan Taylor",
       "points": 15.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "IND"
     },
     {
       "week": 15,
@@ -735,6 +944,7 @@
       "player": "Seahawks D/ST",
       "points": 8.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -744,8 +954,11 @@
       "player": "Marquise Brown",
       "points": 9.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BAL"
     },
     {
       "week": 15,
@@ -753,8 +966,11 @@
       "player": "Jalen Richard",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 15,
@@ -762,8 +978,11 @@
       "player": "Derek Carr",
       "points": 2.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LV"
     },
     {
       "week": 15,
@@ -771,8 +990,11 @@
       "player": "Robert Tonyan",
       "points": 7.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "GB"
     },
     {
       "week": 15,
@@ -780,8 +1002,11 @@
       "player": "Mike Williams",
       "points": 2.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LAC"
     },
     {
       "week": 15,
@@ -789,8 +1014,11 @@
       "player": "Dallas Goedert",
       "points": 3.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "PHI"
     },
     {
       "week": 15,
@@ -798,8 +1026,11 @@
       "player": "Giovani Bernard",
       "points": 21.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 15,
@@ -807,8 +1038,11 @@
       "player": "Derrick Henry",
       "points": 24.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TEN"
     },
     {
       "week": 15,
@@ -816,8 +1050,11 @@
       "player": "Josh Jacobs",
       "points": 16.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 15,
@@ -825,6 +1062,7 @@
       "player": "Chris Godwin",
       "points": 9.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -834,8 +1072,11 @@
       "player": "Amari Cooper",
       "points": 1.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DAL"
     },
     {
       "week": 15,
@@ -843,8 +1084,11 @@
       "player": "Mark Andrews",
       "points": 12.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "BAL"
     },
     {
       "week": 15,
@@ -852,6 +1096,7 @@
       "player": "Melvin Gordon III",
       "points": 20.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -861,8 +1106,11 @@
       "player": "Kyler Murray",
       "points": 36.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "ARI"
     },
     {
       "week": 15,
@@ -870,8 +1118,11 @@
       "player": "Stefon Diggs",
       "points": 16.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BUF"
     },
     {
       "week": 15,
@@ -879,8 +1130,11 @@
       "player": "Jerry Jeudy",
       "points": 1.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DEN"
     },
     {
       "week": 15,
@@ -888,8 +1142,11 @@
       "player": "Myles Gaskin",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 15,
@@ -897,8 +1154,11 @@
       "player": "Chase Claypool",
       "points": 5.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 15,
@@ -906,8 +1166,11 @@
       "player": "Teddy Bridgewater",
       "points": 16.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CAR"
     },
     {
       "week": 15,
@@ -915,8 +1178,11 @@
       "player": "Wayne Gallman",
       "points": 2.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NYG"
     },
     {
       "week": 15,
@@ -924,8 +1190,11 @@
       "player": "Nyheim Hines",
       "points": 5.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "IND"
     },
     {
       "week": 15,
@@ -933,8 +1202,11 @@
       "player": "Mike Gesicki",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "MIA"
     },
     {
       "week": 15,
@@ -942,8 +1214,11 @@
       "player": "Kirk Cousins",
       "points": 18.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "MIN"
     },
     {
       "week": 15,
@@ -951,8 +1226,11 @@
       "player": "Peyton Barber",
       "points": 6.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "WAS"
     },
     {
       "week": 15,
@@ -960,6 +1238,7 @@
       "player": "Cowboys D/ST",
       "points": 10.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -969,8 +1248,11 @@
       "player": "Graham Gano",
       "points": 6.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "NYG"
     },
     {
       "week": 15,
@@ -978,8 +1260,11 @@
       "player": "Aaron Jones",
       "points": 23.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "GB"
     },
     {
       "week": 15,
@@ -987,8 +1272,11 @@
       "player": "Austin Ekeler",
       "points": 7.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 15,
@@ -996,8 +1284,11 @@
       "player": "Adam Thielen",
       "points": 7.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 15,
@@ -1005,8 +1296,11 @@
       "player": "Russell Wilson",
       "points": 11.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "SEA"
     },
     {
       "week": 15,
@@ -1014,6 +1308,7 @@
       "player": "Marvin Jones Jr.",
       "points": 19.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -1023,8 +1318,11 @@
       "player": "Julian Edelman",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NE"
     },
     {
       "week": 15,
@@ -1032,8 +1330,11 @@
       "player": "John Brown",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BUF"
     },
     {
       "week": 15,
@@ -1041,8 +1342,11 @@
       "player": "Damien Harris",
       "points": 0.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NE"
     },
     {
       "week": 15,
@@ -1050,8 +1354,11 @@
       "player": "Antonio Brown",
       "points": 16.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 15,
@@ -1059,8 +1366,11 @@
       "player": "Rob Gronkowski",
       "points": 2.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "TB"
     },
     {
       "week": 15,
@@ -1068,8 +1378,11 @@
       "player": "Davante Adams",
       "points": 4.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "GB"
     },
     {
       "week": 15,
@@ -1077,8 +1390,11 @@
       "player": "Deshaun Watson",
       "points": 24.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "HOU"
     },
     {
       "week": 15,
@@ -1086,8 +1402,11 @@
       "player": "Leonard Fournette",
       "points": 17.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TB"
     },
     {
       "week": 15,
@@ -1095,8 +1414,11 @@
       "player": "Matt Prater",
       "points": 6.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "DET"
     },
     {
       "week": 15,
@@ -1104,6 +1426,7 @@
       "player": "Patriots D/ST",
       "points": 3.0,
       "started": false,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -1113,6 +1436,7 @@
       "player": "Michael Pittman Jr.",
       "points": 1.0,
       "started": false,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -1122,6 +1446,7 @@
       "player": "Saints D/ST",
       "points": 4.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -1131,8 +1456,11 @@
       "player": "J.D. McKissic",
       "points": 16.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "WAS"
     },
     {
       "week": 15,
@@ -1140,8 +1468,11 @@
       "player": "Hunter Henry",
       "points": 12.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "LAC"
     },
     {
       "week": 15,
@@ -1149,8 +1480,11 @@
       "player": "Allen Lazard",
       "points": 5.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "GB"
     },
     {
       "week": 15,
@@ -1158,8 +1492,11 @@
       "player": "Sterling Shepard",
       "points": 5.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NYG"
     },
     {
       "week": 15,
@@ -1167,8 +1504,11 @@
       "player": "Kenyan Drake",
       "points": 3.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ARI"
     },
     {
       "week": 15,
@@ -1176,8 +1516,11 @@
       "player": "Joe Mixon",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 15,
@@ -1185,8 +1528,11 @@
       "player": "DJ Moore",
       "points": 15.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CAR"
     },
     {
       "week": 15,
@@ -1194,8 +1540,11 @@
       "player": "JuJu Smith-Schuster",
       "points": -1.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 15,
@@ -1203,8 +1552,11 @@
       "player": "Robert Woods",
       "points": 15.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 15,
@@ -1212,8 +1564,11 @@
       "player": "James Conner",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PIT"
     },
     {
       "week": 15,
@@ -1221,8 +1576,11 @@
       "player": "Keenan Allen",
       "points": 1.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LAC"
     },
     {
       "week": 15,
@@ -1230,8 +1588,11 @@
       "player": "Tyler Boyd",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 15,
@@ -1239,8 +1600,11 @@
       "player": "Latavius Murray",
       "points": 8.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NO"
     },
     {
       "week": 15,
@@ -1248,8 +1612,11 @@
       "player": "Cam Newton",
       "points": 11.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "NE"
     },
     {
       "week": 15,
@@ -1257,8 +1624,11 @@
       "player": "Ryan Tannehill",
       "points": 38.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "TEN"
     },
     {
       "week": 15,
@@ -1266,8 +1636,11 @@
       "player": "Kalen Ballage",
       "points": 7.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 15,
@@ -1275,8 +1648,11 @@
       "player": "Kareem Hunt",
       "points": 2.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 15,
@@ -1284,8 +1660,11 @@
       "player": "Mike Evans",
       "points": 13.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 15,
@@ -1293,8 +1672,11 @@
       "player": "Gus Edwards",
       "points": 7.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BAL"
     },
     {
       "week": 15,
@@ -1302,8 +1684,11 @@
       "player": "Rodrigo Blankenship",
       "points": 11.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "IND"
     },
     {
       "week": 15,
@@ -1311,6 +1696,7 @@
       "player": "Benny Snell Jr.",
       "points": 16.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -1320,8 +1706,11 @@
       "player": "Eric Ebron",
       "points": 0.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "PIT"
     },
     {
       "week": 15,
@@ -1329,6 +1718,7 @@
       "player": "Browns D/ST",
       "points": 7.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -1338,8 +1728,11 @@
       "player": "Philip Rivers",
       "points": 17.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "IND"
     },
     {
       "week": 15,
@@ -1347,8 +1740,11 @@
       "player": "Clyde Edwards-Helaire",
       "points": 7.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "KC"
     },
     {
       "week": 15,
@@ -1356,8 +1752,11 @@
       "player": "David Johnson",
       "points": 14.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "HOU"
     },
     {
       "week": 15,
@@ -1365,8 +1764,11 @@
       "player": "Brandin Cooks",
       "points": 5.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 15,
@@ -1374,8 +1776,11 @@
       "player": "Matt Ryan",
       "points": 29.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "ATL"
     },
     {
       "week": 15,
@@ -1383,8 +1788,11 @@
       "player": "Antonio Gibson",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "WAS"
     },
     {
       "week": 15,
@@ -1392,8 +1800,11 @@
       "player": "Parris Campbell",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "IND"
     },
     {
       "week": 15,
@@ -1401,8 +1812,11 @@
       "player": "D'Andre Swift",
       "points": 17.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DET"
     },
     {
       "week": 15,
@@ -1410,8 +1824,11 @@
       "player": "Daniel Carlson",
       "points": 9.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "LV"
     },
     {
       "week": 15,
@@ -1419,8 +1836,11 @@
       "player": "Julio Jones",
       "points": 0.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ATL"
     },
     {
       "week": 15,
@@ -1428,8 +1848,11 @@
       "player": "Phillip Lindsay",
       "points": 3.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DEN"
     },
     {
       "week": 15,
@@ -1437,8 +1860,11 @@
       "player": "Brandon Aiyuk",
       "points": 13.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SF"
     },
     {
       "week": 15,
@@ -1446,8 +1872,11 @@
       "player": "Matthew Stafford",
       "points": 15.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "DET"
     },
     {
       "week": 15,
@@ -1455,8 +1884,11 @@
       "player": "Evan Engram",
       "points": 4.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "NYG"
     },
     {
       "week": 15,
@@ -1464,8 +1896,11 @@
       "player": "Christian Kirk",
       "points": 3.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ARI"
     },
     {
       "week": 15,
@@ -1473,8 +1908,11 @@
       "player": "Ben Roethlisberger",
       "points": 6.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "PIT"
     },
     {
       "week": 15,
@@ -1482,8 +1920,11 @@
       "player": "Diontae Johnson",
       "points": 11.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 15,
@@ -1491,6 +1932,7 @@
       "player": "Dolphins D/ST",
       "points": 8.0,
       "started": true,
+      "season": 2020,
       "source": "league",
       "source_player_id": null
     },
@@ -1500,8 +1942,11 @@
       "player": "Nelson Agholor",
       "points": 4.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LV"
     },
     {
       "week": 15,
@@ -1509,8 +1954,11 @@
       "player": "Ty Johnson",
       "points": 10.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NYJ"
     },
     {
       "week": 15,
@@ -1518,8 +1966,11 @@
       "player": "T.Y. Hilton",
       "points": 7.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "IND"
     },
     {
       "week": 15,
@@ -1527,8 +1978,11 @@
       "player": "Rashard Higgins",
       "points": 7.0,
       "started": true,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CLE"
     },
     {
       "week": 15,
@@ -1536,8 +1990,11 @@
       "player": "Russell Gage",
       "points": 12.0,
       "started": false,
+      "season": 2020,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ATL"
     }
   ]
 }

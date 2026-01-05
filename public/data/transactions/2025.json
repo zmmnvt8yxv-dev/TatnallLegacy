@@ -2018,54 +2018,6 @@
       ]
     },
     {
-      "id": "1265068211645206528-trade-4",
-      "season": 2025,
-      "week": 1,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: Tony Pollard | Sent: Jaydon Blue",
-      "created": 1755978274789,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "5967",
-          "name": "Tony Pollard",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12457",
-          "name": "Jaydon Blue",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1265068211645206528-trade-6",
-      "season": 2025,
-      "week": 1,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Jaydon Blue | Sent: Tony Pollard",
-      "created": 1755978274789,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12457",
-          "name": "Jaydon Blue",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5967",
-          "name": "Tony Pollard",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1265067409245474816-add-3-12543",
       "season": 2025,
       "week": 1,
@@ -3650,102 +3602,6 @@
       ]
     },
     {
-      "id": "1271571284085440512-trade-1",
-      "season": 2025,
-      "week": 2,
-      "type": "trade",
-      "team": "cmarvin713",
-      "summary": "Received: J.J. McCarthy | Sent: Austin Ekeler",
-      "created": 1757528728080,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "11565",
-          "name": "J.J. McCarthy",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4663",
-          "name": "Austin Ekeler",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1271571284085440512-trade-4",
-      "season": 2025,
-      "week": 2,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: Austin Ekeler | Sent: J.J. McCarthy",
-      "created": 1757528728080,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "4663",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11565",
-          "name": "J.J. McCarthy",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1271560985420771328-trade-3",
-      "season": 2025,
-      "week": 2,
-      "type": "trade",
-      "team": "LbmBets",
-      "summary": "Received: Bo Nix | Sent: Dylan Sampson",
-      "created": 1757526272686,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "11563",
-          "name": "Bo Nix",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12469",
-          "name": "Dylan Sampson",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1271560985420771328-trade-6",
-      "season": 2025,
-      "week": 2,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Dylan Sampson | Sent: Bo Nix",
-      "created": 1757526272686,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12469",
-          "name": "Dylan Sampson",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11563",
-          "name": "Bo Nix",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1271552096096755712-add-3-9757",
       "season": 2025,
       "week": 2,
@@ -3813,54 +3669,6 @@
           "id": "9500",
           "name": "Josh Downs",
           "action": "drop",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1271539665232498688-trade-3",
-      "season": 2025,
-      "week": 2,
-      "type": "trade",
-      "team": "LbmBets",
-      "summary": "Received: George Kittle | Sent: J.K. Dobbins",
-      "created": 1757521189558,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "4217",
-          "name": "George Kittle",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6806",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1271539665232498688-trade-4",
-      "season": 2025,
-      "week": 2,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: J.K. Dobbins | Sent: George Kittle",
-      "created": 1757521189558,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "6806",
-          "name": "J.K. Dobbins",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4217",
-          "name": "George Kittle",
-          "action": "sent",
           "id_type": "sleeper"
         }
       ]
@@ -4748,102 +4556,6 @@
       ]
     },
     {
-      "id": "1274558243456163840-trade-1",
-      "season": 2025,
-      "week": 3,
-      "type": "trade",
-      "team": "cmarvin713",
-      "summary": "Received: Bhayshul Tuten, Baker Mayfield, Tee Higgins | Sent: Caleb Williams, Rome Odunze, Jaylen Warren",
-      "created": 1758240874688,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12490",
-          "name": "Bhayshul Tuten",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4892",
-          "name": "Baker Mayfield",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6801",
-          "name": "Tee Higgins",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11560",
-          "name": "Caleb Williams",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11620",
-          "name": "Rome Odunze",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8228",
-          "name": "Jaylen Warren",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1274558243456163840-trade-8",
-      "season": 2025,
-      "week": 3,
-      "type": "trade",
-      "team": "Junktion",
-      "summary": "Received: Caleb Williams, Rome Odunze, Jaylen Warren | Sent: Bhayshul Tuten, Baker Mayfield, Tee Higgins",
-      "created": 1758240874688,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "11560",
-          "name": "Caleb Williams",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11620",
-          "name": "Rome Odunze",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8228",
-          "name": "Jaylen Warren",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12490",
-          "name": "Bhayshul Tuten",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4892",
-          "name": "Baker Mayfield",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6801",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1274526802525560832-add-3-9481",
       "season": 2025,
       "week": 3,
@@ -5708,174 +5420,6 @@
       ]
     },
     {
-      "id": "1278801064203673600-trade-6",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Sam LaPorta | Sent: (Unknown Player)",
-      "created": 1759252441982,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "10859",
-          "name": "Sam LaPorta",
-          "action": "received",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1278801064203673600-trade-8",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "Junktion",
-      "summary": "Received: (Unknown Player) | Sent: Sam LaPorta",
-      "created": 1759252441982,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "10859",
-          "name": "Sam LaPorta",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1278794915148500992-trade-4",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: Mike Evans, Derrick Henry, Alvin Kamara, Matthew Stafford | Sent: Jayden Daniels, Troy Franklin, Woody Marks, Jake Ferguson, Bijan Robinson",
-      "created": 1759250975933,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "2216",
-          "name": "Mike Evans",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "3198",
-          "name": "Derrick Henry",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4035",
-          "name": "Alvin Kamara",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "421",
-          "name": "Matthew Stafford",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11566",
-          "name": "Jayden Daniels",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11627",
-          "name": "Troy Franklin",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12474",
-          "name": "Woody Marks",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8110",
-          "name": "Jake Ferguson",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9509",
-          "name": "Bijan Robinson",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1278794915148500992-trade-8",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "Junktion",
-      "summary": "Received: Jayden Daniels, Troy Franklin, Woody Marks, Jake Ferguson, Bijan Robinson | Sent: Mike Evans, Derrick Henry, Alvin Kamara, Matthew Stafford",
-      "created": 1759250975933,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "11566",
-          "name": "Jayden Daniels",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11627",
-          "name": "Troy Franklin",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12474",
-          "name": "Woody Marks",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8110",
-          "name": "Jake Ferguson",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9509",
-          "name": "Bijan Robinson",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "2216",
-          "name": "Mike Evans",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "3198",
-          "name": "Derrick Henry",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4035",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "421",
-          "name": "Matthew Stafford",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1278781532076515328-add-8-4943",
       "season": 2025,
       "week": 4,
@@ -6272,54 +5816,6 @@
       ]
     },
     {
-      "id": "1278734816929382400-trade-2",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "jawnwick13",
-      "summary": "Received: Quentin Johnston | Sent: Kenneth Walker",
-      "created": 1759236647401,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "9754",
-          "name": "Quentin Johnston",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8151",
-          "name": "Kenneth Walker",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1278734816929382400-trade-6",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Kenneth Walker | Sent: Quentin Johnston",
-      "created": 1759236647401,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "8151",
-          "name": "Kenneth Walker",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9754",
-          "name": "Quentin Johnston",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1278733724342575104-drop-4-12522",
       "season": 2025,
       "week": 4,
@@ -6446,174 +5942,6 @@
       ]
     },
     {
-      "id": "1278492862597582848-trade-4",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: RJ Harvey, DeVonta Smith, Jake Ferguson | Sent: J.K. Dobbins",
-      "created": 1759178960994,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12489",
-          "name": "RJ Harvey",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7525",
-          "name": "DeVonta Smith",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8110",
-          "name": "Jake Ferguson",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6806",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1278492862597582848-trade-7",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "downsliquidity",
-      "summary": "Received: J.K. Dobbins | Sent: RJ Harvey, DeVonta Smith, Jake Ferguson",
-      "created": 1759178960994,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "6806",
-          "name": "J.K. Dobbins",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12489",
-          "name": "RJ Harvey",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7525",
-          "name": "DeVonta Smith",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8110",
-          "name": "Jake Ferguson",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1278488163181924352-trade-1",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "cmarvin713",
-      "summary": "Received: Saquon Barkley, Jalen Hurts | Sent: Baker Mayfield, Courtland Sutton, Jauan Jennings, Chase Brown",
-      "created": 1759177840566,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "4866",
-          "name": "Saquon Barkley",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6904",
-          "name": "Jalen Hurts",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4892",
-          "name": "Baker Mayfield",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5045",
-          "name": "Courtland Sutton",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7049",
-          "name": "Jauan Jennings",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9224",
-          "name": "Chase Brown",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1278488163181924352-trade-4",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: Baker Mayfield, Courtland Sutton, Jauan Jennings, Chase Brown | Sent: Saquon Barkley, Jalen Hurts",
-      "created": 1759177840566,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "4892",
-          "name": "Baker Mayfield",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5045",
-          "name": "Courtland Sutton",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7049",
-          "name": "Jauan Jennings",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9224",
-          "name": "Chase Brown",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4866",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6904",
-          "name": "Jalen Hurts",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1277637497240690688-drop-6-11559",
       "season": 2025,
       "week": 4,
@@ -6663,66 +5991,6 @@
           "id": "TB",
           "name": "TB",
           "action": "drop",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1277473629226946560-trade-6",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Travis Hunter, Quentin Johnston | Sent: Nick Chubb",
-      "created": 1758935956822,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12530",
-          "name": "Travis Hunter",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9754",
-          "name": "Quentin Johnston",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4988",
-          "name": "Nick Chubb",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1277473629226946560-trade-7",
-      "season": 2025,
-      "week": 4,
-      "type": "trade",
-      "team": "downsliquidity",
-      "summary": "Received: Nick Chubb | Sent: Travis Hunter, Quentin Johnston",
-      "created": 1758935956822,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "4988",
-          "name": "Nick Chubb",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12530",
-          "name": "Travis Hunter",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9754",
-          "name": "Quentin Johnston",
-          "action": "sent",
           "id_type": "sleeper"
         }
       ]
@@ -7286,90 +6554,6 @@
       ]
     },
     {
-      "id": "1281447876144152576-trade-6",
-      "season": 2025,
-      "week": 5,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Brian Thomas, Ashton Jeanty | Sent: Tetairoa McMillan, Garrett Wilson, Jordan Addison",
-      "created": 1759883491125,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "11631",
-          "name": "Brian Thomas",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12527",
-          "name": "Ashton Jeanty",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12526",
-          "name": "Tetairoa McMillan",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8146",
-          "name": "Garrett Wilson",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9756",
-          "name": "Jordan Addison",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1281447876144152576-trade-8",
-      "season": 2025,
-      "week": 5,
-      "type": "trade",
-      "team": "Junktion",
-      "summary": "Received: Tetairoa McMillan, Garrett Wilson, Jordan Addison | Sent: Brian Thomas, Ashton Jeanty",
-      "created": 1759883491125,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12526",
-          "name": "Tetairoa McMillan",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8146",
-          "name": "Garrett Wilson",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9756",
-          "name": "Jordan Addison",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11631",
-          "name": "Brian Thomas",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12527",
-          "name": "Ashton Jeanty",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1281428450623619072-add-5-11647",
       "season": 2025,
       "week": 5,
@@ -7874,66 +7058,6 @@
       ]
     },
     {
-      "id": "1281132049784147968-trade-5",
-      "season": 2025,
-      "week": 5,
-      "type": "trade",
-      "team": "roylee6",
-      "summary": "Received: Josh Jacobs | Sent: Jaylen Waddle, Breece Hall",
-      "created": 1759808192253,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "5850",
-          "name": "Josh Jacobs",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7526",
-          "name": "Jaylen Waddle",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8155",
-          "name": "Breece Hall",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1281132049784147968-trade-6",
-      "season": 2025,
-      "week": 5,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Jaylen Waddle, Breece Hall | Sent: Josh Jacobs",
-      "created": 1759808192253,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "7526",
-          "name": "Jaylen Waddle",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8155",
-          "name": "Breece Hall",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5850",
-          "name": "Josh Jacobs",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1281076918199791616-add-7-9757",
       "season": 2025,
       "week": 5,
@@ -7965,78 +7089,6 @@
           "id": "6149",
           "name": "Darius Slayton",
           "action": "drop",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1280990535842013184-trade-4",
-      "season": 2025,
-      "week": 5,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: Blake Corum, A.J. Brown | Sent: Alvin Kamara, Tyler Allgeier",
-      "created": 1759774452700,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "11586",
-          "name": "Blake Corum",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5859",
-          "name": "A.J. Brown",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4035",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8132",
-          "name": "Tyler Allgeier",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1280990535842013184-trade-5",
-      "season": 2025,
-      "week": 5,
-      "type": "trade",
-      "team": "roylee6",
-      "summary": "Received: Alvin Kamara, Tyler Allgeier | Sent: Blake Corum, A.J. Brown",
-      "created": 1759774452700,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "4035",
-          "name": "Alvin Kamara",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8132",
-          "name": "Tyler Allgeier",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11586",
-          "name": "Blake Corum",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5859",
-          "name": "A.J. Brown",
-          "action": "sent",
           "id_type": "sleeper"
         }
       ]
@@ -10796,102 +9848,6 @@
       ]
     },
     {
-      "id": "1284566342845861888-trade-2",
-      "season": 2025,
-      "week": 7,
-      "type": "trade",
-      "team": "jawnwick13",
-      "summary": "Received: Courtland Sutton, Terry McLaurin, Chase Brown | Sent: Aaron Jones, George Pickens, Jordan Mason",
-      "created": 1760626991524,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "5045",
-          "name": "Courtland Sutton",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5927",
-          "name": "Terry McLaurin",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9224",
-          "name": "Chase Brown",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4199",
-          "name": "Aaron Jones",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8137",
-          "name": "George Pickens",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8408",
-          "name": "Jordan Mason",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1284566342845861888-trade-4",
-      "season": 2025,
-      "week": 7,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: Aaron Jones, George Pickens, Jordan Mason | Sent: Courtland Sutton, Terry McLaurin, Chase Brown",
-      "created": 1760626991524,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "4199",
-          "name": "Aaron Jones",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8137",
-          "name": "George Pickens",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8408",
-          "name": "Jordan Mason",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5045",
-          "name": "Courtland Sutton",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5927",
-          "name": "Terry McLaurin",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9224",
-          "name": "Chase Brown",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1284564161447100417-add-5-96",
       "season": 2025,
       "week": 7,
@@ -11625,54 +10581,6 @@
           "id": "IND",
           "name": "IND",
           "action": "drop",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1288930681170190336-trade-4",
-      "season": 2025,
-      "week": 8,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: (Unknown Player) | Sent: RJ Harvey, Harold Fannin",
-      "created": 1761667530867,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12489",
-          "name": "RJ Harvey",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12506",
-          "name": "Harold Fannin",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1288930681170190336-trade-6",
-      "season": 2025,
-      "week": 8,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: RJ Harvey, Harold Fannin | Sent: (Unknown Player)",
-      "created": 1761667530867,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12489",
-          "name": "RJ Harvey",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12506",
-          "name": "Harold Fannin",
-          "action": "received",
           "id_type": "sleeper"
         }
       ]
@@ -13478,114 +12386,6 @@
       ]
     },
     {
-      "id": "1291507704723947520-trade-4",
-      "season": 2025,
-      "week": 9,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: Lamar Jackson, Tyler Allgeier, Rashid Shaheed | Sent: Kyle Monangai, Matthew Stafford, DeVonta Smith, George Pickens",
-      "created": 1762281941161,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "4881",
-          "name": "Lamar Jackson",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8132",
-          "name": "Tyler Allgeier",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8676",
-          "name": "Rashid Shaheed",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12534",
-          "name": "Kyle Monangai",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "421",
-          "name": "Matthew Stafford",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7525",
-          "name": "DeVonta Smith",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8137",
-          "name": "George Pickens",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1291507704723947520-trade-5",
-      "season": 2025,
-      "week": 9,
-      "type": "trade",
-      "team": "roylee6",
-      "summary": "Received: Kyle Monangai, Matthew Stafford, DeVonta Smith, George Pickens | Sent: Lamar Jackson, Tyler Allgeier, Rashid Shaheed",
-      "created": 1762281941161,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12534",
-          "name": "Kyle Monangai",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "421",
-          "name": "Matthew Stafford",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7525",
-          "name": "DeVonta Smith",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8137",
-          "name": "George Pickens",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4881",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8132",
-          "name": "Tyler Allgeier",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8676",
-          "name": "Rashid Shaheed",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1291452959288221696-drop-5-4147",
       "season": 2025,
       "week": 9,
@@ -13761,90 +12561,6 @@
           "id": "10236",
           "name": "Dalton Kincaid",
           "action": "add",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1290706578231533568-trade-1",
-      "season": 2025,
-      "week": 9,
-      "type": "trade",
-      "team": "cmarvin713",
-      "summary": "Received: Kareem Hunt, A.J. Brown | Sent: Kyle Monangai, Tee Higgins, Zay Flowers",
-      "created": 1762090937721,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "4098",
-          "name": "Kareem Hunt",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5859",
-          "name": "A.J. Brown",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12534",
-          "name": "Kyle Monangai",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6801",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9997",
-          "name": "Zay Flowers",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1290706578231533568-trade-4",
-      "season": 2025,
-      "week": 9,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: Kyle Monangai, Tee Higgins, Zay Flowers | Sent: Kareem Hunt, A.J. Brown",
-      "created": 1762090937721,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12534",
-          "name": "Kyle Monangai",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6801",
-          "name": "Tee Higgins",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9997",
-          "name": "Zay Flowers",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "4098",
-          "name": "Kareem Hunt",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "5859",
-          "name": "A.J. Brown",
-          "action": "sent",
           "id_type": "sleeper"
         }
       ]
@@ -14115,78 +12831,6 @@
           "id": "7591",
           "name": "Justin Fields",
           "action": "drop",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1289297194100228096-trade-2",
-      "season": 2025,
-      "week": 9,
-      "type": "trade",
-      "team": "jawnwick13",
-      "summary": "Received: Brian Thomas, Tyrone Tracy, Jaylen Waddle | Sent: Jahmyr Gibbs",
-      "created": 1761754914359,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "11631",
-          "name": "Brian Thomas",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11655",
-          "name": "Tyrone Tracy",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7526",
-          "name": "Jaylen Waddle",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9221",
-          "name": "Jahmyr Gibbs",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1289297194100228096-trade-6",
-      "season": 2025,
-      "week": 9,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Jahmyr Gibbs | Sent: Brian Thomas, Tyrone Tracy, Jaylen Waddle",
-      "created": 1761754914359,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "9221",
-          "name": "Jahmyr Gibbs",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11631",
-          "name": "Brian Thomas",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11655",
-          "name": "Tyrone Tracy",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7526",
-          "name": "Jaylen Waddle",
-          "action": "sent",
           "id_type": "sleeper"
         }
       ]
@@ -14930,54 +13574,6 @@
       ]
     },
     {
-      "id": "1293974408225886208-trade-4",
-      "season": 2025,
-      "week": 10,
-      "type": "trade",
-      "team": "conner27lax",
-      "summary": "Received: Kenneth Walker | Sent: J.J. McCarthy",
-      "created": 1762870049105,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "8151",
-          "name": "Kenneth Walker",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11565",
-          "name": "J.J. McCarthy",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1293974408225886208-trade-6",
-      "season": 2025,
-      "week": 10,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: J.J. McCarthy | Sent: Kenneth Walker",
-      "created": 1762870049105,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "11565",
-          "name": "J.J. McCarthy",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8151",
-          "name": "Kenneth Walker",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1293965019322523648-add-2-6783",
       "season": 2025,
       "week": 10,
@@ -15513,78 +14109,6 @@
           "id": "12455",
           "name": "Brashard Smith",
           "action": "drop",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1292189624218701824-trade-2",
-      "season": 2025,
-      "week": 10,
-      "type": "trade",
-      "team": "jawnwick13",
-      "summary": "Received: Harold Fannin, Travis Etienne | Sent: Oronde Gadsden, Jameson Williams",
-      "created": 1762444523438,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12506",
-          "name": "Harold Fannin",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7543",
-          "name": "Travis Etienne",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12493",
-          "name": "Oronde Gadsden",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8148",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1292189624218701824-trade-6",
-      "season": 2025,
-      "week": 10,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Oronde Gadsden, Jameson Williams | Sent: Harold Fannin, Travis Etienne",
-      "created": 1762444523438,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12493",
-          "name": "Oronde Gadsden",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8148",
-          "name": "Jameson Williams",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12506",
-          "name": "Harold Fannin",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7543",
-          "name": "Travis Etienne",
-          "action": "sent",
           "id_type": "sleeper"
         }
       ]
@@ -18812,126 +17336,6 @@
       ]
     },
     {
-      "id": "1302443094985175040-trade-6",
-      "season": 2025,
-      "week": 14,
-      "type": "trade",
-      "team": "PhillyPhilly709",
-      "summary": "Received: Ladd McConkey, Travis Kelce, Jordan Love, Kenneth Gainwell | Sent: Jayden Higgins, RJ Harvey, Breece Hall, C.J. Stroud",
-      "created": 1764889141369,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "11635",
-          "name": "Ladd McConkey",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "1466",
-          "name": "Travis Kelce",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6804",
-          "name": "Jordan Love",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7567",
-          "name": "Kenneth Gainwell",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12484",
-          "name": "Jayden Higgins",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12489",
-          "name": "RJ Harvey",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8155",
-          "name": "Breece Hall",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9758",
-          "name": "C.J. Stroud",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
-      "id": "1302443094985175040-trade-7",
-      "season": 2025,
-      "week": 14,
-      "type": "trade",
-      "team": "downsliquidity",
-      "summary": "Received: Jayden Higgins, RJ Harvey, Breece Hall, C.J. Stroud | Sent: Ladd McConkey, Travis Kelce, Jordan Love, Kenneth Gainwell",
-      "created": 1764889141369,
-      "source": "sleeper_transactions_api",
-      "players": [
-        {
-          "id": "12484",
-          "name": "Jayden Higgins",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "12489",
-          "name": "RJ Harvey",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "8155",
-          "name": "Breece Hall",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "9758",
-          "name": "C.J. Stroud",
-          "action": "received",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "11635",
-          "name": "Ladd McConkey",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "1466",
-          "name": "Travis Kelce",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "6804",
-          "name": "Jordan Love",
-          "action": "sent",
-          "id_type": "sleeper"
-        },
-        {
-          "id": "7567",
-          "name": "Kenneth Gainwell",
-          "action": "sent",
-          "id_type": "sleeper"
-        }
-      ]
-    },
-    {
       "id": "1302300594353999872-add-4-7594",
       "season": 2025,
       "week": 14,
@@ -21825,6 +20229,1602 @@
           "id": "4988",
           "name": "Nick Chubb",
           "action": "drop",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1265068211645206528-trade-4",
+      "season": 2025,
+      "week": 1,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: Tony Pollard | Sent: Jaydon Blue",
+      "created": 1755978274789,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "5967",
+          "name": "Tony Pollard",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12457",
+          "name": "Jaydon Blue",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1265068211645206528-trade-6",
+      "season": 2025,
+      "week": 1,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Jaydon Blue | Sent: Tony Pollard",
+      "created": 1755978274789,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12457",
+          "name": "Jaydon Blue",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5967",
+          "name": "Tony Pollard",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1271571284085440512-trade-1",
+      "season": 2025,
+      "week": 2,
+      "type": "trade",
+      "team": "cmarvin713",
+      "summary": "Received: J.J. McCarthy | Sent: Austin Ekeler",
+      "created": 1757528728080,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "11565",
+          "name": "J.J. McCarthy",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4663",
+          "name": "Austin Ekeler",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1271571284085440512-trade-4",
+      "season": 2025,
+      "week": 2,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: Austin Ekeler | Sent: J.J. McCarthy",
+      "created": 1757528728080,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "4663",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11565",
+          "name": "J.J. McCarthy",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1271560985420771328-trade-3",
+      "season": 2025,
+      "week": 2,
+      "type": "trade",
+      "team": "LbmBets",
+      "summary": "Received: Bo Nix | Sent: Dylan Sampson",
+      "created": 1757526272686,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "11563",
+          "name": "Bo Nix",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12469",
+          "name": "Dylan Sampson",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1271560985420771328-trade-6",
+      "season": 2025,
+      "week": 2,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Dylan Sampson | Sent: Bo Nix",
+      "created": 1757526272686,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12469",
+          "name": "Dylan Sampson",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11563",
+          "name": "Bo Nix",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1271539665232498688-trade-3",
+      "season": 2025,
+      "week": 2,
+      "type": "trade",
+      "team": "LbmBets",
+      "summary": "Received: George Kittle | Sent: J.K. Dobbins",
+      "created": 1757521189558,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "4217",
+          "name": "George Kittle",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6806",
+          "name": "J.K. Dobbins",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1271539665232498688-trade-4",
+      "season": 2025,
+      "week": 2,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: J.K. Dobbins | Sent: George Kittle",
+      "created": 1757521189558,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "6806",
+          "name": "J.K. Dobbins",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4217",
+          "name": "George Kittle",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1274558243456163840-trade-1",
+      "season": 2025,
+      "week": 3,
+      "type": "trade",
+      "team": "cmarvin713",
+      "summary": "Received: Bhayshul Tuten, Baker Mayfield, Tee Higgins | Sent: Caleb Williams, Rome Odunze, Jaylen Warren",
+      "created": 1758240874688,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12490",
+          "name": "Bhayshul Tuten",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4892",
+          "name": "Baker Mayfield",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6801",
+          "name": "Tee Higgins",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11560",
+          "name": "Caleb Williams",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11620",
+          "name": "Rome Odunze",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8228",
+          "name": "Jaylen Warren",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1274558243456163840-trade-8",
+      "season": 2025,
+      "week": 3,
+      "type": "trade",
+      "team": "Junktion",
+      "summary": "Received: Caleb Williams, Rome Odunze, Jaylen Warren | Sent: Bhayshul Tuten, Baker Mayfield, Tee Higgins",
+      "created": 1758240874688,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "11560",
+          "name": "Caleb Williams",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11620",
+          "name": "Rome Odunze",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8228",
+          "name": "Jaylen Warren",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12490",
+          "name": "Bhayshul Tuten",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4892",
+          "name": "Baker Mayfield",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6801",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278801064203673600-trade-6",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Sam LaPorta | Sent: (Unknown Player)",
+      "created": 1759252441982,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "10859",
+          "name": "Sam LaPorta",
+          "action": "received",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278801064203673600-trade-8",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "Junktion",
+      "summary": "Received: (Unknown Player) | Sent: Sam LaPorta",
+      "created": 1759252441982,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "10859",
+          "name": "Sam LaPorta",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278794915148500992-trade-4",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: Mike Evans, Derrick Henry, Alvin Kamara, Matthew Stafford | Sent: Jayden Daniels, Troy Franklin, Woody Marks, Jake Ferguson, Bijan Robinson",
+      "created": 1759250975933,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "2216",
+          "name": "Mike Evans",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "3198",
+          "name": "Derrick Henry",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4035",
+          "name": "Alvin Kamara",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "421",
+          "name": "Matthew Stafford",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11566",
+          "name": "Jayden Daniels",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11627",
+          "name": "Troy Franklin",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12474",
+          "name": "Woody Marks",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8110",
+          "name": "Jake Ferguson",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9509",
+          "name": "Bijan Robinson",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278794915148500992-trade-8",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "Junktion",
+      "summary": "Received: Jayden Daniels, Troy Franklin, Woody Marks, Jake Ferguson, Bijan Robinson | Sent: Mike Evans, Derrick Henry, Alvin Kamara, Matthew Stafford",
+      "created": 1759250975933,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "11566",
+          "name": "Jayden Daniels",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11627",
+          "name": "Troy Franklin",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12474",
+          "name": "Woody Marks",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8110",
+          "name": "Jake Ferguson",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9509",
+          "name": "Bijan Robinson",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "2216",
+          "name": "Mike Evans",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "3198",
+          "name": "Derrick Henry",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4035",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "421",
+          "name": "Matthew Stafford",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278734816929382400-trade-2",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "jawnwick13",
+      "summary": "Received: Quentin Johnston | Sent: Kenneth Walker",
+      "created": 1759236647401,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "9754",
+          "name": "Quentin Johnston",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8151",
+          "name": "Kenneth Walker",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278734816929382400-trade-6",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Kenneth Walker | Sent: Quentin Johnston",
+      "created": 1759236647401,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "8151",
+          "name": "Kenneth Walker",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9754",
+          "name": "Quentin Johnston",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278492862597582848-trade-4",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: RJ Harvey, DeVonta Smith, Jake Ferguson | Sent: J.K. Dobbins",
+      "created": 1759178960994,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12489",
+          "name": "RJ Harvey",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7525",
+          "name": "DeVonta Smith",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8110",
+          "name": "Jake Ferguson",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6806",
+          "name": "J.K. Dobbins",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278492862597582848-trade-7",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "downsliquidity",
+      "summary": "Received: J.K. Dobbins | Sent: RJ Harvey, DeVonta Smith, Jake Ferguson",
+      "created": 1759178960994,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "6806",
+          "name": "J.K. Dobbins",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12489",
+          "name": "RJ Harvey",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7525",
+          "name": "DeVonta Smith",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8110",
+          "name": "Jake Ferguson",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278488163181924352-trade-1",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "cmarvin713",
+      "summary": "Received: Saquon Barkley, Jalen Hurts | Sent: Baker Mayfield, Courtland Sutton, Jauan Jennings, Chase Brown",
+      "created": 1759177840566,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "4866",
+          "name": "Saquon Barkley",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6904",
+          "name": "Jalen Hurts",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4892",
+          "name": "Baker Mayfield",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5045",
+          "name": "Courtland Sutton",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7049",
+          "name": "Jauan Jennings",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9224",
+          "name": "Chase Brown",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1278488163181924352-trade-4",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: Baker Mayfield, Courtland Sutton, Jauan Jennings, Chase Brown | Sent: Saquon Barkley, Jalen Hurts",
+      "created": 1759177840566,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "4892",
+          "name": "Baker Mayfield",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5045",
+          "name": "Courtland Sutton",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7049",
+          "name": "Jauan Jennings",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9224",
+          "name": "Chase Brown",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4866",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6904",
+          "name": "Jalen Hurts",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1277473629226946560-trade-6",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Travis Hunter, Quentin Johnston | Sent: Nick Chubb",
+      "created": 1758935956822,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12530",
+          "name": "Travis Hunter",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9754",
+          "name": "Quentin Johnston",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4988",
+          "name": "Nick Chubb",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1277473629226946560-trade-7",
+      "season": 2025,
+      "week": 4,
+      "type": "trade",
+      "team": "downsliquidity",
+      "summary": "Received: Nick Chubb | Sent: Travis Hunter, Quentin Johnston",
+      "created": 1758935956822,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "4988",
+          "name": "Nick Chubb",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12530",
+          "name": "Travis Hunter",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9754",
+          "name": "Quentin Johnston",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1281447876144152576-trade-6",
+      "season": 2025,
+      "week": 5,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Brian Thomas, Ashton Jeanty | Sent: Tetairoa McMillan, Garrett Wilson, Jordan Addison",
+      "created": 1759883491125,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "11631",
+          "name": "Brian Thomas",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12527",
+          "name": "Ashton Jeanty",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12526",
+          "name": "Tetairoa McMillan",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8146",
+          "name": "Garrett Wilson",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9756",
+          "name": "Jordan Addison",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1281447876144152576-trade-8",
+      "season": 2025,
+      "week": 5,
+      "type": "trade",
+      "team": "Junktion",
+      "summary": "Received: Tetairoa McMillan, Garrett Wilson, Jordan Addison | Sent: Brian Thomas, Ashton Jeanty",
+      "created": 1759883491125,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12526",
+          "name": "Tetairoa McMillan",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8146",
+          "name": "Garrett Wilson",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9756",
+          "name": "Jordan Addison",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11631",
+          "name": "Brian Thomas",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12527",
+          "name": "Ashton Jeanty",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1281132049784147968-trade-5",
+      "season": 2025,
+      "week": 5,
+      "type": "trade",
+      "team": "roylee6",
+      "summary": "Received: Josh Jacobs | Sent: Jaylen Waddle, Breece Hall",
+      "created": 1759808192253,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "5850",
+          "name": "Josh Jacobs",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7526",
+          "name": "Jaylen Waddle",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8155",
+          "name": "Breece Hall",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1281132049784147968-trade-6",
+      "season": 2025,
+      "week": 5,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Jaylen Waddle, Breece Hall | Sent: Josh Jacobs",
+      "created": 1759808192253,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "7526",
+          "name": "Jaylen Waddle",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8155",
+          "name": "Breece Hall",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5850",
+          "name": "Josh Jacobs",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1280990535842013184-trade-4",
+      "season": 2025,
+      "week": 5,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: Blake Corum, A.J. Brown | Sent: Alvin Kamara, Tyler Allgeier",
+      "created": 1759774452700,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "11586",
+          "name": "Blake Corum",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5859",
+          "name": "A.J. Brown",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4035",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8132",
+          "name": "Tyler Allgeier",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1280990535842013184-trade-5",
+      "season": 2025,
+      "week": 5,
+      "type": "trade",
+      "team": "roylee6",
+      "summary": "Received: Alvin Kamara, Tyler Allgeier | Sent: Blake Corum, A.J. Brown",
+      "created": 1759774452700,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "4035",
+          "name": "Alvin Kamara",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8132",
+          "name": "Tyler Allgeier",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11586",
+          "name": "Blake Corum",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5859",
+          "name": "A.J. Brown",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1284566342845861888-trade-2",
+      "season": 2025,
+      "week": 7,
+      "type": "trade",
+      "team": "jawnwick13",
+      "summary": "Received: Courtland Sutton, Terry McLaurin, Chase Brown | Sent: Aaron Jones, George Pickens, Jordan Mason",
+      "created": 1760626991524,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "5045",
+          "name": "Courtland Sutton",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5927",
+          "name": "Terry McLaurin",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9224",
+          "name": "Chase Brown",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4199",
+          "name": "Aaron Jones",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8137",
+          "name": "George Pickens",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8408",
+          "name": "Jordan Mason",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1284566342845861888-trade-4",
+      "season": 2025,
+      "week": 7,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: Aaron Jones, George Pickens, Jordan Mason | Sent: Courtland Sutton, Terry McLaurin, Chase Brown",
+      "created": 1760626991524,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "4199",
+          "name": "Aaron Jones",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8137",
+          "name": "George Pickens",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8408",
+          "name": "Jordan Mason",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5045",
+          "name": "Courtland Sutton",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5927",
+          "name": "Terry McLaurin",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9224",
+          "name": "Chase Brown",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1288930681170190336-trade-4",
+      "season": 2025,
+      "week": 8,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: (Unknown Player) | Sent: RJ Harvey, Harold Fannin",
+      "created": 1761667530867,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12489",
+          "name": "RJ Harvey",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12506",
+          "name": "Harold Fannin",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1288930681170190336-trade-6",
+      "season": 2025,
+      "week": 8,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: RJ Harvey, Harold Fannin | Sent: (Unknown Player)",
+      "created": 1761667530867,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12489",
+          "name": "RJ Harvey",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12506",
+          "name": "Harold Fannin",
+          "action": "received",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1291507704723947520-trade-4",
+      "season": 2025,
+      "week": 9,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: Lamar Jackson, Tyler Allgeier, Rashid Shaheed | Sent: Kyle Monangai, Matthew Stafford, DeVonta Smith, George Pickens",
+      "created": 1762281941161,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "4881",
+          "name": "Lamar Jackson",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8132",
+          "name": "Tyler Allgeier",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8676",
+          "name": "Rashid Shaheed",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12534",
+          "name": "Kyle Monangai",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "421",
+          "name": "Matthew Stafford",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7525",
+          "name": "DeVonta Smith",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8137",
+          "name": "George Pickens",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1291507704723947520-trade-5",
+      "season": 2025,
+      "week": 9,
+      "type": "trade",
+      "team": "roylee6",
+      "summary": "Received: Kyle Monangai, Matthew Stafford, DeVonta Smith, George Pickens | Sent: Lamar Jackson, Tyler Allgeier, Rashid Shaheed",
+      "created": 1762281941161,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12534",
+          "name": "Kyle Monangai",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "421",
+          "name": "Matthew Stafford",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7525",
+          "name": "DeVonta Smith",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8137",
+          "name": "George Pickens",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4881",
+          "name": "Lamar Jackson",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8132",
+          "name": "Tyler Allgeier",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8676",
+          "name": "Rashid Shaheed",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1290706578231533568-trade-1",
+      "season": 2025,
+      "week": 9,
+      "type": "trade",
+      "team": "cmarvin713",
+      "summary": "Received: Kareem Hunt, A.J. Brown | Sent: Kyle Monangai, Tee Higgins, Zay Flowers",
+      "created": 1762090937721,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "4098",
+          "name": "Kareem Hunt",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5859",
+          "name": "A.J. Brown",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12534",
+          "name": "Kyle Monangai",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6801",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9997",
+          "name": "Zay Flowers",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1290706578231533568-trade-4",
+      "season": 2025,
+      "week": 9,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: Kyle Monangai, Tee Higgins, Zay Flowers | Sent: Kareem Hunt, A.J. Brown",
+      "created": 1762090937721,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12534",
+          "name": "Kyle Monangai",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6801",
+          "name": "Tee Higgins",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9997",
+          "name": "Zay Flowers",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "4098",
+          "name": "Kareem Hunt",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "5859",
+          "name": "A.J. Brown",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1289297194100228096-trade-2",
+      "season": 2025,
+      "week": 9,
+      "type": "trade",
+      "team": "jawnwick13",
+      "summary": "Received: Brian Thomas, Tyrone Tracy, Jaylen Waddle | Sent: Jahmyr Gibbs",
+      "created": 1761754914359,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "11631",
+          "name": "Brian Thomas",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11655",
+          "name": "Tyrone Tracy",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7526",
+          "name": "Jaylen Waddle",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9221",
+          "name": "Jahmyr Gibbs",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1289297194100228096-trade-6",
+      "season": 2025,
+      "week": 9,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Jahmyr Gibbs | Sent: Brian Thomas, Tyrone Tracy, Jaylen Waddle",
+      "created": 1761754914359,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "9221",
+          "name": "Jahmyr Gibbs",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11631",
+          "name": "Brian Thomas",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11655",
+          "name": "Tyrone Tracy",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7526",
+          "name": "Jaylen Waddle",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1293974408225886208-trade-4",
+      "season": 2025,
+      "week": 10,
+      "type": "trade",
+      "team": "conner27lax",
+      "summary": "Received: Kenneth Walker | Sent: J.J. McCarthy",
+      "created": 1762870049105,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "8151",
+          "name": "Kenneth Walker",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11565",
+          "name": "J.J. McCarthy",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1293974408225886208-trade-6",
+      "season": 2025,
+      "week": 10,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: J.J. McCarthy | Sent: Kenneth Walker",
+      "created": 1762870049105,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "11565",
+          "name": "J.J. McCarthy",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8151",
+          "name": "Kenneth Walker",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1292189624218701824-trade-2",
+      "season": 2025,
+      "week": 10,
+      "type": "trade",
+      "team": "jawnwick13",
+      "summary": "Received: Harold Fannin, Travis Etienne | Sent: Oronde Gadsden, Jameson Williams",
+      "created": 1762444523438,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12506",
+          "name": "Harold Fannin",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7543",
+          "name": "Travis Etienne",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12493",
+          "name": "Oronde Gadsden",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8148",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1292189624218701824-trade-6",
+      "season": 2025,
+      "week": 10,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Oronde Gadsden, Jameson Williams | Sent: Harold Fannin, Travis Etienne",
+      "created": 1762444523438,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12493",
+          "name": "Oronde Gadsden",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8148",
+          "name": "Jameson Williams",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12506",
+          "name": "Harold Fannin",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7543",
+          "name": "Travis Etienne",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1302443094985175040-trade-6",
+      "season": 2025,
+      "week": 14,
+      "type": "trade",
+      "team": "PhillyPhilly709",
+      "summary": "Received: Ladd McConkey, Travis Kelce, Jordan Love, Kenneth Gainwell | Sent: Jayden Higgins, RJ Harvey, Breece Hall, C.J. Stroud",
+      "created": 1764889141369,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "11635",
+          "name": "Ladd McConkey",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "1466",
+          "name": "Travis Kelce",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6804",
+          "name": "Jordan Love",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7567",
+          "name": "Kenneth Gainwell",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12484",
+          "name": "Jayden Higgins",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12489",
+          "name": "RJ Harvey",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8155",
+          "name": "Breece Hall",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9758",
+          "name": "C.J. Stroud",
+          "action": "sent",
+          "id_type": "sleeper"
+        }
+      ]
+    },
+    {
+      "id": "1302443094985175040-trade-7",
+      "season": 2025,
+      "week": 14,
+      "type": "trade",
+      "team": "downsliquidity",
+      "summary": "Received: Jayden Higgins, RJ Harvey, Breece Hall, C.J. Stroud | Sent: Ladd McConkey, Travis Kelce, Jordan Love, Kenneth Gainwell",
+      "created": 1764889141369,
+      "source": "sleeper_transactions_api",
+      "players": [
+        {
+          "id": "12484",
+          "name": "Jayden Higgins",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "12489",
+          "name": "RJ Harvey",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "8155",
+          "name": "Breece Hall",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "9758",
+          "name": "C.J. Stroud",
+          "action": "received",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "11635",
+          "name": "Ladd McConkey",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "1466",
+          "name": "Travis Kelce",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "6804",
+          "name": "Jordan Love",
+          "action": "sent",
+          "id_type": "sleeper"
+        },
+        {
+          "id": "7567",
+          "name": "Kenneth Gainwell",
+          "action": "sent",
           "id_type": "sleeper"
         }
       ]

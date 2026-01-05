@@ -44,8 +44,11 @@
       "points": 0.0,
       "slot": "IR",
       "started": false,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 11,
@@ -55,8 +58,11 @@
       "points": 6.2,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 11,
@@ -66,6 +72,7 @@
       "points": 15.4,
       "slot": "WR",
       "started": true,
+      "season": 2022,
       "source": "league",
       "source_player_id": null
     },
@@ -77,8 +84,11 @@
       "points": 23.36,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TEN"
     },
     {
       "week": 11,
@@ -88,8 +98,11 @@
       "points": 10.6,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 11,
@@ -99,8 +112,11 @@
       "points": 0.0,
       "slot": "IR",
       "started": false,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DEN"
     },
     {
       "week": 11,
@@ -110,8 +126,11 @@
       "points": 7.2,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 11,
@@ -121,8 +140,11 @@
       "points": 16.0,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LAC"
     }
   ]
 }

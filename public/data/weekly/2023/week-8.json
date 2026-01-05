@@ -42,8 +42,11 @@
       "player": "Austin Ekeler",
       "points": 16.3,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 8,
@@ -51,8 +54,11 @@
       "player": "Garrett Wilson",
       "points": 12.6,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NYJ"
     },
     {
       "week": 8,
@@ -60,8 +66,11 @@
       "player": "Calvin Ridley",
       "points": 8.3,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "JAX"
     },
     {
       "week": 8,
@@ -69,8 +78,11 @@
       "player": "Jaylen Waddle",
       "points": 20.1,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIA"
     },
     {
       "week": 8,
@@ -78,8 +90,11 @@
       "player": "Jahmyr Gibbs",
       "points": 26.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DET"
     },
     {
       "week": 8,
@@ -87,8 +102,11 @@
       "player": "T.J. Hockenson",
       "points": 14.8,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "MIN"
     },
     {
       "week": 8,
@@ -96,8 +114,11 @@
       "player": "Alexander Mattison",
       "points": 3.3,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 8,
@@ -105,8 +126,11 @@
       "player": "Harrison Butker",
       "points": 11.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "KC"
     },
     {
       "week": 8,
@@ -114,8 +138,11 @@
       "player": "Anthony Richardson",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "IND"
     },
     {
       "week": 8,
@@ -123,8 +150,11 @@
       "player": "Tyjae Spears",
       "points": 3.6,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TEN"
     },
     {
       "week": 8,
@@ -132,6 +162,7 @@
       "player": "Browns D/ST",
       "points": 4.0,
       "started": false,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -141,8 +172,11 @@
       "player": "Zay Jones",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "JAX"
     },
     {
       "week": 8,
@@ -150,8 +184,11 @@
       "player": "Russell Wilson",
       "points": 17.56,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "DEN"
     },
     {
       "week": 8,
@@ -159,8 +196,11 @@
       "player": "C.J. Stroud",
       "points": 12.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "HOU"
     },
     {
       "week": 8,
@@ -168,6 +208,7 @@
       "player": "Ravens D/ST",
       "points": 6.0,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -177,8 +218,11 @@
       "player": "Sam Howell",
       "points": 32.98,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "WAS"
     },
     {
       "week": 8,
@@ -186,8 +230,11 @@
       "player": "Elijah Moore",
       "points": 3.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CLE"
     },
     {
       "week": 8,
@@ -195,8 +242,11 @@
       "player": "CeeDee Lamb",
       "points": 31.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DAL"
     },
     {
       "week": 8,
@@ -204,8 +254,11 @@
       "player": "Gus Edwards",
       "points": 27.4,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BAL"
     },
     {
       "week": 8,
@@ -213,6 +266,7 @@
       "player": "Pierre Strong Jr.",
       "points": 8.2,
       "started": false,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -222,8 +276,11 @@
       "player": "Christian McCaffrey",
       "points": 23.8,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 8,
@@ -231,8 +288,11 @@
       "player": "Derrick Henry",
       "points": 14.2,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TEN"
     },
     {
       "week": 8,
@@ -240,8 +300,11 @@
       "player": "Jalen Hurts",
       "points": 29.36,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "PHI"
     },
     {
       "week": 8,
@@ -249,6 +312,7 @@
       "player": "49ers D/ST",
       "points": 1.0,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -258,8 +322,11 @@
       "player": "DK Metcalf",
       "points": 6.7,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 8,
@@ -267,8 +334,11 @@
       "player": "Tee Higgins",
       "points": 6.9,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 8,
@@ -276,8 +346,11 @@
       "player": "Mark Andrews",
       "points": 10.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "BAL"
     },
     {
       "week": 8,
@@ -285,8 +358,11 @@
       "player": "Deshaun Watson",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CLE"
     },
     {
       "week": 8,
@@ -294,8 +370,11 @@
       "player": "Mike Williams",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LAC"
     },
     {
       "week": 8,
@@ -303,8 +382,11 @@
       "player": "DeAndre Hopkins",
       "points": 35.8,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TEN"
     },
     {
       "week": 8,
@@ -312,8 +394,11 @@
       "player": "Dak Prescott",
       "points": 30.06,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "DAL"
     },
     {
       "week": 8,
@@ -321,8 +406,11 @@
       "player": "Tyler Allgeier",
       "points": 3.1,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ATL"
     },
     {
       "week": 8,
@@ -330,8 +418,11 @@
       "player": "Raheem Mostert",
       "points": 10.6,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 8,
@@ -339,8 +430,11 @@
       "player": "Tank Dell",
       "points": 3.1,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 8,
@@ -348,8 +442,11 @@
       "player": "Christian Kirk",
       "points": 4.6,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "JAX"
     },
     {
       "week": 8,
@@ -357,8 +454,11 @@
       "player": "Riley Patterson",
       "points": 15.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "DET"
     },
     {
       "week": 8,
@@ -366,8 +466,11 @@
       "player": "K.J. Osborn",
       "points": 9.9,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 8,
@@ -375,8 +478,11 @@
       "player": "Josh Downs",
       "points": 7.2,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "IND"
     },
     {
       "week": 8,
@@ -384,8 +490,11 @@
       "player": "Kareem Hunt",
       "points": 12.7,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 8,
@@ -393,8 +502,11 @@
       "player": "Royce Freeman",
       "points": 10.4,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LA"
     },
     {
       "week": 8,
@@ -402,8 +514,11 @@
       "player": "Justin Jefferson",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 8,
@@ -411,8 +526,11 @@
       "player": "Travis Kelce",
       "points": 5.8,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "KC"
     },
     {
       "week": 8,
@@ -420,8 +538,11 @@
       "player": "Amon-Ra St. Brown",
       "points": 12.8,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DET"
     },
     {
       "week": 8,
@@ -429,8 +550,11 @@
       "player": "Rhamondre Stevenson",
       "points": 5.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NE"
     },
     {
       "week": 8,
@@ -438,8 +562,11 @@
       "player": "Aaron Jones",
       "points": 4.6,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "GB"
     },
     {
       "week": 8,
@@ -447,6 +574,7 @@
       "player": "Travis Etienne Jr.",
       "points": 24.9,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -456,8 +584,11 @@
       "player": "Marquise Brown",
       "points": 9.3,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ARI"
     },
     {
       "week": 8,
@@ -465,8 +596,11 @@
       "player": "Jared Goff",
       "points": 12.68,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "DET"
     },
     {
       "week": 8,
@@ -474,8 +608,11 @@
       "player": "Tua Tagovailoa",
       "points": 24.76,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "MIA"
     },
     {
       "week": 8,
@@ -483,8 +620,11 @@
       "player": "Jordan Addison",
       "points": 14.4,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 8,
@@ -492,8 +632,11 @@
       "player": "Kyren Williams",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LA"
     },
     {
       "week": 8,
@@ -501,8 +644,11 @@
       "player": "Puka Nacua",
       "points": 4.3,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 8,
@@ -510,8 +656,11 @@
       "player": "Tyler Bass",
       "points": 6.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "BUF"
     },
     {
       "week": 8,
@@ -519,8 +668,11 @@
       "player": "De'Von Achane",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 8,
@@ -528,8 +680,11 @@
       "player": "Rashee Rice",
       "points": 5.6,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "KC"
     },
     {
       "week": 8,
@@ -537,8 +692,11 @@
       "player": "Matthew Stafford",
       "points": 11.38,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LA"
     },
     {
       "week": 8,
@@ -546,6 +704,7 @@
       "player": "Joshua Palmer",
       "points": 2.4,
       "started": false,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -555,8 +714,11 @@
       "player": "D'Onta Foreman",
       "points": 3.6,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CHI"
     },
     {
       "week": 8,
@@ -564,6 +726,7 @@
       "player": "Darrell Henderson Jr.",
       "points": 8.5,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -573,6 +736,7 @@
       "player": "Chiefs D/ST",
       "points": 12.0,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -582,6 +746,7 @@
       "player": "Jeff Wilson Jr.",
       "points": 3.7,
       "started": false,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -591,8 +756,11 @@
       "player": "Bijan Robinson",
       "points": 12.2,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ATL"
     },
     {
       "week": 8,
@@ -600,8 +768,11 @@
       "player": "A.J. Brown",
       "points": 27.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PHI"
     },
     {
       "week": 8,
@@ -609,8 +780,11 @@
       "player": "Davante Adams",
       "points": 1.1,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LV"
     },
     {
       "week": 8,
@@ -618,8 +792,11 @@
       "player": "Najee Harris",
       "points": 5.5,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PIT"
     },
     {
       "week": 8,
@@ -627,8 +804,11 @@
       "player": "Joe Burrow",
       "points": 27.62,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CIN"
     },
     {
       "week": 8,
@@ -636,8 +816,11 @@
       "player": "Chris Olave",
       "points": 4.6,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NO"
     },
     {
       "week": 8,
@@ -645,8 +828,11 @@
       "player": "Dameon Pierce",
       "points": 4.6,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "HOU"
     },
     {
       "week": 8,
@@ -654,8 +840,11 @@
       "player": "Khalil Herbert",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CHI"
     },
     {
       "week": 8,
@@ -663,8 +852,11 @@
       "player": "Kyler Murray",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "ARI"
     },
     {
       "week": 8,
@@ -672,8 +864,11 @@
       "player": "Mike Evans",
       "points": 9.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 8,
@@ -681,8 +876,11 @@
       "player": "Elijah Mitchell",
       "points": 0.2,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 8,
@@ -690,8 +888,11 @@
       "player": "Kenneth Gainwell",
       "points": 0.6,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PHI"
     },
     {
       "week": 8,
@@ -699,8 +900,11 @@
       "player": "Jaxon Smith-Njigba",
       "points": 9.6,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 8,
@@ -708,8 +912,11 @@
       "player": "Sam LaPorta",
       "points": 11.7,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "DET"
     },
     {
       "week": 8,
@@ -717,8 +924,11 @@
       "player": "Tyler Lockett",
       "points": 14.1,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 8,
@@ -726,8 +936,11 @@
       "player": "Geno Smith",
       "points": 13.86,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "SEA"
     },
     {
       "week": 8,
@@ -735,8 +948,11 @@
       "player": "Zach Charbonnet",
       "points": 6.4,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 8,
@@ -744,8 +960,11 @@
       "player": "Baker Mayfield",
       "points": 21.38,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "TB"
     },
     {
       "week": 8,
@@ -753,6 +972,7 @@
       "player": "Eagles D/ST",
       "points": -3.0,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -762,8 +982,11 @@
       "player": "Chuba Hubbard",
       "points": 5.4,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 8,
@@ -771,8 +994,11 @@
       "player": "Cameron Dicker",
       "points": 16.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "LAC"
     },
     {
       "week": 8,
@@ -780,8 +1006,11 @@
       "player": "Cooper Kupp",
       "points": 2.1,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 8,
@@ -789,8 +1018,11 @@
       "player": "Nick Chubb",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 8,
@@ -798,8 +1030,11 @@
       "player": "Ja'Marr Chase",
       "points": 17.2,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 8,
@@ -807,8 +1042,11 @@
       "player": "Justin Herbert",
       "points": 24.02,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LAC"
     },
     {
       "week": 8,
@@ -816,8 +1054,11 @@
       "player": "Keenan Allen",
       "points": 6.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LAC"
     },
     {
       "week": 8,
@@ -825,8 +1066,11 @@
       "player": "Darren Waller",
       "points": 0.4,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "NYG"
     },
     {
       "week": 8,
@@ -834,8 +1078,11 @@
       "player": "Cam Akers",
       "points": 8.5,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 8,
@@ -843,8 +1090,11 @@
       "player": "Jerry Jeudy",
       "points": 11.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DEN"
     },
     {
       "week": 8,
@@ -852,8 +1102,11 @@
       "player": "James Conner",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ARI"
     },
     {
       "week": 8,
@@ -861,8 +1114,11 @@
       "player": "James Cook",
       "points": 7.3,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BUF"
     },
     {
       "week": 8,
@@ -870,8 +1126,11 @@
       "player": "Courtland Sutton",
       "points": 8.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DEN"
     },
     {
       "week": 8,
@@ -879,8 +1138,11 @@
       "player": "Devin Singletary",
       "points": 4.3,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "HOU"
     },
     {
       "week": 8,
@@ -888,8 +1150,11 @@
       "player": "Jaylen Warren",
       "points": 3.8,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PIT"
     },
     {
       "week": 8,
@@ -897,8 +1162,11 @@
       "player": "Roschon Johnson",
       "points": 3.1,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CHI"
     },
     {
       "week": 8,
@@ -906,8 +1174,11 @@
       "player": "Brock Purdy",
       "points": 20.3,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "SF"
     },
     {
       "week": 8,
@@ -915,8 +1186,11 @@
       "player": "Jake Elliott",
       "points": 10.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "PHI"
     },
     {
       "week": 8,
@@ -924,6 +1198,7 @@
       "player": "Cowboys D/ST",
       "points": 16.0,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -933,8 +1208,11 @@
       "player": "Jerome Ford",
       "points": 3.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 8,
@@ -942,8 +1220,11 @@
       "player": "Michael Thomas",
       "points": 6.8,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NO"
     },
     {
       "week": 8,
@@ -951,8 +1232,11 @@
       "player": "Justice Hill",
       "points": 5.5,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BAL"
     },
     {
       "week": 8,
@@ -960,8 +1244,11 @@
       "player": "Derek Carr",
       "points": 22.3,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "NO"
     },
     {
       "week": 8,
@@ -969,8 +1256,11 @@
       "player": "Saquon Barkley",
       "points": 14.8,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NYG"
     },
     {
       "week": 8,
@@ -978,8 +1268,11 @@
       "player": "Josh Jacobs",
       "points": 14.8,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 8,
@@ -987,8 +1280,11 @@
       "player": "Breece Hall",
       "points": 17.3,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NYJ"
     },
     {
       "week": 8,
@@ -996,8 +1292,11 @@
       "player": "Lamar Jackson",
       "points": 11.98,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "BAL"
     },
     {
       "week": 8,
@@ -1005,8 +1304,11 @@
       "player": "Kirk Cousins",
       "points": 19.86,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "MIN"
     },
     {
       "week": 8,
@@ -1014,8 +1316,11 @@
       "player": "Kenneth Walker III",
       "points": 7.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 8,
@@ -1023,8 +1328,11 @@
       "player": "Terry McLaurin",
       "points": 12.3,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "WAS"
     },
     {
       "week": 8,
@@ -1032,8 +1340,11 @@
       "player": "Diontae Johnson",
       "points": 8.5,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 8,
@@ -1041,8 +1352,11 @@
       "player": "Brandon Aiyuk",
       "points": 12.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SF"
     },
     {
       "week": 8,
@@ -1050,6 +1364,7 @@
       "player": "Brian Robinson Jr.",
       "points": 7.9,
       "started": false,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -1059,8 +1374,11 @@
       "player": "Alvin Kamara",
       "points": 23.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NO"
     },
     {
       "week": 8,
@@ -1068,8 +1386,11 @@
       "player": "Drake London",
       "points": 5.5,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ATL"
     },
     {
       "week": 8,
@@ -1077,8 +1398,11 @@
       "player": "Javonte Williams",
       "points": 15.8,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DEN"
     },
     {
       "week": 8,
@@ -1086,6 +1410,7 @@
       "player": "Saints D/ST",
       "points": 3.0,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -1095,6 +1420,7 @@
       "player": "Michael Pittman Jr.",
       "points": 10.0,
       "started": false,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -1104,8 +1430,11 @@
       "player": "Nico Collins",
       "points": 3.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 8,
@@ -1113,8 +1442,11 @@
       "player": "Jakobi Meyers",
       "points": 1.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LV"
     },
     {
       "week": 8,
@@ -1122,8 +1454,11 @@
       "player": "Dallas Goedert",
       "points": 3.6,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "PHI"
     },
     {
       "week": 8,
@@ -1131,8 +1466,11 @@
       "player": "Ka'imi Fairbairn",
       "points": 1.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "HOU"
     },
     {
       "week": 8,
@@ -1140,8 +1478,11 @@
       "player": "Tyreek Hill",
       "points": 20.2,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIA"
     },
     {
       "week": 8,
@@ -1149,8 +1490,11 @@
       "player": "Patrick Mahomes",
       "points": 5.6,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "KC"
     },
     {
       "week": 8,
@@ -1158,8 +1502,11 @@
       "player": "Isiah Pacheco",
       "points": 3.7,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "KC"
     },
     {
       "week": 8,
@@ -1167,8 +1514,11 @@
       "player": "Trevor Lawrence",
       "points": 16.68,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "JAX"
     },
     {
       "week": 8,
@@ -1176,8 +1526,11 @@
       "player": "Tony Pollard",
       "points": 5.5,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DAL"
     },
     {
       "week": 8,
@@ -1185,8 +1538,11 @@
       "player": "Jonathan Taylor",
       "points": 9.7,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "IND"
     },
     {
       "week": 8,
@@ -1194,8 +1550,11 @@
       "player": "Amari Cooper",
       "points": 8.9,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CLE"
     },
     {
       "week": 8,
@@ -1203,8 +1562,11 @@
       "player": "Jordan Love",
       "points": 14.56,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "GB"
     },
     {
       "week": 8,
@@ -1212,8 +1574,11 @@
       "player": "Christian Watson",
       "points": 3.3,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "GB"
     },
     {
       "week": 8,
@@ -1221,6 +1586,7 @@
       "player": "Chris Godwin",
       "points": 12.8,
       "started": false,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -1230,8 +1596,11 @@
       "player": "D'Andre Swift",
       "points": 12.4,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PHI"
     },
     {
       "week": 8,
@@ -1239,8 +1608,11 @@
       "player": "Gabe Davis",
       "points": 14.7,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BUF"
     },
     {
       "week": 8,
@@ -1248,8 +1620,11 @@
       "player": "George Pickens",
       "points": 8.2,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 8,
@@ -1257,8 +1632,11 @@
       "player": "Zack Moss",
       "points": 13.4,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "IND"
     },
     {
       "week": 8,
@@ -1266,8 +1644,11 @@
       "player": "Adam Thielen",
       "points": 7.2,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CAR"
     },
     {
       "week": 8,
@@ -1275,8 +1656,11 @@
       "player": "Brandon Aubrey",
       "points": 13.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "DAL"
     },
     {
       "week": 8,
@@ -1284,8 +1668,11 @@
       "player": "Cole Kmet",
       "points": 7.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "CHI"
     },
     {
       "week": 8,
@@ -1293,8 +1680,11 @@
       "player": "Anders Carlson",
       "points": 4.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "GB"
     },
     {
       "week": 8,
@@ -1302,6 +1692,7 @@
       "player": "Jets D/ST",
       "points": 10.0,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -1311,8 +1702,11 @@
       "player": "Stefon Diggs",
       "points": 7.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BUF"
     },
     {
       "week": 8,
@@ -1320,8 +1714,11 @@
       "player": "George Kittle",
       "points": 16.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "SF"
     },
     {
       "week": 8,
@@ -1329,8 +1726,11 @@
       "player": "Joe Mixon",
       "points": 17.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 8,
@@ -1338,8 +1738,11 @@
       "player": "Josh Allen",
       "points": 31.06,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "BUF"
     },
     {
       "week": 8,
@@ -1347,6 +1750,7 @@
       "player": "Deebo Samuel",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -1356,8 +1760,11 @@
       "player": "Miles Sanders",
       "points": 0.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 8,
@@ -1365,8 +1772,11 @@
       "player": "Justin Tucker",
       "points": 8.0,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "BAL"
     },
     {
       "week": 8,
@@ -1374,8 +1784,11 @@
       "player": "Aaron Rodgers",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "NYJ"
     },
     {
       "week": 8,
@@ -1383,8 +1796,11 @@
       "player": "DJ Moore",
       "points": 5.5,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CHI"
     },
     {
       "week": 8,
@@ -1392,8 +1808,11 @@
       "player": "Justin Fields",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CHI"
     },
     {
       "week": 8,
@@ -1401,8 +1820,11 @@
       "player": "Zay Flowers",
       "points": 1.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BAL"
     },
     {
       "week": 8,
@@ -1410,8 +1832,11 @@
       "player": "David Montgomery",
       "points": 0.0,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DET"
     },
     {
       "week": 8,
@@ -1419,6 +1844,7 @@
       "player": "Bills D/ST",
       "points": 5.0,
       "started": true,
+      "season": 2023,
       "source": "league",
       "source_player_id": null
     },
@@ -1428,8 +1854,11 @@
       "player": "Kyle Pitts",
       "points": 3.5,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "ATL"
     },
     {
       "week": 8,
@@ -1437,8 +1866,11 @@
       "player": "Jameson Williams",
       "points": 1.6,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DET"
     },
     {
       "week": 8,
@@ -1446,8 +1878,11 @@
       "player": "Latavius Murray",
       "points": 1.1,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BUF"
     },
     {
       "week": 8,
@@ -1455,8 +1890,11 @@
       "player": "DeVonta Smith",
       "points": 15.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PHI"
     },
     {
       "week": 8,
@@ -1464,8 +1902,11 @@
       "player": "Rachaad White",
       "points": 10.9,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TB"
     },
     {
       "week": 8,
@@ -1473,8 +1914,11 @@
       "player": "Emari Demercado",
       "points": 7.9,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ARI"
     },
     {
       "week": 8,
@@ -1482,8 +1926,11 @@
       "player": "Bryce Young",
       "points": 14.5,
       "started": true,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CAR"
     },
     {
       "week": 8,
@@ -1491,8 +1938,11 @@
       "player": "Ezekiel Elliott",
       "points": 3.6,
       "started": false,
+      "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NE"
     }
   ]
 }

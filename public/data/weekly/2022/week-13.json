@@ -44,8 +44,11 @@
       "points": 0.0,
       "slot": "IR",
       "started": false,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 13,
@@ -55,8 +58,11 @@
       "points": 0.0,
       "slot": "IR",
       "started": false,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DEN"
     },
     {
       "week": 13,
@@ -66,6 +72,7 @@
       "points": 6.3,
       "slot": "WR",
       "started": true,
+      "season": 2022,
       "source": "league",
       "source_player_id": null
     },
@@ -77,8 +84,11 @@
       "points": 8.2,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 13,
@@ -88,8 +98,11 @@
       "points": 20.6,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 13,
@@ -99,8 +112,11 @@
       "points": 0.0,
       "slot": "IR",
       "started": false,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 13,
@@ -110,8 +126,11 @@
       "points": 14.3,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 13,
@@ -121,8 +140,11 @@
       "points": 3.8,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TEN"
     }
   ]
 }

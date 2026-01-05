@@ -685,6 +685,12 @@ def build_transactions(seasons, sleeper_maps=None):
         txn_id = txn.get("transaction_id") or txn.get("id") or f"{season}-{week}"
         created = txn.get("created") or txn.get("created_at")
         txn_type = (txn.get("type") or "").lower()
+        settings = txn.get("settings") or {}
+        amount = settings.get("waiver_bid")
+        if amount is None:
+          amount = settings.get("faab")
+        if amount is None:
+          amount = txn.get("waiver_bid") or txn.get("faab")
 
         def resolve_player_name(player_id):
           if not player_id:
@@ -735,6 +741,7 @@ def build_transactions(seasons, sleeper_maps=None):
                 "summary": summary,
                 "created": created,
                 "source": "sleeper_transactions_api",
+                "amount": amount,
                 "players": [
                   {
                     "id": player_id,
@@ -758,6 +765,7 @@ def build_transactions(seasons, sleeper_maps=None):
                 "summary": summary,
                 "created": created,
                 "source": "sleeper_transactions_api",
+                "amount": amount,
                 "players": [
                   {
                     "id": player_id,

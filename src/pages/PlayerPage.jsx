@@ -13,6 +13,7 @@ import {
   loadCareerMetrics,
   loadSeasonMetrics,
   loadSeasonSummary,
+  loadTransactions,
   loadWeekData,
 } from "../data/loader.js";
 import { getCanonicalPlayerId, resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName.js";
@@ -55,6 +56,7 @@ export default function PlayerPage() {
   const [boomBustMetrics, setBoomBustMetrics] = useState([]);
   const [seasonMetrics, setSeasonMetrics] = useState([]);
   const [careerMetrics, setCareerMetrics] = useState([]);
+  const [playerTransactions, setPlayerTransactions] = useState([]);
   const [search, setSearch] = useState("");
   const { favorites, togglePlayer } = useFavorites();
   const canonicalPlayerId = useMemo(
@@ -63,6 +65,11 @@ export default function PlayerPage() {
   );
   const resolvedPlayerId = canonicalPlayerId || String(playerId);
   const isFavorite = favorites.players.includes(String(resolvedPlayerId));
+  const formatAmount = (value) => {
+    const numeric = Number(value);
+    if (!Number.isFinite(numeric)) return "—";
+    return `$${numeric}`;
+  };
 
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const paramName = searchParams.get("name") || "";
@@ -191,6 +198,18 @@ export default function PlayerPage() {
   useEffect(() => {
     let active = true;
     if (!selectedSeason) return undefined;
+    loadTransactions(selectedSeason).then((payload) => {
+      if (!active) return;
+      setPlayerTransactions(payload?.entries || []);
+    });
+    return () => {
+      active = false;
+    };
+  }, [selectedSeason]);
+
+  useEffect(() => {
+    let active = true;
+    if (!selectedSeason) return undefined;
     const weeks = manifest?.weeksBySeason?.[String(selectedSeason)] || [];
     Promise.all(weeks.map((week) => loadWeekData(selectedSeason, week))).then((payloads) => {
       if (!active) return;
@@ -232,6 +251,49 @@ export default function PlayerPage() {
       .map(normalizeName)
       .filter(Boolean);
   }, [playerInfo, paramName, espnNameMap, resolvedPlayerId]);
+
+  const transactionHistory = useMemo(() => {
+    if (!playerTransactions.length) return [];
+    const rows = [];
+    for (const entry of playerTransactions) {
+      const players = entry?.players || [];
+      if (!players.length) continue;
+      const matched = players.some((player) => {
+        const id = player?.id ? String(player.id) : "";
+        if (id && targetIds.has(id)) return true;
+        if (player?.source_player_id && targetIds.has(String(player.source_player_id))) return true;
+        if (!targetNames.length) return false;
+        const name = normalizeName(player?.name);
+        return name ? targetNames.includes(name) : false;
+      });
+      if (matched) rows.push(entry);
+    }
+    return rows.sort((a, b) => {
+      const weekA = Number(a.week) || 0;
+      const weekB = Number(b.week) || 0;
+      if (weekA !== weekB) return weekB - weekA;
+      const createdA = Number(a.created) || 0;
+      const createdB = Number(b.created) || 0;
+      if (createdA !== createdB) return createdB - createdA;
+      return String(a.id || "").localeCompare(String(b.id || ""));
+    });
+  }, [playerTransactions, targetIds, targetNames]);
+
+  const formatTransactionDetails = (entry) => {
+    if (!entry?.players?.length) return entry?.summary || "No details";
+    const names = (list) =>
+      list
+        .map((player) => player?.name || player?.id || "Unknown")
+        .filter(Boolean)
+        .join(", ");
+    if (entry.type === "trade") {
+      const received = names(entry.players.filter((player) => player?.action === "received"));
+      const sent = names(entry.players.filter((player) => player?.action === "sent"));
+      return `Received: ${received || "None"} | Sent: ${sent || "None"}`;
+    }
+    const label = entry.type === "add" ? "Added" : entry.type === "drop" ? "Dropped" : "Updated";
+    return `${label}: ${names(entry.players) || "Unknown"}`;
+  };
 
   const statsNameRow = useMemo(() => {
     const tryFind = (rows) =>
@@ -897,6 +959,37 @@ export default function PlayerPage() {
               </div>
             ) : (
               <p>No efficiency data available for this player in the current exports.</p>
+            )}
+          </div>
+          <div className="section-card">
+            <h3 className="section-title">Transactions ({selectedSeason})</h3>
+            {transactionHistory.length ? (
+              <div className="table-wrap">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Week</th>
+                      <th>Type</th>
+                      <th>Team</th>
+                      <th>Amount</th>
+                      <th>Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {transactionHistory.map((entry) => (
+                      <tr key={entry.id}>
+                        <td>{entry.week ?? "—"}</td>
+                        <td>{entry.type || "—"}</td>
+                        <td>{entry.team || "—"}</td>
+                        <td>{formatAmount(entry.amount)}</td>
+                        <td>{formatTransactionDetails(entry)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p>No transactions recorded for this player in the selected season.</p>
             )}
           </div>
         </section>

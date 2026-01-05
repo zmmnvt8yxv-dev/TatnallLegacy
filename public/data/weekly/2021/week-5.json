@@ -42,8 +42,11 @@
       "player": "Ezekiel Elliott",
       "points": 25.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DAL"
     },
     {
       "week": 5,
@@ -51,8 +54,11 @@
       "player": "Jonathan Taylor",
       "points": 32.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "IND"
     },
     {
       "week": 5,
@@ -60,8 +66,11 @@
       "player": "Clyde Edwards-Helaire",
       "points": 2.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "KC"
     },
     {
       "week": 5,
@@ -69,8 +78,11 @@
       "player": "Calvin Ridley",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ATL"
     },
     {
       "week": 5,
@@ -78,8 +90,11 @@
       "player": "Julio Jones",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TEN"
     },
     {
       "week": 5,
@@ -87,8 +102,11 @@
       "player": "Adam Thielen",
       "points": 4.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 5,
@@ -96,8 +114,11 @@
       "player": "Kyler Murray",
       "points": 13.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "ARI"
     },
     {
       "week": 5,
@@ -105,8 +126,11 @@
       "player": "Ja'Marr Chase",
       "points": 25.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 5,
@@ -114,8 +138,11 @@
       "player": "Tyler Lockett",
       "points": 5.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 5,
@@ -123,8 +150,11 @@
       "player": "Dallas Goedert",
       "points": 2.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "PHI"
     },
     {
       "week": 5,
@@ -132,6 +162,7 @@
       "player": "William Fuller V",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -141,6 +172,7 @@
       "player": "Robby Anderson",
       "points": 3.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -150,8 +182,11 @@
       "player": "Joe Burrow",
       "points": 20.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CIN"
     },
     {
       "week": 5,
@@ -159,8 +194,11 @@
       "player": "Harrison Butker",
       "points": 10.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "KC"
     },
     {
       "week": 5,
@@ -168,6 +206,7 @@
       "player": "Patriots D/ST",
       "points": 4.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -177,8 +216,11 @@
       "player": "Marquez Callaway",
       "points": 21.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NO"
     },
     {
       "week": 5,
@@ -186,8 +228,11 @@
       "player": "Noah Fant",
       "points": 2.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "DEN"
     },
     {
       "week": 5,
@@ -195,8 +240,11 @@
       "player": "Teddy Bridgewater",
       "points": 18.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "DEN"
     },
     {
       "week": 5,
@@ -204,6 +252,7 @@
       "player": "Buccaneers D/ST",
       "points": 8.0,
       "started": false,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -213,8 +262,11 @@
       "player": "Dalvin Cook",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 5,
@@ -222,8 +274,11 @@
       "player": "DK Metcalf",
       "points": 21.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 5,
@@ -231,8 +286,11 @@
       "player": "Chris Carson",
       "points": 0.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 5,
@@ -240,8 +298,11 @@
       "player": "CeeDee Lamb",
       "points": 15.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DAL"
     },
     {
       "week": 5,
@@ -249,8 +310,11 @@
       "player": "Kareem Hunt",
       "points": 20.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 5,
@@ -258,8 +322,11 @@
       "player": "Russell Wilson",
       "points": 9.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "SEA"
     },
     {
       "week": 5,
@@ -267,8 +334,11 @@
       "player": "Kyle Pitts",
       "points": 19.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "ATL"
     },
     {
       "week": 5,
@@ -276,8 +346,11 @@
       "player": "Raheem Mostert",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 5,
@@ -285,6 +358,7 @@
       "player": "Ronald Jones II",
       "points": 3.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -294,8 +368,11 @@
       "player": "Tom Brady",
       "points": 43.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "TB"
     },
     {
       "week": 5,
@@ -303,8 +380,11 @@
       "player": "Jarvis Landry",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CLE"
     },
     {
       "week": 5,
@@ -312,8 +392,11 @@
       "player": "Tyler Boyd",
       "points": 2.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 5,
@@ -321,8 +404,11 @@
       "player": "Devin Singletary",
       "points": 2.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BUF"
     },
     {
       "week": 5,
@@ -330,8 +416,11 @@
       "player": "Rob Gronkowski",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "TB"
     },
     {
       "week": 5,
@@ -339,6 +428,7 @@
       "player": "Rams D/ST",
       "points": 6.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -348,8 +438,11 @@
       "player": "Henry Ruggs III",
       "points": 5.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LV"
     },
     {
       "week": 5,
@@ -357,8 +450,11 @@
       "player": "Jalen Reagor",
       "points": 2.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PHI"
     },
     {
       "week": 5,
@@ -366,8 +462,11 @@
       "player": "Tyler Bass",
       "points": 8.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "BUF"
     },
     {
       "week": 5,
@@ -375,8 +474,11 @@
       "player": "Mike Williams",
       "points": 33.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LAC"
     },
     {
       "week": 5,
@@ -384,8 +486,11 @@
       "player": "Miles Sanders",
       "points": 4.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PHI"
     },
     {
       "week": 5,
@@ -393,8 +498,11 @@
       "player": "Travis Kelce",
       "points": 11.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "KC"
     },
     {
       "week": 5,
@@ -402,8 +510,11 @@
       "player": "Nick Chubb",
       "points": 26.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 5,
@@ -411,8 +522,11 @@
       "player": "Justin Jefferson",
       "points": 14.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 5,
@@ -420,6 +534,7 @@
       "player": "Darrell Henderson Jr.",
       "points": 15.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -429,8 +544,11 @@
       "player": "Michael Thomas",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "DB",
+      "nfl_team": "CIN"
     },
     {
       "week": 5,
@@ -438,8 +556,11 @@
       "player": "Javonte Williams",
       "points": 8.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DEN"
     },
     {
       "week": 5,
@@ -447,8 +568,11 @@
       "player": "Damien Harris",
       "points": 9.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NE"
     },
     {
       "week": 5,
@@ -456,8 +580,11 @@
       "player": "Brandon Aiyuk",
       "points": 3.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SF"
     },
     {
       "week": 5,
@@ -465,8 +592,11 @@
       "player": "DeVonta Smith",
       "points": 7.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PHI"
     },
     {
       "week": 5,
@@ -474,8 +604,11 @@
       "player": "Daniel Jones",
       "points": 3.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "NYG"
     },
     {
       "week": 5,
@@ -483,6 +616,7 @@
       "player": "Michael Pittman Jr.",
       "points": 15.0,
       "started": false,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -492,8 +626,11 @@
       "player": "Jason Myers",
       "points": 3.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "SEA"
     },
     {
       "week": 5,
@@ -501,8 +638,11 @@
       "player": "Christian Kirk",
       "points": 4.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ARI"
     },
     {
       "week": 5,
@@ -510,8 +650,11 @@
       "player": "Sterling Shepard",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NYG"
     },
     {
       "week": 5,
@@ -519,8 +662,11 @@
       "player": "Cordarrelle Patterson",
       "points": 11.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ATL"
     },
     {
       "week": 5,
@@ -528,8 +674,11 @@
       "player": "Zack Moss",
       "points": 8.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BUF"
     },
     {
       "week": 5,
@@ -537,8 +686,11 @@
       "player": "Sam Darnold",
       "points": 6.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CAR"
     },
     {
       "week": 5,
@@ -546,8 +698,11 @@
       "player": "Damien Williams",
       "points": 14.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CHI"
     },
     {
       "week": 5,
@@ -555,8 +710,11 @@
       "player": "Emmanuel Sanders",
       "points": 17.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BUF"
     },
     {
       "week": 5,
@@ -564,6 +722,7 @@
       "player": "Raiders D/ST",
       "points": 4.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -573,8 +732,11 @@
       "player": "Davante Adams",
       "points": 30.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "GB"
     },
     {
       "week": 5,
@@ -582,8 +744,11 @@
       "player": "Stefon Diggs",
       "points": 6.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BUF"
     },
     {
       "week": 5,
@@ -591,8 +756,11 @@
       "player": "A.J. Brown",
       "points": 3.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TEN"
     },
     {
       "week": 5,
@@ -600,8 +768,11 @@
       "player": "D'Andre Swift",
       "points": 16.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DET"
     },
     {
       "week": 5,
@@ -609,8 +780,11 @@
       "player": "Robert Woods",
       "points": 17.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 5,
@@ -618,6 +792,7 @@
       "player": "Chris Godwin",
       "points": 7.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -627,8 +802,11 @@
       "player": "Diontae Johnson",
       "points": 15.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 5,
@@ -636,8 +814,11 @@
       "player": "Dak Prescott",
       "points": 23.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "DAL"
     },
     {
       "week": 5,
@@ -645,8 +826,11 @@
       "player": "Logan Thomas",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "WAS"
     },
     {
       "week": 5,
@@ -654,8 +838,11 @@
       "player": "JuJu Smith-Schuster",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 5,
@@ -663,8 +850,11 @@
       "player": "Ryan Tannehill",
       "points": 13.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "TEN"
     },
     {
       "week": 5,
@@ -672,8 +862,11 @@
       "player": "Michael Carter",
       "points": 11.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NYJ"
     },
     {
       "week": 5,
@@ -681,8 +874,11 @@
       "player": "Trey Sermon",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 5,
@@ -690,8 +886,11 @@
       "player": "Michael Gallup",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DAL"
     },
     {
       "week": 5,
@@ -699,8 +898,11 @@
       "player": "Elijah Mitchell",
       "points": 5.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 5,
@@ -708,8 +910,11 @@
       "player": "Kenneth Gainwell",
       "points": 1.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PHI"
     },
     {
       "week": 5,
@@ -717,8 +922,11 @@
       "player": "Derek Carr",
       "points": 7.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LV"
     },
     {
       "week": 5,
@@ -726,6 +934,7 @@
       "player": "Titans D/ST",
       "points": 7.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -735,8 +944,11 @@
       "player": "Cole Beasley",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BUF"
     },
     {
       "week": 5,
@@ -744,8 +956,11 @@
       "player": "Brandon McManus",
       "points": 7.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "DEN"
     },
     {
       "week": 5,
@@ -753,8 +968,11 @@
       "player": "Tyler Higbee",
       "points": 7.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "LA"
     },
     {
       "week": 5,
@@ -762,8 +980,11 @@
       "player": "Derrick Henry",
       "points": 33.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TEN"
     },
     {
       "week": 5,
@@ -771,8 +992,11 @@
       "player": "Austin Ekeler",
       "points": 27.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 5,
@@ -780,8 +1004,11 @@
       "player": "Mike Evans",
       "points": 25.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 5,
@@ -789,8 +1016,11 @@
       "player": "Darren Waller",
       "points": 4.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "LV"
     },
     {
       "week": 5,
@@ -798,8 +1028,11 @@
       "player": "Kenny Golladay",
       "points": 0.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NYG"
     },
     {
       "week": 5,
@@ -807,8 +1040,11 @@
       "player": "Josh Allen",
       "points": 39.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "BUF"
     },
     {
       "week": 5,
@@ -816,8 +1052,11 @@
       "player": "Chase Claypool",
       "points": 21.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 5,
@@ -825,8 +1064,11 @@
       "player": "Mike Davis",
       "points": 9.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ATL"
     },
     {
       "week": 5,
@@ -834,8 +1076,11 @@
       "player": "Brandin Cooks",
       "points": 2.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 5,
@@ -843,8 +1088,11 @@
       "player": "James Robinson",
       "points": 22.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "JAX"
     },
     {
       "week": 5,
@@ -852,8 +1100,11 @@
       "player": "Jalen Hurts",
       "points": 22.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "PHI"
     },
     {
       "week": 5,
@@ -861,8 +1112,11 @@
       "player": "James Conner",
       "points": 8.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ARI"
     },
     {
       "week": 5,
@@ -870,8 +1124,11 @@
       "player": "Corey Davis",
       "points": 4.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NYJ"
     },
     {
       "week": 5,
@@ -879,6 +1136,7 @@
       "player": "Steelers D/ST",
       "points": 3.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -888,8 +1146,11 @@
       "player": "Marquise Brown",
       "points": 27.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BAL"
     },
     {
       "week": 5,
@@ -897,8 +1158,11 @@
       "player": "Matt Gay",
       "points": 8.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "LA"
     },
     {
       "week": 5,
@@ -906,6 +1170,7 @@
       "player": "Broncos D/ST",
       "points": 2.0,
       "started": false,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -915,8 +1180,11 @@
       "player": "Najee Harris",
       "points": 22.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PIT"
     },
     {
       "week": 5,
@@ -924,8 +1192,11 @@
       "player": "Zach Pascal",
       "points": 4.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "IND"
     },
     {
       "week": 5,
@@ -933,8 +1204,11 @@
       "player": "Christian McCaffrey",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 5,
@@ -942,8 +1216,11 @@
       "player": "Joe Mixon",
       "points": 9.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 5,
@@ -951,8 +1228,11 @@
       "player": "Antonio Gibson",
       "points": 19.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "WAS"
     },
     {
       "week": 5,
@@ -960,8 +1240,11 @@
       "player": "Terry McLaurin",
       "points": 4.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "WAS"
     },
     {
       "week": 5,
@@ -969,8 +1252,11 @@
       "player": "George Kittle",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "SF"
     },
     {
       "week": 5,
@@ -978,8 +1264,11 @@
       "player": "Myles Gaskin",
       "points": 21.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 5,
@@ -987,8 +1276,11 @@
       "player": "DJ Moore",
       "points": 4.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CAR"
     },
     {
       "week": 5,
@@ -996,8 +1288,11 @@
       "player": "Courtland Sutton",
       "points": 20.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DEN"
     },
     {
       "week": 5,
@@ -1005,8 +1300,11 @@
       "player": "Cooper Kupp",
       "points": 9.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 5,
@@ -1014,8 +1312,11 @@
       "player": "Justin Herbert",
       "points": 46.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LAC"
     },
     {
       "week": 5,
@@ -1023,8 +1324,11 @@
       "player": "Leonard Fournette",
       "points": 16.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TB"
     },
     {
       "week": 5,
@@ -1032,8 +1336,11 @@
       "player": "Alexander Mattison",
       "points": 21.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 5,
@@ -1041,8 +1348,11 @@
       "player": "Trey Lance",
       "points": 13.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "SF"
     },
     {
       "week": 5,
@@ -1050,8 +1360,11 @@
       "player": "Justin Fields",
       "points": 8.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CHI"
     },
     {
       "week": 5,
@@ -1059,8 +1372,11 @@
       "player": "Rodrigo Blankenship",
       "points": 4.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "IND"
     },
     {
       "week": 5,
@@ -1068,8 +1384,11 @@
       "player": "Tony Pollard",
       "points": 9.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DAL"
     },
     {
       "week": 5,
@@ -1077,8 +1396,11 @@
       "player": "AJ Dillon",
       "points": 13.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "GB"
     },
     {
       "week": 5,
@@ -1086,8 +1408,11 @@
       "player": "Samaje Perine",
       "points": 13.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 5,
@@ -1095,8 +1420,11 @@
       "player": "Darnell Mooney",
       "points": 3.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CHI"
     },
     {
       "week": 5,
@@ -1104,8 +1432,11 @@
       "player": "Jared Cook",
       "points": 2.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "LAC"
     },
     {
       "week": 5,
@@ -1113,6 +1444,7 @@
       "player": "Cardinals D/ST",
       "points": 7.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -1122,8 +1454,11 @@
       "player": "Saquon Barkley",
       "points": 0.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NYG"
     },
     {
       "week": 5,
@@ -1131,8 +1466,11 @@
       "player": "Tyreek Hill",
       "points": 7.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "KC"
     },
     {
       "week": 5,
@@ -1140,8 +1478,11 @@
       "player": "Keenan Allen",
       "points": 7.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LAC"
     },
     {
       "week": 5,
@@ -1149,8 +1490,11 @@
       "player": "David Montgomery",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CHI"
     },
     {
       "week": 5,
@@ -1158,8 +1502,11 @@
       "player": "Patrick Mahomes",
       "points": 18.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "KC"
     },
     {
       "week": 5,
@@ -1167,8 +1514,11 @@
       "player": "Lamar Jackson",
       "points": 46.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "BAL"
     },
     {
       "week": 5,
@@ -1176,8 +1526,11 @@
       "player": "Mark Andrews",
       "points": 32.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "BAL"
     },
     {
       "week": 5,
@@ -1185,8 +1538,11 @@
       "player": "Odell Beckham Jr.",
       "points": 2.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CLE"
     },
     {
       "week": 5,
@@ -1194,6 +1550,7 @@
       "player": "Deebo Samuel",
       "points": 12.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -1203,8 +1560,11 @@
       "player": "Jaylen Waddle",
       "points": 3.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIA"
     },
     {
       "week": 5,
@@ -1212,8 +1572,11 @@
       "player": "T.Y. Hilton",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "IND"
     },
     {
       "week": 5,
@@ -1221,6 +1584,7 @@
       "player": "Melvin Gordon III",
       "points": 3.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -1230,8 +1594,11 @@
       "player": "Jamaal Williams",
       "points": 5.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DET"
     },
     {
       "week": 5,
@@ -1239,6 +1606,7 @@
       "player": "Ravens D/ST",
       "points": 0.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -1248,8 +1616,11 @@
       "player": "Younghoe Koo",
       "points": 11.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "ATL"
     },
     {
       "week": 5,
@@ -1257,8 +1628,11 @@
       "player": "Sony Michel",
       "points": 9.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LA"
     },
     {
       "week": 5,
@@ -1266,8 +1640,11 @@
       "player": "Chuba Hubbard",
       "points": 15.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 5,
@@ -1275,6 +1652,7 @@
       "player": "Bengals D/ST",
       "points": -1.0,
       "started": false,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -1284,8 +1662,11 @@
       "player": "Hunter Renfrow",
       "points": 5.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LV"
     },
     {
       "week": 5,
@@ -1293,8 +1674,11 @@
       "player": "A.J. Green",
       "points": 1.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "CB",
+      "nfl_team": "CLE"
     },
     {
       "week": 5,
@@ -1302,8 +1686,11 @@
       "player": "Antonio Brown",
       "points": 28.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 5,
@@ -1311,8 +1698,11 @@
       "player": "Alvin Kamara",
       "points": 24.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NO"
     },
     {
       "week": 5,
@@ -1320,8 +1710,11 @@
       "player": "Aaron Jones",
       "points": 12.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "GB"
     },
     {
       "week": 5,
@@ -1329,8 +1722,11 @@
       "player": "DeAndre Hopkins",
       "points": 14.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ARI"
     },
     {
       "week": 5,
@@ -1338,8 +1734,11 @@
       "player": "Josh Jacobs",
       "points": 11.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 5,
@@ -1347,6 +1746,7 @@
       "player": "Allen Robinson II",
       "points": 3.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -1356,8 +1756,11 @@
       "player": "Amari Cooper",
       "points": 12.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DAL"
     },
     {
       "week": 5,
@@ -1365,8 +1768,11 @@
       "player": "Chase Edmonds",
       "points": 0.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ARI"
     },
     {
       "week": 5,
@@ -1374,8 +1780,11 @@
       "player": "Aaron Rodgers",
       "points": 21.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "GB"
     },
     {
       "week": 5,
@@ -1383,8 +1792,11 @@
       "player": "T.J. Hockenson",
       "points": 2.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "DET"
     },
     {
       "week": 5,
@@ -1392,8 +1804,11 @@
       "player": "Tee Higgins",
       "points": 5.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 5,
@@ -1401,8 +1816,11 @@
       "player": "Matthew Stafford",
       "points": 18.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LA"
     },
     {
       "week": 5,
@@ -1410,8 +1828,11 @@
       "player": "Jerry Jeudy",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DEN"
     },
     {
       "week": 5,
@@ -1419,8 +1840,11 @@
       "player": "Kenyan Drake",
       "points": 1.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 5,
@@ -1428,8 +1852,11 @@
       "player": "Latavius Murray",
       "points": 2.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BAL"
     },
     {
       "week": 5,
@@ -1437,8 +1864,11 @@
       "player": "Justin Tucker",
       "points": 3.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "BAL"
     },
     {
       "week": 5,
@@ -1446,6 +1876,7 @@
       "player": "Tony Jones Jr.",
       "points": 0.0,
       "started": false,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -1455,6 +1886,7 @@
       "player": "Marvin Jones Jr.",
       "points": 2.0,
       "started": false,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -1464,6 +1896,7 @@
       "player": "Bills D/ST",
       "points": 15.0,
       "started": false,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     },
@@ -1473,8 +1906,11 @@
       "player": "Kirk Cousins",
       "points": 13.0,
       "started": false,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "MIN"
     },
     {
       "week": 5,
@@ -1482,8 +1918,11 @@
       "player": "Alex Collins",
       "points": 6.0,
       "started": true,
+      "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 5,
@@ -1491,6 +1930,7 @@
       "player": "Panthers D/ST",
       "points": 10.0,
       "started": true,
+      "season": 2021,
       "source": "league",
       "source_player_id": null
     }

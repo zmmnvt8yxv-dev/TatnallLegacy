@@ -44,8 +44,11 @@
       "points": 22.9,
       "slot": "WR",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 5,
@@ -55,8 +58,11 @@
       "points": 27.2,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TEN"
     },
     {
       "week": 5,
@@ -66,8 +72,11 @@
       "points": 3.6,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PIT"
     },
     {
       "week": 5,
@@ -77,8 +86,11 @@
       "points": 0.0,
       "slot": "IR",
       "started": false,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DEN"
     },
     {
       "week": 5,
@@ -88,8 +100,11 @@
       "points": 16.4,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 5,
@@ -99,8 +114,11 @@
       "points": 33.9,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 5,
@@ -110,8 +128,11 @@
       "points": 24.1,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 5,
@@ -121,8 +142,11 @@
       "points": 8.8,
       "slot": "RB",
       "started": true,
+      "season": 2022,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     }
   ]
 }

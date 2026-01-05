@@ -169,13 +169,22 @@ export default function TransactionsPage() {
 
   const entries = useMemo(() => {
     const list = transactions?.entries || [];
-    return list.filter((entry) => {
+    const filtered = list.filter((entry) => {
       const entryWeek = Number(entry.week);
       if (Number.isFinite(entryWeek) && (entryWeek < 1 || entryWeek > 18)) return false;
       if (week !== "all" && Number(entry.week) !== Number(week)) return false;
       if (typeFilter !== "all" && entry.type !== typeFilter) return false;
       if (teamFilter && normalizeOwnerName(entry.team) !== teamFilter) return false;
       return true;
+    });
+    return filtered.sort((a, b) => {
+      const weekA = Number(a.week) || 0;
+      const weekB = Number(b.week) || 0;
+      if (weekA !== weekB) return weekB - weekA;
+      const createdA = Number(a.created) || 0;
+      const createdB = Number(b.created) || 0;
+      if (createdA !== createdB) return createdB - createdA;
+      return String(a.id || "").localeCompare(String(b.id || ""));
     });
   }, [transactions, week, typeFilter, teamFilter]);
 
@@ -201,6 +210,11 @@ export default function TransactionsPage() {
   }, [totalsByTeam]);
 
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+  const formatAmount = (value) => {
+    const numeric = Number(value);
+    if (!Number.isFinite(numeric)) return "—";
+    return `$${numeric}`;
+  };
   const virtualEntries = useVirtualRows({ itemCount: entries.length, rowHeight: 46 });
   const visibleEntries = entries.slice(virtualEntries.start, virtualEntries.end);
 
@@ -398,13 +412,14 @@ export default function TransactionsPage() {
                   <th>Week</th>
                   <th>Team</th>
                   <th>Type</th>
+                  <th>Amount</th>
                   <th>Details</th>
                 </tr>
               </thead>
               <tbody>
                 {virtualEntries.topPadding ? (
                   <tr className="table-virtual-spacer" aria-hidden="true">
-                    <td colSpan={4} style={{ height: virtualEntries.topPadding }} />
+                    <td colSpan={5} style={{ height: virtualEntries.topPadding }} />
                   </tr>
                 ) : null}
                 {visibleEntries.map((entry) => (
@@ -420,6 +435,7 @@ export default function TransactionsPage() {
                       </button>
                     </td>
                     <td>{entry.type}</td>
+                    <td>{formatAmount(entry.amount)}</td>
                     <td>
                       {entry.players?.length ? (
                         <div>
@@ -445,7 +461,7 @@ export default function TransactionsPage() {
                 ))}
                 {virtualEntries.bottomPadding ? (
                   <tr className="table-virtual-spacer" aria-hidden="true">
-                    <td colSpan={4} style={{ height: virtualEntries.bottomPadding }} />
+                    <td colSpan={5} style={{ height: virtualEntries.bottomPadding }} />
                   </tr>
                 ) : null}
               </tbody>

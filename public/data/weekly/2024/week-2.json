@@ -42,8 +42,11 @@
       "player": "C.J. Stroud",
       "points": 14.3,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "HOU"
     },
     {
       "week": 2,
@@ -51,8 +54,11 @@
       "player": "Anthony Richardson",
       "points": 9.86,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "IND"
     },
     {
       "week": 2,
@@ -60,8 +66,11 @@
       "player": "Saquon Barkley",
       "points": 15.6,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PHI"
     },
     {
       "week": 2,
@@ -69,8 +78,11 @@
       "player": "Jahmyr Gibbs",
       "points": 14.1,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DET"
     },
     {
       "week": 2,
@@ -78,8 +90,11 @@
       "player": "Deebo Samuel Sr.",
       "points": 16.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SF"
     },
     {
       "week": 2,
@@ -87,8 +102,11 @@
       "player": "D'Andre Swift",
       "points": 6.2,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CHI"
     },
     {
       "week": 2,
@@ -96,8 +114,11 @@
       "player": "Justin Herbert",
       "points": 11.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LAC"
     },
     {
       "week": 2,
@@ -105,8 +126,11 @@
       "player": "Amari Cooper",
       "points": 2.6,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CLE"
     },
     {
       "week": 2,
@@ -114,8 +138,11 @@
       "player": "Jaylen Waddle",
       "points": 6.5,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIA"
     },
     {
       "week": 2,
@@ -123,8 +150,11 @@
       "player": "Tank Dell",
       "points": 1.8,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 2,
@@ -132,8 +162,11 @@
       "player": "Brock Bowers",
       "points": 14.3,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "LV"
     },
     {
       "week": 2,
@@ -141,8 +174,11 @@
       "player": "Kyle Pitts",
       "points": 3.5,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "ATL"
     },
     {
       "week": 2,
@@ -150,8 +186,11 @@
       "player": "Austin Ekeler",
       "points": 10.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "WAS"
     },
     {
       "week": 2,
@@ -159,8 +198,11 @@
       "player": "George Kittle",
       "points": 17.1,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "SF"
     },
     {
       "week": 2,
@@ -168,8 +210,11 @@
       "player": "Kirk Cousins",
       "points": 18.54,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "ATL"
     },
     {
       "week": 2,
@@ -177,8 +222,11 @@
       "player": "Christian Watson",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "GB"
     },
     {
       "week": 2,
@@ -186,6 +234,7 @@
       "player": "Ravens D/ST",
       "points": 9.0,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -195,8 +244,11 @@
       "player": "Justin Tucker",
       "points": 13.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "BAL"
     },
     {
       "week": 2,
@@ -204,8 +256,11 @@
       "player": "Jaylen Wright",
       "points": 0.4,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 2,
@@ -213,8 +268,11 @@
       "player": "De'Von Achane",
       "points": 26.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 2,
@@ -222,8 +280,11 @@
       "player": "Amon-Ra St. Brown",
       "points": 19.4,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DET"
     },
     {
       "week": 2,
@@ -231,8 +292,11 @@
       "player": "CeeDee Lamb",
       "points": 19.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DAL"
     },
     {
       "week": 2,
@@ -240,8 +304,11 @@
       "player": "Jalen Hurts",
       "points": 23.82,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "PHI"
     },
     {
       "week": 2,
@@ -249,8 +316,11 @@
       "player": "DK Metcalf",
       "points": 27.9,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 2,
@@ -258,8 +328,11 @@
       "player": "DJ Moore",
       "points": 8.3,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CHI"
     },
     {
       "week": 2,
@@ -267,8 +340,11 @@
       "player": "Brandon Aiyuk",
       "points": 6.3,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SF"
     },
     {
       "week": 2,
@@ -276,8 +352,11 @@
       "player": "Najee Harris",
       "points": 7.9,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PIT"
     },
     {
       "week": 2,
@@ -285,8 +364,11 @@
       "player": "Trey McBride",
       "points": 15.7,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "ARI"
     },
     {
       "week": 2,
@@ -294,8 +376,11 @@
       "player": "Calvin Ridley",
       "points": 23.7,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TEN"
     },
     {
       "week": 2,
@@ -303,8 +388,11 @@
       "player": "Jayden Reed",
       "points": 5.6,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "GB"
     },
     {
       "week": 2,
@@ -312,8 +400,11 @@
       "player": "J.K. Dobbins",
       "points": 22.6,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 2,
@@ -321,8 +412,11 @@
       "player": "Kyler Murray",
       "points": 30.54,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "ARI"
     },
     {
       "week": 2,
@@ -330,8 +424,11 @@
       "player": "Jayden Daniels",
       "points": 13.44,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "WAS"
     },
     {
       "week": 2,
@@ -339,8 +436,11 @@
       "player": "Tony Pollard",
       "points": 12.7,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TEN"
     },
     {
       "week": 2,
@@ -348,6 +448,7 @@
       "player": "Brian Robinson Jr.",
       "points": 16.1,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -357,8 +458,11 @@
       "player": "Justin Fields",
       "points": 11.38,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "PIT"
     },
     {
       "week": 2,
@@ -366,8 +470,11 @@
       "player": "Cameron Dicker",
       "points": 8.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "LAC"
     },
     {
       "week": 2,
@@ -375,6 +482,7 @@
       "player": "Chargers D/ST",
       "points": 11.0,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -384,8 +492,11 @@
       "player": "Mike Evans",
       "points": 5.7,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 2,
@@ -393,8 +504,11 @@
       "player": "Chris Olave",
       "points": 10.8,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NO"
     },
     {
       "week": 2,
@@ -402,8 +516,11 @@
       "player": "Jonathan Taylor",
       "points": 16.5,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "IND"
     },
     {
       "week": 2,
@@ -411,8 +528,11 @@
       "player": "Kyren Williams",
       "points": 13.2,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LA"
     },
     {
       "week": 2,
@@ -420,8 +540,11 @@
       "player": "Davante Adams",
       "points": 23.5,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LV"
     },
     {
       "week": 2,
@@ -429,8 +552,11 @@
       "player": "Sam LaPorta",
       "points": 2.3,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "DET"
     },
     {
       "week": 2,
@@ -438,8 +564,11 @@
       "player": "Dak Prescott",
       "points": 14.92,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "DAL"
     },
     {
       "week": 2,
@@ -447,8 +576,11 @@
       "player": "Cooper Kupp",
       "points": 5.7,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 2,
@@ -456,6 +588,7 @@
       "player": "Michael Pittman Jr.",
       "points": 3.6,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -465,8 +598,11 @@
       "player": "Brock Purdy",
       "points": 15.96,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "SF"
     },
     {
       "week": 2,
@@ -474,8 +610,11 @@
       "player": "Diontae Johnson",
       "points": 3.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CAR"
     },
     {
       "week": 2,
@@ -483,8 +622,11 @@
       "player": "Devin Singletary",
       "points": 14.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NYG"
     },
     {
       "week": 2,
@@ -492,8 +634,11 @@
       "player": "Brian Thomas Jr.",
       "points": 10.4,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "JAX"
     },
     {
       "week": 2,
@@ -501,8 +646,11 @@
       "player": "Ezekiel Elliott",
       "points": 4.2,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DAL"
     },
     {
       "week": 2,
@@ -510,8 +658,11 @@
       "player": "Bucky Irving",
       "points": 2.2,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TB"
     },
     {
       "week": 2,
@@ -519,8 +670,11 @@
       "player": "Baker Mayfield",
       "points": 19.8,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "TB"
     },
     {
       "week": 2,
@@ -528,8 +682,11 @@
       "player": "Chase Brown",
       "points": 3.1,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 2,
@@ -537,6 +694,7 @@
       "player": "Jaguars D/ST",
       "points": 5.0,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -546,6 +704,7 @@
       "player": "Hollywood Brown",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -555,8 +714,11 @@
       "player": "Harrison Butker",
       "points": 10.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "KC"
     },
     {
       "week": 2,
@@ -564,8 +726,11 @@
       "player": "Puka Nacua",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 2,
@@ -573,8 +738,11 @@
       "player": "Christian McCaffrey",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 2,
@@ -582,8 +750,11 @@
       "player": "Malik Nabers",
       "points": 25.7,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NYG"
     },
     {
       "week": 2,
@@ -591,8 +762,11 @@
       "player": "Travis Kelce",
       "points": 1.1,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "KC"
     },
     {
       "week": 2,
@@ -600,8 +774,11 @@
       "player": "Marvin Harrison Jr.",
       "points": 31.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ARI"
     },
     {
       "week": 2,
@@ -609,8 +786,11 @@
       "player": "Rachaad White",
       "points": 2.8,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TB"
     },
     {
       "week": 2,
@@ -618,8 +798,11 @@
       "player": "Rashee Rice",
       "points": 17.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "KC"
     },
     {
       "week": 2,
@@ -627,8 +810,11 @@
       "player": "Aaron Jones",
       "points": 7.3,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 2,
@@ -636,8 +822,11 @@
       "player": "Jaylen Warren",
       "points": 7.1,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "PIT"
     },
     {
       "week": 2,
@@ -645,8 +834,11 @@
       "player": "Xavier Worthy",
       "points": 3.2,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "KC"
     },
     {
       "week": 2,
@@ -654,8 +846,11 @@
       "player": "Caleb Williams",
       "points": 7.36,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CHI"
     },
     {
       "week": 2,
@@ -663,8 +858,11 @@
       "player": "Aaron Rodgers",
       "points": 15.14,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "NYJ"
     },
     {
       "week": 2,
@@ -672,8 +870,11 @@
       "player": "Rome Odunze",
       "points": 4.3,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CHI"
     },
     {
       "week": 2,
@@ -681,8 +882,11 @@
       "player": "Tua Tagovailoa",
       "points": 5.5,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "MIA"
     },
     {
       "week": 2,
@@ -690,8 +894,11 @@
       "player": "Brandon Aubrey",
       "points": 17.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "DAL"
     },
     {
       "week": 2,
@@ -699,8 +906,11 @@
       "player": "Courtland Sutton",
       "points": 3.1,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DEN"
     },
     {
       "week": 2,
@@ -708,8 +918,11 @@
       "player": "Matthew Stafford",
       "points": 6.64,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "LA"
     },
     {
       "week": 2,
@@ -717,6 +930,7 @@
       "player": "Cowboys D/ST",
       "points": -1.0,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -726,8 +940,11 @@
       "player": "Allen Lazard",
       "points": 2.1,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NYJ"
     },
     {
       "week": 2,
@@ -735,6 +952,7 @@
       "player": "Jeff Wilson Jr.",
       "points": 2.2,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -744,8 +962,11 @@
       "player": "Chuba Hubbard",
       "points": 9.6,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 2,
@@ -753,8 +974,11 @@
       "player": "James Cook",
       "points": 29.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BUF"
     },
     {
       "week": 2,
@@ -762,8 +986,11 @@
       "player": "David Njoku",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "CLE"
     },
     {
       "week": 2,
@@ -771,8 +998,11 @@
       "player": "Tyreek Hill",
       "points": 5.1,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIA"
     },
     {
       "week": 2,
@@ -780,8 +1010,11 @@
       "player": "Isiah Pacheco",
       "points": 13.6,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "KC"
     },
     {
       "week": 2,
@@ -789,8 +1022,11 @@
       "player": "Garrett Wilson",
       "points": 8.2,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "NYJ"
     },
     {
       "week": 2,
@@ -798,8 +1034,11 @@
       "player": "Joe Mixon",
       "points": 6.5,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "HOU"
     },
     {
       "week": 2,
@@ -807,8 +1046,11 @@
       "player": "Alvin Kamara",
       "points": 47.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NO"
     },
     {
       "week": 2,
@@ -816,8 +1058,11 @@
       "player": "Ladd McConkey",
       "points": 3.6,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LAC"
     },
     {
       "week": 2,
@@ -825,8 +1070,11 @@
       "player": "Geno Smith",
       "points": 21.88,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "SEA"
     },
     {
       "week": 2,
@@ -834,8 +1082,11 @@
       "player": "Christian Kirk",
       "points": 0.4,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "JAX"
     },
     {
       "week": 2,
@@ -843,8 +1094,11 @@
       "player": "Jameson Williams",
       "points": 11.9,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "DET"
     },
     {
       "week": 2,
@@ -852,8 +1106,11 @@
       "player": "Jaleel McLaughlin",
       "points": 0.6,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DEN"
     },
     {
       "week": 2,
@@ -861,8 +1118,11 @@
       "player": "Evan McPherson",
       "points": 14.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "CIN"
     },
     {
       "week": 2,
@@ -870,6 +1130,7 @@
       "player": "Seahawks D/ST",
       "points": 5.0,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -879,8 +1140,11 @@
       "player": "Greg Dortch",
       "points": 2.1,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ARI"
     },
     {
       "week": 2,
@@ -888,8 +1152,11 @@
       "player": "Evan Engram",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "JAX"
     },
     {
       "week": 2,
@@ -897,8 +1164,11 @@
       "player": "Alexander Mattison",
       "points": 6.1,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 2,
@@ -906,8 +1176,11 @@
       "player": "Tank Bigsby",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "JAX"
     },
     {
       "week": 2,
@@ -915,8 +1188,11 @@
       "player": "Rico Dowdle",
       "points": 7.9,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DAL"
     },
     {
       "week": 2,
@@ -924,8 +1200,11 @@
       "player": "Derek Carr",
       "points": 25.82,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "NO"
     },
     {
       "week": 2,
@@ -933,8 +1212,11 @@
       "player": "Dallas Goedert",
       "points": 5.3,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "PHI"
     },
     {
       "week": 2,
@@ -942,8 +1224,11 @@
       "player": "George Pickens",
       "points": 3.9,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PIT"
     },
     {
       "week": 2,
@@ -951,8 +1236,11 @@
       "player": "Jordan Love",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "GB"
     },
     {
       "week": 2,
@@ -960,8 +1248,11 @@
       "player": "Josh Allen",
       "points": 9.76,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "BUF"
     },
     {
       "week": 2,
@@ -969,8 +1260,11 @@
       "player": "A.J. Brown",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PHI"
     },
     {
       "week": 2,
@@ -978,6 +1272,7 @@
       "player": "Travis Etienne Jr.",
       "points": 13.3,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -987,8 +1282,11 @@
       "player": "Tee Higgins",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 2,
@@ -996,8 +1294,11 @@
       "player": "Dalton Kincaid",
       "points": 5.3,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "BUF"
     },
     {
       "week": 2,
@@ -1005,8 +1306,11 @@
       "player": "James Conner",
       "points": 20.9,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ARI"
     },
     {
       "week": 2,
@@ -1014,6 +1318,7 @@
       "player": "Chris Godwin",
       "points": 24.2,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -1023,8 +1328,11 @@
       "player": "Zack Moss",
       "points": 5.2,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CIN"
     },
     {
       "week": 2,
@@ -1032,8 +1340,11 @@
       "player": "Javonte Williams",
       "points": 9.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DEN"
     },
     {
       "week": 2,
@@ -1041,8 +1352,11 @@
       "player": "Jonathon Brooks",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CAR"
     },
     {
       "week": 2,
@@ -1050,8 +1364,11 @@
       "player": "Terry McLaurin",
       "points": 5.2,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "WAS"
     },
     {
       "week": 2,
@@ -1059,8 +1376,11 @@
       "player": "Trey Benson",
       "points": 2.2,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ARI"
     },
     {
       "week": 2,
@@ -1068,8 +1388,11 @@
       "player": "Jake Ferguson",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "DAL"
     },
     {
       "week": 2,
@@ -1077,8 +1400,11 @@
       "player": "Blake Corum",
       "points": 2.8,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LA"
     },
     {
       "week": 2,
@@ -1086,8 +1412,11 @@
       "player": "Trevor Lawrence",
       "points": 13.3,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "JAX"
     },
     {
       "week": 2,
@@ -1095,8 +1424,11 @@
       "player": "Jake Elliott",
       "points": 7.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "PHI"
     },
     {
       "week": 2,
@@ -1104,6 +1436,7 @@
       "player": "Steelers D/ST",
       "points": 12.0,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -1113,6 +1446,7 @@
       "player": "Vikings D/ST",
       "points": 12.0,
       "started": false,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -1122,8 +1456,11 @@
       "player": "Drake London",
       "points": 14.4,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "ATL"
     },
     {
       "week": 2,
@@ -1131,8 +1468,11 @@
       "player": "Zay Flowers",
       "points": 18.6,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BAL"
     },
     {
       "week": 2,
@@ -1140,8 +1480,11 @@
       "player": "Bijan Robinson",
       "points": 14.2,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ATL"
     },
     {
       "week": 2,
@@ -1149,8 +1492,11 @@
       "player": "Joe Burrow",
       "points": 17.22,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "CIN"
     },
     {
       "week": 2,
@@ -1158,8 +1504,11 @@
       "player": "Ja'Marr Chase",
       "points": 5.5,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "week": 2,
@@ -1167,8 +1516,11 @@
       "player": "Derrick Henry",
       "points": 16.1,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "BAL"
     },
     {
       "week": 2,
@@ -1176,8 +1528,11 @@
       "player": "Lamar Jackson",
       "points": 16.38,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "BAL"
     },
     {
       "week": 2,
@@ -1185,8 +1540,11 @@
       "player": "Stefon Diggs",
       "points": 5.7,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 2,
@@ -1194,8 +1552,11 @@
       "player": "Jaxon Smith-Njigba",
       "points": 19.7,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "SEA"
     },
     {
       "week": 2,
@@ -1203,8 +1564,11 @@
       "player": "Keenan Allen",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CHI"
     },
     {
       "week": 2,
@@ -1212,8 +1576,11 @@
       "player": "Mark Andrews",
       "points": 7.1,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "BAL"
     },
     {
       "week": 2,
@@ -1221,8 +1588,11 @@
       "player": "Nick Chubb",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 2,
@@ -1230,8 +1600,11 @@
       "player": "Younghoe Koo",
       "points": 10.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "ATL"
     },
     {
       "week": 2,
@@ -1239,6 +1612,7 @@
       "player": "Jets D/ST",
       "points": 11.0,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -1248,8 +1622,11 @@
       "player": "Gus Edwards",
       "points": 5.9,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LAC"
     },
     {
       "week": 2,
@@ -1257,8 +1634,11 @@
       "player": "Tyler Allgeier",
       "points": 7.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "ATL"
     },
     {
       "week": 2,
@@ -1266,8 +1646,11 @@
       "player": "Jerome Ford",
       "points": 6.9,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "CLE"
     },
     {
       "week": 2,
@@ -1275,8 +1658,11 @@
       "player": "Jerry Jeudy",
       "points": 9.8,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "CLE"
     },
     {
       "week": 2,
@@ -1284,8 +1670,11 @@
       "player": "Ty Chandler",
       "points": 8.2,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIN"
     },
     {
       "week": 2,
@@ -1293,8 +1682,11 @@
       "player": "T.J. Hockenson",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "MIN"
     },
     {
       "week": 2,
@@ -1302,8 +1694,11 @@
       "player": "Sam Darnold",
       "points": 21.92,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "MIN"
     },
     {
       "week": 2,
@@ -1311,8 +1706,11 @@
       "player": "Breece Hall",
       "points": 20.9,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NYJ"
     },
     {
       "week": 2,
@@ -1320,8 +1718,11 @@
       "player": "Nico Collins",
       "points": 25.5,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "HOU"
     },
     {
       "week": 2,
@@ -1329,8 +1730,11 @@
       "player": "Justin Jefferson",
       "points": 25.3,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "week": 2,
@@ -1338,8 +1742,11 @@
       "player": "Patrick Mahomes",
       "points": 13.94,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "KC"
     },
     {
       "week": 2,
@@ -1347,8 +1754,11 @@
       "player": "Josh Jacobs",
       "points": 15.1,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "GB"
     },
     {
       "week": 2,
@@ -1356,8 +1766,11 @@
       "player": "Rhamondre Stevenson",
       "points": 16.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "NE"
     },
     {
       "week": 2,
@@ -1365,8 +1778,11 @@
       "player": "Kenneth Walker III",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 2,
@@ -1374,8 +1790,11 @@
       "player": "Zamir White",
       "points": 5.3,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "LV"
     },
     {
       "week": 2,
@@ -1383,8 +1802,11 @@
       "player": "David Montgomery",
       "points": 15.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "DET"
     },
     {
       "week": 2,
@@ -1392,8 +1814,11 @@
       "player": "DeVonta Smith",
       "points": 17.1,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "PHI"
     },
     {
       "week": 2,
@@ -1401,6 +1826,7 @@
       "player": "Browns D/ST",
       "points": 9.0,
       "started": true,
+      "season": 2024,
       "source": "league",
       "source_player_id": null
     },
@@ -1410,8 +1836,11 @@
       "player": "Keon Coleman",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "BUF"
     },
     {
       "week": 2,
@@ -1419,8 +1848,11 @@
       "player": "Raheem Mostert",
       "points": 0.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "MIA"
     },
     {
       "week": 2,
@@ -1428,8 +1860,11 @@
       "player": "Jared Goff",
       "points": 10.78,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "QB",
+      "nfl_team": "DET"
     },
     {
       "week": 2,
@@ -1437,8 +1872,11 @@
       "player": "Zach Charbonnet",
       "points": 15.4,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SEA"
     },
     {
       "week": 2,
@@ -1446,8 +1884,11 @@
       "player": "Ka'imi Fairbairn",
       "points": 20.0,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "K",
+      "nfl_team": "HOU"
     },
     {
       "week": 2,
@@ -1455,8 +1896,11 @@
       "player": "Jordan Mason",
       "points": 18.9,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "SF"
     },
     {
       "week": 2,
@@ -1464,8 +1908,11 @@
       "player": "Isaiah Likely",
       "points": 3.6,
       "started": true,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "TE",
+      "nfl_team": "BAL"
     },
     {
       "week": 2,
@@ -1473,8 +1920,11 @@
       "player": "Demarcus Robinson",
       "points": 6.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 2,
@@ -1482,8 +1932,11 @@
       "player": "Tyler Johnson",
       "points": 3.0,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "WR",
+      "nfl_team": "LA"
     },
     {
       "week": 2,
@@ -1491,8 +1944,11 @@
       "player": "Tyjae Spears",
       "points": 4.1,
       "started": false,
+      "season": 2024,
       "source": "league",
-      "source_player_id": null
+      "source_player_id": null,
+      "position": "RB",
+      "nfl_team": "TEN"
     }
   ]
 }
