@@ -41,6 +41,46 @@ function resolvePlayerFromIndex(playerIndex, candidates) {
   return null;
 }
 
+export function getCanonicalPlayerId(playerId, { row, playerIndex } = {}) {
+  const effectiveRow = row || {};
+  const rawId = playerId != null ? String(playerId) : "";
+  if (playerIndex && rawId) {
+    const direct =
+      playerIndex.sleeper_id?.get(rawId) ||
+      playerIndex.player_id?.get(rawId) ||
+      playerIndex.espn_id?.get(rawId) ||
+      playerIndex.gsis_id?.get(rawId);
+    if (direct) {
+      const mappedId = direct.sleeper_id || direct.player_id;
+      if (mappedId) return String(mappedId);
+    }
+  }
+  const candidates = [
+    { key: "sleeper_id", value: effectiveRow.sleeper_id },
+    { key: "player_id", value: effectiveRow.player_id },
+    { key: "gsis_id", value: effectiveRow.gsis_id },
+    { key: "espn_id", value: effectiveRow.espn_id },
+  ];
+  const resolved = resolvePlayerFromIndex(playerIndex, candidates);
+  if (resolved?.sleeper_id) return String(resolved.sleeper_id);
+  if (resolved?.player_id) return String(resolved.player_id);
+  if (effectiveRow.sleeper_id) return String(effectiveRow.sleeper_id);
+  if (effectiveRow.player_id) return String(effectiveRow.player_id);
+  if (rawId) return rawId;
+  return "";
+}
+
+export function canResolvePlayerId(playerId, playerIndex) {
+  if (!playerId || !playerIndex) return false;
+  const id = String(playerId);
+  return (
+    playerIndex.sleeper_id?.has(id) ||
+    playerIndex.player_id?.has(id) ||
+    playerIndex.espn_id?.has(id) ||
+    playerIndex.gsis_id?.has(id)
+  );
+}
+
 function getSleeperEntry(sleeperPlayers, playerId) {
   if (!sleeperPlayers || !playerId) return null;
   if (sleeperPlayers instanceof Map) return sleeperPlayers.get(String(playerId)) || null;

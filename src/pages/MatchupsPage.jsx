@@ -6,7 +6,7 @@ import Modal from "../components/Modal.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
 import SearchBar from "../components/SearchBar.jsx";
-import { resolvePlayerDisplay } from "../lib/playerName.js";
+import { canResolvePlayerId, getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
 import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
@@ -168,11 +168,15 @@ export default function MatchupsPage() {
     const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
     const mapped = rows.map((row) => {
       const display = resolvePlayerDisplay(row.player_id, { playerIndex });
+      const canonicalId = getCanonicalPlayerId(row.player_id, { row, playerIndex });
+      const canLink = canonicalId && canResolvePlayerId(canonicalId, playerIndex);
       return {
         ...row,
         displayName: display.name,
         position: display.position,
         nflTeam: display.team,
+        canonicalPlayerId: canonicalId || "",
+        canLink,
       };
     });
     const totals = mapped.reduce(
@@ -362,8 +366,8 @@ export default function MatchupsPage() {
                         {roster.rows.map((row, idx) => (
                           <tr key={`${row.player_id || row.player}-${idx}`}>
                             <td>
-                              {row.player_id ? (
-                                <Link className="link-button" to={`/players/${row.player_id}`}>
+                              {row.canLink ? (
+                                <Link className="link-button" to={`/players/${row.canonicalPlayerId}`}>
                                   {row.displayName}
                                 </Link>
                               ) : (

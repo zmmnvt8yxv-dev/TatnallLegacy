@@ -5,7 +5,7 @@ import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
-import { resolvePlayerDisplay } from "../lib/playerName.js";
+import { canResolvePlayerId, getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
@@ -73,11 +73,15 @@ export default function MatchupDetailPage() {
     const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
     const mapped = rows.map((row) => {
       const display = resolvePlayerDisplay(row.player_id, { row, playerIndex });
+      const canonicalId = getCanonicalPlayerId(row.player_id, { row, playerIndex });
+      const canLink = canonicalId && canResolvePlayerId(canonicalId, playerIndex);
       return {
         ...row,
         displayName: display.name,
         position: display.position,
         nflTeam: display.team,
+        canonicalPlayerId: canonicalId || "",
+        canLink,
       };
     });
     const filtered = mapped.filter((row) => {
@@ -171,8 +175,8 @@ export default function MatchupDetailPage() {
                       {roster.rows.map((row, idx) => (
                         <tr key={`${row.player_id || row.player}-${idx}`}>
                           <td>
-                            {row.player_id ? (
-                              <Link to={`/players/${row.player_id}`}>{row.displayName}</Link>
+                            {row.canLink ? (
+                              <Link to={`/players/${row.canonicalPlayerId}`}>{row.displayName}</Link>
                             ) : (
                               row.displayName
                             )}

@@ -8,9 +8,10 @@ import { normalizeOwnerName } from "../utils/owners.js";
 import { useVirtualRows } from "../utils/useVirtualRows.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
 import { Link, useSearchParams } from "react-router-dom";
+import { canResolvePlayerId, getCanonicalPlayerId } from "../lib/playerName.js";
 
 export default function TransactionsPage() {
-  const { manifest, loading, error } = useDataContext();
+  const { manifest, loading, error, playerIndex } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
   const didInitRef = useRef(false);
@@ -252,15 +253,26 @@ export default function TransactionsPage() {
 
   const renderPlayerLinks = (players) =>
     players
-      .map((player, index) =>
-        player?.id ? (
-          <Link key={`${player.id}-${index}`} to={`/players/${player.id}`} className="link-button">
+      .map((player, index) => {
+        if (!player?.id) return <span key={`${player.name}-${index}`}>{player.name || "Unknown"}</span>;
+        const canonicalId = getCanonicalPlayerId(player.id, {
+          row: {
+            player_id: player.id,
+            sleeper_id: player.id_type === "sleeper" ? player.id : null,
+            gsis_id: player.id_type === "gsis" ? player.id : null,
+            espn_id: player.id_type === "espn" ? player.id : null,
+          },
+          playerIndex,
+        });
+        const canLink = canonicalId && canResolvePlayerId(canonicalId, playerIndex);
+        return canLink ? (
+          <Link key={`${player.id}-${index}`} to={`/players/${canonicalId}`} className="link-button">
             {player.name || player.id}
           </Link>
         ) : (
-          <span key={`${player.name}-${index}`}>{player.name || "Unknown"}</span>
-        ),
-      )
+          <span key={`${player.id}-${index}`}>{player.name || player.id}</span>
+        );
+      })
       .reduce((prev, curr) => (prev === null ? [curr] : [prev, ", ", curr]), null);
 
   return (

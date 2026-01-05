@@ -15,7 +15,7 @@ import {
   loadSeasonSummary,
   loadWeekData,
 } from "../data/loader.js";
-import { resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName.js";
+import { getCanonicalPlayerId, resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { useVirtualRows } from "../utils/useVirtualRows.js";
 import { useFavorites } from "../utils/useFavorites.js";
@@ -63,7 +63,12 @@ export default function PlayerPage() {
   const [careerMetrics, setCareerMetrics] = useState([]);
   const [search, setSearch] = useState("");
   const { favorites, togglePlayer } = useFavorites();
-  const isFavorite = favorites.players.includes(String(playerId));
+  const canonicalPlayerId = useMemo(
+    () => getCanonicalPlayerId(playerId, { row: { espn_id: playerId, player_id: playerId }, playerIndex }),
+    [playerId, playerIndex],
+  );
+  const resolvedPlayerId = canonicalPlayerId || String(playerId);
+  const isFavorite = favorites.players.includes(String(resolvedPlayerId));
 
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
 
@@ -203,7 +208,10 @@ export default function PlayerPage() {
       for (const payload of payloads) {
         if (!payload?.lineups) continue;
         for (const row of payload.lineups) {
-          if (String(row.player_id) === String(playerId)) {
+          const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) =>
+            String(value || ""),
+          );
+          if (ids.some((value) => targetIds.has(value))) {
             rows.push({ ...row, season: selectedSeason, week: payload.week });
           }
         }
@@ -213,7 +221,7 @@ export default function PlayerPage() {
     return () => {
       active = false;
     };
-  }, [selectedSeason, playerId, manifest]);
+  }, [selectedSeason, targetIds, manifest]);
 
   useEffect(() => {
     let active = true;
@@ -242,17 +250,36 @@ export default function PlayerPage() {
   }, [selectedSeason]);
 
   const playerInfo = useMemo(() => {
-    const uid = playerIdLookup.bySleeper.get(String(playerId));
-    const info = uid ? playerIdLookup.byUid.get(uid) : null;
-    return info || null;
-  }, [playerIdLookup, playerId]);
+    const candidates = [resolvedPlayerId, playerId].filter(Boolean);
+    for (const id of candidates) {
+      const uid =
+        playerIdLookup.bySleeper.get(String(id)) ||
+        playerIdLookup.byEspn.get(String(id));
+      if (uid) return playerIdLookup.byUid.get(uid) || null;
+    }
+    return null;
+  }, [playerIdLookup, resolvedPlayerId, playerId]);
+
+  const targetIds = useMemo(() => {
+    const ids = new Set();
+    for (const value of [
+      resolvedPlayerId,
+      playerId,
+      playerInfo?.sleeper_id,
+      playerInfo?.player_id,
+      playerInfo?.gsis_id,
+      playerInfo?.espn_id,
+    ]) {
+      if (value) ids.add(String(value));
+    }
+    return ids;
+  }, [resolvedPlayerId, playerId, playerInfo]);
 
   const statsNameRow = useMemo(() => {
-    const targetId = String(playerId);
     const tryFind = (rows) =>
       rows.find((row) => {
-        const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id].map((value) => String(value || ""));
-        return ids.includes(targetId);
+        const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) => String(value || ""));
+        return ids.some((value) => targetIds.has(value));
       }) || null;
     if (statsWeeklyRows.length) return tryFind(statsWeeklyRows);
     if (fullStatsRows.length) return tryFind(fullStatsRows);
@@ -262,27 +289,27 @@ export default function PlayerPage() {
       if (match) return match;
     }
     return null;
-  }, [playerId, statsWeeklyRows, fullStatsRows, statsSeasonSummaries]);
+  }, [targetIds, statsWeeklyRows, fullStatsRows, statsSeasonSummaries]);
 
   const playerInfoWithStats = useMemo(() => {
-    if (!statsNameRow) return playerInfo || { player_id: playerId };
+    if (!statsNameRow) return playerInfo || { player_id: resolvedPlayerId };
     return {
-      player_id: playerId,
-      sleeper_id: statsNameRow.sleeper_id || playerInfo?.sleeper_id || playerId,
+      player_id: resolvedPlayerId,
+      sleeper_id: statsNameRow.sleeper_id || playerInfo?.sleeper_id || resolvedPlayerId,
       display_name: statsNameRow.display_name || statsNameRow.player_display_name || playerInfo?.full_name,
       position: playerInfo?.position || statsNameRow.position,
       nfl_team: playerInfo?.nfl_team || statsNameRow.team,
       ...playerInfo,
     };
-  }, [statsNameRow, playerInfo, playerId]);
+  }, [statsNameRow, playerInfo, resolvedPlayerId]);
 
   const resolvedName = useMemo(() => {
     return resolvePlayerName(playerInfoWithStats, playerIndex);
   }, [playerInfoWithStats, playerIndex]);
 
   const playerDisplay = useMemo(() => {
-    return resolvePlayerDisplay(playerId, { row: playerInfoWithStats, playerIndex });
-  }, [playerId, playerInfoWithStats, playerIndex]);
+    return resolvePlayerDisplay(resolvedPlayerId, { row: playerInfoWithStats, playerIndex });
+  }, [resolvedPlayerId, playerInfoWithStats, playerIndex]);
 
   const displayName = playerDisplay.name || resolvedName;
   const displayPosition = playerDisplay.position || playerInfo?.position || "Position —";
@@ -294,11 +321,12 @@ export default function PlayerPage() {
     const summaries = hasStats ? statsSeasonSummaries : seasonSummaries;
     for (const summary of summaries) {
       const rows = summary?.rows || summary?.playerSeasonTotals || [];
-      const targetIds = String(playerId);
       const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
       const row = rows.find((item) => {
-        const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id].map((value) => String(value || ""));
-        if (ids.includes(targetIds)) return true;
+        const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id, item?.espn_id].map((value) =>
+          String(value || ""),
+        );
+        if (ids.some((value) => targetIds.has(value))) return true;
         if (!targetNames.length) return false;
         const name = normalizeName(item?.display_name || item?.player_display_name || item?.player_name);
         return name && targetNames.includes(name);
@@ -311,11 +339,13 @@ export default function PlayerPage() {
         });
         const ranked = positionRows
           .map((item) => ({
-            ids: [item?.sleeper_id, item?.player_id, item?.gsis_id].map((value) => String(value || "")),
+            ids: [item?.sleeper_id, item?.player_id, item?.gsis_id, item?.espn_id].map((value) =>
+              String(value || ""),
+            ),
             points: safeNumber(item?.points ?? item?.fantasy_points_custom ?? item?.fantasy_points_custom_week),
           }))
           .sort((a, b) => b.points - a.points);
-        const rankIndex = ranked.findIndex((item) => item.ids.includes(targetIds));
+        const rankIndex = ranked.findIndex((item) => item.ids.some((value) => targetIds.has(value)));
         const positionRank = rankIndex >= 0 ? rankIndex + 1 : null;
         stats.push({
           season: summary.season,
@@ -332,15 +362,16 @@ export default function PlayerPage() {
       }
     }
     return stats.sort((a, b) => b.season - a.season);
-  }, [statsSeasonSummaries, seasonSummaries, playerId, playerInfo, resolvedName]);
+  }, [statsSeasonSummaries, seasonSummaries, targetIds, playerInfo, resolvedName]);
 
   const careerTotals = useMemo(() => {
     if (careerStats.length) {
-      const targetIds = String(playerId);
       const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
       const row = careerStats.find((item) => {
-        const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id].map((value) => String(value || ""));
-        if (ids.includes(targetIds)) return true;
+        const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id, item?.espn_id].map((value) =>
+          String(value || ""),
+        );
+        if (ids.some((value) => targetIds.has(value))) return true;
         if (!targetNames.length) return false;
         const name = normalizeName(item?.display_name || item?.player_display_name || item?.player_name);
         return name && targetNames.includes(name);
@@ -366,27 +397,26 @@ export default function PlayerPage() {
       },
       { points: 0, games: 0, seasons: 0, war: 0, delta: 0 },
     );
-  }, [seasonStats, careerStats, playerId]);
+  }, [seasonStats, careerStats, targetIds]);
 
   const matchesPlayer = (row) => {
-    const targetId = String(playerId);
-    const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id].map((value) => String(value || ""));
-    if (ids.includes(targetId)) return true;
+    const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) => String(value || ""));
+    if (ids.some((value) => targetIds.has(value))) return true;
     const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
     if (!targetNames.length) return false;
     const name = normalizeName(row?.display_name || row?.player_display_name || row?.player_name);
     return name && targetNames.includes(name);
-    return false;
   };
 
   const findMetricsRow = (rows) => {
     if (!rows?.length) return null;
-    const targetIds = String(playerId);
     const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
     return (
       rows.find((item) => {
-        const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id].map((value) => String(value || ""));
-        if (ids.includes(targetIds)) return true;
+        const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id, item?.espn_id].map((value) =>
+          String(value || ""),
+        );
+        if (ids.some((value) => targetIds.has(value))) return true;
         if (!targetNames.length) return false;
         const name = normalizeName(item?.display_name || item?.player_display_name || item?.player_name);
         return name && targetNames.includes(name);
@@ -394,8 +424,14 @@ export default function PlayerPage() {
     );
   };
 
-  const seasonEfficiency = useMemo(() => findMetricsRow(seasonMetrics), [seasonMetrics, playerId, playerInfo, resolvedName]);
-  const careerEfficiency = useMemo(() => findMetricsRow(careerMetrics), [careerMetrics, playerId, playerInfo, resolvedName]);
+  const seasonEfficiency = useMemo(
+    () => findMetricsRow(seasonMetrics),
+    [seasonMetrics, targetIds, playerInfo, resolvedName],
+  );
+  const careerEfficiency = useMemo(
+    () => findMetricsRow(careerMetrics),
+    [careerMetrics, targetIds, playerInfo, resolvedName],
+  );
 
   const normalizedMetrics = useMemo(() => {
     if (!statsWeeklyRows.length) return [];
@@ -431,7 +467,7 @@ export default function PlayerPage() {
 
   const metricsForPlayer = useMemo(() => {
     return normalizedMetrics.filter(matchesPlayer);
-  }, [normalizedMetrics, playerId, playerInfo]);
+  }, [normalizedMetrics, targetIds, playerInfo]);
 
   const weeklyDisplayRows = useMemo(() => {
     const lineupByWeek = new Map(weeklyRows.map((row) => [Number(row.week), row]));
@@ -475,7 +511,7 @@ export default function PlayerPage() {
   const filteredFullStatsRows = useMemo(() => {
     if (!fullStatsRows.length) return [];
     return fullStatsRows.filter(matchesPlayer);
-  }, [fullStatsRows, playerId, playerInfo]);
+  }, [fullStatsRows, targetIds, playerInfo]);
 
   const fullStatsColumns = useMemo(() => {
     const position =
@@ -622,7 +658,7 @@ export default function PlayerPage() {
     return () => {
       active = false;
     };
-  }, [seasons, playerId, playerInfo, resolvedName]);
+  }, [seasons, targetIds, playerInfo, resolvedName]);
 
   const boomBust = useMemo(() => {
     const rows = careerWeeklyRows.length ? careerWeeklyRows : weeklyDisplayRows;
@@ -647,10 +683,10 @@ export default function PlayerPage() {
   const boomBustFromMetrics = useMemo(() => {
     if (!boomBustMetrics.length) return null;
     return boomBustMetrics.find((row) => {
-      const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id].map((value) => String(value || ""));
-      return ids.includes(String(playerId));
+      const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) => String(value || ""));
+      return ids.some((value) => targetIds.has(value));
     });
-  }, [boomBustMetrics, playerId]);
+  }, [boomBustMetrics, targetIds]);
 
   const boomBustWeeks = useMemo(() => {
     if (!boomBust) return { top: [], bottom: [] };
@@ -729,14 +765,14 @@ export default function PlayerPage() {
             <button
               type="button"
               className={`favorite-button ${isFavorite ? "active" : ""}`}
-              onClick={() => togglePlayer(playerId)}
+              onClick={() => togglePlayer(resolvedPlayerId)}
             >
               {isFavorite ? "Favorited" : "Add Favorite"}
             </button>
           </div>
         </div>
         <div className="flex-row">
-          <div className="tag">Player ID: {playerId}</div>
+          <div className="tag">Player ID: {resolvedPlayerId}</div>
           <div className="tag">Teams played for: {teamHistory.join(", ") || "No data"}</div>
         </div>
       </section>

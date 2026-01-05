@@ -36,6 +36,7 @@ export function DataProvider({ children }) {
 
   const playerIdLookup = useMemo(() => {
     const bySleeper = new Map();
+    const byEspn = new Map();
     const byUid = new Map();
     for (const player of core.players || []) {
       if (player?.player_uid) byUid.set(player.player_uid, player);
@@ -44,8 +45,11 @@ export function DataProvider({ children }) {
       if (entry?.id_type === "sleeper" && entry?.id_value && entry?.player_uid) {
         bySleeper.set(String(entry.id_value), entry.player_uid);
       }
+      if (entry?.id_type === "espn" && entry?.id_value && entry?.player_uid) {
+        byEspn.set(String(entry.id_value), entry.player_uid);
+      }
     }
-    return { bySleeper, byUid };
+    return { bySleeper, byEspn, byUid };
   }, [core.players, core.playerIds]);
 
   const playerIndex = useMemo(() => {
