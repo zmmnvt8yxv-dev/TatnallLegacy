@@ -251,9 +251,18 @@ export default function TransactionsPage() {
   if (loading) return <LoadingState label="Loading transactions..." />;
   if (error) return <ErrorState message={error} />;
 
+  const isPlaceholderName = (value) => /^ESPN Player \d+$/i.test(String(value || "").trim());
+
   const resolvePlayerLabel = (player) => {
     if (!player) return "Unknown";
-    if (player.name && !looksLikeId(player.name)) return player.name;
+    if (player.name) {
+      if (isPlaceholderName(player.name)) {
+        const mapped = espnNameMap?.[String(player.id)];
+        if (mapped) return mapped;
+      } else if (!looksLikeId(player.name)) {
+        return player.name;
+      }
+    }
     if (player.id_type === "espn") {
       const mapped = espnNameMap?.[String(player.id)];
       if (mapped) return mapped;
@@ -276,8 +285,9 @@ export default function TransactionsPage() {
         });
         const linkId = canonicalId || String(player.id);
         const label = resolvePlayerLabel(player);
+        const link = label ? `/players/${linkId}?name=${encodeURIComponent(label)}` : `/players/${linkId}`;
         return (
-          <Link key={`${player.id}-${index}`} to={`/players/${linkId}`} className="link-button">
+          <Link key={`${player.id}-${index}`} to={link} className="link-button">
             {label}
           </Link>
         );

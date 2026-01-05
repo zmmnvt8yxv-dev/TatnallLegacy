@@ -103,6 +103,7 @@ export async function loadCoreData() {
   let playerIdsPath;
   let teamsPath;
   let espnNameMapPath;
+  let playerSearchPath;
   try {
     const cached = getCached("core");
     if (cached) return cached;
@@ -111,17 +112,20 @@ export async function loadCoreData() {
     playerIdsPath = optionalManifestPath(manifest, "playerIds");
     teamsPath = optionalManifestPath(manifest, "teams");
     espnNameMapPath = optionalManifestPath(manifest, "espnNameMap");
-    const [players, playerIds, teams, espnNameMap] = await Promise.all([
+    playerSearchPath = optionalManifestPath(manifest, "playerSearch") || "data/player_search.json";
+    const [players, playerIds, teams, espnNameMap, playerSearch] = await Promise.all([
       playersPath ? fetchJson(playersPath, { optional: true }) : Promise.resolve([]),
       playerIdsPath ? fetchJson(playerIdsPath, { optional: true }) : Promise.resolve([]),
       teamsPath ? fetchJson(teamsPath, { optional: true }) : Promise.resolve([]),
       espnNameMapPath ? fetchJson(espnNameMapPath, { optional: true }) : Promise.resolve({}),
+      playerSearchPath ? fetchJson(playerSearchPath, { optional: true }) : Promise.resolve(null),
     ]);
     return setCached("core", {
       players: players || [],
       playerIds: playerIds || [],
       teams: teams || [],
       espnNameMap: espnNameMap || {},
+      playerSearch: playerSearch?.rows || [],
     });
   } catch (err) {
     console.error("DATA_LOAD_ERROR", {
@@ -130,10 +134,11 @@ export async function loadCoreData() {
         playerIdsPath,
         teamsPath,
         espnNameMapPath,
+        playerSearchPath,
       },
       err,
     });
-    return setCached("core", { players: [], playerIds: [], teams: [], espnNameMap: {} });
+    return setCached("core", { players: [], playerIds: [], teams: [], espnNameMap: {}, playerSearch: [] });
   }
 }
 
@@ -267,8 +272,8 @@ export async function loadPlayerStatsFull(season) {
     const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
-    const template = optionalManifestPath(manifest, "playerStatsFull");
-    path = template ? resolvePath(template, { season }) : null;
+    const template = optionalManifestPath(manifest, "playerStatsFull") || "data/player_stats/full/{season}.json";
+    path = resolvePath(template, { season });
     if (!path) return null;
     const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;

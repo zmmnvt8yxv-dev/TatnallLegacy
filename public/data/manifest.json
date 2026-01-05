@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-01-05T15:07:16.153714+00:00",
+  "generatedAt": "2026-01-05T15:53:29.141621+00:00",
   "seasons": [
     2015,
     2016,
@@ -235,6 +235,7 @@
     "transactions": "data/transactions/{season}.json",
     "allTime": "data/all_time.json",
     "espnNameMap": "data/espn_name_map.json",
+    "playerSearch": "data/player_search.json",
     "playerStatsWeekly": "data/player_stats/weekly/{season}.json",
     "playerStatsFull": "data/player_stats/full/{season}.json",
     "playerStatsSeason": "data/player_stats/season/{season}.json",

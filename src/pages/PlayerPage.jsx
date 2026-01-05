@@ -16,6 +16,7 @@ import {
   loadWeekData,
 } from "../data/loader.js";
 import { getCanonicalPlayerId, resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName.js";
+import { normalizeName } from "../lib/nameUtils.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { useVirtualRows } from "../utils/useVirtualRows.js";
 import { useFavorites } from "../utils/useFavorites.js";
@@ -32,15 +33,6 @@ const THRESHOLDS = {
   K: 10,
   DEF: 10,
   default: 15,
-};
-
-const normalizeName = (value) => {
-  if (!value) return "";
-  return String(value)
-    .toLowerCase()
-    .replace(/[^a-z0-9\\s]/g, " ")
-    .replace(/\\s+/g, " ")
-    .trim();
 };
 
 const isNumericId = (value) => /^\\d+$/.test(String(value || "").trim());
@@ -73,6 +65,7 @@ export default function PlayerPage() {
   const isFavorite = favorites.players.includes(String(resolvedPlayerId));
 
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
+  const paramName = searchParams.get("name") || "";
 
   useEffect(() => {
     if (!seasons.length) return;
@@ -277,11 +270,21 @@ export default function PlayerPage() {
     };
   }, [selectedSeason]);
 
+  const targetNames = useMemo(() => {
+    const espnName = espnNameMap?.[String(resolvedPlayerId)];
+    return [playerInfo?.full_name, playerInfo?.display_name, playerInfo?.name, paramName, espnName]
+      .map(normalizeName)
+      .filter(Boolean);
+  }, [playerInfo, paramName, espnNameMap, resolvedPlayerId]);
+
   const statsNameRow = useMemo(() => {
     const tryFind = (rows) =>
       rows.find((row) => {
         const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) => String(value || ""));
-        return ids.some((value) => targetIds.has(value));
+        if (ids.some((value) => targetIds.has(value))) return true;
+        if (!targetNames.length) return false;
+        const name = normalizeName(row?.display_name || row?.player_display_name || row?.player_name);
+        return name && targetNames.includes(name);
       }) || null;
     if (statsWeeklyRows.length) return tryFind(statsWeeklyRows);
     if (fullStatsRows.length) return tryFind(fullStatsRows);
@@ -291,7 +294,7 @@ export default function PlayerPage() {
       if (match) return match;
     }
     return null;
-  }, [targetIds, statsWeeklyRows, fullStatsRows, statsSeasonSummaries]);
+  }, [targetIds, targetNames, statsWeeklyRows, fullStatsRows, statsSeasonSummaries]);
 
   const playerInfoWithStats = useMemo(() => {
     if (!statsNameRow) {
@@ -328,7 +331,6 @@ export default function PlayerPage() {
     const summaries = hasStats ? statsSeasonSummaries : seasonSummaries;
     for (const summary of summaries) {
       const rows = summary?.rows || summary?.playerSeasonTotals || [];
-      const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
       const row = rows.find((item) => {
         const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id, item?.espn_id].map((value) =>
           String(value || ""),
@@ -369,11 +371,10 @@ export default function PlayerPage() {
       }
     }
     return stats.sort((a, b) => b.season - a.season);
-  }, [statsSeasonSummaries, seasonSummaries, targetIds, playerInfo, resolvedName]);
+  }, [statsSeasonSummaries, seasonSummaries, targetIds, targetNames, playerInfo, resolvedName]);
 
   const careerTotals = useMemo(() => {
     if (careerStats.length) {
-      const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
       const row = careerStats.find((item) => {
         const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id, item?.espn_id].map((value) =>
           String(value || ""),
@@ -404,12 +405,11 @@ export default function PlayerPage() {
       },
       { points: 0, games: 0, seasons: 0, war: 0, delta: 0 },
     );
-  }, [seasonStats, careerStats, targetIds]);
+  }, [seasonStats, careerStats, targetIds, targetNames]);
 
   const matchesPlayer = (row) => {
     const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) => String(value || ""));
     if (ids.some((value) => targetIds.has(value))) return true;
-    const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
     if (!targetNames.length) return false;
     const name = normalizeName(row?.display_name || row?.player_display_name || row?.player_name);
     return name && targetNames.includes(name);
@@ -417,7 +417,6 @@ export default function PlayerPage() {
 
   const findMetricsRow = (rows) => {
     if (!rows?.length) return null;
-    const targetNames = [playerInfo?.full_name, resolvedName].map(normalizeName).filter(Boolean);
     return (
       rows.find((item) => {
         const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id, item?.espn_id].map((value) =>
@@ -433,11 +432,11 @@ export default function PlayerPage() {
 
   const seasonEfficiency = useMemo(
     () => findMetricsRow(seasonMetrics),
-    [seasonMetrics, targetIds, playerInfo, resolvedName],
+    [seasonMetrics, targetIds, targetNames],
   );
   const careerEfficiency = useMemo(
     () => findMetricsRow(careerMetrics),
-    [careerMetrics, targetIds, playerInfo, resolvedName],
+    [careerMetrics, targetIds, targetNames],
   );
 
   const normalizedMetrics = useMemo(() => {

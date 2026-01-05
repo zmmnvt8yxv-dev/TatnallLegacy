@@ -98,6 +98,8 @@ def main():
     paths["allTime"] = "data/all_time.json"
   if espn_name_map_path.exists():
     paths["espnNameMap"] = "data/espn_name_map.json"
+  if (PUBLIC_DATA / "player_search.json").exists():
+    paths["playerSearch"] = "data/player_search.json"
 
   if season_paths_exist("player_stats/weekly/{season}.json", seasons):
     paths["playerStatsWeekly"] = "data/player_stats/weekly/{season}.json"

@@ -215,88 +215,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "23711ad9-2f27-48fb-87d9-584f0a3a4f59-trade-4",
-      "season": 2023,
-      "week": 1,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Derrick Henry, Christian McCaffrey, DK Metcalf, Dalvin Cook, Jalen Hurts | Sent: Aaron Rodgers, Romeo Doubs, Gus Edwards, Ezekiel Elliott, DJ Moore",
-      "created": 1693006137303,
-      "players": [
-        {
-          "id": "3043078",
-          "name": "Derrick Henry",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3043078
-        },
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3117251
-        },
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        },
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4040715",
-          "name": "Jalen Hurts",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040715
-        },
-        {
-          "id": "8439",
-          "name": "Aaron Rodgers",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 8439
-        },
-        {
-          "id": "4361432",
-          "name": "Romeo Doubs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4361432
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "23711ad9-2f27-48fb-87d9-584f0a3a4f59-trade-8",
       "season": 2023,
       "week": 1,
@@ -379,6 +297,88 @@
       "source": "espn_transactions"
     },
     {
+      "id": "23711ad9-2f27-48fb-87d9-584f0a3a4f59-trade-4",
+      "season": 2023,
+      "week": 1,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Derrick Henry, Christian McCaffrey, DK Metcalf, Dalvin Cook, Jalen Hurts | Sent: Aaron Rodgers, Romeo Doubs, Gus Edwards, Ezekiel Elliott, DJ Moore",
+      "created": 1693006137303,
+      "players": [
+        {
+          "id": "3043078",
+          "name": "Derrick Henry",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3043078
+        },
+        {
+          "id": "3117251",
+          "name": "Christian McCaffrey",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3117251
+        },
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        },
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4040715",
+          "name": "Jalen Hurts",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4040715
+        },
+        {
+          "id": "8439",
+          "name": "Aaron Rodgers",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 8439
+        },
+        {
+          "id": "4361432",
+          "name": "Romeo Doubs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4361432
+        },
+        {
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051926
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "8a65ed86-2d6c-42fd-b2d6-5bb20603b987-add-4-2468609",
       "season": 2023,
       "week": 1,
@@ -450,88 +450,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 2468609
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "95a04f78-cb51-4b6a-ab55-0ebccfda5769-trade-4",
-      "season": 2023,
-      "week": 1,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Derrick Henry, Christian McCaffrey, DK Metcalf, Dalvin Cook, Jalen Hurts | Sent: Aaron Rodgers, Romeo Doubs, Gus Edwards, Ezekiel Elliott, DJ Moore",
-      "created": 1693006507343,
-      "players": [
-        {
-          "id": "3043078",
-          "name": "Derrick Henry",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3043078
-        },
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3117251
-        },
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        },
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4040715",
-          "name": "Jalen Hurts",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040715
-        },
-        {
-          "id": "8439",
-          "name": "Aaron Rodgers",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 8439
-        },
-        {
-          "id": "4361432",
-          "name": "Romeo Doubs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4361432
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
         }
       ],
       "source": "espn_transactions"
@@ -614,6 +532,88 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4040715
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "95a04f78-cb51-4b6a-ab55-0ebccfda5769-trade-4",
+      "season": 2023,
+      "week": 1,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Derrick Henry, Christian McCaffrey, DK Metcalf, Dalvin Cook, Jalen Hurts | Sent: Aaron Rodgers, Romeo Doubs, Gus Edwards, Ezekiel Elliott, DJ Moore",
+      "created": 1693006507343,
+      "players": [
+        {
+          "id": "3043078",
+          "name": "Derrick Henry",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3043078
+        },
+        {
+          "id": "3117251",
+          "name": "Christian McCaffrey",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3117251
+        },
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        },
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4040715",
+          "name": "Jalen Hurts",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4040715
+        },
+        {
+          "id": "8439",
+          "name": "Aaron Rodgers",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 8439
+        },
+        {
+          "id": "4361432",
+          "name": "Romeo Doubs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4361432
+        },
+        {
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051926
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
         }
       ],
       "source": "espn_transactions"
@@ -1729,32 +1729,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "935f9b9f-874c-4c8a-939b-92a15f2ebac9-trade-4",
-      "season": 2023,
-      "week": 1,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Travis Kelce | Sent: JETS",
-      "created": 1694021835876,
-      "players": [
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15847
-        },
-        {
-          "id": "NYJ",
-          "name": "JETS",
-          "action": "sent",
-          "id_type": "defense",
-          "source_player_id": -16020
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "935f9b9f-874c-4c8a-939b-92a15f2ebac9-trade-5",
       "season": 2023,
       "week": 1,
@@ -1776,6 +1750,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15847
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "935f9b9f-874c-4c8a-939b-92a15f2ebac9-trade-4",
+      "season": 2023,
+      "week": 1,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Travis Kelce | Sent: JETS",
+      "created": 1694021835876,
+      "players": [
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15847
+        },
+        {
+          "id": "NYJ",
+          "name": "JETS",
+          "action": "sent",
+          "id_type": "defense",
+          "source_player_id": -16020
         }
       ],
       "source": "espn_transactions"
@@ -2102,32 +2102,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5b01f1fe-86a1-4288-bbae-e55dabb74d83-trade-4",
-      "season": 2023,
-      "week": 1,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Travis Kelce | Sent: JETS",
-      "created": 1693961000262,
-      "players": [
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15847
-        },
-        {
-          "id": "NYJ",
-          "name": "JETS",
-          "action": "sent",
-          "id_type": "defense",
-          "source_player_id": -16020
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "5b01f1fe-86a1-4288-bbae-e55dabb74d83-trade-5",
       "season": 2023,
       "week": 1,
@@ -2149,6 +2123,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15847
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5b01f1fe-86a1-4288-bbae-e55dabb74d83-trade-4",
+      "season": 2023,
+      "week": 1,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Travis Kelce | Sent: JETS",
+      "created": 1693961000262,
+      "players": [
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15847
+        },
+        {
+          "id": "NYJ",
+          "name": "JETS",
+          "action": "sent",
+          "id_type": "defense",
+          "source_player_id": -16020
         }
       ],
       "source": "espn_transactions"
@@ -4846,32 +4846,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "18e4b203-459f-4a14-8ef9-a19b74e6ad58-trade-4",
-      "season": 2023,
-      "week": 3,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Geno Smith | Sent: Justin Fields",
-      "created": 1695610059297,
-      "players": [
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15864
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "18e4b203-459f-4a14-8ef9-a19b74e6ad58-trade-5",
       "season": 2023,
       "week": 3,
@@ -4893,6 +4867,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15864
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "18e4b203-459f-4a14-8ef9-a19b74e6ad58-trade-4",
+      "season": 2023,
+      "week": 3,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Geno Smith | Sent: Justin Fields",
+      "created": 1695610059297,
+      "players": [
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15864
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
         }
       ],
       "source": "espn_transactions"
@@ -5392,32 +5392,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "44647a76-8a3d-402f-a142-168fbcf64c41-trade-4",
-      "season": 2023,
-      "week": 3,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Geno Smith | Sent: Justin Fields",
-      "created": 1695609458235,
-      "players": [
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15864
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "44647a76-8a3d-402f-a142-168fbcf64c41-trade-5",
       "season": 2023,
       "week": 3,
@@ -5439,6 +5413,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15864
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "44647a76-8a3d-402f-a142-168fbcf64c41-trade-4",
+      "season": 2023,
+      "week": 3,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Geno Smith | Sent: Justin Fields",
+      "created": 1695609458235,
+      "players": [
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15864
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
         }
       ],
       "source": "espn_transactions"
@@ -8785,46 +8785,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "cf0df801-003f-4c19-82ea-004c060ab1e5-trade-4",
-      "season": 2023,
-      "week": 6,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Cole Kmet, Gabe Davis | Sent: Romeo Doubs, George Kittle",
-      "created": 1696974748919,
-      "players": [
-        {
-          "id": "4258595",
-          "name": "Cole Kmet",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4258595
-        },
-        {
-          "id": "4243537",
-          "name": "Gabe Davis",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4243537
-        },
-        {
-          "id": "4361432",
-          "name": "Romeo Doubs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4361432
-        },
-        {
-          "id": "3040151",
-          "name": "George Kittle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3040151
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "cf0df801-003f-4c19-82ea-004c060ab1e5-trade-6",
       "season": 2023,
       "week": 6,
@@ -8860,6 +8820,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4243537
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "cf0df801-003f-4c19-82ea-004c060ab1e5-trade-4",
+      "season": 2023,
+      "week": 6,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Cole Kmet, Gabe Davis | Sent: Romeo Doubs, George Kittle",
+      "created": 1696974748919,
+      "players": [
+        {
+          "id": "4258595",
+          "name": "Cole Kmet",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4258595
+        },
+        {
+          "id": "4243537",
+          "name": "Gabe Davis",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4243537
+        },
+        {
+          "id": "4361432",
+          "name": "Romeo Doubs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4361432
+        },
+        {
+          "id": "3040151",
+          "name": "George Kittle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3040151
         }
       ],
       "source": "espn_transactions"
@@ -9093,46 +9093,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "eb65bc7c-d005-4057-b448-de1f00635dcf-trade-4",
-      "season": 2023,
-      "week": 6,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Cole Kmet, Gabe Davis | Sent: Romeo Doubs, George Kittle",
-      "created": 1696957230406,
-      "players": [
-        {
-          "id": "4258595",
-          "name": "Cole Kmet",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4258595
-        },
-        {
-          "id": "4243537",
-          "name": "Gabe Davis",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4243537
-        },
-        {
-          "id": "4361432",
-          "name": "Romeo Doubs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4361432
-        },
-        {
-          "id": "3040151",
-          "name": "George Kittle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3040151
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "eb65bc7c-d005-4057-b448-de1f00635dcf-trade-6",
       "season": 2023,
       "week": 6,
@@ -9168,6 +9128,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4243537
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "eb65bc7c-d005-4057-b448-de1f00635dcf-trade-4",
+      "season": 2023,
+      "week": 6,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Cole Kmet, Gabe Davis | Sent: Romeo Doubs, George Kittle",
+      "created": 1696957230406,
+      "players": [
+        {
+          "id": "4258595",
+          "name": "Cole Kmet",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4258595
+        },
+        {
+          "id": "4243537",
+          "name": "Gabe Davis",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4243537
+        },
+        {
+          "id": "4361432",
+          "name": "Romeo Doubs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4361432
+        },
+        {
+          "id": "3040151",
+          "name": "George Kittle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3040151
         }
       ],
       "source": "espn_transactions"
@@ -10066,46 +10066,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "238786f4-1081-4d08-b744-d678117a7073-trade-4",
-      "season": 2023,
-      "week": 7,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: DeVonta Smith, Rachaad White | Sent: CeeDee Lamb, Gus Edwards",
-      "created": 1698118481363,
-      "players": [
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "4697815",
-          "name": "Rachaad White",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4697815
-        },
-        {
-          "id": "4241389",
-          "name": "CeeDee Lamb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241389
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "238786f4-1081-4d08-b744-d678117a7073-trade-7",
       "season": 2023,
       "week": 7,
@@ -10141,6 +10101,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4697815
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "238786f4-1081-4d08-b744-d678117a7073-trade-4",
+      "season": 2023,
+      "week": 7,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: DeVonta Smith, Rachaad White | Sent: CeeDee Lamb, Gus Edwards",
+      "created": 1698118481363,
+      "players": [
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
+        {
+          "id": "4697815",
+          "name": "Rachaad White",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4697815
+        },
+        {
+          "id": "4241389",
+          "name": "CeeDee Lamb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241389
+        },
+        {
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051926
         }
       ],
       "source": "espn_transactions"
@@ -10697,46 +10697,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fc14d9e7-422e-434d-a839-dd4c073abea5-trade-4",
-      "season": 2023,
-      "week": 8,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Davante Adams, Dameon Pierce | Sent: CeeDee Lamb, Gus Edwards",
-      "created": 1698229572051,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "4360238",
-          "name": "Dameon Pierce",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360238
-        },
-        {
-          "id": "4241389",
-          "name": "CeeDee Lamb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241389
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "fc14d9e7-422e-434d-a839-dd4c073abea5-trade-1",
       "season": 2023,
       "week": 8,
@@ -10772,6 +10732,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4360238
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "fc14d9e7-422e-434d-a839-dd4c073abea5-trade-4",
+      "season": 2023,
+      "week": 8,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Davante Adams, Dameon Pierce | Sent: CeeDee Lamb, Gus Edwards",
+      "created": 1698229572051,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "4360238",
+          "name": "Dameon Pierce",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360238
+        },
+        {
+          "id": "4241389",
+          "name": "CeeDee Lamb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241389
+        },
+        {
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051926
         }
       ],
       "source": "espn_transactions"
@@ -11493,46 +11493,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "4342374a-fc82-4d90-8a3c-4b2024a07e94-trade-4",
-      "season": 2023,
-      "week": 8,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Davante Adams, Dameon Pierce | Sent: CeeDee Lamb, Gus Edwards",
-      "created": 1698162370856,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "4360238",
-          "name": "Dameon Pierce",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360238
-        },
-        {
-          "id": "4241389",
-          "name": "CeeDee Lamb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241389
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "4342374a-fc82-4d90-8a3c-4b2024a07e94-trade-1",
       "season": 2023,
       "week": 8,
@@ -11568,6 +11528,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4360238
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "4342374a-fc82-4d90-8a3c-4b2024a07e94-trade-4",
+      "season": 2023,
+      "week": 8,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Davante Adams, Dameon Pierce | Sent: CeeDee Lamb, Gus Edwards",
+      "created": 1698162370856,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "4360238",
+          "name": "Dameon Pierce",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360238
+        },
+        {
+          "id": "4241389",
+          "name": "CeeDee Lamb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241389
+        },
+        {
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051926
         }
       ],
       "source": "espn_transactions"
@@ -11947,39 +11947,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "df547058-a8d2-4bfb-87c6-84014f49f27e-trade-4",
-      "season": 2023,
-      "week": 8,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Elijah Mitchell, Tyler Lockett | Sent: David Montgomery",
-      "created": 1698723586782,
-      "players": [
-        {
-          "id": "4241555",
-          "name": "Elijah Mitchell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241555
-        },
-        {
-          "id": "2577327",
-          "name": "Tyler Lockett",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2577327
-        },
-        {
-          "id": "4035538",
-          "name": "David Montgomery",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035538
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "df547058-a8d2-4bfb-87c6-84014f49f27e-trade-1",
       "season": 2023,
       "week": 8,
@@ -12008,6 +11975,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2577327
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "df547058-a8d2-4bfb-87c6-84014f49f27e-trade-4",
+      "season": 2023,
+      "week": 8,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Elijah Mitchell, Tyler Lockett | Sent: David Montgomery",
+      "created": 1698723586782,
+      "players": [
+        {
+          "id": "4241555",
+          "name": "Elijah Mitchell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241555
+        },
+        {
+          "id": "2577327",
+          "name": "Tyler Lockett",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2577327
+        },
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035538
         }
       ],
       "source": "espn_transactions"
@@ -12108,46 +12108,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "79d78c89-ff0a-4b4f-b5fe-d90702185314-trade-4",
-      "season": 2023,
-      "week": 8,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: DeVonta Smith, Rachaad White | Sent: CeeDee Lamb, Gus Edwards",
-      "created": 1698238857907,
-      "players": [
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "4697815",
-          "name": "Rachaad White",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4697815
-        },
-        {
-          "id": "4241389",
-          "name": "CeeDee Lamb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241389
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "79d78c89-ff0a-4b4f-b5fe-d90702185314-trade-7",
       "season": 2023,
       "week": 8,
@@ -12188,34 +12148,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "947a4e91-0b30-43fe-aebb-7f6ad5eaf8f1-trade-4",
+      "id": "79d78c89-ff0a-4b4f-b5fe-d90702185314-trade-4",
       "season": 2023,
       "week": 8,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: Elijah Mitchell, Tyler Lockett | Sent: David Montgomery",
-      "created": 1698764151515,
+      "summary": "Received: DeVonta Smith, Rachaad White | Sent: CeeDee Lamb, Gus Edwards",
+      "created": 1698238857907,
       "players": [
         {
-          "id": "4241555",
-          "name": "Elijah Mitchell",
+          "id": "4241478",
+          "name": "DeVonta Smith",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4241555
+          "source_player_id": 4241478
         },
         {
-          "id": "2577327",
-          "name": "Tyler Lockett",
+          "id": "4697815",
+          "name": "Rachaad White",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 2577327
+          "source_player_id": 4697815
         },
         {
-          "id": "4035538",
-          "name": "David Montgomery",
+          "id": "4241389",
+          "name": "CeeDee Lamb",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4035538
+          "source_player_id": 4241389
+        },
+        {
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051926
         }
       ],
       "source": "espn_transactions"
@@ -12249,6 +12216,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2577327
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "947a4e91-0b30-43fe-aebb-7f6ad5eaf8f1-trade-4",
+      "season": 2023,
+      "week": 8,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Elijah Mitchell, Tyler Lockett | Sent: David Montgomery",
+      "created": 1698764151515,
+      "players": [
+        {
+          "id": "4241555",
+          "name": "Elijah Mitchell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241555
+        },
+        {
+          "id": "2577327",
+          "name": "Tyler Lockett",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2577327
+        },
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035538
         }
       ],
       "source": "espn_transactions"
@@ -12548,46 +12548,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d1364ead-0ecf-436d-a250-e438d3b706dc-trade-4",
-      "season": 2023,
-      "week": 9,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Geno Smith, Tyler Lockett | Sent: Jameson Williams, David Montgomery",
-      "created": 1698837594919,
-      "players": [
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15864
-        },
-        {
-          "id": "2577327",
-          "name": "Tyler Lockett",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2577327
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "4035538",
-          "name": "David Montgomery",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035538
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d1364ead-0ecf-436d-a250-e438d3b706dc-trade-1",
       "season": 2023,
       "week": 9,
@@ -12623,6 +12583,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2577327
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d1364ead-0ecf-436d-a250-e438d3b706dc-trade-4",
+      "season": 2023,
+      "week": 9,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Geno Smith, Tyler Lockett | Sent: Jameson Williams, David Montgomery",
+      "created": 1698837594919,
+      "players": [
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15864
+        },
+        {
+          "id": "2577327",
+          "name": "Tyler Lockett",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2577327
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
+        },
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035538
         }
       ],
       "source": "espn_transactions"
@@ -12927,95 +12927,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ce65e4a7-3a3e-425c-850e-237bf84a12d3-trade-4",
-      "season": 2023,
-      "week": 9,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Bijan Robinson, Baker Mayfield, Chuba Hubbard, Zach Charbonnet, Chris Olave, Sam LaPorta, Khalil Herbert | Sent: Josh Allen, Joe Mixon, Rachaad White, Stefon Diggs",
-      "created": 1699392351940,
-      "players": [
-        {
-          "id": "4430807",
-          "name": "Bijan Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430807
-        },
-        {
-          "id": "3052587",
-          "name": "Baker Mayfield",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3052587
-        },
-        {
-          "id": "4241416",
-          "name": "Chuba Hubbard",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241416
-        },
-        {
-          "id": "4426385",
-          "name": "Zach Charbonnet",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426385
-        },
-        {
-          "id": "4361370",
-          "name": "Chris Olave",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4361370
-        },
-        {
-          "id": "4430027",
-          "name": "Sam LaPorta",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430027
-        },
-        {
-          "id": "4035886",
-          "name": "Khalil Herbert",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035886
-        },
-        {
-          "id": "3918298",
-          "name": "Josh Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3918298
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        },
-        {
-          "id": "4697815",
-          "name": "Rachaad White",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4697815
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ce65e4a7-3a3e-425c-850e-237bf84a12d3-trade-1",
       "season": 2023,
       "week": 9,
@@ -13100,6 +13011,95 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4035886
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "ce65e4a7-3a3e-425c-850e-237bf84a12d3-trade-4",
+      "season": 2023,
+      "week": 9,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Bijan Robinson, Baker Mayfield, Chuba Hubbard, Zach Charbonnet, Chris Olave, Sam LaPorta, Khalil Herbert | Sent: Josh Allen, Joe Mixon, Rachaad White, Stefon Diggs",
+      "created": 1699392351940,
+      "players": [
+        {
+          "id": "4430807",
+          "name": "Bijan Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430807
+        },
+        {
+          "id": "3052587",
+          "name": "Baker Mayfield",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3052587
+        },
+        {
+          "id": "4241416",
+          "name": "Chuba Hubbard",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241416
+        },
+        {
+          "id": "4426385",
+          "name": "Zach Charbonnet",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426385
+        },
+        {
+          "id": "4361370",
+          "name": "Chris Olave",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4361370
+        },
+        {
+          "id": "4430027",
+          "name": "Sam LaPorta",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430027
+        },
+        {
+          "id": "4035886",
+          "name": "Khalil Herbert",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035886
+        },
+        {
+          "id": "3918298",
+          "name": "Josh Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3918298
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
+        },
+        {
+          "id": "4697815",
+          "name": "Rachaad White",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4697815
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976212
         }
       ],
       "source": "espn_transactions"
@@ -13200,95 +13200,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "64813349-d2e9-4162-8c47-18b731d6242e-trade-4",
-      "season": 2023,
-      "week": 9,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Bijan Robinson, Baker Mayfield, Chuba Hubbard, Zach Charbonnet, Chris Olave, Sam LaPorta, Khalil Herbert | Sent: Josh Allen, Joe Mixon, Rachaad White, Stefon Diggs",
-      "created": 1699326719033,
-      "players": [
-        {
-          "id": "4430807",
-          "name": "Bijan Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430807
-        },
-        {
-          "id": "3052587",
-          "name": "Baker Mayfield",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3052587
-        },
-        {
-          "id": "4241416",
-          "name": "Chuba Hubbard",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241416
-        },
-        {
-          "id": "4426385",
-          "name": "Zach Charbonnet",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426385
-        },
-        {
-          "id": "4361370",
-          "name": "Chris Olave",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4361370
-        },
-        {
-          "id": "4430027",
-          "name": "Sam LaPorta",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430027
-        },
-        {
-          "id": "4035886",
-          "name": "Khalil Herbert",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035886
-        },
-        {
-          "id": "3918298",
-          "name": "Josh Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3918298
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        },
-        {
-          "id": "4697815",
-          "name": "Rachaad White",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4697815
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "64813349-d2e9-4162-8c47-18b731d6242e-trade-1",
       "season": 2023,
       "week": 9,
@@ -13373,6 +13284,95 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4035886
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "64813349-d2e9-4162-8c47-18b731d6242e-trade-4",
+      "season": 2023,
+      "week": 9,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Bijan Robinson, Baker Mayfield, Chuba Hubbard, Zach Charbonnet, Chris Olave, Sam LaPorta, Khalil Herbert | Sent: Josh Allen, Joe Mixon, Rachaad White, Stefon Diggs",
+      "created": 1699326719033,
+      "players": [
+        {
+          "id": "4430807",
+          "name": "Bijan Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430807
+        },
+        {
+          "id": "3052587",
+          "name": "Baker Mayfield",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3052587
+        },
+        {
+          "id": "4241416",
+          "name": "Chuba Hubbard",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241416
+        },
+        {
+          "id": "4426385",
+          "name": "Zach Charbonnet",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426385
+        },
+        {
+          "id": "4361370",
+          "name": "Chris Olave",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4361370
+        },
+        {
+          "id": "4430027",
+          "name": "Sam LaPorta",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430027
+        },
+        {
+          "id": "4035886",
+          "name": "Khalil Herbert",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035886
+        },
+        {
+          "id": "3918298",
+          "name": "Josh Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3918298
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
+        },
+        {
+          "id": "4697815",
+          "name": "Rachaad White",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4697815
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976212
         }
       ],
       "source": "espn_transactions"
@@ -13677,46 +13677,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "4fa68c20-f436-49d9-8b8a-73661cd81265-trade-4",
-      "season": 2023,
-      "week": 9,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Geno Smith, Tyler Lockett | Sent: Jameson Williams, David Montgomery",
-      "created": 1698761514780,
-      "players": [
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15864
-        },
-        {
-          "id": "2577327",
-          "name": "Tyler Lockett",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2577327
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "4035538",
-          "name": "David Montgomery",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035538
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "4fa68c20-f436-49d9-8b8a-73661cd81265-trade-1",
       "season": 2023,
       "week": 9,
@@ -13752,6 +13712,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2577327
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "4fa68c20-f436-49d9-8b8a-73661cd81265-trade-4",
+      "season": 2023,
+      "week": 9,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Geno Smith, Tyler Lockett | Sent: Jameson Williams, David Montgomery",
+      "created": 1698761514780,
+      "players": [
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15864
+        },
+        {
+          "id": "2577327",
+          "name": "Tyler Lockett",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2577327
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
+        },
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035538
         }
       ],
       "source": "espn_transactions"
@@ -14061,74 +14061,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "605b8526-7638-455f-a603-8fb18109db3b-trade-3",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Kyle Pitts Sr., Miles Sanders, Stefon Diggs, Josh Allen | Sent: Brandon Aiyuk, Alvin Kamara, Saquon Barkley, Lamar Jackson",
-      "created": 1699387108389,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "4045163",
-          "name": "Miles Sanders",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4045163
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        },
-        {
-          "id": "3918298",
-          "name": "Josh Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3918298
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "605b8526-7638-455f-a603-8fb18109db3b-trade-4",
       "season": 2023,
       "week": 10,
@@ -14197,6 +14129,74 @@
       "source": "espn_transactions"
     },
     {
+      "id": "605b8526-7638-455f-a603-8fb18109db3b-trade-3",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Harder Kulm",
+      "summary": "Received: Kyle Pitts Sr., Miles Sanders, Stefon Diggs, Josh Allen | Sent: Brandon Aiyuk, Alvin Kamara, Saquon Barkley, Lamar Jackson",
+      "created": 1699387108389,
+      "players": [
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "4045163",
+          "name": "Miles Sanders",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4045163
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976212
+        },
+        {
+          "id": "3918298",
+          "name": "Josh Allen",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3918298
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3916387
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "3e9fb918-7ff7-40b4-9b72-20051c5a2866-add-8-3045144",
       "season": 2023,
       "week": 10,
@@ -14235,32 +14235,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1af0175a-518d-4ada-a3d7-f6ef5ca481fa-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Jordan Addison | Sent: Ezekiel Elliott",
-      "created": 1699412788503,
-      "players": [
-        {
-          "id": "4429205",
-          "name": "Jordan Addison",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4429205
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "1af0175a-518d-4ada-a3d7-f6ef5ca481fa-trade-5",
       "season": 2023,
       "week": 10,
@@ -14282,6 +14256,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4429205
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1af0175a-518d-4ada-a3d7-f6ef5ca481fa-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Jordan Addison | Sent: Ezekiel Elliott",
+      "created": 1699412788503,
+      "players": [
+        {
+          "id": "4429205",
+          "name": "Jordan Addison",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4429205
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
         }
       ],
       "source": "espn_transactions"
@@ -14382,6 +14382,65 @@
       "source": "espn_transactions"
     },
     {
+      "id": "1bb13577-ceeb-4fad-9de5-7e5e70d9af7e-trade-1",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Federal Burrow of Investigation",
+      "summary": "Received: D'Onta Foreman, Saquon Barkley | Sent: Davante Adams, Bijan Robinson",
+      "created": 1699478953503,
+      "players": [
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3125116
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "4430807",
+          "name": "Bijan Robinson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430807
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1bb13577-ceeb-4fad-9de5-7e5e70d9af7e-trade-0",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Martavis Bryant | Sent: None",
+      "created": 1699478953503,
+      "players": [
+        {
+          "id": "16886",
+          "name": "Martavis Bryant",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16886
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "1bb13577-ceeb-4fad-9de5-7e5e70d9af7e-trade-4",
       "season": 2023,
       "week": 10,
@@ -14429,33 +14488,28 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1bb13577-ceeb-4fad-9de5-7e5e70d9af7e-trade-0",
+      "id": "3a469a0a-9647-4b01-aec3-41a9bb08efec-trade-6",
       "season": 2023,
       "week": 10,
       "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Martavis Bryant | Sent: None",
-      "created": 1699478953503,
+      "team": "Emergency Room",
+      "summary": "Received: Ezekiel Elliott, BILLS, D'Onta Foreman | Sent: RAIDERS, D'Andre Swift",
+      "created": 1699415244590,
       "players": [
         {
-          "id": "16886",
-          "name": "Martavis Bryant",
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 16886
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "1bb13577-ceeb-4fad-9de5-7e5e70d9af7e-trade-1",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Federal Burrow of Investigation",
-      "summary": "Received: D'Onta Foreman, Saquon Barkley | Sent: Davante Adams, Bijan Robinson",
-      "created": 1699478953503,
-      "players": [
+          "source_player_id": 3051392
+        },
+        {
+          "id": "BUF",
+          "name": "BILLS",
+          "action": "received",
+          "id_type": "defense",
+          "source_player_id": -16002
+        },
         {
           "id": "3125116",
           "name": "D'Onta Foreman",
@@ -14464,25 +14518,18 @@
           "source_player_id": 3125116
         },
         {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3929630
+          "id": "LV",
+          "name": "RAIDERS",
+          "action": "sent",
+          "id_type": "defense",
+          "source_player_id": -16013
         },
         {
-          "id": "16800",
-          "name": "Davante Adams",
+          "id": "4259545",
+          "name": "D'Andre Swift",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "4430807",
-          "name": "Bijan Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430807
+          "source_player_id": 4259545
         }
       ],
       "source": "espn_transactions"
@@ -14530,53 +14577,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3125116
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "3a469a0a-9647-4b01-aec3-41a9bb08efec-trade-6",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Ezekiel Elliott, BILLS, D'Onta Foreman | Sent: RAIDERS, D'Andre Swift",
-      "created": 1699415244590,
-      "players": [
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "BUF",
-          "name": "BILLS",
-          "action": "received",
-          "id_type": "defense",
-          "source_player_id": -16002
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3125116
-        },
-        {
-          "id": "LV",
-          "name": "RAIDERS",
-          "action": "sent",
-          "id_type": "defense",
-          "source_player_id": -16013
-        },
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4259545
         }
       ],
       "source": "espn_transactions"
@@ -14677,32 +14677,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "731ab9b9-6805-4f72-b079-c63edeafe5a4-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Latavius Murray | Sent: D'Onta Foreman",
-      "created": 1699545891438,
-      "players": [
-        {
-          "id": "15920",
-          "name": "Latavius Murray",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15920
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3125116
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "731ab9b9-6805-4f72-b079-c63edeafe5a4-trade-5",
       "season": 2023,
       "week": 10,
@@ -14729,6 +14703,32 @@
       "source": "espn_transactions"
     },
     {
+      "id": "731ab9b9-6805-4f72-b079-c63edeafe5a4-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Latavius Murray | Sent: D'Onta Foreman",
+      "created": 1699545891438,
+      "players": [
+        {
+          "id": "15920",
+          "name": "Latavius Murray",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15920
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3125116
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "818cbf99-815a-4909-b013-5527afd34a25-add-5-3117256",
       "season": 2023,
       "week": 10,
@@ -14743,60 +14743,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 3117256
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "d1f78558-8fe6-45a0-a7e5-4ebf6e328820-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Khalil Herbert, Chris Olave, Mike Evans, Dameon Pierce | Sent: Saquon Barkley, Joe Mixon",
-      "created": 1699652463789,
-      "players": [
-        {
-          "id": "4035886",
-          "name": "Khalil Herbert",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035886
-        },
-        {
-          "id": "4361370",
-          "name": "Chris Olave",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4361370
-        },
-        {
-          "id": "16737",
-          "name": "Mike Evans",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16737
-        },
-        {
-          "id": "4360238",
-          "name": "Dameon Pierce",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360238
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
         }
       ],
       "source": "espn_transactions"
@@ -14851,6 +14797,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4360238
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d1f78558-8fe6-45a0-a7e5-4ebf6e328820-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Khalil Herbert, Chris Olave, Mike Evans, Dameon Pierce | Sent: Saquon Barkley, Joe Mixon",
+      "created": 1699652463789,
+      "players": [
+        {
+          "id": "4035886",
+          "name": "Khalil Herbert",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035886
+        },
+        {
+          "id": "4361370",
+          "name": "Chris Olave",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4361370
+        },
+        {
+          "id": "16737",
+          "name": "Mike Evans",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16737
+        },
+        {
+          "id": "4360238",
+          "name": "Dameon Pierce",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360238
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
         }
       ],
       "source": "espn_transactions"
@@ -14951,6 +14951,86 @@
       "source": "espn_transactions"
     },
     {
+      "id": "d85598ba-fc36-4bfd-a357-0aea4cb99f97-trade-1",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Federal Burrow of Investigation",
+      "summary": "Received: Michael Thomas, Justin Fields, D'Onta Foreman, Saquon Barkley | Sent: Dameon Pierce, Chris Olave, Davante Adams",
+      "created": 1699476560073,
+      "players": [
+        {
+          "id": "2976316",
+          "name": "Michael Thomas",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976316
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4362887
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3125116
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "4360238",
+          "name": "Dameon Pierce",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360238
+        },
+        {
+          "id": "4361370",
+          "name": "Chris Olave",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4361370
+        },
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16800
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d85598ba-fc36-4bfd-a357-0aea4cb99f97-trade-0",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Martavis Bryant | Sent: None",
+      "created": 1699476560073,
+      "players": [
+        {
+          "id": "16886",
+          "name": "Martavis Bryant",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16886
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "d85598ba-fc36-4bfd-a357-0aea4cb99f97-trade-4",
       "season": 2023,
       "week": 10,
@@ -15019,32 +15099,65 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d85598ba-fc36-4bfd-a357-0aea4cb99f97-trade-0",
+      "id": "486669a8-ee8e-4dc0-85c3-ce1956b55437-trade-6",
       "season": 2023,
       "week": 10,
       "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Martavis Bryant | Sent: None",
-      "created": 1699476560073,
+      "team": "Emergency Room",
+      "summary": "Received: Ezekiel Elliott | Sent: D'Andre Swift",
+      "created": 1699414844911,
       "players": [
         {
-          "id": "16886",
-          "name": "Martavis Bryant",
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 16886
+          "source_player_id": 3051392
+        },
+        {
+          "id": "4259545",
+          "name": "D'Andre Swift",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4259545
         }
       ],
       "source": "espn_transactions"
     },
     {
-      "id": "d85598ba-fc36-4bfd-a357-0aea4cb99f97-trade-1",
+      "id": "486669a8-ee8e-4dc0-85c3-ce1956b55437-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: D'Andre Swift | Sent: Ezekiel Elliott",
+      "created": 1699414844911,
+      "players": [
+        {
+          "id": "4259545",
+          "name": "D'Andre Swift",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4259545
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b586baf9-05f4-4d9d-8e7a-129c5bc12f8f-trade-1",
       "season": 2023,
       "week": 10,
       "type": "trade",
       "team": "Federal Burrow of Investigation",
       "summary": "Received: Michael Thomas, Justin Fields, D'Onta Foreman, Saquon Barkley | Sent: Dameon Pierce, Chris Olave, Davante Adams",
-      "created": 1699476560073,
+      "created": 1699477801220,
       "players": [
         {
           "id": "2976316",
@@ -15099,53 +15212,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "486669a8-ee8e-4dc0-85c3-ce1956b55437-trade-4",
+      "id": "b586baf9-05f4-4d9d-8e7a-129c5bc12f8f-trade-0",
       "season": 2023,
       "week": 10,
       "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: D'Andre Swift | Sent: Ezekiel Elliott",
-      "created": 1699414844911,
+      "team": "Team 0",
+      "summary": "Received: Martavis Bryant | Sent: None",
+      "created": 1699477801220,
       "players": [
         {
-          "id": "4259545",
-          "name": "D'Andre Swift",
+          "id": "16886",
+          "name": "Martavis Bryant",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4259545
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "486669a8-ee8e-4dc0-85c3-ce1956b55437-trade-6",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Ezekiel Elliott | Sent: D'Andre Swift",
-      "created": 1699414844911,
-      "players": [
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4259545
+          "source_player_id": 16886
         }
       ],
       "source": "espn_transactions"
@@ -15214,86 +15294,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16886
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "b586baf9-05f4-4d9d-8e7a-129c5bc12f8f-trade-0",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Martavis Bryant | Sent: None",
-      "created": 1699477801220,
-      "players": [
-        {
-          "id": "16886",
-          "name": "Martavis Bryant",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16886
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "b586baf9-05f4-4d9d-8e7a-129c5bc12f8f-trade-1",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Federal Burrow of Investigation",
-      "summary": "Received: Michael Thomas, Justin Fields, D'Onta Foreman, Saquon Barkley | Sent: Dameon Pierce, Chris Olave, Davante Adams",
-      "created": 1699477801220,
-      "players": [
-        {
-          "id": "2976316",
-          "name": "Michael Thomas",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976316
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3125116
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "4360238",
-          "name": "Dameon Pierce",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360238
-        },
-        {
-          "id": "4361370",
-          "name": "Chris Olave",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4361370
-        },
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16800
         }
       ],
       "source": "espn_transactions"
@@ -15508,46 +15508,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "6ae34c35-faf1-41be-a9dc-20b633095eb4-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Jordan Addison, D'Onta Foreman | Sent: DeVonta Smith, Latavius Murray",
-      "created": 1699414403263,
-      "players": [
-        {
-          "id": "4429205",
-          "name": "Jordan Addison",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4429205
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3125116
-        },
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "15920",
-          "name": "Latavius Murray",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15920
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "6ae34c35-faf1-41be-a9dc-20b633095eb4-trade-5",
       "season": 2023,
       "week": 10,
@@ -15583,6 +15543,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3125116
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "6ae34c35-faf1-41be-a9dc-20b633095eb4-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Jordan Addison, D'Onta Foreman | Sent: DeVonta Smith, Latavius Murray",
+      "created": 1699414403263,
+      "players": [
+        {
+          "id": "4429205",
+          "name": "Jordan Addison",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4429205
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3125116
+        },
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
+        {
+          "id": "15920",
+          "name": "Latavius Murray",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15920
         }
       ],
       "source": "espn_transactions"
@@ -16120,39 +16120,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1f04df3b-1500-47ea-a9f2-b4564a0d5dbb-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Dameon Pierce, Chris Olave | Sent: Saquon Barkley",
-      "created": 1699477895259,
-      "players": [
-        {
-          "id": "4360238",
-          "name": "Dameon Pierce",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360238
-        },
-        {
-          "id": "4361370",
-          "name": "Chris Olave",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4361370
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "1f04df3b-1500-47ea-a9f2-b4564a0d5dbb-trade-1",
       "season": 2023,
       "week": 10,
@@ -16181,6 +16148,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4361370
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1f04df3b-1500-47ea-a9f2-b4564a0d5dbb-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Dameon Pierce, Chris Olave | Sent: Saquon Barkley",
+      "created": 1699477895259,
+      "players": [
+        {
+          "id": "4360238",
+          "name": "Dameon Pierce",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360238
+        },
+        {
+          "id": "4361370",
+          "name": "Chris Olave",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4361370
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3929630
         }
       ],
       "source": "espn_transactions"
@@ -16224,39 +16224,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "65cc98ad-8c87-428c-af11-bacb652d2e44-trade-3",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Justin Fields, DJ Moore | Sent: Josh Jacobs",
-      "created": 1699652463789,
-      "players": [
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3915416
-        },
-        {
-          "id": "4047365",
-          "name": "Josh Jacobs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4047365
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "65cc98ad-8c87-428c-af11-bacb652d2e44-trade-4",
       "season": 2023,
       "week": 10,
@@ -16285,6 +16252,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3915416
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "65cc98ad-8c87-428c-af11-bacb652d2e44-trade-3",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Harder Kulm",
+      "summary": "Received: Justin Fields, DJ Moore | Sent: Josh Jacobs",
+      "created": 1699652463789,
+      "players": [
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4362887
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        },
+        {
+          "id": "4047365",
+          "name": "Josh Jacobs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4047365
         }
       ],
       "source": "espn_transactions"
@@ -16366,74 +16366,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7779705d-0693-4783-9380-8f8323f12e11-trade-3",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Stefon Diggs, Josh Allen, Miles Sanders, Latavius Murray | Sent: Brandon Aiyuk, Saquon Barkley, Alvin Kamara, Lamar Jackson",
-      "created": 1699392351940,
-      "players": [
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        },
-        {
-          "id": "3918298",
-          "name": "Josh Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3918298
-        },
-        {
-          "id": "4045163",
-          "name": "Miles Sanders",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4045163
-        },
-        {
-          "id": "15920",
-          "name": "Latavius Murray",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15920
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7779705d-0693-4783-9380-8f8323f12e11-trade-4",
       "season": 2023,
       "week": 10,
@@ -16497,6 +16429,74 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15920
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7779705d-0693-4783-9380-8f8323f12e11-trade-3",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Harder Kulm",
+      "summary": "Received: Stefon Diggs, Josh Allen, Miles Sanders, Latavius Murray | Sent: Brandon Aiyuk, Saquon Barkley, Alvin Kamara, Lamar Jackson",
+      "created": 1699392351940,
+      "players": [
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976212
+        },
+        {
+          "id": "3918298",
+          "name": "Josh Allen",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3918298
+        },
+        {
+          "id": "4045163",
+          "name": "Miles Sanders",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4045163
+        },
+        {
+          "id": "15920",
+          "name": "Latavius Murray",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15920
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360438
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3916387
         }
       ],
       "source": "espn_transactions"
@@ -16639,6 +16639,46 @@
       "source": "espn_transactions"
     },
     {
+      "id": "62eb9e9e-2cf9-4469-9d75-bd8c03e0c015-trade-8",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Sniper Gang - 1800 Block",
+      "summary": "Received: Justin Fields, DJ Moore | Sent: Jalen Hurts, DeAndre Hopkins",
+      "created": 1699416781637,
+      "players": [
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4362887
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        },
+        {
+          "id": "4040715",
+          "name": "Jalen Hurts",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4040715
+        },
+        {
+          "id": "15795",
+          "name": "DeAndre Hopkins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15795
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "62eb9e9e-2cf9-4469-9d75-bd8c03e0c015-trade-4",
       "season": 2023,
       "week": 10,
@@ -16679,41 +16719,60 @@
       "source": "espn_transactions"
     },
     {
-      "id": "62eb9e9e-2cf9-4469-9d75-bd8c03e0c015-trade-8",
+      "id": "fa9cdc57-284d-447b-9f46-c5ad9db9d550-trade-1",
       "season": 2023,
       "week": 10,
       "type": "trade",
-      "team": "Sniper Gang - 1800 Block",
-      "summary": "Received: Justin Fields, DJ Moore | Sent: Jalen Hurts, DeAndre Hopkins",
-      "created": 1699416781637,
+      "team": "Federal Burrow of Investigation",
+      "summary": "Received: D'Onta Foreman, Saquon Barkley | Sent: Davante Adams, Bijan Robinson",
+      "created": 1699478909906,
       "players": [
         {
-          "id": "4362887",
-          "name": "Justin Fields",
+          "id": "3125116",
+          "name": "D'Onta Foreman",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4362887
+          "source_player_id": 3125116
         },
         {
-          "id": "3915416",
-          "name": "DJ Moore",
+          "id": "3929630",
+          "name": "Saquon Barkley",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3915416
+          "source_player_id": 3929630
         },
         {
-          "id": "4040715",
-          "name": "Jalen Hurts",
+          "id": "16800",
+          "name": "Davante Adams",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4040715
+          "source_player_id": 16800
         },
         {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
+          "id": "4430807",
+          "name": "Bijan Robinson",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 15795
+          "source_player_id": 4430807
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "fa9cdc57-284d-447b-9f46-c5ad9db9d550-trade-0",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Martavis Bryant | Sent: None",
+      "created": 1699478909906,
+      "players": [
+        {
+          "id": "16886",
+          "name": "Martavis Bryant",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16886
         }
       ],
       "source": "espn_transactions"
@@ -16766,60 +16825,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fa9cdc57-284d-447b-9f46-c5ad9db9d550-trade-0",
+      "id": "8a867e5d-2710-4729-8b03-10020681577e-trade-7",
       "season": 2023,
       "week": 10,
       "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Martavis Bryant | Sent: None",
-      "created": 1699478909906,
+      "team": "Only i can say The N word",
+      "summary": "Received: Justin Tucker, BILLS | Sent: Harrison Butker, RAVENS",
+      "created": 1699416421552,
       "players": [
         {
-          "id": "16886",
-          "name": "Martavis Bryant",
+          "id": "15683",
+          "name": "Justin Tucker",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 16886
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "fa9cdc57-284d-447b-9f46-c5ad9db9d550-trade-1",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Federal Burrow of Investigation",
-      "summary": "Received: D'Onta Foreman, Saquon Barkley | Sent: Davante Adams, Bijan Robinson",
-      "created": 1699478909906,
-      "players": [
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3125116
+          "source_player_id": 15683
         },
         {
-          "id": "3929630",
-          "name": "Saquon Barkley",
+          "id": "BUF",
+          "name": "BILLS",
           "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3929630
+          "id_type": "defense",
+          "source_player_id": -16002
         },
         {
-          "id": "16800",
-          "name": "Davante Adams",
+          "id": "3055899",
+          "name": "Harrison Butker",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 16800
+          "source_player_id": 3055899
         },
         {
-          "id": "4430807",
-          "name": "Bijan Robinson",
+          "id": "BAL",
+          "name": "RAVENS",
           "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430807
+          "id_type": "defense",
+          "source_player_id": -16033
         }
       ],
       "source": "espn_transactions"
@@ -16865,79 +16905,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "8a867e5d-2710-4729-8b03-10020681577e-trade-7",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: Justin Tucker, BILLS | Sent: Harrison Butker, RAVENS",
-      "created": 1699416421552,
-      "players": [
-        {
-          "id": "15683",
-          "name": "Justin Tucker",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15683
-        },
-        {
-          "id": "BUF",
-          "name": "BILLS",
-          "action": "received",
-          "id_type": "defense",
-          "source_player_id": -16002
-        },
-        {
-          "id": "3055899",
-          "name": "Harrison Butker",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3055899
-        },
-        {
-          "id": "BAL",
-          "name": "RAVENS",
-          "action": "sent",
-          "id_type": "defense",
-          "source_player_id": -16033
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "5c578879-6143-4e5e-9eb5-f7e2a31037a2-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Christian McCaffrey | Sent: Joe Mixon, DeVonta Smith",
-      "created": 1699413773553,
-      "players": [
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3117251
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        },
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "5c578879-6143-4e5e-9eb5-f7e2a31037a2-trade-8",
       "season": 2023,
       "week": 10,
@@ -16971,69 +16938,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "78c34d8f-72e6-4c9b-9d65-36106e0f84a9-trade-3",
+      "id": "5c578879-6143-4e5e-9eb5-f7e2a31037a2-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Stefon Diggs, Josh Allen, Miles Sanders, Latavius Murray | Sent: Brandon Aiyuk, Saquon Barkley, Alvin Kamara, Lamar Jackson",
-      "created": 1699376843019,
+      "team": "Wish I had CMC",
+      "summary": "Received: Christian McCaffrey | Sent: Joe Mixon, DeVonta Smith",
+      "created": 1699413773553,
       "players": [
         {
-          "id": "2976212",
-          "name": "Stefon Diggs",
+          "id": "3117251",
+          "name": "Christian McCaffrey",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 2976212
+          "source_player_id": 3117251
         },
         {
-          "id": "3918298",
-          "name": "Josh Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3918298
-        },
-        {
-          "id": "4045163",
-          "name": "Miles Sanders",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4045163
-        },
-        {
-          "id": "15920",
-          "name": "Latavius Murray",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15920
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
+          "id": "3116385",
+          "name": "Joe Mixon",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4360438
+          "source_player_id": 3116385
         },
         {
-          "id": "3929630",
-          "name": "Saquon Barkley",
+          "id": "4241478",
+          "name": "DeVonta Smith",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916387
+          "source_player_id": 4241478
         }
       ],
       "source": "espn_transactions"
@@ -17107,34 +17039,69 @@
       "source": "espn_transactions"
     },
     {
-      "id": "51c237b0-56db-476a-87b5-48f2d0f39a91-trade-4",
+      "id": "78c34d8f-72e6-4c9b-9d65-36106e0f84a9-trade-3",
       "season": 2023,
       "week": 10,
       "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Christian McCaffrey | Sent: Joe Mixon, DeVonta Smith",
-      "created": 1699393640595,
+      "team": "Harder Kulm",
+      "summary": "Received: Stefon Diggs, Josh Allen, Miles Sanders, Latavius Murray | Sent: Brandon Aiyuk, Saquon Barkley, Alvin Kamara, Lamar Jackson",
+      "created": 1699376843019,
       "players": [
         {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
+          "id": "2976212",
+          "name": "Stefon Diggs",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3117251
+          "source_player_id": 2976212
         },
         {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
+          "id": "3918298",
+          "name": "Josh Allen",
+          "action": "received",
           "id_type": "espn",
-          "source_player_id": 3116385
+          "source_player_id": 3918298
         },
         {
-          "id": "4241478",
-          "name": "DeVonta Smith",
+          "id": "4045163",
+          "name": "Miles Sanders",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4045163
+        },
+        {
+          "id": "15920",
+          "name": "Latavius Murray",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15920
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4241478
+          "source_player_id": 4360438
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3916387
         }
       ],
       "source": "espn_transactions"
@@ -17168,6 +17135,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3117251
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "51c237b0-56db-476a-87b5-48f2d0f39a91-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Christian McCaffrey | Sent: Joe Mixon, DeVonta Smith",
+      "created": 1699393640595,
+      "players": [
+        {
+          "id": "3117251",
+          "name": "Christian McCaffrey",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3117251
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
+        },
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241478
         }
       ],
       "source": "espn_transactions"
@@ -17249,46 +17249,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "41646f39-b077-43cd-b189-886d15fbf43a-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: D'Andre Swift, Cole Kmet | Sent: D'Onta Foreman, Geno Smith",
-      "created": 1699415915582,
-      "players": [
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4259545
-        },
-        {
-          "id": "4258595",
-          "name": "Cole Kmet",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4258595
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3125116
-        },
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15864
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "41646f39-b077-43cd-b189-886d15fbf43a-trade-6",
       "season": 2023,
       "week": 10,
@@ -17324,6 +17284,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4258595
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "41646f39-b077-43cd-b189-886d15fbf43a-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: D'Andre Swift, Cole Kmet | Sent: D'Onta Foreman, Geno Smith",
+      "created": 1699415915582,
+      "players": [
+        {
+          "id": "4259545",
+          "name": "D'Andre Swift",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4259545
+        },
+        {
+          "id": "4258595",
+          "name": "Cole Kmet",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4258595
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3125116
+        },
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15864
         }
       ],
       "source": "espn_transactions"
@@ -17424,32 +17424,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "4d4284df-d43e-43b3-b953-64df4ad5f8a3-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: D'Andre Swift | Sent: Ezekiel Elliott",
-      "created": 1699415253323,
-      "players": [
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4259545
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "4d4284df-d43e-43b3-b953-64df4ad5f8a3-trade-6",
       "season": 2023,
       "week": 10,
@@ -17476,27 +17450,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "99c56f1e-12ff-408e-b30d-2507cc805c2a-trade-4",
+      "id": "4d4284df-d43e-43b3-b953-64df4ad5f8a3-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: Latavius Murray | Sent: D'Onta Foreman",
-      "created": 1699579247361,
+      "summary": "Received: D'Andre Swift | Sent: Ezekiel Elliott",
+      "created": 1699415253323,
       "players": [
         {
-          "id": "15920",
-          "name": "Latavius Murray",
+          "id": "4259545",
+          "name": "D'Andre Swift",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 15920
+          "source_player_id": 4259545
         },
         {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3125116
+          "source_player_id": 3051392
         }
       ],
       "source": "espn_transactions"
@@ -17523,6 +17497,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15920
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "99c56f1e-12ff-408e-b30d-2507cc805c2a-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Latavius Murray | Sent: D'Onta Foreman",
+      "created": 1699579247361,
+      "players": [
+        {
+          "id": "15920",
+          "name": "Latavius Murray",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15920
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3125116
         }
       ],
       "source": "espn_transactions"
@@ -17561,74 +17561,6 @@
           "action": "drop",
           "id_type": "espn",
           "source_player_id": 3051392
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "bbb27597-577d-42fd-8872-d9522e6ef7e7-trade-3",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Kyle Pitts Sr., Miles Sanders, Stefon Diggs, Josh Allen | Sent: Brandon Aiyuk, Alvin Kamara, Saquon Barkley, Lamar Jackson",
-      "created": 1699393145376,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "4045163",
-          "name": "Miles Sanders",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4045163
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        },
-        {
-          "id": "3918298",
-          "name": "Josh Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3918298
-        },
-        {
-          "id": "4360438",
-          "name": "Brandon Aiyuk",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360438
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916387
         }
       ],
       "source": "espn_transactions"
@@ -17702,27 +17634,69 @@
       "source": "espn_transactions"
     },
     {
-      "id": "cbf7226d-860a-4e84-80b6-49c089428330-trade-4",
+      "id": "bbb27597-577d-42fd-8872-d9522e6ef7e7-trade-3",
       "season": 2023,
       "week": 10,
       "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Jordan Addison | Sent: Ezekiel Elliott",
-      "created": 1699413773553,
+      "team": "Harder Kulm",
+      "summary": "Received: Kyle Pitts Sr., Miles Sanders, Stefon Diggs, Josh Allen | Sent: Brandon Aiyuk, Alvin Kamara, Saquon Barkley, Lamar Jackson",
+      "created": 1699393145376,
       "players": [
         {
-          "id": "4429205",
-          "name": "Jordan Addison",
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4429205
+          "source_player_id": 4360248
         },
         {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
+          "id": "4045163",
+          "name": "Miles Sanders",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4045163
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976212
+        },
+        {
+          "id": "3918298",
+          "name": "Josh Allen",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3918298
+        },
+        {
+          "id": "4360438",
+          "name": "Brandon Aiyuk",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3051392
+          "source_player_id": 4360438
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3916387
         }
       ],
       "source": "espn_transactions"
@@ -17754,41 +17728,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "39f3964a-56e0-40bf-9709-a0c51a2da079-trade-4",
+      "id": "cbf7226d-860a-4e84-80b6-49c089428330-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: Jared Goff, Amon-Ra St. Brown | Sent: Jordan Addison, Joshua Dobbs",
-      "created": 1699475812168,
+      "summary": "Received: Jordan Addison | Sent: Ezekiel Elliott",
+      "created": 1699413773553,
       "players": [
-        {
-          "id": "3046779",
-          "name": "Jared Goff",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3046779
-        },
-        {
-          "id": "4374302",
-          "name": "Amon-Ra St. Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4374302
-        },
         {
           "id": "4429205",
           "name": "Jordan Addison",
-          "action": "sent",
+          "action": "received",
           "id_type": "espn",
           "source_player_id": 4429205
         },
         {
-          "id": "3044720",
-          "name": "Joshua Dobbs",
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3044720
+          "source_player_id": 3051392
         }
       ],
       "source": "espn_transactions"
@@ -17829,6 +17789,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4374302
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "39f3964a-56e0-40bf-9709-a0c51a2da079-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Jared Goff, Amon-Ra St. Brown | Sent: Jordan Addison, Joshua Dobbs",
+      "created": 1699475812168,
+      "players": [
+        {
+          "id": "3046779",
+          "name": "Jared Goff",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3046779
+        },
+        {
+          "id": "4374302",
+          "name": "Amon-Ra St. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4374302
+        },
+        {
+          "id": "4429205",
+          "name": "Jordan Addison",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4429205
+        },
+        {
+          "id": "3044720",
+          "name": "Joshua Dobbs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3044720
         }
       ],
       "source": "espn_transactions"
@@ -17914,39 +17914,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3d56307e-8ef4-427d-9d94-5492446476f9-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Dameon Pierce, Chris Olave | Sent: Saquon Barkley",
-      "created": 1699477824043,
-      "players": [
-        {
-          "id": "4360238",
-          "name": "Dameon Pierce",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360238
-        },
-        {
-          "id": "4361370",
-          "name": "Chris Olave",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4361370
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "3d56307e-8ef4-427d-9d94-5492446476f9-trade-1",
       "season": 2023,
       "week": 10,
@@ -17980,41 +17947,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "9b0be043-6d8f-46e8-b280-4daa6fbc7bb4-trade-4",
+      "id": "3d56307e-8ef4-427d-9d94-5492446476f9-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: D'Andre Swift, Cole Kmet | Sent: D'Onta Foreman, Geno Smith",
-      "created": 1699417570862,
+      "summary": "Received: Dameon Pierce, Chris Olave | Sent: Saquon Barkley",
+      "created": 1699477824043,
       "players": [
         {
-          "id": "4259545",
-          "name": "D'Andre Swift",
+          "id": "4360238",
+          "name": "Dameon Pierce",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4259545
+          "source_player_id": 4360238
         },
         {
-          "id": "4258595",
-          "name": "Cole Kmet",
+          "id": "4361370",
+          "name": "Chris Olave",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4258595
+          "source_player_id": 4361370
         },
         {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
+          "id": "3929630",
+          "name": "Saquon Barkley",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3125116
-        },
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15864
+          "source_player_id": 3929630
         }
       ],
       "source": "espn_transactions"
@@ -18060,34 +18020,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b6c4f856-1bce-4f52-83a9-ae9e8ba5f5ba-trade-3",
+      "id": "9b0be043-6d8f-46e8-b280-4daa6fbc7bb4-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Justin Fields, DJ Moore | Sent: Josh Jacobs",
-      "created": 1699479699140,
+      "team": "Wish I had CMC",
+      "summary": "Received: D'Andre Swift, Cole Kmet | Sent: D'Onta Foreman, Geno Smith",
+      "created": 1699417570862,
       "players": [
         {
-          "id": "4362887",
-          "name": "Justin Fields",
+          "id": "4259545",
+          "name": "D'Andre Swift",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4362887
+          "source_player_id": 4259545
         },
         {
-          "id": "3915416",
-          "name": "DJ Moore",
+          "id": "4258595",
+          "name": "Cole Kmet",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3915416
+          "source_player_id": 4258595
         },
         {
-          "id": "4047365",
-          "name": "Josh Jacobs",
+          "id": "3125116",
+          "name": "D'Onta Foreman",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4047365
+          "source_player_id": 3125116
+        },
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15864
         }
       ],
       "source": "espn_transactions"
@@ -18121,6 +18088,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3915416
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b6c4f856-1bce-4f52-83a9-ae9e8ba5f5ba-trade-3",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Harder Kulm",
+      "summary": "Received: Justin Fields, DJ Moore | Sent: Josh Jacobs",
+      "created": 1699479699140,
+      "players": [
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4362887
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        },
+        {
+          "id": "4047365",
+          "name": "Josh Jacobs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4047365
         }
       ],
       "source": "espn_transactions"
@@ -18415,60 +18415,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7f4d8d6c-16c5-4656-972f-1cdac8ddb4bb-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Tyler Allgeier, Amon-Ra St. Brown, Jared Goff | Sent: D'Onta Foreman, DJ Moore, Justin Fields",
-      "created": 1699470205048,
-      "players": [
-        {
-          "id": "4373626",
-          "name": "Tyler Allgeier",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4373626
-        },
-        {
-          "id": "4374302",
-          "name": "Amon-Ra St. Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4374302
-        },
-        {
-          "id": "3046779",
-          "name": "Jared Goff",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3046779
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3125116
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7f4d8d6c-16c5-4656-972f-1cdac8ddb4bb-trade-5",
       "season": 2023,
       "week": 10,
@@ -18523,6 +18469,60 @@
       "source": "espn_transactions"
     },
     {
+      "id": "7f4d8d6c-16c5-4656-972f-1cdac8ddb4bb-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Tyler Allgeier, Amon-Ra St. Brown, Jared Goff | Sent: D'Onta Foreman, DJ Moore, Justin Fields",
+      "created": 1699470205048,
+      "players": [
+        {
+          "id": "4373626",
+          "name": "Tyler Allgeier",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4373626
+        },
+        {
+          "id": "4374302",
+          "name": "Amon-Ra St. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4374302
+        },
+        {
+          "id": "3046779",
+          "name": "Jared Goff",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3046779
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3125116
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "9d9f6e3a-c7bd-45f3-81e6-0c0b3d56600a-add-1-4239934",
       "season": 2023,
       "week": 10,
@@ -18537,46 +18537,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 4239934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "5a4752f0-91bf-41cf-a7f8-a2b5582f4881-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Sam Howell, Gus Edwards | Sent: Alvin Kamara, Lamar Jackson",
-      "created": 1699529696505,
-      "players": [
-        {
-          "id": "4426875",
-          "name": "Sam Howell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426875
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916387
         }
       ],
       "source": "espn_transactions"
@@ -18617,6 +18577,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3051926
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5a4752f0-91bf-41cf-a7f8-a2b5582f4881-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Sam Howell, Gus Edwards | Sent: Alvin Kamara, Lamar Jackson",
+      "created": 1699529696505,
+      "players": [
+        {
+          "id": "4426875",
+          "name": "Sam Howell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426875
+        },
+        {
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3051926
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3916387
         }
       ],
       "source": "espn_transactions"
@@ -18938,46 +18938,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "32b1cd6f-5c6b-4942-ad76-d687cbfc9d89-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Jalen Hurts, DeAndre Hopkins | Sent: Justin Fields, DJ Moore",
-      "created": 1699416691095,
-      "players": [
-        {
-          "id": "4040715",
-          "name": "Jalen Hurts",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040715
-        },
-        {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15795
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "32b1cd6f-5c6b-4942-ad76-d687cbfc9d89-trade-8",
       "season": 2023,
       "week": 10,
@@ -19018,41 +18978,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "80429ba7-6790-4b72-9584-c6d4e6f081f9-trade-4",
+      "id": "32b1cd6f-5c6b-4942-ad76-d687cbfc9d89-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: Jordan Addison, D'Onta Foreman | Sent: DeVonta Smith, Latavius Murray",
-      "created": 1699413733430,
+      "summary": "Received: Jalen Hurts, DeAndre Hopkins | Sent: Justin Fields, DJ Moore",
+      "created": 1699416691095,
       "players": [
         {
-          "id": "4429205",
-          "name": "Jordan Addison",
+          "id": "4040715",
+          "name": "Jalen Hurts",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4429205
+          "source_player_id": 4040715
         },
         {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
+          "id": "15795",
+          "name": "DeAndre Hopkins",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3125116
+          "source_player_id": 15795
         },
         {
-          "id": "4241478",
-          "name": "DeVonta Smith",
+          "id": "4362887",
+          "name": "Justin Fields",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4241478
+          "source_player_id": 4362887
         },
         {
-          "id": "15920",
-          "name": "Latavius Murray",
+          "id": "3915416",
+          "name": "DJ Moore",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 15920
+          "source_player_id": 3915416
         }
       ],
       "source": "espn_transactions"
@@ -19098,6 +19058,46 @@
       "source": "espn_transactions"
     },
     {
+      "id": "80429ba7-6790-4b72-9584-c6d4e6f081f9-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Jordan Addison, D'Onta Foreman | Sent: DeVonta Smith, Latavius Murray",
+      "created": 1699413733430,
+      "players": [
+        {
+          "id": "4429205",
+          "name": "Jordan Addison",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4429205
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3125116
+        },
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
+        {
+          "id": "15920",
+          "name": "Latavius Murray",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15920
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "282dbd68-dfd9-4d21-9ed9-b0b727213eb2-add-4-4429025",
       "season": 2023,
       "week": 10,
@@ -19131,60 +19131,6 @@
           "action": "drop",
           "id_type": "espn",
           "source_player_id": 2976316
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "bfaa2a8b-a6ac-4f63-86f8-7fe64ac21373-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Khalil Herbert, Chris Olave, Mike Evans, Dameon Pierce | Sent: Saquon Barkley, Joe Mixon",
-      "created": 1699479805598,
-      "players": [
-        {
-          "id": "4035886",
-          "name": "Khalil Herbert",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035886
-        },
-        {
-          "id": "4361370",
-          "name": "Chris Olave",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4361370
-        },
-        {
-          "id": "16737",
-          "name": "Mike Evans",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16737
-        },
-        {
-          "id": "4360238",
-          "name": "Dameon Pierce",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360238
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
         }
       ],
       "source": "espn_transactions"
@@ -19244,41 +19190,55 @@
       "source": "espn_transactions"
     },
     {
-      "id": "261fa608-935d-4f88-974e-d95212d0ba4f-trade-4",
+      "id": "bfaa2a8b-a6ac-4f63-86f8-7fe64ac21373-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: Jared Goff, Amon-Ra St. Brown | Sent: Jordan Addison, Joshua Dobbs",
-      "created": 1699476658199,
+      "summary": "Received: Khalil Herbert, Chris Olave, Mike Evans, Dameon Pierce | Sent: Saquon Barkley, Joe Mixon",
+      "created": 1699479805598,
       "players": [
         {
-          "id": "3046779",
-          "name": "Jared Goff",
+          "id": "4035886",
+          "name": "Khalil Herbert",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3046779
+          "source_player_id": 4035886
         },
         {
-          "id": "4374302",
-          "name": "Amon-Ra St. Brown",
+          "id": "4361370",
+          "name": "Chris Olave",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4374302
+          "source_player_id": 4361370
         },
         {
-          "id": "4429205",
-          "name": "Jordan Addison",
-          "action": "sent",
+          "id": "16737",
+          "name": "Mike Evans",
+          "action": "received",
           "id_type": "espn",
-          "source_player_id": 4429205
+          "source_player_id": 16737
         },
         {
-          "id": "3044720",
-          "name": "Joshua Dobbs",
+          "id": "4360238",
+          "name": "Dameon Pierce",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360238
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3044720
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
         }
       ],
       "source": "espn_transactions"
@@ -19324,41 +19284,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fbae6b88-df3b-4563-b87a-b99f7cab1661-trade-4",
+      "id": "261fa608-935d-4f88-974e-d95212d0ba4f-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: Bijan Robinson, A.J. Brown | Sent: Justin Fields, DJ Moore",
-      "created": 1699476031690,
+      "summary": "Received: Jared Goff, Amon-Ra St. Brown | Sent: Jordan Addison, Joshua Dobbs",
+      "created": 1699476658199,
       "players": [
         {
-          "id": "4430807",
-          "name": "Bijan Robinson",
+          "id": "3046779",
+          "name": "Jared Goff",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4430807
+          "source_player_id": 3046779
         },
         {
-          "id": "4047646",
-          "name": "A.J. Brown",
+          "id": "4374302",
+          "name": "Amon-Ra St. Brown",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4047646
+          "source_player_id": 4374302
         },
         {
-          "id": "4362887",
-          "name": "Justin Fields",
+          "id": "4429205",
+          "name": "Jordan Addison",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4362887
+          "source_player_id": 4429205
         },
         {
-          "id": "3915416",
-          "name": "DJ Moore",
+          "id": "3044720",
+          "name": "Joshua Dobbs",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3915416
+          "source_player_id": 3044720
         }
       ],
       "source": "espn_transactions"
@@ -19399,6 +19359,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4047646
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "fbae6b88-df3b-4563-b87a-b99f7cab1661-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Bijan Robinson, A.J. Brown | Sent: Justin Fields, DJ Moore",
+      "created": 1699476031690,
+      "players": [
+        {
+          "id": "4430807",
+          "name": "Bijan Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430807
+        },
+        {
+          "id": "4047646",
+          "name": "A.J. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047646
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
         }
       ],
       "source": "espn_transactions"
@@ -19556,46 +19556,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "90ae3519-843f-4005-906c-2e1bd457fcd1-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Harrison Butker, RAVENS | Sent: Justin Tucker, BILLS",
-      "created": 1699416372927,
-      "players": [
-        {
-          "id": "3055899",
-          "name": "Harrison Butker",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3055899
-        },
-        {
-          "id": "BAL",
-          "name": "RAVENS",
-          "action": "received",
-          "id_type": "defense",
-          "source_player_id": -16033
-        },
-        {
-          "id": "15683",
-          "name": "Justin Tucker",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15683
-        },
-        {
-          "id": "BUF",
-          "name": "BILLS",
-          "action": "sent",
-          "id_type": "defense",
-          "source_player_id": -16002
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "90ae3519-843f-4005-906c-2e1bd457fcd1-trade-7",
       "season": 2023,
       "week": 10,
@@ -19631,6 +19591,46 @@
           "action": "sent",
           "id_type": "defense",
           "source_player_id": -16033
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "90ae3519-843f-4005-906c-2e1bd457fcd1-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Harrison Butker, RAVENS | Sent: Justin Tucker, BILLS",
+      "created": 1699416372927,
+      "players": [
+        {
+          "id": "3055899",
+          "name": "Harrison Butker",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3055899
+        },
+        {
+          "id": "BAL",
+          "name": "RAVENS",
+          "action": "received",
+          "id_type": "defense",
+          "source_player_id": -16033
+        },
+        {
+          "id": "15683",
+          "name": "Justin Tucker",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15683
+        },
+        {
+          "id": "BUF",
+          "name": "BILLS",
+          "action": "sent",
+          "id_type": "defense",
+          "source_player_id": -16002
         }
       ],
       "source": "espn_transactions"
@@ -19693,60 +19693,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a3662a9c-6380-47b2-b45d-dfd96c552962-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Tee Higgins, DeAndre Hopkins, Jalen Hurts | Sent: Alvin Kamara, DJ Moore, Justin Fields",
-      "created": 1699453978293,
-      "players": [
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        },
-        {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15795
-        },
-        {
-          "id": "4040715",
-          "name": "Jalen Hurts",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040715
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a3662a9c-6380-47b2-b45d-dfd96c552962-trade-8",
       "season": 2023,
       "week": 10,
@@ -19801,6 +19747,60 @@
       "source": "espn_transactions"
     },
     {
+      "id": "a3662a9c-6380-47b2-b45d-dfd96c552962-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Tee Higgins, DeAndre Hopkins, Jalen Hurts | Sent: Alvin Kamara, DJ Moore, Justin Fields",
+      "created": 1699453978293,
+      "players": [
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4239993
+        },
+        {
+          "id": "15795",
+          "name": "DeAndre Hopkins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15795
+        },
+        {
+          "id": "4040715",
+          "name": "Jalen Hurts",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4040715
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "c1cf25fc-bafa-4ec8-8873-bcc40a51b18c-add-4-4429025",
       "season": 2023,
       "week": 10,
@@ -19834,60 +19834,6 @@
           "action": "drop",
           "id_type": "espn",
           "source_player_id": 2976316
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "bbd73aa2-f190-4c20-afd3-af9b83da4928-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Tyler Allgeier, Amon-Ra St. Brown, Jared Goff | Sent: D'Onta Foreman, DJ Moore, Justin Fields",
-      "created": 1699470564605,
-      "players": [
-        {
-          "id": "4373626",
-          "name": "Tyler Allgeier",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4373626
-        },
-        {
-          "id": "4374302",
-          "name": "Amon-Ra St. Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4374302
-        },
-        {
-          "id": "3046779",
-          "name": "Jared Goff",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3046779
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3125116
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
         }
       ],
       "source": "espn_transactions"
@@ -19942,6 +19888,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3046779
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "bbd73aa2-f190-4c20-afd3-af9b83da4928-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Tyler Allgeier, Amon-Ra St. Brown, Jared Goff | Sent: D'Onta Foreman, DJ Moore, Justin Fields",
+      "created": 1699470564605,
+      "players": [
+        {
+          "id": "4373626",
+          "name": "Tyler Allgeier",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4373626
+        },
+        {
+          "id": "4374302",
+          "name": "Amon-Ra St. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4374302
+        },
+        {
+          "id": "3046779",
+          "name": "Jared Goff",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3046779
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3125116
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
         }
       ],
       "source": "espn_transactions"
@@ -20084,46 +20084,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "319fa6df-afd3-4ae6-93d4-e10ba14cdff4-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Sam Howell, Gus Edwards | Sent: Alvin Kamara, Lamar Jackson",
-      "created": 1699553846185,
-      "players": [
-        {
-          "id": "4426875",
-          "name": "Sam Howell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426875
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "319fa6df-afd3-4ae6-93d4-e10ba14cdff4-trade-7",
       "season": 2023,
       "week": 10,
@@ -20164,48 +20124,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "f6c5062e-c212-4ed9-99d0-36c4158698ca-trade-4",
+      "id": "319fa6df-afd3-4ae6-93d4-e10ba14cdff4-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: RAIDERS, D'Andre Swift | Sent: Ezekiel Elliott, BILLS, D'Onta Foreman",
-      "created": 1699415564212,
+      "summary": "Received: Sam Howell, Gus Edwards | Sent: Alvin Kamara, Lamar Jackson",
+      "created": 1699553846185,
       "players": [
         {
-          "id": "LV",
-          "name": "RAIDERS",
-          "action": "received",
-          "id_type": "defense",
-          "source_player_id": -16013
-        },
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
+          "id": "4426875",
+          "name": "Sam Howell",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4259545
+          "source_player_id": 4426875
         },
         {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3051926
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3051392
+          "source_player_id": 3054850
         },
         {
-          "id": "BUF",
-          "name": "BILLS",
-          "action": "sent",
-          "id_type": "defense",
-          "source_player_id": -16002
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
+          "id": "3916387",
+          "name": "Lamar Jackson",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3125116
+          "source_player_id": 3916387
         }
       ],
       "source": "espn_transactions"
@@ -20258,55 +20211,48 @@
       "source": "espn_transactions"
     },
     {
-      "id": "cf4c05d1-3420-447b-8ca3-28fa0d064e98-trade-4",
+      "id": "f6c5062e-c212-4ed9-99d0-36c4158698ca-trade-4",
       "season": 2023,
       "week": 10,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: Tee Higgins, DeAndre Hopkins, Jalen Hurts | Sent: Alvin Kamara, DJ Moore, Justin Fields",
-      "created": 1699417563517,
+      "summary": "Received: RAIDERS, D'Andre Swift | Sent: Ezekiel Elliott, BILLS, D'Onta Foreman",
+      "created": 1699415564212,
       "players": [
         {
-          "id": "4239993",
-          "name": "Tee Higgins",
+          "id": "LV",
+          "name": "RAIDERS",
+          "action": "received",
+          "id_type": "defense",
+          "source_player_id": -16013
+        },
+        {
+          "id": "4259545",
+          "name": "D'Andre Swift",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4239993
+          "source_player_id": 4259545
         },
         {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15795
-        },
-        {
-          "id": "4040715",
-          "name": "Jalen Hurts",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040715
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3054850
+          "source_player_id": 3051392
         },
         {
-          "id": "3915416",
-          "name": "DJ Moore",
+          "id": "BUF",
+          "name": "BILLS",
           "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
+          "id_type": "defense",
+          "source_player_id": -16002
         },
         {
-          "id": "4362887",
-          "name": "Justin Fields",
+          "id": "3125116",
+          "name": "D'Onta Foreman",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4362887
+          "source_player_id": 3125116
         }
       ],
       "source": "espn_transactions"
@@ -20366,6 +20312,60 @@
       "source": "espn_transactions"
     },
     {
+      "id": "cf4c05d1-3420-447b-8ca3-28fa0d064e98-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Tee Higgins, DeAndre Hopkins, Jalen Hurts | Sent: Alvin Kamara, DJ Moore, Justin Fields",
+      "created": 1699417563517,
+      "players": [
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4239993
+        },
+        {
+          "id": "15795",
+          "name": "DeAndre Hopkins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15795
+        },
+        {
+          "id": "4040715",
+          "name": "Jalen Hurts",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4040715
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "8f56cb30-5130-48ec-a6a5-99a0404cd97f-add-8-4243371",
       "season": 2023,
       "week": 10,
@@ -20399,46 +20399,6 @@
           "action": "drop",
           "id_type": "espn",
           "source_player_id": 3051909
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "f0992125-9c79-4184-9148-e452affb61c5-trade-4",
-      "season": 2023,
-      "week": 10,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Bijan Robinson, A.J. Brown | Sent: Justin Fields, DJ Moore",
-      "created": 1699476072095,
-      "players": [
-        {
-          "id": "4430807",
-          "name": "Bijan Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430807
-        },
-        {
-          "id": "4047646",
-          "name": "A.J. Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047646
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
         }
       ],
       "source": "espn_transactions"
@@ -20479,6 +20439,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4047646
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "f0992125-9c79-4184-9148-e452affb61c5-trade-4",
+      "season": 2023,
+      "week": 10,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Bijan Robinson, A.J. Brown | Sent: Justin Fields, DJ Moore",
+      "created": 1699476072095,
+      "players": [
+        {
+          "id": "4430807",
+          "name": "Bijan Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430807
+        },
+        {
+          "id": "4047646",
+          "name": "A.J. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047646
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
         }
       ],
       "source": "espn_transactions"
@@ -20578,32 +20578,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "412824ce-732e-41f9-a603-134a6bb54642-trade-4",
-      "season": 2023,
-      "week": 11,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Khalil Herbert | Sent: Joshua Dobbs",
-      "created": 1700370482793,
-      "players": [
-        {
-          "id": "4035886",
-          "name": "Khalil Herbert",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035886
-        },
-        {
-          "id": "3044720",
-          "name": "Joshua Dobbs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3044720
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "412824ce-732e-41f9-a603-134a6bb54642-trade-1",
       "season": 2023,
       "week": 11,
@@ -20625,6 +20599,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4035886
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "412824ce-732e-41f9-a603-134a6bb54642-trade-4",
+      "season": 2023,
+      "week": 11,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Khalil Herbert | Sent: Joshua Dobbs",
+      "created": 1700370482793,
+      "players": [
+        {
+          "id": "4035886",
+          "name": "Khalil Herbert",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035886
+        },
+        {
+          "id": "3044720",
+          "name": "Joshua Dobbs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3044720
         }
       ],
       "source": "espn_transactions"
@@ -20839,46 +20839,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1087f157-1514-4437-8efb-4e2056e35d65-trade-7",
-      "season": 2023,
-      "week": 11,
-      "type": "trade",
-      "team": "Only i can say The N word",
-      "summary": "Received: Isiah Pacheco, Jalen Hurts | Sent: Russell Wilson, Austin Ekeler",
-      "created": 1700176451853,
-      "players": [
-        {
-          "id": "4361529",
-          "name": "Isiah Pacheco",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4361529
-        },
-        {
-          "id": "4040715",
-          "name": "Jalen Hurts",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040715
-        },
-        {
-          "id": "14881",
-          "name": "Russell Wilson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14881
-        },
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "1087f157-1514-4437-8efb-4e2056e35d65-trade-8",
       "season": 2023,
       "week": 11,
@@ -20914,6 +20874,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4040715
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1087f157-1514-4437-8efb-4e2056e35d65-trade-7",
+      "season": 2023,
+      "week": 11,
+      "type": "trade",
+      "team": "Only i can say The N word",
+      "summary": "Received: Isiah Pacheco, Jalen Hurts | Sent: Russell Wilson, Austin Ekeler",
+      "created": 1700176451853,
+      "players": [
+        {
+          "id": "4361529",
+          "name": "Isiah Pacheco",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4361529
+        },
+        {
+          "id": "4040715",
+          "name": "Jalen Hurts",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4040715
+        },
+        {
+          "id": "14881",
+          "name": "Russell Wilson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14881
+        },
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3068267
         }
       ],
       "source": "espn_transactions"
@@ -21128,32 +21128,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "09cea716-38ae-41b3-9463-55a4f51ef681-trade-4",
-      "season": 2023,
-      "week": 11,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Khalil Herbert | Sent: Joshua Dobbs",
-      "created": 1700197720567,
-      "players": [
-        {
-          "id": "4035886",
-          "name": "Khalil Herbert",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035886
-        },
-        {
-          "id": "3044720",
-          "name": "Joshua Dobbs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3044720
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "09cea716-38ae-41b3-9463-55a4f51ef681-trade-1",
       "season": 2023,
       "week": 11,
@@ -21175,6 +21149,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4035886
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "09cea716-38ae-41b3-9463-55a4f51ef681-trade-4",
+      "season": 2023,
+      "week": 11,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Khalil Herbert | Sent: Joshua Dobbs",
+      "created": 1700197720567,
+      "players": [
+        {
+          "id": "4035886",
+          "name": "Khalil Herbert",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035886
+        },
+        {
+          "id": "3044720",
+          "name": "Joshua Dobbs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3044720
         }
       ],
       "source": "espn_transactions"
@@ -21674,32 +21674,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a4fcb7ce-bf75-4d90-864b-c897a691b057-trade-3",
-      "season": 2023,
-      "week": 12,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Joshua Dobbs | Sent: Drake London",
-      "created": 1700709422483,
-      "players": [
-        {
-          "id": "3044720",
-          "name": "Joshua Dobbs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3044720
-        },
-        {
-          "id": "4426502",
-          "name": "Drake London",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426502
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a4fcb7ce-bf75-4d90-864b-c897a691b057-trade-4",
       "season": 2023,
       "week": 12,
@@ -21721,6 +21695,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3044720
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a4fcb7ce-bf75-4d90-864b-c897a691b057-trade-3",
+      "season": 2023,
+      "week": 12,
+      "type": "trade",
+      "team": "Harder Kulm",
+      "summary": "Received: Joshua Dobbs | Sent: Drake London",
+      "created": 1700709422483,
+      "players": [
+        {
+          "id": "3044720",
+          "name": "Joshua Dobbs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3044720
+        },
+        {
+          "id": "4426502",
+          "name": "Drake London",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426502
         }
       ],
       "source": "espn_transactions"
@@ -22387,32 +22387,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5a5f4274-81dc-4d7b-a461-2ef372e9db13-trade-3",
-      "season": 2023,
-      "week": 12,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Joshua Dobbs | Sent: Drake London",
-      "created": 1700882222641,
-      "players": [
-        {
-          "id": "3044720",
-          "name": "Joshua Dobbs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3044720
-        },
-        {
-          "id": "4426502",
-          "name": "Drake London",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426502
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "5a5f4274-81dc-4d7b-a461-2ef372e9db13-trade-4",
       "season": 2023,
       "week": 12,
@@ -22434,6 +22408,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3044720
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5a5f4274-81dc-4d7b-a461-2ef372e9db13-trade-3",
+      "season": 2023,
+      "week": 12,
+      "type": "trade",
+      "team": "Harder Kulm",
+      "summary": "Received: Joshua Dobbs | Sent: Drake London",
+      "created": 1700882222641,
+      "players": [
+        {
+          "id": "3044720",
+          "name": "Joshua Dobbs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3044720
+        },
+        {
+          "id": "4426502",
+          "name": "Drake London",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426502
         }
       ],
       "source": "espn_transactions"
@@ -22534,60 +22534,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3c775d5c-e1d9-47e8-8b41-5b60ce726cb4-trade-4",
-      "season": 2023,
-      "week": 13,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Tua Tagovailoa, Tyreek Hill, Kareem Hunt | Sent: Saquon Barkley, DJ Moore, Justin Fields",
-      "created": 1701623160517,
-      "players": [
-        {
-          "id": "4241479",
-          "name": "Tua Tagovailoa",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241479
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        },
-        {
-          "id": "3059915",
-          "name": "Kareem Hunt",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3059915
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "3c775d5c-e1d9-47e8-8b41-5b60ce726cb4-trade-6",
       "season": 2023,
       "week": 13,
@@ -22637,6 +22583,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3059915
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "3c775d5c-e1d9-47e8-8b41-5b60ce726cb4-trade-4",
+      "season": 2023,
+      "week": 13,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Tua Tagovailoa, Tyreek Hill, Kareem Hunt | Sent: Saquon Barkley, DJ Moore, Justin Fields",
+      "created": 1701623160517,
+      "players": [
+        {
+          "id": "4241479",
+          "name": "Tua Tagovailoa",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241479
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116406
+        },
+        {
+          "id": "3059915",
+          "name": "Kareem Hunt",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3059915
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
         }
       ],
       "source": "espn_transactions"
@@ -23231,60 +23231,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d71b60d5-dbb3-4721-9179-85e175932069-trade-4",
-      "season": 2023,
-      "week": 13,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Tua Tagovailoa, Tyreek Hill, Kareem Hunt | Sent: Saquon Barkley, DJ Moore, Justin Fields",
-      "created": 1701450390532,
-      "players": [
-        {
-          "id": "4241479",
-          "name": "Tua Tagovailoa",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241479
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        },
-        {
-          "id": "3059915",
-          "name": "Kareem Hunt",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3059915
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "3915416",
-          "name": "DJ Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3915416
-        },
-        {
-          "id": "4362887",
-          "name": "Justin Fields",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4362887
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d71b60d5-dbb3-4721-9179-85e175932069-trade-6",
       "season": 2023,
       "week": 13,
@@ -23334,6 +23280,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3059915
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d71b60d5-dbb3-4721-9179-85e175932069-trade-4",
+      "season": 2023,
+      "week": 13,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Tua Tagovailoa, Tyreek Hill, Kareem Hunt | Sent: Saquon Barkley, DJ Moore, Justin Fields",
+      "created": 1701450390532,
+      "players": [
+        {
+          "id": "4241479",
+          "name": "Tua Tagovailoa",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241479
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116406
+        },
+        {
+          "id": "3059915",
+          "name": "Kareem Hunt",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3059915
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3915416",
+          "name": "DJ Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3915416
+        },
+        {
+          "id": "4362887",
+          "name": "Justin Fields",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4362887
         }
       ],
       "source": "espn_transactions"
@@ -23453,39 +23453,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c801b512-82bb-4b64-9abe-87fb8d09dc1b-trade-3",
-      "season": 2023,
-      "week": 14,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Tyler Lockett, Geno Smith | Sent: Stefon Diggs",
-      "created": 1701842505379,
-      "players": [
-        {
-          "id": "2577327",
-          "name": "Tyler Lockett",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2577327
-        },
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15864
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "c801b512-82bb-4b64-9abe-87fb8d09dc1b-trade-4",
       "season": 2023,
       "week": 14,
@@ -23514,6 +23481,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15864
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "c801b512-82bb-4b64-9abe-87fb8d09dc1b-trade-3",
+      "season": 2023,
+      "week": 14,
+      "type": "trade",
+      "team": "Harder Kulm",
+      "summary": "Received: Tyler Lockett, Geno Smith | Sent: Stefon Diggs",
+      "created": 1701842505379,
+      "players": [
+        {
+          "id": "2577327",
+          "name": "Tyler Lockett",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2577327
+        },
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15864
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976212
         }
       ],
       "source": "espn_transactions"
@@ -23595,39 +23595,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "86cf11eb-f7c5-4223-ba4d-65363b569ed8-trade-4",
-      "season": 2023,
-      "week": 14,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: DeVonta Smith | Sent: Jordan Addison, D'Onta Foreman",
-      "created": 1701878125683,
-      "players": [
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "4429205",
-          "name": "Jordan Addison",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4429205
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3125116
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "86cf11eb-f7c5-4223-ba4d-65363b569ed8-trade-5",
       "season": 2023,
       "week": 14,
@@ -23661,13 +23628,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "59d3a33b-9c06-4927-8c50-4a177c1276a8-trade-4",
+      "id": "86cf11eb-f7c5-4223-ba4d-65363b569ed8-trade-4",
       "season": 2023,
       "week": 14,
       "type": "trade",
       "team": "Wish I had CMC",
       "summary": "Received: DeVonta Smith | Sent: Jordan Addison, D'Onta Foreman",
-      "created": 1702050901275,
+      "created": 1701878125683,
       "players": [
         {
           "id": "4241478",
@@ -23722,6 +23689,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241478
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "59d3a33b-9c06-4927-8c50-4a177c1276a8-trade-4",
+      "season": 2023,
+      "week": 14,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: DeVonta Smith | Sent: Jordan Addison, D'Onta Foreman",
+      "created": 1702050901275,
+      "players": [
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
+        {
+          "id": "4429205",
+          "name": "Jordan Addison",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4429205
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3125116
         }
       ],
       "source": "espn_transactions"
@@ -23955,32 +23955,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3866f83d-8f5a-4451-983a-c55603d9077d-trade-3",
-      "season": 2023,
-      "week": 14,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Geno Smith | Sent: Terry McLaurin",
-      "created": 1701863169824,
-      "players": [
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15864
-        },
-        {
-          "id": "3121422",
-          "name": "Terry McLaurin",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3121422
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "3866f83d-8f5a-4451-983a-c55603d9077d-trade-4",
       "season": 2023,
       "week": 14,
@@ -24007,6 +23981,32 @@
       "source": "espn_transactions"
     },
     {
+      "id": "3866f83d-8f5a-4451-983a-c55603d9077d-trade-3",
+      "season": 2023,
+      "week": 14,
+      "type": "trade",
+      "team": "Harder Kulm",
+      "summary": "Received: Geno Smith | Sent: Terry McLaurin",
+      "created": 1701863169824,
+      "players": [
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15864
+        },
+        {
+          "id": "3121422",
+          "name": "Terry McLaurin",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3121422
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "8c9ee09b-7e4f-4c49-85bd-694080484d99-add-5-3910544",
       "season": 2023,
       "week": 14,
@@ -24021,39 +24021,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 3910544
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "e0469428-d5c0-4bc9-b8d7-9eaecb755ac4-trade-3",
-      "season": 2023,
-      "week": 14,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Tyler Lockett, Geno Smith | Sent: Stefon Diggs",
-      "created": 1701842052313,
-      "players": [
-        {
-          "id": "2577327",
-          "name": "Tyler Lockett",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2577327
-        },
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15864
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976212
         }
       ],
       "source": "espn_transactions"
@@ -24087,6 +24054,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15864
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e0469428-d5c0-4bc9-b8d7-9eaecb755ac4-trade-3",
+      "season": 2023,
+      "week": 14,
+      "type": "trade",
+      "team": "Harder Kulm",
+      "summary": "Received: Tyler Lockett, Geno Smith | Sent: Stefon Diggs",
+      "created": 1701842052313,
+      "players": [
+        {
+          "id": "2577327",
+          "name": "Tyler Lockett",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2577327
+        },
+        {
+          "id": "15864",
+          "name": "Geno Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15864
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976212
         }
       ],
       "source": "espn_transactions"
@@ -24301,39 +24301,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "dc02c979-e877-4536-9a79-b1c07cd2e935-trade-4",
-      "season": 2023,
-      "week": 14,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Jaylen Waddle | Sent: D'Onta Foreman, Tyler Lockett",
-      "created": 1701843351901,
-      "players": [
-        {
-          "id": "4372016",
-          "name": "Jaylen Waddle",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4372016
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3125116
-        },
-        {
-          "id": "2577327",
-          "name": "Tyler Lockett",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2577327
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "dc02c979-e877-4536-9a79-b1c07cd2e935-trade-7",
       "season": 2023,
       "week": 14,
@@ -24367,27 +24334,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c8beb0bf-b534-4ae4-b61b-c0b3e719402d-trade-4",
+      "id": "dc02c979-e877-4536-9a79-b1c07cd2e935-trade-4",
       "season": 2023,
       "week": 14,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: Puka Nacua | Sent: Tyler Lockett, D'Onta Foreman",
-      "created": 1702356949361,
+      "summary": "Received: Jaylen Waddle | Sent: D'Onta Foreman, Tyler Lockett",
+      "created": 1701843351901,
       "players": [
         {
-          "id": "4426515",
-          "name": "Puka Nacua",
+          "id": "4372016",
+          "name": "Jaylen Waddle",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4426515
-        },
-        {
-          "id": "2577327",
-          "name": "Tyler Lockett",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2577327
+          "source_player_id": 4372016
         },
         {
           "id": "3125116",
@@ -24395,6 +24355,13 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3125116
+        },
+        {
+          "id": "2577327",
+          "name": "Tyler Lockett",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2577327
         }
       ],
       "source": "espn_transactions"
@@ -24433,27 +24400,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "caa40bae-73bd-4675-8118-39eb43fae963-trade-4",
+      "id": "c8beb0bf-b534-4ae4-b61b-c0b3e719402d-trade-4",
       "season": 2023,
       "week": 14,
       "type": "trade",
       "team": "Wish I had CMC",
-      "summary": "Received: Jaylen Waddle | Sent: D'Onta Foreman, Tyler Lockett",
-      "created": 1701904866290,
+      "summary": "Received: Puka Nacua | Sent: Tyler Lockett, D'Onta Foreman",
+      "created": 1702356949361,
       "players": [
         {
-          "id": "4372016",
-          "name": "Jaylen Waddle",
+          "id": "4426515",
+          "name": "Puka Nacua",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4372016
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3125116
+          "source_player_id": 4426515
         },
         {
           "id": "2577327",
@@ -24461,6 +24421,13 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2577327
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3125116
         }
       ],
       "source": "espn_transactions"
@@ -24494,6 +24461,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4372016
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "caa40bae-73bd-4675-8118-39eb43fae963-trade-4",
+      "season": 2023,
+      "week": 14,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Jaylen Waddle | Sent: D'Onta Foreman, Tyler Lockett",
+      "created": 1701904866290,
+      "players": [
+        {
+          "id": "4372016",
+          "name": "Jaylen Waddle",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4372016
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3125116
+        },
+        {
+          "id": "2577327",
+          "name": "Tyler Lockett",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2577327
         }
       ],
       "source": "espn_transactions"
@@ -24575,32 +24575,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "05dc50a2-6246-4342-ae9d-11e864313844-trade-3",
-      "season": 2023,
-      "week": 14,
-      "type": "trade",
-      "team": "Harder Kulm",
-      "summary": "Received: Geno Smith | Sent: Terry McLaurin",
-      "created": 1701842493212,
-      "players": [
-        {
-          "id": "15864",
-          "name": "Geno Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15864
-        },
-        {
-          "id": "3121422",
-          "name": "Terry McLaurin",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3121422
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "05dc50a2-6246-4342-ae9d-11e864313844-trade-4",
       "season": 2023,
       "week": 14,
@@ -24627,34 +24601,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fe408a55-75a2-414a-922d-ba61ef846545-trade-4",
+      "id": "05dc50a2-6246-4342-ae9d-11e864313844-trade-3",
       "season": 2023,
       "week": 14,
       "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Puka Nacua | Sent: Tyler Lockett, D'Onta Foreman",
-      "created": 1702393869959,
+      "team": "Harder Kulm",
+      "summary": "Received: Geno Smith | Sent: Terry McLaurin",
+      "created": 1701842493212,
       "players": [
         {
-          "id": "4426515",
-          "name": "Puka Nacua",
+          "id": "15864",
+          "name": "Geno Smith",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4426515
+          "source_player_id": 15864
         },
         {
-          "id": "2577327",
-          "name": "Tyler Lockett",
+          "id": "3121422",
+          "name": "Terry McLaurin",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 2577327
-        },
-        {
-          "id": "3125116",
-          "name": "D'Onta Foreman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3125116
+          "source_player_id": 3121422
         }
       ],
       "source": "espn_transactions"
@@ -24688,6 +24655,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4426515
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "fe408a55-75a2-414a-922d-ba61ef846545-trade-4",
+      "season": 2023,
+      "week": 14,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Puka Nacua | Sent: Tyler Lockett, D'Onta Foreman",
+      "created": 1702393869959,
+      "players": [
+        {
+          "id": "4426515",
+          "name": "Puka Nacua",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426515
+        },
+        {
+          "id": "2577327",
+          "name": "Tyler Lockett",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2577327
+        },
+        {
+          "id": "3125116",
+          "name": "D'Onta Foreman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3125116
         }
       ],
       "source": "espn_transactions"
@@ -24731,32 +24731,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d55bc6e7-d2ba-4e6e-bfca-d176b109f0f1-trade-4",
-      "season": 2023,
-      "week": 15,
-      "type": "trade",
-      "team": "Wish I had CMC",
-      "summary": "Received: Puka Nacua | Sent: Joe Mixon",
-      "created": 1702566662390,
-      "players": [
-        {
-          "id": "4426515",
-          "name": "Puka Nacua",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426515
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d55bc6e7-d2ba-4e6e-bfca-d176b109f0f1-trade-8",
       "season": 2023,
       "week": 15,
@@ -24783,32 +24757,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e814afe7-f962-4391-b9cb-af886fd6bcf1-add-8-4242431",
-      "season": 2023,
-      "week": 15,
-      "type": "add",
-      "team": "Sniper Gang - 1800 Block",
-      "summary": "Added: Ty Chandler",
-      "created": 1702486827337,
-      "players": [
-        {
-          "id": "4242431",
-          "name": "Ty Chandler",
-          "action": "add",
-          "id_type": "espn",
-          "source_player_id": 4242431
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "3061206b-5e83-4af4-8e0f-949ca81325c1-trade-4",
+      "id": "d55bc6e7-d2ba-4e6e-bfca-d176b109f0f1-trade-4",
       "season": 2023,
       "week": 15,
       "type": "trade",
       "team": "Wish I had CMC",
       "summary": "Received: Puka Nacua | Sent: Joe Mixon",
-      "created": 1702393898356,
+      "created": 1702566662390,
       "players": [
         {
           "id": "4426515",
@@ -24823,6 +24778,25 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116385
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e814afe7-f962-4391-b9cb-af886fd6bcf1-add-8-4242431",
+      "season": 2023,
+      "week": 15,
+      "type": "add",
+      "team": "Sniper Gang - 1800 Block",
+      "summary": "Added: Ty Chandler",
+      "created": 1702486827337,
+      "players": [
+        {
+          "id": "4242431",
+          "name": "Ty Chandler",
+          "action": "add",
+          "id_type": "espn",
+          "source_player_id": 4242431
         }
       ],
       "source": "espn_transactions"
@@ -24849,6 +24823,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4426515
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "3061206b-5e83-4af4-8e0f-949ca81325c1-trade-4",
+      "season": 2023,
+      "week": 15,
+      "type": "trade",
+      "team": "Wish I had CMC",
+      "summary": "Received: Puka Nacua | Sent: Joe Mixon",
+      "created": 1702393898356,
+      "players": [
+        {
+          "id": "4426515",
+          "name": "Puka Nacua",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426515
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
         }
       ],
       "source": "espn_transactions"

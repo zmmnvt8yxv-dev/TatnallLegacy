@@ -4,16 +4,18 @@ import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { loadWeekData } from "../data/loader.js";
+import { loadPlayerStatsFull, loadWeekData } from "../data/loader.js";
 import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
+import { buildNameIndex, normalizeName } from "../lib/nameUtils.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 
 export default function MatchupDetailPage() {
   const { season, week, matchupId } = useParams();
-  const { loading, error, playerIndex, teams, espnNameMap } = useDataContext();
+  const { loading, error, playerIndex, teams, espnNameMap, playerSearch } = useDataContext();
   const [weekData, setWeekData] = useState(null);
+  const [fullStatsRows, setFullStatsRows] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -27,11 +29,26 @@ export default function MatchupDetailPage() {
     };
   }, [season, week]);
 
+  useEffect(() => {
+    let active = true;
+    if (!season) return undefined;
+    loadPlayerStatsFull(Number(season)).then((payload) => {
+      if (!active) return;
+      const rows = payload?.rows || payload || [];
+      setFullStatsRows(rows);
+    });
+    return () => {
+      active = false;
+    };
+  }, [season]);
+
   const matchup = useMemo(() => {
     return (weekData?.matchups || []).find((item) => String(item.matchup_id) === String(matchupId));
   }, [weekData, matchupId]);
 
   const lineups = weekData?.lineups || [];
+  const fullStatsIndex = useMemo(() => buildNameIndex(fullStatsRows), [fullStatsRows]);
+  const searchIndex = useMemo(() => buildNameIndex(playerSearch), [playerSearch]);
   const query = search.toLowerCase().trim();
 
   const teamsByRosterId = useMemo(() => {
@@ -72,15 +89,38 @@ export default function MatchupDetailPage() {
   const buildRoster = (teamKeys) => {
     const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
     const mapped = rows.map((row) => {
-      const display = resolvePlayerDisplay(row.player_id, { row, playerIndex, espnNameMap });
-      const canonicalId = getCanonicalPlayerId(row.player_id, { row, playerIndex });
+      const rawName = row.player || row.display_name || row.player_name;
+      const espnLookupId = row.espn_id || row.player_id || row.source_player_id;
+      const resolvedName =
+        /^ESPN Player \d+$/i.test(String(rawName || "").trim()) && espnLookupId != null
+          ? espnNameMap?.[String(espnLookupId)] || rawName
+          : rawName;
+      const nameKey = normalizeName(resolvedName);
+      const lookup = nameKey ? fullStatsIndex.get(nameKey) || searchIndex.get(nameKey) : null;
+      const merged = lookup
+        ? {
+            ...row,
+            display_name: lookup.name || row.player,
+            position: lookup.position || row.position || row.pos,
+            nfl_team: lookup.team || row.nfl_team,
+            sleeper_id: lookup.sleeper_id || row.sleeper_id,
+            gsis_id: lookup.gsis_id || row.gsis_id,
+            player_id: lookup.player_id || row.player_id,
+          }
+        : row;
+      const display = resolvePlayerDisplay(merged.player_id, { row: merged, playerIndex, espnNameMap });
+      const canonicalId = getCanonicalPlayerId(merged.player_id || merged.gsis_id || merged.sleeper_id, {
+        row: merged,
+        playerIndex,
+      });
       const canLink = Boolean(canonicalId);
       return {
-        ...row,
+        ...merged,
         displayName: display.name,
-        position: display.position,
-        nflTeam: display.team,
+        position: display.position || merged.position || "—",
+        nflTeam: display.team || merged.nfl_team || "—",
         canonicalPlayerId: canonicalId || "",
+        linkName: display.name || merged.display_name || row.player || "",
         canLink,
       };
     });
@@ -102,6 +142,12 @@ export default function MatchupDetailPage() {
       return acc;
     }, {});
     return { rows: filtered, totals, positionalTotals };
+  };
+
+  const buildPlayerLink = (row) => {
+    const name = row.linkName || row.displayName;
+    if (name) return `/players/${row.canonicalPlayerId}?name=${encodeURIComponent(name)}`;
+    return `/players/${row.canonicalPlayerId}`;
   };
 
   if (loading && !weekData) return <LoadingState label="Loading matchup details..." />;
@@ -175,11 +221,11 @@ export default function MatchupDetailPage() {
                       {roster.rows.map((row, idx) => (
                         <tr key={`${row.player_id || row.player}-${idx}`}>
                           <td>
-                            {row.canLink ? (
-                              <Link to={`/players/${row.canonicalPlayerId}`}>{row.displayName}</Link>
-                            ) : (
-                              row.displayName
-                            )}
+                              {row.canLink ? (
+                                <Link to={buildPlayerLink(row)}>{row.displayName}</Link>
+                              ) : (
+                                row.displayName
+                              )}
                           </td>
                           <td>{row.position}</td>
                           <td>{row.started ? "Yes" : "No"}</td>

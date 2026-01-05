@@ -9,6 +9,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data_raw" / "master"
 OUTPUT_DIR = ROOT / "public" / "data" / "player_stats"
+SEARCH_PATH = ROOT / "public" / "data" / "player_search.json"
 PLAYER_IDS_PATH = ROOT / "public" / "data" / "player_ids.json"
 PLAYERS_PATH = ROOT / "public" / "data" / "players.json"
 SLEEPER_PLAYERS_PATH = ROOT / "data_raw" / "sleeper" / "players_flat.csv"
@@ -339,6 +340,72 @@ def build_full_stats(weekly: pd.DataFrame):
         )
 
 
+def build_player_search(full_stats: pd.DataFrame):
+    name_col = pick_first_column(full_stats, ["display_name", "player_display_name", "player_name"])
+    position_col = pick_first_column(full_stats, ["position", "position_group"])
+    team_col = pick_first_column(full_stats, ["team", "recent_team", "nfl_team"])
+    if name_col:
+        full_stats["display_name"] = full_stats[name_col].fillna("Unknown")
+    elif "first_name" in full_stats.columns or "last_name" in full_stats.columns:
+        full_stats["display_name"] = (
+            full_stats.get("first_name", "").fillna("").astype(str).str.strip()
+            + " "
+            + full_stats.get("last_name", "").fillna("").astype(str).str.strip()
+        ).str.strip()
+        full_stats.loc[full_stats["display_name"] == "", "display_name"] = "Unknown"
+    else:
+        full_stats["display_name"] = "Unknown"
+
+    if position_col:
+        full_stats["position"] = full_stats[position_col].astype(str).str.upper()
+    else:
+        full_stats["position"] = "—"
+    if team_col and team_col in full_stats.columns:
+        full_stats["team"] = full_stats[team_col].fillna("—")
+    else:
+        full_stats["team"] = "—"
+
+    records = {}
+    for row in full_stats.itertuples(index=False):
+        name = getattr(row, "display_name", None)
+        if not name or name == "Unknown":
+            continue
+        sleeper_id = getattr(row, "sleeper_id", None)
+        gsis_id = getattr(row, "gsis_id", None)
+        player_id = getattr(row, "player_id", None)
+        if sleeper_id:
+            player_key = (str(sleeper_id), "sleeper")
+        elif gsis_id:
+            player_key = (str(gsis_id), "gsis")
+        elif player_id:
+            player_key = (str(player_id), "player_id")
+        else:
+            continue
+        entry = records.get(player_key[0])
+        position = getattr(row, "position", None) or "—"
+        team = getattr(row, "team", None) or "—"
+        if not entry:
+            records[player_key[0]] = {
+                "id": player_key[0],
+                "id_type": player_key[1],
+                "name": name,
+                "position": position,
+                "team": team,
+            }
+        else:
+            if entry["position"] == "—" and position != "—":
+                entry["position"] = position
+            if entry["team"] == "—" and team != "—":
+                entry["team"] = team
+
+    rows = sorted(records.values(), key=lambda item: item["name"])
+    payload = {
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "rows": rows,
+    }
+    write_json(SEARCH_PATH, payload)
+
+
 def build_season(season_df: pd.DataFrame, expected_games: dict[int, int] | None = None):
     season_df = season_df.copy()
     season_df["season"] = pd.to_numeric(season_df.get("season"), errors="coerce")
@@ -428,6 +495,7 @@ def main() -> None:
             full_stats = read_table(full_stats_source)
             full_stats = attach_ids(full_stats, id_maps)
             build_full_stats(full_stats)
+            build_player_search(full_stats)
         else:
             print("No weekly fantasy WAR source found in data_raw/master. Skipping player stats export.")
         return
@@ -445,6 +513,7 @@ def main() -> None:
         full_stats = read_table(full_stats_source)
         full_stats = attach_ids(full_stats, id_maps)
         build_full_stats(full_stats)
+        build_player_search(full_stats)
     else:
         build_full_stats(weekly)
 

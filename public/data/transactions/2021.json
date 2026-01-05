@@ -2,46 +2,6 @@
   "season": 2021,
   "entries": [
     {
-      "id": "79013ab3-bd94-4387-b1ba-df06081a1087-trade-3",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Melvin Gordon III, T.Y. Hilton | Sent: Elijah Moore, Travis Etienne Jr.",
-      "created": 1628718117112,
-      "players": [
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "4372414",
-          "name": "Elijah Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4372414
-        },
-        {
-          "id": "4239996",
-          "name": "Travis Etienne Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239996
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "79013ab3-bd94-4387-b1ba-df06081a1087-trade-4",
       "season": 2021,
       "week": 1,
@@ -77,6 +37,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 14924
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "79013ab3-bd94-4387-b1ba-df06081a1087-trade-3",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Melvin Gordon III, T.Y. Hilton | Sent: Elijah Moore, Travis Etienne Jr.",
+      "created": 1628718117112,
+      "players": [
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "4372414",
+          "name": "Elijah Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4372414
+        },
+        {
+          "id": "4239996",
+          "name": "Travis Etienne Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239996
         }
       ],
       "source": "espn_transactions"
@@ -177,46 +177,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5985d151-a752-4a6f-a0ac-1d504ef3ca39-trade-4",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Austin Ekeler, Hollywood Brown | Sent: T.Y. Hilton, David Montgomery",
-      "created": 1629257583280,
-      "players": [
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "4035538",
-          "name": "David Montgomery",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035538
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "5985d151-a752-4a6f-a0ac-1d504ef3ca39-trade-6",
       "season": 2021,
       "week": 1,
@@ -252,6 +212,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241372
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5985d151-a752-4a6f-a0ac-1d504ef3ca39-trade-4",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Austin Ekeler, Hollywood Brown | Sent: T.Y. Hilton, David Montgomery",
+      "created": 1629257583280,
+      "players": [
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241372
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035538
         }
       ],
       "source": "espn_transactions"
@@ -295,39 +295,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "cf6ab53e-8de6-4fda-a84c-86dbcc5b4a6b-trade-4",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Aaron Jones Sr. | Sent: Melvin Gordon III, Jaylen Waddle",
-      "created": 1630209751601,
-      "players": [
-        {
-          "id": "3042519",
-          "name": "Aaron Jones Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3042519
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "4372016",
-          "name": "Jaylen Waddle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4372016
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "cf6ab53e-8de6-4fda-a84c-86dbcc5b4a6b-trade-7",
       "season": 2021,
       "week": 1,
@@ -356,6 +323,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3042519
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "cf6ab53e-8de6-4fda-a84c-86dbcc5b4a6b-trade-4",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Aaron Jones Sr. | Sent: Melvin Gordon III, Jaylen Waddle",
+      "created": 1630209751601,
+      "players": [
+        {
+          "id": "3042519",
+          "name": "Aaron Jones Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3042519
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "4372016",
+          "name": "Jaylen Waddle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4372016
         }
       ],
       "source": "espn_transactions"
@@ -399,39 +399,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "cf09d02a-671d-46e5-99d6-913aabc9c207-trade-4",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Aaron Jones Sr. | Sent: Melvin Gordon III, Jaylen Waddle",
-      "created": 1630382521426,
-      "players": [
-        {
-          "id": "3042519",
-          "name": "Aaron Jones Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3042519
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "4372016",
-          "name": "Jaylen Waddle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4372016
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "cf09d02a-671d-46e5-99d6-913aabc9c207-trade-7",
       "season": 2021,
       "week": 1,
@@ -460,6 +427,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3042519
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "cf09d02a-671d-46e5-99d6-913aabc9c207-trade-4",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Aaron Jones Sr. | Sent: Melvin Gordon III, Jaylen Waddle",
+      "created": 1630382521426,
+      "players": [
+        {
+          "id": "3042519",
+          "name": "Aaron Jones Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3042519
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "4372016",
+          "name": "Jaylen Waddle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4372016
         }
       ],
       "source": "espn_transactions"
@@ -503,39 +503,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5ca1dbd7-3dd4-466f-838f-f1db0e7909f3-trade-4",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: James Robinson | Sent: Jaylen Waddle, T.Y. Hilton",
-      "created": 1631303544583,
-      "players": [
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        },
-        {
-          "id": "4372016",
-          "name": "Jaylen Waddle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4372016
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "5ca1dbd7-3dd4-466f-838f-f1db0e7909f3-trade-6",
       "season": 2021,
       "week": 1,
@@ -564,6 +531,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4052042
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5ca1dbd7-3dd4-466f-838f-f1db0e7909f3-trade-4",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: James Robinson | Sent: Jaylen Waddle, T.Y. Hilton",
+      "created": 1631303544583,
+      "players": [
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4052042
+        },
+        {
+          "id": "4372016",
+          "name": "Jaylen Waddle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4372016
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
         }
       ],
       "source": "espn_transactions"
@@ -664,39 +664,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "dc61e69e-50c3-4432-a04c-c11c5f4ae743-trade-4",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Aaron Jones Sr. | Sent: Melvin Gordon III, Deshaun Watson",
-      "created": 1630189037152,
-      "players": [
-        {
-          "id": "3042519",
-          "name": "Aaron Jones Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3042519
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "dc61e69e-50c3-4432-a04c-c11c5f4ae743-trade-7",
       "season": 2021,
       "week": 1,
@@ -725,6 +692,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3042519
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "dc61e69e-50c3-4432-a04c-c11c5f4ae743-trade-4",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Aaron Jones Sr. | Sent: Melvin Gordon III, Deshaun Watson",
+      "created": 1630189037152,
+      "players": [
+        {
+          "id": "3042519",
+          "name": "Aaron Jones Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3042519
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3122840
         }
       ],
       "source": "espn_transactions"
@@ -1053,39 +1053,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c3e13b7a-b7f8-4983-81a7-18775cbd9d3c-trade-4",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Aaron Jones Sr. | Sent: Melvin Gordon III, Deshaun Watson",
-      "created": 1630203791878,
-      "players": [
-        {
-          "id": "3042519",
-          "name": "Aaron Jones Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3042519
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "c3e13b7a-b7f8-4983-81a7-18775cbd9d3c-trade-7",
       "season": 2021,
       "week": 1,
@@ -1114,6 +1081,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3042519
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "c3e13b7a-b7f8-4983-81a7-18775cbd9d3c-trade-4",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Aaron Jones Sr. | Sent: Melvin Gordon III, Deshaun Watson",
+      "created": 1630203791878,
+      "players": [
+        {
+          "id": "3042519",
+          "name": "Aaron Jones Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3042519
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3122840
         }
       ],
       "source": "espn_transactions"
@@ -1290,46 +1290,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "99b7b152-1ead-46d9-9a2e-94eadddc0871-trade-4",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Austin Ekeler, Hollywood Brown | Sent: T.Y. Hilton, David Montgomery",
-      "created": 1629430381326,
-      "players": [
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "4035538",
-          "name": "David Montgomery",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035538
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "99b7b152-1ead-46d9-9a2e-94eadddc0871-trade-6",
       "season": 2021,
       "week": 1,
@@ -1365,6 +1325,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241372
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "99b7b152-1ead-46d9-9a2e-94eadddc0871-trade-4",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Austin Ekeler, Hollywood Brown | Sent: T.Y. Hilton, David Montgomery",
+      "created": 1629430381326,
+      "players": [
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241372
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035538
         }
       ],
       "source": "espn_transactions"
@@ -1465,39 +1465,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "dad5b0e1-566f-4810-91b2-1eaecb4eb32e-trade-4",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: James Robinson | Sent: Jaylen Waddle, T.Y. Hilton",
-      "created": 1631130763338,
-      "players": [
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        },
-        {
-          "id": "4372016",
-          "name": "Jaylen Waddle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4372016
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "dad5b0e1-566f-4810-91b2-1eaecb4eb32e-trade-6",
       "season": 2021,
       "week": 1,
@@ -1526,6 +1493,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4052042
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "dad5b0e1-566f-4810-91b2-1eaecb4eb32e-trade-4",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: James Robinson | Sent: Jaylen Waddle, T.Y. Hilton",
+      "created": 1631130763338,
+      "players": [
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4052042
+        },
+        {
+          "id": "4372016",
+          "name": "Jaylen Waddle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4372016
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
         }
       ],
       "source": "espn_transactions"
@@ -1683,46 +1683,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "f0a0ae4a-134f-4719-959a-e5815b7436bb-trade-3",
-      "season": 2021,
-      "week": 1,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Melvin Gordon III, T.Y. Hilton | Sent: Elijah Moore, Travis Etienne Jr.",
-      "created": 1628716302702,
-      "players": [
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "4372414",
-          "name": "Elijah Moore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4372414
-        },
-        {
-          "id": "4239996",
-          "name": "Travis Etienne Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239996
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "f0a0ae4a-134f-4719-959a-e5815b7436bb-trade-4",
       "season": 2021,
       "week": 1,
@@ -1758,6 +1718,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 14924
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "f0a0ae4a-134f-4719-959a-e5815b7436bb-trade-3",
+      "season": 2021,
+      "week": 1,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Melvin Gordon III, T.Y. Hilton | Sent: Elijah Moore, Travis Etienne Jr.",
+      "created": 1628716302702,
+      "players": [
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "4372414",
+          "name": "Elijah Moore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4372414
+        },
+        {
+          "id": "4239996",
+          "name": "Travis Etienne Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239996
         }
       ],
       "source": "espn_transactions"
@@ -2000,39 +2000,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "29c4b54c-8a34-42aa-8cbd-676debf5f4f7-trade-4",
-      "season": 2021,
-      "week": 2,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: James Robinson | Sent: Jamaal Williams, Melvin Gordon III",
-      "created": 1631987611271,
-      "players": [
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        },
-        {
-          "id": "2980453",
-          "name": "Jamaal Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2980453
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "29c4b54c-8a34-42aa-8cbd-676debf5f4f7-trade-6",
       "season": 2021,
       "week": 2,
@@ -2061,6 +2028,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4052042
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "29c4b54c-8a34-42aa-8cbd-676debf5f4f7-trade-4",
+      "season": 2021,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: James Robinson | Sent: Jamaal Williams, Melvin Gordon III",
+      "created": 1631987611271,
+      "players": [
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4052042
+        },
+        {
+          "id": "2980453",
+          "name": "Jamaal Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2980453
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
         }
       ],
       "source": "espn_transactions"
@@ -2402,53 +2402,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "35ce2f0c-a681-4959-bcfe-a9f0e8170b6f-trade-3",
-      "season": 2021,
-      "week": 2,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Sony Michel, Mark Andrews, Melvin Gordon III | Sent: Damien Harris, Travis Kelce",
-      "created": 1631637944274,
-      "players": [
-        {
-          "id": "3128721",
-          "name": "Sony Michel",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128721
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3925347",
-          "name": "Damien Harris",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3925347
-        },
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15847
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "35ce2f0c-a681-4959-bcfe-a9f0e8170b6f-trade-4",
       "season": 2021,
       "week": 2,
@@ -2491,6 +2444,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2576434
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "35ce2f0c-a681-4959-bcfe-a9f0e8170b6f-trade-3",
+      "season": 2021,
+      "week": 2,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Sony Michel, Mark Andrews, Melvin Gordon III | Sent: Damien Harris, Travis Kelce",
+      "created": 1631637944274,
+      "players": [
+        {
+          "id": "3128721",
+          "name": "Sony Michel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128721
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116365
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3925347",
+          "name": "Damien Harris",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3925347
+        },
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15847
         }
       ],
       "source": "espn_transactions"
@@ -2747,39 +2747,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b23dbf39-2872-4f7f-885c-0b95310a1f51-trade-4",
-      "season": 2021,
-      "week": 2,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: James Robinson | Sent: Jamaal Williams, Melvin Gordon III",
-      "created": 1631814811932,
-      "players": [
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        },
-        {
-          "id": "2980453",
-          "name": "Jamaal Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2980453
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b23dbf39-2872-4f7f-885c-0b95310a1f51-trade-6",
       "season": 2021,
       "week": 2,
@@ -2808,6 +2775,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4052042
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b23dbf39-2872-4f7f-885c-0b95310a1f51-trade-4",
+      "season": 2021,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: James Robinson | Sent: Jamaal Williams, Melvin Gordon III",
+      "created": 1631814811932,
+      "players": [
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4052042
+        },
+        {
+          "id": "2980453",
+          "name": "Jamaal Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2980453
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
         }
       ],
       "source": "espn_transactions"
@@ -2908,53 +2908,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "da18a97d-6a56-4412-99ee-2fadabe84642-trade-3",
-      "season": 2021,
-      "week": 2,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Sony Michel, Mark Andrews, Melvin Gordon III | Sent: Damien Harris, Travis Kelce",
-      "created": 1631636678850,
-      "players": [
-        {
-          "id": "3128721",
-          "name": "Sony Michel",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128721
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "3925347",
-          "name": "Damien Harris",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3925347
-        },
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15847
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "da18a97d-6a56-4412-99ee-2fadabe84642-trade-4",
       "season": 2021,
       "week": 2,
@@ -2997,6 +2950,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2576434
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "da18a97d-6a56-4412-99ee-2fadabe84642-trade-3",
+      "season": 2021,
+      "week": 2,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Sony Michel, Mark Andrews, Melvin Gordon III | Sent: Damien Harris, Travis Kelce",
+      "created": 1631636678850,
+      "players": [
+        {
+          "id": "3128721",
+          "name": "Sony Michel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128721
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116365
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "3925347",
+          "name": "Damien Harris",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3925347
+        },
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15847
         }
       ],
       "source": "espn_transactions"
@@ -3111,39 +3111,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d4f54b56-7ca9-401b-a1a5-939419120163-trade-3",
-      "season": 2021,
-      "week": 3,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Sony Michel, Deebo Samuel | Sent: Justin Jefferson",
-      "created": 1632800602069,
-      "players": [
-        {
-          "id": "3128721",
-          "name": "Sony Michel",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128721
-        },
-        {
-          "id": "3126486",
-          "name": "Deebo Samuel",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3126486
-        },
-        {
-          "id": "4262921",
-          "name": "Justin Jefferson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4262921
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d4f54b56-7ca9-401b-a1a5-939419120163-trade-4",
       "season": 2021,
       "week": 3,
@@ -3172,6 +3139,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3126486
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d4f54b56-7ca9-401b-a1a5-939419120163-trade-3",
+      "season": 2021,
+      "week": 3,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Sony Michel, Deebo Samuel | Sent: Justin Jefferson",
+      "created": 1632800602069,
+      "players": [
+        {
+          "id": "3128721",
+          "name": "Sony Michel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128721
+        },
+        {
+          "id": "3126486",
+          "name": "Deebo Samuel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3126486
+        },
+        {
+          "id": "4262921",
+          "name": "Justin Jefferson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4262921
         }
       ],
       "source": "espn_transactions"
@@ -3215,39 +3215,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "2476dc64-6c03-4e0f-b6d7-b6880656f8e4-trade-3",
-      "season": 2021,
-      "week": 3,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Sony Michel, Deebo Samuel | Sent: Justin Jefferson",
-      "created": 1632973409058,
-      "players": [
-        {
-          "id": "3128721",
-          "name": "Sony Michel",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128721
-        },
-        {
-          "id": "3126486",
-          "name": "Deebo Samuel",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3126486
-        },
-        {
-          "id": "4262921",
-          "name": "Justin Jefferson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4262921
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "2476dc64-6c03-4e0f-b6d7-b6880656f8e4-trade-4",
       "season": 2021,
       "week": 3,
@@ -3276,6 +3243,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3126486
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "2476dc64-6c03-4e0f-b6d7-b6880656f8e4-trade-3",
+      "season": 2021,
+      "week": 3,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Sony Michel, Deebo Samuel | Sent: Justin Jefferson",
+      "created": 1632973409058,
+      "players": [
+        {
+          "id": "3128721",
+          "name": "Sony Michel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128721
+        },
+        {
+          "id": "3126486",
+          "name": "Deebo Samuel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3126486
+        },
+        {
+          "id": "4262921",
+          "name": "Justin Jefferson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4262921
         }
       ],
       "source": "espn_transactions"
@@ -3414,46 +3414,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "9a06c2dd-9e1a-4842-b351-12c904c928cc-trade-3",
-      "season": 2021,
-      "week": 3,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Jakobi Meyers, Melvin Gordon III | Sent: Michael Pittman Jr., Javonte Williams",
-      "created": 1632525342689,
-      "players": [
-        {
-          "id": "3916433",
-          "name": "Jakobi Meyers",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916433
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035687
-        },
-        {
-          "id": "4361579",
-          "name": "Javonte Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4361579
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "9a06c2dd-9e1a-4842-b351-12c904c928cc-trade-4",
       "season": 2021,
       "week": 3,
@@ -3489,6 +3449,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2576434
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "9a06c2dd-9e1a-4842-b351-12c904c928cc-trade-3",
+      "season": 2021,
+      "week": 3,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Jakobi Meyers, Melvin Gordon III | Sent: Michael Pittman Jr., Javonte Williams",
+      "created": 1632525342689,
+      "players": [
+        {
+          "id": "3916433",
+          "name": "Jakobi Meyers",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916433
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "4361579",
+          "name": "Javonte Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4361579
         }
       ],
       "source": "espn_transactions"
@@ -3812,46 +3812,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "380d9432-e2b9-44e8-a7c3-b95db6740bf7-trade-3",
-      "season": 2021,
-      "week": 3,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Jakobi Meyers, Melvin Gordon III | Sent: Michael Pittman Jr., Javonte Williams",
-      "created": 1632698115389,
-      "players": [
-        {
-          "id": "3916433",
-          "name": "Jakobi Meyers",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916433
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035687
-        },
-        {
-          "id": "4361579",
-          "name": "Javonte Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4361579
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "380d9432-e2b9-44e8-a7c3-b95db6740bf7-trade-4",
       "season": 2021,
       "week": 3,
@@ -3887,6 +3847,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2576434
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "380d9432-e2b9-44e8-a7c3-b95db6740bf7-trade-3",
+      "season": 2021,
+      "week": 3,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Jakobi Meyers, Melvin Gordon III | Sent: Michael Pittman Jr., Javonte Williams",
+      "created": 1632698115389,
+      "players": [
+        {
+          "id": "3916433",
+          "name": "Jakobi Meyers",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916433
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "4361579",
+          "name": "Javonte Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4361579
         }
       ],
       "source": "espn_transactions"
@@ -4006,46 +4006,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "904c2f57-79f4-4bd4-b133-86b54ac252d9-trade-3",
-      "season": 2021,
-      "week": 3,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Jakobi Meyers, Melvin Gordon III | Sent: DeVonta Smith, Damien Harris",
-      "created": 1632525500919,
-      "players": [
-        {
-          "id": "3916433",
-          "name": "Jakobi Meyers",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916433
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "3925347",
-          "name": "Damien Harris",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3925347
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "904c2f57-79f4-4bd4-b133-86b54ac252d9-trade-4",
       "season": 2021,
       "week": 3,
@@ -4081,6 +4041,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2576434
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "904c2f57-79f4-4bd4-b133-86b54ac252d9-trade-3",
+      "season": 2021,
+      "week": 3,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Jakobi Meyers, Melvin Gordon III | Sent: DeVonta Smith, Damien Harris",
+      "created": 1632525500919,
+      "players": [
+        {
+          "id": "3916433",
+          "name": "Jakobi Meyers",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916433
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
+        {
+          "id": "3925347",
+          "name": "Damien Harris",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3925347
         }
       ],
       "source": "espn_transactions"
@@ -4219,46 +4219,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "801f68a4-9510-4e65-83a2-f555b53040bf-trade-3",
-      "season": 2021,
-      "week": 3,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Jakobi Meyers, Melvin Gordon III | Sent: DeVonta Smith, Damien Harris",
-      "created": 1632698115389,
-      "players": [
-        {
-          "id": "3916433",
-          "name": "Jakobi Meyers",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916433
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "3925347",
-          "name": "Damien Harris",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3925347
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "801f68a4-9510-4e65-83a2-f555b53040bf-trade-4",
       "season": 2021,
       "week": 3,
@@ -4294,6 +4254,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2576434
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "801f68a4-9510-4e65-83a2-f555b53040bf-trade-3",
+      "season": 2021,
+      "week": 3,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Jakobi Meyers, Melvin Gordon III | Sent: DeVonta Smith, Damien Harris",
+      "created": 1632698115389,
+      "players": [
+        {
+          "id": "3916433",
+          "name": "Jakobi Meyers",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916433
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
+        {
+          "id": "3925347",
+          "name": "Damien Harris",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3925347
         }
       ],
       "source": "espn_transactions"
@@ -4508,32 +4508,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a4f8bd0a-d734-4fce-8772-0f67fe2bbb07-trade-4",
-      "season": 2021,
-      "week": 4,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: A.J. Brown | Sent: Jakobi Meyers",
-      "created": 1632830510594,
-      "players": [
-        {
-          "id": "4047646",
-          "name": "A.J. Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047646
-        },
-        {
-          "id": "3916433",
-          "name": "Jakobi Meyers",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3916433
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a4f8bd0a-d734-4fce-8772-0f67fe2bbb07-trade-5",
       "season": 2021,
       "week": 4,
@@ -4560,13 +4534,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c8e578d7-9ad3-4b5f-b727-bbf11af28403-trade-4",
+      "id": "a4f8bd0a-d734-4fce-8772-0f67fe2bbb07-trade-4",
       "season": 2021,
       "week": 4,
       "type": "trade",
       "team": "Team Malley",
       "summary": "Received: A.J. Brown | Sent: Jakobi Meyers",
-      "created": 1632835245303,
+      "created": 1632830510594,
       "players": [
         {
           "id": "4047646",
@@ -4607,6 +4581,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4047646
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "c8e578d7-9ad3-4b5f-b727-bbf11af28403-trade-4",
+      "season": 2021,
+      "week": 4,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: A.J. Brown | Sent: Jakobi Meyers",
+      "created": 1632835245303,
+      "players": [
+        {
+          "id": "4047646",
+          "name": "A.J. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047646
+        },
+        {
+          "id": "3916433",
+          "name": "Jakobi Meyers",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3916433
         }
       ],
       "source": "espn_transactions"
@@ -5391,53 +5391,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "38e11299-0afc-4fbe-a111-f1399f8598fb-trade-4",
-      "season": 2021,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: A.J. Brown, Elijah Mitchell | Sent: T.Y. Hilton, Odell Beckham Jr., Chuba Hubbard",
-      "created": 1633639181309,
-      "players": [
-        {
-          "id": "4047646",
-          "name": "A.J. Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047646
-        },
-        {
-          "id": "4241555",
-          "name": "Elijah Mitchell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241555
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "16733",
-          "name": "Odell Beckham Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16733
-        },
-        {
-          "id": "4241416",
-          "name": "Chuba Hubbard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241416
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "38e11299-0afc-4fbe-a111-f1399f8598fb-trade-5",
       "season": 2021,
       "week": 5,
@@ -5480,6 +5433,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241555
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "38e11299-0afc-4fbe-a111-f1399f8598fb-trade-4",
+      "season": 2021,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: A.J. Brown, Elijah Mitchell | Sent: T.Y. Hilton, Odell Beckham Jr., Chuba Hubbard",
+      "created": 1633639181309,
+      "players": [
+        {
+          "id": "4047646",
+          "name": "A.J. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047646
+        },
+        {
+          "id": "4241555",
+          "name": "Elijah Mitchell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241555
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "16733",
+          "name": "Odell Beckham Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16733
+        },
+        {
+          "id": "4241416",
+          "name": "Chuba Hubbard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241416
         }
       ],
       "source": "espn_transactions"
@@ -6338,53 +6338,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "6539b459-b7de-4c0d-bf64-cedf8078e659-trade-4",
-      "season": 2021,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: A.J. Brown, Elijah Mitchell | Sent: T.Y. Hilton, Odell Beckham Jr., Chuba Hubbard",
-      "created": 1633811958324,
-      "players": [
-        {
-          "id": "4047646",
-          "name": "A.J. Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047646
-        },
-        {
-          "id": "4241555",
-          "name": "Elijah Mitchell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241555
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "16733",
-          "name": "Odell Beckham Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16733
-        },
-        {
-          "id": "4241416",
-          "name": "Chuba Hubbard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241416
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "6539b459-b7de-4c0d-bf64-cedf8078e659-trade-5",
       "season": 2021,
       "week": 5,
@@ -6427,6 +6380,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241555
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "6539b459-b7de-4c0d-bf64-cedf8078e659-trade-4",
+      "season": 2021,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: A.J. Brown, Elijah Mitchell | Sent: T.Y. Hilton, Odell Beckham Jr., Chuba Hubbard",
+      "created": 1633811958324,
+      "players": [
+        {
+          "id": "4047646",
+          "name": "A.J. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047646
+        },
+        {
+          "id": "4241555",
+          "name": "Elijah Mitchell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241555
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "16733",
+          "name": "Odell Beckham Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16733
+        },
+        {
+          "id": "4241416",
+          "name": "Chuba Hubbard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241416
         }
       ],
       "source": "espn_transactions"
@@ -8906,46 +8906,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "de186cbe-85c9-4c1d-bc43-f86a66f87de6-trade-4",
-      "season": 2021,
-      "week": 8,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Dalvin Cook, Mike Williams | Sent: Antonio Brown, Melvin Gordon III",
-      "created": 1635535502357,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "3045138",
-          "name": "Mike Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3045138
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "de186cbe-85c9-4c1d-bc43-f86a66f87de6-trade-8",
       "season": 2021,
       "week": 8,
@@ -8981,6 +8941,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3045138
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "de186cbe-85c9-4c1d-bc43-f86a66f87de6-trade-4",
+      "season": 2021,
+      "week": 8,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Dalvin Cook, Mike Williams | Sent: Antonio Brown, Melvin Gordon III",
+      "created": 1635535502357,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "3045138",
+          "name": "Mike Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3045138
+        },
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13934
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
         }
       ],
       "source": "espn_transactions"
@@ -9442,46 +9442,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3db15e71-e5bb-4dd9-9331-04b6c9055c91-trade-4",
-      "season": 2021,
-      "week": 8,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Dalvin Cook, Mike Williams | Sent: Antonio Brown, Melvin Gordon III",
-      "created": 1635427934734,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "3045138",
-          "name": "Mike Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3045138
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "3db15e71-e5bb-4dd9-9331-04b6c9055c91-trade-8",
       "season": 2021,
       "week": 8,
@@ -9517,6 +9477,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3045138
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "3db15e71-e5bb-4dd9-9331-04b6c9055c91-trade-4",
+      "season": 2021,
+      "week": 8,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Dalvin Cook, Mike Williams | Sent: Antonio Brown, Melvin Gordon III",
+      "created": 1635427934734,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "3045138",
+          "name": "Mike Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3045138
+        },
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13934
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
         }
       ],
       "source": "espn_transactions"
@@ -10377,32 +10377,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d83e045f-437d-4e5c-8d5d-b6d4a7bccb77-trade-3",
-      "season": 2021,
-      "week": 9,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Deshaun Watson | Sent: Darrell Henderson Jr.",
-      "created": 1635864403939,
-      "players": [
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        },
-        {
-          "id": "4039359",
-          "name": "Darrell Henderson Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4039359
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d83e045f-437d-4e5c-8d5d-b6d4a7bccb77-trade-4",
       "season": 2021,
       "week": 9,
@@ -10424,6 +10398,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122840
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d83e045f-437d-4e5c-8d5d-b6d4a7bccb77-trade-3",
+      "season": 2021,
+      "week": 9,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Deshaun Watson | Sent: Darrell Henderson Jr.",
+      "created": 1635864403939,
+      "players": [
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122840
+        },
+        {
+          "id": "4039359",
+          "name": "Darrell Henderson Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4039359
         }
       ],
       "source": "espn_transactions"
@@ -10486,32 +10486,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c0dc826c-8cf4-427b-93b9-c6ce18d9daa2-trade-3",
-      "season": 2021,
-      "week": 9,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Deshaun Watson | Sent: Darrell Henderson Jr.",
-      "created": 1635866716259,
-      "players": [
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        },
-        {
-          "id": "4039359",
-          "name": "Darrell Henderson Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4039359
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "c0dc826c-8cf4-427b-93b9-c6ce18d9daa2-trade-4",
       "season": 2021,
       "week": 9,
@@ -10533,6 +10507,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122840
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "c0dc826c-8cf4-427b-93b9-c6ce18d9daa2-trade-3",
+      "season": 2021,
+      "week": 9,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Deshaun Watson | Sent: Darrell Henderson Jr.",
+      "created": 1635866716259,
+      "players": [
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122840
+        },
+        {
+          "id": "4039359",
+          "name": "Darrell Henderson Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4039359
         }
       ],
       "source": "espn_transactions"
@@ -11620,32 +11620,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0dd1980f-680a-4602-9b27-f9ba051a38c6-trade-4",
-      "season": 2021,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Joe Mixon | Sent: Antonio Brown",
-      "created": 1637284903651,
-      "players": [
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "0dd1980f-680a-4602-9b27-f9ba051a38c6-trade-1",
       "season": 2021,
       "week": 11,
@@ -11667,6 +11641,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116385
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "0dd1980f-680a-4602-9b27-f9ba051a38c6-trade-4",
+      "season": 2021,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Joe Mixon | Sent: Antonio Brown",
+      "created": 1637284903651,
+      "players": [
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116385
+        },
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13934
         }
       ],
       "source": "espn_transactions"
@@ -11729,32 +11729,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "4f4d0868-7a49-41f4-83d2-1778816e16a2-trade-3",
-      "season": 2021,
-      "week": 11,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Antonio Brown | Sent: Darrell Henderson Jr.",
-      "created": 1637284857677,
-      "players": [
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13934
-        },
-        {
-          "id": "4039359",
-          "name": "Darrell Henderson Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4039359
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "4f4d0868-7a49-41f4-83d2-1778816e16a2-trade-4",
       "season": 2021,
       "week": 11,
@@ -11776,6 +11750,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13934
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "4f4d0868-7a49-41f4-83d2-1778816e16a2-trade-3",
+      "season": 2021,
+      "week": 11,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Antonio Brown | Sent: Darrell Henderson Jr.",
+      "created": 1637284857677,
+      "players": [
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13934
+        },
+        {
+          "id": "4039359",
+          "name": "Darrell Henderson Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4039359
         }
       ],
       "source": "espn_transactions"
@@ -11876,32 +11876,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "74cad25a-3b47-4f74-9987-f72c849cd6bd-trade-4",
-      "season": 2021,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Dalvin Cook | Sent: Antonio Brown",
-      "created": 1637291129497,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "74cad25a-3b47-4f74-9987-f72c849cd6bd-trade-8",
       "season": 2021,
       "week": 11,
@@ -11928,27 +11902,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a5a2a5e3-7c55-44af-903c-2b0e36bb52a3-trade-3",
+      "id": "74cad25a-3b47-4f74-9987-f72c849cd6bd-trade-4",
       "season": 2021,
       "week": 11,
       "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Antonio Brown | Sent: Darrell Henderson Jr.",
-      "created": 1637457634512,
+      "team": "Team Malley",
+      "summary": "Received: Dalvin Cook | Sent: Antonio Brown",
+      "created": 1637291129497,
       "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
         {
           "id": "13934",
           "name": "Antonio Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13934
-        },
-        {
-          "id": "4039359",
-          "name": "Darrell Henderson Jr.",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4039359
+          "source_player_id": 13934
         }
       ],
       "source": "espn_transactions"
@@ -11975,6 +11949,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13934
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a5a2a5e3-7c55-44af-903c-2b0e36bb52a3-trade-3",
+      "season": 2021,
+      "week": 11,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Antonio Brown | Sent: Darrell Henderson Jr.",
+      "created": 1637457634512,
+      "players": [
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13934
+        },
+        {
+          "id": "4039359",
+          "name": "Darrell Henderson Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4039359
         }
       ],
       "source": "espn_transactions"
@@ -12094,32 +12094,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "263630af-14e6-418c-ae41-185595c7fe80-trade-4",
-      "season": 2021,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Hollywood Brown | Sent: Antonio Brown",
-      "created": 1637284836824,
-      "players": [
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "263630af-14e6-418c-ae41-185595c7fe80-trade-6",
       "season": 2021,
       "week": 11,
@@ -12141,6 +12115,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241372
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "263630af-14e6-418c-ae41-185595c7fe80-trade-4",
+      "season": 2021,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Hollywood Brown | Sent: Antonio Brown",
+      "created": 1637284836824,
+      "players": [
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241372
+        },
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13934
         }
       ],
       "source": "espn_transactions"
@@ -12222,32 +12222,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e6deb978-9309-49de-b35c-6393c03e4949-trade-4",
-      "season": 2021,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Aaron Jones Sr. | Sent: Antonio Brown",
-      "created": 1637284944829,
-      "players": [
-        {
-          "id": "3042519",
-          "name": "Aaron Jones Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3042519
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "e6deb978-9309-49de-b35c-6393c03e4949-trade-7",
       "season": 2021,
       "week": 11,
@@ -12274,20 +12248,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fa568ef5-449a-4bee-b91d-e8575aadf789-trade-4",
+      "id": "e6deb978-9309-49de-b35c-6393c03e4949-trade-4",
       "season": 2021,
       "week": 11,
       "type": "trade",
       "team": "Team Malley",
-      "summary": "Received: Dalvin Cook | Sent: Antonio Brown",
-      "created": 1637285004848,
+      "summary": "Received: Aaron Jones Sr. | Sent: Antonio Brown",
+      "created": 1637284944829,
       "players": [
         {
-          "id": "3116593",
-          "name": "Dalvin Cook",
+          "id": "3042519",
+          "name": "Aaron Jones Sr.",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3116593
+          "source_player_id": 3042519
         },
         {
           "id": "13934",
@@ -12326,20 +12300,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "06cb1423-9e27-4e49-8ed2-f71fdab47625-trade-4",
+      "id": "fa568ef5-449a-4bee-b91d-e8575aadf789-trade-4",
       "season": 2021,
       "week": 11,
       "type": "trade",
       "team": "Team Malley",
-      "summary": "Received: Hollywood Brown | Sent: Antonio Brown",
-      "created": 1637457634512,
+      "summary": "Received: Dalvin Cook | Sent: Antonio Brown",
+      "created": 1637285004848,
       "players": [
         {
-          "id": "4241372",
-          "name": "Hollywood Brown",
+          "id": "3116593",
+          "name": "Dalvin Cook",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4241372
+          "source_player_id": 3116593
         },
         {
           "id": "13934",
@@ -12373,6 +12347,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241372
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "06cb1423-9e27-4e49-8ed2-f71fdab47625-trade-4",
+      "season": 2021,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Hollywood Brown | Sent: Antonio Brown",
+      "created": 1637457634512,
+      "players": [
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241372
+        },
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13934
         }
       ],
       "source": "espn_transactions"
@@ -12416,32 +12416,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "01169d3a-3139-482a-ab2f-329732dc129d-trade-4",
-      "season": 2021,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Davante Adams | Sent: Antonio Brown",
-      "created": 1637457634512,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "01169d3a-3139-482a-ab2f-329732dc129d-trade-5",
       "season": 2021,
       "week": 11,
@@ -12468,13 +12442,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "597f61f5-c9aa-47e1-9e79-da743565cf7b-trade-4",
+      "id": "01169d3a-3139-482a-ab2f-329732dc129d-trade-4",
       "season": 2021,
       "week": 11,
       "type": "trade",
       "team": "Team Malley",
       "summary": "Received: Davante Adams | Sent: Antonio Brown",
-      "created": 1637285060112,
+      "created": 1637457634512,
       "players": [
         {
           "id": "16800",
@@ -12515,6 +12489,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16800
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "597f61f5-c9aa-47e1-9e79-da743565cf7b-trade-4",
+      "season": 2021,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Davante Adams | Sent: Antonio Brown",
+      "created": 1637285060112,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13934
         }
       ],
       "source": "espn_transactions"
@@ -12629,32 +12629,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "bf7cab0e-d70e-4116-8244-5ec44c012e01-trade-4",
-      "season": 2021,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Joe Mixon | Sent: Antonio Brown",
-      "created": 1637338547623,
-      "players": [
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "bf7cab0e-d70e-4116-8244-5ec44c012e01-trade-1",
       "season": 2021,
       "week": 11,
@@ -12676,6 +12650,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116385
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "bf7cab0e-d70e-4116-8244-5ec44c012e01-trade-4",
+      "season": 2021,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Joe Mixon | Sent: Antonio Brown",
+      "created": 1637338547623,
+      "players": [
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116385
+        },
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13934
         }
       ],
       "source": "espn_transactions"
@@ -12757,32 +12757,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3b5d0358-c480-43c0-a89b-85baf3cdf052-trade-4",
-      "season": 2021,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Aaron Jones Sr. | Sent: Antonio Brown",
-      "created": 1637284967321,
-      "players": [
-        {
-          "id": "3042519",
-          "name": "Aaron Jones Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3042519
-        },
-        {
-          "id": "13934",
-          "name": "Antonio Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13934
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "3b5d0358-c480-43c0-a89b-85baf3cdf052-trade-7",
       "season": 2021,
       "week": 11,
@@ -12804,6 +12778,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3042519
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "3b5d0358-c480-43c0-a89b-85baf3cdf052-trade-4",
+      "season": 2021,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Aaron Jones Sr. | Sent: Antonio Brown",
+      "created": 1637284967321,
+      "players": [
+        {
+          "id": "3042519",
+          "name": "Aaron Jones Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3042519
+        },
+        {
+          "id": "13934",
+          "name": "Antonio Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13934
         }
       ],
       "source": "espn_transactions"
@@ -14119,32 +14119,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ed208293-6298-4616-920d-085e781dc035-trade-3",
-      "season": 2021,
-      "week": 13,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Odell Beckham Jr. | Sent: Damien Harris",
-      "created": 1638567662815,
-      "players": [
-        {
-          "id": "16733",
-          "name": "Odell Beckham Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16733
-        },
-        {
-          "id": "3925347",
-          "name": "Damien Harris",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3925347
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ed208293-6298-4616-920d-085e781dc035-trade-4",
       "season": 2021,
       "week": 13,
@@ -14166,6 +14140,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16733
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "ed208293-6298-4616-920d-085e781dc035-trade-3",
+      "season": 2021,
+      "week": 13,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Odell Beckham Jr. | Sent: Damien Harris",
+      "created": 1638567662815,
+      "players": [
+        {
+          "id": "16733",
+          "name": "Odell Beckham Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16733
+        },
+        {
+          "id": "3925347",
+          "name": "Damien Harris",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3925347
         }
       ],
       "source": "espn_transactions"
@@ -14204,60 +14204,6 @@
           "action": "drop",
           "id_type": "espn",
           "source_player_id": 3046439
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "eea0f5b1-f641-4565-a18e-582bc03898ae-trade-3",
-      "season": 2021,
-      "week": 13,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Odell Beckham Jr., Mark Andrews, Lamar Jackson | Sent: Nick Chubb, Travis Kelce, Cordarrelle Patterson",
-      "created": 1638392330537,
-      "players": [
-        {
-          "id": "16733",
-          "name": "Odell Beckham Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16733
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        },
-        {
-          "id": "3128720",
-          "name": "Nick Chubb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3128720
-        },
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15847
-        },
-        {
-          "id": "15807",
-          "name": "Cordarrelle Patterson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15807
         }
       ],
       "source": "espn_transactions"
@@ -14312,6 +14258,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3916387
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "eea0f5b1-f641-4565-a18e-582bc03898ae-trade-3",
+      "season": 2021,
+      "week": 13,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Odell Beckham Jr., Mark Andrews, Lamar Jackson | Sent: Nick Chubb, Travis Kelce, Cordarrelle Patterson",
+      "created": 1638392330537,
+      "players": [
+        {
+          "id": "16733",
+          "name": "Odell Beckham Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16733
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116365
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916387
+        },
+        {
+          "id": "3128720",
+          "name": "Nick Chubb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3128720
+        },
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15847
+        },
+        {
+          "id": "15807",
+          "name": "Cordarrelle Patterson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15807
         }
       ],
       "source": "espn_transactions"
@@ -14469,32 +14469,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "98b1efc5-3ce0-4484-a617-93016356a10e-trade-3",
-      "season": 2021,
-      "week": 13,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Odell Beckham Jr. | Sent: Damien Harris",
-      "created": 1638394899877,
-      "players": [
-        {
-          "id": "16733",
-          "name": "Odell Beckham Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16733
-        },
-        {
-          "id": "3925347",
-          "name": "Damien Harris",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3925347
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "98b1efc5-3ce0-4484-a617-93016356a10e-trade-4",
       "season": 2021,
       "week": 13,
@@ -14516,6 +14490,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16733
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "98b1efc5-3ce0-4484-a617-93016356a10e-trade-3",
+      "season": 2021,
+      "week": 13,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Odell Beckham Jr. | Sent: Damien Harris",
+      "created": 1638394899877,
+      "players": [
+        {
+          "id": "16733",
+          "name": "Odell Beckham Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16733
+        },
+        {
+          "id": "3925347",
+          "name": "Damien Harris",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3925347
         }
       ],
       "source": "espn_transactions"
@@ -14947,60 +14947,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e2d31543-b21e-490e-a682-213db64cdf49-trade-3",
-      "season": 2021,
-      "week": 13,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Odell Beckham Jr., Mark Andrews, Lamar Jackson | Sent: Nick Chubb, Travis Kelce, Cordarrelle Patterson",
-      "created": 1638383031084,
-      "players": [
-        {
-          "id": "16733",
-          "name": "Odell Beckham Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16733
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        },
-        {
-          "id": "3128720",
-          "name": "Nick Chubb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3128720
-        },
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15847
-        },
-        {
-          "id": "15807",
-          "name": "Cordarrelle Patterson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15807
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "e2d31543-b21e-490e-a682-213db64cdf49-trade-4",
       "season": 2021,
       "week": 13,
@@ -15050,6 +14996,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3916387
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e2d31543-b21e-490e-a682-213db64cdf49-trade-3",
+      "season": 2021,
+      "week": 13,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Odell Beckham Jr., Mark Andrews, Lamar Jackson | Sent: Nick Chubb, Travis Kelce, Cordarrelle Patterson",
+      "created": 1638383031084,
+      "players": [
+        {
+          "id": "16733",
+          "name": "Odell Beckham Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16733
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116365
+        },
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916387
+        },
+        {
+          "id": "3128720",
+          "name": "Nick Chubb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3128720
+        },
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15847
+        },
+        {
+          "id": "15807",
+          "name": "Cordarrelle Patterson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15807
         }
       ],
       "source": "espn_transactions"
@@ -15933,25 +15933,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d51d0389-ecbc-4220-9236-ec4cff844760-trade-3",
-      "season": 2021,
-      "week": 14,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: None | Sent: Gardner Minshew",
-      "created": 1638899742283,
-      "players": [
-        {
-          "id": "4038524",
-          "name": "Gardner Minshew",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4038524
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d51d0389-ecbc-4220-9236-ec4cff844760-trade-0",
       "season": 2021,
       "week": 14,
@@ -15964,6 +15945,25 @@
           "id": "4038524",
           "name": "Gardner Minshew",
           "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4038524
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d51d0389-ecbc-4220-9236-ec4cff844760-trade-3",
+      "season": 2021,
+      "week": 14,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: None | Sent: Gardner Minshew",
+      "created": 1638899742283,
+      "players": [
+        {
+          "id": "4038524",
+          "name": "Gardner Minshew",
+          "action": "sent",
           "id_type": "espn",
           "source_player_id": 4038524
         }

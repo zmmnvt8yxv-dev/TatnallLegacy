@@ -10,11 +10,22 @@ const navItems = [
 ];
 
 export default function Layout({ children }) {
-  const { players, playerIds } = useDataContext();
+  const { players, playerIds, playerSearch } = useDataContext();
   const [search, setSearch] = useState("");
   const [showResults, setShowResults] = useState(false);
 
   const playerIndex = useMemo(() => {
+    if (playerSearch?.length) {
+      return playerSearch
+        .map((row) => ({
+          id: String(row?.id || ""),
+          idType: row?.id_type || "",
+          name: row?.name || "",
+          position: row?.position || "—",
+          team: row?.team || "—",
+        }))
+        .filter((row) => row.id && row.name);
+    }
     const sleeperByUid = new Map();
     for (const entry of playerIds || []) {
       if (entry?.id_type === "sleeper" && entry?.player_uid && entry?.id_value) {
@@ -25,9 +36,11 @@ export default function Layout({ children }) {
       .map((player) => ({
         id: sleeperByUid.get(String(player?.player_uid)),
         name: player?.full_name,
+        position: player?.position || "—",
+        team: player?.nfl_team || "—",
       }))
       .filter((row) => row.id && row.name);
-  }, [players, playerIds]);
+  }, [players, playerIds, playerSearch]);
 
   const filteredResults = useMemo(() => {
     if (!search.trim()) return [];
@@ -57,7 +70,7 @@ export default function Layout({ children }) {
                 {filteredResults.map((row) => (
                   <Link
                     key={row.id}
-                    to={`/players/${row.id}`}
+                    to={`/players/${row.id}?name=${encodeURIComponent(row.name)}`}
                     className="search-result"
                     onClick={() => {
                       setSearch("");
@@ -65,7 +78,9 @@ export default function Layout({ children }) {
                     }}
                   >
                     <span>{row.name}</span>
-                    <span className="search-result-meta">#{row.id}</span>
+                    <span className="search-result-meta">
+                      {row.position} · {row.team}
+                    </span>
                   </Link>
                 ))}
               </div>
