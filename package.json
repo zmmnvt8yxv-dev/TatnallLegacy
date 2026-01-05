@@ -6,16 +6,9 @@
     "build:data": "python3 scripts/verify_inputs.py && python3 scripts/build_site_weekly_chunks.py && python3 scripts/build_public_player_stats.py && python3 scripts/build_public_player_metrics.py && python3 scripts/build_site_data_manifest.py && python3 scripts/validate_manifest.py && python3 scripts/verify_player_integrity.py",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --strictPort --port 4173 --host",
-    "cap:sync": "npx cap sync",
-    "cap:open:ios": "npx cap open ios",
-    "cap:open:android": "npx cap open android"
-  },
-  "dependencies": {
-    "@capacitor/core": "^6.1.0"
+    "preview": "vite preview --strictPort --port 4173 --host"
   },
   "devDependencies": {
-    "@capacitor/cli": "^6.1.0",
     "@vitejs/plugin-react": "^5.1.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
