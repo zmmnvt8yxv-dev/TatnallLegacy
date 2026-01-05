@@ -8,15 +8,36 @@ export function looksLikeId(value) {
   return false;
 }
 
+function isPlaceholderName(value) {
+  if (!value) return false;
+  return /^ESPN Player \d+$/i.test(String(value).trim());
+}
+
 function resolveNameFromEntry(entry) {
   if (!entry) return "";
   const directName = entry.display_name || entry.player_display_name || entry.full_name || entry.name;
-  if (directName && !looksLikeId(directName)) return directName;
+  if (directName && !looksLikeId(directName) && !isPlaceholderName(directName)) return directName;
   if (entry.first_name || entry.last_name) {
     const combined = [entry.first_name, entry.last_name].filter(Boolean).join(" ").trim();
     if (combined && !looksLikeId(combined)) return combined;
   }
   return "";
+}
+
+function resolveEspnName(espnNameMap, espnId) {
+  if (!espnNameMap || !espnId) return "";
+  const key = String(espnId);
+  if (espnNameMap instanceof Map) return espnNameMap.get(key) || "";
+  return espnNameMap[key] || "";
+}
+
+function resolveEspnIdFromRow(row) {
+  if (!row) return null;
+  if (row.espn_id) return row.espn_id;
+  if (row.id_type === "espn" && row.id) return row.id;
+  if (row.source === "espn" && row.player_id) return row.player_id;
+  if (row.source === "espn" && row.source_player_id) return row.source_player_id;
+  return null;
 }
 
 function getIdEntries(row) {
@@ -90,10 +111,10 @@ function getSleeperEntry(sleeperPlayers, playerId) {
   return sleeperPlayers[String(playerId)] || null;
 }
 
-export function resolvePlayerName(row, playerIndex) {
+export function resolvePlayerName(row, playerIndex, espnNameMap) {
   if (!row) return "(Unknown Player)";
   const directName = row.display_name || row.player_display_name || row.player_name || row.player;
-  if (directName && !looksLikeId(directName)) return directName;
+  if (directName && !looksLikeId(directName) && !isPlaceholderName(directName)) return directName;
   if (playerIndex) {
     for (const { key, value } of getIdEntries(row)) {
       if (!value) continue;
@@ -104,11 +125,13 @@ export function resolvePlayerName(row, playerIndex) {
       if (resolved) return resolved;
     }
   }
+  const espnName = resolveEspnName(espnNameMap, resolveEspnIdFromRow(row));
+  if (espnName) return espnName;
   if (row.player_id) return "(Unknown Player)";
   return "(Unknown Player)";
 }
 
-export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayers } = {}) {
+export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayers, espnNameMap } = {}) {
   const effectiveRow = row || {};
   const directName =
     effectiveRow.display_name || effectiveRow.player_display_name || effectiveRow.player_name || effectiveRow.player;
@@ -120,7 +143,16 @@ export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayer
   ];
   const player = resolvePlayerFromIndex(playerIndex, candidates);
   const sleeperEntry = getSleeperEntry(sleeperPlayers, effectiveRow.player_id || playerId);
-  const resolvedName = directName && !looksLikeId(directName) ? directName : resolveNameFromEntry(player);
+  const resolvedName =
+    directName && !looksLikeId(directName) && !isPlaceholderName(directName)
+      ? directName
+      : resolveNameFromEntry(player);
+  const espnFallback =
+    resolvedName ||
+    resolveEspnName(
+      espnNameMap,
+      resolveEspnIdFromRow(effectiveRow)
+    );
   const fallbackName = resolveNameFromEntry(sleeperEntry);
   const sleeperIdCandidate = effectiveRow.sleeper_id || effectiveRow.player_id || playerId;
   const sleeperHeadshot =
@@ -128,7 +160,7 @@ export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayer
       ? `https://sleepercdn.com/content/nfl/players/${sleeperIdCandidate}.jpg`
       : null;
   return {
-    name: resolvedName || fallbackName || "(Unknown Player)",
+    name: espnFallback || fallbackName || "(Unknown Player)",
     headshotUrl:
       player?.headshot_url ||
       player?.headshotUrl ||

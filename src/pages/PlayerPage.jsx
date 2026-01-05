@@ -43,12 +43,14 @@ const normalizeName = (value) => {
     .trim();
 };
 
+const isNumericId = (value) => /^\\d+$/.test(String(value || "").trim());
+
 export default function PlayerPage() {
   const { playerId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
   const didInitRef = useRef(false);
-  const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
+  const { manifest, loading, error, playerIdLookup, playerIndex, espnNameMap } = useDataContext();
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [seasonSummaries, setSeasonSummaries] = useState([]);
   const [statsSeasonSummaries, setStatsSeasonSummaries] = useState([]);
@@ -136,6 +138,32 @@ export default function PlayerPage() {
     updateSearchParams(nextSeason, activeTab);
   };
 
+  const playerInfo = useMemo(() => {
+    const candidates = [resolvedPlayerId, playerId].filter(Boolean);
+    for (const id of candidates) {
+      const uid =
+        playerIdLookup.bySleeper.get(String(id)) ||
+        playerIdLookup.byEspn.get(String(id));
+      if (uid) return playerIdLookup.byUid.get(uid) || null;
+    }
+    return null;
+  }, [playerIdLookup, resolvedPlayerId, playerId]);
+
+  const targetIds = useMemo(() => {
+    const ids = new Set();
+    for (const value of [
+      resolvedPlayerId,
+      playerId,
+      playerInfo?.sleeper_id,
+      playerInfo?.player_id,
+      playerInfo?.gsis_id,
+      playerInfo?.espn_id,
+    ]) {
+      if (value) ids.add(String(value));
+    }
+    return ids;
+  }, [resolvedPlayerId, playerId, playerInfo]);
+
   useEffect(() => {
     let active = true;
     if (!seasons.length) return undefined;
@@ -201,6 +229,19 @@ export default function PlayerPage() {
   useEffect(() => {
     let active = true;
     if (!selectedSeason) return undefined;
+    loadPlayerStatsWeekly(selectedSeason).then((payload) => {
+      if (!active) return;
+      const rows = payload?.rows || payload || [];
+      setStatsWeeklyRows(rows);
+    });
+    return () => {
+      active = false;
+    };
+  }, [selectedSeason]);
+
+  useEffect(() => {
+    let active = true;
+    if (!selectedSeason) return undefined;
     const weeks = manifest?.weeksBySeason?.[String(selectedSeason)] || [];
     Promise.all(weeks.map((week) => loadWeekData(selectedSeason, week))).then((payloads) => {
       if (!active) return;
@@ -226,19 +267,6 @@ export default function PlayerPage() {
   useEffect(() => {
     let active = true;
     if (!selectedSeason) return undefined;
-    loadPlayerStatsWeekly(selectedSeason).then((payload) => {
-      if (!active) return;
-      const rows = payload?.rows || payload || [];
-      setStatsWeeklyRows(rows);
-    });
-    return () => {
-      active = false;
-    };
-  }, [selectedSeason]);
-
-  useEffect(() => {
-    let active = true;
-    if (!selectedSeason) return undefined;
     loadPlayerStatsFull(selectedSeason).then((payload) => {
       if (!active) return;
       const rows = payload?.rows || payload || [];
@@ -248,32 +276,6 @@ export default function PlayerPage() {
       active = false;
     };
   }, [selectedSeason]);
-
-  const playerInfo = useMemo(() => {
-    const candidates = [resolvedPlayerId, playerId].filter(Boolean);
-    for (const id of candidates) {
-      const uid =
-        playerIdLookup.bySleeper.get(String(id)) ||
-        playerIdLookup.byEspn.get(String(id));
-      if (uid) return playerIdLookup.byUid.get(uid) || null;
-    }
-    return null;
-  }, [playerIdLookup, resolvedPlayerId, playerId]);
-
-  const targetIds = useMemo(() => {
-    const ids = new Set();
-    for (const value of [
-      resolvedPlayerId,
-      playerId,
-      playerInfo?.sleeper_id,
-      playerInfo?.player_id,
-      playerInfo?.gsis_id,
-      playerInfo?.espn_id,
-    ]) {
-      if (value) ids.add(String(value));
-    }
-    return ids;
-  }, [resolvedPlayerId, playerId, playerInfo]);
 
   const statsNameRow = useMemo(() => {
     const tryFind = (rows) =>
@@ -292,7 +294,12 @@ export default function PlayerPage() {
   }, [targetIds, statsWeeklyRows, fullStatsRows, statsSeasonSummaries]);
 
   const playerInfoWithStats = useMemo(() => {
-    if (!statsNameRow) return playerInfo || { player_id: resolvedPlayerId };
+    if (!statsNameRow) {
+      if (playerInfo) return playerInfo;
+      const fallback = { player_id: resolvedPlayerId };
+      if (isNumericId(resolvedPlayerId)) fallback.espn_id = resolvedPlayerId;
+      return fallback;
+    }
     return {
       player_id: resolvedPlayerId,
       sleeper_id: statsNameRow.sleeper_id || playerInfo?.sleeper_id || resolvedPlayerId,
@@ -304,12 +311,12 @@ export default function PlayerPage() {
   }, [statsNameRow, playerInfo, resolvedPlayerId]);
 
   const resolvedName = useMemo(() => {
-    return resolvePlayerName(playerInfoWithStats, playerIndex);
-  }, [playerInfoWithStats, playerIndex]);
+    return resolvePlayerName(playerInfoWithStats, playerIndex, espnNameMap);
+  }, [playerInfoWithStats, playerIndex, espnNameMap]);
 
   const playerDisplay = useMemo(() => {
-    return resolvePlayerDisplay(resolvedPlayerId, { row: playerInfoWithStats, playerIndex });
-  }, [resolvedPlayerId, playerInfoWithStats, playerIndex]);
+    return resolvePlayerDisplay(resolvedPlayerId, { row: playerInfoWithStats, playerIndex, espnNameMap });
+  }, [resolvedPlayerId, playerInfoWithStats, playerIndex, espnNameMap]);
 
   const displayName = playerDisplay.name || resolvedName;
   const displayPosition = playerDisplay.position || playerInfo?.position || "Position —";

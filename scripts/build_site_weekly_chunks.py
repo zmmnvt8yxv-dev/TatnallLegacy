@@ -89,11 +89,8 @@ def read_json(path: Path):
   with path.open("r", encoding="utf-8") as handle:
     return json.load(handle)
 
-def load_sleeper_player_maps():
-  gsis_to_sleeper = {}
-  espn_to_sleeper = {}
-  name_to_sleeper = {}
-  espn_to_name = {}
+def ensure_espn_name_map():
+  name_map = {}
   if ESPN_NAME_MAP_PATH.exists():
     try:
       payload = read_json(ESPN_NAME_MAP_PATH)
@@ -103,8 +100,35 @@ def load_sleeper_player_maps():
       for espn_id, display_name in payload.items():
         espn_id = normalize_numeric_id(espn_id)
         display_name = (str(display_name).strip() if display_name is not None else "")
-        if espn_id and display_name and espn_id not in espn_to_name:
-          espn_to_name[espn_id] = display_name
+        if espn_id and display_name:
+          name_map.setdefault(espn_id, display_name)
+  if ESPN_PLAYERS_INDEX_PATH.exists():
+    with ESPN_PLAYERS_INDEX_PATH.open("r", encoding="utf-8") as handle:
+      reader = csv.DictReader(handle)
+      for row in reader:
+        espn_id = normalize_numeric_id(row.get("id"))
+        if not espn_id:
+          continue
+        display = row.get("displayName") or row.get("fullName") or row.get("shortName") or ""
+        display = str(display).strip()
+        if display and espn_id not in name_map:
+          name_map[espn_id] = display
+  if name_map:
+    ESPN_NAME_MAP_PATH.parent.mkdir(parents=True, exist_ok=True)
+    write_json(ESPN_NAME_MAP_PATH, name_map)
+  return name_map
+
+
+def load_sleeper_player_maps():
+  gsis_to_sleeper = {}
+  espn_to_sleeper = {}
+  name_to_sleeper = {}
+  espn_to_name = {}
+  espn_map = ensure_espn_name_map()
+  if espn_map:
+    for espn_id, display_name in espn_map.items():
+      if espn_id and display_name and espn_id not in espn_to_name:
+        espn_to_name[espn_id] = display_name
   if SLEEPER_PLAYERS_PATH.exists():
     with SLEEPER_PLAYERS_PATH.open("r", encoding="utf-8") as handle:
       reader = csv.DictReader(handle)
@@ -887,6 +911,8 @@ def main():
   season_totals = []
   sleeper_maps = load_sleeper_player_maps()
   player_name_lookup = build_player_name_lookup()
+  if sleeper_maps.get("espn_to_name"):
+    write_json(OUTPUT_DIR / "espn_name_map.json", sleeper_maps["espn_to_name"])
 
   for season_path in DATA_DIR.glob("20*.json"):
     payload = read_json(season_path)

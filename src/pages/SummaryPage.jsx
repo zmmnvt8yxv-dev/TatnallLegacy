@@ -27,7 +27,7 @@ function getLatestSeason(manifest) {
 }
 
 export default function SummaryPage() {
-  const { manifest, loading, error, playerIdLookup, playerIndex } = useDataContext();
+  const { manifest, loading, error, playerIdLookup, playerIndex, espnNameMap } = useDataContext();
   const [seasonSummary, setSeasonSummary] = useState(null);
   const [allTime, setAllTime] = useState(null);
   const [transactions, setTransactions] = useState(null);
@@ -136,7 +136,7 @@ export default function SummaryPage() {
     const query = weeklySearch.toLowerCase().trim();
     return entries.filter((row) => {
       if (!query) return true;
-      return resolvePlayerName(row, playerIndex).toLowerCase().includes(query);
+      return resolvePlayerName(row, playerIndex, espnNameMap).toLowerCase().includes(query);
     });
   }, [allTime, weeklySearch, playerIndex]);
 
@@ -146,7 +146,7 @@ export default function SummaryPage() {
     const query = playerSearch.toLowerCase().trim();
     return entries.filter((row) => {
       if (!query) return true;
-      return resolvePlayerName(row, playerIndex).toLowerCase().includes(query);
+      return resolvePlayerName(row, playerIndex, espnNameMap).toLowerCase().includes(query);
     });
   }, [allTime, playerSearch, playerIndex]);
 
@@ -154,7 +154,7 @@ export default function SummaryPage() {
     () =>
       favorites.players.map((id) => ({
         id,
-        name: resolvePlayerName({ player_id: id }, playerIndex),
+        name: resolvePlayerName({ player_id: id }, playerIndex, espnNameMap),
       })),
     [favorites.players, playerIndex],
   );
@@ -179,7 +179,7 @@ export default function SummaryPage() {
     return playerIdLookup.byUid.get(uid);
   };
 
-  const getPlayerName = (row) => resolvePlayerName(row, playerIndex);
+  const getPlayerName = (row) => resolvePlayerName(row, playerIndex, espnNameMap);
 
   return (
     <>
@@ -469,7 +469,12 @@ export default function SummaryPage() {
         }}
         placeholder={<div className="section-card">Loading stat assistant…</div>}
       >
-        <LocalStatAssistant allTime={allTime} boomBust={boomBust} playerIndex={playerIndex} />
+        <LocalStatAssistant
+          allTime={allTime}
+          boomBust={boomBust}
+          playerIndex={playerIndex}
+          espnNameMap={espnNameMap}
+        />
       </DeferredSection>
 
       <section className="section-card">

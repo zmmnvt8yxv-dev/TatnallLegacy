@@ -2,11 +2,11 @@ import React, { useMemo, useState } from "react";
 import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 
-export default function LocalStatAssistant({ allTime, boomBust, playerIndex }) {
+export default function LocalStatAssistant({ allTime, boomBust, playerIndex, espnNameMap }) {
   const [chatInput, setChatInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
 
-  const getPlayerName = (row) => resolvePlayerName(row, playerIndex);
+  const getPlayerName = (row) => resolvePlayerName(row, playerIndex, espnNameMap);
 
   const chatInsights = useMemo(() => {
     const weekly = [...(allTime?.topWeekly || [])].sort((a, b) => (b?.points || 0) - (a?.points || 0));

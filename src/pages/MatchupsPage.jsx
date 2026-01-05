@@ -6,14 +6,14 @@ import Modal from "../components/Modal.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
 import SearchBar from "../components/SearchBar.jsx";
-import { canResolvePlayerId, getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
+import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
 import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
 
 export default function MatchupsPage() {
-  const { manifest, loading, error, playerIndex, teams } = useDataContext();
+  const { manifest, loading, error, playerIndex, teams, espnNameMap } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
   const didInitRef = useRef(false);
@@ -167,9 +167,9 @@ export default function MatchupsPage() {
   const buildRoster = (teamKeys) => {
     const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
     const mapped = rows.map((row) => {
-      const display = resolvePlayerDisplay(row.player_id, { playerIndex });
+      const display = resolvePlayerDisplay(row.player_id, { playerIndex, espnNameMap });
       const canonicalId = getCanonicalPlayerId(row.player_id, { row, playerIndex });
-      const canLink = canonicalId && canResolvePlayerId(canonicalId, playerIndex);
+      const canLink = Boolean(canonicalId);
       return {
         ...row,
         displayName: display.name,
@@ -222,7 +222,7 @@ export default function MatchupsPage() {
     const starters = lineups.filter((row) => row.started).length;
     for (const row of lineups) {
       if (!row.player_id && !row.sleeper_id && !row.gsis_id && !row.espn_id) missingIds += 1;
-      const display = resolvePlayerDisplay(row.player_id, { playerIndex });
+      const display = resolvePlayerDisplay(row.player_id, { playerIndex, espnNameMap });
       if (display.name && display.name !== "(Unknown Player)") resolvedNames += 1;
     }
     return {

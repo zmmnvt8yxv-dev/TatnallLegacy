@@ -102,6 +102,7 @@ export async function loadCoreData() {
   let playersPath;
   let playerIdsPath;
   let teamsPath;
+  let espnNameMapPath;
   try {
     const cached = getCached("core");
     if (cached) return cached;
@@ -109,22 +110,30 @@ export async function loadCoreData() {
     playersPath = optionalManifestPath(manifest, "players");
     playerIdsPath = optionalManifestPath(manifest, "playerIds");
     teamsPath = optionalManifestPath(manifest, "teams");
-    const [players, playerIds, teams] = await Promise.all([
+    espnNameMapPath = optionalManifestPath(manifest, "espnNameMap");
+    const [players, playerIds, teams, espnNameMap] = await Promise.all([
       playersPath ? fetchJson(playersPath, { optional: true }) : Promise.resolve([]),
       playerIdsPath ? fetchJson(playerIdsPath, { optional: true }) : Promise.resolve([]),
       teamsPath ? fetchJson(teamsPath, { optional: true }) : Promise.resolve([]),
+      espnNameMapPath ? fetchJson(espnNameMapPath, { optional: true }) : Promise.resolve({}),
     ]);
-    return setCached("core", { players: players || [], playerIds: playerIds || [], teams: teams || [] });
+    return setCached("core", {
+      players: players || [],
+      playerIds: playerIds || [],
+      teams: teams || [],
+      espnNameMap: espnNameMap || {},
+    });
   } catch (err) {
     console.error("DATA_LOAD_ERROR", {
       url: {
         playersPath,
         playerIdsPath,
         teamsPath,
+        espnNameMapPath,
       },
       err,
     });
-    return setCached("core", { players: [], playerIds: [], teams: [] });
+    return setCached("core", { players: [], playerIds: [], teams: [], espnNameMap: {} });
   }
 }
 

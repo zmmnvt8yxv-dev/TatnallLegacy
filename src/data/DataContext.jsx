@@ -6,7 +6,7 @@ const DataContext = createContext(null);
 
 export function DataProvider({ children }) {
   const [manifest, setManifest] = useState(null);
-  const [core, setCore] = useState({ players: [], playerIds: [], teams: [] });
+  const [core, setCore] = useState({ players: [], playerIds: [], teams: [], espnNameMap: {} });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -62,6 +62,7 @@ export function DataProvider({ children }) {
       players: core.players,
       playerIds: core.playerIds,
       teams: core.teams,
+      espnNameMap: core.espnNameMap || {},
       playerIdLookup,
       playerIndex,
       loading,

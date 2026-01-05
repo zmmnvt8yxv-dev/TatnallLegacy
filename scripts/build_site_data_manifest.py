@@ -77,6 +77,7 @@ def main():
   player_ids_path = PUBLIC_DATA / "player_ids.json"
   teams_path = PUBLIC_DATA / "teams.json"
   all_time_path = PUBLIC_DATA / "all_time.json"
+  espn_name_map_path = PUBLIC_DATA / "espn_name_map.json"
 
   if players_path.exists():
     paths["players"] = "data/players.json"
@@ -95,6 +96,8 @@ def main():
 
   if all_time_path.exists():
     paths["allTime"] = "data/all_time.json"
+  if espn_name_map_path.exists():
+    paths["espnNameMap"] = "data/espn_name_map.json"
 
   if season_paths_exist("player_stats/weekly/{season}.json", seasons):
     paths["playerStatsWeekly"] = "data/player_stats/weekly/{season}.json"

@@ -5,14 +5,14 @@ import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { loadWeekData } from "../data/loader.js";
-import { canResolvePlayerId, getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
+import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 
 export default function MatchupDetailPage() {
   const { season, week, matchupId } = useParams();
-  const { loading, error, playerIndex, teams } = useDataContext();
+  const { loading, error, playerIndex, teams, espnNameMap } = useDataContext();
   const [weekData, setWeekData] = useState(null);
   const [search, setSearch] = useState("");
 
@@ -72,9 +72,9 @@ export default function MatchupDetailPage() {
   const buildRoster = (teamKeys) => {
     const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
     const mapped = rows.map((row) => {
-      const display = resolvePlayerDisplay(row.player_id, { row, playerIndex });
+      const display = resolvePlayerDisplay(row.player_id, { row, playerIndex, espnNameMap });
       const canonicalId = getCanonicalPlayerId(row.player_id, { row, playerIndex });
-      const canLink = canonicalId && canResolvePlayerId(canonicalId, playerIndex);
+      const canLink = Boolean(canonicalId);
       return {
         ...row,
         displayName: display.name,

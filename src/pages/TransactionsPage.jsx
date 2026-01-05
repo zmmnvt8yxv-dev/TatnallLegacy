@@ -8,10 +8,10 @@ import { normalizeOwnerName } from "../utils/owners.js";
 import { useVirtualRows } from "../utils/useVirtualRows.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
 import { Link, useSearchParams } from "react-router-dom";
-import { canResolvePlayerId, getCanonicalPlayerId } from "../lib/playerName.js";
+import { getCanonicalPlayerId, looksLikeId } from "../lib/playerName.js";
 
 export default function TransactionsPage() {
-  const { manifest, loading, error, playerIndex } = useDataContext();
+  const { manifest, loading, error, playerIndex, espnNameMap } = useDataContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
   const didInitRef = useRef(false);
@@ -251,6 +251,16 @@ export default function TransactionsPage() {
   if (loading) return <LoadingState label="Loading transactions..." />;
   if (error) return <ErrorState message={error} />;
 
+  const resolvePlayerLabel = (player) => {
+    if (!player) return "Unknown";
+    if (player.name && !looksLikeId(player.name)) return player.name;
+    if (player.id_type === "espn") {
+      const mapped = espnNameMap?.[String(player.id)];
+      if (mapped) return mapped;
+    }
+    return player.name || player.id || "Unknown";
+  };
+
   const renderPlayerLinks = (players) =>
     players
       .map((player, index) => {
@@ -264,13 +274,12 @@ export default function TransactionsPage() {
           },
           playerIndex,
         });
-        const canLink = canonicalId && canResolvePlayerId(canonicalId, playerIndex);
-        return canLink ? (
-          <Link key={`${player.id}-${index}`} to={`/players/${canonicalId}`} className="link-button">
-            {player.name || player.id}
+        const linkId = canonicalId || String(player.id);
+        const label = resolvePlayerLabel(player);
+        return (
+          <Link key={`${player.id}-${index}`} to={`/players/${linkId}`} className="link-button">
+            {label}
           </Link>
-        ) : (
-          <span key={`${player.id}-${index}`}>{player.name || player.id}</span>
         );
       })
       .reduce((prev, curr) => (prev === null ? [curr] : [prev, ", ", curr]), null);
