@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-01-04T00:51:09.028561+00:00",
+  "generatedAt": "2026-01-05T13:36:32.865238+00:00",
   "seasons": [
     2015,
     2016,
@@ -235,6 +235,7 @@
     "transactions": "data/transactions/{season}.json",
     "allTime": "data/all_time.json",
     "playerStatsWeekly": "data/player_stats/weekly/{season}.json",
+    "playerStatsFull": "data/player_stats/full/{season}.json",
     "playerStatsSeason": "data/player_stats/season/{season}.json",
     "playerStatsCareer": "data/player_stats/career.json",
     "metricsSummary": "data/player_metrics/summary.json",
@@ -368,67 +369,67 @@
       "2018": {
         "1": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 141
         },
         "2": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 144
         },
         "3": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 144
         },
         "4": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 142
         },
         "5": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 143
         },
         "6": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 143
         },
         "7": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 143
         },
         "8": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 143
         },
         "9": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 141
         },
         "10": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 141
         },
         "11": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 141
         },
         "12": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 142
         },
         "13": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 141
         },
         "14": {
           "matchups": 5,
-          "lineups": 0
+          "lineups": 140
         },
         "15": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 142
         },
         "16": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 138
         }
       },
       "2015": {
@@ -500,67 +501,67 @@
       "2019": {
         "1": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 139
         },
         "2": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 140
         },
         "3": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 143
         },
         "4": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 146
         },
         "5": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 145
         },
         "6": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 145
         },
         "7": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 144
         },
         "8": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 144
         },
         "9": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 142
         },
         "10": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 145
         },
         "11": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 144
         },
         "12": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 143
         },
         "13": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 146
         },
         "14": {
           "matchups": 5,
-          "lineups": 0
+          "lineups": 143
         },
         "15": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 140
         },
         "16": {
           "matchups": 4,
-          "lineups": 0
+          "lineups": 138
         }
       },
       "2023": {

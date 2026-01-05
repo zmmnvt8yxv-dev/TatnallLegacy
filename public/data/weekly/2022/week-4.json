@@ -43,7 +43,9 @@
       "player_nfl": "CIN",
       "points": 13.4,
       "slot": "RB",
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 4,
@@ -52,7 +54,9 @@
       "player_nfl": "LAR",
       "points": 14.2,
       "slot": "WR",
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 4,
@@ -61,7 +65,9 @@
       "player_nfl": "TEN",
       "points": 22.7,
       "slot": "RB",
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 4,
@@ -70,7 +76,9 @@
       "player_nfl": "PIT",
       "points": 7.4,
       "slot": "RB",
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 4,
@@ -79,7 +87,9 @@
       "player_nfl": "IND",
       "points": 2.3,
       "slot": "RB",
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 4,
@@ -88,7 +98,9 @@
       "player_nfl": "SF",
       "points": 16.8,
       "slot": "RB/WR/TE",
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 4,
@@ -97,7 +109,9 @@
       "player_nfl": "LAC",
       "points": 28.9,
       "slot": "RB",
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 4,
@@ -106,7 +120,9 @@
       "player_nfl": "MIN",
       "points": 8.6,
       "slot": "RB",
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     }
   ]
 }

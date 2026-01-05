@@ -41,1134 +41,1458 @@
       "team": "Team jack",
       "player": "Davante Adams",
       "points": 8.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Stefon Diggs",
       "points": 14.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "A.J. Brown",
       "points": 9.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "D'Andre Swift",
       "points": 12.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Robert Woods",
       "points": 9.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Chris Godwin",
       "points": 4.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Diontae Johnson",
       "points": 9.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Dak Prescott",
       "points": 30.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Logan Thomas",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Ryan Tannehill",
       "points": 12.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Michael Carter",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Michael Gallup",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Elijah Mitchell",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Kenneth Gainwell",
       "points": 0.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Derek Carr",
       "points": 24.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Cole Beasley",
       "points": 14.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Brandon McManus",
       "points": 6.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Tyler Higbee",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Packers D/ST",
       "points": 9.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Chuba Hubbard",
       "points": 12.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team jack",
       "player": "Kenyan Drake",
       "points": 18.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Ezekiel Elliott",
       "points": 11.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Jonathan Taylor",
       "points": 29.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Clyde Edwards-Helaire",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Calvin Ridley",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Julio Jones",
       "points": 5.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Adam Thielen",
       "points": 20.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Kyler Murray",
       "points": 25.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Ja'Marr Chase",
       "points": 9.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Tyler Lockett",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Dallas Goedert",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Robby Anderson",
       "points": 7.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Joe Burrow",
       "points": 23.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Harrison Butker",
       "points": 9.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Marquez Callaway",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Noah Fant",
       "points": 15.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Buccaneers D/ST",
       "points": 6.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Mark Ingram II",
       "points": 7.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Jerick McKinnon",
       "points": 1.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Downs",
       "player": "Vikings D/ST",
       "points": 9.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Christian McCaffrey",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Joe Mixon",
       "points": 21.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Antonio Gibson",
       "points": 2.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Terry McLaurin",
       "points": 2.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "George Kittle",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Myles Gaskin",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "DJ Moore",
       "points": 5.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Courtland Sutton",
       "points": 15.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Cooper Kupp",
       "points": 27.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Justin Herbert",
       "points": 10.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Leonard Fournette",
       "points": 24.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Alexander Mattison",
       "points": 1.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Trey Lance",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Justin Fields",
       "points": 12.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Tony Pollard",
       "points": 6.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Samaje Perine",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Darnell Mooney",
       "points": 10.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Devontae Booker",
       "points": 6.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Dalton Schultz",
       "points": 7.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Bengals D/ST",
       "points": 8.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "King of  December",
       "player": "Chris Boswell",
       "points": 13.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Travis Kelce",
       "points": 9.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Nick Chubb",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Justin Jefferson",
       "points": 6.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Darrell Henderson Jr.",
       "points": 21.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Michael Thomas",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Javonte Williams",
       "points": 6.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Damien Harris",
       "points": 18.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "DeVonta Smith",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Daniel Jones",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Michael Pittman Jr.",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Jason Myers",
       "points": 10.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Christian Kirk",
       "points": 13.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Sterling Shepard",
       "points": 7.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Cordarrelle Patterson",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Zack Moss",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Sam Darnold",
       "points": 14.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Damien Williams",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Emmanuel Sanders",
       "points": 9.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Raiders D/ST",
       "points": 10.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Valar Morghulis",
       "player": "Taylor Heinicke",
       "points": 9.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Alvin Kamara",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Aaron Jones",
       "points": 16.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "DeAndre Hopkins",
       "points": 17.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Josh Jacobs",
       "points": 13.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Allen Robinson II",
       "points": 5.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Amari Cooper",
       "points": 5.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Chase Edmonds",
       "points": 4.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Aaron Rodgers",
       "points": 22.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "T.J. Hockenson",
       "points": 7.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Tee Higgins",
       "points": 4.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Matthew Stafford",
       "points": 25.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Jerry Jeudy",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Justin Tucker",
       "points": 12.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Tony Jones Jr.",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Marvin Jones Jr.",
       "points": 18.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Bills D/ST",
       "points": 0.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Kirk Cousins",
       "points": 29.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Alex Collins",
       "points": 18.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Panthers D/ST",
       "points": 2.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Dawson Knox",
       "points": 4.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Only i can say The N word",
       "player": "Kadarius Toney",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Derrick Henry",
       "points": 37.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Austin Ekeler",
       "points": 4.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Mike Evans",
       "points": 2.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Darren Waller",
       "points": 5.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Kenny Golladay",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Josh Allen",
       "points": 30.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Chase Claypool",
       "points": 1.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Mike Davis",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Brandin Cooks",
       "points": 8.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "James Robinson",
       "points": 15.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Jalen Hurts",
       "points": 24.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "James Conner",
       "points": 7.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Corey Davis",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Steelers D/ST",
       "points": 7.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Marquise Brown",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Matt Gay",
       "points": 8.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Najee Harris",
       "points": 18.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Cowboys D/ST",
       "points": 13.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "What tf happene to my team",
       "player": "Jakobi Meyers",
       "points": 6.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Dalvin Cook",
       "points": 22.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "DK Metcalf",
       "points": 5.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Chris Carson",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "CeeDee Lamb",
       "points": 28.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Kareem Hunt",
       "points": 7.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Russell Wilson",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Kyle Pitts",
       "points": 0.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Raheem Mostert",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Ronald Jones II",
       "points": 2.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Tom Brady",
       "points": 17.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Jarvis Landry",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Tyler Boyd",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Devin Singletary",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Rob Gronkowski",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Rams D/ST",
       "points": 17.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Henry Ruggs III",
       "points": 16.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Jalen Reagor",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Tyler Bass",
       "points": 13.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Mike Williams",
       "points": 2.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Miles Sanders",
       "points": 6.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Pompano Beach Sniper Gang",
       "player": "Carson Wentz",
       "points": 18.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Saquon Barkley",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Tyreek Hill",
       "points": 13.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Keenan Allen",
       "points": 5.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "David Montgomery",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Patrick Mahomes",
       "points": 24.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Lamar Jackson",
       "points": 11.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Mark Andrews",
       "points": 12.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Odell Beckham Jr.",
       "points": 7.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Deebo Samuel",
       "points": 0.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Jaylen Waddle",
       "points": 19.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "T.Y. Hilton",
       "points": 8.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Melvin Gordon III",
       "points": 7.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Jamaal Williams",
       "points": 1.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Hunter Renfrow",
       "points": 3.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Antonio Brown",
       "points": 15.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Khalil Herbert",
       "points": 16.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Darrel Williams",
       "points": 20.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Nick Folk",
       "points": 3.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Latavius Murray",
       "points": 11.0,
-      "started": false
+      "started": false,
+      "source": "league",
+      "source_player_id": null
     },
     {
       "week": 6,
       "team": "Team Malley",
       "player": "Colts D/ST",
       "points": 11.0,
-      "started": true
+      "started": true,
+      "source": "league",
+      "source_player_id": null
     }
   ]
 }
