@@ -69,15 +69,16 @@ export default function PlayerPage() {
 
   useEffect(() => {
     if (!seasons.length) return;
+    const options = availableSeasons.length ? availableSeasons : seasons;
     const paramSeason = Number(searchParams.get("season"));
-    if (Number.isFinite(paramSeason) && seasons.includes(paramSeason) && paramSeason !== Number(selectedSeason)) {
+    if (Number.isFinite(paramSeason) && options.includes(paramSeason) && paramSeason !== Number(selectedSeason)) {
       setSelectedSeason(paramSeason);
     }
     const paramTab = searchParams.get("tab");
     if (paramTab && TABS.includes(paramTab) && paramTab !== activeTab) {
       setActiveTab(paramTab);
     }
-  }, [searchParamsString, seasons, selectedSeason, activeTab]);
+  }, [searchParamsString, seasons, selectedSeason, activeTab, availableSeasons]);
 
   useEffect(() => {
     if (!seasons.length) return;
@@ -87,8 +88,9 @@ export default function PlayerPage() {
     const storedSeason = Number(stored?.season);
     const storedTab = stored?.tab;
     const paramSeason = Number(searchParams.get("season"));
-    let nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
-    if (!searchParams.get("season") && Number.isFinite(storedSeason) && seasons.includes(storedSeason)) {
+    const options = availableSeasons.length ? availableSeasons : seasons;
+    let nextSeason = Number.isFinite(paramSeason) && options.includes(paramSeason) ? paramSeason : options[0];
+    if (!searchParams.get("season") && Number.isFinite(storedSeason) && options.includes(storedSeason)) {
       nextSeason = storedSeason;
     }
     const paramTab = searchParams.get("tab");
@@ -109,7 +111,7 @@ export default function PlayerPage() {
     }
     if (changed) setSearchParams(params, { replace: true });
     didInitRef.current = true;
-  }, [seasons, searchParams, setSearchParams]);
+  }, [seasons, searchParams, setSearchParams, availableSeasons]);
 
   const updateSearchParams = (nextSeason, nextTab) => {
     const params = new URLSearchParams(searchParams);
@@ -122,7 +124,7 @@ export default function PlayerPage() {
 
   const handleTabChange = (value) => {
     setActiveTab(value);
-    updateSearchParams(selectedSeason || seasons[0], value);
+    updateSearchParams(selectedSeason || seasonOptions[0], value);
   };
 
   const handleSeasonChange = (value) => {
@@ -415,6 +417,34 @@ export default function PlayerPage() {
     return name && targetNames.includes(name);
   };
 
+  const availableSeasons = useMemo(() => {
+    if (!statsSeasonSummaries.length) return seasons;
+    const seen = new Set();
+    for (const summary of statsSeasonSummaries) {
+      const rows = summary?.rows || [];
+      if (!rows.length) continue;
+      if (rows.some(matchesPlayer)) {
+        const seasonValue = Number(summary?.season);
+        if (Number.isFinite(seasonValue)) seen.add(seasonValue);
+      }
+    }
+    return Array.from(seen).sort((a, b) => b - a) || seasons;
+  }, [statsSeasonSummaries, seasons, targetIds, targetNames]);
+
+  const seasonOptions = useMemo(
+    () => (availableSeasons.length ? availableSeasons : seasons),
+    [availableSeasons, seasons],
+  );
+
+  useEffect(() => {
+    if (!seasonOptions.length) return;
+    const nextSeason = seasonOptions[0];
+    if (Number(selectedSeason) !== nextSeason) {
+      setSelectedSeason(nextSeason);
+      updateSearchParams(nextSeason, activeTab);
+    }
+  }, [seasonOptions]);
+
   const findMetricsRow = (rows) => {
     if (!rows?.length) return null;
     return (
@@ -502,11 +532,26 @@ export default function PlayerPage() {
 
   const teamHistory = useMemo(() => {
     const teams = new Set();
+    const addTeam = (value) => {
+      const cleaned = String(value || "").trim();
+      if (cleaned && cleaned !== "—") teams.add(cleaned);
+    };
+    for (const summary of statsSeasonSummaries) {
+      const rows = summary?.rows || [];
+      for (const row of rows) {
+        if (!matchesPlayer(row)) continue;
+        addTeam(row.team);
+        addTeam(row.nfl_team);
+        addTeam(row.team_abbr);
+        addTeam(row.team_abbrev);
+        addTeam(row.club);
+      }
+    }
     for (const row of weeklyDisplayRows) {
-      if (row.nflTeam) teams.add(row.nflTeam);
+      addTeam(row.nflTeam);
     }
     return Array.from(teams);
-  }, [weeklyDisplayRows]);
+  }, [statsSeasonSummaries, weeklyDisplayRows, targetIds, targetNames]);
 
   const filteredWeeklyRows = useMemo(() => {
     const query = search.toLowerCase().trim();
@@ -905,7 +950,7 @@ export default function PlayerPage() {
             <div>
               <label>Season</label>
               <select value={selectedSeason} onChange={(event) => handleSeasonChange(event.target.value)}>
-                {seasons.map((season) => (
+                {seasonOptions.map((season) => (
                   <option key={season} value={season}>
                     {season}
                   </option>
@@ -969,7 +1014,7 @@ export default function PlayerPage() {
             <div>
               <label>Season</label>
               <select value={selectedSeason} onChange={(event) => handleSeasonChange(event.target.value)}>
-                {seasons.map((season) => (
+                {seasonOptions.map((season) => (
                   <option key={season} value={season}>
                     {season}
                   </option>
