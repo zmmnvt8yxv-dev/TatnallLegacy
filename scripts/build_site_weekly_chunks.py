@@ -12,6 +12,7 @@ SLEEPER_PLAYERS_PATH = ROOT / "data_raw" / "sleeper" / "players_flat.csv"
 MASTER_PLAYERS_PATH = ROOT / "data_raw" / "master" / "players_master_nflverse_espn_sleeper.csv"
 ESPN_PLAYERS_INDEX_PATH = ROOT / "data_raw" / "espn_core" / "index" / "athletes_index_flat.csv"
 ESPN_CORE_BY_ID_DIR = ROOT / "data_raw" / "espn_core" / "athletes_by_id"
+ESPN_NAME_MAP_PATH = ROOT / "data_raw" / "espn_core" / "index" / "espn_name_map.json"
 
 ESPN_TEAM_ID_TO_ABBR = {
   1: "ATL",
@@ -93,6 +94,17 @@ def load_sleeper_player_maps():
   espn_to_sleeper = {}
   name_to_sleeper = {}
   espn_to_name = {}
+  if ESPN_NAME_MAP_PATH.exists():
+    try:
+      payload = read_json(ESPN_NAME_MAP_PATH)
+    except Exception:
+      payload = None
+    if isinstance(payload, dict):
+      for espn_id, display_name in payload.items():
+        espn_id = normalize_numeric_id(espn_id)
+        display_name = (str(display_name).strip() if display_name is not None else "")
+        if espn_id and display_name and espn_id not in espn_to_name:
+          espn_to_name[espn_id] = display_name
   if SLEEPER_PLAYERS_PATH.exists():
     with SLEEPER_PLAYERS_PATH.open("r", encoding="utf-8") as handle:
       reader = csv.DictReader(handle)
