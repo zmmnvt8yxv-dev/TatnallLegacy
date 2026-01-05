@@ -206,6 +206,25 @@
       "source": "espn_transactions"
     },
     {
+      "id": "6cb261e4-4952-4e12-9a2a-298c5234f926-trade-0",
+      "season": 2020,
+      "week": 1,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Dion Lewis | Sent: None",
+      "created": 1599700914389,
+      "players": [
+        {
+          "id": "14198",
+          "name": "Dion Lewis",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14198
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "6cb261e4-4952-4e12-9a2a-298c5234f926-trade-4",
       "season": 2020,
       "week": 1,
@@ -239,25 +258,6 @@
           "id": "14198",
           "name": "Dion Lewis",
           "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14198
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "6cb261e4-4952-4e12-9a2a-298c5234f926-trade-0",
-      "season": 2020,
-      "week": 1,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Dion Lewis | Sent: None",
-      "created": 1599700914389,
-      "players": [
-        {
-          "id": "14198",
-          "name": "Dion Lewis",
-          "action": "received",
           "id_type": "espn",
           "source_player_id": 14198
         }
@@ -507,39 +507,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fa77b3d7-72fd-4587-ad2c-f3685043741e-trade-8",
-      "season": 2020,
-      "week": 1,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Leonard Fournette | Sent: Tarik Cohen, Emmanuel Sanders",
-      "created": 1598879318213,
-      "players": [
-        {
-          "id": "3115364",
-          "name": "Leonard Fournette",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3115364
-        },
-        {
-          "id": "3066158",
-          "name": "Tarik Cohen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3066158
-        },
-        {
-          "id": "13295",
-          "name": "Emmanuel Sanders",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13295
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "fa77b3d7-72fd-4587-ad2c-f3685043741e-trade-4",
       "season": 2020,
       "week": 1,
@@ -568,6 +535,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3115364
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "fa77b3d7-72fd-4587-ad2c-f3685043741e-trade-8",
+      "season": 2020,
+      "week": 1,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Leonard Fournette | Sent: Tarik Cohen, Emmanuel Sanders",
+      "created": 1598879318213,
+      "players": [
+        {
+          "id": "3115364",
+          "name": "Leonard Fournette",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3115364
+        },
+        {
+          "id": "3066158",
+          "name": "Tarik Cohen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3066158
+        },
+        {
+          "id": "13295",
+          "name": "Emmanuel Sanders",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13295
         }
       ],
       "source": "espn_transactions"
@@ -677,6 +677,25 @@
       "source": "espn_transactions"
     },
     {
+      "id": "bd6e3d19-e01e-4ff4-b501-ca07ecb5923e-trade-0",
+      "season": 2020,
+      "week": 1,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Dion Lewis | Sent: None",
+      "created": 1599765132292,
+      "players": [
+        {
+          "id": "14198",
+          "name": "Dion Lewis",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14198
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "bd6e3d19-e01e-4ff4-b501-ca07ecb5923e-trade-4",
       "season": 2020,
       "week": 1,
@@ -710,25 +729,6 @@
           "id": "14198",
           "name": "Dion Lewis",
           "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14198
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "bd6e3d19-e01e-4ff4-b501-ca07ecb5923e-trade-0",
-      "season": 2020,
-      "week": 1,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Dion Lewis | Sent: None",
-      "created": 1599765132292,
-      "players": [
-        {
-          "id": "14198",
-          "name": "Dion Lewis",
-          "action": "received",
           "id_type": "espn",
           "source_player_id": 14198
         }
@@ -1176,39 +1176,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "00e93ae2-5ee1-46b4-82e3-2e7de18f7f33-trade-8",
-      "season": 2020,
-      "week": 1,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Leonard Fournette | Sent: Tarik Cohen, Emmanuel Sanders",
-      "created": 1598891354515,
-      "players": [
-        {
-          "id": "3115364",
-          "name": "Leonard Fournette",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3115364
-        },
-        {
-          "id": "3066158",
-          "name": "Tarik Cohen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3066158
-        },
-        {
-          "id": "13295",
-          "name": "Emmanuel Sanders",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13295
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "00e93ae2-5ee1-46b4-82e3-2e7de18f7f33-trade-4",
       "season": 2020,
       "week": 1,
@@ -1237,6 +1204,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3115364
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "00e93ae2-5ee1-46b4-82e3-2e7de18f7f33-trade-8",
+      "season": 2020,
+      "week": 1,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Leonard Fournette | Sent: Tarik Cohen, Emmanuel Sanders",
+      "created": 1598891354515,
+      "players": [
+        {
+          "id": "3115364",
+          "name": "Leonard Fournette",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3115364
+        },
+        {
+          "id": "3066158",
+          "name": "Tarik Cohen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3066158
+        },
+        {
+          "id": "13295",
+          "name": "Emmanuel Sanders",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13295
         }
       ],
       "source": "espn_transactions"
@@ -1427,60 +1427,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "04e862f3-0454-4a91-98a7-793df7ecb024-trade-4",
-      "season": 2020,
-      "week": 2,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Mark Ingram II, Odell Beckham Jr., Le'Veon Bell, Brandin Cooks | Sent: Davante Adams, Julio Jones",
-      "created": 1600654814919,
-      "players": [
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "16733",
-          "name": "Odell Beckham Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16733
-        },
-        {
-          "id": "15825",
-          "name": "Le'Veon Bell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15825
-        },
-        {
-          "id": "16731",
-          "name": "Brandin Cooks",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16731
-        },
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "13982",
-          "name": "Julio Jones",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13982
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "04e862f3-0454-4a91-98a7-793df7ecb024-trade-3",
       "season": 2020,
       "week": 2,
@@ -1530,6 +1476,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16731
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "04e862f3-0454-4a91-98a7-793df7ecb024-trade-4",
+      "season": 2020,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Mark Ingram II, Odell Beckham Jr., Le'Veon Bell, Brandin Cooks | Sent: Davante Adams, Julio Jones",
+      "created": 1600654814919,
+      "players": [
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "16733",
+          "name": "Odell Beckham Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16733
+        },
+        {
+          "id": "15825",
+          "name": "Le'Veon Bell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15825
+        },
+        {
+          "id": "16731",
+          "name": "Brandin Cooks",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16731
+        },
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "13982",
+          "name": "Julio Jones",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13982
         }
       ],
       "source": "espn_transactions"
@@ -1734,46 +1734,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "12295125-62bf-43d2-9e21-d4d203acfdba-trade-8",
-      "season": 2020,
-      "week": 2,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Davante Adams, Darrell Henderson Jr. | Sent: Derrick Henry, Jerry Jeudy",
-      "created": 1600782947963,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "4039359",
-          "name": "Darrell Henderson Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4039359
-        },
-        {
-          "id": "3043078",
-          "name": "Derrick Henry",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3043078
-        },
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "12295125-62bf-43d2-9e21-d4d203acfdba-trade-4",
       "season": 2020,
       "week": 2,
@@ -1809,6 +1769,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4039359
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "12295125-62bf-43d2-9e21-d4d203acfdba-trade-8",
+      "season": 2020,
+      "week": 2,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Davante Adams, Darrell Henderson Jr. | Sent: Derrick Henry, Jerry Jeudy",
+      "created": 1600782947963,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "4039359",
+          "name": "Darrell Henderson Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4039359
+        },
+        {
+          "id": "3043078",
+          "name": "Derrick Henry",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3043078
+        },
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241463
         }
       ],
       "source": "espn_transactions"
@@ -2032,32 +2032,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7a1e699c-6950-4b7b-a4ea-e16501c9ef02-trade-6",
-      "season": 2020,
-      "week": 2,
-      "type": "trade",
-      "team": "Fuck My Alarm",
-      "summary": "Received: Saquon Barkley | Sent: Kenyan Drake",
-      "created": 1600633375204,
-      "players": [
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "2979843",
-          "name": "Kenyan Drake",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2979843
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7a1e699c-6950-4b7b-a4ea-e16501c9ef02-trade-4",
       "season": 2020,
       "week": 2,
@@ -2079,6 +2053,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3929630
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7a1e699c-6950-4b7b-a4ea-e16501c9ef02-trade-6",
+      "season": 2020,
+      "week": 2,
+      "type": "trade",
+      "team": "Fuck My Alarm",
+      "summary": "Received: Saquon Barkley | Sent: Kenyan Drake",
+      "created": 1600633375204,
+      "players": [
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "2979843",
+          "name": "Kenyan Drake",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2979843
         }
       ],
       "source": "espn_transactions"
@@ -2269,32 +2269,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "04ffaf0e-2059-44cb-a71b-74ca8a11eba7-trade-6",
-      "season": 2020,
-      "week": 2,
-      "type": "trade",
-      "team": "Fuck My Alarm",
-      "summary": "Received: Phillip Lindsay | Sent: J.K. Dobbins",
-      "created": 1600458126579,
-      "players": [
-        {
-          "id": "3052117",
-          "name": "Phillip Lindsay",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3052117
-        },
-        {
-          "id": "4241985",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241985
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "04ffaf0e-2059-44cb-a71b-74ca8a11eba7-trade-4",
       "season": 2020,
       "week": 2,
@@ -2321,41 +2295,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d973c982-b102-4209-af25-9f9316757283-trade-2",
+      "id": "04ffaf0e-2059-44cb-a71b-74ca8a11eba7-trade-6",
       "season": 2020,
       "week": 2,
       "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: Saquon Barkley | Sent: Ronald Jones, Adrian Peterson, Travis Kelce",
-      "created": 1600274196938,
+      "team": "Fuck My Alarm",
+      "summary": "Received: Phillip Lindsay | Sent: J.K. Dobbins",
+      "created": 1600458126579,
       "players": [
         {
-          "id": "3929630",
-          "name": "Saquon Barkley",
+          "id": "3052117",
+          "name": "Phillip Lindsay",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3929630
+          "source_player_id": 3052117
         },
         {
-          "id": "3912550",
-          "name": "Ronald Jones",
+          "id": "4241985",
+          "name": "J.K. Dobbins",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3912550
-        },
-        {
-          "id": "10452",
-          "name": "Adrian Peterson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 10452
-        },
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15847
+          "source_player_id": 4241985
         }
       ],
       "source": "espn_transactions"
@@ -2401,6 +2361,46 @@
       "source": "espn_transactions"
     },
     {
+      "id": "d973c982-b102-4209-af25-9f9316757283-trade-2",
+      "season": 2020,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: Saquon Barkley | Sent: Ronald Jones, Adrian Peterson, Travis Kelce",
+      "created": 1600274196938,
+      "players": [
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3912550",
+          "name": "Ronald Jones",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912550
+        },
+        {
+          "id": "10452",
+          "name": "Adrian Peterson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 10452
+        },
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15847
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "e77639eb-095b-44bc-a485-408b89b3fb68-add-4-3051902",
       "season": 2020,
       "week": 2,
@@ -2415,46 +2415,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 3051902
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "632f18d4-dad2-4630-9b62-1f11c2ddd37c-trade-4",
-      "season": 2020,
-      "week": 2,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Le'Veon Bell, Nyheim Hines, Darius Slayton | Sent: Saquon Barkley",
-      "created": 1600285131707,
-      "players": [
-        {
-          "id": "15825",
-          "name": "Le'Veon Bell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15825
-        },
-        {
-          "id": "3916430",
-          "name": "Nyheim Hines",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916430
-        },
-        {
-          "id": "3916945",
-          "name": "Darius Slayton",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916945
-        },
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3929630
         }
       ],
       "source": "espn_transactions"
@@ -2500,32 +2460,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "13cc53ab-899c-4e87-be9d-c6d6491e1302-drop-3-15966",
-      "season": 2020,
-      "week": 2,
-      "type": "drop",
-      "team": "Valar Morghulis",
-      "summary": "Dropped: Chris Thompson",
-      "created": 1600181481348,
-      "players": [
-        {
-          "id": "15966",
-          "name": "Chris Thompson",
-          "action": "drop",
-          "id_type": "espn",
-          "source_player_id": 15966
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "37851432-d34d-431a-acd6-4bd6743957da-trade-4",
+      "id": "632f18d4-dad2-4630-9b62-1f11c2ddd37c-trade-4",
       "season": 2020,
       "week": 2,
       "type": "trade",
       "team": "Team Malley",
       "summary": "Received: Le'Veon Bell, Nyheim Hines, Darius Slayton | Sent: Saquon Barkley",
-      "created": 1600275364099,
+      "created": 1600285131707,
       "players": [
         {
           "id": "15825",
@@ -2554,6 +2495,25 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3929630
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "13cc53ab-899c-4e87-be9d-c6d6491e1302-drop-3-15966",
+      "season": 2020,
+      "week": 2,
+      "type": "drop",
+      "team": "Valar Morghulis",
+      "summary": "Dropped: Chris Thompson",
+      "created": 1600181481348,
+      "players": [
+        {
+          "id": "15966",
+          "name": "Chris Thompson",
+          "action": "drop",
+          "id_type": "espn",
+          "source_player_id": 15966
         }
       ],
       "source": "espn_transactions"
@@ -2594,6 +2554,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3916945
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "37851432-d34d-431a-acd6-4bd6743957da-trade-4",
+      "season": 2020,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Le'Veon Bell, Nyheim Hines, Darius Slayton | Sent: Saquon Barkley",
+      "created": 1600275364099,
+      "players": [
+        {
+          "id": "15825",
+          "name": "Le'Veon Bell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15825
+        },
+        {
+          "id": "3916430",
+          "name": "Nyheim Hines",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916430
+        },
+        {
+          "id": "3916945",
+          "name": "Darius Slayton",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916945
+        },
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3929630
         }
       ],
       "source": "espn_transactions"
@@ -2874,46 +2874,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b23a0fce-b8ae-4b19-be05-3579cd4a2034-trade-2",
-      "season": 2020,
-      "week": 2,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: Saquon Barkley | Sent: Ronald Jones, Adrian Peterson, Travis Kelce",
-      "created": 1600274491532,
-      "players": [
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "3912550",
-          "name": "Ronald Jones",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3912550
-        },
-        {
-          "id": "10452",
-          "name": "Adrian Peterson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 10452
-        },
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15847
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b23a0fce-b8ae-4b19-be05-3579cd4a2034-trade-4",
       "season": 2020,
       "week": 2,
@@ -2949,6 +2909,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3929630
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b23a0fce-b8ae-4b19-be05-3579cd4a2034-trade-2",
+      "season": 2020,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: Saquon Barkley | Sent: Ronald Jones, Adrian Peterson, Travis Kelce",
+      "created": 1600274491532,
+      "players": [
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "3912550",
+          "name": "Ronald Jones",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912550
+        },
+        {
+          "id": "10452",
+          "name": "Adrian Peterson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 10452
+        },
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15847
         }
       ],
       "source": "espn_transactions"
@@ -3177,46 +3177,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "8a47d087-96ad-4be7-a6e2-1e15f9f5e958-trade-8",
-      "season": 2020,
-      "week": 2,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Davante Adams, Darrell Henderson Jr. | Sent: Derrick Henry, Jerry Jeudy",
-      "created": 1600744302475,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "4039359",
-          "name": "Darrell Henderson Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4039359
-        },
-        {
-          "id": "3043078",
-          "name": "Derrick Henry",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3043078
-        },
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "8a47d087-96ad-4be7-a6e2-1e15f9f5e958-trade-4",
       "season": 2020,
       "week": 2,
@@ -3252,6 +3212,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4039359
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "8a47d087-96ad-4be7-a6e2-1e15f9f5e958-trade-8",
+      "season": 2020,
+      "week": 2,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Davante Adams, Darrell Henderson Jr. | Sent: Derrick Henry, Jerry Jeudy",
+      "created": 1600744302475,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "4039359",
+          "name": "Darrell Henderson Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4039359
+        },
+        {
+          "id": "3043078",
+          "name": "Derrick Henry",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3043078
+        },
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241463
         }
       ],
       "source": "espn_transactions"
@@ -3423,32 +3423,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a00935db-9c85-4c2d-a892-0bcec84a98f0-trade-6",
-      "season": 2020,
-      "week": 2,
-      "type": "trade",
-      "team": "Fuck My Alarm",
-      "summary": "Received: Phillip Lindsay | Sent: J.K. Dobbins",
-      "created": 1600285349516,
-      "players": [
-        {
-          "id": "3052117",
-          "name": "Phillip Lindsay",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3052117
-        },
-        {
-          "id": "4241985",
-          "name": "J.K. Dobbins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241985
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a00935db-9c85-4c2d-a892-0bcec84a98f0-trade-4",
       "season": 2020,
       "week": 2,
@@ -3470,6 +3444,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3052117
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a00935db-9c85-4c2d-a892-0bcec84a98f0-trade-6",
+      "season": 2020,
+      "week": 2,
+      "type": "trade",
+      "team": "Fuck My Alarm",
+      "summary": "Received: Phillip Lindsay | Sent: J.K. Dobbins",
+      "created": 1600285349516,
+      "players": [
+        {
+          "id": "3052117",
+          "name": "Phillip Lindsay",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3052117
+        },
+        {
+          "id": "4241985",
+          "name": "J.K. Dobbins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241985
         }
       ],
       "source": "espn_transactions"
@@ -3764,32 +3764,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "6fe449f9-ffcf-4355-b2a9-973100396f4d-trade-6",
-      "season": 2020,
-      "week": 2,
-      "type": "trade",
-      "team": "Fuck My Alarm",
-      "summary": "Received: Saquon Barkley | Sent: Kenyan Drake",
-      "created": 1600806003817,
-      "players": [
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "2979843",
-          "name": "Kenyan Drake",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2979843
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "6fe449f9-ffcf-4355-b2a9-973100396f4d-trade-4",
       "season": 2020,
       "week": 2,
@@ -3816,55 +3790,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "624f51d7-6e4e-423f-b80b-748d568990e2-trade-4",
+      "id": "6fe449f9-ffcf-4355-b2a9-973100396f4d-trade-6",
       "season": 2020,
       "week": 2,
       "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Mark Ingram II, Odell Beckham Jr., Le'Veon Bell, Brandin Cooks | Sent: Davante Adams, Julio Jones",
-      "created": 1600827606064,
+      "team": "Fuck My Alarm",
+      "summary": "Received: Saquon Barkley | Sent: Kenyan Drake",
+      "created": 1600806003817,
       "players": [
         {
-          "id": "13981",
-          "name": "Mark Ingram II",
+          "id": "3929630",
+          "name": "Saquon Barkley",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 13981
+          "source_player_id": 3929630
         },
         {
-          "id": "16733",
-          "name": "Odell Beckham Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16733
-        },
-        {
-          "id": "15825",
-          "name": "Le'Veon Bell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15825
-        },
-        {
-          "id": "16731",
-          "name": "Brandin Cooks",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16731
-        },
-        {
-          "id": "16800",
-          "name": "Davante Adams",
+          "id": "2979843",
+          "name": "Kenyan Drake",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "13982",
-          "name": "Julio Jones",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13982
+          "source_player_id": 2979843
         }
       ],
       "source": "espn_transactions"
@@ -3919,6 +3865,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16731
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "624f51d7-6e4e-423f-b80b-748d568990e2-trade-4",
+      "season": 2020,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Mark Ingram II, Odell Beckham Jr., Le'Veon Bell, Brandin Cooks | Sent: Davante Adams, Julio Jones",
+      "created": 1600827606064,
+      "players": [
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "16733",
+          "name": "Odell Beckham Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16733
+        },
+        {
+          "id": "15825",
+          "name": "Le'Veon Bell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15825
+        },
+        {
+          "id": "16731",
+          "name": "Brandin Cooks",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16731
+        },
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "13982",
+          "name": "Julio Jones",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13982
         }
       ],
       "source": "espn_transactions"
@@ -4298,39 +4298,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "345fdcf0-360f-4447-8401-95008bedff83-trade-2",
-      "season": 2020,
-      "week": 3,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: James Robinson | Sent: CeeDee Lamb, DJ Chark",
-      "created": 1600814279079,
-      "players": [
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        },
-        {
-          "id": "4241389",
-          "name": "CeeDee Lamb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241389
-        },
-        {
-          "id": "3115394",
-          "name": "DJ Chark",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3115394
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "345fdcf0-360f-4447-8401-95008bedff83-trade-4",
       "season": 2020,
       "week": 3,
@@ -4359,6 +4326,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4052042
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "345fdcf0-360f-4447-8401-95008bedff83-trade-2",
+      "season": 2020,
+      "week": 3,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: James Robinson | Sent: CeeDee Lamb, DJ Chark",
+      "created": 1600814279079,
+      "players": [
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4052042
+        },
+        {
+          "id": "4241389",
+          "name": "CeeDee Lamb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241389
+        },
+        {
+          "id": "3115394",
+          "name": "DJ Chark",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3115394
         }
       ],
       "source": "espn_transactions"
@@ -5443,39 +5443,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0874db90-dfff-4460-9669-6cb972393158-trade-2",
-      "season": 2020,
-      "week": 3,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: James Robinson | Sent: CeeDee Lamb, DJ Chark",
-      "created": 1600815604364,
-      "players": [
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        },
-        {
-          "id": "4241389",
-          "name": "CeeDee Lamb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241389
-        },
-        {
-          "id": "3115394",
-          "name": "DJ Chark",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3115394
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "0874db90-dfff-4460-9669-6cb972393158-trade-4",
       "season": 2020,
       "week": 3,
@@ -5504,6 +5471,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4052042
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "0874db90-dfff-4460-9669-6cb972393158-trade-2",
+      "season": 2020,
+      "week": 3,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: James Robinson | Sent: CeeDee Lamb, DJ Chark",
+      "created": 1600815604364,
+      "players": [
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4052042
+        },
+        {
+          "id": "4241389",
+          "name": "CeeDee Lamb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241389
+        },
+        {
+          "id": "3115394",
+          "name": "DJ Chark",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3115394
         }
       ],
       "source": "espn_transactions"
@@ -5950,39 +5950,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "2593e329-1811-40d8-9720-e446c3b00d15-trade-4",
-      "season": 2020,
-      "week": 4,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Mark Ingram II, Brandin Cooks | Sent: Devin Singletary",
-      "created": 1601478487633,
-      "players": [
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "16731",
-          "name": "Brandin Cooks",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16731
-        },
-        {
-          "id": "4040761",
-          "name": "Devin Singletary",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4040761
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "2593e329-1811-40d8-9720-e446c3b00d15-trade-3",
       "season": 2020,
       "week": 4,
@@ -6011,6 +5978,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16731
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "2593e329-1811-40d8-9720-e446c3b00d15-trade-4",
+      "season": 2020,
+      "week": 4,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Mark Ingram II, Brandin Cooks | Sent: Devin Singletary",
+      "created": 1601478487633,
+      "players": [
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "16731",
+          "name": "Brandin Cooks",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16731
+        },
+        {
+          "id": "4040761",
+          "name": "Devin Singletary",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4040761
         }
       ],
       "source": "espn_transactions"
@@ -6624,46 +6624,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "cb3e8d6a-d4fb-4520-ad61-936558847ae5-trade-8",
-      "season": 2020,
-      "week": 4,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Devin Singletary, Julio Jones | Sent: Derrick Henry, Hollywood Brown",
-      "created": 1601562821771,
-      "players": [
-        {
-          "id": "4040761",
-          "name": "Devin Singletary",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040761
-        },
-        {
-          "id": "13982",
-          "name": "Julio Jones",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13982
-        },
-        {
-          "id": "3043078",
-          "name": "Derrick Henry",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3043078
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "cb3e8d6a-d4fb-4520-ad61-936558847ae5-trade-4",
       "season": 2020,
       "week": 4,
@@ -6699,6 +6659,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13982
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "cb3e8d6a-d4fb-4520-ad61-936558847ae5-trade-8",
+      "season": 2020,
+      "week": 4,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Devin Singletary, Julio Jones | Sent: Derrick Henry, Hollywood Brown",
+      "created": 1601562821771,
+      "players": [
+        {
+          "id": "4040761",
+          "name": "Devin Singletary",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4040761
+        },
+        {
+          "id": "13982",
+          "name": "Julio Jones",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13982
+        },
+        {
+          "id": "3043078",
+          "name": "Derrick Henry",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3043078
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241372
         }
       ],
       "source": "espn_transactions"
@@ -8043,46 +8043,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b319ff99-d0b8-4d32-81b7-e2c0c04be551-trade-8",
-      "season": 2020,
-      "week": 4,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Devin Singletary, Julio Jones | Sent: Derrick Henry, Hollywood Brown",
-      "created": 1601482437431,
-      "players": [
-        {
-          "id": "4040761",
-          "name": "Devin Singletary",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040761
-        },
-        {
-          "id": "13982",
-          "name": "Julio Jones",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13982
-        },
-        {
-          "id": "3043078",
-          "name": "Derrick Henry",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3043078
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b319ff99-d0b8-4d32-81b7-e2c0c04be551-trade-4",
       "season": 2020,
       "week": 4,
@@ -8118,6 +8078,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13982
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b319ff99-d0b8-4d32-81b7-e2c0c04be551-trade-8",
+      "season": 2020,
+      "week": 4,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Devin Singletary, Julio Jones | Sent: Derrick Henry, Hollywood Brown",
+      "created": 1601482437431,
+      "players": [
+        {
+          "id": "4040761",
+          "name": "Devin Singletary",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4040761
+        },
+        {
+          "id": "13982",
+          "name": "Julio Jones",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13982
+        },
+        {
+          "id": "3043078",
+          "name": "Derrick Henry",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3043078
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241372
         }
       ],
       "source": "espn_transactions"
@@ -8369,39 +8369,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a60d6520-56b9-48c1-80b6-690b60542fde-trade-4",
-      "season": 2020,
-      "week": 4,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Mark Ingram II, Brandin Cooks | Sent: Devin Singletary",
-      "created": 1601383049453,
-      "players": [
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "16731",
-          "name": "Brandin Cooks",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16731
-        },
-        {
-          "id": "4040761",
-          "name": "Devin Singletary",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4040761
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a60d6520-56b9-48c1-80b6-690b60542fde-trade-3",
       "season": 2020,
       "week": 4,
@@ -8430,6 +8397,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16731
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a60d6520-56b9-48c1-80b6-690b60542fde-trade-4",
+      "season": 2020,
+      "week": 4,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Mark Ingram II, Brandin Cooks | Sent: Devin Singletary",
+      "created": 1601383049453,
+      "players": [
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "16731",
+          "name": "Brandin Cooks",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16731
+        },
+        {
+          "id": "4040761",
+          "name": "Devin Singletary",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4040761
         }
       ],
       "source": "espn_transactions"
@@ -8829,46 +8829,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fddd9179-2009-4064-968f-a1e71709ff08-trade-6",
-      "season": 2020,
-      "week": 5,
-      "type": "trade",
-      "team": "Fuck My Alarm",
-      "summary": "Received: Darrell Henderson Jr., Justin Jefferson | Sent: Kenyan Drake, Hunter Henry",
-      "created": 1602778506207,
-      "players": [
-        {
-          "id": "4039359",
-          "name": "Darrell Henderson Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4039359
-        },
-        {
-          "id": "4262921",
-          "name": "Justin Jefferson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4262921
-        },
-        {
-          "id": "2979843",
-          "name": "Kenyan Drake",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2979843
-        },
-        {
-          "id": "3046439",
-          "name": "Hunter Henry",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3046439
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "fddd9179-2009-4064-968f-a1e71709ff08-trade-4",
       "season": 2020,
       "week": 5,
@@ -8904,6 +8864,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4262921
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "fddd9179-2009-4064-968f-a1e71709ff08-trade-6",
+      "season": 2020,
+      "week": 5,
+      "type": "trade",
+      "team": "Fuck My Alarm",
+      "summary": "Received: Darrell Henderson Jr., Justin Jefferson | Sent: Kenyan Drake, Hunter Henry",
+      "created": 1602778506207,
+      "players": [
+        {
+          "id": "4039359",
+          "name": "Darrell Henderson Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4039359
+        },
+        {
+          "id": "4262921",
+          "name": "Justin Jefferson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4262921
+        },
+        {
+          "id": "2979843",
+          "name": "Kenyan Drake",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2979843
+        },
+        {
+          "id": "3046439",
+          "name": "Hunter Henry",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3046439
         }
       ],
       "source": "espn_transactions"
@@ -9569,46 +9569,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "dcf0390a-1daa-46a3-8a45-be1186cb0107-trade-1",
-      "season": 2020,
-      "week": 5,
-      "type": "trade",
-      "team": "The King",
-      "summary": "Received: Davante Adams, Devonta Freeman | Sent: Diontae Johnson, David Montgomery",
-      "created": 1602637500689,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "16944",
-          "name": "Devonta Freeman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16944
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
-        },
-        {
-          "id": "4035538",
-          "name": "David Montgomery",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035538
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "dcf0390a-1daa-46a3-8a45-be1186cb0107-trade-4",
       "season": 2020,
       "week": 5,
@@ -9644,6 +9604,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16944
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "dcf0390a-1daa-46a3-8a45-be1186cb0107-trade-1",
+      "season": 2020,
+      "week": 5,
+      "type": "trade",
+      "team": "The King",
+      "summary": "Received: Davante Adams, Devonta Freeman | Sent: Diontae Johnson, David Montgomery",
+      "created": 1602637500689,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "16944",
+          "name": "Devonta Freeman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16944
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
+        },
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035538
         }
       ],
       "source": "espn_transactions"
@@ -9706,46 +9706,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "25626107-cb41-4f59-bea2-be5e479628f1-trade-6",
-      "season": 2020,
-      "week": 5,
-      "type": "trade",
-      "team": "Fuck My Alarm",
-      "summary": "Received: Darrell Henderson Jr., Justin Jefferson | Sent: Kenyan Drake, Hunter Henry",
-      "created": 1602605739582,
-      "players": [
-        {
-          "id": "4039359",
-          "name": "Darrell Henderson Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4039359
-        },
-        {
-          "id": "4262921",
-          "name": "Justin Jefferson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4262921
-        },
-        {
-          "id": "2979843",
-          "name": "Kenyan Drake",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2979843
-        },
-        {
-          "id": "3046439",
-          "name": "Hunter Henry",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3046439
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "25626107-cb41-4f59-bea2-be5e479628f1-trade-4",
       "season": 2020,
       "week": 5,
@@ -9781,6 +9741,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4262921
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "25626107-cb41-4f59-bea2-be5e479628f1-trade-6",
+      "season": 2020,
+      "week": 5,
+      "type": "trade",
+      "team": "Fuck My Alarm",
+      "summary": "Received: Darrell Henderson Jr., Justin Jefferson | Sent: Kenyan Drake, Hunter Henry",
+      "created": 1602605739582,
+      "players": [
+        {
+          "id": "4039359",
+          "name": "Darrell Henderson Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4039359
+        },
+        {
+          "id": "4262921",
+          "name": "Justin Jefferson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4262921
+        },
+        {
+          "id": "2979843",
+          "name": "Kenyan Drake",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2979843
+        },
+        {
+          "id": "3046439",
+          "name": "Hunter Henry",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3046439
         }
       ],
       "source": "espn_transactions"
@@ -9843,46 +9843,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "9869b617-19eb-448d-9358-2ff6efea07be-trade-1",
-      "season": 2020,
-      "week": 5,
-      "type": "trade",
-      "team": "The King",
-      "summary": "Received: Davante Adams, Devonta Freeman | Sent: Diontae Johnson, David Montgomery",
-      "created": 1602725961278,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "16944",
-          "name": "Devonta Freeman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16944
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
-        },
-        {
-          "id": "4035538",
-          "name": "David Montgomery",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035538
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "9869b617-19eb-448d-9358-2ff6efea07be-trade-4",
       "season": 2020,
       "week": 5,
@@ -9918,6 +9878,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16944
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "9869b617-19eb-448d-9358-2ff6efea07be-trade-1",
+      "season": 2020,
+      "week": 5,
+      "type": "trade",
+      "team": "The King",
+      "summary": "Received: Davante Adams, Devonta Freeman | Sent: Diontae Johnson, David Montgomery",
+      "created": 1602725961278,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "16944",
+          "name": "Devonta Freeman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16944
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
+        },
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035538
         }
       ],
       "source": "espn_transactions"
@@ -10075,39 +10075,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a19944f5-370c-493f-8db1-9a6ad45aa8a6-trade-4",
-      "season": 2020,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Mark Ingram II, Le'Veon Bell | Sent: James Robinson",
-      "created": 1602773292305,
-      "players": [
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "15825",
-          "name": "Le'Veon Bell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15825
-        },
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a19944f5-370c-493f-8db1-9a6ad45aa8a6-trade-3",
       "season": 2020,
       "week": 6,
@@ -10136,6 +10103,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15825
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a19944f5-370c-493f-8db1-9a6ad45aa8a6-trade-4",
+      "season": 2020,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Mark Ingram II, Le'Veon Bell | Sent: James Robinson",
+      "created": 1602773292305,
+      "players": [
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "15825",
+          "name": "Le'Veon Bell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15825
+        },
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4052042
         }
       ],
       "source": "espn_transactions"
@@ -10179,32 +10179,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "4428396c-bc21-4c16-b2f6-a5e52922bec3-trade-4",
-      "season": 2020,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Le'Veon Bell | Sent: James Robinson",
-      "created": 1602772998471,
-      "players": [
-        {
-          "id": "15825",
-          "name": "Le'Veon Bell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15825
-        },
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "4428396c-bc21-4c16-b2f6-a5e52922bec3-trade-3",
       "season": 2020,
       "week": 6,
@@ -10226,6 +10200,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15825
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "4428396c-bc21-4c16-b2f6-a5e52922bec3-trade-4",
+      "season": 2020,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Le'Veon Bell | Sent: James Robinson",
+      "created": 1602772998471,
+      "players": [
+        {
+          "id": "15825",
+          "name": "Le'Veon Bell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15825
+        },
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4052042
         }
       ],
       "source": "espn_transactions"
@@ -10576,32 +10576,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0eb05641-283f-4cfb-a431-dedef489b57f-trade-4",
-      "season": 2020,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Le'Veon Bell | Sent: James Robinson",
-      "created": 1602772960164,
-      "players": [
-        {
-          "id": "15825",
-          "name": "Le'Veon Bell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15825
-        },
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "0eb05641-283f-4cfb-a431-dedef489b57f-trade-3",
       "season": 2020,
       "week": 6,
@@ -10623,6 +10597,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15825
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "0eb05641-283f-4cfb-a431-dedef489b57f-trade-4",
+      "season": 2020,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Le'Veon Bell | Sent: James Robinson",
+      "created": 1602772960164,
+      "players": [
+        {
+          "id": "15825",
+          "name": "Le'Veon Bell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15825
+        },
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4052042
         }
       ],
       "source": "espn_transactions"
@@ -10813,46 +10813,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7a44b8eb-d61d-465d-91ab-d10f38610181-trade-1",
-      "season": 2020,
-      "week": 6,
-      "type": "trade",
-      "team": "The King",
-      "summary": "Received: Odell Beckham Jr., D'Andre Swift | Sent: Justin Jackson, Diontae Johnson",
-      "created": 1602858590235,
-      "players": [
-        {
-          "id": "16733",
-          "name": "Odell Beckham Jr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16733
-        },
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4259545
-        },
-        {
-          "id": "3116136",
-          "name": "Justin Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116136
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7a44b8eb-d61d-465d-91ab-d10f38610181-trade-3",
       "season": 2020,
       "week": 6,
@@ -10888,6 +10848,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4259545
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7a44b8eb-d61d-465d-91ab-d10f38610181-trade-1",
+      "season": 2020,
+      "week": 6,
+      "type": "trade",
+      "team": "The King",
+      "summary": "Received: Odell Beckham Jr., D'Andre Swift | Sent: Justin Jackson, Diontae Johnson",
+      "created": 1602858590235,
+      "players": [
+        {
+          "id": "16733",
+          "name": "Odell Beckham Jr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16733
+        },
+        {
+          "id": "4259545",
+          "name": "D'Andre Swift",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4259545
+        },
+        {
+          "id": "3116136",
+          "name": "Justin Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116136
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
         }
       ],
       "source": "espn_transactions"
@@ -11007,53 +11007,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "509a0767-8136-49ad-8b75-adc703382f3e-trade-1",
-      "season": 2020,
-      "week": 6,
-      "type": "trade",
-      "team": "The King",
-      "summary": "Received: Deshaun Watson, Julio Jones | Sent: Tom Brady, Diontae Johnson, Justin Jackson",
-      "created": 1602813349655,
-      "players": [
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        },
-        {
-          "id": "13982",
-          "name": "Julio Jones",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13982
-        },
-        {
-          "id": "2330",
-          "name": "Tom Brady",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2330
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
-        },
-        {
-          "id": "3116136",
-          "name": "Justin Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116136
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "509a0767-8136-49ad-8b75-adc703382f3e-trade-4",
       "season": 2020,
       "week": 6,
@@ -11101,32 +11054,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c9885330-f9f8-4b6b-bfa1-65bea698cce8-add-1-3043275",
-      "season": 2020,
-      "week": 6,
-      "type": "add",
-      "team": "The King",
-      "summary": "Added: Austin Hooper",
-      "created": 1603036848020,
-      "players": [
-        {
-          "id": "3043275",
-          "name": "Austin Hooper",
-          "action": "add",
-          "id_type": "espn",
-          "source_player_id": 3043275
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "1058e828-28df-44de-8abb-43a0429fbbac-trade-1",
+      "id": "509a0767-8136-49ad-8b75-adc703382f3e-trade-1",
       "season": 2020,
       "week": 6,
       "type": "trade",
       "team": "The King",
       "summary": "Received: Deshaun Watson, Julio Jones | Sent: Tom Brady, Diontae Johnson, Justin Jackson",
-      "created": 1602812670391,
+      "created": 1602813349655,
       "players": [
         {
           "id": "3122840",
@@ -11162,6 +11096,25 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116136
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "c9885330-f9f8-4b6b-bfa1-65bea698cce8-add-1-3043275",
+      "season": 2020,
+      "week": 6,
+      "type": "add",
+      "team": "The King",
+      "summary": "Added: Austin Hooper",
+      "created": 1603036848020,
+      "players": [
+        {
+          "id": "3043275",
+          "name": "Austin Hooper",
+          "action": "add",
+          "id_type": "espn",
+          "source_player_id": 3043275
         }
       ],
       "source": "espn_transactions"
@@ -11209,6 +11162,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13982
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1058e828-28df-44de-8abb-43a0429fbbac-trade-1",
+      "season": 2020,
+      "week": 6,
+      "type": "trade",
+      "team": "The King",
+      "summary": "Received: Deshaun Watson, Julio Jones | Sent: Tom Brady, Diontae Johnson, Justin Jackson",
+      "created": 1602812670391,
+      "players": [
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122840
+        },
+        {
+          "id": "13982",
+          "name": "Julio Jones",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13982
+        },
+        {
+          "id": "2330",
+          "name": "Tom Brady",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2330
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
+        },
+        {
+          "id": "3116136",
+          "name": "Justin Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116136
         }
       ],
       "source": "espn_transactions"
@@ -11442,39 +11442,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a32614ba-6954-4ed6-aebb-ac2cafe4d49a-trade-4",
-      "season": 2020,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Mark Ingram II, Le'Veon Bell | Sent: James Robinson",
-      "created": 1602946087732,
-      "players": [
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "15825",
-          "name": "Le'Veon Bell",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15825
-        },
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a32614ba-6954-4ed6-aebb-ac2cafe4d49a-trade-3",
       "season": 2020,
       "week": 6,
@@ -11503,6 +11470,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15825
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a32614ba-6954-4ed6-aebb-ac2cafe4d49a-trade-4",
+      "season": 2020,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Mark Ingram II, Le'Veon Bell | Sent: James Robinson",
+      "created": 1602946087732,
+      "players": [
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "15825",
+          "name": "Le'Veon Bell",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15825
+        },
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4052042
         }
       ],
       "source": "espn_transactions"
@@ -11755,53 +11755,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0bb74a7a-1469-4373-bd9c-0671076cd427-trade-6",
-      "season": 2020,
-      "week": 6,
-      "type": "trade",
-      "team": "Fuck My Alarm",
-      "summary": "Received: Phillip Lindsay, Deebo Samuel, N'Keal Harry | Sent: Tyler Boyd, Christian McCaffrey",
-      "created": 1602864029185,
-      "players": [
-        {
-          "id": "3052117",
-          "name": "Phillip Lindsay",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3052117
-        },
-        {
-          "id": "3126486",
-          "name": "Deebo Samuel",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3126486
-        },
-        {
-          "id": "4047839",
-          "name": "N'Keal Harry",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047839
-        },
-        {
-          "id": "3045144",
-          "name": "Tyler Boyd",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3045144
-        },
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3117251
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "0bb74a7a-1469-4373-bd9c-0671076cd427-trade-4",
       "season": 2020,
       "week": 6,
@@ -11849,13 +11802,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "74093d49-79ad-4c5c-bc17-03aab5f4fdfc-trade-6",
+      "id": "0bb74a7a-1469-4373-bd9c-0671076cd427-trade-6",
       "season": 2020,
       "week": 6,
       "type": "trade",
       "team": "Fuck My Alarm",
       "summary": "Received: Phillip Lindsay, Deebo Samuel, N'Keal Harry | Sent: Tyler Boyd, Christian McCaffrey",
-      "created": 1602699215020,
+      "created": 1602864029185,
       "players": [
         {
           "id": "3052117",
@@ -11943,6 +11896,53 @@
       "source": "espn_transactions"
     },
     {
+      "id": "74093d49-79ad-4c5c-bc17-03aab5f4fdfc-trade-6",
+      "season": 2020,
+      "week": 6,
+      "type": "trade",
+      "team": "Fuck My Alarm",
+      "summary": "Received: Phillip Lindsay, Deebo Samuel, N'Keal Harry | Sent: Tyler Boyd, Christian McCaffrey",
+      "created": 1602699215020,
+      "players": [
+        {
+          "id": "3052117",
+          "name": "Phillip Lindsay",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3052117
+        },
+        {
+          "id": "3126486",
+          "name": "Deebo Samuel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3126486
+        },
+        {
+          "id": "4047839",
+          "name": "N'Keal Harry",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047839
+        },
+        {
+          "id": "3045144",
+          "name": "Tyler Boyd",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3045144
+        },
+        {
+          "id": "3117251",
+          "name": "Christian McCaffrey",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3117251
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "212f4fdf-0b81-403b-8bc0-c12e58db408a-add-1-16782",
       "season": 2020,
       "week": 7,
@@ -11995,67 +11995,6 @@
           "action": "drop",
           "id_type": "espn",
           "source_player_id": 3124679
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "91ac0bdb-1f65-4eb0-9205-6294762b888f-trade-2",
-      "season": 2020,
-      "week": 7,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: DK Metcalf, Hayden Hurst, Julio Jones | Sent: CeeDee Lamb, DJ Chark, Travis Kelce, Tee Higgins",
-      "created": 1603505726410,
-      "players": [
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        },
-        {
-          "id": "3924365",
-          "name": "Hayden Hurst",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3924365
-        },
-        {
-          "id": "13982",
-          "name": "Julio Jones",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13982
-        },
-        {
-          "id": "4241389",
-          "name": "CeeDee Lamb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241389
-        },
-        {
-          "id": "3115394",
-          "name": "DJ Chark",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3115394
-        },
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15847
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -12117,6 +12056,67 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13982
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "91ac0bdb-1f65-4eb0-9205-6294762b888f-trade-2",
+      "season": 2020,
+      "week": 7,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: DK Metcalf, Hayden Hurst, Julio Jones | Sent: CeeDee Lamb, DJ Chark, Travis Kelce, Tee Higgins",
+      "created": 1603505726410,
+      "players": [
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        },
+        {
+          "id": "3924365",
+          "name": "Hayden Hurst",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3924365
+        },
+        {
+          "id": "13982",
+          "name": "Julio Jones",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13982
+        },
+        {
+          "id": "4241389",
+          "name": "CeeDee Lamb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241389
+        },
+        {
+          "id": "3115394",
+          "name": "DJ Chark",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3115394
+        },
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15847
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -12198,39 +12198,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1d748479-df81-453d-bd6f-7e9d41c88fbd-trade-1",
-      "season": 2020,
-      "week": 7,
-      "type": "trade",
-      "team": "The King",
-      "summary": "Received: Justin Jefferson | Sent: Justin Jackson, Sterling Shepard",
-      "created": 1603774672657,
-      "players": [
-        {
-          "id": "4262921",
-          "name": "Justin Jefferson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4262921
-        },
-        {
-          "id": "3116136",
-          "name": "Justin Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116136
-        },
-        {
-          "id": "2976592",
-          "name": "Sterling Shepard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976592
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "1d748479-df81-453d-bd6f-7e9d41c88fbd-trade-4",
       "season": 2020,
       "week": 7,
@@ -12259,6 +12226,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4262921
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1d748479-df81-453d-bd6f-7e9d41c88fbd-trade-1",
+      "season": 2020,
+      "week": 7,
+      "type": "trade",
+      "team": "The King",
+      "summary": "Received: Justin Jefferson | Sent: Justin Jackson, Sterling Shepard",
+      "created": 1603774672657,
+      "players": [
+        {
+          "id": "4262921",
+          "name": "Justin Jefferson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4262921
+        },
+        {
+          "id": "3116136",
+          "name": "Justin Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116136
+        },
+        {
+          "id": "2976592",
+          "name": "Sterling Shepard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976592
         }
       ],
       "source": "espn_transactions"
@@ -12378,39 +12378,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "bf8d219c-375a-4908-adae-a2190d87e776-trade-4",
-      "season": 2020,
-      "week": 7,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Tyreek Hill | Sent: Julio Jones, Phillip Lindsay",
-      "created": 1603724097107,
-      "players": [
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        },
-        {
-          "id": "13982",
-          "name": "Julio Jones",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13982
-        },
-        {
-          "id": "3052117",
-          "name": "Phillip Lindsay",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3052117
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "bf8d219c-375a-4908-adae-a2190d87e776-trade-0",
       "season": 2020,
       "week": 7,
@@ -12465,6 +12432,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13981
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "bf8d219c-375a-4908-adae-a2190d87e776-trade-4",
+      "season": 2020,
+      "week": 7,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Tyreek Hill | Sent: Julio Jones, Phillip Lindsay",
+      "created": 1603724097107,
+      "players": [
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116406
+        },
+        {
+          "id": "13982",
+          "name": "Julio Jones",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13982
+        },
+        {
+          "id": "3052117",
+          "name": "Phillip Lindsay",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3052117
         }
       ],
       "source": "espn_transactions"
@@ -12527,39 +12527,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a65cd0d6-29d1-4558-aac9-3bf67f9b6eae-trade-1",
-      "season": 2020,
-      "week": 7,
-      "type": "trade",
-      "team": "The King",
-      "summary": "Received: Justin Jefferson | Sent: Justin Jackson, Sterling Shepard",
-      "created": 1603819076388,
-      "players": [
-        {
-          "id": "4262921",
-          "name": "Justin Jefferson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4262921
-        },
-        {
-          "id": "3116136",
-          "name": "Justin Jackson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116136
-        },
-        {
-          "id": "2976592",
-          "name": "Sterling Shepard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976592
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a65cd0d6-29d1-4558-aac9-3bf67f9b6eae-trade-4",
       "season": 2020,
       "week": 7,
@@ -12588,6 +12555,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4262921
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a65cd0d6-29d1-4558-aac9-3bf67f9b6eae-trade-1",
+      "season": 2020,
+      "week": 7,
+      "type": "trade",
+      "team": "The King",
+      "summary": "Received: Justin Jefferson | Sent: Justin Jackson, Sterling Shepard",
+      "created": 1603819076388,
+      "players": [
+        {
+          "id": "4262921",
+          "name": "Justin Jefferson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4262921
+        },
+        {
+          "id": "3116136",
+          "name": "Justin Jackson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116136
+        },
+        {
+          "id": "2976592",
+          "name": "Sterling Shepard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976592
         }
       ],
       "source": "espn_transactions"
@@ -12764,67 +12764,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "64ed6bb4-15ef-47ef-afd9-fcadf1aefc92-trade-2",
-      "season": 2020,
-      "week": 7,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: DK Metcalf, Hayden Hurst, Julio Jones | Sent: CeeDee Lamb, DJ Chark, Travis Kelce, Tee Higgins",
-      "created": 1603599803292,
-      "players": [
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        },
-        {
-          "id": "3924365",
-          "name": "Hayden Hurst",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3924365
-        },
-        {
-          "id": "13982",
-          "name": "Julio Jones",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13982
-        },
-        {
-          "id": "4241389",
-          "name": "CeeDee Lamb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241389
-        },
-        {
-          "id": "3115394",
-          "name": "DJ Chark",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3115394
-        },
-        {
-          "id": "15847",
-          "name": "Travis Kelce",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15847
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "64ed6bb4-15ef-47ef-afd9-fcadf1aefc92-trade-4",
       "season": 2020,
       "week": 7,
@@ -12881,6 +12820,67 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13982
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "64ed6bb4-15ef-47ef-afd9-fcadf1aefc92-trade-2",
+      "season": 2020,
+      "week": 7,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: DK Metcalf, Hayden Hurst, Julio Jones | Sent: CeeDee Lamb, DJ Chark, Travis Kelce, Tee Higgins",
+      "created": 1603599803292,
+      "players": [
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        },
+        {
+          "id": "3924365",
+          "name": "Hayden Hurst",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3924365
+        },
+        {
+          "id": "13982",
+          "name": "Julio Jones",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13982
+        },
+        {
+          "id": "4241389",
+          "name": "CeeDee Lamb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241389
+        },
+        {
+          "id": "3115394",
+          "name": "DJ Chark",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3115394
+        },
+        {
+          "id": "15847",
+          "name": "Travis Kelce",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15847
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -15278,39 +15278,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "69e68c51-b9f3-4582-96a8-36afa66b145b-trade-4",
-      "season": 2020,
-      "week": 8,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Tyreek Hill | Sent: Julio Jones, Phillip Lindsay",
-      "created": 1603810510312,
-      "players": [
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        },
-        {
-          "id": "13982",
-          "name": "Julio Jones",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13982
-        },
-        {
-          "id": "3052117",
-          "name": "Phillip Lindsay",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3052117
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "69e68c51-b9f3-4582-96a8-36afa66b145b-trade-0",
       "season": 2020,
       "week": 8,
@@ -15365,6 +15332,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13981
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "69e68c51-b9f3-4582-96a8-36afa66b145b-trade-4",
+      "season": 2020,
+      "week": 8,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Tyreek Hill | Sent: Julio Jones, Phillip Lindsay",
+      "created": 1603810510312,
+      "players": [
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116406
+        },
+        {
+          "id": "13982",
+          "name": "Julio Jones",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13982
+        },
+        {
+          "id": "3052117",
+          "name": "Phillip Lindsay",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3052117
         }
       ],
       "source": "espn_transactions"
@@ -19181,53 +19181,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1a82d74a-ef1f-4493-b55a-6eb52b3ebd8b-trade-8",
-      "season": 2020,
-      "week": 11,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Lamar Jackson, Ezekiel Elliott | Sent: Teddy Bridgewater, Melvin Gordon III, Amari Cooper",
-      "created": 1605649142860,
-      "players": [
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "16728",
-          "name": "Teddy Bridgewater",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16728
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "2976499",
-          "name": "Amari Cooper",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976499
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "1a82d74a-ef1f-4493-b55a-6eb52b3ebd8b-trade-4",
       "season": 2020,
       "week": 11,
@@ -19270,6 +19223,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3051392
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1a82d74a-ef1f-4493-b55a-6eb52b3ebd8b-trade-8",
+      "season": 2020,
+      "week": 11,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Lamar Jackson, Ezekiel Elliott | Sent: Teddy Bridgewater, Melvin Gordon III, Amari Cooper",
+      "created": 1605649142860,
+      "players": [
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916387
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "16728",
+          "name": "Teddy Bridgewater",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16728
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "2976499",
+          "name": "Amari Cooper",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976499
         }
       ],
       "source": "espn_transactions"
@@ -19503,74 +19503,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b3c1dda4-3965-4251-be1f-8eb399e5b5b4-trade-4",
-      "season": 2020,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Clyde Edwards-Helaire, Hayden Hurst, Jerick McKinnon, David Johnson, Phillip Lindsay | Sent: James Robinson, Ezekiel Elliott, Hunter Henry",
-      "created": 1605747694726,
-      "players": [
-        {
-          "id": "4242214",
-          "name": "Clyde Edwards-Helaire",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4242214
-        },
-        {
-          "id": "3924365",
-          "name": "Hayden Hurst",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3924365
-        },
-        {
-          "id": "16782",
-          "name": "Jerick McKinnon",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16782
-        },
-        {
-          "id": "2508176",
-          "name": "David Johnson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2508176
-        },
-        {
-          "id": "3052117",
-          "name": "Phillip Lindsay",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3052117
-        },
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "3046439",
-          "name": "Hunter Henry",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3046439
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b3c1dda4-3965-4251-be1f-8eb399e5b5b4-trade-3",
       "season": 2020,
       "week": 11,
@@ -19639,6 +19571,74 @@
       "source": "espn_transactions"
     },
     {
+      "id": "b3c1dda4-3965-4251-be1f-8eb399e5b5b4-trade-4",
+      "season": 2020,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Clyde Edwards-Helaire, Hayden Hurst, Jerick McKinnon, David Johnson, Phillip Lindsay | Sent: James Robinson, Ezekiel Elliott, Hunter Henry",
+      "created": 1605747694726,
+      "players": [
+        {
+          "id": "4242214",
+          "name": "Clyde Edwards-Helaire",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4242214
+        },
+        {
+          "id": "3924365",
+          "name": "Hayden Hurst",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3924365
+        },
+        {
+          "id": "16782",
+          "name": "Jerick McKinnon",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16782
+        },
+        {
+          "id": "2508176",
+          "name": "David Johnson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2508176
+        },
+        {
+          "id": "3052117",
+          "name": "Phillip Lindsay",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3052117
+        },
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4052042
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "3046439",
+          "name": "Hunter Henry",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3046439
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "2230c5e9-0367-48a0-8dfa-0e65881d60b9-add-1-3916430",
       "season": 2020,
       "week": 11,
@@ -19653,39 +19653,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 3916430
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "cc3b8091-315d-4984-8195-17f436eb95d1-trade-1",
-      "season": 2020,
-      "week": 11,
-      "type": "trade",
-      "team": "The King",
-      "summary": "Received: A.J. Brown | Sent: Jonathan Taylor, Zack Moss",
-      "created": 1605712415124,
-      "players": [
-        {
-          "id": "4047646",
-          "name": "A.J. Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047646
-        },
-        {
-          "id": "4242335",
-          "name": "Jonathan Taylor",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4242335
-        },
-        {
-          "id": "4035676",
-          "name": "Zack Moss",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035676
         }
       ],
       "source": "espn_transactions"
@@ -19719,6 +19686,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4047646
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "cc3b8091-315d-4984-8195-17f436eb95d1-trade-1",
+      "season": 2020,
+      "week": 11,
+      "type": "trade",
+      "team": "The King",
+      "summary": "Received: A.J. Brown | Sent: Jonathan Taylor, Zack Moss",
+      "created": 1605712415124,
+      "players": [
+        {
+          "id": "4047646",
+          "name": "A.J. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047646
+        },
+        {
+          "id": "4242335",
+          "name": "Jonathan Taylor",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4242335
+        },
+        {
+          "id": "4035676",
+          "name": "Zack Moss",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035676
         }
       ],
       "source": "espn_transactions"
@@ -20231,74 +20231,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5b1844b5-a243-48be-bc71-d20ed0e7c533-trade-4",
-      "season": 2020,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Clyde Edwards-Helaire, Hayden Hurst, Jerick McKinnon, David Johnson, Phillip Lindsay | Sent: James Robinson, Ezekiel Elliott, Hunter Henry",
-      "created": 1605920466659,
-      "players": [
-        {
-          "id": "4242214",
-          "name": "Clyde Edwards-Helaire",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4242214
-        },
-        {
-          "id": "3924365",
-          "name": "Hayden Hurst",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3924365
-        },
-        {
-          "id": "16782",
-          "name": "Jerick McKinnon",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16782
-        },
-        {
-          "id": "2508176",
-          "name": "David Johnson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2508176
-        },
-        {
-          "id": "3052117",
-          "name": "Phillip Lindsay",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3052117
-        },
-        {
-          "id": "4052042",
-          "name": "James Robinson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4052042
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "3046439",
-          "name": "Hunter Henry",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3046439
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "5b1844b5-a243-48be-bc71-d20ed0e7c533-trade-3",
       "season": 2020,
       "week": 11,
@@ -20362,6 +20294,74 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3052117
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5b1844b5-a243-48be-bc71-d20ed0e7c533-trade-4",
+      "season": 2020,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Clyde Edwards-Helaire, Hayden Hurst, Jerick McKinnon, David Johnson, Phillip Lindsay | Sent: James Robinson, Ezekiel Elliott, Hunter Henry",
+      "created": 1605920466659,
+      "players": [
+        {
+          "id": "4242214",
+          "name": "Clyde Edwards-Helaire",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4242214
+        },
+        {
+          "id": "3924365",
+          "name": "Hayden Hurst",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3924365
+        },
+        {
+          "id": "16782",
+          "name": "Jerick McKinnon",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16782
+        },
+        {
+          "id": "2508176",
+          "name": "David Johnson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2508176
+        },
+        {
+          "id": "3052117",
+          "name": "Phillip Lindsay",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3052117
+        },
+        {
+          "id": "4052042",
+          "name": "James Robinson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4052042
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "3046439",
+          "name": "Hunter Henry",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3046439
         }
       ],
       "source": "espn_transactions"
@@ -20457,39 +20457,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a9eaa6c5-a0b2-4ccc-b7f6-63b1c5cdb52c-trade-1",
-      "season": 2020,
-      "week": 11,
-      "type": "trade",
-      "team": "The King",
-      "summary": "Received: A.J. Brown | Sent: Jonathan Taylor, Zack Moss",
-      "created": 1605677396284,
-      "players": [
-        {
-          "id": "4047646",
-          "name": "A.J. Brown",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047646
-        },
-        {
-          "id": "4242335",
-          "name": "Jonathan Taylor",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4242335
-        },
-        {
-          "id": "4035676",
-          "name": "Zack Moss",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035676
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a9eaa6c5-a0b2-4ccc-b7f6-63b1c5cdb52c-trade-4",
       "season": 2020,
       "week": 11,
@@ -20518,6 +20485,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4047646
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a9eaa6c5-a0b2-4ccc-b7f6-63b1c5cdb52c-trade-1",
+      "season": 2020,
+      "week": 11,
+      "type": "trade",
+      "team": "The King",
+      "summary": "Received: A.J. Brown | Sent: Jonathan Taylor, Zack Moss",
+      "created": 1605677396284,
+      "players": [
+        {
+          "id": "4047646",
+          "name": "A.J. Brown",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047646
+        },
+        {
+          "id": "4242335",
+          "name": "Jonathan Taylor",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4242335
+        },
+        {
+          "id": "4035676",
+          "name": "Zack Moss",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035676
         }
       ],
       "source": "espn_transactions"
@@ -20873,53 +20873,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "225a0c82-0dd1-461d-a8ff-16f17401167a-trade-8",
-      "season": 2020,
-      "week": 11,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Lamar Jackson, Ezekiel Elliott | Sent: Teddy Bridgewater, Melvin Gordon III, Amari Cooper",
-      "created": 1605649117746,
-      "players": [
-        {
-          "id": "3916387",
-          "name": "Lamar Jackson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3916387
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "16728",
-          "name": "Teddy Bridgewater",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16728
-        },
-        {
-          "id": "2576434",
-          "name": "Melvin Gordon III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2576434
-        },
-        {
-          "id": "2976499",
-          "name": "Amari Cooper",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976499
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "225a0c82-0dd1-461d-a8ff-16f17401167a-trade-4",
       "season": 2020,
       "week": 11,
@@ -20962,6 +20915,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3051392
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "225a0c82-0dd1-461d-a8ff-16f17401167a-trade-8",
+      "season": 2020,
+      "week": 11,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Lamar Jackson, Ezekiel Elliott | Sent: Teddy Bridgewater, Melvin Gordon III, Amari Cooper",
+      "created": 1605649117746,
+      "players": [
+        {
+          "id": "3916387",
+          "name": "Lamar Jackson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3916387
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "16728",
+          "name": "Teddy Bridgewater",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16728
+        },
+        {
+          "id": "2576434",
+          "name": "Melvin Gordon III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2576434
+        },
+        {
+          "id": "2976499",
+          "name": "Amari Cooper",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976499
         }
       ],
       "source": "espn_transactions"
@@ -25580,32 +25580,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "dbe54ffa-52ab-41af-9aef-611de77fab38-trade-2",
-      "season": 2020,
-      "week": 15,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: Devin Singletary | Sent: Tee Higgins",
-      "created": 1608228067543,
-      "players": [
-        {
-          "id": "4040761",
-          "name": "Devin Singletary",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040761
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "dbe54ffa-52ab-41af-9aef-611de77fab38-trade-4",
       "season": 2020,
       "week": 15,
@@ -25627,6 +25601,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4040761
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "dbe54ffa-52ab-41af-9aef-611de77fab38-trade-2",
+      "season": 2020,
+      "week": 15,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: Devin Singletary | Sent: Tee Higgins",
+      "created": 1608228067543,
+      "players": [
+        {
+          "id": "4040761",
+          "name": "Devin Singletary",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4040761
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -26325,32 +26325,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "640a63fe-5a00-4aff-b396-3482b060e911-trade-2",
-      "season": 2020,
-      "week": 15,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: Devin Singletary | Sent: Tee Higgins",
-      "created": 1608227841062,
-      "players": [
-        {
-          "id": "4040761",
-          "name": "Devin Singletary",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4040761
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "640a63fe-5a00-4aff-b396-3482b060e911-trade-4",
       "season": 2020,
       "week": 15,
@@ -26372,6 +26346,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4040761
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "640a63fe-5a00-4aff-b396-3482b060e911-trade-2",
+      "season": 2020,
+      "week": 15,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: Devin Singletary | Sent: Tee Higgins",
+      "created": 1608227841062,
+      "players": [
+        {
+          "id": "4040761",
+          "name": "Devin Singletary",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4040761
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"

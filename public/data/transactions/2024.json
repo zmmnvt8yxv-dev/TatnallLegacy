@@ -562,46 +562,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c21964fd-ea58-4311-8c17-f21b2bb69d0e-trade-4",
-      "season": 2024,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Josh Jacobs, DeAndre Hopkins | Sent: Gus Edwards, Keenan Allen",
-      "created": 1723930169151,
-      "players": [
-        {
-          "id": "4047365",
-          "name": "Josh Jacobs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047365
-        },
-        {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15795
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "c21964fd-ea58-4311-8c17-f21b2bb69d0e-trade-3",
       "season": 2024,
       "week": 1,
@@ -637,6 +597,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15795
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "c21964fd-ea58-4311-8c17-f21b2bb69d0e-trade-4",
+      "season": 2024,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Josh Jacobs, DeAndre Hopkins | Sent: Gus Edwards, Keenan Allen",
+      "created": 1723930169151,
+      "players": [
+        {
+          "id": "4047365",
+          "name": "Josh Jacobs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047365
+        },
+        {
+          "id": "15795",
+          "name": "DeAndre Hopkins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15795
+        },
+        {
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051926
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
         }
       ],
       "source": "espn_transactions"
@@ -708,46 +708,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c03452b0-d987-4759-b909-bf483525c437-trade-1",
-      "season": 2024,
-      "week": 1,
-      "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: Stefon Diggs | Sent: Hollywood Brown, Diontae Johnson, Chuba Hubbard",
-      "created": 1724382689242,
-      "players": [
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
-        },
-        {
-          "id": "4241416",
-          "name": "Chuba Hubbard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241416
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "c03452b0-d987-4759-b909-bf483525c437-trade-4",
       "season": 2024,
       "week": 1,
@@ -783,6 +743,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2976212
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "c03452b0-d987-4759-b909-bf483525c437-trade-1",
+      "season": 2024,
+      "week": 1,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: Stefon Diggs | Sent: Hollywood Brown, Diontae Johnson, Chuba Hubbard",
+      "created": 1724382689242,
+      "players": [
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976212
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241372
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
+        },
+        {
+          "id": "4241416",
+          "name": "Chuba Hubbard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241416
         }
       ],
       "source": "espn_transactions"
@@ -864,46 +864,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "9d8ad10f-79da-42ed-9fe1-831d556b16fe-trade-4",
-      "season": 2024,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Josh Jacobs, DeAndre Hopkins | Sent: Gus Edwards, Keenan Allen",
-      "created": 1723929464436,
-      "players": [
-        {
-          "id": "4047365",
-          "name": "Josh Jacobs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047365
-        },
-        {
-          "id": "15795",
-          "name": "DeAndre Hopkins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15795
-        },
-        {
-          "id": "3051926",
-          "name": "Gus Edwards",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051926
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "9d8ad10f-79da-42ed-9fe1-831d556b16fe-trade-3",
       "season": 2024,
       "week": 1,
@@ -939,6 +899,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15795
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "9d8ad10f-79da-42ed-9fe1-831d556b16fe-trade-4",
+      "season": 2024,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Josh Jacobs, DeAndre Hopkins | Sent: Gus Edwards, Keenan Allen",
+      "created": 1723929464436,
+      "players": [
+        {
+          "id": "4047365",
+          "name": "Josh Jacobs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047365
+        },
+        {
+          "id": "15795",
+          "name": "DeAndre Hopkins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15795
+        },
+        {
+          "id": "3051926",
+          "name": "Gus Edwards",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051926
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
         }
       ],
       "source": "espn_transactions"
@@ -1001,46 +1001,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "79a12df5-68cb-4d32-9d27-6068d295770d-trade-2",
-      "season": 2024,
-      "week": 1,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Christian Watson, Kirk Cousins | Sent: Isiah Pacheco, Deshaun Watson",
-      "created": 1723935215576,
-      "players": [
-        {
-          "id": "4248528",
-          "name": "Christian Watson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4248528
-        },
-        {
-          "id": "14880",
-          "name": "Kirk Cousins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 14880
-        },
-        {
-          "id": "4361529",
-          "name": "Isiah Pacheco",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4361529
-        },
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "79a12df5-68cb-4d32-9d27-6068d295770d-trade-7",
       "season": 2024,
       "week": 1,
@@ -1081,27 +1041,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "8ad41fbc-bc50-4f0f-ad31-af6703787a7e-trade-1",
+      "id": "79a12df5-68cb-4d32-9d27-6068d295770d-trade-2",
       "season": 2024,
       "week": 1,
       "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: Anthony Richardson Sr. | Sent: Diontae Johnson",
-      "created": 1724001150163,
+      "team": "Tugg Speedman",
+      "summary": "Received: Christian Watson, Kirk Cousins | Sent: Isiah Pacheco, Deshaun Watson",
+      "created": 1723935215576,
       "players": [
         {
-          "id": "4429084",
-          "name": "Anthony Richardson Sr.",
+          "id": "4248528",
+          "name": "Christian Watson",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4429084
+          "source_player_id": 4248528
         },
         {
-          "id": "3932905",
-          "name": "Diontae Johnson",
+          "id": "14880",
+          "name": "Kirk Cousins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14880
+        },
+        {
+          "id": "4361529",
+          "name": "Isiah Pacheco",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3932905
+          "source_player_id": 4361529
+        },
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3122840
         }
       ],
       "source": "espn_transactions"
@@ -1128,6 +1102,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4429084
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "8ad41fbc-bc50-4f0f-ad31-af6703787a7e-trade-1",
+      "season": 2024,
+      "week": 1,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: Anthony Richardson Sr. | Sent: Diontae Johnson",
+      "created": 1724001150163,
+      "players": [
+        {
+          "id": "4429084",
+          "name": "Anthony Richardson Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4429084
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
         }
       ],
       "source": "espn_transactions"
@@ -1266,39 +1266,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "99137fb4-82cf-4e51-96b0-72e388f0bf2e-trade-1",
-      "season": 2024,
-      "week": 1,
-      "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: Keenan Allen | Sent: MarShawn Lloyd, Hollywood Brown",
-      "created": 1724801712700,
-      "players": [
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "4429023",
-          "name": "MarShawn Lloyd",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4429023
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "99137fb4-82cf-4e51-96b0-72e388f0bf2e-trade-4",
       "season": 2024,
       "week": 1,
@@ -1327,6 +1294,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15818
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "99137fb4-82cf-4e51-96b0-72e388f0bf2e-trade-1",
+      "season": 2024,
+      "week": 1,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: Keenan Allen | Sent: MarShawn Lloyd, Hollywood Brown",
+      "created": 1724801712700,
+      "players": [
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15818
+        },
+        {
+          "id": "4429023",
+          "name": "MarShawn Lloyd",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4429023
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241372
         }
       ],
       "source": "espn_transactions"
@@ -1754,39 +1754,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ef4be2fd-45c9-480c-84a3-6d6bd161e034-trade-1",
-      "season": 2024,
-      "week": 1,
-      "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: Keenan Allen | Sent: MarShawn Lloyd, Hollywood Brown",
-      "created": 1724688970736,
-      "players": [
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "4429023",
-          "name": "MarShawn Lloyd",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4429023
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ef4be2fd-45c9-480c-84a3-6d6bd161e034-trade-4",
       "season": 2024,
       "week": 1,
@@ -1820,20 +1787,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5dfb1eda-c8bb-4d2b-b825-cfb09292f66b-trade-1",
+      "id": "ef4be2fd-45c9-480c-84a3-6d6bd161e034-trade-1",
       "season": 2024,
       "week": 1,
       "type": "trade",
       "team": "King of December 💍💍💍",
-      "summary": "Received: Stefon Diggs | Sent: Hollywood Brown, Diontae Johnson, Chuba Hubbard",
-      "created": 1724555342074,
+      "summary": "Received: Keenan Allen | Sent: MarShawn Lloyd, Hollywood Brown",
+      "created": 1724688970736,
       "players": [
         {
-          "id": "2976212",
-          "name": "Stefon Diggs",
+          "id": "15818",
+          "name": "Keenan Allen",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 2976212
+          "source_player_id": 15818
+        },
+        {
+          "id": "4429023",
+          "name": "MarShawn Lloyd",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4429023
         },
         {
           "id": "4241372",
@@ -1841,20 +1815,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241372
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
-        },
-        {
-          "id": "4241416",
-          "name": "Chuba Hubbard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241416
         }
       ],
       "source": "espn_transactions"
@@ -1895,6 +1855,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2976212
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5dfb1eda-c8bb-4d2b-b825-cfb09292f66b-trade-1",
+      "season": 2024,
+      "week": 1,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: Stefon Diggs | Sent: Hollywood Brown, Diontae Johnson, Chuba Hubbard",
+      "created": 1724555342074,
+      "players": [
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976212
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241372
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
+        },
+        {
+          "id": "4241416",
+          "name": "Chuba Hubbard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241416
         }
       ],
       "source": "espn_transactions"
@@ -2071,6 +2071,25 @@
       "source": "espn_transactions"
     },
     {
+      "id": "3053ad37-07cb-490a-98c1-df6e7140f416-trade-0",
+      "season": 2024,
+      "week": 1,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: JETS | Sent: None",
+      "created": 1724808659067,
+      "players": [
+        {
+          "id": "NYJ",
+          "name": "JETS",
+          "action": "received",
+          "id_type": "defense",
+          "source_player_id": -16020
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "3053ad37-07cb-490a-98c1-df6e7140f416-trade-1",
       "season": 2024,
       "week": 1,
@@ -2137,25 +2156,6 @@
           "id": "NYJ",
           "name": "JETS",
           "action": "sent",
-          "id_type": "defense",
-          "source_player_id": -16020
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "3053ad37-07cb-490a-98c1-df6e7140f416-trade-0",
-      "season": 2024,
-      "week": 1,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: JETS | Sent: None",
-      "created": 1724808659067,
-      "players": [
-        {
-          "id": "NYJ",
-          "name": "JETS",
-          "action": "received",
           "id_type": "defense",
           "source_player_id": -16020
         }
@@ -2277,39 +2277,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "4118a0a4-d75f-4d84-b44c-9ecbc6cd115d-trade-1",
-      "season": 2024,
-      "week": 1,
-      "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: Kyler Murray, Jayden Daniels | Sent: Dak Prescott",
-      "created": 1723931321802,
-      "players": [
-        {
-          "id": "3917315",
-          "name": "Kyler Murray",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3917315
-        },
-        {
-          "id": "4426348",
-          "name": "Jayden Daniels",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426348
-        },
-        {
-          "id": "2577417",
-          "name": "Dak Prescott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2577417
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "4118a0a4-d75f-4d84-b44c-9ecbc6cd115d-trade-5",
       "season": 2024,
       "week": 1,
@@ -2343,6 +2310,39 @@
       "source": "espn_transactions"
     },
     {
+      "id": "4118a0a4-d75f-4d84-b44c-9ecbc6cd115d-trade-1",
+      "season": 2024,
+      "week": 1,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: Kyler Murray, Jayden Daniels | Sent: Dak Prescott",
+      "created": 1723931321802,
+      "players": [
+        {
+          "id": "3917315",
+          "name": "Kyler Murray",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3917315
+        },
+        {
+          "id": "4426348",
+          "name": "Jayden Daniels",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426348
+        },
+        {
+          "id": "2577417",
+          "name": "Dak Prescott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2577417
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "7fa1d182-86f6-40e3-aba4-5229fc892657-add-1--16024",
       "season": 2024,
       "week": 1,
@@ -2357,6 +2357,25 @@
           "action": "add",
           "id_type": "defense",
           "source_player_id": -16024
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "c7dd3a7b-44b3-464d-a3ab-57d90a24474b-trade-0",
+      "season": 2024,
+      "week": 1,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: JETS | Sent: None",
+      "created": 1724801792558,
+      "players": [
+        {
+          "id": "NYJ",
+          "name": "JETS",
+          "action": "received",
+          "id_type": "defense",
+          "source_player_id": -16020
         }
       ],
       "source": "espn_transactions"
@@ -2428,25 +2447,6 @@
           "id": "NYJ",
           "name": "JETS",
           "action": "sent",
-          "id_type": "defense",
-          "source_player_id": -16020
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "c7dd3a7b-44b3-464d-a3ab-57d90a24474b-trade-0",
-      "season": 2024,
-      "week": 1,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: JETS | Sent: None",
-      "created": 1724801792558,
-      "players": [
-        {
-          "id": "NYJ",
-          "name": "JETS",
-          "action": "received",
           "id_type": "defense",
           "source_player_id": -16020
         }
@@ -3329,25 +3329,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "17844654-c39d-47ba-92ba-b93731cfd63b-trade-1",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: None | Sent: T.J. Hockenson",
-      "created": 1726089051969,
-      "players": [
-        {
-          "id": "4036133",
-          "name": "T.J. Hockenson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4036133
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "17844654-c39d-47ba-92ba-b93731cfd63b-trade-0",
       "season": 2024,
       "week": 2,
@@ -3362,6 +3343,25 @@
           "action": "received",
           "id_type": "defense",
           "source_player_id": -16004
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "17844654-c39d-47ba-92ba-b93731cfd63b-trade-1",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: None | Sent: T.J. Hockenson",
+      "created": 1726089051969,
+      "players": [
+        {
+          "id": "4036133",
+          "name": "T.J. Hockenson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4036133
         }
       ],
       "source": "espn_transactions"
@@ -3450,53 +3450,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "6bec4919-c0ca-4146-bd0f-29449cac3958-trade-2",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Justin Herbert, Brock Bowers, D'Andre Swift | Sent: Isiah Pacheco, James Cook III",
-      "created": 1726058468585,
-      "players": [
-        {
-          "id": "4038941",
-          "name": "Justin Herbert",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4038941
-        },
-        {
-          "id": "4432665",
-          "name": "Brock Bowers",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4432665
-        },
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4259545
-        },
-        {
-          "id": "4361529",
-          "name": "Isiah Pacheco",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4361529
-        },
-        {
-          "id": "4379399",
-          "name": "James Cook III",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4379399
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "6bec4919-c0ca-4146-bd0f-29449cac3958-trade-7",
       "season": 2024,
       "week": 2,
@@ -3539,6 +3492,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4259545
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "6bec4919-c0ca-4146-bd0f-29449cac3958-trade-2",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Justin Herbert, Brock Bowers, D'Andre Swift | Sent: Isiah Pacheco, James Cook III",
+      "created": 1726058468585,
+      "players": [
+        {
+          "id": "4038941",
+          "name": "Justin Herbert",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4038941
+        },
+        {
+          "id": "4432665",
+          "name": "Brock Bowers",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4432665
+        },
+        {
+          "id": "4259545",
+          "name": "D'Andre Swift",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4259545
+        },
+        {
+          "id": "4361529",
+          "name": "Isiah Pacheco",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4361529
+        },
+        {
+          "id": "4379399",
+          "name": "James Cook III",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4379399
         }
       ],
       "source": "espn_transactions"
@@ -3639,46 +3639,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "6ab37cf6-8153-41e3-9c30-e3745de17866-trade-8",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Sam Darnold, Ty Chandler | Sent: Caleb Williams, Xavier Worthy",
-      "created": 1726541774016,
-      "players": [
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4242431",
-          "name": "Ty Chandler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4242431
-        },
-        {
-          "id": "4431611",
-          "name": "Caleb Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4431611
-        },
-        {
-          "id": "4683062",
-          "name": "Xavier Worthy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4683062
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "6ab37cf6-8153-41e3-9c30-e3745de17866-trade-4",
       "season": 2024,
       "week": 2,
@@ -3714,6 +3674,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4242431
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "6ab37cf6-8153-41e3-9c30-e3745de17866-trade-8",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Sam Darnold, Ty Chandler | Sent: Caleb Williams, Xavier Worthy",
+      "created": 1726541774016,
+      "players": [
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4242431",
+          "name": "Ty Chandler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4242431
+        },
+        {
+          "id": "4431611",
+          "name": "Caleb Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4431611
+        },
+        {
+          "id": "4683062",
+          "name": "Xavier Worthy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4683062
         }
       ],
       "source": "espn_transactions"
@@ -3951,39 +3951,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ae9c6572-4114-4570-a2bb-a89041c354b0-trade-8",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Bijan Robinson | Sent: Rashee Rice, Rome Odunze",
-      "created": 1725973968069,
-      "players": [
-        {
-          "id": "4430807",
-          "name": "Bijan Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430807
-        },
-        {
-          "id": "4428331",
-          "name": "Rashee Rice",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4428331
-        },
-        {
-          "id": "4431299",
-          "name": "Rome Odunze",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4431299
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ae9c6572-4114-4570-a2bb-a89041c354b0-trade-4",
       "season": 2024,
       "week": 2,
@@ -4012,6 +3979,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4430807
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "ae9c6572-4114-4570-a2bb-a89041c354b0-trade-8",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Bijan Robinson | Sent: Rashee Rice, Rome Odunze",
+      "created": 1725973968069,
+      "players": [
+        {
+          "id": "4430807",
+          "name": "Bijan Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430807
+        },
+        {
+          "id": "4428331",
+          "name": "Rashee Rice",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4428331
+        },
+        {
+          "id": "4431299",
+          "name": "Rome Odunze",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4431299
         }
       ],
       "source": "espn_transactions"
@@ -4188,39 +4188,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b26657d8-ab45-4b5c-90c5-ea85012c9348-trade-8",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Bijan Robinson | Sent: Rashee Rice, Rome Odunze",
-      "created": 1725974075222,
-      "players": [
-        {
-          "id": "4430807",
-          "name": "Bijan Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430807
-        },
-        {
-          "id": "4428331",
-          "name": "Rashee Rice",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4428331
-        },
-        {
-          "id": "4431299",
-          "name": "Rome Odunze",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4431299
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b26657d8-ab45-4b5c-90c5-ea85012c9348-trade-4",
       "season": 2024,
       "week": 2,
@@ -4254,34 +4221,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3d401fc3-c245-47e8-942d-7ad93a373c03-trade-8",
+      "id": "b26657d8-ab45-4b5c-90c5-ea85012c9348-trade-8",
       "season": 2024,
       "week": 2,
       "type": "trade",
       "team": "Mayo Clinic",
-      "summary": "Received: Jaxon Smith-Njigba, Jerome Ford | Sent: Christian McCaffrey",
-      "created": 1725974151098,
+      "summary": "Received: Bijan Robinson | Sent: Rashee Rice, Rome Odunze",
+      "created": 1725974075222,
       "players": [
         {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
+          "id": "4430807",
+          "name": "Bijan Robinson",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4430878
+          "source_player_id": 4430807
         },
         {
-          "id": "4372019",
-          "name": "Jerome Ford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4372019
-        },
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
+          "id": "4428331",
+          "name": "Rashee Rice",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3117251
+          "source_player_id": 4428331
+        },
+        {
+          "id": "4431299",
+          "name": "Rome Odunze",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4431299
         }
       ],
       "source": "espn_transactions"
@@ -4315,6 +4282,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4372019
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "3d401fc3-c245-47e8-942d-7ad93a373c03-trade-8",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Jaxon Smith-Njigba, Jerome Ford | Sent: Christian McCaffrey",
+      "created": 1725974151098,
+      "players": [
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430878
+        },
+        {
+          "id": "4372019",
+          "name": "Jerome Ford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4372019
+        },
+        {
+          "id": "3117251",
+          "name": "Christian McCaffrey",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3117251
         }
       ],
       "source": "espn_transactions"
@@ -4529,32 +4529,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "f8d31c08-b82b-40dd-aff0-ef2e761856d3-trade-4",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Keon Coleman | Sent: Jerry Jeudy",
-      "created": 1726071045936,
-      "players": [
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "f8d31c08-b82b-40dd-aff0-ef2e761856d3-trade-3",
       "season": 2024,
       "week": 2,
@@ -4576,6 +4550,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4635008
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "f8d31c08-b82b-40dd-aff0-ef2e761856d3-trade-4",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Keon Coleman | Sent: Jerry Jeudy",
+      "created": 1726071045936,
+      "players": [
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241463
         }
       ],
       "source": "espn_transactions"
@@ -4733,46 +4733,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7f358a8d-73f2-493d-b476-d04bccee41ae-trade-8",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Sam Darnold, Ty Chandler | Sent: Caleb Williams, Xavier Worthy",
-      "created": 1726542620448,
-      "players": [
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4242431",
-          "name": "Ty Chandler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4242431
-        },
-        {
-          "id": "4431611",
-          "name": "Caleb Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4431611
-        },
-        {
-          "id": "4683062",
-          "name": "Xavier Worthy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4683062
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7f358a8d-73f2-493d-b476-d04bccee41ae-trade-4",
       "season": 2024,
       "week": 2,
@@ -4808,6 +4768,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4242431
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7f358a8d-73f2-493d-b476-d04bccee41ae-trade-8",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Sam Darnold, Ty Chandler | Sent: Caleb Williams, Xavier Worthy",
+      "created": 1726542620448,
+      "players": [
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4242431",
+          "name": "Ty Chandler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4242431
+        },
+        {
+          "id": "4431611",
+          "name": "Caleb Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4431611
+        },
+        {
+          "id": "4683062",
+          "name": "Xavier Worthy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4683062
         }
       ],
       "source": "espn_transactions"
@@ -5003,39 +5003,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "215342aa-a158-4662-bfaf-0f1f83b715e9-trade-8",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Jaxon Smith-Njigba, Jerome Ford | Sent: Christian McCaffrey",
-      "created": 1725974107976,
-      "players": [
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        },
-        {
-          "id": "4372019",
-          "name": "Jerome Ford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4372019
-        },
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3117251
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "215342aa-a158-4662-bfaf-0f1f83b715e9-trade-4",
       "season": 2024,
       "week": 2,
@@ -5064,6 +5031,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4372019
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "215342aa-a158-4662-bfaf-0f1f83b715e9-trade-8",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Jaxon Smith-Njigba, Jerome Ford | Sent: Christian McCaffrey",
+      "created": 1725974107976,
+      "players": [
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430878
+        },
+        {
+          "id": "4372019",
+          "name": "Jerome Ford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4372019
+        },
+        {
+          "id": "3117251",
+          "name": "Christian McCaffrey",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3117251
         }
       ],
       "source": "espn_transactions"
@@ -5221,46 +5221,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "df12618f-a8ab-4114-ad9c-14810fae6cab-trade-6",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Jerry Jeudy, Jerome Ford | Sent: Tee Higgins, Zack Moss",
-      "created": 1726024987410,
-      "players": [
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        },
-        {
-          "id": "4372019",
-          "name": "Jerome Ford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4372019
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        },
-        {
-          "id": "4035676",
-          "name": "Zack Moss",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035676
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "df12618f-a8ab-4114-ad9c-14810fae6cab-trade-4",
       "season": 2024,
       "week": 2,
@@ -5296,6 +5256,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4372019
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "df12618f-a8ab-4114-ad9c-14810fae6cab-trade-6",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Emergency Room",
+      "summary": "Received: Jerry Jeudy, Jerome Ford | Sent: Tee Higgins, Zack Moss",
+      "created": 1726024987410,
+      "players": [
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241463
+        },
+        {
+          "id": "4372019",
+          "name": "Jerome Ford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4372019
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
+        },
+        {
+          "id": "4035676",
+          "name": "Zack Moss",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035676
         }
       ],
       "source": "espn_transactions"
@@ -5764,32 +5764,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7e81203c-954d-4c6e-abcf-0d34bd41b96b-trade-4",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Keon Coleman | Sent: Jerry Jeudy",
-      "created": 1725977030040,
-      "players": [
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7e81203c-954d-4c6e-abcf-0d34bd41b96b-trade-3",
       "season": 2024,
       "week": 2,
@@ -5811,6 +5785,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4635008
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7e81203c-954d-4c6e-abcf-0d34bd41b96b-trade-4",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Keon Coleman | Sent: Jerry Jeudy",
+      "created": 1725977030040,
+      "players": [
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241463
         }
       ],
       "source": "espn_transactions"
@@ -5892,46 +5892,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "f3c6b2c1-cd7b-4e45-ba32-056159ee66d0-trade-6",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Jerry Jeudy, Jerome Ford | Sent: Tee Higgins, Zack Moss",
-      "created": 1726024929554,
-      "players": [
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        },
-        {
-          "id": "4372019",
-          "name": "Jerome Ford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4372019
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        },
-        {
-          "id": "4035676",
-          "name": "Zack Moss",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035676
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "f3c6b2c1-cd7b-4e45-ba32-056159ee66d0-trade-4",
       "season": 2024,
       "week": 2,
@@ -5967,6 +5927,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4372019
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "f3c6b2c1-cd7b-4e45-ba32-056159ee66d0-trade-6",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Emergency Room",
+      "summary": "Received: Jerry Jeudy, Jerome Ford | Sent: Tee Higgins, Zack Moss",
+      "created": 1726024929554,
+      "players": [
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241463
+        },
+        {
+          "id": "4372019",
+          "name": "Jerome Ford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4372019
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
+        },
+        {
+          "id": "4035676",
+          "name": "Zack Moss",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035676
         }
       ],
       "source": "espn_transactions"
@@ -6029,32 +6029,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "13564625-5469-4586-8f71-136d9a3a5afe-trade-6",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Jerry Jeudy | Sent: Tee Higgins",
-      "created": 1726544713872,
-      "players": [
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "13564625-5469-4586-8f71-136d9a3a5afe-trade-4",
       "season": 2024,
       "week": 2,
@@ -6076,6 +6050,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241463
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "13564625-5469-4586-8f71-136d9a3a5afe-trade-6",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Emergency Room",
+      "summary": "Received: Jerry Jeudy | Sent: Tee Higgins",
+      "created": 1726544713872,
+      "players": [
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241463
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -6252,32 +6252,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c0e5007f-4d56-4e38-a1e4-0f45e9a0358d-trade-6",
-      "season": 2024,
-      "week": 2,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Jerry Jeudy | Sent: Tee Higgins",
-      "created": 1726717503240,
-      "players": [
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "c0e5007f-4d56-4e38-a1e4-0f45e9a0358d-trade-4",
       "season": 2024,
       "week": 2,
@@ -6299,6 +6273,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241463
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "c0e5007f-4d56-4e38-a1e4-0f45e9a0358d-trade-6",
+      "season": 2024,
+      "week": 2,
+      "type": "trade",
+      "team": "Emergency Room",
+      "summary": "Received: Jerry Jeudy | Sent: Tee Higgins",
+      "created": 1726717503240,
+      "players": [
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241463
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -7216,39 +7216,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a3afa432-6da3-43c7-acc8-1c9828030145-trade-1",
-      "season": 2024,
-      "week": 3,
-      "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: D'Andre Swift | Sent: Ezekiel Elliott, Diontae Johnson",
-      "created": 1726691637247,
-      "players": [
-        {
-          "id": "4259545",
-          "name": "D'Andre Swift",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4259545
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "3932905",
-          "name": "Diontae Johnson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3932905
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a3afa432-6da3-43c7-acc8-1c9828030145-trade-7",
       "season": 2024,
       "week": 3,
@@ -7277,6 +7244,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4259545
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a3afa432-6da3-43c7-acc8-1c9828030145-trade-1",
+      "season": 2024,
+      "week": 3,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: D'Andre Swift | Sent: Ezekiel Elliott, Diontae Johnson",
+      "created": 1726691637247,
+      "players": [
+        {
+          "id": "4259545",
+          "name": "D'Andre Swift",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4259545
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "3932905",
+          "name": "Diontae Johnson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3932905
         }
       ],
       "source": "espn_transactions"
@@ -7776,46 +7776,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "f9cf36a6-0b15-43f6-9181-78359c11125a-trade-1",
-      "season": 2024,
-      "week": 3,
-      "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: Saquon Barkley, Amari Cooper | Sent: Michael Pittman Jr., Kyren Williams",
-      "created": 1726762626672,
-      "players": [
-        {
-          "id": "3929630",
-          "name": "Saquon Barkley",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3929630
-        },
-        {
-          "id": "2976499",
-          "name": "Amari Cooper",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976499
-        },
-        {
-          "id": "4035687",
-          "name": "Michael Pittman Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4035687
-        },
-        {
-          "id": "4430737",
-          "name": "Kyren Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430737
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "f9cf36a6-0b15-43f6-9181-78359c11125a-trade-7",
       "season": 2024,
       "week": 3,
@@ -7851,6 +7811,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2976499
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "f9cf36a6-0b15-43f6-9181-78359c11125a-trade-1",
+      "season": 2024,
+      "week": 3,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: Saquon Barkley, Amari Cooper | Sent: Michael Pittman Jr., Kyren Williams",
+      "created": 1726762626672,
+      "players": [
+        {
+          "id": "3929630",
+          "name": "Saquon Barkley",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3929630
+        },
+        {
+          "id": "2976499",
+          "name": "Amari Cooper",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976499
+        },
+        {
+          "id": "4035687",
+          "name": "Michael Pittman Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4035687
+        },
+        {
+          "id": "4430737",
+          "name": "Kyren Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430737
         }
       ],
       "source": "espn_transactions"
@@ -7989,46 +7989,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ca4dc84b-0bae-4358-8dc5-96febb9240d3-trade-8",
-      "season": 2024,
-      "week": 4,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Jerry Jeudy, Jerome Ford | Sent: Aaron Jones Sr., Malik Nabers",
-      "created": 1727655123041,
-      "players": [
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        },
-        {
-          "id": "4372019",
-          "name": "Jerome Ford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4372019
-        },
-        {
-          "id": "3042519",
-          "name": "Aaron Jones Sr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3042519
-        },
-        {
-          "id": "4595348",
-          "name": "Malik Nabers",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4595348
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ca4dc84b-0bae-4358-8dc5-96febb9240d3-trade-4",
       "season": 2024,
       "week": 4,
@@ -8064,6 +8024,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4372019
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "ca4dc84b-0bae-4358-8dc5-96febb9240d3-trade-8",
+      "season": 2024,
+      "week": 4,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Jerry Jeudy, Jerome Ford | Sent: Aaron Jones Sr., Malik Nabers",
+      "created": 1727655123041,
+      "players": [
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241463
+        },
+        {
+          "id": "4372019",
+          "name": "Jerome Ford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4372019
+        },
+        {
+          "id": "3042519",
+          "name": "Aaron Jones Sr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3042519
+        },
+        {
+          "id": "4595348",
+          "name": "Malik Nabers",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4595348
         }
       ],
       "source": "espn_transactions"
@@ -8525,46 +8525,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "278ea574-fff6-4df5-ac49-8c48916df96f-trade-8",
-      "season": 2024,
-      "week": 4,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Jerry Jeudy, Jerome Ford | Sent: Aaron Jones Sr., Malik Nabers",
-      "created": 1727655069469,
-      "players": [
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        },
-        {
-          "id": "4372019",
-          "name": "Jerome Ford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4372019
-        },
-        {
-          "id": "3042519",
-          "name": "Aaron Jones Sr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3042519
-        },
-        {
-          "id": "4595348",
-          "name": "Malik Nabers",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4595348
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "278ea574-fff6-4df5-ac49-8c48916df96f-trade-4",
       "season": 2024,
       "week": 4,
@@ -8600,6 +8560,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4372019
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "278ea574-fff6-4df5-ac49-8c48916df96f-trade-8",
+      "season": 2024,
+      "week": 4,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Jerry Jeudy, Jerome Ford | Sent: Aaron Jones Sr., Malik Nabers",
+      "created": 1727655069469,
+      "players": [
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241463
+        },
+        {
+          "id": "4372019",
+          "name": "Jerome Ford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4372019
+        },
+        {
+          "id": "3042519",
+          "name": "Aaron Jones Sr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3042519
+        },
+        {
+          "id": "4595348",
+          "name": "Malik Nabers",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4595348
         }
       ],
       "source": "espn_transactions"
@@ -10918,25 +10918,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e5cec35d-9980-460d-a573-ef33b32b6efa-trade-1",
-      "season": 2024,
-      "week": 6,
-      "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: None | Sent: Austin Seibert",
-      "created": 1728585723414,
-      "players": [
-        {
-          "id": "3821683",
-          "name": "Austin Seibert",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3821683
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "e5cec35d-9980-460d-a573-ef33b32b6efa-trade-0",
       "season": 2024,
       "week": 6,
@@ -10949,6 +10930,25 @@
           "id": "3821683",
           "name": "Austin Seibert",
           "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3821683
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e5cec35d-9980-460d-a573-ef33b32b6efa-trade-1",
+      "season": 2024,
+      "week": 6,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: None | Sent: Austin Seibert",
+      "created": 1728585723414,
+      "players": [
+        {
+          "id": "3821683",
+          "name": "Austin Seibert",
+          "action": "sent",
           "id_type": "espn",
           "source_player_id": 3821683
         }
@@ -10994,32 +10994,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "76cc5703-6544-42aa-90f1-88d103c9ae41-trade-4",
-      "season": 2024,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: DeVonta Smith | Sent: Mark Andrews",
-      "created": 1729019282671,
-      "players": [
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "76cc5703-6544-42aa-90f1-88d103c9ae41-trade-3",
       "season": 2024,
       "week": 6,
@@ -11041,6 +11015,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241478
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "76cc5703-6544-42aa-90f1-88d103c9ae41-trade-4",
+      "season": 2024,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: DeVonta Smith | Sent: Mark Andrews",
+      "created": 1729019282671,
+      "players": [
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
         }
       ],
       "source": "espn_transactions"
@@ -11423,46 +11423,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "8420cff5-b89a-4496-a4af-0e3f480fa683-trade-4",
-      "season": 2024,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: David Montgomery, Jared Goff | Sent: Sam Darnold, Austin Ekeler",
-      "created": 1728489996255,
-      "players": [
-        {
-          "id": "4035538",
-          "name": "David Montgomery",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035538
-        },
-        {
-          "id": "3046779",
-          "name": "Jared Goff",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3046779
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "8420cff5-b89a-4496-a4af-0e3f480fa683-trade-3",
       "season": 2024,
       "week": 6,
@@ -11503,6 +11463,46 @@
       "source": "espn_transactions"
     },
     {
+      "id": "8420cff5-b89a-4496-a4af-0e3f480fa683-trade-4",
+      "season": 2024,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: David Montgomery, Jared Goff | Sent: Sam Darnold, Austin Ekeler",
+      "created": 1728489996255,
+      "players": [
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035538
+        },
+        {
+          "id": "3046779",
+          "name": "Jared Goff",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3046779
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "ef6cb3ec-3384-4a18-b2e7-48bf1bf75e0a-drop-7-11252",
       "season": 2024,
       "week": 6,
@@ -11517,32 +11517,6 @@
           "action": "drop",
           "id_type": "espn",
           "source_player_id": 11252
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "d9adc3d6-3c58-4add-8c41-331a05dc26d7-trade-4",
-      "season": 2024,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Keon Coleman | Sent: Jerry Jeudy",
-      "created": 1728440699394,
-      "players": [
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241463
         }
       ],
       "source": "espn_transactions"
@@ -11569,6 +11543,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4635008
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d9adc3d6-3c58-4add-8c41-331a05dc26d7-trade-4",
+      "season": 2024,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Keon Coleman | Sent: Jerry Jeudy",
+      "created": 1728440699394,
+      "players": [
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241463
         }
       ],
       "source": "espn_transactions"
@@ -12420,53 +12420,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "afe1f7a8-d309-4fd6-ab53-34dd1cee5af9-trade-4",
-      "season": 2024,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Nico Collins, Jordan Mason | Sent: Jaxon Smith-Njigba, Keon Coleman, Mark Andrews",
-      "created": 1728933185791,
-      "players": [
-        {
-          "id": "4258173",
-          "name": "Nico Collins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4258173
-        },
-        {
-          "id": "4360569",
-          "name": "Jordan Mason",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360569
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "afe1f7a8-d309-4fd6-ab53-34dd1cee5af9-trade-3",
       "season": 2024,
       "week": 6,
@@ -12509,6 +12462,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4360569
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "afe1f7a8-d309-4fd6-ab53-34dd1cee5af9-trade-4",
+      "season": 2024,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Nico Collins, Jordan Mason | Sent: Jaxon Smith-Njigba, Keon Coleman, Mark Andrews",
+      "created": 1728933185791,
+      "players": [
+        {
+          "id": "4258173",
+          "name": "Nico Collins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4258173
+        },
+        {
+          "id": "4360569",
+          "name": "Jordan Mason",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360569
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430878
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
         }
       ],
       "source": "espn_transactions"
@@ -12571,32 +12571,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "edf669cb-709b-4800-bc8f-f630531bd926-trade-4",
-      "season": 2024,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: DeVonta Smith | Sent: Mark Andrews",
-      "created": 1728846521592,
-      "players": [
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "edf669cb-709b-4800-bc8f-f630531bd926-trade-3",
       "season": 2024,
       "week": 6,
@@ -12618,6 +12592,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241478
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "edf669cb-709b-4800-bc8f-f630531bd926-trade-4",
+      "season": 2024,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: DeVonta Smith | Sent: Mark Andrews",
+      "created": 1728846521592,
+      "players": [
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
         }
       ],
       "source": "espn_transactions"
@@ -12737,32 +12737,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e62720d7-4d2c-42b9-81fc-08d46ac433af-trade-4",
-      "season": 2024,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Keon Coleman | Sent: Jerry Jeudy",
-      "created": 1728440736509,
-      "players": [
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "4241463",
-          "name": "Jerry Jeudy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241463
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "e62720d7-4d2c-42b9-81fc-08d46ac433af-trade-3",
       "season": 2024,
       "week": 6,
@@ -12784,6 +12758,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4635008
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e62720d7-4d2c-42b9-81fc-08d46ac433af-trade-4",
+      "season": 2024,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Keon Coleman | Sent: Jerry Jeudy",
+      "created": 1728440736509,
+      "players": [
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "4241463",
+          "name": "Jerry Jeudy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241463
         }
       ],
       "source": "espn_transactions"
@@ -13036,46 +13036,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7ecc78c6-66fe-405b-b54d-ac0f2e40e0fd-trade-4",
-      "season": 2024,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: David Montgomery, Jared Goff | Sent: Sam Darnold, Austin Ekeler",
-      "created": 1728662766252,
-      "players": [
-        {
-          "id": "4035538",
-          "name": "David Montgomery",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035538
-        },
-        {
-          "id": "3046779",
-          "name": "Jared Goff",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3046779
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7ecc78c6-66fe-405b-b54d-ac0f2e40e0fd-trade-3",
       "season": 2024,
       "week": 6,
@@ -13111,6 +13071,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3046779
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7ecc78c6-66fe-405b-b54d-ac0f2e40e0fd-trade-4",
+      "season": 2024,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: David Montgomery, Jared Goff | Sent: Sam Darnold, Austin Ekeler",
+      "created": 1728662766252,
+      "players": [
+        {
+          "id": "4035538",
+          "name": "David Montgomery",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035538
+        },
+        {
+          "id": "3046779",
+          "name": "Jared Goff",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3046779
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3068267
         }
       ],
       "source": "espn_transactions"
@@ -13325,53 +13325,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "03529792-47e3-4f4f-aa34-103edfd2a8aa-trade-4",
-      "season": 2024,
-      "week": 6,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Nico Collins, Jordan Mason | Sent: Jaxon Smith-Njigba, Keon Coleman, Mark Andrews",
-      "created": 1728933225292,
-      "players": [
-        {
-          "id": "4258173",
-          "name": "Nico Collins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4258173
-        },
-        {
-          "id": "4360569",
-          "name": "Jordan Mason",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360569
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "03529792-47e3-4f4f-aa34-103edfd2a8aa-trade-3",
       "season": 2024,
       "week": 6,
@@ -13414,6 +13367,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4360569
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "03529792-47e3-4f4f-aa34-103edfd2a8aa-trade-4",
+      "season": 2024,
+      "week": 6,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Nico Collins, Jordan Mason | Sent: Jaxon Smith-Njigba, Keon Coleman, Mark Andrews",
+      "created": 1728933225292,
+      "players": [
+        {
+          "id": "4258173",
+          "name": "Nico Collins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4258173
+        },
+        {
+          "id": "4360569",
+          "name": "Jordan Mason",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360569
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430878
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
         }
       ],
       "source": "espn_transactions"
@@ -13680,39 +13680,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "2e5bdc7e-9d71-4938-856c-d7fead251a4b-trade-8",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Zack Moss, Javonte Williams | Sent: Chuba Hubbard",
-      "created": 1729019818950,
-      "players": [
-        {
-          "id": "4035676",
-          "name": "Zack Moss",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4035676
-        },
-        {
-          "id": "4361579",
-          "name": "Javonte Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4361579
-        },
-        {
-          "id": "4241416",
-          "name": "Chuba Hubbard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241416
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "2e5bdc7e-9d71-4938-856c-d7fead251a4b-trade-6",
       "season": 2024,
       "week": 7,
@@ -13741,6 +13708,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4361579
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "2e5bdc7e-9d71-4938-856c-d7fead251a4b-trade-8",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Zack Moss, Javonte Williams | Sent: Chuba Hubbard",
+      "created": 1729019818950,
+      "players": [
+        {
+          "id": "4035676",
+          "name": "Zack Moss",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4035676
+        },
+        {
+          "id": "4361579",
+          "name": "Javonte Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4361579
+        },
+        {
+          "id": "4241416",
+          "name": "Chuba Hubbard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241416
         }
       ],
       "source": "espn_transactions"
@@ -13793,6 +13793,32 @@
       "source": "espn_transactions"
     },
     {
+      "id": "a81b7552-3eb9-4f34-aa01-91d65cab4916-trade-0",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Alexander Mattison, Dontayvion Wicks | Sent: None",
+      "created": 1729002217953,
+      "players": [
+        {
+          "id": "4048244",
+          "name": "Alexander Mattison",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4048244
+        },
+        {
+          "id": "4428850",
+          "name": "Dontayvion Wicks",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4428850
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "a81b7552-3eb9-4f34-aa01-91d65cab4916-trade-4",
       "season": 2024,
       "week": 7,
@@ -13826,27 +13852,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a81b7552-3eb9-4f34-aa01-91d65cab4916-trade-0",
+      "id": "6e600295-1297-4ddc-b36d-3900f851cd20-trade-4",
       "season": 2024,
       "week": 7,
       "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Alexander Mattison, Dontayvion Wicks | Sent: None",
-      "created": 1729002217953,
+      "team": "Team Malley",
+      "summary": "Received: Christian McCaffrey | Sent: Austin Ekeler, Keon Coleman",
+      "created": 1729478851323,
       "players": [
         {
-          "id": "4048244",
-          "name": "Alexander Mattison",
+          "id": "3117251",
+          "name": "Christian McCaffrey",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4048244
+          "source_player_id": 3117251
         },
         {
-          "id": "4428850",
-          "name": "Dontayvion Wicks",
-          "action": "received",
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4428850
+          "source_player_id": 3068267
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4635008
         }
       ],
       "source": "espn_transactions"
@@ -13880,39 +13913,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3117251
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "6e600295-1297-4ddc-b36d-3900f851cd20-trade-4",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Christian McCaffrey | Sent: Austin Ekeler, Keon Coleman",
-      "created": 1729478851323,
-      "players": [
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3117251
-        },
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4635008
         }
       ],
       "source": "espn_transactions"
@@ -14155,39 +14155,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ae606a89-fc3a-4e49-b57f-783450c56cad-trade-2",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Keon Coleman, Austin Ekeler | Sent: Tyreek Hill",
-      "created": 1729002971648,
-      "players": [
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ae606a89-fc3a-4e49-b57f-783450c56cad-trade-4",
       "season": 2024,
       "week": 7,
@@ -14216,6 +14183,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3068267
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "ae606a89-fc3a-4e49-b57f-783450c56cad-trade-2",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Keon Coleman, Austin Ekeler | Sent: Tyreek Hill",
+      "created": 1729002971648,
+      "players": [
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116406
         }
       ],
       "source": "espn_transactions"
@@ -14392,39 +14392,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "af8aca8e-61be-4f9f-b8ca-5c959cf95a4b-trade-8",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Austin Ekeler, Keon Coleman | Sent: Christian McCaffrey",
-      "created": 1729478840021,
-      "players": [
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3117251
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "af8aca8e-61be-4f9f-b8ca-5c959cf95a4b-trade-4",
       "season": 2024,
       "week": 7,
@@ -14453,6 +14420,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4635008
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "af8aca8e-61be-4f9f-b8ca-5c959cf95a4b-trade-8",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Austin Ekeler, Keon Coleman | Sent: Christian McCaffrey",
+      "created": 1729478840021,
+      "players": [
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "3117251",
+          "name": "Christian McCaffrey",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3117251
         }
       ],
       "source": "espn_transactions"
@@ -14826,39 +14826,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d2372902-4ebd-4975-a913-da38a4b7aea2-trade-4",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Josh Jacobs | Sent: Keon Coleman, Jaxon Smith-Njigba",
-      "created": 1729002098454,
-      "players": [
-        {
-          "id": "4047365",
-          "name": "Josh Jacobs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047365
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d2372902-4ebd-4975-a913-da38a4b7aea2-trade-3",
       "season": 2024,
       "week": 7,
@@ -14887,6 +14854,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4047365
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d2372902-4ebd-4975-a913-da38a4b7aea2-trade-4",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Josh Jacobs | Sent: Keon Coleman, Jaxon Smith-Njigba",
+      "created": 1729002098454,
+      "players": [
+        {
+          "id": "4047365",
+          "name": "Josh Jacobs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047365
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430878
         }
       ],
       "source": "espn_transactions"
@@ -14949,39 +14949,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "dddadcd0-da5d-4805-9261-135fd1f5ba44-trade-2",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Keon Coleman, Austin Ekeler | Sent: Tyreek Hill",
-      "created": 1729002910773,
-      "players": [
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "dddadcd0-da5d-4805-9261-135fd1f5ba44-trade-4",
       "season": 2024,
       "week": 7,
@@ -15015,6 +14982,39 @@
       "source": "espn_transactions"
     },
     {
+      "id": "dddadcd0-da5d-4805-9261-135fd1f5ba44-trade-2",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Keon Coleman, Austin Ekeler | Sent: Tyreek Hill",
+      "created": 1729002910773,
+      "players": [
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116406
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "54200ba0-d1f7-4fac-b557-2352668469bc-add-2-4572680",
       "season": 2024,
       "week": 7,
@@ -15029,39 +15029,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 4572680
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "1310d7d2-81a2-4340-b5af-f76a848020a8-trade-2",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Austin Ekeler, Jaxon Smith-Njigba | Sent: Alvin Kamara",
-      "created": 1729002432881,
-      "players": [
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        },
-        {
-          "id": "3054850",
-          "name": "Alvin Kamara",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3054850
         }
       ],
       "source": "espn_transactions"
@@ -15100,13 +15067,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a119e8dc-6045-49cb-a098-0f8ab74ac8c2-trade-2",
+      "id": "1310d7d2-81a2-4340-b5af-f76a848020a8-trade-2",
       "season": 2024,
       "week": 7,
       "type": "trade",
       "team": "Tugg Speedman",
       "summary": "Received: Austin Ekeler, Jaxon Smith-Njigba | Sent: Alvin Kamara",
-      "created": 1729002344684,
+      "created": 1729002432881,
       "players": [
         {
           "id": "3068267",
@@ -15161,6 +15128,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4430878
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a119e8dc-6045-49cb-a098-0f8ab74ac8c2-trade-2",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Austin Ekeler, Jaxon Smith-Njigba | Sent: Alvin Kamara",
+      "created": 1729002344684,
+      "players": [
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430878
+        },
+        {
+          "id": "3054850",
+          "name": "Alvin Kamara",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3054850
         }
       ],
       "source": "espn_transactions"
@@ -15251,6 +15251,32 @@
       "source": "espn_transactions"
     },
     {
+      "id": "ab51c4db-60ab-424c-a323-473179922b04-trade-0",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Alexander Mattison, Dontayvion Wicks | Sent: None",
+      "created": 1729002238869,
+      "players": [
+        {
+          "id": "4048244",
+          "name": "Alexander Mattison",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4048244
+        },
+        {
+          "id": "4428850",
+          "name": "Dontayvion Wicks",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4428850
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "ab51c4db-60ab-424c-a323-473179922b04-trade-4",
       "season": 2024,
       "week": 7,
@@ -15279,32 +15305,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3916387
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "ab51c4db-60ab-424c-a323-473179922b04-trade-0",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Alexander Mattison, Dontayvion Wicks | Sent: None",
-      "created": 1729002238869,
-      "players": [
-        {
-          "id": "4048244",
-          "name": "Alexander Mattison",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4048244
-        },
-        {
-          "id": "4428850",
-          "name": "Dontayvion Wicks",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4428850
         }
       ],
       "source": "espn_transactions"
@@ -15348,46 +15348,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "efdd9984-0545-4142-b8d9-e808620a4c7a-trade-8",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Mayo Clinic",
-      "summary": "Received: Austin Ekeler, Jaxon Smith-Njigba | Sent: Rashee Rice, Christian McCaffrey",
-      "created": 1729002189088,
-      "players": [
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        },
-        {
-          "id": "4428331",
-          "name": "Rashee Rice",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4428331
-        },
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3117251
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "efdd9984-0545-4142-b8d9-e808620a4c7a-trade-4",
       "season": 2024,
       "week": 7,
@@ -15423,6 +15383,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4430878
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "efdd9984-0545-4142-b8d9-e808620a4c7a-trade-8",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Mayo Clinic",
+      "summary": "Received: Austin Ekeler, Jaxon Smith-Njigba | Sent: Rashee Rice, Christian McCaffrey",
+      "created": 1729002189088,
+      "players": [
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430878
+        },
+        {
+          "id": "4428331",
+          "name": "Rashee Rice",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4428331
+        },
+        {
+          "id": "3117251",
+          "name": "Christian McCaffrey",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3117251
         }
       ],
       "source": "espn_transactions"
@@ -15503,6 +15503,25 @@
       "source": "espn_transactions"
     },
     {
+      "id": "98e6733d-1591-4951-9672-f04ce134c17d-trade-0",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Caleb Williams | Sent: None",
+      "created": 1729478922083,
+      "players": [
+        {
+          "id": "4431611",
+          "name": "Caleb Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4431611
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "98e6733d-1591-4951-9672-f04ce134c17d-trade-4",
       "season": 2024,
       "week": 7,
@@ -15571,20 +15590,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "98e6733d-1591-4951-9672-f04ce134c17d-trade-0",
+      "id": "edb81316-1c68-4814-9e33-5c510406055e-trade-4",
       "season": 2024,
       "week": 7,
       "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Caleb Williams | Sent: None",
-      "created": 1729478922083,
+      "team": "Team Malley",
+      "summary": "Received: Rashee Rice, Christian McCaffrey | Sent: Austin Ekeler, Jaxon Smith-Njigba",
+      "created": 1729002177957,
       "players": [
         {
-          "id": "4431611",
-          "name": "Caleb Williams",
+          "id": "4428331",
+          "name": "Rashee Rice",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4431611
+          "source_player_id": 4428331
+        },
+        {
+          "id": "3117251",
+          "name": "Christian McCaffrey",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3117251
+        },
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430878
         }
       ],
       "source": "espn_transactions"
@@ -15630,46 +15670,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "edb81316-1c68-4814-9e33-5c510406055e-trade-4",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Rashee Rice, Christian McCaffrey | Sent: Austin Ekeler, Jaxon Smith-Njigba",
-      "created": 1729002177957,
-      "players": [
-        {
-          "id": "4428331",
-          "name": "Rashee Rice",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4428331
-        },
-        {
-          "id": "3117251",
-          "name": "Christian McCaffrey",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3117251
-        },
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "37080d5b-93c4-4085-946b-f8813280ba14-add-7-4682745",
       "season": 2024,
       "week": 7,
@@ -15708,39 +15708,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d322e464-e209-4c56-9665-997f2f671801-trade-4",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Josh Jacobs | Sent: Keon Coleman, Jaxon Smith-Njigba",
-      "created": 1729174864168,
-      "players": [
-        {
-          "id": "4047365",
-          "name": "Josh Jacobs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047365
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d322e464-e209-4c56-9665-997f2f671801-trade-3",
       "season": 2024,
       "week": 7,
@@ -15769,6 +15736,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4047365
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d322e464-e209-4c56-9665-997f2f671801-trade-4",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Josh Jacobs | Sent: Keon Coleman, Jaxon Smith-Njigba",
+      "created": 1729174864168,
+      "players": [
+        {
+          "id": "4047365",
+          "name": "Josh Jacobs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047365
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430878
         }
       ],
       "source": "espn_transactions"
@@ -16255,6 +16255,25 @@
       "source": "espn_transactions"
     },
     {
+      "id": "1071ba31-c64c-4793-a91f-77f1f8a8372e-trade-0",
+      "season": 2024,
+      "week": 7,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Caleb Williams | Sent: None",
+      "created": 1729478959999,
+      "players": [
+        {
+          "id": "4431611",
+          "name": "Caleb Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4431611
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "1071ba31-c64c-4793-a91f-77f1f8a8372e-trade-4",
       "season": 2024,
       "week": 7,
@@ -16318,25 +16337,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3916387
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "1071ba31-c64c-4793-a91f-77f1f8a8372e-trade-0",
-      "season": 2024,
-      "week": 7,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Caleb Williams | Sent: None",
-      "created": 1729478959999,
-      "players": [
-        {
-          "id": "4431611",
-          "name": "Caleb Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4431611
         }
       ],
       "source": "espn_transactions"
@@ -16531,6 +16531,39 @@
       "source": "espn_transactions"
     },
     {
+      "id": "ae67d8d4-9dd7-4259-bd63-0aaec9e08718-trade-0",
+      "season": 2024,
+      "week": 8,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Austin Ekeler, Sam Darnold, Keon Coleman | Sent: None",
+      "created": 1729789033379,
+      "players": [
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "ae67d8d4-9dd7-4259-bd63-0aaec9e08718-trade-4",
       "season": 2024,
       "week": 8,
@@ -16599,72 +16632,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ae67d8d4-9dd7-4259-bd63-0aaec9e08718-trade-0",
-      "season": 2024,
-      "week": 8,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Austin Ekeler, Sam Darnold, Keon Coleman | Sent: None",
-      "created": 1729789033379,
-      "players": [
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "ccc515a2-c6d0-4779-ad21-0fdde4bf5f1c-trade-1",
-      "season": 2024,
-      "week": 8,
-      "type": "trade",
-      "team": "King of December 💍💍💍",
-      "summary": "Received: Mark Andrews, Keon Coleman | Sent: Davante Adams",
-      "created": 1729633940063,
-      "players": [
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16800
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ccc515a2-c6d0-4779-ad21-0fdde4bf5f1c-trade-4",
       "season": 2024,
       "week": 8,
@@ -16698,13 +16665,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "56c837cd-aadd-4047-baa1-708bea785b54-trade-1",
+      "id": "ccc515a2-c6d0-4779-ad21-0fdde4bf5f1c-trade-1",
       "season": 2024,
       "week": 8,
       "type": "trade",
       "team": "King of December 💍💍💍",
       "summary": "Received: Mark Andrews, Keon Coleman | Sent: Davante Adams",
-      "created": 1729633541572,
+      "created": 1729633940063,
       "players": [
         {
           "id": "3116365",
@@ -16759,6 +16726,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4635008
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "56c837cd-aadd-4047-baa1-708bea785b54-trade-1",
+      "season": 2024,
+      "week": 8,
+      "type": "trade",
+      "team": "King of December 💍💍💍",
+      "summary": "Received: Mark Andrews, Keon Coleman | Sent: Davante Adams",
+      "created": 1729633541572,
+      "players": [
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116365
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16800
         }
       ],
       "source": "espn_transactions"
@@ -17125,46 +17125,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "81c504e9-7648-492f-ab5c-2968a8953349-trade-4",
-      "season": 2024,
-      "week": 8,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Justin Jefferson | Sent: Mark Andrews, Jaxon Smith-Njigba, Stefon Diggs",
-      "created": 1729961405317,
-      "players": [
-        {
-          "id": "4262921",
-          "name": "Justin Jefferson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4262921
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "81c504e9-7648-492f-ab5c-2968a8953349-trade-3",
       "season": 2024,
       "week": 8,
@@ -17205,27 +17165,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "621479b5-aa2a-4910-96a0-38bf14eff2ec-trade-4",
+      "id": "81c504e9-7648-492f-ab5c-2968a8953349-trade-4",
       "season": 2024,
       "week": 8,
       "type": "trade",
       "team": "Team Malley",
-      "summary": "Received: DeVonta Smith | Sent: Keon Coleman, Mark Andrews",
-      "created": 1729806065037,
+      "summary": "Received: Justin Jefferson | Sent: Mark Andrews, Jaxon Smith-Njigba, Stefon Diggs",
+      "created": 1729961405317,
       "players": [
         {
-          "id": "4241478",
-          "name": "DeVonta Smith",
+          "id": "4262921",
+          "name": "Justin Jefferson",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4635008
+          "source_player_id": 4262921
         },
         {
           "id": "3116365",
@@ -17233,6 +17186,20 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116365
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430878
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976212
         }
       ],
       "source": "espn_transactions"
@@ -17271,34 +17238,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "9bff4aa8-3904-4d21-8892-224b4a3c2a1b-trade-2",
+      "id": "621479b5-aa2a-4910-96a0-38bf14eff2ec-trade-4",
       "season": 2024,
       "week": 8,
       "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Keon Coleman, Sam Darnold | Sent: Garrett Wilson",
-      "created": 1729633859473,
+      "team": "Team Malley",
+      "summary": "Received: DeVonta Smith | Sent: Keon Coleman, Mark Andrews",
+      "created": 1729806065037,
       "players": [
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
         {
           "id": "4635008",
           "name": "Keon Coleman",
-          "action": "received",
+          "action": "sent",
           "id_type": "espn",
           "source_player_id": 4635008
         },
         {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4569618",
-          "name": "Garrett Wilson",
+          "id": "3116365",
+          "name": "Mark Andrews",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4569618
+          "source_player_id": 3116365
         }
       ],
       "source": "espn_transactions"
@@ -17332,6 +17299,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3912547
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "9bff4aa8-3904-4d21-8892-224b4a3c2a1b-trade-2",
+      "season": 2024,
+      "week": 8,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Keon Coleman, Sam Darnold | Sent: Garrett Wilson",
+      "created": 1729633859473,
+      "players": [
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4569618",
+          "name": "Garrett Wilson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4569618
         }
       ],
       "source": "espn_transactions"
@@ -17479,6 +17479,39 @@
       "source": "espn_transactions"
     },
     {
+      "id": "46a3705e-97b3-4f7c-9876-3e2f8c33a559-trade-0",
+      "season": 2024,
+      "week": 8,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Austin Ekeler, Sam Darnold, Keon Coleman | Sent: None",
+      "created": 1729900731016,
+      "players": [
+        {
+          "id": "3068267",
+          "name": "Austin Ekeler",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3068267
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "46a3705e-97b3-4f7c-9876-3e2f8c33a559-trade-4",
       "season": 2024,
       "week": 8,
@@ -17540,39 +17573,6 @@
           "id": "4635008",
           "name": "Keon Coleman",
           "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "46a3705e-97b3-4f7c-9876-3e2f8c33a559-trade-0",
-      "season": 2024,
-      "week": 8,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Austin Ekeler, Sam Darnold, Keon Coleman | Sent: None",
-      "created": 1729900731016,
-      "players": [
-        {
-          "id": "3068267",
-          "name": "Austin Ekeler",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3068267
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
           "id_type": "espn",
           "source_player_id": 4635008
         }
@@ -18264,39 +18264,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5adb40d8-6710-4ec9-9720-942f0eb1859d-trade-2",
-      "season": 2024,
-      "week": 8,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Keon Coleman, Sam Darnold | Sent: Garrett Wilson",
-      "created": 1729633887775,
-      "players": [
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4569618",
-          "name": "Garrett Wilson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4569618
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "5adb40d8-6710-4ec9-9720-942f0eb1859d-trade-4",
       "season": 2024,
       "week": 8,
@@ -18325,6 +18292,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3912547
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5adb40d8-6710-4ec9-9720-942f0eb1859d-trade-2",
+      "season": 2024,
+      "week": 8,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Keon Coleman, Sam Darnold | Sent: Garrett Wilson",
+      "created": 1729633887775,
+      "players": [
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4569618",
+          "name": "Garrett Wilson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4569618
         }
       ],
       "source": "espn_transactions"
@@ -18567,46 +18567,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e29e8e36-e249-4b5d-b170-8be8a8e3af96-trade-4",
-      "season": 2024,
-      "week": 8,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Justin Jefferson | Sent: Mark Andrews, Jaxon Smith-Njigba, Stefon Diggs",
-      "created": 1729788724101,
-      "players": [
-        {
-          "id": "4262921",
-          "name": "Justin Jefferson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4262921
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "e29e8e36-e249-4b5d-b170-8be8a8e3af96-trade-3",
       "season": 2024,
       "week": 8,
@@ -18642,6 +18602,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4262921
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e29e8e36-e249-4b5d-b170-8be8a8e3af96-trade-4",
+      "season": 2024,
+      "week": 8,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Justin Jefferson | Sent: Mark Andrews, Jaxon Smith-Njigba, Stefon Diggs",
+      "created": 1729788724101,
+      "players": [
+        {
+          "id": "4262921",
+          "name": "Justin Jefferson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4262921
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430878
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976212
         }
       ],
       "source": "espn_transactions"
@@ -19293,39 +19293,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5738d04a-f5f4-4cc0-91af-5c52ab0bf5ca-trade-4",
-      "season": 2024,
-      "week": 8,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: DeVonta Smith | Sent: Keon Coleman, Mark Andrews",
-      "created": 1729633307517,
-      "players": [
-        {
-          "id": "4241478",
-          "name": "DeVonta Smith",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4241478
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "5738d04a-f5f4-4cc0-91af-5c52ab0bf5ca-trade-3",
       "season": 2024,
       "week": 8,
@@ -19354,6 +19321,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4241478
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5738d04a-f5f4-4cc0-91af-5c52ab0bf5ca-trade-4",
+      "season": 2024,
+      "week": 8,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: DeVonta Smith | Sent: Keon Coleman, Mark Andrews",
+      "created": 1729633307517,
+      "players": [
+        {
+          "id": "4241478",
+          "name": "DeVonta Smith",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4241478
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116365
         }
       ],
       "source": "espn_transactions"
@@ -19718,6 +19718,25 @@
       "source": "espn_transactions"
     },
     {
+      "id": "fb398ed2-ea3c-4bd2-ba42-41a876e15bd9-trade-0",
+      "season": 2024,
+      "week": 9,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Ray Davis | Sent: None",
+      "created": 1730383641038,
+      "players": [
+        {
+          "id": "4429501",
+          "name": "Ray Davis",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4429501
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "fb398ed2-ea3c-4bd2-ba42-41a876e15bd9-trade-1",
       "season": 2024,
       "week": 9,
@@ -19828,25 +19847,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4430878
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "fb398ed2-ea3c-4bd2-ba42-41a876e15bd9-trade-0",
-      "season": 2024,
-      "week": 9,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Ray Davis | Sent: None",
-      "created": 1730383641038,
-      "players": [
-        {
-          "id": "4429501",
-          "name": "Ray Davis",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4429501
         }
       ],
       "source": "espn_transactions"
@@ -20004,6 +20004,25 @@
       "source": "espn_transactions"
     },
     {
+      "id": "11d7a026-e67c-44c6-8c42-07b5a41a9edd-trade-0",
+      "season": 2024,
+      "week": 9,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: Ray Davis | Sent: None",
+      "created": 1730556425749,
+      "players": [
+        {
+          "id": "4429501",
+          "name": "Ray Davis",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4429501
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "11d7a026-e67c-44c6-8c42-07b5a41a9edd-trade-1",
       "season": 2024,
       "week": 9,
@@ -20114,25 +20133,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4430878
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "11d7a026-e67c-44c6-8c42-07b5a41a9edd-trade-0",
-      "season": 2024,
-      "week": 9,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: Ray Davis | Sent: None",
-      "created": 1730556425749,
-      "players": [
-        {
-          "id": "4429501",
-          "name": "Ray Davis",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4429501
         }
       ],
       "source": "espn_transactions"
@@ -21031,46 +21031,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1035e885-3687-47c4-919d-b917016728e0-trade-2",
-      "season": 2024,
-      "week": 10,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Bijan Robinson | Sent: Jameson Williams, Rico Dowdle, Tyrone Tracy Jr.",
-      "created": 1731095525228,
-      "players": [
-        {
-          "id": "4430807",
-          "name": "Bijan Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430807
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "4038815",
-          "name": "Rico Dowdle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4038815
-        },
-        {
-          "id": "4360516",
-          "name": "Tyrone Tracy Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360516
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "1035e885-3687-47c4-919d-b917016728e0-trade-4",
       "season": 2024,
       "week": 10,
@@ -21106,6 +21066,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4430807
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1035e885-3687-47c4-919d-b917016728e0-trade-2",
+      "season": 2024,
+      "week": 10,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Bijan Robinson | Sent: Jameson Williams, Rico Dowdle, Tyrone Tracy Jr.",
+      "created": 1731095525228,
+      "players": [
+        {
+          "id": "4430807",
+          "name": "Bijan Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430807
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
+        },
+        {
+          "id": "4038815",
+          "name": "Rico Dowdle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4038815
+        },
+        {
+          "id": "4360516",
+          "name": "Tyrone Tracy Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360516
         }
       ],
       "source": "espn_transactions"
@@ -21301,46 +21301,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "13e2bb26-c83b-4033-a5b7-2abacc8ebe0c-trade-2",
-      "season": 2024,
-      "week": 10,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Bijan Robinson | Sent: Jameson Williams, Rico Dowdle, Tyrone Tracy Jr.",
-      "created": 1730922751545,
-      "players": [
-        {
-          "id": "4430807",
-          "name": "Bijan Robinson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4430807
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "4038815",
-          "name": "Rico Dowdle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4038815
-        },
-        {
-          "id": "4360516",
-          "name": "Tyrone Tracy Jr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360516
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "13e2bb26-c83b-4033-a5b7-2abacc8ebe0c-trade-4",
       "season": 2024,
       "week": 10,
@@ -21376,6 +21336,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4430807
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "13e2bb26-c83b-4033-a5b7-2abacc8ebe0c-trade-2",
+      "season": 2024,
+      "week": 10,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Bijan Robinson | Sent: Jameson Williams, Rico Dowdle, Tyrone Tracy Jr.",
+      "created": 1730922751545,
+      "players": [
+        {
+          "id": "4430807",
+          "name": "Bijan Robinson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4430807
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
+        },
+        {
+          "id": "4038815",
+          "name": "Rico Dowdle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4038815
+        },
+        {
+          "id": "4360516",
+          "name": "Tyrone Tracy Jr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360516
         }
       ],
       "source": "espn_transactions"
@@ -21609,46 +21609,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a3901ceb-d0d9-4ee6-9a9d-c2eafbc84f7f-trade-6",
-      "season": 2024,
-      "week": 11,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Keenan Allen, Kyle Pitts Sr. | Sent: Dalton Kincaid, Tee Higgins",
-      "created": 1731688936087,
-      "players": [
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "4385690",
-          "name": "Dalton Kincaid",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4385690
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a3901ceb-d0d9-4ee6-9a9d-c2eafbc84f7f-trade-4",
       "season": 2024,
       "week": 11,
@@ -21684,6 +21644,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4360248
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a3901ceb-d0d9-4ee6-9a9d-c2eafbc84f7f-trade-6",
+      "season": 2024,
+      "week": 11,
+      "type": "trade",
+      "team": "Emergency Room",
+      "summary": "Received: Keenan Allen, Kyle Pitts Sr. | Sent: Dalton Kincaid, Tee Higgins",
+      "created": 1731688936087,
+      "players": [
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15818
+        },
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "4385690",
+          "name": "Dalton Kincaid",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4385690
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -21803,39 +21803,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1928c101-8b2f-4d0d-9adb-e1551828d4a3-trade-4",
-      "season": 2024,
-      "week": 11,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Nico Collins | Sent: Keenan Allen, Kyle Pitts Sr.",
-      "created": 1731632536445,
-      "players": [
-        {
-          "id": "4258173",
-          "name": "Nico Collins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4258173
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "1928c101-8b2f-4d0d-9adb-e1551828d4a3-trade-3",
       "season": 2024,
       "week": 11,
@@ -21864,6 +21831,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4258173
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1928c101-8b2f-4d0d-9adb-e1551828d4a3-trade-4",
+      "season": 2024,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Nico Collins | Sent: Keenan Allen, Kyle Pitts Sr.",
+      "created": 1731632536445,
+      "players": [
+        {
+          "id": "4258173",
+          "name": "Nico Collins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4258173
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
+        },
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360248
         }
       ],
       "source": "espn_transactions"
@@ -22002,46 +22002,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fb29191e-06f8-4316-b4f2-5c7752f1d8c3-trade-6",
-      "season": 2024,
-      "week": 11,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Keenan Allen, Kyle Pitts Sr. | Sent: Dalton Kincaid, Tee Higgins",
-      "created": 1731861724098,
-      "players": [
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "4385690",
-          "name": "Dalton Kincaid",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4385690
-        },
-        {
-          "id": "4239993",
-          "name": "Tee Higgins",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4239993
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "fb29191e-06f8-4316-b4f2-5c7752f1d8c3-trade-4",
       "season": 2024,
       "week": 11,
@@ -22082,34 +22042,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5885b69b-c266-49b4-9e24-1ff85cab6ec1-trade-4",
+      "id": "fb29191e-06f8-4316-b4f2-5c7752f1d8c3-trade-6",
       "season": 2024,
       "week": 11,
       "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Nico Collins | Sent: Keenan Allen, Kyle Pitts Sr.",
-      "created": 1731805324499,
+      "team": "Emergency Room",
+      "summary": "Received: Keenan Allen, Kyle Pitts Sr. | Sent: Dalton Kincaid, Tee Higgins",
+      "created": 1731861724098,
       "players": [
-        {
-          "id": "4258173",
-          "name": "Nico Collins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4258173
-        },
         {
           "id": "15818",
           "name": "Keenan Allen",
-          "action": "sent",
+          "action": "received",
           "id_type": "espn",
           "source_player_id": 15818
         },
         {
           "id": "4360248",
           "name": "Kyle Pitts Sr.",
-          "action": "sent",
+          "action": "received",
           "id_type": "espn",
           "source_player_id": 4360248
+        },
+        {
+          "id": "4385690",
+          "name": "Dalton Kincaid",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4385690
+        },
+        {
+          "id": "4239993",
+          "name": "Tee Higgins",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4239993
         }
       ],
       "source": "espn_transactions"
@@ -22143,6 +22110,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4258173
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5885b69b-c266-49b4-9e24-1ff85cab6ec1-trade-4",
+      "season": 2024,
+      "week": 11,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Nico Collins | Sent: Keenan Allen, Kyle Pitts Sr.",
+      "created": 1731805324499,
+      "players": [
+        {
+          "id": "4258173",
+          "name": "Nico Collins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4258173
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
+        },
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360248
         }
       ],
       "source": "espn_transactions"
@@ -23953,39 +23953,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "2d44ab8d-1a27-4370-be01-56e82bc49c52-trade-6",
-      "season": 2024,
-      "week": 14,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Kyle Pitts Sr., Nick Chubb | Sent: Jonathan Taylor",
-      "created": 1733242077782,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "3128720",
-          "name": "Nick Chubb",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128720
-        },
-        {
-          "id": "4242335",
-          "name": "Jonathan Taylor",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4242335
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "2d44ab8d-1a27-4370-be01-56e82bc49c52-trade-4",
       "season": 2024,
       "week": 14,
@@ -24014,6 +23981,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3128720
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "2d44ab8d-1a27-4370-be01-56e82bc49c52-trade-6",
+      "season": 2024,
+      "week": 14,
+      "type": "trade",
+      "team": "Emergency Room",
+      "summary": "Received: Kyle Pitts Sr., Nick Chubb | Sent: Jonathan Taylor",
+      "created": 1733242077782,
+      "players": [
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "3128720",
+          "name": "Nick Chubb",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128720
+        },
+        {
+          "id": "4242335",
+          "name": "Jonathan Taylor",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4242335
         }
       ],
       "source": "espn_transactions"
@@ -24456,39 +24456,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b17fdb93-5d7b-4e1c-8397-218ce08033b9-trade-6",
-      "season": 2024,
-      "week": 14,
-      "type": "trade",
-      "team": "Emergency Room",
-      "summary": "Received: Kyle Pitts Sr., Nick Chubb | Sent: Jonathan Taylor",
-      "created": 1733414821042,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "3128720",
-          "name": "Nick Chubb",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128720
-        },
-        {
-          "id": "4242335",
-          "name": "Jonathan Taylor",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4242335
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b17fdb93-5d7b-4e1c-8397-218ce08033b9-trade-4",
       "season": 2024,
       "week": 14,
@@ -24517,6 +24484,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3128720
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b17fdb93-5d7b-4e1c-8397-218ce08033b9-trade-6",
+      "season": 2024,
+      "week": 14,
+      "type": "trade",
+      "team": "Emergency Room",
+      "summary": "Received: Kyle Pitts Sr., Nick Chubb | Sent: Jonathan Taylor",
+      "created": 1733414821042,
+      "players": [
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "3128720",
+          "name": "Nick Chubb",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128720
+        },
+        {
+          "id": "4242335",
+          "name": "Jonathan Taylor",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4242335
         }
       ],
       "source": "espn_transactions"
@@ -24693,39 +24693,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a11bb654-d125-4d24-b86d-9fdf71fc85a6-trade-4",
-      "season": 2024,
-      "week": 14,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Nico Collins | Sent: Kyle Pitts Sr., Keenan Allen",
-      "created": 1733242190780,
-      "players": [
-        {
-          "id": "4258173",
-          "name": "Nico Collins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4258173
-        },
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a11bb654-d125-4d24-b86d-9fdf71fc85a6-trade-3",
       "season": 2024,
       "week": 14,
@@ -24754,6 +24721,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4258173
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a11bb654-d125-4d24-b86d-9fdf71fc85a6-trade-4",
+      "season": 2024,
+      "week": 14,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Nico Collins | Sent: Kyle Pitts Sr., Keenan Allen",
+      "created": 1733242190780,
+      "players": [
+        {
+          "id": "4258173",
+          "name": "Nico Collins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4258173
+        },
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
         }
       ],
       "source": "espn_transactions"
@@ -24892,39 +24892,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a4fba1af-f85d-4f5d-99b2-c19ba634993e-trade-4",
-      "season": 2024,
-      "week": 14,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Nico Collins | Sent: Kyle Pitts Sr., Keenan Allen",
-      "created": 1733242735852,
-      "players": [
-        {
-          "id": "4258173",
-          "name": "Nico Collins",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4258173
-        },
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a4fba1af-f85d-4f5d-99b2-c19ba634993e-trade-3",
       "season": 2024,
       "week": 14,
@@ -24953,6 +24920,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4258173
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a4fba1af-f85d-4f5d-99b2-c19ba634993e-trade-4",
+      "season": 2024,
+      "week": 14,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Nico Collins | Sent: Kyle Pitts Sr., Keenan Allen",
+      "created": 1733242735852,
+      "players": [
+        {
+          "id": "4258173",
+          "name": "Nico Collins",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4258173
+        },
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
         }
       ],
       "source": "espn_transactions"
@@ -25148,46 +25148,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "a4b3e006-6fb4-49dd-af93-1b64a33c0e11-trade-4",
-      "season": 2024,
-      "week": 15,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: DK Metcalf, Zach Charbonnet | Sent: Keenan Allen, Sam Darnold",
-      "created": 1733974120617,
-      "players": [
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        },
-        {
-          "id": "4426385",
-          "name": "Zach Charbonnet",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426385
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "a4b3e006-6fb4-49dd-af93-1b64a33c0e11-trade-3",
       "season": 2024,
       "week": 15,
@@ -25223,6 +25183,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4426385
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "a4b3e006-6fb4-49dd-af93-1b64a33c0e11-trade-4",
+      "season": 2024,
+      "week": 15,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: DK Metcalf, Zach Charbonnet | Sent: Keenan Allen, Sam Darnold",
+      "created": 1733974120617,
+      "players": [
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        },
+        {
+          "id": "4426385",
+          "name": "Zach Charbonnet",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426385
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912547
         }
       ],
       "source": "espn_transactions"
@@ -25285,32 +25285,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "921b69bb-2565-4479-b998-c603cca6009d-trade-2",
-      "season": 2024,
-      "week": 15,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Sam Darnold | Sent: Rico Dowdle",
-      "created": 1734108597566,
-      "players": [
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4038815",
-          "name": "Rico Dowdle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4038815
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "921b69bb-2565-4479-b998-c603cca6009d-trade-4",
       "season": 2024,
       "week": 15,
@@ -25332,6 +25306,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3912547
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "921b69bb-2565-4479-b998-c603cca6009d-trade-2",
+      "season": 2024,
+      "week": 15,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Sam Darnold | Sent: Rico Dowdle",
+      "created": 1734108597566,
+      "players": [
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4038815",
+          "name": "Rico Dowdle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4038815
         }
       ],
       "source": "espn_transactions"
@@ -25413,46 +25413,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0209a045-6c7a-4bc8-a86a-5df5b9b8223c-trade-2",
-      "season": 2024,
-      "week": 15,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Mark Andrews, Keon Coleman, Sam Darnold | Sent: Rico Dowdle",
-      "created": 1733973808549,
-      "players": [
-        {
-          "id": "3116365",
-          "name": "Mark Andrews",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116365
-        },
-        {
-          "id": "4635008",
-          "name": "Keon Coleman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4635008
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4038815",
-          "name": "Rico Dowdle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4038815
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "0209a045-6c7a-4bc8-a86a-5df5b9b8223c-trade-4",
       "season": 2024,
       "week": 15,
@@ -25493,41 +25453,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "57adfd3c-0c2f-49e1-a650-a64c81d76db9-trade-4",
+      "id": "0209a045-6c7a-4bc8-a86a-5df5b9b8223c-trade-2",
       "season": 2024,
       "week": 15,
       "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Zach Charbonnet, DK Metcalf | Sent: Nick Chubb, Sam Darnold",
-      "created": 1733961200004,
+      "team": "Tugg Speedman",
+      "summary": "Received: Mark Andrews, Keon Coleman, Sam Darnold | Sent: Rico Dowdle",
+      "created": 1733973808549,
       "players": [
         {
-          "id": "4426385",
-          "name": "Zach Charbonnet",
+          "id": "3116365",
+          "name": "Mark Andrews",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4426385
+          "source_player_id": 3116365
         },
         {
-          "id": "4047650",
-          "name": "DK Metcalf",
+          "id": "4635008",
+          "name": "Keon Coleman",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4047650
-        },
-        {
-          "id": "3128720",
-          "name": "Nick Chubb",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3128720
+          "source_player_id": 4635008
         },
         {
           "id": "3912547",
           "name": "Sam Darnold",
-          "action": "sent",
+          "action": "received",
           "id_type": "espn",
           "source_player_id": 3912547
+        },
+        {
+          "id": "4038815",
+          "name": "Rico Dowdle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4038815
         }
       ],
       "source": "espn_transactions"
@@ -25573,13 +25533,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b3c12cf2-e622-47bc-8aaa-f53d86162f22-trade-4",
+      "id": "57adfd3c-0c2f-49e1-a650-a64c81d76db9-trade-4",
       "season": 2024,
       "week": 15,
       "type": "trade",
       "team": "Team Malley",
       "summary": "Received: Zach Charbonnet, DK Metcalf | Sent: Nick Chubb, Sam Darnold",
-      "created": 1733960840133,
+      "created": 1733961200004,
       "players": [
         {
           "id": "4426385",
@@ -25648,6 +25608,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4047650
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b3c12cf2-e622-47bc-8aaa-f53d86162f22-trade-4",
+      "season": 2024,
+      "week": 15,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Zach Charbonnet, DK Metcalf | Sent: Nick Chubb, Sam Darnold",
+      "created": 1733960840133,
+      "players": [
+        {
+          "id": "4426385",
+          "name": "Zach Charbonnet",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426385
+        },
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        },
+        {
+          "id": "3128720",
+          "name": "Nick Chubb",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3128720
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912547
         }
       ],
       "source": "espn_transactions"
@@ -25748,46 +25748,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "8976b9b3-53f6-402c-b25c-4e5cc8bc010f-trade-4",
-      "season": 2024,
-      "week": 15,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Josh Jacobs, Khalil Shakir | Sent: Sam Darnold, Jaxon Smith-Njigba",
-      "created": 1734147780306,
-      "players": [
-        {
-          "id": "4047365",
-          "name": "Josh Jacobs",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047365
-        },
-        {
-          "id": "4373678",
-          "name": "Khalil Shakir",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4373678
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4430878
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "8976b9b3-53f6-402c-b25c-4e5cc8bc010f-trade-3",
       "season": 2024,
       "week": 15,
@@ -25823,6 +25783,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4373678
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "8976b9b3-53f6-402c-b25c-4e5cc8bc010f-trade-4",
+      "season": 2024,
+      "week": 15,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Josh Jacobs, Khalil Shakir | Sent: Sam Darnold, Jaxon Smith-Njigba",
+      "created": 1734147780306,
+      "players": [
+        {
+          "id": "4047365",
+          "name": "Josh Jacobs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047365
+        },
+        {
+          "id": "4373678",
+          "name": "Khalil Shakir",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4373678
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430878
         }
       ],
       "source": "espn_transactions"
@@ -25923,39 +25923,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e9fd2790-47ff-4d04-9f42-f38b7885829d-trade-2",
-      "season": 2024,
-      "week": 15,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Sam Darnold, Keenan Allen | Sent: Rico Dowdle",
-      "created": 1734108592223,
-      "players": [
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "4038815",
-          "name": "Rico Dowdle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4038815
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "e9fd2790-47ff-4d04-9f42-f38b7885829d-trade-4",
       "season": 2024,
       "week": 15,
@@ -25984,6 +25951,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15818
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e9fd2790-47ff-4d04-9f42-f38b7885829d-trade-2",
+      "season": 2024,
+      "week": 15,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Sam Darnold, Keenan Allen | Sent: Rico Dowdle",
+      "created": 1734108592223,
+      "players": [
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15818
+        },
+        {
+          "id": "4038815",
+          "name": "Rico Dowdle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4038815
         }
       ],
       "source": "espn_transactions"
@@ -26103,46 +26103,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ebdf2262-8dee-43b9-b8f6-3ec15408d30e-trade-4",
-      "season": 2024,
-      "week": 15,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: DK Metcalf, Zach Charbonnet | Sent: Keenan Allen, Sam Darnold",
-      "created": 1734146880471,
-      "players": [
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        },
-        {
-          "id": "4426385",
-          "name": "Zach Charbonnet",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426385
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ebdf2262-8dee-43b9-b8f6-3ec15408d30e-trade-3",
       "season": 2024,
       "week": 15,
@@ -26183,41 +26143,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "2f70b71e-c431-4626-89b0-81483bd1be07-trade-2",
+      "id": "ebdf2262-8dee-43b9-b8f6-3ec15408d30e-trade-4",
       "season": 2024,
       "week": 15,
       "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Mark Andrews, Keon Coleman, Sam Darnold | Sent: Rico Dowdle",
-      "created": 1733973543464,
+      "team": "Team Malley",
+      "summary": "Received: DK Metcalf, Zach Charbonnet | Sent: Keenan Allen, Sam Darnold",
+      "created": 1734146880471,
       "players": [
         {
-          "id": "3116365",
-          "name": "Mark Andrews",
+          "id": "4047650",
+          "name": "DK Metcalf",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3116365
+          "source_player_id": 4047650
         },
         {
-          "id": "4635008",
-          "name": "Keon Coleman",
+          "id": "4426385",
+          "name": "Zach Charbonnet",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4635008
+          "source_player_id": 4426385
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
         },
         {
           "id": "3912547",
           "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4038815",
-          "name": "Rico Dowdle",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4038815
+          "source_player_id": 3912547
         }
       ],
       "source": "espn_transactions"
@@ -26258,6 +26218,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3912547
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "2f70b71e-c431-4626-89b0-81483bd1be07-trade-2",
+      "season": 2024,
+      "week": 15,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Mark Andrews, Keon Coleman, Sam Darnold | Sent: Rico Dowdle",
+      "created": 1733973543464,
+      "players": [
+        {
+          "id": "3116365",
+          "name": "Mark Andrews",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116365
+        },
+        {
+          "id": "4635008",
+          "name": "Keon Coleman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4635008
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4038815",
+          "name": "Rico Dowdle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4038815
         }
       ],
       "source": "espn_transactions"
@@ -26358,39 +26358,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "cb2948e2-8f13-47ba-b663-9947809dc4bc-trade-2",
-      "season": 2024,
-      "week": 15,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Sam Darnold, Keenan Allen | Sent: Rico Dowdle",
-      "created": 1733974207418,
-      "players": [
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15818
-        },
-        {
-          "id": "4038815",
-          "name": "Rico Dowdle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4038815
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "cb2948e2-8f13-47ba-b663-9947809dc4bc-trade-4",
       "season": 2024,
       "week": 15,
@@ -26419,6 +26386,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15818
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "cb2948e2-8f13-47ba-b663-9947809dc4bc-trade-2",
+      "season": 2024,
+      "week": 15,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Sam Darnold, Keenan Allen | Sent: Rico Dowdle",
+      "created": 1733974207418,
+      "players": [
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15818
+        },
+        {
+          "id": "4038815",
+          "name": "Rico Dowdle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4038815
         }
       ],
       "source": "espn_transactions"
@@ -26457,46 +26457,6 @@
           "action": "drop",
           "id_type": "defense",
           "source_player_id": -16015
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "e2996bdb-a6c3-44d9-bdba-d2327d0c19a3-trade-2",
-      "season": 2024,
-      "week": 15,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Kyle Pitts Sr., Sam Darnold | Sent: Jameson Williams, Rico Dowdle",
-      "created": 1733972485700,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "4038815",
-          "name": "Rico Dowdle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4038815
         }
       ],
       "source": "espn_transactions"
@@ -26542,41 +26502,41 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5f753df0-aefd-4b19-8cdf-bdf30e7475ca-trade-4",
+      "id": "e2996bdb-a6c3-44d9-bdba-d2327d0c19a3-trade-2",
       "season": 2024,
       "week": 15,
       "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Josh Jacobs, Khalil Shakir | Sent: Sam Darnold, Jaxon Smith-Njigba",
-      "created": 1733975029449,
+      "team": "Tugg Speedman",
+      "summary": "Received: Kyle Pitts Sr., Sam Darnold | Sent: Jameson Williams, Rico Dowdle",
+      "created": 1733972485700,
       "players": [
         {
-          "id": "4047365",
-          "name": "Josh Jacobs",
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4047365
-        },
-        {
-          "id": "4373678",
-          "name": "Khalil Shakir",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4373678
+          "source_player_id": 4360248
         },
         {
           "id": "3912547",
           "name": "Sam Darnold",
-          "action": "sent",
+          "action": "received",
           "id_type": "espn",
           "source_player_id": 3912547
         },
         {
-          "id": "4430878",
-          "name": "Jaxon Smith-Njigba",
+          "id": "4426388",
+          "name": "Jameson Williams",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 4430878
+          "source_player_id": 4426388
+        },
+        {
+          "id": "4038815",
+          "name": "Rico Dowdle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4038815
         }
       ],
       "source": "espn_transactions"
@@ -26622,6 +26582,46 @@
       "source": "espn_transactions"
     },
     {
+      "id": "5f753df0-aefd-4b19-8cdf-bdf30e7475ca-trade-4",
+      "season": 2024,
+      "week": 15,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Josh Jacobs, Khalil Shakir | Sent: Sam Darnold, Jaxon Smith-Njigba",
+      "created": 1733975029449,
+      "players": [
+        {
+          "id": "4047365",
+          "name": "Josh Jacobs",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047365
+        },
+        {
+          "id": "4373678",
+          "name": "Khalil Shakir",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4373678
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4430878",
+          "name": "Jaxon Smith-Njigba",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4430878
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "67758916-d1d8-4ccb-accf-1fb538d159a6-add-7-4037457",
       "season": 2024,
       "week": 15,
@@ -26655,46 +26655,6 @@
           "action": "drop",
           "id_type": "espn",
           "source_player_id": 4599739
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "b7af23db-1444-4af9-978d-8406013a1b9d-trade-2",
-      "season": 2024,
-      "week": 15,
-      "type": "trade",
-      "team": "Tugg Speedman",
-      "summary": "Received: Kyle Pitts Sr., Sam Darnold | Sent: Jameson Williams, Rico Dowdle",
-      "created": 1733972426607,
-      "players": [
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "4426388",
-          "name": "Jameson Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4426388
-        },
-        {
-          "id": "4038815",
-          "name": "Rico Dowdle",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4038815
         }
       ],
       "source": "espn_transactions"
@@ -26740,20 +26700,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fce53dd7-b8d6-4f8a-8949-cdc5a1f3dfe4-trade-2",
+      "id": "b7af23db-1444-4af9-978d-8406013a1b9d-trade-2",
       "season": 2024,
       "week": 15,
       "type": "trade",
       "team": "Tugg Speedman",
-      "summary": "Received: Sam Darnold | Sent: Rico Dowdle",
-      "created": 1733972558116,
+      "summary": "Received: Kyle Pitts Sr., Sam Darnold | Sent: Jameson Williams, Rico Dowdle",
+      "created": 1733972426607,
       "players": [
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
         {
           "id": "3912547",
           "name": "Sam Darnold",
           "action": "received",
           "id_type": "espn",
           "source_player_id": 3912547
+        },
+        {
+          "id": "4426388",
+          "name": "Jameson Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4426388
         },
         {
           "id": "4038815",
@@ -26787,6 +26761,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3912547
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "fce53dd7-b8d6-4f8a-8949-cdc5a1f3dfe4-trade-2",
+      "season": 2024,
+      "week": 15,
+      "type": "trade",
+      "team": "Tugg Speedman",
+      "summary": "Received: Sam Darnold | Sent: Rico Dowdle",
+      "created": 1733972558116,
+      "players": [
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "4038815",
+          "name": "Rico Dowdle",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4038815
         }
       ],
       "source": "espn_transactions"
@@ -26982,46 +26982,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "434bf413-a7da-47fa-9a39-a40bcc839521-trade-4",
-      "season": 2024,
-      "week": 16,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Zach Charbonnet | Sent: Kyle Pitts Sr., Sam Darnold, Keenan Allen",
-      "created": 1734542467172,
-      "players": [
-        {
-          "id": "4426385",
-          "name": "Zach Charbonnet",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426385
-        },
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "434bf413-a7da-47fa-9a39-a40bcc839521-trade-3",
       "season": 2024,
       "week": 16,
@@ -27057,6 +27017,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4426385
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "434bf413-a7da-47fa-9a39-a40bcc839521-trade-4",
+      "season": 2024,
+      "week": 16,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Zach Charbonnet | Sent: Kyle Pitts Sr., Sam Darnold, Keenan Allen",
+      "created": 1734542467172,
+      "players": [
+        {
+          "id": "4426385",
+          "name": "Zach Charbonnet",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426385
+        },
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
         }
       ],
       "source": "espn_transactions"
@@ -27404,46 +27404,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "f4000c3e-0d09-4526-bfb3-2f3bb651872c-trade-4",
-      "season": 2024,
-      "week": 16,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Zach Charbonnet | Sent: Kyle Pitts Sr., Sam Darnold, Keenan Allen",
-      "created": 1734715260413,
-      "players": [
-        {
-          "id": "4426385",
-          "name": "Zach Charbonnet",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4426385
-        },
-        {
-          "id": "4360248",
-          "name": "Kyle Pitts Sr.",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4360248
-        },
-        {
-          "id": "3912547",
-          "name": "Sam Darnold",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3912547
-        },
-        {
-          "id": "15818",
-          "name": "Keenan Allen",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15818
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "f4000c3e-0d09-4526-bfb3-2f3bb651872c-trade-3",
       "season": 2024,
       "week": 16,
@@ -27479,6 +27439,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4426385
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "f4000c3e-0d09-4526-bfb3-2f3bb651872c-trade-4",
+      "season": 2024,
+      "week": 16,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Zach Charbonnet | Sent: Kyle Pitts Sr., Sam Darnold, Keenan Allen",
+      "created": 1734715260413,
+      "players": [
+        {
+          "id": "4426385",
+          "name": "Zach Charbonnet",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4426385
+        },
+        {
+          "id": "4360248",
+          "name": "Kyle Pitts Sr.",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4360248
+        },
+        {
+          "id": "3912547",
+          "name": "Sam Darnold",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3912547
+        },
+        {
+          "id": "15818",
+          "name": "Keenan Allen",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15818
         }
       ],
       "source": "espn_transactions"
