@@ -980,26 +980,28 @@ export default function PlayerPage() {
               <div className="stat-subtext">{keeperInfo.note}</div>
             </div>
             {seasonStats.length ? (
-              <div className="stat-card">
-                <div className="stat-label">Seasons</div>
-                <div className="stat-value">{careerTotals.seasons}</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-label">Games Logged</div>
-                <div className="stat-value">{careerTotals.games}</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-label">Total Points</div>
-                <div className="stat-value">{formatPoints(careerTotals.points)}</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-label">Replacement WAR</div>
-                <div className="stat-value">{formatPoints(careerTotals.war)}</div>
-              </div>
-              <div className="stat-card">
-                <div className="stat-label">Delta to Next</div>
-                <div className="stat-value">{formatPoints(careerTotals.delta)}</div>
-              </div>
+              <>
+                <div className="stat-card">
+                  <div className="stat-label">Seasons</div>
+                  <div className="stat-value">{careerTotals.seasons}</div>
+                </div>
+                <div className="stat-card">
+                  <div className="stat-label">Games Logged</div>
+                  <div className="stat-value">{careerTotals.games}</div>
+                </div>
+                <div className="stat-card">
+                  <div className="stat-label">Total Points</div>
+                  <div className="stat-value">{formatPoints(careerTotals.points)}</div>
+                </div>
+                <div className="stat-card">
+                  <div className="stat-label">Replacement WAR</div>
+                  <div className="stat-value">{formatPoints(careerTotals.war)}</div>
+                </div>
+                <div className="stat-card">
+                  <div className="stat-label">Delta to Next</div>
+                  <div className="stat-value">{formatPoints(careerTotals.delta)}</div>
+                </div>
+              </>
             ) : null}
           </div>
           {!seasonStats.length ? (
