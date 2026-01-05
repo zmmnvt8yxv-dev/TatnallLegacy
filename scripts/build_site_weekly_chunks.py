@@ -13,6 +13,7 @@ MASTER_PLAYERS_PATH = ROOT / "data_raw" / "master" / "players_master_nflverse_es
 ESPN_PLAYERS_INDEX_PATH = ROOT / "data_raw" / "espn_core" / "index" / "athletes_index_flat.csv"
 ESPN_CORE_BY_ID_DIR = ROOT / "data_raw" / "espn_core" / "athletes_by_id"
 ESPN_NAME_MAP_PATH = ROOT / "data_raw" / "espn_core" / "index" / "espn_name_map.json"
+NFLVERSE_STATS_PATH = ROOT / "data_raw" / "nflverse_stats" / "player_stats_2015_2025.csv"
 
 ESPN_TEAM_ID_TO_ABBR = {
   1: "ATL",
@@ -89,6 +90,14 @@ def read_json(path: Path):
   with path.open("r", encoding="utf-8") as handle:
     return json.load(handle)
 
+def normalize_name(value):
+  if value is None:
+    return ""
+  text = str(value).strip().lower()
+  if not text:
+    return ""
+  return "".join(char for char in text if char.isalnum())
+
 def ensure_espn_name_map():
   name_map = {}
   if ESPN_NAME_MAP_PATH.exists():
@@ -117,6 +126,63 @@ def ensure_espn_name_map():
     ESPN_NAME_MAP_PATH.parent.mkdir(parents=True, exist_ok=True)
     write_json(ESPN_NAME_MAP_PATH, name_map)
   return name_map
+
+
+def load_nflverse_lookup():
+  if not NFLVERSE_STATS_PATH.exists():
+    return {}, {}, {}
+  by_week = {}
+  by_season = {}
+  by_name = {}
+  with NFLVERSE_STATS_PATH.open("r", encoding="utf-8") as handle:
+    reader = csv.DictReader(handle)
+    for row in reader:
+      try:
+        season = int(row.get("season") or 0)
+      except ValueError:
+        continue
+      try:
+        week = int(row.get("week") or 0)
+      except ValueError:
+        week = 0
+      if week and not is_regular_season(week):
+        continue
+      name = row.get("player_display_name") or row.get("player_name") or row.get("name") or ""
+      name_key = normalize_name(name)
+      if not name_key:
+        continue
+      position = (row.get("position") or row.get("pos") or "").strip().upper()
+      team = (row.get("team") or row.get("recent_team") or row.get("club") or "").strip().upper()
+      if position or team:
+        by_name.setdefault(name_key, {})
+        if position and not by_name[name_key].get("position"):
+          by_name[name_key]["position"] = position
+        if team and not by_name[name_key].get("team"):
+          by_name[name_key]["team"] = team
+        by_season.setdefault((season, name_key), {})
+        if position and not by_season[(season, name_key)].get("position"):
+          by_season[(season, name_key)]["position"] = position
+        if team and not by_season[(season, name_key)].get("team"):
+          by_season[(season, name_key)]["team"] = team
+      if week and (position or team):
+        by_week[(season, week, name_key)] = {"position": position, "team": team}
+  return by_week, by_season, by_name
+
+
+def resolve_nflverse_meta(by_week, by_season, by_name, season, week, player_name):
+  name_key = normalize_name(player_name)
+  if not name_key:
+    return None, None
+  entry = None
+  if season and week:
+    entry = by_week.get((season, week, name_key))
+  if entry is None and season:
+    entry = by_season.get((season, name_key))
+  if entry is None:
+    entry = by_name.get(name_key)
+  if not entry:
+    return None, None
+  return entry.get("position"), entry.get("team")
 
 
 def load_sleeper_player_maps():
@@ -264,12 +330,14 @@ def load_espn_lineups(season, week):
   return payload.get("lineups", []) or []
 
 
-def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup):
+def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup, season=None, by_week=None, by_season=None, by_name=None):
   normalized = []
   for row in lineups or []:
     raw_id = row.get("player_id")
     espn_id = normalize_numeric_id(raw_id)
     next_row = dict(row)
+    if season and not next_row.get("season"):
+      next_row["season"] = season
     next_row["source"] = "espn"
     next_row["source_player_id"] = raw_id
     if espn_id:
@@ -278,6 +346,8 @@ def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup):
     if defense:
       next_row["player_id"] = defense["id"]
       next_row["player"] = defense["name"]
+      next_row.setdefault("position", "DEF")
+      next_row.setdefault("nfl_team", defense["id"])
       normalized.append(next_row)
       continue
     sleeper_id = sleeper_maps.get("espn_to_sleeper", {}).get(str(espn_id)) if espn_id else None
@@ -291,15 +361,27 @@ def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup):
     if not player_name and espn_id:
       player_name = f"ESPN Player {espn_id}"
     next_row["player"] = player_name or next_row.get("player") or "(Unknown Player)"
+    if by_week is not None:
+      try:
+        week = int(next_row.get("week") or 0)
+      except (TypeError, ValueError):
+        week = 0
+      position, nfl_team = resolve_nflverse_meta(by_week, by_season or {}, by_name or {}, season, week, next_row.get("player"))
+      if position and not next_row.get("position"):
+        next_row["position"] = position
+      if nfl_team and not next_row.get("nfl_team"):
+        next_row["nfl_team"] = nfl_team
     normalized.append(next_row)
   return normalized
 
 
-def normalize_lineups(lineups, sleeper_maps, player_name_lookup, source="league"):
+def normalize_lineups(lineups, sleeper_maps, player_name_lookup, source="league", season=None, by_week=None, by_season=None, by_name=None):
   normalized = []
   for row in lineups or []:
     next_row = dict(row)
     raw_id = row.get("player_id")
+    if season and not next_row.get("season"):
+      next_row["season"] = season
     next_row["source"] = row.get("source") or source
     next_row["source_player_id"] = raw_id
     sleeper_id = None
@@ -315,12 +397,25 @@ def normalize_lineups(lineups, sleeper_maps, player_name_lookup, source="league"
     if defense:
       next_row["player_id"] = defense["id"]
       next_row["player"] = defense["name"]
+      next_row.setdefault("position", "DEF")
+      next_row.setdefault("nfl_team", defense["id"])
       normalized.append(next_row)
       continue
     if sleeper_id:
       next_row["player_id"] = sleeper_id
       if not next_row.get("player"):
         next_row["player"] = player_name_lookup.get(str(sleeper_id))
+    if by_week is not None:
+      try:
+        week = int(next_row.get("week") or 0)
+      except (TypeError, ValueError):
+        week = 0
+      lookup_season = season or next_row.get("season")
+      position, nfl_team = resolve_nflverse_meta(by_week, by_season or {}, by_name or {}, lookup_season, week, next_row.get("player"))
+      if position and not next_row.get("position"):
+        next_row["position"] = position
+      if nfl_team and not next_row.get("nfl_team"):
+        next_row["nfl_team"] = nfl_team
     normalized.append(next_row)
   return normalized
 
@@ -897,7 +992,34 @@ def build_transactions(seasons, sleeper_maps=None):
               }
             )
 
+  def dedupe_trade_entries(entries):
+    source_rank = {
+      "sleeper_transactions_api": 3,
+      "sleeper_transactions": 2,
+      "sleeper_trades": 1,
+      "espn_transactions": 3,
+    }
+    non_trades = []
+    trade_map = {}
+    for entry in entries:
+      if entry.get("type") != "trade":
+        non_trades.append(entry)
+        continue
+      trade_key = entry.get("trade_id") or entry.get("id")
+      summary = entry.get("summary") or ""
+      key = ("trade", str(trade_key), summary)
+      existing = trade_map.get(key)
+      if not existing:
+        trade_map[key] = entry
+        continue
+      existing_rank = source_rank.get(existing.get("source"), 0)
+      current_rank = source_rank.get(entry.get("source"), 0)
+      if current_rank > existing_rank:
+        trade_map[key] = entry
+    return non_trades + list(trade_map.values())
+
   for season, entries in transactions_by_season.items():
+    entries = dedupe_trade_entries(entries)
     sources = sources_by_season.get(season, [])
     write_json(
       OUTPUT_DIR / "transactions" / f"{season}.json",
@@ -911,6 +1033,7 @@ def main():
   season_totals = []
   sleeper_maps = load_sleeper_player_maps()
   player_name_lookup = build_player_name_lookup()
+  nfl_by_week, nfl_by_season, nfl_by_name = load_nflverse_lookup()
   if sleeper_maps.get("espn_to_name"):
     write_json(OUTPUT_DIR / "espn_name_map.json", sleeper_maps["espn_to_name"])
 
@@ -927,7 +1050,16 @@ def main():
     season = int(season_value)
     seasons.append(season)
     raw_lineups = [row for row in payload.get("lineups", []) if is_regular_season(row.get("week"))]
-    lineups = normalize_lineups(raw_lineups, sleeper_maps, player_name_lookup, source="league")
+    lineups = normalize_lineups(
+      raw_lineups,
+      sleeper_maps,
+      player_name_lookup,
+      source="league",
+      season=season,
+      by_week=nfl_by_week,
+      by_season=nfl_by_season,
+      by_name=nfl_by_name,
+    )
     matchups = [row for row in payload.get("matchups", []) if is_regular_season(row.get("week"))]
     teams = payload.get("teams", [])
     weeks = sorted({int(row.get("week")) for row in lineups + matchups if is_regular_season(row.get("week"))})
@@ -939,7 +1071,15 @@ def main():
       if not week_lineups:
         espn_lineups = load_espn_lineups(season, week)
         if espn_lineups:
-          week_lineups = normalize_espn_lineups(espn_lineups, sleeper_maps, player_name_lookup)
+          week_lineups = normalize_espn_lineups(
+            espn_lineups,
+            sleeper_maps,
+            player_name_lookup,
+            season=season,
+            by_week=nfl_by_week,
+            by_season=nfl_by_season,
+            by_name=nfl_by_name,
+          )
           effective_lineups.extend(week_lineups)
       write_json(
         OUTPUT_DIR / "weekly" / str(season) / f"week-{week}.json",

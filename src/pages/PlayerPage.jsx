@@ -550,7 +550,7 @@ export default function PlayerPage() {
     for (const row of weeklyDisplayRows) {
       addTeam(row.nflTeam);
     }
-    return Array.from(teams);
+    return Array.from(teams).sort((a, b) => a.localeCompare(b));
   }, [statsSeasonSummaries, weeklyDisplayRows, targetIds, targetNames]);
 
   const filteredWeeklyRows = useMemo(() => {

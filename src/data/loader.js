@@ -120,6 +120,17 @@ export async function loadCoreData() {
       espnNameMapPath ? fetchJson(espnNameMapPath, { optional: true }) : Promise.resolve({}),
       playerSearchPath ? fetchJson(playerSearchPath, { optional: true }) : Promise.resolve(null),
     ]);
+    if (IS_DEV) {
+      if (!playerSearch?.rows?.length) {
+        console.warn("DATA_OPTIONAL_MISSING", { key: "playerSearch", url: playerSearchPath });
+      }
+      if (!players?.length) {
+        console.warn("DATA_OPTIONAL_MISSING", { key: "players", url: playersPath });
+      }
+      if (!playerIds?.length) {
+        console.warn("DATA_OPTIONAL_MISSING", { key: "playerIds", url: playerIdsPath });
+      }
+    }
     return setCached("core", {
       players: players || [],
       playerIds: playerIds || [],

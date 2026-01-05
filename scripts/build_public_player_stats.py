@@ -516,6 +516,7 @@ def main() -> None:
         build_player_search(full_stats)
     else:
         build_full_stats(weekly)
+        build_player_search(weekly)
 
     if season_source:
         season_df = read_table(season_source)

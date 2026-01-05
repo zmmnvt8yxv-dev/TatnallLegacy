@@ -15,16 +15,22 @@ export default function Layout({ children }) {
   const [showResults, setShowResults] = useState(false);
 
   const playerIndex = useMemo(() => {
-    if (playerSearch?.length) {
-      return playerSearch
-        .map((row) => ({
-          id: String(row?.id || ""),
-          idType: row?.id_type || "",
-          name: row?.name || "",
-          position: row?.position || "—",
-          team: row?.team || "—",
-        }))
-        .filter((row) => row.id && row.name);
+    const combined = [];
+    const seen = new Set();
+    const pushRow = (row) => {
+      if (!row?.id || !row?.name) return;
+      if (seen.has(row.id)) return;
+      seen.add(row.id);
+      combined.push(row);
+    };
+    for (const row of playerSearch || []) {
+      pushRow({
+        id: String(row?.id || ""),
+        idType: row?.id_type || "",
+        name: row?.name || "",
+        position: row?.position || "—",
+        team: row?.team || "—",
+      });
     }
     const sleeperByUid = new Map();
     for (const entry of playerIds || []) {
@@ -32,14 +38,15 @@ export default function Layout({ children }) {
         sleeperByUid.set(String(entry.player_uid), String(entry.id_value));
       }
     }
-    return (players || [])
-      .map((player) => ({
+    for (const player of players || []) {
+      pushRow({
         id: sleeperByUid.get(String(player?.player_uid)),
         name: player?.full_name,
         position: player?.position || "—",
         team: player?.nfl_team || "—",
-      }))
-      .filter((row) => row.id && row.name);
+      });
+    }
+    return combined;
   }, [players, playerIds, playerSearch]);
 
   const filteredResults = useMemo(() => {
