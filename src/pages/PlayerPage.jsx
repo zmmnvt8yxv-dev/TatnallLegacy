@@ -477,6 +477,123 @@ export default function PlayerPage() {
     return fullStatsRows.filter(matchesPlayer);
   }, [fullStatsRows, playerId, playerInfo]);
 
+  const fullStatsColumns = useMemo(() => {
+    const position =
+      String(playerInfo?.position || statsNameRow?.position || displayPosition || "")
+        .toUpperCase()
+        .trim() || "FLEX";
+    const rows = filteredFullStatsRows;
+    const hasCol = (key) => rows.some((row) => row?.[key] != null);
+    const columnsByPosition = {
+      QB: [
+        { key: "attempts", label: "Pass Att" },
+        { key: "completions", label: "Comp" },
+        { key: "passing_yards", label: "Pass Yds" },
+        { key: "passing_tds", label: "Pass TD" },
+        { key: "passing_interceptions", label: "INT" },
+        { key: "passing_rating", label: "Rating" },
+        { key: "passing_qbr", label: "QBR" },
+        { key: "carries", label: "Rush Att" },
+        { key: "rushing_yards", label: "Rush Yds" },
+        { key: "rushing_tds", label: "Rush TD" },
+        { key: "fumbles_lost", label: "Fum L" },
+      ],
+      RB: [
+        { key: "carries", label: "Rush Att" },
+        { key: "rushing_yards", label: "Rush Yds" },
+        { key: "rushing_tds", label: "Rush TD" },
+        { key: "receptions", label: "Rec" },
+        { key: "targets", label: "Targets" },
+        { key: "receiving_yards", label: "Rec Yds" },
+        { key: "receiving_tds", label: "Rec TD" },
+        { key: "ypc", label: "YPC", calc: "ypc" },
+        { key: "ypr", label: "YPR", calc: "ypr" },
+        { key: "fumbles_lost", label: "Fum L" },
+      ],
+      WR: [
+        { key: "receptions", label: "Rec" },
+        { key: "targets", label: "Targets" },
+        { key: "receiving_yards", label: "Rec Yds" },
+        { key: "receiving_tds", label: "Rec TD" },
+        { key: "ypr", label: "YPR", calc: "ypr" },
+        { key: "carries", label: "Rush Att" },
+        { key: "rushing_yards", label: "Rush Yds" },
+        { key: "rushing_tds", label: "Rush TD" },
+        { key: "fumbles_lost", label: "Fum L" },
+      ],
+      TE: [
+        { key: "receptions", label: "Rec" },
+        { key: "targets", label: "Targets" },
+        { key: "receiving_yards", label: "Rec Yds" },
+        { key: "receiving_tds", label: "Rec TD" },
+        { key: "ypr", label: "YPR", calc: "ypr" },
+        { key: "carries", label: "Rush Att" },
+        { key: "rushing_yards", label: "Rush Yds" },
+        { key: "rushing_tds", label: "Rush TD" },
+        { key: "fumbles_lost", label: "Fum L" },
+      ],
+      K: [
+        { key: "extra_points_attempted", label: "XP Att" },
+        { key: "extra_points_made", label: "XP Made" },
+        { key: "field_goals_attempted", label: "FG Att" },
+        { key: "field_goals_made", label: "FG Made" },
+        { key: "field_goals_made_40_49", label: "FG 40-49" },
+        { key: "field_goals_made_50_plus", label: "FG 50+" },
+      ],
+      DEF: [
+        { key: "points", label: "Points", calc: "points" },
+      ],
+      FLEX: [
+        { key: "attempts", label: "Pass Att" },
+        { key: "completions", label: "Comp" },
+        { key: "passing_yards", label: "Pass Yds" },
+        { key: "passing_tds", label: "Pass TD" },
+        { key: "passing_interceptions", label: "INT" },
+        { key: "carries", label: "Rush Att" },
+        { key: "rushing_yards", label: "Rush Yds" },
+        { key: "rushing_tds", label: "Rush TD" },
+        { key: "receptions", label: "Rec" },
+        { key: "receiving_yards", label: "Rec Yds" },
+        { key: "receiving_tds", label: "Rec TD" },
+        { key: "fumbles_lost", label: "Fum L" },
+      ],
+    };
+    const columns = columnsByPosition[position] || columnsByPosition.FLEX;
+    return columns.filter((col) => col.calc || hasCol(col.key));
+  }, [filteredFullStatsRows, playerInfo, statsNameRow, displayPosition]);
+
+  const resolveFullStatValue = (row, column) => {
+    const get = (key) => safeNumber(row?.[key]);
+    if (column.calc === "ypc") {
+      const carries = get("carries");
+      if (!carries) return "—";
+      return (get("rushing_yards") / carries).toFixed(2);
+    }
+    if (column.calc === "ypr") {
+      const rec = get("receptions");
+      if (!rec) return "—";
+      return (get("receiving_yards") / rec).toFixed(2);
+    }
+    if (column.calc === "points") {
+      return (
+        row.fantasy_points_custom_week_with_bonus ??
+        row.fantasy_points_custom_week ??
+        row.fantasy_points_ppr ??
+        row.fantasy_points ??
+        "—"
+      );
+    }
+    if (column.key === "fumbles_lost") {
+      const total =
+        get("rushing_fumbles_lost") +
+        get("receiving_fumbles_lost") +
+        get("sack_fumbles_lost");
+      return total ? total : "—";
+    }
+    const value = row?.[column.key];
+    return value == null || value === "" ? "—" : value;
+  };
+
   const weeklyVirtual = useVirtualRows({ itemCount: filteredWeeklyRows.length, rowHeight: 46 });
   const visibleWeeklyRows = filteredWeeklyRows.slice(weeklyVirtual.start, weeklyVirtual.end);
   const fullStatsVirtual = useVirtualRows({ itemCount: filteredFullStatsRows.length, rowHeight: 46 });
@@ -827,21 +944,16 @@ export default function PlayerPage() {
                     <th>Week</th>
                     <th>Team</th>
                     <th>Opp</th>
-                    <th>Pass Yds</th>
-                    <th>Pass TD</th>
-                    <th>INT</th>
-                    <th>Rush Yds</th>
-                    <th>Rush TD</th>
-                    <th>Rec</th>
-                    <th>Rec Yds</th>
-                    <th>Rec TD</th>
+                    {fullStatsColumns.map((column) => (
+                      <th key={column.label}>{column.label}</th>
+                    ))}
                     <th>Pts</th>
                   </tr>
                 </thead>
                 <tbody>
                   {fullStatsVirtual.topPadding ? (
                     <tr className="table-virtual-spacer" aria-hidden="true">
-                      <td colSpan={13} style={{ height: fullStatsVirtual.topPadding }} />
+                      <td colSpan={5 + fullStatsColumns.length} style={{ height: fullStatsVirtual.topPadding }} />
                     </tr>
                   ) : null}
                   {visibleFullStatsRows.map((row, idx) => (
@@ -850,14 +962,9 @@ export default function PlayerPage() {
                       <td>{row.week}</td>
                       <td>{row.team || "—"}</td>
                       <td>{row.opponent_team || "—"}</td>
-                      <td>{row.passing_yards ?? "—"}</td>
-                      <td>{row.passing_tds ?? "—"}</td>
-                      <td>{row.passing_interceptions ?? "—"}</td>
-                      <td>{row.rushing_yards ?? "—"}</td>
-                      <td>{row.rushing_tds ?? "—"}</td>
-                      <td>{row.receptions ?? "—"}</td>
-                      <td>{row.receiving_yards ?? "—"}</td>
-                      <td>{row.receiving_tds ?? "—"}</td>
+                      {fullStatsColumns.map((column) => (
+                        <td key={`${column.key}-${idx}`}>{resolveFullStatValue(row, column)}</td>
+                      ))}
                       <td>
                         {row.fantasy_points_custom_week_with_bonus ??
                           row.fantasy_points_custom_week ??
