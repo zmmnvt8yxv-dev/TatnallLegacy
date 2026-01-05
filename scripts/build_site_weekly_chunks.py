@@ -10,7 +10,8 @@ OUTPUT_DIR = ROOT / "public" / "data"
 PLAYER_DATA_DIR = ROOT / "public" / "data"
 SLEEPER_PLAYERS_PATH = ROOT / "data_raw" / "sleeper" / "players_flat.csv"
 MASTER_PLAYERS_PATH = ROOT / "data_raw" / "master" / "players_master_nflverse_espn_sleeper.csv"
-ESPN_PLAYERS_INDEX_PATH = ROOT / "data_raw" / "espn_players_index.csv"
+ESPN_PLAYERS_INDEX_PATH = ROOT / "data_raw" / "espn_core" / "index" / "athletes_index_flat.csv"
+ESPN_CORE_BY_ID_DIR = ROOT / "data_raw" / "espn_core" / "athletes_by_id"
 
 ESPN_TEAM_ID_TO_ABBR = {
   1: "ATL",
@@ -142,10 +143,23 @@ def load_sleeper_player_maps():
     with ESPN_PLAYERS_INDEX_PATH.open("r", encoding="utf-8") as handle:
       reader = csv.DictReader(handle)
       for row in reader:
-        espn_id = normalize_numeric_id(row.get("espn_id"))
-        display_name = (row.get("display_name") or "").strip()
+        espn_id = normalize_numeric_id(row.get("id") or row.get("espn_id"))
+        display_name = (row.get("displayName") or row.get("fullName") or row.get("shortName") or "").strip()
         if espn_id and display_name and espn_id not in espn_to_name:
           espn_to_name[espn_id] = display_name
+  if ESPN_CORE_BY_ID_DIR.exists():
+    for path in ESPN_CORE_BY_ID_DIR.glob("*.json"):
+      try:
+        payload = read_json(path)
+      except Exception:
+        continue
+      data = payload.get("data") if isinstance(payload, dict) else None
+      if not isinstance(data, dict):
+        continue
+      espn_id = normalize_numeric_id(data.get("id") or data.get("playerId"))
+      display_name = (data.get("displayName") or data.get("fullName") or data.get("shortName") or "").strip()
+      if espn_id and display_name and espn_id not in espn_to_name:
+        espn_to_name[espn_id] = display_name
   return {
     "gsis_to_sleeper": gsis_to_sleeper,
     "espn_to_sleeper": espn_to_sleeper,
