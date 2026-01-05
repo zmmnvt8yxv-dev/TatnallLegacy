@@ -133,14 +133,28 @@ def load_sleeper_player_maps():
           name_norm = normalize_name(row.get("sleeper_full_name") or row.get("display_name") or "")
         if name_norm and name_norm not in name_to_sleeper:
           name_to_sleeper[name_norm] = sleeper_id
+  espn_index_rows = []
   if ESPN_PLAYERS_INDEX_PATH.exists():
     with ESPN_PLAYERS_INDEX_PATH.open("r", encoding="utf-8") as handle:
-      reader = csv.DictReader(handle)
-      for row in reader:
-        espn_id = normalize_numeric_id(row.get("id") or row.get("espn_id"))
-        display_name = (row.get("displayName") or row.get("fullName") or row.get("shortName") or "").strip()
-        if espn_id and display_name and espn_id not in espn_to_name:
-          espn_to_name[espn_id] = display_name
+      espn_index_rows = list(csv.DictReader(handle))
+  else:
+    espn_index_parquet = ESPN_PLAYERS_INDEX_PATH.with_suffix(".parquet")
+    if espn_index_parquet.exists():
+      try:
+        import pandas as pd  # Optional: only used when parquet is the source.
+      except Exception:
+        pd = None
+      if pd is not None:
+        try:
+          espn_index_rows = pd.read_parquet(espn_index_parquet).to_dict(orient="records")
+        except Exception:
+          espn_index_rows = []
+  if espn_index_rows:
+    for row in espn_index_rows:
+      espn_id = normalize_numeric_id(row.get("id") or row.get("espn_id"))
+      display_name = (row.get("displayName") or row.get("fullName") or row.get("shortName") or "").strip()
+      if espn_id and display_name and espn_id not in espn_to_name:
+        espn_to_name[espn_id] = display_name
   if ESPN_CORE_BY_ID_DIR.exists():
     for path in ESPN_CORE_BY_ID_DIR.glob("*.json"):
       try:
