@@ -210,7 +210,9 @@ export default function TransactionsPage() {
   }, [totalsByTeam]);
 
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
-  const formatAmount = (value) => {
+  const formatAmount = (entry) => {
+    if (entry?.type !== "add" && entry?.type !== "trade") return "—";
+    const value = entry?.amount;
     const numeric = Number(value);
     if (!Number.isFinite(numeric)) return "—";
     return `$${numeric}`;
@@ -435,7 +437,7 @@ export default function TransactionsPage() {
                       </button>
                     </td>
                     <td>{entry.type}</td>
-                    <td>{formatAmount(entry.amount)}</td>
+                    <td>{formatAmount(entry)}</td>
                     <td>
                       {entry.players?.length ? (
                         <div>

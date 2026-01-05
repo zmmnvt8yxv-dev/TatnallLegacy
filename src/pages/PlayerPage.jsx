@@ -65,8 +65,9 @@ export default function PlayerPage() {
   );
   const resolvedPlayerId = canonicalPlayerId || String(playerId);
   const isFavorite = favorites.players.includes(String(resolvedPlayerId));
-  const formatAmount = (value) => {
-    const numeric = Number(value);
+  const formatAmount = (entry) => {
+    if (entry?.type !== "add" && entry?.type !== "trade") return "—";
+    const numeric = Number(entry?.amount);
     if (!Number.isFinite(numeric)) return "—";
     return `$${numeric}`;
   };
@@ -981,7 +982,7 @@ export default function PlayerPage() {
                         <td>{entry.week ?? "—"}</td>
                         <td>{entry.type || "—"}</td>
                         <td>{entry.team || "—"}</td>
-                        <td>{formatAmount(entry.amount)}</td>
+                        <td>{formatAmount(entry)}</td>
                         <td>{formatTransactionDetails(entry)}</td>
                       </tr>
                     ))}

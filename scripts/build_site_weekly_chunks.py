@@ -765,7 +765,6 @@ def build_transactions(seasons, sleeper_maps=None):
                 "summary": summary,
                 "created": created,
                 "source": "sleeper_transactions_api",
-                "amount": amount,
                 "players": [
                   {
                     "id": player_id,
