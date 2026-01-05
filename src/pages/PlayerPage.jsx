@@ -367,27 +367,6 @@ export default function PlayerPage() {
   const displayPosition = playerDisplay.position || playerInfo?.position || "Position —";
   const displayTeam = playerDisplay.team || playerInfo?.nfl_team || "Team —";
 
-  useEffect(() => {
-    if (!isDev) return;
-    if (!availableSeasons.length && seasons.length) {
-      console.warn("PLAYER_PROFILE_WARNING: no available seasons for player", {
-        playerId: resolvedPlayerId,
-        name: displayName,
-      });
-    }
-  }, [isDev, availableSeasons, seasons, resolvedPlayerId, displayName]);
-
-  useEffect(() => {
-    if (!isDev || !selectedSeason) return;
-    if (!statsWeeklyRows.length && !weeklyRows.length && !fullStatsRows.length) {
-      console.warn("PLAYER_PROFILE_WARNING: no stats rows for season", {
-        playerId: resolvedPlayerId,
-        season: selectedSeason,
-        name: displayName,
-      });
-    }
-  }, [isDev, selectedSeason, statsWeeklyRows, weeklyRows, fullStatsRows, resolvedPlayerId, displayName]);
-
   const seasonStats = useMemo(() => {
     const stats = [];
     const hasStats = statsSeasonSummaries.length > 0;
@@ -509,6 +488,30 @@ export default function PlayerPage() {
     () => (availableSeasons.length ? availableSeasons : seasons),
     [availableSeasons, seasons],
   );
+
+
+  useEffect(() => {
+    if (!isDev) return;
+    if (!availableSeasons.length && seasons.length) {
+      console.warn("PLAYER_PROFILE_WARNING: no available seasons for player", {
+        playerId: resolvedPlayerId,
+        name: displayName,
+      });
+    }
+  }, [isDev, availableSeasons, seasons, resolvedPlayerId, displayName]);
+
+
+  useEffect(() => {
+    if (!isDev || !selectedSeason) return;
+    if (!statsWeeklyRows.length && !weeklyRows.length && !fullStatsRows.length) {
+      console.warn("PLAYER_PROFILE_WARNING: no stats rows for season", {
+        playerId: resolvedPlayerId,
+        season: selectedSeason,
+        name: displayName,
+      });
+    }
+  }, [isDev, selectedSeason, statsWeeklyRows, weeklyRows, fullStatsRows, resolvedPlayerId, displayName]);
+
 
   useEffect(() => {
     if (!seasonOptions.length) return;
