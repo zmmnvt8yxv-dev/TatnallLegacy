@@ -290,46 +290,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "45b59236-9016-47bf-9cd7-0de9acd63fe2-trade-4",
-      "season": 2019,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Dalvin Cook, A.J. Green | Sent: T.Y. Hilton, Sterling Shepard",
-      "created": 1567365306933,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "13983",
-          "name": "A.J. Green",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13983
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "2976592",
-          "name": "Sterling Shepard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976592
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "45b59236-9016-47bf-9cd7-0de9acd63fe2-trade-3",
       "season": 2019,
       "week": 1,
@@ -365,6 +325,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13983
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "45b59236-9016-47bf-9cd7-0de9acd63fe2-trade-4",
+      "season": 2019,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Dalvin Cook, A.J. Green | Sent: T.Y. Hilton, Sterling Shepard",
+      "created": 1567365306933,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "13983",
+          "name": "A.J. Green",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13983
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "2976592",
+          "name": "Sterling Shepard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976592
         }
       ],
       "source": "espn_transactions"
@@ -517,53 +517,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "c0f5510d-c9cd-44d7-ba39-d6740c71c137-trade-4",
-      "season": 2019,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Tyrell Williams, David Johnson | Sent: Leonard Fournette, Josh Gordon, Sterling Shepard",
-      "created": 1568049170844,
-      "players": [
-        {
-          "id": "2587819",
-          "name": "Tyrell Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2587819
-        },
-        {
-          "id": "2508176",
-          "name": "David Johnson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2508176
-        },
-        {
-          "id": "3115364",
-          "name": "Leonard Fournette",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3115364
-        },
-        {
-          "id": "15705",
-          "name": "Josh Gordon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15705
-        },
-        {
-          "id": "2976592",
-          "name": "Sterling Shepard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976592
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "c0f5510d-c9cd-44d7-ba39-d6740c71c137-trade-3",
       "season": 2019,
       "week": 1,
@@ -611,6 +564,53 @@
       "source": "espn_transactions"
     },
     {
+      "id": "c0f5510d-c9cd-44d7-ba39-d6740c71c137-trade-4",
+      "season": 2019,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Tyrell Williams, David Johnson | Sent: Leonard Fournette, Josh Gordon, Sterling Shepard",
+      "created": 1568049170844,
+      "players": [
+        {
+          "id": "2587819",
+          "name": "Tyrell Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2587819
+        },
+        {
+          "id": "2508176",
+          "name": "David Johnson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2508176
+        },
+        {
+          "id": "3115364",
+          "name": "Leonard Fournette",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3115364
+        },
+        {
+          "id": "15705",
+          "name": "Josh Gordon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15705
+        },
+        {
+          "id": "2976592",
+          "name": "Sterling Shepard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976592
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "d0beec89-2a03-4ce1-bb71-77e6474ebb06-add-1-3916148",
       "season": 2019,
       "week": 1,
@@ -625,32 +625,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 3916148
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "025c4f86-58d6-4b9c-aff7-675e5bcfb287-trade-4",
-      "season": 2019,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: LeSean McCoy | Sent: Donte Moncrief",
-      "created": 1567265912084,
-      "players": [
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "16791",
-          "name": "Donte Moncrief",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16791
         }
       ],
       "source": "espn_transactions"
@@ -677,6 +651,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 12514
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "025c4f86-58d6-4b9c-aff7-675e5bcfb287-trade-4",
+      "season": 2019,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: LeSean McCoy | Sent: Donte Moncrief",
+      "created": 1567265912084,
+      "players": [
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "16791",
+          "name": "Donte Moncrief",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16791
         }
       ],
       "source": "espn_transactions"
@@ -1344,53 +1344,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "640f3b55-c0c9-45f8-9eed-70d84bc38e4c-trade-4",
-      "season": 2019,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Tyrell Williams, David Johnson | Sent: Leonard Fournette, Josh Gordon, Sterling Shepard",
-      "created": 1568048762739,
-      "players": [
-        {
-          "id": "2587819",
-          "name": "Tyrell Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2587819
-        },
-        {
-          "id": "2508176",
-          "name": "David Johnson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2508176
-        },
-        {
-          "id": "3115364",
-          "name": "Leonard Fournette",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3115364
-        },
-        {
-          "id": "15705",
-          "name": "Josh Gordon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15705
-        },
-        {
-          "id": "2976592",
-          "name": "Sterling Shepard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976592
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "640f3b55-c0c9-45f8-9eed-70d84bc38e4c-trade-3",
       "season": 2019,
       "week": 1,
@@ -1433,6 +1386,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2508176
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "640f3b55-c0c9-45f8-9eed-70d84bc38e4c-trade-4",
+      "season": 2019,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Tyrell Williams, David Johnson | Sent: Leonard Fournette, Josh Gordon, Sterling Shepard",
+      "created": 1568048762739,
+      "players": [
+        {
+          "id": "2587819",
+          "name": "Tyrell Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2587819
+        },
+        {
+          "id": "2508176",
+          "name": "David Johnson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2508176
+        },
+        {
+          "id": "3115364",
+          "name": "Leonard Fournette",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3115364
+        },
+        {
+          "id": "15705",
+          "name": "Josh Gordon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15705
+        },
+        {
+          "id": "2976592",
+          "name": "Sterling Shepard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976592
         }
       ],
       "source": "espn_transactions"
@@ -1890,32 +1890,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "24e990ed-abe1-48a1-a1df-5fbf036d9047-trade-4",
-      "season": 2019,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: LeSean McCoy | Sent: Donte Moncrief",
-      "created": 1567282376059,
-      "players": [
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "16791",
-          "name": "Donte Moncrief",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16791
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "24e990ed-abe1-48a1-a1df-5fbf036d9047-trade-3",
       "season": 2019,
       "week": 1,
@@ -1937,6 +1911,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 12514
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "24e990ed-abe1-48a1-a1df-5fbf036d9047-trade-4",
+      "season": 2019,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: LeSean McCoy | Sent: Donte Moncrief",
+      "created": 1567282376059,
+      "players": [
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "16791",
+          "name": "Donte Moncrief",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16791
         }
       ],
       "source": "espn_transactions"
@@ -2107,46 +2107,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "589f50c5-651d-4a6c-b4f6-fff0c6e70e93-trade-4",
-      "season": 2019,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Dalvin Cook, A.J. Green | Sent: T.Y. Hilton, Sterling Shepard",
-      "created": 1567365228922,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "13983",
-          "name": "A.J. Green",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13983
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "2976592",
-          "name": "Sterling Shepard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976592
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "589f50c5-651d-4a6c-b4f6-fff0c6e70e93-trade-3",
       "season": 2019,
       "week": 1,
@@ -2182,6 +2142,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13983
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "589f50c5-651d-4a6c-b4f6-fff0c6e70e93-trade-4",
+      "season": 2019,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Dalvin Cook, A.J. Green | Sent: T.Y. Hilton, Sterling Shepard",
+      "created": 1567365228922,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "13983",
+          "name": "A.J. Green",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13983
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "2976592",
+          "name": "Sterling Shepard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976592
         }
       ],
       "source": "espn_transactions"
@@ -9318,6 +9318,25 @@
       "source": "espn_transactions"
     },
     {
+      "id": "fccccb04-9d78-4ff9-9460-2c74c9376371-trade-0",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: DK Metcalf | Sent: None",
+      "created": 1570110433676,
+      "players": [
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "fccccb04-9d78-4ff9-9460-2c74c9376371-trade-3",
       "season": 2019,
       "week": 5,
@@ -9351,25 +9370,6 @@
           "id": "4047650",
           "name": "DK Metcalf",
           "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "fccccb04-9d78-4ff9-9460-2c74c9376371-trade-0",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: DK Metcalf | Sent: None",
-      "created": 1570110433676,
-      "players": [
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
           "id_type": "espn",
           "source_player_id": 4047650
         }
@@ -9434,39 +9434,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b71a670d-77af-451b-bf27-0bacc8914321-trade-4",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: David Johnson | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1570110444871,
-      "players": [
-        {
-          "id": "2508176",
-          "name": "David Johnson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2508176
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12514
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b71a670d-77af-451b-bf27-0bacc8914321-trade-3",
       "season": 2019,
       "week": 5,
@@ -9495,6 +9462,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2508176
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "b71a670d-77af-451b-bf27-0bacc8914321-trade-4",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: David Johnson | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1570110444871,
+      "players": [
+        {
+          "id": "2508176",
+          "name": "David Johnson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2508176
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 12514
         }
       ],
       "source": "espn_transactions"
@@ -9595,32 +9595,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7cb23cb5-bbb9-4823-9625-c3d71b240b69-trade-8",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Matthew Stafford | Sent: Frank Gore",
-      "created": 1570045360034,
-      "players": [
-        {
-          "id": "12483",
-          "name": "Matthew Stafford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12483
-        },
-        {
-          "id": "8479",
-          "name": "Frank Gore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 8479
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7cb23cb5-bbb9-4823-9625-c3d71b240b69-trade-6",
       "season": 2019,
       "week": 5,
@@ -9642,6 +9616,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 12483
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7cb23cb5-bbb9-4823-9625-c3d71b240b69-trade-8",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Matthew Stafford | Sent: Frank Gore",
+      "created": 1570045360034,
+      "players": [
+        {
+          "id": "12483",
+          "name": "Matthew Stafford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12483
+        },
+        {
+          "id": "8479",
+          "name": "Frank Gore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 8479
         }
       ],
       "source": "espn_transactions"
@@ -10125,39 +10125,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1fd16307-cff5-42a6-b50d-f684414dd341-trade-4",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: James Conner | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1570373970392,
-      "players": [
-        {
-          "id": "3045147",
-          "name": "James Conner",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3045147
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12514
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "1fd16307-cff5-42a6-b50d-f684414dd341-trade-6",
       "season": 2019,
       "week": 5,
@@ -10191,6 +10158,39 @@
       "source": "espn_transactions"
     },
     {
+      "id": "1fd16307-cff5-42a6-b50d-f684414dd341-trade-4",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: James Conner | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1570373970392,
+      "players": [
+        {
+          "id": "3045147",
+          "name": "James Conner",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3045147
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 12514
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "6dd19ada-4e7d-4362-a42b-a4844e21989a-add-3-8479",
       "season": 2019,
       "week": 5,
@@ -10205,53 +10205,6 @@
           "action": "add",
           "id_type": "espn",
           "source_player_id": 8479
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "1e301227-19fb-4b22-9be7-931e0d78b4bb-trade-4",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Dalvin Cook, DK Metcalf | Sent: Davante Adams, LeSean McCoy, Tyler Boyd",
-      "created": 1569957719299,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        },
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "3045144",
-          "name": "Tyler Boyd",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3045144
         }
       ],
       "source": "espn_transactions"
@@ -10299,6 +10252,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 4047650
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1e301227-19fb-4b22-9be7-931e0d78b4bb-trade-4",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Dalvin Cook, DK Metcalf | Sent: Davante Adams, LeSean McCoy, Tyler Boyd",
+      "created": 1569957719299,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        },
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "3045144",
+          "name": "Tyler Boyd",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3045144
         }
       ],
       "source": "espn_transactions"
@@ -10399,39 +10399,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ec6e8515-91ea-44fa-b5bb-eb3f76851aab-trade-4",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Todd Gurley | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1570124340151,
-      "players": [
-        {
-          "id": "2977644",
-          "name": "Todd Gurley",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2977644
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12514
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ec6e8515-91ea-44fa-b5bb-eb3f76851aab-trade-7",
       "season": 2019,
       "week": 5,
@@ -10465,20 +10432,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e0198674-4d62-47e7-a066-5330e9f76d13-trade-4",
+      "id": "ec6e8515-91ea-44fa-b5bb-eb3f76851aab-trade-4",
       "season": 2019,
       "week": 5,
       "type": "trade",
       "team": "Team Malley",
-      "summary": "Received: James Conner | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1570546561035,
+      "summary": "Received: Todd Gurley | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1570124340151,
       "players": [
         {
-          "id": "3045147",
-          "name": "James Conner",
+          "id": "2977644",
+          "name": "Todd Gurley",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3045147
+          "source_player_id": 2977644
         },
         {
           "id": "14924",
@@ -10526,6 +10493,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3045147
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e0198674-4d62-47e7-a066-5330e9f76d13-trade-4",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: James Conner | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1570546561035,
+      "players": [
+        {
+          "id": "3045147",
+          "name": "James Conner",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3045147
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 12514
         }
       ],
       "source": "espn_transactions"
@@ -10616,39 +10616,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "79aa8b4c-5856-4a81-888e-ac2bd6f6ac02-trade-4",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Todd Gurley | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1569958092016,
-      "players": [
-        {
-          "id": "2977644",
-          "name": "Todd Gurley",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2977644
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12514
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "79aa8b4c-5856-4a81-888e-ac2bd6f6ac02-trade-7",
       "season": 2019,
       "week": 5,
@@ -10682,27 +10649,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "2c0fecea-0d83-447e-879b-eeea0ea2e11e-trade-4",
+      "id": "79aa8b4c-5856-4a81-888e-ac2bd6f6ac02-trade-4",
       "season": 2019,
       "week": 5,
       "type": "trade",
       "team": "Team Malley",
-      "summary": "Received: Sony Michel, Tyreek Hill | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1570374031112,
+      "summary": "Received: Todd Gurley | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1569958092016,
       "players": [
         {
-          "id": "3128721",
-          "name": "Sony Michel",
+          "id": "2977644",
+          "name": "Todd Gurley",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3128721
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116406
+          "source_player_id": 2977644
         },
         {
           "id": "14924",
@@ -10757,6 +10717,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116406
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "2c0fecea-0d83-447e-879b-eeea0ea2e11e-trade-4",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Sony Michel, Tyreek Hill | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1570374031112,
+      "players": [
+        {
+          "id": "3128721",
+          "name": "Sony Michel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128721
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116406
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 12514
         }
       ],
       "source": "espn_transactions"
@@ -10842,53 +10842,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "455967e1-85f3-44fb-ad1c-2f40ad8d4bb3-trade-4",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Dalvin Cook, DK Metcalf | Sent: Davante Adams, LeSean McCoy, Tyler Boyd",
-      "created": 1570130462358,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        },
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "3045144",
-          "name": "Tyler Boyd",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3045144
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "455967e1-85f3-44fb-ad1c-2f40ad8d4bb3-trade-3",
       "season": 2019,
       "week": 5,
@@ -10936,6 +10889,53 @@
       "source": "espn_transactions"
     },
     {
+      "id": "455967e1-85f3-44fb-ad1c-2f40ad8d4bb3-trade-4",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Dalvin Cook, DK Metcalf | Sent: Davante Adams, LeSean McCoy, Tyler Boyd",
+      "created": 1570130462358,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        },
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "3045144",
+          "name": "Tyler Boyd",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3045144
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-4",
       "season": 2019,
       "week": 5,
@@ -10964,6 +10964,25 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15880
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-0",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: DK Metcalf | Sent: None",
+      "created": 1570128879411,
+      "players": [
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
         }
       ],
       "source": "espn_transactions"
@@ -11009,25 +11028,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-0",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: DK Metcalf | Sent: None",
-      "created": 1570128879411,
-      "players": [
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b1ca7968-5fcd-4563-ac4a-8a4c4bf2dd19-drop-8-12483",
       "season": 2019,
       "week": 5,
@@ -11042,46 +11042,6 @@
           "action": "drop",
           "id_type": "espn",
           "source_player_id": 12483
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "446134dc-6bb6-4c14-ba0d-23a3f2d37519-trade-4",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Sony Michel, Tyreek Hill | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1570542055696,
-      "players": [
-        {
-          "id": "3128721",
-          "name": "Sony Michel",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3128721
-        },
-        {
-          "id": "3116406",
-          "name": "Tyreek Hill",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116406
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12514
         }
       ],
       "source": "espn_transactions"
@@ -11122,6 +11082,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116406
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "446134dc-6bb6-4c14-ba0d-23a3f2d37519-trade-4",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Sony Michel, Tyreek Hill | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1570542055696,
+      "players": [
+        {
+          "id": "3128721",
+          "name": "Sony Michel",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3128721
+        },
+        {
+          "id": "3116406",
+          "name": "Tyreek Hill",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116406
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 12514
         }
       ],
       "source": "espn_transactions"
@@ -11245,39 +11245,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ada95eaa-f1b8-49d1-ac4a-e79830dc8798-trade-4",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: David Johnson | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1570104948839,
-      "players": [
-        {
-          "id": "2508176",
-          "name": "David Johnson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2508176
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12514
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ada95eaa-f1b8-49d1-ac4a-e79830dc8798-trade-3",
       "season": 2019,
       "week": 5,
@@ -11306,6 +11273,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2508176
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "ada95eaa-f1b8-49d1-ac4a-e79830dc8798-trade-4",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: David Johnson | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1570104948839,
+      "players": [
+        {
+          "id": "2508176",
+          "name": "David Johnson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2508176
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 12514
         }
       ],
       "source": "espn_transactions"
@@ -15574,39 +15574,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "75db0dba-3f8b-4062-b2fb-4c1248c6c8fe-trade-4",
-      "season": 2019,
-      "week": 8,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Devonta Freeman, Matt Breida | Sent: Dalvin Cook",
-      "created": 1571845510700,
-      "players": [
-        {
-          "id": "16944",
-          "name": "Devonta Freeman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16944
-        },
-        {
-          "id": "3049916",
-          "name": "Matt Breida",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3049916
-        },
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "75db0dba-3f8b-4062-b2fb-4c1248c6c8fe-trade-7",
       "season": 2019,
       "week": 8,
@@ -15635,6 +15602,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3049916
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "75db0dba-3f8b-4062-b2fb-4c1248c6c8fe-trade-4",
+      "season": 2019,
+      "week": 8,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Devonta Freeman, Matt Breida | Sent: Dalvin Cook",
+      "created": 1571845510700,
+      "players": [
+        {
+          "id": "16944",
+          "name": "Devonta Freeman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16944
+        },
+        {
+          "id": "3049916",
+          "name": "Matt Breida",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3049916
+        },
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116593
         }
       ],
       "source": "espn_transactions"
@@ -16172,39 +16172,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d8324a9f-50fb-499e-860e-f03551c3e430-trade-4",
-      "season": 2019,
-      "week": 8,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Devonta Freeman, Matt Breida | Sent: Dalvin Cook",
-      "created": 1571845892694,
-      "players": [
-        {
-          "id": "16944",
-          "name": "Devonta Freeman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16944
-        },
-        {
-          "id": "3049916",
-          "name": "Matt Breida",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3049916
-        },
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "d8324a9f-50fb-499e-860e-f03551c3e430-trade-7",
       "season": 2019,
       "week": 8,
@@ -16233,6 +16200,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3049916
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d8324a9f-50fb-499e-860e-f03551c3e430-trade-4",
+      "season": 2019,
+      "week": 8,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Devonta Freeman, Matt Breida | Sent: Dalvin Cook",
+      "created": 1571845892694,
+      "players": [
+        {
+          "id": "16944",
+          "name": "Devonta Freeman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16944
+        },
+        {
+          "id": "3049916",
+          "name": "Matt Breida",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3049916
+        },
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116593
         }
       ],
       "source": "espn_transactions"
@@ -18523,32 +18523,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5db3d90f-e75e-4393-9edb-546ae19e5c63-trade-4",
-      "season": 2019,
-      "week": 10,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Jameis Winston | Sent: Sterling Shepard",
-      "created": 1573070921098,
-      "players": [
-        {
-          "id": "2969939",
-          "name": "Jameis Winston",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2969939
-        },
-        {
-          "id": "2976592",
-          "name": "Sterling Shepard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976592
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "5db3d90f-e75e-4393-9edb-546ae19e5c63-trade-7",
       "season": 2019,
       "week": 10,
@@ -18570,6 +18544,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2969939
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5db3d90f-e75e-4393-9edb-546ae19e5c63-trade-4",
+      "season": 2019,
+      "week": 10,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Jameis Winston | Sent: Sterling Shepard",
+      "created": 1573070921098,
+      "players": [
+        {
+          "id": "2969939",
+          "name": "Jameis Winston",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2969939
+        },
+        {
+          "id": "2976592",
+          "name": "Sterling Shepard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976592
         }
       ],
       "source": "espn_transactions"
@@ -19196,32 +19196,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "8cf62c08-214c-475a-86ec-b69e97dd8196-trade-4",
-      "season": 2019,
-      "week": 10,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: A.J. Green | Sent: Courtland Sutton",
-      "created": 1573159796226,
-      "players": [
-        {
-          "id": "13983",
-          "name": "A.J. Green",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13983
-        },
-        {
-          "id": "3128429",
-          "name": "Courtland Sutton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3128429
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "8cf62c08-214c-475a-86ec-b69e97dd8196-trade-3",
       "season": 2019,
       "week": 10,
@@ -19243,6 +19217,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13983
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "8cf62c08-214c-475a-86ec-b69e97dd8196-trade-4",
+      "season": 2019,
+      "week": 10,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: A.J. Green | Sent: Courtland Sutton",
+      "created": 1573159796226,
+      "players": [
+        {
+          "id": "13983",
+          "name": "A.J. Green",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13983
+        },
+        {
+          "id": "3128429",
+          "name": "Courtland Sutton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3128429
         }
       ],
       "source": "espn_transactions"
@@ -19799,32 +19799,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "04491889-4d94-4e1a-a376-9edf40102198-trade-4",
-      "season": 2019,
-      "week": 10,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: A.J. Green | Sent: Courtland Sutton",
-      "created": 1573190210356,
-      "players": [
-        {
-          "id": "13983",
-          "name": "A.J. Green",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13983
-        },
-        {
-          "id": "3128429",
-          "name": "Courtland Sutton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3128429
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "04491889-4d94-4e1a-a376-9edf40102198-trade-3",
       "season": 2019,
       "week": 10,
@@ -19846,6 +19820,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 13983
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "04491889-4d94-4e1a-a376-9edf40102198-trade-4",
+      "season": 2019,
+      "week": 10,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: A.J. Green | Sent: Courtland Sutton",
+      "created": 1573190210356,
+      "players": [
+        {
+          "id": "13983",
+          "name": "A.J. Green",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13983
+        },
+        {
+          "id": "3128429",
+          "name": "Courtland Sutton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3128429
         }
       ],
       "source": "espn_transactions"
@@ -19946,32 +19946,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "754175e7-381c-458e-ad5e-f626856f5465-trade-4",
-      "season": 2019,
-      "week": 10,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Jameis Winston | Sent: Sterling Shepard",
-      "created": 1573069149765,
-      "players": [
-        {
-          "id": "2969939",
-          "name": "Jameis Winston",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2969939
-        },
-        {
-          "id": "2976592",
-          "name": "Sterling Shepard",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976592
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "754175e7-381c-458e-ad5e-f626856f5465-trade-7",
       "season": 2019,
       "week": 10,
@@ -19993,6 +19967,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2969939
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "754175e7-381c-458e-ad5e-f626856f5465-trade-4",
+      "season": 2019,
+      "week": 10,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Jameis Winston | Sent: Sterling Shepard",
+      "created": 1573069149765,
+      "players": [
+        {
+          "id": "2969939",
+          "name": "Jameis Winston",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2969939
+        },
+        {
+          "id": "2976592",
+          "name": "Sterling Shepard",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976592
         }
       ],
       "source": "espn_transactions"
