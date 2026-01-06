@@ -183,7 +183,7 @@ export default function MatchupsPage() {
 
   const buildRoster = (teamKeys) => {
     const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
-    const mapped = rows.map((row) => {
+    const mapped = rows.map((row, originalIndex) => {
       const rawName = row.player || row.display_name || row.player_name;
       const espnLookupId = row.espn_id || row.player_id || row.source_player_id;
       const resolvedName =
@@ -211,6 +211,7 @@ export default function MatchupsPage() {
       const canLink = Boolean(canonicalId);
       return {
         ...merged,
+        originalIndex,
         displayName: display.name,
         position: display.position || merged.position || "—",
         nflTeam: display.team || merged.nfl_team || "—",
@@ -219,7 +220,44 @@ export default function MatchupsPage() {
         canLink,
       };
     });
-    const totals = mapped.reduce(
+    const sortedRows = Number(season) === 2025
+      ? mapped
+      : [...mapped].sort((a, b) => {
+          const aStarter = a.started ? 0 : 1;
+          const bStarter = b.started ? 0 : 1;
+          if (aStarter !== bStarter) return aStarter - bStarter;
+
+          const slotA = String(a.slot || a.lineup_position || a.lineupSlot || "").toUpperCase();
+          const slotB = String(b.slot || b.lineup_position || b.lineupSlot || "").toUpperCase();
+          const posA = String(a.position || "").toUpperCase();
+          const posB = String(b.position || "").toUpperCase();
+
+          const isFlexA = slotA.includes("FLEX") || slotA.includes("W/R") || slotA.includes("WR/RB") || slotA.includes("RB/WR") || slotA.includes("W/R/T");
+          const isFlexB = slotB.includes("FLEX") || slotB.includes("W/R") || slotB.includes("WR/RB") || slotB.includes("RB/WR") || slotB.includes("W/R/T");
+
+          const rank = (pos, isFlex) => {
+            if (isFlex) return 4;
+            if (pos === "QB") return 0;
+            if (pos === "RB") return 1;
+            if (pos === "WR") return 2;
+            if (pos === "TE") return 3;
+            if (pos === "FLEX") return 4;
+            if (pos === "DEF" || pos === "DST" || pos === "D/ST") return 5;
+            if (pos === "K") return 6;
+            return 7;
+          };
+
+          const rA = rank(posA, isFlexA);
+          const rB = rank(posB, isFlexB);
+          if (rA !== rB) return rA - rB;
+
+          const pA = safeNumber(a.points);
+          const pB = safeNumber(b.points);
+          if (pA !== pB) return pB - pA;
+
+          return (a.originalIndex ?? 0) - (b.originalIndex ?? 0);
+        });
+    const totals = sortedRows.reduce(
       (acc, row) => {
         acc.points += safeNumber(row.points);
         acc.starters += row.started ? 1 : 0;
@@ -227,12 +265,12 @@ export default function MatchupsPage() {
       },
       { points: 0, starters: 0 },
     );
-    const positionalTotals = mapped.reduce((acc, row) => {
+    const positionalTotals = sortedRows.reduce((acc, row) => {
       const position = row.position || "—";
       acc[position] = (acc[position] || 0) + safeNumber(row.points);
       return acc;
     }, {});
-    return { rows: mapped, totals, positionalTotals };
+    return { rows: sortedRows, totals, positionalTotals };
   };
 
   const buildPlayerLink = (row) => {
@@ -409,22 +447,72 @@ export default function MatchupsPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {roster.rows.map((row, idx) => (
-                          <tr key={`${row.player_id || row.player}-${idx}`}>
-                            <td>
-                              {row.canLink ? (
-                                <Link className="link-button" to={buildPlayerLink(row)}>
-                                  {row.displayName}
-                                </Link>
-                              ) : (
-                                row.displayName
-                              )}
-                            </td>
-                            <td>{row.position}</td>
-                            <td>{row.started ? "Yes" : "No"}</td>
-                            <td>{formatPoints(row.points)}</td>
-                          </tr>
-                        ))}
+                        {(() => {
+                          const starters = roster.rows.filter((r) => r.started);
+                          const bench = roster.rows.filter((r) => !r.started);
+                          const startersTotal = starters.reduce((acc, r) => acc + safeNumber(r.points), 0);
+                          const benchTotal = bench.reduce((acc, r) => acc + safeNumber(r.points), 0);
+
+                          return (
+                            <>
+                              {starters.map((row, idx) => (
+                                <tr key={`${row.player_id || row.player}-starter-${idx}`}>
+                                  <td>
+                                    {row.canLink ? (
+                                      <Link className="link-button" to={buildPlayerLink(row)}>
+                                        {row.displayName}
+                                      </Link>
+                                    ) : (
+                                      row.displayName
+                                    )}
+                                  </td>
+                                  <td>{row.position}</td>
+                                  <td>{row.started ? "Yes" : "No"}</td>
+                                  <td>{formatPoints(row.points)}</td>
+                                </tr>
+                              ))}
+
+                              {starters.length ? (
+                                <tr className="table-total">
+                                  <td colSpan={3}>
+                                    <strong>Starters total</strong>
+                                  </td>
+                                  <td>
+                                    <strong>{formatPoints(startersTotal)}</strong>
+                                  </td>
+                                </tr>
+                              ) : null}
+
+                              {bench.map((row, idx) => (
+                                <tr key={`${row.player_id || row.player}-bench-${idx}`}>
+                                  <td>
+                                    {row.canLink ? (
+                                      <Link className="link-button" to={buildPlayerLink(row)}>
+                                        {row.displayName}
+                                      </Link>
+                                    ) : (
+                                      row.displayName
+                                    )}
+                                  </td>
+                                  <td>{row.position}</td>
+                                  <td>{row.started ? "Yes" : "No"}</td>
+                                  <td>{formatPoints(row.points)}</td>
+                                </tr>
+                              ))}
+
+                              {bench.length ? (
+                                <tr className="table-total">
+                                  <td colSpan={3}>
+                                    <strong>Bench total</strong>
+                                  </td>
+                                  <td>
+                                    <strong>{formatPoints(benchTotal)}</strong>
+                                  </td>
+                                </tr>
+                              ) : null}
+                            </>
+                          );
+                        })()}
                       </tbody>
                     </table>
                   </div>
