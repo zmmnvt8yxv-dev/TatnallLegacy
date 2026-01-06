@@ -1,7 +1,486 @@
 {
-  "generatedAt": "2026-01-06T21:31:31.343734+00:00",
-  "topWeekly": [],
-  "topSeasons": [],
+  "generatedAt": "2026-01-06T21:33:04.365621+00:00",
+  "topWeekly": [
+    {
+      "player_id": null,
+      "player_name": "Ja'Marr Chase",
+      "team": "Team Malley",
+      "season": 2024,
+      "week": 10,
+      "started": true,
+      "position": "WR",
+      "nfl_team": "CIN",
+      "points": 57.9
+    },
+    {
+      "player_id": "9221",
+      "player_name": "9221",
+      "team": "“Feels Different This Yr”",
+      "season": 2025,
+      "week": 12,
+      "started": true,
+      "position": null,
+      "nfl_team": null,
+      "points": 56.9
+    },
+    {
+      "player_id": null,
+      "player_name": "Josh Allen",
+      "team": "King of December 💍💍💍",
+      "season": 2024,
+      "week": 14,
+      "started": true,
+      "position": "QB",
+      "nfl_team": "BUF",
+      "points": 56.88
+    },
+    {
+      "player_id": null,
+      "player_name": "Alvin Kamara",
+      "team": "Team Downs",
+      "season": 2020,
+      "week": 16,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "NO",
+      "points": 55.0
+    },
+    {
+      "player_id": null,
+      "player_name": "Alvin Kamara",
+      "team": "Team Downs",
+      "season": 2020,
+      "week": 17,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "NO",
+      "points": 55.0
+    },
+    {
+      "player_id": null,
+      "player_name": "Alvin Kamara",
+      "team": "Team Downs",
+      "season": 2020,
+      "week": 18,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "NO",
+      "points": 55.0
+    },
+    {
+      "player_id": "6813",
+      "player_name": "6813",
+      "team": "Insane in The Achane ",
+      "season": 2025,
+      "week": 10,
+      "started": true,
+      "position": null,
+      "nfl_team": null,
+      "points": 54.1
+    },
+    {
+      "player_id": null,
+      "player_name": "De'Von Achane",
+      "team": "Insane in the Achane",
+      "season": 2023,
+      "week": 3,
+      "started": false,
+      "position": "RB",
+      "nfl_team": "MIA",
+      "points": 53.3
+    },
+    {
+      "player_id": null,
+      "player_name": "Joe Mixon",
+      "team": "Only i can say The N word",
+      "season": 2022,
+      "week": 9,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "CIN",
+      "points": 53.1
+    },
+    {
+      "player_id": null,
+      "player_name": "Saquon Barkley",
+      "team": "Make-A-Wish-Kid",
+      "season": 2024,
+      "week": 12,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "PHI",
+      "points": 52.2
+    },
+    {
+      "player_id": null,
+      "player_name": "Ja'Marr Chase",
+      "team": "Team Downs",
+      "season": 2021,
+      "week": 17,
+      "started": true,
+      "position": "WR",
+      "nfl_team": "CIN",
+      "points": 52.0
+    },
+    {
+      "player_id": null,
+      "player_name": "Ja'Marr Chase",
+      "team": "Team Downs",
+      "season": 2021,
+      "week": 18,
+      "started": true,
+      "position": "WR",
+      "nfl_team": "CIN",
+      "points": 52.0
+    },
+    {
+      "player_id": null,
+      "player_name": "Tyreek Hill",
+      "team": "Team Malley",
+      "season": 2020,
+      "week": 12,
+      "started": true,
+      "position": "WR",
+      "nfl_team": "KC",
+      "points": 51.0
+    },
+    {
+      "player_id": null,
+      "player_name": "Jonathan Taylor",
+      "team": "Team Downs",
+      "season": 2021,
+      "week": 11,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "IND",
+      "points": 51.0
+    },
+    {
+      "player_id": null,
+      "player_name": "Dalvin Cook",
+      "team": "The King",
+      "season": 2020,
+      "week": 8,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "MIN",
+      "points": 50.0
+    },
+    {
+      "player_id": "4984",
+      "player_name": "4984",
+      "team": "FantasyGPT 2.5",
+      "season": 2025,
+      "week": 11,
+      "started": true,
+      "position": null,
+      "nfl_team": null,
+      "points": 49.68
+    },
+    {
+      "player_id": null,
+      "player_name": "C.J. Stroud",
+      "team": "Only i can say The N word",
+      "season": 2023,
+      "week": 9,
+      "started": true,
+      "position": "QB",
+      "nfl_team": "HOU",
+      "points": 47.8
+    },
+    {
+      "player_id": null,
+      "player_name": "Jonathan Taylor",
+      "team": "Emergency Room",
+      "season": 2024,
+      "week": 16,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "IND",
+      "points": 47.8
+    },
+    {
+      "player_id": "7523",
+      "player_name": "7523",
+      "team": "Only I can say the N-word",
+      "season": 2025,
+      "week": 15,
+      "started": true,
+      "position": null,
+      "nfl_team": null,
+      "points": 47.3
+    },
+    {
+      "player_id": null,
+      "player_name": "Jared Goff",
+      "team": "MaHomelander",
+      "season": 2024,
+      "week": 15,
+      "started": true,
+      "position": "QB",
+      "nfl_team": "DET",
+      "points": 47.06
+    },
+    {
+      "player_id": null,
+      "player_name": "DJ Moore",
+      "team": "Wish I had CMC",
+      "season": 2023,
+      "week": 5,
+      "started": false,
+      "position": "WR",
+      "nfl_team": "CHI",
+      "points": 47.0
+    },
+    {
+      "player_id": null,
+      "player_name": "Alvin Kamara",
+      "team": "Tugg Speedman",
+      "season": 2024,
+      "week": 2,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "NO",
+      "points": 47.0
+    },
+    {
+      "player_id": null,
+      "player_name": "Amari Cooper",
+      "team": "Emergency Room",
+      "season": 2023,
+      "week": 16,
+      "started": true,
+      "position": "WR",
+      "nfl_team": "CLE",
+      "points": 46.5
+    },
+    {
+      "player_id": null,
+      "player_name": "Justin Herbert",
+      "team": "King of  December",
+      "season": 2021,
+      "week": 5,
+      "started": true,
+      "position": "QB",
+      "nfl_team": "LAC",
+      "points": 46.0
+    },
+    {
+      "player_id": null,
+      "player_name": "Lamar Jackson",
+      "team": "Team Malley",
+      "season": 2021,
+      "week": 5,
+      "started": true,
+      "position": "QB",
+      "nfl_team": "BAL",
+      "points": 46.0
+    },
+    {
+      "player_id": "9493",
+      "player_name": "9493",
+      "team": "Insane in The Achane ",
+      "season": 2025,
+      "week": 16,
+      "started": true,
+      "position": null,
+      "nfl_team": null,
+      "points": 45.5
+    },
+    {
+      "player_id": null,
+      "player_name": "Derrick Henry",
+      "team": "What tf happene to my team",
+      "season": 2021,
+      "week": 2,
+      "started": true,
+      "position": "RB",
+      "nfl_team": "TEN",
+      "points": 45.0
+    }
+  ],
+  "topSeasons": [
+    {
+      "season": 2018,
+      "player_id": "15825",
+      "points": 0.0,
+      "games": 12
+    },
+    {
+      "season": 2018,
+      "player_id": "2576434",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2018,
+      "player_id": "2976316",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2018,
+      "player_id": "3117251",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2018,
+      "player_id": "14912",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2018,
+      "player_id": "14886",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2018,
+      "player_id": "3120348",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2018,
+      "player_id": "15072",
+      "points": 0.0,
+      "games": 12
+    },
+    {
+      "season": 2018,
+      "player_id": "10475",
+      "points": 0.0,
+      "games": 9
+    },
+    {
+      "season": 2018,
+      "player_id": "12483",
+      "points": 0.0,
+      "games": 10
+    },
+    {
+      "season": 2019,
+      "player_id": "15825",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2019,
+      "player_id": "16733",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2019,
+      "player_id": "3128720",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2019,
+      "player_id": "4047365",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2019,
+      "player_id": "12649",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2019,
+      "player_id": "3116165",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2019,
+      "player_id": "2979843",
+      "points": 0.0,
+      "games": 15
+    },
+    {
+      "season": 2019,
+      "player_id": "3052117",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2019,
+      "player_id": "3045138",
+      "points": 0.0,
+      "games": 11
+    },
+    {
+      "season": 2019,
+      "player_id": "11237",
+      "points": 0.0,
+      "games": 16
+    },
+    {
+      "season": 2025,
+      "player_id": "4984",
+      "points": 364.43999999999994,
+      "games": 17
+    },
+    {
+      "season": 2025,
+      "player_id": "3294",
+      "points": 341.08000000000004,
+      "games": 17
+    },
+    {
+      "season": 2025,
+      "player_id": "4034",
+      "points": 336.79999999999995,
+      "games": 17
+    },
+    {
+      "season": 2025,
+      "player_id": "6813",
+      "points": 335.5,
+      "games": 17
+    },
+    {
+      "season": 2025,
+      "player_id": "9221",
+      "points": 325.6,
+      "games": 17
+    },
+    {
+      "season": 2025,
+      "player_id": "11564",
+      "points": 317.28,
+      "games": 17
+    },
+    {
+      "season": 2025,
+      "player_id": "9509",
+      "points": 304.1000000000001,
+      "games": 17
+    },
+    {
+      "season": 2025,
+      "player_id": "6904",
+      "points": 302.1599999999999,
+      "games": 17
+    },
+    {
+      "season": 2025,
+      "player_id": "4046",
+      "points": 301.18,
+      "games": 14
+    },
+    {
+      "season": 2025,
+      "player_id": "8138",
+      "points": 301.0,
+      "games": 17
+    }
+  ],
   "careerLeaders": [
     {
       "player_id": "00-0029263",
@@ -26908,14 +27387,673 @@
       ]
     },
     {
-      "player_id": "DAL",
-      "source_player_id": "DAL",
-      "display_name": "Cowboys D/ST",
+      "player_id": "MIN",
+      "source_player_id": "MIN",
+      "display_name": "VIKINGS",
       "position": "D/ST",
-      "nfl_team": "DAL",
+      "nfl_team": "MIN",
+      "points": 0.0,
+      "games": 18,
+      "seasons": 2
+    },
+    {
+      "player_id": "3050478",
+      "source_player_id": "3050478",
+      "display_name": "Jake Elliott",
+      "position": "K",
+      "nfl_team": "PHI",
+      "points": 0.0,
+      "games": 3,
+      "seasons": 1,
+      "nfl_teams": [
+        "PHI"
+      ]
+    },
+    {
+      "player_id": "DEN",
+      "source_player_id": "DEN",
+      "display_name": "BRONCOS",
+      "position": "D/ST",
+      "nfl_team": "DEN",
+      "points": 0.0,
+      "games": 16,
+      "seasons": 1
+    },
+    {
+      "player_id": "9704",
+      "source_player_id": "9704",
+      "display_name": "Stephen Gostkowski",
+      "position": "K",
+      "nfl_team": "NE",
+      "points": 0.0,
+      "games": 20,
+      "seasons": 2,
+      "nfl_teams": [
+        "NE",
+        "TEN"
+      ]
+    },
+    {
+      "player_id": "17372",
+      "source_player_id": "17372",
+      "display_name": "Chris Boswell",
+      "position": "K",
+      "nfl_team": "PIT",
+      "points": 0.0,
+      "games": 7,
+      "seasons": 2,
+      "nfl_teams": [
+        "PIT"
+      ]
+    },
+    {
+      "player_id": "NO",
+      "source_player_id": "NO",
+      "display_name": "SAINTS",
+      "position": "D/ST",
+      "nfl_team": "NO",
+      "points": 0.0,
+      "games": 13,
+      "seasons": 2
+    },
+    {
+      "player_id": "HOU",
+      "source_player_id": "HOU",
+      "display_name": "TEXANS",
+      "position": "D/ST",
+      "nfl_team": "HOU",
+      "points": 0.0,
+      "games": 14,
+      "seasons": 1
+    },
+    {
+      "player_id": "4333",
+      "source_player_id": "4333",
+      "display_name": "Matt Bryant",
+      "position": "K",
+      "nfl_team": "ATL",
+      "points": 0.0,
+      "games": 10,
+      "seasons": 2,
+      "nfl_teams": [
+        "ATL"
+      ]
+    },
+    {
+      "player_id": "DET",
+      "source_player_id": "DET",
+      "display_name": "LIONS",
+      "position": "D/ST",
+      "nfl_team": "DET",
       "points": 0.0,
       "games": 1,
       "seasons": 1
+    },
+    {
+      "player_id": "PHI",
+      "source_player_id": "PHI",
+      "display_name": "EAGLES",
+      "position": "D/ST",
+      "nfl_team": "PHI",
+      "points": 0.0,
+      "games": 18,
+      "seasons": 2
+    },
+    {
+      "player_id": "14993",
+      "source_player_id": "14993",
+      "display_name": "Greg Zuerlein",
+      "position": "K",
+      "nfl_team": "LA",
+      "points": 0.0,
+      "games": 30,
+      "seasons": 2,
+      "nfl_teams": [
+        "DAL",
+        "LA",
+        "NYJ"
+      ]
+    },
+    {
+      "player_id": "BAL",
+      "source_player_id": "BAL",
+      "display_name": "RAVENS",
+      "position": "D/ST",
+      "nfl_team": "BAL",
+      "points": 0.0,
+      "games": 22,
+      "seasons": 2
+    },
+    {
+      "player_id": "LAR",
+      "source_player_id": "LAR",
+      "display_name": "RAMS",
+      "position": "D/ST",
+      "nfl_team": "LAR",
+      "points": 0.0,
+      "games": 24,
+      "seasons": 2
+    },
+    {
+      "player_id": "9354",
+      "source_player_id": "9354",
+      "display_name": "Robbie Gould",
+      "position": "K",
+      "nfl_team": "SF",
+      "points": 0.0,
+      "games": 18,
+      "seasons": 2,
+      "nfl_teams": [
+        "CHI",
+        "NYG",
+        "SF"
+      ]
+    },
+    {
+      "player_id": "JAX",
+      "source_player_id": "JAX",
+      "display_name": "JAGUARS",
+      "position": "D/ST",
+      "nfl_team": "JAX",
+      "points": 0.0,
+      "games": 24,
+      "seasons": 2
+    },
+    {
+      "player_id": "15683",
+      "source_player_id": "15683",
+      "display_name": "Justin Tucker",
+      "position": "K",
+      "nfl_team": "BAL",
+      "points": 0.0,
+      "games": 32,
+      "seasons": 2,
+      "nfl_teams": [
+        "BAL"
+      ]
+    },
+    {
+      "player_id": "LAC",
+      "source_player_id": "LAC",
+      "display_name": "CHARGERS",
+      "position": "D/ST",
+      "nfl_team": "LAC",
+      "points": 0.0,
+      "games": 14,
+      "seasons": 2
+    },
+    {
+      "player_id": "11122",
+      "source_player_id": "11122",
+      "display_name": "Matt Prater",
+      "position": "K",
+      "nfl_team": "DET",
+      "points": 0.0,
+      "games": 9,
+      "seasons": 2,
+      "nfl_teams": [
+        "ARI",
+        "BUF",
+        "DET"
+      ]
+    },
+    {
+      "player_id": "NE",
+      "source_player_id": "NE",
+      "display_name": "PATRIOTS",
+      "position": "D/ST",
+      "nfl_team": "NE",
+      "points": 0.0,
+      "games": 17,
+      "seasons": 2
+    },
+    {
+      "player_id": "CHI",
+      "source_player_id": "CHI",
+      "display_name": "BEARS",
+      "position": "D/ST",
+      "nfl_team": "CHI",
+      "points": 0.0,
+      "games": 28,
+      "seasons": 2
+    },
+    {
+      "player_id": "2985659",
+      "source_player_id": "2985659",
+      "display_name": "Wil Lutz",
+      "position": "K",
+      "nfl_team": "NO",
+      "points": 0.0,
+      "games": 30,
+      "seasons": 2,
+      "nfl_teams": [
+        "DEN",
+        "NO"
+      ]
+    },
+    {
+      "player_id": "2582139",
+      "source_player_id": "2582139",
+      "display_name": "Sam Ficken",
+      "position": "K",
+      "nfl_team": "LA",
+      "points": 0.0,
+      "games": 1,
+      "seasons": 1,
+      "nfl_teams": [
+        "LA",
+        "NYJ"
+      ]
+    },
+    {
+      "player_id": "CLE",
+      "source_player_id": "CLE",
+      "display_name": "BROWNS",
+      "position": "D/ST",
+      "nfl_team": "CLE",
+      "points": 0.0,
+      "games": 5,
+      "seasons": 2
+    },
+    {
+      "player_id": "3055899",
+      "source_player_id": "3055899",
+      "display_name": "Harrison Butker",
+      "position": "K",
+      "nfl_team": "KC",
+      "points": 0.0,
+      "games": 28,
+      "seasons": 2,
+      "nfl_teams": [
+        "KC"
+      ]
+    },
+    {
+      "player_id": "KC",
+      "source_player_id": "KC",
+      "display_name": "CHIEFS",
+      "position": "D/ST",
+      "nfl_team": "KC",
+      "points": 0.0,
+      "games": 12,
+      "seasons": 2
+    },
+    {
+      "player_id": "SEA",
+      "source_player_id": "SEA",
+      "display_name": "SEAHAWKS",
+      "position": "D/ST",
+      "nfl_team": "SEA",
+      "points": 0.0,
+      "games": 3,
+      "seasons": 2
+    },
+    {
+      "player_id": "10636",
+      "source_player_id": "10636",
+      "display_name": "Mason Crosby",
+      "position": "K",
+      "nfl_team": "GB",
+      "points": 0.0,
+      "games": 6,
+      "seasons": 1,
+      "nfl_teams": [
+        "GB",
+        "NYG"
+      ]
+    },
+    {
+      "player_id": "CAR",
+      "source_player_id": "CAR",
+      "display_name": "PANTHERS",
+      "position": "D/ST",
+      "nfl_team": "CAR",
+      "points": 0.0,
+      "games": 6,
+      "seasons": 2
+    },
+    {
+      "player_id": "TEN",
+      "source_player_id": "TEN",
+      "display_name": "TITANS",
+      "position": "D/ST",
+      "nfl_team": "TEN",
+      "points": 0.0,
+      "games": 5,
+      "seasons": 2
+    },
+    {
+      "player_id": "GB",
+      "source_player_id": "GB",
+      "display_name": "PACKERS",
+      "position": "D/ST",
+      "nfl_team": "GB",
+      "points": 0.0,
+      "games": 5,
+      "seasons": 2
+    },
+    {
+      "player_id": "1097",
+      "source_player_id": "1097",
+      "display_name": "Adam Vinatieri",
+      "position": "K",
+      "nfl_team": "IND",
+      "points": 0.0,
+      "games": 7,
+      "seasons": 2,
+      "nfl_teams": [
+        "IND"
+      ]
+    },
+    {
+      "player_id": "12460",
+      "source_player_id": "12460",
+      "display_name": "Graham Gano",
+      "position": "K",
+      "nfl_team": "CAR",
+      "points": 0.0,
+      "games": 5,
+      "seasons": 1,
+      "nfl_teams": [
+        "CAR",
+        "NYG"
+      ]
+    },
+    {
+      "player_id": "IND",
+      "source_player_id": "IND",
+      "display_name": "COLTS",
+      "position": "D/ST",
+      "nfl_team": "IND",
+      "points": 0.0,
+      "games": 9,
+      "seasons": 2
+    },
+    {
+      "player_id": "WSH",
+      "source_player_id": "WSH",
+      "display_name": "COMMANDERS",
+      "position": "D/ST",
+      "nfl_team": "WSH",
+      "points": 0.0,
+      "games": 5,
+      "seasons": 2
+    },
+    {
+      "player_id": "14322",
+      "source_player_id": "14322",
+      "display_name": "Dan Bailey",
+      "position": "K",
+      "nfl_team": "MIN",
+      "points": 0.0,
+      "games": 2,
+      "seasons": 1,
+      "nfl_teams": [
+        "DAL",
+        "MIN"
+      ]
+    },
+    {
+      "player_id": "DAL",
+      "source_player_id": "DAL",
+      "display_name": "COWBOYS",
+      "position": "D/ST",
+      "nfl_team": "DAL",
+      "points": 0.0,
+      "games": 6,
+      "seasons": 2
+    },
+    {
+      "player_id": "NYJ",
+      "source_player_id": "NYJ",
+      "display_name": "JETS",
+      "position": "D/ST",
+      "nfl_team": "NYJ",
+      "points": 0.0,
+      "games": 2,
+      "seasons": 2
+    },
+    {
+      "player_id": "ARI",
+      "source_player_id": "ARI",
+      "display_name": "CARDINALS",
+      "position": "D/ST",
+      "nfl_team": "ARI",
+      "points": 0.0,
+      "games": 1,
+      "seasons": 1
+    },
+    {
+      "player_id": "PIT",
+      "source_player_id": "PIT",
+      "display_name": "STEELERS",
+      "position": "D/ST",
+      "nfl_team": "PIT",
+      "points": 0.0,
+      "games": 11,
+      "seasons": 2
+    },
+    {
+      "player_id": "CIN",
+      "source_player_id": "CIN",
+      "display_name": "BENGALS",
+      "position": "D/ST",
+      "nfl_team": "CIN",
+      "points": 0.0,
+      "games": 1,
+      "seasons": 1
+    },
+    {
+      "player_id": "2971573",
+      "source_player_id": "2971573",
+      "display_name": "Ka'imi Fairbairn",
+      "position": "K",
+      "nfl_team": "HOU",
+      "points": 0.0,
+      "games": 9,
+      "seasons": 2,
+      "nfl_teams": [
+        "HOU"
+      ]
+    },
+    {
+      "player_id": "16486",
+      "source_player_id": "16486",
+      "display_name": "Brett Maher",
+      "position": "K",
+      "nfl_team": "DAL",
+      "points": 0.0,
+      "games": 7,
+      "seasons": 2,
+      "nfl_teams": [
+        "DAL",
+        "LA",
+        "NO"
+      ]
+    },
+    {
+      "player_id": "12731",
+      "source_player_id": "12731",
+      "display_name": "Ryan Succop",
+      "position": "K",
+      "nfl_team": "TEN",
+      "points": 0.0,
+      "games": 1,
+      "seasons": 1,
+      "nfl_teams": [
+        "TB",
+        "TEN"
+      ]
+    },
+    {
+      "player_id": "MIA",
+      "source_player_id": "MIA",
+      "display_name": "DOLPHINS",
+      "position": "D/ST",
+      "nfl_team": "MIA",
+      "points": 0.0,
+      "games": 1,
+      "seasons": 1
+    },
+    {
+      "player_id": "BUF",
+      "source_player_id": "BUF",
+      "display_name": "BILLS",
+      "position": "D/ST",
+      "nfl_team": "BUF",
+      "points": 0.0,
+      "games": 16,
+      "seasons": 2
+    },
+    {
+      "player_id": "2473037",
+      "source_player_id": "2473037",
+      "display_name": "Jason Myers",
+      "position": "K",
+      "nfl_team": "NYJ",
+      "points": 0.0,
+      "games": 4,
+      "seasons": 2,
+      "nfl_teams": [
+        "JAX",
+        "NYJ",
+        "SEA"
+      ]
+    },
+    {
+      "player_id": "3068939",
+      "source_player_id": "3068939",
+      "display_name": "Aldrick Rosas",
+      "position": "K",
+      "nfl_team": "NYG",
+      "points": 0.0,
+      "games": 2,
+      "seasons": 1,
+      "nfl_teams": [
+        "DET",
+        "JAX",
+        "NO",
+        "NYG"
+      ]
+    },
+    {
+      "player_id": "3124084",
+      "source_player_id": "3124084",
+      "display_name": "Joey Slye",
+      "position": "K",
+      "nfl_team": "CAR",
+      "points": 0.0,
+      "games": 4,
+      "seasons": 1,
+      "nfl_teams": [
+        "CAR",
+        "HOU",
+        "NE",
+        "SF",
+        "TEN",
+        "WAS"
+      ]
+    },
+    {
+      "player_id": "SF",
+      "source_player_id": "SF",
+      "display_name": "49ERS",
+      "position": "D/ST",
+      "nfl_team": "SF",
+      "points": 0.0,
+      "games": 10,
+      "seasons": 1
+    },
+    {
+      "player_id": "3043234",
+      "source_player_id": "3043234",
+      "display_name": "Zane Gonzalez",
+      "position": "K",
+      "nfl_team": "ARI",
+      "points": 0.0,
+      "games": 11,
+      "seasons": 1,
+      "nfl_teams": [
+        "ARI",
+        "ATL",
+        "CAR",
+        "CLE",
+        "WAS"
+      ]
+    },
+    {
+      "player_id": "2998120",
+      "source_player_id": "2998120",
+      "display_name": "Josh Lambo",
+      "position": "K",
+      "nfl_team": "JAX",
+      "points": 0.0,
+      "games": 2,
+      "seasons": 1,
+      "nfl_teams": [
+        "JAX",
+        "LAC",
+        "TEN"
+      ]
+    },
+    {
+      "player_id": "3821683",
+      "source_player_id": "3821683",
+      "display_name": "Austin Seibert",
+      "position": "K",
+      "nfl_team": "CLE",
+      "points": 0.0,
+      "games": 7,
+      "seasons": 1,
+      "nfl_teams": [
+        "CIN",
+        "CLE",
+        "DET",
+        "NYJ",
+        "WAS"
+      ]
+    },
+    {
+      "player_id": "NYG",
+      "source_player_id": "NYG",
+      "display_name": "GIANTS",
+      "position": "D/ST",
+      "nfl_team": "NYG",
+      "points": 0.0,
+      "games": 1,
+      "seasons": 1
+    },
+    {
+      "player_id": "4249087",
+      "source_player_id": "4249087",
+      "display_name": "Matt Gay",
+      "position": "K",
+      "nfl_team": "TB",
+      "points": 0.0,
+      "games": 6,
+      "seasons": 1,
+      "nfl_teams": [
+        "IND",
+        "LA",
+        "SF",
+        "TB",
+        "WAS"
+      ]
+    },
+    {
+      "player_id": "3049899",
+      "source_player_id": "3049899",
+      "display_name": "Younghoe Koo",
+      "position": "K",
+      "nfl_team": "ATL",
+      "points": 0.0,
+      "games": 2,
+      "seasons": 1,
+      "nfl_teams": [
+        "ATL",
+        "LAC",
+        "NYG"
+      ]
     }
   ]
 }
