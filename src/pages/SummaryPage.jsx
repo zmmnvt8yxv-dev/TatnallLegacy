@@ -185,7 +185,7 @@ export default function SummaryPage() {
   }, [transactions]);
 
   const topWeekly = useMemo(() => {
-    const entries = allTime?.topWeekly || [];
+    const entries = (allTime?.topWeekly || []).filter(Boolean);
     if (!entries.length) return [];
     const query = weeklySearch.toLowerCase().trim();
     return entries.filter((row) => {
@@ -416,11 +416,11 @@ export default function SummaryPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {topWeekly.map((row) => {
+                  {topWeekly.map((row, index) => {
                     const player = playerFromSleeper(row.player_id);
                     const playerName = getPlayerName(row) || player?.full_name;
                     return (
-                      <tr key={`${row.player_id}-${row.season}-${row.week}`}>
+                      <tr key={`${row?.player_id || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`}>
                         <td>
                           <Link to={`/players/${row.player_id}`} className="tag">
                             {playerName}
@@ -510,11 +510,11 @@ export default function SummaryPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {careerLeaders.map((row) => {
+                  {careerLeaders.map((row, index) => {
                     const player = playerFromSleeper(row.player_id);
                     const playerName = getPlayerName(row) || player?.full_name;
                     return (
-                      <tr key={row.player_id}>
+                      <tr key={row?.player_id || `career-${index}`}>
                         <td>
                           <Link to={`/players/${row.player_id}`} className="tag">
                             {playerName}
