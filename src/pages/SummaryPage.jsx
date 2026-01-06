@@ -39,10 +39,46 @@ export default function SummaryPage() {
   const [playerSearch, setPlayerSearch] = useState("");
   const [weeklySearch, setWeeklySearch] = useState("");
   const { favorites } = useFavorites();
+  const [allSummaries, setAllSummaries] = useState([]);
 
   const latestSeason = getLatestSeason(manifest);
   const seasonWeeks = latestSeason ? manifest?.weeksBySeason?.[String(latestSeason)] || [] : [];
   const inSeason = seasonWeeks.length > 0;
+
+  const seasons = useMemo(() => {
+    return (manifest?.seasons || manifest?.years || [])
+      .map(Number)
+      .filter(Number.isFinite)
+      .sort((a, b) => b - a);
+  }, [manifest]);
+  useEffect(() => {
+    let active = true;
+    if (!seasons.length) return undefined;
+
+    Promise.all(seasons.map((year) => loadSeasonSummary(year))).then((payloads) => {
+      if (!active) return;
+      setAllSummaries(payloads.filter(Boolean));
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [seasons]);
+
+  const ownersBySeason = useMemo(() => {
+    const bySeason = new Map();
+    for (const summary of allSummaries) {
+      const ownerByTeam = new Map();
+      for (const team of summary?.teams || []) {
+        const ownerName = normalizeOwnerName(team.owner || team.display_name || team.username || team.team_name);
+        if (ownerName) {
+          ownerByTeam.set(team.team_name, ownerName);
+        }
+      }
+      bySeason.set(Number(summary?.season), ownerByTeam);
+    }
+    return bySeason;
+  }, [allSummaries]);
 
   useEffect(() => {
     let active = true;
@@ -355,7 +391,13 @@ export default function SummaryPage() {
                         </td>
                         <td>{row.season}</td>
                         <td>{row.week}</td>
-                        <td>{`${row.team} - ${ownerLabel(row.team, row.team)}`}</td>
+                        <td>
+                          {(() => {
+                            const ownerByTeam = ownersBySeason.get(Number(row.season));
+                            const owner = ownerByTeam?.get(row.team);
+                            return owner ? `${row.team} - ${owner}` : row.team;
+                          })()}
+                        </td>
                         <td>{formatPoints(row.points)}</td>
                       </tr>
                     );
