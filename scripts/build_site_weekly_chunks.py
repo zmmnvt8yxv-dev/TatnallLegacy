@@ -1182,7 +1182,7 @@ def main():
         }
       )
 
-  top_weekly = [row for row in all_time_weekly if float(row.get("points") or 0) >= 30]
+  top_weekly = [row for row in all_time_weekly if float(row.get("points") or 0) >= 45]
   top_weekly = sorted(top_weekly, key=lambda item: item["points"], reverse=True)
   career_stats_path = OUTPUT_DIR / "player_stats" / "career.json"
   if career_stats_path.exists():
