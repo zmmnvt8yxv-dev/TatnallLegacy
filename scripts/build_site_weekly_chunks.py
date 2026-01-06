@@ -414,6 +414,27 @@ def defense_from_espn_id(value):
   return {"id": abbr, "name": ESPN_TEAM_ABBR_TO_NAME.get(abbr, abbr)}
 
 
+
+def _coerce_points(value):
+  if value is None:
+    return None
+  if isinstance(value, (int, float)):
+    return float(value)
+  if isinstance(value, str):
+    t=value.strip()
+    if not t:
+      return None
+    try:
+      return float(t)
+    except ValueError:
+      return None
+  if isinstance(value, dict):
+    for k in ("points","total","score","actual","appliedTotal","applied_total","appliedStatTotal","applied_stat_total"):
+      if k in value:
+        return _coerce_points(value.get(k))
+  return None
+
+
 def write_json(path: Path, payload):
   path.parent.mkdir(parents=True, exist_ok=True)
   with path.open("w", encoding="utf-8") as handle:
@@ -443,9 +464,24 @@ def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup, season=Non
     defense = defense_from_espn_id(espn_id)
     if defense:
       next_row["player_id"] = defense["id"]
-      next_row["player"] = defense["name"]
+      
+    pts = _coerce_points(next_row.get("points"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("fantasy_points"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("actual_points"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("score"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("total"))
+    if pts is None and isinstance(next_row.get("scoring") , dict):
+      pts = _coerce_points(next_row.get("scoring"))
+    if pts is not None:
+      next_row["points"] = float(pts)
+next_row["player"] = defense["name"]
       next_row.setdefault("position", "D/ST")
-      next_row.setdefault("nfl_team", defense["id"])      _coerce_defense_row(next_row)      _coerce_defense_row(next_row)
+      next_row.setdefault("nfl_team", defense["id"])
+      _coerce_defense_row(next_row)
       normalized.append(next_row)
       continue
     sleeper_id = sleeper_maps.get("espn_to_sleeper", {}).get(str(espn_id)) if espn_id else None
@@ -494,9 +530,24 @@ def normalize_lineups(lineups, sleeper_maps, player_name_lookup, source="league"
     defense = defense_from_espn_id(espn_id)
     if defense:
       next_row["player_id"] = defense["id"]
-      next_row["player"] = defense["name"]
+      
+    pts = _coerce_points(next_row.get("points"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("fantasy_points"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("actual_points"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("score"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("total"))
+    if pts is None and isinstance(next_row.get("scoring") , dict):
+      pts = _coerce_points(next_row.get("scoring"))
+    if pts is not None:
+      next_row["points"] = float(pts)
+next_row["player"] = defense["name"]
       next_row.setdefault("position", "D/ST")
       next_row.setdefault("nfl_team", defense["id"])
+      _coerce_defense_row(next_row)
       normalized.append(next_row)
       continue
     if sleeper_id:
