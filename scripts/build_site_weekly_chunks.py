@@ -1034,6 +1034,31 @@ def build_transactions(seasons, sleeper_maps=None):
     )
 
 
+
+def _clean_player_name(name):
+  if not name:
+    return ""
+  name = str(name).strip().lower()
+  name = name.replace("’", "'").replace("`", "'")
+  for ch in [".", ",", "(", ")", "[", "]", "{", "}", "\""]:
+    name = name.replace(ch, "")
+  name = " ".join(name.split())
+  return name
+
+def _coerce_player_id(row, player_name_lookup):
+  for k in ("player_id", "sleeper_id", "gsis_id", "espn_id", "playerId", "id"):
+    v = row.get(k)
+    if v not in (None, "", "None"):
+      return str(v)
+  name = row.get("player") or row.get("player_name") or row.get("display_name")
+  key = _clean_player_name(name)
+  if not key:
+    return None
+  v = player_name_lookup.get(key) or player_name_lookup.get(name) or player_name_lookup.get(str(name))
+  if v not in (None, "", "None"):
+    return str(v)
+  return None
+
 def main():
   seasons = []
   all_time_weekly = []
@@ -1095,8 +1120,8 @@ def main():
 
     player_totals = {}
     for row in effective_lineups:
-      player_id = str(row.get("player_id"))
-      if not player_id or player_id == "None":
+      player_id = _coerce_player_id(row, player_name_lookup)
+      if not player_id:
         continue
       current = player_totals.get(player_id, {"player_id": player_id, "points": 0.0, "games": 0})
       current["points"] += float(row.get("points") or 0)
@@ -1105,7 +1130,7 @@ def main():
       all_time_weekly.append(
         {
           "player_id": player_id,
-          "player_name": row.get("player"),
+          "player_name": row.get("player") or row.get("player_name"),
           "team": row.get("team"),
           "season": season,
           "week": row.get("week"),
