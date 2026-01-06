@@ -1120,13 +1120,12 @@ def main():
 
     player_totals = {}
     for row in effective_lineups:
-      player_id = _coerce_player_id(row, player_name_lookup)
-      if not player_id:
-        continue
-      current = player_totals.get(player_id, {"player_id": player_id, "points": 0.0, "games": 0})
-      current["points"] += float(row.get("points") or 0)
-      current["games"] += 1
-      player_totals[player_id] = current
+      points = float(row.get("points") or 0)
+      pid = row.get("player_id")
+      player_id = None
+      if pid not in (None, "", "None"):
+        player_id = str(pid)
+
       all_time_weekly.append(
         {
           "player_id": player_id,
@@ -1134,9 +1133,18 @@ def main():
           "team": row.get("team"),
           "season": season,
           "week": row.get("week"),
-          "points": float(row.get("points") or 0),
+          "points": points,
         }
       )
+
+      if not player_id:
+        continue
+      current = player_totals.get(player_id, {"player_id": player_id, "points": 0.0, "games": 0})
+      current["points"] += points
+      current["games"] += 1
+      player_totals[player_id] = current
+
+
     season_totals.append({"season": season, "player_totals": list(player_totals.values())})
 
     season_summary = {
