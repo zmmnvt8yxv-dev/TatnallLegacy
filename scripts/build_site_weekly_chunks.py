@@ -1083,12 +1083,55 @@ def _map_to_sleeper_id(sleeper_maps, pid):
   return None
 
 
+def _load_players_index(output_dir):
+  try:
+    players = read_json(output_dir / "players.json")
+  except Exception:
+    players = []
+  by_gsis = {}
+  by_sleeper = {}
+  by_name = {}
+  if isinstance(players, list):
+    for r in players:
+      if not isinstance(r, dict):
+        continue
+      gsis = str(r.get("gsis_id") or r.get("gsisId") or "").strip()
+      sid = str(r.get("sleeper_id") or r.get("sleeperId") or r.get("player_id") or "").strip()
+      name = str(r.get("full_name") or r.get("name") or r.get("player_name") or "").strip()
+      if gsis:
+        by_gsis[gsis] = r
+      if sid and sid != "None":
+        by_sleeper[sid] = r
+      if name:
+        by_name[name.lower()] = r
+  return {"by_gsis": by_gsis, "by_sleeper": by_sleeper, "by_name": by_name}
+
+def _enrich_career_leader(item, players_idx):
+  if not isinstance(item, dict):
+    return item
+  pid = str(item.get("player_id") or "").strip()
+  name = str(item.get("display_name") or item.get("player_name") or "").strip()
+  rec = None
+  if pid and pid != "None":
+    rec = players_idx["by_sleeper"].get(pid) or players_idx["by_gsis"].get(pid)
+  if rec is None and name:
+    rec = players_idx["by_name"].get(name.lower())
+  if rec:
+    pos = rec.get("position") or rec.get("pos")
+    team = rec.get("team") or rec.get("nfl_team") or rec.get("nflTeam")
+    if pos and not item.get("position"):
+      item["position"] = str(pos)
+    if team and not item.get("nfl_team"):
+      item["nfl_team"] = str(team)
+  return item
+
 def main():
   seasons = []
   all_time_weekly = []
   season_totals = []
   sleeper_maps = load_sleeper_player_maps()
   player_name_lookup = build_player_name_lookup()
+  players_idx = _load_players_index(OUTPUT_DIR)
   nfl_by_week, nfl_by_season, nfl_by_name = load_nflverse_lookup()
   if sleeper_maps.get("espn_to_name"):
     write_json(OUTPUT_DIR / "espn_name_map.json", sleeper_maps["espn_to_name"])
@@ -1229,7 +1272,12 @@ def main():
     "games": int(row.get("games") or row.get("games_played") or 0),
     "seasons": int(row.get("seasons") or row.get("seasons_played") or 0),
   }
-)career_leaders = sorted(normalized, key=lambda item: item["points"], reverse=True)[:25]
+)
+
+  
+  career_leaders = sorted(normalized, key=lambda item: item["points"], reverse=True)[:25]
+  career_leaders = [_enrich_career_leader(dict(r), players_idx) for r in career_leaders]
+
   else:
     career_leaders = sorted(career_totals.values(), key=lambda item: item["points"], reverse=True)[:25]
 
