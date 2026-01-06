@@ -1133,6 +1133,7 @@ def main():
           "team": row.get("team"),
           "season": season,
           "week": row.get("week"),
+          "started": bool(row.get("started") or row.get("starter") or row.get("is_starter")),
           "points": points,
         }
       )
