@@ -61,13 +61,30 @@ export default function SummaryPage() {
   useEffect(() => {
     let active = true;
     if (!loadHistory) return undefined;
-    loadAllTime().then((payload) => {
+
+    const seasons = (manifest?.seasons || manifest?.years || [])
+      .map(Number)
+      .filter(Number.isFinite)
+      .sort((a, b) => a - b);
+
+    const tryLoad = async () => {
+      try {
+        // Preferred: loader supports a seasons filter so the backend can aggregate 2015-2025.
+        return await loadAllTime({ seasons });
+      } catch (e) {
+        // Back-compat: older loader takes no args.
+        return await loadAllTime();
+      }
+    };
+
+    tryLoad().then((payload) => {
       if (active) setAllTime(payload);
     });
+
     return () => {
       active = false;
     };
-  }, [loadHistory]);
+  }, [loadHistory, manifest]);
 
   useEffect(() => {
     let active = true;
@@ -311,7 +328,7 @@ export default function SummaryPage() {
         placeholder={<div className="section-card">Loading weekly leaders…</div>}
       >
         <section className="section-card">
-          <h2 className="section-title">Best Weekly Performances (Top 10)</h2>
+          <h2 className="section-title">Best Weekly Performances (All Years, Top 10)</h2>
           <SearchBar value={weeklySearch} onChange={setWeeklySearch} placeholder="Search weekly leaders..." />
           {allTimePending ? (
             <div>Loading weekly leaders…</div>
