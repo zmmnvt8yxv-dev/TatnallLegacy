@@ -23,25 +23,15 @@ import { normalizeOwnerName } from "../utils/owners.js";
 function normalizePosition(pos) {
   const p = String(pos || "").trim().toUpperCase();
   if (!p) return "";
-  if (p === "DST" || p === "D/ST" || p === "D\u002FST") return "DEF";
-  if (p === "DEFENSE" || p === "D") return "DEF";
+  if (p === "DST" || p === "D/ST" || p === "D\u002FST" || p === "DEF" || p === "DEFENSE" || p === "D") return "D/ST";
   if (p === "PK") return "K";
   if (p === "FB" || p === "HB") return "RB";
   if (p === "ALL") return "ALL";
-  if (["QB","RB","WR","TE","DEF","K"].includes(p)) return p;
+  if (["QB","RB","WR","TE","D/ST","K"].includes(p)) return p;
   return p;
 }
 
 
-function getPlayerPosition(row) {
-  if (!row) return "";
-  const pid = row.player_id || row.sleeper_id || row.espn_id || row.id;
-  const idx = (typeof playerIndex !== "undefined" && playerIndex) ? playerIndex : null;
-  if (pid != null && idx && idx[String(pid)]) {
-    return idx[String(pid)]?.position || idx[String(pid)]?.pos || "";
-  }
-  return row.position || row.pos || row.player_position || "";
-}
 function getLatestSeason(manifest) {
   const seasons = (manifest?.seasons || []).map(Number).filter(Number.isFinite);
   if (!seasons.length) return null;
@@ -506,7 +496,7 @@ const favoritePlayers = useMemo(
                 <option value="RB">RB</option>
                 <option value="WR">WR</option>
                 <option value="TE">TE</option>
-                <option value="DEF">DEF</option>
+                <option value="D/ST">D/ST</option>
                 <option value="K">K</option>
               </select>
             </label>
