@@ -88,7 +88,7 @@ export default function MatchupDetailPage() {
 
   const buildRoster = (teamKeys) => {
     const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
-    const mapped = rows.map((row) => {
+    const mapped = rows.map((row, originalIndex) => {
       const rawName = row.player || row.display_name || row.player_name;
       const espnLookupId = row.espn_id || row.player_id || row.source_player_id;
       const resolvedName =
@@ -122,13 +122,51 @@ export default function MatchupDetailPage() {
         canonicalPlayerId: canonicalId || "",
         linkName: display.name || merged.display_name || row.player || "",
         canLink,
+        originalIndex,
       };
     });
     const filtered = mapped.filter((row) => {
       if (!query) return true;
       return String(row.displayName).toLowerCase().includes(query);
     });
-    const totals = filtered.reduce(
+    const sortedRows = Number(season) === 2025
+      ? filtered
+      : [...filtered].sort((a, b) => {
+          const aStarter = a.started ? 0 : 1;
+          const bStarter = b.started ? 0 : 1;
+          if (aStarter !== bStarter) return aStarter - bStarter;
+
+          const slotA = String(a.slot || a.lineup_position || a.lineupSlot || "").toUpperCase();
+          const slotB = String(b.slot || b.lineup_position || b.lineupSlot || "").toUpperCase();
+          const posA = String(a.position || "").toUpperCase();
+          const posB = String(b.position || "").toUpperCase();
+
+          const isFlexA = slotA.includes("FLEX") || slotA.includes("W/R") || slotA.includes("WR/RB") || slotA.includes("RB/WR") || slotA.includes("W/R/T");
+          const isFlexB = slotB.includes("FLEX") || slotB.includes("W/R") || slotB.includes("WR/RB") || slotB.includes("RB/WR") || slotB.includes("W/R/T");
+
+          const rank = (pos, isFlex) => {
+            if (isFlex) return 4;
+            if (pos === "QB") return 0;
+            if (pos === "RB") return 1;
+            if (pos === "WR") return 2;
+            if (pos === "TE") return 3;
+            if (pos === "FLEX") return 4;
+            if (pos === "DEF" || pos === "DST" || pos === "D/ST") return 5;
+            if (pos === "K") return 6;
+            return 7;
+          };
+
+          const rA = rank(posA, isFlexA);
+          const rB = rank(posB, isFlexB);
+          if (rA !== rB) return rA - rB;
+
+          const pA = safeNumber(a.points);
+          const pB = safeNumber(b.points);
+          if (pA !== pB) return pB - pA;
+
+          return (a.originalIndex ?? 0) - (b.originalIndex ?? 0);
+        });
+    const totals = sortedRows.reduce(
       (acc, row) => {
         acc.points += safeNumber(row.points);
         acc.starters += row.started ? 1 : 0;
@@ -136,12 +174,12 @@ export default function MatchupDetailPage() {
       },
       { points: 0, starters: 0 },
     );
-    const positionalTotals = filtered.reduce((acc, row) => {
+    const positionalTotals = sortedRows.reduce((acc, row) => {
       const position = row.position || "—";
       acc[position] = (acc[position] || 0) + safeNumber(row.points);
       return acc;
     }, {});
-    return { rows: filtered, totals, positionalTotals };
+    return { rows: sortedRows, totals, positionalTotals };
   };
 
   const buildPlayerLink = (row) => {
