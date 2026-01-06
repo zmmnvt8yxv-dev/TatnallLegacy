@@ -86,60 +86,6 @@ ESPN_TEAM_ABBR_TO_NAME = {
 }
 
 
-def _clean_text(value):
-  if value is None:
-    return ""
-  text = str(value).strip().lower()
-  if not text:
-    return ""
-  out = []
-  for ch in text:
-    if ch.isalnum() or ch.isspace() or ch in ("-", "/", "&", "'"):
-      out.append(ch)
-  return " ".join("".join(out).split())
-
-def _is_defense_position(pos):
-  p = str(pos or "").strip().upper()
-  return p in ("DEF", "DST", "D/ST")
-
-def _looks_like_defense_name(name):
-  t = _clean_text(name)
-  if not t:
-    return False
-  return ("d/st" in t) or ("dst" in t) or ("defense" in t) or (t.endswith("def")) or (" d st" in t)
-
-def _infer_defense_abbr(player_name, nfl_team=None):
-  t = str(nfl_team or "").strip().upper()
-  if t and t in ESPN_TEAM_ABBR_TO_NAME:
-    return t
-  name = _clean_text(player_name)
-  if not name or not _looks_like_defense_name(name):
-    return None
-  nick_to_abbr = {v.lower(): k for k, v in ESPN_TEAM_ABBR_TO_NAME.items() if v}
-  best = None
-  best_len = 0
-  for nick, abbr in nick_to_abbr.items():
-    if nick and nick in name and len(nick) > best_len:
-      best = abbr
-      best_len = len(nick)
-  return best
-
-def _coerce_defense_row(row_dict):
-  if not isinstance(row_dict, dict):
-    return row_dict
-  pos = row_dict.get("position")
-  name = row_dict.get("player") or row_dict.get("player_name") or row_dict.get("display_name")
-  nfl_team = row_dict.get("nfl_team")
-  if _is_defense_position(pos) or _looks_like_defense_name(name):
-    abbr = _infer_defense_abbr(name, nfl_team=nfl_team)
-    if abbr:
-      row_dict["player_id"] = abbr
-      row_dict["position"] = "D/ST"
-      row_dict["nfl_team"] = abbr
-      row_dict["player"] = f"{ESPN_TEAM_ABBR_TO_NAME.get(abbr, abbr).title()} D/ST"
-  return row_dict
-
-
 def read_json(path: Path):
   with path.open("r", encoding="utf-8") as handle:
     return json.load(handle)
@@ -414,27 +360,6 @@ def defense_from_espn_id(value):
   return {"id": abbr, "name": ESPN_TEAM_ABBR_TO_NAME.get(abbr, abbr)}
 
 
-
-def _coerce_points(value):
-  if value is None:
-    return None
-  if isinstance(value, (int, float)):
-    return float(value)
-  if isinstance(value, str):
-    t=value.strip()
-    if not t:
-      return None
-    try:
-      return float(t)
-    except ValueError:
-      return None
-  if isinstance(value, dict):
-    for k in ("points","total","score","actual","appliedTotal","applied_total","appliedStatTotal","applied_stat_total"):
-      if k in value:
-        return _coerce_points(value.get(k))
-  return None
-
-
 def write_json(path: Path, payload):
   path.parent.mkdir(parents=True, exist_ok=True)
   with path.open("w", encoding="utf-8") as handle:
@@ -459,12 +384,7 @@ def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup, season=Non
       next_row["season"] = season
     next_row["source"] = "espn"
     next_row["source_player_id"] = raw_id
-    if espn_id:
-      next_row["espn_id"] = espn_id
-    defense = defense_from_espn_id(espn_id)
-    if defense:
-      next_row["player_id"] = defense["id"]
-      
+    # Points block injection
     pts = _coerce_points(next_row.get("points"))
     if pts is None:
       pts = _coerce_points(next_row.get("fantasy_points"))
@@ -474,14 +394,16 @@ def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup, season=Non
       pts = _coerce_points(next_row.get("score"))
     if pts is None:
       pts = _coerce_points(next_row.get("total"))
-    if pts is None and isinstance(next_row.get("scoring") , dict):
-      pts = _coerce_points(next_row.get("scoring"))
     if pts is not None:
       next_row["points"] = float(pts)
-next_row["player"] = defense["name"]
+    if espn_id:
+      next_row["espn_id"] = espn_id
+    defense = defense_from_espn_id(espn_id)
+    if defense:
+      next_row["player_id"] = defense["id"]
+      next_row["player"] = defense["name"]
       next_row.setdefault("position", "D/ST")
       next_row.setdefault("nfl_team", defense["id"])
-      _coerce_defense_row(next_row)
       normalized.append(next_row)
       continue
     sleeper_id = sleeper_maps.get("espn_to_sleeper", {}).get(str(espn_id)) if espn_id else None
@@ -518,6 +440,18 @@ def normalize_lineups(lineups, sleeper_maps, player_name_lookup, source="league"
       next_row["season"] = season
     next_row["source"] = row.get("source") or source
     next_row["source_player_id"] = raw_id
+    # Points block injection
+    pts = _coerce_points(next_row.get("points"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("fantasy_points"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("actual_points"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("score"))
+    if pts is None:
+      pts = _coerce_points(next_row.get("total"))
+    if pts is not None:
+      next_row["points"] = float(pts)
     sleeper_id = None
     gsis_id = str(raw_id).strip() if raw_id else None
     if gsis_id and gsis_id in sleeper_maps.get("gsis_to_sleeper", {}):
@@ -530,24 +464,9 @@ def normalize_lineups(lineups, sleeper_maps, player_name_lookup, source="league"
     defense = defense_from_espn_id(espn_id)
     if defense:
       next_row["player_id"] = defense["id"]
-      
-    pts = _coerce_points(next_row.get("points"))
-    if pts is None:
-      pts = _coerce_points(next_row.get("fantasy_points"))
-    if pts is None:
-      pts = _coerce_points(next_row.get("actual_points"))
-    if pts is None:
-      pts = _coerce_points(next_row.get("score"))
-    if pts is None:
-      pts = _coerce_points(next_row.get("total"))
-    if pts is None and isinstance(next_row.get("scoring") , dict):
-      pts = _coerce_points(next_row.get("scoring"))
-    if pts is not None:
-      next_row["points"] = float(pts)
-next_row["player"] = defense["name"]
+      next_row["player"] = defense["name"]
       next_row.setdefault("position", "D/ST")
       next_row.setdefault("nfl_team", defense["id"])
-      _coerce_defense_row(next_row)
       normalized.append(next_row)
       continue
     if sleeper_id:
@@ -1467,191 +1386,9 @@ def main():
 
     career_leaders = sorted(normalized, key=lambda item: item["points"], reverse=True)
     career_leaders = [_enrich_career_leader(dict(r), players_idx, nfl_teams_by_name=nfl_teams_by_name) for r in career_leaders]
-
-    # Backfill/override D/ST and K career totals from weekly lineup data (league + ESPN)
-    def _normalize_pos(pos):
-      p = str(pos or "").strip().upper()
-      if p in ("DEF", "DST", "D/ST"):
-        return "D/ST"
-      if p in ("PK",):
-        return "K"
-      return p
-
-    def _calc_weekly_career_totals(rows, positions=("D/ST","K")):
-      positions = set(positions)
-      totals = {}
-      for row in rows or []:
-        pid = row.get("player_id")
-        if pid in (None, "", "None"):
-          continue
-        pos = _normalize_pos(row.get("position"))
-        if pos not in positions:
-          continue
-        season = row.get("season")
-        week = row.get("week")
-        try:
-          pts = float(row.get("points") or 0)
-        except Exception:
-          pts = 0.0
-        cur = totals.get(str(pid))
-        if cur is None:
-          cur = {
-            "player_id": str(pid),
-            "display_name": row.get("player_name") or row.get("player") or row.get("display_name") or str(pid),
-            "position": pos,
-            "nfl_team": row.get("nfl_team") or (str(pid) if pos == "D/ST" else None),
-            "points": 0.0,
-            "games": 0,
-            "seasons_set": set(),
-          }
-          totals[str(pid)] = cur
-        cur["points"] += pts
-        cur["games"] += 1
-        if season not in (None, "", "None"):
-          try:
-            cur["seasons_set"].add(int(season))
-          except Exception:
-            pass
-        if (not cur.get("nfl_team")) and row.get("nfl_team"):
-          cur["nfl_team"] = row.get("nfl_team")
-      for cur in totals.values():
-        cur["seasons"] = len(cur["seasons_set"])
-        del cur["seasons_set"]
-      return totals
-
-    special_totals = _calc_weekly_career_totals(all_time_weekly, positions=("D/ST","K"))
-
-    # index existing career leaders by player_id
-    by_pid = {}
-    for r in career_leaders:
-      if isinstance(r, dict) and r.get("player_id") not in (None, "", "None"):
-        by_pid[str(r["player_id"])] = r
-
-    # override points/games/seasons for D/ST and K (more complete via weekly lineups)
-    for pid, agg in special_totals.items():
-      existing = by_pid.get(pid)
-      if existing is None:
-        existing = {
-          "player_id": pid,
-          "source_player_id": agg.get("source_player_id") or pid,
-          "display_name": agg.get("display_name") or pid,
-          "position": agg.get("position"),
-          "nfl_team": agg.get("nfl_team"),
-          "points": agg.get("points") or 0.0,
-          "games": agg.get("games") or 0,
-          "seasons": agg.get("seasons") or 0,
-        }
-        existing = _enrich_career_leader(existing, players_idx, nfl_teams_by_name=nfl_teams_by_name)
-        career_leaders.append(existing)
-        by_pid[pid] = existing
-      else:
-        pos = _normalize_pos(existing.get("position") or agg.get("position"))
-        if pos in ("D/ST", "K"):
-          existing["position"] = pos
-          existing["points"] = float(agg.get("points") or 0.0)
-          existing["games"] = int(agg.get("games") or 0)
-          existing["seasons"] = int(agg.get("seasons") or 0)
-          if agg.get("nfl_team"):
-            existing["nfl_team"] = agg.get("nfl_team")
-          existing = _enrich_career_leader(existing, players_idx, nfl_teams_by_name=nfl_teams_by_name)
-          by_pid[pid] = existing
-
-    # re-sort after overrides/inserts
-    career_leaders = sorted(career_leaders, key=lambda item: float(item.get("points") or 0), reverse=True)
   else:
     career_leaders = sorted(career_totals.values(), key=lambda item: item["points"], reverse=True)
     career_leaders = [_enrich_career_leader(dict(r), players_idx, nfl_teams_by_name=nfl_teams_by_name) for r in career_leaders]
-
-    # Backfill/override D/ST and K career totals from weekly lineup data (league + ESPN)
-    def _normalize_pos(pos):
-      p = str(pos or "").strip().upper()
-      if p in ("DEF", "DST", "D/ST"):
-        return "D/ST"
-      if p in ("PK",):
-        return "K"
-      return p
-
-    def _calc_weekly_career_totals(rows, positions=("D/ST","K")):
-      positions = set(positions)
-      totals = {}
-      for row in rows or []:
-        pid = row.get("player_id")
-        if pid in (None, "", "None"):
-          continue
-        pos = _normalize_pos(row.get("position"))
-        if pos not in positions:
-          continue
-        season = row.get("season")
-        week = row.get("week")
-        try:
-          pts = float(row.get("points") or 0)
-        except Exception:
-          pts = 0.0
-        cur = totals.get(str(pid))
-        if cur is None:
-          cur = {
-            "player_id": str(pid),
-            "display_name": row.get("player_name") or row.get("player") or row.get("display_name") or str(pid),
-            "position": pos,
-            "nfl_team": row.get("nfl_team") or (str(pid) if pos == "D/ST" else None),
-            "points": 0.0,
-            "games": 0,
-            "seasons_set": set(),
-          }
-          totals[str(pid)] = cur
-        cur["points"] += pts
-        cur["games"] += 1
-        if season not in (None, "", "None"):
-          try:
-            cur["seasons_set"].add(int(season))
-          except Exception:
-            pass
-        if (not cur.get("nfl_team")) and row.get("nfl_team"):
-          cur["nfl_team"] = row.get("nfl_team")
-      for cur in totals.values():
-        cur["seasons"] = len(cur["seasons_set"])
-        del cur["seasons_set"]
-      return totals
-
-    special_totals = _calc_weekly_career_totals(all_time_weekly, positions=("D/ST","K"))
-
-    # index existing career leaders by player_id
-    by_pid = {}
-    for r in career_leaders:
-      if isinstance(r, dict) and r.get("player_id") not in (None, "", "None"):
-        by_pid[str(r["player_id"])] = r
-
-    # override points/games/seasons for D/ST and K (more complete via weekly lineups)
-    for pid, agg in special_totals.items():
-      existing = by_pid.get(pid)
-      if existing is None:
-        existing = {
-          "player_id": pid,
-          "source_player_id": agg.get("source_player_id") or pid,
-          "display_name": agg.get("display_name") or pid,
-          "position": agg.get("position"),
-          "nfl_team": agg.get("nfl_team"),
-          "points": agg.get("points") or 0.0,
-          "games": agg.get("games") or 0,
-          "seasons": agg.get("seasons") or 0,
-        }
-        existing = _enrich_career_leader(existing, players_idx, nfl_teams_by_name=nfl_teams_by_name)
-        career_leaders.append(existing)
-        by_pid[pid] = existing
-      else:
-        pos = _normalize_pos(existing.get("position") or agg.get("position"))
-        if pos in ("D/ST", "K"):
-          existing["position"] = pos
-          existing["points"] = float(agg.get("points") or 0.0)
-          existing["games"] = int(agg.get("games") or 0)
-          existing["seasons"] = int(agg.get("seasons") or 0)
-          if agg.get("nfl_team"):
-            existing["nfl_team"] = agg.get("nfl_team")
-          existing = _enrich_career_leader(existing, players_idx, nfl_teams_by_name=nfl_teams_by_name)
-          by_pid[pid] = existing
-
-    # re-sort after overrides/inserts
-    career_leaders = sorted(career_leaders, key=lambda item: float(item.get("points") or 0), reverse=True)
 
   all_time_payload = {
     "generatedAt": datetime.now(timezone.utc).isoformat(),
