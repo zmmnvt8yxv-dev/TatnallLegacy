@@ -38,7 +38,6 @@ export default function SummaryPage() {
   const [loadBoomBust, setLoadBoomBust] = useState(false);
   const [playerSearch, setPlayerSearch] = useState("");
   const [weeklySearch, setWeeklySearch] = useState("");
-  const [careerSortByPosition, setCareerSortByPosition] = useState(false);
   const { favorites } = useFavorites();
   const [allSummaries, setAllSummaries] = useState([]);
 
@@ -192,35 +191,17 @@ export default function SummaryPage() {
       if (!query) return true;
       return resolvePlayerName(row, playerIndex, espnNameMap).toLowerCase().includes(query);
     });
-  }, [allTime, weeklySearch, playerIndex]);
+  }, [allTime, weeklySearch, playerIndex, espnNameMap]);
 
   const careerLeaders = useMemo(() => {
-    const entries = allTime?.careerLeaders || [allTime, playerSearch, playerIndex, espnNameMap, careerSortByPosition];
+    const entries = (allTime?.careerLeaders || []).filter(Boolean);
     if (!entries.length) return [];
     const query = playerSearch.toLowerCase().trim();
-    const filtered = entries.filter((row) => {
+    return entries.filter((row) => {
       if (!query) return true;
       return resolvePlayerName(row, playerIndex, espnNameMap).toLowerCase().includes(query);
     });
-
-    if (!careerSortByPosition) return filtered;
-
-    return [...filtered].sort((a, b) => {
-      const pa = getPlayerPosition(a);
-      const pb = getPlayerPosition(b);
-      const ra = positionRank(pa);
-      const rb = positionRank(pb);
-      if (ra !== rb) return ra - rb;
-
-      const ptsA = safeNumber(a.points);
-      const ptsB = safeNumber(b.points);
-      if (ptsA !== ptsB) return ptsB - ptsA;
-
-      const na = getPlayerName(a) || "";
-      const nb = getPlayerName(b) || "";
-      return na.localeCompare(nb);
-    });
-}, [allTime, playerSearch, playerIndex]);
+  }, [allTime, playerSearch, playerIndex, espnNameMap]);
 
   const favoritePlayers = useMemo(
     () =>
@@ -252,22 +233,6 @@ export default function SummaryPage() {
   };
 
   const getPlayerName = (row) => resolvePlayerName(row, playerIndex, espnNameMap);
-
-  const getPlayerPosition = (row) => {
-    const player = playerFromSleeper(row.player_id);
-    const pos = player?.position || player?.pos || row?.position || row?.pos;
-    return pos ? String(pos).toUpperCase() : "";
-  };
-
-  const positionRank = (pos) => {
-    if (pos === "QB") return 0;
-    if (pos === "RB") return 1;
-    if (pos === "WR") return 2;
-    if (pos === "TE") return 3;
-    if (pos === "DEF" || pos === "DST" || pos === "D/ST") return 4;
-    if (pos === "K") return 5;
-    return 9;
-  };
 
   return (
     <>
@@ -417,14 +382,19 @@ export default function SummaryPage() {
                 </thead>
                 <tbody>
                   {topWeekly.map((row, index) => {
-                    const player = playerFromSleeper(row.player_id);
-                    const playerName = getPlayerName(row) || player?.full_name;
+                    const pid = row?.player_id;
+                    const player = pid ? playerFromSleeper(pid) : null;
+                    const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
                     return (
-                      <tr key={`${row?.player_id || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`}>
+                      <tr key={`${pid || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`}>
                         <td>
-                          <Link to={`/players/${row.player_id}`} className="tag">
-                            {playerName}
-                          </Link>
+                          {pid ? (
+                            <Link to={`/players/${pid}`} className="tag">
+                              {playerName}
+                            </Link>
+                          ) : (
+                            <span className="tag">{playerName || "Unknown"}</span>
+                          )}
                         </td>
                         <td>{row.season}</td>
                         <td>{row.week}</td>
@@ -485,16 +455,6 @@ export default function SummaryPage() {
       >
         <section className="section-card">
           <h2 className="section-title">Career Fantasy Leaders</h2>
-          <div className="flex-row" style={{ alignItems: "center", gap: 10, marginBottom: 10 }}>
-            <label className="tag" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-              <input
-                type="checkbox"
-                checked={careerSortByPosition}
-                onChange={(e) => setCareerSortByPosition(e.target.checked)}
-              />
-              Sort by position
-            </label>
-          </div>
           <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search career leaders..." />
           {allTimePending ? (
             <div>Loading career leaders…</div>
@@ -511,14 +471,19 @@ export default function SummaryPage() {
                 </thead>
                 <tbody>
                   {careerLeaders.map((row, index) => {
-                    const player = playerFromSleeper(row.player_id);
-                    const playerName = getPlayerName(row) || player?.full_name;
+                    const pid = row?.player_id;
+                    const player = pid ? playerFromSleeper(pid) : null;
+                    const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
                     return (
-                      <tr key={row?.player_id || `career-${index}`}>
+                      <tr key={pid || `career-${index}`}>
                         <td>
-                          <Link to={`/players/${row.player_id}`} className="tag">
-                            {playerName}
-                          </Link>
+                          {pid ? (
+                            <Link to={`/players/${pid}`} className="tag">
+                              {playerName}
+                            </Link>
+                          ) : (
+                            <span className="tag">{playerName || "Unknown"}</span>
+                          )}
                         </td>
                         <td>{row.seasons}</td>
                         <td>{row.games}</td>
