@@ -355,7 +355,7 @@ export default function SummaryPage() {
                         </td>
                         <td>{row.season}</td>
                         <td>{row.week}</td>
-                        <td>{row.team || "—"}</td>
+                        <td>{`${row.team} - ${ownerLabel(row.team, row.team)}`}</td>
                         <td>{formatPoints(row.points)}</td>
                       </tr>
                     );
