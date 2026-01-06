@@ -1362,9 +1362,191 @@ def main():
 
     career_leaders = sorted(normalized, key=lambda item: item["points"], reverse=True)
     career_leaders = [_enrich_career_leader(dict(r), players_idx, nfl_teams_by_name=nfl_teams_by_name) for r in career_leaders]
+
+    # Backfill/override D/ST and K career totals from weekly lineup data (league + ESPN)
+    def _normalize_pos(pos):
+      p = str(pos or "").strip().upper()
+      if p in ("DEF", "DST", "D/ST"):
+        return "D/ST"
+      if p in ("PK",):
+        return "K"
+      return p
+
+    def _calc_weekly_career_totals(rows, positions=("D/ST","K")):
+      positions = set(positions)
+      totals = {}
+      for row in rows or []:
+        pid = row.get("player_id")
+        if pid in (None, "", "None"):
+          continue
+        pos = _normalize_pos(row.get("position"))
+        if pos not in positions:
+          continue
+        season = row.get("season")
+        week = row.get("week")
+        try:
+          pts = float(row.get("points") or 0)
+        except Exception:
+          pts = 0.0
+        cur = totals.get(str(pid))
+        if cur is None:
+          cur = {
+            "player_id": str(pid),
+            "display_name": row.get("player_name") or row.get("player") or row.get("display_name") or str(pid),
+            "position": pos,
+            "nfl_team": row.get("nfl_team") or (str(pid) if pos == "D/ST" else None),
+            "points": 0.0,
+            "games": 0,
+            "seasons_set": set(),
+          }
+          totals[str(pid)] = cur
+        cur["points"] += pts
+        cur["games"] += 1
+        if season not in (None, "", "None"):
+          try:
+            cur["seasons_set"].add(int(season))
+          except Exception:
+            pass
+        if (not cur.get("nfl_team")) and row.get("nfl_team"):
+          cur["nfl_team"] = row.get("nfl_team")
+      for cur in totals.values():
+        cur["seasons"] = len(cur["seasons_set"])
+        del cur["seasons_set"]
+      return totals
+
+    special_totals = _calc_weekly_career_totals(all_time_weekly, positions=("D/ST","K"))
+
+    # index existing career leaders by player_id
+    by_pid = {}
+    for r in career_leaders:
+      if isinstance(r, dict) and r.get("player_id") not in (None, "", "None"):
+        by_pid[str(r["player_id"])] = r
+
+    # override points/games/seasons for D/ST and K (more complete via weekly lineups)
+    for pid, agg in special_totals.items():
+      existing = by_pid.get(pid)
+      if existing is None:
+        existing = {
+          "player_id": pid,
+          "source_player_id": agg.get("source_player_id") or pid,
+          "display_name": agg.get("display_name") or pid,
+          "position": agg.get("position"),
+          "nfl_team": agg.get("nfl_team"),
+          "points": agg.get("points") or 0.0,
+          "games": agg.get("games") or 0,
+          "seasons": agg.get("seasons") or 0,
+        }
+        existing = _enrich_career_leader(existing, players_idx, nfl_teams_by_name=nfl_teams_by_name)
+        career_leaders.append(existing)
+        by_pid[pid] = existing
+      else:
+        pos = _normalize_pos(existing.get("position") or agg.get("position"))
+        if pos in ("D/ST", "K"):
+          existing["position"] = pos
+          existing["points"] = float(agg.get("points") or 0.0)
+          existing["games"] = int(agg.get("games") or 0)
+          existing["seasons"] = int(agg.get("seasons") or 0)
+          if agg.get("nfl_team"):
+            existing["nfl_team"] = agg.get("nfl_team")
+          existing = _enrich_career_leader(existing, players_idx, nfl_teams_by_name=nfl_teams_by_name)
+          by_pid[pid] = existing
+
+    # re-sort after overrides/inserts
+    career_leaders = sorted(career_leaders, key=lambda item: float(item.get("points") or 0), reverse=True)
   else:
     career_leaders = sorted(career_totals.values(), key=lambda item: item["points"], reverse=True)
     career_leaders = [_enrich_career_leader(dict(r), players_idx, nfl_teams_by_name=nfl_teams_by_name) for r in career_leaders]
+
+    # Backfill/override D/ST and K career totals from weekly lineup data (league + ESPN)
+    def _normalize_pos(pos):
+      p = str(pos or "").strip().upper()
+      if p in ("DEF", "DST", "D/ST"):
+        return "D/ST"
+      if p in ("PK",):
+        return "K"
+      return p
+
+    def _calc_weekly_career_totals(rows, positions=("D/ST","K")):
+      positions = set(positions)
+      totals = {}
+      for row in rows or []:
+        pid = row.get("player_id")
+        if pid in (None, "", "None"):
+          continue
+        pos = _normalize_pos(row.get("position"))
+        if pos not in positions:
+          continue
+        season = row.get("season")
+        week = row.get("week")
+        try:
+          pts = float(row.get("points") or 0)
+        except Exception:
+          pts = 0.0
+        cur = totals.get(str(pid))
+        if cur is None:
+          cur = {
+            "player_id": str(pid),
+            "display_name": row.get("player_name") or row.get("player") or row.get("display_name") or str(pid),
+            "position": pos,
+            "nfl_team": row.get("nfl_team") or (str(pid) if pos == "D/ST" else None),
+            "points": 0.0,
+            "games": 0,
+            "seasons_set": set(),
+          }
+          totals[str(pid)] = cur
+        cur["points"] += pts
+        cur["games"] += 1
+        if season not in (None, "", "None"):
+          try:
+            cur["seasons_set"].add(int(season))
+          except Exception:
+            pass
+        if (not cur.get("nfl_team")) and row.get("nfl_team"):
+          cur["nfl_team"] = row.get("nfl_team")
+      for cur in totals.values():
+        cur["seasons"] = len(cur["seasons_set"])
+        del cur["seasons_set"]
+      return totals
+
+    special_totals = _calc_weekly_career_totals(all_time_weekly, positions=("D/ST","K"))
+
+    # index existing career leaders by player_id
+    by_pid = {}
+    for r in career_leaders:
+      if isinstance(r, dict) and r.get("player_id") not in (None, "", "None"):
+        by_pid[str(r["player_id"])] = r
+
+    # override points/games/seasons for D/ST and K (more complete via weekly lineups)
+    for pid, agg in special_totals.items():
+      existing = by_pid.get(pid)
+      if existing is None:
+        existing = {
+          "player_id": pid,
+          "source_player_id": agg.get("source_player_id") or pid,
+          "display_name": agg.get("display_name") or pid,
+          "position": agg.get("position"),
+          "nfl_team": agg.get("nfl_team"),
+          "points": agg.get("points") or 0.0,
+          "games": agg.get("games") or 0,
+          "seasons": agg.get("seasons") or 0,
+        }
+        existing = _enrich_career_leader(existing, players_idx, nfl_teams_by_name=nfl_teams_by_name)
+        career_leaders.append(existing)
+        by_pid[pid] = existing
+      else:
+        pos = _normalize_pos(existing.get("position") or agg.get("position"))
+        if pos in ("D/ST", "K"):
+          existing["position"] = pos
+          existing["points"] = float(agg.get("points") or 0.0)
+          existing["games"] = int(agg.get("games") or 0)
+          existing["seasons"] = int(agg.get("seasons") or 0)
+          if agg.get("nfl_team"):
+            existing["nfl_team"] = agg.get("nfl_team")
+          existing = _enrich_career_leader(existing, players_idx, nfl_teams_by_name=nfl_teams_by_name)
+          by_pid[pid] = existing
+
+    # re-sort after overrides/inserts
+    career_leaders = sorted(career_leaders, key=lambda item: float(item.get("points") or 0), reverse=True)
 
   all_time_payload = {
     "generatedAt": datetime.now(timezone.utc).isoformat(),
