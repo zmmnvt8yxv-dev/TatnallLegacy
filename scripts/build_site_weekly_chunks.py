@@ -1059,6 +1059,30 @@ def _coerce_player_id(row, player_name_lookup):
     return str(v)
   return None
 
+
+def _map_to_sleeper_id(sleeper_maps, pid):
+  pid = str(pid or "")
+  if not pid or not isinstance(sleeper_maps, dict):
+    return None
+  for k, v in sleeper_maps.items():
+    if not isinstance(v, dict):
+      continue
+    lk = str(k).lower()
+    if "gsis" in lk and "sleeper" in lk and pid in v:
+      return str(v.get(pid))
+  for k, v in sleeper_maps.items():
+    if not isinstance(v, dict):
+      continue
+    if pid in v:
+      mapped = v.get(pid)
+      if mapped is None:
+        continue
+      mapped_s = str(mapped)
+      if mapped_s.isdigit():
+        return mapped_s
+  return None
+
+
 def main():
   seasons = []
   all_time_weekly = []
@@ -1195,15 +1219,17 @@ def main():
       if not player_id:
         continue
       normalized.append(
-        {
-          "player_id": str(player_id),
-          "display_name": row.get("display_name") or row.get("player_display_name") or row.get("player_name"),
-          "points": float(row.get("points") or row.get("fantasy_points_custom") or 0),
-          "games": int(row.get("games") or row.get("games_played") or 0),
-          "seasons": int(row.get("seasons") or row.get("seasons_played") or 0),
-        }
-      )
-    career_leaders = sorted(normalized, key=lambda item: item["points"], reverse=True)[:25]
+  {
+    "player_id": (_map_to_sleeper_id(sleeper_maps, player_id) or str(player_id)),
+    "source_player_id": str(player_id),
+    "display_name": row.get("display_name") or row.get("player_display_name") or row.get("player_name"),
+    "position": row.get("position") or row.get("pos") or row.get("player_position") or row.get("fantasy_position"),
+    "nfl_team": row.get("nfl_team") or row.get("team") or row.get("pro_team") or row.get("nflTeam"),
+    "points": float(row.get("points") or row.get("fantasy_points_custom") or 0),
+    "games": int(row.get("games") or row.get("games_played") or 0),
+    "seasons": int(row.get("seasons") or row.get("seasons_played") or 0),
+  }
+)career_leaders = sorted(normalized, key=lambda item: item["points"], reverse=True)[:25]
   else:
     career_leaders = sorted(career_totals.values(), key=lambda item: item["points"], reverse=True)[:25]
 
