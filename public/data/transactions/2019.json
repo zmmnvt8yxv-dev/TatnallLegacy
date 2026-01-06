@@ -16702,46 +16702,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "45799c3c-12c1-4bb4-8e34-d4bfbf7b2172-trade-2",
-      "season": 2019,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: Davante Adams | Sent: Mark Ingram II, Stefon Diggs, Emmanuel Sanders",
-      "created": 1566314944750,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        },
-        {
-          "id": "13295",
-          "name": "Emmanuel Sanders",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13295
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "45799c3c-12c1-4bb4-8e34-d4bfbf7b2172-trade-4",
       "season": 2019,
       "week": 1,
@@ -16777,6 +16737,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16800
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "45799c3c-12c1-4bb4-8e34-d4bfbf7b2172-trade-2",
+      "season": 2019,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: Davante Adams | Sent: Mark Ingram II, Stefon Diggs, Emmanuel Sanders",
+      "created": 1566314944750,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976212
+        },
+        {
+          "id": "13295",
+          "name": "Emmanuel Sanders",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13295
         }
       ],
       "source": "espn_transactions"
@@ -17816,46 +17816,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "3f528a25-461f-40c7-8987-23a4a7df790c-trade-2",
-      "season": 2019,
-      "week": 1,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: Davante Adams | Sent: Mark Ingram II, Stefon Diggs, Emmanuel Sanders",
-      "created": 1566326089526,
-      "players": [
-        {
-          "id": "16800",
-          "name": "Davante Adams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16800
-        },
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "2976212",
-          "name": "Stefon Diggs",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2976212
-        },
-        {
-          "id": "13295",
-          "name": "Emmanuel Sanders",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13295
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "3f528a25-461f-40c7-8987-23a4a7df790c-trade-4",
       "season": 2019,
       "week": 1,
@@ -17891,6 +17851,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16800
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "3f528a25-461f-40c7-8987-23a4a7df790c-trade-2",
+      "season": 2019,
+      "week": 1,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: Davante Adams | Sent: Mark Ingram II, Stefon Diggs, Emmanuel Sanders",
+      "created": 1566326089526,
+      "players": [
+        {
+          "id": "16800",
+          "name": "Davante Adams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16800
+        },
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "2976212",
+          "name": "Stefon Diggs",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2976212
+        },
+        {
+          "id": "13295",
+          "name": "Emmanuel Sanders",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13295
         }
       ],
       "source": "espn_transactions"
@@ -18522,32 +18522,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "04053236-08f1-4b5b-b9e9-039ed69baf73-trade-3",
-      "season": 2019,
-      "week": 2,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Carlos Hyde | Sent: Latavius Murray",
-      "created": 1568138065539,
-      "players": [
-        {
-          "id": "16777",
-          "name": "Carlos Hyde",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16777
-        },
-        {
-          "id": "15920",
-          "name": "Latavius Murray",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15920
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "04053236-08f1-4b5b-b9e9-039ed69baf73-trade-5",
       "season": 2019,
       "week": 2,
@@ -18569,6 +18543,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16777
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "04053236-08f1-4b5b-b9e9-039ed69baf73-trade-3",
+      "season": 2019,
+      "week": 2,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Carlos Hyde | Sent: Latavius Murray",
+      "created": 1568138065539,
+      "players": [
+        {
+          "id": "16777",
+          "name": "Carlos Hyde",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16777
+        },
+        {
+          "id": "15920",
+          "name": "Latavius Murray",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15920
         }
       ],
       "source": "espn_transactions"
@@ -18720,39 +18720,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "30776ab3-7bd2-474a-a281-c94293ad950d-trade-2",
-      "season": 2019,
-      "week": 3,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: Leonard Fournette, Josh Gordon | Sent: Mark Ingram II",
-      "created": 1569183602261,
-      "players": [
-        {
-          "id": "3115364",
-          "name": "Leonard Fournette",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3115364
-        },
-        {
-          "id": "15705",
-          "name": "Josh Gordon",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15705
-        },
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13981
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "30776ab3-7bd2-474a-a281-c94293ad950d-trade-4",
       "season": 2019,
       "week": 3,
@@ -18786,27 +18753,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0bf81711-223a-4bb9-8634-a2ff5a578dc2-trade-3",
+      "id": "30776ab3-7bd2-474a-a281-c94293ad950d-trade-2",
       "season": 2019,
       "week": 3,
       "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Ronald Jones | Sent: Adrian Peterson",
-      "created": 1568734712697,
+      "team": "Team Downs",
+      "summary": "Received: Leonard Fournette, Josh Gordon | Sent: Mark Ingram II",
+      "created": 1569183602261,
       "players": [
         {
-          "id": "3912550",
-          "name": "Ronald Jones",
+          "id": "3115364",
+          "name": "Leonard Fournette",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3912550
+          "source_player_id": 3115364
         },
         {
-          "id": "10452",
-          "name": "Adrian Peterson",
+          "id": "15705",
+          "name": "Josh Gordon",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15705
+        },
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 10452
+          "source_player_id": 13981
         }
       ],
       "source": "espn_transactions"
@@ -18833,6 +18807,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3912550
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "0bf81711-223a-4bb9-8634-a2ff5a578dc2-trade-3",
+      "season": 2019,
+      "week": 3,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Ronald Jones | Sent: Adrian Peterson",
+      "created": 1568734712697,
+      "players": [
+        {
+          "id": "3912550",
+          "name": "Ronald Jones",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3912550
+        },
+        {
+          "id": "10452",
+          "name": "Adrian Peterson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 10452
         }
       ],
       "source": "espn_transactions"
@@ -18904,6 +18904,39 @@
       "source": "espn_transactions"
     },
     {
+      "id": "b5c32735-485a-4db6-9d45-e93755c0591a-trade-4",
+      "season": 2019,
+      "week": 3,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Mark Ingram II, Royce Freeman | Sent: Ezekiel Elliott",
+      "created": 1569192159053,
+      "players": [
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "3122672",
+          "name": "Royce Freeman",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122672
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "b5c32735-485a-4db6-9d45-e93755c0591a-trade-2",
       "season": 2019,
       "week": 3,
@@ -18937,13 +18970,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b5c32735-485a-4db6-9d45-e93755c0591a-trade-4",
+      "id": "6cbe6450-b7c0-439f-89b6-1f78ef637144-trade-4",
       "season": 2019,
       "week": 3,
       "type": "trade",
       "team": "Team Malley",
-      "summary": "Received: Mark Ingram II, Royce Freeman | Sent: Ezekiel Elliott",
-      "created": 1569192159053,
+      "summary": "Received: Mark Ingram II | Sent: Leonard Fournette, Josh Gordon",
+      "created": 1569329364069,
       "players": [
         {
           "id": "13981",
@@ -18953,18 +18986,18 @@
           "source_player_id": 13981
         },
         {
-          "id": "3122672",
-          "name": "Royce Freeman",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122672
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
+          "id": "3115364",
+          "name": "Leonard Fournette",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3051392
+          "source_player_id": 3115364
+        },
+        {
+          "id": "15705",
+          "name": "Josh Gordon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 15705
         }
       ],
       "source": "espn_transactions"
@@ -19003,12 +19036,12 @@
       "source": "espn_transactions"
     },
     {
-      "id": "6cbe6450-b7c0-439f-89b6-1f78ef637144-trade-4",
+      "id": "272af1c4-d27d-4e3b-bdc2-78839e9d8c14-trade-4",
       "season": 2019,
       "week": 3,
       "type": "trade",
       "team": "Team Malley",
-      "summary": "Received: Mark Ingram II | Sent: Leonard Fournette, Josh Gordon",
+      "summary": "Received: Mark Ingram II, Damien Williams | Sent: Leonard Fournette, Josh Gordon",
       "created": 1569329364069,
       "players": [
         {
@@ -19017,6 +19050,13 @@
           "action": "received",
           "id_type": "espn",
           "source_player_id": 13981
+        },
+        {
+          "id": "17359",
+          "name": "Damien Williams",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 17359
         },
         {
           "id": "3115364",
@@ -19071,46 +19111,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 17359
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "272af1c4-d27d-4e3b-bdc2-78839e9d8c14-trade-4",
-      "season": 2019,
-      "week": 3,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Mark Ingram II, Damien Williams | Sent: Leonard Fournette, Josh Gordon",
-      "created": 1569329364069,
-      "players": [
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "17359",
-          "name": "Damien Williams",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 17359
-        },
-        {
-          "id": "3115364",
-          "name": "Leonard Fournette",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3115364
-        },
-        {
-          "id": "15705",
-          "name": "Josh Gordon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 15705
         }
       ],
       "source": "espn_transactions"
@@ -19196,39 +19196,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "dd494708-7b2f-4207-bb91-a0db656419af-trade-2",
-      "season": 2019,
-      "week": 3,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: Ezekiel Elliott | Sent: Mark Ingram II, Royce Freeman",
-      "created": 1569184394726,
-      "players": [
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "3122672",
-          "name": "Royce Freeman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3122672
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "dd494708-7b2f-4207-bb91-a0db656419af-trade-4",
       "season": 2019,
       "week": 3,
@@ -19262,27 +19229,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d5581e80-891d-4e3d-8f84-9a351bd0157c-trade-2",
+      "id": "dd494708-7b2f-4207-bb91-a0db656419af-trade-2",
       "season": 2019,
       "week": 3,
       "type": "trade",
       "team": "Team Downs",
-      "summary": "Received: Leonard Fournette, Josh Gordon | Sent: Mark Ingram II, Damien Williams",
-      "created": 1569192192460,
+      "summary": "Received: Ezekiel Elliott | Sent: Mark Ingram II, Royce Freeman",
+      "created": 1569184394726,
       "players": [
         {
-          "id": "3115364",
-          "name": "Leonard Fournette",
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3115364
-        },
-        {
-          "id": "15705",
-          "name": "Josh Gordon",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15705
+          "source_player_id": 3051392
         },
         {
           "id": "13981",
@@ -19292,11 +19252,11 @@
           "source_player_id": 13981
         },
         {
-          "id": "17359",
-          "name": "Damien Williams",
+          "id": "3122672",
+          "name": "Royce Freeman",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 17359
+          "source_player_id": 3122672
         }
       ],
       "source": "espn_transactions"
@@ -19337,6 +19297,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15705
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d5581e80-891d-4e3d-8f84-9a351bd0157c-trade-2",
+      "season": 2019,
+      "week": 3,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: Leonard Fournette, Josh Gordon | Sent: Mark Ingram II, Damien Williams",
+      "created": 1569192192460,
+      "players": [
+        {
+          "id": "3115364",
+          "name": "Leonard Fournette",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3115364
+        },
+        {
+          "id": "15705",
+          "name": "Josh Gordon",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15705
+        },
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "17359",
+          "name": "Damien Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 17359
         }
       ],
       "source": "espn_transactions"
@@ -19586,60 +19586,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "15db608b-b804-42e7-a9ec-278d8e96656d-trade-3",
-      "season": 2019,
-      "week": 4,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Deshaun Watson, James Conner, Jaylen Samuels | Sent: Carson Wentz, Sony Michel, Nelson Agholor",
-      "created": 1569426809643,
-      "players": [
-        {
-          "id": "3122840",
-          "name": "Deshaun Watson",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3122840
-        },
-        {
-          "id": "3045147",
-          "name": "James Conner",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3045147
-        },
-        {
-          "id": "3116721",
-          "name": "Jaylen Samuels",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116721
-        },
-        {
-          "id": "2573079",
-          "name": "Carson Wentz",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2573079
-        },
-        {
-          "id": "3128721",
-          "name": "Sony Michel",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3128721
-        },
-        {
-          "id": "2971618",
-          "name": "Nelson Agholor",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2971618
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "15db608b-b804-42e7-a9ec-278d8e96656d-trade-6",
       "season": 2019,
       "week": 4,
@@ -19689,6 +19635,60 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116721
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "15db608b-b804-42e7-a9ec-278d8e96656d-trade-3",
+      "season": 2019,
+      "week": 4,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Deshaun Watson, James Conner, Jaylen Samuels | Sent: Carson Wentz, Sony Michel, Nelson Agholor",
+      "created": 1569426809643,
+      "players": [
+        {
+          "id": "3122840",
+          "name": "Deshaun Watson",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3122840
+        },
+        {
+          "id": "3045147",
+          "name": "James Conner",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3045147
+        },
+        {
+          "id": "3116721",
+          "name": "Jaylen Samuels",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116721
+        },
+        {
+          "id": "2573079",
+          "name": "Carson Wentz",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2573079
+        },
+        {
+          "id": "3128721",
+          "name": "Sony Michel",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3128721
+        },
+        {
+          "id": "2971618",
+          "name": "Nelson Agholor",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2971618
         }
       ],
       "source": "espn_transactions"
@@ -20070,39 +20070,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "bb85e59e-fa1e-4d6e-bd43-553d8e66b7b1-trade-2",
-      "season": 2019,
-      "week": 4,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: LeSean McCoy, Robert Woods | Sent: Mark Ingram II",
-      "created": 1569345737530,
-      "players": [
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "15880",
-          "name": "Robert Woods",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15880
-        },
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13981
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "bb85e59e-fa1e-4d6e-bd43-553d8e66b7b1-trade-4",
       "season": 2019,
       "week": 4,
@@ -20131,6 +20098,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15880
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "bb85e59e-fa1e-4d6e-bd43-553d8e66b7b1-trade-2",
+      "season": 2019,
+      "week": 4,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: LeSean McCoy, Robert Woods | Sent: Mark Ingram II",
+      "created": 1569345737530,
+      "players": [
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "15880",
+          "name": "Robert Woods",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15880
+        },
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13981
         }
       ],
       "source": "espn_transactions"
@@ -20408,39 +20408,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "34214a7b-ac85-43b8-b4c8-b0240bdc0e1e-trade-2",
-      "season": 2019,
-      "week": 4,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: LeSean McCoy, Robert Woods | Sent: Mark Ingram II",
-      "created": 1569518520755,
-      "players": [
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "15880",
-          "name": "Robert Woods",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 15880
-        },
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13981
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "34214a7b-ac85-43b8-b4c8-b0240bdc0e1e-trade-4",
       "season": 2019,
       "week": 4,
@@ -20469,6 +20436,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15880
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "34214a7b-ac85-43b8-b4c8-b0240bdc0e1e-trade-2",
+      "season": 2019,
+      "week": 4,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: LeSean McCoy, Robert Woods | Sent: Mark Ingram II",
+      "created": 1569518520755,
+      "players": [
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "15880",
+          "name": "Robert Woods",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 15880
+        },
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13981
         }
       ],
       "source": "espn_transactions"
@@ -20714,39 +20714,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "79c45811-1158-4be2-8cf9-d683b529bda3-trade-2",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: T.Y. Hilton, LeSean McCoy | Sent: Mark Ingram II",
-      "created": 1570373768406,
-      "players": [
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13981
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "79c45811-1158-4be2-8cf9-d683b529bda3-trade-4",
       "season": 2019,
       "week": 5,
@@ -20780,20 +20747,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "fccccb04-9d78-4ff9-9460-2c74c9376371-trade-0",
+      "id": "79c45811-1158-4be2-8cf9-d683b529bda3-trade-2",
       "season": 2019,
       "week": 5,
       "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: DK Metcalf | Sent: None",
-      "created": 1570110433676,
+      "team": "Team Downs",
+      "summary": "Received: T.Y. Hilton, LeSean McCoy | Sent: Mark Ingram II",
+      "created": 1570373768406,
       "players": [
         {
-          "id": "4047650",
-          "name": "DK Metcalf",
+          "id": "14924",
+          "name": "T.Y. Hilton",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 4047650
+          "source_player_id": 14924
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13981
         }
       ],
       "source": "espn_transactions"
@@ -20872,6 +20853,25 @@
       "source": "espn_transactions"
     },
     {
+      "id": "fccccb04-9d78-4ff9-9460-2c74c9376371-trade-0",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: DK Metcalf | Sent: None",
+      "created": 1570110433676,
+      "players": [
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "b71a670d-77af-451b-bf27-0bacc8914321-trade-4",
       "season": 2019,
       "week": 5,
@@ -20938,32 +20938,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7cb23cb5-bbb9-4823-9625-c3d71b240b69-trade-8",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Golden Taint",
-      "summary": "Received: Matthew Stafford | Sent: Frank Gore",
-      "created": 1570045360034,
-      "players": [
-        {
-          "id": "12483",
-          "name": "Matthew Stafford",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12483
-        },
-        {
-          "id": "8479",
-          "name": "Frank Gore",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 8479
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7cb23cb5-bbb9-4823-9625-c3d71b240b69-trade-6",
       "season": 2019,
       "week": 5,
@@ -20985,6 +20959,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 12483
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7cb23cb5-bbb9-4823-9625-c3d71b240b69-trade-8",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Golden Taint",
+      "summary": "Received: Matthew Stafford | Sent: Frank Gore",
+      "created": 1570045360034,
+      "players": [
+        {
+          "id": "12483",
+          "name": "Matthew Stafford",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12483
+        },
+        {
+          "id": "8479",
+          "name": "Frank Gore",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 8479
         }
       ],
       "source": "espn_transactions"
@@ -21122,46 +21122,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e13ba300-53ca-4f3a-9c73-b29bf18a8d1f-trade-2",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: T.Y. Hilton, Ezekiel Elliott | Sent: Mark Ingram II, Joe Mixon",
-      "created": 1570470933692,
-      "players": [
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "e13ba300-53ca-4f3a-9c73-b29bf18a8d1f-trade-4",
       "season": 2019,
       "week": 5,
@@ -21197,6 +21157,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3051392
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e13ba300-53ca-4f3a-9c73-b29bf18a8d1f-trade-2",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: T.Y. Hilton, Ezekiel Elliott | Sent: Mark Ingram II, Joe Mixon",
+      "created": 1570470933692,
+      "players": [
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
         }
       ],
       "source": "espn_transactions"
@@ -21362,39 +21362,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "ec6e8515-91ea-44fa-b5bb-eb3f76851aab-trade-7",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Big Dick Bandito",
-      "summary": "Received: T.Y. Hilton, LeSean McCoy | Sent: Todd Gurley",
-      "created": 1570124340151,
-      "players": [
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 12514
-        },
-        {
-          "id": "2977644",
-          "name": "Todd Gurley",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2977644
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "ec6e8515-91ea-44fa-b5bb-eb3f76851aab-trade-4",
       "season": 2019,
       "week": 5,
@@ -21423,6 +21390,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 12514
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "ec6e8515-91ea-44fa-b5bb-eb3f76851aab-trade-7",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Big Dick Bandito",
+      "summary": "Received: T.Y. Hilton, LeSean McCoy | Sent: Todd Gurley",
+      "created": 1570124340151,
+      "players": [
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 12514
+        },
+        {
+          "id": "2977644",
+          "name": "Todd Gurley",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2977644
         }
       ],
       "source": "espn_transactions"
@@ -21494,6 +21494,39 @@
       "source": "espn_transactions"
     },
     {
+      "id": "5d218dc1-5666-4e17-a990-a00fa4c29c08-trade-4",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Mark Ingram II | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1570470799286,
+      "players": [
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "12514",
+          "name": "LeSean McCoy",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 12514
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
       "id": "5d218dc1-5666-4e17-a990-a00fa4c29c08-trade-2",
       "season": 2019,
       "week": 5,
@@ -21527,20 +21560,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5d218dc1-5666-4e17-a990-a00fa4c29c08-trade-4",
+      "id": "79aa8b4c-5856-4a81-888e-ac2bd6f6ac02-trade-4",
       "season": 2019,
       "week": 5,
       "type": "trade",
       "team": "Team Malley",
-      "summary": "Received: Mark Ingram II | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1570470799286,
+      "summary": "Received: Todd Gurley | Sent: T.Y. Hilton, LeSean McCoy",
+      "created": 1569958092016,
       "players": [
         {
-          "id": "13981",
-          "name": "Mark Ingram II",
+          "id": "2977644",
+          "name": "Todd Gurley",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 13981
+          "source_player_id": 2977644
         },
         {
           "id": "14924",
@@ -21588,39 +21621,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2977644
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
-      "id": "79aa8b4c-5856-4a81-888e-ac2bd6f6ac02-trade-4",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Todd Gurley | Sent: T.Y. Hilton, LeSean McCoy",
-      "created": 1569958092016,
-      "players": [
-        {
-          "id": "2977644",
-          "name": "Todd Gurley",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2977644
-        },
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "12514",
-          "name": "LeSean McCoy",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 12514
         }
       ],
       "source": "espn_transactions"
@@ -21706,46 +21706,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "9187394a-345c-4541-88b1-3f485ea38670-trade-3",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Valar Morghulis",
-      "summary": "Received: Larry Fitzgerald, Alshon Jeffery | Sent: Tyrell Williams, DK Metcalf",
-      "created": 1570111259495,
-      "players": [
-        {
-          "id": "5528",
-          "name": "Larry Fitzgerald",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 5528
-        },
-        {
-          "id": "14912",
-          "name": "Alshon Jeffery",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 14912
-        },
-        {
-          "id": "2587819",
-          "name": "Tyrell Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2587819
-        },
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "9187394a-345c-4541-88b1-3f485ea38670-trade-6",
       "season": 2019,
       "week": 5,
@@ -21781,6 +21741,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 14912
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "9187394a-345c-4541-88b1-3f485ea38670-trade-3",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Valar Morghulis",
+      "summary": "Received: Larry Fitzgerald, Alshon Jeffery | Sent: Tyrell Williams, DK Metcalf",
+      "created": 1570111259495,
+      "players": [
+        {
+          "id": "5528",
+          "name": "Larry Fitzgerald",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 5528
+        },
+        {
+          "id": "14912",
+          "name": "Alshon Jeffery",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14912
+        },
+        {
+          "id": "2587819",
+          "name": "Tyrell Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2587819
+        },
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4047650
         }
       ],
       "source": "espn_transactions"
@@ -21880,25 +21880,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-0",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team 0",
-      "summary": "Received: DK Metcalf | Sent: None",
-      "created": 1570128879411,
-      "players": [
-        {
-          "id": "4047650",
-          "name": "DK Metcalf",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 4047650
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-3",
       "season": 2019,
       "week": 5,
@@ -21967,6 +21948,25 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 15880
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "7045b48d-4cf1-4974-91b9-0bd903337cc6-trade-0",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team 0",
+      "summary": "Received: DK Metcalf | Sent: None",
+      "created": 1570128879411,
+      "players": [
+        {
+          "id": "4047650",
+          "name": "DK Metcalf",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 4047650
         }
       ],
       "source": "espn_transactions"
@@ -22052,46 +22052,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "45b6a7c9-0f06-49ab-ac2f-20f168909c10-trade-2",
-      "season": 2019,
-      "week": 5,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: T.Y. Hilton, Ezekiel Elliott | Sent: Mark Ingram II, Joe Mixon",
-      "created": 1570643701357,
-      "players": [
-        {
-          "id": "14924",
-          "name": "T.Y. Hilton",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 14924
-        },
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "13981",
-          "name": "Mark Ingram II",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 13981
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "45b6a7c9-0f06-49ab-ac2f-20f168909c10-trade-4",
       "season": 2019,
       "week": 5,
@@ -22127,6 +22087,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3051392
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "45b6a7c9-0f06-49ab-ac2f-20f168909c10-trade-2",
+      "season": 2019,
+      "week": 5,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: T.Y. Hilton, Ezekiel Elliott | Sent: Mark Ingram II, Joe Mixon",
+      "created": 1570643701357,
+      "players": [
+        {
+          "id": "14924",
+          "name": "T.Y. Hilton",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 14924
+        },
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "13981",
+          "name": "Mark Ingram II",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 13981
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
         }
       ],
       "source": "espn_transactions"
@@ -23326,39 +23326,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "75db0dba-3f8b-4062-b2fb-4c1248c6c8fe-trade-7",
-      "season": 2019,
-      "week": 8,
-      "type": "trade",
-      "team": "Big Dick Bandito",
-      "summary": "Received: Dalvin Cook | Sent: Devonta Freeman, Matt Breida",
-      "created": 1571845510700,
-      "players": [
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "16944",
-          "name": "Devonta Freeman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 16944
-        },
-        {
-          "id": "3049916",
-          "name": "Matt Breida",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3049916
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "75db0dba-3f8b-4062-b2fb-4c1248c6c8fe-trade-4",
       "season": 2019,
       "week": 8,
@@ -23392,13 +23359,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "d8324a9f-50fb-499e-860e-f03551c3e430-trade-7",
+      "id": "75db0dba-3f8b-4062-b2fb-4c1248c6c8fe-trade-7",
       "season": 2019,
       "week": 8,
       "type": "trade",
       "team": "Big Dick Bandito",
       "summary": "Received: Dalvin Cook | Sent: Devonta Freeman, Matt Breida",
-      "created": 1571845892694,
+      "created": 1571845510700,
       "players": [
         {
           "id": "3116593",
@@ -23453,6 +23420,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3116593
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "d8324a9f-50fb-499e-860e-f03551c3e430-trade-7",
+      "season": 2019,
+      "week": 8,
+      "type": "trade",
+      "team": "Big Dick Bandito",
+      "summary": "Received: Dalvin Cook | Sent: Devonta Freeman, Matt Breida",
+      "created": 1571845892694,
+      "players": [
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "16944",
+          "name": "Devonta Freeman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 16944
+        },
+        {
+          "id": "3049916",
+          "name": "Matt Breida",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3049916
         }
       ],
       "source": "espn_transactions"
@@ -23524,53 +23524,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "b8933f20-ba66-4213-884d-63dac6792ee1-trade-2",
-      "season": 2019,
-      "week": 9,
-      "type": "trade",
-      "team": "Team Downs",
-      "summary": "Received: Ezekiel Elliott | Sent: Royce Freeman, JuJu Smith-Schuster, Joe Mixon, Damien Williams",
-      "created": 1572409795072,
-      "players": [
-        {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 3051392
-        },
-        {
-          "id": "3122672",
-          "name": "Royce Freeman",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3122672
-        },
-        {
-          "id": "3120348",
-          "name": "JuJu Smith-Schuster",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3120348
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        },
-        {
-          "id": "17359",
-          "name": "Damien Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 17359
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "b8933f20-ba66-4213-884d-63dac6792ee1-trade-4",
       "season": 2019,
       "week": 9,
@@ -23618,27 +23571,20 @@
       "source": "espn_transactions"
     },
     {
-      "id": "49e5a98f-fb80-47c7-9392-e9be047fa6ac-trade-2",
+      "id": "b8933f20-ba66-4213-884d-63dac6792ee1-trade-2",
       "season": 2019,
       "week": 9,
       "type": "trade",
       "team": "Team Downs",
-      "summary": "Received: Lamar Jackson | Sent: Jared Goff, Royce Freeman",
-      "created": 1572409839311,
+      "summary": "Received: Ezekiel Elliott | Sent: Royce Freeman, JuJu Smith-Schuster, Joe Mixon, Damien Williams",
+      "created": 1572409795072,
       "players": [
         {
-          "id": "3916387",
-          "name": "Lamar Jackson",
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3916387
-        },
-        {
-          "id": "3046779",
-          "name": "Jared Goff",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3046779
+          "source_player_id": 3051392
         },
         {
           "id": "3122672",
@@ -23646,6 +23592,27 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122672
+        },
+        {
+          "id": "3120348",
+          "name": "JuJu Smith-Schuster",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3120348
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
+        },
+        {
+          "id": "17359",
+          "name": "Damien Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 17359
         }
       ],
       "source": "espn_transactions"
@@ -23684,13 +23651,13 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5003eb83-7abd-451a-a21f-fc301bc2ed11-trade-2",
+      "id": "49e5a98f-fb80-47c7-9392-e9be047fa6ac-trade-2",
       "season": 2019,
       "week": 9,
       "type": "trade",
       "team": "Team Downs",
       "summary": "Received: Lamar Jackson | Sent: Jared Goff, Royce Freeman",
-      "created": 1572409189534,
+      "created": 1572409839311,
       "players": [
         {
           "id": "3916387",
@@ -23750,20 +23717,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "e0c895c6-11ec-4be9-a37f-ca1922360a71-trade-2",
+      "id": "5003eb83-7abd-451a-a21f-fc301bc2ed11-trade-2",
       "season": 2019,
       "week": 9,
       "type": "trade",
       "team": "Team Downs",
-      "summary": "Received: Ezekiel Elliott | Sent: Royce Freeman, JuJu Smith-Schuster, Joe Mixon, Damien Williams",
-      "created": 1572409836055,
+      "summary": "Received: Lamar Jackson | Sent: Jared Goff, Royce Freeman",
+      "created": 1572409189534,
       "players": [
         {
-          "id": "3051392",
-          "name": "Ezekiel Elliott",
+          "id": "3916387",
+          "name": "Lamar Jackson",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 3051392
+          "source_player_id": 3916387
+        },
+        {
+          "id": "3046779",
+          "name": "Jared Goff",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3046779
         },
         {
           "id": "3122672",
@@ -23771,27 +23745,6 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3122672
-        },
-        {
-          "id": "3120348",
-          "name": "JuJu Smith-Schuster",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3120348
-        },
-        {
-          "id": "3116385",
-          "name": "Joe Mixon",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116385
-        },
-        {
-          "id": "17359",
-          "name": "Damien Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 17359
         }
       ],
       "source": "espn_transactions"
@@ -23839,6 +23792,53 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 3051392
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "e0c895c6-11ec-4be9-a37f-ca1922360a71-trade-2",
+      "season": 2019,
+      "week": 9,
+      "type": "trade",
+      "team": "Team Downs",
+      "summary": "Received: Ezekiel Elliott | Sent: Royce Freeman, JuJu Smith-Schuster, Joe Mixon, Damien Williams",
+      "created": 1572409836055,
+      "players": [
+        {
+          "id": "3051392",
+          "name": "Ezekiel Elliott",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 3051392
+        },
+        {
+          "id": "3122672",
+          "name": "Royce Freeman",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3122672
+        },
+        {
+          "id": "3120348",
+          "name": "JuJu Smith-Schuster",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3120348
+        },
+        {
+          "id": "3116385",
+          "name": "Joe Mixon",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116385
+        },
+        {
+          "id": "17359",
+          "name": "Damien Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 17359
         }
       ],
       "source": "espn_transactions"
@@ -23910,39 +23910,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "bdc616bf-3e90-41f8-b5ca-ca8d56be088e-trade-4",
-      "season": 2019,
-      "week": 10,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Michael Thomas | Sent: Adrian Peterson, Tyrell Williams",
-      "created": 1573160281268,
-      "players": [
-        {
-          "id": "2976316",
-          "name": "Michael Thomas",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976316
-        },
-        {
-          "id": "10452",
-          "name": "Adrian Peterson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 10452
-        },
-        {
-          "id": "2587819",
-          "name": "Tyrell Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2587819
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "bdc616bf-3e90-41f8-b5ca-ca8d56be088e-trade-5",
       "season": 2019,
       "week": 10,
@@ -23976,27 +23943,34 @@
       "source": "espn_transactions"
     },
     {
-      "id": "5db3d90f-e75e-4393-9edb-546ae19e5c63-trade-7",
+      "id": "bdc616bf-3e90-41f8-b5ca-ca8d56be088e-trade-4",
       "season": 2019,
       "week": 10,
       "type": "trade",
-      "team": "Big Dick Bandito",
-      "summary": "Received: Sterling Shepard | Sent: Jameis Winston",
-      "created": 1573070921098,
+      "team": "Team Malley",
+      "summary": "Received: Michael Thomas | Sent: Adrian Peterson, Tyrell Williams",
+      "created": 1573160281268,
       "players": [
         {
-          "id": "2976592",
-          "name": "Sterling Shepard",
+          "id": "2976316",
+          "name": "Michael Thomas",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 2976592
+          "source_player_id": 2976316
         },
         {
-          "id": "2969939",
-          "name": "Jameis Winston",
+          "id": "10452",
+          "name": "Adrian Peterson",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 2969939
+          "source_player_id": 10452
+        },
+        {
+          "id": "2587819",
+          "name": "Tyrell Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2587819
         }
       ],
       "source": "espn_transactions"
@@ -24023,6 +23997,32 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2976592
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "5db3d90f-e75e-4393-9edb-546ae19e5c63-trade-7",
+      "season": 2019,
+      "week": 10,
+      "type": "trade",
+      "team": "Big Dick Bandito",
+      "summary": "Received: Sterling Shepard | Sent: Jameis Winston",
+      "created": 1573070921098,
+      "players": [
+        {
+          "id": "2976592",
+          "name": "Sterling Shepard",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976592
+        },
+        {
+          "id": "2969939",
+          "name": "Jameis Winston",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2969939
         }
       ],
       "source": "espn_transactions"
@@ -24108,39 +24108,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "0939361a-66d2-486d-9061-bb7e7966cfeb-trade-4",
-      "season": 2019,
-      "week": 10,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Michael Thomas | Sent: Adrian Peterson, Tyrell Williams",
-      "created": 1572987518287,
-      "players": [
-        {
-          "id": "2976316",
-          "name": "Michael Thomas",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976316
-        },
-        {
-          "id": "10452",
-          "name": "Adrian Peterson",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 10452
-        },
-        {
-          "id": "2587819",
-          "name": "Tyrell Williams",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2587819
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "0939361a-66d2-486d-9061-bb7e7966cfeb-trade-5",
       "season": 2019,
       "week": 10,
@@ -24169,6 +24136,39 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 2976316
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "0939361a-66d2-486d-9061-bb7e7966cfeb-trade-4",
+      "season": 2019,
+      "week": 10,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Michael Thomas | Sent: Adrian Peterson, Tyrell Williams",
+      "created": 1572987518287,
+      "players": [
+        {
+          "id": "2976316",
+          "name": "Michael Thomas",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976316
+        },
+        {
+          "id": "10452",
+          "name": "Adrian Peterson",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 10452
+        },
+        {
+          "id": "2587819",
+          "name": "Tyrell Williams",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 2587819
         }
       ],
       "source": "espn_transactions"
@@ -24278,32 +24278,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "754175e7-381c-458e-ad5e-f626856f5465-trade-7",
-      "season": 2019,
-      "week": 10,
-      "type": "trade",
-      "team": "Big Dick Bandito",
-      "summary": "Received: Sterling Shepard | Sent: Jameis Winston",
-      "created": 1573069149765,
-      "players": [
-        {
-          "id": "2976592",
-          "name": "Sterling Shepard",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976592
-        },
-        {
-          "id": "2969939",
-          "name": "Jameis Winston",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 2969939
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "754175e7-381c-458e-ad5e-f626856f5465-trade-4",
       "season": 2019,
       "week": 10,
@@ -24330,41 +24304,27 @@
       "source": "espn_transactions"
     },
     {
-      "id": "1e6f9386-ee58-4b13-a740-ac0167e34b9f-trade-4",
+      "id": "754175e7-381c-458e-ad5e-f626856f5465-trade-7",
       "season": 2019,
-      "week": 12,
+      "week": 10,
       "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Michael Thomas, Carlos Hyde | Sent: Dalvin Cook, Hollywood Brown",
-      "created": 1574189643070,
+      "team": "Big Dick Bandito",
+      "summary": "Received: Sterling Shepard | Sent: Jameis Winston",
+      "created": 1573069149765,
       "players": [
         {
-          "id": "2976316",
-          "name": "Michael Thomas",
+          "id": "2976592",
+          "name": "Sterling Shepard",
           "action": "received",
           "id_type": "espn",
-          "source_player_id": 2976316
+          "source_player_id": 2976592
         },
         {
-          "id": "16777",
-          "name": "Carlos Hyde",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16777
-        },
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
+          "id": "2969939",
+          "name": "Jameis Winston",
           "action": "sent",
           "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241372
+          "source_player_id": 2969939
         }
       ],
       "source": "espn_transactions"
@@ -24405,6 +24365,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16777
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "1e6f9386-ee58-4b13-a740-ac0167e34b9f-trade-4",
+      "season": 2019,
+      "week": 12,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Michael Thomas, Carlos Hyde | Sent: Dalvin Cook, Hollywood Brown",
+      "created": 1574189643070,
+      "players": [
+        {
+          "id": "2976316",
+          "name": "Michael Thomas",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976316
+        },
+        {
+          "id": "16777",
+          "name": "Carlos Hyde",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16777
+        },
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241372
         }
       ],
       "source": "espn_transactions"
@@ -24476,46 +24476,6 @@
       "source": "espn_transactions"
     },
     {
-      "id": "4e3d94ce-9802-4237-bf00-655b62be0404-trade-4",
-      "season": 2019,
-      "week": 12,
-      "type": "trade",
-      "team": "Team Malley",
-      "summary": "Received: Michael Thomas, Carlos Hyde | Sent: Dalvin Cook, Hollywood Brown",
-      "created": 1574189834692,
-      "players": [
-        {
-          "id": "2976316",
-          "name": "Michael Thomas",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 2976316
-        },
-        {
-          "id": "16777",
-          "name": "Carlos Hyde",
-          "action": "received",
-          "id_type": "espn",
-          "source_player_id": 16777
-        },
-        {
-          "id": "3116593",
-          "name": "Dalvin Cook",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 3116593
-        },
-        {
-          "id": "4241372",
-          "name": "Hollywood Brown",
-          "action": "sent",
-          "id_type": "espn",
-          "source_player_id": 4241372
-        }
-      ],
-      "source": "espn_transactions"
-    },
-    {
       "id": "4e3d94ce-9802-4237-bf00-655b62be0404-trade-5",
       "season": 2019,
       "week": 12,
@@ -24551,6 +24511,46 @@
           "action": "sent",
           "id_type": "espn",
           "source_player_id": 16777
+        }
+      ],
+      "source": "espn_transactions"
+    },
+    {
+      "id": "4e3d94ce-9802-4237-bf00-655b62be0404-trade-4",
+      "season": 2019,
+      "week": 12,
+      "type": "trade",
+      "team": "Team Malley",
+      "summary": "Received: Michael Thomas, Carlos Hyde | Sent: Dalvin Cook, Hollywood Brown",
+      "created": 1574189834692,
+      "players": [
+        {
+          "id": "2976316",
+          "name": "Michael Thomas",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 2976316
+        },
+        {
+          "id": "16777",
+          "name": "Carlos Hyde",
+          "action": "received",
+          "id_type": "espn",
+          "source_player_id": 16777
+        },
+        {
+          "id": "3116593",
+          "name": "Dalvin Cook",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 3116593
+        },
+        {
+          "id": "4241372",
+          "name": "Hollywood Brown",
+          "action": "sent",
+          "id_type": "espn",
+          "source_player_id": 4241372
         }
       ],
       "source": "espn_transactions"
