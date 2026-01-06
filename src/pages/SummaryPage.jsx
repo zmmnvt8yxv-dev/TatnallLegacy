@@ -377,6 +377,7 @@ export default function SummaryPage() {
                     <th>Season</th>
                     <th>Week</th>
                     <th>Team</th>
+                    <th>Starter</th>
                     <th>Points</th>
                   </tr>
                 </thead>
@@ -398,6 +399,7 @@ export default function SummaryPage() {
                             return owner ? `${row.team} - ${owner}` : row.team;
                           })()}
                         </td>
+                        <td>{row.started == null ? "—" : row.started ? "Yes" : "No"}</td>
                         <td>{formatPoints(row.points)}</td>
                       </tr>
                     );
