@@ -256,20 +256,68 @@ export default function MatchupDetailPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {roster.rows.map((row, idx) => (
-                        <tr key={`${row.player_id || row.player}-${idx}`}>
-                          <td>
-                              {row.canLink ? (
-                                <Link to={buildPlayerLink(row)}>{row.displayName}</Link>
-                              ) : (
-                                row.displayName
-                              )}
-                          </td>
-                          <td>{row.position}</td>
-                          <td>{row.started ? "Yes" : "No"}</td>
-                          <td>{formatPoints(row.points)}</td>
-                        </tr>
-                      ))}
+                      {(() => {
+                        const starters = roster.rows.filter((r) => r.started);
+                        const bench = roster.rows.filter((r) => !r.started);
+                        const startersTotal = starters.reduce((acc, r) => acc + safeNumber(r.points), 0);
+                        const benchTotal = bench.reduce((acc, r) => acc + safeNumber(r.points), 0);
+
+                        return (
+                          <>
+                            {starters.map((row, idx) => (
+                              <tr key={`${row.player_id || row.player}-starter-${idx}`}>
+                                <td>
+                                  {row.canLink ? (
+                                    <Link to={buildPlayerLink(row)}>{row.displayName}</Link>
+                                  ) : (
+                                    row.displayName
+                                  )}
+                                </td>
+                                <td>{row.position}</td>
+                                <td>{row.started ? "Yes" : "No"}</td>
+                                <td>{formatPoints(row.points)}</td>
+                              </tr>
+                            ))}
+
+                            {starters.length ? (
+                              <tr className="table-total">
+                                <td colSpan={3}>
+                                  <strong>Starters total</strong>
+                                </td>
+                                <td>
+                                  <strong>{formatPoints(startersTotal)}</strong>
+                                </td>
+                              </tr>
+                            ) : null}
+
+                            {bench.map((row, idx) => (
+                              <tr key={`${row.player_id || row.player}-bench-${idx}`}>
+                                <td>
+                                  {row.canLink ? (
+                                    <Link to={buildPlayerLink(row)}>{row.displayName}</Link>
+                                  ) : (
+                                    row.displayName
+                                  )}
+                                </td>
+                                <td>{row.position}</td>
+                                <td>{row.started ? "Yes" : "No"}</td>
+                                <td>{formatPoints(row.points)}</td>
+                              </tr>
+                            ))}
+
+                            {bench.length ? (
+                              <tr className="table-total">
+                                <td colSpan={3}>
+                                  <strong>Bench total</strong>
+                                </td>
+                                <td>
+                                  <strong>{formatPoints(benchTotal)}</strong>
+                                </td>
+                              </tr>
+                            ) : null}
+                          </>
+                        );
+                      })()}
                     </tbody>
                   </table>
                 </div>
