@@ -225,7 +225,7 @@ export default function SummaryPage() {
 
     const withPos = entries.map((row) => ({
       ...row,
-      __pos: normalizePosition(getPlayerPosition(row)),
+      __pos: normalizePosition(row.position || row.__pos || row.pos || row.player_position || row.fantasy_position || ""),
       __name: resolvePlayerName(row, playerIndex, espnNameMap),
       __points: safeNumber(row.points),
     }));
