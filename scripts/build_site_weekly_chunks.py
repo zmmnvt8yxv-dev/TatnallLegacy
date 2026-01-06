@@ -86,6 +86,60 @@ ESPN_TEAM_ABBR_TO_NAME = {
 }
 
 
+def _clean_text(value):
+  if value is None:
+    return ""
+  text = str(value).strip().lower()
+  if not text:
+    return ""
+  out = []
+  for ch in text:
+    if ch.isalnum() or ch.isspace() or ch in ("-", "/", "&", "'"):
+      out.append(ch)
+  return " ".join("".join(out).split())
+
+def _is_defense_position(pos):
+  p = str(pos or "").strip().upper()
+  return p in ("DEF", "DST", "D/ST")
+
+def _looks_like_defense_name(name):
+  t = _clean_text(name)
+  if not t:
+    return False
+  return ("d/st" in t) or ("dst" in t) or ("defense" in t) or (t.endswith("def")) or (" d st" in t)
+
+def _infer_defense_abbr(player_name, nfl_team=None):
+  t = str(nfl_team or "").strip().upper()
+  if t and t in ESPN_TEAM_ABBR_TO_NAME:
+    return t
+  name = _clean_text(player_name)
+  if not name or not _looks_like_defense_name(name):
+    return None
+  nick_to_abbr = {v.lower(): k for k, v in ESPN_TEAM_ABBR_TO_NAME.items() if v}
+  best = None
+  best_len = 0
+  for nick, abbr in nick_to_abbr.items():
+    if nick and nick in name and len(nick) > best_len:
+      best = abbr
+      best_len = len(nick)
+  return best
+
+def _coerce_defense_row(row_dict):
+  if not isinstance(row_dict, dict):
+    return row_dict
+  pos = row_dict.get("position")
+  name = row_dict.get("player") or row_dict.get("player_name") or row_dict.get("display_name")
+  nfl_team = row_dict.get("nfl_team")
+  if _is_defense_position(pos) or _looks_like_defense_name(name):
+    abbr = _infer_defense_abbr(name, nfl_team=nfl_team)
+    if abbr:
+      row_dict["player_id"] = abbr
+      row_dict["position"] = "D/ST"
+      row_dict["nfl_team"] = abbr
+      row_dict["player"] = f"{ESPN_TEAM_ABBR_TO_NAME.get(abbr, abbr).title()} D/ST"
+  return row_dict
+
+
 def read_json(path: Path):
   with path.open("r", encoding="utf-8") as handle:
     return json.load(handle)
@@ -391,7 +445,7 @@ def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup, season=Non
       next_row["player_id"] = defense["id"]
       next_row["player"] = defense["name"]
       next_row.setdefault("position", "D/ST")
-      next_row.setdefault("nfl_team", defense["id"])
+      next_row.setdefault("nfl_team", defense["id"])      _coerce_defense_row(next_row)      _coerce_defense_row(next_row)
       normalized.append(next_row)
       continue
     sleeper_id = sleeper_maps.get("espn_to_sleeper", {}).get(str(espn_id)) if espn_id else None
