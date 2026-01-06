@@ -32,6 +32,16 @@ function normalizePosition(pos) {
   return p;
 }
 
+
+function getPlayerPosition(row) {
+  if (!row) return "";
+  const pid = row.player_id || row.sleeper_id || row.espn_id || row.id;
+  const idx = (typeof playerIndex !== "undefined" && playerIndex) ? playerIndex : null;
+  if (pid != null && idx && idx[String(pid)]) {
+    return idx[String(pid)]?.position || idx[String(pid)]?.pos || "";
+  }
+  return row.position || row.pos || row.player_position || "";
+}
 function getLatestSeason(manifest) {
   const seasons = (manifest?.seasons || []).map(Number).filter(Number.isFinite);
   if (!seasons.length) return null;
