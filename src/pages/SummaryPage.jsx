@@ -38,6 +38,7 @@ export default function SummaryPage() {
   const [loadBoomBust, setLoadBoomBust] = useState(false);
   const [playerSearch, setPlayerSearch] = useState("");
   const [weeklySearch, setWeeklySearch] = useState("");
+  const [careerPosition, setCareerPosition] = useState("ALL");
   const { favorites } = useFavorites();
   const [allSummaries, setAllSummaries] = useState([]);
 
@@ -196,14 +197,32 @@ export default function SummaryPage() {
   const careerLeaders = useMemo(() => {
     const entries = (allTime?.careerLeaders || []).filter(Boolean);
     if (!entries.length) return [];
-    const query = playerSearch.toLowerCase().trim();
-    return entries.filter((row) => {
-      if (!query) return true;
-      return resolvePlayerName(row, playerIndex, espnNameMap).toLowerCase().includes(query);
-    });
-  }, [allTime, playerSearch, playerIndex, espnNameMap]);
 
-  const favoritePlayers = useMemo(
+    const query = playerSearch.toLowerCase().trim();
+    const posFilter = normalizePosition(careerPosition);
+
+    const withPos = entries.map((row) => ({
+      ...row,
+      __pos: normalizePosition(getPlayerPosition(row)),
+      __name: resolvePlayerName(row, playerIndex, espnNameMap),
+      __points: safeNumber(row.points),
+    }));
+
+    const filtered = withPos.filter((row) => {
+      if (query && !String(row.__name || "").toLowerCase().includes(query)) return false;
+      if (posFilter !== "ALL" && row.__pos !== posFilter) return false;
+      return true;
+    });
+
+    filtered.sort((a, b) => {
+      if (a.__points !== b.__points) return b.__points - a.__points;
+      return String(a.__name || "").localeCompare(String(b.__name || ""));
+    });
+
+    return filtered.slice(0, 20);
+  }, [allTime, playerSearch, playerIndex, espnNameMap, careerPosition]);
+
+const favoritePlayers = useMemo(
     () =>
       favorites.players.map((id) => ({
         id,
@@ -455,7 +474,21 @@ export default function SummaryPage() {
       >
         <section className="section-card">
           <h2 className="section-title">Career Fantasy Leaders</h2>
-          <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search career leaders..." />
+          <div className="flex-row" style={{ alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+            <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search career leaders..." />
+            <label className="tag" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              <span>Position</span>
+              <select value={careerPosition} onChange={(e) => setCareerPosition(e.target.value)}>
+                <option value="ALL">All</option>
+                <option value="QB">QB</option>
+                <option value="RB">RB</option>
+                <option value="WR">WR</option>
+                <option value="TE">TE</option>
+                <option value="DEF">DEF</option>
+                <option value="K">K</option>
+              </select>
+            </label>
+          </div>
           {allTimePending ? (
             <div>Loading career leaders…</div>
           ) : careerLeaders.length ? (
@@ -464,6 +497,7 @@ export default function SummaryPage() {
                 <thead>
                   <tr>
                     <th>Player</th>
+                    <th>Pos</th>
                     <th>Seasons</th>
                     <th>Games</th>
                     <th>Total Points</th>
@@ -485,6 +519,7 @@ export default function SummaryPage() {
                             <span className="tag">{playerName || "Unknown"}</span>
                           )}
                         </td>
+                        <td>{row.__pos || "—"}</td>
                         <td>{row.seasons}</td>
                         <td>{row.games}</td>
                         <td>{formatPoints(row.points)}</td>
