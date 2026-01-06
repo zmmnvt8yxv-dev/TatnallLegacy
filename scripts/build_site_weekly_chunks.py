@@ -366,6 +366,29 @@ def write_json(path: Path, payload):
     json.dump(payload, handle, ensure_ascii=False, indent=2)
 
 
+def _coerce_points(value):
+  if value is None:
+    return None
+  if isinstance(value, (int, float)):
+    try:
+      return float(value)
+    except Exception:
+      return None
+  text = str(value).strip()
+  if not text:
+    return None
+  if text.lower() in ("none", "null", "nan"):
+    return None
+  try:
+    return float(text)
+  except Exception:
+    text2 = text.replace(",", "")
+    try:
+      return float(text2)
+    except Exception:
+      return None
+
+
 def load_espn_lineups(season, week):
   candidate = ROOT / "data_raw" / "espn_lineups" / str(season) / f"week-{week}.json"
   if not candidate.exists():
