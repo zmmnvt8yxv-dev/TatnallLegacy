@@ -86,6 +86,50 @@ ESPN_TEAM_ABBR_TO_NAME = {
 }
 
 
+def _clean_text(value):
+  if value is None:
+    return ""
+  text = str(value).strip().lower()
+  if not text:
+    return ""
+  out = []
+  for ch in text:
+    if ch.isalnum() or ch.isspace() or ch in ("-", "/"):
+      out.append(ch)
+  return " ".join("".join(out).split())
+
+def _is_defense_position(pos):
+  p = str(pos or "").strip().upper()
+  return p in ("DEF", "DST", "D/ST")
+
+def _infer_defense_abbr(player_name, nfl_team=None):
+  t = str(nfl_team or "").strip().upper()
+  if t and t in ESPN_TEAM_ABBR_TO_NAME:
+    return t
+
+  name = _clean_text(player_name)
+  if not name:
+    return None
+
+  if "d/st" not in name and "dst" not in name and "def" not in name:
+    return None
+
+  for abbr in ESPN_TEAM_ABBR_TO_NAME.keys():
+    if abbr.lower() in name.split():
+      return abbr
+
+  nick_to_abbr = {v.lower(): k for k, v in ESPN_TEAM_ABBR_TO_NAME.items() if v}
+  best = None
+  best_len = 0
+  for nick, abbr in nick_to_abbr.items():
+    if nick and nick in name:
+      if len(nick) > best_len:
+        best = abbr
+        best_len = len(nick)
+  return best
+
+
+
 def read_json(path: Path):
   with path.open("r", encoding="utf-8") as handle:
     return json.load(handle)
@@ -1255,27 +1299,40 @@ def main():
       )
 
     player_totals = {}
-    for row in effective_lineups:
-      points = float(row.get("points") or 0)
-      pid = row.get("player_id")
-      player_id = None
-      if pid not in (None, "", "None"):
-        player_id = str(pid)
+    for row in effective_lineups:    points = float(row.get("points") or 0)
+    pid = row.get("player_id")
+    player_id = None
+    if pid not in (None, "", "None"):
+      player_id = str(pid)
 
-      all_time_weekly.append(
-        {
-          "player_id": player_id,
-          "player_name": row.get("player") or row.get("player_name"),
-          "team": row.get("team"),
-          "season": season,
-          "week": row.get("week"),
-          "started": bool(row.get("started") or row.get("starter") or row.get("is_starter")),
-          "position": row.get("position"),
-          "nfl_team": row.get("nfl_team"),
-          "points": points,
-        }
-      )
+    pos = row.get("position")
+    nfl_team = row.get("nfl_team")
+    player_name = row.get("player") or row.get("player_name") or row.get("display_name")
 
+    if _is_defense_position(pos):
+      abbr = _infer_defense_abbr(player_name, nfl_team=nfl_team)
+      if abbr:
+        player_id = abbr
+        pos = "D/ST"
+        nfl_team = abbr
+        player_name = f"{ESPN_TEAM_ABBR_TO_NAME.get(abbr, abbr).title()} D/ST"
+
+    all_time_weekly.append(
+      {
+        "player_id": player_id,
+        "player_name": player_name,
+        "team": row.get("team"),
+        "season": season,
+        "week": row.get("week"),
+        "started": bool(row.get("started") or row.get("starter") or row.get("is_starter")),
+        "position": pos,
+        "nfl_team": nfl_team,
+        "points": points,
+      }
+    )
+
+    if not player_id:
+      continue
       if not player_id:
         continue
       current = player_totals.get(player_id, {"player_id": player_id, "points": 0.0, "games": 0})
