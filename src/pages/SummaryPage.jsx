@@ -377,7 +377,6 @@ export default function SummaryPage() {
                     <th>Season</th>
                     <th>Week</th>
                     <th>Team</th>
-                    <th>Starter</th>
                     <th>Points</th>
                   </tr>
                 </thead>
@@ -399,8 +398,38 @@ export default function SummaryPage() {
                             return owner ? `${row.team} - ${owner}` : row.team;
                           })()}
                         </td>
-                        <td>{row.started == null ? "—" : row.started ? "Yes" : "No"}</td>
-                        <td>{formatPoints(row.points)}</td>
+                        <td>
+                          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                            <span>{formatPoints(row.points)}</span>
+                            <span
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                padding: "2px 8px",
+                                borderRadius: 999,
+                                fontSize: 12,
+                                fontWeight: 700,
+                                lineHeight: 1.4,
+                                border: "1px solid rgba(0,0,0,0.15)",
+                                background:
+                                  row.started == null
+                                    ? "rgba(107,114,128,0.15)"
+                                    : row.started
+                                      ? "rgba(34,197,94,0.18)"
+                                      : "rgba(239,68,68,0.18)",
+                                color:
+                                  row.started == null
+                                    ? "rgba(107,114,128,1)"
+                                    : row.started
+                                      ? "rgba(21,128,61,1)"
+                                      : "rgba(185,28,28,1)",
+                              }}
+                              title={row.started == null ? "Starter status unknown" : row.started ? "Starter" : "Bench"}
+                            >
+                              {row.started == null ? "—" : row.started ? "STARTER" : "BENCH"}
+                            </span>
+                          </div>
+                        </td>
                       </tr>
                     );
                   })}
