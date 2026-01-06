@@ -328,7 +328,7 @@ export default function SummaryPage() {
         placeholder={<div className="section-card">Loading weekly leaders…</div>}
       >
         <section className="section-card">
-          <h2 className="section-title">Weekly 30+ Point Games (2015–2025)</h2>
+          <h2 className="section-title">Weekly 45+ Point Games (2015–2025)</h2>
           <SearchBar value={weeklySearch} onChange={setWeeklySearch} placeholder="Search weekly leaders..." />
           {allTimePending ? (
             <div>Loading weekly leaders…</div>
