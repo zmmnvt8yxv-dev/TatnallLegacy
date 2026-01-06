@@ -128,6 +128,7 @@ def ensure_espn_name_map():
   return name_map
 
 
+
 def load_nflverse_lookup():
   if not NFLVERSE_STATS_PATH.exists():
     return {}, {}, {}
@@ -167,6 +168,49 @@ def load_nflverse_lookup():
       if week and (position or team):
         by_week[(season, week, name_key)] = {"position": position, "team": team}
   return by_week, by_season, by_name
+
+
+# New helper: load_nflverse_teams_by_player
+def load_nflverse_teams_by_player():
+  """Return mapping of normalized player name -> {teams:[...], last_team:<abbr or None>} from nflverse stats."""
+  if not NFLVERSE_STATS_PATH.exists():
+    return {}
+  by_player = {}
+  with NFLVERSE_STATS_PATH.open("r", encoding="utf-8") as handle:
+    reader = csv.DictReader(handle)
+    for row in reader:
+      try:
+        season = int(row.get("season") or 0)
+      except ValueError:
+        continue
+      try:
+        week = int(row.get("week") or 0)
+      except ValueError:
+        week = 0
+      if week and not is_regular_season(week):
+        continue
+      name = row.get("player_display_name") or row.get("player_name") or row.get("name") or ""
+      name_key = normalize_name(name)
+      if not name_key:
+        continue
+      team = (row.get("team") or row.get("recent_team") or row.get("club") or "").strip().upper()
+      if not team:
+        continue
+      entry = by_player.get(name_key)
+      if entry is None:
+        entry = {"teams": set(), "last": (0, 0, None)}
+        by_player[name_key] = entry
+      entry["teams"].add(team)
+      last_season, last_week, _ = entry["last"]
+      if (season, week) >= (last_season, last_week):
+        entry["last"] = (season, week, team)
+
+  finalized = {}
+  for k, v in by_player.items():
+    teams = sorted(v["teams"]) if v.get("teams") else []
+    last_team = v.get("last", (0, 0, None))[2]
+    finalized[k] = {"teams": teams, "last_team": last_team}
+  return finalized
 
 
 def resolve_nflverse_meta(by_week, by_season, by_name, season, week, player_name):
@@ -346,7 +390,7 @@ def normalize_espn_lineups(lineups, sleeper_maps, player_name_lookup, season=Non
     if defense:
       next_row["player_id"] = defense["id"]
       next_row["player"] = defense["name"]
-      next_row.setdefault("position", "DEF")
+      next_row.setdefault("position", "D/ST")
       next_row.setdefault("nfl_team", defense["id"])
       normalized.append(next_row)
       continue
@@ -397,7 +441,7 @@ def normalize_lineups(lineups, sleeper_maps, player_name_lookup, source="league"
     if defense:
       next_row["player_id"] = defense["id"]
       next_row["player"] = defense["name"]
-      next_row.setdefault("position", "DEF")
+      next_row.setdefault("position", "D/ST")
       next_row.setdefault("nfl_team", defense["id"])
       normalized.append(next_row)
       continue
@@ -1106,7 +1150,7 @@ def _load_players_index(output_dir):
         by_name[name.lower()] = r
   return {"by_gsis": by_gsis, "by_sleeper": by_sleeper, "by_name": by_name}
 
-def _enrich_career_leader(item, players_idx):
+def _enrich_career_leader(item, players_idx, nfl_teams_by_name=None):
   if not isinstance(item, dict):
     return item
   pid = str(item.get("player_id") or "").strip()
@@ -1120,9 +1164,33 @@ def _enrich_career_leader(item, players_idx):
     pos = rec.get("position") or rec.get("pos")
     team = rec.get("team") or rec.get("nfl_team") or rec.get("nflTeam")
     if pos and not item.get("position"):
-      item["position"] = str(pos)
+      p = str(pos).strip().upper()
+      if p in ("DEF", "DST", "D/ST"):
+        item["position"] = "D/ST"
+      else:
+        item["position"] = str(pos)
     if team and not item.get("nfl_team"):
       item["nfl_team"] = str(team)
+
+  # Backfill team history from nflverse (all teams across years) by display name
+  try:
+    name_key = normalize_name(name)
+  except Exception:
+    name_key = ""
+  nfl_teams_by_name = nfl_teams_by_name or {}
+  if name_key and name_key in nfl_teams_by_name:
+    meta = nfl_teams_by_name.get(name_key) or {}
+    teams = meta.get("teams") or []
+    last_team = meta.get("last_team")
+    if teams and not item.get("nfl_teams"):
+      item["nfl_teams"] = teams
+    if (not item.get("nfl_team")) and last_team:
+      item["nfl_team"] = last_team
+
+  # Normalize defense position label everywhere
+  pos = (item.get("position") or "").strip().upper()
+  if pos in ("DEF", "DST", "D/ST"):
+    item["position"] = "D/ST"
   return item
 
 def main():
@@ -1133,6 +1201,7 @@ def main():
   player_name_lookup = build_player_name_lookup()
   players_idx = _load_players_index(OUTPUT_DIR)
   nfl_by_week, nfl_by_season, nfl_by_name = load_nflverse_lookup()
+  nfl_teams_by_name = load_nflverse_teams_by_player()
   if sleeper_maps.get("espn_to_name"):
     write_json(OUTPUT_DIR / "espn_name_map.json", sleeper_maps["espn_to_name"])
 
@@ -1201,6 +1270,8 @@ def main():
           "season": season,
           "week": row.get("week"),
           "started": bool(row.get("started") or row.get("starter") or row.get("is_starter")),
+          "position": row.get("position"),
+          "nfl_team": row.get("nfl_team"),
           "points": points,
         }
       )
@@ -1252,34 +1323,48 @@ def main():
 
   top_weekly = [row for row in all_time_weekly if float(row.get("points") or 0) >= 45]
   top_weekly = sorted(top_weekly, key=lambda item: item["points"], reverse=True)
+  for row in top_weekly:
+    p = str(row.get("position") or "").strip().upper()
+    if p in ("DEF", "DST", "D/ST"):
+      row["position"] = "D/ST"
   career_stats_path = OUTPUT_DIR / "player_stats" / "career.json"
   if career_stats_path.exists():
     career_payload = read_json(career_stats_path)
     career_rows = career_payload.get("rows", []) if isinstance(career_payload, dict) else []
     normalized = []
     for row in career_rows:
-      player_id = row.get("player_id") or row.get("sleeper_id") or row.get("gsis_id")
-      if not player_id:
+      source_pid = row.get("player_id") or row.get("sleeper_id") or row.get("gsis_id")
+      if not source_pid:
         continue
+
+      mapped_pid = _map_to_sleeper_id(sleeper_maps, source_pid) or str(source_pid)
+
+      raw_pos = row.get("position") or row.get("pos") or row.get("player_position") or row.get("fantasy_position")
+      p = str(raw_pos or "").strip().upper()
+      if p in ("DEF", "DST", "D/ST"):
+        p = "D/ST"
+
+      raw_team = row.get("nfl_team") or row.get("team") or row.get("pro_team") or row.get("nflTeam")
+      t = str(raw_team or "").strip().upper() or None
+
       normalized.append(
-  {
-    "player_id": (_map_to_sleeper_id(sleeper_maps, player_id) or str(player_id)),
-    "source_player_id": str(player_id),
-    "display_name": row.get("display_name") or row.get("player_display_name") or row.get("player_name"),
-    "position": row.get("position") or row.get("pos") or row.get("player_position") or row.get("fantasy_position"),
-    "nfl_team": row.get("nfl_team") or row.get("team") or row.get("pro_team") or row.get("nflTeam"),
-    "points": float(row.get("points") or row.get("fantasy_points_custom") or 0),
-    "games": int(row.get("games") or row.get("games_played") or 0),
-    "seasons": int(row.get("seasons") or row.get("seasons_played") or 0),
-  }
-)
+        {
+          "player_id": mapped_pid,
+          "source_player_id": str(source_pid),
+          "display_name": row.get("display_name") or row.get("player_display_name") or row.get("player_name"),
+          "position": p or None,
+          "nfl_team": t,
+          "points": float(row.get("points") or row.get("fantasy_points_custom") or 0),
+          "games": int(row.get("games") or row.get("games_played") or 0),
+          "seasons": int(row.get("seasons") or row.get("seasons_played") or 0),
+        }
+      )
 
-  
-  career_leaders = sorted(normalized, key=lambda item: item["points"], reverse=True)[:25]
-  career_leaders = [_enrich_career_leader(dict(r), players_idx) for r in career_leaders]
-
+    career_leaders = sorted(normalized, key=lambda item: item["points"], reverse=True)
+    career_leaders = [_enrich_career_leader(dict(r), players_idx, nfl_teams_by_name=nfl_teams_by_name) for r in career_leaders]
   else:
-    career_leaders = sorted(career_totals.values(), key=lambda item: item["points"], reverse=True)[:25]
+    career_leaders = sorted(career_totals.values(), key=lambda item: item["points"], reverse=True)
+    career_leaders = [_enrich_career_leader(dict(r), players_idx, nfl_teams_by_name=nfl_teams_by_name) for r in career_leaders]
 
   all_time_payload = {
     "generatedAt": datetime.now(timezone.utc).isoformat(),
