@@ -20,6 +20,18 @@ import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 
+function normalizePosition(pos) {
+  const p = String(pos || "").trim().toUpperCase();
+  if (!p) return "";
+  if (p === "DST" || p === "D/ST" || p === "D\u002FST") return "DEF";
+  if (p === "DEFENSE" || p === "D") return "DEF";
+  if (p === "PK") return "K";
+  if (p === "FB" || p === "HB") return "RB";
+  if (p === "ALL") return "ALL";
+  if (["QB","RB","WR","TE","DEF","K"].includes(p)) return p;
+  return p;
+}
+
 function getLatestSeason(manifest) {
   const seasons = (manifest?.seasons || []).map(Number).filter(Number.isFinite);
   if (!seasons.length) return null;
