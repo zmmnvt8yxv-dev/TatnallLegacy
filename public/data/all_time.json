@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-18T21:24:34.609773+00:00",
+  "generatedAt": "2026-01-18T21:51:50.120223+00:00",
   "topWeekly": [
     {
       "player_id": "7564",
@@ -34,24 +34,6 @@
       "points": 55.0,
       "season": 2020,
       "week": 16,
-      "position": "RB",
-      "team": "NO"
-    },
-    {
-      "player_id": "4035",
-      "player_name": "Alvin Kamara",
-      "points": 55.0,
-      "season": 2020,
-      "week": 17,
-      "position": "RB",
-      "team": "NO"
-    },
-    {
-      "player_id": "4035",
-      "player_name": "Alvin Kamara",
-      "points": 55.0,
-      "season": 2020,
-      "week": 18,
       "position": "RB",
       "team": "NO"
     },
@@ -97,15 +79,6 @@
       "points": 52.0,
       "season": 2021,
       "week": 17,
-      "position": "WR",
-      "team": "CIN"
-    },
-    {
-      "player_id": "7564",
-      "player_name": "Ja'Marr Chase",
-      "points": 52.0,
-      "season": 2021,
-      "week": 18,
       "position": "WR",
       "team": "CIN"
     },
@@ -389,15 +362,6 @@
       "team": "CIN"
     },
     {
-      "player_id": "6770",
-      "player_name": "Joe Burrow",
-      "points": 42.0,
-      "season": 2021,
-      "week": 18,
-      "position": "QB",
-      "team": "CIN"
-    },
-    {
       "player_id": "6783",
       "player_name": "Jerry Jeudy",
       "points": 42.0,
@@ -450,290 +414,302 @@
       "week": 5,
       "position": "WR",
       "team": "CIN"
+    },
+    {
+      "player_id": "7564",
+      "player_name": "Ja'Marr Chase",
+      "points": 41.2,
+      "season": 2023,
+      "week": 5,
+      "position": "WR",
+      "team": "CIN"
+    },
+    {
+      "player_id": "7564",
+      "player_name": "Ja'Marr Chase",
+      "points": 41.1,
+      "season": 2024,
+      "week": 14,
+      "position": "WR",
+      "team": "CIN"
+    },
+    {
+      "player_id": "6797",
+      "player_name": "Justin Herbert",
+      "points": 41.0,
+      "season": 2020,
+      "week": 7,
+      "position": "QB",
+      "team": "LAC"
+    },
+    {
+      "player_id": "4046",
+      "player_name": "Patrick Mahomes",
+      "points": 41.0,
+      "season": 2020,
+      "week": 8,
+      "position": "QB",
+      "team": "KC"
     }
   ],
   "topSeasons": [
     {
-      "season": 2020,
-      "player_id": "4984",
-      "points": 455.0,
-      "games": 18
-    },
-    {
       "season": 2024,
       "player_id": "6994",
-      "points": 452.82000000000005,
-      "games": 18
+      "points": 422.40000000000003,
+      "games": 17
     },
     {
       "season": 2024,
       "player_id": "6770",
-      "points": 432.82,
-      "games": 18
+      "points": 391.84,
+      "games": 17
+    },
+    {
+      "season": 2024,
+      "player_id": "4984",
+      "points": 391.04,
+      "games": 17
     },
     {
       "season": 2020,
       "player_id": "4046",
-      "points": 429.0,
-      "games": 18
+      "points": 391.0,
+      "games": 16
     },
     {
-      "season": 2024,
+      "season": 2020,
       "player_id": "4984",
-      "points": 414.02000000000004,
-      "games": 18
-    },
-    {
-      "season": 2020,
-      "player_id": "96",
-      "points": 411.0,
-      "games": 18
-    },
-    {
-      "season": 2020,
-      "player_id": "4017",
-      "points": 407.0,
-      "games": 18
+      "points": 385.0,
+      "games": 16
     },
     {
       "season": 2023,
       "player_id": "4984",
-      "points": 404.74000000000007,
-      "games": 18
+      "points": 383.58000000000004,
+      "games": 17
+    },
+    {
+      "season": 2021,
+      "player_id": "4984",
+      "points": 378.0,
+      "games": 17
     },
     {
       "season": 2020,
       "player_id": "5849",
-      "points": 404.0,
-      "games": 18
+      "points": 376.0,
+      "games": 16
     },
     {
       "season": 2021,
       "player_id": "167",
-      "points": 401.0,
-      "games": 18
-    },
-    {
-      "season": 2020,
-      "player_id": "4035",
-      "points": 398.0,
-      "games": 18
-    },
-    {
-      "season": 2021,
-      "player_id": "4984",
-      "points": 398.0,
-      "games": 18
-    },
-    {
-      "season": 2024,
-      "player_id": "11566",
-      "points": 395.38,
-      "games": 18
+      "points": 371.0,
+      "games": 17
     },
     {
       "season": 2024,
       "player_id": "4866",
-      "points": 390.6999999999999,
-      "games": 18
+      "points": 370.7999999999999,
+      "games": 17
     },
     {
       "season": 2023,
       "player_id": "6904",
-      "points": 387.40000000000003,
-      "games": 18
-    },
-    {
-      "season": 2023,
-      "player_id": "6994",
-      "points": 385.56000000000006,
-      "games": 18
-    },
-    {
-      "season": 2020,
-      "player_id": "1234",
-      "points": 382.0,
-      "games": 18
-    },
-    {
-      "season": 2021,
-      "player_id": "6797",
-      "points": 381.0,
-      "games": 18
-    },
-    {
-      "season": 2021,
-      "player_id": "6770",
-      "points": 380.0,
-      "games": 18
-    },
-    {
-      "season": 2020,
-      "player_id": "167",
-      "points": 374.0,
-      "games": 18
-    },
-    {
-      "season": 2024,
-      "player_id": "3163",
-      "points": 372.54,
-      "games": 18
-    },
-    {
-      "season": 2024,
-      "player_id": "4892",
-      "points": 368.06,
+      "points": 368.22,
       "games": 17
     },
     {
       "season": 2025,
       "player_id": "4984",
       "points": 364.43999999999994,
+      "games": 16
+    },
+    {
+      "season": 2020,
+      "player_id": "96",
+      "points": 363.0,
+      "games": 16
+    },
+    {
+      "season": 2021,
+      "player_id": "6797",
+      "points": 363.0,
       "games": 17
+    },
+    {
+      "season": 2024,
+      "player_id": "11566",
+      "points": 361.6,
+      "games": 17
+    },
+    {
+      "season": 2020,
+      "player_id": "4017",
+      "points": 353.0,
+      "games": 16
+    },
+    {
+      "season": 2023,
+      "player_id": "6994",
+      "points": 345.22,
+      "games": 17
+    },
+    {
+      "season": 2020,
+      "player_id": "1234",
+      "points": 344.0,
+      "games": 16
     },
     {
       "season": 2021,
       "player_id": "4046",
-      "points": 364.0,
-      "games": 18
+      "points": 344.0,
+      "games": 17
+    },
+    {
+      "season": 2024,
+      "player_id": "3163",
+      "points": 343.72,
+      "games": 17
     },
     {
       "season": 2024,
       "player_id": "7564",
-      "points": 358.59999999999997,
-      "games": 18
-    },
-    {
-      "season": 2021,
-      "player_id": "6813",
-      "points": 358.0,
-      "games": 18
-    },
-    {
-      "season": 2023,
-      "player_id": "3294",
-      "points": 357.9800000000001,
-      "games": 18
+      "points": 341.9,
+      "games": 17
     },
     {
       "season": 2023,
       "player_id": "4034",
-      "points": 350.4000000000001,
-      "games": 18
-    },
-    {
-      "season": 2020,
-      "player_id": "1049",
-      "points": 346.0,
-      "games": 18
-    },
-    {
-      "season": 2021,
-      "player_id": "421",
-      "points": 346.0,
-      "games": 18
-    },
-    {
-      "season": 2020,
-      "player_id": "6994",
-      "points": 345.0,
-      "games": 18
-    },
-    {
-      "season": 2024,
-      "player_id": "3198",
-      "points": 341.29999999999995,
-      "games": 18
+      "points": 341.30000000000007,
+      "games": 17
     },
     {
       "season": 2025,
       "player_id": "3294",
       "points": 341.08000000000004,
+      "games": 16
+    },
+    {
+      "season": 2021,
+      "player_id": "6813",
+      "points": 340.0,
+      "games": 17
+    },
+    {
+      "season": 2021,
+      "player_id": "6770",
+      "points": 338.0,
       "games": 17
     },
     {
       "season": 2025,
       "player_id": "4034",
       "points": 336.79999999999995,
-      "games": 17
+      "games": 16
     },
     {
       "season": 2025,
       "player_id": "6813",
       "points": 335.5,
-      "games": 17
-    },
-    {
-      "season": 2021,
-      "player_id": "96",
-      "points": 335.0,
-      "games": 18
+      "games": 16
     },
     {
       "season": 2023,
-      "player_id": "6804",
-      "points": 330.96,
-      "games": 18
+      "player_id": "3294",
+      "points": 333.68000000000006,
+      "games": 17
     },
     {
       "season": 2024,
-      "player_id": "9221",
-      "points": 330.70000000000005,
-      "games": 18
+      "player_id": "4892",
+      "points": 331.5,
+      "games": 16
+    },
+    {
+      "season": 2021,
+      "player_id": "421",
+      "points": 330.0,
+      "games": 17
     },
     {
       "season": 2025,
       "player_id": "9221",
       "points": 325.6,
+      "games": 16
+    },
+    {
+      "season": 2024,
+      "player_id": "6904",
+      "points": 322.12000000000006,
       "games": 17
     },
     {
       "season": 2025,
       "player_id": "11564",
       "points": 317.28,
-      "games": 17
+      "games": 16
     },
     {
       "season": 2021,
-      "player_id": "3294",
-      "points": 317.0,
-      "games": 18
-    },
-    {
-      "season": 2023,
-      "player_id": "8183",
-      "points": 316.40000000000003,
+      "player_id": "96",
+      "points": 316.0,
       "games": 17
     },
     {
-      "season": 2021,
-      "player_id": "6904",
+      "season": 2024,
+      "player_id": "3198",
+      "points": 315.79999999999995,
+      "games": 17
+    },
+    {
+      "season": 2020,
+      "player_id": "1049",
       "points": 314.0,
-      "games": 18
+      "games": 16
+    },
+    {
+      "season": 2020,
+      "player_id": "167",
+      "points": 312.0,
+      "games": 16
+    },
+    {
+      "season": 2020,
+      "player_id": "4029",
+      "points": 305.0,
+      "games": 16
     },
     {
       "season": 2025,
       "player_id": "9509",
       "points": 304.1000000000001,
-      "games": 17
+      "games": 16
+    },
+    {
+      "season": 2020,
+      "player_id": "6994",
+      "points": 303.0,
+      "games": 16
     },
     {
       "season": 2023,
-      "player_id": "4046",
-      "points": 303.21999999999997,
-      "games": 18
+      "player_id": "6804",
+      "points": 302.52,
+      "games": 17
     },
     {
       "season": 2025,
       "player_id": "6904",
       "points": 302.1599999999999,
-      "games": 17
+      "games": 16
     },
     {
-      "season": 2023,
-      "player_id": "6768",
-      "points": 301.6199999999999,
-      "games": 18
+      "season": 2021,
+      "player_id": "6904",
+      "points": 302.0,
+      "games": 17
     },
     {
       "season": 2025,
@@ -745,20 +721,44 @@
       "season": 2025,
       "player_id": "8138",
       "points": 301.0,
+      "games": 16
+    },
+    {
+      "season": 2023,
+      "player_id": "8183",
+      "points": 298.8,
+      "games": 16
+    },
+    {
+      "season": 2021,
+      "player_id": "3294",
+      "points": 294.0,
       "games": 17
     },
     {
       "season": 2023,
-      "player_id": "6786",
-      "points": 299.9,
-      "games": 18
+      "player_id": "4046",
+      "points": 291.21999999999997,
+      "games": 17
+    },
+    {
+      "season": 2023,
+      "player_id": "6768",
+      "points": 286.7399999999999,
+      "games": 17
+    },
+    {
+      "season": 2023,
+      "player_id": "3163",
+      "points": 278.29999999999995,
+      "games": 17
     }
   ],
   "careerLeaders": [
     {
       "player_id": "4984",
-      "points": 2036.1999999999998,
-      "games": 89,
+      "points": 1902.06,
+      "games": 83,
       "seasons": 5,
       "display_name": "Josh Allen",
       "position": "QB",
@@ -766,8 +766,8 @@
     },
     {
       "player_id": "4046",
-      "points": 1716.92,
-      "games": 118,
+      "points": 1618.92,
+      "games": 113,
       "seasons": 7,
       "display_name": "Patrick Mahomes",
       "position": "QB",
@@ -775,8 +775,8 @@
     },
     {
       "player_id": "3198",
-      "points": 1543.62,
-      "games": 138,
+      "points": 1495.9199999999998,
+      "games": 131,
       "seasons": 8,
       "display_name": "Derrick Henry",
       "position": "RB",
@@ -784,8 +784,8 @@
     },
     {
       "player_id": "6904",
-      "points": 1448.68,
-      "games": 77,
+      "points": 1375.5,
+      "games": 71,
       "seasons": 5,
       "display_name": "Jalen Hurts",
       "position": "QB",
@@ -793,8 +793,8 @@
     },
     {
       "player_id": "6994",
-      "points": 1423.38,
-      "games": 72,
+      "points": 1310.6200000000001,
+      "games": 67,
       "seasons": 4,
       "display_name": "Lamar Jackson",
       "position": "CB",
@@ -802,35 +802,35 @@
     },
     {
       "player_id": "6797",
-      "points": 1381.72,
-      "games": 79,
+      "points": 1306.28,
+      "games": 73,
       "seasons": 5,
       "display_name": "Justin Herbert",
       "position": "QB",
       "nfl_team": "LAC"
     },
     {
-      "player_id": "6813",
-      "points": 1336.7,
-      "games": 93,
-      "seasons": 6,
-      "display_name": "Jonathan Taylor",
-      "position": "RB",
-      "nfl_team": "IND"
-    },
-    {
       "player_id": "3294",
-      "points": 1286.58,
-      "games": 95,
+      "points": 1239.2800000000002,
+      "games": 92,
       "seasons": 7,
       "display_name": "Dak Prescott",
       "position": "QB",
       "nfl_team": "DAL"
     },
     {
+      "player_id": "6813",
+      "points": 1235.7,
+      "games": 87,
+      "seasons": 6,
+      "display_name": "Jonathan Taylor",
+      "position": "RB",
+      "nfl_team": "IND"
+    },
+    {
       "player_id": "6770",
-      "points": 1246.9,
-      "games": 76,
+      "points": 1163.92,
+      "games": 72,
       "seasons": 5,
       "display_name": "Joe Burrow",
       "position": "QB",
@@ -838,8 +838,8 @@
     },
     {
       "player_id": "5849",
-      "points": 1240.44,
-      "games": 93,
+      "points": 1148.72,
+      "games": 88,
       "seasons": 6,
       "display_name": "Kyler Murray",
       "position": "QB",
@@ -847,8 +847,8 @@
     },
     {
       "player_id": "4034",
-      "points": 1175.26,
-      "games": 136,
+      "points": 1138.86,
+      "games": 130,
       "seasons": 8,
       "display_name": "Christian McCaffrey",
       "position": "RB",
@@ -856,8 +856,8 @@
     },
     {
       "player_id": "421",
-      "points": 1173.46,
-      "games": 72,
+      "points": 1133.72,
+      "games": 66,
       "seasons": 5,
       "display_name": "Matthew Stafford",
       "position": "QB",
@@ -865,197 +865,206 @@
     },
     {
       "player_id": "2133",
-      "points": 1138.5,
-      "games": 118,
+      "points": 1015.6999999999999,
+      "games": 113,
       "seasons": 7,
       "display_name": "Davante Adams",
       "position": "WR",
       "nfl_team": "LAR"
     },
     {
-      "player_id": "4035",
-      "points": 1067.4,
-      "games": 115,
-      "seasons": 7,
-      "display_name": "Alvin Kamara",
-      "position": "RB",
-      "nfl_team": "NO"
-    },
-    {
-      "player_id": "7564",
-      "points": 1053.52,
-      "games": 70,
-      "seasons": 4,
-      "display_name": "Ja'Marr Chase",
-      "position": "WR",
-      "nfl_team": "CIN"
-    },
-    {
-      "player_id": "96",
-      "points": 1048.52,
-      "games": 76,
-      "seasons": 5,
-      "display_name": "Aaron Rodgers",
-      "position": "QB",
-      "nfl_team": "PIT"
-    },
-    {
       "player_id": "3163",
-      "points": 1026.9999999999998,
-      "games": 90,
+      "points": 987.34,
+      "games": 87,
       "seasons": 6,
       "display_name": "Jared Goff",
       "position": "QB",
       "nfl_team": "DET"
     },
     {
-      "player_id": "6786",
-      "points": 1024.3,
-      "games": 86,
+      "player_id": "96",
+      "points": 981.04,
+      "games": 71,
       "seasons": 5,
-      "display_name": "CeeDee Lamb",
-      "position": "WR",
-      "nfl_team": "DAL"
+      "display_name": "Aaron Rodgers",
+      "position": "QB",
+      "nfl_team": "PIT"
     },
     {
-      "player_id": "1234",
-      "points": 1004.8999999999999,
-      "games": 95,
-      "seasons": 6,
-      "display_name": "Russell Wilson",
-      "position": "QB",
-      "nfl_team": "NYG"
+      "player_id": "7564",
+      "points": 980.72,
+      "games": 66,
+      "seasons": 4,
+      "display_name": "Ja'Marr Chase",
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "player_id": "5850",
-      "points": 980.2999999999998,
-      "games": 104,
+      "points": 944.3999999999999,
+      "games": 98,
       "seasons": 6,
       "display_name": "Josh Jacobs",
       "position": "RB",
       "nfl_team": "GB"
     },
     {
+      "player_id": "6786",
+      "points": 944.1,
+      "games": 80,
+      "seasons": 5,
+      "display_name": "CeeDee Lamb",
+      "position": "WR",
+      "nfl_team": "DAL"
+    },
+    {
+      "player_id": "4035",
+      "points": 937.5,
+      "games": 110,
+      "seasons": 7,
+      "display_name": "Alvin Kamara",
+      "position": "RB",
+      "nfl_team": "NO"
+    },
+    {
       "player_id": "3321",
-      "points": 967.5,
-      "games": 108,
+      "points": 926.9000000000001,
+      "games": 103,
       "seasons": 7,
       "display_name": "Tyreek Hill",
       "position": "WR",
       "nfl_team": "MIA"
     },
     {
-      "player_id": "6794",
-      "points": 942.48,
-      "games": 87,
-      "seasons": 5,
-      "display_name": "Justin Jefferson",
-      "position": "WR",
-      "nfl_team": "MIN"
+      "player_id": "1234",
+      "points": 922.1999999999999,
+      "games": 90,
+      "seasons": 6,
+      "display_name": "Russell Wilson",
+      "position": "QB",
+      "nfl_team": "NYG"
     },
     {
       "player_id": "4018",
-      "points": 937.8,
-      "games": 122,
+      "points": 910.2,
+      "games": 116,
       "seasons": 7,
       "display_name": "Joe Mixon",
       "position": "RB",
       "nfl_team": "HOU"
     },
     {
-      "player_id": "4663",
-      "points": 912.9,
-      "games": 119,
-      "seasons": 7,
-      "display_name": "Austin Ekeler",
-      "position": "RB",
-      "nfl_team": "WAS"
-    },
-    {
-      "player_id": "4892",
-      "points": 911.24,
-      "games": 74,
-      "seasons": 7,
-      "display_name": "Baker Mayfield",
-      "position": "QB",
-      "nfl_team": "TB"
+      "player_id": "6794",
+      "points": 902.38,
+      "games": 81,
+      "seasons": 5,
+      "display_name": "Justin Jefferson",
+      "position": "WR",
+      "nfl_team": "MIN"
     },
     {
       "player_id": "4866",
-      "points": 896.9999999999999,
-      "games": 114,
+      "points": 859.3,
+      "games": 110,
       "seasons": 7,
       "display_name": "Saquon Barkley",
       "position": "RB",
       "nfl_team": "PHI"
     },
     {
-      "player_id": "2216",
-      "points": 894.6,
-      "games": 111,
-      "seasons": 7,
-      "display_name": "Mike Evans",
-      "position": "WR",
-      "nfl_team": "TB"
-    },
-    {
-      "player_id": "5846",
-      "points": 892.8,
-      "games": 102,
-      "seasons": 6,
-      "display_name": "DK Metcalf",
-      "position": "WR",
-      "nfl_team": "PIT"
-    },
-    {
       "player_id": "5859",
-      "points": 870.5,
-      "games": 90,
+      "points": 842.1,
+      "games": 84,
       "seasons": 6,
       "display_name": "A.J. Brown",
       "position": "WR",
       "nfl_team": "PHI"
     },
     {
-      "player_id": "5892",
-      "points": 863.84,
-      "games": 97,
-      "seasons": 6,
-      "display_name": "David Montgomery",
-      "position": "RB",
-      "nfl_team": "DET"
+      "player_id": "4892",
+      "points": 841.4200000000001,
+      "games": 69,
+      "seasons": 7,
+      "display_name": "Baker Mayfield",
+      "position": "QB",
+      "nfl_team": "TB"
     },
     {
-      "player_id": "4039",
-      "points": 853.9000000000001,
-      "games": 116,
-      "seasons": 8,
-      "display_name": "Cooper Kupp",
+      "player_id": "5846",
+      "points": 840.5,
+      "games": 96,
+      "seasons": 6,
+      "display_name": "DK Metcalf",
       "position": "WR",
-      "nfl_team": "SEA"
+      "nfl_team": "PIT"
+    },
+    {
+      "player_id": "4663",
+      "points": 837.8000000000001,
+      "games": 113,
+      "seasons": 7,
+      "display_name": "Austin Ekeler",
+      "position": "RB",
+      "nfl_team": "WAS"
     },
     {
       "player_id": "9221",
-      "points": 845.7000000000002,
-      "games": 53,
+      "points": 815.1000000000001,
+      "games": 50,
       "seasons": 3,
       "display_name": "Jahmyr Gibbs",
       "position": "RB",
       "nfl_team": "DET"
     },
     {
-      "player_id": "2449",
-      "points": 834.72,
-      "games": 108,
-      "seasons": 7,
-      "display_name": "Stefon Diggs",
+      "player_id": "4039",
+      "points": 814.8,
+      "games": 110,
+      "seasons": 8,
+      "display_name": "Cooper Kupp",
       "position": "WR",
-      "nfl_team": "NE"
+      "nfl_team": "SEA"
+    },
+    {
+      "player_id": "5892",
+      "points": 800.34,
+      "games": 92,
+      "seasons": 6,
+      "display_name": "David Montgomery",
+      "position": "RB",
+      "nfl_team": "DET"
+    },
+    {
+      "player_id": "2216",
+      "points": 787.9,
+      "games": 105,
+      "seasons": 7,
+      "display_name": "Mike Evans",
+      "position": "WR",
+      "nfl_team": "TB"
+    },
+    {
+      "player_id": "6790",
+      "points": 775.6999999999999,
+      "games": 80,
+      "seasons": 5,
+      "display_name": "D'Andre Swift",
+      "position": "RB",
+      "nfl_team": "CHI"
+    },
+    {
+      "player_id": "6768",
+      "points": 775.4999999999999,
+      "games": 60,
+      "seasons": 5,
+      "display_name": "Tua Tagovailoa",
+      "position": "QB",
+      "nfl_team": "MIA"
     },
     {
       "player_id": "7547",
-      "points": 828.68,
-      "games": 59,
+      "points": 767.58,
+      "games": 55,
       "seasons": 4,
       "display_name": "Amon-Ra St. Brown",
       "position": "WR",
@@ -1063,44 +1072,44 @@
     },
     {
       "player_id": "4199",
-      "points": 821.0,
-      "games": 83,
+      "points": 766.3000000000001,
+      "games": 77,
       "seasons": 5,
       "display_name": "Aaron Jones",
       "position": "RB",
       "nfl_team": "MIN"
     },
     {
-      "player_id": "6768",
-      "points": 810.3799999999998,
-      "games": 65,
-      "seasons": 5,
-      "display_name": "Tua Tagovailoa",
-      "position": "QB",
-      "nfl_team": "MIA"
-    },
-    {
-      "player_id": "6790",
-      "points": 803.4,
-      "games": 86,
-      "seasons": 5,
-      "display_name": "D'Andre Swift",
-      "position": "RB",
-      "nfl_team": "CHI"
-    },
-    {
       "player_id": "9509",
-      "points": 798.1000000000001,
-      "games": 53,
+      "points": 766.2,
+      "games": 50,
       "seasons": 3,
       "display_name": "Bijan Robinson",
       "position": "RB",
       "nfl_team": "ATL"
     },
     {
+      "player_id": "2449",
+      "points": 754.62,
+      "games": 103,
+      "seasons": 7,
+      "display_name": "Stefon Diggs",
+      "position": "WR",
+      "nfl_team": "NE"
+    },
+    {
+      "player_id": "8138",
+      "points": 745.4,
+      "games": 50,
+      "seasons": 3,
+      "display_name": "James Cook",
+      "position": "RB",
+      "nfl_team": "BUF"
+    },
+    {
       "player_id": "4137",
-      "points": 787.8000000000001,
-      "games": 107,
+      "points": 734.7,
+      "games": 102,
       "seasons": 7,
       "display_name": "James Conner",
       "position": "RB",
@@ -1108,44 +1117,26 @@
     },
     {
       "player_id": "1466",
-      "points": 785.8,
-      "games": 113,
+      "points": 727.8,
+      "games": 108,
       "seasons": 7,
       "display_name": "Travis Kelce",
       "position": "TE",
       "nfl_team": "KC"
     },
     {
-      "player_id": "167",
-      "points": 775.0,
-      "games": 41,
-      "seasons": 4,
-      "display_name": "Tom Brady",
-      "position": "QB",
-      "nfl_team": ""
-    },
-    {
       "player_id": "4983",
-      "points": 764.2,
-      "games": 82,
+      "points": 723.1,
+      "games": 76,
       "seasons": 5,
       "display_name": "DJ Moore",
       "position": "WR",
       "nfl_team": "CHI"
     },
     {
-      "player_id": "8138",
-      "points": 761.1,
-      "games": 53,
-      "seasons": 3,
-      "display_name": "James Cook",
-      "position": "RB",
-      "nfl_team": "BUF"
-    },
-    {
       "player_id": "8183",
-      "points": 756.6999999999999,
-      "games": 43,
+      "points": 706.82,
+      "games": 40,
       "seasons": 3,
       "display_name": "Brock Purdy",
       "position": "QB",
@@ -1153,8 +1144,8 @@
     },
     {
       "player_id": "8150",
-      "points": 746.7,
-      "games": 52,
+      "points": 703.8999999999999,
+      "games": 49,
       "seasons": 3,
       "display_name": "Kyren Williams",
       "position": "RB",
@@ -1162,8 +1153,8 @@
     },
     {
       "player_id": "1166",
-      "points": 746.18,
-      "games": 71,
+      "points": 700.18,
+      "games": 68,
       "seasons": 7,
       "display_name": "Kirk Cousins",
       "position": "QB",
@@ -1171,8 +1162,8 @@
     },
     {
       "player_id": "9226",
-      "points": 726.6,
-      "games": 51,
+      "points": 700.1,
+      "games": 48,
       "seasons": 3,
       "display_name": "De'Von Achane",
       "position": "RB",
@@ -1180,305 +1171,314 @@
     },
     {
       "player_id": "4029",
-      "points": 724.0,
-      "games": 93,
+      "points": 690.5999999999999,
+      "games": 89,
       "seasons": 6,
       "display_name": "Dalvin Cook",
       "position": "RB",
       "nfl_team": ""
     },
     {
-      "player_id": "6801",
-      "points": 716.9,
-      "games": 79,
-      "seasons": 5,
-      "display_name": "Tee Higgins",
-      "position": "WR",
-      "nfl_team": "CIN"
-    },
-    {
-      "player_id": "4217",
-      "points": 715.8,
-      "games": 115,
-      "seasons": 7,
-      "display_name": "George Kittle",
-      "position": "TE",
-      "nfl_team": "SF"
-    },
-    {
-      "player_id": "6804",
-      "points": 712.28,
-      "games": 44,
-      "seasons": 3,
-      "display_name": "Jordan Love",
+      "player_id": "167",
+      "points": 683.0,
+      "games": 36,
+      "seasons": 4,
+      "display_name": "Tom Brady",
       "position": "QB",
-      "nfl_team": "GB"
+      "nfl_team": ""
     },
     {
       "player_id": "5927",
-      "points": 699.6999999999999,
-      "games": 95,
+      "points": 680.6,
+      "games": 89,
       "seasons": 6,
       "display_name": "Terry McLaurin",
       "position": "WR",
       "nfl_team": "WAS"
     },
     {
+      "player_id": "4217",
+      "points": 675.6999999999999,
+      "games": 109,
+      "seasons": 7,
+      "display_name": "George Kittle",
+      "position": "TE",
+      "nfl_team": "SF"
+    },
+    {
       "player_id": "5872",
-      "points": 699.0999999999999,
-      "games": 89,
+      "points": 671.9,
+      "games": 83,
       "seasons": 6,
       "display_name": "Deebo Samuel",
       "position": "WR",
       "nfl_team": "WAS"
     },
     {
-      "player_id": "9493",
-      "points": 690.5,
-      "games": 51,
+      "player_id": "6804",
+      "points": 669.84,
+      "games": 42,
       "seasons": 3,
-      "display_name": "Puka Nacua",
-      "position": "WR",
-      "nfl_team": "LAR"
+      "display_name": "Jordan Love",
+      "position": "QB",
+      "nfl_team": "GB"
     },
     {
       "player_id": "1479",
-      "points": 677.8600000000001,
-      "games": 108,
+      "points": 662.8600000000001,
+      "games": 103,
       "seasons": 7,
       "display_name": "Keenan Allen",
       "position": "WR",
       "nfl_team": "LAC"
     },
     {
-      "player_id": "7528",
-      "points": 644.1,
-      "games": 59,
-      "seasons": 4,
-      "display_name": "Najee Harris",
-      "position": "RB",
-      "nfl_team": "LAC"
+      "player_id": "9493",
+      "points": 654.9,
+      "games": 48,
+      "seasons": 3,
+      "display_name": "Puka Nacua",
+      "position": "WR",
+      "nfl_team": "LAR"
+    },
+    {
+      "player_id": "6801",
+      "points": 642.4000000000001,
+      "games": 73,
+      "seasons": 5,
+      "display_name": "Tee Higgins",
+      "position": "WR",
+      "nfl_team": "CIN"
     },
     {
       "player_id": "7588",
-      "points": 610.0,
-      "games": 84,
+      "points": 600.2,
+      "games": 79,
       "seasons": 5,
       "display_name": "Javonte Williams",
       "position": "RB",
       "nfl_team": "DAL"
     },
     {
-      "player_id": "7525",
-      "points": 608.9,
-      "games": 68,
-      "seasons": 4,
-      "display_name": "DeVonta Smith",
-      "position": "WR",
-      "nfl_team": "PHI"
-    },
-    {
-      "player_id": "4981",
-      "points": 602.9000000000001,
-      "games": 102,
-      "seasons": 7,
-      "display_name": "Calvin Ridley",
-      "position": "WR",
-      "nfl_team": "TEN"
-    },
-    {
       "player_id": "9488",
-      "points": 602.0,
-      "games": 52,
+      "points": 590.1,
+      "games": 49,
       "seasons": 3,
       "display_name": "Jaxon Smith-Njigba",
       "position": "WR",
       "nfl_team": "SEA"
     },
     {
-      "player_id": "7591",
-      "points": 596.58,
-      "games": 50,
+      "player_id": "7528",
+      "points": 581.8,
+      "games": 56,
       "seasons": 4,
-      "display_name": "Justin Fields",
-      "position": "QB",
-      "nfl_team": "NYJ"
-    },
-    {
-      "player_id": "8155",
-      "points": 596.36,
-      "games": 53,
-      "seasons": 3,
-      "display_name": "Breece Hall",
+      "display_name": "Najee Harris",
       "position": "RB",
-      "nfl_team": "NYJ"
-    },
-    {
-      "player_id": "2309",
-      "points": 590.8,
-      "games": 102,
-      "seasons": 6,
-      "display_name": "Amari Cooper",
-      "position": "WR",
-      "nfl_team": ""
+      "nfl_team": "LAC"
     },
     {
       "player_id": "5045",
-      "points": 590.3,
-      "games": 87,
+      "points": 576.3,
+      "games": 84,
       "seasons": 7,
       "display_name": "Courtland Sutton",
       "position": "WR",
       "nfl_team": "DEN"
     },
     {
-      "player_id": "1049",
-      "points": 586.0,
-      "games": 41,
+      "player_id": "8155",
+      "points": 571.96,
+      "games": 50,
       "seasons": 3,
-      "display_name": "Ryan Tannehill",
+      "display_name": "Breece Hall",
+      "position": "RB",
+      "nfl_team": "NYJ"
+    },
+    {
+      "player_id": "7525",
+      "points": 571.9,
+      "games": 64,
+      "seasons": 4,
+      "display_name": "DeVonta Smith",
+      "position": "WR",
+      "nfl_team": "PHI"
+    },
+    {
+      "player_id": "7591",
+      "points": 571.36,
+      "games": 48,
+      "seasons": 4,
+      "display_name": "Justin Fields",
       "position": "QB",
-      "nfl_team": ""
+      "nfl_team": "NYJ"
     },
     {
       "player_id": "5967",
-      "points": 581.1,
-      "games": 70,
+      "points": 570.2,
+      "games": 65,
       "seasons": 6,
       "display_name": "Tony Pollard",
       "position": "RB",
       "nfl_team": "TEN"
     },
     {
+      "player_id": "4981",
+      "points": 557.4000000000001,
+      "games": 97,
+      "seasons": 7,
+      "display_name": "Calvin Ridley",
+      "position": "WR",
+      "nfl_team": "TEN"
+    },
+    {
       "player_id": "8137",
-      "points": 577.5,
-      "games": 53,
+      "points": 555.9,
+      "games": 50,
       "seasons": 3,
       "display_name": "George Pickens",
       "position": "WR",
       "nfl_team": "DAL"
     },
     {
-      "player_id": "5012",
-      "points": 566.7,
-      "games": 88,
-      "seasons": 6,
-      "display_name": "Mark Andrews",
-      "position": "TE",
-      "nfl_team": "BAL"
-    },
-    {
-      "player_id": "4037",
-      "points": 564.0,
-      "games": 76,
-      "seasons": 5,
-      "display_name": "Chris Godwin",
-      "position": "WR",
-      "nfl_team": "TB"
-    },
-    {
-      "player_id": "1373",
-      "points": 559.96,
-      "games": 41,
-      "seasons": 4,
-      "display_name": "Geno Smith",
-      "position": "QB",
-      "nfl_team": "LV"
-    },
-    {
       "player_id": "7523",
       "points": 555.82,
-      "games": 42,
+      "games": 40,
       "seasons": 4,
       "display_name": "Trevor Lawrence",
       "position": "QB",
       "nfl_team": "JAX"
     },
     {
-      "player_id": "4098",
-      "points": 552.9000000000001,
-      "games": 88,
-      "seasons": 7,
-      "display_name": "Kareem Hunt",
-      "position": "RB",
-      "nfl_team": "KC"
+      "player_id": "2309",
+      "points": 542.7,
+      "games": 97,
+      "seasons": 6,
+      "display_name": "Amari Cooper",
+      "position": "WR",
+      "nfl_team": ""
     },
     {
-      "player_id": "7569",
-      "points": 540.8,
-      "games": 51,
+      "player_id": "1049",
+      "points": 542.0,
+      "games": 38,
       "seasons": 3,
-      "display_name": "Nico Collins",
-      "position": "WR",
-      "nfl_team": "HOU"
+      "display_name": "Ryan Tannehill",
+      "position": "QB",
+      "nfl_team": ""
+    },
+    {
+      "player_id": "1373",
+      "points": 534.76,
+      "games": 39,
+      "seasons": 4,
+      "display_name": "Geno Smith",
+      "position": "QB",
+      "nfl_team": "LV"
     },
     {
       "player_id": "7526",
-      "points": 538.22,
-      "games": 70,
+      "points": 534.22,
+      "games": 66,
       "seasons": 4,
       "display_name": "Jaylen Waddle",
       "position": "WR",
       "nfl_team": "MIA"
     },
     {
+      "player_id": "5012",
+      "points": 530.9,
+      "games": 83,
+      "seasons": 6,
+      "display_name": "Mark Andrews",
+      "position": "TE",
+      "nfl_team": "BAL"
+    },
+    {
+      "player_id": "7569",
+      "points": 524.7,
+      "games": 48,
+      "seasons": 3,
+      "display_name": "Nico Collins",
+      "position": "WR",
+      "nfl_team": "HOU"
+    },
+    {
+      "player_id": "4098",
+      "points": 522.9000000000001,
+      "games": 84,
+      "seasons": 7,
+      "display_name": "Kareem Hunt",
+      "position": "RB",
+      "nfl_team": "KC"
+    },
+    {
+      "player_id": "4037",
+      "points": 520.9000000000001,
+      "games": 71,
+      "seasons": 5,
+      "display_name": "Chris Godwin",
+      "position": "WR",
+      "nfl_team": "TB"
+    },
+    {
       "player_id": "9758",
-      "points": 535.24,
-      "games": 39,
+      "points": 516.22,
+      "games": 37,
       "seasons": 3,
       "display_name": "C.J. Stroud",
       "position": "QB",
       "nfl_team": "HOU"
     },
     {
-      "player_id": "1689",
-      "points": 535.0,
-      "games": 93,
-      "seasons": 6,
-      "display_name": "Adam Thielen",
-      "position": "WR",
-      "nfl_team": ""
-    },
-    {
-      "player_id": "1264",
-      "points": 534.0,
-      "games": 92,
-      "seasons": 6,
-      "display_name": "Justin Tucker",
-      "position": "K",
-      "nfl_team": ""
-    },
-    {
       "player_id": "1426",
-      "points": 530.0,
-      "games": 92,
+      "points": 514.8,
+      "games": 89,
       "seasons": 6,
       "display_name": "DeAndre Hopkins",
       "position": "WR",
       "nfl_team": "BAL"
     },
     {
+      "player_id": "1264",
+      "points": 493.0,
+      "games": 88,
+      "seasons": 6,
+      "display_name": "Justin Tucker",
+      "position": "K",
+      "nfl_team": ""
+    },
+    {
       "player_id": "4988",
-      "points": 515.4000000000001,
-      "games": 103,
+      "points": 488.40000000000003,
+      "games": 99,
       "seasons": 7,
       "display_name": "Nick Chubb",
       "position": "RB",
       "nfl_team": "HOU"
     },
     {
-      "player_id": "4017",
-      "points": 513.86,
-      "games": 71,
-      "seasons": 6,
-      "display_name": "Deshaun Watson",
+      "player_id": "11560",
+      "points": 478.03999999999996,
+      "games": 30,
+      "seasons": 2,
+      "display_name": "Caleb Williams",
       "position": "QB",
-      "nfl_team": "CLE"
+      "nfl_team": "CHI"
+    },
+    {
+      "player_id": "11533",
+      "points": 475.6,
+      "games": 47,
+      "seasons": 3,
+      "display_name": "Brandon Aubrey",
+      "position": "K",
+      "nfl_team": "DAL"
     },
     {
       "player_id": "11566",
-      "points": 508.94,
-      "games": 24,
+      "points": 475.16,
+      "games": 23,
       "seasons": 2,
       "display_name": "Jayden Daniels",
       "position": "QB",
@@ -1486,174 +1486,174 @@
     },
     {
       "player_id": "7594",
-      "points": 492.9,
-      "games": 47,
+      "points": 473.79999999999995,
+      "games": 44,
       "seasons": 4,
       "display_name": "Chuba Hubbard",
       "position": "RB",
       "nfl_team": "CAR"
     },
     {
-      "player_id": "8130",
-      "points": 491.0,
-      "games": 43,
-      "seasons": 3,
-      "display_name": "Trey McBride",
-      "position": "TE",
-      "nfl_team": "ARI"
-    },
-    {
-      "player_id": "3164",
-      "points": 490.8,
-      "games": 86,
+      "player_id": "1689",
+      "points": 472.7,
+      "games": 88,
       "seasons": 6,
-      "display_name": "Ezekiel Elliott",
-      "position": "RB",
-      "nfl_team": ""
-    },
-    {
-      "player_id": "5937",
-      "points": 487.79999999999995,
-      "games": 65,
-      "seasons": 4,
-      "display_name": "Diontae Johnson",
+      "display_name": "Adam Thielen",
       "position": "WR",
       "nfl_team": ""
     },
     {
-      "player_id": "11533",
-      "points": 487.6,
-      "games": 50,
-      "seasons": 3,
-      "display_name": "Brandon Aubrey",
-      "position": "K",
-      "nfl_team": "DAL"
-    },
-    {
       "player_id": "8112",
-      "points": 486.47999999999996,
-      "games": 47,
+      "points": 464.78,
+      "games": 44,
       "seasons": 3,
       "display_name": "Drake London",
       "position": "WR",
       "nfl_team": "ATL"
     },
     {
-      "player_id": "11560",
-      "points": 484.62,
-      "games": 32,
-      "seasons": 2,
-      "display_name": "Caleb Williams",
+      "player_id": "8130",
+      "points": 459.9,
+      "games": 40,
+      "seasons": 3,
+      "display_name": "Trey McBride",
+      "position": "TE",
+      "nfl_team": "ARI"
+    },
+    {
+      "player_id": "4017",
+      "points": 459.86,
+      "games": 69,
+      "seasons": 6,
+      "display_name": "Deshaun Watson",
       "position": "QB",
-      "nfl_team": "CHI"
+      "nfl_team": "CLE"
     },
     {
       "player_id": "9997",
-      "points": 478.9,
-      "games": 52,
+      "points": 454.20000000000005,
+      "games": 49,
       "seasons": 3,
       "display_name": "Zay Flowers",
       "position": "WR",
       "nfl_team": "BAL"
     },
     {
-      "player_id": "espn:4035687",
-      "points": 467.90000000000003,
-      "games": 62,
-      "seasons": 4,
-      "display_name": "Michael Pittman Jr.",
-      "position": null,
-      "nfl_team": null
+      "player_id": "3164",
+      "points": 448.3,
+      "games": 82,
+      "seasons": 6,
+      "display_name": "Ezekiel Elliott",
+      "position": "RB",
+      "nfl_team": ""
     },
     {
       "player_id": "2374",
-      "points": 464.49999999999994,
-      "games": 85,
+      "points": 447.49999999999994,
+      "games": 81,
       "seasons": 6,
       "display_name": "Tyler Lockett",
       "position": "WR",
       "nfl_team": "LV"
     },
     {
-      "player_id": "4943",
-      "points": 460.58000000000004,
-      "games": 25,
-      "seasons": 3,
-      "display_name": "Sam Darnold",
-      "position": "QB",
-      "nfl_team": "SEA"
+      "player_id": "5937",
+      "points": 445.20000000000005,
+      "games": 61,
+      "seasons": 4,
+      "display_name": "Diontae Johnson",
+      "position": "WR",
+      "nfl_team": ""
     },
     {
       "player_id": "9224",
-      "points": 457.9000000000001,
-      "games": 38,
+      "points": 444.0000000000001,
+      "games": 35,
       "seasons": 3,
       "display_name": "Chase Brown",
       "position": "RB",
       "nfl_team": "CIN"
     },
     {
-      "player_id": "4227",
-      "points": 456.0,
-      "games": 82,
-      "seasons": 7,
-      "display_name": "Harrison Butker",
-      "position": "K",
-      "nfl_team": "KC"
-    },
-    {
-      "player_id": "6130",
-      "points": 455.24,
-      "games": 78,
-      "seasons": 6,
-      "display_name": "Devin Singletary",
-      "position": "RB",
-      "nfl_team": "NYG"
-    },
-    {
-      "player_id": "6806",
-      "points": 451.70000000000005,
-      "games": 47,
-      "seasons": 4,
-      "display_name": "J.K. Dobbins",
-      "position": "RB",
-      "nfl_team": "DEN"
-    },
-    {
       "player_id": "8136",
-      "points": 447.99999999999994,
-      "games": 42,
+      "points": 439.49999999999994,
+      "games": 40,
       "seasons": 3,
       "display_name": "Rachaad White",
       "position": "RB",
       "nfl_team": "TB"
     },
     {
-      "player_id": "138",
-      "points": 446.0,
-      "games": 28,
-      "seasons": 2,
-      "display_name": "Ben Roethlisberger",
+      "player_id": "4943",
+      "points": 433.80000000000007,
+      "games": 24,
+      "seasons": 3,
+      "display_name": "Sam Darnold",
       "position": "QB",
-      "nfl_team": "PIT"
+      "nfl_team": "SEA"
+    },
+    {
+      "player_id": "espn:4035687",
+      "points": 429.9000000000001,
+      "games": 57,
+      "seasons": 4,
+      "display_name": "Michael Pittman Jr.",
+      "position": null,
+      "nfl_team": null
+    },
+    {
+      "player_id": "6130",
+      "points": 421.64000000000004,
+      "games": 76,
+      "seasons": 6,
+      "display_name": "Devin Singletary",
+      "position": "RB",
+      "nfl_team": "NYG"
+    },
+    {
+      "player_id": "5870",
+      "points": 420.94000000000005,
+      "games": 39,
+      "seasons": 6,
+      "display_name": "Daniel Jones",
+      "position": "QB",
+      "nfl_team": "IND"
     },
     {
       "player_id": "11563",
-      "points": 441.94,
-      "games": 23,
+      "points": 418.08,
+      "games": 22,
       "seasons": 2,
       "display_name": "Bo Nix",
       "position": "QB",
       "nfl_team": "DEN"
     },
     {
-      "player_id": "8228",
-      "points": 429.6,
-      "games": 47,
-      "seasons": 3,
-      "display_name": "Jaylen Warren",
-      "position": "RB",
-      "nfl_team": "PIT"
+      "player_id": "4227",
+      "points": 418.0,
+      "games": 79,
+      "seasons": 7,
+      "display_name": "Harrison Butker",
+      "position": "K",
+      "nfl_team": "KC"
+    },
+    {
+      "player_id": "11564",
+      "points": 415.81999999999994,
+      "games": 23,
+      "seasons": 2,
+      "display_name": "Drake Maye",
+      "position": "QB",
+      "nfl_team": "NE"
+    },
+    {
+      "player_id": "2028",
+      "points": 411.88,
+      "games": 37,
+      "seasons": 6,
+      "display_name": "Derek Carr",
+      "position": "QB",
+      "nfl_team": ""
     }
   ]
 }

@@ -29,12 +29,54 @@ def normalize_string(value):
     text = re.sub(r"[^a-z0-9\s]", "", text)
     return " ".join(text.split())
 
-def is_regular_season(week):
+def get_max_week(season):
+    """Get the maximum valid week for a given season (including playoffs).
+    
+    2015-2020: Max week 16 (reg season 1-13, playoffs 14-16)
+    2021+: Max week 17 (reg season 1-14, playoffs 15-17)
+    """
+    if season <= 2020:
+        return 16
+    return 17
+
+def is_valid_week(week, season=None):
+    """Check if week is valid for stats inclusion.
+    
+    If season is provided, enforces max week limit per era.
+    If season not provided, uses conservative default of week 18.
+    """
     try:
         week_num = int(week)
     except (TypeError, ValueError):
         return False
-    return 1 <= week_num <= 18
+    
+    if week_num < 1:
+        return False
+    
+    if season:
+        max_week = get_max_week(season)
+        return week_num <= max_week
+    
+    return week_num <= 18  # Conservative default
+
+def is_regular_season(week, season=None):
+    """Check if week is regular season (not playoffs)."""
+    try:
+        week_num = int(week)
+    except (TypeError, ValueError):
+        return False
+    
+    if week_num < 1:
+        return False
+    
+    if season:
+        # 2015-2020: regular season weeks 1-13
+        # 2021+: regular season weeks 1-14
+        if season <= 2020:
+            return week_num <= 13
+        return week_num <= 14
+    
+    return week_num <= 14  # Conservative default
 
 def _coerce_points(value):
     if value is None:
@@ -768,12 +810,15 @@ def main():
         raw_matchups = payload.get("matchups", [])
         
         # Add ESPN Fallback Lineups if needed
-        weeks = sorted({int(r.get("week")) for r in raw_lineups + raw_matchups if is_regular_season(r.get("week"))})
+        # Filter weeks to only include valid weeks for this season (respecting max week)
+        max_week = get_max_week(season)
+        weeks = sorted({int(r.get("week")) for r in raw_lineups + raw_matchups 
+                       if is_valid_week(r.get("week"), season)})
         if not weeks: # Infer from standard weeks?
-             weeks = list(range(1, 15)) if season < 2021 else list(range(1, 16))
+             weeks = list(range(1, max_week + 1))
 
         final_lineups = []
-        final_matchups = [m for m in raw_matchups if is_regular_season(m.get("week"))]
+        final_matchups = [m for m in raw_matchups if is_valid_week(m.get("week"), season)]
 
         for w in weeks:
             w_lineups = [r for r in raw_lineups if int(r.get("week")) == w]

@@ -525,67 +525,67 @@
   "standings": [
     {
       "team": "King of  December",
-      "wins": 11,
+      "wins": 10,
       "losses": 6,
       "ties": 0,
-      "points_for": 453.36,
-      "points_against": 644.0999999999999
+      "points_for": 421.26,
+      "points_against": 639.6999999999999
     },
     {
       "team": "Team Downs",
-      "wins": 11,
+      "wins": 10,
       "losses": 7,
       "ties": 0,
-      "points_for": 1311.9999999999998,
-      "points_against": 1116.1000000000001
+      "points_for": 1159.7399999999998,
+      "points_against": 1017.4000000000001
     },
     {
       "team": "Pompano Beach Sniper Gang",
       "wins": 9,
       "losses": 7,
-      "ties": 2,
+      "ties": 1,
       "points_for": 409.44000000000005,
       "points_against": 405.40000000000003
     },
     {
       "team": "Emergency Room",
       "wins": 9,
-      "losses": 8,
+      "losses": 7,
       "ties": 0,
-      "points_for": 399.78000000000003,
-      "points_against": 681.22
+      "points_for": 372.48,
+      "points_against": 568.0
     },
     {
       "team": "Team Hanrahan",
       "wins": 9,
-      "losses": 9,
+      "losses": 8,
       "ties": 0,
-      "points_for": 1503.54,
-      "points_against": 1156.12
+      "points_for": 1404.84,
+      "points_against": 1003.86
     },
     {
       "team": "Only i can say The N word",
       "wins": 7,
       "losses": 9,
-      "ties": 2,
+      "ties": 1,
       "points_for": 570.74,
       "points_against": 616.96
     },
     {
       "team": "Harder Kulm",
-      "wins": 7,
+      "wins": 6,
       "losses": 11,
       "ties": 0,
-      "points_for": 923.34,
-      "points_against": 507.24
+      "points_for": 810.12,
+      "points_against": 479.94
     },
     {
       "team": "King of January",
       "wins": 6,
-      "losses": 12,
+      "losses": 11,
       "ties": 0,
-      "points_for": 373.76000000000005,
-      "points_against": 818.8199999999998,
+      "points_for": 369.36000000000007,
+      "points_against": 786.7199999999998,
       "rank": 1
     }
   ],
@@ -593,17 +593,17 @@
     {
       "player_id": "3198",
       "points": 275.96000000000004,
-      "games": 18
+      "games": 17
     },
     {
       "player_id": "4018",
       "points": 168.7,
-      "games": 18
+      "games": 17
     },
     {
       "player_id": "4663",
-      "points": 298.8,
-      "games": 18
+      "points": 266.7,
+      "games": 17
     },
     {
       "player_id": "6813",
@@ -618,27 +618,27 @@
     {
       "player_id": "4039",
       "points": 140.4,
-      "games": 18
+      "games": 17
     },
     {
       "player_id": "4029",
-      "points": 211.49999999999997,
-      "games": 18
+      "points": 207.09999999999997,
+      "games": 17
     },
     {
       "player_id": "4034",
-      "points": 294.76,
-      "games": 18
+      "points": 267.46,
+      "games": 17
     },
     {
       "player_id": "7588",
       "points": 0.0,
-      "games": 14
+      "games": 13
     },
     {
       "player_id": "5872",
       "points": 54.89999999999999,
-      "games": 13
+      "games": 12
     }
   ],
   "weeks": [
@@ -658,12 +658,11 @@
     14,
     15,
     16,
-    17,
-    18
+    17
   ],
   "totals": {
-    "matchups": 73,
-    "lineups": 144
+    "matchups": 69,
+    "lineups": 136
   },
   "champion": {
     "team": "King of January",
