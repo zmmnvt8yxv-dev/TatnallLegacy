@@ -68,6 +68,18 @@ def fantasy_points_layer_a_week(df: pd.DataFrame) -> pd.Series:
         col(df, "receiving_2pt_conversions") * 2
     )
 
+    # Passing Bonuses
+    py = col(df, "passing_yards")
+    pts += np.where(py >= 400, 4.0, np.where(py >= 300, 2.0, 0.0))
+
+    # Rushing Bonuses
+    ry = col(df, "rushing_yards")
+    pts += np.where(ry >= 200, 4.0, np.where(ry >= 100, 2.0, 0.0))
+
+    # Receiving Bonuses
+    recy = col(df, "receiving_yards")
+    pts += np.where(recy >= 200, 4.0, np.where(recy >= 100, 2.0, 0.0))
+
     # Fumbles lost (include any that exist)
     f_lost = (
         col(df, "rushing_fumbles_lost") +

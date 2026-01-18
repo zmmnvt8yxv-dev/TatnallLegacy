@@ -4,8 +4,8 @@ import pandas as pd
 from rapidfuzz import fuzz, process
 
 ROOT = Path(".")
-SLEEPER_JSON = ROOT / "data_raw/sleeper/players_nfl.json"
-ESPN_ACTIVE_CSV = ROOT / "data_raw/verify/espn_active_only.csv"  # from your Phase B earlier (active-only)
+SLEEPER_JSON = ROOT / "data_raw/sleeper/players_raw.json"
+ESPN_ALL_CSV = ROOT / "data_raw/verify/espn_all.csv"
 OUT_DIR = ROOT / "data_raw/verify"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -61,7 +61,7 @@ def build_sleeper_df():
     return df
 
 def build_espn_df():
-    df = pd.read_csv(ESPN_ACTIVE_CSV)
+    df = pd.read_csv(ESPN_ALL_CSV)
     # expected cols: espn_id, fullName, dateOfBirth, position, team ...
     df["espn_id"] = df["espn_id"].astype(str)
     df["espn_dob"] = df["dateOfBirth"].map(norm_dob)
@@ -75,8 +75,8 @@ def build_espn_df():
 def main():
     if not SLEEPER_JSON.exists():
         raise SystemExit(f"Missing {SLEEPER_JSON}. Run the curl pull first.")
-    if not ESPN_ACTIVE_CSV.exists():
-        raise SystemExit(f"Missing {ESPN_ACTIVE_CSV}. Generate it first.")
+    if not ESPN_ALL_CSV.exists():
+        raise SystemExit(f"Missing {ESPN_ALL_CSV}. Generate it first.")
 
     sleeper = build_sleeper_df()
     espn = build_espn_df()

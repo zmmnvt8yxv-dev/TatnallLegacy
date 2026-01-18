@@ -4,7 +4,7 @@ import pandas as pd
 
 NFL = Path("data_raw/nflverse_players.parquet")
 ESPN_INDEX = Path("data_raw/espn_core/index/athletes_index_flat.parquet")
-ESPN_SLP = Path("data_raw/verify/espn_active_x_sleeper_matched_DEDUPED.csv")
+ESPN_SLP = Path("data_raw/verify/espn_active_x_sleeper_xwalk.csv")
 SLEEPER = Path("data_raw/sleeper/players_flat.parquet")  # change if yours is CSV
 
 OUT_DIR = Path("data_raw/master")

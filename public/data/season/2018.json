@@ -6,80 +6,104 @@
       "team_name": "The Champ",
       "owner": "sdmarvin713",
       "record": "9-4",
-      "points_for": 2150.0,
-      "points_against": 1915.0,
+      "points_for": 2637.0,
+      "points_against": 2178.0,
       "regular_season_rank": 1,
-      "final_rank": 1
+      "final_rank": 1,
+      "wins": 12,
+      "losses": 4,
+      "ties": 0
     },
     {
       "team_id": 2,
       "team_name": "Hello All My Peasants",
       "owner": "John.downs123",
       "record": "9-4",
-      "points_for": 1981.0,
-      "points_against": 1858.0,
+      "points_for": 2371.0,
+      "points_against": 2124.0,
       "regular_season_rank": 2,
-      "final_rank": 3
+      "final_rank": 3,
+      "wins": 11,
+      "losses": 5,
+      "ties": 0
     },
     {
       "team_id": 3,
       "team_name": "Valar Morghulis",
       "owner": "Edward3864",
       "record": "4-9",
-      "points_for": 1579.0,
-      "points_against": 1846.0,
+      "points_for": 1952.0,
+      "points_against": 2251.0,
       "regular_season_rank": 8,
-      "final_rank": 8
+      "final_rank": 8,
+      "wins": 6,
+      "losses": 10,
+      "ties": 0
     },
     {
       "team_id": 4,
       "team_name": "Team Malley",
       "owner": "connerandfinn",
       "record": "7-6",
-      "points_for": 1852.0,
-      "points_against": 1857.0,
+      "points_for": 2213.0,
+      "points_against": 2165.0,
       "regular_season_rank": 3,
-      "final_rank": 5
+      "final_rank": 5,
+      "wins": 8,
+      "losses": 7,
+      "ties": 1
     },
     {
       "team_id": 5,
       "team_name": "Team Blow me ",
       "owner": "jksheehy",
       "record": "6-7",
-      "points_for": 1973.0,
-      "points_against": 2015.0,
+      "points_for": 2244.0,
+      "points_against": 2426.0,
       "regular_season_rank": 5,
-      "final_rank": 6
+      "final_rank": 6,
+      "wins": 6,
+      "losses": 9,
+      "ties": 1
     },
     {
       "team_id": 6,
       "team_name": "The ER Squad",
       "owner": "Jefe6700",
       "record": "5-8",
-      "points_for": 1921.0,
-      "points_against": 2018.0,
+      "points_for": 2326.0,
+      "points_against": 2391.0,
       "regular_season_rank": 7,
-      "final_rank": 7
+      "final_rank": 7,
+      "wins": 6,
+      "losses": 10,
+      "ties": 0
     },
     {
       "team_id": 7,
       "team_name": "Big Dick Bandito",
       "owner": "jdunca5228572",
       "record": "6-7",
-      "points_for": 1890.0,
-      "points_against": 1923.0,
+      "points_for": 2350.0,
+      "points_against": 2345.0,
       "regular_season_rank": 6,
-      "final_rank": 2
+      "final_rank": 2,
+      "wins": 8,
+      "losses": 8,
+      "ties": 0
     },
     {
       "team_id": 8,
       "team_name": "Team del Rosario",
       "owner": "jalendelrosario@comcast.net",
       "record": "6-7",
-      "points_for": 2014.0,
-      "points_against": 1928.0,
+      "points_for": 2405.0,
+      "points_against": 2331.0,
       "regular_season_rank": 4,
-      "final_rank": 4
+      "final_rank": 4,
+      "wins": 7,
+      "losses": 9,
+      "ties": 0
     }
   ],
   "weeks": [
@@ -176,62 +200,62 @@
   ],
   "playerSeasonTotals": [
     {
-      "player_id": "15825",
+      "player_id": "1408",
       "points": 0.0,
       "games": 12
     },
     {
-      "player_id": "2576434",
+      "player_id": "2320",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "2976316",
+      "player_id": "3199",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3117251",
+      "player_id": "4034",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "14912",
+      "player_id": "1149",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "14886",
+      "player_id": "1048",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3120348",
+      "player_id": "4040",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15072",
+      "player_id": "1067",
       "points": 0.0,
       "games": 12
     },
     {
-      "player_id": "10475",
+      "player_id": "58",
       "points": 0.0,
       "games": 9
     },
     {
-      "player_id": "12483",
+      "player_id": "421",
       "points": 0.0,
       "games": 10
     },
     {
-      "player_id": "11439",
+      "player_id": "269",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "17133",
+      "player_id": "1901",
       "points": 0.0,
       "games": 14
     },
@@ -241,87 +265,87 @@
       "games": 11
     },
     {
-      "player_id": "5536",
+      "player_id": "138",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3050478",
+      "player_id": "4195",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "13295",
+      "player_id": "538",
       "points": 0.0,
       "games": 13
     },
     {
-      "player_id": "3049916",
+      "player_id": "4455",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3116389",
+      "player_id": "4147",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "14163",
+      "player_id": "827",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "2977644",
+      "player_id": "2315",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "8439",
+      "player_id": "96",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "14880",
+      "player_id": "1166",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3060022",
+      "player_id": "3306",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "2573300",
+      "player_id": "2452",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "16800",
+      "player_id": "2133",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "2976212",
+      "player_id": "2449",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "2977609",
+      "player_id": "2346",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15835",
+      "player_id": "1339",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "14198",
+      "player_id": "788",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "2979477",
+      "player_id": "2378",
       "points": 0.0,
       "games": 16
     },
@@ -331,112 +355,112 @@
       "games": 16
     },
     {
-      "player_id": "9704",
+      "player_id": "110",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15971",
+      "player_id": "1387",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "16777",
+      "player_id": "2257",
       "points": 0.0,
       "games": 11
     },
     {
-      "player_id": "10452",
+      "player_id": "184",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "2971618",
+      "player_id": "2325",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "2508176",
+      "player_id": "2391",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "13983",
+      "player_id": "830",
       "points": 0.0,
       "games": 13
     },
     {
-      "player_id": "12514",
+      "player_id": "676",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3139925",
+      "player_id": "4985",
       "points": 0.0,
       "games": 10
     },
     {
-      "player_id": "2976499",
+      "player_id": "2309",
       "points": 0.0,
       "games": 14
     },
     {
-      "player_id": "16799",
+      "player_id": "1992",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3912550",
+      "player_id": "5052",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "2573079",
+      "player_id": "3161",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15860",
+      "player_id": "1500",
       "points": 0.0,
       "games": 12
     },
     {
-      "player_id": "16760",
+      "player_id": "1837",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "3128774",
+      "player_id": "4994",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "17372",
+      "player_id": "1945",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "3045147",
+      "player_id": "4137",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "13213",
+      "player_id": "730",
       "points": 0.0,
       "games": 4
     },
     {
-      "player_id": "3919596",
+      "player_id": "4273",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3052876",
+      "player_id": "3157",
       "points": 0.0,
       "games": 8
     },
     {
-      "player_id": "13197",
+      "player_id": "621",
       "points": 0.0,
       "games": 1
     },
@@ -446,52 +470,52 @@
       "games": 3
     },
     {
-      "player_id": "3116593",
+      "player_id": "4029",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "14924",
+      "player_id": "1110",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3043078",
+      "player_id": "3198",
       "points": 0.0,
       "games": 15
     },
     {
-      "player_id": "15705",
+      "player_id": "1244",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "14402",
+      "player_id": "1329",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "2980453",
+      "player_id": "4149",
       "points": 0.0,
       "games": 4
     },
     {
-      "player_id": "2580",
+      "player_id": "289",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "14874",
+      "player_id": "1111",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3051876",
+      "player_id": "4066",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "15920",
+      "player_id": "1476",
       "points": 0.0,
       "games": 12
     },
@@ -501,27 +525,27 @@
       "games": 14
     },
     {
-      "player_id": "4333",
+      "player_id": "127",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "3066158",
+      "player_id": "4157",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3929630",
+      "player_id": "4866",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "5528",
+      "player_id": "223",
       "points": 0.0,
       "games": 11
     },
     {
-      "player_id": "3125116",
+      "player_id": "4111",
       "points": 0.0,
       "games": 13
     },
@@ -531,47 +555,47 @@
       "games": 1
     },
     {
-      "player_id": "14129",
+      "player_id": "818",
       "points": 0.0,
       "games": 7
     },
     {
-      "player_id": "3059915",
+      "player_id": "4098",
       "points": 0.0,
       "games": 13
     },
     {
-      "player_id": "13229",
+      "player_id": "515",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3116406",
+      "player_id": "3321",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "2330",
+      "player_id": "167",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "13217",
+      "player_id": "642",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "13994",
+      "player_id": "954",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15880",
+      "player_id": "1352",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "16725",
+      "player_id": "1817",
       "points": 0.0,
       "games": 16
     },
@@ -581,37 +605,37 @@
       "games": 10
     },
     {
-      "player_id": "14993",
+      "player_id": "1266",
       "points": 0.0,
       "games": 15
     },
     {
-      "player_id": "14053",
+      "player_id": "928",
       "points": 0.0,
       "games": 8
     },
     {
-      "player_id": "15966",
+      "player_id": "1502",
       "points": 0.0,
       "games": 13
     },
     {
-      "player_id": "3054850",
+      "player_id": "4035",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "16737",
+      "player_id": "2216",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "17177",
+      "player_id": "1984",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "11270",
+      "player_id": "175",
       "points": 0.0,
       "games": 9
     },
@@ -621,57 +645,57 @@
       "games": 12
     },
     {
-      "player_id": "3115364",
+      "player_id": "3969",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15795",
+      "player_id": "1426",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "14221",
+      "player_id": "988",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3128721",
+      "player_id": "4962",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "16731",
+      "player_id": "2197",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3122672",
+      "player_id": "5046",
       "points": 0.0,
       "games": 12
     },
     {
-      "player_id": "3042778",
+      "player_id": "4036",
       "points": 0.0,
       "games": 14
     },
     {
-      "player_id": "3916925",
+      "player_id": "5068",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3139477",
+      "player_id": "4046",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "12649",
+      "player_id": "344",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3128720",
+      "player_id": "4988",
       "points": 0.0,
       "games": 11
     },
@@ -681,92 +705,92 @@
       "games": 15
     },
     {
-      "player_id": "16974",
+      "player_id": "1793",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "11237",
+      "player_id": "24",
       "points": 0.0,
       "games": 15
     },
     {
-      "player_id": "9354",
+      "player_id": "49",
       "points": 0.0,
       "games": 12
     },
     {
-      "player_id": "2574808",
+      "player_id": "3423",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "3051891",
+      "player_id": "5100",
       "points": 0.0,
       "games": 4
     },
     {
-      "player_id": "16757",
+      "player_id": "2028",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "13934",
+      "player_id": "536",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "13982",
+      "player_id": "947",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "16944",
+      "player_id": "2168",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3116385",
+      "player_id": "4018",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "2979843",
+      "player_id": "3242",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15847",
+      "player_id": "1466",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "16790",
+      "player_id": "1825",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "14881",
+      "player_id": "1234",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3139605",
+      "player_id": "4152",
       "points": 0.0,
       "games": 14
     },
     {
-      "player_id": "12563",
+      "player_id": "455",
       "points": 0.0,
       "games": 12
     },
     {
-      "player_id": "3046779",
+      "player_id": "3163",
       "points": 0.0,
       "games": 14
     },
     {
-      "player_id": "2576716",
+      "player_id": "2410",
       "points": 0.0,
       "games": 2
     },
@@ -776,87 +800,87 @@
       "games": 14
     },
     {
-      "player_id": "15683",
+      "player_id": "1264",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "2520698",
+      "player_id": "2699",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "3916430",
+      "player_id": "5347",
       "points": 0.0,
       "games": 10
     },
     {
-      "player_id": "2577134",
+      "player_id": "2399",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "3051392",
+      "player_id": "3164",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "16733",
+      "player_id": "2078",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15818",
+      "player_id": "1479",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "16460",
+      "player_id": "1689",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "3046409",
+      "player_id": "3327",
       "points": 0.0,
       "games": 12
     },
     {
-      "player_id": "3122840",
+      "player_id": "4017",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "10456",
+      "player_id": "745",
       "points": 0.0,
       "games": 14
     },
     {
-      "player_id": "13216",
+      "player_id": "560",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "13981",
+      "player_id": "956",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15839",
+      "player_id": "1346",
       "points": 0.0,
       "games": 7
     },
     {
-      "player_id": "13232",
+      "player_id": "616",
       "points": 0.0,
       "games": 13
     },
     {
-      "player_id": "3042519",
+      "player_id": "4199",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "5529",
+      "player_id": "331",
       "points": 0.0,
       "games": 16
     },
@@ -866,42 +890,42 @@
       "games": 11
     },
     {
-      "player_id": "3051902",
+      "player_id": "3594",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "15009",
+      "player_id": "1170",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "11122",
+      "player_id": "17",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "3040151",
+      "player_id": "4217",
       "points": 0.0,
       "games": 15
     },
     {
-      "player_id": "16899",
+      "player_id": "1854",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "2977187",
+      "player_id": "4039",
       "points": 0.0,
       "games": 9
     },
     {
-      "player_id": "9705",
+      "player_id": "648",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "11252",
+      "player_id": "19",
       "points": 0.0,
       "games": 3
     },
@@ -911,27 +935,27 @@
       "games": 2
     },
     {
-      "player_id": "3068267",
+      "player_id": "4663",
       "points": 0.0,
       "games": 13
     },
     {
-      "player_id": "2976516",
+      "player_id": "2341",
       "points": 0.0,
       "games": 10
     },
     {
-      "player_id": "16913",
+      "player_id": "1848",
       "points": 0.0,
       "games": 15
     },
     {
-      "player_id": "3052117",
+      "player_id": "5170",
       "points": 0.0,
       "games": 15
     },
     {
-      "player_id": "3039707",
+      "player_id": "3976",
       "points": 0.0,
       "games": 10
     },
@@ -941,47 +965,47 @@
       "games": 15
     },
     {
-      "player_id": "8416",
+      "player_id": "268",
       "points": 0.0,
       "games": 8
     },
     {
-      "player_id": "2976592",
+      "player_id": "3200",
       "points": 0.0,
       "games": 15
     },
     {
-      "player_id": "2985659",
+      "player_id": "3678",
       "points": 0.0,
       "games": 14
     },
     {
-      "player_id": "2969962",
+      "player_id": "2382",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "2974858",
+      "player_id": "4131",
       "points": 0.0,
       "games": 14
     },
     {
-      "player_id": "2582139",
+      "player_id": "3909",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "3116165",
+      "player_id": "4037",
       "points": 0.0,
       "games": 8
     },
     {
-      "player_id": "16804",
+      "player_id": "2238",
       "points": 0.0,
       "games": 14
     },
     {
-      "player_id": "3071572",
+      "player_id": "4622",
       "points": 0.0,
       "games": 2
     },
@@ -991,7 +1015,7 @@
       "games": 2
     },
     {
-      "player_id": "3055899",
+      "player_id": "4227",
       "points": 0.0,
       "games": 12
     },
@@ -1001,32 +1025,32 @@
       "games": 11
     },
     {
-      "player_id": "15826",
+      "player_id": "1386",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "8664",
+      "player_id": "333",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "2979590",
+      "player_id": "2463",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "2577327",
+      "player_id": "2374",
       "points": 0.0,
       "games": 11
     },
     {
-      "player_id": "11283",
+      "player_id": "147",
       "points": 0.0,
       "games": 11
     },
     {
-      "player_id": "3045260",
+      "player_id": "4651",
       "points": 0.0,
       "games": 4
     },
@@ -1036,52 +1060,52 @@
       "games": 1
     },
     {
-      "player_id": "2577253",
+      "player_id": "2430",
       "points": 0.0,
       "games": 4
     },
     {
-      "player_id": "14054",
+      "player_id": "943",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "3052587",
+      "player_id": "4892",
       "points": 0.0,
       "games": 11
     },
     {
-      "player_id": "3925357",
+      "player_id": "4981",
       "points": 0.0,
       "games": 13
     },
     {
-      "player_id": "16732",
+      "player_id": "2118",
       "points": 0.0,
       "games": 11
     },
     {
-      "player_id": "16724",
+      "player_id": "1979",
       "points": 0.0,
       "games": 4
     },
     {
-      "player_id": "3043080",
+      "player_id": "4055",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "10636",
+      "player_id": "59",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "16921",
+      "player_id": "1944",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "3045144",
+      "player_id": "3225",
       "points": 0.0,
       "games": 12
     },
@@ -1091,7 +1115,7 @@
       "games": 3
     },
     {
-      "player_id": "16845",
+      "player_id": "2093",
       "points": 0.0,
       "games": 1
     },
@@ -1101,37 +1125,37 @@
       "games": 3
     },
     {
-      "player_id": "12537",
+      "player_id": "367",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "3115913",
+      "player_id": "3503",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "14012",
+      "player_id": "829",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "3025433",
+      "player_id": "2431",
       "points": 0.0,
       "games": 8
     },
     {
-      "player_id": "2969939",
+      "player_id": "2306",
       "points": 0.0,
       "games": 8
     },
     {
-      "player_id": "17437",
+      "player_id": "1903",
       "points": 0.0,
       "games": 11
     },
     {
-      "player_id": "3123969",
+      "player_id": "5004",
       "points": 0.0,
       "games": 3
     },
@@ -1141,17 +1165,17 @@
       "games": 3
     },
     {
-      "player_id": "1097",
+      "player_id": "120",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "3042429",
+      "player_id": "3309",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "12460",
+      "player_id": "503",
       "points": 0.0,
       "games": 5
     },
@@ -1161,32 +1185,32 @@
       "games": 1
     },
     {
-      "player_id": "14901",
+      "player_id": "1105",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "8479",
+      "player_id": "232",
       "points": 0.0,
       "games": 8
     },
     {
-      "player_id": "3123076",
+      "player_id": "4033",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "14885",
+      "player_id": "1195",
       "points": 0.0,
       "games": 10
     },
     {
-      "player_id": "14922",
+      "player_id": "1071",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "13587",
+      "player_id": "717",
       "points": 0.0,
       "games": 1
     },
@@ -1196,22 +1220,22 @@
       "games": 4
     },
     {
-      "player_id": "14322",
+      "player_id": "899",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "16886",
+      "player_id": "1916",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "2576414",
+      "player_id": "2749",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "15921",
+      "player_id": "1546",
       "points": 0.0,
       "games": 1
     },
@@ -1221,37 +1245,37 @@
       "games": 1
     },
     {
-      "player_id": "2576623",
+      "player_id": "2319",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "16504",
+      "player_id": "1706",
       "points": 0.0,
       "games": 4
     },
     {
-      "player_id": "2972091",
+      "player_id": "3868",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "3059989",
+      "player_id": "4464",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "3128429",
+      "player_id": "5045",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "3122866",
+      "player_id": "3209",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "3895856",
+      "player_id": "4950",
       "points": 0.0,
       "games": 1
     },
@@ -1261,17 +1285,17 @@
       "games": 1
     },
     {
-      "player_id": "3128451",
+      "player_id": "5026",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "3051738",
+      "player_id": "5086",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "3043275",
+      "player_id": "3202",
       "points": 0.0,
       "games": 5
     },
@@ -1281,7 +1305,7 @@
       "games": 1
     },
     {
-      "player_id": "3115306",
+      "player_id": "4171",
       "points": 0.0,
       "games": 3
     },
@@ -1296,72 +1320,72 @@
       "games": 1
     },
     {
-      "player_id": "3932420",
+      "player_id": "5136",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "2577417",
+      "player_id": "3294",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "2587819",
+      "player_id": "2583",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "2971573",
+      "player_id": "3451",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "17453",
+      "player_id": "2214",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "16486",
+      "player_id": "4958",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "16946",
+      "player_id": "2255",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "3051926",
+      "player_id": "5248",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "3916387",
+      "player_id": "4881",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "3915416",
+      "player_id": "4983",
       "points": 0.0,
       "games": 5
     },
     {
-      "player_id": "12731",
+      "player_id": "391",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "16020",
+      "player_id": "1601",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "3116136",
+      "player_id": "5131",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "4512",
+      "player_id": "655",
       "points": 0.0,
       "games": 1
     },
@@ -1371,17 +1395,17 @@
       "games": 1
     },
     {
-      "player_id": "3123052",
+      "player_id": "5230",
       "points": 0.0,
       "games": 4
     },
     {
-      "player_id": "17359",
+      "player_id": "1833",
       "points": 0.0,
       "games": 4
     },
     {
-      "player_id": "3116721",
+      "player_id": "5107",
       "points": 0.0,
       "games": 3
     },
@@ -1391,62 +1415,62 @@
       "games": 3
     },
     {
-      "player_id": "8544",
+      "player_id": "246",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "2576491",
+      "player_id": "2822",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "2473037",
+      "player_id": "2747",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "3122976",
+      "player_id": "5284",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "14028",
+      "player_id": "811",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "3068939",
+      "player_id": "3827",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "3121427",
+      "player_id": "4082",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "3918298",
+      "player_id": "4984",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "4045305",
+      "player_id": "4995",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "3042494",
+      "player_id": "4263",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "16016",
+      "player_id": "1555",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "16040",
+      "player_id": "1451",
       "points": 0.0,
       "games": 1
     }

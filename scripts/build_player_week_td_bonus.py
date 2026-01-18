@@ -17,9 +17,14 @@ def load_pbp(years: list[int]) -> pd.DataFrame:
     """
     Uses nfl_data_py to load play-by-play (nflverse).
     """
-    import nfl_data_py as nfl
-    # nfl_data_py.import_pbp_data returns a DataFrame
-    pbp = nfl.import_pbp_data(years, downcast=True, cache=False)
+    import nflreadpy as nfl
+    # nflreadpy.load_pbp returns a DataFrame (Polars or Pandas)
+    pbp = nfl.load_pbp(years)
+    if not isinstance(pbp, pd.DataFrame):
+        try:
+             pbp = pbp.to_pandas()
+        except:
+             pass
     return pbp
 
 def main():

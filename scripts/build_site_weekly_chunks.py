@@ -1333,11 +1333,41 @@ def main():
 
     season_totals.append({"season": season, "player_totals": list(player_totals.values())})
 
+    standings_data = build_standings(matchups)
+    standings_map = {s["team"]: s for s in standings_data}
+    
+    # Backfill stats into teams array for consistency
+    enriched_teams = []
+    for team in teams:
+        t = dict(team)
+        name = t.get("display_name") or t.get("team_name") or t.get("name") # Try to match logic in build_transactions/standings
+        # Note: build_standings uses team names from matchups. We need to ensure we can link them.
+        # Matchups usually use 'team_name' or 'display_name'.
+        # Let's try to match by name or roster_id if available (not reliable here as standing uses name)
+        
+        # Simple name match
+        stats = None
+        if name:
+            stats = standings_map.get(name)
+            
+        # If not found, try normalization? Or maybe standings uses roster_id?
+        # build_standings uses 'home_team'/'away_team' strings from matchups.
+        
+        if stats:
+            t["points_for"] = stats.get("points_for", 0.0)
+            t["points_against"] = stats.get("points_against", 0.0)
+            t["wins"] = stats.get("wins", 0)
+            t["losses"] = stats.get("losses", 0)
+            t["ties"] = stats.get("ties", 0)
+            # Rank might be implicit in standings order
+        
+        enriched_teams.append(t)
+
     season_summary = {
       "season": season,
-      "teams": teams,
+      "teams": enriched_teams,
       "weeks": weeks,
-      "standings": build_standings(matchups),
+      "standings": standings_data,
       "playerSeasonTotals": list(player_totals.values()),
       "totals": {"matchups": len(matchups), "lineups": len(lineups)},
     }

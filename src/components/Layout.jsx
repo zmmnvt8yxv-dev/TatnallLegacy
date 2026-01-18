@@ -4,9 +4,13 @@ import { useDataContext } from "../data/DataContext.jsx";
 
 const navItems = [
   { to: "/", label: "Summary" },
+  { to: "/seasons", label: "Seasons" },
   { to: "/matchups", label: "Matchups" },
   { to: "/transactions", label: "Transactions" },
   { to: "/standings", label: "Standings" },
+  { to: "/teams", label: "Teams" },
+  { to: "/records", label: "Records" },
+  { to: "/head-to-head", label: "Head-to-Head" },
 ];
 
 export default function Layout({ children }) {

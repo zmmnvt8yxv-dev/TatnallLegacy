@@ -53,32 +53,57 @@ function optionalManifestPath(manifest, key) {
   return path;
 }
 
-async function fetchJson(path, { optional = false } = {}) {
+async function fetchJson(path, { optional = false, retries = 2, retryDelay = 500 } = {}) {
   const url = safeUrl(path);
-  const response = await fetch(url, { cache: "no-store" });
-  if (!response.ok) {
-    if (optional && response.status === 404) {
-      return null;
+  let lastError = null;
+
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url, { cache: "no-store" });
+
+      if (!response.ok) {
+        if (optional && response.status === 404) {
+          return null;
+        }
+        throw new Error(`${response.status} ${response.statusText} (${url})`);
+      }
+
+      const contentType = response.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        if (optional) {
+          return null;
+        }
+        throw new Error(`Non-JSON response (${contentType || "unknown"}) (${url})`);
+      }
+
+      const payload = await response.json();
+      logDev("DATA_FILE_OK", { url, attempt });
+      return payload;
+    } catch (err) {
+      lastError = err;
+
+      // Don't retry for 404s or if optional and not found
+      if (optional && (err.message?.includes("404") || err.message?.includes("Non-JSON"))) {
+        return null;
+      }
+
+      // If not last attempt, wait and retry
+      if (attempt < retries) {
+        const delay = retryDelay * Math.pow(2, attempt); // Exponential backoff
+        logDev("DATA_FETCH_RETRY", { url, attempt: attempt + 1, delay });
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      }
     }
-    throw new Error(`${response.status} ${response.statusText} (${url})`);
   }
-  const contentType = response.headers.get("content-type") || "";
-  if (!contentType.includes("application/json")) {
-    if (optional) {
-      return null;
-    }
-    throw new Error(`Non-JSON response (${contentType || "unknown"}) (${url})`);
+
+  // All retries exhausted
+  if (optional) {
+    console.warn("DATA_FETCH_FAILED_OPTIONAL", { url, error: lastError?.message });
+    return null;
   }
-  try {
-    const payload = await response.json();
-    logDev("DATA_FILE_OK", { url });
-    return payload;
-  } catch (err) {
-    if (optional) {
-      return null;
-    }
-    throw err;
-  }
+
+  console.error("DATA_FETCH_FAILED", { url, error: lastError?.message, retries });
+  throw lastError;
 }
 
 export async function loadManifest() {

@@ -1,0 +1,293 @@
+{
+  "generated_at": "2026-01-18T14:50:26.768495",
+  "manifest": {
+    "status": "ok",
+    "seasons": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "path_count": 18,
+    "issues": []
+  },
+  "players": {
+    "status": "ok",
+    "total_players": 290,
+    "total_ids": 290,
+    "players_with_sleeper_id": 0,
+    "players_with_espn_id": 0,
+    "players_with_gsis_id": 0,
+    "players_missing_name": 0,
+    "players_missing_position": 0,
+    "id_type_distribution": {
+      "sleeper": 290
+    }
+  },
+  "seasons": {
+    "2015": {
+      "status": "ok",
+      "season": 2015,
+      "team_count": 8,
+      "issues": []
+    },
+    "2016": {
+      "status": "ok",
+      "season": 2016,
+      "team_count": 8,
+      "issues": []
+    },
+    "2017": {
+      "status": "ok",
+      "season": 2017,
+      "team_count": 8,
+      "issues": []
+    },
+    "2018": {
+      "status": "ok",
+      "season": 2018,
+      "team_count": 8,
+      "issues": []
+    },
+    "2019": {
+      "status": "ok",
+      "season": 2019,
+      "team_count": 8,
+      "issues": []
+    },
+    "2020": {
+      "status": "ok",
+      "season": 2020,
+      "team_count": 8,
+      "issues": []
+    },
+    "2021": {
+      "status": "ok",
+      "season": 2021,
+      "team_count": 8,
+      "issues": []
+    },
+    "2022": {
+      "status": "ok",
+      "season": 2022,
+      "team_count": 8,
+      "issues": []
+    },
+    "2023": {
+      "status": "ok",
+      "season": 2023,
+      "team_count": 8,
+      "issues": []
+    },
+    "2024": {
+      "status": "ok",
+      "season": 2024,
+      "team_count": 8,
+      "issues": []
+    },
+    "2025": {
+      "status": "ok",
+      "season": 2025,
+      "team_count": 8,
+      "issues": []
+    }
+  },
+  "weekly_summary": {
+    "2015": {
+      "total_matchups": 16,
+      "total_lineups": 0,
+      "issues": {
+        "missing_player_id": 0,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2016": {
+      "total_matchups": 16,
+      "total_lineups": 0,
+      "issues": {
+        "missing_player_id": 0,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2017": {
+      "total_matchups": 16,
+      "total_lineups": 0,
+      "issues": {
+        "missing_player_id": 0,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2018": {
+      "total_matchups": 16,
+      "total_lineups": 566,
+      "issues": {
+        "missing_player_id": 0,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2019": {
+      "total_matchups": 16,
+      "total_lineups": 572,
+      "issues": {
+        "missing_player_id": 0,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2020": {
+      "total_matchups": 16,
+      "total_lineups": 826,
+      "issues": {
+        "missing_player_id": 826,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2021": {
+      "total_matchups": 20,
+      "total_lineups": 802,
+      "issues": {
+        "missing_player_id": 802,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2022": {
+      "total_matchups": 20,
+      "total_lineups": 40,
+      "issues": {
+        "missing_player_id": 40,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2023": {
+      "total_matchups": 20,
+      "total_lineups": 811,
+      "issues": {
+        "missing_player_id": 811,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2024": {
+      "total_matchups": 20,
+      "total_lineups": 810,
+      "issues": {
+        "missing_player_id": 810,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    },
+    "2025": {
+      "total_matchups": 18,
+      "total_lineups": 520,
+      "issues": {
+        "missing_player_id": 0,
+        "missing_player_name": 0,
+        "unknown_player": 0
+      }
+    }
+  },
+  "transactions": {
+    "2015": {
+      "entry_count": 0,
+      "type_distribution": {},
+      "missing_player_names": 0
+    },
+    "2016": {
+      "entry_count": 0,
+      "type_distribution": {},
+      "missing_player_names": 0
+    },
+    "2017": {
+      "entry_count": 0,
+      "type_distribution": {},
+      "missing_player_names": 0
+    },
+    "2018": {
+      "entry_count": 2664,
+      "type_distribution": {
+        "drop": 620,
+        "add": 812,
+        "trade": 1232
+      },
+      "missing_player_names": 0
+    },
+    "2019": {
+      "entry_count": 1079,
+      "type_distribution": {
+        "add": 465,
+        "drop": 407,
+        "trade": 207
+      },
+      "missing_player_names": 0
+    },
+    "2020": {
+      "entry_count": 1237,
+      "type_distribution": {
+        "add": 558,
+        "drop": 445,
+        "trade": 234
+      },
+      "missing_player_names": 0
+    },
+    "2021": {
+      "entry_count": 848,
+      "type_distribution": {
+        "add": 385,
+        "drop": 337,
+        "trade": 126
+      },
+      "missing_player_names": 0
+    },
+    "2022": {
+      "entry_count": 686,
+      "type_distribution": {
+        "add": 293,
+        "drop": 249,
+        "trade": 144
+      },
+      "missing_player_names": 0
+    },
+    "2023": {
+      "entry_count": 1090,
+      "type_distribution": {
+        "add": 466,
+        "drop": 403,
+        "trade": 221
+      },
+      "missing_player_names": 0
+    },
+    "2024": {
+      "entry_count": 1246,
+      "type_distribution": {
+        "add": 542,
+        "drop": 445,
+        "trade": 259
+      },
+      "missing_player_names": 0
+    },
+    "2025": {
+      "entry_count": 1168,
+      "type_distribution": {
+        "add": 592,
+        "drop": 532,
+        "trade": 44
+      },
+      "missing_player_names": 45
+    }
+  },
+  "overall_status": "ok"
+}
