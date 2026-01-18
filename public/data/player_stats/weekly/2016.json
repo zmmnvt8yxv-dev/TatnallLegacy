@@ -54,7 +54,7 @@
       "delta_to_next": 2.700000000000003,
       "pos_week_z": 3.3422139908649555,
       "sleeper_id": "306",
-      "gsis_id": "00-0024242",
+      "gsis_id": null,
       "player_id": "306"
     },
     {
@@ -312,7 +312,7 @@
     {
       "season": 2016,
       "week": 1,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 21.200000000000003,
@@ -978,7 +978,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.6826404113450912,
       "sleeper_id": "297",
-      "gsis_id": "00-0026182",
+      "gsis_id": null,
       "player_id": "297"
     },
     {
@@ -1062,7 +1062,7 @@
       "delta_to_next": 1.7199999999999989,
       "pos_week_z": -0.7116780537830195,
       "sleeper_id": "416",
-      "gsis_id": "00-0024226",
+      "gsis_id": null,
       "player_id": "416"
     },
     {
@@ -1174,7 +1174,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": 0.421085948713952,
       "sleeper_id": "669",
-      "gsis_id": "00-0026796",
+      "gsis_id": null,
       "player_id": "669"
     },
     {
@@ -1376,16 +1376,16 @@
     {
       "season": 2016,
       "week": 1,
-      "display_name": "Robert Griffin III",
+      "display_name": "Robert Griffin",
       "position": "QB",
       "team": "CLE",
       "points": 10.3,
       "war_rep": -7.439999999999998,
       "delta_to_next": 0.0199999999999995,
       "pos_week_z": -1.0245238742886107,
-      "sleeper_id": null,
+      "sleeper_id": "1169",
       "gsis_id": "00-0029665",
-      "player_id": "00-0029665"
+      "player_id": "1169"
     },
     {
       "season": 2016,
@@ -1412,7 +1412,7 @@
       "delta_to_next": 4.699999999999999,
       "pos_week_z": -1.0319139330407114,
       "sleeper_id": "686",
-      "gsis_id": "00-0020679",
+      "gsis_id": null,
       "player_id": "686"
     },
     {
@@ -1558,7 +1558,7 @@
     {
       "season": 2016,
       "week": 1,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 9.3,
@@ -1720,7 +1720,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": -0.0401703212355133,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -1748,7 +1748,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.0074748984978808,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -1818,7 +1818,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.4783946931420655,
       "sleeper_id": "32",
-      "gsis_id": "00-0026267",
+      "gsis_id": null,
       "player_id": "32"
     },
     {
@@ -1860,7 +1860,7 @@
       "delta_to_next": 1.0999999999999996,
       "pos_week_z": 0.4574675412110913,
       "sleeper_id": "1759",
-      "gsis_id": "00-0028838",
+      "gsis_id": null,
       "player_id": "1759"
     },
     {
@@ -2000,7 +2000,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.2272688699703775,
       "sleeper_id": "397",
-      "gsis_id": "00-0027135",
+      "gsis_id": null,
       "player_id": "397"
     },
     {
@@ -2056,7 +2056,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.2122559719294071,
       "sleeper_id": "458",
-      "gsis_id": "00-0026373",
+      "gsis_id": null,
       "player_id": "458"
     },
     {
@@ -2308,7 +2308,7 @@
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": -0.0866384089942322,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -2377,9 +2377,9 @@
       "war_rep": -8.799999999999999,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.5405777514836243,
-      "sleeper_id": "3930",
+      "sleeper_id": "2312",
       "gsis_id": "00-0031545",
-      "player_id": "3930"
+      "player_id": "2312"
     },
     {
       "season": 2016,
@@ -2476,7 +2476,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.5961785770667477,
       "sleeper_id": "92",
-      "gsis_id": "00-0022044",
+      "gsis_id": null,
       "player_id": "92"
     },
     {
@@ -2490,7 +2490,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6100787834625285,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -2826,7 +2826,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7907814666076798,
       "sleeper_id": "247",
-      "gsis_id": "00-0026224",
+      "gsis_id": null,
       "player_id": "247"
     },
     {
@@ -2895,9 +2895,9 @@
       "war_rep": -4.0,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6098172072685818,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -2924,7 +2924,7 @@
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": -0.8324820857950224,
       "sleeper_id": "128",
-      "gsis_id": "00-0023496",
+      "gsis_id": null,
       "player_id": "128"
     },
     {
@@ -2937,9 +2937,9 @@
       "war_rep": -4.2,
       "delta_to_next": 0.0,
       "pos_week_z": -0.6516715111305299,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -3106,7 +3106,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.7938965112957574,
       "sleeper_id": "1284",
-      "gsis_id": "00-0029004",
+      "gsis_id": null,
       "player_id": "1284"
     },
     {
@@ -3161,9 +3161,9 @@
       "war_rep": -9.6,
       "delta_to_next": 0.0,
       "pos_week_z": -0.8197472019342618,
-      "sleeper_id": "2575",
+      "sleeper_id": "886",
       "gsis_id": "00-0028063",
-      "player_id": "2575"
+      "player_id": "886"
     },
     {
       "season": 2016,
@@ -3218,7 +3218,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.832672547253514,
       "sleeper_id": "762",
-      "gsis_id": "00-0027791",
+      "gsis_id": null,
       "player_id": "762"
     },
     {
@@ -3316,7 +3316,7 @@
       "delta_to_next": 0.3999999999999999,
       "pos_week_z": -0.8818701823712438,
       "sleeper_id": "833",
-      "gsis_id": "00-0028040",
+      "gsis_id": null,
       "player_id": "833"
     },
     {
@@ -3568,7 +3568,7 @@
       "delta_to_next": 0.8000000000000002,
       "pos_week_z": -0.3472058202182818,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -3624,7 +3624,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9865059420261136,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -3666,7 +3666,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0074330939570877,
       "sleeper_id": "1868",
-      "gsis_id": "00-0030992",
+      "gsis_id": null,
       "player_id": "1868"
     },
     {
@@ -3686,16 +3686,16 @@
     {
       "season": 2016,
       "week": 1,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 1.0,
       "war_rep": -12.7,
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.0826858009190778,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -3722,7 +3722,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9748513457652884,
       "sleeper_id": "1449",
-      "gsis_id": "00-0030547",
+      "gsis_id": null,
       "player_id": "1449"
     },
     {
@@ -3792,7 +3792,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.5852898112251037,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -3820,7 +3820,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0136273817230452,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -3875,9 +3875,9 @@
       "war_rep": -11.3,
       "delta_to_next": 0.1,
       "pos_week_z": -1.0394780723615498,
-      "sleeper_id": "6087",
+      "sleeper_id": "272",
       "gsis_id": "00-0026164",
-      "player_id": "6087"
+      "player_id": "272"
     },
     {
       "season": 2016,
@@ -4310,7 +4310,7 @@
       "delta_to_next": 0.9000000000000021,
       "pos_week_z": 2.1580167560526555,
       "sleeper_id": "306",
-      "gsis_id": "00-0024242",
+      "gsis_id": null,
       "player_id": "306"
     },
     {
@@ -4394,7 +4394,7 @@
       "delta_to_next": 0.3999999999999986,
       "pos_week_z": 1.5515744340729856,
       "sleeper_id": "968",
-      "gsis_id": "00-0028050",
+      "gsis_id": null,
       "player_id": "968"
     },
     {
@@ -4576,7 +4576,7 @@
       "delta_to_next": 0.7000000000000028,
       "pos_week_z": 1.7764863922521938,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -4660,7 +4660,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 1.6495945070913225,
       "sleeper_id": "32",
-      "gsis_id": "00-0026267",
+      "gsis_id": null,
       "player_id": "32"
     },
     {
@@ -4792,7 +4792,7 @@
     {
       "season": 2016,
       "week": 2,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 14.4,
@@ -4912,7 +4912,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 1.178281790779516,
       "sleeper_id": "833",
-      "gsis_id": "00-0028040",
+      "gsis_id": null,
       "player_id": "833"
     },
     {
@@ -5002,7 +5002,7 @@
     {
       "season": 2016,
       "week": 2,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 12.6,
@@ -5121,9 +5121,9 @@
       "war_rep": 3.0999999999999996,
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": 0.6480394710531914,
-      "sleeper_id": "6087",
+      "sleeper_id": "272",
       "gsis_id": "00-0026164",
-      "player_id": "6087"
+      "player_id": "272"
     },
     {
       "season": 2016,
@@ -5668,7 +5668,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.054699492121527,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -5794,7 +5794,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.1277119433121867,
       "sleeper_id": "92",
-      "gsis_id": "00-0022044",
+      "gsis_id": null,
       "player_id": "92"
     },
     {
@@ -5850,7 +5850,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.1569169237884506,
       "sleeper_id": "297",
-      "gsis_id": "00-0026182",
+      "gsis_id": null,
       "player_id": "297"
     },
     {
@@ -5989,9 +5989,9 @@
       "war_rep": -7.4,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.2591343554553741,
-      "sleeper_id": "3930",
+      "sleeper_id": "2312",
       "gsis_id": "00-0031545",
-      "player_id": "3930"
+      "player_id": "2312"
     },
     {
       "season": 2016,
@@ -6004,7 +6004,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.273736845693506,
       "sleeper_id": "128",
-      "gsis_id": "00-0023496",
+      "gsis_id": null,
       "player_id": "128"
     },
     {
@@ -6074,7 +6074,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.1685808973648861,
       "sleeper_id": "458",
-      "gsis_id": "00-0026373",
+      "gsis_id": null,
       "player_id": "458"
     },
     {
@@ -6339,9 +6339,9 @@
       "war_rep": -3.8000000000000007,
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.2900385946534192,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -6410,7 +6410,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.3380681436403362,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -6564,7 +6564,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.4531853041459677,
       "sleeper_id": "1759",
-      "gsis_id": "00-0028838",
+      "gsis_id": null,
       "player_id": "1759"
     },
     {
@@ -6606,7 +6606,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.5803891406942766,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -6620,7 +6620,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.4613315954770271,
       "sleeper_id": "1284",
-      "gsis_id": "00-0029004",
+      "gsis_id": null,
       "player_id": "1284"
     },
     {
@@ -6662,7 +6662,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6241966114086726,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -6746,7 +6746,7 @@
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": -0.6387991016468044,
       "sleeper_id": "769",
-      "gsis_id": "00-0026739",
+      "gsis_id": null,
       "player_id": "769"
     },
     {
@@ -6900,7 +6900,7 @@
       "delta_to_next": 0.1600000000000001,
       "pos_week_z": -1.5296448359609467,
       "sleeper_id": "416",
-      "gsis_id": "00-0024226",
+      "gsis_id": null,
       "player_id": "416"
     },
     {
@@ -7082,7 +7082,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7613513109652258,
       "sleeper_id": "1868",
-      "gsis_id": "00-0030992",
+      "gsis_id": null,
       "player_id": "1868"
     },
     {
@@ -7110,7 +7110,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.707858499150409,
       "sleeper_id": "1275",
-      "gsis_id": "00-0029510",
+      "gsis_id": null,
       "player_id": "1275"
     },
     {
@@ -7152,7 +7152,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": 1.330564206079771,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -7172,16 +7172,16 @@
     {
       "season": 2016,
       "week": 2,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 2.5,
       "war_rep": -11.4,
       "delta_to_next": 0.0,
       "pos_week_z": -0.8432339649806515,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -7193,9 +7193,9 @@
       "war_rep": -11.4,
       "delta_to_next": 0.0,
       "pos_week_z": -0.8432339649806515,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -7207,9 +7207,9 @@
       "war_rep": -11.4,
       "delta_to_next": 0.0,
       "pos_week_z": -0.8432339649806515,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -7250,7 +7250,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7386743621095817,
       "sleeper_id": "762",
-      "gsis_id": "00-0027791",
+      "gsis_id": null,
       "player_id": "762"
     },
     {
@@ -7432,7 +7432,7 @@
       "delta_to_next": 0.3999999999999999,
       "pos_week_z": 0.7068622344798784,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -7474,7 +7474,7 @@
       "delta_to_next": 0.1000000000000003,
       "pos_week_z": -0.8157140195075135,
       "sleeper_id": "1449",
-      "gsis_id": "00-0030547",
+      "gsis_id": null,
       "player_id": "1449"
     },
     {
@@ -7544,7 +7544,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.960053886885707,
       "sleeper_id": "866",
-      "gsis_id": "00-0028052",
+      "gsis_id": null,
       "player_id": "866"
     },
     {
@@ -7684,7 +7684,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0038613576001028,
       "sleeper_id": "618",
-      "gsis_id": "00-0027654",
+      "gsis_id": null,
       "player_id": "618"
     },
     {
@@ -7782,7 +7782,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0332624934528063,
       "sleeper_id": "1787",
-      "gsis_id": "00-0028987",
+      "gsis_id": null,
       "player_id": "1787"
     },
     {
@@ -7852,7 +7852,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9389774713442044,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -7921,9 +7921,9 @@
       "war_rep": -8.100000000000001,
       "delta_to_next": 0.0,
       "pos_week_z": -1.069517317784484,
-      "sleeper_id": "2391",
+      "sleeper_id": "362",
       "gsis_id": "00-0026957",
-      "player_id": "2391"
+      "player_id": "362"
     },
     {
       "season": 2016,
@@ -7935,9 +7935,9 @@
       "war_rep": -8.100000000000001,
       "delta_to_next": 0.4,
       "pos_week_z": -1.069517317784484,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -7978,7 +7978,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9697933343033772,
       "sleeper_id": "669",
-      "gsis_id": "00-0026796",
+      "gsis_id": null,
       "player_id": "669"
     },
     {
@@ -8006,7 +8006,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.00060919726255,
       "sleeper_id": "1819",
-      "gsis_id": "00-0030860",
+      "gsis_id": null,
       "player_id": "1819"
     },
     {
@@ -8026,7 +8026,7 @@
     {
       "season": 2016,
       "week": 2,
-      "display_name": "EJ Manuel",
+      "display_name": "E.J. Manuel",
       "position": "QB",
       "team": "BUF",
       "points": 0.6000000000000001,
@@ -8048,7 +8048,7 @@
       "delta_to_next": 1.1102230246251563e-16,
       "pos_week_z": -1.0160171287421362,
       "sleeper_id": "1265",
-      "gsis_id": "00-0029612",
+      "gsis_id": null,
       "player_id": "1265"
     },
     {
@@ -8090,7 +8090,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.1420269664478386,
       "sleeper_id": "51",
-      "gsis_id": "00-0024268",
+      "gsis_id": null,
       "player_id": "51"
     },
     {
@@ -8104,7 +8104,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.1420269664478386,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -8132,7 +8132,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.149886259981422,
       "sleeper_id": "1798",
-      "gsis_id": "00-0030990",
+      "gsis_id": null,
       "player_id": "1798"
     },
     {
@@ -8160,7 +8160,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.5384648632797355,
       "sleeper_id": "2835",
-      "gsis_id": "00-0031706",
+      "gsis_id": null,
       "player_id": "2835"
     },
     {
@@ -8523,9 +8523,9 @@
       "war_rep": 16.2,
       "delta_to_next": 1.400000000000002,
       "pos_week_z": 3.009922122347824,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -8824,7 +8824,7 @@
     {
       "season": 2016,
       "week": 3,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 17.6,
@@ -9140,7 +9140,7 @@
       "delta_to_next": 1.7763568394002505e-15,
       "pos_week_z": 0.4181895342679028,
       "sleeper_id": "1819",
-      "gsis_id": "00-0030860",
+      "gsis_id": null,
       "player_id": "1819"
     },
     {
@@ -9168,7 +9168,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.5384353389966858,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -9223,9 +9223,9 @@
       "war_rep": -0.1999999999999993,
       "delta_to_next": 0.5,
       "pos_week_z": 0.3625830974747522,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -9545,9 +9545,9 @@
       "war_rep": 1.5999999999999988,
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": 0.5059413254088934,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -9559,9 +9559,9 @@
       "war_rep": -2.3000000000000007,
       "delta_to_next": 0.3999999999999986,
       "pos_week_z": 0.0988047351918515,
-      "sleeper_id": "3930",
+      "sleeper_id": "2312",
       "gsis_id": "00-0031545",
-      "player_id": "3930"
+      "player_id": "2312"
     },
     {
       "season": 2016,
@@ -9994,7 +9994,7 @@
       "delta_to_next": 0.5999999999999996,
       "pos_week_z": 0.1629302573350674,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -10120,7 +10120,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.3415085697588897,
       "sleeper_id": "306",
-      "gsis_id": "00-0024242",
+      "gsis_id": null,
       "player_id": "306"
     },
     {
@@ -10176,7 +10176,7 @@
       "delta_to_next": 3.3999999999999995,
       "pos_week_z": 1.8772930178557283,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -10190,7 +10190,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.3656259698867244,
       "sleeper_id": "458",
-      "gsis_id": "00-0026373",
+      "gsis_id": null,
       "player_id": "458"
     },
     {
@@ -10218,7 +10218,7 @@
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": -0.3776846699506418,
       "sleeper_id": "1284",
-      "gsis_id": "00-0029004",
+      "gsis_id": null,
       "player_id": "1284"
     },
     {
@@ -10414,7 +10414,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.4036302405851016,
       "sleeper_id": "128",
-      "gsis_id": "00-0023496",
+      "gsis_id": null,
       "player_id": "128"
     },
     {
@@ -10560,7 +10560,7 @@
     {
       "season": 2016,
       "week": 3,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 4.6,
@@ -10638,7 +10638,7 @@
       "delta_to_next": 0.200000000000001,
       "pos_week_z": -0.3344357913719803,
       "sleeper_id": "32",
-      "gsis_id": "00-0026267",
+      "gsis_id": null,
       "player_id": "32"
     },
     {
@@ -10792,7 +10792,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": -0.5543607333181876,
       "sleeper_id": "1798",
-      "gsis_id": "00-0030990",
+      "gsis_id": null,
       "player_id": "1798"
     },
     {
@@ -10806,7 +10806,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6429760713568233,
       "sleeper_id": "1275",
-      "gsis_id": "00-0029510",
+      "gsis_id": null,
       "player_id": "1275"
     },
     {
@@ -10918,7 +10918,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.604604230895883,
       "sleeper_id": "297",
-      "gsis_id": "00-0026182",
+      "gsis_id": null,
       "player_id": "297"
     },
     {
@@ -11100,7 +11100,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6799694772624258,
       "sleeper_id": "247",
-      "gsis_id": "00-0026224",
+      "gsis_id": null,
       "player_id": "247"
     },
     {
@@ -11114,7 +11114,7 @@
       "delta_to_next": 0.9000000000000004,
       "pos_week_z": 0.2815939526783593,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -11128,7 +11128,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7635630719959967,
       "sleeper_id": "1059",
-      "gsis_id": "00-0029384",
+      "gsis_id": null,
       "player_id": "1059"
     },
     {
@@ -11268,7 +11268,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.6259951992347326,
       "sleeper_id": "1759",
-      "gsis_id": "00-0028838",
+      "gsis_id": null,
       "player_id": "1759"
     },
     {
@@ -11296,7 +11296,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.742773849234545,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -11562,7 +11562,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.818139095601088,
       "sleeper_id": "564",
-      "gsis_id": "00-0027651",
+      "gsis_id": null,
       "player_id": "564"
     },
     {
@@ -11590,7 +11590,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7631996264642631,
       "sleeper_id": "2144",
-      "gsis_id": "00-0030758",
+      "gsis_id": null,
       "player_id": "2144"
     },
     {
@@ -11632,7 +11632,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.9082674727630048,
       "sleeper_id": "1206",
-      "gsis_id": "00-0029626",
+      "gsis_id": null,
       "player_id": "1206"
     },
     {
@@ -11730,7 +11730,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9565022730186742,
       "sleeper_id": "762",
-      "gsis_id": "00-0027791",
+      "gsis_id": null,
       "player_id": "762"
     },
     {
@@ -11772,7 +11772,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.8935043419676311,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -11828,7 +11828,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.8661029468864109,
       "sleeper_id": "397",
-      "gsis_id": "00-0027135",
+      "gsis_id": null,
       "player_id": "397"
     },
     {
@@ -11884,7 +11884,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9004040536937935,
       "sleeper_id": "833",
-      "gsis_id": "00-0028040",
+      "gsis_id": null,
       "player_id": "833"
     },
     {
@@ -12037,9 +12037,9 @@
       "war_rep": -9.8,
       "delta_to_next": 0.3,
       "pos_week_z": -1.0529718735300129,
-      "sleeper_id": "6087",
+      "sleeper_id": "272",
       "gsis_id": "00-0026164",
-      "player_id": "6087"
+      "player_id": "272"
     },
     {
       "season": 2016,
@@ -12122,7 +12122,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.1012066737856825,
       "sleeper_id": "1265",
-      "gsis_id": "00-0029612",
+      "gsis_id": null,
       "player_id": "1265"
     },
     {
@@ -12248,7 +12248,7 @@
       "delta_to_next": 2.5,
       "pos_week_z": 2.197755617020367,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -12374,7 +12374,7 @@
       "delta_to_next": 0.7000000000000028,
       "pos_week_z": 1.8704804983065748,
       "sleeper_id": "297",
-      "gsis_id": "00-0026182",
+      "gsis_id": null,
       "player_id": "297"
     },
     {
@@ -12486,7 +12486,7 @@
       "delta_to_next": 11.599999999999998,
       "pos_week_z": 2.0888882467795233,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -12660,7 +12660,7 @@
     {
       "season": 2016,
       "week": 4,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 17.6,
@@ -13046,7 +13046,7 @@
       "delta_to_next": 1.1000000000000014,
       "pos_week_z": 1.1716251715122352,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -13340,7 +13340,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.3851570550304715,
       "sleeper_id": "1819",
-      "gsis_id": "00-0030860",
+      "gsis_id": null,
       "player_id": "1819"
     },
     {
@@ -13409,9 +13409,9 @@
       "war_rep": 2.8999999999999995,
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.7717315210669122,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -13508,7 +13508,7 @@
       "delta_to_next": 1.0,
       "pos_week_z": 0.2702890567543812,
       "sleeper_id": "1059",
-      "gsis_id": "00-0029384",
+      "gsis_id": null,
       "player_id": "1059"
     },
     {
@@ -13829,9 +13829,9 @@
       "war_rep": -3.9,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.0246488287607864,
-      "sleeper_id": "3930",
+      "sleeper_id": "2312",
       "gsis_id": "00-0031545",
-      "player_id": "3930"
+      "player_id": "2312"
     },
     {
       "season": 2016,
@@ -13878,16 +13878,16 @@
     {
       "season": 2016,
       "week": 4,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 8.0,
       "war_rep": -4.4,
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.040806194981972,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -13956,7 +13956,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.1030319376429119,
       "sleeper_id": "306",
-      "gsis_id": "00-0024242",
+      "gsis_id": null,
       "player_id": "306"
     },
     {
@@ -14012,7 +14012,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.1718910453989281,
       "sleeper_id": "32",
-      "gsis_id": "00-0026267",
+      "gsis_id": null,
       "player_id": "32"
     },
     {
@@ -14067,9 +14067,9 @@
       "war_rep": -0.7999999999999998,
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": 0.0991831089543241,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -14320,7 +14320,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": -0.3942633231928675,
       "sleeper_id": "128",
-      "gsis_id": "00-0023496",
+      "gsis_id": null,
       "player_id": "128"
     },
     {
@@ -14376,7 +14376,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.4597183469356259,
       "sleeper_id": "92",
-      "gsis_id": "00-0022044",
+      "gsis_id": null,
       "player_id": "92"
     },
     {
@@ -14488,7 +14488,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.5251733706783844,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -14592,7 +14592,7 @@
     {
       "season": 2016,
       "week": 4,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 3.8,
@@ -14614,7 +14614,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.629901408666798,
       "sleeper_id": "769",
-      "gsis_id": "00-0026739",
+      "gsis_id": null,
       "player_id": "769"
     },
     {
@@ -14627,9 +14627,9 @@
       "war_rep": -7.300000000000001,
       "delta_to_next": 0.0,
       "pos_week_z": -0.677371929023363,
-      "sleeper_id": "6087",
+      "sleeper_id": "272",
       "gsis_id": "00-0026164",
-      "player_id": "6087"
+      "player_id": "272"
     },
     {
       "season": 2016,
@@ -14712,7 +14712,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.5733653031582642,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -14753,9 +14753,9 @@
       "war_rep": -4.6,
       "delta_to_next": 0.1,
       "pos_week_z": -0.5915422872694153,
-      "sleeper_id": "2391",
+      "sleeper_id": "362",
       "gsis_id": "00-0026957",
-      "player_id": "2391"
+      "player_id": "362"
     },
     {
       "season": 2016,
@@ -14921,9 +14921,9 @@
       "war_rep": -9.7,
       "delta_to_next": 0.1,
       "pos_week_z": -0.7346294466552116,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -14936,7 +14936,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7922399272994533,
       "sleeper_id": "1284",
-      "gsis_id": "00-0029004",
+      "gsis_id": null,
       "player_id": "1284"
     },
     {
@@ -14950,7 +14950,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.6824272078251704,
       "sleeper_id": "1868",
-      "gsis_id": "00-0030992",
+      "gsis_id": null,
       "player_id": "1868"
     },
     {
@@ -15188,7 +15188,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -0.8131754751465218,
       "sleeper_id": "564",
-      "gsis_id": "00-0027651",
+      "gsis_id": null,
       "player_id": "564"
     },
     {
@@ -15244,7 +15244,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8524484893921768,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -15356,7 +15356,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.935824925144566,
       "sleeper_id": "1206",
-      "gsis_id": "00-0029626",
+      "gsis_id": null,
       "player_id": "1206"
     },
     {
@@ -15467,9 +15467,9 @@
       "war_rep": -11.0,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9048125083863836,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -15580,7 +15580,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.5027361638704451,
       "sleeper_id": "25",
-      "gsis_id": "00-0026286",
+      "gsis_id": null,
       "player_id": "25"
     },
     {
@@ -15818,7 +15818,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -1.0794099229896787,
       "sleeper_id": "736",
-      "gsis_id": "00-0027218",
+      "gsis_id": null,
       "player_id": "736"
     },
     {
@@ -15846,7 +15846,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.045966890048191,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -15860,7 +15860,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -1.009540546374797,
       "sleeper_id": "618",
-      "gsis_id": "00-0027654",
+      "gsis_id": null,
       "player_id": "618"
     },
     {
@@ -15902,7 +15902,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6118571916872859,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -16692,7 +16692,7 @@
     {
       "season": 2016,
       "week": 5,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 14.1,
@@ -16756,7 +16756,7 @@
       "delta_to_next": 0.200000000000001,
       "pos_week_z": 0.6765027014045808,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -17007,9 +17007,9 @@
       "war_rep": 2.6000000000000014,
       "delta_to_next": 0.0,
       "pos_week_z": 0.6806483662548317,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -17022,7 +17022,7 @@
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": 0.6806483662548317,
       "sleeper_id": "1868",
-      "gsis_id": "00-0030992",
+      "gsis_id": null,
       "player_id": "1868"
     },
     {
@@ -17036,7 +17036,7 @@
       "delta_to_next": 0.200000000000001,
       "pos_week_z": 0.1222471818169669,
       "sleeper_id": "1059",
-      "gsis_id": "00-0029384",
+      "gsis_id": null,
       "player_id": "1059"
     },
     {
@@ -17050,7 +17050,7 @@
       "delta_to_next": 0.0200000000000013,
       "pos_week_z": -0.9153574497992816,
       "sleeper_id": "698",
-      "gsis_id": "00-0024296",
+      "gsis_id": null,
       "player_id": "698"
     },
     {
@@ -17232,7 +17232,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.4581009174156722,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -17274,7 +17274,7 @@
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": 0.0756975204602593,
       "sleeper_id": "1798",
-      "gsis_id": "00-0030990",
+      "gsis_id": null,
       "player_id": "1798"
     },
     {
@@ -17372,7 +17372,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.0157293549008329,
       "sleeper_id": "92",
-      "gsis_id": "00-0022044",
+      "gsis_id": null,
       "player_id": "92"
     },
     {
@@ -17400,7 +17400,7 @@
       "delta_to_next": 0.0999999999999978,
       "pos_week_z": 0.2673459612678212,
       "sleeper_id": "2732",
-      "gsis_id": "00-0031732",
+      "gsis_id": null,
       "player_id": "2732"
     },
     {
@@ -17428,7 +17428,7 @@
       "delta_to_next": 1.3000000000000016,
       "pos_week_z": 0.2514497149221673,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -17498,7 +17498,7 @@
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": -0.0810342658730419,
       "sleeper_id": "297",
-      "gsis_id": "00-0026182",
+      "gsis_id": null,
       "player_id": "297"
     },
     {
@@ -17638,7 +17638,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": -0.3307752384374585,
       "sleeper_id": "762",
-      "gsis_id": "00-0027791",
+      "gsis_id": null,
       "player_id": "762"
     },
     {
@@ -17862,7 +17862,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.4336807851229696,
       "sleeper_id": "128",
-      "gsis_id": "00-0023496",
+      "gsis_id": null,
       "player_id": "128"
     },
     {
@@ -18002,7 +18002,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.5251076604840619,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -18198,7 +18198,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6557174824284795,
       "sleeper_id": "769",
-      "gsis_id": "00-0026739",
+      "gsis_id": null,
       "player_id": "769"
     },
     {
@@ -18380,7 +18380,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.7602053399840137,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -18520,7 +18520,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -0.8817484522604085,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -18631,9 +18631,9 @@
       "war_rep": -6.3999999999999995,
       "delta_to_next": 0.0,
       "pos_week_z": -0.7500138048540502,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -18688,7 +18688,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.7659100511997043,
       "sleeper_id": "397",
-      "gsis_id": "00-0027135",
+      "gsis_id": null,
       "player_id": "397"
     },
     {
@@ -18744,7 +18744,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7977025438910129,
       "sleeper_id": "51",
-      "gsis_id": "00-0024268",
+      "gsis_id": null,
       "player_id": "51"
     },
     {
@@ -18772,7 +18772,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8135987902366673,
       "sleeper_id": "1246",
-      "gsis_id": "00-0028994",
+      "gsis_id": null,
       "player_id": "1246"
     },
     {
@@ -18786,7 +18786,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.8135987902366673,
       "sleeper_id": "165",
-      "gsis_id": "00-0029601",
+      "gsis_id": null,
       "player_id": "165"
     },
     {
@@ -18842,7 +18842,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0164307934171295,
       "sleeper_id": "1819",
-      "gsis_id": "00-0030860",
+      "gsis_id": null,
       "player_id": "1819"
     },
     {
@@ -18946,16 +18946,16 @@
     {
       "season": 2016,
       "week": 5,
-      "display_name": "Rod Smith",
+      "display_name": "Rodney Smith",
       "position": "RB",
       "team": "DAL",
       "points": 0.9,
       "war_rep": -8.799999999999999,
       "delta_to_next": 0.2999999999999999,
       "pos_week_z": -1.0409184918092609,
-      "sleeper_id": null,
+      "sleeper_id": "2892",
       "gsis_id": "00-0031900",
-      "player_id": "00-0031900"
+      "player_id": "2892"
     },
     {
       "season": 2016,
@@ -19016,7 +19016,7 @@
     {
       "season": 2016,
       "week": 5,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 0.9,
@@ -19044,16 +19044,16 @@
     {
       "season": 2016,
       "week": 5,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 0.7,
       "war_rep": -11.3,
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -1.0083640016784072,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -19066,7 +19066,7 @@
       "delta_to_next": 0.4000000000000001,
       "pos_week_z": -0.3518965547449199,
       "sleeper_id": "25",
-      "gsis_id": "00-0026286",
+      "gsis_id": null,
       "player_id": "25"
     },
     {
@@ -19094,7 +19094,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9407687610019012,
       "sleeper_id": "32",
-      "gsis_id": "00-0026267",
+      "gsis_id": null,
       "player_id": "32"
     },
     {
@@ -19136,7 +19136,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.114381586985654,
       "sleeper_id": "179",
-      "gsis_id": "00-0024217",
+      "gsis_id": null,
       "player_id": "179"
     },
     {
@@ -19150,7 +19150,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6535221730977085,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -19206,7 +19206,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.086729894845058,
       "sleeper_id": "564",
-      "gsis_id": "00-0027651",
+      "gsis_id": null,
       "player_id": "564"
     },
     {
@@ -19226,7 +19226,7 @@
     {
       "season": 2016,
       "week": 6,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 44.2,
@@ -19682,7 +19682,7 @@
       "delta_to_next": 0.120000000000001,
       "pos_week_z": 0.2548238289127303,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -19766,7 +19766,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 1.87782940884362,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -19990,7 +19990,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.7092277215598444,
       "sleeper_id": "618",
-      "gsis_id": "00-0027654",
+      "gsis_id": null,
       "player_id": "618"
     },
     {
@@ -20886,7 +20886,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": 0.2744936324272002,
       "sleeper_id": "51",
-      "gsis_id": "00-0024268",
+      "gsis_id": null,
       "player_id": "51"
     },
     {
@@ -20998,7 +20998,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.1505581688521843,
       "sleeper_id": "297",
-      "gsis_id": "00-0026182",
+      "gsis_id": null,
       "player_id": "297"
     },
     {
@@ -21054,7 +21054,7 @@
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": -0.1782931975751529,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -21109,9 +21109,9 @@
       "war_rep": -1.1000000000000003,
       "delta_to_next": 0.0,
       "pos_week_z": 0.0382125706395172,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -21124,7 +21124,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.0382125706395172,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -21180,7 +21180,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": 0.0044581332412769,
       "sleeper_id": "1759",
-      "gsis_id": "00-0028838",
+      "gsis_id": null,
       "player_id": "1759"
     },
     {
@@ -21194,7 +21194,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.2892333124670276,
       "sleeper_id": "769",
-      "gsis_id": "00-0026739",
+      "gsis_id": null,
       "player_id": "769"
     },
     {
@@ -21264,7 +21264,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.3031008268285118,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -21404,7 +21404,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.3318694017459089,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -21530,7 +21530,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.385701790455241,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -21655,9 +21655,9 @@
       "war_rep": -3.1000000000000005,
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": -0.2993318033428869,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -21908,7 +21908,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.5041330456157714,
       "sleeper_id": "1059",
-      "gsis_id": "00-0029384",
+      "gsis_id": null,
       "player_id": "1059"
     },
     {
@@ -22006,7 +22006,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.4849812090332091,
       "sleeper_id": "1787",
-      "gsis_id": "00-0028987",
+      "gsis_id": null,
       "player_id": "1787"
     },
     {
@@ -22244,7 +22244,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.636876177325291,
       "sleeper_id": "32",
-      "gsis_id": "00-0026267",
+      "gsis_id": null,
       "player_id": "32"
     },
     {
@@ -22258,7 +22258,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6548637340019011,
       "sleeper_id": "669",
-      "gsis_id": "00-0026796",
+      "gsis_id": null,
       "player_id": "669"
     },
     {
@@ -22328,7 +22328,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.8300663725649166,
       "sleeper_id": "564",
-      "gsis_id": "00-0027651",
+      "gsis_id": null,
       "player_id": "564"
     },
     {
@@ -22496,7 +22496,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.7212622708208921,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -22692,7 +22692,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.7732949891624314,
       "sleeper_id": "1579",
-      "gsis_id": "00-0030282",
+      "gsis_id": null,
       "player_id": "1579"
     },
     {
@@ -22776,7 +22776,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8562800204138538,
       "sleeper_id": "1246",
-      "gsis_id": "00-0028994",
+      "gsis_id": null,
       "player_id": "1246"
     },
     {
@@ -22818,7 +22818,7 @@
       "delta_to_next": 0.5000000000000002,
       "pos_week_z": -0.2103860619954829,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -22838,7 +22838,7 @@
     {
       "season": 2016,
       "week": 6,
-      "display_name": "EJ Manuel",
+      "display_name": "E.J. Manuel",
       "position": "QB",
       "team": "BUF",
       "points": 1.1,
@@ -22873,9 +22873,9 @@
       "war_rep": -10.7,
       "delta_to_next": 0.0,
       "pos_week_z": -1.0242115736256971,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -22902,7 +22902,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.8163609001298971,
       "sleeper_id": "306",
-      "gsis_id": "00-0024242",
+      "gsis_id": null,
       "player_id": "306"
     },
     {
@@ -22930,7 +22930,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9237888952103344,
       "sleeper_id": "2144",
-      "gsis_id": "00-0030758",
+      "gsis_id": null,
       "player_id": "2144"
     },
     {
@@ -22972,7 +22972,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9406661139094548,
       "sleeper_id": "584",
-      "gsis_id": "00-0027725",
+      "gsis_id": null,
       "player_id": "584"
     },
     {
@@ -23014,7 +23014,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8594268110973627,
       "sleeper_id": "179",
-      "gsis_id": "00-0024217",
+      "gsis_id": null,
       "player_id": "179"
     },
     {
@@ -23056,7 +23056,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8701932888392292,
       "sleeper_id": "458",
-      "gsis_id": "00-0026373",
+      "gsis_id": null,
       "player_id": "458"
     },
     {
@@ -23140,7 +23140,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8532323625372366,
       "sleeper_id": "2835",
-      "gsis_id": "00-0031706",
+      "gsis_id": null,
       "player_id": "2835"
     },
     {
@@ -23994,7 +23994,7 @@
       "delta_to_next": 0.3999999999999968,
       "pos_week_z": 0.0451184223239297,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -24218,7 +24218,7 @@
       "delta_to_next": 0.9000000000000004,
       "pos_week_z": 0.3806922005497403,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -24414,7 +24414,7 @@
       "delta_to_next": 0.9999999999999982,
       "pos_week_z": 0.1490698008392896,
       "sleeper_id": "179",
-      "gsis_id": "00-0024217",
+      "gsis_id": null,
       "player_id": "179"
     },
     {
@@ -24568,7 +24568,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.832373616326126,
       "sleeper_id": "32",
-      "gsis_id": "00-0026267",
+      "gsis_id": null,
       "player_id": "32"
     },
     {
@@ -24763,9 +24763,9 @@
       "war_rep": -5.100000000000001,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.0474370359194931,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -24784,7 +24784,7 @@
     {
       "season": 2016,
       "week": 7,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 7.4,
@@ -24862,7 +24862,7 @@
       "delta_to_next": 0.4999999999999991,
       "pos_week_z": -0.221526038697431,
       "sleeper_id": "863",
-      "gsis_id": "00-0028409",
+      "gsis_id": null,
       "player_id": "863"
     },
     {
@@ -24918,7 +24918,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.2794316386250435,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -25002,7 +25002,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.3399441828020986,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -25016,7 +25016,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.3399441828020986,
       "sleeper_id": "1332",
-      "gsis_id": "00-0029740",
+      "gsis_id": null,
       "player_id": "1332"
     },
     {
@@ -25030,7 +25030,7 @@
       "delta_to_next": 0.5999999999999996,
       "pos_week_z": 0.3399441828020986,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -25086,7 +25086,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.2685608568985477,
       "sleeper_id": "1798",
-      "gsis_id": "00-0030990",
+      "gsis_id": null,
       "player_id": "1798"
     },
     {
@@ -25100,7 +25100,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.3257561185671336,
       "sleeper_id": "458",
-      "gsis_id": "00-0026373",
+      "gsis_id": null,
       "player_id": "458"
     },
     {
@@ -25128,7 +25128,7 @@
       "delta_to_next": 0.4000000000000012,
       "pos_week_z": -0.3373372385526562,
       "sleeper_id": "609",
-      "gsis_id": "00-0026855",
+      "gsis_id": null,
       "player_id": "609"
     },
     {
@@ -25239,9 +25239,9 @@
       "war_rep": -0.4000000000000003,
       "delta_to_next": 0.5999999999999996,
       "pos_week_z": 0.1161126221093587,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -25324,7 +25324,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.4758644390664113,
       "sleeper_id": "618",
-      "gsis_id": "00-0027654",
+      "gsis_id": null,
       "player_id": "618"
     },
     {
@@ -25358,7 +25358,7 @@
     {
       "season": 2016,
       "week": 7,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 4.2,
@@ -25576,7 +25576,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.683168021234275,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -25632,7 +25632,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.696988260045466,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -25730,7 +25730,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.4210831235532168,
       "sleeper_id": "584",
-      "gsis_id": "00-0027725",
+      "gsis_id": null,
       "player_id": "584"
     },
     {
@@ -25828,7 +25828,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7384489764790387,
       "sleeper_id": "2074",
-      "gsis_id": "00-0031310",
+      "gsis_id": null,
       "player_id": "2074"
     },
     {
@@ -25883,9 +25883,9 @@
       "war_rep": -3.1000000000000005,
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.4882325917610388,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -26164,7 +26164,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.6001483721074088,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -26206,7 +26206,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.849010886968566,
       "sleeper_id": "1247",
-      "gsis_id": "00-0029033",
+      "gsis_id": null,
       "player_id": "1247"
     },
     {
@@ -26290,7 +26290,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6672978403152307,
       "sleeper_id": "51",
-      "gsis_id": "00-0024268",
+      "gsis_id": null,
       "player_id": "51"
     },
     {
@@ -26360,7 +26360,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8353253979301248,
       "sleeper_id": "669",
-      "gsis_id": "00-0026796",
+      "gsis_id": null,
       "player_id": "669"
     },
     {
@@ -26472,7 +26472,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9042918422133296,
       "sleeper_id": "769",
-      "gsis_id": "00-0026739",
+      "gsis_id": null,
       "player_id": "769"
     },
     {
@@ -26653,9 +26653,9 @@
       "war_rep": -4.4,
       "delta_to_next": 0.0,
       "pos_week_z": -0.7792136206616006,
-      "sleeper_id": "2391",
+      "sleeper_id": "362",
       "gsis_id": "00-0026957",
-      "player_id": "2391"
+      "player_id": "362"
     },
     {
       "season": 2016,
@@ -26906,7 +26906,7 @@
       "delta_to_next": 1.1102230246251563e-16,
       "pos_week_z": -0.9279743578143052,
       "sleeper_id": "3722",
-      "gsis_id": "00-0032636",
+      "gsis_id": null,
       "player_id": "3722"
     },
     {
@@ -26962,7 +26962,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.95113659778535,
       "sleeper_id": "1059",
-      "gsis_id": "00-0029384",
+      "gsis_id": null,
       "player_id": "1059"
     },
     {
@@ -26976,7 +26976,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7803680919760617,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -27606,7 +27606,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 1.4201029206760216,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -27886,7 +27886,7 @@
       "delta_to_next": 0.6799999999999997,
       "pos_week_z": -0.3938257742996492,
       "sleeper_id": "416",
-      "gsis_id": "00-0024226",
+      "gsis_id": null,
       "player_id": "416"
     },
     {
@@ -28040,7 +28040,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": 0.9808118798757818,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -28123,9 +28123,9 @@
       "war_rep": 4.800000000000001,
       "delta_to_next": 0.5,
       "pos_week_z": 0.898992327852776,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -28264,7 +28264,7 @@
       "delta_to_next": 0.7999999999999989,
       "pos_week_z": 0.702625402997562,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -28628,7 +28628,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.0025562420625959,
       "sleeper_id": "1009",
-      "gsis_id": "00-0027595",
+      "gsis_id": null,
       "player_id": "1009"
     },
     {
@@ -28992,7 +28992,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": -0.3895181122021201,
       "sleeper_id": "2621",
-      "gsis_id": "00-0031682",
+      "gsis_id": null,
       "player_id": "2621"
     },
     {
@@ -29006,7 +29006,7 @@
       "delta_to_next": 0.3999999999999986,
       "pos_week_z": -0.4033656597689388,
       "sleeper_id": "2011",
-      "gsis_id": "00-0030705",
+      "gsis_id": null,
       "player_id": "2011"
     },
     {
@@ -29131,9 +29131,9 @@
       "war_rep": -6.6,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.4664668386077973,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -29215,9 +29215,9 @@
       "war_rep": -2.5999999999999996,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.3119370420877093,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -29425,9 +29425,9 @@
       "war_rep": -8.0,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6829584503288914,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -29496,7 +29496,7 @@
       "delta_to_next": 0.2000000000000006,
       "pos_week_z": -0.7495543489394011,
       "sleeper_id": "179",
-      "gsis_id": "00-0024217",
+      "gsis_id": null,
       "player_id": "179"
     },
     {
@@ -29510,7 +29510,7 @@
       "delta_to_next": 1.4,
       "pos_week_z": 0.4238874471830056,
       "sleeper_id": "25",
-      "gsis_id": "00-0026286",
+      "gsis_id": null,
       "player_id": "25"
     },
     {
@@ -29524,7 +29524,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.5410317877521256,
       "sleeper_id": "1787",
-      "gsis_id": "00-0028987",
+      "gsis_id": null,
       "player_id": "1787"
     },
     {
@@ -29558,7 +29558,7 @@
     {
       "season": 2016,
       "week": 8,
-      "display_name": "EJ Manuel",
+      "display_name": "E.J. Manuel",
       "position": "QB",
       "team": "BUF",
       "points": 3.4000000000000004,
@@ -29636,7 +29636,7 @@
       "delta_to_next": 0.8999999999999999,
       "pos_week_z": -0.8326396343403121,
       "sleeper_id": "609",
-      "gsis_id": "00-0026855",
+      "gsis_id": null,
       "player_id": "609"
     },
     {
@@ -29650,7 +29650,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.6392152501797324,
       "sleeper_id": "32",
-      "gsis_id": "00-0026267",
+      "gsis_id": null,
       "player_id": "32"
     },
     {
@@ -29670,7 +29670,7 @@
     {
       "season": 2016,
       "week": 8,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 2.8000000000000003,
@@ -29776,7 +29776,7 @@
       "delta_to_next": 1.6,
       "pos_week_z": -0.2354930262127812,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -30042,7 +30042,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0850143006680657,
       "sleeper_id": "769",
-      "gsis_id": "00-0026739",
+      "gsis_id": null,
       "player_id": "769"
     },
     {
@@ -30056,7 +30056,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -1.0850143006680657,
       "sleeper_id": "1798",
-      "gsis_id": "00-0030990",
+      "gsis_id": null,
       "player_id": "1798"
     },
     {
@@ -30168,7 +30168,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0957430381098636,
       "sleeper_id": "1275",
-      "gsis_id": "00-0029510",
+      "gsis_id": null,
       "player_id": "1275"
     },
     {
@@ -30224,7 +30224,7 @@
       "delta_to_next": 0.3999999999999999,
       "pos_week_z": -1.109590585676682,
       "sleeper_id": "3722",
-      "gsis_id": "00-0032636",
+      "gsis_id": null,
       "player_id": "3722"
     },
     {
@@ -30266,7 +30266,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9664934582717556,
       "sleeper_id": "165",
-      "gsis_id": "00-0029601",
+      "gsis_id": null,
       "player_id": "165"
     },
     {
@@ -30336,7 +30336,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.177796419977106,
       "sleeper_id": "564",
-      "gsis_id": "00-0027651",
+      "gsis_id": null,
       "player_id": "564"
     },
     {
@@ -30364,7 +30364,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -1.177796419977106,
       "sleeper_id": "3310",
-      "gsis_id": "00-0032974",
+      "gsis_id": null,
       "player_id": "3310"
     },
     {
@@ -30448,7 +30448,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -1.2065234186444114,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -30462,7 +30462,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.1774651310639055,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -30630,7 +30630,7 @@
       "delta_to_next": 1.0399999999999991,
       "pos_week_z": 1.2892937411591645,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -30840,7 +30840,7 @@
       "delta_to_next": 1.6000000000000014,
       "pos_week_z": 1.6355781370611644,
       "sleeper_id": "863",
-      "gsis_id": "00-0028409",
+      "gsis_id": null,
       "player_id": "863"
     },
     {
@@ -30944,7 +30944,7 @@
     {
       "season": 2016,
       "week": 9,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 18.6,
@@ -31162,7 +31162,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 1.1135879516833165,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -31456,7 +31456,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.6651322445980064,
       "sleeper_id": "769",
-      "gsis_id": "00-0026739",
+      "gsis_id": null,
       "player_id": "769"
     },
     {
@@ -31568,7 +31568,7 @@
       "delta_to_next": 2.0,
       "pos_week_z": 0.7394073729460925,
       "sleeper_id": "1246",
-      "gsis_id": "00-0028994",
+      "gsis_id": null,
       "player_id": "1246"
     },
     {
@@ -31890,7 +31890,7 @@
       "delta_to_next": 0.0999999999999978,
       "pos_week_z": 0.0821398253871031,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -32436,7 +32436,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.3513673581286962,
       "sleeper_id": "247",
-      "gsis_id": "00-0026224",
+      "gsis_id": null,
       "player_id": "247"
     },
     {
@@ -32506,7 +32506,7 @@
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": -0.3546646164466003,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -32604,7 +32604,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.4401351641432526,
       "sleeper_id": "609",
-      "gsis_id": "00-0026855",
+      "gsis_id": null,
       "player_id": "609"
     },
     {
@@ -32814,7 +32814,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.5866561030517997,
       "sleeper_id": "1560",
-      "gsis_id": "00-0030391",
+      "gsis_id": null,
       "player_id": "1560"
     },
     {
@@ -32841,9 +32841,9 @@
       "war_rep": -9.0,
       "delta_to_next": 0.0,
       "pos_week_z": -0.695183400227434,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -32912,7 +32912,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6232863377789365,
       "sleeper_id": "179",
-      "gsis_id": "00-0024217",
+      "gsis_id": null,
       "player_id": "179"
     },
     {
@@ -32968,7 +32968,7 @@
       "delta_to_next": 0.3999999999999999,
       "pos_week_z": -0.6477064942636943,
       "sleeper_id": "2621",
-      "gsis_id": "00-0031682",
+      "gsis_id": null,
       "player_id": "2621"
     },
     {
@@ -33024,7 +33024,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6988422048495856,
       "sleeper_id": "2144",
-      "gsis_id": "00-0030758",
+      "gsis_id": null,
       "player_id": "2144"
     },
     {
@@ -33108,7 +33108,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.8446686359225373,
       "sleeper_id": "866",
-      "gsis_id": "00-0028052",
+      "gsis_id": null,
       "player_id": "866"
     },
     {
@@ -33122,7 +33122,7 @@
       "delta_to_next": 4.440892098500626e-16,
       "pos_week_z": -0.7634826353123125,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -33150,7 +33150,7 @@
       "delta_to_next": 1.1999999999999995,
       "pos_week_z": 1.7157491699680247,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -33248,7 +33248,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.8745656830615579,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -33275,9 +33275,9 @@
       "war_rep": -7.300000000000001,
       "delta_to_next": 0.0,
       "pos_week_z": -0.811962958159358,
-      "sleeper_id": "3557",
-      "gsis_id": "00-0029793",
-      "player_id": "3557"
+      "sleeper_id": "3653",
+      "gsis_id": null,
+      "player_id": "3653"
     },
     {
       "season": 2016,
@@ -33304,7 +33304,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9044627302005788,
       "sleeper_id": "618",
-      "gsis_id": "00-0027654",
+      "gsis_id": null,
       "player_id": "618"
     },
     {
@@ -33331,9 +33331,9 @@
       "war_rep": -7.4,
       "delta_to_next": 0.0,
       "pos_week_z": -0.8281230657750397,
-      "sleeper_id": "2391",
+      "sleeper_id": "362",
       "gsis_id": "00-0026957",
-      "player_id": "2391"
+      "player_id": "362"
     },
     {
       "season": 2016,
@@ -33346,7 +33346,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8281230657750397,
       "sleeper_id": "397",
-      "gsis_id": "00-0027135",
+      "gsis_id": null,
       "player_id": "397"
     },
     {
@@ -33430,7 +33430,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8186475896569994,
       "sleeper_id": "3722",
-      "gsis_id": "00-0032636",
+      "gsis_id": null,
       "player_id": "3722"
     },
     {
@@ -33472,7 +33472,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8308576678993782,
       "sleeper_id": "1928",
-      "gsis_id": "00-0030789",
+      "gsis_id": null,
       "player_id": "1928"
     },
     {
@@ -33514,7 +33514,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.9250837114691304,
       "sleeper_id": "51",
-      "gsis_id": "00-0024268",
+      "gsis_id": null,
       "player_id": "51"
     },
     {
@@ -33534,16 +33534,16 @@
     {
       "season": 2016,
       "week": 9,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 1.4,
       "war_rep": -11.1,
       "delta_to_next": 0.0,
       "pos_week_z": -1.0091023951871507,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -33654,7 +33654,7 @@
       "delta_to_next": 0.6000000000000001,
       "pos_week_z": -0.9735640343161758,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -33667,9 +33667,9 @@
       "war_rep": -11.4,
       "delta_to_next": 0.1,
       "pos_week_z": -1.0539479658956818,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -33864,7 +33864,7 @@
       "delta_to_next": 0.24,
       "pos_week_z": -1.9680416946090156,
       "sleeper_id": "810",
-      "gsis_id": "00-0028012",
+      "gsis_id": null,
       "player_id": "810"
     },
     {
@@ -33878,7 +33878,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7459778999860979,
       "sleeper_id": "25",
-      "gsis_id": "00-0026286",
+      "gsis_id": null,
       "player_id": "25"
     },
     {
@@ -33948,7 +33948,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8578745849840125,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -33962,7 +33962,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.001798763292683,
       "sleeper_id": "306",
-      "gsis_id": "00-0024242",
+      "gsis_id": null,
       "player_id": "306"
     },
     {
@@ -34298,7 +34298,7 @@
       "delta_to_next": 1.4199999999999982,
       "pos_week_z": 0.7172481630637326,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -34346,7 +34346,7 @@
     {
       "season": 2016,
       "week": 10,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 20.700000000000003,
@@ -34732,7 +34732,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.7451462122730116,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -34900,7 +34900,7 @@
       "delta_to_next": 0.5000000000000018,
       "pos_week_z": 0.4143438620990731,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -34956,7 +34956,7 @@
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": 0.3569503870093889,
       "sleeper_id": "762",
-      "gsis_id": "00-0027791",
+      "gsis_id": null,
       "player_id": "762"
     },
     {
@@ -35137,9 +35137,9 @@
       "war_rep": -3.700000000000001,
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": 0.1725543350833257,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -35180,7 +35180,7 @@
       "delta_to_next": 0.4600000000000008,
       "pos_week_z": -0.9162751402489572,
       "sleeper_id": "416",
-      "gsis_id": "00-0024226",
+      "gsis_id": null,
       "player_id": "416"
     },
     {
@@ -35459,9 +35459,9 @@
       "war_rep": 0.0999999999999996,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.3363816895485615,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -35642,7 +35642,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": 0.1793522509492331,
       "sleeper_id": "51",
-      "gsis_id": "00-0024268",
+      "gsis_id": null,
       "player_id": "51"
     },
     {
@@ -35838,7 +35838,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.2935088207687439,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -35978,7 +35978,7 @@
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": -0.1739639858992562,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -35991,9 +35991,9 @@
       "war_rep": -2.8999999999999995,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.2524787051989204,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -36104,7 +36104,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": -0.5465145339455818,
       "sleeper_id": "866",
-      "gsis_id": "00-0028052",
+      "gsis_id": null,
       "player_id": "866"
     },
     {
@@ -36216,7 +36216,7 @@
       "delta_to_next": 0.4999999999999995,
       "pos_week_z": -0.4683941832729972,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -36370,7 +36370,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.7462558864536118,
       "sleeper_id": "769",
-      "gsis_id": "00-0026739",
+      "gsis_id": null,
       "player_id": "769"
     },
     {
@@ -36510,7 +36510,7 @@
       "delta_to_next": 0.3000000000000002,
       "pos_week_z": -0.7995202471224198,
       "sleeper_id": "297",
-      "gsis_id": "00-0026182",
+      "gsis_id": null,
       "player_id": "297"
     },
     {
@@ -36607,9 +36607,9 @@
       "war_rep": -11.5,
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.8661006979584297,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -36692,7 +36692,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7794404197663526,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -36804,7 +36804,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -0.8138765048201629,
       "sleeper_id": "1560",
-      "gsis_id": "00-0030391",
+      "gsis_id": null,
       "player_id": "1560"
     },
     {
@@ -36888,7 +36888,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9859455094632475,
       "sleeper_id": "1247",
-      "gsis_id": "00-0029033",
+      "gsis_id": null,
       "player_id": "1247"
     },
     {
@@ -36930,7 +36930,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8483125898739733,
       "sleeper_id": "863",
-      "gsis_id": "00-0028409",
+      "gsis_id": null,
       "player_id": "863"
     },
     {
@@ -37056,7 +37056,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0572545780204794,
       "sleeper_id": "397",
-      "gsis_id": "00-0027135",
+      "gsis_id": null,
       "player_id": "397"
     },
     {
@@ -37182,7 +37182,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -0.5520524474738834,
       "sleeper_id": "2835",
-      "gsis_id": "00-0031706",
+      "gsis_id": null,
       "player_id": "2835"
     },
     {
@@ -37209,9 +37209,9 @@
       "war_rep": -7.4,
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -1.1357692973201434,
-      "sleeper_id": "2391",
+      "sleeper_id": "362",
       "gsis_id": "00-0026957",
-      "player_id": "2391"
+      "player_id": "362"
     },
     {
       "season": 2016,
@@ -37350,7 +37350,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.2339126964447238,
       "sleeper_id": "2499",
-      "gsis_id": "00-0031533",
+      "gsis_id": null,
       "player_id": "2499"
     },
     {
@@ -37546,7 +37546,7 @@
       "delta_to_next": 1.1000000000000014,
       "pos_week_z": 1.6002918818020804,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -37602,7 +37602,7 @@
       "delta_to_next": 0.0999999999999978,
       "pos_week_z": 2.0818706647155354,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -37658,7 +37658,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.3010992801482607,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -37882,7 +37882,7 @@
       "delta_to_next": 0.200000000000001,
       "pos_week_z": 0.8377928372989236,
       "sleeper_id": "762",
-      "gsis_id": "00-0027791",
+      "gsis_id": null,
       "player_id": "762"
     },
     {
@@ -38175,9 +38175,9 @@
       "war_rep": 7.400000000000001,
       "delta_to_next": 1.1000000000000014,
       "pos_week_z": 1.6652261729945002,
-      "sleeper_id": "171",
+      "sleeper_id": "749",
       "gsis_id": "00-0027125",
-      "player_id": "171"
+      "player_id": "749"
     },
     {
       "season": 2016,
@@ -38204,7 +38204,7 @@
       "delta_to_next": 1.7763568394002505e-15,
       "pos_week_z": -0.5142348876985086,
       "sleeper_id": "416",
-      "gsis_id": "00-0024226",
+      "gsis_id": null,
       "player_id": "416"
     },
     {
@@ -38484,7 +38484,7 @@
       "delta_to_next": 0.8000000000000007,
       "pos_week_z": 1.1534194650362797,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -38806,7 +38806,7 @@
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": 0.1591092176808013,
       "sleeper_id": "866",
-      "gsis_id": "00-0028052",
+      "gsis_id": null,
       "player_id": "866"
     },
     {
@@ -38945,9 +38945,9 @@
       "war_rep": -4.200000000000001,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.0640684502785873,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -39036,7 +39036,7 @@
     {
       "season": 2016,
       "week": 11,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 7.1000000000000005,
@@ -39561,9 +39561,9 @@
       "war_rep": -1.5,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.2327237023505676,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -39604,7 +39604,7 @@
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": -0.275374261347086,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -39617,9 +39617,9 @@
       "war_rep": -7.100000000000001,
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.561926324957224,
-      "sleeper_id": "2721",
-      "gsis_id": "00-0031854",
-      "player_id": "2721"
+      "sleeper_id": "1595",
+      "gsis_id": null,
+      "player_id": "1595"
     },
     {
       "season": 2016,
@@ -39702,7 +39702,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6477638895569889,
       "sleeper_id": "1512",
-      "gsis_id": "00-0030047",
+      "gsis_id": null,
       "player_id": "1512"
     },
     {
@@ -39828,7 +39828,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8055240689578806,
       "sleeper_id": "179",
-      "gsis_id": "00-0024217",
+      "gsis_id": null,
       "player_id": "179"
     },
     {
@@ -39912,7 +39912,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.818670604207935,
       "sleeper_id": "1449",
-      "gsis_id": "00-0030547",
+      "gsis_id": null,
       "player_id": "1449"
     },
     {
@@ -39982,7 +39982,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8709415575163778,
       "sleeper_id": "429",
-      "gsis_id": "00-0026998",
+      "gsis_id": null,
       "player_id": "429"
     },
     {
@@ -39996,7 +39996,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.8709415575163778,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -40024,7 +40024,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.8712567452081529,
       "sleeper_id": "1284",
-      "gsis_id": "00-0029004",
+      "gsis_id": null,
       "player_id": "1284"
     },
     {
@@ -40052,7 +40052,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9052765833562838,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -40108,7 +40108,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.9396116091961898,
       "sleeper_id": "297",
-      "gsis_id": "00-0026182",
+      "gsis_id": null,
       "player_id": "297"
     },
     {
@@ -40122,7 +40122,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": 0.5233482207488298,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -40164,13 +40164,13 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9567791221161428,
       "sleeper_id": "2478",
-      "gsis_id": "00-0031600",
+      "gsis_id": null,
       "player_id": "2478"
     },
     {
       "season": 2016,
       "week": 11,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 2.2,
@@ -40192,7 +40192,7 @@
       "delta_to_next": 1.2000000000000002,
       "pos_week_z": 0.4599120727792746,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -40219,9 +40219,9 @@
       "war_rep": -4.2,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8085062488035657,
-      "sleeper_id": "2391",
+      "sleeper_id": "362",
       "gsis_id": "00-0026957",
-      "player_id": "2391"
+      "player_id": "362"
     },
     {
       "season": 2016,
@@ -40612,7 +40612,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.094747844459078,
       "sleeper_id": "1560",
-      "gsis_id": "00-0030391",
+      "gsis_id": null,
       "player_id": "1560"
     },
     {
@@ -40639,9 +40639,9 @@
       "war_rep": -10.7,
       "delta_to_next": 0.4,
       "pos_week_z": -1.1078943797091323,
-      "sleeper_id": "7745",
+      "sleeper_id": "2529",
       "gsis_id": "00-0031959",
-      "player_id": "7745"
+      "player_id": "2529"
     },
     {
       "season": 2016,
@@ -40654,7 +40654,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -1.1971243029954846,
       "sleeper_id": "247",
-      "gsis_id": "00-0026224",
+      "gsis_id": null,
       "player_id": "247"
     },
     {
@@ -40668,7 +40668,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -0.5550662947336072,
       "sleeper_id": "2835",
-      "gsis_id": "00-0031706",
+      "gsis_id": null,
       "player_id": "2835"
     },
     {
@@ -40710,7 +40710,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.1604805207093505,
       "sleeper_id": "863",
-      "gsis_id": "00-0028409",
+      "gsis_id": null,
       "player_id": "863"
     },
     {
@@ -40766,7 +40766,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7453747386422725,
       "sleeper_id": "25",
-      "gsis_id": "00-0026286",
+      "gsis_id": null,
       "player_id": "25"
     },
     {
@@ -40780,7 +40780,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7453747386422725,
       "sleeper_id": "782",
-      "gsis_id": "00-0027905",
+      "gsis_id": null,
       "player_id": "782"
     },
     {
@@ -40836,7 +40836,7 @@
       "delta_to_next": 1.6400000000000006,
       "pos_week_z": 2.22221829504354,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -41080,7 +41080,7 @@
     {
       "season": 2016,
       "week": 12,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 24.6,
@@ -41102,7 +41102,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": 2.1212108859216214,
       "sleeper_id": "1512",
-      "gsis_id": "00-0030047",
+      "gsis_id": null,
       "player_id": "1512"
     },
     {
@@ -42138,7 +42138,7 @@
       "delta_to_next": 2.839999999999998,
       "pos_week_z": -1.3785177993631934,
       "sleeper_id": "896",
-      "gsis_id": "00-0028595",
+      "gsis_id": null,
       "player_id": "896"
     },
     {
@@ -42306,7 +42306,7 @@
       "delta_to_next": 0.200000000000001,
       "pos_week_z": 0.2255600034779532,
       "sleeper_id": "762",
-      "gsis_id": "00-0027791",
+      "gsis_id": null,
       "player_id": "762"
     },
     {
@@ -42522,7 +42522,7 @@
     {
       "season": 2016,
       "week": 12,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 8.0,
@@ -42795,9 +42795,9 @@
       "war_rep": -6.6,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.1965297300112684,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -42824,7 +42824,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.2098500783786987,
       "sleeper_id": "247",
-      "gsis_id": "00-0026224",
+      "gsis_id": null,
       "player_id": "247"
     },
     {
@@ -42838,7 +42838,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.0977541822117316,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -42907,9 +42907,9 @@
       "war_rep": -6.8999999999999995,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.2364907751135595,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -43048,7 +43048,7 @@
       "delta_to_next": 0.6000000000000005,
       "pos_week_z": 0.059637654502642,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -43117,9 +43117,9 @@
       "war_rep": -2.1000000000000005,
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": -0.0610747064183687,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -43244,7 +43244,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.2019057941595478,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -43369,9 +43369,9 @@
       "war_rep": -9.5,
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.58281983266675,
-      "sleeper_id": "2721",
-      "gsis_id": "00-0031854",
-      "player_id": "2721"
+      "sleeper_id": "1595",
+      "gsis_id": null,
+      "player_id": "1595"
     },
     {
       "season": 2016,
@@ -43440,7 +43440,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6094605294016108,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -43482,7 +43482,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.5018969143238378,
       "sleeper_id": "1449",
-      "gsis_id": "00-0030547",
+      "gsis_id": null,
       "player_id": "1449"
     },
     {
@@ -43524,7 +43524,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.5288397631313115,
       "sleeper_id": "895",
-      "gsis_id": "00-0028121",
+      "gsis_id": null,
       "player_id": "895"
     },
     {
@@ -43846,7 +43846,7 @@
       "delta_to_next": 1.2000000000000002,
       "pos_week_z": -0.0146315933613036,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -43860,7 +43860,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7048739646637593,
       "sleeper_id": "165",
-      "gsis_id": "00-0029601",
+      "gsis_id": null,
       "player_id": "165"
     },
     {
@@ -43930,7 +43930,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7174397047836277,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -43972,7 +43972,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.7249926914839279,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -44062,16 +44062,16 @@
     {
       "season": 2016,
       "week": 12,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 2.2,
       "war_rep": -11.5,
       "delta_to_next": 0.0,
       "pos_week_z": -0.849226800015358,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -44139,9 +44139,9 @@
       "war_rep": -7.300000000000001,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.7578539779948383,
-      "sleeper_id": "2575",
+      "sleeper_id": "886",
       "gsis_id": "00-0028063",
-      "player_id": "2575"
+      "player_id": "886"
     },
     {
       "season": 2016,
@@ -44266,7 +44266,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.91582854185251,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -44364,7 +44364,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8252111000135227,
       "sleeper_id": "863",
-      "gsis_id": "00-0028409",
+      "gsis_id": null,
       "player_id": "863"
     },
     {
@@ -44420,7 +44420,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8386825244172595,
       "sleeper_id": "1275",
-      "gsis_id": "00-0029510",
+      "gsis_id": null,
       "player_id": "1275"
     },
     {
@@ -44532,7 +44532,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.4243162074778117,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -44616,7 +44616,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9957506320570924,
       "sleeper_id": "866",
-      "gsis_id": "00-0028052",
+      "gsis_id": null,
       "player_id": "866"
     },
     {
@@ -44686,7 +44686,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.906039646435944,
       "sleeper_id": "2890",
-      "gsis_id": "00-0031746",
+      "gsis_id": null,
       "player_id": "2890"
     },
     {
@@ -44840,7 +44840,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9464539196471546,
       "sleeper_id": "1284",
-      "gsis_id": "00-0029004",
+      "gsis_id": null,
       "player_id": "1284"
     },
     {
@@ -44944,16 +44944,16 @@
     {
       "season": 2016,
       "week": 12,
-      "display_name": "Danny Vitale",
+      "display_name": "Dan Vitale",
       "position": "RB",
       "team": "CLE",
       "points": 0.0999999999999999,
       "war_rep": -9.2,
       "delta_to_next": 0.0,
       "pos_week_z": -1.013811041665839,
-      "sleeper_id": null,
+      "sleeper_id": "3353",
       "gsis_id": "00-0032794",
-      "player_id": "00-0032794"
+      "player_id": "3353"
     },
     {
       "season": 2016,
@@ -45176,7 +45176,7 @@
       "delta_to_next": 1.5,
       "pos_week_z": 2.695065929010029,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -45462,7 +45462,7 @@
     {
       "season": 2016,
       "week": 13,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 17.0,
@@ -45708,7 +45708,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": 0.7768604070768317,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -46281,9 +46281,9 @@
       "war_rep": 2.3,
       "delta_to_next": 0.0,
       "pos_week_z": 0.5323587020266723,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -46428,7 +46428,7 @@
     {
       "season": 2016,
       "week": 13,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 8.4,
@@ -46478,7 +46478,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.0549870151269154,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -46506,7 +46506,7 @@
       "delta_to_next": 5.9,
       "pos_week_z": 1.0402394323156303,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -46646,7 +46646,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": 0.2079526179791689,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -46702,7 +46702,7 @@
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": 0.1770568004508352,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -46716,7 +46716,7 @@
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": -0.1264656476636703,
       "sleeper_id": "1449",
-      "gsis_id": "00-0030547",
+      "gsis_id": null,
       "player_id": "1449"
     },
     {
@@ -46842,7 +46842,7 @@
       "delta_to_next": 0.4999999999999991,
       "pos_week_z": -0.1997083007507381,
       "sleeper_id": "1275",
-      "gsis_id": "00-0029510",
+      "gsis_id": null,
       "player_id": "1275"
     },
     {
@@ -47114,16 +47114,16 @@
     {
       "season": 2016,
       "week": 13,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 5.1,
       "war_rep": -7.0,
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": -0.4840764395277003,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -47290,7 +47290,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.5683051043174839,
       "sleeper_id": "1009",
-      "gsis_id": "00-0027595",
+      "gsis_id": null,
       "player_id": "1009"
     },
     {
@@ -47836,7 +47836,7 @@
       "delta_to_next": 0.54,
       "pos_week_z": -1.3891506179898472,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -47850,7 +47850,7 @@
       "delta_to_next": 1.0,
       "pos_week_z": -0.4714385604583151,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -47990,7 +47990,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6416823640500068,
       "sleeper_id": "2555",
-      "gsis_id": "00-0032190",
+      "gsis_id": null,
       "player_id": "2555"
     },
     {
@@ -48032,7 +48032,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0231398941823158,
       "sleeper_id": "866",
-      "gsis_id": "00-0028052",
+      "gsis_id": null,
       "player_id": "866"
     },
     {
@@ -48102,7 +48102,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6725781815783405,
       "sleeper_id": "165",
-      "gsis_id": "00-0029601",
+      "gsis_id": null,
       "player_id": "165"
     },
     {
@@ -48129,9 +48129,9 @@
       "war_rep": -8.1,
       "delta_to_next": 0.1,
       "pos_week_z": -0.7734424165994352,
-      "sleeper_id": "2575",
+      "sleeper_id": "886",
       "gsis_id": "00-0028063",
-      "player_id": "2575"
+      "player_id": "886"
     },
     {
       "season": 2016,
@@ -48312,7 +48312,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7498177253991747,
       "sleeper_id": "1246",
-      "gsis_id": "00-0028994",
+      "gsis_id": null,
       "player_id": "1246"
     },
     {
@@ -48326,7 +48326,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.141060024888013,
       "sleeper_id": "1742",
-      "gsis_id": "00-0029394",
+      "gsis_id": null,
       "player_id": "1742"
     },
     {
@@ -48423,9 +48423,9 @@
       "war_rep": -11.0,
       "delta_to_next": 0.1,
       "pos_week_z": -1.1579057578459695,
-      "sleeper_id": "2721",
-      "gsis_id": "00-0031854",
-      "player_id": "2721"
+      "sleeper_id": "1595",
+      "gsis_id": null,
+      "player_id": "1595"
     },
     {
       "season": 2016,
@@ -48480,7 +48480,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8710992873821923,
       "sleeper_id": "863",
-      "gsis_id": "00-0028409",
+      "gsis_id": null,
       "player_id": "863"
     },
     {
@@ -48494,7 +48494,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8710992873821923,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -48592,7 +48592,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.9077206139257262,
       "sleeper_id": "2011",
-      "gsis_id": "00-0030705",
+      "gsis_id": null,
       "player_id": "2011"
     },
     {
@@ -48620,7 +48620,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9321348316214154,
       "sleeper_id": "179",
-      "gsis_id": "00-0024217",
+      "gsis_id": null,
       "player_id": "179"
     },
     {
@@ -48648,7 +48648,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9321348316214154,
       "sleeper_id": "895",
-      "gsis_id": "00-0028121",
+      "gsis_id": null,
       "player_id": "895"
     },
     {
@@ -48690,7 +48690,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.6152804603640485,
       "sleeper_id": "686",
-      "gsis_id": "00-0020679",
+      "gsis_id": null,
       "player_id": "686"
     },
     {
@@ -48746,7 +48746,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.6270580563210382,
       "sleeper_id": "896",
-      "gsis_id": "00-0028595",
+      "gsis_id": null,
       "player_id": "896"
     },
     {
@@ -48760,7 +48760,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9565490493171048,
       "sleeper_id": "762",
-      "gsis_id": "00-0027791",
+      "gsis_id": null,
       "player_id": "762"
     },
     {
@@ -48774,7 +48774,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9565490493171048,
       "sleeper_id": "2890",
-      "gsis_id": "00-0031746",
+      "gsis_id": null,
       "player_id": "2890"
     },
     {
@@ -49018,7 +49018,7 @@
     {
       "season": 2016,
       "week": 14,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 19.4,
@@ -49746,16 +49746,16 @@
     {
       "season": 2016,
       "week": 14,
-      "display_name": "Robert Griffin III",
+      "display_name": "Robert Griffin",
       "position": "QB",
       "team": "CLE",
       "points": 12.26,
       "war_rep": -0.4000000000000021,
       "delta_to_next": 0.6399999999999988,
       "pos_week_z": -0.2415567781382042,
-      "sleeper_id": null,
+      "sleeper_id": "1169",
       "gsis_id": "00-0029665",
-      "player_id": "00-0029665"
+      "player_id": "1169"
     },
     {
       "season": 2016,
@@ -49838,7 +49838,7 @@
       "delta_to_next": 0.0199999999999995,
       "pos_week_z": -0.3396282728379132,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -49894,7 +49894,7 @@
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": 0.5455298166087341,
       "sleeper_id": "1009",
-      "gsis_id": "00-0027595",
+      "gsis_id": null,
       "player_id": "1009"
     },
     {
@@ -50342,7 +50342,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.0110619706676264,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -50467,9 +50467,9 @@
       "war_rep": -5.2,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.0675362419707717,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -50509,9 +50509,9 @@
       "war_rep": -5.5,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.1146951695538106,
-      "sleeper_id": "1414",
+      "sleeper_id": "1604",
       "gsis_id": "00-0029848",
-      "player_id": "1414"
+      "player_id": "1604"
     },
     {
       "season": 2016,
@@ -50566,7 +50566,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.1745401640273619,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -50874,7 +50874,7 @@
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": -0.3976487350520443,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -50958,7 +50958,7 @@
       "delta_to_next": 4.000000000000001,
       "pos_week_z": 0.6256325757748935,
       "sleeper_id": "126",
-      "gsis_id": "00-0026393",
+      "gsis_id": null,
       "player_id": "126"
     },
     {
@@ -51014,7 +51014,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.0679345340739417,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -51168,7 +51168,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.1986346702814168,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -51196,7 +51196,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.2639847383851542,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -51377,9 +51377,9 @@
       "war_rep": -3.4999999999999996,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.37290151855805,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -51405,9 +51405,9 @@
       "war_rep": -9.1,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6806023005502778,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -51426,7 +51426,7 @@
     {
       "season": 2016,
       "week": 14,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 3.2,
@@ -51476,7 +51476,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.5982784526087397,
       "sleeper_id": "458",
-      "gsis_id": "00-0026373",
+      "gsis_id": null,
       "player_id": "458"
     },
     {
@@ -51588,7 +51588,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.6326356111423649,
       "sleeper_id": "1284",
-      "gsis_id": "00-0029004",
+      "gsis_id": null,
       "player_id": "1284"
     },
     {
@@ -51602,7 +51602,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.503601654765525,
       "sleeper_id": "165",
-      "gsis_id": "00-0029601",
+      "gsis_id": null,
       "player_id": "165"
     },
     {
@@ -51630,7 +51630,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7749201557163556,
       "sleeper_id": "1798",
-      "gsis_id": "00-0030990",
+      "gsis_id": null,
       "player_id": "1798"
     },
     {
@@ -51644,7 +51644,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7906397982440353,
       "sleeper_id": "2478",
-      "gsis_id": "00-0031600",
+      "gsis_id": null,
       "player_id": "2478"
     },
     {
@@ -51686,7 +51686,7 @@
       "delta_to_next": 0.3000000000000002,
       "pos_week_z": -0.6669927696759901,
       "sleeper_id": "2621",
-      "gsis_id": "00-0031682",
+      "gsis_id": null,
       "player_id": "2621"
     },
     {
@@ -51742,7 +51742,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.6125184349384208,
       "sleeper_id": "51",
-      "gsis_id": "00-0024268",
+      "gsis_id": null,
       "player_id": "51"
     },
     {
@@ -51923,9 +51923,9 @@
       "war_rep": -4.8,
       "delta_to_next": 0.0,
       "pos_week_z": -0.6560851470075793,
-      "sleeper_id": "2391",
+      "sleeper_id": "362",
       "gsis_id": "00-0026957",
-      "player_id": "2391"
+      "player_id": "362"
     },
     {
       "season": 2016,
@@ -52008,7 +52008,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7471594729211156,
       "sleeper_id": "1275",
-      "gsis_id": "00-0029510",
+      "gsis_id": null,
       "player_id": "1275"
     },
     {
@@ -52162,7 +52162,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9635558660485112,
       "sleeper_id": "247",
-      "gsis_id": "00-0026224",
+      "gsis_id": null,
       "player_id": "247"
     },
     {
@@ -52218,7 +52218,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.7815166314547408,
       "sleeper_id": "1059",
-      "gsis_id": "00-0029384",
+      "gsis_id": null,
       "player_id": "1059"
     },
     {
@@ -52232,7 +52232,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.7867852832150543,
       "sleeper_id": "397",
-      "gsis_id": "00-0027135",
+      "gsis_id": null,
       "player_id": "397"
     },
     {
@@ -52315,9 +52315,9 @@
       "war_rep": -11.1,
       "delta_to_next": 0.0,
       "pos_week_z": -0.9949951511038706,
-      "sleeper_id": "2721",
-      "gsis_id": "00-0031854",
-      "player_id": "2721"
+      "sleeper_id": "1595",
+      "gsis_id": null,
+      "player_id": "1595"
     },
     {
       "season": 2016,
@@ -52358,7 +52358,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8303519952842124,
       "sleeper_id": "2499",
-      "gsis_id": "00-0031533",
+      "gsis_id": null,
       "player_id": "2499"
     },
     {
@@ -52406,16 +52406,16 @@
     {
       "season": 2016,
       "week": 14,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 1.1,
       "war_rep": -11.3,
       "delta_to_next": 0.1,
       "pos_week_z": -1.02643443615923,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -52526,7 +52526,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.057873721214589,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -52540,7 +52540,7 @@
       "delta_to_next": 0.6000000000000001,
       "pos_week_z": -0.7456169053755577,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -52666,7 +52666,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8960404932334916,
       "sleeper_id": "179",
-      "gsis_id": "00-0024217",
+      "gsis_id": null,
       "player_id": "179"
     },
     {
@@ -52694,7 +52694,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9074928794113668,
       "sleeper_id": "762",
-      "gsis_id": "00-0027791",
+      "gsis_id": null,
       "player_id": "762"
     },
     {
@@ -52722,7 +52722,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9074928794113668,
       "sleeper_id": "736",
-      "gsis_id": "00-0027218",
+      "gsis_id": null,
       "player_id": "736"
     },
     {
@@ -52750,7 +52750,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9189452655892418,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -53036,16 +53036,16 @@
     {
       "season": 2016,
       "week": 15,
-      "display_name": "Robert Griffin III",
+      "display_name": "Robert Griffin",
       "position": "QB",
       "team": "CLE",
       "points": 18.64,
       "war_rep": 4.159999999999998,
       "delta_to_next": 1.2199999999999989,
       "pos_week_z": 0.6548971227021522,
-      "sleeper_id": null,
+      "sleeper_id": "1169",
       "gsis_id": "00-0029665",
-      "player_id": "00-0029665"
+      "player_id": "1169"
     },
     {
       "season": 2016,
@@ -53142,7 +53142,7 @@
       "delta_to_next": 1.1799999999999995,
       "pos_week_z": 0.4943709388140034,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -53274,7 +53274,7 @@
     {
       "season": 2016,
       "week": 15,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 16.3,
@@ -53757,9 +53757,9 @@
       "war_rep": 5.1,
       "delta_to_next": 0.0,
       "pos_week_z": 1.6715406818325684,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -53884,7 +53884,7 @@
       "delta_to_next": 8.6,
       "pos_week_z": 2.016499131685142,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -54080,7 +54080,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": 0.4783608285487166,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -54436,16 +54436,16 @@
     {
       "season": 2016,
       "week": 15,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 7.5,
       "war_rep": -6.0,
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": -0.0356074075040337,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -54500,7 +54500,7 @@
       "delta_to_next": 0.4000000000000012,
       "pos_week_z": -0.1359277640587731,
       "sleeper_id": "458",
-      "gsis_id": "00-0026373",
+      "gsis_id": null,
       "player_id": "458"
     },
     {
@@ -54716,7 +54716,7 @@
     {
       "season": 2016,
       "week": 15,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 5.9,
@@ -54892,7 +54892,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.4110586599849646,
       "sleeper_id": "2621",
-      "gsis_id": "00-0031682",
+      "gsis_id": null,
       "player_id": "2621"
     },
     {
@@ -55074,7 +55074,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.4908364165793269,
       "sleeper_id": "3552",
-      "gsis_id": "00-0032739",
+      "gsis_id": null,
       "player_id": "3552"
     },
     {
@@ -55199,9 +55199,9 @@
       "war_rep": -9.4,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.5348908368124199,
-      "sleeper_id": "2721",
-      "gsis_id": "00-0031854",
-      "player_id": "2721"
+      "sleeper_id": "1595",
+      "gsis_id": null,
+      "player_id": "1595"
     },
     {
       "season": 2016,
@@ -55312,7 +55312,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.5944792572690921,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -55340,7 +55340,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.5789452570455127,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -55382,7 +55382,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6083148705342414,
       "sleeper_id": "1009",
-      "gsis_id": "00-0027595",
+      "gsis_id": null,
       "player_id": "1009"
     },
     {
@@ -55578,7 +55578,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.6992910271457365,
       "sleeper_id": "1284",
-      "gsis_id": "00-0029004",
+      "gsis_id": null,
       "player_id": "1284"
     },
     {
@@ -55732,7 +55732,7 @@
       "delta_to_next": 0.3000000000000002,
       "pos_week_z": -0.5406956051687203,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -55788,7 +55788,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.7647983833186393,
       "sleeper_id": "1275",
-      "gsis_id": "00-0029510",
+      "gsis_id": null,
       "player_id": "1275"
     },
     {
@@ -55920,16 +55920,16 @@
     {
       "season": 2016,
       "week": 15,
-      "display_name": "Danny Vitale",
+      "display_name": "Dan Vitale",
       "position": "RB",
       "team": "CLE",
       "points": 2.2,
       "war_rep": -9.2,
       "delta_to_next": 0.3,
       "pos_week_z": -0.8041027970223809,
-      "sleeper_id": null,
+      "sleeper_id": "3353",
       "gsis_id": "00-0032794",
-      "player_id": "00-0032794"
+      "player_id": "3353"
     },
     {
       "season": 2016,
@@ -56026,7 +56026,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6747705316536469,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -56053,9 +56053,9 @@
       "war_rep": -11.5,
       "delta_to_next": 0.0,
       "pos_week_z": -0.8432717784440701,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -56082,7 +56082,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.8434072107261225,
       "sleeper_id": "895",
-      "gsis_id": "00-0028121",
+      "gsis_id": null,
       "player_id": "895"
     },
     {
@@ -56180,7 +56180,7 @@
       "delta_to_next": 0.3000000000000002,
       "pos_week_z": -0.4329906110980364,
       "sleeper_id": "25",
-      "gsis_id": "00-0026286",
+      "gsis_id": null,
       "player_id": "25"
     },
     {
@@ -56207,9 +56207,9 @@
       "war_rep": -5.7,
       "delta_to_next": 0.1,
       "pos_week_z": -0.7418079948961102,
-      "sleeper_id": "2391",
+      "sleeper_id": "362",
       "gsis_id": "00-0026957",
-      "player_id": "2391"
+      "player_id": "362"
     },
     {
       "season": 2016,
@@ -56264,7 +56264,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9020110054215272,
       "sleeper_id": "2478",
-      "gsis_id": "00-0031600",
+      "gsis_id": null,
       "player_id": "2478"
     },
     {
@@ -56362,7 +56362,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.507217573000557,
       "sleeper_id": "126",
-      "gsis_id": "00-0026393",
+      "gsis_id": null,
       "player_id": "126"
     },
     {
@@ -56494,16 +56494,16 @@
     {
       "season": 2016,
       "week": 15,
-      "display_name": "Josh Perkins",
+      "display_name": "Joshua Perkins",
       "position": "TE",
       "team": "ATL",
       "points": 1.3,
       "war_rep": -6.1000000000000005,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8311912792193946,
-      "sleeper_id": null,
+      "sleeper_id": "3668",
       "gsis_id": "00-0032599",
-      "player_id": "00-0032599"
+      "player_id": "3668"
     },
     {
       "season": 2016,
@@ -56516,7 +56516,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9460654256546204,
       "sleeper_id": "1589",
-      "gsis_id": "00-0030450",
+      "gsis_id": null,
       "player_id": "1589"
     },
     {
@@ -56558,7 +56558,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.5567022142689041,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -56872,7 +56872,7 @@
     {
       "season": 2016,
       "week": 15,
-      "display_name": "EJ Manuel",
+      "display_name": "E.J. Manuel",
       "position": "QB",
       "team": "BUF",
       "points": 0.1,
@@ -56894,7 +56894,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0792336929485724,
       "sleeper_id": "2104",
-      "gsis_id": "00-0031057",
+      "gsis_id": null,
       "player_id": "2104"
     },
     {
@@ -57104,7 +57104,7 @@
       "delta_to_next": 0.4200000000000017,
       "pos_week_z": 0.969018151971743,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -57306,7 +57306,7 @@
     {
       "season": 2016,
       "week": 16,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 22.5,
@@ -57468,7 +57468,7 @@
       "delta_to_next": 0.1999999999999957,
       "pos_week_z": 1.33859833842854,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -58126,7 +58126,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.9467722915758716,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -58272,16 +58272,16 @@
     {
       "season": 2016,
       "week": 16,
-      "display_name": "Robert Griffin III",
+      "display_name": "Robert Griffin",
       "position": "QB",
       "team": "CLE",
       "points": 10.760000000000002,
       "war_rep": -7.719999999999995,
       "delta_to_next": 2.5000000000000018,
       "pos_week_z": -0.6209838546992407,
-      "sleeper_id": null,
+      "sleeper_id": "1169",
       "gsis_id": "00-0029665",
-      "player_id": "00-0029665"
+      "player_id": "1169"
     },
     {
       "season": 2016,
@@ -58300,16 +58300,16 @@
     {
       "season": 2016,
       "week": 16,
-      "display_name": "Josh Perkins",
+      "display_name": "Joshua Perkins",
       "position": "TE",
       "team": "ATL",
       "points": 10.4,
       "war_rep": 2.0999999999999996,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.7535473804963935,
-      "sleeper_id": null,
+      "sleeper_id": "3668",
       "gsis_id": "00-0032599",
-      "player_id": "00-0032599"
+      "player_id": "3668"
     },
     {
       "season": 2016,
@@ -58868,7 +58868,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.1536874066799598,
       "sleeper_id": "247",
-      "gsis_id": "00-0026224",
+      "gsis_id": null,
       "player_id": "247"
     },
     {
@@ -58882,7 +58882,7 @@
       "delta_to_next": 8.881784197001252e-16,
       "pos_week_z": -0.3357951794608624,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -58924,7 +58924,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.3357951794608625,
       "sleeper_id": "458",
-      "gsis_id": "00-0026373",
+      "gsis_id": null,
       "player_id": "458"
     },
     {
@@ -58966,7 +58966,7 @@
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": -0.1906862268066169,
       "sleeper_id": "1009",
-      "gsis_id": "00-0027595",
+      "gsis_id": null,
       "player_id": "1009"
     },
     {
@@ -59050,7 +59050,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.0,
       "sleeper_id": "1996",
-      "gsis_id": "00-0030828",
+      "gsis_id": null,
       "player_id": "1996"
     },
     {
@@ -59134,7 +59134,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": 0.0157795381929311,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -59294,7 +59294,7 @@
     {
       "season": 2016,
       "week": 16,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 5.4,
@@ -59792,7 +59792,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6346720683265012,
       "sleeper_id": "1798",
-      "gsis_id": "00-0030990",
+      "gsis_id": null,
       "player_id": "1798"
     },
     {
@@ -59834,7 +59834,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.5287633930310528,
       "sleeper_id": "397",
-      "gsis_id": "00-0027135",
+      "gsis_id": null,
       "player_id": "397"
     },
     {
@@ -59889,9 +59889,9 @@
       "war_rep": -9.7,
       "delta_to_next": 0.1,
       "pos_week_z": -0.6716708884531584,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -59988,7 +59988,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7333355886642534,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -60002,7 +60002,7 @@
       "delta_to_next": 0.3999999999999999,
       "pos_week_z": 0.0457974545411568,
       "sleeper_id": "25",
-      "gsis_id": "00-0026286",
+      "gsis_id": null,
       "player_id": "25"
     },
     {
@@ -60184,7 +60184,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7826673488331294,
       "sleeper_id": "769",
-      "gsis_id": "00-0026739",
+      "gsis_id": null,
       "player_id": "769"
     },
     {
@@ -60232,16 +60232,16 @@
     {
       "season": 2016,
       "week": 16,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 2.1,
       "war_rep": -10.7,
       "delta_to_next": 0.1,
       "pos_week_z": -0.7950002888753485,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -60254,22 +60254,22 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.1207387437903229,
       "sleeper_id": "126",
-      "gsis_id": "00-0026393",
+      "gsis_id": null,
       "player_id": "126"
     },
     {
       "season": 2016,
       "week": 16,
-      "display_name": "Danny Vitale",
+      "display_name": "Dan Vitale",
       "position": "RB",
       "team": "CLE",
       "points": 2.0,
       "war_rep": -9.7,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9864621305438408,
-      "sleeper_id": null,
+      "sleeper_id": "3353",
       "gsis_id": "00-0032794",
-      "player_id": "00-0032794"
+      "player_id": "3353"
     },
     {
       "season": 2016,
@@ -60338,7 +60338,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9992203060552718,
       "sleeper_id": "863",
-      "gsis_id": "00-0028409",
+      "gsis_id": null,
       "player_id": "863"
     },
     {
@@ -60352,7 +60352,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9992203060552718,
       "sleeper_id": "2011",
-      "gsis_id": "00-0030705",
+      "gsis_id": null,
       "player_id": "2011"
     },
     {
@@ -60380,7 +60380,7 @@
       "delta_to_next": 0.3999999999999999,
       "pos_week_z": -1.0119784815667028,
       "sleeper_id": "1059",
-      "gsis_id": "00-0029384",
+      "gsis_id": null,
       "player_id": "1059"
     },
     {
@@ -60422,7 +60422,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7746860071322069,
       "sleeper_id": "51",
-      "gsis_id": "00-0024268",
+      "gsis_id": null,
       "player_id": "51"
     },
     {
@@ -60464,7 +60464,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8443320490442244,
       "sleeper_id": "2478",
-      "gsis_id": "00-0031600",
+      "gsis_id": null,
       "player_id": "2478"
     },
     {
@@ -60520,7 +60520,7 @@
       "delta_to_next": 1.0,
       "pos_week_z": -0.2872749421218026,
       "sleeper_id": "53",
-      "gsis_id": "00-0022999",
+      "gsis_id": null,
       "player_id": "53"
     },
     {
@@ -60610,7 +60610,7 @@
     {
       "season": 2016,
       "week": 16,
-      "display_name": "DeMarcus Ayers",
+      "display_name": "Demarcus Ayers",
       "position": "WR",
       "team": "PIT",
       "points": 1.4,
@@ -60632,7 +60632,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8449496111611081,
       "sleeper_id": "469",
-      "gsis_id": "00-0026008",
+      "gsis_id": null,
       "player_id": "469"
     },
     {
@@ -60848,16 +60848,16 @@
     {
       "season": 2016,
       "week": 16,
-      "display_name": "Matt McGloin",
+      "display_name": "Matthew McGloin",
       "position": "QB",
       "team": "LV",
       "points": 0.8599999999999999,
       "war_rep": -17.619999999999997,
       "delta_to_next": 0.2199999999999998,
       "pos_week_z": -1.5819740785113738,
-      "sleeper_id": null,
+      "sleeper_id": "1747",
       "gsis_id": "00-0030419",
-      "player_id": "00-0030419"
+      "player_id": "1747"
     },
     {
       "season": 2016,
@@ -60981,9 +60981,9 @@
       "war_rep": -12.2,
       "delta_to_next": 0.0,
       "pos_week_z": -0.9799943895086336,
-      "sleeper_id": "2721",
-      "gsis_id": "00-0031854",
-      "player_id": "2721"
+      "sleeper_id": "1595",
+      "gsis_id": null,
+      "player_id": "1595"
     },
     {
       "season": 2016,
@@ -61052,7 +61052,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6869618181173539,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -61066,7 +61066,7 @@
       "delta_to_next": 1.6653345369377348e-16,
       "pos_week_z": -1.216109289749598,
       "sleeper_id": "1720",
-      "gsis_id": "00-0030348",
+      "gsis_id": null,
       "player_id": "1720"
     },
     {
@@ -61080,7 +61080,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.0,
       "sleeper_id": "865",
-      "gsis_id": "00-0028059",
+      "gsis_id": null,
       "player_id": "865"
     },
     {
@@ -61402,7 +61402,7 @@
       "delta_to_next": 3.8999999999999986,
       "pos_week_z": 1.8342042099661509,
       "sleeper_id": "306",
-      "gsis_id": "00-0024242",
+      "gsis_id": null,
       "player_id": "306"
     },
     {
@@ -61590,16 +61590,16 @@
     {
       "season": 2016,
       "week": 17,
-      "display_name": "Robert Griffin III",
+      "display_name": "Robert Griffin",
       "position": "QB",
       "team": "CLE",
       "points": 17.48,
       "war_rep": 1.34,
       "delta_to_next": 0.620000000000001,
       "pos_week_z": 0.3850012489822482,
-      "sleeper_id": null,
+      "sleeper_id": "1169",
       "gsis_id": "00-0029665",
-      "player_id": "00-0029665"
+      "player_id": "1169"
     },
     {
       "season": 2016,
@@ -61766,7 +61766,7 @@
       "delta_to_next": 0.5999999999999996,
       "pos_week_z": 1.2113427285907867,
       "sleeper_id": "527",
-      "gsis_id": "00-0027714",
+      "gsis_id": null,
       "player_id": "527"
     },
     {
@@ -61948,7 +61948,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": 0.9300870818878156,
       "sleeper_id": "1009",
-      "gsis_id": "00-0027595",
+      "gsis_id": null,
       "player_id": "1009"
     },
     {
@@ -62018,7 +62018,7 @@
       "delta_to_next": 1.1199999999999992,
       "pos_week_z": -0.1972891972396596,
       "sleeper_id": "980",
-      "gsis_id": "00-0027974",
+      "gsis_id": null,
       "player_id": "980"
     },
     {
@@ -62046,7 +62046,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.4612715802978718,
       "sleeper_id": "380",
-      "gsis_id": "00-0027155",
+      "gsis_id": null,
       "player_id": "380"
     },
     {
@@ -62116,13 +62116,13 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.7405731187689535,
       "sleeper_id": "1306",
-      "gsis_id": "00-0028249",
+      "gsis_id": null,
       "player_id": "1306"
     },
     {
       "season": 2016,
       "week": 17,
-      "display_name": "DeMarcus Ayers",
+      "display_name": "Demarcus Ayers",
       "position": "WR",
       "team": "PIT",
       "points": 11.7,
@@ -62718,7 +62718,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.0506749060045547,
       "sleeper_id": "458",
-      "gsis_id": "00-0026373",
+      "gsis_id": null,
       "player_id": "458"
     },
     {
@@ -62760,7 +62760,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.0121814677895564,
       "sleeper_id": "2088",
-      "gsis_id": "00-0031055",
+      "gsis_id": null,
       "player_id": "2088"
     },
     {
@@ -62830,7 +62830,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.2086682851122268,
       "sleeper_id": "1951",
-      "gsis_id": "00-0031302",
+      "gsis_id": null,
       "player_id": "1951"
     },
     {
@@ -63096,7 +63096,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.2187791615004345,
       "sleeper_id": "1275",
-      "gsis_id": "00-0029510",
+      "gsis_id": null,
       "player_id": "1275"
     },
     {
@@ -63116,7 +63116,7 @@
     {
       "season": 2016,
       "week": 17,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "NYG",
       "points": 6.9,
@@ -63375,9 +63375,9 @@
       "war_rep": -6.099999999999999,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.3103679494356444,
-      "sleeper_id": "12994",
+      "sleeper_id": "2685",
       "gsis_id": "00-0031697",
-      "player_id": "12994"
+      "player_id": "2685"
     },
     {
       "season": 2016,
@@ -63418,7 +63418,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.4112463525754269,
       "sleeper_id": "1284",
-      "gsis_id": "00-0029004",
+      "gsis_id": null,
       "player_id": "1284"
     },
     {
@@ -63558,7 +63558,7 @@
       "delta_to_next": 8.881784197001252e-16,
       "pos_week_z": -0.3965106599442179,
       "sleeper_id": "3552",
-      "gsis_id": "00-0032739",
+      "gsis_id": null,
       "player_id": "3552"
     },
     {
@@ -63600,7 +63600,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.4309677441476474,
       "sleeper_id": "169",
-      "gsis_id": "00-0020337",
+      "gsis_id": null,
       "player_id": "169"
     },
     {
@@ -63781,9 +63781,9 @@
       "war_rep": -7.699999999999999,
       "delta_to_next": 0.0,
       "pos_week_z": -0.58602462306308,
-      "sleeper_id": "2721",
-      "gsis_id": "00-0031854",
-      "player_id": "2721"
+      "sleeper_id": "1595",
+      "gsis_id": null,
+      "player_id": "1595"
     },
     {
       "season": 2016,
@@ -63830,7 +63830,7 @@
     {
       "season": 2016,
       "week": 17,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "points": 3.9,
@@ -63852,7 +63852,7 @@
       "delta_to_next": 0.3000000000000002,
       "pos_week_z": -0.6204817072665094,
       "sleeper_id": "2478",
-      "gsis_id": "00-0031600",
+      "gsis_id": null,
       "player_id": "2478"
     },
     {
@@ -63880,7 +63880,7 @@
       "delta_to_next": 1.1999999999999995,
       "pos_week_z": -0.0722811698606512,
       "sleeper_id": "126",
-      "gsis_id": "00-0026393",
+      "gsis_id": null,
       "player_id": "126"
     },
     {
@@ -63950,7 +63950,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.6893958756733685,
       "sleeper_id": "831",
-      "gsis_id": "00-0027918",
+      "gsis_id": null,
       "player_id": "831"
     },
     {
@@ -64187,9 +64187,9 @@
       "war_rep": -5.9,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6843386411108655,
-      "sleeper_id": "3557",
-      "gsis_id": "00-0029793",
-      "player_id": "3557"
+      "sleeper_id": "3653",
+      "gsis_id": null,
+      "player_id": "3653"
     },
     {
       "season": 2016,
@@ -64216,7 +64216,7 @@
       "delta_to_next": 0.9000000000000004,
       "pos_week_z": -0.2985526581200807,
       "sleeper_id": "182",
-      "gsis_id": "00-0026069",
+      "gsis_id": null,
       "player_id": "182"
     },
     {
@@ -64292,7 +64292,7 @@
     {
       "season": 2016,
       "week": 17,
-      "display_name": "EJ Manuel",
+      "display_name": "E.J. Manuel",
       "position": "QB",
       "team": "BUF",
       "points": 2.24,
@@ -64397,9 +64397,9 @@
       "war_rep": -6.4,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.762672582007628,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2016,
@@ -64496,7 +64496,7 @@
       "delta_to_next": 0.3999999999999999,
       "pos_week_z": -0.7783393701869805,
       "sleeper_id": "1477",
-      "gsis_id": "00-0030514",
+      "gsis_id": null,
       "player_id": "1477"
     },
     {
@@ -64524,7 +64524,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.8859987572270749,
       "sleeper_id": "1449",
-      "gsis_id": "00-0030547",
+      "gsis_id": null,
       "player_id": "1449"
     },
     {
@@ -64544,16 +64544,16 @@
     {
       "season": 2016,
       "week": 17,
-      "display_name": "Charles D. Johnson",
+      "display_name": "Charles Johnson",
       "position": "WR",
       "team": "MIN",
       "points": 1.6,
       "war_rep": -10.1,
       "delta_to_next": 0.1,
       "pos_week_z": -0.9995096335042332,
-      "sleeper_id": null,
+      "sleeper_id": "1530",
       "gsis_id": "00-0030113",
-      "player_id": "00-0030113"
+      "player_id": "1530"
     },
     {
       "season": 2016,
@@ -64580,7 +64580,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9116610493704072,
       "sleeper_id": "659",
-      "gsis_id": "00-0026932",
+      "gsis_id": null,
       "player_id": "659"
     },
     {
@@ -64622,7 +64622,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.016738175605948,
       "sleeper_id": "539",
-      "gsis_id": "00-0027816",
+      "gsis_id": null,
       "player_id": "539"
     },
     {
@@ -64650,7 +64650,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.016738175605948,
       "sleeper_id": "1742",
-      "gsis_id": "00-0029394",
+      "gsis_id": null,
       "player_id": "1742"
     },
     {
@@ -64663,9 +64663,9 @@
       "war_rep": -10.2,
       "delta_to_next": 0.1,
       "pos_week_z": -1.016738175605948,
-      "sleeper_id": "1414",
+      "sleeper_id": "1604",
       "gsis_id": "00-0029848",
-      "player_id": "1414"
+      "player_id": "1604"
     },
     {
       "season": 2016,
@@ -64719,9 +64719,9 @@
       "war_rep": -10.3,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -1.0339667177076628,
-      "sleeper_id": "2563",
-      "gsis_id": "00-0030856",
-      "player_id": "2563"
+      "sleeper_id": "1978",
+      "gsis_id": null,
+      "player_id": "1978"
     },
     {
       "season": 2016,
@@ -64761,9 +64761,9 @@
       "war_rep": -10.4,
       "delta_to_next": 0.0,
       "pos_week_z": -1.0511952598093774,
-      "sleeper_id": "11702",
+      "sleeper_id": "2196",
       "gsis_id": "00-0030801",
-      "player_id": "11702"
+      "player_id": "2196"
     },
     {
       "season": 2016,
@@ -64790,7 +64790,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8880068874424479,
       "sleeper_id": "165",
-      "gsis_id": "00-0029601",
+      "gsis_id": null,
       "player_id": "165"
     },
     {
@@ -64888,7 +64888,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0856523440128067,
       "sleeper_id": "3470",
-      "gsis_id": "00-0032679",
+      "gsis_id": null,
       "player_id": "3470"
     },
     {
@@ -64958,7 +64958,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.988647925800404,
       "sleeper_id": "1704",
-      "gsis_id": "00-0028795",
+      "gsis_id": null,
       "player_id": "1704"
     },
     {
@@ -65020,16 +65020,16 @@
     {
       "season": 2016,
       "week": 17,
-      "display_name": "Matt McGloin",
+      "display_name": "Matthew McGloin",
       "position": "QB",
       "team": "LV",
       "points": 0.84,
       "war_rep": -15.3,
       "delta_to_next": 0.0,
       "pos_week_z": -1.4500959148686126,
-      "sleeper_id": null,
+      "sleeper_id": "1747",
       "gsis_id": "00-0030419",
-      "player_id": "00-0030419"
+      "player_id": "1747"
     },
     {
       "season": 2016,
@@ -65042,7 +65042,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.0014790718720703,
       "sleeper_id": "1059",
-      "gsis_id": "00-0029384",
+      "gsis_id": null,
       "player_id": "1059"
     },
     {
@@ -65146,16 +65146,16 @@
     {
       "season": 2016,
       "week": 17,
-      "display_name": "Danny Vitale",
+      "display_name": "Dan Vitale",
       "position": "RB",
       "team": "CLE",
       "points": 0.4,
       "war_rep": -9.9,
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.0528036561587348,
-      "sleeper_id": null,
+      "sleeper_id": "3353",
       "gsis_id": "00-0032794",
-      "player_id": "00-0032794"
+      "player_id": "3353"
     },
     {
       "season": 2016,
@@ -65196,7 +65196,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0912970943737337,
       "sleeper_id": "2011",
-      "gsis_id": "00-0030705",
+      "gsis_id": null,
       "player_id": "2011"
     },
     {

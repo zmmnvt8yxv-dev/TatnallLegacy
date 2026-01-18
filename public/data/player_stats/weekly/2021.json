@@ -116,7 +116,7 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 31.4,
@@ -536,7 +536,7 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 21.0,
@@ -964,7 +964,7 @@
       "delta_to_next": 3.4000000000000004,
       "pos_week_z": 1.5461772755966223,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -1104,7 +1104,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.5789061435449153,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -1320,16 +1320,16 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 11.2,
       "war_rep": 0.9000000000000004,
       "delta_to_next": 1.7763568394002505e-15,
       "pos_week_z": 0.4602715241378369,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -1398,7 +1398,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": 0.1713265763389524,
       "sleeper_id": "6895",
-      "gsis_id": "00-0036277",
+      "gsis_id": null,
       "player_id": "6895"
     },
     {
@@ -1496,7 +1496,7 @@
       "delta_to_next": 1.7763568394002505e-15,
       "pos_week_z": 0.0949054074878347,
       "sleeper_id": "7533",
-      "gsis_id": "00-0036999",
+      "gsis_id": null,
       "player_id": "7533"
     },
     {
@@ -1614,7 +1614,7 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 9.4,
@@ -2126,7 +2126,7 @@
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": 0.114591629332206,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -2258,16 +2258,16 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 6.1000000000000005,
       "war_rep": -1.7000000000000002,
       "delta_to_next": 0.0,
       "pos_week_z": -0.053830211404784,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -2314,7 +2314,7 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Henry Ruggs III",
+      "display_name": "Henry Ruggs",
       "position": "WR",
       "team": "LV",
       "points": 5.6000000000000005,
@@ -2336,7 +2336,7 @@
       "delta_to_next": 8.881784197001252e-16,
       "pos_week_z": -0.4782533588955505,
       "sleeper_id": "6805",
-      "gsis_id": "00-0036412",
+      "gsis_id": null,
       "player_id": "6805"
     },
     {
@@ -2546,13 +2546,13 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6183588351226003,
       "sleeper_id": "6849",
-      "gsis_id": "00-0036255",
+      "gsis_id": null,
       "player_id": "6849"
     },
     {
       "season": 2021,
       "week": 1,
-      "display_name": "K.J. Hill",
+      "display_name": "KJ Hill",
       "position": "WR",
       "team": "LAC",
       "points": 4.5,
@@ -2560,7 +2560,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6183588351226003,
       "sleeper_id": "6866",
-      "gsis_id": "00-0036382",
+      "gsis_id": null,
       "player_id": "6866"
     },
     {
@@ -2672,8 +2672,8 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": -0.6693062810233456,
       "sleeper_id": null,
-      "gsis_id": "00-0036955",
-      "player_id": "00-0036955"
+      "gsis_id": null,
+      "player_id": "espn:4362630"
     },
     {
       "season": 2021,
@@ -2692,16 +2692,16 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 3.9,
       "war_rep": -12.3,
       "delta_to_next": 0.1,
       "pos_week_z": -0.6947800039737182,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -2742,7 +2742,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7075168654489045,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -2755,9 +2755,9 @@
       "war_rep": -4.1000000000000005,
       "delta_to_next": 0.1,
       "pos_week_z": -0.4580426291735606,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -2938,7 +2938,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7712011728248361,
       "sleeper_id": "7612",
-      "gsis_id": "00-0036620",
+      "gsis_id": null,
       "player_id": "7612"
     },
     {
@@ -2966,7 +2966,7 @@
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": -0.5254113654683568,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -3014,7 +3014,7 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 3.1000000000000005,
@@ -3120,8 +3120,8 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.7944044964711352,
       "sleeper_id": null,
-      "gsis_id": "00-0036650",
-      "player_id": "00-0036650"
+      "gsis_id": null,
+      "player_id": "espn:4241205"
     },
     {
       "season": 2021,
@@ -3246,7 +3246,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.8858329261015132,
       "sleeper_id": "7540",
-      "gsis_id": "00-0036991",
+      "gsis_id": null,
       "player_id": "7540"
     },
     {
@@ -3288,7 +3288,7 @@
       "delta_to_next": 0.4000000000000001,
       "pos_week_z": -0.7106753902790459,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -3322,7 +3322,7 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 2.2,
@@ -3554,7 +3554,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.9862961231525074,
       "sleeper_id": "7572",
-      "gsis_id": "00-0036669",
+      "gsis_id": null,
       "player_id": "7572"
     },
     {
@@ -3708,7 +3708,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -1.030578806232824,
       "sleeper_id": "7529",
-      "gsis_id": "00-0036569",
+      "gsis_id": null,
       "player_id": "7529"
     },
     {
@@ -3756,16 +3756,16 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Tyron Johnson",
+      "display_name": "Tyron Billy-Johnson",
       "position": "WR",
       "team": "JAX",
       "points": 1.1,
       "war_rep": -15.1,
       "delta_to_next": 0.0,
       "pos_week_z": -1.0514121252789357,
-      "sleeper_id": null,
+      "sleeper_id": "6063",
       "gsis_id": "00-0035457",
-      "player_id": "00-0035457"
+      "player_id": "6063"
     },
     {
       "season": 2021,
@@ -3988,7 +3988,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -1.1278332941300535,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -4022,16 +4022,16 @@
     {
       "season": 2021,
       "week": 1,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 0.4,
       "war_rep": -9.9,
       "delta_to_next": 0.2,
       "pos_week_z": -1.1339050667535628,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -4072,7 +4072,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.1533070170804265,
       "sleeper_id": "7587",
-      "gsis_id": "00-0036626",
+      "gsis_id": null,
       "player_id": "7587"
     },
     {
@@ -4128,7 +4128,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.078904059385462,
       "sleeper_id": "7318",
-      "gsis_id": "00-0035908",
+      "gsis_id": null,
       "player_id": "7318"
     },
     {
@@ -4156,7 +4156,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.163426855473774,
       "sleeper_id": "8085",
-      "gsis_id": "00-0036698",
+      "gsis_id": null,
       "player_id": "8085"
     },
     {
@@ -4386,7 +4386,7 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Henry Ruggs III",
+      "display_name": "Henry Ruggs",
       "position": "WR",
       "team": "LV",
       "points": 24.0,
@@ -4576,7 +4576,7 @@
       "delta_to_next": 0.8999999999999986,
       "pos_week_z": 1.6254876181644136,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -5052,7 +5052,7 @@
       "delta_to_next": 0.200000000000001,
       "pos_week_z": 0.8386949902140045,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -5108,7 +5108,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.7844334296657004,
       "sleeper_id": "6895",
-      "gsis_id": "00-0036277",
+      "gsis_id": null,
       "player_id": "6895"
     },
     {
@@ -5128,7 +5128,7 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 14.2,
@@ -5212,7 +5212,7 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 13.1,
@@ -5346,7 +5346,7 @@
       "delta_to_next": 1.8000000000000025,
       "pos_week_z": 0.4615824983335531,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -6046,7 +6046,7 @@
       "delta_to_next": 0.4200000000000008,
       "pos_week_z": -1.21438456452583,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -6060,7 +6060,7 @@
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": 0.4006193793332649,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -6276,16 +6276,16 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 5.8,
       "war_rep": -3.8000000000000016,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.3026413550394523,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -6508,7 +6508,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.4907132432194457,
       "sleeper_id": "7587",
-      "gsis_id": "00-0036626",
+      "gsis_id": null,
       "player_id": "7587"
     },
     {
@@ -6592,7 +6592,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.1293479610403367,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -6661,9 +6661,9 @@
       "war_rep": -5.500000000000001,
       "delta_to_next": 0.0,
       "pos_week_z": -0.5088604900766124,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -6675,9 +6675,9 @@
       "war_rep": -5.500000000000001,
       "delta_to_next": 0.7000000000000002,
       "pos_week_z": -0.5088604900766124,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -6836,16 +6836,16 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 3.5,
       "war_rep": -10.8,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.68062870513851,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -6998,13 +6998,13 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7213248755497381,
       "sleeper_id": null,
-      "gsis_id": "00-0036955",
-      "player_id": "00-0036955"
+      "gsis_id": null,
+      "player_id": "espn:4362630"
     },
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 3.1,
@@ -7018,7 +7018,7 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 3.0999999999999996,
@@ -7082,7 +7082,7 @@
       "delta_to_next": 4.440892098500626e-16,
       "pos_week_z": -0.4685270588794417,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -7144,16 +7144,16 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 2.7,
       "war_rep": -6.900000000000001,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6786880130483914,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -7256,16 +7256,16 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 2.5,
       "war_rep": -4.4,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.5321231397242739,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -7284,16 +7284,16 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 2.4000000000000004,
       "war_rep": -7.200000000000001,
       "delta_to_next": 0.3000000000000002,
       "pos_week_z": -0.7150796251137725,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -7403,9 +7403,9 @@
       "war_rep": -4.9,
       "delta_to_next": 0.0,
       "pos_week_z": -0.6381166077989943,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -7432,7 +7432,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8841095571946503,
       "sleeper_id": "7210",
-      "gsis_id": "00-0035864",
+      "gsis_id": null,
       "player_id": "7210"
     },
     {
@@ -7460,7 +7460,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.7757323118894079,
       "sleeper_id": "7794",
-      "gsis_id": "00-0036857",
+      "gsis_id": null,
       "player_id": "7794"
     },
     {
@@ -7474,7 +7474,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.6593153014139383,
       "sleeper_id": "7439",
-      "gsis_id": "00-0036173",
+      "gsis_id": null,
       "player_id": "7439"
     },
     {
@@ -7634,16 +7634,16 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Joseph Fortson",
+      "display_name": "Jody Fortson",
       "position": "TE",
       "team": "KC",
       "points": 1.6,
       "war_rep": -5.300000000000001,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.7229113822587705,
-      "sleeper_id": null,
+      "sleeper_id": "6665",
       "gsis_id": "00-0035547",
-      "player_id": "00-0035547"
+      "player_id": "6665"
     },
     {
       "season": 2021,
@@ -7698,7 +7698,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9519365078800304,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -7950,7 +7950,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -0.8289048503334908,
       "sleeper_id": "7842",
-      "gsis_id": "00-0036887",
+      "gsis_id": null,
       "player_id": "7842"
     },
     {
@@ -8006,7 +8006,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0197634585654105,
       "sleeper_id": "6805",
-      "gsis_id": "00-0036412",
+      "gsis_id": null,
       "player_id": "6805"
     },
     {
@@ -8048,7 +8048,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9091682227958056,
       "sleeper_id": "7572",
-      "gsis_id": "00-0036669",
+      "gsis_id": null,
       "player_id": "7572"
     },
     {
@@ -8138,7 +8138,7 @@
     {
       "season": 2021,
       "week": 2,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 0.7,
@@ -8258,7 +8258,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9698209095714412,
       "sleeper_id": "6973",
-      "gsis_id": "00-0036096",
+      "gsis_id": null,
       "player_id": "6973"
     },
     {
@@ -8272,8 +8272,8 @@
       "delta_to_next": 0.2,
       "pos_week_z": -0.9698209095714412,
       "sleeper_id": null,
-      "gsis_id": "00-0036650",
-      "player_id": "00-0036650"
+      "gsis_id": null,
+      "player_id": "espn:4241205"
     },
     {
       "season": 2021,
@@ -8300,7 +8300,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6766938546080655,
       "sleeper_id": "7204",
-      "gsis_id": "00-0036187",
+      "gsis_id": null,
       "player_id": "7204"
     },
     {
@@ -9020,7 +9020,7 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 16.6,
@@ -9048,30 +9048,30 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 16.5,
       "war_rep": 8.6,
       "delta_to_next": 0.5999999999999996,
       "pos_week_z": 2.064228293688368,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 16.4,
       "war_rep": 5.399999999999999,
       "delta_to_next": 0.7999999999999972,
       "pos_week_z": 1.070405460197977,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -9566,7 +9566,7 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "CLE",
       "points": 11.2,
@@ -9616,7 +9616,7 @@
       "delta_to_next": 1.259999999999998,
       "pos_week_z": -0.8530259208274513,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -9636,7 +9636,7 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Henry Ruggs III",
+      "display_name": "Henry Ruggs",
       "position": "WR",
       "team": "LV",
       "points": 10.5,
@@ -9714,7 +9714,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": 0.8607029634460334,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -9972,16 +9972,16 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 8.7,
       "war_rep": -3.700000000000001,
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": 0.1282652188182916,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -10120,7 +10120,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.0077467112355601,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -10168,21 +10168,21 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Joseph Fortson",
+      "display_name": "Jody Fortson",
       "position": "TE",
       "team": "KC",
       "points": 7.7,
       "war_rep": -0.2000000000000001,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.3831135466832022,
-      "sleeper_id": null,
+      "sleeper_id": "6665",
       "gsis_id": "00-0035547",
-      "player_id": "00-0035547"
+      "player_id": "6665"
     },
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 7.7,
@@ -10218,7 +10218,7 @@
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": -0.0379715845808606,
       "sleeper_id": "6857",
-      "gsis_id": "00-0036254",
+      "gsis_id": null,
       "player_id": "6857"
     },
     {
@@ -10322,7 +10322,7 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 6.800000000000001,
@@ -10344,8 +10344,8 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.1588710779620624,
       "sleeper_id": null,
-      "gsis_id": "00-0036955",
-      "player_id": "00-0036955"
+      "gsis_id": null,
+      "player_id": "espn:4362630"
     },
     {
       "season": 2021,
@@ -10392,16 +10392,16 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 6.300000000000001,
       "war_rep": -4.699999999999999,
       "delta_to_next": 1.3000000000000007,
       "pos_week_z": -0.2812008499107528,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -10498,7 +10498,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.3402203180338651,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -10518,7 +10518,7 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "MIA",
       "points": 5.5,
@@ -10616,16 +10616,16 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 4.9,
       "war_rep": -6.1,
       "delta_to_next": 0.0,
       "pos_week_z": -0.4685522196287947,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -10974,7 +10974,7 @@
       "delta_to_next": 4.440892098500626e-16,
       "pos_week_z": -0.6425213486526907,
       "sleeper_id": "7794",
-      "gsis_id": "00-0036857",
+      "gsis_id": null,
       "player_id": "7794"
     },
     {
@@ -11022,7 +11022,7 @@
     {
       "season": 2021,
       "week": 3,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 3.5999999999999996,
@@ -11086,7 +11086,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.6726939248321702,
       "sleeper_id": "6957",
-      "gsis_id": "00-0036133",
+      "gsis_id": null,
       "player_id": "6957"
     },
     {
@@ -11114,7 +11114,7 @@
       "delta_to_next": 0.3000000000000002,
       "pos_week_z": -0.6878063615048203,
       "sleeper_id": "6805",
-      "gsis_id": "00-0036412",
+      "gsis_id": null,
       "player_id": "6805"
     },
     {
@@ -11268,7 +11268,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7784809815407218,
       "sleeper_id": "7039",
-      "gsis_id": "00-0035891",
+      "gsis_id": null,
       "player_id": "7039"
     },
     {
@@ -11296,7 +11296,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.793593418213372,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -11436,7 +11436,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.8164904776765867,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -11520,22 +11520,22 @@
       "delta_to_next": 1.3,
       "pos_week_z": -0.3538812102191874,
       "sleeper_id": "7318",
-      "gsis_id": "00-0035908",
+      "gsis_id": null,
       "player_id": "7318"
     },
     {
       "season": 2021,
       "week": 3,
-      "display_name": "Scott Miller",
+      "display_name": "Scotty Miller",
       "position": "WR",
       "team": "TB",
       "points": 2.1,
       "war_rep": -10.3,
       "delta_to_next": 0.1,
       "pos_week_z": -0.8691556015766232,
-      "sleeper_id": null,
+      "sleeper_id": "6290",
       "gsis_id": "00-0035298",
-      "player_id": "00-0035298"
+      "player_id": "6290"
     },
     {
       "season": 2021,
@@ -11688,7 +11688,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.9235484032297534,
       "sleeper_id": "6973",
-      "gsis_id": "00-0036096",
+      "gsis_id": null,
       "player_id": "6973"
     },
     {
@@ -11828,7 +11828,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.990055094957825,
       "sleeper_id": "6895",
-      "gsis_id": "00-0036277",
+      "gsis_id": null,
       "player_id": "6895"
     },
     {
@@ -11953,9 +11953,9 @@
       "war_rep": -9.9,
       "delta_to_next": 0.0,
       "pos_week_z": -0.9770773660063368,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -11967,9 +11967,9 @@
       "war_rep": -9.9,
       "delta_to_next": 0.1,
       "pos_week_z": -0.9770773660063368,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -12038,7 +12038,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8777225135706724,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -12079,9 +12079,9 @@
       "war_rep": -6.9,
       "delta_to_next": 0.0,
       "pos_week_z": -0.8968260902411858,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -12094,7 +12094,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.8968260902411858,
       "sleeper_id": "7828",
-      "gsis_id": "00-0036637",
+      "gsis_id": null,
       "player_id": "7828"
     },
     {
@@ -12136,7 +12136,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.915929666911699,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -12192,7 +12192,7 @@
       "delta_to_next": 0.4,
       "pos_week_z": -0.9350332435822124,
       "sleeper_id": "7439",
-      "gsis_id": "00-0036173",
+      "gsis_id": null,
       "player_id": "7439"
     },
     {
@@ -12276,7 +12276,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.043988569477066,
       "sleeper_id": "7771",
-      "gsis_id": "00-0036860",
+      "gsis_id": null,
       "player_id": "7771"
     },
     {
@@ -12318,7 +12318,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -1.1109545883390268,
       "sleeper_id": "7713",
-      "gsis_id": "00-0036877",
+      "gsis_id": null,
       "player_id": "7713"
     },
     {
@@ -12332,7 +12332,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.0707530508653575,
       "sleeper_id": "7529",
-      "gsis_id": "00-0036569",
+      "gsis_id": null,
       "player_id": "7529"
     },
     {
@@ -12346,7 +12346,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0114475502642652,
       "sleeper_id": "7842",
-      "gsis_id": "00-0036887",
+      "gsis_id": null,
       "player_id": "7842"
     },
     {
@@ -12360,8 +12360,8 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0841352915595035,
       "sleeper_id": null,
-      "gsis_id": "00-0036650",
-      "player_id": "00-0036650"
+      "gsis_id": null,
+      "player_id": "espn:4241205"
     },
     {
       "season": 2021,
@@ -12416,7 +12416,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0975175322536497,
       "sleeper_id": "8085",
-      "gsis_id": "00-0036698",
+      "gsis_id": null,
       "player_id": "8085"
     },
     {
@@ -12464,7 +12464,7 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 35.7,
@@ -13500,7 +13500,7 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 14.0,
@@ -13598,16 +13598,16 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 12.8,
       "war_rep": 0.0,
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": 0.4514523039266547,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -13830,13 +13830,13 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": 0.248415456290103,
       "sleeper_id": "6895",
-      "gsis_id": "00-0036277",
+      "gsis_id": null,
       "player_id": "6895"
     },
     {
       "season": 2021,
       "week": 4,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 10.2,
@@ -13850,16 +13850,16 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 10.0,
       "war_rep": -3.5,
       "delta_to_next": 0.0,
       "pos_week_z": 0.2088508893386357,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -13900,7 +13900,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.1956627003548133,
       "sleeper_id": "6957",
-      "gsis_id": "00-0036133",
+      "gsis_id": null,
       "player_id": "6957"
     },
     {
@@ -13956,7 +13956,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.1429099444195237,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -14054,7 +14054,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.5178810384052691,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -14235,9 +14235,9 @@
       "war_rep": -4.299999999999999,
       "delta_to_next": 0.0,
       "pos_week_z": -0.0858440937373113,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -14249,9 +14249,9 @@
       "war_rep": -4.299999999999999,
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": -0.0858440937373113,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -14424,7 +14424,7 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Henry Ruggs III",
+      "display_name": "Henry Ruggs",
       "position": "WR",
       "team": "LV",
       "points": 7.5,
@@ -14501,9 +14501,9 @@
       "war_rep": -5.499999999999998,
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": -0.2357872744807436,
-      "sleeper_id": "1631",
-      "gsis_id": "00-0035957",
-      "player_id": "1631"
+      "sleeper_id": "2892",
+      "gsis_id": "00-0031900",
+      "player_id": "2892"
     },
     {
       "season": 2021,
@@ -14564,7 +14564,7 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 7.0,
@@ -14634,16 +14634,16 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Joseph Fortson",
+      "display_name": "Jody Fortson",
       "position": "TE",
       "team": "KC",
       "points": 6.7,
       "war_rep": -2.2,
       "delta_to_next": 0.5,
       "pos_week_z": 0.1125981570401383,
-      "sleeper_id": null,
+      "sleeper_id": "6665",
       "gsis_id": "00-0035547",
-      "player_id": "00-0035547"
+      "player_id": "6665"
     },
     {
       "season": 2021,
@@ -14936,7 +14936,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.4769349378201291,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -15054,7 +15054,7 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "CLE",
       "points": 4.1,
@@ -15166,16 +15166,16 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 3.8,
       "war_rep": -5.1000000000000005,
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": -0.3984106933767656,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -15314,8 +15314,8 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.7605884070827572,
       "sleeper_id": null,
-      "gsis_id": "00-0036650",
-      "player_id": "00-0036650"
+      "gsis_id": null,
+      "player_id": "espn:4241205"
     },
     {
       "season": 2021,
@@ -15468,7 +15468,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7670750954642221,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -15538,7 +15538,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.7934514734318668,
       "sleeper_id": "7587",
-      "gsis_id": "00-0036626",
+      "gsis_id": null,
       "player_id": "7587"
     },
     {
@@ -15608,7 +15608,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8730457926403316,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -15656,16 +15656,16 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 2.1,
       "war_rep": -10.7,
       "delta_to_next": 0.1,
       "pos_week_z": -0.8855410577022843,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -15776,7 +15776,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7332095953740475,
       "sleeper_id": "7439",
-      "gsis_id": "00-0036173",
+      "gsis_id": null,
       "player_id": "7439"
     },
     {
@@ -15846,7 +15846,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.8725806073348013,
       "sleeper_id": "7210",
-      "gsis_id": "00-0035864",
+      "gsis_id": null,
       "player_id": "7210"
     },
     {
@@ -15930,7 +15930,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7860725798999341,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -16028,7 +16028,7 @@
       "delta_to_next": 0.4999999999999999,
       "pos_week_z": -0.0954185731245067,
       "sleeper_id": "7204",
-      "gsis_id": "00-0036187",
+      "gsis_id": null,
       "player_id": "7204"
     },
     {
@@ -16055,9 +16055,9 @@
       "war_rep": -7.6,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8389355644258208,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -16098,7 +16098,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9979984432598584,
       "sleeper_id": "6108",
-      "gsis_id": "00-0035760",
+      "gsis_id": null,
       "player_id": "6108"
     },
     {
@@ -16140,7 +16140,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.856556559267783,
       "sleeper_id": "7842",
-      "gsis_id": "00-0036887",
+      "gsis_id": null,
       "player_id": "7842"
     },
     {
@@ -16202,7 +16202,7 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "MIA",
       "points": 1.1,
@@ -16308,7 +16308,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.927040538635632,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -16322,7 +16322,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.927040538635632,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -16336,7 +16336,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.927040538635632,
       "sleeper_id": "7602",
-      "gsis_id": "00-0036876",
+      "gsis_id": null,
       "player_id": "7602"
     },
     {
@@ -16406,8 +16406,8 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -1.0176506861568475,
       "sleeper_id": null,
-      "gsis_id": "00-0036955",
-      "player_id": "00-0036955"
+      "gsis_id": null,
+      "player_id": "espn:4362630"
     },
     {
       "season": 2021,
@@ -16426,16 +16426,16 @@
     {
       "season": 2021,
       "week": 4,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 0.5,
       "war_rep": -12.3,
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.0854652986935274,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -16504,7 +16504,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.015145512845443,
       "sleeper_id": "7531",
-      "gsis_id": "00-0036825",
+      "gsis_id": null,
       "player_id": "7531"
     },
     {
@@ -16798,7 +16798,7 @@
       "delta_to_next": 1.6799999999999962,
       "pos_week_z": 0.8213364731730016,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -17434,7 +17434,7 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 15.9,
@@ -17546,7 +17546,7 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 14.6,
@@ -17882,7 +17882,7 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 10.5,
@@ -18044,7 +18044,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.1142643301742095,
       "sleeper_id": "7210",
-      "gsis_id": "00-0035864",
+      "gsis_id": null,
       "player_id": "7210"
     },
     {
@@ -18198,7 +18198,7 @@
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": 0.3158834346774994,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -18568,7 +18568,7 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Henry Ruggs III",
+      "display_name": "Henry Ruggs",
       "position": "WR",
       "team": "LV",
       "points": 6.6000000000000005,
@@ -18694,7 +18694,7 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 6.300000000000001,
@@ -18716,7 +18716,7 @@
       "delta_to_next": 0.6000000000000005,
       "pos_week_z": -0.2752080734271058,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -18736,16 +18736,16 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 6.0,
       "war_rep": -7.300000000000001,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.4300863671195029,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -18792,16 +18792,16 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 5.48,
       "war_rep": -7.220000000000001,
       "delta_to_next": 0.1799999999999997,
       "pos_week_z": -0.375010376849943,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -18856,7 +18856,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.3969181995525169,
       "sleeper_id": "6895",
-      "gsis_id": "00-0036277",
+      "gsis_id": null,
       "player_id": "6895"
     },
     {
@@ -18870,7 +18870,7 @@
       "delta_to_next": 0.4999999999999991,
       "pos_week_z": -0.0974778575715136,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -19136,7 +19136,7 @@
       "delta_to_next": 8.881784197001252e-16,
       "pos_week_z": -0.518628325677928,
       "sleeper_id": "6849",
-      "gsis_id": "00-0036255",
+      "gsis_id": null,
       "player_id": "6849"
     },
     {
@@ -19247,9 +19247,9 @@
       "war_rep": -9.2,
       "delta_to_next": 0.0,
       "pos_week_z": -0.6409325451119287,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -19261,9 +19261,9 @@
       "war_rep": -9.2,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6409325451119287,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -19346,7 +19346,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.5673123761280925,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -19394,16 +19394,16 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 3.5,
       "war_rep": -3.2,
       "delta_to_next": 0.0,
       "pos_week_z": -0.3540469355191769,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -19562,7 +19562,7 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "CLE",
       "points": 3.0,
@@ -19654,7 +19654,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.4395699615017313,
       "sleeper_id": "7602",
-      "gsis_id": "00-0036876",
+      "gsis_id": null,
       "player_id": "7602"
     },
     {
@@ -19780,7 +19780,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.8184872213160765,
       "sleeper_id": "7794",
-      "gsis_id": "00-0036857",
+      "gsis_id": null,
       "player_id": "7794"
     },
     {
@@ -19808,7 +19808,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.737706552703668,
       "sleeper_id": "6957",
-      "gsis_id": "00-0036133",
+      "gsis_id": null,
       "player_id": "6957"
     },
     {
@@ -19836,8 +19836,8 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.7498775653162091,
       "sleeper_id": null,
-      "gsis_id": "00-0036955",
-      "player_id": "00-0036955"
+      "gsis_id": null,
+      "player_id": "espn:4362630"
     },
     {
       "season": 2021,
@@ -19856,16 +19856,16 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 2.3,
       "war_rep": -11.0,
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.8406815558415951,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -19912,7 +19912,7 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 2.2,
@@ -20066,16 +20066,16 @@
     {
       "season": 2021,
       "week": 5,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 1.8,
       "war_rep": -11.5,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8961673921553912,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -20102,7 +20102,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.5963621758030813,
       "sleeper_id": "7842",
-      "gsis_id": "00-0036887",
+      "gsis_id": null,
       "player_id": "7842"
     },
     {
@@ -20298,7 +20298,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8715876914416202,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -20494,7 +20494,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9081007292792436,
       "sleeper_id": "7751",
-      "gsis_id": "00-0036671",
+      "gsis_id": null,
       "player_id": "7751"
     },
     {
@@ -20508,7 +20508,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9849447302574652,
       "sleeper_id": "7572",
-      "gsis_id": "00-0036669",
+      "gsis_id": null,
       "player_id": "7572"
     },
     {
@@ -20563,9 +20563,9 @@
       "war_rep": -5.8,
       "delta_to_next": 0.0,
       "pos_week_z": -0.7246467147769128,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -20606,7 +20606,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -0.7246467147769128,
       "sleeper_id": "7075",
-      "gsis_id": "00-0036429",
+      "gsis_id": null,
       "player_id": "7075"
     },
     {
@@ -20704,7 +20704,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7674082277681902,
       "sleeper_id": "6865",
-      "gsis_id": "00-0036244",
+      "gsis_id": null,
       "player_id": "6865"
     },
     {
@@ -21130,16 +21130,16 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 22.4,
       "war_rep": 13.099999999999998,
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": 1.516974580958513,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -21354,7 +21354,7 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Henry Ruggs III",
+      "display_name": "Henry Ruggs",
       "position": "WR",
       "team": "LV",
       "points": 18.200000000000003,
@@ -21614,7 +21614,7 @@
       "delta_to_next": 0.4999999999999982,
       "pos_week_z": 0.5733500535795896,
       "sleeper_id": "7794",
-      "gsis_id": "00-0036857",
+      "gsis_id": null,
       "player_id": "7794"
     },
     {
@@ -21984,7 +21984,7 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "CLE",
       "points": 10.4,
@@ -22250,16 +22250,16 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 8.600000000000001,
       "war_rep": 0.200000000000001,
       "delta_to_next": 0.200000000000001,
       "pos_week_z": 0.5100486236069992,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -22320,7 +22320,7 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 8.4,
@@ -22356,7 +22356,7 @@
       "delta_to_next": 1.1400000000000006,
       "pos_week_z": -0.9453944890566366,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -22426,7 +22426,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.0571995110262918,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -22698,7 +22698,7 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 6.8,
@@ -22810,16 +22810,16 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 6.2,
       "war_rep": -5.900000000000001,
       "delta_to_next": 0.0,
       "pos_week_z": -0.2979822145845871,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -22832,7 +22832,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.2979822145845871,
       "sleeper_id": "7210",
-      "gsis_id": "00-0035864",
+      "gsis_id": null,
       "player_id": "7210"
     },
     {
@@ -22880,21 +22880,21 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 5.9,
       "war_rep": -3.4000000000000004,
       "delta_to_next": 0.0,
       "pos_week_z": -0.3817820899868815,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
       "week": 6,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 5.9,
@@ -23098,7 +23098,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.5387649181428825,
       "sleeper_id": "7587",
-      "gsis_id": "00-0036626",
+      "gsis_id": null,
       "player_id": "7587"
     },
     {
@@ -23391,9 +23391,9 @@
       "war_rep": -5.9,
       "delta_to_next": 0.0,
       "pos_week_z": -0.6694724946755778,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -23405,9 +23405,9 @@
       "war_rep": -5.9,
       "delta_to_next": 0.6999999999999997,
       "pos_week_z": -0.6694724946755778,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -23440,16 +23440,16 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Joseph Fortson",
+      "display_name": "Jody Fortson",
       "position": "TE",
       "team": "KC",
       "points": 3.2,
       "war_rep": -5.2,
       "delta_to_next": 0.5,
       "pos_week_z": -0.6150232814114247,
-      "sleeper_id": null,
+      "sleeper_id": "6665",
       "gsis_id": "00-0035547",
-      "player_id": "00-0035547"
+      "player_id": "6665"
     },
     {
       "season": 2021,
@@ -23462,7 +23462,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.737056556367361,
       "sleeper_id": "6857",
-      "gsis_id": "00-0036254",
+      "gsis_id": null,
       "player_id": "6857"
     },
     {
@@ -23490,7 +23490,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.7512202448119666,
       "sleeper_id": "7603",
-      "gsis_id": "00-0036572",
+      "gsis_id": null,
       "player_id": "7603"
     },
     {
@@ -23510,16 +23510,16 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 2.7,
       "war_rep": -6.6000000000000005,
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.7500258079884127,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -23560,7 +23560,7 @@
       "delta_to_next": 0.6000000000000001,
       "pos_week_z": -0.7400312708579163,
       "sleeper_id": "7842",
-      "gsis_id": "00-0036887",
+      "gsis_id": null,
       "player_id": "7842"
     },
     {
@@ -23574,7 +23574,7 @@
       "delta_to_next": 4.440892098500626e-16,
       "pos_week_z": -0.7845486565510562,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -23686,7 +23686,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.8650392603044078,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -23728,7 +23728,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.9070208177026282,
       "sleeper_id": "7540",
-      "gsis_id": "00-0036991",
+      "gsis_id": null,
       "player_id": "7540"
     },
     {
@@ -23770,7 +23770,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.921184506147234,
       "sleeper_id": "7533",
-      "gsis_id": "00-0036999",
+      "gsis_id": null,
       "player_id": "7533"
     },
     {
@@ -23896,7 +23896,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.8996248184265347,
       "sleeper_id": "7087",
-      "gsis_id": "00-0035924",
+      "gsis_id": null,
       "player_id": "7087"
     },
     {
@@ -23966,8 +23966,8 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9778392599256562,
       "sleeper_id": null,
-      "gsis_id": "00-0036955",
-      "player_id": "00-0036955"
+      "gsis_id": null,
+      "player_id": "espn:4362630"
     },
     {
       "season": 2021,
@@ -24028,7 +24028,7 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 1.3,
@@ -24078,7 +24078,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0317165795663965,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -24134,7 +24134,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8195545342007191,
       "sleeper_id": "7318",
-      "gsis_id": "00-0035908",
+      "gsis_id": null,
       "player_id": "7318"
     },
     {
@@ -24218,7 +24218,7 @@
       "delta_to_next": 0.76,
       "pos_week_z": -1.732167570072577,
       "sleeper_id": "7083",
-      "gsis_id": "00-0035993",
+      "gsis_id": null,
       "player_id": "7083"
     },
     {
@@ -24260,7 +24260,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -1.0942205742896425,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -24280,16 +24280,16 @@
     {
       "season": 2021,
       "week": 6,
-      "display_name": "Mike Boone",
+      "display_name": "Tony Romo",
       "position": "RB",
       "team": "DEN",
       "points": 0.8,
       "war_rep": -8.5,
       "delta_to_next": 0.0,
       "pos_week_z": -0.9686705155518216,
-      "sleeper_id": "5209",
-      "gsis_id": "00-0034208",
-      "player_id": "5209"
+      "sleeper_id": "142",
+      "gsis_id": "00-0021678",
+      "player_id": "142"
     },
     {
       "season": 2021,
@@ -24400,7 +24400,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -1.0911487674825011,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -24714,7 +24714,7 @@
     {
       "season": 2021,
       "week": 7,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 23.1,
@@ -24840,7 +24840,7 @@
     {
       "season": 2021,
       "week": 7,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 19.5,
@@ -25100,7 +25100,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.9811479627764208,
       "sleeper_id": "6973",
-      "gsis_id": "00-0036096",
+      "gsis_id": null,
       "player_id": "6973"
     },
     {
@@ -25688,7 +25688,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.2308819802396595,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -26038,7 +26038,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.1402929668396917,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -26058,16 +26058,16 @@
     {
       "season": 2021,
       "week": 7,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 6.5,
       "war_rep": -3.6999999999999993,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.1921367389446293,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -26212,7 +26212,7 @@
     {
       "season": 2021,
       "week": 7,
-      "display_name": "Henry Ruggs III",
+      "display_name": "Henry Ruggs",
       "position": "WR",
       "team": "LV",
       "points": 5.1000000000000005,
@@ -26276,7 +26276,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.41042226484622,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -26346,7 +26346,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.4054179290392284,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -26429,9 +26429,9 @@
       "war_rep": -5.899999999999999,
       "delta_to_next": 0.0,
       "pos_week_z": -0.4922793370593165,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -26443,9 +26443,9 @@
       "war_rep": -5.899999999999999,
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.4922793370593165,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -26528,7 +26528,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.3779702054222243,
       "sleeper_id": "7075",
-      "gsis_id": "00-0036429",
+      "gsis_id": null,
       "player_id": "7075"
     },
     {
@@ -26696,7 +26696,7 @@
       "delta_to_next": 0.54,
       "pos_week_z": -1.1265787911480307,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -26716,7 +26716,7 @@
     {
       "season": 2021,
       "week": 7,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "CLE",
       "points": 3.3000000000000003,
@@ -26794,7 +26794,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.5381720059168145,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -26808,7 +26808,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6307741469088347,
       "sleeper_id": "7533",
-      "gsis_id": "00-0036999",
+      "gsis_id": null,
       "player_id": "7533"
     },
     {
@@ -26878,7 +26878,7 @@
       "delta_to_next": 0.6000000000000001,
       "pos_week_z": 0.7071067811865483,
       "sleeper_id": "6724",
-      "gsis_id": "00-0035327",
+      "gsis_id": null,
       "player_id": "6724"
     },
     {
@@ -26892,7 +26892,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.6969220175920577,
       "sleeper_id": "7064",
-      "gsis_id": "00-0036297",
+      "gsis_id": null,
       "player_id": "7064"
     },
     {
@@ -26982,7 +26982,7 @@
     {
       "season": 2021,
       "week": 7,
-      "display_name": "PJ Walker",
+      "display_name": "P.J. Walker",
       "position": "QB",
       "team": "CAR",
       "points": 2.62,
@@ -27074,7 +27074,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.6837991393487419,
       "sleeper_id": "7751",
-      "gsis_id": "00-0036671",
+      "gsis_id": null,
       "player_id": "7751"
     },
     {
@@ -27088,7 +27088,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.6970553874587189,
       "sleeper_id": "7210",
-      "gsis_id": "00-0035864",
+      "gsis_id": null,
       "player_id": "7210"
     },
     {
@@ -27144,7 +27144,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7071067811865474,
       "sleeper_id": "7259",
-      "gsis_id": "00-0036011",
+      "gsis_id": null,
       "player_id": "7259"
     },
     {
@@ -27158,7 +27158,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6983738064114046,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -27213,9 +27213,9 @@
       "war_rep": -4.8,
       "delta_to_next": 0.0,
       "pos_week_z": -0.7339742065213134,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -27228,7 +27228,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.7339742065213134,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -27262,16 +27262,16 @@
     {
       "season": 2021,
       "week": 7,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 1.7000000000000002,
       "war_rep": -8.5,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.8469933166494015,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -27298,7 +27298,7 @@
       "delta_to_next": 0.96,
       "pos_week_z": -1.3104852977576351,
       "sleeper_id": "7083",
-      "gsis_id": "00-0035993",
+      "gsis_id": null,
       "player_id": "7083"
     },
     {
@@ -27346,16 +27346,16 @@
     {
       "season": 2021,
       "week": 7,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 1.4,
       "war_rep": -8.799999999999999,
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.8879218527559497,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -27494,7 +27494,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8585756069059947,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -27536,7 +27536,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.9152075434936486,
       "sleeper_id": "6753",
-      "gsis_id": "00-0035715",
+      "gsis_id": null,
       "player_id": "6753"
     },
     {
@@ -27578,7 +27578,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8693866128884177,
       "sleeper_id": "6857",
-      "gsis_id": "00-0036254",
+      "gsis_id": null,
       "player_id": "6857"
     },
     {
@@ -27634,7 +27634,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8826428609983944,
       "sleeper_id": "6849",
-      "gsis_id": "00-0036255",
+      "gsis_id": null,
       "player_id": "6849"
     },
     {
@@ -27648,7 +27648,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8826428609983944,
       "sleeper_id": "7713",
-      "gsis_id": "00-0036877",
+      "gsis_id": null,
       "player_id": "7713"
     },
     {
@@ -27788,7 +27788,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9297764071258124,
       "sleeper_id": "7828",
-      "gsis_id": "00-0036637",
+      "gsis_id": null,
       "player_id": "7828"
     },
     {
@@ -27844,7 +27844,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9834217703378956,
       "sleeper_id": "7087",
-      "gsis_id": "00-0035924",
+      "gsis_id": null,
       "player_id": "7087"
     },
     {
@@ -28026,7 +28026,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0516359971821427,
       "sleeper_id": "7572",
-      "gsis_id": "00-0036669",
+      "gsis_id": null,
       "player_id": "7572"
     },
     {
@@ -28144,7 +28144,7 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 26.0,
@@ -28194,7 +28194,7 @@
       "delta_to_next": 1.7999999999999972,
       "pos_week_z": 0.9521353254650016,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -28284,7 +28284,7 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 22.1,
@@ -28424,16 +28424,16 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 19.3,
       "war_rep": 6.800000000000001,
       "delta_to_next": 0.0,
       "pos_week_z": 1.6487136260691797,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -28774,16 +28774,16 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 14.0,
       "war_rep": 3.1999999999999993,
       "delta_to_next": 0.0,
       "pos_week_z": 0.8494740304483129,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -29090,7 +29090,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": 1.936573811765064,
       "sleeper_id": "7568",
-      "gsis_id": "00-0036556",
+      "gsis_id": null,
       "player_id": "7568"
     },
     {
@@ -29188,7 +29188,7 @@
       "delta_to_next": 0.6000000000000014,
       "pos_week_z": 0.3757325018859183,
       "sleeper_id": "6753",
-      "gsis_id": "00-0035715",
+      "gsis_id": null,
       "player_id": "6753"
     },
     {
@@ -29446,7 +29446,7 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 8.9,
@@ -29600,16 +29600,16 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 8.2,
       "war_rep": 1.9999999999999991,
       "delta_to_next": 0.3999999999999986,
       "pos_week_z": 0.9820638739393835,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -29726,7 +29726,7 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 7.800000000000001,
@@ -30238,7 +30238,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": 0.0556277578144596,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -30378,7 +30378,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": -0.5348632730218573,
       "sleeper_id": "7757",
-      "gsis_id": "00-0036862",
+      "gsis_id": null,
       "player_id": "7757"
     },
     {
@@ -30398,16 +30398,16 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 4.4,
       "war_rep": -6.4,
       "delta_to_next": 0.0,
       "pos_week_z": -0.5717505552388712,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -30448,7 +30448,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": -0.1128151723900719,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -30461,9 +30461,9 @@
       "war_rep": -8.2,
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.5643710689555198,
-      "sleeper_id": "3930",
+      "sleeper_id": "2312",
       "gsis_id": "00-0031545",
-      "player_id": "3930"
+      "player_id": "2312"
     },
     {
       "season": 2021,
@@ -30532,7 +30532,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.608632762856014,
       "sleeper_id": "6849",
-      "gsis_id": "00-0036255",
+      "gsis_id": null,
       "player_id": "6849"
     },
     {
@@ -30686,7 +30686,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.3935533893976249,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -30720,7 +30720,7 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 3.1,
@@ -30756,7 +30756,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.7790124739849189,
       "sleeper_id": "7005",
-      "gsis_id": "00-0036069",
+      "gsis_id": null,
       "player_id": "7005"
     },
     {
@@ -30770,7 +30770,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.4777748544998907,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -30812,7 +30812,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.7856795384579899,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -30854,7 +30854,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8004334364248211,
       "sleeper_id": "7751",
-      "gsis_id": "00-0036671",
+      "gsis_id": null,
       "player_id": "7751"
     },
     {
@@ -30938,7 +30938,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8151873343916526,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -30952,7 +30952,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8151873343916526,
       "sleeper_id": "7713",
-      "gsis_id": "00-0036877",
+      "gsis_id": null,
       "player_id": "7713"
     },
     {
@@ -31035,9 +31035,9 @@
       "war_rep": -8.4,
       "delta_to_next": 0.0,
       "pos_week_z": -0.8678390105903679,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -31049,9 +31049,9 @@
       "war_rep": -8.4,
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.8678390105903679,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -31064,7 +31064,7 @@
       "delta_to_next": 4.440892098500626e-16,
       "pos_week_z": -0.8594490282921464,
       "sleeper_id": "7540",
-      "gsis_id": "00-0036991",
+      "gsis_id": null,
       "player_id": "7540"
     },
     {
@@ -31148,7 +31148,7 @@
       "delta_to_next": 0.5000000000000002,
       "pos_week_z": -0.8974478561255176,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -31218,7 +31218,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9037107221926404,
       "sleeper_id": "6857",
-      "gsis_id": "00-0036254",
+      "gsis_id": null,
       "player_id": "6857"
     },
     {
@@ -31308,16 +31308,16 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 1.7,
       "war_rep": -9.1,
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.9714699699633916,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -31364,16 +31364,16 @@
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Tyron Johnson",
+      "display_name": "Tyron Billy-Johnson",
       "position": "WR",
       "team": "JAX",
       "points": 1.5,
       "war_rep": -11.0,
       "delta_to_next": 0.1,
       "pos_week_z": -0.9774802120267972,
-      "sleeper_id": null,
+      "sleeper_id": "6063",
       "gsis_id": "00-0035457",
-      "player_id": "00-0035457"
+      "player_id": "6063"
     },
     {
       "season": 2021,
@@ -31400,7 +31400,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9269560017119752,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -31414,7 +31414,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9269560017119752,
       "sleeper_id": "7946",
-      "gsis_id": "00-0036741",
+      "gsis_id": null,
       "player_id": "7946"
     },
     {
@@ -31525,9 +31525,9 @@
       "war_rep": -5.0,
       "delta_to_next": 0.0,
       "pos_week_z": -0.9831036451134858,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -31554,7 +31554,7 @@
       "delta_to_next": 0.3000000000000001,
       "pos_week_z": -0.9831036451134858,
       "sleeper_id": "7075",
-      "gsis_id": "00-0036429",
+      "gsis_id": null,
       "player_id": "7075"
     },
     {
@@ -31610,13 +31610,13 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0602965065688408,
       "sleeper_id": null,
-      "gsis_id": "00-0036650",
-      "player_id": "00-0036650"
+      "gsis_id": null,
+      "player_id": "espn:4241205"
     },
     {
       "season": 2021,
       "week": 8,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "CLE",
       "points": 1.1,
@@ -31638,7 +31638,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0364958038941223,
       "sleeper_id": "7559",
-      "gsis_id": "00-0036635",
+      "gsis_id": null,
       "player_id": "7559"
     },
     {
@@ -31694,7 +31694,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.0673251102157515,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -31764,7 +31764,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -1.095398931916507,
       "sleeper_id": "7842",
-      "gsis_id": "00-0036887",
+      "gsis_id": null,
       "player_id": "7842"
     },
     {
@@ -31862,7 +31862,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.1796203970187729,
       "sleeper_id": "7602",
-      "gsis_id": "00-0036876",
+      "gsis_id": null,
       "player_id": "7602"
     },
     {
@@ -31918,7 +31918,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.1545269876287731,
       "sleeper_id": "7603",
-      "gsis_id": "00-0036572",
+      "gsis_id": null,
       "player_id": "7603"
     },
     {
@@ -31946,7 +31946,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.208340734244589,
       "sleeper_id": "6878",
-      "gsis_id": "00-0036336",
+      "gsis_id": null,
       "player_id": "6878"
     },
     {
@@ -32218,16 +32218,16 @@
     {
       "season": 2021,
       "week": 9,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 18.8,
       "war_rep": 8.400000000000002,
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 1.2359529445513706,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -32904,7 +32904,7 @@
     {
       "season": 2021,
       "week": 9,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 11.0,
@@ -32953,9 +32953,9 @@
       "war_rep": 3.2,
       "delta_to_next": 1.9000000000000004,
       "pos_week_z": 1.1311414246390152,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -33170,16 +33170,16 @@
     {
       "season": 2021,
       "week": 9,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 9.2,
       "war_rep": -1.1999999999999993,
       "delta_to_next": 0.0999999999999978,
       "pos_week_z": 0.0611857893342262,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -33338,7 +33338,7 @@
     {
       "season": 2021,
       "week": 9,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 8.8,
@@ -33632,16 +33632,16 @@
     {
       "season": 2021,
       "week": 9,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 7.0,
       "war_rep": -0.6000000000000005,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.3064987647061487,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -33710,7 +33710,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.0,
       "sleeper_id": "7118",
-      "gsis_id": "00-0036215",
+      "gsis_id": null,
       "player_id": "7118"
     },
     {
@@ -33724,7 +33724,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": 0.2413953968167118,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -34186,7 +34186,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.2360293010391582,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -34200,7 +34200,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.4786339234953647,
       "sleeper_id": "7210",
-      "gsis_id": "00-0035864",
+      "gsis_id": null,
       "player_id": "7210"
     },
     {
@@ -34304,7 +34304,7 @@
     {
       "season": 2021,
       "week": 9,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 4.0,
@@ -34346,16 +34346,16 @@
     {
       "season": 2021,
       "week": 9,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 3.8,
       "war_rep": -5.899999999999999,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6055043860185918,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -34396,7 +34396,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.4313394047074687,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -34550,13 +34550,13 @@
       "delta_to_next": 0.6000000000000001,
       "pos_week_z": -0.5181438952267178,
       "sleeper_id": "7602",
-      "gsis_id": "00-0036876",
+      "gsis_id": null,
       "player_id": "7602"
     },
     {
       "season": 2021,
       "week": 9,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 3.2,
@@ -34648,7 +34648,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.7342294720107151,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -34690,7 +34690,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.6483506310055914,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -34732,7 +34732,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8411209592760135,
       "sleeper_id": "6849",
-      "gsis_id": "00-0036255",
+      "gsis_id": null,
       "player_id": "6849"
     },
     {
@@ -34774,7 +34774,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.7709409456112508,
       "sleeper_id": "6753",
-      "gsis_id": "00-0035715",
+      "gsis_id": null,
       "player_id": "6753"
     },
     {
@@ -34872,7 +34872,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9317427182211756,
       "sleeper_id": "7533",
-      "gsis_id": "00-0036999",
+      "gsis_id": null,
       "player_id": "7533"
     },
     {
@@ -34886,7 +34886,7 @@
       "delta_to_next": 0.1799999999999997,
       "pos_week_z": -0.8002584894142774,
       "sleeper_id": "7568",
-      "gsis_id": "00-0036556",
+      "gsis_id": null,
       "player_id": "7568"
     },
     {
@@ -34914,7 +34914,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.949867070010208,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -34928,7 +34928,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9679914217992404,
       "sleeper_id": "7351",
-      "gsis_id": "00-0035844",
+      "gsis_id": null,
       "player_id": "7351"
     },
     {
@@ -34998,7 +34998,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8688382085460129,
       "sleeper_id": "7794",
-      "gsis_id": "00-0036857",
+      "gsis_id": null,
       "player_id": "7794"
     },
     {
@@ -35208,7 +35208,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -1.076737532533435,
       "sleeper_id": "6985",
-      "gsis_id": "00-0036228",
+      "gsis_id": null,
       "player_id": "6985"
     },
     {
@@ -35250,7 +35250,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9738674704527756,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -35334,7 +35334,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9544983136139296,
       "sleeper_id": "7720",
-      "gsis_id": "00-0036842",
+      "gsis_id": null,
       "player_id": "7720"
     },
     {
@@ -35544,7 +35544,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.147476451491274,
       "sleeper_id": "7531",
-      "gsis_id": "00-0036825",
+      "gsis_id": null,
       "player_id": "7531"
     },
     {
@@ -35572,7 +35572,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.4726097105479492,
       "sleeper_id": "6778",
-      "gsis_id": "00-0035752",
+      "gsis_id": null,
       "player_id": "6778"
     },
     {
@@ -35586,7 +35586,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0401584186818464,
       "sleeper_id": "7005",
-      "gsis_id": "00-0036069",
+      "gsis_id": null,
       "player_id": "7005"
     },
     {
@@ -35600,7 +35600,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.4830939910904213,
       "sleeper_id": "7583",
-      "gsis_id": "00-0036879",
+      "gsis_id": null,
       "player_id": "7583"
     },
     {
@@ -35614,8 +35614,8 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0523955765486916,
       "sleeper_id": null,
-      "gsis_id": "00-0036650",
-      "player_id": "00-0036650"
+      "gsis_id": null,
+      "player_id": "espn:4241205"
     },
     {
       "season": 2021,
@@ -35634,7 +35634,7 @@
     {
       "season": 2021,
       "week": 10,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 28.8,
@@ -35676,16 +35676,16 @@
     {
       "season": 2021,
       "week": 10,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 26.9,
       "war_rep": 16.8,
       "delta_to_next": 1.1000000000000014,
       "pos_week_z": 2.491674025517028,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -35704,7 +35704,7 @@
     {
       "season": 2021,
       "week": 10,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 25.8,
@@ -36208,16 +36208,16 @@
     {
       "season": 2021,
       "week": 10,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 14.6,
       "war_rep": 8.0,
       "delta_to_next": 1.0999999999999996,
       "pos_week_z": 2.067767060995851,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -36832,13 +36832,13 @@
       "delta_to_next": 0.7999999999999989,
       "pos_week_z": 0.8783129533046125,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
       "season": 2021,
       "week": 10,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 9.2,
@@ -37196,8 +37196,8 @@
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": -0.2277439332911421,
       "sleeper_id": null,
-      "gsis_id": "00-0036650",
-      "player_id": "00-0036650"
+      "gsis_id": null,
+      "player_id": "espn:4241205"
     },
     {
       "season": 2021,
@@ -37294,7 +37294,7 @@
       "delta_to_next": 0.8999999999999995,
       "pos_week_z": 0.3056128273792013,
       "sleeper_id": "7828",
-      "gsis_id": "00-0036637",
+      "gsis_id": null,
       "player_id": "7828"
     },
     {
@@ -37314,7 +37314,7 @@
     {
       "season": 2021,
       "week": 10,
-      "display_name": "PJ Walker",
+      "display_name": "P.J. Walker",
       "position": "QB",
       "team": "CAR",
       "points": 6.279999999999999,
@@ -37448,7 +37448,7 @@
       "delta_to_next": 0.7999999999999998,
       "pos_week_z": 0.1073704760973283,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -37504,7 +37504,7 @@
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": -0.2965485325586572,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -37616,7 +37616,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.134925731024961,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -37804,16 +37804,16 @@
     {
       "season": 2021,
       "week": 10,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 4.0,
       "war_rep": -6.100000000000001,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6377064396441324,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -37826,7 +37826,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.2670872985462097,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -37846,16 +37846,16 @@
     {
       "season": 2021,
       "week": 10,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 3.9,
       "war_rep": -6.200000000000001,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6513718565225655,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -37916,7 +37916,7 @@
     {
       "season": 2021,
       "week": 10,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 3.7,
@@ -37944,7 +37944,7 @@
     {
       "season": 2021,
       "week": 10,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 3.6,
@@ -38008,7 +38008,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.5888735865254313,
       "sleeper_id": "7713",
-      "gsis_id": "00-0036877",
+      "gsis_id": null,
       "player_id": "7713"
     },
     {
@@ -38204,13 +38204,13 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.5314104335887072,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
       "season": 2021,
       "week": 10,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "LA",
       "points": 2.8,
@@ -38287,9 +38287,9 @@
       "war_rep": -4.0,
       "delta_to_next": 0.1,
       "pos_week_z": -0.5754642894291234,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -38316,7 +38316,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.5974912173493315,
       "sleeper_id": "6964",
-      "gsis_id": "00-0036032",
+      "gsis_id": null,
       "player_id": "6964"
     },
     {
@@ -38540,7 +38540,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.7076258569503722,
       "sleeper_id": "7602",
-      "gsis_id": "00-0036876",
+      "gsis_id": null,
       "player_id": "7602"
     },
     {
@@ -38568,8 +38568,8 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8042709947114755,
       "sleeper_id": null,
-      "gsis_id": "00-0036955",
-      "player_id": "00-0036955"
+      "gsis_id": null,
+      "player_id": "espn:4362630"
     },
     {
       "season": 2021,
@@ -38582,7 +38582,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.9246801940912256,
       "sleeper_id": "6753",
-      "gsis_id": "00-0035715",
+      "gsis_id": null,
       "player_id": "6753"
     },
     {
@@ -38638,7 +38638,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.7296527848705803,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -38652,7 +38652,7 @@
       "delta_to_next": 2.220446049250313e-16,
       "pos_week_z": -0.8196565238676214,
       "sleeper_id": "7530",
-      "gsis_id": "00-0036951",
+      "gsis_id": null,
       "player_id": "7530"
     },
     {
@@ -38680,7 +38680,7 @@
       "delta_to_next": 0.6599999999999997,
       "pos_week_z": -1.2558256493032824,
       "sleeper_id": "6778",
-      "gsis_id": "00-0035752",
+      "gsis_id": null,
       "player_id": "6778"
     },
     {
@@ -38722,7 +38722,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7957335686312046,
       "sleeper_id": "7946",
-      "gsis_id": "00-0036741",
+      "gsis_id": null,
       "player_id": "7946"
     },
     {
@@ -38820,7 +38820,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9119696988044976,
       "sleeper_id": "7757",
-      "gsis_id": "00-0036862",
+      "gsis_id": null,
       "player_id": "7757"
     },
     {
@@ -38848,7 +38848,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9273552279606434,
       "sleeper_id": "7751",
-      "gsis_id": "00-0036671",
+      "gsis_id": null,
       "player_id": "7751"
     },
     {
@@ -38890,7 +38890,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -1.0340035291186898,
       "sleeper_id": "6973",
-      "gsis_id": "00-0036096",
+      "gsis_id": null,
       "player_id": "6973"
     },
     {
@@ -38974,7 +38974,7 @@
       "delta_to_next": 1.1102230246251563e-16,
       "pos_week_z": -0.9735118154290814,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -39001,9 +39001,9 @@
       "war_rep": -5.699999999999999,
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9499220640726614,
-      "sleeper_id": "5251",
-      "gsis_id": "00-0036250",
-      "player_id": "5251"
+      "sleeper_id": "7131",
+      "gsis_id": null,
+      "player_id": "7131"
     },
     {
       "season": 2021,
@@ -39058,7 +39058,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9719489919928695,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -39156,7 +39156,7 @@
       "delta_to_next": 0.3999999999999999,
       "pos_week_z": -0.9939759199130777,
       "sleeper_id": "7891",
-      "gsis_id": "00-0036754",
+      "gsis_id": null,
       "player_id": "7891"
     },
     {
@@ -39170,7 +39170,7 @@
       "delta_to_next": 0.56,
       "pos_week_z": 0.7071067811865476,
       "sleeper_id": "7307",
-      "gsis_id": "00-0035889",
+      "gsis_id": null,
       "player_id": "7307"
     },
     {
@@ -39226,7 +39226,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -1.0350539320536656,
       "sleeper_id": "7729",
-      "gsis_id": "00-0036627",
+      "gsis_id": null,
       "player_id": "7729"
     },
     {
@@ -39310,7 +39310,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0965960486782496,
       "sleeper_id": "7612",
-      "gsis_id": "00-0036620",
+      "gsis_id": null,
       "player_id": "7612"
     },
     {
@@ -39974,7 +39974,7 @@
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 16.2,
@@ -39988,7 +39988,7 @@
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 15.9,
@@ -40094,7 +40094,7 @@
       "delta_to_next": 2.9000000000000004,
       "pos_week_z": 1.807170217940004,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -40128,7 +40128,7 @@
     {
       "season": 2021,
       "week": 11,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 12.7,
@@ -40170,16 +40170,16 @@
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Dontrell Hilliard",
+      "display_name": "Ben Roethlisberger",
       "position": "RB",
       "team": "TEN",
       "points": 12.2,
       "war_rep": 3.599999999999998,
       "delta_to_next": 1.3999999999999986,
       "pos_week_z": 0.539831922346018,
-      "sleeper_id": "5536",
-      "gsis_id": "00-0034253",
-      "player_id": "5536"
+      "sleeper_id": "138",
+      "gsis_id": "00-0022924",
+      "player_id": "138"
     },
     {
       "season": 2021,
@@ -40220,7 +40220,7 @@
       "delta_to_next": 0.3800000000000008,
       "pos_week_z": -0.3381748830284886,
       "sleeper_id": "7083",
-      "gsis_id": "00-0035993",
+      "gsis_id": null,
       "player_id": "7083"
     },
     {
@@ -40304,7 +40304,7 @@
       "delta_to_next": 0.3999999999999986,
       "pos_week_z": 0.4552784638940227,
       "sleeper_id": "7729",
-      "gsis_id": "00-0036627",
+      "gsis_id": null,
       "player_id": "7729"
     },
     {
@@ -40332,7 +40332,7 @@
       "delta_to_next": 0.5999999999999979,
       "pos_week_z": 1.0715211571831764,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -40513,9 +40513,9 @@
       "war_rep": 0.6999999999999993,
       "delta_to_next": 0.0,
       "pos_week_z": 0.2175085097594329,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -40527,9 +40527,9 @@
       "war_rep": 0.6999999999999993,
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.2175085097594329,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -41032,7 +41032,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.0,
       "sleeper_id": "6810",
-      "gsis_id": "00-0036386",
+      "gsis_id": null,
       "player_id": "6810"
     },
     {
@@ -41228,22 +41228,22 @@
       "delta_to_next": 8.881784197001252e-16,
       "pos_week_z": -0.2864234565267406,
       "sleeper_id": "7244",
-      "gsis_id": "00-0036110",
+      "gsis_id": null,
       "player_id": "7244"
     },
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 5.6,
       "war_rep": -6.9,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.2864234565267407,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -41290,7 +41290,7 @@
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 5.5,
@@ -41325,9 +41325,9 @@
       "war_rep": -2.0999999999999996,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.0115177378199301,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -41374,16 +41374,16 @@
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 5.0,
       "war_rep": -2.5,
       "delta_to_next": 0.5,
       "pos_week_z": -0.0932565223484666,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -41466,7 +41466,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.195430003009137,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -41634,7 +41634,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.3384728759340756,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -41892,30 +41892,30 @@
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 3.1,
       "war_rep": -5.500000000000002,
       "delta_to_next": 0.0,
       "pos_week_z": -0.4715967171498181,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 3.1,
       "war_rep": -5.500000000000002,
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.4715967171498181,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -42004,7 +42004,7 @@
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 2.8000000000000003,
@@ -42502,7 +42502,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.7676014947088916,
       "sleeper_id": "7891",
-      "gsis_id": "00-0036754",
+      "gsis_id": null,
       "player_id": "7891"
     },
     {
@@ -42670,7 +42670,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.849340279237428,
       "sleeper_id": "7502",
-      "gsis_id": "00-0036456",
+      "gsis_id": null,
       "player_id": "7502"
     },
     {
@@ -42684,7 +42684,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.849340279237428,
       "sleeper_id": "7828",
-      "gsis_id": "00-0036637",
+      "gsis_id": null,
       "player_id": "7828"
     },
     {
@@ -42698,7 +42698,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.849340279237428,
       "sleeper_id": "7602",
-      "gsis_id": "00-0036876",
+      "gsis_id": null,
       "player_id": "7602"
     },
     {
@@ -42740,7 +42740,7 @@
       "delta_to_next": 1.0000000000000002,
       "pos_week_z": -0.2536960822079436,
       "sleeper_id": "7204",
-      "gsis_id": "00-0036187",
+      "gsis_id": null,
       "player_id": "7204"
     },
     {
@@ -42768,7 +42768,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.6827741253962016,
       "sleeper_id": "7794",
-      "gsis_id": "00-0036857",
+      "gsis_id": null,
       "player_id": "7794"
     },
     {
@@ -42796,7 +42796,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.869774975369562,
       "sleeper_id": "7568",
-      "gsis_id": "00-0036556",
+      "gsis_id": null,
       "player_id": "7568"
     },
     {
@@ -42810,7 +42810,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.869774975369562,
       "sleeper_id": "7554",
-      "gsis_id": "00-0037011",
+      "gsis_id": null,
       "player_id": "7554"
     },
     {
@@ -42894,7 +42894,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8902096715016963,
       "sleeper_id": "6865",
-      "gsis_id": "00-0036244",
+      "gsis_id": null,
       "player_id": "6865"
     },
     {
@@ -42936,7 +42936,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9182436109592428,
       "sleeper_id": "7751",
-      "gsis_id": "00-0036671",
+      "gsis_id": null,
       "player_id": "7751"
     },
     {
@@ -42950,7 +42950,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -1.3787389981071474,
       "sleeper_id": "7583",
-      "gsis_id": "00-0036879",
+      "gsis_id": null,
       "player_id": "7583"
     },
     {
@@ -43048,7 +43048,7 @@
       "delta_to_next": 0.4,
       "pos_week_z": -0.945714052456308,
       "sleeper_id": "7713",
-      "gsis_id": "00-0036877",
+      "gsis_id": null,
       "player_id": "7713"
     },
     {
@@ -43076,7 +43076,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9719484560302326,
       "sleeper_id": "6964",
-      "gsis_id": "00-0036032",
+      "gsis_id": null,
       "player_id": "6964"
     },
     {
@@ -43132,8 +43132,8 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.7605763284343429,
       "sleeper_id": null,
-      "gsis_id": "00-0036650",
-      "player_id": "00-0036650"
+      "gsis_id": null,
+      "player_id": "espn:4241205"
     },
     {
       "season": 2021,
@@ -43152,16 +43152,16 @@
     {
       "season": 2021,
       "week": 11,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 0.4,
       "war_rep": -8.200000000000001,
       "delta_to_next": 0.0,
       "pos_week_z": -0.771690928868363,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -43216,7 +43216,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0006549354504386,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -43314,7 +43314,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7939201297364034,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -43544,16 +43544,16 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "Dontrell Hilliard",
+      "display_name": "Ben Roethlisberger",
       "position": "RB",
       "team": "TEN",
       "points": 21.8,
       "war_rep": 12.000000000000002,
       "delta_to_next": 1.6999999999999993,
       "pos_week_z": 1.5748521528223998,
-      "sleeper_id": "5536",
-      "gsis_id": "00-0034253",
-      "player_id": "5536"
+      "sleeper_id": "138",
+      "gsis_id": "00-0022924",
+      "player_id": "138"
     },
     {
       "season": 2021,
@@ -43600,7 +43600,7 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 20.3,
@@ -43712,7 +43712,7 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "LA",
       "points": 18.6,
@@ -43796,7 +43796,7 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 17.5,
@@ -43950,16 +43950,16 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 15.9,
       "war_rep": 3.5999999999999996,
       "delta_to_next": 0.7000000000000011,
       "pos_week_z": 1.4057282284535908,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -44630,7 +44630,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": 0.8989110409739276,
       "sleeper_id": "7568",
-      "gsis_id": "00-0036556",
+      "gsis_id": null,
       "player_id": "7568"
     },
     {
@@ -44671,9 +44671,9 @@
       "war_rep": -0.0999999999999996,
       "delta_to_next": 0.0,
       "pos_week_z": 0.1218890166326924,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -44685,9 +44685,9 @@
       "war_rep": -0.0999999999999996,
       "delta_to_next": 0.3999999999999986,
       "pos_week_z": 0.1218890166326924,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -44714,7 +44714,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.4047119555119066,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -44938,7 +44938,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.4187185623117261,
       "sleeper_id": "6964",
-      "gsis_id": "00-0036032",
+      "gsis_id": null,
       "player_id": "6964"
     },
     {
@@ -45176,7 +45176,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.209939223762943,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -45294,7 +45294,7 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 5.800000000000001,
@@ -45518,16 +45518,16 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 4.4,
       "war_rep": -5.399999999999999,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.5145328529380057,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -45638,7 +45638,7 @@
       "delta_to_next": 0.2999999999999994,
       "pos_week_z": -0.4994317748870338,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -45722,7 +45722,7 @@
       "delta_to_next": 4.440892098500626e-16,
       "pos_week_z": -0.5801588936726534,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -45777,23 +45777,23 @@
       "war_rep": -4.0,
       "delta_to_next": 0.0,
       "pos_week_z": -0.4163987918834064,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
       "week": 12,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 3.5,
       "war_rep": -4.0,
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.4163987918834064,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -45840,7 +45840,7 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 3.5,
@@ -45904,7 +45904,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.6466204107734335,
       "sleeper_id": "7794",
-      "gsis_id": "00-0036857",
+      "gsis_id": null,
       "player_id": "7794"
     },
     {
@@ -45974,7 +45974,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.4790325934480413,
       "sleeper_id": "7602",
-      "gsis_id": "00-0036876",
+      "gsis_id": null,
       "player_id": "7602"
     },
     {
@@ -46142,7 +46142,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.709322283729645,
       "sleeper_id": "7244",
-      "gsis_id": "00-0036110",
+      "gsis_id": null,
       "player_id": "7244"
     },
     {
@@ -46176,7 +46176,7 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 2.7,
@@ -46232,7 +46232,7 @@
     {
       "season": 2021,
       "week": 12,
-      "display_name": "PJ Walker",
+      "display_name": "P.J. Walker",
       "position": "QB",
       "team": "CAR",
       "points": 2.48,
@@ -46310,7 +46310,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.6669339981419462,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -46408,7 +46408,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.729567799706581,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -46464,7 +46464,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8384856737866364,
       "sleeper_id": "7612",
-      "gsis_id": "00-0036620",
+      "gsis_id": null,
       "player_id": "7612"
     },
     {
@@ -46492,7 +46492,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8546310975437603,
       "sleeper_id": "7729",
-      "gsis_id": "00-0036627",
+      "gsis_id": null,
       "player_id": "7729"
     },
     {
@@ -46506,7 +46506,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.8267398078217444,
       "sleeper_id": "6878",
-      "gsis_id": "00-0036336",
+      "gsis_id": null,
       "player_id": "6878"
     },
     {
@@ -46590,7 +46590,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.792201601271216,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -46646,7 +46646,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8130795351260943,
       "sleeper_id": "7075",
-      "gsis_id": "00-0036429",
+      "gsis_id": null,
       "player_id": "7075"
     },
     {
@@ -46674,7 +46674,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8627636872314065,
       "sleeper_id": "8025",
-      "gsis_id": "00-0036727",
+      "gsis_id": null,
       "player_id": "8025"
     },
     {
@@ -47024,7 +47024,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9592250721102424,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -47094,7 +47094,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.9588273656571724,
       "sleeper_id": "7720",
-      "gsis_id": "00-0036842",
+      "gsis_id": null,
       "player_id": "7720"
     },
     {
@@ -47408,7 +47408,7 @@
     {
       "season": 2021,
       "week": 13,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 24.700000000000003,
@@ -47646,16 +47646,16 @@
     {
       "season": 2021,
       "week": 13,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 19.0,
       "war_rep": 9.6,
       "delta_to_next": 0.2999999999999971,
       "pos_week_z": 1.362708821460989,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -48284,7 +48284,7 @@
       "delta_to_next": 0.8000000000000007,
       "pos_week_z": 0.545276743793719,
       "sleeper_id": "7612",
-      "gsis_id": "00-0036620",
+      "gsis_id": null,
       "player_id": "7612"
     },
     {
@@ -48340,13 +48340,13 @@
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": 0.3846235723767879,
       "sleeper_id": "7891",
-      "gsis_id": "00-0036754",
+      "gsis_id": null,
       "player_id": "7891"
     },
     {
       "season": 2021,
       "week": 13,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "LA",
       "points": 9.8,
@@ -48388,16 +48388,16 @@
     {
       "season": 2021,
       "week": 13,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 9.5,
       "war_rep": 0.0999999999999996,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.1073188257865251,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -48430,16 +48430,16 @@
     {
       "season": 2021,
       "week": 13,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 9.1,
       "war_rep": 2.3000000000000016,
       "delta_to_next": 0.5000000000000018,
       "pos_week_z": 0.2945712271272799,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -48507,9 +48507,9 @@
       "war_rep": 1.7000000000000002,
       "delta_to_next": 0.3999999999999986,
       "pos_week_z": 0.2173835026277013,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -48662,7 +48662,7 @@
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": 0.0438022609503963,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -48696,16 +48696,16 @@
     {
       "season": 2021,
       "week": 13,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 7.1000000000000005,
       "war_rep": -2.3,
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.2098323310154445,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -48976,16 +48976,16 @@
     {
       "season": 2021,
       "week": 13,
-      "display_name": "Mike Boone",
+      "display_name": "Tony Romo",
       "position": "RB",
       "team": "DEN",
       "points": 5.9,
       "war_rep": -3.5,
       "delta_to_next": 0.0,
       "pos_week_z": -0.3684079094164295,
-      "sleeper_id": "5209",
-      "gsis_id": "00-0034208",
-      "player_id": "5209"
+      "sleeper_id": "142",
+      "gsis_id": "00-0021678",
+      "player_id": "142"
     },
     {
       "season": 2021,
@@ -49040,7 +49040,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.142825878370331,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -49186,7 +49186,7 @@
     {
       "season": 2021,
       "week": 13,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 4.6,
@@ -49292,7 +49292,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.4576722218929262,
       "sleeper_id": "7757",
-      "gsis_id": "00-0036862",
+      "gsis_id": null,
       "player_id": "7757"
     },
     {
@@ -49362,7 +49362,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.4129829141188553,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -49418,7 +49418,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.5579671184615907,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -49446,7 +49446,7 @@
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": -0.4644413971185743,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -49572,7 +49572,7 @@
       "delta_to_next": 0.7600000000000002,
       "pos_week_z": -1.4857508390409493,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -50062,7 +50062,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.6574107083675202,
       "sleeper_id": "7568",
-      "gsis_id": "00-0036556",
+      "gsis_id": null,
       "player_id": "7568"
     },
     {
@@ -50202,7 +50202,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9630663284201229,
       "sleeper_id": "7720",
-      "gsis_id": "00-0036842",
+      "gsis_id": null,
       "player_id": "7720"
     },
     {
@@ -50328,7 +50328,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.7088691913672391,
       "sleeper_id": "7535",
-      "gsis_id": "00-0037004",
+      "gsis_id": null,
       "player_id": "7535"
     },
     {
@@ -50370,7 +50370,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.8588518081675842,
       "sleeper_id": "7210",
-      "gsis_id": "00-0035864",
+      "gsis_id": null,
       "player_id": "7210"
     },
     {
@@ -50384,7 +50384,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8588518081675842,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -50412,7 +50412,7 @@
       "delta_to_next": 0.6000000000000001,
       "pos_week_z": -0.7345984328670985,
       "sleeper_id": "7602",
-      "gsis_id": "00-0036876",
+      "gsis_id": null,
       "player_id": "7602"
     },
     {
@@ -50440,7 +50440,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8731796505345364,
       "sleeper_id": "7587",
-      "gsis_id": "00-0036626",
+      "gsis_id": null,
       "player_id": "7587"
     },
     {
@@ -50496,7 +50496,7 @@
       "delta_to_next": 0.2999999999999999,
       "pos_week_z": -0.9018353352684404,
       "sleeper_id": "6849",
-      "gsis_id": "00-0036255",
+      "gsis_id": null,
       "player_id": "6849"
     },
     {
@@ -50565,9 +50565,9 @@
       "war_rep": -8.700000000000001,
       "delta_to_next": 0.0,
       "pos_week_z": -1.0555687491540309,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -50579,9 +50579,9 @@
       "war_rep": -8.700000000000001,
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -1.0555687491540309,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -50608,7 +50608,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -1.0819980122208617,
       "sleeper_id": "8085",
-      "gsis_id": "00-0036698",
+      "gsis_id": null,
       "player_id": "8085"
     },
     {
@@ -51168,7 +51168,7 @@
       "delta_to_next": 0.7000000000000028,
       "pos_week_z": 0.2352907369843497,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -51252,7 +51252,7 @@
       "delta_to_next": 0.2000000000000028,
       "pos_week_z": 1.0520370395127556,
       "sleeper_id": "6753",
-      "gsis_id": "00-0035715",
+      "gsis_id": null,
       "player_id": "6753"
     },
     {
@@ -51314,7 +51314,7 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 17.5,
@@ -51356,7 +51356,7 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "LA",
       "points": 16.7,
@@ -51546,7 +51546,7 @@
       "delta_to_next": 0.1400000000000005,
       "pos_week_z": -0.2781890481472414,
       "sleeper_id": "7083",
-      "gsis_id": "00-0035993",
+      "gsis_id": null,
       "player_id": "7083"
     },
     {
@@ -51566,7 +51566,7 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 15.1,
@@ -51728,7 +51728,7 @@
       "delta_to_next": 1.1000000000000014,
       "pos_week_z": 0.9786768332262522,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -51762,7 +51762,7 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 12.4,
@@ -51860,16 +51860,16 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 11.4,
       "war_rep": 1.799999999999999,
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": 0.2898874352704041,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -52022,7 +52022,7 @@
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": 0.6680863874484906,
       "sleeper_id": "7568",
-      "gsis_id": "00-0036556",
+      "gsis_id": null,
       "player_id": "7568"
     },
     {
@@ -52504,7 +52504,7 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 7.1000000000000005,
@@ -52722,7 +52722,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": -0.0618011601292484,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -52742,7 +52742,7 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "PJ Walker",
+      "display_name": "P.J. Walker",
       "position": "QB",
       "team": "CAR",
       "points": 5.5,
@@ -52784,7 +52784,7 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 5.4,
@@ -53029,9 +53029,9 @@
       "war_rep": -3.3000000000000003,
       "delta_to_next": 0.3000000000000002,
       "pos_week_z": -0.3879211281958978,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -53058,7 +53058,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.4345096950625621,
       "sleeper_id": "7891",
-      "gsis_id": "00-0036754",
+      "gsis_id": null,
       "player_id": "7891"
     },
     {
@@ -53142,7 +53142,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.4655687396403382,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -53274,16 +53274,16 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 3.0,
       "war_rep": -4.1000000000000005,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.5121573065070024,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -53380,22 +53380,22 @@
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": -0.5432163510847786,
       "sleeper_id": "8041",
-      "gsis_id": "00-0036534",
+      "gsis_id": null,
       "player_id": "8041"
     },
     {
       "season": 2021,
       "week": 14,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 2.8,
       "war_rep": -11.5,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.9013610000221028,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -53450,7 +53450,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.7536712536152768,
       "sleeper_id": "7993",
-      "gsis_id": "00-0036523",
+      "gsis_id": null,
       "player_id": "7993"
     },
     {
@@ -53478,7 +53478,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.6053344402403308,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -53646,7 +53646,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.6674525293958831,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -53800,7 +53800,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -1.1067006361218124,
       "sleeper_id": "7793",
-      "gsis_id": "00-0036652",
+      "gsis_id": null,
       "player_id": "7793"
     },
     {
@@ -53820,16 +53820,16 @@
     {
       "season": 2021,
       "week": 14,
-      "display_name": "Dontrell Hilliard",
+      "display_name": "Ben Roethlisberger",
       "position": "RB",
       "team": "TEN",
       "points": 1.3,
       "war_rep": -8.3,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8943757959369416,
-      "sleeper_id": "5536",
-      "gsis_id": "00-0034253",
-      "player_id": "5536"
+      "sleeper_id": "138",
+      "gsis_id": "00-0022924",
+      "player_id": "138"
     },
     {
       "season": 2021,
@@ -54066,7 +54066,7 @@
       "delta_to_next": 0.7,
       "pos_week_z": -1.1653691035788725,
       "sleeper_id": "7337",
-      "gsis_id": "00-0036080",
+      "gsis_id": null,
       "player_id": "7337"
     },
     {
@@ -54149,9 +54149,9 @@
       "war_rep": -8.8,
       "delta_to_next": 0.0,
       "pos_week_z": -0.9530026885709684,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -54163,9 +54163,9 @@
       "war_rep": -8.8,
       "delta_to_next": 0.3,
       "pos_week_z": -0.9530026885709684,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -54262,7 +54262,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0116295812049956,
       "sleeper_id": "7863",
-      "gsis_id": "00-0036768",
+      "gsis_id": null,
       "player_id": "7863"
     },
     {
@@ -54290,7 +54290,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.2680389216287271,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -54318,7 +54318,7 @@
       "delta_to_next": 1.3000000000000045,
       "pos_week_z": 2.492165227035484,
       "sleeper_id": "7083",
-      "gsis_id": "00-0035993",
+      "gsis_id": null,
       "player_id": "7083"
     },
     {
@@ -54674,7 +54674,7 @@
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 16.9,
@@ -54724,7 +54724,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.3407677196318418,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -55332,7 +55332,7 @@
     {
       "season": 2021,
       "week": 15,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 10.0,
@@ -55661,9 +55661,9 @@
       "war_rep": -1.0999999999999996,
       "delta_to_next": 0.0,
       "pos_week_z": 0.0808725729620563,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -55675,9 +55675,9 @@
       "war_rep": -1.0999999999999996,
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.0808725729620563,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -55690,7 +55690,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.3318859929667884,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -55794,21 +55794,21 @@
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Dontrell Hilliard",
+      "display_name": "Ben Roethlisberger",
       "position": "RB",
       "team": "TEN",
       "points": 7.9,
       "war_rep": -1.3000000000000007,
       "delta_to_next": 0.5,
       "pos_week_z": 0.0475323478969188,
-      "sleeper_id": "5536",
-      "gsis_id": "00-0034253",
-      "player_id": "5536"
+      "sleeper_id": "138",
+      "gsis_id": "00-0022924",
+      "player_id": "138"
     },
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "points": 7.9,
@@ -55900,7 +55900,7 @@
       "delta_to_next": 0.5000000000000009,
       "pos_week_z": 0.2199331552957282,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -55920,16 +55920,16 @@
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 7.3,
       "war_rep": -1.9000000000000012,
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": -0.0524883272984932,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -55942,7 +55942,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.0614533485081953,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -55956,7 +55956,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": 0.0614533485081953,
       "sleeper_id": "7559",
-      "gsis_id": "00-0036635",
+      "gsis_id": null,
       "player_id": "7559"
     },
     {
@@ -56004,7 +56004,7 @@
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 6.9,
@@ -56194,7 +56194,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.0950250851932281,
       "sleeper_id": "7757",
-      "gsis_id": "00-0036862",
+      "gsis_id": null,
       "player_id": "7757"
     },
     {
@@ -56585,9 +56585,9 @@
       "war_rep": -3.0999999999999996,
       "delta_to_next": 0.0,
       "pos_week_z": -0.1159253577174527,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2021,
@@ -56908,7 +56908,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.3258369283506908,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -56950,7 +56950,7 @@
       "delta_to_next": 4.440892098500626e-16,
       "pos_week_z": -0.71929282860124,
       "sleeper_id": "7720",
-      "gsis_id": "00-0036842",
+      "gsis_id": null,
       "player_id": "7720"
     },
     {
@@ -57020,7 +57020,7 @@
       "delta_to_next": 0.7400000000000002,
       "pos_week_z": -1.1365104033423234,
       "sleeper_id": "6822",
-      "gsis_id": "00-0036197",
+      "gsis_id": null,
       "player_id": "6822"
     },
     {
@@ -57062,7 +57062,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.7526330536663776,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -57090,7 +57090,7 @@
       "delta_to_next": 0.3999999999999999,
       "pos_week_z": -0.3678192424773385,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -57118,7 +57118,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.5957560730377832,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -57166,16 +57166,16 @@
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Scott Miller",
+      "display_name": "Scotty Miller",
       "position": "WR",
       "team": "TB",
       "points": 2.8,
       "war_rep": -6.500000000000001,
       "delta_to_next": 0.0,
       "pos_week_z": -0.6270517597780679,
-      "sleeper_id": null,
+      "sleeper_id": "6290",
       "gsis_id": "00-0035298",
-      "player_id": "00-0035298"
+      "player_id": "6290"
     },
     {
       "season": 2021,
@@ -57201,9 +57201,9 @@
       "war_rep": -5.3,
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.4237956613128686,
-      "sleeper_id": "5251",
-      "gsis_id": "00-0036250",
-      "player_id": "5251"
+      "sleeper_id": "7131",
+      "gsis_id": null,
+      "player_id": "7131"
     },
     {
       "season": 2021,
@@ -57342,7 +57342,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6896431332586372,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -57440,7 +57440,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -0.5077602895661639,
       "sleeper_id": "8041",
-      "gsis_id": "00-0036534",
+      "gsis_id": null,
       "player_id": "8041"
     },
     {
@@ -57468,7 +57468,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7365866633690643,
       "sleeper_id": "6857",
-      "gsis_id": "00-0036254",
+      "gsis_id": null,
       "player_id": "6857"
     },
     {
@@ -57482,7 +57482,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9360042915246328,
       "sleeper_id": "7087",
-      "gsis_id": "00-0035924",
+      "gsis_id": null,
       "player_id": "7087"
     },
     {
@@ -57502,7 +57502,7 @@
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 2.0,
@@ -57748,7 +57748,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.6057190225283416,
       "sleeper_id": "6926",
-      "gsis_id": "00-0036424",
+      "gsis_id": null,
       "player_id": "6926"
     },
     {
@@ -57776,7 +57776,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.6197131272372243,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -57790,22 +57790,22 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8617694103302032,
       "sleeper_id": "6957",
-      "gsis_id": "00-0036133",
+      "gsis_id": null,
       "player_id": "6957"
     },
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 1.2000000000000002,
       "war_rep": -8.0,
       "delta_to_next": 0.0,
       "pos_week_z": -1.0693651917851823,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -57838,16 +57838,16 @@
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 1.2000000000000002,
       "war_rep": -6.8,
       "delta_to_next": 0.0,
       "pos_week_z": -0.6337072319461068,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -57860,13 +57860,13 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6337072319461068,
       "sleeper_id": "7946",
-      "gsis_id": "00-0036741",
+      "gsis_id": null,
       "player_id": "7946"
     },
     {
       "season": 2021,
       "week": 15,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "LA",
       "points": 1.2000000000000002,
@@ -58000,7 +58000,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.9087129404406302,
       "sleeper_id": "7595",
-      "gsis_id": "00-0036630",
+      "gsis_id": null,
       "player_id": "7595"
     },
     {
@@ -58070,7 +58070,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.6756895460727543,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -58084,7 +58084,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.6756895460727543,
       "sleeper_id": "7554",
-      "gsis_id": "00-0037011",
+      "gsis_id": null,
       "player_id": "7554"
     },
     {
@@ -58238,7 +58238,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.1134309685687385,
       "sleeper_id": "7318",
-      "gsis_id": "00-0035908",
+      "gsis_id": null,
       "player_id": "7318"
     },
     {
@@ -58294,7 +58294,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0182478440316267,
       "sleeper_id": "7751",
-      "gsis_id": "00-0036671",
+      "gsis_id": null,
       "player_id": "7751"
     },
     {
@@ -58538,7 +58538,7 @@
     {
       "season": 2021,
       "week": 16,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 25.6,
@@ -58770,7 +58770,7 @@
       "delta_to_next": 1.5199999999999996,
       "pos_week_z": 0.4634019520094393,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -59091,9 +59091,9 @@
       "war_rep": 2.299999999999999,
       "delta_to_next": 0.0,
       "pos_week_z": 0.845655800099955,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -59105,9 +59105,9 @@
       "war_rep": 2.299999999999999,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.845655800099955,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -59350,7 +59350,7 @@
     {
       "season": 2021,
       "week": 16,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 12.8,
@@ -59428,7 +59428,7 @@
       "delta_to_next": 0.6999999999999993,
       "pos_week_z": 0.4407027794759586,
       "sleeper_id": "6753",
-      "gsis_id": "00-0035715",
+      "gsis_id": null,
       "player_id": "6753"
     },
     {
@@ -59448,7 +59448,7 @@
     {
       "season": 2021,
       "week": 16,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "LA",
       "points": 11.7,
@@ -59470,7 +59470,7 @@
       "delta_to_next": 1.5,
       "pos_week_z": 1.2533065631174622,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -59526,7 +59526,7 @@
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.3940053898426464,
       "sleeper_id": "6957",
-      "gsis_id": "00-0036133",
+      "gsis_id": null,
       "player_id": "6957"
     },
     {
@@ -59638,22 +59638,22 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.2542608542110736,
       "sleeper_id": "7603",
-      "gsis_id": "00-0036572",
+      "gsis_id": null,
       "player_id": "7603"
     },
     {
       "season": 2021,
       "week": 16,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 10.0,
       "war_rep": -2.8000000000000007,
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": 0.2002619234804607,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -59764,7 +59764,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": 0.1564396792689729,
       "sleeper_id": "7533",
-      "gsis_id": "00-0036999",
+      "gsis_id": null,
       "player_id": "7533"
     },
     {
@@ -60044,7 +60044,7 @@
       "delta_to_next": 0.4000000000000003,
       "pos_week_z": -0.0531771241783859,
       "sleeper_id": "6985",
-      "gsis_id": "00-0036228",
+      "gsis_id": null,
       "player_id": "6985"
     },
     {
@@ -60114,7 +60114,7 @@
       "delta_to_next": 0.7000000000000002,
       "pos_week_z": 0.445389935653313,
       "sleeper_id": "7568",
-      "gsis_id": "00-0036556",
+      "gsis_id": null,
       "player_id": "7568"
     },
     {
@@ -60204,7 +60204,7 @@
     {
       "season": 2021,
       "week": 16,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 7.1000000000000005,
@@ -60478,7 +60478,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.5773502691896268,
       "sleeper_id": "6899",
-      "gsis_id": "00-0036036",
+      "gsis_id": null,
       "player_id": "6899"
     },
     {
@@ -60492,7 +60492,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.2382318260471206,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -60512,16 +60512,16 @@
     {
       "season": 2021,
       "week": 16,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 6.4,
       "war_rep": -0.5,
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": 0.1968002041258824,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -60562,7 +60562,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.276768381188902,
       "sleeper_id": "7587",
-      "gsis_id": "00-0036626",
+      "gsis_id": null,
       "player_id": "7587"
     },
     {
@@ -60660,7 +60660,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.3466406490046884,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -60996,7 +60996,7 @@
       "delta_to_next": 0.8999999999999995,
       "pos_week_z": -1.1861242757834565,
       "sleeper_id": "7589",
-      "gsis_id": "00-0036929",
+      "gsis_id": null,
       "player_id": "7589"
     },
     {
@@ -61220,7 +61220,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.4661057466139325,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -61304,7 +61304,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7239508952099344,
       "sleeper_id": "7039",
-      "gsis_id": "00-0035891",
+      "gsis_id": null,
       "player_id": "7039"
     },
     {
@@ -61444,7 +61444,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7798487094625633,
       "sleeper_id": "7612",
-      "gsis_id": "00-0036620",
+      "gsis_id": null,
       "player_id": "7612"
     },
     {
@@ -61570,7 +61570,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.8077976165888778,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -61590,30 +61590,30 @@
     {
       "season": 2021,
       "week": 16,
-      "display_name": "Dontrell Hilliard",
+      "display_name": "Ben Roethlisberger",
       "position": "RB",
       "team": "TEN",
       "points": 2.4,
       "war_rep": -10.4,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.7615015005015309,
-      "sleeper_id": "5536",
-      "gsis_id": "00-0034253",
-      "player_id": "5536"
+      "sleeper_id": "138",
+      "gsis_id": "00-0022924",
+      "player_id": "138"
     },
     {
       "season": 2021,
       "week": 16,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 2.3000000000000003,
       "war_rep": -10.5,
       "delta_to_next": 4.440892098500626e-16,
       "pos_week_z": -0.7741562823960307,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -61640,7 +61640,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.7741562823960308,
       "sleeper_id": "7720",
-      "gsis_id": "00-0036842",
+      "gsis_id": null,
       "player_id": "7720"
     },
     {
@@ -61654,7 +61654,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.8357465237151924,
       "sleeper_id": "7595",
-      "gsis_id": "00-0036630",
+      "gsis_id": null,
       "player_id": "7595"
     },
     {
@@ -61668,7 +61668,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6732638562201246,
       "sleeper_id": "7828",
-      "gsis_id": "00-0036637",
+      "gsis_id": null,
       "player_id": "7828"
     },
     {
@@ -61702,16 +61702,16 @@
     {
       "season": 2021,
       "week": 16,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 2.0,
       "war_rep": -10.1,
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8776698844046642,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -61752,7 +61752,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.7354112891019824,
       "sleeper_id": "7891",
-      "gsis_id": "00-0036754",
+      "gsis_id": null,
       "player_id": "7891"
     },
     {
@@ -61766,7 +61766,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8916443379678214,
       "sleeper_id": "7751",
-      "gsis_id": "00-0036671",
+      "gsis_id": null,
       "player_id": "7751"
     },
     {
@@ -61864,7 +61864,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.7768429110232207,
       "sleeper_id": "7554",
-      "gsis_id": "00-0037011",
+      "gsis_id": null,
       "player_id": "7554"
     },
     {
@@ -61948,7 +61948,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8182745329444592,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -61976,7 +61976,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9475421522204504,
       "sleeper_id": "7586",
-      "gsis_id": "00-0036907",
+      "gsis_id": null,
       "player_id": "7586"
     },
     {
@@ -62046,7 +62046,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.9615166057836076,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -62060,7 +62060,7 @@
       "delta_to_next": 0.9,
       "pos_week_z": -0.4500939652834478,
       "sleeper_id": "7204",
-      "gsis_id": "00-0036187",
+      "gsis_id": null,
       "player_id": "7204"
     },
     {
@@ -62074,7 +62074,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.4928090990118834,
       "sleeper_id": "6822",
-      "gsis_id": "00-0036197",
+      "gsis_id": null,
       "player_id": "6822"
     },
     {
@@ -62186,7 +62186,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -0.901137776786936,
       "sleeper_id": "7602",
-      "gsis_id": "00-0036876",
+      "gsis_id": null,
       "player_id": "7602"
     },
     {
@@ -62214,8 +62214,8 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0034399664730795,
       "sleeper_id": null,
-      "gsis_id": "00-0036955",
-      "player_id": "00-0036955"
+      "gsis_id": null,
+      "player_id": "espn:4362630"
     },
     {
       "season": 2021,
@@ -62438,7 +62438,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.7071067811865476,
       "sleeper_id": "6950",
-      "gsis_id": "00-0036313",
+      "gsis_id": null,
       "player_id": "6950"
     },
     {
@@ -62466,7 +62466,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0272519202860284,
       "sleeper_id": "7466",
-      "gsis_id": "00-0035835",
+      "gsis_id": null,
       "player_id": "7466"
     },
     {
@@ -62480,7 +62480,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0272519202860284,
       "sleeper_id": "7087",
-      "gsis_id": "00-0035924",
+      "gsis_id": null,
       "player_id": "7087"
     },
     {
@@ -62494,7 +62494,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.1152355949783377,
       "sleeper_id": "7234",
-      "gsis_id": "00-0035883",
+      "gsis_id": null,
       "player_id": "7234"
     },
     {
@@ -62522,7 +62522,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0399067021805286,
       "sleeper_id": "8025",
-      "gsis_id": "00-0036727",
+      "gsis_id": null,
       "player_id": "8025"
     },
     {
@@ -62536,7 +62536,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.0525614840750284,
       "sleeper_id": "7794",
-      "gsis_id": "00-0036857",
+      "gsis_id": null,
       "player_id": "7794"
     },
     {
@@ -62710,16 +62710,16 @@
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 24.2,
       "war_rep": 12.0,
       "delta_to_next": 1.599999999999998,
       "pos_week_z": 1.8930180586592924,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -62822,7 +62822,7 @@
     {
       "season": 2021,
       "week": 17,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 21.3,
@@ -63040,7 +63040,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": 1.2672859525909488,
       "sleeper_id": "7438",
-      "gsis_id": "00-0036183",
+      "gsis_id": null,
       "player_id": "7438"
     },
     {
@@ -63172,7 +63172,7 @@
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 16.700000000000003,
@@ -63242,16 +63242,16 @@
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 15.74,
       "war_rep": 3.34,
       "delta_to_next": 0.9399999999999996,
       "pos_week_z": 0.9584880530224203,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -63284,16 +63284,16 @@
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Dontrell Hilliard",
+      "display_name": "Ben Roethlisberger",
       "position": "RB",
       "team": "TEN",
       "points": 15.3,
       "war_rep": 3.1000000000000014,
       "delta_to_next": 1.0,
       "pos_week_z": 0.793601061820607,
-      "sleeper_id": "5536",
-      "gsis_id": "00-0034253",
-      "player_id": "5536"
+      "sleeper_id": "138",
+      "gsis_id": "00-0022924",
+      "player_id": "138"
     },
     {
       "season": 2021,
@@ -63494,7 +63494,7 @@
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "LA",
       "points": 12.4,
@@ -63516,7 +63516,7 @@
       "delta_to_next": 0.08,
       "pos_week_z": -0.2219388826908306,
       "sleeper_id": "7083",
-      "gsis_id": "00-0035993",
+      "gsis_id": null,
       "player_id": "7083"
     },
     {
@@ -63880,7 +63880,7 @@
       "delta_to_next": 2.0999999999999996,
       "pos_week_z": -0.4725150405675751,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -64216,7 +64216,7 @@
       "delta_to_next": 0.2999999999999998,
       "pos_week_z": -0.0758593829306997,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -64236,16 +64236,16 @@
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 7.2,
       "war_rep": 0.0999999999999996,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.4118994660630823,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -64426,7 +64426,7 @@
       "delta_to_next": 1.3999999999999997,
       "pos_week_z": 0.2746295503417762,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -64734,7 +64734,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.4787579345207934,
       "sleeper_id": "6753",
-      "gsis_id": "00-0035715",
+      "gsis_id": null,
       "player_id": "6753"
     },
     {
@@ -64748,7 +64748,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": -0.091423558248373,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -64846,7 +64846,7 @@
       "delta_to_next": 0.2999999999999989,
       "pos_week_z": -0.1829368353959105,
       "sleeper_id": "7597",
-      "gsis_id": "00-0036510",
+      "gsis_id": null,
       "player_id": "7597"
     },
     {
@@ -64944,7 +64944,7 @@
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.4901004677177503,
       "sleeper_id": "7612",
-      "gsis_id": "00-0036620",
+      "gsis_id": null,
       "player_id": "7612"
     },
     {
@@ -65070,22 +65070,22 @@
       "delta_to_next": 0.3000000000000002,
       "pos_week_z": -0.5277587481529367,
       "sleeper_id": "7534",
-      "gsis_id": "00-0036657",
+      "gsis_id": null,
       "player_id": "7534"
     },
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 3.8,
       "war_rep": -8.399999999999999,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.6269939340945488,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -65126,7 +65126,7 @@
       "delta_to_next": 0.7000000000000002,
       "pos_week_z": -0.3888417089778694,
       "sleeper_id": "7554",
-      "gsis_id": "00-0037011",
+      "gsis_id": null,
       "player_id": "7554"
     },
     {
@@ -65210,7 +65210,7 @@
       "delta_to_next": 0.04,
       "pos_week_z": -0.5980542049652847,
       "sleeper_id": "7210",
-      "gsis_id": "00-0035864",
+      "gsis_id": null,
       "player_id": "7210"
     },
     {
@@ -65307,9 +65307,9 @@
       "war_rep": -9.0,
       "delta_to_next": 0.0,
       "pos_week_z": -0.7011119338814265,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -65321,9 +65321,9 @@
       "war_rep": -9.0,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.7011119338814265,
-      "sleeper_id": "4955",
+      "sleeper_id": "5052",
       "gsis_id": "00-0034816",
-      "player_id": "4955"
+      "player_id": "5052"
     },
     {
       "season": 2021,
@@ -65350,7 +65350,7 @@
       "delta_to_next": 4.440892098500626e-16,
       "pos_week_z": -0.713464933845906,
       "sleeper_id": "7087",
-      "gsis_id": "00-0035924",
+      "gsis_id": null,
       "player_id": "7087"
     },
     {
@@ -65370,7 +65370,7 @@
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 3.1,
@@ -65406,7 +65406,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.640733589458496,
       "sleeper_id": "7587",
-      "gsis_id": "00-0036626",
+      "gsis_id": null,
       "player_id": "7587"
     },
     {
@@ -65476,22 +65476,22 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.6658391097486203,
       "sleeper_id": "7757",
-      "gsis_id": "00-0036862",
+      "gsis_id": null,
       "player_id": "7757"
     },
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 2.7,
       "war_rep": -9.5,
       "delta_to_next": 0.1,
       "pos_week_z": -0.7628769337038245,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -65546,8 +65546,8 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.6909446300387446,
       "sleeper_id": null,
-      "gsis_id": "00-0036955",
-      "player_id": "00-0036955"
+      "gsis_id": null,
+      "player_id": "espn:4362630"
     },
     {
       "season": 2021,
@@ -65574,7 +65574,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.7034973901838066,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -65608,7 +65608,7 @@
     {
       "season": 2021,
       "week": 17,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 2.3,
@@ -65672,7 +65672,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.7548948175680188,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -65769,9 +65769,9 @@
       "war_rep": -5.200000000000001,
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.8006514561417875,
-      "sleeper_id": "5251",
-      "gsis_id": "00-0036250",
-      "player_id": "5251"
+      "sleeper_id": "7131",
+      "gsis_id": null,
+      "player_id": "7131"
     },
     {
       "season": 2021,
@@ -65868,7 +65868,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.8464080947155561,
       "sleeper_id": "6865",
-      "gsis_id": "00-0036244",
+      "gsis_id": null,
       "player_id": "6865"
     },
     {
@@ -65966,7 +65966,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.8921647332893248,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -66036,7 +66036,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.9150430525762092,
       "sleeper_id": "7568",
-      "gsis_id": "00-0036556",
+      "gsis_id": null,
       "player_id": "7568"
     },
     {
@@ -66148,7 +66148,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9607996911499778,
       "sleeper_id": "7842",
-      "gsis_id": "00-0036887",
+      "gsis_id": null,
       "player_id": "7842"
     },
     {
@@ -66176,7 +66176,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -0.9605249331354984,
       "sleeper_id": "8025",
-      "gsis_id": "00-0036727",
+      "gsis_id": null,
       "player_id": "8025"
     },
     {
@@ -66190,7 +66190,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -0.983678010436862,
       "sleeper_id": "7828",
-      "gsis_id": "00-0036637",
+      "gsis_id": null,
       "player_id": "7828"
     },
     {
@@ -66288,7 +66288,7 @@
       "delta_to_next": 0.2,
       "pos_week_z": -1.0294346490106308,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -66470,7 +66470,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.5321520841901914,
       "sleeper_id": "7318",
-      "gsis_id": "00-0035908",
+      "gsis_id": null,
       "player_id": "7318"
     },
     {
@@ -66484,7 +66484,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.5045490467378952,
       "sleeper_id": "7581",
-      "gsis_id": "00-0036946",
+      "gsis_id": null,
       "player_id": "7581"
     },
     {
@@ -66540,7 +66540,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -1.004763633665298,
       "sleeper_id": "7751",
-      "gsis_id": "00-0036671",
+      "gsis_id": null,
       "player_id": "7751"
     },
     {
@@ -66596,7 +66596,7 @@
       "delta_to_next": 1.9599999999999973,
       "pos_week_z": 1.6043066950847291,
       "sleeper_id": "7585",
-      "gsis_id": "00-0036898",
+      "gsis_id": null,
       "player_id": "7585"
     },
     {
@@ -66616,16 +66616,16 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "points": 28.4,
       "war_rep": 12.699999999999998,
       "delta_to_next": 1.4399999999999975,
       "pos_week_z": 2.4575099283189155,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2021,
@@ -66658,7 +66658,7 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "points": 26.96,
@@ -66988,7 +66988,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 1.4860310408062225,
       "sleeper_id": "7559",
-      "gsis_id": "00-0036635",
+      "gsis_id": null,
       "player_id": "7559"
     },
     {
@@ -67226,7 +67226,7 @@
       "delta_to_next": 0.3999999999999986,
       "pos_week_z": 0.9875089801089192,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -67282,7 +67282,7 @@
       "delta_to_next": 0.5000000000000018,
       "pos_week_z": 2.049553696587441,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -67506,7 +67506,7 @@
       "delta_to_next": 1.200000000000001,
       "pos_week_z": 0.7245141911699576,
       "sleeper_id": "7794",
-      "gsis_id": "00-0036857",
+      "gsis_id": null,
       "player_id": "7794"
     },
     {
@@ -67666,7 +67666,7 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Josh Palmer",
+      "display_name": "Joshua Palmer",
       "position": "WR",
       "team": "LAC",
       "points": 12.5,
@@ -67730,7 +67730,7 @@
       "delta_to_next": 0.200000000000001,
       "pos_week_z": 1.273955924861088,
       "sleeper_id": "7891",
-      "gsis_id": "00-0036754",
+      "gsis_id": null,
       "player_id": "7891"
     },
     {
@@ -67778,16 +67778,16 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Scott Miller",
+      "display_name": "Scotty Miller",
       "position": "WR",
       "team": "TB",
       "points": 11.7,
       "war_rep": -4.0,
       "delta_to_next": 0.1000000000000014,
       "pos_week_z": 0.3228128991791823,
-      "sleeper_id": null,
+      "sleeper_id": "6290",
       "gsis_id": "00-0035298",
-      "player_id": "00-0035298"
+      "player_id": "6290"
     },
     {
       "season": 2021,
@@ -68080,7 +68080,7 @@
       "delta_to_next": 0.5800000000000018,
       "pos_week_z": -0.9066529962204392,
       "sleeper_id": "6822",
-      "gsis_id": "00-0036197",
+      "gsis_id": null,
       "player_id": "6822"
     },
     {
@@ -68094,7 +68094,7 @@
       "delta_to_next": 0.5,
       "pos_week_z": 0.1106636173380329,
       "sleeper_id": "7609",
-      "gsis_id": "00-0036654",
+      "gsis_id": null,
       "player_id": "7609"
     },
     {
@@ -68108,7 +68108,7 @@
       "delta_to_next": 0.3000000000000007,
       "pos_week_z": -0.0223177582266429,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -68150,7 +68150,7 @@
       "delta_to_next": 3.74,
       "pos_week_z": -0.9801321395583302,
       "sleeper_id": "7083",
-      "gsis_id": "00-0035993",
+      "gsis_id": null,
       "player_id": "7083"
     },
     {
@@ -68170,7 +68170,7 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "points": 8.7,
@@ -68206,7 +68206,7 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": 0.0015346264345796,
       "sleeper_id": "7863",
-      "gsis_id": "00-0036768",
+      "gsis_id": null,
       "player_id": "7863"
     },
     {
@@ -68262,7 +68262,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": 0.5371380417210525,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -68450,7 +68450,7 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "points": 7.200000000000001,
@@ -68514,7 +68514,7 @@
       "delta_to_next": 0.1999999999999993,
       "pos_week_z": 0.2850687659099877,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -68618,30 +68618,30 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Dontrell Hilliard",
+      "display_name": "Ben Roethlisberger",
       "position": "RB",
       "team": "TEN",
       "points": 6.3,
       "war_rep": -4.500000000000001,
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.3122112224128485,
-      "sleeper_id": "5536",
-      "gsis_id": "00-0034253",
-      "player_id": "5536"
+      "sleeper_id": "138",
+      "gsis_id": "00-0022924",
+      "player_id": "138"
     },
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Darrel Williams",
+      "display_name": "Steven Jackson",
       "position": "RB",
       "team": "KC",
       "points": 6.2,
       "war_rep": -4.6000000000000005,
       "delta_to_next": 0.5,
       "pos_week_z": -0.3258523462757801,
-      "sleeper_id": "5549",
-      "gsis_id": "00-0034301",
-      "player_id": "5549"
+      "sleeper_id": "57",
+      "gsis_id": null,
+      "player_id": "57"
     },
     {
       "season": 2021,
@@ -68850,7 +68850,7 @@
       "delta_to_next": 0.3999999999999994,
       "pos_week_z": -0.4759047087680282,
       "sleeper_id": "7107",
-      "gsis_id": "00-0036278",
+      "gsis_id": null,
       "player_id": "7107"
     },
     {
@@ -69116,7 +69116,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.6742312222154238,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -69276,16 +69276,16 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Travis Homer",
+      "display_name": "Jason Peters",
       "position": "RB",
       "team": "SEA",
       "points": 3.2,
       "war_rep": -7.6,
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.7350860621637298,
-      "sleeper_id": "6012",
-      "gsis_id": "00-0035594",
-      "player_id": "6012"
+      "sleeper_id": "412",
+      "gsis_id": "00-0022531",
+      "player_id": "412"
     },
     {
       "season": 2021,
@@ -69354,7 +69354,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.4711390615232063,
       "sleeper_id": "6894",
-      "gsis_id": "00-0035771",
+      "gsis_id": null,
       "player_id": "6894"
     },
     {
@@ -69368,7 +69368,7 @@
       "delta_to_next": 0.1999999999999997,
       "pos_week_z": -0.4711390615232063,
       "sleeper_id": "7502",
-      "gsis_id": "00-0036456",
+      "gsis_id": null,
       "player_id": "7502"
     },
     {
@@ -69396,22 +69396,22 @@
       "delta_to_next": 0.0999999999999996,
       "pos_week_z": -0.7623683098895931,
       "sleeper_id": "6753",
-      "gsis_id": "00-0035715",
+      "gsis_id": null,
       "player_id": "6753"
     },
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "points": 2.9000000000000004,
       "war_rep": -7.9,
       "delta_to_next": 0.1000000000000005,
       "pos_week_z": -0.7760094337525247,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2021,
@@ -69458,7 +69458,7 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "LA",
       "points": 2.8,
@@ -69592,7 +69592,7 @@
       "delta_to_next": 0.2000000000000001,
       "pos_week_z": -0.606868671575318,
       "sleeper_id": "6865",
-      "gsis_id": "00-0036244",
+      "gsis_id": null,
       "player_id": "6865"
     },
     {
@@ -69732,7 +69732,7 @@
       "delta_to_next": 0.3,
       "pos_week_z": -0.6650385044547945,
       "sleeper_id": "7694",
-      "gsis_id": "00-0037005",
+      "gsis_id": null,
       "player_id": "7694"
     },
     {
@@ -69760,7 +69760,7 @@
       "delta_to_next": 0.0,
       "pos_week_z": -0.9043183271526406,
       "sleeper_id": "8068",
-      "gsis_id": "00-0036910",
+      "gsis_id": null,
       "player_id": "8068"
     },
     {
@@ -69774,7 +69774,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9043183271526406,
       "sleeper_id": "7533",
-      "gsis_id": "00-0036999",
+      "gsis_id": null,
       "player_id": "7533"
     },
     {
@@ -69858,7 +69858,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -0.94266617797551,
       "sleeper_id": "7586",
-      "gsis_id": "00-0036907",
+      "gsis_id": null,
       "player_id": "7586"
     },
     {
@@ -69892,16 +69892,16 @@
     {
       "season": 2021,
       "week": 18,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "points": 1.6,
       "war_rep": -5.4,
       "delta_to_next": 0.1,
       "pos_week_z": -0.7619882259205886,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2021,
@@ -69984,7 +69984,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -0.9810140287983796,
       "sleeper_id": "8005",
-      "gsis_id": "00-0036491",
+      "gsis_id": null,
       "player_id": "8005"
     },
     {
@@ -69998,7 +69998,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -0.8007681145069062,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -70180,7 +70180,7 @@
       "delta_to_next": 0.0999999999999999,
       "pos_week_z": -0.8783278916795415,
       "sleeper_id": "7716",
-      "gsis_id": "00-0036628",
+      "gsis_id": null,
       "player_id": "7716"
     },
     {
@@ -70194,7 +70194,7 @@
       "delta_to_next": 0.1999999999999999,
       "pos_week_z": -1.044927113503162,
       "sleeper_id": "7540",
-      "gsis_id": "00-0036991",
+      "gsis_id": null,
       "player_id": "7540"
     },
     {
@@ -70236,7 +70236,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.0624730348740896,
       "sleeper_id": "8025",
-      "gsis_id": "00-0036727",
+      "gsis_id": null,
       "player_id": "8025"
     },
     {
@@ -70278,7 +70278,7 @@
       "delta_to_next": 0.0999999999999998,
       "pos_week_z": -1.076114158737021,
       "sleeper_id": "7087",
-      "gsis_id": "00-0035924",
+      "gsis_id": null,
       "player_id": "7087"
     },
     {
@@ -70404,7 +70404,7 @@
       "delta_to_next": 0.1000000000000002,
       "pos_week_z": -1.1170375303258162,
       "sleeper_id": "7720",
-      "gsis_id": "00-0036842",
+      "gsis_id": null,
       "player_id": "7720"
     },
     {
@@ -70460,7 +70460,7 @@
       "delta_to_next": 0.1,
       "pos_week_z": -1.1443197780516796,
       "sleeper_id": "8085",
-      "gsis_id": "00-0036698",
+      "gsis_id": null,
       "player_id": "8085"
     },
     {

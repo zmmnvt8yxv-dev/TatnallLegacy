@@ -6,131 +6,89 @@
       "team_name": "The Champ",
       "owner": "sdmarvin713",
       "record": "8-5",
-      "points_for": 2329.0,
-      "points_against": 2351.0,
+      "points_for": 1923.0,
+      "points_against": 1889.0,
       "regular_season_rank": 3,
-      "final_rank": 6,
-      "wins": 8,
-      "losses": 8,
-      "ties": 0
+      "final_rank": 6
     },
     {
       "team_id": 2,
       "team_name": "Team Downs",
       "owner": "John.downs123",
       "record": "3-10",
-      "points_for": 2046.0,
-      "points_against": 2431.0,
+      "points_for": 1684.0,
+      "points_against": 1935.0,
       "regular_season_rank": 8,
-      "final_rank": 8,
-      "wins": 3,
-      "losses": 13,
-      "ties": 0
+      "final_rank": 8
     },
     {
       "team_id": 3,
       "team_name": "Valar Morghulis",
       "owner": "Edward3864",
       "record": "7-6",
-      "points_for": 2235.0,
-      "points_against": 2133.0,
+      "points_for": 1865.0,
+      "points_against": 1835.0,
       "regular_season_rank": 2,
-      "final_rank": 4,
-      "wins": 8,
-      "losses": 8,
-      "ties": 0
+      "final_rank": 4
     },
     {
       "team_id": 4,
       "team_name": "Team Malley",
       "owner": "connerandfinn",
       "record": "8-5",
-      "points_for": 2396.0,
-      "points_against": 2324.0,
+      "points_for": 1903.0,
+      "points_against": 1888.0,
       "regular_season_rank": 4,
-      "final_rank": 3,
-      "wins": 10,
-      "losses": 6,
-      "ties": 0
+      "final_rank": 3
     },
     {
       "team_id": 5,
       "team_name": "Team Blow me ",
       "owner": "jksheehy",
       "record": "6-7",
-      "points_for": 2301.0,
-      "points_against": 2236.0,
+      "points_for": 1870.0,
+      "points_against": 1835.0,
       "regular_season_rank": 6,
-      "final_rank": 2,
-      "wins": 8,
-      "losses": 8,
-      "ties": 0
+      "final_rank": 2
     },
     {
       "team_id": 6,
       "team_name": "Dear Lord Please",
       "owner": "Jefe6700",
       "record": "8-5",
-      "points_for": 2348.0,
-      "points_against": 2068.0,
+      "points_for": 1940.0,
+      "points_against": 1807.0,
       "regular_season_rank": 1,
-      "final_rank": 1,
-      "wins": 11,
-      "losses": 5,
-      "ties": 0
+      "final_rank": 1
     },
     {
       "team_id": 7,
       "team_name": "Big Dick Bandito",
       "owner": "jdunca5228572",
       "record": "5-8",
-      "points_for": 2254.0,
-      "points_against": 2200.0,
+      "points_for": 1758.0,
+      "points_against": 1838.0,
       "regular_season_rank": 7,
-      "final_rank": 7,
-      "wins": 8,
-      "losses": 8,
-      "ties": 0
+      "final_rank": 7
     },
     {
       "team_id": 8,
       "team_name": "Golden Taint",
       "owner": "mattmaloy99",
       "record": "7-6",
-      "points_for": 2277.0,
-      "points_against": 2227.0,
+      "points_for": 1815.0,
+      "points_against": 1731.0,
       "regular_season_rank": 5,
-      "final_rank": 5,
-      "wins": 9,
-      "losses": 7,
-      "ties": 0
+      "final_rank": 5
     }
-  ],
-  "weeks": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16
   ],
   "standings": [
     {
       "team": "Dear Lord Please",
-      "wins": 11,
+      "wins": 10,
       "losses": 5,
       "ties": 0,
-      "points_for": 2348.0,
+      "points_for": 2231.0,
       "points_against": 2068.0
     },
     {
@@ -150,14 +108,6 @@
       "points_against": 2227.0
     },
     {
-      "team": "Big Dick Bandito",
-      "wins": 8,
-      "losses": 8,
-      "ties": 0,
-      "points_for": 2254.0,
-      "points_against": 2200.0
-    },
-    {
       "team": "The Champ",
       "wins": 8,
       "losses": 8,
@@ -174,11 +124,19 @@
       "points_against": 2236.0
     },
     {
-      "team": "Valar Morghulis",
+      "team": "Big Dick Bandito",
       "wins": 8,
       "losses": 8,
       "ties": 0,
-      "points_for": 2235.0,
+      "points_for": 2254.0,
+      "points_against": 2200.0
+    },
+    {
+      "team": "Valar Morghulis",
+      "wins": 7,
+      "losses": 8,
+      "ties": 0,
+      "points_for": 2136.0,
       "points_against": 2133.0
     },
     {
@@ -188,14 +146,6 @@
       "ties": 0,
       "points_for": 2046.0,
       "points_against": 2431.0
-    },
-    {
-      "team": "Away",
-      "wins": 0,
-      "losses": 2,
-      "ties": 0,
-      "points_for": 0.0,
-      "points_against": 216.0
     }
   ],
   "playerSeasonTotals": [
@@ -205,7 +155,7 @@
       "games": 16
     },
     {
-      "player_id": "2078",
+      "player_id": "espn:16733",
       "points": 0.0,
       "games": 16
     },
@@ -220,12 +170,12 @@
       "games": 16
     },
     {
-      "player_id": "344",
+      "player_id": "12649",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "4037",
+      "player_id": "espn:3116165",
       "points": 0.0,
       "games": 16
     },
@@ -245,7 +195,7 @@
       "games": 11
     },
     {
-      "player_id": "24",
+      "player_id": "11237",
       "points": 0.0,
       "games": 16
     },
@@ -265,7 +215,7 @@
       "games": 1
     },
     {
-      "player_id": "138",
+      "player_id": "5536",
       "points": 0.0,
       "games": 13
     },
@@ -275,12 +225,12 @@
       "games": 16
     },
     {
-      "player_id": "367",
+      "player_id": "12537",
       "points": 0.0,
       "games": 6
     },
     {
-      "player_id": "PHI",
+      "player_id": "-16021",
       "points": 0.0,
       "games": 8
     },
@@ -315,7 +265,7 @@
       "games": 16
     },
     {
-      "player_id": "956",
+      "player_id": "espn:13981",
       "points": 0.0,
       "games": 16
     },
@@ -325,7 +275,7 @@
       "games": 16
     },
     {
-      "player_id": "96",
+      "player_id": "8439",
       "points": 0.0,
       "games": 16
     },
@@ -355,12 +305,12 @@
       "games": 15
     },
     {
-      "player_id": "4274",
+      "player_id": "7869",
       "points": 0.0,
       "games": 7
     },
     {
-      "player_id": "BUF",
+      "player_id": "-16002",
       "points": 0.0,
       "games": 13
     },
@@ -425,7 +375,7 @@
       "games": 1
     },
     {
-      "player_id": "LAC",
+      "player_id": "-16024",
       "points": 0.0,
       "games": 3
     },
@@ -485,7 +435,7 @@
       "games": 16
     },
     {
-      "player_id": "2320",
+      "player_id": "espn:2576434",
       "points": 0.0,
       "games": 16
     },
@@ -515,12 +465,12 @@
       "games": 14
     },
     {
-      "player_id": "616",
+      "player_id": "13232",
       "points": 0.0,
       "games": 2
     },
     {
-      "player_id": "CHI",
+      "player_id": "-16003",
       "points": 0.0,
       "games": 13
     },
@@ -540,7 +490,7 @@
       "games": 16
     },
     {
-      "player_id": "676",
+      "player_id": "12514",
       "points": 0.0,
       "games": 16
     },
@@ -605,7 +555,7 @@
       "games": 14
     },
     {
-      "player_id": "1067",
+      "player_id": "espn:15072",
       "points": 0.0,
       "games": 16
     },
@@ -630,7 +580,7 @@
       "games": 16
     },
     {
-      "player_id": "LAR",
+      "player_id": "-16014",
       "points": 0.0,
       "games": 9
     },
@@ -660,7 +610,7 @@
       "games": 16
     },
     {
-      "player_id": "4983",
+      "player_id": "4961",
       "points": 0.0,
       "games": 16
     },
@@ -690,7 +640,7 @@
       "games": 3
     },
     {
-      "player_id": "5052",
+      "player_id": "4955",
       "points": 0.0,
       "games": 16
     },
@@ -705,7 +655,7 @@
       "games": 6
     },
     {
-      "player_id": "MIN",
+      "player_id": "-16016",
       "points": 0.0,
       "games": 7
     },
@@ -720,7 +670,7 @@
       "games": 15
     },
     {
-      "player_id": "CLE",
+      "player_id": "-16005",
       "points": 0.0,
       "games": 3
     },
@@ -750,12 +700,12 @@
       "games": 16
     },
     {
-      "player_id": "4199",
+      "player_id": "espn:3042519",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "5916",
+      "player_id": "espn:4039359",
       "points": 0.0,
       "games": 2
     },
@@ -765,7 +715,7 @@
       "games": 16
     },
     {
-      "player_id": "289",
+      "player_id": "2580",
       "points": 0.0,
       "games": 16
     },
@@ -785,12 +735,12 @@
       "games": 16
     },
     {
-      "player_id": "JAX",
+      "player_id": "-16030",
       "points": 0.0,
       "games": 10
     },
     {
-      "player_id": "120",
+      "player_id": "1097",
       "points": 0.0,
       "games": 1
     },
@@ -800,7 +750,7 @@
       "games": 16
     },
     {
-      "player_id": "NO",
+      "player_id": "-16018",
       "points": 0.0,
       "games": 10
     },
@@ -855,7 +805,7 @@
       "games": 16
     },
     {
-      "player_id": "3157",
+      "player_id": "espn:3052876",
       "points": 0.0,
       "games": 8
     },
@@ -870,17 +820,17 @@
       "games": 4
     },
     {
-      "player_id": "331",
+      "player_id": "5529",
       "points": 0.0,
       "games": 11
     },
     {
-      "player_id": "147",
+      "player_id": "11283",
       "points": 0.0,
       "games": 16
     },
     {
-      "player_id": "167",
+      "player_id": "2330",
       "points": 0.0,
       "games": 15
     },
@@ -890,7 +840,7 @@
       "games": 16
     },
     {
-      "player_id": "IND",
+      "player_id": "-16011",
       "points": 0.0,
       "games": 8
     },
@@ -905,7 +855,7 @@
       "games": 14
     },
     {
-      "player_id": "BAL",
+      "player_id": "-16033",
       "points": 0.0,
       "games": 10
     },
@@ -915,7 +865,7 @@
       "games": 11
     },
     {
-      "player_id": "NE",
+      "player_id": "-16017",
       "points": 0.0,
       "games": 15
     },
@@ -925,7 +875,7 @@
       "games": 5
     },
     {
-      "player_id": "4984",
+      "player_id": "2212",
       "points": 0.0,
       "games": 13
     },
@@ -940,12 +890,12 @@
       "games": 13
     },
     {
-      "player_id": "5848",
+      "player_id": "espn:4241372",
       "points": 0.0,
       "games": 14
     },
     {
-      "player_id": "5917",
+      "player_id": "espn:4035004",
       "points": 0.0,
       "games": 7
     },
@@ -960,7 +910,7 @@
       "games": 3
     },
     {
-      "player_id": "127",
+      "player_id": "4333",
       "points": 0.0,
       "games": 4
     },
@@ -985,7 +935,7 @@
       "games": 1
     },
     {
-      "player_id": "GB",
+      "player_id": "-16009",
       "points": 0.0,
       "games": 2
     },
@@ -1000,17 +950,17 @@
       "games": 3
     },
     {
-      "player_id": "23",
+      "player_id": "4527",
       "points": 0.0,
       "games": 3
     },
     {
-      "player_id": "223",
+      "player_id": "5528",
       "points": 0.0,
       "games": 8
     },
     {
-      "player_id": "232",
+      "player_id": "8479",
       "points": 0.0,
       "games": 6
     },
@@ -1070,7 +1020,7 @@
       "games": 3
     },
     {
-      "player_id": "421",
+      "player_id": "12483",
       "points": 0.0,
       "games": 11
     },
@@ -1095,7 +1045,7 @@
       "games": 1
     },
     {
-      "player_id": "5284",
+      "player_id": "espn:3122976",
       "points": 0.0,
       "games": 1
     },
@@ -1105,7 +1055,7 @@
       "games": 6
     },
     {
-      "player_id": "TEN",
+      "player_id": "-16010",
       "points": 0.0,
       "games": 2
     },
@@ -1125,7 +1075,7 @@
       "games": 12
     },
     {
-      "player_id": "SF",
+      "player_id": "-16025",
       "points": 0.0,
       "games": 10
     },
@@ -1135,7 +1085,7 @@
       "games": 5
     },
     {
-      "player_id": "WSH",
+      "player_id": "-16028",
       "points": 0.0,
       "games": 1
     },
@@ -1145,7 +1095,7 @@
       "games": 4
     },
     {
-      "player_id": "CAR",
+      "player_id": "-16029",
       "points": 0.0,
       "games": 3
     },
@@ -1165,7 +1115,7 @@
       "games": 11
     },
     {
-      "player_id": "6446",
+      "player_id": "espn:3122799",
       "points": 0.0,
       "games": 1
     },
@@ -1175,7 +1125,7 @@
       "games": 3
     },
     {
-      "player_id": "642",
+      "player_id": "13217",
       "points": 0.0,
       "games": 10
     },
@@ -1185,7 +1135,7 @@
       "games": 2
     },
     {
-      "player_id": "17",
+      "player_id": "11122",
       "points": 0.0,
       "games": 7
     },
@@ -1200,7 +1150,7 @@
       "games": 2
     },
     {
-      "player_id": "233",
+      "player_id": "11128",
       "points": 0.0,
       "games": 1
     },
@@ -1225,12 +1175,12 @@
       "games": 2
     },
     {
-      "player_id": "PIT",
+      "player_id": "-16023",
       "points": 0.0,
       "games": 9
     },
     {
-      "player_id": "6156",
+      "player_id": "espn:4035072",
       "points": 0.0,
       "games": 3
     },
@@ -1265,7 +1215,7 @@
       "games": 1
     },
     {
-      "player_id": "DAL",
+      "player_id": "-16006",
       "points": 0.0,
       "games": 5
     },
@@ -1285,7 +1235,7 @@
       "games": 5
     },
     {
-      "player_id": "NYG",
+      "player_id": "-16019",
       "points": 0.0,
       "games": 1
     },
@@ -1295,7 +1245,7 @@
       "games": 1
     },
     {
-      "player_id": "345",
+      "player_id": "12477",
       "points": 0.0,
       "games": 1
     },
@@ -1360,7 +1310,7 @@
       "games": 1
     },
     {
-      "player_id": "NYJ",
+      "player_id": "-16020",
       "points": 0.0,
       "games": 1
     },
@@ -1395,7 +1345,7 @@
       "games": 2
     },
     {
-      "player_id": "SEA",
+      "player_id": "-16026",
       "points": 0.0,
       "games": 2
     },
@@ -1405,7 +1355,7 @@
       "games": 2
     },
     {
-      "player_id": "188",
+      "player_id": "5526",
       "points": 0.0,
       "games": 1
     },
@@ -1420,12 +1370,12 @@
       "games": 1
     },
     {
-      "player_id": "KC",
+      "player_id": "-16012",
       "points": 0.0,
       "games": 1
     },
     {
-      "player_id": "333",
+      "player_id": "8664",
       "points": 0.0,
       "games": 1
     },
@@ -1435,8 +1385,26 @@
       "games": 1
     }
   ],
+  "weeks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
   "totals": {
     "matchups": 65,
-    "lineups": 0
+    "lineups": 2287
   }
 }

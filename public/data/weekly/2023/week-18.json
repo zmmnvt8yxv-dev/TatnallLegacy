@@ -44,7 +44,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4034",
+      "sleeper_id": "4034",
+      "espn_id": "3117251",
+      "gsis_id": "00-0033280",
       "position": "RB",
       "nfl_team": "SF"
     },
@@ -56,7 +59,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6904",
+      "sleeper_id": "6904",
+      "espn_id": "4040715",
+      "gsis_id": "00-0036389",
       "position": "QB",
       "nfl_team": "PHI"
     },
@@ -67,8 +73,7 @@
       "points": 10.0,
       "started": true,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -78,9 +83,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5846",
+      "sleeper_id": "5846",
+      "espn_id": "4047650",
+      "gsis_id": "00-0035640",
       "position": "WR",
-      "nfl_team": "SEA"
+      "nfl_team": "PIT"
     },
     {
       "week": 18,
@@ -90,7 +98,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6801",
+      "sleeper_id": "6801",
+      "espn_id": "4239993",
+      "gsis_id": "00-0036410",
       "position": "WR",
       "nfl_team": "CIN"
     },
@@ -102,9 +113,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1426",
+      "sleeper_id": "1426",
+      "espn_id": "15795",
+      "gsis_id": "00-0030564",
       "position": "WR",
-      "nfl_team": "TEN"
+      "nfl_team": "BAL"
     },
     {
       "week": 18,
@@ -114,7 +128,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3294",
+      "sleeper_id": "3294",
+      "espn_id": "2577417",
+      "gsis_id": "00-0033077",
       "position": "QB",
       "nfl_team": "DAL"
     },
@@ -126,7 +143,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9500",
+      "sleeper_id": "9500",
+      "espn_id": "4688813",
+      "gsis_id": "00-0038997",
       "position": "WR",
       "nfl_team": "IND"
     },
@@ -138,7 +158,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4381",
+      "sleeper_id": "4381",
+      "espn_id": "2468609",
+      "gsis_id": "00-0033357",
       "position": "TE",
       "nfl_team": "NO"
     },
@@ -150,9 +173,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4950",
+      "sleeper_id": "4950",
+      "espn_id": "3895856",
+      "gsis_id": "00-0034775",
       "position": "WR",
-      "nfl_team": "JAX"
+      "nfl_team": "HOU"
     },
     {
       "week": 18,
@@ -162,9 +188,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9493",
+      "sleeper_id": "9493",
+      "espn_id": "4426515",
+      "gsis_id": "00-0039075",
       "position": "WR",
-      "nfl_team": "LA"
+      "nfl_team": "LAR"
     },
     {
       "week": 18,
@@ -174,7 +203,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8205",
+      "sleeper_id": "8205",
+      "espn_id": "4361529",
+      "gsis_id": "00-0037197",
       "position": "RB",
       "nfl_team": "KC"
     },
@@ -186,7 +218,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6826",
+      "sleeper_id": "6826",
+      "espn_id": "4258595",
+      "gsis_id": "00-0036290",
       "position": "TE",
       "nfl_team": "CHI"
     },
@@ -198,7 +233,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6813",
+      "sleeper_id": "6813",
+      "espn_id": "4242335",
+      "gsis_id": "00-0036223",
       "position": "RB",
       "nfl_team": "IND"
     },
@@ -210,9 +248,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4234",
+      "sleeper_id": "4234",
+      "espn_id": "3121409",
+      "gsis_id": "00-0033591",
       "position": "WR",
-      "nfl_team": "HOU"
+      "nfl_team": "WAS"
     },
     {
       "week": 18,
@@ -222,7 +263,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1264",
+      "sleeper_id": "1264",
+      "espn_id": "15683",
+      "gsis_id": "00-0029597",
       "position": "K",
       "nfl_team": "BAL"
     },
@@ -234,7 +278,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8230",
+      "sleeper_id": "8230",
+      "espn_id": "4242431",
+      "gsis_id": "00-0037276",
       "position": "RB",
       "nfl_team": "MIN"
     },
@@ -246,7 +293,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9224",
+      "sleeper_id": "9224",
+      "espn_id": "4362238",
+      "gsis_id": "00-0038597",
       "position": "RB",
       "nfl_team": "CIN"
     },
@@ -258,9 +308,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6945",
+      "sleeper_id": "6945",
+      "espn_id": "4360294",
+      "gsis_id": "00-0036328",
       "position": "RB",
-      "nfl_team": "WAS"
+      "nfl_team": "NE"
     },
     {
       "week": 18,
@@ -270,7 +323,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8139",
+      "sleeper_id": "8139",
+      "espn_id": "4361777",
+      "gsis_id": "00-0038040",
       "position": "RB",
       "nfl_team": "LV"
     },
@@ -282,7 +338,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3321",
+      "sleeper_id": "3321",
+      "espn_id": "3116406",
+      "gsis_id": "00-0033040",
       "position": "WR",
       "nfl_team": "MIA"
     },
@@ -294,7 +353,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7523",
+      "sleeper_id": "7523",
+      "espn_id": "4360310",
+      "gsis_id": "00-0036971",
       "position": "QB",
       "nfl_team": "JAX"
     },
@@ -306,9 +368,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5967",
+      "sleeper_id": "5967",
+      "espn_id": "3916148",
+      "gsis_id": "00-0035261",
       "position": "RB",
-      "nfl_team": "DAL"
+      "nfl_team": "TEN"
     },
     {
       "week": 18,
@@ -318,7 +383,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2309",
+      "sleeper_id": "2309",
+      "espn_id": "2976499",
+      "gsis_id": "00-0031544",
       "position": "WR",
       "nfl_team": "CLE"
     },
@@ -330,7 +398,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6804",
+      "sleeper_id": "6804",
+      "espn_id": "4036378",
+      "gsis_id": "00-0036264",
       "position": "QB",
       "nfl_team": "GB"
     },
@@ -342,7 +413,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8167",
+      "sleeper_id": "8167",
+      "espn_id": "4248528",
+      "gsis_id": "00-0038124",
       "position": "WR",
       "nfl_team": "GB"
     },
@@ -354,7 +428,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "player_id": "4037",
+      "sleeper_id": "4037",
+      "espn_id": "3116165.0",
+      "gsis_id": "00-0033921",
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 18,
@@ -364,9 +443,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6790",
+      "sleeper_id": "6790",
+      "espn_id": "4259545",
+      "gsis_id": "00-0036275",
       "position": "RB",
-      "nfl_team": "PHI"
+      "nfl_team": "CHI"
     },
     {
       "week": 18,
@@ -376,7 +458,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6943",
+      "sleeper_id": "6943",
+      "espn_id": "4243537",
+      "gsis_id": "00-0036196",
       "position": "WR",
       "nfl_team": "BUF"
     },
@@ -388,9 +473,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8137",
+      "sleeper_id": "8137",
+      "espn_id": "4426354",
+      "gsis_id": "00-0037247",
       "position": "WR",
-      "nfl_team": "PIT"
+      "nfl_team": "DAL"
     },
     {
       "week": 18,
@@ -400,7 +488,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1689",
+      "sleeper_id": "1689",
+      "espn_id": "16460",
+      "gsis_id": "00-0030035",
       "position": "WR",
       "nfl_team": "CAR"
     },
@@ -412,7 +503,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "11533",
+      "sleeper_id": "11533",
+      "espn_id": "3953687",
+      "gsis_id": "00-0037692",
       "position": "K",
       "nfl_team": "DAL"
     },
@@ -424,7 +518,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6768",
+      "sleeper_id": "6768",
+      "espn_id": "4241479",
+      "gsis_id": "00-0036212",
       "position": "QB",
       "nfl_team": "MIA"
     },
@@ -436,9 +533,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2749",
+      "sleeper_id": "2749",
+      "espn_id": "2576414",
+      "gsis_id": "00-0031687",
       "position": "RB",
-      "nfl_team": "MIA"
+      "nfl_team": "LV"
     },
     {
       "week": 18,
@@ -448,9 +548,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3198",
+      "sleeper_id": "3198",
+      "espn_id": "3043078",
+      "gsis_id": "00-0032764",
       "position": "RB",
-      "nfl_team": "TEN"
+      "nfl_team": "BAL"
     },
     {
       "week": 18,
@@ -460,7 +563,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5012",
+      "sleeper_id": "5012",
+      "espn_id": "3116365",
+      "gsis_id": "00-0034753",
       "position": "TE",
       "nfl_team": "BAL"
     },
@@ -472,7 +578,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8131",
+      "sleeper_id": "8131",
+      "espn_id": "4361050",
+      "gsis_id": "00-0037838",
       "position": "TE",
       "nfl_team": "BAL"
     },
@@ -483,8 +592,7 @@
       "points": 9.0,
       "started": true,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -494,7 +602,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "167",
+      "sleeper_id": "167",
+      "espn_id": "2330",
+      "gsis_id": "00-0019596",
       "position": "QB",
       "nfl_team": "NE"
     },
@@ -506,7 +617,8 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "player_id": "espn:3122976",
+      "espn_id": "3122976"
     },
     {
       "week": 18,
@@ -516,7 +628,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6794",
+      "sleeper_id": "6794",
+      "espn_id": "4262921",
+      "gsis_id": "00-0036322",
       "position": "WR",
       "nfl_team": "MIN"
     },
@@ -528,7 +643,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1466",
+      "sleeper_id": "1466",
+      "espn_id": "15847",
+      "gsis_id": "00-0030506",
       "position": "TE",
       "nfl_team": "KC"
     },
@@ -540,7 +658,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7547",
+      "sleeper_id": "7547",
+      "espn_id": "4374302",
+      "gsis_id": "00-0036963",
       "position": "WR",
       "nfl_team": "DET"
     },
@@ -552,7 +673,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7611",
+      "sleeper_id": "7611",
+      "espn_id": "4569173",
+      "gsis_id": "00-0036875",
       "position": "RB",
       "nfl_team": "NE"
     },
@@ -564,9 +688,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4199",
+      "sleeper_id": "4199",
+      "espn_id": "17766",
+      "gsis_id": "00-0033293",
       "position": "RB",
-      "nfl_team": "GB"
+      "nfl_team": "MIN"
     },
     {
       "week": 18,
@@ -575,8 +702,7 @@
       "points": 27.8,
       "started": true,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -586,7 +712,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3163",
+      "sleeper_id": "3163",
+      "espn_id": "3046779",
+      "gsis_id": "00-0033106",
       "position": "QB",
       "nfl_team": "DET"
     },
@@ -598,9 +727,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8150",
+      "sleeper_id": "8150",
+      "espn_id": "4430737",
+      "gsis_id": "00-0037840",
       "position": "RB",
-      "nfl_team": "LA"
+      "nfl_team": "LAR"
     },
     {
       "week": 18,
@@ -610,7 +742,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7042",
+      "sleeper_id": "7042",
+      "espn_id": "3917232",
+      "gsis_id": "00-0036162",
       "position": "K",
       "nfl_team": "BUF"
     },
@@ -622,7 +757,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9226",
+      "sleeper_id": "9226",
+      "espn_id": "4429160",
+      "gsis_id": "00-0039040",
       "position": "RB",
       "nfl_team": "MIA"
     },
@@ -634,7 +772,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "10229",
+      "sleeper_id": "10229",
+      "espn_id": "4428331",
+      "gsis_id": "00-0039067",
       "position": "WR",
       "nfl_team": "KC"
     },
@@ -646,7 +787,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8132",
+      "sleeper_id": "8132",
+      "espn_id": "4373626",
+      "gsis_id": "00-0037263",
       "position": "RB",
       "nfl_team": "ATL"
     },
@@ -658,7 +802,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7525",
+      "sleeper_id": "7525",
+      "espn_id": "4241478",
+      "gsis_id": "00-0036912",
       "position": "WR",
       "nfl_team": "PHI"
     },
@@ -670,7 +817,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4046",
+      "sleeper_id": "4046",
+      "espn_id": "3139477",
+      "gsis_id": "00-0033873",
       "position": "QB",
       "nfl_team": "KC"
     },
@@ -682,7 +832,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "10222",
+      "sleeper_id": "10222",
+      "espn_id": "4362249",
+      "gsis_id": "00-0039146",
       "position": "WR",
       "nfl_team": "GB"
     },
@@ -693,8 +846,7 @@
       "points": 8.0,
       "started": false,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -703,8 +855,7 @@
       "points": 9.0,
       "started": false,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -713,8 +864,7 @@
       "points": 19.0,
       "started": true,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -724,9 +874,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "10937",
+      "sleeper_id": "10937",
+      "espn_id": "4372066",
+      "gsis_id": "00-0038562",
       "position": "K",
-      "nfl_team": "SF"
+      "nfl_team": "WAS"
     },
     {
       "week": 18,
@@ -736,7 +889,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "10235",
+      "sleeper_id": "10235",
+      "espn_id": "4426386",
+      "gsis_id": "00-0039021",
       "position": "RB",
       "nfl_team": "CHI"
     },
@@ -748,9 +904,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4039",
+      "sleeper_id": "4039",
+      "espn_id": "2977187",
+      "gsis_id": "00-0033908",
       "position": "WR",
-      "nfl_team": "LA"
+      "nfl_team": "SEA"
     },
     {
       "week": 18,
@@ -760,7 +919,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7564",
+      "sleeper_id": "7564",
+      "espn_id": "4362628",
+      "gsis_id": "00-0036900",
       "position": "WR",
       "nfl_team": "CIN"
     },
@@ -772,7 +934,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6797",
+      "sleeper_id": "6797",
+      "espn_id": "4038941",
+      "gsis_id": "00-0036355",
       "position": "QB",
       "nfl_team": "LAC"
     },
@@ -784,7 +949,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1479",
+      "sleeper_id": "1479",
+      "espn_id": "15818",
+      "gsis_id": "00-0030279",
       "position": "WR",
       "nfl_team": "LAC"
     },
@@ -796,9 +964,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2505",
+      "sleeper_id": "2505",
+      "espn_id": "2576925",
+      "gsis_id": "00-0031610",
       "position": "TE",
-      "nfl_team": "NYG"
+      "nfl_team": "MIA"
     },
     {
       "week": 18,
@@ -808,7 +979,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4137",
+      "sleeper_id": "4137",
+      "espn_id": "3045147",
+      "gsis_id": "00-0033553",
       "position": "RB",
       "nfl_team": "ARI"
     },
@@ -820,7 +994,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8138",
+      "sleeper_id": "8138",
+      "espn_id": "4379399",
+      "gsis_id": "00-0037248",
       "position": "RB",
       "nfl_team": "BUF"
     },
@@ -832,7 +1009,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5045",
+      "sleeper_id": "5045",
+      "espn_id": "3128429",
+      "gsis_id": "00-0034348",
       "position": "WR",
       "nfl_team": "DEN"
     },
@@ -844,9 +1024,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6130",
+      "sleeper_id": "6130",
+      "espn_id": "4040761",
+      "gsis_id": "00-0035250",
       "position": "RB",
-      "nfl_team": "HOU"
+      "nfl_team": "NYG"
     },
     {
       "week": 18,
@@ -856,7 +1039,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8228",
+      "sleeper_id": "8228",
+      "espn_id": "4569987",
+      "gsis_id": "00-0037228",
       "position": "RB",
       "nfl_team": "PIT"
     },
@@ -868,7 +1054,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8183",
+      "sleeper_id": "8183",
+      "espn_id": "4361741",
+      "gsis_id": "00-0037834",
       "position": "QB",
       "nfl_team": "SF"
     },
@@ -880,7 +1069,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4195",
+      "sleeper_id": "4195",
+      "espn_id": "3050478",
+      "gsis_id": "00-0033787",
       "position": "K",
       "nfl_team": "PHI"
     },
@@ -891,8 +1083,7 @@
       "points": 2.0,
       "started": false,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -902,7 +1093,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8143",
+      "sleeper_id": "8143",
+      "espn_id": "4372019",
+      "gsis_id": "00-0037267",
       "position": "RB",
       "nfl_team": "CLE"
     },
@@ -914,7 +1108,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4033",
+      "sleeper_id": "4033",
+      "espn_id": "3123076",
+      "gsis_id": "00-0033885",
       "position": "TE",
       "nfl_team": "CLE"
     },
@@ -926,7 +1123,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5001",
+      "sleeper_id": "5001",
+      "espn_id": "3117256",
+      "gsis_id": "00-0034383",
       "position": "TE",
       "nfl_team": "HOU"
     },
@@ -938,9 +1138,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2197",
+      "sleeper_id": "2197",
+      "espn_id": "16731",
+      "gsis_id": "00-0031236",
       "position": "WR",
-      "nfl_team": "DAL"
+      "nfl_team": "BUF"
     },
     {
       "week": 18,
@@ -950,9 +1153,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "421",
+      "sleeper_id": "421",
+      "espn_id": "12483",
+      "gsis_id": "00-0026498",
       "position": "QB",
-      "nfl_team": "LA"
+      "nfl_team": "LAR"
     },
     {
       "week": 18,
@@ -962,9 +1168,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4988",
+      "sleeper_id": "4988",
+      "espn_id": "3128720",
+      "gsis_id": "00-0034791",
       "position": "RB",
-      "nfl_team": "CLE"
+      "nfl_team": "HOU"
     },
     {
       "week": 18,
@@ -974,7 +1183,8 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "espn:16733",
+      "espn_id": "16733",
       "position": "WR",
       "nfl_team": "BAL"
     },
@@ -985,8 +1195,7 @@
       "points": 1.0,
       "started": true,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -996,9 +1205,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5850",
+      "sleeper_id": "5850",
+      "espn_id": "4047365",
+      "gsis_id": "00-0035700",
       "position": "RB",
-      "nfl_team": "LV"
+      "nfl_team": "GB"
     },
     {
       "week": 18,
@@ -1008,7 +1220,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8155",
+      "sleeper_id": "8155",
+      "espn_id": "4427366",
+      "gsis_id": "00-0038120",
       "position": "RB",
       "nfl_team": "NYJ"
     },
@@ -1020,7 +1235,6 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
       "position": "RB",
       "nfl_team": "SEA"
     },
@@ -1032,7 +1246,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5937",
+      "sleeper_id": "5937",
+      "espn_id": "3932905",
+      "gsis_id": "00-0035216",
       "position": "WR",
       "nfl_team": "PIT"
     },
@@ -1043,8 +1260,7 @@
       "points": 7.6,
       "started": false,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -1054,9 +1270,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7588",
+      "sleeper_id": "7588",
+      "espn_id": "4361579",
+      "gsis_id": "00-0036997",
       "position": "RB",
-      "nfl_team": "DEN"
+      "nfl_team": "DAL"
     },
     {
       "week": 18,
@@ -1065,8 +1284,7 @@
       "points": 13.0,
       "started": true,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -1076,7 +1294,8 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "player_id": "espn:4035687",
+      "espn_id": "4035687"
     },
     {
       "week": 18,
@@ -1086,7 +1305,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7569",
+      "sleeper_id": "7569",
+      "espn_id": "4258173",
+      "gsis_id": "00-0036554",
       "position": "WR",
       "nfl_team": "HOU"
     },
@@ -1098,9 +1320,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5947",
+      "sleeper_id": "5947",
+      "espn_id": "3916433",
+      "gsis_id": "00-0034960",
       "position": "WR",
-      "nfl_team": "LV"
+      "nfl_team": "JAX"
     },
     {
       "week": 18,
@@ -1110,7 +1335,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5022",
+      "sleeper_id": "5022",
+      "espn_id": "3121023",
+      "gsis_id": "00-0034351",
       "position": "TE",
       "nfl_team": "PHI"
     },
@@ -1122,9 +1350,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2449",
+      "sleeper_id": "2449",
+      "espn_id": "2976212",
+      "gsis_id": "00-0031588",
       "position": "WR",
-      "nfl_team": "BUF"
+      "nfl_team": "NE"
     },
     {
       "week": 18,
@@ -1134,7 +1365,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4984",
+      "sleeper_id": "4984",
+      "espn_id": "3918298.0",
+      "gsis_id": "00-0034857",
       "position": "QB",
       "nfl_team": "BUF"
     },
@@ -1146,7 +1380,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9511",
+      "sleeper_id": "9511",
+      "espn_id": "4596334",
+      "gsis_id": "00-0038454",
       "position": "RB",
       "nfl_team": "BAL"
     },
@@ -1158,7 +1395,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8110",
+      "sleeper_id": "8110",
+      "espn_id": "4242355",
+      "gsis_id": "00-0038041",
       "position": "TE",
       "nfl_team": "DAL"
     },
@@ -1170,7 +1410,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1348",
+      "sleeper_id": "1348",
+      "espn_id": "15965",
+      "gsis_id": "00-0030098",
       "position": "K",
       "nfl_team": "CLE"
     },
@@ -1182,7 +1425,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8121",
+      "sleeper_id": "8121",
+      "espn_id": "4361432",
+      "gsis_id": "00-0037816",
       "position": "WR",
       "nfl_team": "GB"
     },
@@ -1194,9 +1440,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1373",
+      "sleeper_id": "1373",
+      "espn_id": "15864",
+      "gsis_id": "00-0030565",
       "position": "QB",
-      "nfl_team": "SEA"
+      "nfl_team": "LV"
     },
     {
       "week": 18,
@@ -1206,9 +1455,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6011",
+      "sleeper_id": "6011",
+      "espn_id": "4038524",
+      "gsis_id": "00-0035289",
       "position": "QB",
-      "nfl_team": "IND"
+      "nfl_team": "KC"
     },
     {
       "week": 18,
@@ -1218,7 +1470,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6820",
+      "sleeper_id": "6820",
+      "espn_id": "4242214",
+      "gsis_id": "00-0036360",
       "position": "RB",
       "nfl_team": "KC"
     },
@@ -1230,7 +1485,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4217",
+      "sleeper_id": "4217",
+      "espn_id": "3040151",
+      "gsis_id": "00-0033288",
       "position": "TE",
       "nfl_team": "SF"
     },
@@ -1242,9 +1500,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4018",
+      "sleeper_id": "4018",
+      "espn_id": "3116385",
+      "gsis_id": "00-0033897",
       "position": "RB",
-      "nfl_team": "CIN"
+      "nfl_team": "HOU"
     },
     {
       "week": 18,
@@ -1254,7 +1515,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null
+      "player_id": "5872",
+      "sleeper_id": "5872",
+      "espn_id": "3126486",
+      "gsis_id": "00-0035719",
+      "position": "WR",
+      "nfl_team": "WAS"
     },
     {
       "week": 18,
@@ -1264,9 +1530,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "96",
+      "sleeper_id": "96",
+      "espn_id": "8439",
+      "gsis_id": "00-0023459",
       "position": "QB",
-      "nfl_team": "NYJ"
+      "nfl_team": "PIT"
     },
     {
       "week": 18,
@@ -1276,7 +1545,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4983",
+      "sleeper_id": "4983",
+      "espn_id": "3915416.0",
+      "gsis_id": "00-0034827",
       "position": "WR",
       "nfl_team": "CHI"
     },
@@ -1288,9 +1560,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7591",
+      "sleeper_id": "7591",
+      "espn_id": "4362887",
+      "gsis_id": "00-0036945",
       "position": "QB",
-      "nfl_team": "CHI"
+      "nfl_team": "NYJ"
     },
     {
       "week": 18,
@@ -1300,7 +1575,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9997",
+      "sleeper_id": "9997",
+      "espn_id": "4429615",
+      "gsis_id": "00-0039064",
       "position": "WR",
       "nfl_team": "BAL"
     },
@@ -1312,7 +1590,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8136",
+      "sleeper_id": "8136",
+      "espn_id": "4697815",
+      "gsis_id": "00-0037256",
       "position": "RB",
       "nfl_team": "TB"
     },
@@ -1324,9 +1605,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2374",
+      "sleeper_id": "2374",
+      "espn_id": "2577327",
+      "gsis_id": "00-0032211",
       "position": "WR",
-      "nfl_team": "SEA"
+      "nfl_team": "LV"
     },
     {
       "week": 18,
@@ -1336,7 +1620,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6803",
+      "sleeper_id": "6803",
+      "espn_id": "4360438",
+      "gsis_id": "00-0036261",
       "position": "WR",
       "nfl_team": "SF"
     },
@@ -1348,7 +1635,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4035",
+      "sleeper_id": "4035",
+      "espn_id": "3054850",
+      "gsis_id": "00-0033906",
       "position": "RB",
       "nfl_team": "NO"
     },
@@ -1360,9 +1650,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4866",
+      "sleeper_id": "4866",
+      "espn_id": "3929630",
+      "gsis_id": "00-0034844",
       "position": "RB",
-      "nfl_team": "NYG"
+      "nfl_team": "PHI"
     },
     {
       "week": 18,
@@ -1372,8 +1665,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
-      "position": "QB",
+      "player_id": "6994",
+      "sleeper_id": "6994",
+      "espn_id": "4034849.0",
+      "position": "CB",
       "nfl_team": "BAL"
     },
     {
@@ -1384,7 +1679,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9756",
+      "sleeper_id": "9756",
+      "espn_id": "4429205",
+      "gsis_id": "00-0038994",
       "position": "WR",
       "nfl_team": "MIN"
     },
@@ -1396,7 +1694,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4111",
+      "sleeper_id": "4111",
+      "espn_id": "3125116",
+      "gsis_id": "00-0033925",
       "position": "RB",
       "nfl_team": "CHI"
     },
@@ -1408,7 +1709,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3164",
+      "sleeper_id": "3164",
+      "espn_id": "3051392",
+      "gsis_id": "00-0033045",
       "position": "RB",
       "nfl_team": "NE"
     },
@@ -1420,9 +1724,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8160",
+      "sleeper_id": "8160",
+      "espn_id": "4240703",
+      "gsis_id": "00-0038102",
       "position": "QB",
-      "nfl_team": "PIT"
+      "nfl_team": "LV"
     },
     {
       "week": 18,
@@ -1432,7 +1739,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6083",
+      "sleeper_id": "6083",
+      "espn_id": "4249087",
+      "gsis_id": "00-0035269",
       "position": "K",
       "nfl_team": "IND"
     },
@@ -1444,7 +1754,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5927",
+      "sleeper_id": "5927",
+      "espn_id": "3121422",
+      "gsis_id": "00-0035659",
       "position": "WR",
       "nfl_team": "WAS"
     },
@@ -1456,7 +1769,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8112",
+      "sleeper_id": "8112",
+      "espn_id": "4426502",
+      "gsis_id": "00-0037238",
       "position": "WR",
       "nfl_team": "ATL"
     },
@@ -1467,8 +1783,7 @@
       "points": 16.0,
       "started": true,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -1478,9 +1793,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4663",
+      "sleeper_id": "4663",
+      "espn_id": "3068267",
+      "gsis_id": "00-0033699",
       "position": "RB",
-      "nfl_team": "LAC"
+      "nfl_team": "WAS"
     },
     {
       "week": 18,
@@ -1490,7 +1808,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8146",
+      "sleeper_id": "8146",
+      "espn_id": "4569618",
+      "gsis_id": "00-0037740",
       "position": "WR",
       "nfl_team": "NYJ"
     },
@@ -1502,9 +1823,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4981",
+      "sleeper_id": "4981",
+      "espn_id": "3925357",
+      "gsis_id": "00-0034837",
       "position": "WR",
-      "nfl_team": "JAX"
+      "nfl_team": "TEN"
     },
     {
       "week": 18,
@@ -1514,7 +1838,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7526",
+      "sleeper_id": "7526",
+      "espn_id": "4372016",
+      "gsis_id": "00-0036613",
       "position": "WR",
       "nfl_team": "MIA"
     },
@@ -1526,7 +1853,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9221",
+      "sleeper_id": "9221",
+      "espn_id": "4429795",
+      "gsis_id": "00-0039139",
       "position": "RB",
       "nfl_team": "DET"
     },
@@ -1538,7 +1868,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5844",
+      "sleeper_id": "5844",
+      "espn_id": "4036133",
+      "gsis_id": "00-0035229",
       "position": "TE",
       "nfl_team": "MIN"
     },
@@ -1550,9 +1883,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5987",
+      "sleeper_id": "5987",
+      "espn_id": "4048244",
+      "gsis_id": "00-0034972",
       "position": "RB",
-      "nfl_team": "MIN"
+      "nfl_team": "MIA"
     },
     {
       "week": 18,
@@ -1562,7 +1898,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4227",
+      "sleeper_id": "4227",
+      "espn_id": "3055899",
+      "gsis_id": "00-0033303",
       "position": "K",
       "nfl_team": "KC"
     },
@@ -1574,7 +1913,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9229",
+      "sleeper_id": "9229",
+      "espn_id": "4429084",
+      "gsis_id": "00-0039164",
       "position": "QB",
       "nfl_team": "IND"
     },
@@ -1586,7 +1928,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9508",
+      "sleeper_id": "9508",
+      "espn_id": "4428557",
+      "gsis_id": "00-0039032",
       "position": "RB",
       "nfl_team": "TEN"
     },
@@ -1597,8 +1942,7 @@
       "points": 14.0,
       "started": true,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -1608,9 +1952,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1234",
+      "sleeper_id": "1234",
+      "espn_id": "14881",
+      "gsis_id": "00-0029263",
       "position": "QB",
-      "nfl_team": "DEN"
+      "nfl_team": "NYG"
     },
     {
       "week": 18,
@@ -1620,7 +1967,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9758",
+      "sleeper_id": "9758",
+      "espn_id": "4432577",
+      "gsis_id": "00-0039163",
       "position": "QB",
       "nfl_team": "HOU"
     },
@@ -1631,8 +1981,7 @@
       "points": 8.0,
       "started": false,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -1642,9 +1991,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8162",
+      "sleeper_id": "8162",
+      "espn_id": "4426875",
+      "gsis_id": "00-0037077",
       "position": "QB",
-      "nfl_team": "WAS"
+      "nfl_team": "PHI"
     },
     {
       "week": 18,
@@ -1654,7 +2006,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6786",
+      "sleeper_id": "6786",
+      "espn_id": "4241389",
+      "gsis_id": "00-0036358",
       "position": "WR",
       "nfl_team": "DAL"
     },
@@ -1666,7 +2021,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5248",
+      "sleeper_id": "5248",
+      "espn_id": "3051926",
+      "gsis_id": "00-0034184",
       "position": "RB",
       "nfl_team": "BAL"
     },
@@ -1678,7 +2036,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9502",
+      "sleeper_id": "9502",
+      "espn_id": "4366031",
+      "gsis_id": "00-0038977",
       "position": "WR",
       "nfl_team": "HOU"
     },
@@ -1690,7 +2051,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8130",
+      "sleeper_id": "8130",
+      "espn_id": "4361307",
+      "gsis_id": "00-0037744",
       "position": "TE",
       "nfl_team": "ARI"
     },
@@ -1702,9 +2066,12 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7021",
+      "sleeper_id": "7021",
+      "espn_id": "4038815",
+      "gsis_id": "00-0036139",
       "position": "RB",
-      "nfl_team": "DAL"
+      "nfl_team": "CAR"
     },
     {
       "week": 18,
@@ -1714,7 +2081,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9509",
+      "sleeper_id": "9509",
+      "espn_id": "4430807",
+      "gsis_id": "00-0038542",
       "position": "RB",
       "nfl_team": "ATL"
     },
@@ -1726,7 +2096,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5859",
+      "sleeper_id": "5859",
+      "espn_id": "4047646",
+      "gsis_id": "00-0035676",
       "position": "WR",
       "nfl_team": "PHI"
     },
@@ -1738,9 +2111,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2133",
+      "sleeper_id": "2133",
+      "espn_id": "16800",
+      "gsis_id": "00-0031381",
       "position": "WR",
-      "nfl_team": "LV"
+      "nfl_team": "LAR"
     },
     {
       "week": 18,
@@ -1750,9 +2126,12 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7528",
+      "sleeper_id": "7528",
+      "espn_id": "2987659",
+      "gsis_id": "00-0036893",
       "position": "RB",
-      "nfl_team": "PIT"
+      "nfl_team": "LAC"
     },
     {
       "week": 18,
@@ -1762,7 +2141,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6770",
+      "sleeper_id": "6770",
+      "espn_id": "3915511",
+      "gsis_id": "00-0036442",
       "position": "QB",
       "nfl_team": "CIN"
     },
@@ -1774,7 +2156,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8144",
+      "sleeper_id": "8144",
+      "espn_id": "4361370",
+      "gsis_id": "00-0037239",
       "position": "WR",
       "nfl_team": "NO"
     },
@@ -1786,7 +2171,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5849",
+      "sleeper_id": "5849",
+      "espn_id": "3917315",
+      "gsis_id": "00-0035228",
       "position": "QB",
       "nfl_team": "ARI"
     },
@@ -1798,7 +2186,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2216",
+      "sleeper_id": "2216",
+      "espn_id": "16737",
+      "gsis_id": "00-0031408",
       "position": "WR",
       "nfl_team": "TB"
     },
@@ -1810,7 +2201,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9488",
+      "sleeper_id": "9488",
+      "espn_id": "4430878",
+      "gsis_id": "00-0038543",
       "position": "WR",
       "nfl_team": "SEA"
     },
@@ -1822,7 +2216,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "10859",
+      "sleeper_id": "10859",
+      "espn_id": "4430027",
+      "gsis_id": "00-0039065",
       "position": "TE",
       "nfl_team": "DET"
     },
@@ -1834,7 +2231,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "9753",
+      "sleeper_id": "9753",
+      "espn_id": "4426385",
+      "gsis_id": "00-0039165",
       "position": "RB",
       "nfl_team": "SEA"
     },
@@ -1846,7 +2246,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4892",
+      "sleeper_id": "4892",
+      "espn_id": "3052587",
+      "gsis_id": "00-0034855",
       "position": "QB",
       "nfl_team": "TB"
     },
@@ -1858,7 +2261,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7594",
+      "sleeper_id": "7594",
+      "espn_id": "4241416",
+      "gsis_id": "00-0036555",
       "position": "RB",
       "nfl_team": "CAR"
     },
@@ -1870,7 +2276,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5892",
+      "sleeper_id": "5892",
+      "espn_id": "4035538",
+      "gsis_id": "00-0035685",
       "position": "RB",
       "nfl_team": "DET"
     },
@@ -1882,21 +2291,27 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "10236",
+      "sleeper_id": "10236",
+      "espn_id": "4385690",
+      "gsis_id": "00-0038933",
       "position": "TE",
       "nfl_team": "BUF"
     },
     {
       "week": 18,
       "team": "Federal Burrow of Investigation",
-      "player": "AJ Dillon",
+      "player": "A.J. Dillon",
       "points": 2.7,
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6828",
+      "sleeper_id": "6828",
+      "espn_id": "4239934",
+      "gsis_id": "00-0036265",
       "position": "RB",
-      "nfl_team": "GB"
+      "nfl_team": "PHI"
     },
     {
       "week": 18,
@@ -1906,7 +2321,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6111",
+      "sleeper_id": "6111",
+      "espn_id": "3886812",
+      "gsis_id": "00-0035100",
       "position": "QB",
       "nfl_team": "CIN"
     },
@@ -1917,8 +2335,7 @@
       "points": -2.0,
       "started": true,
       "season": 2023,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 18,
@@ -1928,7 +2345,10 @@
       "started": true,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2020",
+      "sleeper_id": "2020",
+      "espn_id": "17427",
+      "gsis_id": "00-0031203",
       "position": "K",
       "nfl_team": "CHI"
     },
@@ -1940,7 +2360,10 @@
       "started": false,
       "season": 2023,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "8153",
+      "sleeper_id": "8153",
+      "espn_id": "4426891",
+      "gsis_id": "00-0038045",
       "position": "RB",
       "nfl_team": "LAC"
     }

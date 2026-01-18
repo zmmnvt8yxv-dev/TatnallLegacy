@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -10,9 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data_raw" / "master"
 OUTPUT_DIR = ROOT / "public" / "data" / "player_stats"
 SEARCH_PATH = ROOT / "public" / "data" / "player_search.json"
-PLAYER_IDS_PATH = ROOT / "public" / "data" / "player_ids.json"
-PLAYERS_PATH = ROOT / "public" / "data" / "players.json"
-SLEEPER_PLAYERS_PATH = ROOT / "data_raw" / "sleeper" / "players_flat.csv"
+REGISTRY_PATH = ROOT / "public" / "data" / "player_registry.json"
 
 
 def read_json(path: Path):
@@ -25,6 +24,64 @@ def write_json(path: Path, payload):
     with path.open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
 
+
+# --- REGISTRY HELPERS --- #
+
+def normalize_string(value):
+    if not value or pd.isna(value):
+        return ""
+    text = str(value).lower()
+    text = re.sub(r"[^a-z0-9\s]", "", text)
+    return " ".join(text.split())
+
+def load_registry():
+    if not REGISTRY_PATH.exists():
+        raise FileNotFoundError(f"Registry not found at {REGISTRY_PATH}. Run build_player_registry.py first.")
+    
+    data = read_json(REGISTRY_PATH)
+    registry = data.get("registry", {})
+    indices = data.get("indices", {})
+    
+    # Ensure indices exist
+    for key in ["sleeper", "espn", "gsis"]:
+        if key not in indices:
+            indices[key] = {}
+            
+    # Rebuild name index
+    name_index = {} 
+    for cid, entry in registry.items():
+        name = entry.get("name")
+        if name:
+            norm = normalize_string(name)
+            if norm:
+                name_index[norm] = cid
+    indices["name"] = name_index
+            
+    return registry, indices
+
+def resolve_player(registry, indices, source_id, source_name=None):
+    canonical_id = None
+    source_id_str = str(source_id).strip() if source_id and not pd.isna(source_id) else ""
+    
+    if source_id_str:
+        if source_id_str in indices["sleeper"]:
+            canonical_id = indices["sleeper"][source_id_str]
+        elif source_id_str in indices["espn"]:
+            canonical_id = indices["espn"][source_id_str]
+        elif source_id_str in indices["gsis"]:
+            canonical_id = indices["gsis"][source_id_str]
+            
+    if not canonical_id and source_name and not pd.isna(source_name):
+        norm = normalize_string(source_name)
+        if norm and norm in indices["name"]:
+            canonical_id = indices["name"][norm]
+            
+    if canonical_id and canonical_id in registry:
+        return canonical_id, registry[canonical_id]
+        
+    return None, None
+
+# ------------------------ #
 
 def find_source(basenames: list[str], search_dirs: list[Path] | None = None) -> Path | None:
     dirs = search_dirs or [DATA_DIR]
@@ -68,101 +125,75 @@ def filter_regular_season_rows(df: pd.DataFrame) -> pd.DataFrame:
     return df[season_type.isin({"REG", "REGULAR", "REGULAR_SEASON"}) | season_type.str.contains("REG")]
 
 
-def build_id_maps():
-    if not PLAYER_IDS_PATH.exists():
-        return {}
-    payload = read_json(PLAYER_IDS_PATH)
-    by_uid: dict[str, dict[str, str]] = {}
-    for entry in payload:
-        uid = entry.get("player_uid")
-        id_type = entry.get("id_type")
-        id_value = entry.get("id_value")
-        if not uid or not id_type or not id_value:
-            continue
-        by_uid.setdefault(uid, {})[id_type] = str(id_value)
-    gsis_to_sleeper = {}
-    for uid, ids in by_uid.items():
-        gsis = ids.get("gsis")
-        sleeper = ids.get("sleeper")
-        if gsis and sleeper:
-            gsis_to_sleeper[gsis] = sleeper
-    name_to_sleeper = {}
-    if PLAYERS_PATH.exists():
-        players = read_json(PLAYERS_PATH)
-        for player in players:
-            uid = player.get("player_uid")
-            name = player.get("full_name")
-            if not uid or not name:
-                continue
-            sleeper = by_uid.get(uid, {}).get("sleeper")
-            if not sleeper:
-                continue
-            key = normalize_name(name)
-            if key and key not in name_to_sleeper:
-                name_to_sleeper[key] = sleeper
-    if SLEEPER_PLAYERS_PATH.exists():
-        sleeper_df = pd.read_csv(SLEEPER_PLAYERS_PATH)
-        for _, row in sleeper_df.iterrows():
-            sleeper_id = row.get("player_id")
-            if pd.isna(sleeper_id):
-                continue
-            name = row.get("full_name")
-            if not name or pd.isna(name):
-                first = row.get("first_name")
-                last = row.get("last_name")
-                if isinstance(first, str) and isinstance(last, str):
-                    name = f"{first} {last}".strip()
-            key = normalize_name(name)
-            if key and key not in name_to_sleeper:
-                name_to_sleeper[key] = str(sleeper_id)
-    return {
-        "gsis_to_sleeper": gsis_to_sleeper,
-        "name_to_sleeper": name_to_sleeper,
-    }
-
-
-def attach_ids(df: pd.DataFrame, id_maps: dict) -> pd.DataFrame:
+def attach_ids(df: pd.DataFrame, registry_data) -> pd.DataFrame:
+    """
+    Enriches DataFrame with canonical IDs from registry.
+    """
     df = df.copy()
-    if "gsis_id" not in df.columns and "player_id" in df.columns:
-        df["gsis_id"] = df["player_id"]
-    if "gsis_id" not in df.columns:
-        df["gsis_id"] = None
-    gsis_to_sleeper = id_maps.get("gsis_to_sleeper", {})
-    if "sleeper_id" in df.columns:
-        df["sleeper_id"] = df["sleeper_id"].where(df["sleeper_id"].notna(), df["gsis_id"].map(gsis_to_sleeper))
-    else:
-        df["sleeper_id"] = df["gsis_id"].map(gsis_to_sleeper)
-    name_to_sleeper = id_maps.get("name_to_sleeper", {})
+    registry, indices = registry_data
+
+    # Helper for apply
+    def row_mapper(row):
+        # Specific coercion for common ID keys
+        def clean_id(val):
+            if val is None or pd.isna(val) or str(val).lower() in ("nan", "none", ""):
+                return None
+            return str(val).strip()
+
+        # Candidates for lookup
+        candidates = []
+        for col in ["sleeper_id", "gsis_id", "espn_id", "player_id"]:
+            if col in row:
+                c = clean_id(row[col])
+                if c: candidates.append(c)
+        
+        name_col = pick_first_column(pd.DataFrame([row]), ["display_name", "player_display_name", "player_name", "name"])
+        name = row[name_col] if name_col and not pd.isna(row[name_col]) else None
+        
+        cid = None
+        entry = None
+        
+        # Try IDs first
+        for cand in candidates:
+            cid, entry = resolve_player(registry, indices, cand)
+            if cid: break
+            
+        # Try name
+        if not cid:
+            cid, entry = resolve_player(registry, indices, None, name)
+            
+        if cid and entry:
+            return pd.Series({
+                "player_id": cid,
+                "sleeper_id": clean_id(entry["identifiers"]["sleeper_id"]),
+                "gsis_id": clean_id(entry["identifiers"]["gsis_id"]),
+                "display_name": entry["name"]
+            })
+        
+        # Return originals if no match (but cleaned!)
+        return pd.Series({
+            "player_id": clean_id(row.get("player_id")),
+            "sleeper_id": clean_id(row.get("sleeper_id")),
+            "gsis_id": clean_id(row.get("gsis_id")),
+            "display_name": name or "Unknown"
+        })
+
+    # This might be slow for massive DF, but robust
+    print(f"Resolving IDs for {len(df)} rows...")
+    resolved = df.apply(row_mapper, axis=1)
+    
+    # Update columns
+    df["player_id"] = resolved["player_id"]
+    df["sleeper_id"] = resolved["sleeper_id"]
+    df["gsis_id"] = resolved["gsis_id"]
+    # We update display_name effectively via registry
     name_col = pick_first_column(df, ["display_name", "player_display_name", "player_name"])
     if name_col:
-        resolved = df[name_col].apply(lambda value: name_to_sleeper.get(normalize_name(value)))
-        df["sleeper_id"] = df["sleeper_id"].where(df["sleeper_id"].notna(), resolved)
-    df["player_id"] = df["sleeper_id"].where(df["sleeper_id"].notna(), df["gsis_id"])
-    for col in ("sleeper_id", "gsis_id", "player_id"):
-        if col in df.columns:
-            df[col] = df[col].apply(normalize_id_value)
+        df[name_col] = resolved["display_name"]
+    else:
+        df["display_name"] = resolved["display_name"]
+
     return df
-
-
-def normalize_id_value(value):
-    if value is None or (isinstance(value, float) and pd.isna(value)):
-        return None
-    if isinstance(value, float) and value.is_integer():
-        return str(int(value))
-    return str(value)
-
-
-def normalize_name(value):
-    if value is None or (isinstance(value, float) and pd.isna(value)):
-        return ""
-    text = str(value).strip().lower()
-    if not text:
-        return ""
-    cleaned = []
-    for ch in text:
-        if ch.isalnum() or ch.isspace():
-            cleaned.append(ch)
-    return " ".join("".join(cleaned).split())
 
 
 def build_weekly(weekly: pd.DataFrame):
@@ -186,15 +217,9 @@ def build_weekly(weekly: pd.DataFrame):
 
     if name_col:
         weekly["display_name"] = weekly[name_col].fillna("Unknown")
-    elif "first_name" in weekly.columns or "last_name" in weekly.columns:
-        weekly["display_name"] = (
-            weekly.get("first_name", "").fillna("").astype(str).str.strip()
-            + " "
-            + weekly.get("last_name", "").fillna("").astype(str).str.strip()
-        ).str.strip()
-        weekly.loc[weekly["display_name"] == "", "display_name"] = "Unknown"
     else:
         weekly["display_name"] = "Unknown"
+        
     if position_col:
         weekly["position"] = weekly[position_col].astype(str).str.upper()
     else:
@@ -241,15 +266,9 @@ def build_full_stats(weekly: pd.DataFrame):
     team_col = pick_first_column(weekly, ["team", "recent_team", "nfl_team"]) or "team"
     if name_col:
         weekly["display_name"] = weekly[name_col].fillna("Unknown")
-    elif "first_name" in weekly.columns or "last_name" in weekly.columns:
-        weekly["display_name"] = (
-            weekly.get("first_name", "").fillna("").astype(str).str.strip()
-            + " "
-            + weekly.get("last_name", "").fillna("").astype(str).str.strip()
-        ).str.strip()
-        weekly.loc[weekly["display_name"] == "", "display_name"] = "Unknown"
     else:
         weekly["display_name"] = "Unknown"
+        
     if position_col:
         weekly["position"] = weekly[position_col].astype(str).str.upper()
     else:
@@ -258,6 +277,8 @@ def build_full_stats(weekly: pd.DataFrame):
         weekly["team"] = weekly[team_col].fillna("—")
     else:
         weekly["team"] = "—"
+        
+    # Field standardization
     if "attempts" not in weekly.columns and "passing_attempts" in weekly.columns:
         weekly["attempts"] = weekly["passing_attempts"]
     if "completions" not in weekly.columns and "passing_completions" in weekly.columns:
@@ -271,12 +292,7 @@ def build_full_stats(weekly: pd.DataFrame):
             if alt in weekly.columns:
                 weekly["opponent_team"] = weekly[alt]
                 break
-    if "rushing_fumbles_lost" not in weekly.columns and "fumbles_lost" in weekly.columns:
-        weekly["rushing_fumbles_lost"] = weekly["fumbles_lost"]
-    if "receiving_fumbles_lost" not in weekly.columns and "fumbles_lost" in weekly.columns:
-        weekly["receiving_fumbles_lost"] = weekly["fumbles_lost"]
-    if "fantasy_points_ppr" not in weekly.columns and "fantasy_points" in weekly.columns:
-        weekly["fantasy_points_ppr"] = weekly["fantasy_points"]
+    
     fields = [
         "season",
         "week",
@@ -308,16 +324,6 @@ def build_full_stats(weekly: pd.DataFrame):
         "extra_points_made",
         "field_goals_attempted",
         "field_goals_made",
-        "field_goals_attempted_0_19",
-        "field_goals_attempted_20_29",
-        "field_goals_attempted_30_39",
-        "field_goals_attempted_40_49",
-        "field_goals_attempted_50_plus",
-        "field_goals_made_0_19",
-        "field_goals_made_20_29",
-        "field_goals_made_30_39",
-        "field_goals_made_40_49",
-        "field_goals_made_50_plus",
         "fantasy_points",
         "fantasy_points_ppr",
         "fantasy_points_custom_week",
@@ -346,13 +352,6 @@ def build_player_search(full_stats: pd.DataFrame):
     team_col = pick_first_column(full_stats, ["team", "recent_team", "nfl_team"])
     if name_col:
         full_stats["display_name"] = full_stats[name_col].fillna("Unknown")
-    elif "first_name" in full_stats.columns or "last_name" in full_stats.columns:
-        full_stats["display_name"] = (
-            full_stats.get("first_name", "").fillna("").astype(str).str.strip()
-            + " "
-            + full_stats.get("last_name", "").fillna("").astype(str).str.strip()
-        ).str.strip()
-        full_stats.loc[full_stats["display_name"] == "", "display_name"] = "Unknown"
     else:
         full_stats["display_name"] = "Unknown"
 
@@ -373,30 +372,35 @@ def build_player_search(full_stats: pd.DataFrame):
         sleeper_id = getattr(row, "sleeper_id", None)
         gsis_id = getattr(row, "gsis_id", None)
         player_id = getattr(row, "player_id", None)
-        if sleeper_id:
-            player_key = (str(sleeper_id), "sleeper")
-        elif gsis_id:
-            player_key = (str(gsis_id), "gsis")
-        elif player_id:
-            player_key = (str(player_id), "player_id")
-        else:
-            continue
-        entry = records.get(player_key[0])
-        position = getattr(row, "position", None) or "—"
-        team = getattr(row, "team", None) or "—"
-        if not entry:
-            records[player_key[0]] = {
-                "id": player_key[0],
-                "id_type": player_key[1],
+        
+        # Determine ID
+        pid = None
+        itype = None
+        if sleeper_id and not pd.isna(sleeper_id):
+            pid = str(sleeper_id)
+            itype = "sleeper"
+        elif gsis_id and not pd.isna(gsis_id):
+            pid = str(gsis_id)
+            itype = "gsis"
+        elif player_id and not pd.isna(player_id):
+            pid = str(player_id)
+            itype = "player_id"
+            
+        if not pid: continue
+        
+        if pid not in records:
+            records[pid] = {
+                "id": pid,
+                "id_type": itype,
                 "name": name,
-                "position": position,
-                "team": team,
+                "position": getattr(row, "position", "—"),
+                "team": getattr(row, "team", "—")
             }
         else:
-            if entry["position"] == "—" and position != "—":
-                entry["position"] = position
-            if entry["team"] == "—" and team != "—":
-                entry["team"] = team
+             # update pos/team if we have better data
+             curr = records[pid]
+             if curr["position"] == "—": curr["position"] = getattr(row, "position", "—")
+             if curr["team"] == "—": curr["team"] = getattr(row, "team", "—")
 
     rows = sorted(records.values(), key=lambda item: item["name"])
     payload = {
@@ -476,6 +480,10 @@ def build_career(career_df: pd.DataFrame):
 
 
 def main() -> None:
+    print("Loading registry...")
+    registry_data = load_registry()
+    print("Registry loaded.")
+
     weekly_source = find_source(["player_week_fantasy_2015_2025_with_war"])
     season_source = find_source(["player_season_fantasy_2015_2025_with_war"])
     career_source = find_source(["player_career_fantasy_2015_2025_with_war"])
@@ -491,27 +499,29 @@ def main() -> None:
     if not weekly_source:
         if full_stats_source:
             print("No weekly fantasy WAR source found in data_raw/master. Building full stats only.")
-            id_maps = build_id_maps()
             full_stats = read_table(full_stats_source)
-            full_stats = attach_ids(full_stats, id_maps)
+            full_stats = attach_ids(full_stats, registry_data)
             build_full_stats(full_stats)
             build_player_search(full_stats)
         else:
             print("No weekly fantasy WAR source found in data_raw/master. Skipping player stats export.")
         return
 
+    print("Processing Weekly Stats...")
     weekly = read_table(weekly_source)
-    id_maps = build_id_maps()
-    weekly = attach_ids(weekly, id_maps)
+    weekly = attach_ids(weekly, registry_data)
     seasons = build_weekly(weekly)
+    
     expected_games = (
         weekly.groupby("season")["week"].max().dropna().astype(int).to_dict()
         if "season" in weekly.columns and "week" in weekly.columns
         else {}
     )
+    
     if full_stats_source:
+        print("Processing Full Stats...")
         full_stats = read_table(full_stats_source)
-        full_stats = attach_ids(full_stats, id_maps)
+        full_stats = attach_ids(full_stats, registry_data)
         build_full_stats(full_stats)
         build_player_search(full_stats)
     else:
@@ -519,6 +529,7 @@ def main() -> None:
         build_player_search(weekly)
 
     if season_source:
+        print("Processing Season Stats...")
         season_df = read_table(season_source)
     else:
         season_df = weekly.groupby(["player_id", "season"], as_index=False).agg(
@@ -535,10 +546,11 @@ def main() -> None:
             sleeper_id=("sleeper_id", "first"),
             gsis_id=("gsis_id", "first"),
         )
-    season_df = attach_ids(season_df, id_maps)
+    season_df = attach_ids(season_df, registry_data)
     build_season(season_df, expected_games)
 
     if career_source:
+        print("Processing Career Stats...")
         career_df = read_table(career_source)
     else:
         career_df = season_df.groupby("player_id", as_index=False).agg(
@@ -555,18 +567,13 @@ def main() -> None:
             sleeper_id=("sleeper_id", "first"),
             gsis_id=("gsis_id", "first"),
         )
-    career_df = attach_ids(career_df, id_maps)
+    career_df = attach_ids(career_df, registry_data)
     build_career(career_df)
 
     summary = {"generatedAt": datetime.now(timezone.utc).isoformat(), "seasons": seasons}
     write_json(OUTPUT_DIR / "summary.json", summary)
 
     print("=== PLAYER STATS EXPORTED ===")
-    print("Weekly source:", weekly_source)
-    if season_source:
-        print("Season source:", season_source)
-    if career_source:
-        print("Career source:", career_source)
 
 
 if __name__ == "__main__":

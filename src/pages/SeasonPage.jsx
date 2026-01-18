@@ -32,6 +32,7 @@ export default function SeasonPage() {
     const [playerStats, setPlayerStats] = useState(null);
     const [transactions, setTransactions] = useState(null);
     const [pageLoading, setPageLoading] = useState(false);
+    const [loadErrors, setLoadErrors] = useState({ summary: false, stats: false, transactions: false });
 
     // Sync season with URL
     useEffect(() => {
@@ -63,20 +64,55 @@ export default function SeasonPage() {
         setPageLoading(true);
 
         async function load() {
+            // Reset state immediately to prevent "sticky" old data
+            if (active) {
+                setSummary(null);
+                setPlayerStats(null);
+                setTransactions(null);
+            }
+
             try {
-                const [sum, stats, trans] = await Promise.all([
+                const results = await Promise.allSettled([
                     loadSeasonSummary(season),
                     loadPlayerStatsSeason(season),
-                    loadTransactions(season).catch(() => null)
+                    loadTransactions(season)
                 ]);
 
-                if (active) {
-                    setSummary(sum);
-                    setPlayerStats(Array.isArray(stats) ? stats : stats?.rows || []);
-                    setTransactions(trans);
+                if (!active) return;
+
+                const errors = { summary: false, stats: false, transactions: false };
+
+                // 0: Summary
+                if (results[0].status === "fulfilled") {
+                    setSummary(results[0].value);
+                } else {
+                    console.error("Failed to load summary", results[0].reason);
+                    errors.summary = true;
                 }
+
+                // 1: Stats
+                if (results[1].status === "fulfilled") {
+                    const stats = results[1].value;
+                    setPlayerStats(Array.isArray(stats) ? stats : stats?.rows || []);
+                } else {
+                    console.error("Failed to load player stats", results[1].reason);
+                    setPlayerStats([]);
+                    errors.stats = true;
+                }
+
+                // 2: Transactions
+                if (results[2].status === "fulfilled") {
+                    setTransactions(results[2].value);
+                } else {
+                    console.warn("Transactions unavailable", results[2].reason);
+                    setTransactions(null);
+                    errors.transactions = true;
+                }
+
+                setLoadErrors(errors);
+
             } catch (err) {
-                console.error(err);
+                console.error("Critical loader error", err);
             } finally {
                 if (active) setPageLoading(false);
             }
@@ -135,9 +171,20 @@ export default function SeasonPage() {
             {pageLoading ? (
                 <LoadingState label={`Loading ${season} data...`} />
             ) : (
-                <>
-                    {/* HEROS */}
-                    <div className="card-grid">
+                <div className="season-content">
+                    {/* Error Banners */}
+                    {loadErrors.summary && (
+                        <div className="error-banner" style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: 'rgba(239, 68, 68, 0.1)', borderLeft: '4px solid #ef4444', borderRadius: '4px' }}>
+                            <p style={{ margin: 0, color: '#ef4444' }}>⚠️ Partial Data: League summary and standings could not be loaded for {season}.</p>
+                        </div>
+                    )}
+                    {loadErrors.stats && !loadErrors.summary && (
+                        <div className="error-banner" style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderLeft: '4px solid #3b82f6', borderRadius: '4px' }}>
+                            <p style={{ margin: 0, color: '#3b82f6' }}>ℹ️ Player statistics for this season are currently unavailable.</p>
+                        </div>
+                    )}
+
+                    <div className="stat-cards-grid">
                         <div className="stat-card accent">
                             <div className="stat-label">League Champion</div>
                             <div className="stat-value">{champion ? ownerLabel(champion) : "—"}</div>
@@ -208,7 +255,9 @@ export default function SeasonPage() {
                                     </table>
                                 </div>
                             ) : (
-                                <div>No standings available.</div>
+                                <div style={{ color: 'var(--ink-400)', padding: '20px 0' }}>
+                                    {loadErrors.summary ? "Failed to load standings data." : "No standings available for this season."}
+                                </div>
                             )}
                         </div>
 
@@ -227,17 +276,16 @@ export default function SeasonPage() {
                                         <strong>Weeks:</strong> {(manifest?.weeksBySeason?.[season] || []).length}
                                     </li>
                                 </ul>
-                                <div style={{ marginTop: '20px' }}>
+                                <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                                     <Link to={`/matchups?season=${season}`} className="button">Browse Matchups</Link>
-                                </div>
-                                <div style={{ marginTop: '10px' }}>
                                     <Link to={`/transactions?season=${season}`} className="button secondary">View Transactions</Link>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </>
+                </div>
             )}
         </>
     );
+}
 }

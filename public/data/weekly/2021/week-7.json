@@ -44,7 +44,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3164",
+      "sleeper_id": "3164",
+      "espn_id": "3051392",
+      "gsis_id": "00-0033045",
       "position": "RB",
       "nfl_team": "DAL"
     },
@@ -56,7 +59,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6813",
+      "sleeper_id": "6813",
+      "espn_id": "4242335",
+      "gsis_id": "00-0036223",
       "position": "RB",
       "nfl_team": "IND"
     },
@@ -68,7 +74,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6820",
+      "sleeper_id": "6820",
+      "espn_id": "4242214",
+      "gsis_id": "00-0036360",
       "position": "RB",
       "nfl_team": "KC"
     },
@@ -80,9 +89,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4981",
+      "sleeper_id": "4981",
+      "espn_id": "3925357",
+      "gsis_id": "00-0034837",
       "position": "WR",
-      "nfl_team": "ATL"
+      "nfl_team": "TEN"
     },
     {
       "week": 7,
@@ -92,7 +104,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "947",
+      "sleeper_id": "947",
+      "espn_id": "13982",
+      "gsis_id": "00-0027944",
       "position": "WR",
       "nfl_team": "TEN"
     },
@@ -104,7 +119,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1689",
+      "sleeper_id": "1689",
+      "espn_id": "16460",
+      "gsis_id": "00-0030035",
       "position": "WR",
       "nfl_team": "MIN"
     },
@@ -116,7 +134,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5849",
+      "sleeper_id": "5849",
+      "espn_id": "3917315",
+      "gsis_id": "00-0035228",
       "position": "QB",
       "nfl_team": "ARI"
     },
@@ -128,7 +149,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7564",
+      "sleeper_id": "7564",
+      "espn_id": "4362628",
+      "gsis_id": "00-0036900",
       "position": "WR",
       "nfl_team": "CIN"
     },
@@ -140,9 +164,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2374",
+      "sleeper_id": "2374",
+      "espn_id": "2577327",
+      "gsis_id": "00-0032211",
       "position": "WR",
-      "nfl_team": "SEA"
+      "nfl_team": "LV"
     },
     {
       "week": 7,
@@ -152,7 +179,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5022",
+      "sleeper_id": "5022",
+      "espn_id": "3121023",
+      "gsis_id": "00-0034351",
       "position": "TE",
       "nfl_team": "PHI"
     },
@@ -163,8 +193,7 @@
       "points": 1.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -174,7 +203,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6770",
+      "sleeper_id": "6770",
+      "espn_id": "3915511",
+      "gsis_id": "00-0036442",
       "position": "QB",
       "nfl_team": "CIN"
     },
@@ -186,7 +218,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4227",
+      "sleeper_id": "4227",
+      "espn_id": "3055899",
+      "gsis_id": "00-0033303",
       "position": "K",
       "nfl_team": "KC"
     },
@@ -198,7 +233,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6989",
+      "sleeper_id": "6989",
+      "espn_id": "4035170",
+      "gsis_id": "00-0036219",
       "position": "WR",
       "nfl_team": "NO"
     },
@@ -210,9 +248,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5857",
+      "sleeper_id": "5857",
+      "espn_id": "4036131",
+      "gsis_id": "00-0035644",
       "position": "TE",
-      "nfl_team": "DEN"
+      "nfl_team": "CIN"
     },
     {
       "week": 7,
@@ -221,8 +262,7 @@
       "points": 18.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -231,8 +271,7 @@
       "points": 0.0,
       "started": false,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -242,21 +281,27 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6694",
+      "sleeper_id": "6694",
+      "espn_id": "3139602",
+      "gsis_id": "00-0035628",
       "position": "RB",
-      "nfl_team": "CLE"
+      "nfl_team": "NE"
     },
     {
       "week": 7,
       "team": "Team Downs",
-      "player": "AJ Dillon",
+      "player": "A.J. Dillon",
       "points": -2.0,
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6828",
+      "sleeper_id": "6828",
+      "espn_id": "4239934",
+      "gsis_id": "00-0036265",
       "position": "RB",
-      "nfl_team": "GB"
+      "nfl_team": "PHI"
     },
     {
       "week": 7,
@@ -266,9 +311,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4034",
+      "sleeper_id": "4034",
+      "espn_id": "3117251",
+      "gsis_id": "00-0033280",
       "position": "RB",
-      "nfl_team": "CAR"
+      "nfl_team": "SF"
     },
     {
       "week": 7,
@@ -278,9 +326,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4018",
+      "sleeper_id": "4018",
+      "espn_id": "3116385",
+      "gsis_id": "00-0033897",
       "position": "RB",
-      "nfl_team": "CIN"
+      "nfl_team": "HOU"
     },
     {
       "week": 7,
@@ -290,9 +341,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6945",
+      "sleeper_id": "6945",
+      "espn_id": "4360294",
+      "gsis_id": "00-0036328",
       "position": "RB",
-      "nfl_team": "WAS"
+      "nfl_team": "NE"
     },
     {
       "week": 7,
@@ -302,7 +356,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5927",
+      "sleeper_id": "5927",
+      "espn_id": "3121422",
+      "gsis_id": "00-0035659",
       "position": "WR",
       "nfl_team": "WAS"
     },
@@ -314,7 +371,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4217",
+      "sleeper_id": "4217",
+      "espn_id": "3040151",
+      "gsis_id": "00-0033288",
       "position": "TE",
       "nfl_team": "SF"
     },
@@ -326,7 +386,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5980",
+      "sleeper_id": "5980",
+      "espn_id": "3886818",
+      "gsis_id": "00-0035311",
       "position": "RB",
       "nfl_team": "MIA"
     },
@@ -338,9 +401,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4983",
+      "sleeper_id": "4983",
+      "espn_id": "3915416.0",
+      "gsis_id": "00-0034827",
       "position": "WR",
-      "nfl_team": "CAR"
+      "nfl_team": "CHI"
     },
     {
       "week": 7,
@@ -350,7 +416,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5045",
+      "sleeper_id": "5045",
+      "espn_id": "3128429",
+      "gsis_id": "00-0034348",
       "position": "WR",
       "nfl_team": "DEN"
     },
@@ -362,9 +431,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4039",
+      "sleeper_id": "4039",
+      "espn_id": "2977187",
+      "gsis_id": "00-0033908",
       "position": "WR",
-      "nfl_team": "LA"
+      "nfl_team": "SEA"
     },
     {
       "week": 7,
@@ -374,7 +446,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6797",
+      "sleeper_id": "6797",
+      "espn_id": "4038941",
+      "gsis_id": "00-0036355",
       "position": "QB",
       "nfl_team": "LAC"
     },
@@ -386,7 +461,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3969",
+      "sleeper_id": "3969",
+      "espn_id": "3115364",
+      "gsis_id": "00-0033856",
       "position": "RB",
       "nfl_team": "TB"
     },
@@ -398,9 +476,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5987",
+      "sleeper_id": "5987",
+      "espn_id": "4048244",
+      "gsis_id": "00-0034972",
       "position": "RB",
-      "nfl_team": "MIN"
+      "nfl_team": "MIA"
     },
     {
       "week": 7,
@@ -410,9 +491,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7610",
+      "sleeper_id": "7610",
+      "espn_id": "4383351",
+      "gsis_id": "00-0037012",
       "position": "QB",
-      "nfl_team": "SF"
+      "nfl_team": "LAC"
     },
     {
       "week": 7,
@@ -422,9 +506,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7591",
+      "sleeper_id": "7591",
+      "espn_id": "4362887",
+      "gsis_id": "00-0036945",
       "position": "QB",
-      "nfl_team": "CHI"
+      "nfl_team": "NYJ"
     },
     {
       "week": 7,
@@ -434,9 +521,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5967",
+      "sleeper_id": "5967",
+      "espn_id": "3916148",
+      "gsis_id": "00-0035261",
       "position": "RB",
-      "nfl_team": "DAL"
+      "nfl_team": "TEN"
     },
     {
       "week": 7,
@@ -446,9 +536,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7090",
+      "sleeper_id": "7090",
+      "espn_id": "4040655",
+      "gsis_id": "00-0036309",
       "position": "WR",
-      "nfl_team": "CHI"
+      "nfl_team": "ATL"
     },
     {
       "week": 7,
@@ -458,7 +551,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3209",
+      "sleeper_id": "3209",
+      "espn_id": "3122866",
+      "gsis_id": "00-0032972",
       "position": "RB",
       "nfl_team": "NYG"
     },
@@ -469,8 +565,7 @@
       "points": 13.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -480,9 +575,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4993",
+      "sleeper_id": "4993",
+      "espn_id": "3116164",
+      "gsis_id": "00-0034829",
       "position": "TE",
-      "nfl_team": "MIA"
+      "nfl_team": "CIN"
     },
     {
       "week": 7,
@@ -492,7 +590,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "24",
+      "sleeper_id": "24",
+      "espn_id": "11237",
+      "gsis_id": "00-0026143",
       "position": "QB",
       "nfl_team": "ATL"
     },
@@ -504,9 +605,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "17",
+      "sleeper_id": "17",
+      "espn_id": "11122",
+      "gsis_id": "00-0023853",
       "position": "K",
-      "nfl_team": "ARI"
+      "nfl_team": "BUF"
     },
     {
       "week": 7,
@@ -516,7 +620,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1466",
+      "sleeper_id": "1466",
+      "espn_id": "15847",
+      "gsis_id": "00-0030506",
       "position": "TE",
       "nfl_team": "KC"
     },
@@ -528,9 +635,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4988",
+      "sleeper_id": "4988",
+      "espn_id": "3128720",
+      "gsis_id": "00-0034791",
       "position": "RB",
-      "nfl_team": "CLE"
+      "nfl_team": "HOU"
     },
     {
       "week": 7,
@@ -540,7 +650,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6794",
+      "sleeper_id": "6794",
+      "espn_id": "4262921",
+      "gsis_id": "00-0036322",
       "position": "WR",
       "nfl_team": "MIN"
     },
@@ -552,7 +665,8 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "player_id": "espn:4039359",
+      "espn_id": "4039359"
     },
     {
       "week": 7,
@@ -562,8 +676,11 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
-      "position": "DB",
+      "player_id": "3199",
+      "sleeper_id": "3199",
+      "espn_id": "2976316",
+      "gsis_id": "00-0032765",
+      "position": "WR",
       "nfl_team": "CIN"
     },
     {
@@ -574,9 +691,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7588",
+      "sleeper_id": "7588",
+      "espn_id": "4361579",
+      "gsis_id": "00-0036997",
       "position": "RB",
-      "nfl_team": "DEN"
+      "nfl_team": "DAL"
     },
     {
       "week": 7,
@@ -586,7 +706,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5890",
+      "sleeper_id": "5890",
+      "espn_id": "3925347",
+      "gsis_id": "00-0035657",
       "position": "RB",
       "nfl_team": "NE"
     },
@@ -598,7 +721,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7525",
+      "sleeper_id": "7525",
+      "espn_id": "4241478",
+      "gsis_id": "00-0036912",
       "position": "WR",
       "nfl_team": "PHI"
     },
@@ -610,9 +736,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5870",
+      "sleeper_id": "5870",
+      "espn_id": "3917792",
+      "gsis_id": "00-0035710",
       "position": "QB",
-      "nfl_team": "NYG"
+      "nfl_team": "IND"
     },
     {
       "week": 7,
@@ -622,7 +751,8 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "player_id": "espn:4035687",
+      "espn_id": "4035687"
     },
     {
       "week": 7,
@@ -632,7 +762,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2747",
+      "sleeper_id": "2747",
+      "espn_id": "2473037",
+      "gsis_id": "00-0031492",
       "position": "K",
       "nfl_team": "SEA"
     },
@@ -644,9 +777,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4950",
+      "sleeper_id": "4950",
+      "espn_id": "3895856",
+      "gsis_id": "00-0034775",
       "position": "WR",
-      "nfl_team": "ARI"
+      "nfl_team": "HOU"
     },
     {
       "week": 7,
@@ -656,9 +792,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3200",
+      "sleeper_id": "3200",
+      "espn_id": "2976592",
+      "gsis_id": "00-0032385",
       "position": "WR",
-      "nfl_team": "NYG"
+      "nfl_team": "TB"
     },
     {
       "week": 7,
@@ -668,7 +807,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1535",
+      "sleeper_id": "1535",
+      "espn_id": "15807",
+      "gsis_id": "00-0030578",
       "position": "RB",
       "nfl_team": "ATL"
     },
@@ -680,7 +822,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6845",
+      "sleeper_id": "6845",
+      "espn_id": "4035676",
+      "gsis_id": "00-0036251",
       "position": "RB",
       "nfl_team": "BUF"
     },
@@ -692,9 +837,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4943",
+      "sleeper_id": "4943",
+      "espn_id": "3912547",
+      "gsis_id": "00-0034869",
       "position": "QB",
-      "nfl_team": "CAR"
+      "nfl_team": "SEA"
     },
     {
       "week": 7,
@@ -704,7 +852,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1833",
+      "sleeper_id": "1833",
+      "espn_id": "17359",
+      "gsis_id": "00-0030874",
       "position": "RB",
       "nfl_team": "CHI"
     },
@@ -716,7 +867,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "538",
+      "sleeper_id": "538",
+      "espn_id": "13295",
+      "gsis_id": "00-0027685",
       "position": "WR",
       "nfl_team": "BUF"
     },
@@ -727,8 +881,7 @@
       "points": 5.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -738,7 +891,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6149",
+      "sleeper_id": "6149",
+      "espn_id": "3916945",
+      "gsis_id": "00-0035535",
       "position": "WR",
       "nfl_team": "NYG"
     },
@@ -750,9 +906,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2306",
+      "sleeper_id": "2306",
+      "espn_id": "2969939",
+      "gsis_id": "00-0031503",
       "position": "QB",
-      "nfl_team": "NO"
+      "nfl_team": "NYG"
     },
     {
       "week": 7,
@@ -762,7 +921,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4035",
+      "sleeper_id": "4035",
+      "espn_id": "3054850",
+      "gsis_id": "00-0033906",
       "position": "RB",
       "nfl_team": "NO"
     },
@@ -774,9 +936,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4199",
+      "sleeper_id": "4199",
+      "espn_id": "17766",
+      "gsis_id": "00-0033293",
       "position": "RB",
-      "nfl_team": "GB"
+      "nfl_team": "MIN"
     },
     {
       "week": 7,
@@ -786,9 +951,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1426",
+      "sleeper_id": "1426",
+      "espn_id": "15795",
+      "gsis_id": "00-0030564",
       "position": "WR",
-      "nfl_team": "ARI"
+      "nfl_team": "BAL"
     },
     {
       "week": 7,
@@ -798,9 +966,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5850",
+      "sleeper_id": "5850",
+      "espn_id": "4047365",
+      "gsis_id": "00-0035700",
       "position": "RB",
-      "nfl_team": "LV"
+      "nfl_team": "GB"
     },
     {
       "week": 7,
@@ -809,8 +980,7 @@
       "points": 1.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -820,7 +990,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2309",
+      "sleeper_id": "2309",
+      "espn_id": "2976499",
+      "gsis_id": "00-0031544",
       "position": "WR",
       "nfl_team": "DAL"
     },
@@ -832,9 +1005,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5000",
+      "sleeper_id": "5000",
+      "espn_id": "3119195",
+      "gsis_id": "00-0034681",
       "position": "RB",
-      "nfl_team": "ARI"
+      "nfl_team": "WAS"
     },
     {
       "week": 7,
@@ -844,9 +1020,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "96",
+      "sleeper_id": "96",
+      "espn_id": "8439",
+      "gsis_id": "00-0023459",
       "position": "QB",
-      "nfl_team": "GB"
+      "nfl_team": "PIT"
     },
     {
       "week": 7,
@@ -856,9 +1035,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5844",
+      "sleeper_id": "5844",
+      "espn_id": "4036133",
+      "gsis_id": "00-0035229",
       "position": "TE",
-      "nfl_team": "DET"
+      "nfl_team": "MIN"
     },
     {
       "week": 7,
@@ -868,7 +1050,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6801",
+      "sleeper_id": "6801",
+      "espn_id": "4239993",
+      "gsis_id": "00-0036410",
       "position": "WR",
       "nfl_team": "CIN"
     },
@@ -880,9 +1065,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "421",
+      "sleeper_id": "421",
+      "espn_id": "12483",
+      "gsis_id": "00-0026498",
       "position": "QB",
-      "nfl_team": "LA"
+      "nfl_team": "LAR"
     },
     {
       "week": 7,
@@ -892,9 +1080,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6783",
+      "sleeper_id": "6783",
+      "espn_id": "4241463",
+      "gsis_id": "00-0036407",
       "position": "WR",
-      "nfl_team": "DEN"
+      "nfl_team": "CLE"
     },
     {
       "week": 7,
@@ -904,7 +1095,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1264",
+      "sleeper_id": "1264",
+      "espn_id": "15683",
+      "gsis_id": "00-0029597",
       "position": "K",
       "nfl_team": "BAL"
     },
@@ -916,7 +1110,8 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "player_id": "espn:4046676",
+      "espn_id": "4046676"
     },
     {
       "week": 7,
@@ -926,7 +1121,8 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "player_id": "espn:15072",
+      "espn_id": "15072"
     },
     {
       "week": 7,
@@ -935,8 +1131,7 @@
       "points": 0.0,
       "started": false,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -946,9 +1141,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1166",
+      "sleeper_id": "1166",
+      "espn_id": "14880",
+      "gsis_id": "00-0029604",
       "position": "QB",
-      "nfl_team": "MIN"
+      "nfl_team": "ATL"
     },
     {
       "week": 7,
@@ -958,7 +1156,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3327",
+      "sleeper_id": "3327",
+      "espn_id": "3046409",
+      "gsis_id": "00-0032426",
       "position": "RB",
       "nfl_team": "SEA"
     },
@@ -969,8 +1170,7 @@
       "points": 2.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -980,7 +1180,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5906",
+      "sleeper_id": "5906",
+      "espn_id": "3930086",
+      "gsis_id": "00-0035689",
       "position": "TE",
       "nfl_team": "BUF"
     },
@@ -992,7 +1195,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4985",
+      "sleeper_id": "4985",
+      "espn_id": "3139925",
+      "gsis_id": "00-0034750",
       "position": "RB",
       "nfl_team": "SEA"
     },
@@ -1004,9 +1210,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3198",
+      "sleeper_id": "3198",
+      "espn_id": "3043078",
+      "gsis_id": "00-0032764",
       "position": "RB",
-      "nfl_team": "TEN"
+      "nfl_team": "BAL"
     },
     {
       "week": 7,
@@ -1016,9 +1225,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4663",
+      "sleeper_id": "4663",
+      "espn_id": "3068267",
+      "gsis_id": "00-0033699",
       "position": "RB",
-      "nfl_team": "LAC"
+      "nfl_team": "WAS"
     },
     {
       "week": 7,
@@ -1028,7 +1240,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2216",
+      "sleeper_id": "2216",
+      "espn_id": "16737",
+      "gsis_id": "00-0031408",
       "position": "WR",
       "nfl_team": "TB"
     },
@@ -1040,9 +1255,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2505",
+      "sleeper_id": "2505",
+      "espn_id": "2576925",
+      "gsis_id": "00-0031610",
       "position": "TE",
-      "nfl_team": "LV"
+      "nfl_team": "MIA"
     },
     {
       "week": 7,
@@ -1052,7 +1270,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4131",
+      "sleeper_id": "4131",
+      "espn_id": "2974858",
+      "gsis_id": "00-0033932",
       "position": "WR",
       "nfl_team": "NYG"
     },
@@ -1064,7 +1285,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4984",
+      "sleeper_id": "4984",
+      "espn_id": "3918298.0",
+      "gsis_id": "00-0034857",
       "position": "QB",
       "nfl_team": "BUF"
     },
@@ -1076,7 +1300,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6886",
+      "sleeper_id": "6886",
+      "espn_id": "4046692",
+      "gsis_id": "00-0036326",
       "position": "WR",
       "nfl_team": "PIT"
     },
@@ -1088,7 +1315,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2431",
+      "sleeper_id": "2431",
+      "espn_id": "3025433",
+      "gsis_id": "00-0032063",
       "position": "RB",
       "nfl_team": "ATL"
     },
@@ -1100,9 +1330,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2197",
+      "sleeper_id": "2197",
+      "espn_id": "16731",
+      "gsis_id": "00-0031236",
       "position": "WR",
-      "nfl_team": "HOU"
+      "nfl_team": "BUF"
     },
     {
       "week": 7,
@@ -1112,7 +1345,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6955",
+      "sleeper_id": "6955",
+      "espn_id": "4052042",
+      "gsis_id": "00-0035831",
       "position": "RB",
       "nfl_team": "JAX"
     },
@@ -1124,7 +1360,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6904",
+      "sleeper_id": "6904",
+      "espn_id": "4040715",
+      "gsis_id": "00-0036389",
       "position": "QB",
       "nfl_team": "PHI"
     },
@@ -1136,7 +1375,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4137",
+      "sleeper_id": "4137",
+      "espn_id": "3045147",
+      "gsis_id": "00-0033553",
       "position": "RB",
       "nfl_team": "ARI"
     },
@@ -1148,7 +1390,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4036",
+      "sleeper_id": "4036",
+      "espn_id": "3042778",
+      "gsis_id": "00-0033871",
       "position": "WR",
       "nfl_team": "NYJ"
     },
@@ -1160,9 +1405,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5848",
+      "sleeper_id": "5848",
+      "espn_id": "4241372.0",
+      "gsis_id": "00-0035662",
       "position": "WR",
-      "nfl_team": "BAL"
+      "nfl_team": "KC"
     },
     {
       "week": 7,
@@ -1172,7 +1420,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6083",
+      "sleeper_id": "6083",
+      "espn_id": "4249087",
+      "gsis_id": "00-0035269",
       "position": "K",
       "nfl_team": "LA"
     },
@@ -1184,9 +1435,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7528",
+      "sleeper_id": "7528",
+      "espn_id": "2987659",
+      "gsis_id": "00-0036893",
       "position": "RB",
-      "nfl_team": "PIT"
+      "nfl_team": "LAC"
     },
     {
       "week": 7,
@@ -1195,8 +1449,7 @@
       "points": 0.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -1206,9 +1459,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5947",
+      "sleeper_id": "5947",
+      "espn_id": "3916433",
+      "gsis_id": "00-0034960",
       "position": "WR",
-      "nfl_team": "NE"
+      "nfl_team": "JAX"
     },
     {
       "week": 7,
@@ -1218,7 +1474,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6768",
+      "sleeper_id": "6768",
+      "espn_id": "4241479",
+      "gsis_id": "00-0036212",
       "position": "QB",
       "nfl_team": "MIA"
     },
@@ -1230,7 +1489,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4029",
+      "sleeper_id": "4029",
+      "espn_id": "3116593",
+      "gsis_id": "00-0033893",
       "position": "RB",
       "nfl_team": "MIN"
     },
@@ -1242,9 +1504,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5846",
+      "sleeper_id": "5846",
+      "espn_id": "4047650",
+      "gsis_id": "00-0035640",
       "position": "WR",
-      "nfl_team": "SEA"
+      "nfl_team": "PIT"
     },
     {
       "week": 7,
@@ -1254,7 +1519,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4273",
+      "sleeper_id": "4273",
+      "espn_id": "3919596",
+      "gsis_id": "00-0033594",
       "position": "RB",
       "nfl_team": "SEA"
     },
@@ -1266,7 +1534,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6786",
+      "sleeper_id": "6786",
+      "espn_id": "4241389",
+      "gsis_id": "00-0036358",
       "position": "WR",
       "nfl_team": "DAL"
     },
@@ -1278,9 +1549,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4098",
+      "sleeper_id": "4098",
+      "espn_id": "3059915",
+      "gsis_id": "00-0033923",
       "position": "RB",
-      "nfl_team": "CLE"
+      "nfl_team": "KC"
     },
     {
       "week": 7,
@@ -1290,9 +1564,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1234",
+      "sleeper_id": "1234",
+      "espn_id": "14881",
+      "gsis_id": "00-0029263",
       "position": "QB",
-      "nfl_team": "SEA"
+      "nfl_team": "NYG"
     },
     {
       "week": 7,
@@ -1302,7 +1579,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7553",
+      "sleeper_id": "7553",
+      "espn_id": "4360248",
+      "gsis_id": "00-0036970",
       "position": "TE",
       "nfl_team": "ATL"
     },
@@ -1314,9 +1594,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2749",
+      "sleeper_id": "2749",
+      "espn_id": "2576414",
+      "gsis_id": "00-0031687",
       "position": "RB",
-      "nfl_team": "SF"
+      "nfl_team": "LV"
     },
     {
       "week": 7,
@@ -1325,8 +1608,7 @@
       "points": 4.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -1336,7 +1618,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "167",
+      "sleeper_id": "167",
+      "espn_id": "2330",
+      "gsis_id": "00-0019596",
       "position": "QB",
       "nfl_team": "TB"
     },
@@ -1348,7 +1633,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1825",
+      "sleeper_id": "1825",
+      "espn_id": "16790",
+      "gsis_id": "00-0031382",
       "position": "WR",
       "nfl_team": "CLE"
     },
@@ -1360,7 +1648,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3225",
+      "sleeper_id": "3225",
+      "espn_id": "3045144",
+      "gsis_id": "00-0033009",
       "position": "WR",
       "nfl_team": "CIN"
     },
@@ -1372,9 +1663,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6130",
+      "sleeper_id": "6130",
+      "espn_id": "4040761",
+      "gsis_id": "00-0035250",
       "position": "RB",
-      "nfl_team": "BUF"
+      "nfl_team": "NYG"
     },
     {
       "week": 7,
@@ -1384,7 +1678,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "515",
+      "sleeper_id": "515",
+      "espn_id": "13229",
+      "gsis_id": "00-0027656",
       "position": "TE",
       "nfl_team": "TB"
     },
@@ -1395,8 +1692,7 @@
       "points": 3.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -1406,7 +1702,8 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "espn:4241475",
+      "espn_id": "4241475",
       "position": "WR",
       "nfl_team": "LV"
     },
@@ -1418,7 +1715,9 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6798",
+      "sleeper_id": "6798",
+      "espn_id": "4241802",
       "position": "WR",
       "nfl_team": "PHI"
     },
@@ -1430,7 +1729,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7042",
+      "sleeper_id": "7042",
+      "espn_id": "3917232",
+      "gsis_id": "00-0036162",
       "position": "K",
       "nfl_team": "BUF"
     },
@@ -1442,7 +1744,9 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "748",
+      "sleeper_id": "748",
+      "espn_id": "13489.0",
       "position": "WR",
       "nfl_team": "LAC"
     },
@@ -1454,9 +1758,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6151",
+      "sleeper_id": "6151",
+      "espn_id": "4045163",
+      "gsis_id": "00-0035243",
       "position": "RB",
-      "nfl_team": "PHI"
+      "nfl_team": "DAL"
     },
     {
       "week": 7,
@@ -1466,9 +1773,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3161",
+      "sleeper_id": "3161",
+      "espn_id": "2573079",
+      "gsis_id": "00-0032950",
       "position": "QB",
-      "nfl_team": "IND"
+      "nfl_team": "MIN"
     },
     {
       "week": 7,
@@ -1478,9 +1788,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4866",
+      "sleeper_id": "4866",
+      "espn_id": "3929630",
+      "gsis_id": "00-0034844",
       "position": "RB",
-      "nfl_team": "NYG"
+      "nfl_team": "PHI"
     },
     {
       "week": 7,
@@ -1490,9 +1803,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3321",
+      "sleeper_id": "3321",
+      "espn_id": "3116406",
+      "gsis_id": "00-0033040",
       "position": "WR",
-      "nfl_team": "KC"
+      "nfl_team": "MIA"
     },
     {
       "week": 7,
@@ -1502,7 +1818,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1479",
+      "sleeper_id": "1479",
+      "espn_id": "15818",
+      "gsis_id": "00-0030279",
       "position": "WR",
       "nfl_team": "LAC"
     },
@@ -1514,9 +1833,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5892",
+      "sleeper_id": "5892",
+      "espn_id": "4035538",
+      "gsis_id": "00-0035685",
       "position": "RB",
-      "nfl_team": "CHI"
+      "nfl_team": "DET"
     },
     {
       "week": 7,
@@ -1526,7 +1848,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4046",
+      "sleeper_id": "4046",
+      "espn_id": "3139477",
+      "gsis_id": "00-0033873",
       "position": "QB",
       "nfl_team": "KC"
     },
@@ -1538,8 +1863,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
-      "position": "QB",
+      "player_id": "6994",
+      "sleeper_id": "6994",
+      "espn_id": "4034849.0",
+      "position": "CB",
       "nfl_team": "BAL"
     },
     {
@@ -1550,7 +1877,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5012",
+      "sleeper_id": "5012",
+      "espn_id": "3116365",
+      "gsis_id": "00-0034753",
       "position": "TE",
       "nfl_team": "BAL"
     },
@@ -1562,7 +1892,8 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "espn:16733",
+      "espn_id": "16733",
       "position": "WR",
       "nfl_team": "CLE"
     },
@@ -1574,7 +1905,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "player_id": "5872",
+      "sleeper_id": "5872",
+      "espn_id": "3126486",
+      "gsis_id": "00-0035719",
+      "position": "WR",
+      "nfl_team": "WAS"
     },
     {
       "week": 7,
@@ -1584,7 +1920,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7526",
+      "sleeper_id": "7526",
+      "espn_id": "4372016",
+      "gsis_id": "00-0036613",
       "position": "WR",
       "nfl_team": "MIA"
     },
@@ -1596,7 +1935,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1110",
+      "sleeper_id": "1110",
+      "espn_id": "14924",
+      "gsis_id": "00-0029608",
       "position": "WR",
       "nfl_team": "IND"
     },
@@ -1608,7 +1950,8 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "player_id": "espn:2576434",
+      "espn_id": "2576434"
     },
     {
       "week": 7,
@@ -1618,7 +1961,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4149",
+      "sleeper_id": "4149",
+      "espn_id": "2980453",
+      "gsis_id": "00-0033948",
       "position": "RB",
       "nfl_team": "DET"
     },
@@ -1630,7 +1976,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "536",
+      "sleeper_id": "536",
+      "espn_id": "13934",
+      "gsis_id": "00-0027793",
       "position": "WR",
       "nfl_team": "TB"
     },
@@ -1642,9 +1991,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7608",
+      "sleeper_id": "7608",
+      "espn_id": "4035886",
+      "gsis_id": "00-0036906",
       "position": "RB",
-      "nfl_team": "CHI"
+      "nfl_team": "NYJ"
     },
     {
       "week": 7,
@@ -1654,7 +2006,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5549",
+      "sleeper_id": "5549",
+      "espn_id": "3115375",
+      "gsis_id": "00-0034301",
       "position": "RB",
       "nfl_team": "KC"
     },
@@ -1666,9 +2021,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "650",
+      "sleeper_id": "650",
+      "espn_id": "10621",
+      "gsis_id": "00-0025565",
       "position": "K",
-      "nfl_team": "NE"
+      "nfl_team": "NYJ"
     },
     {
       "week": 7,
@@ -1678,7 +2036,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1476",
+      "sleeper_id": "1476",
+      "espn_id": "15920",
+      "gsis_id": "00-0030513",
       "position": "RB",
       "nfl_team": "BAL"
     },
@@ -1689,8 +2050,7 @@
       "points": 11.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -1700,9 +2060,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "4017",
+      "sleeper_id": "4017",
+      "espn_id": "3122840",
+      "gsis_id": "00-0033537",
       "position": "QB",
-      "nfl_team": "HOU"
+      "nfl_team": "CLE"
     },
     {
       "week": 7,
@@ -1712,7 +2075,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2168",
+      "sleeper_id": "2168",
+      "espn_id": "16944",
+      "gsis_id": "00-0031285",
       "position": "RB",
       "nfl_team": "BAL"
     },
@@ -1724,9 +2090,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2133",
+      "sleeper_id": "2133",
+      "espn_id": "16800",
+      "gsis_id": "00-0031381",
       "position": "WR",
-      "nfl_team": "GB"
+      "nfl_team": "LAR"
     },
     {
       "week": 7,
@@ -1736,9 +2105,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2449",
+      "sleeper_id": "2449",
+      "espn_id": "2976212",
+      "gsis_id": "00-0031588",
       "position": "WR",
-      "nfl_team": "BUF"
+      "nfl_team": "NE"
     },
     {
       "week": 7,
@@ -1748,9 +2120,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5859",
+      "sleeper_id": "5859",
+      "espn_id": "4047646",
+      "gsis_id": "00-0035676",
       "position": "WR",
-      "nfl_team": "TEN"
+      "nfl_team": "PHI"
     },
     {
       "week": 7,
@@ -1760,9 +2135,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "6790",
+      "sleeper_id": "6790",
+      "espn_id": "4259545",
+      "gsis_id": "00-0036275",
       "position": "RB",
-      "nfl_team": "DET"
+      "nfl_team": "CHI"
     },
     {
       "week": 7,
@@ -1772,7 +2150,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1352",
+      "sleeper_id": "1352",
+      "espn_id": "15880",
+      "gsis_id": "00-0030431",
       "position": "WR",
       "nfl_team": "LA"
     },
@@ -1784,7 +2165,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null
+      "player_id": "4037",
+      "sleeper_id": "4037",
+      "espn_id": "3116165.0",
+      "gsis_id": "00-0033921",
+      "position": "WR",
+      "nfl_team": "TB"
     },
     {
       "week": 7,
@@ -1794,7 +2180,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5937",
+      "sleeper_id": "5937",
+      "espn_id": "3932905",
+      "gsis_id": "00-0035216",
       "position": "WR",
       "nfl_team": "PIT"
     },
@@ -1806,7 +2195,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3294",
+      "sleeper_id": "3294",
+      "espn_id": "2577417",
+      "gsis_id": "00-0033077",
       "position": "QB",
       "nfl_team": "DAL"
     },
@@ -1818,7 +2210,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2251",
+      "sleeper_id": "2251",
+      "espn_id": "16813",
+      "gsis_id": "00-0031260",
       "position": "TE",
       "nfl_team": "WAS"
     },
@@ -1830,7 +2225,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1049",
+      "sleeper_id": "1049",
+      "espn_id": "14876",
+      "gsis_id": "00-0029701",
       "position": "QB",
       "nfl_team": "TEN"
     },
@@ -1842,9 +2240,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
-      "position": "RB",
-      "nfl_team": "NYJ"
+      "player_id": "7835",
+      "sleeper_id": "7835",
+      "position": "CB",
+      "nfl_team": "PHI"
     },
     {
       "week": 7,
@@ -1854,7 +2253,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "5038",
+      "sleeper_id": "5038",
+      "espn_id": "4036348",
+      "gsis_id": "00-0034764",
       "position": "WR",
       "nfl_team": "DAL"
     },
@@ -1866,8 +2268,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
-      "position": "RB",
+      "player_id": "4844",
+      "sleeper_id": "4844",
+      "espn_id": "3052304.0",
+      "position": "CB",
       "nfl_team": "SF"
     },
     {
@@ -1878,9 +2282,12 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7567",
+      "sleeper_id": "7567",
+      "espn_id": "4371733",
+      "gsis_id": "00-0036919",
       "position": "RB",
-      "nfl_team": "PHI"
+      "nfl_team": "PIT"
     },
     {
       "week": 7,
@@ -1890,7 +2297,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "2028",
+      "sleeper_id": "2028",
+      "espn_id": "16757",
+      "gsis_id": "00-0031280",
       "position": "QB",
       "nfl_team": "LV"
     },
@@ -1902,7 +2312,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1144",
+      "sleeper_id": "1144",
+      "espn_id": "15349",
+      "gsis_id": "00-0029000",
       "position": "WR",
       "nfl_team": "BUF"
     },
@@ -1914,9 +2327,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "1433",
+      "sleeper_id": "1433",
+      "espn_id": "16339",
+      "gsis_id": "00-0029822",
       "position": "K",
-      "nfl_team": "DEN"
+      "nfl_team": "GB"
     },
     {
       "week": 7,
@@ -1926,9 +2342,12 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3271",
+      "sleeper_id": "3271",
+      "espn_id": "2573401",
+      "gsis_id": "00-0033110",
       "position": "TE",
-      "nfl_team": "LA"
+      "nfl_team": "LAR"
     },
     {
       "week": 7,
@@ -1937,8 +2356,7 @@
       "points": 10.0,
       "started": true,
       "season": 2021,
-      "source": "league",
-      "source_player_id": null
+      "source": "league"
     },
     {
       "week": 7,
@@ -1948,7 +2366,10 @@
       "started": true,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "7594",
+      "sleeper_id": "7594",
+      "espn_id": "4241416",
+      "gsis_id": "00-0036555",
       "position": "RB",
       "nfl_team": "CAR"
     },
@@ -1960,7 +2381,10 @@
       "started": false,
       "season": 2021,
       "source": "league",
-      "source_player_id": null,
+      "player_id": "3242",
+      "sleeper_id": "3242",
+      "espn_id": "2979843",
+      "gsis_id": "00-0033118",
       "position": "RB",
       "nfl_team": "LV"
     }

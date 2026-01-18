@@ -998,7 +998,7 @@
       "delta_to_next": 0.4999999999999999,
       "delta_to_next_pg": 0.4999999999999999,
       "sleeper_id": "982",
-      "gsis_id": "00-0028149",
+      "gsis_id": null,
       "player_id": "982"
     },
     {
@@ -1343,7 +1343,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Robert Griffin III",
+      "display_name": "Robert Griffin",
       "position": "QB",
       "team": "BAL",
       "games": 2,
@@ -1357,9 +1357,9 @@
       "war_rep_pg": -15.469999999999995,
       "delta_to_next": 0.1000000000000014,
       "delta_to_next_pg": 0.0500000000000007,
-      "sleeper_id": null,
+      "sleeper_id": "1169",
       "gsis_id": "00-0029665",
-      "player_id": "00-0029665"
+      "player_id": "1169"
     },
     {
       "season": 2020,
@@ -1537,9 +1537,9 @@
       "war_rep_pg": -4.075,
       "delta_to_next": 0.9999999999999996,
       "delta_to_next_pg": 0.2499999999999999,
-      "sleeper_id": "1550",
+      "sleeper_id": "1425",
       "gsis_id": "00-0030108",
-      "player_id": "1550"
+      "player_id": "1425"
     },
     {
       "season": 2020,
@@ -2263,7 +2263,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Odell Beckham Jr.",
+      "display_name": "Odell Beckham",
       "position": "WR",
       "team": "CLE",
       "games": 6,
@@ -2277,9 +2277,9 @@
       "war_rep_pg": -0.513333333333334,
       "delta_to_next": 9.2,
       "delta_to_next_pg": 1.5333333333333334,
-      "sleeper_id": null,
+      "sleeper_id": "2078",
       "gsis_id": "00-0031235",
-      "player_id": "00-0031235"
+      "player_id": "2078"
     },
     {
       "season": 2020,
@@ -4543,7 +4543,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Will Fuller",
+      "display_name": "William Fuller",
       "position": "WR",
       "team": "HOU",
       "games": 10,
@@ -4557,9 +4557,9 @@
       "war_rep_pg": 4.3,
       "delta_to_next": 13.200000000000005,
       "delta_to_next_pg": 1.3200000000000005,
-      "sleeper_id": null,
+      "sleeper_id": "3157",
       "gsis_id": "00-0033127",
-      "player_id": "00-0033127"
+      "player_id": "3157"
     },
     {
       "season": 2020,
@@ -4683,7 +4683,7 @@
     },
     {
       "season": 2020,
-      "display_name": "PJ Walker",
+      "display_name": "P.J. Walker",
       "position": "QB",
       "team": "CAR",
       "games": 4,
@@ -5417,9 +5417,9 @@
       "war_rep_pg": -6.575,
       "delta_to_next": 4.500000000000002,
       "delta_to_next_pg": 0.2812500000000001,
-      "sleeper_id": "7869",
+      "sleeper_id": "4274",
       "gsis_id": "00-0033589",
-      "player_id": "7869"
+      "player_id": "4274"
     },
     {
       "season": 2020,
@@ -6023,7 +6023,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Chris Godwin Jr.",
+      "display_name": "Chris Godwin",
       "position": "WR",
       "team": "TB",
       "games": 16,
@@ -6037,9 +6037,9 @@
       "war_rep_pg": 1.6874999999999998,
       "delta_to_next": 7.599999999999998,
       "delta_to_next_pg": 0.4749999999999998,
-      "sleeper_id": null,
+      "sleeper_id": "4037",
       "gsis_id": "00-0033921",
-      "player_id": "00-0033921"
+      "player_id": "4037"
     },
     {
       "season": 2020,
@@ -6623,7 +6623,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Tyler Conklin",
+      "display_name": "Ryan Izzo",
       "position": "TE",
       "team": "MIN",
       "games": 7,
@@ -6637,9 +6637,9 @@
       "war_rep_pg": -2.8285714285714287,
       "delta_to_next": 1.8999999999999968,
       "delta_to_next_pg": 0.2714285714285709,
-      "sleeper_id": "5133",
+      "sleeper_id": "5094",
       "gsis_id": "00-0034270",
-      "player_id": "5133"
+      "player_id": "5094"
     },
     {
       "season": 2020,
@@ -6983,7 +6983,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Nyheim Hines",
+      "display_name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND",
       "games": 17,
@@ -6997,9 +6997,9 @@
       "war_rep_pg": -0.5294117647058824,
       "delta_to_next": 7.799999999999996,
       "delta_to_next_pg": 0.4588235294117644,
-      "sleeper_id": null,
+      "sleeper_id": "5347",
       "gsis_id": "00-0034367",
-      "player_id": "00-0034367"
+      "player_id": "5347"
     },
     {
       "season": 2020,
@@ -7223,7 +7223,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Cedrick Wilson Jr.",
+      "display_name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL",
       "games": 8,
@@ -7237,9 +7237,9 @@
       "war_rep_pg": -7.7225,
       "delta_to_next": 3.920000000000002,
       "delta_to_next_pg": 0.4900000000000002,
-      "sleeper_id": null,
+      "sleeper_id": "5113",
       "gsis_id": "00-0034418",
-      "player_id": "00-0034418"
+      "player_id": "5113"
     },
     {
       "season": 2020,
@@ -7343,7 +7343,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Ryan Izzo",
+      "display_name": "Tyler Conklin",
       "position": "TE",
       "team": "NE",
       "games": 8,
@@ -7357,9 +7357,9 @@
       "war_rep_pg": -4.4,
       "delta_to_next": 1.7000000000000006,
       "delta_to_next_pg": 0.2125,
-      "sleeper_id": "5094",
+      "sleeper_id": "5133",
       "gsis_id": "00-0034439",
-      "player_id": "5094"
+      "player_id": "5133"
     },
     {
       "season": 2020,
@@ -8737,9 +8737,9 @@
       "war_rep_pg": 0.0,
       "delta_to_next": 0.4000000000000001,
       "delta_to_next_pg": 0.4000000000000001,
-      "sleeper_id": "8568",
+      "sleeper_id": "6231",
       "gsis_id": "00-0035161",
-      "player_id": "8568"
+      "player_id": "6231"
     },
     {
       "season": 2020,
@@ -9183,7 +9183,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Scott Miller",
+      "display_name": "Scotty Miller",
       "position": "WR",
       "team": "TB",
       "games": 16,
@@ -9197,9 +9197,9 @@
       "war_rep_pg": -4.968750000000001,
       "delta_to_next": 5.999999999999999,
       "delta_to_next_pg": 0.3749999999999999,
-      "sleeper_id": null,
+      "sleeper_id": "6290",
       "gsis_id": "00-0035298",
-      "player_id": "00-0035298"
+      "player_id": "6290"
     },
     {
       "season": 2020,
@@ -9298,7 +9298,7 @@
       "delta_to_next": 0.0,
       "delta_to_next_pg": 0.0,
       "sleeper_id": "6724",
-      "gsis_id": "00-0035327",
+      "gsis_id": null,
       "player_id": "6724"
     },
     {
@@ -9423,7 +9423,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Tyron Johnson",
+      "display_name": "Tyron Billy-Johnson",
       "position": "WR",
       "team": "LAC",
       "games": 11,
@@ -9437,9 +9437,9 @@
       "war_rep_pg": -7.072727272727274,
       "delta_to_next": 2.900000000000003,
       "delta_to_next_pg": 0.2636363636363639,
-      "sleeper_id": null,
+      "sleeper_id": "6063",
       "gsis_id": "00-0035457",
-      "player_id": "00-0035457"
+      "player_id": "6063"
     },
     {
       "season": 2020,
@@ -10103,7 +10103,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Deebo Samuel Sr.",
+      "display_name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
       "games": 7,
@@ -10117,9 +10117,9 @@
       "war_rep_pg": -3.9142857142857146,
       "delta_to_next": 1.599999999999998,
       "delta_to_next_pg": 0.2285714285714282,
-      "sleeper_id": null,
+      "sleeper_id": "5872",
       "gsis_id": "00-0035719",
-      "player_id": "00-0035719"
+      "player_id": "5872"
     },
     {
       "season": 2020,
@@ -10158,7 +10158,7 @@
       "delta_to_next": 2.6999999999999984,
       "delta_to_next_pg": 1.3499999999999992,
       "sleeper_id": "6778",
-      "gsis_id": "00-0035752",
+      "gsis_id": null,
       "player_id": "6778"
     },
     {
@@ -10198,7 +10198,7 @@
       "delta_to_next": 0.3999999999999999,
       "delta_to_next_pg": 0.1999999999999999,
       "sleeper_id": "7288",
-      "gsis_id": "00-0035823",
+      "gsis_id": null,
       "player_id": "7288"
     },
     {
@@ -10223,7 +10223,7 @@
     },
     {
       "season": 2020,
-      "display_name": "De'Michael Harris",
+      "display_name": "DeMichael Harris",
       "position": "WR",
       "team": "IND",
       "games": 5,
@@ -10238,7 +10238,7 @@
       "delta_to_next": 0.5000000000000011,
       "delta_to_next_pg": 0.1000000000000002,
       "sleeper_id": "7279",
-      "gsis_id": "00-0035848",
+      "gsis_id": null,
       "player_id": "7279"
     },
     {
@@ -10278,7 +10278,7 @@
       "delta_to_next": 0.3999999999999992,
       "delta_to_next_pg": 0.0999999999999998,
       "sleeper_id": "6873",
-      "gsis_id": "00-0035869",
+      "gsis_id": null,
       "player_id": "6873"
     },
     {
@@ -10298,7 +10298,7 @@
       "delta_to_next": 0.0,
       "delta_to_next_pg": 0.0,
       "sleeper_id": "7307",
-      "gsis_id": "00-0035889",
+      "gsis_id": null,
       "player_id": "7307"
     },
     {
@@ -10318,12 +10318,12 @@
       "delta_to_next": 9.1,
       "delta_to_next_pg": 1.5166666666666666,
       "sleeper_id": "7318",
-      "gsis_id": "00-0035908",
+      "gsis_id": null,
       "player_id": "7318"
     },
     {
       "season": 2020,
-      "display_name": "Levante Bellamy",
+      "display_name": "LeVante Bellamy",
       "position": "RB",
       "team": "DEN",
       "games": 1,
@@ -10338,7 +10338,7 @@
       "delta_to_next": 0.3,
       "delta_to_next_pg": 0.3,
       "sleeper_id": "6959",
-      "gsis_id": "00-0035912",
+      "gsis_id": null,
       "player_id": "6959"
     },
     {
@@ -10358,7 +10358,7 @@
       "delta_to_next": 0.0999999999999996,
       "delta_to_next_pg": 0.0999999999999996,
       "sleeper_id": "7087",
-      "gsis_id": "00-0035924",
+      "gsis_id": null,
       "player_id": "7087"
     },
     {
@@ -10378,7 +10378,7 @@
       "delta_to_next": 0.0,
       "delta_to_next_pg": 0.0,
       "sleeper_id": "7226",
-      "gsis_id": "00-0035950",
+      "gsis_id": null,
       "player_id": "7226"
     },
     {
@@ -10397,9 +10397,9 @@
       "war_rep_pg": -6.814285714285714,
       "delta_to_next": 1.900000000000002,
       "delta_to_next_pg": 0.2714285714285717,
-      "sleeper_id": "1631",
-      "gsis_id": "00-0035957",
-      "player_id": "1631"
+      "sleeper_id": "2892",
+      "gsis_id": "00-0031900",
+      "player_id": "2892"
     },
     {
       "season": 2020,
@@ -10418,7 +10418,7 @@
       "delta_to_next": 4.659999999999999,
       "delta_to_next_pg": 1.553333333333333,
       "sleeper_id": "7083",
-      "gsis_id": "00-0035993",
+      "gsis_id": null,
       "player_id": "7083"
     },
     {
@@ -10438,7 +10438,7 @@
       "delta_to_next": 0.2000000000000001,
       "delta_to_next_pg": 0.2000000000000001,
       "sleeper_id": "6846",
-      "gsis_id": "00-0036008",
+      "gsis_id": null,
       "player_id": "6846"
     },
     {
@@ -10478,7 +10478,7 @@
       "delta_to_next": 0.7000000000000007,
       "delta_to_next_pg": 0.1750000000000001,
       "sleeper_id": "7002",
-      "gsis_id": "00-0036040",
+      "gsis_id": null,
       "player_id": "7002"
     },
     {
@@ -10498,7 +10498,7 @@
       "delta_to_next": 0.1,
       "delta_to_next_pg": 0.1,
       "sleeper_id": "7005",
-      "gsis_id": "00-0036069",
+      "gsis_id": null,
       "player_id": "7005"
     },
     {
@@ -10518,7 +10518,7 @@
       "delta_to_next": 0.399999999999999,
       "delta_to_next_pg": 0.0999999999999997,
       "sleeper_id": "6973",
-      "gsis_id": "00-0036096",
+      "gsis_id": null,
       "player_id": "6973"
     },
     {
@@ -10538,7 +10538,7 @@
       "delta_to_next": 0.2999999999999999,
       "delta_to_next_pg": 0.0749999999999999,
       "sleeper_id": "7458",
-      "gsis_id": "00-0036100",
+      "gsis_id": null,
       "player_id": "7458"
     },
     {
@@ -10558,7 +10558,7 @@
       "delta_to_next": 0.0999999999999996,
       "delta_to_next_pg": 0.0999999999999996,
       "sleeper_id": "7244",
-      "gsis_id": "00-0036110",
+      "gsis_id": null,
       "player_id": "7244"
     },
     {
@@ -10578,7 +10578,7 @@
       "delta_to_next": 0.1,
       "delta_to_next_pg": 0.1,
       "sleeper_id": "6957",
-      "gsis_id": "00-0036133",
+      "gsis_id": null,
       "player_id": "6957"
     },
     {
@@ -10618,7 +10618,7 @@
       "delta_to_next": 0.7999999999999977,
       "delta_to_next_pg": 0.0799999999999997,
       "sleeper_id": "7407",
-      "gsis_id": "00-0036142",
+      "gsis_id": null,
       "player_id": "7407"
     },
     {
@@ -10638,7 +10638,7 @@
       "delta_to_next": 0.0999999999999996,
       "delta_to_next_pg": 0.0999999999999996,
       "sleeper_id": "7106",
-      "gsis_id": "00-0036145",
+      "gsis_id": null,
       "player_id": "7106"
     },
     {
@@ -10698,7 +10698,7 @@
       "delta_to_next": 5.0,
       "delta_to_next_pg": 2.5,
       "sleeper_id": "7204",
-      "gsis_id": "00-0036187",
+      "gsis_id": null,
       "player_id": "7204"
     },
     {
@@ -10718,7 +10718,7 @@
       "delta_to_next": 1.0,
       "delta_to_next_pg": 1.0,
       "sleeper_id": "7203",
-      "gsis_id": "00-0036188",
+      "gsis_id": null,
       "player_id": "7203"
     },
     {
@@ -10738,7 +10738,7 @@
       "delta_to_next": 0.0999999999999996,
       "delta_to_next_pg": 0.0999999999999996,
       "sleeper_id": "6956",
-      "gsis_id": "00-0036194",
+      "gsis_id": null,
       "player_id": "6956"
     },
     {
@@ -10758,7 +10758,7 @@
       "delta_to_next": 0.0,
       "delta_to_next_pg": 0.0,
       "sleeper_id": "7115",
-      "gsis_id": "00-0036195",
+      "gsis_id": null,
       "player_id": "7115"
     },
     {
@@ -10798,7 +10798,7 @@
       "delta_to_next": 0.2999999999999992,
       "delta_to_next_pg": 0.1499999999999996,
       "sleeper_id": "7227",
-      "gsis_id": "00-0036208",
+      "gsis_id": null,
       "player_id": "7227"
     },
     {
@@ -10877,9 +10877,9 @@
       "war_rep_pg": -6.666666666666667,
       "delta_to_next": 0.5,
       "delta_to_next_pg": 0.1666666666666666,
-      "sleeper_id": "5173",
-      "gsis_id": "00-0036225",
-      "player_id": "5173"
+      "sleeper_id": "7082",
+      "gsis_id": null,
+      "player_id": "7082"
     },
     {
       "season": 2020,
@@ -10898,7 +10898,7 @@
       "delta_to_next": 6.700000000000002,
       "delta_to_next_pg": 0.6700000000000002,
       "sleeper_id": "6850",
-      "gsis_id": "00-0036232",
+      "gsis_id": null,
       "player_id": "6850"
     },
     {
@@ -10938,7 +10938,7 @@
       "delta_to_next": 0.1,
       "delta_to_next_pg": 0.1,
       "sleeper_id": "6865",
-      "gsis_id": "00-0036244",
+      "gsis_id": null,
       "player_id": "6865"
     },
     {
@@ -10958,7 +10958,7 @@
       "delta_to_next": 1.0999999999999996,
       "delta_to_next_pg": 0.157142857142857,
       "sleeper_id": "7109",
-      "gsis_id": "00-0036245",
+      "gsis_id": null,
       "player_id": "7109"
     },
     {
@@ -10978,7 +10978,7 @@
       "delta_to_next": 1.739999999999998,
       "delta_to_next_pg": 0.1933333333333331,
       "sleeper_id": "7135",
-      "gsis_id": "00-0036247",
+      "gsis_id": null,
       "player_id": "7135"
     },
     {
@@ -11038,7 +11038,7 @@
       "delta_to_next": 1.1000000000000032,
       "delta_to_next_pg": 0.1222222222222225,
       "sleeper_id": "6857",
-      "gsis_id": "00-0036254",
+      "gsis_id": null,
       "player_id": "6857"
     },
     {
@@ -11058,7 +11058,7 @@
       "delta_to_next": 1.599999999999996,
       "delta_to_next_pg": 0.1999999999999995,
       "sleeper_id": "6849",
-      "gsis_id": "00-0036255",
+      "gsis_id": null,
       "player_id": "6849"
     },
     {
@@ -11083,7 +11083,7 @@
     },
     {
       "season": 2020,
-      "display_name": "AJ Dillon",
+      "display_name": "A.J. Dillon",
       "position": "RB",
       "team": "GB",
       "games": 11,
@@ -11103,7 +11103,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Laviska Shenault Jr.",
+      "display_name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX",
       "games": 14,
@@ -11117,9 +11117,9 @@
       "war_rep_pg": -4.392857142857143,
       "delta_to_next": 5.0,
       "delta_to_next_pg": 0.3571428571428571,
-      "sleeper_id": null,
+      "sleeper_id": "6814",
       "gsis_id": "00-0036268",
-      "player_id": "00-0036268"
+      "player_id": "6814"
     },
     {
       "season": 2020,
@@ -11158,7 +11158,7 @@
       "delta_to_next": 1.200000000000001,
       "delta_to_next_pg": 0.3000000000000002,
       "sleeper_id": "6927",
-      "gsis_id": "00-0036271",
+      "gsis_id": null,
       "player_id": "6927"
     },
     {
@@ -11198,7 +11198,7 @@
       "delta_to_next": 1.899999999999998,
       "delta_to_next_pg": 0.1727272727272725,
       "sleeper_id": "6895",
-      "gsis_id": "00-0036277",
+      "gsis_id": null,
       "player_id": "6895"
     },
     {
@@ -11218,7 +11218,7 @@
       "delta_to_next": 0.4,
       "delta_to_next_pg": 0.1333333333333333,
       "sleeper_id": "7107",
-      "gsis_id": "00-0036278",
+      "gsis_id": null,
       "player_id": "7107"
     },
     {
@@ -11258,7 +11258,7 @@
       "delta_to_next": 0.0,
       "delta_to_next_pg": 0.0,
       "sleeper_id": "7016",
-      "gsis_id": "00-0036293",
+      "gsis_id": null,
       "player_id": "7016"
     },
     {
@@ -11278,7 +11278,7 @@
       "delta_to_next": 0.8999999999999994,
       "delta_to_next_pg": 0.1799999999999998,
       "sleeper_id": "7064",
-      "gsis_id": "00-0036297",
+      "gsis_id": null,
       "player_id": "7064"
     },
     {
@@ -11318,7 +11318,7 @@
       "delta_to_next": 3.2000000000000024,
       "delta_to_next_pg": 1.0666666666666675,
       "sleeper_id": "7084",
-      "gsis_id": "00-0036312",
+      "gsis_id": null,
       "player_id": "7084"
     },
     {
@@ -11338,7 +11338,7 @@
       "delta_to_next": 0.0,
       "delta_to_next_pg": 0.0,
       "sleeper_id": "6936",
-      "gsis_id": "00-0036320",
+      "gsis_id": null,
       "player_id": "6936"
     },
     {
@@ -11438,7 +11438,7 @@
       "delta_to_next": 0.1,
       "delta_to_next_pg": 0.1,
       "sleeper_id": "7050",
-      "gsis_id": "00-0036332",
+      "gsis_id": null,
       "player_id": "7050"
     },
     {
@@ -11458,7 +11458,7 @@
       "delta_to_next": 1.5000000000000004,
       "delta_to_next_pg": 0.1363636363636364,
       "sleeper_id": "6878",
-      "gsis_id": "00-0036336",
+      "gsis_id": null,
       "player_id": "6878"
     },
     {
@@ -11478,7 +11478,7 @@
       "delta_to_next": 0.1,
       "delta_to_next_pg": 0.05,
       "sleeper_id": "6906",
-      "gsis_id": "00-0036340",
+      "gsis_id": null,
       "player_id": "6906"
     },
     {
@@ -11503,7 +11503,7 @@
     },
     {
       "season": 2020,
-      "display_name": "Henry Ruggs III",
+      "display_name": "Henry Ruggs",
       "position": "WR",
       "team": "LV",
       "games": 13,
@@ -11517,9 +11517,9 @@
       "war_rep_pg": -7.461538461538462,
       "delta_to_next": 4.6999999999999975,
       "delta_to_next_pg": 0.3615384615384613,
-      "sleeper_id": null,
+      "sleeper_id": "6789",
       "gsis_id": "00-0036357",
-      "player_id": "00-0036357"
+      "player_id": "6789"
     },
     {
       "season": 2020,
@@ -11578,7 +11578,7 @@
       "delta_to_next": 1.4800000000000002,
       "delta_to_next_pg": 0.185,
       "sleeper_id": "6909",
-      "gsis_id": "00-0036364",
+      "gsis_id": null,
       "player_id": "6909"
     },
     {
@@ -11638,12 +11638,12 @@
       "delta_to_next": 0.4,
       "delta_to_next_pg": 0.1333333333333333,
       "sleeper_id": "6913",
-      "gsis_id": "00-0036377",
+      "gsis_id": null,
       "player_id": "6913"
     },
     {
       "season": 2020,
-      "display_name": "K.J. Hill",
+      "display_name": "KJ Hill",
       "position": "WR",
       "team": "LAC",
       "games": 5,
@@ -11658,7 +11658,7 @@
       "delta_to_next": 0.7000000000000007,
       "delta_to_next_pg": 0.1400000000000001,
       "sleeper_id": "6866",
-      "gsis_id": "00-0036382",
+      "gsis_id": null,
       "player_id": "6866"
     },
     {
@@ -11678,7 +11678,7 @@
       "delta_to_next": 4.000000000000001,
       "delta_to_next_pg": 2.0000000000000004,
       "sleeper_id": "7143",
-      "gsis_id": "00-0036384",
+      "gsis_id": null,
       "player_id": "7143"
     },
     {
@@ -11698,7 +11698,7 @@
       "delta_to_next": 0.0,
       "delta_to_next_pg": 0.0,
       "sleeper_id": "6810",
-      "gsis_id": "00-0036386",
+      "gsis_id": null,
       "player_id": "6810"
     },
     {
@@ -11718,7 +11718,7 @@
       "delta_to_next": 1.6999999999999988,
       "delta_to_next_pg": 0.1545454545454544,
       "sleeper_id": "6798",
-      "gsis_id": "00-0036387",
+      "gsis_id": null,
       "player_id": "6798"
     },
     {
@@ -11758,7 +11758,7 @@
       "delta_to_next": 0.8999999999999998,
       "delta_to_next_pg": 0.1124999999999999,
       "sleeper_id": "7086",
-      "gsis_id": "00-0036398",
+      "gsis_id": null,
       "player_id": "7086"
     },
     {
@@ -11818,7 +11818,7 @@
       "delta_to_next": 4.1,
       "delta_to_next_pg": 0.3727272727272727,
       "sleeper_id": "6805",
-      "gsis_id": "00-0036412",
+      "gsis_id": null,
       "player_id": "6805"
     },
     {
@@ -11878,7 +11878,7 @@
       "delta_to_next": 2.7000000000000006,
       "delta_to_next_pg": 0.2700000000000001,
       "sleeper_id": "6869",
-      "gsis_id": "00-0036422",
+      "gsis_id": null,
       "player_id": "6869"
     },
     {
@@ -11898,7 +11898,7 @@
       "delta_to_next": 1.9999999999999996,
       "delta_to_next_pg": 0.4999999999999999,
       "sleeper_id": "6843",
-      "gsis_id": "00-0036423",
+      "gsis_id": null,
       "player_id": "6843"
     },
     {
@@ -11937,9 +11937,9 @@
       "war_rep_pg": -6.555555555555556,
       "delta_to_next": 2.000000000000001,
       "delta_to_next_pg": 0.2222222222222223,
-      "sleeper_id": "8550",
+      "sleeper_id": "6960",
       "gsis_id": "00-0036427",
-      "player_id": "8550"
+      "player_id": "6960"
     },
     {
       "season": 2020,
@@ -11958,7 +11958,7 @@
       "delta_to_next": 0.3000000000000011,
       "delta_to_next_pg": 0.1500000000000005,
       "sleeper_id": "7075",
-      "gsis_id": "00-0036429",
+      "gsis_id": null,
       "player_id": "7075"
     },
     {
@@ -11978,7 +11978,7 @@
       "delta_to_next": 0.3200000000000003,
       "delta_to_next_pg": 0.3200000000000003,
       "sleeper_id": "7149",
-      "gsis_id": "00-0036433",
+      "gsis_id": null,
       "player_id": "7149"
     },
     {
@@ -11998,7 +11998,7 @@
       "delta_to_next": 0.3999999999999999,
       "delta_to_next_pg": 0.1333333333333333,
       "sleeper_id": "7032",
-      "gsis_id": "00-0036439",
+      "gsis_id": null,
       "player_id": "7032"
     },
     {
@@ -12058,7 +12058,7 @@
       "delta_to_next": 0.6999999999999995,
       "delta_to_next_pg": 0.3499999999999997,
       "sleeper_id": "7502",
-      "gsis_id": "00-0036456",
+      "gsis_id": null,
       "player_id": "7502"
     }
   ]

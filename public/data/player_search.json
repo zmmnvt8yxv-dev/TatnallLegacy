@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-18T19:18:49.587931+00:00",
+  "generatedAt": "2026-01-18T20:24:15.901400+00:00",
   "rows": [
     {
       "id": "3218",
@@ -7,13 +7,6 @@
       "name": "A'Shawn Robinson",
       "position": "DE",
       "team": "DET"
-    },
-    {
-      "id": "8505",
-      "id_type": "sleeper",
-      "name": "A.J. Arcuri",
-      "position": "OT",
-      "team": "LA"
     },
     {
       "id": "1674",
@@ -44,6 +37,13 @@
       "team": "NE"
     },
     {
+      "id": "6828",
+      "id_type": "sleeper",
+      "name": "A.J. Dillon",
+      "position": "RB",
+      "team": "GB"
+    },
+    {
       "id": "6802",
       "id_type": "sleeper",
       "name": "A.J. Epenesa",
@@ -63,6 +63,13 @@
       "name": "A.J. Green",
       "position": "WR",
       "team": "CIN"
+    },
+    {
+      "id": "6876",
+      "id_type": "sleeper",
+      "name": "A.J. Green",
+      "position": "CB",
+      "team": "CLE"
     },
     {
       "id": "261",
@@ -121,6 +128,13 @@
       "team": "NO"
     },
     {
+      "id": "8505",
+      "id_type": "sleeper",
+      "name": "AJ Arcuri",
+      "position": "OT",
+      "team": "LA"
+    },
+    {
       "id": "11603",
       "id_type": "sleeper",
       "name": "AJ Barner",
@@ -133,13 +147,6 @@
       "name": "AJ Cole",
       "position": "P",
       "team": "LV"
-    },
-    {
-      "id": "6828",
-      "id_type": "sleeper",
-      "name": "AJ Dillon",
-      "position": "RB",
-      "team": "GB"
     },
     {
       "id": "11121",
@@ -170,7 +177,7 @@
       "team": "SF"
     },
     {
-      "id": "7440",
+      "id": "1122",
       "id_type": "sleeper",
       "name": "Aaron Brewer",
       "position": "LS",
@@ -408,15 +415,15 @@
       "team": "IND"
     },
     {
-      "id": "5813",
+      "id": "2190",
       "id_type": "sleeper",
       "name": "Adarius Taylor",
       "position": "ILB",
       "team": "TB"
     },
     {
-      "id": "00-0036949",
-      "id_type": "gsis",
+      "id": "espn:4046693",
+      "id_type": "player_id",
       "name": "Adetokunbo Ogundeji",
       "position": "LB",
       "team": "ATL"
@@ -625,7 +632,7 @@
       "team": "CIN"
     },
     {
-      "id": "11871",
+      "id": "946",
       "id_type": "sleeper",
       "name": "Akeem Dent",
       "position": "OLB",
@@ -980,6 +987,13 @@
       "name": "Alex Smith",
       "position": "QB",
       "team": "KC"
+    },
+    {
+      "id": "661",
+      "id_type": "sleeper",
+      "name": "Alex Smith",
+      "position": "TE",
+      "team": "WAS"
     },
     {
       "id": "1262",
@@ -1360,8 +1374,8 @@
       "team": "DEN"
     },
     {
-      "id": "00-0038801",
-      "id_type": "gsis",
+      "id": "espn:4577333",
+      "id_type": "player_id",
       "name": "Andre Carter II",
       "position": "LB",
       "team": "MIN"
@@ -1430,8 +1444,8 @@
       "team": "IND"
     },
     {
-      "id": "00-0038635",
-      "id_type": "gsis",
+      "id": "espn:4249214",
+      "id_type": "player_id",
       "name": "Andre Jones Jr.",
       "position": "DE",
       "team": "WAS"
@@ -1458,11 +1472,18 @@
       "team": "WAS"
     },
     {
-      "id": "5340",
+      "id": "358",
       "id_type": "sleeper",
       "name": "Andre Smith",
       "position": "OT",
       "team": "CIN"
+    },
+    {
+      "id": "5340",
+      "id_type": "sleeper",
+      "name": "Andre Smith",
+      "position": "LB",
+      "team": "CAR"
     },
     {
       "id": "11261",
@@ -1836,7 +1857,7 @@
       "team": "SEA"
     },
     {
-      "id": "8241",
+      "id": "3345",
       "id_type": "sleeper",
       "name": "Anthony Brown",
       "position": "CB",
@@ -1913,15 +1934,15 @@
       "team": "DAL"
     },
     {
-      "id": "11112",
+      "id": "1823",
       "id_type": "sleeper",
       "name": "Anthony Johnson",
       "position": "DE",
       "team": "NE"
     },
     {
-      "id": "00-0038411",
-      "id_type": "gsis",
+      "id": "espn:4361748",
+      "id_type": "player_id",
       "name": "Anthony Johnson Jr.",
       "position": "SAF",
       "team": "GB"
@@ -2039,8 +2060,8 @@
       "team": "SF"
     },
     {
-      "id": "00-0036346",
-      "id_type": "gsis",
+      "id": "espn:4036213",
+      "id_type": "player_id",
       "name": "Antoine Brooks Jr.",
       "position": "SAF",
       "team": "PIT"
@@ -2060,8 +2081,8 @@
       "team": "ARI"
     },
     {
-      "id": "00-0036411",
-      "id_type": "gsis",
+      "id": "espn:4034790",
+      "id_type": "player_id",
       "name": "Antoine Winfield Jr.",
       "position": "SAF",
       "team": "TB"
@@ -2144,8 +2165,8 @@
       "team": "WAS"
     },
     {
-      "id": "00-0039587",
-      "id_type": "gsis",
+      "id": "espn:4360864",
+      "id_type": "player_id",
       "name": "Antonio Grier Jr.",
       "position": "LB",
       "team": "TB"
@@ -2212,6 +2233,13 @@
       "name": "Antwione Williams",
       "position": "LB",
       "team": "DET"
+    },
+    {
+      "id": "1115",
+      "id_type": "sleeper",
+      "name": "Antwon Blake",
+      "position": "DB",
+      "team": "PIT"
     },
     {
       "id": "180",
@@ -2403,8 +2431,8 @@
       "team": "NE"
     },
     {
-      "id": "00-0036617",
-      "id_type": "gsis",
+      "id": "espn:4363034",
+      "id_type": "player_id",
       "name": "Asante Samuel Jr.",
       "position": "CB",
       "team": "LAC"
@@ -2468,7 +2496,7 @@
     {
       "id": "11579",
       "id_type": "sleeper",
-      "name": "Audric Estimé",
+      "name": "Audric Estime",
       "position": "RB",
       "team": "DEN"
     },
@@ -2543,7 +2571,7 @@
       "team": "MIN"
     },
     {
-      "id": "5482",
+      "id": "1200",
       "id_type": "sleeper",
       "name": "Austin Davis",
       "position": "QB",
@@ -2597,6 +2625,13 @@
       "name": "Austin Johnson",
       "position": "FB",
       "team": "NO"
+    },
+    {
+      "id": "3560",
+      "id_type": "sleeper",
+      "name": "Austin Johnson",
+      "position": "NT",
+      "team": "TEN"
     },
     {
       "id": "12948",
@@ -2697,7 +2732,7 @@
       "team": "NYG"
     },
     {
-      "id": "4620",
+      "id": "7809",
       "id_type": "sleeper",
       "name": "Avery Williams",
       "position": "RB",
@@ -2774,6 +2809,13 @@
       "team": "NYG"
     },
     {
+      "id": "espn:4875266",
+      "id_type": "player_id",
+      "name": "B.J. Green II",
+      "position": "DE",
+      "team": "JAX"
+    },
+    {
       "id": "5020",
       "id_type": "sleeper",
       "name": "B.J. Hill",
@@ -2793,13 +2835,6 @@
       "name": "B.W. Webb",
       "position": "CB",
       "team": "TEN"
-    },
-    {
-      "id": "00-0040329",
-      "id_type": "gsis",
-      "name": "BJ Green II",
-      "position": "DE",
-      "team": "JAX"
     },
     {
       "id": "10908",
@@ -2837,8 +2872,8 @@
       "team": "CLE"
     },
     {
-      "id": "00-0037157",
-      "id_type": "gsis",
+      "id": "espn:4427728",
+      "id_type": "player_id",
       "name": "Bam Knight",
       "position": "RB",
       "team": "NYJ"
@@ -2921,8 +2956,8 @@
       "team": "KC"
     },
     {
-      "id": "00-0039454",
-      "id_type": "gsis",
+      "id": "espn:4363052",
+      "id_type": "player_id",
       "name": "Beanie Bishop Jr.",
       "position": "CB",
       "team": "PIT"
@@ -3257,8 +3292,8 @@
       "team": "LA"
     },
     {
-      "id": "00-0038470",
-      "id_type": "gsis",
+      "id": "espn:4360944",
+      "id_type": "player_id",
       "name": "Benny Sapp III",
       "position": "SAF",
       "team": "GB"
@@ -3334,8 +3369,8 @@
       "team": "NYJ"
     },
     {
-      "id": "00-0040156",
-      "id_type": "gsis",
+      "id": "espn:4431194",
+      "id_type": "player_id",
       "name": "Billy Bowman Jr.",
       "position": "SAF",
       "team": "ATL"
@@ -3530,9 +3565,9 @@
       "team": "CLE"
     },
     {
-      "id": "00-0035294",
-      "id_type": "gsis",
-      "name": "Blessuan Austin",
+      "id": "5933",
+      "id_type": "sleeper",
+      "name": "Bless Austin",
       "position": "DB",
       "team": "NYJ"
     },
@@ -3572,8 +3607,8 @@
       "team": "DET"
     },
     {
-      "id": "00-0036903",
-      "id_type": "gsis",
+      "id": "espn:4372518",
+      "id_type": "player_id",
       "name": "Bobby Brown III",
       "position": "DT",
       "team": "LA"
@@ -3922,13 +3957,6 @@
       "team": "DEN"
     },
     {
-      "id": "11533",
-      "id_type": "sleeper",
-      "name": "Brandon Aubrey",
-      "position": "K",
-      "team": "DAL"
-    },
-    {
       "id": "876",
       "id_type": "sleeper",
       "name": "Brandon Bair",
@@ -4006,7 +4034,7 @@
       "team": "BUF"
     },
     {
-      "id": "11702",
+      "id": "2196",
       "id_type": "sleeper",
       "name": "Brandon Coleman",
       "position": "WR",
@@ -4083,7 +4111,7 @@
       "team": "PHI"
     },
     {
-      "id": "12877",
+      "id": "8756",
       "id_type": "sleeper",
       "name": "Brandon Johnson",
       "position": "WR",
@@ -4104,7 +4132,7 @@
       "team": "DET"
     },
     {
-      "id": "7508",
+      "id": "2724",
       "id_type": "sleeper",
       "name": "Brandon King",
       "position": "LB",
@@ -4137,6 +4165,13 @@
       "name": "Brandon Marshall",
       "position": "WR",
       "team": "NYJ"
+    },
+    {
+      "id": "1118",
+      "id_type": "sleeper",
+      "name": "Brandon Marshall",
+      "position": "ILB",
+      "team": "DEN"
     },
     {
       "id": "1571",
@@ -4223,7 +4258,7 @@
       "team": "NYJ"
     },
     {
-      "id": "8324",
+      "id": "7865",
       "id_type": "sleeper",
       "name": "Brandon Smith",
       "position": "LB",
@@ -4286,11 +4321,25 @@
       "team": "NYJ"
     },
     {
-      "id": "3557",
+      "id": "1383",
       "id_type": "sleeper",
       "name": "Brandon Williams",
       "position": "DE",
       "team": "BAL"
+    },
+    {
+      "id": "3653",
+      "id_type": "sleeper",
+      "name": "Brandon Williams",
+      "position": "TE",
+      "team": "MIA"
+    },
+    {
+      "id": "3557",
+      "id_type": "sleeper",
+      "name": "Brandon Williams",
+      "position": "CB",
+      "team": "ARI"
     },
     {
       "id": "4230",
@@ -4503,8 +4552,8 @@
       "team": "CAR"
     },
     {
-      "id": "00-0038463",
-      "id_type": "gsis",
+      "id": "espn:4361776",
+      "id_type": "player_id",
       "name": "Brenton Cox Jr.",
       "position": "DE",
       "team": "GB"
@@ -4594,8 +4643,15 @@
       "team": "PIT"
     },
     {
-      "id": "00-0037822",
-      "id_type": "gsis",
+      "id": "5304",
+      "id_type": "sleeper",
+      "name": "Brian Allen",
+      "position": "C",
+      "team": "LA"
+    },
+    {
+      "id": "espn:4360255",
+      "id_type": "player_id",
       "name": "Brian Asamoah II",
       "position": "LB",
       "team": "MIN"
@@ -4743,7 +4799,7 @@
     {
       "id": "11631",
       "id_type": "sleeper",
-      "name": "Brian Thomas Jr.",
+      "name": "Brian Thomas",
       "position": "WR",
       "team": "JAX"
     },
@@ -5245,8 +5301,8 @@
       "team": "ARI"
     },
     {
-      "id": "00-0039309",
-      "id_type": "gsis",
+      "id": "espn:4570040",
+      "id_type": "player_id",
       "name": "Byron Murphy II",
       "position": "DT",
       "team": "SEA"
@@ -5259,7 +5315,7 @@
       "team": "KC"
     },
     {
-      "id": "10917",
+      "id": "10925",
       "id_type": "sleeper",
       "name": "Byron Young",
       "position": "LB",
@@ -5343,11 +5399,18 @@
       "team": "DET"
     },
     {
-      "id": "1875",
+      "id": "743",
       "id_type": "sleeper",
       "name": "C.J. Mosley",
       "position": "DT",
       "team": "MIA"
+    },
+    {
+      "id": "1875",
+      "id_type": "sleeper",
+      "name": "C.J. Mosley",
+      "position": "ILB",
+      "team": "BAL"
     },
     {
       "id": "3204",
@@ -5406,18 +5469,18 @@
       "team": "CIN"
     },
     {
+      "id": "12649",
+      "id_type": "sleeper",
+      "name": "C.J. West",
+      "position": "DT",
+      "team": "SF"
+    },
+    {
       "id": "603",
       "id_type": "sleeper",
       "name": "C.J. Wilson",
       "position": "DE",
       "team": "LV"
-    },
-    {
-      "id": "12649",
-      "id_type": "sleeper",
-      "name": "CJ West",
-      "position": "DT",
-      "team": "SF"
     },
     {
       "id": "7956",
@@ -5525,7 +5588,7 @@
       "team": "ATL"
     },
     {
-      "id": "7846",
+      "id": "11303",
       "id_type": "sleeper",
       "name": "Caleb Johnson",
       "position": "LB",
@@ -5595,8 +5658,8 @@
       "team": "DEN"
     },
     {
-      "id": "00-0037837",
-      "id_type": "gsis",
+      "id": "espn:4243389",
+      "id_type": "player_id",
       "name": "Calvin Austin III",
       "position": "WR",
       "team": "PIT"
@@ -5651,6 +5714,13 @@
       "team": "LA"
     },
     {
+      "id": "1836",
+      "id_type": "sleeper",
+      "name": "Cam Fleming",
+      "position": "OT",
+      "team": "NE"
+    },
+    {
       "id": "7451",
       "id_type": "sleeper",
       "name": "Cam Gill",
@@ -5679,7 +5749,7 @@
       "team": "CAR"
     },
     {
-      "id": "12086",
+      "id": "1328",
       "id_type": "sleeper",
       "name": "Cam Johnson",
       "position": "OLB",
@@ -5847,13 +5917,6 @@
       "team": "CLE"
     },
     {
-      "id": "00-0031067",
-      "id_type": "gsis",
-      "name": "Cameron Fleming",
-      "position": "OT",
-      "team": "NE"
-    },
-    {
       "id": "8526",
       "id_type": "sleeper",
       "name": "Cameron Goode",
@@ -5987,13 +6050,6 @@
       "team": "MIN"
     },
     {
-      "id": "00-0031982",
-      "id_type": "gsis",
-      "name": "Cap Capi",
-      "position": "DE",
-      "team": "NYG"
-    },
-    {
       "id": "441",
       "id_type": "sleeper",
       "name": "Captain Munnerlyn",
@@ -6071,7 +6127,7 @@
       "team": "BUF"
     },
     {
-      "id": "6995",
+      "id": "4837",
       "id_type": "sleeper",
       "name": "Carlos Davis",
       "position": "DT",
@@ -6113,9 +6169,9 @@
       "team": "HOU"
     },
     {
-      "id": "00-0034778",
-      "id_type": "gsis",
-      "name": "Carlton Davis III",
+      "id": "5054",
+      "id_type": "sleeper",
+      "name": "Carlton Davis",
       "position": "CB",
       "team": "TB"
     },
@@ -6337,9 +6393,9 @@
       "team": "SEA"
     },
     {
-      "id": "00-0034418",
-      "id_type": "gsis",
-      "name": "Cedrick Wilson Jr.",
+      "id": "5113",
+      "id_type": "sleeper",
+      "name": "Cedrick Wilson",
       "position": "WR",
       "team": "DAL"
     },
@@ -6575,13 +6631,6 @@
       "team": "SEA"
     },
     {
-      "id": "00-0030113",
-      "id_type": "gsis",
-      "name": "Charles D. Johnson",
-      "position": "WR",
-      "team": "MIN"
-    },
-    {
       "id": "2490",
       "id_type": "sleeper",
       "name": "Charles Gaines",
@@ -6610,7 +6659,7 @@
       "team": "HOU"
     },
     {
-      "id": "37",
+      "id": "1530",
       "id_type": "sleeper",
       "name": "Charles Johnson",
       "position": "DE",
@@ -6624,9 +6673,9 @@
       "team": "JAX"
     },
     {
-      "id": "00-0031095",
-      "id_type": "gsis",
-      "name": "Charles Leno Jr.",
+      "id": "2112",
+      "id_type": "sleeper",
+      "name": "Charles Leno",
       "position": "OT",
       "team": "CHI"
     },
@@ -6757,7 +6806,7 @@
       "team": "KC"
     },
     {
-      "id": "8182",
+      "id": "4389",
       "id_type": "sleeper",
       "name": "Chase Allen",
       "position": "OLB",
@@ -7037,7 +7086,7 @@
       "team": "JAX"
     },
     {
-      "id": "696",
+      "id": "337",
       "id_type": "sleeper",
       "name": "Chris Clemons",
       "position": "DE",
@@ -7086,8 +7135,8 @@
       "team": "SF"
     },
     {
-      "id": "00-0039513",
-      "id_type": "gsis",
+      "id": "espn:2993",
+      "id_type": "player_id",
       "name": "Chris Edmonds",
       "position": "SAF",
       "team": "CLE"
@@ -7116,7 +7165,7 @@
     {
       "id": "4037",
       "id_type": "sleeper",
-      "name": "Chris Godwin Jr.",
+      "name": "Chris Godwin",
       "position": "WR",
       "team": "TB"
     },
@@ -7135,7 +7184,7 @@
       "team": "LAC"
     },
     {
-      "id": "2721",
+      "id": "1595",
       "id_type": "sleeper",
       "name": "Chris Harper",
       "position": "WR",
@@ -7184,7 +7233,7 @@
       "team": "TEN"
     },
     {
-      "id": "6087",
+      "id": "272",
       "id_type": "sleeper",
       "name": "Chris Johnson",
       "position": "RB",
@@ -7196,6 +7245,27 @@
       "name": "Chris Jones",
       "position": "P",
       "team": "DAL"
+    },
+    {
+      "id": "1430",
+      "id_type": "sleeper",
+      "name": "Chris Jones",
+      "position": "DT",
+      "team": "MIA"
+    },
+    {
+      "id": "3558",
+      "id_type": "sleeper",
+      "name": "Chris Jones",
+      "position": "DE",
+      "team": "KC"
+    },
+    {
+      "id": "5815",
+      "id_type": "sleeper",
+      "name": "Chris Jones",
+      "position": "DB",
+      "team": "ARI"
     },
     {
       "id": "5661",
@@ -7331,7 +7401,7 @@
       "team": "NYJ"
     },
     {
-      "id": "8522",
+      "id": "12659",
       "id_type": "sleeper",
       "name": "Chris Paul",
       "position": "G",
@@ -7359,8 +7429,8 @@
       "team": "JAX"
     },
     {
-      "id": "00-0038611",
-      "id_type": "gsis",
+      "id": "espn:4362619",
+      "id_type": "player_id",
       "name": "Chris Rodriguez Jr.",
       "position": "RB",
       "team": "WAS"
@@ -7373,8 +7443,8 @@
       "team": "ATL"
     },
     {
-      "id": "00-0036867",
-      "id_type": "gsis",
+      "id": "espn:4240475",
+      "id_type": "player_id",
       "name": "Chris Rumph II",
       "position": "DE",
       "team": "LAC"
@@ -7387,15 +7457,22 @@
       "team": "CAR"
     },
     {
-      "id": "11345",
+      "id": "1994",
       "id_type": "sleeper",
       "name": "Chris Smith",
       "position": "LB",
       "team": "JAX"
     },
     {
-      "id": "00-0038602",
-      "id_type": "gsis",
+      "id": "10967",
+      "id_type": "sleeper",
+      "name": "Chris Smith",
+      "position": "DT",
+      "team": "DET"
+    },
+    {
+      "id": "espn:4379413",
+      "id_type": "player_id",
       "name": "Chris Smith II",
       "position": "S",
       "team": "LV"
@@ -7420,6 +7497,13 @@
       "name": "Chris Thompson",
       "position": "RB",
       "team": "WAS"
+    },
+    {
+      "id": "4719",
+      "id_type": "sleeper",
+      "name": "Chris Thompson",
+      "position": "WR",
+      "team": "HOU"
     },
     {
       "id": "2056",
@@ -7555,7 +7639,7 @@
       "team": "TB"
     },
     {
-      "id": "11768",
+      "id": "2110",
       "id_type": "sleeper",
       "name": "Christian Jones",
       "position": "OLB",
@@ -7730,8 +7814,8 @@
       "team": "CIN"
     },
     {
-      "id": "00-0038568",
-      "id_type": "gsis",
+      "id": "espn:4429067",
+      "id_type": "player_id",
       "name": "Clark Phillips III",
       "position": "CB",
       "team": "ATL"
@@ -8290,11 +8374,18 @@
       "team": "PIT"
     },
     {
-      "id": "5913",
+      "id": "3301",
       "id_type": "sleeper",
       "name": "Connor McGovern",
       "position": "G",
       "team": "DEN"
+    },
+    {
+      "id": "5913",
+      "id_type": "sleeper",
+      "name": "Connor McGovern",
+      "position": "C",
+      "team": "DAL"
     },
     {
       "id": "13037",
@@ -8374,18 +8465,18 @@
       "team": "NYG"
     },
     {
+      "id": "8310",
+      "id_type": "sleeper",
+      "name": "Cor'Dale Flott",
+      "position": "CB",
+      "team": "NYG"
+    },
+    {
       "id": "840",
       "id_type": "sleeper",
       "name": "Corbin Bryant",
       "position": "DT",
       "team": "BUF"
-    },
-    {
-      "id": "8310",
-      "id_type": "sleeper",
-      "name": "Cordale Flott",
-      "position": "CB",
-      "team": "NYG"
     },
     {
       "id": "1535",
@@ -8605,6 +8696,13 @@
       "team": "MIA"
     },
     {
+      "id": "1582",
+      "id_type": "sleeper",
+      "name": "Cornellius Carradine",
+      "position": "DE",
+      "team": "SF"
+    },
+    {
       "id": "839",
       "id_type": "sleeper",
       "name": "Cortez Allen",
@@ -8661,8 +8759,8 @@
       "team": "ARI"
     },
     {
-      "id": "00-0038639",
-      "id_type": "gsis",
+      "id": "espn:4372492",
+      "id_type": "player_id",
       "name": "Cory Trice Jr.",
       "position": "CB",
       "team": "PIT"
@@ -8740,7 +8838,7 @@
     {
       "id": "3416",
       "id_type": "sleeper",
-      "name": "Cre'von LeBlanc",
+      "name": "Cre'Von LeBlanc",
       "position": "CB",
       "team": "CHI"
     },
@@ -8955,6 +9053,20 @@
       "team": "KC"
     },
     {
+      "id": "11135",
+      "id_type": "sleeper",
+      "name": "D.J. Coleman",
+      "position": "DE",
+      "team": "JAX"
+    },
+    {
+      "id": "8262",
+      "id_type": "sleeper",
+      "name": "D.J. Davidson",
+      "position": "DT",
+      "team": "NYG"
+    },
+    {
       "id": "1480",
       "id_type": "sleeper",
       "name": "D.J. Fluker",
@@ -8981,13 +9093,6 @@
       "name": "D.J. Humphries",
       "position": "OT",
       "team": "ARI"
-    },
-    {
-      "id": "11032",
-      "id_type": "sleeper",
-      "name": "D.J. Ivey",
-      "position": "CB",
-      "team": "CIN"
     },
     {
       "id": "4278",
@@ -9032,7 +9137,7 @@
       "team": "KC"
     },
     {
-      "id": "935",
+      "id": "11989",
       "id_type": "sleeper",
       "name": "D.J. Williams",
       "position": "RB",
@@ -9053,20 +9158,6 @@
       "team": "JAX"
     },
     {
-      "id": "11135",
-      "id_type": "sleeper",
-      "name": "DJ Coleman",
-      "position": "DE",
-      "team": "JAX"
-    },
-    {
-      "id": "8262",
-      "id_type": "sleeper",
-      "name": "DJ Davidson",
-      "position": "DT",
-      "team": "NYG"
-    },
-    {
       "id": "12471",
       "id_type": "sleeper",
       "name": "DJ Giddens",
@@ -9079,6 +9170,13 @@
       "name": "DJ Glaze",
       "position": "OT",
       "team": "LV"
+    },
+    {
+      "id": "11032",
+      "id_type": "sleeper",
+      "name": "DJ Ivey",
+      "position": "CB",
+      "team": "CIN"
     },
     {
       "id": "11801",
@@ -9109,15 +9207,15 @@
       "team": "HOU"
     },
     {
-      "id": "10894",
+      "id": "7989",
       "id_type": "sleeper",
       "name": "DJ Turner",
       "position": "WR",
       "team": "LV"
     },
     {
-      "id": "00-0038549",
-      "id_type": "gsis",
+      "id": "espn:4572036",
+      "id_type": "player_id",
       "name": "DJ Turner II",
       "position": "CB",
       "team": "CIN"
@@ -9333,7 +9431,7 @@
       "team": "IND"
     },
     {
-      "id": "5173",
+      "id": "7082",
       "id_type": "sleeper",
       "name": "Dalton Keene",
       "position": "TE",
@@ -9389,7 +9487,7 @@
       "team": "TEN"
     },
     {
-      "id": "7787",
+      "id": "6979",
       "id_type": "sleeper",
       "name": "Damar Hamlin",
       "position": "SAF",
@@ -9585,8 +9683,8 @@
       "team": "PIT"
     },
     {
-      "id": "00-0036869",
-      "id_type": "gsis",
+      "id": "espn:4240920",
+      "id_type": "player_id",
       "name": "Dan Moore Jr.",
       "position": "OT",
       "team": "PIT"
@@ -9611,6 +9709,13 @@
       "name": "Dan Skuta",
       "position": "OLB",
       "team": "JAX"
+    },
+    {
+      "id": "3353",
+      "id_type": "sleeper",
+      "name": "Dan Vitale",
+      "position": "RB",
+      "team": "CLE"
     },
     {
       "id": "629",
@@ -9774,14 +9879,14 @@
       "team": "KC"
     },
     {
-      "id": "7053",
+      "id": "806",
       "id_type": "sleeper",
       "name": "Daniel Thomas",
       "position": "SAF",
       "team": "JAX"
     },
     {
-      "id": "11525",
+      "id": "8674",
       "id_type": "sleeper",
       "name": "Daniel Whelan",
       "position": "P",
@@ -9893,13 +9998,6 @@
       "team": "DEN"
     },
     {
-      "id": "00-0032794",
-      "id_type": "gsis",
-      "name": "Danny Vitale",
-      "position": "RB",
-      "team": "CLE"
-    },
-    {
       "id": "735",
       "id_type": "sleeper",
       "name": "Danny Woodhead",
@@ -9907,9 +10005,9 @@
       "team": "LAC"
     },
     {
-      "id": "00-0032052",
-      "id_type": "gsis",
-      "name": "Dante Fowler Jr.",
+      "id": "2308",
+      "id_type": "sleeper",
+      "name": "Dante Fowler",
       "position": "DE",
       "team": "JAX"
     },
@@ -9935,8 +10033,8 @@
       "team": "ARI"
     },
     {
-      "id": "00-0040182",
-      "id_type": "gsis",
+      "id": "espn:4431664",
+      "id_type": "player_id",
       "name": "Dante Trader Jr.",
       "position": "SAF",
       "team": "MIA"
@@ -10047,7 +10145,7 @@
       "team": "KC"
     },
     {
-      "id": "5186",
+      "id": "3371",
       "id_type": "sleeper",
       "name": "Darius Jackson",
       "position": "RB",
@@ -10180,13 +10278,6 @@
       "team": "CIN"
     },
     {
-      "id": "5549",
-      "id_type": "sleeper",
-      "name": "Darrel Williams",
-      "position": "RB",
-      "team": "KC"
-    },
-    {
       "id": "682",
       "id_type": "sleeper",
       "name": "Darrel Young",
@@ -10194,8 +10285,8 @@
       "team": "WAS"
     },
     {
-      "id": "00-0037549",
-      "id_type": "gsis",
+      "id": "espn:4036660",
+      "id_type": "player_id",
       "name": "Darrell Baker Jr.",
       "position": "CB",
       "team": "IND"
@@ -10215,8 +10306,8 @@
       "team": "LA"
     },
     {
-      "id": "00-0038594",
-      "id_type": "gsis",
+      "id": "espn:4685978",
+      "id_type": "player_id",
       "name": "Darrell Luter Jr.",
       "position": "CB",
       "team": "SF"
@@ -10236,7 +10327,7 @@
       "team": "SEA"
     },
     {
-      "id": "6170",
+      "id": "3014",
       "id_type": "sleeper",
       "name": "Darrell Williams",
       "position": "OT",
@@ -10439,13 +10530,6 @@
       "team": "GB"
     },
     {
-      "id": "00-0034427",
-      "id_type": "gsis",
-      "name": "Dave Williams",
-      "position": "RB",
-      "team": "JAX"
-    },
-    {
       "id": "1498",
       "id_type": "sleeper",
       "name": "David Amerson",
@@ -10572,6 +10656,13 @@
       "team": "ARI"
     },
     {
+      "id": "362",
+      "id_type": "sleeper",
+      "name": "David Johnson",
+      "position": "TE",
+      "team": "LAC"
+    },
+    {
       "id": "1697",
       "id_type": "sleeper",
       "name": "David King",
@@ -10579,18 +10670,18 @@
       "team": "SEA"
     },
     {
+      "id": "5928",
+      "id_type": "sleeper",
+      "name": "David Long",
+      "position": "ILB",
+      "team": "TEN"
+    },
+    {
       "id": "5914",
       "id_type": "sleeper",
       "name": "David Long",
       "position": "DB",
       "team": "LA"
-    },
-    {
-      "id": "00-0035292",
-      "id_type": "gsis",
-      "name": "David Long Jr.",
-      "position": "ILB",
-      "team": "TEN"
     },
     {
       "id": "12357",
@@ -10689,6 +10780,13 @@
       "name": "David Wells",
       "position": "TE",
       "team": "TB"
+    },
+    {
+      "id": "5115",
+      "id_type": "sleeper",
+      "name": "David Williams",
+      "position": "RB",
+      "team": "JAX"
     },
     {
       "id": "6380",
@@ -10810,9 +10908,9 @@
       "team": "CHI"
     },
     {
-      "id": "00-0033581",
-      "id_type": "gsis",
-      "name": "De'Angelo Henderson Sr.",
+      "id": "4239",
+      "id_type": "sleeper",
+      "name": "De'Angelo Henderson",
       "position": "RB",
       "team": "DEN"
     },
@@ -10831,7 +10929,14 @@
       "team": "KC"
     },
     {
-      "id": "7493",
+      "id": "11772",
+      "id_type": "sleeper",
+      "name": "De'Antre Prince",
+      "position": "CB",
+      "team": "JAX"
+    },
+    {
+      "id": "7504",
       "id_type": "sleeper",
       "name": "De'Jon Harris",
       "position": "LB",
@@ -10845,18 +10950,18 @@
       "team": "BAL"
     },
     {
-      "id": "7279",
-      "id_type": "sleeper",
-      "name": "De'Michael Harris",
-      "position": "WR",
-      "team": "IND"
-    },
-    {
       "id": "8641",
       "id_type": "sleeper",
       "name": "De'Shaan Dixon",
       "position": "DE",
       "team": "JAX"
+    },
+    {
+      "id": "3022",
+      "id_type": "sleeper",
+      "name": "De'Vante Bausby",
+      "position": "CB",
+      "team": "CHI"
     },
     {
       "id": "3424",
@@ -10887,6 +10992,13 @@
       "team": "ATL"
     },
     {
+      "id": "5852",
+      "id_type": "sleeper",
+      "name": "DeAndre Baker",
+      "position": "CB",
+      "team": "NYG"
+    },
+    {
       "id": "2750",
       "id_type": "sleeper",
       "name": "DeAndre Carter",
@@ -10913,6 +11025,13 @@
       "name": "DeAndre Houston-Carson",
       "position": "DB",
       "team": "CHI"
+    },
+    {
+      "id": "419",
+      "id_type": "sleeper",
+      "name": "DeAndre Levy",
+      "position": "OLB",
+      "team": "DET"
     },
     {
       "id": "2436",
@@ -10978,13 +11097,6 @@
       "team": "PHI"
     },
     {
-      "id": "3384",
-      "id_type": "sleeper",
-      "name": "DeMarcus Ayers",
-      "position": "WR",
-      "team": "PIT"
-    },
-    {
       "id": "2064",
       "id_type": "sleeper",
       "name": "DeMarcus Lawrence",
@@ -11041,6 +11153,13 @@
       "team": "PHI"
     },
     {
+      "id": "7279",
+      "id_type": "sleeper",
+      "name": "DeMichael Harris",
+      "position": "WR",
+      "team": "IND"
+    },
+    {
       "id": "147",
       "id_type": "sleeper",
       "name": "DeSean Jackson",
@@ -11074,13 +11193,6 @@
       "name": "DeShone Kizer",
       "position": "QB",
       "team": "CLE"
-    },
-    {
-      "id": "3022",
-      "id_type": "sleeper",
-      "name": "DeVante Bausby",
-      "position": "CB",
-      "team": "CHI"
     },
     {
       "id": "2319",
@@ -11132,25 +11244,11 @@
       "team": "CAR"
     },
     {
-      "id": "5852",
-      "id_type": "sleeper",
-      "name": "Deandre Baker",
-      "position": "CB",
-      "team": "NYG"
-    },
-    {
       "id": "1981",
       "id_type": "sleeper",
       "name": "Deandre Coleman",
       "position": "DT",
       "team": "MIA"
-    },
-    {
-      "id": "419",
-      "id_type": "sleeper",
-      "name": "Deandre Levy",
-      "position": "OLB",
-      "team": "DET"
     },
     {
       "id": "8519",
@@ -11165,13 +11263,6 @@
       "name": "Deante Burton",
       "position": "DB",
       "team": "ATL"
-    },
-    {
-      "id": "11772",
-      "id_type": "sleeper",
-      "name": "Deantre Prince",
-      "position": "CB",
-      "team": "JAX"
     },
     {
       "id": "4174",
@@ -11267,9 +11358,16 @@
     {
       "id": "5872",
       "id_type": "sleeper",
-      "name": "Deebo Samuel Sr.",
+      "name": "Deebo Samuel",
       "position": "WR",
       "team": "SF"
+    },
+    {
+      "id": "6570",
+      "id_type": "sleeper",
+      "name": "Deion Calhoun",
+      "position": "G",
+      "team": "MIA"
     },
     {
       "id": "3222",
@@ -11328,6 +11426,13 @@
       "team": "TEN"
     },
     {
+      "id": "4141",
+      "id_type": "sleeper",
+      "name": "Delano Hill",
+      "position": "SAF",
+      "team": "SEA"
+    },
+    {
       "id": "8282",
       "id_type": "sleeper",
       "name": "Delarrin Turner-Yell",
@@ -11361,6 +11466,13 @@
       "name": "Demar Dotson",
       "position": "OT",
       "team": "TB"
+    },
+    {
+      "id": "3384",
+      "id_type": "sleeper",
+      "name": "Demarcus Ayers",
+      "position": "WR",
+      "team": "PIT"
     },
     {
       "id": "977",
@@ -11426,8 +11538,8 @@
       "team": "KC"
     },
     {
-      "id": "00-0040738",
-      "id_type": "gsis",
+      "id": "espn:4427729",
+      "id_type": "player_id",
       "name": "Demetrius Knight Jr.",
       "position": "LB",
       "team": "CIN"
@@ -11720,8 +11832,8 @@
       "team": "NE"
     },
     {
-      "id": "00-0037237",
-      "id_type": "gsis",
+      "id": "espn:4426434",
+      "id_type": "player_id",
       "name": "Derek Stingley Jr.",
       "position": "CB",
       "team": "HOU"
@@ -12119,7 +12231,7 @@
       "team": "DAL"
     },
     {
-      "id": "1641",
+      "id": "8596",
       "id_type": "sleeper",
       "name": "Devin Taylor",
       "position": "DE",
@@ -12413,9 +12525,9 @@
       "team": "CLE"
     },
     {
-      "id": "00-0024338",
-      "id_type": "gsis",
-      "name": "Domata Peko Sr.",
+      "id": "236",
+      "id_type": "sleeper",
+      "name": "Domata Peko",
       "position": "NT",
       "team": "CIN"
     },
@@ -12651,8 +12763,8 @@
       "team": "NE"
     },
     {
-      "id": "00-0040581",
-      "id_type": "gsis",
+      "id": "espn:4432775",
+      "id_type": "player_id",
       "name": "Dont'e Thornton Jr.",
       "position": "WR",
       "team": "LV"
@@ -12686,6 +12798,13 @@
       "team": "GB"
     },
     {
+      "id": "3765",
+      "id_type": "sleeper",
+      "name": "Donte Deayon",
+      "position": "CB",
+      "team": "NYG"
+    },
+    {
       "id": "5051",
       "id_type": "sleeper",
       "name": "Donte Jackson",
@@ -12707,25 +12826,11 @@
       "team": "CLE"
     },
     {
-      "id": "3765",
-      "id_type": "sleeper",
-      "name": "Donte' Deayon",
-      "position": "CB",
-      "team": "NYG"
-    },
-    {
       "id": "2824",
       "id_type": "sleeper",
       "name": "Donteea Dye",
       "position": "WR",
       "team": "TB"
-    },
-    {
-      "id": "5536",
-      "id_type": "sleeper",
-      "name": "Dontrell Hilliard",
-      "position": "RB",
-      "team": "CLE"
     },
     {
       "id": "2291",
@@ -12847,7 +12952,7 @@
       "team": "GB"
     },
     {
-      "id": "7886",
+      "id": "8351",
       "id_type": "sleeper",
       "name": "Drake Jackson",
       "position": "DE",
@@ -13043,7 +13148,7 @@
       "team": "CHI"
     },
     {
-      "id": "1351",
+      "id": "3846",
       "id_type": "sleeper",
       "name": "Duke Williams",
       "position": "S",
@@ -13232,7 +13337,7 @@
       "team": "LA"
     },
     {
-      "id": "8751",
+      "id": "8458",
       "id_type": "sleeper",
       "name": "Dylan Parham",
       "position": "G",
@@ -13288,18 +13393,18 @@
       "team": "PHI"
     },
     {
+      "id": "1349",
+      "id_type": "sleeper",
+      "name": "E.J. Manuel",
+      "position": "QB",
+      "team": "BUF"
+    },
+    {
       "id": "6218",
       "id_type": "sleeper",
       "name": "E.J. Speed",
       "position": "LB",
       "team": "IND"
-    },
-    {
-      "id": "1349",
-      "id_type": "sleeper",
-      "name": "EJ Manuel",
-      "position": "QB",
-      "team": "BUF"
     },
     {
       "id": "546",
@@ -13330,8 +13435,8 @@
       "team": "ARI"
     },
     {
-      "id": "00-0036855",
-      "id_type": "gsis",
+      "id": "espn:4242292",
+      "id_type": "player_id",
       "name": "Earnest Brown IV",
       "position": "DE",
       "team": "LA"
@@ -13491,8 +13596,8 @@
       "team": "CAR"
     },
     {
-      "id": "00-0040563",
-      "id_type": "gsis",
+      "id": "espn:4695193",
+      "id_type": "player_id",
       "name": "Efton Chism III",
       "position": "WR",
       "team": "NE"
@@ -13638,7 +13743,7 @@
       "team": "ARI"
     },
     {
-      "id": "8896",
+      "id": "11717",
       "id_type": "sleeper",
       "name": "Elijah Jones",
       "position": "CB",
@@ -13687,7 +13792,7 @@
       "team": "NYJ"
     },
     {
-      "id": "12978",
+      "id": "7963",
       "id_type": "sleeper",
       "name": "Elijah Ponder",
       "position": "LB",
@@ -13792,8 +13897,8 @@
       "team": "LAC"
     },
     {
-      "id": "00-0040068",
-      "id_type": "gsis",
+      "id": "espn:4685736",
+      "id_type": "player_id",
       "name": "Emery Jones Jr.",
       "position": "OT",
       "team": "BAL"
@@ -13848,8 +13953,8 @@
       "team": "DAL"
     },
     {
-      "id": "00-0039862",
-      "id_type": "gsis",
+      "id": "espn:4566092",
+      "id_type": "player_id",
       "name": "Ennis Rakestraw Jr.",
       "position": "CB",
       "team": "DET"
@@ -14044,7 +14149,7 @@
       "team": "ATL"
     },
     {
-      "id": "8667",
+      "id": "4413",
       "id_type": "sleeper",
       "name": "Eric Wilson",
       "position": "LB",
@@ -14422,9 +14527,9 @@
       "team": "PHI"
     },
     {
-      "id": "00-0034275",
-      "id_type": "gsis",
-      "name": "Foley Fatukasi",
+      "id": "5090",
+      "id_type": "sleeper",
+      "name": "Folorunso Fatukasi",
       "position": "DT",
       "team": "NYJ"
     },
@@ -14464,9 +14569,9 @@
       "team": "LAC"
     },
     {
-      "id": "00-0034413",
-      "id_type": "gsis",
-      "name": "Foye Oluokun",
+      "id": "5332",
+      "id_type": "sleeper",
+      "name": "Foyesade Oluokun",
       "position": "LB",
       "team": "ATL"
     },
@@ -14520,8 +14625,8 @@
       "team": "IND"
     },
     {
-      "id": "00-0039471",
-      "id_type": "gsis",
+      "id": "espn:4429805",
+      "id_type": "player_id",
       "name": "Frank Gore Jr.",
       "position": "RB",
       "team": "BUF"
@@ -15045,8 +15150,8 @@
       "team": "NYG"
     },
     {
-      "id": "00-0039070",
-      "id_type": "gsis",
+      "id": "espn:4429014",
+      "id_type": "player_id",
       "name": "Gervon Dexter Sr.",
       "position": "DT",
       "team": "CHI"
@@ -15290,8 +15395,8 @@
       "team": "HOU"
     },
     {
-      "id": "00-0036996",
-      "id_type": "gsis",
+      "id": "espn:4361266",
+      "id_type": "player_id",
       "name": "Greg Newsome II",
       "position": "CB",
       "team": "CLE"
@@ -15339,8 +15444,8 @@
       "team": "WAS"
     },
     {
-      "id": "00-0026910",
-      "id_type": "gsis",
+      "id": "espn:12738",
+      "id_type": "player_id",
       "name": "Greg Toler",
       "position": "DB",
       "team": "IND"
@@ -15521,8 +15626,8 @@
       "team": "ARI"
     },
     {
-      "id": "00-0040663",
-      "id_type": "gsis",
+      "id": "espn:5083076",
+      "id_type": "player_id",
       "name": "Harold Fannin Jr.",
       "position": "TE",
       "team": "CLE"
@@ -15535,9 +15640,9 @@
       "team": "CHI"
     },
     {
-      "id": "00-0034828",
-      "id_type": "gsis",
-      "name": "Harold Landry III",
+      "id": "5030",
+      "id_type": "sleeper",
+      "name": "Harold Landry",
       "position": "LB",
       "team": "TEN"
     },
@@ -15698,7 +15803,7 @@
     {
       "id": "6789",
       "id_type": "sleeper",
-      "name": "Henry Ruggs III",
+      "name": "Henry Ruggs",
       "position": "WR",
       "team": "LV"
     },
@@ -15759,8 +15864,8 @@
       "team": "WAS"
     },
     {
-      "id": "00-0040369",
-      "id_type": "gsis",
+      "id": "espn:4426992",
+      "id_type": "player_id",
       "name": "Howard Cross III",
       "position": "DT",
       "team": "CIN"
@@ -16116,11 +16221,25 @@
       "team": "CHI"
     },
     {
-      "id": "12124",
+      "id": "2640",
       "id_type": "sleeper",
       "name": "Isaiah Johnson",
       "position": "DB",
       "team": "DET"
+    },
+    {
+      "id": "3592",
+      "id_type": "sleeper",
+      "name": "Isaiah Johnson",
+      "position": "FS",
+      "team": "TB"
+    },
+    {
+      "id": "5951",
+      "id_type": "sleeper",
+      "name": "Isaiah Johnson",
+      "position": "CB",
+      "team": "LV"
     },
     {
       "id": "11514",
@@ -16200,6 +16319,13 @@
       "team": "IND"
     },
     {
+      "id": "6618",
+      "id_type": "sleeper",
+      "name": "Isaiah Searight",
+      "position": "DT",
+      "team": "NYJ"
+    },
+    {
       "id": "6781",
       "id_type": "sleeper",
       "name": "Isaiah Simmons",
@@ -16228,7 +16354,7 @@
       "team": "CLE"
     },
     {
-      "id": "11608",
+      "id": "3931",
       "id_type": "sleeper",
       "name": "Isaiah Williams",
       "position": "OT",
@@ -16298,8 +16424,8 @@
       "team": "ATL"
     },
     {
-      "id": "00-0038807",
-      "id_type": "gsis",
+      "id": "espn:4430280",
+      "id_type": "player_id",
       "name": "Ivan Pace Jr.",
       "position": "LB",
       "team": "MIN"
@@ -16333,6 +16459,13 @@
       "team": "NE"
     },
     {
+      "id": "1529",
+      "id_type": "sleeper",
+      "name": "J.C. Tretter",
+      "position": "C",
+      "team": "GB"
+    },
+    {
       "id": "3664",
       "id_type": "sleeper",
       "name": "J.D. McKissic",
@@ -16352,20 +16485,6 @@
       "name": "J.J. Arcega-Whiteside",
       "position": "WR",
       "team": "PHI"
-    },
-    {
-      "id": "439",
-      "id_type": "sleeper",
-      "name": "J.J. Jansen",
-      "position": "LS",
-      "team": "CAR"
-    },
-    {
-      "id": "12913",
-      "id_type": "sleeper",
-      "name": "J.J. Jones",
-      "position": "WR",
-      "team": "LAC"
     },
     {
       "id": "7339",
@@ -16424,13 +16543,6 @@
       "team": "BAL"
     },
     {
-      "id": "5087",
-      "id_type": "sleeper",
-      "name": "J.K. Scott",
-      "position": "P",
-      "team": "GB"
-    },
-    {
       "id": "3695",
       "id_type": "sleeper",
       "name": "J.P. Holtz",
@@ -16487,13 +16599,6 @@
       "team": "TEN"
     },
     {
-      "id": "1529",
-      "id_type": "sleeper",
-      "name": "JC Tretter",
-      "position": "C",
-      "team": "GB"
-    },
-    {
       "id": "11770",
       "id_type": "sleeper",
       "name": "JD Bertrand",
@@ -16501,11 +16606,32 @@
       "team": "ATL"
     },
     {
+      "id": "439",
+      "id_type": "sleeper",
+      "name": "JJ Jansen",
+      "position": "LS",
+      "team": "CAR"
+    },
+    {
+      "id": "5267",
+      "id_type": "sleeper",
+      "name": "JJ Jones",
+      "position": "WR",
+      "team": "LAC"
+    },
+    {
       "id": "12689",
       "id_type": "sleeper",
       "name": "JJ Pegues",
       "position": "DT",
       "team": "LV"
+    },
+    {
+      "id": "5087",
+      "id_type": "sleeper",
+      "name": "JK Scott",
+      "position": "P",
+      "team": "GB"
     },
     {
       "id": "11011",
@@ -17005,7 +17131,7 @@
       "team": "ATL"
     },
     {
-      "id": "12432",
+      "id": "8546",
       "id_type": "sleeper",
       "name": "Jacobi Francis",
       "position": "DB",
@@ -17026,7 +17152,7 @@
       "team": "CHI"
     },
     {
-      "id": "13120",
+      "id": "203",
       "id_type": "sleeper",
       "name": "Jacoby Jones",
       "position": "WR",
@@ -17474,13 +17600,6 @@
       "team": "MIN"
     },
     {
-      "id": "11439",
-      "id_type": "sleeper",
-      "name": "Jaleel McLaughlin",
-      "position": "RB",
-      "team": "DEN"
-    },
-    {
       "id": "5005",
       "id_type": "sleeper",
       "name": "Jaleel Scott",
@@ -17824,6 +17943,13 @@
       "team": "HOU"
     },
     {
+      "id": "4658",
+      "id_type": "sleeper",
+      "name": "Jamal Perry",
+      "position": "CB",
+      "team": "MIA"
+    },
+    {
       "id": "1359",
       "id_type": "sleeper",
       "name": "Jamar Taylor",
@@ -17915,7 +18041,7 @@
       "team": "CLE"
     },
     {
-      "id": "12915",
+      "id": "989",
       "id_type": "sleeper",
       "name": "James Carpenter",
       "position": "G",
@@ -18062,8 +18188,8 @@
       "team": "LAC"
     },
     {
-      "id": "00-0040578",
-      "id_type": "gsis",
+      "id": "espn:5081394",
+      "id_type": "player_id",
       "name": "James Pearce Jr.",
       "position": "DE",
       "team": "ATL"
@@ -18139,7 +18265,7 @@
       "team": "NE"
     },
     {
-      "id": "11847",
+      "id": "6169",
       "id_type": "sleeper",
       "name": "James Williams",
       "position": "LB",
@@ -18538,8 +18664,8 @@
       "team": "SF"
     },
     {
-      "id": "00-0039372",
-      "id_type": "gsis",
+      "id": "espn:4426817",
+      "id_type": "player_id",
       "name": "Jarvis Brownlee Jr.",
       "position": "CB",
       "team": "TEN"
@@ -18650,8 +18776,8 @@
       "team": "PHI"
     },
     {
-      "id": "00-0040178",
-      "id_type": "gsis",
+      "id": "espn:4432730",
+      "id_type": "player_id",
       "name": "Jason Marshall Jr.",
       "position": "CB",
       "team": "MIA"
@@ -18720,8 +18846,8 @@
       "team": "MIA"
     },
     {
-      "id": "00-0039060",
-      "id_type": "gsis",
+      "id": "espn:4361835",
+      "id_type": "player_id",
       "name": "Jason Taylor II",
       "position": "SAF",
       "team": "LA"
@@ -18928,13 +19054,6 @@
       "name": "Jay Cutler",
       "position": "QB",
       "team": "CHI"
-    },
-    {
-      "id": "00-0030752",
-      "id_type": "gsis",
-      "name": "Jay Elliott",
-      "position": "LB",
-      "team": "GB"
     },
     {
       "id": "13024",
@@ -19182,14 +19301,14 @@
       "team": "CHI"
     },
     {
-      "id": "11052",
+      "id": "8702",
       "id_type": "sleeper",
       "name": "Jaylon Jones",
       "position": "DB",
       "team": "CHI"
     },
     {
-      "id": "7191",
+      "id": "7834",
       "id_type": "sleeper",
       "name": "Jaylon Moore",
       "position": "OT",
@@ -19222,6 +19341,13 @@
       "name": "Jayron Kearse",
       "position": "S",
       "team": "MIN"
+    },
+    {
+      "id": "4903",
+      "id_type": "sleeper",
+      "name": "Jayrone Elliott",
+      "position": "LB",
+      "team": "GB"
     },
     {
       "id": "2202",
@@ -19455,8 +19581,8 @@
       "team": "CLE"
     },
     {
-      "id": "00-0037711",
-      "id_type": "gsis",
+      "id": "espn:5081728",
+      "id_type": "player_id",
       "name": "Jeremiah Pharms Jr.",
       "position": "DE",
       "team": "NE"
@@ -19476,8 +19602,8 @@
       "team": "MIN"
     },
     {
-      "id": "00-0039826",
-      "id_type": "gsis",
+      "id": "espn:4432777",
+      "id_type": "player_id",
       "name": "Jeremiah Trotter Jr.",
       "position": "LB",
       "team": "PHI"
@@ -19805,8 +19931,8 @@
       "team": "CAR"
     },
     {
-      "id": "00-0038613",
-      "id_type": "gsis",
+      "id": "espn:4570084",
+      "id_type": "player_id",
       "name": "Jerrick Reed II",
       "position": "SAF",
       "team": "SEA"
@@ -19966,8 +20092,8 @@
       "team": "SEA"
     },
     {
-      "id": "00-0040218",
-      "id_type": "gsis",
+      "id": "espn:4708486",
+      "id_type": "player_id",
       "name": "Jimmy Horn Jr.",
       "position": "WR",
       "team": "CAR"
@@ -20020,6 +20146,13 @@
       "name": "JoJo Natson",
       "position": "WR",
       "team": "NYJ"
+    },
+    {
+      "id": "6665",
+      "id_type": "sleeper",
+      "name": "Jody Fortson",
+      "position": "TE",
+      "team": "KC"
     },
     {
       "id": "11673",
@@ -20176,8 +20309,8 @@
       "team": "LAC"
     },
     {
-      "id": "00-0039398",
-      "id_type": "gsis",
+      "id": "espn:4360698",
+      "id_type": "player_id",
       "name": "Joe Milton III",
       "position": "QB",
       "team": "NE"
@@ -20188,13 +20321,6 @@
       "name": "Joe Mixon",
       "position": "RB",
       "team": "CIN"
-    },
-    {
-      "id": "00-0034803",
-      "id_type": "gsis",
-      "name": "Joe Noteboom",
-      "position": "OT",
-      "team": "LA"
     },
     {
       "id": "5179",
@@ -20232,11 +20358,18 @@
       "team": "SF"
     },
     {
-      "id": "2147",
+      "id": "327",
       "id_type": "sleeper",
       "name": "Joe Thomas",
       "position": "OT",
       "team": "CLE"
+    },
+    {
+      "id": "2147",
+      "id_type": "sleeper",
+      "name": "Joe Thomas",
+      "position": "OLB",
+      "team": "GB"
     },
     {
       "id": "3247",
@@ -20351,8 +20484,8 @@
       "team": "ATL"
     },
     {
-      "id": "00-0039167",
-      "id_type": "gsis",
+      "id": "espn:4426506",
+      "id_type": "player_id",
       "name": "Joey Porter Jr.",
       "position": "CB",
       "team": "PIT"
@@ -20505,15 +20638,15 @@
       "team": "JAX"
     },
     {
-      "id": "8568",
+      "id": "6231",
       "id_type": "sleeper",
       "name": "John Lovett",
       "position": "FB",
       "team": "GB"
     },
     {
-      "id": "00-0037614",
-      "id_type": "gsis",
+      "id": "espn:4567096",
+      "id_type": "player_id",
       "name": "John Metchie III",
       "position": "WR",
       "team": "HOU"
@@ -20771,13 +20904,6 @@
       "team": "DET"
     },
     {
-      "id": "00-0033734",
-      "id_type": "gsis",
-      "name": "Jomal Wiltz",
-      "position": "CB",
-      "team": "MIA"
-    },
-    {
       "id": "283",
       "id_type": "sleeper",
       "name": "Jon Beason",
@@ -20820,8 +20946,8 @@
       "team": "LV"
     },
     {
-      "id": "00-0038571",
-      "id_type": "gsis",
+      "id": "espn:4367199",
+      "id_type": "player_id",
       "name": "Jon Gaines II",
       "position": "G",
       "team": "ARI"
@@ -20902,6 +21028,13 @@
       "name": "Jonah Williams",
       "position": "OT",
       "team": "CIN"
+    },
+    {
+      "id": "7344",
+      "id_type": "sleeper",
+      "name": "Jonah Williams",
+      "position": "DE",
+      "team": "LA"
     },
     {
       "id": "1698",
@@ -21436,7 +21569,7 @@
       "team": "NO"
     },
     {
-      "id": "11660",
+      "id": "4193",
       "id_type": "sleeper",
       "name": "Jordan Morgan",
       "position": "OT",
@@ -21457,7 +21590,7 @@
       "team": "CLE"
     },
     {
-      "id": "12679",
+      "id": "2357",
       "id_type": "sleeper",
       "name": "Jordan Phillips",
       "position": "DT",
@@ -21513,7 +21646,7 @@
       "team": "BAL"
     },
     {
-      "id": "12994",
+      "id": "2685",
       "id_type": "sleeper",
       "name": "Jordan Taylor",
       "position": "WR",
@@ -21646,11 +21779,11 @@
       "team": "CAR"
     },
     {
-      "id": "00-0035547",
-      "id_type": "gsis",
-      "name": "Joseph Fortson",
-      "position": "TE",
-      "team": "KC"
+      "id": "5014",
+      "id_type": "sleeper",
+      "name": "Joseph Noteboom",
+      "position": "OT",
+      "team": "LA"
     },
     {
       "id": "7678",
@@ -21758,8 +21891,8 @@
       "team": "DET"
     },
     {
-      "id": "00-0040686",
-      "id_type": "gsis",
+      "id": "espn:4685326",
+      "id_type": "player_id",
       "name": "Josh Conerly Jr.",
       "position": "OT",
       "team": "WAS"
@@ -21891,14 +22024,21 @@
       "team": "PHI"
     },
     {
-      "id": "260",
+      "id": "1625",
       "id_type": "sleeper",
       "name": "Josh Johnson",
       "position": "CB",
       "team": "JAX"
     },
     {
-      "id": "6808",
+      "id": "260",
+      "id_type": "sleeper",
+      "name": "Josh Johnson",
+      "position": "QB",
+      "team": "WAS"
+    },
+    {
+      "id": "4109",
       "id_type": "sleeper",
       "name": "Josh Jones",
       "position": "S",
@@ -21947,8 +22087,8 @@
       "team": "NYJ"
     },
     {
-      "id": "00-0027170",
-      "id_type": "gsis",
+      "id": "espn:13165",
+      "id_type": "player_id",
       "name": "Josh Mauga",
       "position": "ILB",
       "team": "KC"
@@ -22010,20 +22150,6 @@
       "team": "JAX"
     },
     {
-      "id": "7670",
-      "id_type": "sleeper",
-      "name": "Josh Palmer",
-      "position": "WR",
-      "team": "LAC"
-    },
-    {
-      "id": "00-0032599",
-      "id_type": "gsis",
-      "name": "Josh Perkins",
-      "position": "TE",
-      "team": "ATL"
-    },
-    {
       "id": "4171",
       "id_type": "sleeper",
       "name": "Josh Reynolds",
@@ -22031,7 +22157,7 @@
       "team": "LA"
     },
     {
-      "id": "2506",
+      "id": "1254",
       "id_type": "sleeper",
       "name": "Josh Robinson",
       "position": "RB",
@@ -22094,7 +22220,7 @@
       "team": "PHI"
     },
     {
-      "id": "7208",
+      "id": "907",
       "id_type": "sleeper",
       "name": "Josh Thomas",
       "position": "DB",
@@ -22241,11 +22367,25 @@
       "team": "SEA"
     },
     {
+      "id": "7670",
+      "id_type": "sleeper",
+      "name": "Joshua Palmer",
+      "position": "WR",
+      "team": "LAC"
+    },
+    {
       "id": "00-0038096",
       "id_type": "gsis",
       "name": "Joshua Paschal",
       "position": "DE",
       "team": "DET"
+    },
+    {
+      "id": "3668",
+      "id_type": "sleeper",
+      "name": "Joshua Perkins",
+      "position": "TE",
+      "team": "ATL"
     },
     {
       "id": "3264",
@@ -22439,7 +22579,7 @@
     {
       "id": "4165",
       "id_type": "sleeper",
-      "name": "Julie'n Davenport",
+      "name": "Julien Davenport",
       "position": "OT",
       "team": "HOU"
     },
@@ -22605,7 +22745,7 @@
       "team": "LV"
     },
     {
-      "id": "5525",
+      "id": "4096",
       "id_type": "sleeper",
       "name": "Justin Evans",
       "position": "S",
@@ -22724,9 +22864,9 @@
       "team": "PIT"
     },
     {
-      "id": "00-0031999",
-      "id_type": "gsis",
-      "name": "Justin March",
+      "id": "2839",
+      "id_type": "sleeper",
+      "name": "Justin March-Lillard",
       "position": "LB",
       "team": "KC"
     },
@@ -22773,7 +22913,7 @@
       "team": "HOU"
     },
     {
-      "id": "11839",
+      "id": "797",
       "id_type": "sleeper",
       "name": "Justin Rogers",
       "position": "DB",
@@ -22941,11 +23081,11 @@
       "team": "HOU"
     },
     {
-      "id": "6866",
+      "id": "10991",
       "id_type": "sleeper",
-      "name": "K.J. Hill",
-      "position": "WR",
-      "team": "LAC"
+      "name": "K.J. Henry",
+      "position": "DE",
+      "team": "WAS"
     },
     {
       "id": "7066",
@@ -22976,11 +23116,11 @@
       "team": "DEN"
     },
     {
-      "id": "10991",
+      "id": "6866",
       "id_type": "sleeper",
-      "name": "KJ Henry",
-      "position": "DE",
-      "team": "WAS"
+      "name": "KJ Hill",
+      "position": "WR",
+      "team": "LAC"
     },
     {
       "id": "11817",
@@ -23200,13 +23340,6 @@
       "team": "WAS"
     },
     {
-      "id": "00-0034556",
-      "id_type": "gsis",
-      "name": "Kam Kelly",
-      "position": "FS",
-      "team": "PIT"
-    },
-    {
       "id": "11787",
       "id_type": "sleeper",
       "name": "Kamal Hadden",
@@ -23261,6 +23394,13 @@
       "name": "Kameron Johnson",
       "position": "WR",
       "team": "TB"
+    },
+    {
+      "id": "5489",
+      "id_type": "sleeper",
+      "name": "Kameron Kelly",
+      "position": "FS",
+      "team": "PIT"
     },
     {
       "id": "11726",
@@ -23368,8 +23508,8 @@
       "team": "BUF"
     },
     {
-      "id": "00-0036662",
-      "id_type": "gsis",
+      "id": "espn:4242211",
+      "id_type": "player_id",
       "name": "Kary Vincent Jr.",
       "position": "CB",
       "team": "PHI"
@@ -23767,8 +23907,8 @@
       "team": "DAL"
     },
     {
-      "id": "00-0040125",
-      "id_type": "gsis",
+      "id": "espn:4685260",
+      "id_type": "player_id",
       "name": "Kelvin Banks Jr.",
       "position": "OT",
       "team": "NO"
@@ -24047,16 +24187,16 @@
       "team": "MIA"
     },
     {
-      "id": "00-0036441",
-      "id_type": "gsis",
-      "name": "Kenneth Murray, Jr.",
+      "id": "espn:4241394",
+      "id_type": "player_id",
+      "name": "Kenneth Murray Jr.",
       "position": "LB",
       "team": "LAC"
     },
     {
       "id": "8151",
       "id_type": "sleeper",
-      "name": "Kenneth Walker III",
+      "name": "Kenneth Walker",
       "position": "RB",
       "team": "SEA"
     },
@@ -24117,9 +24257,9 @@
       "team": "SEA"
     },
     {
-      "id": "00-0033393",
-      "id_type": "gsis",
-      "name": "Kenny Moore II",
+      "id": "4427",
+      "id_type": "sleeper",
+      "name": "Kenny Moore",
       "position": "CB",
       "team": "IND"
     },
@@ -24313,8 +24453,8 @@
       "team": "NE"
     },
     {
-      "id": "00-0037231",
-      "id_type": "gsis",
+      "id": "espn:4372758",
+      "id_type": "player_id",
       "name": "Kevin Austin Jr.",
       "position": "WR",
       "team": "NO"
@@ -24474,7 +24614,7 @@
       "team": "CHI"
     },
     {
-      "id": "3930",
+      "id": "2312",
       "id_type": "sleeper",
       "name": "Kevin White",
       "position": "WR",
@@ -24488,8 +24628,8 @@
       "team": "NO"
     },
     {
-      "id": "00-0040141",
-      "id_type": "gsis",
+      "id": "espn:4685617",
+      "id_type": "player_id",
       "name": "Kevin Winston Jr.",
       "position": "SAF",
       "team": "TEN"
@@ -24971,8 +25111,8 @@
       "team": "HOU"
     },
     {
-      "id": "00-0037420",
-      "id_type": "gsis",
+      "id": "espn:4035912",
+      "id_type": "player_id",
       "name": "Kwamie Lassiter II",
       "position": "WR",
       "team": "CIN"
@@ -25032,6 +25172,13 @@
       "name": "Kyle Fuller",
       "position": "CB",
       "team": "CHI"
+    },
+    {
+      "id": "4245",
+      "id_type": "sleeper",
+      "name": "Kyle Fuller",
+      "position": "G",
+      "team": "HOU"
     },
     {
       "id": "8339",
@@ -25174,18 +25321,32 @@
       "team": "DAL"
     },
     {
-      "id": "12547",
+      "id": "94",
       "id_type": "sleeper",
       "name": "Kyle Williams",
       "position": "DT",
       "team": "BUF"
     },
     {
-      "id": "5749",
+      "id": "638",
+      "id_type": "sleeper",
+      "name": "Kyle Williams",
+      "position": "WR",
+      "team": "NE"
+    },
+    {
+      "id": "524",
       "id_type": "sleeper",
       "name": "Kyle Wilson",
       "position": "DB",
       "team": "NO"
+    },
+    {
+      "id": "5749",
+      "id_type": "sleeper",
+      "name": "Kyle Wilson",
+      "position": "LB",
+      "team": "LAC"
     },
     {
       "id": "7602",
@@ -25307,13 +25468,6 @@
       "team": "DAL"
     },
     {
-      "id": "00-0031607",
-      "id_type": "gsis",
-      "name": "L.T. Walton",
-      "position": "DE",
-      "team": "PIT"
-    },
-    {
       "id": "6962",
       "id_type": "sleeper",
       "name": "La'Darius Hamilton",
@@ -25354,13 +25508,6 @@
       "name": "LaCale London",
       "position": "DT",
       "team": "ATL"
-    },
-    {
-      "id": "2779",
-      "id_type": "sleeper",
-      "name": "LaDarius Gunter",
-      "position": "CB",
-      "team": "GB"
     },
     {
       "id": "12699",
@@ -25412,6 +25559,13 @@
       "team": "LAC"
     },
     {
+      "id": "2779",
+      "id_type": "sleeper",
+      "name": "Ladarius Gunter",
+      "position": "CB",
+      "team": "GB"
+    },
+    {
       "id": "11635",
       "id_type": "sleeper",
       "name": "Ladd McConkey",
@@ -25445,6 +25599,13 @@
       "name": "Lamar Jackson",
       "position": "QB",
       "team": "BAL"
+    },
+    {
+      "id": "6994",
+      "id_type": "sleeper",
+      "name": "Lamar Jackson",
+      "position": "CB",
+      "team": "NYJ"
     },
     {
       "id": "1048",
@@ -25573,13 +25734,6 @@
       "team": "GB"
     },
     {
-      "id": "00-0033931",
-      "id_type": "gsis",
-      "name": "Lano Hill",
-      "position": "SAF",
-      "team": "SEA"
-    },
-    {
       "id": "3155",
       "id_type": "sleeper",
       "name": "Laquon Treadwell",
@@ -25650,8 +25804,8 @@
       "team": "JAX"
     },
     {
-      "id": "00-0036650",
-      "id_type": "gsis",
+      "id": "espn:4241205",
+      "id_type": "player_id",
       "name": "Larry Rountree III",
       "position": "RB",
       "team": "LAC"
@@ -25701,7 +25855,7 @@
     {
       "id": "6814",
       "id_type": "sleeper",
-      "name": "Laviska Shenault Jr.",
+      "name": "Laviska Shenault",
       "position": "WR",
       "team": "JAX"
     },
@@ -25769,8 +25923,8 @@
       "team": "NE"
     },
     {
-      "id": "00-0040238",
-      "id_type": "gsis",
+      "id": "espn:4911851",
+      "id_type": "player_id",
       "name": "LeQuint Allen Jr.",
       "position": "RB",
       "team": "JAX"
@@ -25795,6 +25949,13 @@
       "name": "LeShun Daniels",
       "position": "RB",
       "team": "WAS"
+    },
+    {
+      "id": "6959",
+      "id_type": "sleeper",
+      "name": "LeVante Bellamy",
+      "position": "RB",
+      "team": "DEN"
     },
     {
       "id": "8497",
@@ -25881,9 +26042,9 @@
       "team": "NYG"
     },
     {
-      "id": "00-0033470",
-      "id_type": "gsis",
-      "name": "Leon McQuay III",
+      "id": "4248",
+      "id_type": "sleeper",
+      "name": "Leon McQuay",
       "position": "DB",
       "team": "KC"
     },
@@ -25923,8 +26084,8 @@
       "team": "NE"
     },
     {
-      "id": "00-0039289",
-      "id_type": "gsis",
+      "id": "espn:4431598",
+      "id_type": "player_id",
       "name": "Leonard Taylor III",
       "position": "DT",
       "team": "NYJ"
@@ -25958,8 +26119,8 @@
       "team": "DEN"
     },
     {
-      "id": "00-0037591",
-      "id_type": "gsis",
+      "id": "espn:4570018",
+      "id_type": "player_id",
       "name": "Leroy Watson IV",
       "position": "OT",
       "team": "TEN"
@@ -25972,18 +26133,18 @@
       "team": "MIA"
     },
     {
+      "id": "2500",
+      "id_type": "sleeper",
+      "name": "Leterrius Walton",
+      "position": "DE",
+      "team": "PIT"
+    },
+    {
       "id": "29",
       "id_type": "sleeper",
       "name": "Letroy Guion",
       "position": "DE",
       "team": "GB"
-    },
-    {
-      "id": "6959",
-      "id_type": "sleeper",
-      "name": "Levante Bellamy",
-      "position": "RB",
-      "team": "DEN"
     },
     {
       "id": "12111",
@@ -26084,8 +26245,8 @@
       "team": "DAL"
     },
     {
-      "id": "00-0036391",
-      "id_type": "gsis",
+      "id": "espn:4035448",
+      "id_type": "player_id",
       "name": "Lloyd Cushenberry III",
       "position": "C",
       "team": "DEN"
@@ -26441,8 +26602,8 @@
       "team": "JAX"
     },
     {
-      "id": "00-0040735",
-      "id_type": "gsis",
+      "id": "espn:4685278",
+      "id_type": "player_id",
       "name": "Luther Burden III",
       "position": "WR",
       "team": "CHI"
@@ -26497,8 +26658,8 @@
       "team": "NE"
     },
     {
-      "id": "00-0036724",
-      "id_type": "gsis",
+      "id": "espn:4369247",
+      "id_type": "player_id",
       "name": "Mac McCain III",
       "position": "CB",
       "team": "PHI"
@@ -26812,8 +26973,8 @@
       "team": "BUF"
     },
     {
-      "id": "00-0025504",
-      "id_type": "gsis",
+      "id": "espn:10561",
+      "id_type": "player_id",
       "name": "Manny Ramirez",
       "position": "G",
       "team": "DET"
@@ -26889,8 +27050,8 @@
       "team": "SF"
     },
     {
-      "id": "00-0039390",
-      "id_type": "gsis",
+      "id": "espn:4875079",
+      "id_type": "player_id",
       "name": "Marcellas Dial Jr.",
       "position": "CB",
       "team": "NE"
@@ -26987,7 +27148,7 @@
       "team": "NYJ"
     },
     {
-      "id": "11828",
+      "id": "12712",
       "id_type": "sleeper",
       "name": "Marcus Harris",
       "position": "CB",
@@ -27022,7 +27183,7 @@
       "team": "TEN"
     },
     {
-      "id": "5558",
+      "id": "2260",
       "id_type": "sleeper",
       "name": "Marcus Martin",
       "position": "C",
@@ -27043,7 +27204,7 @@
       "team": "NYG"
     },
     {
-      "id": "7745",
+      "id": "2529",
       "id_type": "sleeper",
       "name": "Marcus Murphy",
       "position": "RB",
@@ -27099,6 +27260,13 @@
       "team": "NYJ"
     },
     {
+      "id": "4091",
+      "id_type": "sleeper",
+      "name": "Marcus Williams",
+      "position": "FS",
+      "team": "NO"
+    },
+    {
       "id": "1392",
       "id_type": "sleeper",
       "name": "Margus Hunt",
@@ -27141,7 +27309,7 @@
       "team": "PHI"
     },
     {
-      "id": "219",
+      "id": "13001",
       "id_type": "sleeper",
       "name": "Mario Williams",
       "position": "DE",
@@ -27577,7 +27745,7 @@
     {
       "id": "11628",
       "id_type": "sleeper",
-      "name": "Marvin Harrison Jr.",
+      "name": "Marvin Harrison",
       "position": "WR",
       "team": "ARI"
     },
@@ -27591,7 +27759,7 @@
     {
       "id": "9494",
       "id_type": "sleeper",
-      "name": "Marvin Mims Jr.",
+      "name": "Marvin Mims",
       "position": "WR",
       "team": "DEN"
     },
@@ -27757,13 +27925,6 @@
       "team": "MIA"
     },
     {
-      "id": "00-0033596",
-      "id_type": "gsis",
-      "name": "Matt Dayes",
-      "position": "RB",
-      "team": "CLE"
-    },
-    {
       "id": "5615",
       "id_type": "sleeper",
       "name": "Matt Dickerson",
@@ -27862,6 +28023,13 @@
       "team": "DEN"
     },
     {
+      "id": "3308",
+      "id_type": "sleeper",
+      "name": "Matt Ioannidis",
+      "position": "DT",
+      "team": "WAS"
+    },
+    {
       "id": "2400",
       "id_type": "sleeper",
       "name": "Matt Jones",
@@ -27918,13 +28086,6 @@
       "team": "LV"
     },
     {
-      "id": "00-0030419",
-      "id_type": "gsis",
-      "name": "Matt McGloin",
-      "position": "QB",
-      "team": "LV"
-    },
-    {
       "id": "4191",
       "id_type": "sleeper",
       "name": "Matt Milano",
@@ -27944,6 +28105,13 @@
       "name": "Matt Nelson",
       "position": "OT",
       "team": "DET"
+    },
+    {
+      "id": "6461",
+      "id_type": "sleeper",
+      "name": "Matt Orzech",
+      "position": "LS",
+      "team": "LA"
     },
     {
       "id": "1112",
@@ -28065,6 +28233,13 @@
       "team": "LV"
     },
     {
+      "id": "4232",
+      "id_type": "sleeper",
+      "name": "Matthew Dayes",
+      "position": "RB",
+      "team": "CLE"
+    },
+    {
       "id": "12501",
       "id_type": "sleeper",
       "name": "Matthew Golden",
@@ -28077,13 +28252,6 @@
       "name": "Matthew Hayball",
       "position": "P",
       "team": "NO"
-    },
-    {
-      "id": "00-0032781",
-      "id_type": "gsis",
-      "name": "Matthew Ioannidis",
-      "position": "DT",
-      "team": "WAS"
     },
     {
       "id": "11458",
@@ -28100,18 +28268,18 @@
       "team": "BAL"
     },
     {
+      "id": "1747",
+      "id_type": "sleeper",
+      "name": "Matthew McGloin",
+      "position": "QB",
+      "team": "LV"
+    },
+    {
       "id": "469",
       "id_type": "sleeper",
       "name": "Matthew Mulligan",
       "position": "TE",
       "team": "BUF"
-    },
-    {
-      "id": "00-0035118",
-      "id_type": "gsis",
-      "name": "Matthew Orzech",
-      "position": "LS",
-      "team": "LA"
     },
     {
       "id": "312",
@@ -28149,7 +28317,7 @@
       "team": "IND"
     },
     {
-      "id": "8921",
+      "id": "2224",
       "id_type": "sleeper",
       "name": "Maurice Alexander",
       "position": "LB",
@@ -28422,6 +28590,13 @@
       "team": "TEN"
     },
     {
+      "id": "5230",
+      "id_type": "sleeper",
+      "name": "Michael Badgley",
+      "position": "K",
+      "team": "LAC"
+    },
+    {
       "id": "8076",
       "id_type": "sleeper",
       "name": "Michael Bandy",
@@ -28434,6 +28609,13 @@
       "name": "Michael Bennett",
       "position": "DE",
       "team": "SEA"
+    },
+    {
+      "id": "2482",
+      "id_type": "sleeper",
+      "name": "Michael Bennett",
+      "position": "DT",
+      "team": "JAX"
     },
     {
       "id": "1197",
@@ -28464,8 +28646,8 @@
       "team": "NYJ"
     },
     {
-      "id": "00-0036501",
-      "id_type": "gsis",
+      "id": "espn:4240456",
+      "id_type": "player_id",
       "name": "Michael Carter II",
       "position": "CB",
       "team": "NYJ"
@@ -28548,7 +28730,7 @@
       "team": "DAL"
     },
     {
-      "id": "8541",
+      "id": "46",
       "id_type": "sleeper",
       "name": "Michael Griffin",
       "position": "FS",
@@ -28583,6 +28765,13 @@
       "team": "NYG"
     },
     {
+      "id": "1703",
+      "id_type": "sleeper",
+      "name": "Michael J. Thomas",
+      "position": "DB",
+      "team": "MIA"
+    },
+    {
       "id": "7405",
       "id_type": "sleeper",
       "name": "Michael Jacquet",
@@ -28597,10 +28786,24 @@
       "team": "SEA"
     },
     {
-      "id": "2754",
+      "id": "354",
       "id_type": "sleeper",
       "name": "Michael Johnson",
       "position": "DE",
+      "team": "CIN"
+    },
+    {
+      "id": "3487",
+      "id_type": "sleeper",
+      "name": "Michael Jordan",
+      "position": "CB",
+      "team": "LA"
+    },
+    {
+      "id": "5869",
+      "id_type": "sleeper",
+      "name": "Michael Jordan",
+      "position": "G",
       "team": "CIN"
     },
     {
@@ -28623,6 +28826,13 @@
       "name": "Michael Mayer",
       "position": "TE",
       "team": "LV"
+    },
+    {
+      "id": "395",
+      "id_type": "sleeper",
+      "name": "Michael Mitchell",
+      "position": "S",
+      "team": "PIT"
     },
     {
       "id": "8750",
@@ -28662,7 +28872,7 @@
     {
       "id": "11559",
       "id_type": "sleeper",
-      "name": "Michael Penix Jr.",
+      "name": "Michael Penix",
       "position": "QB",
       "team": "ATL"
     },
@@ -28698,8 +28908,8 @@
       "id": "3199",
       "id_type": "sleeper",
       "name": "Michael Thomas",
-      "position": "DB",
-      "team": "MIA"
+      "position": "WR",
+      "team": "NO"
     },
     {
       "id": "6363",
@@ -28737,28 +28947,14 @@
       "team": "NYJ"
     },
     {
-      "id": "1087",
+      "id": "74",
       "id_type": "sleeper",
       "name": "Mike Adams",
       "position": "FS",
       "team": "IND"
     },
     {
-      "id": "5230",
-      "id_type": "sleeper",
-      "name": "Mike Badgley",
-      "position": "K",
-      "team": "LAC"
-    },
-    {
-      "id": "5209",
-      "id_type": "sleeper",
-      "name": "Mike Boone",
-      "position": "RB",
-      "team": "MIN"
-    },
-    {
-      "id": "1321",
+      "id": "8532",
       "id_type": "sleeper",
       "name": "Mike Brown",
       "position": "SAF",
@@ -28795,7 +28991,7 @@
     {
       "id": "231",
       "id_type": "sleeper",
-      "name": "Mike DeVito",
+      "name": "Mike Devito",
       "position": "DE",
       "team": "KC"
     },
@@ -28804,6 +29000,13 @@
       "id_type": "sleeper",
       "name": "Mike Edwards",
       "position": "SAF",
+      "team": "TB"
+    },
+    {
+      "id": "12381",
+      "id_type": "sleeper",
+      "name": "Mike Edwards",
+      "position": "OL",
       "team": "TB"
     },
     {
@@ -28856,8 +29059,8 @@
       "team": "TB"
     },
     {
-      "id": "00-0039895",
-      "id_type": "gsis",
+      "id": "espn:4600415",
+      "id_type": "player_id",
       "name": "Mike Hall Jr.",
       "position": "DT",
       "team": "CLE"
@@ -28870,7 +29073,7 @@
       "team": "PIT"
     },
     {
-      "id": "5187",
+      "id": "4982",
       "id_type": "sleeper",
       "name": "Mike Hughes",
       "position": "CB",
@@ -28912,20 +29115,6 @@
       "team": "TB"
     },
     {
-      "id": "00-0032676",
-      "id_type": "gsis",
-      "name": "Mike Jordan",
-      "position": "CB",
-      "team": "LA"
-    },
-    {
-      "id": "00-0035266",
-      "id_type": "gsis",
-      "name": "Mike Jordan",
-      "position": "G",
-      "team": "CIN"
-    },
-    {
       "id": "477",
       "id_type": "sleeper",
       "name": "Mike Leach",
@@ -28954,13 +29143,6 @@
       "team": "SF"
     },
     {
-      "id": "00-0027023",
-      "id_type": "gsis",
-      "name": "Mike Mitchell",
-      "position": "S",
-      "team": "PIT"
-    },
-    {
       "id": "872",
       "id_type": "sleeper",
       "name": "Mike Mohamed",
@@ -28968,8 +29150,8 @@
       "team": "NO"
     },
     {
-      "id": "00-0028443",
-      "id_type": "gsis",
+      "id": "espn:14292",
+      "id_type": "player_id",
       "name": "Mike Morgan",
       "position": "OLB",
       "team": "SEA"
@@ -29080,8 +29262,8 @@
       "team": "HOU"
     },
     {
-      "id": "00-0020245",
-      "id_type": "gsis",
+      "id": "espn:2549",
+      "id_type": "player_id",
       "name": "Mike Vick",
       "position": "QB",
       "team": "PIT"
@@ -29192,7 +29374,7 @@
       "team": "WAS"
     },
     {
-      "id": "2941",
+      "id": "7696",
       "id_type": "sleeper",
       "name": "Milton Williams",
       "position": "DE",
@@ -29262,8 +29444,8 @@
       "team": "CLE"
     },
     {
-      "id": "00-0038839",
-      "id_type": "gsis",
+      "id": "espn:4690070",
+      "id_type": "player_id",
       "name": "Mitchell Tinsley",
       "position": "WR",
       "team": "CIN"
@@ -29549,7 +29731,7 @@
       "team": "JAX"
     },
     {
-      "id": "12195",
+      "id": "10875",
       "id_type": "sleeper",
       "name": "Myles Murphy",
       "position": "DE",
@@ -29563,7 +29745,7 @@
       "team": "MIN"
     },
     {
-      "id": "3050",
+      "id": "1765",
       "id_type": "sleeper",
       "name": "Myles White",
       "position": "WR",
@@ -29582,13 +29764,6 @@
       "name": "NaJee Thompson",
       "position": "CB",
       "team": "MIN"
-    },
-    {
-      "id": "632",
-      "id_type": "sleeper",
-      "name": "NaVorro Bowman",
-      "position": "MLB",
-      "team": "SF"
     },
     {
       "id": "7687",
@@ -29773,13 +29948,6 @@
       "team": "NE"
     },
     {
-      "id": "00-0029629",
-      "id_type": "gsis",
-      "name": "Nate Stupar",
-      "position": "MLB",
-      "team": "ATL"
-    },
-    {
       "id": "3343",
       "id_type": "sleeper",
       "name": "Nate Sudfeld",
@@ -29829,6 +29997,13 @@
       "team": "NYJ"
     },
     {
+      "id": "1729",
+      "id_type": "sleeper",
+      "name": "Nathan Stupar",
+      "position": "MLB",
+      "team": "ATL"
+    },
+    {
       "id": "00-0039422",
       "id_type": "gsis",
       "name": "Nathan Thomas",
@@ -29862,6 +30037,13 @@
       "name": "Natrone Brooks",
       "position": "CB",
       "team": "ATL"
+    },
+    {
+      "id": "632",
+      "id_type": "sleeper",
+      "name": "Navorro Bowman",
+      "position": "MLB",
+      "team": "SF"
     },
     {
       "id": "4142",
@@ -30214,6 +30396,13 @@
       "team": "HOU"
     },
     {
+      "id": "12630",
+      "id_type": "sleeper",
+      "name": "Nick Martin",
+      "position": "LB",
+      "team": "SF"
+    },
+    {
       "id": "7974",
       "id_type": "sleeper",
       "name": "Nick McCloud",
@@ -30277,7 +30466,7 @@
       "team": "BUF"
     },
     {
-      "id": "2759",
+      "id": "1177",
       "id_type": "sleeper",
       "name": "Nick Perry",
       "position": "OLB",
@@ -30354,11 +30543,18 @@
       "team": "DET"
     },
     {
-      "id": "1414",
+      "id": "1604",
       "id_type": "sleeper",
       "name": "Nick Williams",
       "position": "WR",
       "team": "ATL"
+    },
+    {
+      "id": "1414",
+      "id_type": "sleeper",
+      "name": "Nick Williams",
+      "position": "DT",
+      "team": "KC"
     },
     {
       "id": "8501",
@@ -30571,6 +30767,13 @@
       "team": "TB"
     },
     {
+      "id": "2736",
+      "id_type": "sleeper",
+      "name": "Nordly Capi",
+      "position": "DE",
+      "team": "NYG"
+    },
+    {
       "id": "6387",
       "id_type": "sleeper",
       "name": "Nsimba Webster",
@@ -30578,9 +30781,9 @@
       "team": "LA"
     },
     {
-      "id": "00-0034367",
-      "id_type": "gsis",
-      "name": "Nyheim Hines",
+      "id": "5347",
+      "id_type": "sleeper",
+      "name": "Nyheim Miller-Hines",
       "position": "RB",
       "team": "IND"
     },
@@ -30643,7 +30846,7 @@
     {
       "id": "2078",
       "id_type": "sleeper",
-      "name": "Odell Beckham Jr.",
+      "name": "Odell Beckham",
       "position": "WR",
       "team": "NYG"
     },
@@ -30690,8 +30893,8 @@
       "team": "MIA"
     },
     {
-      "id": "00-0040198",
-      "id_type": "gsis",
+      "id": "espn:4711533",
+      "id_type": "player_id",
       "name": "Ollie Gordon II",
       "position": "RB",
       "team": "MIA"
@@ -30858,8 +31061,8 @@
       "team": "LAC"
     },
     {
-      "id": "00-0031562",
-      "id_type": "gsis",
+      "id": "espn:2510866",
+      "id_type": "player_id",
       "name": "Owa Odighizuwa",
       "position": "DE",
       "team": "NYG"
@@ -30907,6 +31110,13 @@
       "team": "DEN"
     },
     {
+      "id": "4335",
+      "id_type": "sleeper",
+      "name": "P.J. Walker",
+      "position": "QB",
+      "team": "CAR"
+    },
+    {
       "id": "2383",
       "id_type": "sleeper",
       "name": "P.J. Williams",
@@ -30928,15 +31138,8 @@
       "team": "NO"
     },
     {
-      "id": "4335",
-      "id_type": "sleeper",
-      "name": "PJ Walker",
-      "position": "QB",
-      "team": "CAR"
-    },
-    {
-      "id": "00-0038540",
-      "id_type": "gsis",
+      "id": "espn:4428991",
+      "id_type": "player_id",
       "name": "Paris Johnson Jr.",
       "position": "OT",
       "team": "ARI"
@@ -31033,8 +31236,8 @@
       "team": "CIN"
     },
     {
-      "id": "00-0036874",
-      "id_type": "gsis",
+      "id": "espn:4372012",
+      "id_type": "player_id",
       "name": "Pat Surtain II",
       "position": "CB",
       "team": "DEN"
@@ -31061,8 +31264,8 @@
       "team": "PHI"
     },
     {
-      "id": "00-0037007",
-      "id_type": "gsis",
+      "id": "espn:4036063",
+      "id_type": "player_id",
       "name": "Patrick Jones II",
       "position": "LB",
       "team": "MIN"
@@ -31558,8 +31761,8 @@
       "team": "SF"
     },
     {
-      "id": "00-0036734",
-      "id_type": "gsis",
+      "id": "espn:4360326",
+      "id_type": "player_id",
       "name": "Pooka Williams Jr.",
       "position": "RB",
       "team": "CIN"
@@ -31579,8 +31782,8 @@
       "team": "CLE"
     },
     {
-      "id": "00-0036847",
-      "id_type": "gsis",
+      "id": "espn:4240485",
+      "id_type": "player_id",
       "name": "Pressley Harvin III",
       "position": "P",
       "team": "PIT"
@@ -31621,9 +31824,9 @@
       "team": "NYG"
     },
     {
-      "id": "00-0032456",
-      "id_type": "gsis",
-      "name": "Prince Charles Iworah",
+      "id": "3404",
+      "id_type": "sleeper",
+      "name": "Prince Charles Charles Iworah",
       "position": "CB",
       "team": "SF"
     },
@@ -31817,13 +32020,6 @@
       "team": "DEN"
     },
     {
-      "id": "6118",
-      "id_type": "sleeper",
-      "name": "Quinnen Williams",
-      "position": "DT",
-      "team": "NYJ"
-    },
-    {
       "id": "12512",
       "id_type": "sleeper",
       "name": "Quinshon Judkins",
@@ -31936,18 +32132,18 @@
       "team": "NYG"
     },
     {
-      "id": "12694",
-      "id_type": "sleeper",
-      "name": "R.J. Mickens",
-      "position": "SAF",
-      "team": "LAC"
-    },
-    {
       "id": "12489",
       "id_type": "sleeper",
       "name": "RJ Harvey",
       "position": "RB",
       "team": "DEN"
+    },
+    {
+      "id": "12694",
+      "id_type": "sleeper",
+      "name": "RJ Mickens",
+      "position": "SAF",
+      "team": "LAC"
     },
     {
       "id": "2170",
@@ -32391,8 +32587,8 @@
       "team": "LA"
     },
     {
-      "id": "00-0036611",
-      "id_type": "gsis",
+      "id": "espn:4241135",
+      "id_type": "player_id",
       "name": "Raymond Johnson III",
       "position": "DE",
       "team": "NYG"
@@ -32412,8 +32608,8 @@
       "team": "LAC"
     },
     {
-      "id": "00-0040213",
-      "id_type": "gsis",
+      "id": "espn:4880675",
+      "id_type": "player_id",
       "name": "Rayuan Lane III",
       "position": "SAF",
       "team": "JAX"
@@ -32496,14 +32692,14 @@
       "team": "KC"
     },
     {
-      "id": "00-0036372",
-      "id_type": "gsis",
+      "id": "espn:3917006",
+      "id_type": "player_id",
       "name": "Reggie Robinson II",
       "position": "CB",
       "team": "DAL"
     },
     {
-      "id": "694",
+      "id": "7398",
       "id_type": "sleeper",
       "name": "Reggie Walker",
       "position": "LB",
@@ -32706,9 +32902,9 @@
       "team": "WAS"
     },
     {
-      "id": "00-0026502",
-      "id_type": "gsis",
-      "name": "Ricky Jean Francois",
+      "id": "487",
+      "id_type": "sleeper",
+      "name": "Ricky Jean-Francois",
       "position": "DT",
       "team": "WAS"
     },
@@ -32895,8 +33091,8 @@
       "team": "NE"
     },
     {
-      "id": "00-0036227",
-      "id_type": "gsis",
+      "id": "espn:3929658",
+      "id_type": "player_id",
       "name": "Rob Windsor",
       "position": "DT",
       "team": "IND"
@@ -32944,8 +33140,8 @@
       "team": "NYG"
     },
     {
-      "id": "00-0038603",
-      "id_type": "gsis",
+      "id": "espn:4259558",
+      "id_type": "player_id",
       "name": "Robert Beal Jr.",
       "position": "DE",
       "team": "SF"
@@ -32979,9 +33175,9 @@
       "team": "PIT"
     },
     {
-      "id": "00-0029665",
-      "id_type": "gsis",
-      "name": "Robert Griffin III",
+      "id": "1169",
+      "id_type": "sleeper",
+      "name": "Robert Griffin",
       "position": "QB",
       "team": "CLE"
     },
@@ -33007,8 +33203,8 @@
       "team": "CLE"
     },
     {
-      "id": "00-0036596",
-      "id_type": "gsis",
+      "id": "espn:359",
+      "id_type": "player_id",
       "name": "Robert Jones",
       "position": "G",
       "team": "MIA"
@@ -33126,13 +33322,6 @@
       "team": "IND"
     },
     {
-      "id": "00-0031900",
-      "id_type": "gsis",
-      "name": "Rod Smith",
-      "position": "RB",
-      "team": "SEA"
-    },
-    {
       "id": "1138",
       "id_type": "sleeper",
       "name": "Rod Streater",
@@ -33175,8 +33364,8 @@
       "team": "HOU"
     },
     {
-      "id": "00-0037341",
-      "id_type": "gsis",
+      "id": "espn:4052609",
+      "id_type": "player_id",
       "name": "Roderick Perry II",
       "position": "DT",
       "team": "CLE"
@@ -33210,18 +33399,18 @@
       "team": "LV"
     },
     {
-      "id": "00-0028899",
-      "id_type": "gsis",
-      "name": "Rodney McLeod Jr.",
+      "id": "1205",
+      "id_type": "sleeper",
+      "name": "Rodney McLeod",
       "position": "FS",
       "team": "LA"
     },
     {
-      "id": "1631",
+      "id": "2892",
       "id_type": "sleeper",
       "name": "Rodney Smith",
       "position": "RB",
-      "team": "CAR"
+      "team": "SEA"
     },
     {
       "id": "8517",
@@ -33344,13 +33533,6 @@
     },
     {
       "id": "5052",
-      "id_type": "sleeper",
-      "name": "Ronald Jones",
-      "position": "RB",
-      "team": "TB"
-    },
-    {
-      "id": "4955",
       "id_type": "sleeper",
       "name": "Ronald Jones",
       "position": "RB",
@@ -33546,8 +33728,8 @@
       "team": "GB"
     },
     {
-      "id": "00-0040167",
-      "id_type": "gsis",
+      "id": "espn:4429970",
+      "id_type": "player_id",
       "name": "Ruben Hyppolite II",
       "position": "LB",
       "team": "CHI"
@@ -33630,7 +33812,7 @@
       "team": "NE"
     },
     {
-      "id": "6537",
+      "id": "4097",
       "id_type": "sleeper",
       "name": "Ryan Anderson",
       "position": "LB",
@@ -33728,11 +33910,18 @@
       "team": "WAS"
     },
     {
-      "id": "1550",
+      "id": "1425",
       "id_type": "sleeper",
       "name": "Ryan Griffin",
       "position": "TE",
       "team": "HOU"
+    },
+    {
+      "id": "1550",
+      "id_type": "sleeper",
+      "name": "Ryan Griffin",
+      "position": "QB",
+      "team": "TB"
     },
     {
       "id": "2109",
@@ -33760,7 +33949,7 @@
       "id_type": "sleeper",
       "name": "Ryan Izzo",
       "position": "TE",
-      "team": "NE"
+      "team": "MIN"
     },
     {
       "id": "1378",
@@ -34106,8 +34295,8 @@
       "team": "LA"
     },
     {
-      "id": "00-0036037",
-      "id_type": "gsis",
+      "id": "espn:4044133",
+      "id_type": "player_id",
       "name": "Sam Franklin Jr.",
       "position": "SAF",
       "team": "CAR"
@@ -34351,13 +34540,6 @@
       "team": "LAC"
     },
     {
-      "id": "00-0035298",
-      "id_type": "gsis",
-      "name": "Scott Miller",
-      "position": "WR",
-      "team": "TB"
-    },
-    {
       "id": "5104",
       "id_type": "sleeper",
       "name": "Scott Quessenberry",
@@ -34391,6 +34573,13 @@
       "name": "Scottie Phillips",
       "position": "RB",
       "team": "HOU"
+    },
+    {
+      "id": "6290",
+      "id_type": "sleeper",
+      "name": "Scotty Miller",
+      "position": "WR",
+      "team": "TB"
     },
     {
       "id": "985",
@@ -34498,7 +34687,7 @@
       "team": "GB"
     },
     {
-      "id": "467",
+      "id": "6736",
       "id_type": "sleeper",
       "name": "Sean Smith",
       "position": "CB",
@@ -34757,13 +34946,6 @@
       "team": "DET"
     },
     {
-      "id": "00-0035336",
-      "id_type": "gsis",
-      "name": "Shaq Calhoun",
-      "position": "G",
-      "team": "MIA"
-    },
-    {
       "id": "3182",
       "id_type": "sleeper",
       "name": "Shaq Lawson",
@@ -34897,8 +35079,8 @@
       "team": "TB"
     },
     {
-      "id": "00-0040008",
-      "id_type": "gsis",
+      "id": "espn:5095865",
+      "id_type": "player_id",
       "name": "Shavon Revel Jr.",
       "position": "CB",
       "team": "DAL"
@@ -35198,8 +35380,8 @@
       "team": "KC"
     },
     {
-      "id": "00-0040013",
-      "id_type": "gsis",
+      "id": "espn:4431573",
+      "id_type": "player_id",
       "name": "Smael Mondon Jr.",
       "position": "LB",
       "team": "PHI"
@@ -35247,7 +35429,7 @@
       "team": "PIT"
     },
     {
-      "id": "7867",
+      "id": "7691",
       "id_type": "sleeper",
       "name": "Spencer Brown",
       "position": "OT",
@@ -35380,8 +35562,8 @@
       "team": "CAR"
     },
     {
-      "id": "00-0038663",
-      "id_type": "gsis",
+      "id": "espn:4363408",
+      "id_type": "player_id",
       "name": "Starling Thomas V",
       "position": "CB",
       "team": "ARI"
@@ -35455,6 +35637,13 @@
       "name": "Stephen Gostkowski",
       "position": "K",
       "team": "NE"
+    },
+    {
+      "id": "775",
+      "id_type": "sleeper",
+      "name": "Stephen Hauschka",
+      "position": "K",
+      "team": "SEA"
     },
     {
       "id": "00-0037551",
@@ -35595,13 +35784,6 @@
       "name": "Steve Williams",
       "position": "DB",
       "team": "LAC"
-    },
-    {
-      "id": "00-0025944",
-      "id_type": "gsis",
-      "name": "Steven Hauschka",
-      "position": "K",
-      "team": "SEA"
     },
     {
       "id": "57",
@@ -35751,11 +35933,11 @@
       "team": "NYJ"
     },
     {
-      "id": "7148",
+      "id": "11516",
       "id_type": "sleeper",
-      "name": "T.J. Brunson",
-      "position": "LB",
-      "team": "NYG"
+      "name": "T.J. Bass",
+      "position": "G",
+      "team": "DAL"
     },
     {
       "id": "2029",
@@ -35765,7 +35947,7 @@
       "team": "LV"
     },
     {
-      "id": "8748",
+      "id": "7166",
       "id_type": "sleeper",
       "name": "T.J. Carter",
       "position": "CB",
@@ -35912,15 +36094,15 @@
       "team": "IND"
     },
     {
-      "id": "11516",
+      "id": "7148",
       "id_type": "sleeper",
-      "name": "TJ Bass",
-      "position": "G",
-      "team": "DAL"
+      "name": "TJ Brunson",
+      "position": "LB",
+      "team": "NYG"
     },
     {
-      "id": "00-0038850",
-      "id_type": "gsis",
+      "id": "espn:4568018",
+      "id_type": "player_id",
       "name": "TK McLendon Jr.",
       "position": "DE",
       "team": "TEN"
@@ -35989,7 +36171,7 @@
       "team": "MIN"
     },
     {
-      "id": "2575",
+      "id": "886",
       "id_type": "sleeper",
       "name": "Taiwan Jones",
       "position": "RB",
@@ -36050,13 +36232,6 @@
       "name": "Tank Carder",
       "position": "ILB",
       "team": "CLE"
-    },
-    {
-      "id": "00-0030457",
-      "id_type": "gsis",
-      "name": "Tank Carradine",
-      "position": "DE",
-      "team": "SF"
     },
     {
       "id": "9502",
@@ -36591,8 +36766,8 @@
       "team": "NE"
     },
     {
-      "id": "00-0036955",
-      "id_type": "gsis",
+      "id": "espn:4362630",
+      "id_type": "player_id",
       "name": "Terrace Marshall Jr.",
       "position": "WR",
       "team": "CAR"
@@ -36836,8 +37011,8 @@
       "team": "ARI"
     },
     {
-      "id": "00-0037322",
-      "id_type": "gsis",
+      "id": "espn:4242001",
+      "id_type": "player_id",
       "name": "Thayer Munford Jr.",
       "position": "OT",
       "team": "LV"
@@ -36871,8 +37046,8 @@
       "team": "DET"
     },
     {
-      "id": "00-0040311",
-      "id_type": "gsis",
+      "id": "espn:4426535",
+      "id_type": "player_id",
       "name": "Theo Wease Jr.",
       "position": "WR",
       "team": "MIA"
@@ -36892,8 +37067,8 @@
       "team": "CAR"
     },
     {
-      "id": "00-0040225",
-      "id_type": "gsis",
+      "id": "espn:4590292",
+      "id_type": "player_id",
       "name": "Thomas Fidone II",
       "position": "TE",
       "team": "NYG"
@@ -36906,8 +37081,8 @@
       "team": "CHI"
     },
     {
-      "id": "00-0036908",
-      "id_type": "gsis",
+      "id": "espn:4242485",
+      "id_type": "player_id",
       "name": "Thomas Graham Jr.",
       "position": "CB",
       "team": "CHI"
@@ -37270,7 +37445,7 @@
       "team": "LV"
     },
     {
-      "id": "5472",
+      "id": "8860",
       "id_type": "sleeper",
       "name": "Tony Adams",
       "position": "SAF",
@@ -37305,8 +37480,8 @@
       "team": "IND"
     },
     {
-      "id": "00-0036634",
-      "id_type": "gsis",
+      "id": "espn:4245655",
+      "id_type": "player_id",
       "name": "Tony Fields II",
       "position": "LB",
       "team": "CLE"
@@ -37389,7 +37564,7 @@
       "team": "BUF"
     },
     {
-      "id": "2563",
+      "id": "1978",
       "id_type": "sleeper",
       "name": "Tony Washington",
       "position": "WR",
@@ -37403,8 +37578,8 @@
       "team": "SF"
     },
     {
-      "id": "00-0040541",
-      "id_type": "gsis",
+      "id": "espn:4696902",
+      "id_type": "player_id",
       "name": "Torricelli Simpkins III",
       "position": "G",
       "team": "NO"
@@ -37473,9 +37648,9 @@
       "team": "CHI"
     },
     {
-      "id": "00-0034745",
-      "id_type": "gsis",
-      "name": "Tracy Walker III",
+      "id": "5064",
+      "id_type": "sleeper",
+      "name": "Tracy Walker",
       "position": "DB",
       "team": "DET"
     },
@@ -37592,13 +37767,6 @@
       "team": "GB"
     },
     {
-      "id": "6012",
-      "id_type": "sleeper",
-      "name": "Travis Homer",
-      "position": "RB",
-      "team": "SEA"
-    },
-    {
       "id": "12530",
       "id_type": "sleeper",
       "name": "Travis Hunter",
@@ -37711,15 +37879,8 @@
       "team": "SEA"
     },
     {
-      "id": "12509",
-      "id_type": "sleeper",
-      "name": "Tre Harris",
-      "position": "WR",
-      "team": "LAC"
-    },
-    {
-      "id": "00-0038403",
-      "id_type": "gsis",
+      "id": "espn:4686553",
+      "id_type": "player_id",
       "name": "Tre Hawkins III",
       "position": "CB",
       "team": "NYG"
@@ -37730,13 +37891,6 @@
       "name": "Tre Herndon",
       "position": "CB",
       "team": "JAX"
-    },
-    {
-      "id": "2416",
-      "id_type": "sleeper",
-      "name": "Tre Jackson",
-      "position": "G",
-      "team": "NE"
     },
     {
       "id": "3564",
@@ -37795,6 +37949,20 @@
       "team": "LV"
     },
     {
+      "id": "12509",
+      "id_type": "sleeper",
+      "name": "Tre' Harris",
+      "position": "WR",
+      "team": "LAC"
+    },
+    {
+      "id": "2416",
+      "id_type": "sleeper",
+      "name": "Tre' Jackson",
+      "position": "G",
+      "team": "NE"
+    },
+    {
       "id": "7554",
       "id_type": "sleeper",
       "name": "Tre' McKitty",
@@ -37818,7 +37986,7 @@
     {
       "id": "4527",
       "id_type": "sleeper",
-      "name": "Tre'Von Johnson",
+      "name": "Tre'von Johnson",
       "position": "LB",
       "team": "LAC"
     },
@@ -37963,7 +38131,7 @@
       "team": "BAL"
     },
     {
-      "id": "5533",
+      "id": "8763",
       "id_type": "sleeper",
       "name": "Trenton Thompson",
       "position": "DB",
@@ -38751,7 +38919,7 @@
       "id_type": "sleeper",
       "name": "Tyler Conklin",
       "position": "TE",
-      "team": "MIN"
+      "team": "NE"
     },
     {
       "id": "7942",
@@ -38761,7 +38929,7 @@
       "team": "DAL"
     },
     {
-      "id": "5251",
+      "id": "7131",
       "id_type": "sleeper",
       "name": "Tyler Davis",
       "position": "TE",
@@ -38957,7 +39125,7 @@
       "team": "NO"
     },
     {
-      "id": "8449",
+      "id": "11889",
       "id_type": "sleeper",
       "name": "Tyler Smith",
       "position": "OT",
@@ -39160,9 +39328,9 @@
       "team": "BUF"
     },
     {
-      "id": "00-0035457",
-      "id_type": "gsis",
-      "name": "Tyron Johnson",
+      "id": "6063",
+      "id_type": "sleeper",
+      "name": "Tyron Billy-Johnson",
       "position": "WR",
       "team": "LAC"
     },
@@ -39197,7 +39365,7 @@
     {
       "id": "11655",
       "id_type": "sleeper",
-      "name": "Tyrone Tracy Jr.",
+      "name": "Tyrone Tracy",
       "position": "RB",
       "team": "NYG"
     },
@@ -39321,8 +39489,8 @@
       "team": "PIT"
     },
     {
-      "id": "00-0040476",
-      "id_type": "gsis",
+      "id": "espn:4426689",
+      "id_type": "player_id",
       "name": "Ulysses Bentley IV",
       "position": "RB",
       "team": "IND"
@@ -39340,13 +39508,6 @@
       "name": "Vadal Alexander",
       "position": "OT",
       "team": "LV"
-    },
-    {
-      "id": "00-0029050",
-      "id_type": "gsis",
-      "name": "Valentino Blake",
-      "position": "DB",
-      "team": "PIT"
     },
     {
       "id": "6853",
@@ -39377,8 +39538,8 @@
       "team": "MIN"
     },
     {
-      "id": "00-0037745",
-      "id_type": "gsis",
+      "id": "espn:4035693",
+      "id_type": "player_id",
       "name": "Velus Jones Jr.",
       "position": "RB",
       "team": "CHI"
@@ -39419,9 +39580,9 @@
       "team": "SF"
     },
     {
-      "id": "00-0032758",
-      "id_type": "gsis",
-      "name": "Vernon Hargreaves III",
+      "id": "3194",
+      "id_type": "sleeper",
+      "name": "Vernon Hargreaves",
       "position": "CB",
       "team": "TB"
     },
@@ -39433,8 +39594,8 @@
       "team": "GB"
     },
     {
-      "id": "00-0037354",
-      "id_type": "gsis",
+      "id": "espn:4360692",
+      "id_type": "player_id",
       "name": "Verone McKinley III",
       "position": "SAF",
       "team": "MIA"
@@ -39706,8 +39867,8 @@
       "team": "GB"
     },
     {
-      "id": "00-0039077",
-      "id_type": "gsis",
+      "id": "espn:4426512",
+      "id_type": "player_id",
       "name": "Warren McClendon Jr.",
       "position": "OT",
       "team": "LA"
@@ -39818,8 +39979,8 @@
       "team": "PIT"
     },
     {
-      "id": "00-0039108",
-      "id_type": "gsis",
+      "id": "espn:4685724",
+      "id_type": "player_id",
       "name": "Will Anderson Jr.",
       "position": "DE",
       "team": "HOU"
@@ -39888,13 +40049,6 @@
       "team": "IND"
     },
     {
-      "id": "3157",
-      "id_type": "sleeper",
-      "name": "Will Fuller",
-      "position": "WR",
-      "team": "HOU"
-    },
-    {
       "id": "5903",
       "id_type": "sleeper",
       "name": "Will Grier",
@@ -39930,7 +40084,7 @@
       "team": "ARI"
     },
     {
-      "id": "1250",
+      "id": "2984",
       "id_type": "sleeper",
       "name": "Will Johnson",
       "position": "RB",
@@ -39951,8 +40105,8 @@
       "team": "IND"
     },
     {
-      "id": "00-0039142",
-      "id_type": "gsis",
+      "id": "espn:4361767",
+      "id_type": "player_id",
       "name": "Will McDonald IV",
       "position": "DE",
       "team": "NYJ"
@@ -40035,6 +40189,13 @@
       "team": "PHI"
     },
     {
+      "id": "3157",
+      "id_type": "sleeper",
+      "name": "William Fuller",
+      "position": "WR",
+      "team": "HOU"
+    },
+    {
       "id": "156",
       "id_type": "sleeper",
       "name": "William Gay",
@@ -40084,8 +40245,8 @@
       "team": "CIN"
     },
     {
-      "id": "00-0036362",
-      "id_type": "gsis",
+      "id": "espn:4259804",
+      "id_type": "player_id",
       "name": "Willie Gay Jr.",
       "position": "LB",
       "team": "KC"
@@ -40308,9 +40469,9 @@
       "team": "DAL"
     },
     {
-      "id": "00-0033450",
-      "id_type": "gsis",
-      "name": "Xavier Woodson-Luster",
+      "id": "4452",
+      "id_type": "sleeper",
+      "name": "Xavier Woodson",
       "position": "LB",
       "team": "LV"
     },
@@ -40525,7 +40686,7 @@
       "team": "TEN"
     },
     {
-      "id": "171",
+      "id": "749",
       "id_type": "sleeper",
       "name": "Zach Miller",
       "position": "TE",
@@ -40644,8 +40805,8 @@
       "team": "NO"
     },
     {
-      "id": "00-0026282",
-      "id_type": "gsis",
+      "id": "espn:11365",
+      "id_type": "player_id",
       "name": "Zack Bowman",
       "position": "DB",
       "team": "MIA"
@@ -40784,8 +40945,8 @@
       "team": "KC"
     },
     {
-      "id": "00-0036917",
-      "id_type": "gsis",
+      "id": "espn:4045161",
+      "id_type": "player_id",
       "name": "Zech McPhearson",
       "position": "CB",
       "team": "PHI"

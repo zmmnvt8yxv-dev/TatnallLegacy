@@ -6,8 +6,8 @@
       "team_name": "King of  December",
       "owner": "sdmarvin713",
       "record": "11-3",
-      "points_for": 466.36,
-      "points_against": 644.0999999999999,
+      "points_for": 2221.3,
+      "points_against": 1909.72,
       "regular_season_rank": 2,
       "final_rank": null,
       "owners": [
@@ -64,18 +64,15 @@
             }
           ]
         }
-      ],
-      "wins": 12,
-      "losses": 6,
-      "ties": 0
+      ]
     },
     {
       "team_id": 2,
       "team_name": "Team Downs",
       "owner": "John.downs123",
       "record": "3-11",
-      "points_for": 1311.9999999999998,
-      "points_against": 1116.1000000000001,
+      "points_for": 1824.26,
+      "points_against": 2036.22,
       "regular_season_rank": 7,
       "final_rank": null,
       "owners": [
@@ -132,18 +129,15 @@
             }
           ]
         }
-      ],
-      "wins": 11,
-      "losses": 7,
-      "ties": 0
+      ]
     },
     {
       "team_id": 3,
       "team_name": "Harder Kulm",
       "owner": "Edward3864",
       "record": "8-6",
-      "points_for": 923.34,
-      "points_against": 507.24,
+      "points_for": 2110.66,
+      "points_against": 1995.48,
       "regular_season_rank": 3,
       "final_rank": null,
       "owners": [
@@ -200,18 +194,15 @@
             }
           ]
         }
-      ],
-      "wins": 7,
-      "losses": 11,
-      "ties": 0
+      ]
     },
     {
       "team_id": 4,
       "team_name": "King of January",
       "owner": "connerandfinn",
       "record": "7-7",
-      "points_for": 373.76000000000005,
-      "points_against": 818.8199999999998,
+      "points_for": 1977.98,
+      "points_against": 1911.24,
       "regular_season_rank": 5,
       "final_rank": 1,
       "owners": [
@@ -268,18 +259,15 @@
             }
           ]
         }
-      ],
-      "wins": 6,
-      "losses": 12,
-      "ties": 0
+      ]
     },
     {
       "team_id": 5,
       "team_name": "Team Hanrahan",
       "owner": "bhanrahan7",
       "record": "2-12",
-      "points_for": 1503.54,
-      "points_against": 1156.12,
+      "points_for": 1494.22,
+      "points_against": 1953.72,
       "regular_season_rank": 8,
       "final_rank": null,
       "owners": [
@@ -336,18 +324,15 @@
             }
           ]
         }
-      ],
-      "wins": 9,
-      "losses": 9,
-      "ties": 0
+      ]
     },
     {
       "team_id": 6,
       "team_name": "Emergency Room",
       "owner": "Jefe6700",
       "record": "11-3",
-      "points_for": 421.58000000000004,
-      "points_against": 681.22,
+      "points_for": 2267.96,
+      "points_against": 2017.88,
       "regular_season_rank": 1,
       "final_rank": null,
       "owners": [
@@ -404,18 +389,15 @@
             }
           ]
         }
-      ],
-      "wins": 10,
-      "losses": 8,
-      "ties": 0
+      ]
     },
     {
       "team_id": 7,
       "team_name": "Only i can say The N word",
       "owner": "jdunca5228572",
       "record": "6-8",
-      "points_for": 570.74,
-      "points_against": 616.96,
+      "points_for": 1792.2800000000002,
+      "points_against": 1964.3,
       "regular_season_rank": 6,
       "final_rank": null,
       "owners": [
@@ -472,18 +454,15 @@
             }
           ]
         }
-      ],
-      "wins": 7,
-      "losses": 9,
-      "ties": 2
+      ]
     },
     {
       "team_id": 8,
       "team_name": "Pompano Beach Sniper Gang",
       "owner": "espn92085473",
       "record": "8-6",
-      "points_for": 409.44000000000005,
-      "points_against": 405.40000000000003,
+      "points_for": 2105.5399999999995,
+      "points_against": 2005.64,
       "regular_season_rank": 4,
       "final_rank": null,
       "owners": [
@@ -540,39 +519,16 @@
             }
           ]
         }
-      ],
-      "wins": 9,
-      "losses": 7,
-      "ties": 2
+      ]
     }
-  ],
-  "weeks": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18
   ],
   "standings": [
     {
       "team": "King of  December",
-      "wins": 12,
+      "wins": 11,
       "losses": 6,
       "ties": 0,
-      "points_for": 466.36,
+      "points_for": 453.36,
       "points_against": 644.0999999999999
     },
     {
@@ -584,20 +540,20 @@
       "points_against": 1116.1000000000001
     },
     {
-      "team": "Emergency Room",
-      "wins": 10,
-      "losses": 8,
-      "ties": 0,
-      "points_for": 421.58000000000004,
-      "points_against": 681.22
-    },
-    {
       "team": "Pompano Beach Sniper Gang",
       "wins": 9,
       "losses": 7,
       "ties": 2,
       "points_for": 409.44000000000005,
       "points_against": 405.40000000000003
+    },
+    {
+      "team": "Emergency Room",
+      "wins": 9,
+      "losses": 8,
+      "ties": 0,
+      "points_for": 399.78000000000003,
+      "points_against": 681.22
     },
     {
       "team": "Team Hanrahan",
@@ -630,17 +586,80 @@
       "ties": 0,
       "points_for": 373.76000000000005,
       "points_against": 818.8199999999998
-    },
-    {
-      "team": "Away",
-      "wins": 0,
-      "losses": 2,
-      "ties": 0,
-      "points_for": 0.0,
-      "points_against": 34.8
     }
   ],
-  "playerSeasonTotals": [],
+  "playerSeasonTotals": [
+    {
+      "player_id": "3198",
+      "points": 275.96000000000004,
+      "games": 18
+    },
+    {
+      "player_id": "4018",
+      "points": 168.7,
+      "games": 18
+    },
+    {
+      "player_id": "4663",
+      "points": 298.8,
+      "games": 18
+    },
+    {
+      "player_id": "6813",
+      "points": 43.199999999999996,
+      "games": 4
+    },
+    {
+      "player_id": "7528",
+      "points": 38.6,
+      "games": 5
+    },
+    {
+      "player_id": "4039",
+      "points": 140.4,
+      "games": 18
+    },
+    {
+      "player_id": "4029",
+      "points": 211.49999999999997,
+      "games": 18
+    },
+    {
+      "player_id": "4034",
+      "points": 294.76,
+      "games": 18
+    },
+    {
+      "player_id": "7588",
+      "points": 0.0,
+      "games": 14
+    },
+    {
+      "player_id": "5872",
+      "points": 54.89999999999999,
+      "games": 13
+    }
+  ],
+  "weeks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
   "totals": {
     "matchups": 73,
     "lineups": 144
