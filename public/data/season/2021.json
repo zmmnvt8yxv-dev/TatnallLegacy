@@ -81,7 +81,8 @@
       "losses": 6,
       "ties": 0,
       "points_for": 2772.0,
-      "points_against": 2483.0
+      "points_against": 2483.0,
+      "rank": 1
     },
     {
       "team": "Team Malley",
@@ -89,7 +90,8 @@
       "losses": 7,
       "ties": 0,
       "points_for": 2522.0,
-      "points_against": 2560.0
+      "points_against": 2560.0,
+      "rank": 2
     },
     {
       "team": "What tf happene to my team",
@@ -97,7 +99,8 @@
       "losses": 8,
       "ties": 0,
       "points_for": 2545.0,
-      "points_against": 2412.0
+      "points_against": 2412.0,
+      "rank": 3
     },
     {
       "team": "Only i can say The N word",
@@ -105,7 +108,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2567.0,
-      "points_against": 2463.0
+      "points_against": 2463.0,
+      "rank": 5
     },
     {
       "team": "King of  December",
@@ -113,7 +117,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2620.0,
-      "points_against": 2386.0
+      "points_against": 2386.0,
+      "rank": 4
     },
     {
       "team": "Team jack",
@@ -121,7 +126,8 @@
       "losses": 10,
       "ties": 0,
       "points_for": 2331.0,
-      "points_against": 2509.0
+      "points_against": 2509.0,
+      "rank": 6
     },
     {
       "team": "Pompano Beach Sniper Gang",
@@ -129,7 +135,8 @@
       "losses": 11,
       "ties": 0,
       "points_for": 2271.0,
-      "points_against": 2482.0
+      "points_against": 2482.0,
+      "rank": 7
     },
     {
       "team": "Valar Morghulis",
@@ -137,7 +144,8 @@
       "losses": 11,
       "ties": 0,
       "points_for": 2207.0,
-      "points_against": 2540.0
+      "points_against": 2540.0,
+      "rank": 8
     }
   ],
   "playerSeasonTotals": [
@@ -1320,5 +1328,292 @@
   "totals": {
     "matchups": 73,
     "lineups": 2905
+  },
+  "champion": {
+    "team": "Team Downs",
+    "owner": "John Downs",
+    "final_rank": 1,
+    "source": "espn_verified"
+  },
+  "runnerUp": {
+    "team": "Team Malley",
+    "owner": "Conner Malley",
+    "final_rank": 2,
+    "source": "espn_verified"
+  },
+  "thirdPlace": {
+    "team": "What tf happene to my team",
+    "owner": "Jeffrey Crossland",
+    "final_rank": 3,
+    "source": "espn_verified"
+  },
+  "kiltBowlLoser": {
+    "team": "Valar Morghulis",
+    "owner": "Edward Saad",
+    "final_rank": 8
+  },
+  "playoffBracket": [
+    {
+      "week": 15,
+      "round": "Quarterfinals",
+      "home_team": "Team jack",
+      "home_owner": "Jack Sheehy",
+      "home_score": 92.0,
+      "home_seed": 4,
+      "away_team": "What tf happene to my team",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 112.0,
+      "away_seed": 5,
+      "winner": "What tf happene to my team"
+    },
+    {
+      "week": 15,
+      "round": "Quarterfinals",
+      "home_team": "Team Downs",
+      "home_owner": "John Downs",
+      "home_score": 145.0,
+      "home_seed": 3,
+      "away_team": "Only i can say The N word",
+      "away_owner": "jared duncan",
+      "away_score": 112.0,
+      "away_seed": 6,
+      "winner": "Team Downs"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "Team Malley",
+      "home_owner": "Conner Malley",
+      "home_score": 137.0,
+      "home_seed": 1,
+      "away_team": "What tf happene to my team",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 105.0,
+      "away_seed": 5,
+      "winner": "Team Malley"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "King of  December",
+      "home_owner": "stephen marvin",
+      "home_score": 142.0,
+      "home_seed": 2,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 155.0,
+      "away_seed": 3,
+      "winner": "Team Downs"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "Team jack",
+      "home_owner": "Jack Sheehy",
+      "home_score": 133.0,
+      "home_seed": 4,
+      "away_team": "Only i can say The N word",
+      "away_owner": "jared duncan",
+      "away_score": 197.0,
+      "away_seed": 6,
+      "winner": "Only i can say The N word"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "Team Malley",
+      "home_owner": "Conner Malley",
+      "home_score": 150.0,
+      "home_seed": 1,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 216.0,
+      "away_seed": 3,
+      "winner": "Team Downs"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "King of  December",
+      "home_owner": "stephen marvin",
+      "home_score": 132.0,
+      "home_seed": 2,
+      "away_team": "What tf happene to my team",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 133.0,
+      "away_seed": 5,
+      "winner": "What tf happene to my team"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "Team jack",
+      "home_owner": "Jack Sheehy",
+      "home_score": 129.0,
+      "home_seed": 4,
+      "away_team": "Only i can say The N word",
+      "away_owner": "jared duncan",
+      "away_score": 153.0,
+      "away_seed": 6,
+      "winner": "Only i can say The N word"
+    },
+    {
+      "week": 18,
+      "round": "Championship",
+      "home_team": "Team Malley",
+      "home_owner": "Conner Malley",
+      "home_score": 150.0,
+      "home_seed": 1,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 216.0,
+      "away_seed": 3,
+      "winner": "Team Downs"
+    },
+    {
+      "week": 18,
+      "round": "Championship",
+      "home_team": "King of  December",
+      "home_owner": "stephen marvin",
+      "home_score": 132.0,
+      "home_seed": 2,
+      "away_team": "What tf happene to my team",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 133.0,
+      "away_seed": 5,
+      "winner": "What tf happene to my team"
+    },
+    {
+      "week": 18,
+      "round": "Championship",
+      "home_team": "Team jack",
+      "home_owner": "Jack Sheehy",
+      "home_score": 129.0,
+      "home_seed": 4,
+      "away_team": "Only i can say The N word",
+      "away_owner": "jared duncan",
+      "away_score": 153.0,
+      "away_seed": 6,
+      "winner": "Only i can say The N word"
+    },
+    {
+      "week": 19,
+      "round": "Championship",
+      "home_team": "Team Malley",
+      "home_owner": "Conner Malley",
+      "home_score": 150.0,
+      "home_seed": 1,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 216.0,
+      "away_seed": 3,
+      "winner": "Team Downs"
+    },
+    {
+      "week": 19,
+      "round": "Championship",
+      "home_team": "King of  December",
+      "home_owner": "stephen marvin",
+      "home_score": 132.0,
+      "home_seed": 2,
+      "away_team": "What tf happene to my team",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 133.0,
+      "away_seed": 5,
+      "winner": "What tf happene to my team"
+    },
+    {
+      "week": 19,
+      "round": "Championship",
+      "home_team": "Team jack",
+      "home_owner": "Jack Sheehy",
+      "home_score": 129.0,
+      "home_seed": 4,
+      "away_team": "Only i can say The N word",
+      "away_owner": "jared duncan",
+      "away_score": 153.0,
+      "away_seed": 6,
+      "winner": "Only i can say The N word"
+    },
+    {
+      "week": 20,
+      "round": "Championship",
+      "home_team": "Team Malley",
+      "home_owner": "Conner Malley",
+      "home_score": 150.0,
+      "home_seed": 1,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 216.0,
+      "away_seed": 3,
+      "winner": "Team Downs"
+    },
+    {
+      "week": 20,
+      "round": "Championship",
+      "home_team": "King of  December",
+      "home_owner": "stephen marvin",
+      "home_score": 132.0,
+      "home_seed": 2,
+      "away_team": "What tf happene to my team",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 133.0,
+      "away_seed": 5,
+      "winner": "What tf happene to my team"
+    },
+    {
+      "week": 20,
+      "round": "Championship",
+      "home_team": "Team jack",
+      "home_owner": "Jack Sheehy",
+      "home_score": 129.0,
+      "home_seed": 4,
+      "away_team": "Only i can say The N word",
+      "away_owner": "jared duncan",
+      "away_score": 153.0,
+      "away_seed": 6,
+      "winner": "Only i can say The N word"
+    }
+  ],
+  "kiltBowl": {
+    "team1": {
+      "name": "Pompano Beach Sniper Gang",
+      "owner": "Roy Lee",
+      "wins": 1
+    },
+    "team2": {
+      "name": "Valar Morghulis",
+      "owner": "Edward Saad",
+      "wins": 2
+    },
+    "games": [
+      {
+        "week": 15,
+        "home_team": "Valar Morghulis",
+        "home_score": 138.0,
+        "away_team": "Pompano Beach Sniper Gang",
+        "away_score": 104.0,
+        "winner": "Valar Morghulis"
+      },
+      {
+        "week": 16,
+        "home_team": "Valar Morghulis",
+        "home_score": 133.0,
+        "away_team": "Pompano Beach Sniper Gang",
+        "away_score": 126.0,
+        "winner": "Valar Morghulis"
+      },
+      {
+        "week": 17,
+        "home_team": "Valar Morghulis",
+        "home_score": 80.0,
+        "away_team": "Pompano Beach Sniper Gang",
+        "away_score": 170.0,
+        "winner": "Pompano Beach Sniper Gang"
+      }
+    ],
+    "series_winner": "Valar Morghulis",
+    "series_loser": "Pompano Beach Sniper Gang",
+    "series_score": "2-1"
   }
 }

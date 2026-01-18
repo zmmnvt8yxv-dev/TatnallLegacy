@@ -81,7 +81,8 @@
       "losses": 2,
       "ties": 1,
       "points_for": 2394.0,
-      "points_against": 1981.0
+      "points_against": 1981.0,
+      "rank": 1
     },
     {
       "team": "Team Downs",
@@ -89,7 +90,8 @@
       "losses": 5,
       "ties": 0,
       "points_for": 2367.0,
-      "points_against": 2061.0
+      "points_against": 2061.0,
+      "rank": 3
     },
     {
       "team": "Golden Taint",
@@ -97,7 +99,8 @@
       "losses": 8,
       "ties": 0,
       "points_for": 2421.0,
-      "points_against": 2293.0
+      "points_against": 2293.0,
+      "rank": 6
     },
     {
       "team": "Team Malley",
@@ -105,7 +108,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2298.0,
-      "points_against": 2395.0
+      "points_against": 2395.0,
+      "rank": 2
     },
     {
       "team": "Big Dick Bandito",
@@ -113,7 +117,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2213.0,
-      "points_against": 2409.0
+      "points_against": 2409.0,
+      "rank": 4
     },
     {
       "team": "Fuck My Alarm",
@@ -121,7 +126,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2092.0,
-      "points_against": 2300.0
+      "points_against": 2300.0,
+      "rank": 7
     },
     {
       "team": "Team jack",
@@ -129,7 +135,8 @@
       "losses": 9,
       "ties": 1,
       "points_for": 2270.0,
-      "points_against": 2418.0
+      "points_against": 2418.0,
+      "rank": 5
     },
     {
       "team": "Valar Morghulis",
@@ -137,7 +144,8 @@
       "losses": 11,
       "ties": 0,
       "points_for": 2018.0,
-      "points_against": 2216.0
+      "points_against": 2216.0,
+      "rank": 8
     }
   ],
   "playerSeasonTotals": [
@@ -1395,5 +1403,175 @@
   "totals": {
     "matchups": 65,
     "lineups": 3000
+  },
+  "champion": {
+    "team": "The King",
+    "owner": "stephen marvin",
+    "final_rank": 1,
+    "source": "espn_verified"
+  },
+  "runnerUp": {
+    "team": "Team Malley",
+    "owner": "Conner Malley",
+    "final_rank": 2,
+    "source": "espn_verified"
+  },
+  "thirdPlace": {
+    "team": "Team Downs",
+    "owner": "John Downs",
+    "final_rank": 3,
+    "source": "espn_verified"
+  },
+  "kiltBowlLoser": {
+    "team": "Valar Morghulis",
+    "owner": "Edward Saad",
+    "final_rank": 8
+  },
+  "playoffBracket": [
+    {
+      "week": 14,
+      "round": "Quarterfinals",
+      "home_team": "Big Dick Bandito",
+      "home_owner": "jared duncan",
+      "home_score": 154.0,
+      "home_seed": 4,
+      "away_team": "Team jack",
+      "away_owner": "Jack Sheehy",
+      "away_score": 111.0,
+      "away_seed": 5,
+      "winner": "Big Dick Bandito"
+    },
+    {
+      "week": 14,
+      "round": "Quarterfinals",
+      "home_team": "Golden Taint",
+      "home_owner": "Matt Maloy",
+      "home_score": 164.0,
+      "home_seed": 3,
+      "away_team": "Team Malley",
+      "away_owner": "Conner Malley",
+      "away_score": 179.0,
+      "away_seed": 6,
+      "winner": "Team Malley"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "The King",
+      "home_owner": "stephen marvin",
+      "home_score": 219.0,
+      "home_seed": 1,
+      "away_team": "Big Dick Bandito",
+      "away_owner": "jared duncan",
+      "away_score": 115.0,
+      "away_seed": 4,
+      "winner": "The King"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "Team Downs",
+      "home_owner": "John Downs",
+      "home_score": 165.0,
+      "home_seed": 2,
+      "away_team": "Team Malley",
+      "away_owner": "Conner Malley",
+      "away_score": 167.0,
+      "away_seed": 6,
+      "winner": "Team Malley"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "Golden Taint",
+      "home_owner": "Matt Maloy",
+      "home_score": 176.0,
+      "home_seed": 3,
+      "away_team": "Team jack",
+      "away_owner": "Jack Sheehy",
+      "away_score": 139.0,
+      "away_seed": 5,
+      "winner": "Golden Taint"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "The King",
+      "home_owner": "stephen marvin",
+      "home_score": 174.0,
+      "home_seed": 1,
+      "away_team": "Team Malley",
+      "away_owner": "Conner Malley",
+      "away_score": 120.0,
+      "away_seed": 6,
+      "winner": "The King"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "Team Downs",
+      "home_owner": "John Downs",
+      "home_score": 186.0,
+      "home_seed": 2,
+      "away_team": "Big Dick Bandito",
+      "away_owner": "jared duncan",
+      "away_score": 117.0,
+      "away_seed": 4,
+      "winner": "Team Downs"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "Golden Taint",
+      "home_owner": "Matt Maloy",
+      "home_score": 148.0,
+      "home_seed": 3,
+      "away_team": "Team jack",
+      "away_owner": "Jack Sheehy",
+      "away_score": 159.0,
+      "away_seed": 5,
+      "winner": "Team jack"
+    }
+  ],
+  "kiltBowl": {
+    "team1": {
+      "name": "Fuck My Alarm",
+      "owner": "Jeffrey Crossland",
+      "wins": 2
+    },
+    "team2": {
+      "name": "Valar Morghulis",
+      "owner": "Edward Saad",
+      "wins": 1
+    },
+    "games": [
+      {
+        "week": 14,
+        "home_team": "Fuck My Alarm",
+        "home_score": 114.0,
+        "away_team": "Valar Morghulis",
+        "away_score": 106.0,
+        "winner": "Fuck My Alarm"
+      },
+      {
+        "week": 15,
+        "home_team": "Fuck My Alarm",
+        "home_score": 131.0,
+        "away_team": "Valar Morghulis",
+        "away_score": 137.0,
+        "winner": "Valar Morghulis"
+      },
+      {
+        "week": 16,
+        "home_team": "Fuck My Alarm",
+        "home_score": 143.0,
+        "away_team": "Valar Morghulis",
+        "away_score": 123.0,
+        "winner": "Fuck My Alarm"
+      }
+    ],
+    "series_winner": "Fuck My Alarm",
+    "series_loser": "Valar Morghulis",
+    "series_score": "2-1"
   }
 }

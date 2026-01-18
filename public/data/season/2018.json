@@ -89,7 +89,8 @@
       "losses": 4,
       "ties": 0,
       "points_for": 2469.0,
-      "points_against": 2178.0
+      "points_against": 2178.0,
+      "rank": 1
     },
     {
       "team": "Hello All My Peasants",
@@ -97,7 +98,8 @@
       "losses": 5,
       "ties": 0,
       "points_for": 2252.0,
-      "points_against": 2124.0
+      "points_against": 2124.0,
+      "rank": 3
     },
     {
       "team": "Team Malley",
@@ -105,7 +107,8 @@
       "losses": 7,
       "ties": 1,
       "points_for": 2213.0,
-      "points_against": 2165.0
+      "points_against": 2165.0,
+      "rank": 5
     },
     {
       "team": "Big Dick Bandito",
@@ -113,7 +116,8 @@
       "losses": 8,
       "ties": 0,
       "points_for": 2350.0,
-      "points_against": 2345.0
+      "points_against": 2345.0,
+      "rank": 2
     },
     {
       "team": "Team del Rosario",
@@ -121,7 +125,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2405.0,
-      "points_against": 2331.0
+      "points_against": 2331.0,
+      "rank": 4
     },
     {
       "team": "Team Blow me ",
@@ -129,7 +134,8 @@
       "losses": 9,
       "ties": 1,
       "points_for": 2244.0,
-      "points_against": 2426.0
+      "points_against": 2426.0,
+      "rank": 6
     },
     {
       "team": "The ER Squad",
@@ -137,7 +143,8 @@
       "losses": 10,
       "ties": 0,
       "points_for": 2326.0,
-      "points_against": 2391.0
+      "points_against": 2391.0,
+      "rank": 7
     },
     {
       "team": "Valar Morghulis",
@@ -145,7 +152,8 @@
       "losses": 10,
       "ties": 0,
       "points_for": 1952.0,
-      "points_against": 2251.0
+      "points_against": 2251.0,
+      "rank": 8
     }
   ],
   "playerSeasonTotals": [
@@ -1446,5 +1454,175 @@
   "totals": {
     "matchups": 65,
     "lineups": 2269
+  },
+  "champion": {
+    "team": "The Champ",
+    "owner": "sdmarvin713",
+    "final_rank": 1,
+    "source": "espn_verified"
+  },
+  "runnerUp": {
+    "team": "Big Dick Bandito",
+    "owner": "jdunca5228572",
+    "final_rank": 2,
+    "source": "espn_verified"
+  },
+  "thirdPlace": {
+    "team": "Hello All My Peasants",
+    "owner": "John.downs123",
+    "final_rank": 3,
+    "source": "espn_verified"
+  },
+  "kiltBowlLoser": {
+    "team": "Valar Morghulis",
+    "owner": "Edward3864",
+    "final_rank": 8
+  },
+  "playoffBracket": [
+    {
+      "week": 14,
+      "round": "Quarterfinals",
+      "home_team": "Team del Rosario",
+      "home_owner": "jalendelrosario@comcast.net",
+      "home_score": 175.0,
+      "home_seed": 4,
+      "away_team": "Team Blow me ",
+      "away_owner": "jksheehy",
+      "away_score": 110.0,
+      "away_seed": 5,
+      "winner": "Team del Rosario"
+    },
+    {
+      "week": 14,
+      "round": "Quarterfinals",
+      "home_team": "Team Malley",
+      "home_owner": "connerandfinn",
+      "home_score": 125.0,
+      "home_seed": 3,
+      "away_team": "Big Dick Bandito",
+      "away_owner": "jdunca5228572",
+      "away_score": 147.0,
+      "away_seed": 6,
+      "winner": "Big Dick Bandito"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "The Champ",
+      "home_owner": "sdmarvin713",
+      "home_score": 133.0,
+      "home_seed": 1,
+      "away_team": "Team del Rosario",
+      "away_owner": "jalendelrosario@comcast.net",
+      "away_score": 112.0,
+      "away_seed": 4,
+      "winner": "The Champ"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "Hello All My Peasants",
+      "home_owner": "John.downs123",
+      "home_score": 111.0,
+      "home_seed": 2,
+      "away_team": "Big Dick Bandito",
+      "away_owner": "jdunca5228572",
+      "away_score": 162.0,
+      "away_seed": 6,
+      "winner": "Big Dick Bandito"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "Team Malley",
+      "home_owner": "connerandfinn",
+      "home_score": 86.0,
+      "home_seed": 3,
+      "away_team": "Team Blow me ",
+      "away_owner": "jksheehy",
+      "away_score": 86.0,
+      "away_seed": 5,
+      "winner": "Team Blow me "
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "The Champ",
+      "home_owner": "sdmarvin713",
+      "home_score": 186.0,
+      "home_seed": 1,
+      "away_team": "Big Dick Bandito",
+      "away_owner": "jdunca5228572",
+      "away_score": 151.0,
+      "away_seed": 6,
+      "winner": "The Champ"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "Hello All My Peasants",
+      "home_owner": "John.downs123",
+      "home_score": 160.0,
+      "home_seed": 2,
+      "away_team": "Team del Rosario",
+      "away_owner": "jalendelrosario@comcast.net",
+      "away_score": 104.0,
+      "away_seed": 4,
+      "winner": "Hello All My Peasants"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "Team Malley",
+      "home_owner": "connerandfinn",
+      "home_score": 150.0,
+      "home_seed": 3,
+      "away_team": "Team Blow me ",
+      "away_owner": "jksheehy",
+      "away_score": 75.0,
+      "away_seed": 5,
+      "winner": "Team Malley"
+    }
+  ],
+  "kiltBowl": {
+    "team1": {
+      "name": "The ER Squad",
+      "owner": "Jefe6700",
+      "wins": 1
+    },
+    "team2": {
+      "name": "Valar Morghulis",
+      "owner": "Edward3864",
+      "wins": 2
+    },
+    "games": [
+      {
+        "week": 14,
+        "home_team": "The ER Squad",
+        "home_score": 109.0,
+        "away_team": "Valar Morghulis",
+        "away_score": 122.0,
+        "winner": "Valar Morghulis"
+      },
+      {
+        "week": 15,
+        "home_team": "The ER Squad",
+        "home_score": 138.0,
+        "away_team": "Valar Morghulis",
+        "away_score": 143.0,
+        "winner": "Valar Morghulis"
+      },
+      {
+        "week": 16,
+        "home_team": "The ER Squad",
+        "home_score": 158.0,
+        "away_team": "Valar Morghulis",
+        "away_score": 108.0,
+        "winner": "The ER Squad"
+      }
+    ],
+    "series_winner": "Valar Morghulis",
+    "series_loser": "The ER Squad",
+    "series_score": "2-1"
   }
 }

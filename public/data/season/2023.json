@@ -81,7 +81,8 @@
       "losses": 5,
       "ties": 0,
       "points_for": 2612.62,
-      "points_against": 2287.26
+      "points_against": 2287.26,
+      "rank": 1
     },
     {
       "team": "Insane in the Achane ",
@@ -89,7 +90,8 @@
       "losses": 7,
       "ties": 0,
       "points_for": 2737.2400000000007,
-      "points_against": 2702.92
+      "points_against": 2702.92,
+      "rank": 3
     },
     {
       "team": "Emergency Room",
@@ -97,7 +99,8 @@
       "losses": 7,
       "ties": 0,
       "points_for": 2346.1,
-      "points_against": 2278.6199999999994
+      "points_against": 2278.6199999999994,
+      "rank": 2
     },
     {
       "team": "Wish I had CMC",
@@ -105,7 +108,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2859.6600000000003,
-      "points_against": 2561.02
+      "points_against": 2561.02,
+      "rank": 5
     },
     {
       "team": "Team Downs",
@@ -113,7 +117,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2575.56,
-      "points_against": 2580.5199999999995
+      "points_against": 2580.5199999999995,
+      "rank": 4
     },
     {
       "team": "Federal Burrow of Investigation",
@@ -121,7 +126,8 @@
       "losses": 10,
       "ties": 0,
       "points_for": 2460.54,
-      "points_against": 2693.42
+      "points_against": 2693.42,
+      "rank": 7
     },
     {
       "team": "Harder Kulm",
@@ -129,7 +135,8 @@
       "losses": 11,
       "ties": 0,
       "points_for": 2356.44,
-      "points_against": 2640.0
+      "points_against": 2640.0,
+      "rank": 6
     },
     {
       "team": "Only i can say The N word",
@@ -137,7 +144,8 @@
       "losses": 13,
       "ties": 0,
       "points_for": 2529.54,
-      "points_against": 2733.94
+      "points_against": 2733.94,
+      "rank": 8
     }
   ],
   "playerSeasonTotals": [
@@ -1295,5 +1303,292 @@
   "totals": {
     "matchups": 73,
     "lineups": 2921
+  },
+  "champion": {
+    "team": "Sniper Gang - 1800 Block",
+    "owner": "Roy Lee",
+    "final_rank": 1,
+    "source": "espn_verified"
+  },
+  "runnerUp": {
+    "team": "Emergency Room",
+    "owner": "Jeffrey Crossland",
+    "final_rank": 2,
+    "source": "espn_verified"
+  },
+  "thirdPlace": {
+    "team": "Insane in the Achane",
+    "owner": "Insane in the Achane",
+    "final_rank": 3,
+    "source": "espn_verified"
+  },
+  "kiltBowlLoser": {
+    "team": "Only i can say The N word",
+    "owner": "jared duncan",
+    "final_rank": 8
+  },
+  "playoffBracket": [
+    {
+      "week": 15,
+      "round": "Quarterfinals",
+      "home_team": "Team Downs",
+      "home_owner": "John Downs",
+      "home_score": 200.1,
+      "home_seed": 4,
+      "away_team": "Harder Kulm",
+      "away_owner": "Edward Saad",
+      "away_score": 113.26,
+      "away_seed": 5,
+      "winner": "Team Downs"
+    },
+    {
+      "week": 15,
+      "round": "Quarterfinals",
+      "home_team": "Insane in the Achane ",
+      "home_owner": "Samuel Kirby",
+      "home_score": 158.82,
+      "home_seed": 3,
+      "away_team": "Wish I had CMC",
+      "away_owner": "Conner Malley",
+      "away_score": 145.68,
+      "away_seed": 6,
+      "winner": "Insane in the Achane "
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_owner": "Roy Lee",
+      "home_score": 173.56,
+      "home_seed": 1,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 97.92,
+      "away_seed": 4,
+      "winner": "Sniper Gang - 1800 Block"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "Emergency Room",
+      "home_owner": "Jeffrey Crossland",
+      "home_score": 174.04,
+      "home_seed": 2,
+      "away_team": "Insane in the Achane ",
+      "away_owner": "Samuel Kirby",
+      "away_score": 148.78,
+      "away_seed": 3,
+      "winner": "Emergency Room"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "Harder Kulm",
+      "home_owner": "Edward Saad",
+      "home_score": 99.72,
+      "home_seed": 5,
+      "away_team": "Wish I had CMC",
+      "away_owner": "Conner Malley",
+      "away_score": 144.78,
+      "away_seed": 6,
+      "winner": "Wish I had CMC"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_owner": "Roy Lee",
+      "home_score": 163.98,
+      "home_seed": 1,
+      "away_team": "Emergency Room",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 138.52,
+      "away_seed": 2,
+      "winner": "Sniper Gang - 1800 Block"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "Insane in the Achane ",
+      "home_owner": "Samuel Kirby",
+      "home_score": 184.74,
+      "home_seed": 3,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 152.88,
+      "away_seed": 4,
+      "winner": "Insane in the Achane "
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "Harder Kulm",
+      "home_owner": "Edward Saad",
+      "home_score": 107.02,
+      "home_seed": 5,
+      "away_team": "Wish I had CMC",
+      "away_owner": "Conner Malley",
+      "away_score": 193.46,
+      "away_seed": 6,
+      "winner": "Wish I had CMC"
+    },
+    {
+      "week": 18,
+      "round": "Championship",
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_owner": "Roy Lee",
+      "home_score": 163.98,
+      "home_seed": 1,
+      "away_team": "Emergency Room",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 138.52,
+      "away_seed": 2,
+      "winner": "Sniper Gang - 1800 Block"
+    },
+    {
+      "week": 18,
+      "round": "Championship",
+      "home_team": "Insane in the Achane ",
+      "home_owner": "Samuel Kirby",
+      "home_score": 184.74,
+      "home_seed": 3,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 152.88,
+      "away_seed": 4,
+      "winner": "Insane in the Achane "
+    },
+    {
+      "week": 18,
+      "round": "Championship",
+      "home_team": "Harder Kulm",
+      "home_owner": "Edward Saad",
+      "home_score": 107.02,
+      "home_seed": 5,
+      "away_team": "Wish I had CMC",
+      "away_owner": "Conner Malley",
+      "away_score": 193.46,
+      "away_seed": 6,
+      "winner": "Wish I had CMC"
+    },
+    {
+      "week": 19,
+      "round": "Championship",
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_owner": "Roy Lee",
+      "home_score": 163.98,
+      "home_seed": 1,
+      "away_team": "Emergency Room",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 138.52,
+      "away_seed": 2,
+      "winner": "Sniper Gang - 1800 Block"
+    },
+    {
+      "week": 19,
+      "round": "Championship",
+      "home_team": "Insane in the Achane ",
+      "home_owner": "Samuel Kirby",
+      "home_score": 184.74,
+      "home_seed": 3,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 152.88,
+      "away_seed": 4,
+      "winner": "Insane in the Achane "
+    },
+    {
+      "week": 19,
+      "round": "Championship",
+      "home_team": "Harder Kulm",
+      "home_owner": "Edward Saad",
+      "home_score": 107.02,
+      "home_seed": 5,
+      "away_team": "Wish I had CMC",
+      "away_owner": "Conner Malley",
+      "away_score": 193.46,
+      "away_seed": 6,
+      "winner": "Wish I had CMC"
+    },
+    {
+      "week": 20,
+      "round": "Championship",
+      "home_team": "Sniper Gang - 1800 Block",
+      "home_owner": "Roy Lee",
+      "home_score": 163.98,
+      "home_seed": 1,
+      "away_team": "Emergency Room",
+      "away_owner": "Jeffrey Crossland",
+      "away_score": 138.52,
+      "away_seed": 2,
+      "winner": "Sniper Gang - 1800 Block"
+    },
+    {
+      "week": 20,
+      "round": "Championship",
+      "home_team": "Insane in the Achane ",
+      "home_owner": "Samuel Kirby",
+      "home_score": 184.74,
+      "home_seed": 3,
+      "away_team": "Team Downs",
+      "away_owner": "John Downs",
+      "away_score": 152.88,
+      "away_seed": 4,
+      "winner": "Insane in the Achane "
+    },
+    {
+      "week": 20,
+      "round": "Championship",
+      "home_team": "Harder Kulm",
+      "home_owner": "Edward Saad",
+      "home_score": 107.02,
+      "home_seed": 5,
+      "away_team": "Wish I had CMC",
+      "away_owner": "Conner Malley",
+      "away_score": 193.46,
+      "away_seed": 6,
+      "winner": "Wish I had CMC"
+    }
+  ],
+  "kiltBowl": {
+    "team1": {
+      "name": "Federal Burrow of Investigation",
+      "owner": "Carl Marvin",
+      "wins": 3
+    },
+    "team2": {
+      "name": "Only i can say The N word",
+      "owner": "jared duncan",
+      "wins": 0
+    },
+    "games": [
+      {
+        "week": 15,
+        "home_team": "Only i can say The N word",
+        "home_score": 151.4,
+        "away_team": "Federal Burrow of Investigation",
+        "away_score": 152.38,
+        "winner": "Federal Burrow of Investigation"
+      },
+      {
+        "week": 16,
+        "home_team": "Only i can say The N word",
+        "home_score": 135.26,
+        "away_team": "Federal Burrow of Investigation",
+        "away_score": 146.32,
+        "winner": "Federal Burrow of Investigation"
+      },
+      {
+        "week": 17,
+        "home_team": "Only i can say The N word",
+        "home_score": 109.56,
+        "away_team": "Federal Burrow of Investigation",
+        "away_score": 157.64,
+        "winner": "Federal Burrow of Investigation"
+      }
+    ],
+    "series_winner": "Federal Burrow of Investigation",
+    "series_loser": "Only i can say The N word",
+    "series_score": "3-0"
   }
 }

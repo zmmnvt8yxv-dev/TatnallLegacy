@@ -3,6 +3,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import StatCard from "../components/StatCard.jsx";
+import PlayoffBracket from "../components/PlayoffBracket.jsx";
+import KiltBowlBracket from "../components/KiltBowlBracket.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import {
     loadSeasonSummary,
@@ -122,25 +124,34 @@ export default function SeasonPage() {
         return () => { active = false; };
     }, [season]);
 
-    // Derived Data
+    // Derived Data - now using pre-computed fields from backend
     const champion = useMemo(() => {
-        if (!summary?.standings) return null;
-        // Simple heuristic: The winner of the league is usually top of the final standings list 
-        // IF the standings are finalized. However, raw standings are Regular Season usually.
-        // For many fantasy exports, 'rank' indicates final placement.
-        const sorted = [...summary.standings].sort((a, b) => (a.rank || 99) - (b.rank || 99));
-        return sorted[0]; // Rank 1
+        // Use pre-computed champion from backend
+        if (summary?.champion) return summary.champion;
+        // Fallback: find team with final_rank === 1
+        const teams = summary?.teams || [];
+        return teams.find(t => t.final_rank === 1) || null;
     }, [summary]);
 
     const runnerUp = useMemo(() => {
-        if (!summary?.standings) return null;
-        const sorted = [...summary.standings].sort((a, b) => (a.rank || 99) - (b.rank || 99));
-        return sorted.length > 1 ? sorted[1] : null;
+        // Use pre-computed runnerUp from backend
+        if (summary?.runnerUp) return summary.runnerUp;
+        // Fallback: find team with final_rank === 2
+        const teams = summary?.teams || [];
+        return teams.find(t => t.final_rank === 2) || null;
+    }, [summary]);
+
+    const kiltBowlLoser = useMemo(() => {
+        // Use pre-computed kiltBowlLoser from backend
+        if (summary?.kiltBowlLoser) return summary.kiltBowlLoser;
+        // Fallback: find team with final_rank === 8
+        const teams = summary?.teams || [];
+        return teams.find(t => t.final_rank === 8) || null;
     }, [summary]);
 
     const scoringChamp = useMemo(() => {
-        if (!summary?.standings) return null;
-        return [...summary.standings].sort((a, b) => b.points_for - a.points_for)[0];
+        if (!summary?.teams) return null;
+        return [...summary.teams].sort((a, b) => b.points_for - a.points_for)[0];
     }, [summary]);
 
     const mvp = useMemo(() => getMvp(playerStats), [playerStats]);
@@ -188,14 +199,25 @@ export default function SeasonPage() {
                         <div className="stat-card accent">
                             <div className="stat-label">League Champion</div>
                             <div className="stat-value">{champion ? ownerLabel(champion) : "—"}</div>
-                            <div className="stat-subtext">
-                                {champion ? `${champion.wins}-${champion.losses} Record` : "No data"}
+                            <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
+                                {champion ? (champion.team || champion.team_name) : "No data"}
                             </div>
                         </div>
 
                         <div className="stat-card">
                             <div className="stat-label">Runner Up</div>
                             <div className="stat-value">{runnerUp ? ownerLabel(runnerUp) : "—"}</div>
+                            <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
+                                {runnerUp ? (runnerUp.team || runnerUp.team_name) : "—"}
+                            </div>
+                        </div>
+
+                        <div className="stat-card">
+                            <div className="stat-label">Kilt Bowl Loser</div>
+                            <div className="stat-value">{kiltBowlLoser ? ownerLabel(kiltBowlLoser) : "—"}</div>
+                            <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
+                                {kiltBowlLoser ? kiltBowlLoser.team : "—"}
+                            </div>
                         </div>
 
                         <div className="stat-card">
@@ -283,6 +305,16 @@ export default function SeasonPage() {
                             </div>
                         </div>
                     </div>
+
+                    {/* Playoff Bracket */}
+                    <PlayoffBracket
+                        bracket={summary?.playoffBracket}
+                        champion={champion}
+                        runnerUp={runnerUp}
+                    />
+
+                    {/* Kilt Bowl */}
+                    <KiltBowlBracket kiltBowl={summary?.kiltBowl} />
                 </div>
             )}
         </>

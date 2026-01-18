@@ -1,0 +1,123 @@
+{
+    "_description": "Authoritative league history data from ESPN. This is the source of truth for champions, runner-ups, and playoff placements.",
+    "_source": "ESPN League History page - manually verified",
+    "_playoff_weeks": {
+        "note": "Different eras have different playoff week ranges",
+        "2015-2020": "Weeks 14-16 (regular season: 1-13)",
+        "2021-present": "Weeks 15-17 (regular season: 1-14)"
+    },
+    "seasons": {
+        "2024": {
+            "champion": "Team Malley",
+            "second_place": "King of December 💍💍💍",
+            "third_place": "MaHomelander",
+            "playoff_weeks": [
+                15,
+                16,
+                17
+            ],
+            "regular_season_weeks": 14
+        },
+        "2023": {
+            "champion": "Sniper Gang - 1800 Block",
+            "second_place": "Emergency Room",
+            "third_place": "Insane in the Achane",
+            "playoff_weeks": [
+                15,
+                16,
+                17
+            ],
+            "regular_season_weeks": 14
+        },
+        "2022": {
+            "champion": "King of January",
+            "champion_owner": "Conner Malley",
+            "second_place": "King of December",
+            "third_place": "Emergency Room",
+            "playoff_weeks": [
+                15,
+                16,
+                17
+            ],
+            "regular_season_weeks": 14,
+            "note": "Champion ruled despite lower final score due to league ruling"
+        },
+        "2021": {
+            "champion": "Team Downs",
+            "second_place": "Team Malley",
+            "third_place": "What tf happene to my team",
+            "playoff_weeks": [
+                15,
+                16,
+                17
+            ],
+            "regular_season_weeks": 14
+        },
+        "2020": {
+            "champion": "The King",
+            "second_place": "Team Malley",
+            "third_place": "Team Downs",
+            "playoff_weeks": [
+                14,
+                15,
+                16
+            ],
+            "regular_season_weeks": 13
+        },
+        "2019": {
+            "champion": "Dear Lord Please",
+            "second_place": "Team Blow me",
+            "third_place": "Team Malley",
+            "playoff_weeks": [
+                14,
+                15,
+                16
+            ],
+            "regular_season_weeks": 13
+        },
+        "2018": {
+            "champion": "The Champ",
+            "second_place": "Big Dick Bandito",
+            "third_place": "Hello All My Peasants",
+            "playoff_weeks": [
+                14,
+                15,
+                16
+            ],
+            "regular_season_weeks": 13
+        },
+        "2017": {
+            "champion": "The Champ",
+            "second_place": "Hello All My Peasants",
+            "third_place": "Abby Klassman",
+            "playoff_weeks": [
+                14,
+                15,
+                16
+            ],
+            "regular_season_weeks": 13
+        },
+        "2016": {
+            "champion": "Hello all my Peasants",
+            "second_place": "Team Saad",
+            "third_place": "Jalen is Stupid",
+            "playoff_weeks": [
+                14,
+                15,
+                16
+            ],
+            "regular_season_weeks": 13
+        },
+        "2015": {
+            "champion": "Team Downs",
+            "second_place": "I am God",
+            "third_place": "Team Hardin",
+            "playoff_weeks": [
+                14,
+                15,
+                16
+            ],
+            "regular_season_weeks": 13
+        }
+    }
+}

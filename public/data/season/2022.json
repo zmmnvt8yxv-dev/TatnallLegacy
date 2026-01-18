@@ -585,7 +585,8 @@
       "losses": 12,
       "ties": 0,
       "points_for": 373.76000000000005,
-      "points_against": 818.8199999999998
+      "points_against": 818.8199999999998,
+      "rank": 1
     }
   ],
   "playerSeasonTotals": [
@@ -663,5 +664,23 @@
   "totals": {
     "matchups": 73,
     "lineups": 144
+  },
+  "champion": {
+    "team": "King of January",
+    "owner": "connerandfinn",
+    "final_rank": 1,
+    "source": "espn_verified"
+  },
+  "runnerUp": {
+    "team": "King of December",
+    "owner": "King of December",
+    "final_rank": 2,
+    "source": "espn_verified"
+  },
+  "thirdPlace": {
+    "team": "Emergency Room",
+    "owner": "Jefe6700",
+    "final_rank": 3,
+    "source": "espn_verified"
   }
 }

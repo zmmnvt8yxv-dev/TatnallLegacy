@@ -89,7 +89,8 @@
       "losses": 5,
       "ties": 0,
       "points_for": 2321.0,
-      "points_against": 1984.0
+      "points_against": 1984.0,
+      "rank": 1
     },
     {
       "team": "Team Saad",
@@ -97,7 +98,8 @@
       "losses": 5,
       "ties": 0,
       "points_for": 2225.0,
-      "points_against": 2051.0
+      "points_against": 2051.0,
+      "rank": 2
     },
     {
       "team": "Jalen is  Stupid",
@@ -105,7 +107,8 @@
       "losses": 7,
       "ties": 0,
       "points_for": 2324.0,
-      "points_against": 2105.0
+      "points_against": 2105.0,
+      "rank": 3
     },
     {
       "team": "Team del Rosario",
@@ -113,7 +116,8 @@
       "losses": 8,
       "ties": 1,
       "points_for": 2271.0,
-      "points_against": 2234.0
+      "points_against": 2234.0,
+      "rank": 5
     },
     {
       "team": "Gimme your Ring",
@@ -121,7 +125,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2208.0,
-      "points_against": 2403.0
+      "points_against": 2403.0,
+      "rank": 4
     },
     {
       "team": "Fantastic Seventh",
@@ -129,7 +134,8 @@
       "losses": 9,
       "ties": 0,
       "points_for": 2024.0,
-      "points_against": 2144.0
+      "points_against": 2144.0,
+      "rank": 7
     },
     {
       "team": "Team Hardin",
@@ -137,7 +143,8 @@
       "losses": 9,
       "ties": 1,
       "points_for": 2188.0,
-      "points_against": 2428.0
+      "points_against": 2428.0,
+      "rank": 6
     },
     {
       "team": "Fuck Matt Prater",
@@ -145,7 +152,8 @@
       "losses": 10,
       "ties": 0,
       "points_for": 2062.0,
-      "points_against": 2274.0
+      "points_against": 2274.0,
+      "rank": 8
     }
   ],
   "playerSeasonTotals": [],
@@ -170,5 +178,175 @@
   "totals": {
     "matchups": 65,
     "lineups": 0
+  },
+  "champion": {
+    "team": "Hello all my Peasants",
+    "owner": "John.downs123",
+    "final_rank": 1,
+    "source": "espn_verified"
+  },
+  "runnerUp": {
+    "team": "Team Saad",
+    "owner": "Edward3864",
+    "final_rank": 2,
+    "source": "espn_verified"
+  },
+  "thirdPlace": {
+    "team": "Jalen is Stupid",
+    "owner": "Jalen is Stupid",
+    "final_rank": 3,
+    "source": "espn_verified"
+  },
+  "kiltBowlLoser": {
+    "team": "Fuck Matt Prater",
+    "owner": "Jefe6700",
+    "final_rank": 8
+  },
+  "playoffBracket": [
+    {
+      "week": 14,
+      "round": "Quarterfinals",
+      "home_team": "Team del Rosario",
+      "home_owner": "jalendelrosario@comcast.net",
+      "home_score": 81.0,
+      "home_seed": 4,
+      "away_team": "Gimme your Ring",
+      "away_owner": "jdunca5228572",
+      "away_score": 111.0,
+      "away_seed": 5,
+      "winner": "Gimme your Ring"
+    },
+    {
+      "week": 14,
+      "round": "Quarterfinals",
+      "home_team": "Jalen is  Stupid",
+      "home_owner": "sdmarvin713",
+      "home_score": 192.0,
+      "home_seed": 3,
+      "away_team": "Team Hardin",
+      "away_owner": "mhardi5674696",
+      "away_score": 100.0,
+      "away_seed": 6,
+      "winner": "Jalen is  Stupid"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "Team Saad",
+      "home_owner": "Edward3864",
+      "home_score": 149.0,
+      "home_seed": 1,
+      "away_team": "Gimme your Ring",
+      "away_owner": "jdunca5228572",
+      "away_score": 130.0,
+      "away_seed": 5,
+      "winner": "Team Saad"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "Hello all my Peasants",
+      "home_owner": "John.downs123",
+      "home_score": 146.0,
+      "home_seed": 2,
+      "away_team": "Jalen is  Stupid",
+      "away_owner": "sdmarvin713",
+      "away_score": 124.0,
+      "away_seed": 3,
+      "winner": "Hello all my Peasants"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "Team del Rosario",
+      "home_owner": "jalendelrosario@comcast.net",
+      "home_score": 110.0,
+      "home_seed": 4,
+      "away_team": "Team Hardin",
+      "away_owner": "mhardi5674696",
+      "away_score": 110.0,
+      "away_seed": 6,
+      "winner": "Team Hardin"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "Team Saad",
+      "home_owner": "Edward3864",
+      "home_score": 84.0,
+      "home_seed": 1,
+      "away_team": "Hello all my Peasants",
+      "away_owner": "John.downs123",
+      "away_score": 197.0,
+      "away_seed": 2,
+      "winner": "Hello all my Peasants"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "Jalen is  Stupid",
+      "home_owner": "sdmarvin713",
+      "home_score": 156.0,
+      "home_seed": 3,
+      "away_team": "Gimme your Ring",
+      "away_owner": "jdunca5228572",
+      "away_score": 144.0,
+      "away_seed": 5,
+      "winner": "Jalen is  Stupid"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "Team del Rosario",
+      "home_owner": "jalendelrosario@comcast.net",
+      "home_score": 183.0,
+      "home_seed": 4,
+      "away_team": "Team Hardin",
+      "away_owner": "mhardi5674696",
+      "away_score": 175.0,
+      "away_seed": 6,
+      "winner": "Team del Rosario"
+    }
+  ],
+  "kiltBowl": {
+    "team1": {
+      "name": "Fantastic Seventh",
+      "owner": "connerandfinn",
+      "wins": 2
+    },
+    "team2": {
+      "name": "Fuck Matt Prater",
+      "owner": "Jefe6700",
+      "wins": 1
+    },
+    "games": [
+      {
+        "week": 14,
+        "home_team": "Fuck Matt Prater",
+        "home_score": 117.0,
+        "away_team": "Fantastic Seventh",
+        "away_score": 72.0,
+        "winner": "Fuck Matt Prater"
+      },
+      {
+        "week": 15,
+        "home_team": "Fuck Matt Prater",
+        "home_score": 101.0,
+        "away_team": "Fantastic Seventh",
+        "away_score": 144.0,
+        "winner": "Fantastic Seventh"
+      },
+      {
+        "week": 16,
+        "home_team": "Fuck Matt Prater",
+        "home_score": 128.0,
+        "away_team": "Fantastic Seventh",
+        "away_score": 132.0,
+        "winner": "Fantastic Seventh"
+      }
+    ],
+    "series_winner": "Fantastic Seventh",
+    "series_loser": "Fuck Matt Prater",
+    "series_score": "2-1"
   }
 }

@@ -89,7 +89,8 @@
       "losses": 5,
       "ties": 0,
       "points_for": 2231.0,
-      "points_against": 2068.0
+      "points_against": 2068.0,
+      "rank": 1
     },
     {
       "team": "Team Malley",
@@ -97,7 +98,8 @@
       "losses": 6,
       "ties": 0,
       "points_for": 2396.0,
-      "points_against": 2324.0
+      "points_against": 2324.0,
+      "rank": 3
     },
     {
       "team": "Golden Taint",
@@ -105,7 +107,8 @@
       "losses": 7,
       "ties": 0,
       "points_for": 2277.0,
-      "points_against": 2227.0
+      "points_against": 2227.0,
+      "rank": 5
     },
     {
       "team": "The Champ",
@@ -113,7 +116,8 @@
       "losses": 8,
       "ties": 0,
       "points_for": 2329.0,
-      "points_against": 2351.0
+      "points_against": 2351.0,
+      "rank": 6
     },
     {
       "team": "Team Blow me ",
@@ -121,7 +125,8 @@
       "losses": 8,
       "ties": 0,
       "points_for": 2301.0,
-      "points_against": 2236.0
+      "points_against": 2236.0,
+      "rank": 2
     },
     {
       "team": "Big Dick Bandito",
@@ -129,7 +134,8 @@
       "losses": 8,
       "ties": 0,
       "points_for": 2254.0,
-      "points_against": 2200.0
+      "points_against": 2200.0,
+      "rank": 7
     },
     {
       "team": "Valar Morghulis",
@@ -137,7 +143,8 @@
       "losses": 8,
       "ties": 0,
       "points_for": 2136.0,
-      "points_against": 2133.0
+      "points_against": 2133.0,
+      "rank": 4
     },
     {
       "team": "Team Downs",
@@ -145,7 +152,8 @@
       "losses": 13,
       "ties": 0,
       "points_for": 2046.0,
-      "points_against": 2431.0
+      "points_against": 2431.0,
+      "rank": 8
     }
   ],
   "playerSeasonTotals": [
@@ -1406,5 +1414,175 @@
   "totals": {
     "matchups": 65,
     "lineups": 2287
+  },
+  "champion": {
+    "team": "Dear Lord Please",
+    "owner": "Jefe6700",
+    "final_rank": 1,
+    "source": "espn_verified"
+  },
+  "runnerUp": {
+    "team": "Team Blow me",
+    "owner": "Team Blow me",
+    "final_rank": 2,
+    "source": "espn_verified"
+  },
+  "thirdPlace": {
+    "team": "Team Malley",
+    "owner": "connerandfinn",
+    "final_rank": 3,
+    "source": "espn_verified"
+  },
+  "kiltBowlLoser": {
+    "team": "Team Downs",
+    "owner": "John.downs123",
+    "final_rank": 8
+  },
+  "playoffBracket": [
+    {
+      "week": 14,
+      "round": "Quarterfinals",
+      "home_team": "Team Malley",
+      "home_owner": "connerandfinn",
+      "home_score": 212.0,
+      "home_seed": 4,
+      "away_team": "Golden Taint",
+      "away_owner": "mattmaloy99",
+      "away_score": 153.0,
+      "away_seed": 5,
+      "winner": "Team Malley"
+    },
+    {
+      "week": 14,
+      "round": "Quarterfinals",
+      "home_team": "The Champ",
+      "home_owner": "sdmarvin713",
+      "home_score": 122.0,
+      "home_seed": 3,
+      "away_team": "Team Blow me ",
+      "away_owner": "jksheehy",
+      "away_score": 153.0,
+      "away_seed": 6,
+      "winner": "Team Blow me "
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "Dear Lord Please",
+      "home_owner": "Jefe6700",
+      "home_score": 161.0,
+      "home_seed": 1,
+      "away_team": "Team Malley",
+      "away_owner": "connerandfinn",
+      "away_score": 133.0,
+      "away_seed": 4,
+      "winner": "Dear Lord Please"
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "Valar Morghulis",
+      "home_owner": "Edward3864",
+      "home_score": 149.0,
+      "home_seed": 2,
+      "away_team": "Team Blow me ",
+      "away_owner": "jksheehy",
+      "away_score": 150.0,
+      "away_seed": 6,
+      "winner": "Team Blow me "
+    },
+    {
+      "week": 15,
+      "round": "Semifinals",
+      "home_team": "The Champ",
+      "home_owner": "sdmarvin713",
+      "home_score": 157.0,
+      "home_seed": 3,
+      "away_team": "Golden Taint",
+      "away_owner": "mattmaloy99",
+      "away_score": 167.0,
+      "away_seed": 5,
+      "winner": "Golden Taint"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "Dear Lord Please",
+      "home_owner": "Jefe6700",
+      "home_score": 130.0,
+      "home_seed": 1,
+      "away_team": "Team Blow me ",
+      "away_owner": "jksheehy",
+      "away_score": 128.0,
+      "away_seed": 6,
+      "winner": "Dear Lord Please"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "Valar Morghulis",
+      "home_owner": "Edward3864",
+      "home_score": 122.0,
+      "home_seed": 2,
+      "away_team": "Team Malley",
+      "away_owner": "connerandfinn",
+      "away_score": 148.0,
+      "away_seed": 4,
+      "winner": "Team Malley"
+    },
+    {
+      "week": 16,
+      "round": "Championship",
+      "home_team": "The Champ",
+      "home_owner": "sdmarvin713",
+      "home_score": 127.0,
+      "home_seed": 3,
+      "away_team": "Golden Taint",
+      "away_owner": "mattmaloy99",
+      "away_score": 142.0,
+      "away_seed": 5,
+      "winner": "Golden Taint"
+    }
+  ],
+  "kiltBowl": {
+    "team1": {
+      "name": "Big Dick Bandito",
+      "owner": "jdunca5228572",
+      "wins": 3
+    },
+    "team2": {
+      "name": "Team Downs",
+      "owner": "John.downs123",
+      "wins": 0
+    },
+    "games": [
+      {
+        "week": 14,
+        "home_team": "Big Dick Bandito",
+        "home_score": 164.0,
+        "away_team": "Team Downs",
+        "away_score": 123.0,
+        "winner": "Big Dick Bandito"
+      },
+      {
+        "week": 15,
+        "home_team": "Big Dick Bandito",
+        "home_score": 168.0,
+        "away_team": "Team Downs",
+        "away_score": 108.0,
+        "winner": "Big Dick Bandito"
+      },
+      {
+        "week": 16,
+        "home_team": "Big Dick Bandito",
+        "home_score": 164.0,
+        "away_team": "Team Downs",
+        "away_score": 131.0,
+        "winner": "Big Dick Bandito"
+      }
+    ],
+    "series_winner": "Big Dick Bandito",
+    "series_loser": "Team Downs",
+    "series_score": "3-0"
   }
 }
