@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0.0",
-  "generatedAt": "2026-01-18T19:18:52.284309+00:00",
+  "generatedAt": "2026-01-18T22:08:19.000459+00:00",
   "seasons": [
     2015,
     2016,
@@ -32,8 +32,7 @@
       14,
       15,
       16,
-      17,
-      18
+      17
     ],
     "2018": [
       1,
@@ -106,8 +105,7 @@
       14,
       15,
       16,
-      17,
-      18
+      17
     ],
     "2024": [
       1,
@@ -126,8 +124,7 @@
       14,
       15,
       16,
-      17,
-      18
+      17
     ],
     "2025": [
       1,
@@ -146,8 +143,7 @@
       14,
       15,
       16,
-      17,
-      18
+      17
     ],
     "2020": [
       1,
@@ -165,9 +161,7 @@
       13,
       14,
       15,
-      16,
-      17,
-      18
+      16
     ],
     "2016": [
       1,
@@ -222,8 +216,7 @@
       14,
       15,
       16,
-      17,
-      18
+      17
     ]
   },
   "paths": {
@@ -249,12 +242,12 @@
   "counts": {
     "seasonSummary": {
       "2022": {
-        "matchups": 73,
-        "lineups": 144
+        "matchups": 69,
+        "lineups": 136
       },
       "2018": {
         "matchups": 65,
-        "lineups": 0
+        "lineups": 2269
       },
       "2015": {
         "matchups": 65,
@@ -262,23 +255,23 @@
       },
       "2019": {
         "matchups": 65,
-        "lineups": 0
+        "lineups": 2287
       },
       "2023": {
-        "matchups": 73,
-        "lineups": 2921
+        "matchups": 69,
+        "lineups": 2759
       },
       "2024": {
-        "matchups": 73,
-        "lineups": 2938
+        "matchups": 69,
+        "lineups": 2773
       },
       "2025": {
         "matchups": 64,
-        "lineups": 1872
+        "lineups": 1768
       },
       "2020": {
         "matchups": 65,
-        "lineups": 3000
+        "lineups": 2670
       },
       "2016": {
         "matchups": 65,
@@ -289,8 +282,8 @@
         "lineups": 0
       },
       "2021": {
-        "matchups": 73,
-        "lineups": 2905
+        "matchups": 69,
+        "lineups": 2745
       }
     },
     "weekly": {
@@ -360,10 +353,6 @@
           "lineups": 8
         },
         "17": {
-          "matchups": 4,
-          "lineups": 8
-        },
-        "18": {
           "matchups": 4,
           "lineups": 8
         }
@@ -634,10 +623,6 @@
         "17": {
           "matchups": 4,
           "lineups": 162
-        },
-        "18": {
-          "matchups": 4,
-          "lineups": 162
         }
       },
       "2024": {
@@ -706,10 +691,6 @@
           "lineups": 165
         },
         "17": {
-          "matchups": 4,
-          "lineups": 165
-        },
-        "18": {
           "matchups": 4,
           "lineups": 165
         }
@@ -782,10 +763,6 @@
         "17": {
           "matchups": 2,
           "lineups": 104
-        },
-        "18": {
-          "matchups": 0,
-          "lineups": 104
         }
       },
       "2020": {
@@ -851,14 +828,6 @@
         },
         "16": {
           "matchups": 4,
-          "lineups": 165
-        },
-        "17": {
-          "matchups": 0,
-          "lineups": 165
-        },
-        "18": {
-          "matchups": 0,
           "lineups": 165
         }
       },
@@ -1060,10 +1029,6 @@
           "lineups": 162
         },
         "17": {
-          "matchups": 4,
-          "lineups": 160
-        },
-        "18": {
           "matchups": 4,
           "lineups": 160
         }
