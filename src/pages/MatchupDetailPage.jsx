@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
-import { useDataContext } from "../data/DataContext.jsx";
-import { loadPlayerStatsFull, loadWeekData } from "../data/loader.js";
+import { useMatchupDetail } from "../hooks/useMatchupDetail.js";
+import PageTransition from "../components/PageTransition.jsx";
 import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
 import { buildNameIndex, normalizeName } from "../lib/nameUtils.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
@@ -13,34 +13,16 @@ import { positionSort } from "../utils/positions.js";
 
 export default function MatchupDetailPage() {
   const { season, week, matchupId } = useParams();
-  const { loading, error, playerIndex, teams, espnNameMap, playerSearch } = useDataContext();
-  const [weekData, setWeekData] = useState(null);
-  const [fullStatsRows, setFullStatsRows] = useState([]);
+  const { loading: contextLoading, error: contextError, playerIndex, teams, espnNameMap, playerSearch } = useDataContext();
+
+  const {
+    weekData,
+    fullStatsRows,
+    isLoading: dataLoading,
+    isError: dataError
+  } = useMatchupDetail(season, week);
+
   const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    let active = true;
-    if (!season || !week) return undefined;
-    loadWeekData(Number(season), Number(week)).then((payload) => {
-      if (active) setWeekData(payload);
-    });
-    return () => {
-      active = false;
-    };
-  }, [season, week]);
-
-  useEffect(() => {
-    let active = true;
-    if (!season) return undefined;
-    loadPlayerStatsFull(Number(season)).then((payload) => {
-      if (!active) return;
-      const rows = payload?.rows || payload || [];
-      setFullStatsRows(rows);
-    });
-    return () => {
-      active = false;
-    };
-  }, [season]);
 
   const matchup = useMemo(() => {
     return (weekData?.matchups || []).find((item) => String(item.matchup_id) === String(matchupId));
@@ -99,14 +81,14 @@ export default function MatchupDetailPage() {
       const lookup = nameKey ? fullStatsIndex.get(nameKey) || searchIndex.get(nameKey) : null;
       const merged = lookup
         ? {
-            ...row,
-            display_name: lookup.name || row.player,
-            position: lookup.position || row.position || row.pos,
-            nfl_team: lookup.team || row.nfl_team,
-            sleeper_id: lookup.sleeper_id || row.sleeper_id,
-            gsis_id: lookup.gsis_id || row.gsis_id,
-            player_id: lookup.player_id || row.player_id,
-          }
+          ...row,
+          display_name: lookup.name || row.player,
+          position: lookup.position || row.position || row.pos,
+          nfl_team: lookup.team || row.nfl_team,
+          sleeper_id: lookup.sleeper_id || row.sleeper_id,
+          gsis_id: lookup.gsis_id || row.gsis_id,
+          player_id: lookup.player_id || row.player_id,
+        }
         : row;
       const display = resolvePlayerDisplay(merged.player_id, { row: merged, playerIndex, espnNameMap });
       const canonicalId = getCanonicalPlayerId(merged.player_id || merged.gsis_id || merged.sleeper_id, {
@@ -132,40 +114,40 @@ export default function MatchupDetailPage() {
     const sortedRows = Number(season) === 2025
       ? filtered
       : [...filtered].sort((a, b) => {
-          const aStarter = a.started ? 0 : 1;
-          const bStarter = b.started ? 0 : 1;
-          if (aStarter !== bStarter) return aStarter - bStarter;
+        const aStarter = a.started ? 0 : 1;
+        const bStarter = b.started ? 0 : 1;
+        if (aStarter !== bStarter) return aStarter - bStarter;
 
-          const slotA = String(a.slot || a.lineup_position || a.lineupSlot || "").toUpperCase();
-          const slotB = String(b.slot || b.lineup_position || b.lineupSlot || "").toUpperCase();
-          const posA = String(a.position || "").toUpperCase();
-          const posB = String(b.position || "").toUpperCase();
+        const slotA = String(a.slot || a.lineup_position || a.lineupSlot || "").toUpperCase();
+        const slotB = String(b.slot || b.lineup_position || b.lineupSlot || "").toUpperCase();
+        const posA = String(a.position || "").toUpperCase();
+        const posB = String(b.position || "").toUpperCase();
 
-          const isFlexA = slotA.includes("FLEX") || slotA.includes("W/R") || slotA.includes("WR/RB") || slotA.includes("RB/WR") || slotA.includes("W/R/T");
-          const isFlexB = slotB.includes("FLEX") || slotB.includes("W/R") || slotB.includes("WR/RB") || slotB.includes("RB/WR") || slotB.includes("W/R/T");
+        const isFlexA = slotA.includes("FLEX") || slotA.includes("W/R") || slotA.includes("WR/RB") || slotA.includes("RB/WR") || slotA.includes("W/R/T");
+        const isFlexB = slotB.includes("FLEX") || slotB.includes("W/R") || slotB.includes("WR/RB") || slotB.includes("RB/WR") || slotB.includes("W/R/T");
 
-          const rank = (pos, isFlex) => {
-            if (isFlex) return 4;
-            if (pos === "QB") return 0;
-            if (pos === "RB") return 1;
-            if (pos === "WR") return 2;
-            if (pos === "TE") return 3;
-            if (pos === "FLEX") return 4;
-            if (pos === "DEF" || pos === "DST" || pos === "D/ST") return 5;
-            if (pos === "K") return 6;
-            return 7;
-          };
+        const rank = (pos, isFlex) => {
+          if (isFlex) return 4;
+          if (pos === "QB") return 0;
+          if (pos === "RB") return 1;
+          if (pos === "WR") return 2;
+          if (pos === "TE") return 3;
+          if (pos === "FLEX") return 4;
+          if (pos === "DEF" || pos === "DST" || pos === "D/ST") return 5;
+          if (pos === "K") return 6;
+          return 7;
+        };
 
-          const rA = rank(posA, isFlexA);
-          const rB = rank(posB, isFlexB);
-          if (rA !== rB) return rA - rB;
+        const rA = rank(posA, isFlexA);
+        const rB = rank(posB, isFlexB);
+        if (rA !== rB) return rA - rB;
 
-          const pA = safeNumber(a.points);
-          const pB = safeNumber(b.points);
-          if (pA !== pB) return pB - pA;
+        const pA = safeNumber(a.points);
+        const pB = safeNumber(b.points);
+        if (pA !== pB) return pB - pA;
 
-          return (a.originalIndex ?? 0) - (b.originalIndex ?? 0);
-        });
+        return (a.originalIndex ?? 0) - (b.originalIndex ?? 0);
+      });
     const totals = sortedRows.reduce(
       (acc, row) => {
         acc.points += safeNumber(row.points);
@@ -188,18 +170,20 @@ export default function MatchupDetailPage() {
     return `/players/${row.canonicalPlayerId}`;
   };
 
-  if (loading && !weekData) return <LoadingState label="Loading matchup details..." />;
-  if (error) return <ErrorState message={error} />;
+  if ((contextLoading || dataLoading) && !weekData) return <LoadingState label="Loading matchup details..." />;
+  if (contextError || dataError) return <ErrorState message={contextError || "Error loading matchup details"} />;
 
   if (!matchup) {
     return (
-      <div className="section-card">
-        <h1 className="page-title">Matchup Detail</h1>
-        <p>No matchup data available for this selection.</p>
-        <Link className="tag" to="/matchups">
-          Back to matchups →
-        </Link>
-      </div>
+      <PageTransition>
+        <div className="section-card">
+          <h1 className="page-title">Matchup Detail</h1>
+          <p>No matchup data available for this selection.</p>
+          <Link className="tag" to="/matchups">
+            Back to matchups →
+          </Link>
+        </div>
+      </PageTransition>
     );
   }
 
@@ -208,7 +192,7 @@ export default function MatchupDetailPage() {
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
 
   return (
-    <>
+    <PageTransition>
       <section>
         <h1 className="page-title">
           Week {week} Matchup: {ownerLabel(getMatchupLabel(matchup.home_team, matchup.home_roster_id), matchup.home_team)}{" "}
@@ -336,6 +320,6 @@ export default function MatchupDetailPage() {
           current exports, so this matchup is displayed with points-only totals.
         </p>
       </section>
-    </>
+    </PageTransition>
   );
 }

@@ -1,7 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import LoadingState from "../components/LoadingState.jsx";
-import { loadManifest, loadSeasonSummary, loadWeekData } from "../data/loader.js";
+import ErrorState from "../components/ErrorState.jsx";
+import { useHeadToHeadData } from "../hooks/useHeadToHeadData.js";
+import PageTransition from "../components/PageTransition.jsx";
 import { normalizeOwnerName } from "../lib/identity.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 
@@ -21,137 +23,66 @@ function getOwnerOptions(seasonData) {
 
 export default function HeadToHeadPage() {
     const [searchParams, setSearchParams] = useSearchParams();
-    const [manifest, setManifest] = useState(null);
-    const [allSeasonData, setAllSeasonData] = useState({});
-    const [matchupHistory, setMatchupHistory] = useState([]);
-    const [loading, setLoading] = useState(true);
 
     const ownerA = searchParams.get("ownerA") || "";
     const ownerB = searchParams.get("ownerB") || "";
 
-    useEffect(() => {
-        let active = true;
+    const {
+        manifest,
+        allSeasonData,
+        allWeekData,
+        isLoading: loading,
+        isError: error
+    } = useHeadToHeadData(ownerA, ownerB);
 
-        async function loadData() {
-            const m = await loadManifest();
-            if (!active) return;
-            setManifest(m);
+    // Calculate matchup history from loaded week data
+    const matchupHistory = useMemo(() => {
+        if (!ownerA || !ownerB || !allWeekData.length || !allSeasonData) return [];
 
-            const seasons = m.seasons || [];
-            const seasonPromises = seasons.map(s => loadSeasonSummary(s));
-            const results = await Promise.all(seasonPromises);
+        const history = [];
 
-            const seasonMap = {};
-            results.forEach((res, idx) => {
-                if (res) seasonMap[seasons[idx]] = res;
-            });
+        allWeekData.forEach(weekData => {
+            if (!weekData?.matchups) return;
+            const season = weekData.season;
+            const summary = allSeasonData[season];
+            if (!summary) return;
 
-            if (active) {
-                setAllSeasonData(seasonMap);
-                setLoading(false);
-            }
-        }
+            weekData.matchups.forEach(matchup => {
+                if (!matchup.rosters || matchup.rosters.length < 2) return;
 
-        loadData();
-        return () => { active = false; };
-    }, []);
+                const roster1 = matchup.rosters[0];
+                const roster2 = matchup.rosters[1];
+                if (!roster1 || !roster2) return;
 
-    // Load detailed matchup history when owners are selected
-    useEffect(() => {
-        if (!ownerA || !ownerB || !manifest) return;
+                const getOwner = (r) => {
+                    if (r.owner) return normalizeOwnerName(r.owner);
+                    const team = summary.teams?.find(t => t.roster_id === r.roster_id);
+                    if (team) return normalizeOwnerName(team.owner || team.display_name || team.team_name);
+                    return null;
+                };
 
-        let active = true;
-        setLoading(true);
+                const name1 = getOwner(roster1);
+                const name2 = getOwner(roster2);
 
-        async function findMatchups() {
-            const history = [];
-            const seasons = manifest.seasons || [];
+                if (!name1 || !name2) return;
 
-            // We need to check every week of every season
-            // Note: This could be heavy, optimized by loading only needed seasons or chunking
-            // For now, loading all weekly chunks sequentially to be safe
-
-            for (const season of seasons) {
-                // Optimization: Check if both owners participated in this season first
-                const summary = allSeasonData[season];
-                if (!summary) continue;
-
-                const ownerNames = summary.teams?.map(t =>
-                    normalizeOwnerName(t.owner || t.display_name || t.team_name)
-                ) || [];
-
-                if (!ownerNames.includes(ownerA) || !ownerNames.includes(ownerB)) {
-                    continue;
-                }
-
-                // Fetch all weeks for valid seasons
-                // Use manifest to determine weeks if available, otherwise default to 18
-                const seasonWeeks = manifest.weeksBySeason?.[season] ||
-                    Array.from({ length: 18 }, (_, i) => i + 1);
-
-                const weekPromises = seasonWeeks.map(w => loadWeekData(season, w).catch(() => null));
-                const weekResults = await Promise.all(weekPromises);
-
-                weekResults.forEach((weekData, idx) => {
-                    if (!weekData?.matchups) return;
-                    const weekNum = seasonWeeks[idx];
-
-                    weekData.matchups.forEach(matchup => {
-                        if (!matchup.rosters || matchup.rosters.length < 2) return;
-
-                        const roster1 = matchup.rosters[0];
-                        const roster2 = matchup.rosters[1];
-                        if (!roster1 || !roster2) return;
-
-                        // Resolve owners for this specific matchup
-                        // We need to map rosterID -> owner from the season summary or roster data
-                        // The matchup object often contains minimal info. 
-                        // We rely on roster_id or custom owner fields if present.
-                        // TatnallLegacy format: roster objects often have 'owner_id' or we match via roster_id to season info.
-
-                        // Helper to get owner name from roster
-                        const getOwner = (r) => {
-                            // Try direct property
-                            if (r.owner) return normalizeOwnerName(r.owner);
-
-                            // Try looking up via roster_id in season summary
-                            const team = summary.teams.find(t => t.roster_id === r.roster_id);
-                            if (team) return normalizeOwnerName(team.owner || team.display_name || team.team_name);
-
-                            return null;
-                        };
-
-                        const name1 = getOwner(roster1);
-                        const name2 = getOwner(roster2);
-
-                        if (!name1 || !name2) return;
-
-                        if ((name1 === ownerA && name2 === ownerB) || (name1 === ownerB && name2 === ownerA)) {
-                            history.push({
-                                season,
-                                week: weekNum,
-                                winner: roster1.points > roster2.points ? name1 : name2,
-                                loser: roster1.points > roster2.points ? name2 : name1,
-                                ownerA_score: name1 === ownerA ? roster1.points : roster2.points,
-                                ownerB_score: name1 === ownerB ? roster1.points : roster2.points,
-                                margin: Math.abs(roster1.points - roster2.points),
-                                isPlayoff: weekNum > 14 // Approx rule, could be refined
-                            });
-                        }
+                if ((name1 === ownerA && name2 === ownerB) || (name1 === ownerB && name2 === ownerA)) {
+                    history.push({
+                        season,
+                        week: weekData.week,
+                        winner: roster1.points > roster2.points ? name1 : name2,
+                        loser: roster1.points > roster2.points ? name2 : name1,
+                        ownerA_score: name1 === ownerA ? roster1.points : roster2.points,
+                        ownerB_score: name1 === ownerB ? roster1.points : roster2.points,
+                        margin: Math.abs(roster1.points - roster2.points),
+                        isPlayoff: weekData.week > 14
                     });
-                });
-            }
+                }
+            });
+        });
 
-            if (active) {
-                setMatchupHistory(history.sort((a, b) => b.season - a.season || b.week - a.week));
-                setLoading(false);
-            }
-        }
-
-        findMatchups();
-
-        return () => { active = false; };
-    }, [ownerA, ownerB, manifest, allSeasonData]);
+        return history.sort((a, b) => b.season - a.season || b.week - a.week);
+    }, [allWeekData, allSeasonData, ownerA, ownerB]);
 
     const owners = useMemo(() => getOwnerOptions(allSeasonData), [allSeasonData]);
 
@@ -219,11 +150,15 @@ export default function HeadToHeadPage() {
     };
 
     if (loading && !manifest) {
-        return <LoadingState message="Loading head-to-head data..." />;
+        return <LoadingState label="Loading head-to-head data..." />;
+    }
+
+    if (error) {
+        return <ErrorState message="Failed to load head-to-head data" />;
     }
 
     return (
-        <>
+        <PageTransition>
             <h1 className="page-title">⚔️ Head-to-Head Comparison</h1>
             <p className="page-subtitle">Compare history between any two league members</p>
 
@@ -349,6 +284,6 @@ export default function HeadToHeadPage() {
                     </div>
                 </div>
             )}
-        </>
+        </PageTransition>
     );
 }

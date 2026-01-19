@@ -4,18 +4,8 @@ import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import {
-  loadBoomBustMetrics,
-  loadPlayerStatsCareer,
-  loadPlayerStatsFull,
-  loadPlayerStatsSeason,
-  loadPlayerStatsWeekly,
-  loadCareerMetrics,
-  loadSeasonMetrics,
-  loadSeasonSummary,
-  loadTransactions,
-  loadWeekData,
-} from "../data/loader.js";
+import { usePlayerDetails } from "../hooks/usePlayerDetails.js";
+import PageTransition from "../components/PageTransition.jsx";
 import { getCanonicalPlayerId, resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName.js";
 import { normalizeName } from "../lib/nameUtils.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
@@ -46,18 +36,8 @@ export default function PlayerPage() {
   const { manifest, loading, error, playerIdLookup, playerIndex, espnNameMap } = useDataContext();
   const isDev = import.meta.env.DEV;
   const [activeTab, setActiveTab] = useState(TABS[0]);
-  const [seasonSummaries, setSeasonSummaries] = useState([]);
-  const [statsSeasonSummaries, setStatsSeasonSummaries] = useState([]);
   const [selectedSeason, setSelectedSeason] = useState("");
   const [weeklyRows, setWeeklyRows] = useState([]);
-  const [statsWeeklyRows, setStatsWeeklyRows] = useState([]);
-  const [careerWeeklyRows, setCareerWeeklyRows] = useState([]);
-  const [fullStatsRows, setFullStatsRows] = useState([]);
-  const [careerStats, setCareerStats] = useState([]);
-  const [boomBustMetrics, setBoomBustMetrics] = useState([]);
-  const [seasonMetrics, setSeasonMetrics] = useState([]);
-  const [careerMetrics, setCareerMetrics] = useState([]);
-  const [playerTransactions, setPlayerTransactions] = useState([]);
   const [search, setSearch] = useState("");
   const { favorites, togglePlayer } = useFavorites();
   const canonicalPlayerId = useMemo(
@@ -129,130 +109,41 @@ export default function PlayerPage() {
     return ids;
   }, [resolvedPlayerId, playerId, playerInfo]);
 
-  useEffect(() => {
-    let active = true;
-    if (!seasons.length) return undefined;
-    Promise.all(seasons.map((season) => loadSeasonSummary(season))).then((payloads) => {
-      if (active) setSeasonSummaries(payloads.filter(Boolean));
-    });
-    return () => {
-      active = false;
-    };
-  }, [seasons]);
+  const {
+    careerStats,
+    boomBustMetrics,
+    careerMetrics,
+    seasonSummaries,
+    statsSeasonSummaries,
+    seasonMetrics,
+    statsWeeklyRows,
+    playerTransactions,
+    fullStatsRows,
+    weekLineups,
+    isLoading: dataLoading,
+    isError: dataError
+  } = usePlayerDetails({
+    selectedSeason: Number(selectedSeason),
+    seasons
+  });
 
   useEffect(() => {
-    let active = true;
-    if (!seasons.length) return undefined;
-    Promise.all(seasons.map((season) => loadPlayerStatsSeason(season))).then((payloads) => {
-      if (active) setStatsSeasonSummaries(payloads.filter(Boolean));
-    });
-    return () => {
-      active = false;
-    };
-  }, [seasons]);
-
-  useEffect(() => {
-    let active = true;
-    loadPlayerStatsCareer().then((payload) => {
-      if (active && payload?.rows) setCareerStats(payload.rows);
-      if (active && Array.isArray(payload)) setCareerStats(payload);
-    });
-    loadBoomBustMetrics().then((payload) => {
-      if (active && payload?.rows) setBoomBustMetrics(payload.rows);
-      if (active && Array.isArray(payload)) setBoomBustMetrics(payload);
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    let active = true;
-    if (!selectedSeason) return undefined;
-    loadSeasonMetrics(selectedSeason).then((payload) => {
-      if (!active) return;
-      const rows = payload?.rows || payload || [];
-      setSeasonMetrics(rows);
-    });
-    return () => {
-      active = false;
-    };
-  }, [selectedSeason]);
-
-  useEffect(() => {
-    let active = true;
-    loadCareerMetrics().then((payload) => {
-      if (!active) return;
-      const rows = payload?.rows || payload || [];
-      setCareerMetrics(rows);
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    let active = true;
-    if (!selectedSeason) return undefined;
-    loadPlayerStatsWeekly(selectedSeason).then((payload) => {
-      if (!active) return;
-      const rows = payload?.rows || payload || [];
-      setStatsWeeklyRows(rows);
-    });
-    return () => {
-      active = false;
-    };
-  }, [selectedSeason]);
-
-  useEffect(() => {
-    let active = true;
-    if (!selectedSeason) return undefined;
-    loadTransactions(selectedSeason).then((payload) => {
-      if (!active) return;
-      setPlayerTransactions(payload?.entries || []);
-    });
-    return () => {
-      active = false;
-    };
-  }, [selectedSeason]);
-
-  useEffect(() => {
-    let active = true;
-    if (!selectedSeason) return undefined;
-    const weeks = manifest?.weeksBySeason?.[String(selectedSeason)] || [];
-    Promise.all(weeks.map((week) => loadWeekData(selectedSeason, week))).then((payloads) => {
-      if (!active) return;
-      const rows = [];
-      for (const payload of payloads) {
-        if (!payload?.lineups) continue;
-        for (const row of payload.lineups) {
-          const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) =>
-            String(value || ""),
-          );
-          if (ids.some((value) => targetIds.has(value))) {
-            rows.push({ ...row, season: selectedSeason, week: payload.week });
-          }
+    if (!weekLineups.length || !targetIds.size) return;
+    const rows = [];
+    for (const payload of weekLineups) {
+      if (!payload?.lineups) continue;
+      for (const row of payload.lineups) {
+        const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) =>
+          String(value || ""),
+        );
+        if (ids.some((value) => targetIds.has(value))) {
+          rows.push({ ...row, season: selectedSeason, week: payload.week });
         }
       }
-      setWeeklyRows(rows.sort((a, b) => a.week - b.week));
-    });
-    return () => {
-      active = false;
-    };
-  }, [selectedSeason, targetIds, manifest]);
+    }
+    setWeeklyRows(rows.sort((a, b) => a.week - b.week));
+  }, [weekLineups, targetIds, selectedSeason]);
 
-  useEffect(() => {
-    let active = true;
-    if (!selectedSeason) return undefined;
-    loadPlayerStatsFull(selectedSeason).then((payload) => {
-      if (!active) return;
-      const rows = payload?.rows || payload || [];
-      setFullStatsRows(rows);
-    });
-    return () => {
-      active = false;
-    };
-  }, [selectedSeason]);
 
   const targetNames = useMemo(() => {
     const espnName = espnNameMap?.[String(resolvedPlayerId)];
@@ -466,13 +357,6 @@ export default function PlayerPage() {
       const seasonValue = Number(summary?.season);
       if (Number.isFinite(seasonValue)) seen.add(seasonValue);
     }
-    if (!seen.size && careerWeeklyRows.length) {
-      for (const row of careerWeeklyRows) {
-        if (!matchesPlayer(row)) continue;
-        const seasonValue = Number(row?.season);
-        if (Number.isFinite(seasonValue)) seen.add(seasonValue);
-      }
-    }
     if (!seen.size && statsWeeklyRows.length) {
       for (const row of statsWeeklyRows) {
         if (!matchesPlayer(row)) continue;
@@ -670,14 +554,6 @@ export default function PlayerPage() {
         addTeam(row.team_abbrev);
         addTeam(row.club);
       }
-    }
-    for (const row of careerWeeklyRows) {
-      if (!matchesPlayer(row)) continue;
-      addTeam(row.team);
-      addTeam(row.nfl_team);
-      addTeam(row.team_abbr);
-      addTeam(row.team_abbrev);
-      addTeam(row.club);
     }
     for (const row of weeklyDisplayRows) {
       addTeam(row.nflTeam);
@@ -924,12 +800,12 @@ export default function PlayerPage() {
     </div>
   );
 
-  if (loading && !seasonSummaries.length && !statsSeasonSummaries.length)
+  if ((loading || dataLoading) && !seasonSummaries.length && !statsSeasonSummaries.length)
     return <LoadingState label="Loading player profile..." />;
-  if (error) return <ErrorState message={error} />;
+  if (error || dataError) return <ErrorState message={error || "Error loading player data"} />;
 
   return (
-    <>
+    <PageTransition>
       <section>
         <div className="flex-row">
           {playerDisplay?.headshotUrl ? (
@@ -1082,25 +958,25 @@ export default function PlayerPage() {
                 <thead>
                   <tr>
                     <th>Season</th>
-                  <th>Games</th>
-                  <th>Avail</th>
-                  <th>Total Points</th>
-                  <th>Pos Rank</th>
-                  <th>WAR</th>
-                  <th>Delta</th>
+                    <th>Games</th>
+                    <th>Avail</th>
+                    <th>Total Points</th>
+                    <th>Pos Rank</th>
+                    <th>WAR</th>
+                    <th>Delta</th>
                   </tr>
                 </thead>
                 <tbody>
                   {seasonStats.map((row) => (
                     <tr key={row.season}>
-                    <td>{row.season}</td>
-                    <td>{row.games}</td>
-                    <td>
-                      {row.gamesPossible
-                        ? `${row.availabilityFlag === "limited" ? "Limited" : "Full"} (${row.games}/${row.gamesPossible})`
-                        : "—"}
-                    </td>
-                    <td>{formatPoints(row.points)}</td>
+                      <td>{row.season}</td>
+                      <td>{row.games}</td>
+                      <td>
+                        {row.gamesPossible
+                          ? `${row.availabilityFlag === "limited" ? "Limited" : "Full"} (${row.games}/${row.gamesPossible})`
+                          : "—"}
+                      </td>
+                      <td>{formatPoints(row.points)}</td>
                       <td>{row.position && row.positionRank ? `${row.position}${row.positionRank}` : "—"}</td>
                       <td>{formatPoints(row.war)}</td>
                       <td>{formatPoints(row.delta)}</td>
@@ -1323,6 +1199,6 @@ export default function PlayerPage() {
       )}
 
       {warDefinitions}
-    </>
+    </PageTransition>
   );
 }

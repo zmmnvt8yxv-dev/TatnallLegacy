@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
-import { useDataContext } from "../data/DataContext.jsx";
-import { loadManifest, loadSeasonSummary } from "../data/loader.js";
+import { useTeamsList } from "../hooks/useTeamsList.js";
+import PageTransition from "../components/PageTransition.jsx";
 import { normalizeOwnerName } from "../lib/identity.js";
 import { formatPoints } from "../utils/format.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
@@ -15,50 +15,29 @@ function slugifyOwner(name) {
 }
 
 export default function TeamsPage() {
-    const [manifest, setManifest] = useState(null);
-    const [seasonData, setSeasonData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
 
     const season = searchParams.get("season")
         ? Number(searchParams.get("season"))
         : null;
 
+    const {
+        manifest,
+        seasonData,
+        isLoading: loading,
+        isError: error
+    } = useTeamsList(season);
+
     useEffect(() => {
-        let active = true;
-        setLoading(true);
-        setError(null);
-
-        loadManifest()
-            .then((m) => {
-                if (!active) return;
-                setManifest(m);
-                const seasons = m?.seasons || [];
-                const stored = readStorage(PREF_KEY);
-                const targetSeason =
-                    season || (stored && seasons.includes(Number(stored)) ? Number(stored) : seasons[0]);
-                if (!season && targetSeason) {
-                    setSearchParams({ season: targetSeason }, { replace: true });
-                }
-                return targetSeason ? loadSeasonSummary(targetSeason) : null;
-            })
-            .then((data) => {
-                if (!active) return;
-                setSeasonData(data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                if (!active) return;
-                console.error("TeamsPage load error:", err);
-                setError(err);
-                setLoading(false);
-            });
-
-        return () => {
-            active = false;
-        };
-    }, [season, searchParams, setSearchParams]);
+        if (!manifest) return;
+        const seasons = manifest?.seasons || [];
+        const stored = readStorage(PREF_KEY);
+        const targetSeason =
+            season || (stored && seasons.includes(Number(stored)) ? Number(stored) : seasons[0]);
+        if (!season && targetSeason) {
+            setSearchParams({ season: targetSeason }, { replace: true });
+        }
+    }, [season, manifest, setSearchParams]);
 
     const handleSeasonChange = (value) => {
         const newSeason = Number(value);
@@ -79,7 +58,7 @@ export default function TeamsPage() {
     }, [seasonData]);
 
     if (loading) {
-        return <LoadingState message="Loading teams..." />;
+        return <LoadingState label="Loading teams..." />;
     }
 
     if (error) {
@@ -87,7 +66,7 @@ export default function TeamsPage() {
     }
 
     return (
-        <>
+        <PageTransition>
             <h1 className="page-title">Fantasy Teams</h1>
             <p className="page-subtitle">
                 Browse all fantasy teams across {seasons.length} seasons
@@ -165,6 +144,6 @@ export default function TeamsPage() {
                     ))}
                 </div>
             </div>
-        </>
+        </PageTransition>
     );
 }

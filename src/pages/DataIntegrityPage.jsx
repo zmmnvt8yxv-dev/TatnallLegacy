@@ -1,45 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import LoadingState from "../components/LoadingState.jsx";
-import { safeUrl } from "../lib/url.js";
+import { useDataIntegrity } from "../hooks/useDataIntegrity.js";
+import PageTransition from "../components/PageTransition.jsx";
 
 /**
  * Data Integrity Dashboard
  * Shows the health status of all data in the system
  */
 export default function DataIntegrityPage() {
-    const [report, setReport] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        fetch(safeUrl("data/integrity_report.json"))
-            .then((res) => {
-                if (!res.ok) throw new Error("Report not found");
-                return res.json();
-            })
-            .then((data) => {
-                setReport(data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                setError(err.message);
-                setLoading(false);
-            });
-    }, []);
+    const {
+        data: report,
+        isLoading: loading,
+        isError: error
+    } = useDataIntegrity();
 
     if (loading) {
-        return <LoadingState message="Loading integrity report..." />;
+        return <LoadingState label="Loading integrity report..." />;
     }
 
     if (error) {
         return (
-            <div className="section-card">
-                <h2 className="section-title">No Report Available</h2>
-                <p style={{ color: "var(--ink-500)" }}>
-                    Run <code>python3 scripts/audit_data_integrity.py</code> to generate a data integrity report.
-                </p>
-            </div>
+            <PageTransition>
+                <div className="section-card">
+                    <h2 className="section-title">No Report Available</h2>
+                    <p style={{ color: "var(--ink-500)" }}>
+                        Run <code>python3 scripts/audit_data_integrity.py</code> to generate a data integrity report.
+                    </p>
+                </div>
+            </PageTransition>
         );
     }
 
@@ -66,7 +55,7 @@ export default function DataIntegrityPage() {
     );
 
     return (
-        <>
+        <PageTransition>
             <h1 className="page-title">📊 Data Integrity Dashboard</h1>
             <p className="page-subtitle">
                 Last updated: {new Date(report.generated_at).toLocaleString()}
@@ -227,6 +216,6 @@ export default function DataIntegrityPage() {
                     and <code>python3 scripts/audit_data_integrity.py</code> to refresh this report.
                 </p>
             </div>
-        </>
+        </PageTransition>
     );
 }

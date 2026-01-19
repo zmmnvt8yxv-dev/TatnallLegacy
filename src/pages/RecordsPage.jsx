@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
-import { loadManifest, loadSeasonSummary, loadAllTime } from "../data/loader.js";
+import { useRecords } from "../hooks/useRecords.js";
+import PageTransition from "../components/PageTransition.jsx";
 import { normalizeOwnerName } from "../lib/identity.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 
@@ -11,48 +12,13 @@ function slugifyOwner(name) {
 }
 
 export default function RecordsPage() {
-    const [manifest, setManifest] = useState(null);
-    const [allSeasonData, setAllSeasonData] = useState({});
-    const [allTimeData, setAllTimeData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        let active = true;
-        setLoading(true);
-        setError(null);
-
-        Promise.all([loadManifest(), loadAllTime()])
-            .then(async ([m, allTime]) => {
-                if (!active) return;
-                setManifest(m);
-                setAllTimeData(allTime);
-
-                const seasons = m?.seasons || [];
-                const seasonPromises = seasons.map((s) => loadSeasonSummary(s).catch(() => null));
-                const seasonResults = await Promise.all(seasonPromises);
-
-                if (!active) return;
-
-                const seasonMap = {};
-                seasons.forEach((s, idx) => {
-                    if (seasonResults[idx]) seasonMap[s] = seasonResults[idx];
-                });
-
-                setAllSeasonData(seasonMap);
-                setLoading(false);
-            })
-            .catch((err) => {
-                if (!active) return;
-                console.error("RecordsPage load error:", err);
-                setError(err);
-                setLoading(false);
-            });
-
-        return () => {
-            active = false;
-        };
-    }, []);
+    const {
+        manifest,
+        allSeasonData,
+        allTimeData,
+        isLoading: loading,
+        isError: error
+    } = useRecords();
 
     // Calculate all-time records
     const records = useMemo(() => {
@@ -158,7 +124,7 @@ export default function RecordsPage() {
     }, [records.allOwners]);
 
     if (loading) {
-        return <LoadingState message="Compiling league records..." />;
+        return <LoadingState label="Compiling league records..." />;
     }
 
     if (error) {
@@ -166,7 +132,7 @@ export default function RecordsPage() {
     }
 
     return (
-        <>
+        <PageTransition>
             <h1 className="page-title">🏆 League Records</h1>
             <p className="page-subtitle">
                 All-time achievements and records across {manifest?.seasons?.length || 0} seasons
@@ -316,6 +282,6 @@ export default function RecordsPage() {
                     </div>
                 </div>
             )}
-        </>
+        </PageTransition>
     );
 }

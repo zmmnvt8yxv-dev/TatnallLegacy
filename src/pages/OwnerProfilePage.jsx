@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
-import { loadManifest, loadSeasonSummary, loadTransactions, loadAllTime } from "../data/loader.js";
+import { useOwnerProfile } from "../hooks/useOwnerProfile.js";
+import PageTransition from "../components/PageTransition.jsx";
 import { normalizeOwnerName, OWNER_ALIASES } from "../lib/identity.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 
@@ -27,61 +28,16 @@ export default function OwnerProfilePage() {
     const [searchParams] = useSearchParams();
     const fromSeason = searchParams.get("from");
 
-    const [manifest, setManifest] = useState(null);
-    const [allSeasonData, setAllSeasonData] = useState({});
-    const [allTransactions, setAllTransactions] = useState({});
-    const [allTimeData, setAllTimeData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
     const ownerName = useMemo(() => slugToName(ownerId), [ownerId]);
 
-    useEffect(() => {
-        let active = true;
-        setLoading(true);
-        setError(null);
-
-        Promise.all([loadManifest(), loadAllTime()])
-            .then(async ([m, allTime]) => {
-                if (!active) return;
-                setManifest(m);
-                setAllTimeData(allTime);
-
-                const seasons = m?.seasons || [];
-
-                // Load all seasons and transactions in parallel
-                const seasonPromises = seasons.map((s) => loadSeasonSummary(s).catch(() => null));
-                const txPromises = seasons.map((s) => loadTransactions(s).catch(() => null));
-
-                const [seasonResults, txResults] = await Promise.all([
-                    Promise.all(seasonPromises),
-                    Promise.all(txPromises),
-                ]);
-
-                if (!active) return;
-
-                const seasonMap = {};
-                const txMap = {};
-                seasons.forEach((s, idx) => {
-                    if (seasonResults[idx]) seasonMap[s] = seasonResults[idx];
-                    if (txResults[idx]) txMap[s] = txResults[idx];
-                });
-
-                setAllSeasonData(seasonMap);
-                setAllTransactions(txMap);
-                setLoading(false);
-            })
-            .catch((err) => {
-                if (!active) return;
-                console.error("OwnerProfilePage load error:", err);
-                setError(err);
-                setLoading(false);
-            });
-
-        return () => {
-            active = false;
-        };
-    }, []);
+    const {
+        manifest,
+        allSeasonData,
+        allTransactions,
+        allTimeData,
+        isLoading: loading,
+        isError: error
+    } = useOwnerProfile();
 
     // Calculate owner stats across all seasons
     const ownerStats = useMemo(() => {
@@ -192,7 +148,7 @@ export default function OwnerProfilePage() {
     }, [allSeasonData, ownerName]);
 
     if (loading) {
-        return <LoadingState message={`Loading ${ownerName}'s profile...`} />;
+        return <LoadingState label={`Loading ${ownerName}'s profile...`} />;
     }
 
     if (error) {
@@ -210,7 +166,7 @@ export default function OwnerProfilePage() {
         : "0.0";
 
     return (
-        <>
+        <PageTransition>
             <h1 className="page-title">{ownerName}</h1>
             <p className="page-subtitle">
                 League member since {Math.min(...ownerStats.seasons.map((s) => s.year))}
@@ -327,6 +283,6 @@ export default function OwnerProfilePage() {
                     </Link>
                 )}
             </div>
-        </>
+        </PageTransition>
     );
 }
