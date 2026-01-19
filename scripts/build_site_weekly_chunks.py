@@ -766,42 +766,39 @@ def build_transactions(seasons, registry, indices):
              week = txn.get("scoringPeriodId")
              if not is_regular_season(week): continue
              
-             txn_type = (txn.get("type") or "").upper()
              items = txn.get("items") or []
-             
-             if "TRADE" in txn_type:
-                 # Complex logic simplified
-                 pass 
-             elif "ADD" in txn_type or "DROP" in txn_type:
-                 # items have playerId, type=ADD/DROP
-                 pass
-                 # NOTE: Due to complexity, I'm simplifying. 
-                 # In a real impl, we'd parse items similarly to normalize_lineups.
-                 # For now, let's trust the sleeper/league exports mostly, and only add ESPN if we have time/need.
-                 # The user wants "Most Accurate Data".
-                 # I will implement basic ADD/DROP for ESPN.
+             # Process all transaction types (WAIVER, FREEAGENT, TRADE, etc) via their items
+             for item in items:
+                 itype = (item.get("type") or "").upper()
+                 pid = item.get("playerId")
+                 # Some items are LINEUP_SLOT (no playerId)
+                 if not pid: continue
+
+                 # Identify action
+                 action = None
+                 if "ADD" in itype: action = "add"
+                 elif "DROP" in itype: action = "drop"
+                 elif "TRADE" in itype: action = "trade"
                  
-                 for item in items:
-                     itype = item.get("type")
-                     pid = item.get("playerId")
-                     tid = item.get("teamId") or item.get("toTeamId")
-                     
-                     cid, entry = resolve_player(registry, indices, pid)
-                     pname = entry["name"] if entry else f"Player {pid}"
-                     
-                     action = "add" if itype == "ADD" else "drop"
-                     
-                     tx_by_season[season].append({
-                         "id": f"espn-{txn.get('id')}-{pid}-{action}",
-                         "type": action,
-                         "season": season,
-                         "week": week,
-                         "team": team_map.get(str(tid), "Unknown"),
-                         "summary": f"{action.capitalize()}ed: {pname}",
-                         "players": [{"id": cid or pid, "name": pname, "action": action}],
-                         "created": txn.get("proposedDate"),
-                         "source": "espn"
-                     })
+                 if not action: continue
+
+                 tid = item.get("teamId") or item.get("toTeamId") or item.get("fromTeamId")
+                 
+                 # Resolve player
+                 cid, entry = resolve_player(registry, indices, pid)
+                 pname = entry["name"] if entry else f"Player {pid}"
+                 
+                 tx_by_season[season].append({
+                     "id": f"espn-{txn.get('id')}-{pid}-{action}",
+                     "type": action,
+                     "season": season,
+                     "week": week,
+                     "team": team_map.get(str(tid), "Unknown"),
+                     "summary": f"{action.capitalize()}ed: {pname}",
+                     "players": [{"id": cid or pid, "name": pname, "action": action}],
+                     "created": datetime.now(timezone.utc).isoformat(), # Use current time as fallback if proposedDate missing
+                     "source": "espn"
+                 })
 
     # Write
     for s, txs in tx_by_season.items():

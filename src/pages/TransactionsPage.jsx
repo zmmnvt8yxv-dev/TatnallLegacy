@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import PageTransition from "../components/PageTransition.jsx";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
@@ -313,7 +314,7 @@ export default function TransactionsPage() {
       .reduce((prev, curr) => (prev === null ? [curr] : [prev, ", ", curr]), null);
 
   return (
-    <>
+    <PageTransition>
       <section>
         <h1 className="page-title">Transactions</h1>
         <p className="page-subtitle">Track trades, adds, and drops by season and week.</p>
@@ -528,6 +529,6 @@ export default function TransactionsPage() {
           )}
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 }

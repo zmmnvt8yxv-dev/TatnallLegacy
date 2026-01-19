@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import PageTransition from "../components/PageTransition.jsx";
 import { Link, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
@@ -166,7 +167,7 @@ export default function SeasonPage() {
     if (error) return <ErrorState message={error} />;
 
     return (
-        <>
+        <PageTransition>
             <section>
                 <h1 className="page-title">Season Overview</h1>
                 <p className="page-subtitle">Champions, awards, and statistics for {season}</p>
@@ -317,6 +318,6 @@ export default function SeasonPage() {
                     <KiltBowlBracket kiltBowl={summary?.kiltBowl} />
                 </div>
             )}
-        </>
+        </PageTransition>
     );
 }

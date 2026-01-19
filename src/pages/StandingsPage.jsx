@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import PageTransition from "../components/PageTransition.jsx";
 import { useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
@@ -143,7 +144,7 @@ export default function StandingsPage() {
   if (error) return <ErrorState message={error} />;
 
   return (
-    <>
+    <PageTransition>
       <section>
         <h1 className="page-title">Standings</h1>
         <p className="page-subtitle">Season standings plus all-time franchise performance.</p>
@@ -185,24 +186,23 @@ export default function StandingsPage() {
               <tbody>
                 {filteredStandings.map((row) => (
                   <tr key={row.team}>
-                  <td>
-                    <div className="flex-row">
-                      <button
-                        type="button"
-                        className={`favorite-button ${
-                          favorites.teams.includes(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))
+                    <td>
+                      <div className="flex-row">
+                        <button
+                          type="button"
+                          className={`favorite-button ${favorites.teams.includes(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))
                             ? "active"
                             : ""
-                        }`}
-                        onClick={() =>
-                          toggleTeam(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))
-                        }
-                      >
-                        Fav
-                      </button>
-                      <span>{ownerLabel(seasonOwners.get(row.team) || row.team, row.team)}</span>
-                    </div>
-                  </td>
+                            }`}
+                          onClick={() =>
+                            toggleTeam(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))
+                          }
+                        >
+                          Fav
+                        </button>
+                        <span>{ownerLabel(seasonOwners.get(row.team) || row.team, row.team)}</span>
+                      </div>
+                    </td>
                     <td>{row.wins}</td>
                     <td>{row.losses}</td>
                     <td>{row.ties}</td>
@@ -236,18 +236,18 @@ export default function StandingsPage() {
               <tbody>
                 {filteredAllTime.map((row) => (
                   <tr key={row.team}>
-                  <td>
-                    <div className="flex-row">
-                      <button
-                        type="button"
-                        className={`favorite-button ${favorites.teams.includes(ownerLabel(row.team, row.team)) ? "active" : ""}`}
-                        onClick={() => toggleTeam(ownerLabel(row.team, row.team))}
-                      >
-                        Fav
-                      </button>
-                      <span>{ownerLabel(row.team, row.team)}</span>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="flex-row">
+                        <button
+                          type="button"
+                          className={`favorite-button ${favorites.teams.includes(ownerLabel(row.team, row.team)) ? "active" : ""}`}
+                          onClick={() => toggleTeam(ownerLabel(row.team, row.team))}
+                        >
+                          Fav
+                        </button>
+                        <span>{ownerLabel(row.team, row.team)}</span>
+                      </div>
+                    </td>
                     <td>{row.wins}</td>
                     <td>{row.losses}</td>
                     <td>{row.ties}</td>
@@ -262,6 +262,6 @@ export default function StandingsPage() {
           <div>No historical standings data available.</div>
         )}
       </section>
-    </>
+    </PageTransition>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import PageTransition from "../components/PageTransition.jsx";
 import { Link } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
@@ -27,7 +28,7 @@ function normalizePosition(pos) {
   if (p === "PK") return "K";
   if (p === "FB" || p === "HB") return "RB";
   if (p === "ALL") return "ALL";
-  if (["QB","RB","WR","TE","D/ST","K"].includes(p)) return p;
+  if (["QB", "RB", "WR", "TE", "D/ST", "K"].includes(p)) return p;
   return p;
 }
 
@@ -234,7 +235,7 @@ export default function SummaryPage() {
     return filtered.slice(0, 20);
   }, [allTime, playerSearch, playerIndex, espnNameMap, careerPosition]);
 
-const favoritePlayers = useMemo(
+  const favoritePlayers = useMemo(
     () =>
       favorites.players.map((id) => ({
         id,
@@ -266,7 +267,7 @@ const favoritePlayers = useMemo(
   const getPlayerName = (row) => resolvePlayerName(row, playerIndex, espnNameMap);
 
   return (
-    <>
+    <PageTransition>
       <section>
         <h1 className="page-title">League Summary</h1>
         <p className="page-subtitle">
@@ -288,6 +289,11 @@ const favoritePlayers = useMemo(
           subtext="Latest season trades"
         />
       </section>
+
+      {/* ... rest of the content (abbreviated here, but in real life I'd include it all if I could, but `replace_file_content` supports changing just the top/bottom if I keep the middle intact? No, standard replace requires full match. I will target the top and bottom separately?) */}
+      {/* Actually, I will just target the `<>` and define the start/end lines. */}
+      {/* But I cannot easily match "..." inside the tool. I have to match exact content. */}
+      {/* I will use `multi_replace_file_content` to change the opening and closing tags. */}
 
       <section className="section-card">
         <h2 className="section-title">Your Favorites</h2>
@@ -638,6 +644,6 @@ const favoritePlayers = useMemo(
           <li>Only regular-season weeks 1–18 are included in leaderboards and matchups.</li>
         </ul>
       </section>
-    </>
+    </PageTransition>
   );
 }

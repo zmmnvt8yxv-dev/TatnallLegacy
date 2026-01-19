@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-18T14:50:26.768495",
+  "generated_at": "2026-01-18T21:49:54.540199",
   "manifest": {
     "status": "ok",
     "seasons": [
@@ -93,10 +93,16 @@
       "issues": []
     },
     "2025": {
-      "status": "ok",
+      "status": "warning",
       "season": 2025,
       "team_count": 8,
-      "issues": []
+      "issues": [
+        "Team missing points_for: \ud83d\udc8d\ud83d\udc8d\ud83d\udc8d",
+        "Team missing points_for: Only I can say the N-word",
+        "Team missing points_for: Insane in The Achane ",
+        "Team missing points_for: Team Cancun",
+        "Team missing points_for: FantasyGPT 2.5"
+      ]
     }
   },
   "weekly_summary": {
@@ -149,7 +155,7 @@
       "total_matchups": 16,
       "total_lineups": 826,
       "issues": {
-        "missing_player_id": 826,
+        "missing_player_id": 78,
         "missing_player_name": 0,
         "unknown_player": 0
       }
@@ -158,7 +164,7 @@
       "total_matchups": 20,
       "total_lineups": 802,
       "issues": {
-        "missing_player_id": 802,
+        "missing_player_id": 68,
         "missing_player_name": 0,
         "unknown_player": 0
       }
@@ -167,7 +173,7 @@
       "total_matchups": 20,
       "total_lineups": 40,
       "issues": {
-        "missing_player_id": 40,
+        "missing_player_id": 0,
         "missing_player_name": 0,
         "unknown_player": 0
       }
@@ -176,7 +182,7 @@
       "total_matchups": 20,
       "total_lineups": 811,
       "issues": {
-        "missing_player_id": 811,
+        "missing_player_id": 70,
         "missing_player_name": 0,
         "unknown_player": 0
       }
@@ -185,7 +191,7 @@
       "total_matchups": 20,
       "total_lineups": 810,
       "issues": {
-        "missing_player_id": 810,
+        "missing_player_id": 80,
         "missing_player_name": 0,
         "unknown_player": 0
       }
@@ -217,77 +223,75 @@
       "missing_player_names": 0
     },
     "2018": {
-      "entry_count": 2664,
+      "entry_count": 3617,
       "type_distribution": {
-        "drop": 620,
-        "add": 812,
-        "trade": 1232
+        "trade": 2232,
+        "drop": 633,
+        "add": 752
       },
       "missing_player_names": 0
     },
     "2019": {
-      "entry_count": 1079,
+      "entry_count": 1205,
       "type_distribution": {
-        "add": 465,
-        "drop": 407,
-        "trade": 207
+        "trade": 390,
+        "add": 438,
+        "drop": 377
       },
       "missing_player_names": 0
     },
     "2020": {
-      "entry_count": 1237,
+      "entry_count": 1272,
       "type_distribution": {
-        "add": 558,
-        "drop": 445,
-        "trade": 234
+        "add": 480,
+        "drop": 399,
+        "trade": 393
       },
       "missing_player_names": 0
     },
     "2021": {
-      "entry_count": 848,
+      "entry_count": 834,
       "type_distribution": {
-        "add": 385,
-        "drop": 337,
-        "trade": 126
+        "trade": 197,
+        "add": 344,
+        "drop": 293
       },
       "missing_player_names": 0
     },
     "2022": {
-      "entry_count": 686,
+      "entry_count": 773,
       "type_distribution": {
-        "add": 293,
-        "drop": 249,
-        "trade": 144
+        "trade": 302,
+        "drop": 216,
+        "add": 255
       },
       "missing_player_names": 0
     },
     "2023": {
-      "entry_count": 1090,
+      "entry_count": 1283,
       "type_distribution": {
-        "add": 466,
-        "drop": 403,
-        "trade": 221
+        "add": 443,
+        "drop": 388,
+        "trade": 452
       },
       "missing_player_names": 0
     },
     "2024": {
-      "entry_count": 1246,
+      "entry_count": 1280,
       "type_distribution": {
-        "add": 542,
-        "drop": 445,
-        "trade": 259
+        "add": 488,
+        "drop": 421,
+        "trade": 371
       },
       "missing_player_names": 0
     },
     "2025": {
-      "entry_count": 1168,
+      "entry_count": 44,
       "type_distribution": {
-        "add": 592,
-        "drop": 532,
         "trade": 44
       },
-      "missing_player_names": 45
+      "missing_player_names": 0
     }
   },
-  "overall_status": "ok"
+  "overall_status": "warning"
 }

@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useDataContext } from "../data/DataContext.jsx";
 import ThemeToggle from "./ThemeToggle.jsx";
+import { CommandMenu } from "./CommandMenu.jsx";
 
 const navItems = [
   { to: "/", label: "Summary" },
@@ -61,59 +62,62 @@ export default function Layout({ children }) {
   }, [search, playerIndex]);
 
   return (
-    <div className="app-shell">
-      <header className="site-header">
-        <div className="brand">
-          <div className="brand-title">Tatnall Legacy League</div>
-          <div className="brand-subtitle">League Encyclopedia</div>
-        </div>
-        <div className="header-tools">
-          <ThemeToggle />
-          <div className="header-search">
-            <input
-              type="search"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              onFocus={() => setShowResults(true)}
-              onBlur={() => setTimeout(() => setShowResults(false), 150)}
-              placeholder="Find a player..."
-            />
-            {showResults && filteredResults.length ? (
-              <div className="search-results">
-                {filteredResults.map((row) => (
-                  <Link
-                    key={row.id}
-                    to={`/players/${row.id}?name=${encodeURIComponent(row.name)}`}
-                    className="search-result"
-                    onClick={() => {
-                      setSearch("");
-                      setShowResults(false);
-                    }}
-                  >
-                    <span>{row.name}</span>
-                    <span className="search-result-meta">
-                      {row.position} · {row.team}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            ) : null}
+    <>
+      <CommandMenu />
+      <div className="app-shell">
+        <header className="site-header">
+          <div className="brand">
+            <div className="brand-title">Tatnall Legacy League</div>
+            <div className="brand-subtitle">League Encyclopedia</div>
           </div>
-          <nav className="site-nav">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
-        </div>
-      </header>
-      <main className="site-main">{children}</main>
-    </div>
+          <div className="header-tools">
+            <ThemeToggle />
+            <div className="header-search">
+              <input
+                type="search"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                onFocus={() => setShowResults(true)}
+                onBlur={() => setTimeout(() => setShowResults(false), 150)}
+                placeholder="Find a player..."
+              />
+              {showResults && filteredResults.length ? (
+                <div className="search-results">
+                  {filteredResults.map((row) => (
+                    <Link
+                      key={row.id}
+                      to={`/players/${row.id}?name=${encodeURIComponent(row.name)}`}
+                      className="search-result"
+                      onClick={() => {
+                        setSearch("");
+                        setShowResults(false);
+                      }}
+                    >
+                      <span>{row.name}</span>
+                      <span className="search-result-meta">
+                        {row.position} · {row.team}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+            <nav className="site-nav">
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            </nav>
+          </div>
+        </header>
+        <main className="site-main">{children}</main>
+      </div>
+    </>
   );
 }
 

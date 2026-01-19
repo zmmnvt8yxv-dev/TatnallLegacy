@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import PageTransition from "../components/PageTransition.jsx";
 import { Link, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
@@ -194,14 +195,14 @@ export default function MatchupsPage() {
       const lookup = nameKey ? fullStatsIndex.get(nameKey) || searchIndex.get(nameKey) : null;
       const merged = lookup
         ? {
-            ...row,
-            display_name: lookup.name || row.player,
-            position: lookup.position || row.position || row.pos,
-            nfl_team: lookup.team || row.nfl_team,
-            sleeper_id: lookup.sleeper_id || row.sleeper_id,
-            gsis_id: lookup.gsis_id || row.gsis_id,
-            player_id: lookup.player_id || row.player_id,
-          }
+          ...row,
+          display_name: lookup.name || row.player,
+          position: lookup.position || row.position || row.pos,
+          nfl_team: lookup.team || row.nfl_team,
+          sleeper_id: lookup.sleeper_id || row.sleeper_id,
+          gsis_id: lookup.gsis_id || row.gsis_id,
+          player_id: lookup.player_id || row.player_id,
+        }
         : row;
       const display = resolvePlayerDisplay(merged.player_id, { row: merged, playerIndex, espnNameMap });
       const canonicalId = getCanonicalPlayerId(merged.player_id || merged.gsis_id || merged.sleeper_id, {
@@ -223,40 +224,40 @@ export default function MatchupsPage() {
     const sortedRows = Number(season) === 2025
       ? mapped
       : [...mapped].sort((a, b) => {
-          const aStarter = a.started ? 0 : 1;
-          const bStarter = b.started ? 0 : 1;
-          if (aStarter !== bStarter) return aStarter - bStarter;
+        const aStarter = a.started ? 0 : 1;
+        const bStarter = b.started ? 0 : 1;
+        if (aStarter !== bStarter) return aStarter - bStarter;
 
-          const slotA = String(a.slot || a.lineup_position || a.lineupSlot || "").toUpperCase();
-          const slotB = String(b.slot || b.lineup_position || b.lineupSlot || "").toUpperCase();
-          const posA = String(a.position || "").toUpperCase();
-          const posB = String(b.position || "").toUpperCase();
+        const slotA = String(a.slot || a.lineup_position || a.lineupSlot || "").toUpperCase();
+        const slotB = String(b.slot || b.lineup_position || b.lineupSlot || "").toUpperCase();
+        const posA = String(a.position || "").toUpperCase();
+        const posB = String(b.position || "").toUpperCase();
 
-          const isFlexA = slotA.includes("FLEX") || slotA.includes("W/R") || slotA.includes("WR/RB") || slotA.includes("RB/WR") || slotA.includes("W/R/T");
-          const isFlexB = slotB.includes("FLEX") || slotB.includes("W/R") || slotB.includes("WR/RB") || slotB.includes("RB/WR") || slotB.includes("W/R/T");
+        const isFlexA = slotA.includes("FLEX") || slotA.includes("W/R") || slotA.includes("WR/RB") || slotA.includes("RB/WR") || slotA.includes("W/R/T");
+        const isFlexB = slotB.includes("FLEX") || slotB.includes("W/R") || slotB.includes("WR/RB") || slotB.includes("RB/WR") || slotB.includes("W/R/T");
 
-          const rank = (pos, isFlex) => {
-            if (isFlex) return 4;
-            if (pos === "QB") return 0;
-            if (pos === "RB") return 1;
-            if (pos === "WR") return 2;
-            if (pos === "TE") return 3;
-            if (pos === "FLEX") return 4;
-            if (pos === "DEF" || pos === "DST" || pos === "D/ST") return 5;
-            if (pos === "K") return 6;
-            return 7;
-          };
+        const rank = (pos, isFlex) => {
+          if (isFlex) return 4;
+          if (pos === "QB") return 0;
+          if (pos === "RB") return 1;
+          if (pos === "WR") return 2;
+          if (pos === "TE") return 3;
+          if (pos === "FLEX") return 4;
+          if (pos === "DEF" || pos === "DST" || pos === "D/ST") return 5;
+          if (pos === "K") return 6;
+          return 7;
+        };
 
-          const rA = rank(posA, isFlexA);
-          const rB = rank(posB, isFlexB);
-          if (rA !== rB) return rA - rB;
+        const rA = rank(posA, isFlexA);
+        const rB = rank(posB, isFlexB);
+        if (rA !== rB) return rA - rB;
 
-          const pA = safeNumber(a.points);
-          const pB = safeNumber(b.points);
-          if (pA !== pB) return pB - pA;
+        const pA = safeNumber(a.points);
+        const pB = safeNumber(b.points);
+        if (pA !== pB) return pB - pA;
 
-          return (a.originalIndex ?? 0) - (b.originalIndex ?? 0);
-        });
+        return (a.originalIndex ?? 0) - (b.originalIndex ?? 0);
+      });
     const totals = sortedRows.reduce(
       (acc, row) => {
         acc.points += safeNumber(row.points);
@@ -321,7 +322,7 @@ export default function MatchupsPage() {
   if (error) return <ErrorState message={error} />;
 
   return (
-    <>
+    <PageTransition>
       <section>
         <h1 className="page-title">Matchups</h1>
         <p className="page-subtitle">Filter by season and week, then open a matchup to see roster details.</p>
@@ -354,6 +355,10 @@ export default function MatchupsPage() {
         </div>
         <div className="tag">Matchups loaded: {matchups.length || 0}</div>
       </section>
+
+      {/* ... keeping middle content ... */}
+      {/* Wait, I can't keep middle content if I replace a large block. I should just replace the top tag and the bottom tag separately or use multi-replace. */}
+      {/* I will use multi_replace to target opening and closing tags. */}
 
       {diagnostics ? (
         <section className="section-card">
@@ -407,9 +412,9 @@ export default function MatchupsPage() {
         title={
           activeMatchup
             ? `Week ${week} · ${ownerLabel(
-                getMatchupLabel(activeMatchup, "home"),
-                activeMatchup.home_team,
-              )} vs ${ownerLabel(getMatchupLabel(activeMatchup, "away"), activeMatchup.away_team)}`
+              getMatchupLabel(activeMatchup, "home"),
+              activeMatchup.home_team,
+            )} vs ${ownerLabel(getMatchupLabel(activeMatchup, "away"), activeMatchup.away_team)}`
             : "Matchup"
         }
         onClose={() => setActiveMatchup(null)}
@@ -527,6 +532,6 @@ export default function MatchupsPage() {
         )}
       </Modal>
 
-    </>
+    </PageTransition>
   );
 }
