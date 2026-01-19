@@ -1,16 +1,16 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { Card, CardHeader, CardContent } from "@/components/ui/card.jsx";
 
 export default function StatCard({ label, value, subtext }) {
   return (
-    <motion.div
-      className="stat-card"
-      whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    >
-      <div className="stat-label">{label}</div>
-      <div className="stat-value">{value}</div>
-      {subtext ? <div className="stat-subtext">{subtext}</div> : null}
-    </motion.div>
+    <Card className="shadow-soft border-ink-100">
+      <CardHeader className="pb-2">
+        <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">{label}</span>
+      </CardHeader>
+      <CardContent>
+        <div className="text-3xl font-display text-ink-900">{value}</div>
+        {subtext && <p className="text-xs text-ink-400 mt-1">{subtext}</p>}
+      </CardContent>
+    </Card>
   );
 }

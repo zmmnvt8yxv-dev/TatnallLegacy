@@ -14,6 +14,9 @@ import LocalStatAssistant from "../components/LocalStatAssistant.jsx";
 import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
+import { Button } from "@/components/ui/button.jsx";
+import { Badge } from "@/components/ui/badge.jsx";
 
 function normalizePosition(pos) {
   const p = String(pos || "").trim().toUpperCase();
@@ -201,63 +204,94 @@ export default function SummaryPage() {
         </p>
       </section>
 
-      <section className="card-grid">
-        <StatCard label="Current Season" value={latestSeason ?? "—"} subtext={statusLabel} />
-        <StatCard label="Current Champion" value={championLabel} subtext={championNote} />
-        <StatCard
-          label="Total Transactions"
-          value={transactionTotals ? transactionTotals.total : "No data"}
-          subtext="Trades + adds + drops (latest season)"
-        />
-        <StatCard
-          label="Total Trades"
-          value={transactionTotals ? transactionTotals.totalTrades : "No data"}
-          subtext="Latest season trades"
-        />
-      </section>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <Card className="shadow-soft">
+          <CardHeader className="pb-2">
+            <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Current Season</span>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-display text-accent-700">{latestSeason ?? "—"}</div>
+            <p className="text-xs text-ink-400 mt-1">{statusLabel}</p>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-soft">
+          <CardHeader className="pb-2">
+            <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Current Champion</span>
+          </CardHeader>
+          <CardContent>
+            <div className="text-xl font-display text-ink-900 truncate">{championLabel}</div>
+            <p className="text-xs text-ink-400 mt-1">{championNote}</p>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-soft">
+          <CardHeader className="pb-2">
+            <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Transactions</span>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-display text-ink-900">{transactionTotals ? transactionTotals.total : "—"}</div>
+            <p className="text-xs text-ink-400 mt-1">Trades + adds + drops</p>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-soft">
+          <CardHeader className="pb-2">
+            <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Total Trades</span>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-display text-ink-900">{transactionTotals ? transactionTotals.totalTrades : "—"}</div>
+            <p className="text-xs text-ink-400 mt-1">Latest season trades</p>
+          </CardContent>
+        </Card>
+      </div>
 
       {/* ... rest of the content (abbreviated here, but in real life I'd include it all if I could, but `replace_file_content` supports changing just the top/bottom if I keep the middle intact? No, standard replace requires full match. I will target the top and bottom separately?) */}
       {/* Actually, I will just target the `<>` and define the start/end lines. */}
       {/* But I cannot easily match "..." inside the tool. I have to match exact content. */}
       {/* I will use `multi_replace_file_content` to change the opening and closing tags. */}
 
-      <section className="section-card">
-        <h2 className="section-title">Your Favorites</h2>
-        {favoritePlayers.length || favorites.teams.length ? (
-          <>
-            {favoritePlayers.length ? (
-              <>
-                <div className="stat-label">Players</div>
-                <div className="favorite-list">
-                  {favoritePlayers.map((player) => (
-                    <Link key={player.id} to={`/players/${player.id}`} className="tag">
-                      {player.name}
-                    </Link>
-                  ))}
+      <Card className="mb-8 shadow-soft">
+        <CardHeader>
+          <CardTitle>Your Favorites</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {favoritePlayers.length || favorites.teams.length ? (
+            <div className="flex flex-col gap-4">
+              {favoritePlayers.length ? (
+                <div>
+                  <div className="text-xs font-bold text-ink-500 uppercase mb-2">Players</div>
+                  <div className="flex flex-wrap gap-2">
+                    {favoritePlayers.map((player) => (
+                      <Link key={player.id} to={`/players/${player.id}`}>
+                        <Badge variant="outline" className="hover:bg-accent-50 cursor-pointer">
+                          {player.name}
+                        </Badge>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </>
-            ) : null}
-            {favorites.teams.length ? (
-              <>
-                <div className="stat-label" style={{ marginTop: 12 }}>
-                  Teams
+              ) : null}
+              {favorites.teams.length ? (
+                <div>
+                  <div className="text-xs font-bold text-ink-500 uppercase mb-2">Teams</div>
+                  <div className="flex flex-wrap gap-2">
+                    {favorites.teams.map((team) => (
+                      <Badge key={team} variant="secondary">
+                        {ownerLabel(team, team)}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-                <div className="favorite-list">
-                  {favorites.teams.map((team) => (
-                    <span key={team} className="tag">
-                      {ownerLabel(team, team)}
-                    </span>
-                  ))}
-                </div>
-              </>
-            ) : null}
-          </>
-        ) : (
-          <div>No favorites yet. Add a player or team to see them here.</div>
-        )}
-      </section>
+              ) : null}
+            </div>
+          ) : (
+            <div className="text-sm text-ink-500">No favorites yet. Add a player or team to see them here.</div>
+          )}
+        </CardContent>
+      </Card>
 
-      <section className="card-grid">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <NavigationCard
           to="/matchups"
           title="Weekly Matchups"
@@ -273,277 +307,311 @@ export default function SummaryPage() {
           title="Standings"
           description="Season standings plus all-time franchise summaries."
         />
-      </section>
+      </div>
 
-      <section className="detail-grid">
-        <div className="section-card">
-          <h2 className="section-title">Season Highlights</h2>
-          {transactionTotals ? (
-            <div className="flex-row">
-              <div className="tag">
-                Most adds: {ownerLabel(transactionTotals.mostAdds?.team, transactionTotals.mostAdds?.team || "—")} (
-                {transactionTotals.mostAdds?.adds || 0})
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <Card className="shadow-soft">
+          <CardHeader>
+            <CardTitle>Season Highlights</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {transactionTotals ? (
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary">
+                  Most adds: {ownerLabel(transactionTotals.mostAdds?.team, transactionTotals.mostAdds?.team || "—")} (
+                  {transactionTotals.mostAdds?.adds || 0})
+                </Badge>
+                <Badge variant="secondary">
+                  Most drops: {ownerLabel(transactionTotals.mostDrops?.team, transactionTotals.mostDrops?.team || "—")} (
+                  {transactionTotals.mostDrops?.drops || 0})
+                </Badge>
+                <Badge variant="secondary">Trades logged: {transactionTotals.totalTrades}</Badge>
               </div>
-              <div className="tag">
-                Most drops: {ownerLabel(transactionTotals.mostDrops?.team, transactionTotals.mostDrops?.team || "—")} (
-                {transactionTotals.mostDrops?.drops || 0})
-              </div>
-              <div className="tag">Trades logged: {transactionTotals.totalTrades}</div>
-            </div>
-          ) : (
-            <div>No transaction data available for this season.</div>
-          )}
-        </div>
+            ) : (
+              <div className="text-sm text-ink-500">No transaction data available for this season.</div>
+            )}
+          </CardContent>
+        </Card>
+
         <DeferredSection
           onVisible={() => setLoadHistory(true)}
-          placeholder={<div className="section-card">Loading all-time records…</div>}
+          placeholder={<Card className="shadow-soft"><CardContent className="pt-6">Loading all-time records…</CardContent></Card>}
         >
-          <div className="section-card">
-            <h2 className="section-title">All-Time Records</h2>
-            <div className="flex-row">
-              <div className="tag">Weekly points leaderboard (custom points)</div>
-              <div className="tag">Career fantasy totals</div>
-            </div>
-            {allTimePending ? (
-              <div>Loading all-time data…</div>
-            ) : !allTime ? (
-              <div>No all-time data available.</div>
-            ) : (
-              <div className="flex-row">
-                <Link to="/matchups" className="tag">
-                  Explore weekly matchups →
-                </Link>
-                <Link to="/standings" className="tag">
-                  View franchise history →
-                </Link>
+          <Card className="shadow-soft">
+            <CardHeader>
+              <CardTitle>All-Time Records</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <Badge variant="outline">Weekly points leaderboard</Badge>
+                <Badge variant="outline">Career fantasy totals</Badge>
               </div>
-            )}
-          </div>
+              {allTimePending ? (
+                <div className="text-sm text-ink-500">Loading all-time data…</div>
+              ) : !allTime ? (
+                <div className="text-sm text-ink-500">No all-time data available.</div>
+              ) : (
+                <div className="flex gap-4">
+                  <Link to="/matchups" className="text-accent-600 font-bold text-sm hover:underline">
+                    Explore matchups →
+                  </Link>
+                  <Link to="/standings" className="text-accent-600 font-bold text-sm hover:underline">
+                    View franchise history →
+                  </Link>
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </DeferredSection>
-      </section>
+      </div>
 
       <DeferredSection
         onVisible={() => setLoadHistory(true)}
-        placeholder={<div className="section-card">Loading weekly leaders…</div>}
+        placeholder={<Card className="mb-8 shadow-soft"><CardContent className="pt-6">Loading weekly leaders…</CardContent></Card>}
       >
-        <section className="section-card">
-          <h2 className="section-title">Weekly 45+ Point Games (2015–2025)</h2>
-          <SearchBar value={weeklySearch} onChange={setWeeklySearch} placeholder="Search weekly leaders..." />
-          {allTimePending ? (
-            <div>Loading weekly leaders…</div>
-          ) : topWeekly.length ? (
-            <div className="table-wrap">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Player</th>
-                    <th>Season</th>
-                    <th>Week</th>
-                    <th>Team</th>
-                    <th>Points</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {topWeekly.map((row, index) => {
-                    const pid = row?.player_id;
-                    const player = pid ? playerFromSleeper(pid) : null;
-                    const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
-                    return (
-                      <tr key={`${pid || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`}>
-                        <td>
-                          {pid ? (
-                            <Link to={`/players/${pid}`} className="tag">
-                              {playerName}
-                            </Link>
-                          ) : (
-                            <span className="tag">{playerName || "Unknown"}</span>
-                          )}
-                        </td>
-                        <td>{row.season}</td>
-                        <td>{row.week}</td>
-                        <td>
-                          {(() => {
-                            const ownerByTeam = ownersBySeason.get(Number(row.season));
-                            const owner = ownerByTeam?.get(row.team);
-                            return owner ? `${row.team} - ${owner}` : row.team;
-                          })()}
-                        </td>
-                        <td>
-                          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                            <span>{formatPoints(row.points)}</span>
-                            <span
-                              style={{
-                                display: "inline-flex",
-                                alignItems: "center",
-                                padding: "2px 8px",
-                                borderRadius: 999,
-                                fontSize: 12,
-                                fontWeight: 700,
-                                lineHeight: 1.4,
-                                border: "1px solid rgba(0,0,0,0.15)",
-                                background:
-                                  row.started == null
-                                    ? "rgba(107,114,128,0.15)"
-                                    : row.started
-                                      ? "rgba(34,197,94,0.18)"
-                                      : "rgba(239,68,68,0.18)",
-                                color:
-                                  row.started == null
-                                    ? "rgba(107,114,128,1)"
-                                    : row.started
-                                      ? "rgba(21,128,61,1)"
-                                      : "rgba(185,28,28,1)",
-                              }}
-                              title={row.started == null ? "Starter status unknown" : row.started ? "Starter" : "Bench"}
-                            >
-                              {row.started == null ? "—" : row.started ? "STARTER" : "BENCH"}
-                            </span>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+        <Card className="mb-8 shadow-soft">
+          <CardHeader>
+            <CardTitle>Weekly 45+ Point Games (2015–2025)</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="mb-4">
+              <SearchBar value={weeklySearch} onChange={setWeeklySearch} placeholder="Search weekly leaders..." />
             </div>
-          ) : (
-            <div>No weekly performance data available.</div>
-          )}
-        </section>
+            {allTimePending ? (
+              <div className="text-sm text-ink-500">Loading weekly leaders…</div>
+            ) : topWeekly.length ? (
+              <div className="table-wrap">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Player</th>
+                      <th>Season</th>
+                      <th>Week</th>
+                      <th>Team</th>
+                      <th>Points</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {topWeekly.map((row, index) => {
+                      const pid = row?.player_id;
+                      const player = pid ? playerFromSleeper(pid) : null;
+                      const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
+                      return (
+                        <tr key={`${pid || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`}>
+                          <td>
+                            {pid ? (
+                              <Link to={`/players/${pid}`}>
+                                <Badge variant="outline" className="hover:bg-accent-50 font-body">
+                                  {playerName}
+                                </Badge>
+                              </Link>
+                            ) : (
+                              <span className="text-sm font-body">{playerName || "Unknown"}</span>
+                            )}
+                          </td>
+                          <td className="font-mono text-sm">{row.season}</td>
+                          <td className="font-mono text-sm">{row.week}</td>
+                          <td className="text-sm">
+                            {(() => {
+                              const ownerByTeam = ownersBySeason.get(Number(row.season));
+                              const owner = ownerByTeam?.get(row.team);
+                              return owner ? `${row.team} - ${owner}` : row.team;
+                            })()}
+                          </td>
+                          <td>
+                            <div className="flex items-center gap-3">
+                              <span className="font-bold text-accent-700">{formatPoints(row.points)}</span>
+                              {row.started != null && (
+                                <Badge
+                                  variant={row.started ? "success" : "destructive"}
+                                  className="text-[10px] px-1.5 py-0"
+                                >
+                                  {row.started ? "STARTER" : "BENCH"}
+                                </Badge>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="text-sm text-ink-500 italic pb-4">No weekly performance data available.</div>
+            )}
+          </CardContent>
+        </Card>
       </DeferredSection>
 
       <DeferredSection
         onVisible={() => setLoadHistory(true)}
-        placeholder={<div className="section-card">Loading career leaders…</div>}
+        placeholder={<Card className="mb-8 shadow-soft"><CardContent className="pt-6">Loading career leaders…</CardContent></Card>}
       >
-        <section className="section-card">
-          <h2 className="section-title">Career Fantasy Leaders</h2>
-          <div className="flex-row" style={{ alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-            <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search career leaders..." />
-            <label className="tag" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-              <span>Position</span>
-              <select value={careerPosition} onChange={(e) => setCareerPosition(e.target.value)}>
-                <option value="ALL">All</option>
-                <option value="QB">QB</option>
-                <option value="RB">RB</option>
-                <option value="WR">WR</option>
-                <option value="TE">TE</option>
-                <option value="D/ST">D/ST</option>
-                <option value="K">K</option>
-              </select>
-            </label>
-          </div>
-          {allTimePending ? (
-            <div>Loading career leaders…</div>
-          ) : careerLeaders.length ? (
-            <div className="table-wrap">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Player</th>
-                    <th>Pos</th>
-                    <th>Seasons</th>
-                    <th>Games</th>
-                    <th>Total Points</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {careerLeaders.map((row, index) => {
-                    const pid = row?.player_id;
-                    const player = pid ? playerFromSleeper(pid) : null;
-                    const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
-                    return (
-                      <tr key={pid || `career-${index}`}>
-                        <td>
-                          {pid ? (
-                            <Link to={`/players/${pid}`} className="tag">
-                              {playerName}
-                            </Link>
-                          ) : (
-                            <span className="tag">{playerName || "Unknown"}</span>
-                          )}
-                        </td>
-                        <td>{row.__pos || "—"}</td>
-                        <td>{row.seasons}</td>
-                        <td>{row.games}</td>
-                        <td>{formatPoints(row.points)}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+        <Card className="mb-8 shadow-soft">
+          <CardHeader>
+            <CardTitle>Career Fantasy Leaders</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap items-center gap-4 mb-6">
+              <div className="flex-1 min-w-[200px]">
+                <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search career leaders..." />
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-bold text-ink-500 uppercase">Position</span>
+                <select
+                  value={careerPosition}
+                  onChange={(e) => setCareerPosition(e.target.value)}
+                  className="rounded-md border border-ink-200 bg-white px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500"
+                >
+                  <option value="ALL">All</option>
+                  <option value="QB">QB</option>
+                  <option value="RB">RB</option>
+                  <option value="WR">WR</option>
+                  <option value="TE">TE</option>
+                  <option value="D/ST">D/ST</option>
+                  <option value="K">K</option>
+                </select>
+              </div>
             </div>
-          ) : (
-            <div>No career leaderboard data available.</div>
-          )}
-        </section>
+            {allTimePending ? (
+              <div className="text-sm text-ink-500">Loading career leaders…</div>
+            ) : careerLeaders.length ? (
+              <div className="table-wrap">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Player</th>
+                      <th>Pos</th>
+                      <th>Seasons</th>
+                      <th>Games</th>
+                      <th>Total Points</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {careerLeaders.map((row, index) => {
+                      const pid = row?.player_id;
+                      const player = pid ? playerFromSleeper(pid) : null;
+                      const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
+                      return (
+                        <tr key={pid || `career-${index}`}>
+                          <td>
+                            {pid ? (
+                              <Link to={`/players/${pid}`}>
+                                <Badge variant="outline" className="hover:bg-accent-50 font-body">
+                                  {playerName}
+                                </Badge>
+                              </Link>
+                            ) : (
+                              <span className="text-sm font-body">{playerName || "Unknown"}</span>
+                            )}
+                          </td>
+                          <td className="text-sm">{row.__pos || "—"}</td>
+                          <td className="font-mono text-sm">{row.seasons}</td>
+                          <td className="font-mono text-sm">{row.games}</td>
+                          <td className="font-bold text-accent-700">{formatPoints(row.points)}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="text-sm text-ink-500 italic pb-4">No career leaderboard data available.</div>
+            )}
+          </CardContent>
+        </Card>
       </DeferredSection>
 
       <DeferredSection
         onVisible={() => setLoadMetrics(true)}
-        placeholder={<div className="section-card">Loading advanced metrics…</div>}
+        placeholder={<Card className="mb-8 shadow-soft"><CardContent className="pt-6">Loading advanced metrics…</CardContent></Card>}
       >
-        <section className="section-card">
-          <h2 className="section-title">Advanced Metrics Highlights</h2>
-          {metricsPending ? (
-            <div>Loading advanced metrics…</div>
-          ) : !metricsSummary ? (
-            <div>
-              No advanced metrics available. Run <code>npm run build:data</code> to generate WAR and z-score stats.
-            </div>
-          ) : (
-            <div className="detail-grid">
-              <div className="section-card">
-                <h3 className="section-title">Top Weekly WAR</h3>
-                {metricsSummary.topWeeklyWar?.length ? (
-                  <ul>
-                    {metricsSummary.topWeeklyWar.map((row) => (
-                      <li
-                        key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
-                      >
-                        {getPlayerName(row)} — Week {row.week} {row.season} ({formatPoints(row.war_rep)})
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <div>No weekly WAR data available.</div>
-                )}
+        <Card className="mb-8 shadow-soft">
+          <CardHeader>
+            <CardTitle>Advanced Metrics Highlights</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {metricsPending ? (
+              <div className="text-sm text-ink-500">Loading advanced metrics…</div>
+            ) : !metricsSummary ? (
+              <div className="text-sm text-ink-500 italic">
+                No advanced metrics available. Run <code>npm run build:data</code> to generate WAR and z-score stats.
               </div>
-              <div className="section-card">
-                <h3 className="section-title">Best Weekly Z-Scores</h3>
-                {metricsSummary.topWeeklyZ?.length ? (
-                  <ul>
-                    {metricsSummary.topWeeklyZ.map((row) => (
-                      <li
-                        key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
-                      >
-                        {getPlayerName(row)} — Week {row.week} {row.season} ({safeNumber(row.pos_week_z).toFixed(2)})
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <div>No weekly z-score data available.</div>
-                )}
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card variant="outline" className="bg-ink-50/50">
+                  <CardHeader className="py-3">
+                    <CardTitle className="text-base">Top Weekly WAR</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pb-4">
+                    {metricsSummary.topWeeklyWar?.length ? (
+                      <ul className="text-sm space-y-2">
+                        {metricsSummary.topWeeklyWar.map((row) => (
+                          <li
+                            key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
+                            className="flex justify-between"
+                          >
+                            <span className="font-semibold text-ink-900">{getPlayerName(row)}</span>
+                            <span className="text-accent-700 font-bold">{formatPoints(row.war_rep)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className="text-xs text-ink-400">No weekly WAR data available.</div>
+                    )}
+                  </CardContent>
+                </Card>
+
+                <Card variant="outline" className="bg-ink-50/50">
+                  <CardHeader className="py-3">
+                    <CardTitle className="text-base">Best Weekly Z-Scores</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pb-4">
+                    {metricsSummary.topWeeklyZ?.length ? (
+                      <ul className="text-sm space-y-2">
+                        {metricsSummary.topWeeklyZ.map((row) => (
+                          <li
+                            key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}-${row.week}`}
+                            className="flex justify-between"
+                          >
+                            <span className="font-semibold text-ink-900">{getPlayerName(row)}</span>
+                            <span className="text-accent-700 font-bold">{safeNumber(row.pos_week_z).toFixed(2)}z</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className="text-xs text-ink-400">No weekly z-score data available.</div>
+                    )}
+                  </CardContent>
+                </Card>
+
+                <Card variant="outline" className="bg-ink-50/50">
+                  <CardHeader className="py-3">
+                    <CardTitle className="text-base">Top WAR Seasons</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pb-4">
+                    {metricsSummary.topSeasonWar?.length ? (
+                      <ul className="text-sm space-y-2">
+                        {metricsSummary.topSeasonWar.map((row) => (
+                          <li
+                            key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}`}
+                            className="flex justify-between"
+                          >
+                            <span className="font-semibold text-ink-900">{getPlayerName(row)}</span>
+                            <span className="text-accent-700 font-bold">{formatPoints(row.war_rep)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className="text-xs text-ink-400">No season WAR data available.</div>
+                    )}
+                  </CardContent>
+                </Card>
               </div>
-              <div className="section-card">
-                <h3 className="section-title">Top WAR Seasons</h3>
-                {metricsSummary.topSeasonWar?.length ? (
-                  <ul>
-                    {metricsSummary.topSeasonWar.map((row) => (
-                      <li
-                        key={`${row.player_id || row.sleeper_id || row.gsis_id || row.display_name}-${row.season}`}
-                      >
-                        {getPlayerName(row)} — {row.season} ({formatPoints(row.war_rep)})
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <div>No season WAR data available.</div>
-                )}
-              </div>
-            </div>
-          )}
-        </section>
+            )}
+          </CardContent>
+        </Card>
       </DeferredSection>
       <DeferredSection
         onVisible={() => {
@@ -555,21 +623,25 @@ export default function SummaryPage() {
         <LocalStatAssistant
           allTime={allTime}
           boomBust={boomBust}
+          metricsSummary={metricsSummary}
           playerIndex={playerIndex}
           espnNameMap={espnNameMap}
         />
       </DeferredSection>
 
-      <section className="section-card">
-        <h2 className="section-title">Data Coverage Notes</h2>
-        <ul>
-          <li>
-            Advanced metrics (z-scores, WAR, efficiency) are displayed when present in the data exports. Missing
-            files are shown as “No data available.”
-          </li>
-          <li>Only regular-season weeks 1–18 are included in leaderboards and matchups.</li>
-        </ul>
-      </section>
+      <Card className="mb-8 border-none bg-accent-50/30">
+        <CardHeader>
+          <CardTitle className="text-lg">Data Coverage Notes</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="text-sm space-y-2 list-disc list-inside text-ink-600">
+            <li>
+              Advanced metrics (z-scores, WAR, efficiency) are displayed when present in the data exports.
+            </li>
+            <li>Only regular-season weeks 1–18 are included in leaderboards and matchups.</li>
+          </ul>
+        </CardContent>
+      </Card>
     </PageTransition>
   );
 }

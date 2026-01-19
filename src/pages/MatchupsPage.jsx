@@ -13,6 +13,8 @@ import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/for
 import { normalizeOwnerName } from "../utils/owners.js";
 import { positionSort } from "../utils/positions.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
+import { Button } from "@/components/ui/button.jsx";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
 
 export default function MatchupsPage() {
   const { manifest, loading, error, playerIndex, teams, espnNameMap, playerSearch } = useDataContext();
@@ -345,15 +347,17 @@ export default function MatchupsPage() {
       {/* I will use multi_replace to target opening and closing tags. */}
 
       {diagnostics ? (
-        <section className="section-card">
-          <h2 className="section-title">Diagnostics (DEV)</h2>
-          <div className="flex-row">
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle>Diagnostics (DEV)</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-row gap-2 flex-wrap">
             <div className="tag">Lineups: {diagnostics.total}</div>
             <div className="tag">Starters loaded: {diagnostics.starters}</div>
             <div className="tag">Resolved names: {diagnostics.resolvedNames}</div>
             <div className="tag">Missing player ids: {diagnostics.missingIds}</div>
-          </div>
-        </section>
+          </CardContent>
+        </Card>
       ) : null}
 
       {filteredMatchups.length ? (
@@ -375,13 +379,15 @@ export default function MatchupsPage() {
                   <span className="pill">{awayWin ? "Winner" : homeWin ? "—" : "Tie"}</span>
                   <span>{formatPoints(matchup.away_score)}</span>
                 </div>
-                <div className="flex-row">
-                  <button type="button" className="tag" onClick={() => setActiveMatchup(matchup)}>
+                <div className="flex-row gap-2 mt-4">
+                  <Button variant="outline" size="sm" onClick={() => setActiveMatchup(matchup)}>
                     Quick view →
-                  </button>
-                  <Link to={`/matchups/${season}/${week}/${matchup.matchup_id}`} className="tag">
-                    Full matchup →
-                  </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="sm">
+                    <Link to={`/matchups/${season}/${week}/${matchup.matchup_id}`}>
+                      Full matchup →
+                    </Link>
+                  </Button>
                 </div>
               </div>
             );

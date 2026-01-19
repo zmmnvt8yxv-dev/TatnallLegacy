@@ -10,6 +10,9 @@ import { useVirtualRows } from "../utils/useVirtualRows.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
 import { Link, useSearchParams } from "react-router-dom";
 import { getCanonicalPlayerId, looksLikeId } from "../lib/playerName.js";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
+import { Button } from "@/components/ui/button.jsx";
+import { Badge } from "@/components/ui/badge.jsx";
 
 export default function TransactionsPage() {
   const { manifest, loading, error, playerIndex, espnNameMap } = useDataContext();
@@ -316,66 +319,104 @@ export default function TransactionsPage() {
         <p className="page-subtitle">Track trades, adds, and drops by season and week.</p>
       </section>
 
-      <section className="section-card filters filters--sticky">
-        <div>
-          <label>Season</label>
-          <select value={season} onChange={(event) => handleSeasonChange(event.target.value)}>
-            {seasons.map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label>Week</label>
-          <select value={week} onChange={(event) => handleWeekChange(event.target.value)}>
-            <option value="all">All weeks</option>
-            {availableWeeks.map((value) => (
-              <option key={value} value={value}>
-                Week {value}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label>Type</label>
-          <select value={typeFilter} onChange={(event) => handleTypeChange(event.target.value)}>
-            <option value="all">All types</option>
-            <option value="trade">Trade</option>
-            <option value="add">Add</option>
-            <option value="drop">Drop</option>
-          </select>
-        </div>
-        <div>
-          <label>Team</label>
-          <select value={teamFilter} onChange={(event) => handleTeamChange(event.target.value)}>
-            <option value="">All teams</option>
-            {teamOptions.map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="tag">Entries: {entries.length}</div>
-        <div className="tag">
-          Trades: {filteredCounts.trade} · Adds: {filteredCounts.add} · Drops: {filteredCounts.drop}
-        </div>
-        {teamFilter || typeFilter !== "all" || week !== "all" ? (
-          <button
-            type="button"
-            className="tag"
-            onClick={() => {
-              setTeamFilter("");
-              setTypeFilter("all");
-              setWeek("all");
-            }}
-          >
-            Clear filters
-          </button>
-        ) : null}
-      </section>
+      <Card className="mb-6 shadow-soft filters--sticky bg-white/80 backdrop-blur-sm border-ink-100">
+        <CardContent className="py-4">
+          <div className="flex flex-wrap gap-4 items-end">
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Season</label>
+              <select
+                value={season}
+                onChange={(event) => handleSeasonChange(event.target.value)}
+                className="rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[100px]"
+              >
+                {seasons.map((value) => (
+                  <option key={value} value={value}>{value}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Week</label>
+              <select
+                value={week}
+                onChange={(event) => handleWeekChange(event.target.value)}
+                className="rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[120px]"
+              >
+                <option value="all">All weeks</option>
+                {availableWeeks.map((value) => (
+                  <option key={value} value={value}>Week {value}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Type</label>
+              <select
+                value={typeFilter}
+                onChange={(event) => handleTypeChange(event.target.value)}
+                className="rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[120px]"
+              >
+                <option value="all">All types</option>
+                <option value="trade">Trade</option>
+                <option value="add">Add</option>
+                <option value="drop">Drop</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Team</label>
+              <select
+                value={teamFilter}
+                onChange={(event) => handleTeamChange(event.target.value)}
+                className="rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[150px]"
+              >
+                <option value="">All teams</option>
+                {teamOptions.map((value) => (
+                  <option key={value} value={value}>{value}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex gap-2 mb-1.5">
+              <Badge variant="outline" className="h-8 px-3 border-ink-200 whitespace-nowrap">
+                {entries.length} Entries
+              </Badge>
+              {teamFilter || typeFilter !== "all" || week !== "all" ? (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 text-xs text-ink-500 hover:text-accent-700"
+                  onClick={() => {
+                    setTeamFilter("");
+                    setTypeFilter("all");
+                    setWeek("all");
+                    updateSearchParams(season, "all", "all", "");
+                  }}
+                >
+                  Clear filters
+                </Button>
+              ) : null}
+            </div>
+          </div>
+
+          <div className="flex gap-4 mt-3 pt-3 border-t border-ink-100">
+            <div className="text-[11px] text-ink-500 flex items-center gap-3">
+              <span className="flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-500"></span>
+                Trades: <span className="font-bold text-ink-900">{filteredCounts.trade}</span>
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                Adds: <span className="font-bold text-ink-900">{filteredCounts.add}</span>
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                Drops: <span className="font-bold text-ink-900">{filteredCounts.drop}</span>
+              </span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {diagnostics ? (
         <section className="section-card">
@@ -403,128 +444,168 @@ export default function TransactionsPage() {
         </section>
       ) : null}
 
-      <section className="section-card">
-        <h2 className="section-title">Recent Transactions</h2>
-        {entries.length ? (
-          <div className="table-wrap virtual-table" ref={virtualEntries.containerRef}>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Week</th>
-                  <th>Team</th>
-                  <th>Type</th>
-                  {showAmount ? <th>Amount</th> : null}
-                  <th>Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                {virtualEntries.topPadding ? (
-                  <tr className="table-virtual-spacer" aria-hidden="true">
-                    <td colSpan={showAmount ? 5 : 4} style={{ height: virtualEntries.topPadding }} />
-                  </tr>
-                ) : null}
-                {visibleEntries.map((entry) => (
-                  <tr key={entry.id}>
-                    <td>{entry.week ?? "—"}</td>
-                    <td>
-                      <button
-                        type="button"
-                        className="tag"
-                        onClick={() => setTeamFilter(normalizeOwnerName(entry.team))}
-                      >
-                        {ownerLabel(entry.team, entry.team || "Unknown")}
-                      </button>
-                    </td>
-                    <td>{entry.type}</td>
-                    {showAmount ? <td>{formatAmount(entry)}</td> : null}
-                    <td>
-                      {entry.players?.length ? (
-                        <div>
-                          {entry.type === "trade" ? (
-                            <span>
-                              Received:{" "}
-                              {renderPlayerLinks(entry.players.filter((player) => player?.action === "received"))}
-                              {" | "}Sent:{" "}
-                              {renderPlayerLinks(entry.players.filter((player) => player?.action === "sent"))}
-                            </span>
-                          ) : (
-                            <span>
-                              {entry.type === "add" ? "Added: " : entry.type === "drop" ? "Dropped: " : "Updated: "}
-                              {renderPlayerLinks(entry.players)}
-                            </span>
-                          )}
-                        </div>
-                      ) : (
-                        <div>{entry.summary || "No details"}</div>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-                {virtualEntries.bottomPadding ? (
-                  <tr className="table-virtual-spacer" aria-hidden="true">
-                    <td colSpan={showAmount ? 5 : 4} style={{ height: virtualEntries.bottomPadding }} />
-                  </tr>
-                ) : null}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div>No transaction data available for this season.</div>
-        )}
-      </section>
-
-      <section className="detail-grid">
-        <div className="section-card">
-          <h2 className="section-title">Season Totals by Team</h2>
-          {totalsByTeam.length ? (
-            <div className="table-wrap">
+      <Card className="mb-8 shadow-soft">
+        <CardHeader>
+          <CardTitle>Recent Transactions</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {entries.length ? (
+            <div className="table-wrap virtual-table" ref={virtualEntries.containerRef}>
               <table className="table">
                 <thead>
                   <tr>
+                    <th>Week</th>
                     <th>Team</th>
-                    <th>Adds</th>
-                    <th>Drops</th>
-                    <th>Trades</th>
+                    <th>Type</th>
+                    {showAmount ? <th>Amount</th> : null}
+                    <th>Details</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {totalsByTeam.map((row) => (
-                    <tr key={row.team}>
-                      <td>{ownerLabel(row.team, row.team)}</td>
-                      <td>{row.adds}</td>
-                      <td>{row.drops}</td>
-                      <td>{row.trades}</td>
+                  {virtualEntries.topPadding ? (
+                    <tr className="table-virtual-spacer" aria-hidden="true">
+                      <td colSpan={showAmount ? 5 : 4} style={{ height: virtualEntries.topPadding }} />
+                    </tr>
+                  ) : null}
+                  {visibleEntries.map((entry) => (
+                    <tr key={entry.id}>
+                      <td className="font-mono text-sm">{entry.week ?? "—"}</td>
+                      <td>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-7 px-2 text-xs font-semibold text-accent-700 bg-accent-50/50 hover:bg-accent-100"
+                          onClick={() => handleTeamChange(normalizeOwnerName(entry.team))}
+                        >
+                          {ownerLabel(entry.team, entry.team || "Unknown")}
+                        </Button>
+                      </td>
+                      <td>
+                        <Badge
+                          className="text-[10px] uppercase font-bold"
+                          variant={
+                            entry.type === "trade" ? "secondary" : entry.type === "add" ? "success" : "destructive"
+                          }
+                        >
+                          {entry.type}
+                        </Badge>
+                      </td>
+                      {showAmount ? <td className="font-mono text-sm">{formatAmount(entry)}</td> : null}
+                      <td>
+                        {entry.players?.length ? (
+                          <div className="text-sm">
+                            {entry.type === "trade" ? (
+                              <div className="flex flex-col gap-1">
+                                <span className="text-xs text-ink-400">Received:</span>
+                                <div className="flex flex-wrap gap-x-1">
+                                  {renderPlayerLinks(entry.players.filter((player) => player?.action === "received"))}
+                                </div>
+                                <span className="text-xs text-ink-400">Sent:</span>
+                                <div className="flex flex-wrap gap-x-1">
+                                  {renderPlayerLinks(entry.players.filter((player) => player?.action === "sent"))}
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="flex flex-wrap gap-x-1">
+                                <span className="text-ink-500 italic mr-1">
+                                  {entry.type === "add" ? "Added:" : entry.type === "drop" ? "Dropped:" : "Updated:"}
+                                </span>
+                                {renderPlayerLinks(entry.players)}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="text-sm text-ink-600 italic">{entry.summary || "No details"}</div>
+                        )}
+                      </td>
                     </tr>
                   ))}
+                  {virtualEntries.bottomPadding ? (
+                    <tr className="table-virtual-spacer" aria-hidden="true">
+                      <td colSpan={showAmount ? 5 : 4} style={{ height: virtualEntries.bottomPadding }} />
+                    </tr>
+                  ) : null}
                 </tbody>
               </table>
             </div>
           ) : (
-            <div>No team totals available.</div>
+            <div className="text-sm text-ink-500 italic text-center py-12">
+              No transaction data available for this season.
+            </div>
           )}
-        </div>
-        <div className="section-card">
-          <h2 className="section-title">League Records</h2>
-          {recordHighlights ? (
-            <ul>
-              <li>
-                Most adds: {ownerLabel(recordHighlights.mostAdds.team, recordHighlights.mostAdds.team)} (
-                {recordHighlights.mostAdds.adds})
-              </li>
-              <li>
-                Most drops: {ownerLabel(recordHighlights.mostDrops.team, recordHighlights.mostDrops.team)} (
-                {recordHighlights.mostDrops.drops})
-              </li>
-              <li>
-                Most trades: {ownerLabel(recordHighlights.mostTrades.team, recordHighlights.mostTrades.team)} (
-                {recordHighlights.mostTrades.trades})
-              </li>
-            </ul>
-          ) : (
-            <div>No league transaction records available.</div>
-          )}
-        </div>
-      </section>
+        </CardContent>
+      </Card>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <Card className="shadow-soft">
+          <CardHeader>
+            <CardTitle>Season Totals by Team</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {totalsByTeam.length ? (
+              <div className="table-wrap">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Team</th>
+                      <th>Adds</th>
+                      <th>Drops</th>
+                      <th>Trades</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {totalsByTeam.map((row) => (
+                      <tr key={row.team}>
+                        <td className="font-semibold text-ink-900">{ownerLabel(row.team, row.team)}</td>
+                        <td className="font-mono text-sm">{row.adds}</td>
+                        <td className="font-mono text-sm">{row.drops}</td>
+                        <td className="font-mono text-sm text-accent-700 font-bold">{row.trades}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="text-sm text-ink-500 italic">No team totals available.</div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-soft">
+          <CardHeader>
+            <CardTitle>League Records</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {recordHighlights ? (
+              <div className="space-y-4">
+                <div className="p-3 rounded-lg bg-accent-50/50 border border-accent-100">
+                  <div className="text-[10px] font-bold text-accent-700 uppercase tracking-wider mb-1">Most Weekly Adds</div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-display text-ink-900">{ownerLabel(recordHighlights.mostAdds.team, recordHighlights.mostAdds.team)}</span>
+                    <Badge variant="accent">{recordHighlights.mostAdds.adds} adds</Badge>
+                  </div>
+                </div>
+                <div className="p-3 rounded-lg bg-ink-50/50 border border-ink-100">
+                  <div className="text-[10px] font-bold text-ink-500 uppercase tracking-wider mb-1">Most Weekly Drops</div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-display text-ink-900">{ownerLabel(recordHighlights.mostDrops.team, recordHighlights.mostDrops.team)}</span>
+                    <Badge variant="outline">{recordHighlights.mostDrops.drops} drops</Badge>
+                  </div>
+                </div>
+                <div className="p-3 rounded-lg bg-accent-50/50 border border-accent-100">
+                  <div className="text-[10px] font-bold text-accent-700 uppercase tracking-wider mb-1">Total Trades Leader</div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-display text-ink-900">{ownerLabel(recordHighlights.mostTrades.team, recordHighlights.mostTrades.team)}</span>
+                    <Badge variant="accent">{recordHighlights.mostTrades.trades} trades</Badge>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-sm text-ink-500 italic">No league transaction records available.</div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
     </PageTransition>
   );
 }

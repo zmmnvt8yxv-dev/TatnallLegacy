@@ -10,6 +10,8 @@ import { formatPoints } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { useFavorites } from "../utils/useFavorites.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
+import { Button } from "@/components/ui/button.jsx";
 
 export default function StandingsPage() {
   const { manifest, loading, error } = useDataContext();
@@ -153,100 +155,105 @@ export default function StandingsPage() {
         <div className="tag">Teams: {standings.length || 0}</div>
       </section>
 
-      <section className="section-card">
-        <h2 className="section-title">Season Standings</h2>
-        {filteredStandings.length ? (
-          <div className="table-wrap">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Team</th>
-                  <th>W</th>
-                  <th>L</th>
-                  <th>T</th>
-                  <th>PF</th>
-                  <th>PA</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredStandings.map((row) => (
-                  <tr key={row.team}>
-                    <td>
-                      <div className="flex-row">
-                        <button
-                          type="button"
-                          className={`favorite-button ${favorites.teams.includes(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))
-                            ? "active"
-                            : ""
-                            }`}
-                          onClick={() =>
-                            toggleTeam(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))
-                          }
-                        >
-                          Fav
-                        </button>
-                        <span>{ownerLabel(seasonOwners.get(row.team) || row.team, row.team)}</span>
-                      </div>
-                    </td>
-                    <td>{row.wins}</td>
-                    <td>{row.losses}</td>
-                    <td>{row.ties}</td>
-                    <td>{formatPoints(row.points_for)}</td>
-                    <td>{formatPoints(row.points_against)}</td>
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle>Season Standings</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {filteredStandings.length ? (
+            <div className="table-wrap">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>T</th>
+                    <th>PF</th>
+                    <th>PA</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div>No standings data available for this season.</div>
-        )}
-      </section>
+                </thead>
+                <tbody>
+                  {filteredStandings.map((row) => (
+                    <tr key={row.team}>
+                      <td>
+                        <div className="flex-row items-center gap-2">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className={`favorite-button ${favorites.teams.includes(ownerLabel(seasonOwners.get(row.team) || row.team, row.team)) ? "active" : ""}`}
+                            onClick={() => toggleTeam(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))}
+                          >
+                            Fav
+                          </Button>
+                          <span>{ownerLabel(seasonOwners.get(row.team) || row.team, row.team)}</span>
+                        </div>
+                      </td>
+                      <td>{row.wins}</td>
+                      <td>{row.losses}</td>
+                      <td>{row.ties}</td>
+                      <td>{formatPoints(row.points_for)}</td>
+                      <td>{formatPoints(row.points_against)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div>No standings data available for this season.</div>
+          )}
+        </CardContent>
+      </Card>
 
-      <section className="section-card">
-        <h2 className="section-title">All-Time Franchise Summary</h2>
-        {filteredAllTime.length ? (
-          <div className="table-wrap">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Team</th>
-                  <th>W</th>
-                  <th>L</th>
-                  <th>T</th>
-                  <th>PF</th>
-                  <th>PA</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredAllTime.map((row) => (
-                  <tr key={row.team}>
-                    <td>
-                      <div className="flex-row">
-                        <button
-                          type="button"
-                          className={`favorite-button ${favorites.teams.includes(ownerLabel(row.team, row.team)) ? "active" : ""}`}
-                          onClick={() => toggleTeam(ownerLabel(row.team, row.team))}
-                        >
-                          Fav
-                        </button>
-                        <span>{ownerLabel(row.team, row.team)}</span>
-                      </div>
-                    </td>
-                    <td>{row.wins}</td>
-                    <td>{row.losses}</td>
-                    <td>{row.ties}</td>
-                    <td>{formatPoints(row.points_for)}</td>
-                    <td>{formatPoints(row.points_against)}</td>
+      <Card>
+        <CardHeader>
+          <CardTitle>All-Time Franchise Summary</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {filteredAllTime.length ? (
+            <div className="table-wrap">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>T</th>
+                    <th>PF</th>
+                    <th>PA</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div>No historical standings data available.</div>
-        )}
-      </section>
+                </thead>
+                <tbody>
+                  {filteredAllTime.map((row) => (
+                    <tr key={row.team}>
+                      <td>
+                        <div className="flex-row items-center gap-2">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className={`favorite-button ${favorites.teams.includes(ownerLabel(row.team, row.team)) ? "active" : ""}`}
+                            onClick={() => toggleTeam(ownerLabel(row.team, row.team))}
+                          >
+                            Fav
+                          </Button>
+                          <span>{ownerLabel(row.team, row.team)}</span>
+                        </div>
+                      </td>
+                      <td>{row.wins}</td>
+                      <td>{row.losses}</td>
+                      <td>{row.ties}</td>
+                      <td>{formatPoints(row.points_for)}</td>
+                      <td>{formatPoints(row.points_against)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div>No historical standings data available.</div>
+          )}
+        </CardContent>
+      </Card>
     </PageTransition>
   );
 }

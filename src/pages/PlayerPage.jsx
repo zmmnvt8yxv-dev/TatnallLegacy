@@ -11,7 +11,12 @@ import { normalizeName } from "../lib/nameUtils.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { useVirtualRows } from "../utils/useVirtualRows.js";
 import { useFavorites } from "../utils/useFavorites.js";
+import { loadPlayerStatsWeekly } from "../data/loader.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
+import { Button } from "@/components/ui/button.jsx";
+import { Badge } from "@/components/ui/badge.jsx";
+import { Heart } from "lucide-react";
 
 const TABS = ["Overview", "Seasons", "Weekly Log", "Full Stats", "Boom/Bust"];
 const PLAYER_PREF_KEY = "tatnall-pref-player";
@@ -806,180 +811,241 @@ export default function PlayerPage() {
 
   return (
     <PageTransition>
-      <section>
-        <div className="flex-row">
-          {playerDisplay?.headshotUrl ? (
-            <img
-              className="player-headshot"
-              src={playerDisplay.headshotUrl}
-              alt={`${displayName} headshot`}
-              loading="lazy"
-            />
-          ) : null}
-          <div>
-            <h1 className="page-title">{displayName}</h1>
-            <p className="page-subtitle">
-              {displayPosition} · {displayTeam}
-            </p>
-            <button
-              type="button"
-              className={`favorite-button ${isFavorite ? "active" : ""}`}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pt-4">
+        <div>
+          <div className="flex items-center gap-3 mb-2">
+            <h1 className="text-4xl font-display text-ink-900">{displayName}</h1>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={isFavorite ? "text-red-500 hover:text-red-600" : "text-ink-300 hover:text-red-400"}
               onClick={() => togglePlayer(resolvedPlayerId)}
             >
-              {isFavorite ? "Favorited" : "Add Favorite"}
-            </button>
+              <Heart className={isFavorite ? "fill-current" : ""} size={24} />
+            </Button>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge variant="secondary" className="text-sm px-3 py-1">
+              {displayPosition}
+            </Badge>
+            <Badge variant="outline" className="text-sm px-3 py-1">
+              {displayTeam}
+            </Badge>
+            {playerInfo?.age && (
+              <span className="text-sm text-ink-500">Age: {playerInfo.age}</span>
+            )}
+            {playerInfo?.years_exp != null && (
+              <span className="text-sm text-ink-500">· {playerInfo.years_exp} yrs exp</span>
+            )}
           </div>
         </div>
-        <div className="flex-row">
-          <div className="tag">Player ID: {resolvedPlayerId}</div>
-          <div className="tag">Teams played for: {teamHistory.join(", ") || "No data"}</div>
-        </div>
-      </section>
 
-      <section className="section-card flex-row">
+        <div className="flex items-center gap-3">
+          <div className="flex flex-col items-end">
+            <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest">Season</span>
+            <select
+              value={selectedSeason}
+              onChange={(e) => handleSeasonChange(e.target.value)}
+              className="mt-1 rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[120px]"
+            >
+              {seasonOptions.map((v) => (
+                <option key={v} value={v}>
+                  {v} Season
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex border-b border-ink-100 mb-8 overflow-x-auto no-scrollbar">
         {TABS.map((tab) => (
           <button
             key={tab}
-            type="button"
-            className={`tag ${activeTab === tab ? "active" : ""}`}
             onClick={() => handleTabChange(tab)}
+            className={`px-6 py-3 text-sm font-bold transition-all whitespace-nowrap border-b-2 ${activeTab === tab
+              ? "border-accent-600 text-accent-700"
+              : "border-transparent text-ink-500 hover:text-ink-900 hover:border-ink-200"
+              }`}
           >
             {tab}
           </button>
         ))}
-      </section>
+      </div>
 
       {activeTab === "Overview" && (
-        <section className="section-card">
-          <h2 className="section-title">Career Overview</h2>
-          <div className="card-grid">
-            <div className="stat-card">
-              <div className="stat-label">Keeper Value</div>
-              <div className="stat-value">{formatDollarValue(keeperInfo.value)}</div>
-              <div className="stat-subtext">{keeperInfo.note}</div>
-            </div>
-            {seasonStats.length ? (
-              <>
-                <div className="stat-card">
-                  <div className="stat-label">Seasons</div>
-                  <div className="stat-value">{careerTotals.seasons}</div>
+        <div className="space-y-8 animate-in fade-in duration-500">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Card className="shadow-soft bg-accent-50/20 border-accent-100">
+              <CardHeader className="pb-2">
+                <span className="text-xs font-bold text-accent-700 uppercase tracking-wider">Career Points</span>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-display text-accent-900">{formatPoints(careerTotals.points)}</div>
+                <p className="text-xs text-accent-600 mt-1">{careerTotals.games} games · {careerTotals.seasons} seasons</p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-soft">
+              <CardHeader className="pb-2">
+                <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Avg Points</span>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-display text-ink-900">
+                  {careerTotals.games > 0 ? (careerTotals.points / careerTotals.games).toFixed(1) : "0.0"}
                 </div>
-                <div className="stat-card">
-                  <div className="stat-label">Games Logged</div>
-                  <div className="stat-value">{careerTotals.games}</div>
+                <p className="text-xs text-ink-400 mt-1">Points per game</p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-soft">
+              <CardHeader className="pb-2">
+                <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Consistency</span>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center gap-2">
+                  <div className="text-3xl font-display text-ink-900">{consistencyLabel || "—"}</div>
+                  {consistencyLabel && (
+                    <Badge variant={consistencyLabel === "High" ? "success" : consistencyLabel === "Medium" ? "accent" : "destructive"}>
+                      {consistencyLabel === "High" ? "TOP" : consistencyLabel === "Medium" ? "STABLE" : "VOLATILE"}
+                    </Badge>
+                  )}
                 </div>
-                <div className="stat-card">
-                  <div className="stat-label">Total Points</div>
-                  <div className="stat-value">{formatPoints(careerTotals.points)}</div>
-                </div>
-                <div className="stat-card">
-                  <div className="stat-label">Replacement WAR</div>
-                  <div className="stat-value">{formatPoints(careerTotals.war)}</div>
-                </div>
-                <div className="stat-card">
-                  <div className="stat-label">Delta to Next</div>
-                  <div className="stat-value">{formatPoints(careerTotals.delta)}</div>
-                </div>
-              </>
-            ) : null}
+                <p className="text-xs text-ink-400 mt-1">{boomBust?.stdDev ? `Std Dev: ${boomBust.stdDev.toFixed(1)}` : "No consistency data"}</p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-soft bg-ink-900 text-white border-none">
+              <CardHeader className="pb-2">
+                <span className="text-xs font-bold text-ink-300 uppercase tracking-wider">Career WAR</span>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-display text-accent-400">{formatPoints(careerTotals.war)}</div>
+                <p className="text-xs text-ink-400 mt-1">Value over replacement</p>
+              </CardContent>
+            </Card>
           </div>
-          {!seasonStats.length ? (
-            <div>No season totals available for this player.</div>
-          ) : null}
-          <div className="section-card">
-            <h3 className="section-title">Efficiency (Per Game)</h3>
-            {seasonEfficiency || careerEfficiency ? (
-              <div className="card-grid">
-                {seasonEfficiency ? (
-                  <div className="stat-card">
-                    <div className="stat-label">Season {selectedSeason}</div>
-                    <div className="stat-value">{formatPoints(seasonEfficiency.points_pg)}</div>
-                    <div className="stat-subtext">
-                      WAR/pg {formatPoints(seasonEfficiency.war_rep_pg)} · Delta/pg{" "}
-                      {formatPoints(seasonEfficiency.delta_to_next_pg)}
-                    </div>
-                  </div>
-                ) : null}
-                {careerEfficiency ? (
-                  <div className="stat-card">
-                    <div className="stat-label">Career</div>
-                    <div className="stat-value">{formatPoints(careerEfficiency.points_pg)}</div>
-                    <div className="stat-subtext">
-                      WAR/pg {formatPoints(careerEfficiency.war_rep_pg)} · Delta/pg{" "}
-                      {formatPoints(careerEfficiency.delta_to_next_pg)}
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            ) : (
-              <p>No efficiency data available for this player in the current exports.</p>
-            )}
-          </div>
-          <div className="section-card">
-            <h3 className="section-title">Transactions ({selectedSeason})</h3>
-            {transactionHistory.length ? (
-              <div className="table-wrap">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Week</th>
-                      <th>Type</th>
-                      <th>Team</th>
-                      <th>Amount</th>
-                      <th>Details</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {transactionHistory.map((entry) => (
-                      <tr key={entry.id}>
-                        <td>{entry.week ?? "—"}</td>
-                        <td>{entry.type || "—"}</td>
-                        <td>{entry.team || "—"}</td>
-                        <td>{formatAmount(entry)}</td>
-                        <td>{formatTransactionDetails(entry)}</td>
-                      </tr>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <Card className="lg:col-span-2 shadow-soft">
+              <CardHeader>
+                <CardTitle>Recent Transaction History</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {transactionHistory.length ? (
+                  <div className="space-y-4">
+                    {transactionHistory.slice(0, 5).map((entry) => (
+                      <div key={entry.id} className="flex items-start gap-4 p-3 rounded-lg border border-ink-100 bg-ink-50/30">
+                        <div className="flex flex-col items-center min-w-[60px]">
+                          <span className="text-[10px] font-bold text-ink-400 uppercase">{entry.season}</span>
+                          <span className="text-xl font-display text-ink-900">W{entry.week}</span>
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <Badge variant={entry.type === "trade" ? "secondary" : entry.type === "add" ? "success" : "destructive"}>
+                              {entry.type.toUpperCase()}
+                            </Badge>
+                            <span className="text-sm font-bold text-ink-800">{normalizeOwnerName(entry.team)}</span>
+                          </div>
+                          <p className="text-sm text-ink-600">{formatTransactionDetails(entry)}</p>
+                        </div>
+                        {entry.amount != null && (
+                          <div className="font-mono text-sm font-bold text-accent-700">
+                            {formatAmount(entry)}
+                          </div>
+                        )}
+                      </div>
                     ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <p>No transactions recorded for this player in the selected season.</p>
-            )}
+                    {transactionHistory.length > 5 && (
+                      <Button variant="outline" className="w-full text-xs" onClick={() => handleTabChange("Overview")}>
+                        View full history in transactions page
+                      </Button>
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-sm text-ink-500 italic py-4 text-center border-2 border-dashed rounded-lg border-ink-100">
+                    No transactions recorded for this player.
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-soft bg-accent-50/10 border-accent-100/50">
+              <CardHeader>
+                <CardTitle className="text-lg">Keeper Analysis (2025)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col gap-6">
+                  <div>
+                    <div className="text-[10px] font-bold text-ink-400 uppercase tracking-wider mb-2">Projected Value</div>
+                    <div className="text-4xl font-display text-accent-700">{formatDollarValue(keeperInfo.value)}</div>
+                    <p className="text-xs text-ink-500 mt-2 leading-relaxed">{keeperInfo.note}</p>
+                  </div>
+
+                  <div className="space-y-3 pt-4 border-t border-accent-100/50">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-ink-500">Replacement Avg</span>
+                      <span className="font-bold text-ink-900">
+                        {metricsForPlayer.length > 0 ? (metricsForPlayer[0].replacement_baseline || 0).toFixed(1) : "—"}
+                      </span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-ink-500">Avg Weekly WAR</span>
+                      <span className="font-bold text-accent-700">
+                        {metricsForPlayer.length > 0
+                          ? (metricsForPlayer.reduce((sum, r) => sum + (r.war_rep || 0), 0) / metricsForPlayer.length).toFixed(1)
+                          : "—"}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-3 bg-amber-50 border border-amber-100 rounded text-[11px] text-amber-800 italic">
+                    Keeper values are calculated as: <strong>Added Value + $5 Inflation</strong>. Players never rostered default to $10 ($5 + $5 base).
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </section>
+        </div>
       )}
 
       {activeTab === "Seasons" && (
-        <section className="section-card">
+        <section className="section-card animate-in fade-in duration-500">
           <h2 className="section-title">Season-by-Season Totals</h2>
           {seasonStats.length ? (
             <div className="table-wrap">
               <table className="table">
                 <thead>
-                  <tr>
-                    <th>Season</th>
-                    <th>Games</th>
-                    <th>Avail</th>
-                    <th>Total Points</th>
-                    <th>Pos Rank</th>
-                    <th>WAR</th>
-                    <th>Delta</th>
+                  <tr className="border-b border-ink-100">
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Season</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Games</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Avail</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Total Points</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pos Rank</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">WAR</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Delta</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="divide-y divide-ink-50">
                   {seasonStats.map((row) => (
-                    <tr key={row.season}>
-                      <td>{row.season}</td>
-                      <td>{row.games}</td>
-                      <td>
-                        {row.gamesPossible
-                          ? `${row.availabilityFlag === "limited" ? "Limited" : "Full"} (${row.games}/${row.gamesPossible})`
-                          : "—"}
+                    <tr key={row.season} className="hover:bg-ink-50/30 transition-colors">
+                      <td className="py-3 px-4 font-bold text-ink-900">{row.season}</td>
+                      <td className="py-3 px-4 text-ink-600">{row.games}</td>
+                      <td className="py-3 px-4">
+                        {row.gamesPossible ? (
+                          <Badge variant={row.availabilityFlag === "limited" ? "outline" : "secondary"} className="text-[10px]">
+                            {row.availabilityFlag === "limited" ? "Limited" : "Full"} ({row.games}/{row.gamesPossible})
+                          </Badge>
+                        ) : "—"}
                       </td>
-                      <td>{formatPoints(row.points)}</td>
-                      <td>{row.position && row.positionRank ? `${row.position}${row.positionRank}` : "—"}</td>
-                      <td>{formatPoints(row.war)}</td>
-                      <td>{formatPoints(row.delta)}</td>
+                      <td className="py-3 px-4 font-mono font-bold text-accent-700">{formatPoints(row.points)}</td>
+                      <td className="py-3 px-4">
+                        {row.position && row.positionRank ? (
+                          <span className="text-sm font-bold text-ink-800">{row.position}{row.positionRank}</span>
+                        ) : "—"}
+                      </td>
+                      <td className="py-3 px-4 font-mono text-ink-600">{formatPoints(row.war)}</td>
+                      <td className="py-3 px-4 font-mono text-ink-400">{formatPoints(row.delta)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -992,7 +1058,7 @@ export default function PlayerPage() {
       )}
 
       {activeTab === "Weekly Log" && (
-        <section className="section-card">
+        <section className="section-card animate-in fade-in duration-500">
           <div className="filters filters--sticky">
             <div>
               <label>Season</label>
@@ -1010,35 +1076,47 @@ export default function PlayerPage() {
             <div className="table-wrap virtual-table" ref={weeklyVirtual.containerRef}>
               <table className="table">
                 <thead>
-                  <tr>
-                    <th>Week</th>
-                    <th>NFL Team</th>
-                    <th>Fantasy Team</th>
-                    <th>Starter</th>
-                    <th>Points</th>
-                    <th>Z-Score</th>
-                    <th>WAR</th>
-                    <th>Delta</th>
-                    <th>Pos Rank</th>
+                  <tr className="border-b border-ink-100">
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Week</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">NFL Team</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Fantasy Team</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Starter</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Points</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Z-Score</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">WAR</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Delta</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pos Rank</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="divide-y divide-ink-50">
                   {weeklyVirtual.topPadding ? (
                     <tr className="table-virtual-spacer" aria-hidden="true">
                       <td colSpan={9} style={{ height: weeklyVirtual.topPadding }} />
                     </tr>
                   ) : null}
                   {visibleWeeklyRows.map((row, idx) => (
-                    <tr key={`${row.week}-${idx}`}>
-                      <td>{row.week}</td>
-                      <td>{row.nflTeam || "—"}</td>
-                      <td>{row.fantasyTeam || "—"}</td>
-                      <td>{row.started ? "Yes" : "—"}</td>
-                      <td>{formatPoints(row.points)}</td>
-                      <td>{row.pos_week_z ? safeNumber(row.pos_week_z).toFixed(2) : "—"}</td>
-                      <td>{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
-                      <td>{row.delta_to_next != null ? formatPoints(row.delta_to_next) : "—"}</td>
-                      <td>{row.position && row.pos_week_rank ? `${row.position}${row.pos_week_rank}` : "—"}</td>
+                    <tr key={`${row.week}-${idx}`} className="hover:bg-ink-50/30 transition-colors">
+                      <td className="py-3 px-4 font-bold text-ink-900">W{row.week}</td>
+                      <td className="py-3 px-4 text-sm text-ink-600">{row.nflTeam || "—"}</td>
+                      <td className="py-3 px-4 text-sm font-medium text-ink-800">{row.fantasyTeam || "—"}</td>
+                      <td className="py-3 px-4 capitalize">
+                        {row.started ? (
+                          <Badge variant="success" className="text-[10px]">Starter</Badge>
+                        ) : (
+                          <span className="text-xs text-ink-400">—</span>
+                        )}
+                      </td>
+                      <td className="py-3 px-4 font-mono font-bold text-accent-700">{formatPoints(row.points)}</td>
+                      <td className="py-3 px-4 font-mono text-xs text-ink-500">
+                        {row.pos_week_z ? safeNumber(row.pos_week_z).toFixed(2) : "—"}
+                      </td>
+                      <td className="py-3 px-4 font-mono text-xs text-ink-600">{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
+                      <td className="py-3 px-4 font-mono text-xs text-ink-400">{row.delta_to_next != null ? formatPoints(row.delta_to_next) : "—"}</td>
+                      <td className="py-3 px-4">
+                        {row.position && row.pos_week_rank ? (
+                          <span className="text-xs font-bold text-ink-700">{row.position}{row.pos_week_rank}</span>
+                        ) : "—"}
+                      </td>
                     </tr>
                   ))}
                   {weeklyVirtual.bottomPadding ? (
@@ -1056,7 +1134,7 @@ export default function PlayerPage() {
       )}
 
       {activeTab === "Full Stats" && (
-        <section className="section-card">
+        <section className="section-card animate-in fade-in duration-500">
           <div className="filters filters--sticky">
             <div>
               <label>Season</label>
@@ -1073,33 +1151,33 @@ export default function PlayerPage() {
             <div className="table-wrap virtual-table" ref={fullStatsVirtual.containerRef}>
               <table className="table">
                 <thead>
-                  <tr>
-                    <th>Season</th>
-                    <th>Week</th>
-                    <th>Team</th>
-                    <th>Opp</th>
+                  <tr className="border-b border-ink-100">
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Season</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Week</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Team</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Opp</th>
                     {fullStatsColumns.map((column) => (
-                      <th key={column.label}>{column.label}</th>
+                      <th key={column.label} className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">{column.label}</th>
                     ))}
-                    <th>Pts</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pts</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="divide-y divide-ink-50">
                   {fullStatsVirtual.topPadding ? (
                     <tr className="table-virtual-spacer" aria-hidden="true">
                       <td colSpan={5 + fullStatsColumns.length} style={{ height: fullStatsVirtual.topPadding }} />
                     </tr>
                   ) : null}
                   {visibleFullStatsRows.map((row, idx) => (
-                    <tr key={`${row.week}-${idx}`}>
-                      <td>{row.season || selectedSeason}</td>
-                      <td>{row.week}</td>
-                      <td>{row.team || "—"}</td>
-                      <td>{row.opponent_team || "—"}</td>
+                    <tr key={`${row.week}-${idx}`} className="hover:bg-ink-50/30 transition-colors">
+                      <td className="py-3 px-4 text-xs text-ink-500">{row.season || selectedSeason}</td>
+                      <td className="py-3 px-4 font-bold text-ink-900">W{row.week}</td>
+                      <td className="py-3 px-4 text-xs font-medium text-ink-600 uppercase">{row.team || "—"}</td>
+                      <td className="py-3 px-4 text-xs text-ink-400">vs {row.opponent_team || "—"}</td>
                       {fullStatsColumns.map((column) => (
-                        <td key={`${column.key}-${idx}`}>{resolveFullStatValue(row, column)}</td>
+                        <td key={`${column.key}-${idx}`} className="py-3 px-4 font-mono text-sm text-ink-700">{resolveFullStatValue(row, column)}</td>
                       ))}
-                      <td>
+                      <td className="py-3 px-4 font-mono font-bold text-accent-700">
                         {row.fantasy_points_custom_week_with_bonus ??
                           row.fantasy_points_custom_week ??
                           row.fantasy_points_ppr ??
@@ -1123,82 +1201,117 @@ export default function PlayerPage() {
       )}
 
       {activeTab === "Boom/Bust" && (
-        <section className="section-card">
+        <section className="section-card animate-in fade-in duration-500">
           <h2 className="section-title">Boom / Bust Summary</h2>
           {boomBustFromMetrics || boomBust ? (
             <>
-              <div className="flex-row">
-                <div className="tag">
+              <div className="flex flex-wrap gap-2 mb-6">
+                <Badge variant="outline">
                   Std dev: {formatPoints(boomBustFromMetrics?.fp_std ?? boomBust?.stdDev)}
-                </div>
-                {consistencyLabel ? <div className="tag">Consistency: {consistencyLabel}</div> : null}
-                <div className="tag">
-                  % weeks ≥ {boomBust?.threshold ?? THRESHOLDS.default} pts:{" "}
+                </Badge>
+                {consistencyLabel && <Badge variant="secondary">Consistency: {consistencyLabel}</Badge>}
+                <Badge variant="accent">
+                  % weeks ≥ {boomBust?.threshold ?? THRESHOLDS.default} pts: {" "}
                   {(boomBustFromMetrics?.boom_pct
                     ? boomBustFromMetrics.boom_pct * 100
                     : boomBust?.percentAbove || 0
                   ).toFixed(1)}
                   %
-                </div>
+                </Badge>
               </div>
-              <div className="detail-grid">
-                <div className="section-card">
-                  <h3 className="section-title">Top 5 Weeks</h3>
-                  <ul>
-                    {boomBustWeeks.top.map((row, idx) => (
-                      <li key={`top-${idx}`}>
-                        Week {row.week} ({row.season || selectedSeason}) — {formatPoints(row.points)} pts
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="section-card">
-                  <h3 className="section-title">Bottom 5 Weeks</h3>
-                  <ul>
-                    {boomBustWeeks.bottom.map((row, idx) => (
-                      <li key={`bottom-${idx}`}>
-                        Week {row.week} ({row.season || selectedSeason}) — {formatPoints(row.points)} pts
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Top 5 Weeks</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {boomBustWeeks.top.map((row, idx) => (
+                        <li key={`top-${idx}`} className="text-sm flex justify-between">
+                          <span>Week {row.week} ({row.season || selectedSeason})</span>
+                          <span className="font-bold text-accent-700">{formatPoints(row.points)} pts</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm">Bottom 5 Weeks</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {boomBustWeeks.bottom.map((row, idx) => (
+                        <li key={`bottom-${idx}`} className="text-sm flex justify-between text-ink-500">
+                          <span>Week {row.week} ({row.season || selectedSeason})</span>
+                          <span className="font-bold">{formatPoints(row.points)} pts</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
               </div>
               {boomBustBySeason.length ? (
-                <div className="section-card">
-                  <h3 className="section-title">Season Breakouts</h3>
-                  {boomBustBySeason.map((season) => (
-                    <div key={season.season} className="subtle-text" style={{ marginBottom: "12px" }}>
-                      <strong>{season.season}</strong>
-                      <div>
-                        Top weeks:{" "}
-                        {season.top.map((row, idx) => (
-                          <span key={`season-top-${season.season}-${idx}`}>
-                            Week {row.week} ({formatPoints(row.points)} pts)
-                            {idx < season.top.length - 1 ? ", " : ""}
-                          </span>
-                        ))}
-                      </div>
-                      <div>
-                        Bottom weeks:{" "}
-                        {season.bottom.map((row, idx) => (
-                          <span key={`season-bottom-${season.season}-${idx}`}>
-                            Week {row.week} ({formatPoints(row.points)} pts)
-                            {idx < season.bottom.length - 1 ? ", " : ""}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                <div className="mt-8">
+                  <h3 className="text-lg font-bold mb-4">Season Breakouts</h3>
+                  <div className="space-y-4">
+                    {boomBustBySeason.map((season) => (
+                      <Card key={season.season} className="bg-ink-50/30">
+                        <CardContent className="pt-4">
+                          <div className="font-bold text-lg mb-2">{season.season}</div>
+                          <div className="text-sm">
+                            <span className="text-ink-500">Top weeks:</span>{" "}
+                            {season.top.map((row, idx) => (
+                              <span key={`season-top-${season.season}-${idx}`}>
+                                W{row.week} ({formatPoints(row.points)}){idx < season.top.length - 1 ? ", " : ""}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="text-sm mt-1">
+                            <span className="text-ink-500">Bottom weeks:</span>{" "}
+                            {season.bottom.map((row, idx) => (
+                              <span key={`season-bottom-${season.season}-${idx}`}>
+                                W{row.week} ({formatPoints(row.points)}){idx < season.bottom.length - 1 ? ", " : ""}
+                              </span>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
                 </div>
               ) : null}
             </>
           ) : (
-            <div>No weekly data available to compute boom/bust metrics.</div>
+            <div className="text-center py-12 text-ink-500 italic">
+              No weekly data available to compute boom/bust metrics.
+            </div>
           )}
         </section>
       )}
 
-      {warDefinitions}
+      <Card className="mt-12 bg-ink-50/20 border-ink-100">
+        <CardHeader>
+          <CardTitle className="text-lg">WAR Definitions</CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm text-ink-600 space-y-4">
+          <p>
+            <strong className="text-ink-900">Replacement-level WAR</strong> is your weekly points minus a replacement baseline for your position.
+            In this league, baselines assume 8 teams (2QB, 3RB, 3WR, 2TE).
+          </p>
+          <p>
+            <strong className="text-ink-900">Delta to next guy</strong> is the margin to the next best player at the same position in a given week.
+            These values appear when weekly metrics exports are provided.
+          </p>
+          <div className="p-4 bg-white rounded-lg border border-ink-100">
+            <span className="font-bold text-ink-900 block mb-2">Baseline examples (8-team league):</span>
+            <p>
+              The baseline is the points scored by the last starter in the league at each position:
+              <span className="font-mono text-accent-700 ml-2">QB16 · RB24 · WR24 · TE16 · K8 · DEF8</span>
+            </p>
+          </div>
+        </CardContent>
+      </Card>
     </PageTransition>
   );
 }

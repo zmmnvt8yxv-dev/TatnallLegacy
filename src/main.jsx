@@ -10,9 +10,28 @@ import { ThemeProvider } from "./lib/ThemeContext.jsx";
 import "./styles.css";
 
 const queryClient = new QueryClient();
+import * as Sentry from "@sentry/react";
+import ReactGA from "react-ga4";
+
+// Initialize Google Analytics with a placeholder ID
+ReactGA.initialize("G-PLACEHOLDER");
+// Send initial pageview
+ReactGA.send("pageview");
+
+Sentry.init({
+  dsn: "https://placeholder-dsn@sentry.io/placeholder", // Placeholder for development
+  integrations: [
+    Sentry.browserTracingIntegration(),
+    Sentry.replayIntegration(),
+  ],
+  tracesSampleRate: 1.0,
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1.0,
+});
 
 window.addEventListener("unhandledrejection", (e) => {
   console.error("UNHANDLED_REJECTION", e.reason);
+  Sentry.captureException(e.reason);
 });
 
 createRoot(document.getElementById("root")).render(

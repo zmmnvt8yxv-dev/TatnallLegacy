@@ -2,42 +2,27 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 import { buildPlayerIndex } from "../lib/playerName.js";
 import { loadCoreData, loadManifest } from "./loader.js";
 
+import { useManifest } from "../hooks/useManifest.js";
+import { useCore } from "../hooks/useCore.js";
+
 const DataContext = createContext(null);
 
 export function DataProvider({ children }) {
-  const [manifest, setManifest] = useState(null);
-  const [core, setCore] = useState({
-    players: [],
-    playerIds: [],
-    teams: [],
-    espnNameMap: {},
-    playerSearch: [],
-  });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const { data: manifest, isLoading: manifestLoading, error: manifestError } = useManifest();
+  const { data: coreData, isLoading: coreLoading, error: coreError } = useCore();
 
-  useEffect(() => {
-    let active = true;
-    (async () => {
-      try {
-        setLoading(true);
-        const manifestData = await loadManifest();
-        if (!active) return;
-        setManifest(manifestData);
-        const coreData = await loadCoreData();
-        if (!active) return;
-        setCore(coreData);
-      } catch (err) {
-        if (!active) return;
-        setError(String(err?.message || err));
-      } finally {
-        if (active) setLoading(false);
-      }
-    })();
-    return () => {
-      active = false;
+  const core = useMemo(() => {
+    return coreData || {
+      players: [],
+      playerIds: [],
+      teams: [],
+      espnNameMap: {},
+      playerSearch: [],
     };
-  }, []);
+  }, [coreData]);
+
+  const loading = manifestLoading || coreLoading;
+  const error = manifestError?.message || coreError?.message || "";
 
 
   const playerIdLookup = useMemo(() => {

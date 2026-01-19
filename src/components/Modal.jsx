@@ -1,29 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export default function Modal({ isOpen, title, onClose, children }) {
-  useEffect(() => {
-    if (!isOpen) return undefined;
-    const handleKey = (event) => {
-      if (event.key === "Escape") onClose?.();
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
   return (
-    <div className="modal-overlay" role="dialog" aria-modal="true">
-      <div className="modal-card">
-        <div className="modal-header">
-          <h2 className="modal-title">{title}</h2>
-          <button type="button" className="modal-close" onClick={onClose} aria-label="Close modal">
-            ×
-          </button>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose?.()}>
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle>{title}</DialogTitle>
+        </DialogHeader>
+        <div className="py-4 font-body">
+          {children}
         </div>
-        <div className="modal-body">{children}</div>
-      </div>
-      <button type="button" className="modal-backdrop" onClick={onClose} aria-label="Close modal" />
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }
