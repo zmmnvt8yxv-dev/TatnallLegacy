@@ -22,7 +22,8 @@
         "wins": 11
       },
       "team_name": "💍💍💍",
-      "username": null
+      "username": null,
+      "final_rank": 3
     },
     {
       "avatar": "8ed5d01375893b6092b1681344ea2919",
@@ -45,7 +46,8 @@
         "wins": 6
       },
       "team_name": "Only I can say the N-word",
-      "username": null
+      "username": null,
+      "final_rank": 2
     },
     {
       "avatar": "51afd682835136594efbfbfed41cc9ba",
@@ -68,7 +70,8 @@
         "wins": 12
       },
       "team_name": "Insane in The Achane ",
-      "username": null
+      "username": null,
+      "final_rank": 1
     },
     {
       "avatar": "d55d1f7075eda01948318de4af616075",
@@ -91,7 +94,8 @@
         "wins": 3
       },
       "team_name": "Team Cancun",
-      "username": null
+      "username": null,
+      "final_rank": 7
     },
     {
       "avatar": "11811fc6d13b9aca9f6b1efda62a2113",
@@ -114,7 +118,8 @@
         "wins": 8
       },
       "team_name": "FantasyGPT 2.5",
-      "username": null
+      "username": null,
+      "final_rank": 3
     },
     {
       "avatar": "4f4090e5e9c3941414db40a871e3e909",
@@ -137,7 +142,8 @@
         "wins": 6
       },
       "team_name": "“Feels Different This Yr”",
-      "username": null
+      "username": null,
+      "final_rank": 3
     },
     {
       "avatar": "d9fa853abdec7c6d561ac6282198a9e9",
@@ -160,7 +166,8 @@
         "wins": 6
       },
       "team_name": "Dak Shots",
-      "username": null
+      "username": null,
+      "final_rank": 3
     },
     {
       "avatar": "51385ba57cd089261f6de9ce483b8716",
@@ -183,7 +190,8 @@
         "wins": 4
       },
       "team_name": "Nine-1-1",
-      "username": null
+      "username": null,
+      "final_rank": 8
     }
   ],
   "standings": [
@@ -1486,5 +1494,163 @@
   "totals": {
     "matchups": 64,
     "lineups": 1768
+  },
+  "champion": {
+    "team": "LbmBets",
+    "owner": "LbmBets",
+    "final_rank": 1,
+    "source": "espn_verified"
+  },
+  "runnerUp": {
+    "team": "jawnwick13",
+    "owner": "jawnwick13",
+    "final_rank": 2,
+    "source": "espn_verified"
+  },
+  "thirdPlace": {
+    "team": "Unknown",
+    "owner": "Unknown",
+    "final_rank": 3,
+    "source": "espn_verified"
+  },
+  "kiltBowlLoser": {
+    "team": "Junktion",
+    "owner": "Jeff Crossland",
+    "final_rank": 8,
+    "source": "espn_verified"
+  },
+  "playoffBracket": [
+    {
+      "week": 15,
+      "round": "Quarterfinals",
+      "home_team": "PhillyPhilly709",
+      "home_owner": null,
+      "home_score": 179.7,
+      "home_seed": null,
+      "away_team": "downsliquidity",
+      "away_owner": null,
+      "away_score": 162.96,
+      "away_seed": null,
+      "winner": "PhillyPhilly709"
+    },
+    {
+      "week": 15,
+      "round": "Quarterfinals",
+      "home_team": "jawnwick13",
+      "home_owner": null,
+      "home_score": 228.1,
+      "home_seed": null,
+      "away_team": "roylee6",
+      "away_owner": null,
+      "away_score": 155.74,
+      "away_seed": null,
+      "winner": "jawnwick13"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "LbmBets",
+      "home_owner": null,
+      "home_score": 188.62,
+      "home_seed": null,
+      "away_team": "PhillyPhilly709",
+      "away_owner": null,
+      "away_score": 146.22,
+      "away_seed": null,
+      "winner": "LbmBets"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "jawnwick13",
+      "home_owner": null,
+      "home_score": 190.26,
+      "home_seed": null,
+      "away_team": "cmarvin713",
+      "away_owner": null,
+      "away_score": 187.46,
+      "away_seed": null,
+      "winner": "jawnwick13"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "downsliquidity",
+      "home_owner": null,
+      "home_score": 196.56,
+      "home_seed": null,
+      "away_team": "roylee6",
+      "away_owner": null,
+      "away_score": 195.78,
+      "away_seed": null,
+      "winner": "downsliquidity"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "LbmBets",
+      "home_owner": null,
+      "home_score": 174.9,
+      "home_seed": null,
+      "away_team": "jawnwick13",
+      "away_owner": null,
+      "away_score": 158.76,
+      "away_seed": null,
+      "winner": "LbmBets"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "cmarvin713",
+      "home_owner": null,
+      "home_score": 127.48,
+      "home_seed": null,
+      "away_team": "PhillyPhilly709",
+      "away_owner": null,
+      "away_score": 101.64,
+      "away_seed": null,
+      "winner": "cmarvin713"
+    }
+  ],
+  "kiltBowl": {
+    "team1": {
+      "name": "Team Cancun",
+      "owner": null,
+      "wins": 2
+    },
+    "team2": {
+      "name": "Nine-1-1",
+      "owner": null,
+      "wins": 1
+    },
+    "games": [
+      {
+        "week": 15,
+        "home_team": "conner27lax",
+        "home_score": 185.18,
+        "away_team": "Junktion",
+        "away_score": 139.8,
+        "winner": "conner27lax"
+      },
+      {
+        "week": 16,
+        "home_team": "conner27lax",
+        "home_score": 136.34,
+        "away_team": "Junktion",
+        "away_score": 169.58,
+        "winner": "Junktion"
+      },
+      {
+        "week": 17,
+        "home_team": "conner27lax",
+        "home_score": 180.52,
+        "away_team": "Junktion",
+        "away_score": 172.42,
+        "winner": "conner27lax"
+      }
+    ],
+    "series_winner": "conner27lax",
+    "series_loser": "Junktion",
+    "series_score": "2-1"
   }
 }

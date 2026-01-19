@@ -1349,7 +1349,8 @@
   "kiltBowlLoser": {
     "team": "Valar Morghulis",
     "owner": "Edward Saad",
-    "final_rank": 8
+    "final_rank": 8,
+    "source": "computed"
   },
   "playoffBracket": [
     {
@@ -1445,123 +1446,6 @@
     },
     {
       "week": 17,
-      "round": "Championship",
-      "home_team": "Team jack",
-      "home_owner": "Jack Sheehy",
-      "home_score": 129.0,
-      "home_seed": 4,
-      "away_team": "Only i can say The N word",
-      "away_owner": "jared duncan",
-      "away_score": 153.0,
-      "away_seed": 6,
-      "winner": "Only i can say The N word"
-    },
-    {
-      "week": 18,
-      "round": "Championship",
-      "home_team": "Team Malley",
-      "home_owner": "Conner Malley",
-      "home_score": 150.0,
-      "home_seed": 1,
-      "away_team": "Team Downs",
-      "away_owner": "John Downs",
-      "away_score": 216.0,
-      "away_seed": 3,
-      "winner": "Team Downs"
-    },
-    {
-      "week": 18,
-      "round": "Championship",
-      "home_team": "King of  December",
-      "home_owner": "stephen marvin",
-      "home_score": 132.0,
-      "home_seed": 2,
-      "away_team": "What tf happene to my team",
-      "away_owner": "Jeffrey Crossland",
-      "away_score": 133.0,
-      "away_seed": 5,
-      "winner": "What tf happene to my team"
-    },
-    {
-      "week": 18,
-      "round": "Championship",
-      "home_team": "Team jack",
-      "home_owner": "Jack Sheehy",
-      "home_score": 129.0,
-      "home_seed": 4,
-      "away_team": "Only i can say The N word",
-      "away_owner": "jared duncan",
-      "away_score": 153.0,
-      "away_seed": 6,
-      "winner": "Only i can say The N word"
-    },
-    {
-      "week": 19,
-      "round": "Championship",
-      "home_team": "Team Malley",
-      "home_owner": "Conner Malley",
-      "home_score": 150.0,
-      "home_seed": 1,
-      "away_team": "Team Downs",
-      "away_owner": "John Downs",
-      "away_score": 216.0,
-      "away_seed": 3,
-      "winner": "Team Downs"
-    },
-    {
-      "week": 19,
-      "round": "Championship",
-      "home_team": "King of  December",
-      "home_owner": "stephen marvin",
-      "home_score": 132.0,
-      "home_seed": 2,
-      "away_team": "What tf happene to my team",
-      "away_owner": "Jeffrey Crossland",
-      "away_score": 133.0,
-      "away_seed": 5,
-      "winner": "What tf happene to my team"
-    },
-    {
-      "week": 19,
-      "round": "Championship",
-      "home_team": "Team jack",
-      "home_owner": "Jack Sheehy",
-      "home_score": 129.0,
-      "home_seed": 4,
-      "away_team": "Only i can say The N word",
-      "away_owner": "jared duncan",
-      "away_score": 153.0,
-      "away_seed": 6,
-      "winner": "Only i can say The N word"
-    },
-    {
-      "week": 20,
-      "round": "Championship",
-      "home_team": "Team Malley",
-      "home_owner": "Conner Malley",
-      "home_score": 150.0,
-      "home_seed": 1,
-      "away_team": "Team Downs",
-      "away_owner": "John Downs",
-      "away_score": 216.0,
-      "away_seed": 3,
-      "winner": "Team Downs"
-    },
-    {
-      "week": 20,
-      "round": "Championship",
-      "home_team": "King of  December",
-      "home_owner": "stephen marvin",
-      "home_score": 132.0,
-      "home_seed": 2,
-      "away_team": "What tf happene to my team",
-      "away_owner": "Jeffrey Crossland",
-      "away_score": 133.0,
-      "away_seed": 5,
-      "winner": "What tf happene to my team"
-    },
-    {
-      "week": 20,
       "round": "Championship",
       "home_team": "Team jack",
       "home_owner": "Jack Sheehy",

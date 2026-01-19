@@ -9,7 +9,7 @@
       "points_for": 2221.3,
       "points_against": 1909.72,
       "regular_season_rank": 2,
-      "final_rank": null,
+      "final_rank": 3,
       "owners": [
         {
           "displayName": "sdmarvin713",
@@ -74,7 +74,7 @@
       "points_for": 1824.26,
       "points_against": 2036.22,
       "regular_season_rank": 7,
-      "final_rank": null,
+      "final_rank": 3,
       "owners": [
         {
           "displayName": "John.downs123",
@@ -139,7 +139,7 @@
       "points_for": 2110.66,
       "points_against": 1995.48,
       "regular_season_rank": 3,
-      "final_rank": null,
+      "final_rank": 3,
       "owners": [
         {
           "displayName": "Edward3864",
@@ -269,7 +269,7 @@
       "points_for": 1494.22,
       "points_against": 1953.72,
       "regular_season_rank": 8,
-      "final_rank": null,
+      "final_rank": 3,
       "owners": [
         {
           "displayName": "bhanrahan7",
@@ -334,7 +334,7 @@
       "points_for": 2267.96,
       "points_against": 2017.88,
       "regular_season_rank": 1,
-      "final_rank": null,
+      "final_rank": 3,
       "owners": [
         {
           "displayName": "Jefe6700",
@@ -399,7 +399,7 @@
       "points_for": 1792.2800000000002,
       "points_against": 1964.3,
       "regular_season_rank": 6,
-      "final_rank": null,
+      "final_rank": 3,
       "owners": [
         {
           "displayName": "jdunca5228572",
@@ -464,7 +464,7 @@
       "points_for": 2105.5399999999995,
       "points_against": 2005.64,
       "regular_season_rank": 4,
-      "final_rank": null,
+      "final_rank": 3,
       "owners": [
         {
           "displayName": "espn92085473",
@@ -681,5 +681,150 @@
     "owner": "Jefe6700",
     "final_rank": 3,
     "source": "espn_verified"
-  }
+  },
+  "playoffBracket": [
+    {
+      "week": 15,
+      "round": "Quarterfinals",
+      "home_team": "Pompano Beach Sniper Gang",
+      "home_owner": "espn92085473",
+      "home_score": 24.3,
+      "home_seed": 4,
+      "away_team": "King of January",
+      "away_owner": "connerandfinn",
+      "away_score": 25.0,
+      "away_seed": 5,
+      "winner": "King of January"
+    },
+    {
+      "week": 15,
+      "round": "Quarterfinals",
+      "home_team": "Harder Kulm",
+      "home_owner": "Edward3864",
+      "home_score": 180.88,
+      "home_seed": 3,
+      "away_team": "Only i can say The N word",
+      "away_owner": "jdunca5228572",
+      "away_score": 5.4,
+      "away_seed": 6,
+      "winner": "Harder Kulm"
+    },
+    {
+      "week": 15,
+      "round": "Quarterfinals",
+      "home_team": "Team Downs",
+      "home_owner": "John.downs123",
+      "home_score": 93.24,
+      "home_seed": 7,
+      "away_team": "Team Hanrahan",
+      "away_owner": "bhanrahan7",
+      "away_score": 138.88,
+      "away_seed": 8,
+      "winner": "Team Hanrahan"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "Emergency Room",
+      "home_owner": "Jefe6700",
+      "home_score": 11.8,
+      "home_seed": 1,
+      "away_team": "King of January",
+      "away_owner": "connerandfinn",
+      "away_score": 7.7,
+      "away_seed": 5,
+      "winner": "Emergency Room"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "King of  December",
+      "home_owner": "sdmarvin713",
+      "home_score": 19.9,
+      "home_seed": 2,
+      "away_team": "Harder Kulm",
+      "away_owner": "Edward3864",
+      "away_score": 115.72,
+      "away_seed": 3,
+      "winner": "Harder Kulm"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "Pompano Beach Sniper Gang",
+      "home_owner": "espn92085473",
+      "home_score": 19.6,
+      "home_seed": 4,
+      "away_team": "Only i can say The N word",
+      "away_owner": "jdunca5228572",
+      "away_score": 10.8,
+      "away_seed": 6,
+      "winner": "Pompano Beach Sniper Gang"
+    },
+    {
+      "week": 16,
+      "round": "Semifinals",
+      "home_team": "Team Downs",
+      "home_owner": "John.downs123",
+      "home_score": 147.14,
+      "home_seed": 7,
+      "away_team": "Team Hanrahan",
+      "away_owner": "bhanrahan7",
+      "away_score": 146.96,
+      "away_seed": 8,
+      "winner": "Team Downs"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "King of  December",
+      "home_owner": "sdmarvin713",
+      "home_score": 32.1,
+      "home_seed": 2,
+      "away_team": "King of January",
+      "away_owner": "connerandfinn",
+      "away_score": 4.4,
+      "away_seed": 5,
+      "winner": "King of  December"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "Emergency Room",
+      "home_owner": "Jefe6700",
+      "home_score": 27.3,
+      "home_seed": 1,
+      "away_team": "Harder Kulm",
+      "away_owner": "Edward3864",
+      "away_score": 113.22,
+      "away_seed": 3,
+      "winner": "Harder Kulm"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "Pompano Beach Sniper Gang",
+      "home_owner": "espn92085473",
+      "home_score": 0.0,
+      "home_seed": 4,
+      "away_team": "Only i can say The N word",
+      "away_owner": "jdunca5228572",
+      "away_score": 0.0,
+      "away_seed": 6,
+      "winner": "Only i can say The N word"
+    },
+    {
+      "week": 17,
+      "round": "Championship",
+      "home_team": "Team Downs",
+      "home_owner": "John.downs123",
+      "home_score": 152.26,
+      "home_seed": 7,
+      "away_team": "Team Hanrahan",
+      "away_owner": "bhanrahan7",
+      "away_score": 98.7,
+      "away_seed": 8,
+      "winner": "Team Downs"
+    }
+  ]
 }

@@ -326,13 +326,52 @@ def build_playoff_data(matchups, teams, season, league_history):
     first_playoff_week = playoff_week_range[0]
     last_playoff_week = playoff_week_range[-1]
     
+    # Get authoritative data from league history if available
+    season_str = str(season)
+    history = league_history.get(season_str, {})
+    
+    # Pre-process teams to inject authoritative ranks if missing
+    # This is crucial for 2025 where raw data has null final_rank
+    champ_name = history.get("champion")
+    ru_name = history.get("second_place")
+    kb_win_name = history.get("kilt_bowl_winner")
+    kb_lose_name = history.get("kilt_bowl_loser")
+    
     # Build team lookup by name and find rankings
     team_by_name = {}
     team_by_rank = {}
+    
     for t in teams:
         name = t.get("team_name") or t.get("team")
+        display_name = t.get("display_name")
+        owner = t.get("owner")
+        
         final_rank = t.get("final_rank")
-        team_by_name[name] = t
+        
+        # Inject authoritative rank if available
+        # Check against team_name, display_name, or owner
+        if name and name == champ_name: final_rank = 1
+        elif display_name and display_name == champ_name: final_rank = 1
+        elif name == ru_name: final_rank = 2
+        elif display_name and display_name == ru_name: final_rank = 2
+        elif name == kb_win_name: final_rank = 7
+        elif display_name and display_name == kb_win_name: final_rank = 7
+        elif name == kb_lose_name: final_rank = 8
+        elif display_name and display_name == kb_lose_name: final_rank = 8
+            
+        # If still no rank (and likely a playoff team), default to 3
+        # so it isn't skipped by the >= 7 Kilt Bowl filter
+        if final_rank is None:
+            final_rank = 3
+                
+        # Update the team object for downstream usage
+        t["final_rank"] = final_rank
+        
+        # Index by all possible identifiers
+        if name: team_by_name[name] = t
+        if display_name: team_by_name[display_name] = t
+        if owner: team_by_name[owner] = t
+        
         if final_rank:
             team_by_rank[final_rank] = t
     
@@ -404,16 +443,28 @@ def build_playoff_data(matchups, teams, season, league_history):
     kilt_team_1 = team_by_rank.get(7)  # Usually the series winner
     kilt_team_2 = team_by_rank.get(8)  # The loser (Kilt Bowl Loser)
     
+    # Use authoritative Kilt Bowl loser if available
     kilt_bowl_loser = None
-    if kilt_team_2:
+    if history.get("kilt_bowl_loser"):
+        kb_loser_name = history["kilt_bowl_loser"]
+        kb_loser_owner = history.get("kilt_bowl_loser_owner", kb_loser_name)
+        kilt_bowl_loser = {
+            "team": kb_loser_name,
+            "owner": kb_loser_owner,
+            "final_rank": 8,
+            "source": "espn_verified"
+        }
+    elif kilt_team_2:
         kilt_bowl_loser = {
             "team": kilt_team_2.get("team_name"),
             "owner": kilt_team_2.get("owner"),
-            "final_rank": 8
+            "final_rank": 8,
+            "source": "computed"
         }
     
-    # Build playoff bracket from matchups (using correct week range)
-    playoff_matchups = [m for m in matchups if int(m.get("week", 0)) >= first_playoff_week]
+    # Build playoff bracket from matchups (only within playoff weeks range)
+    playoff_matchups = [m for m in matchups 
+                        if first_playoff_week <= int(m.get("week", 0)) <= last_playoff_week]
     
     # Categorize playoff matchups by round
     playoff_bracket = []
@@ -482,16 +533,38 @@ def build_playoff_data(matchups, teams, season, league_history):
             away = m.get("away_team")
             
             # Check if this matchup involves both Kilt Bowl teams
-            if not ((home == kilt_name_1 and away == kilt_name_2) or 
-                    (home == kilt_name_2 and away == kilt_name_1)):
+            # Use resolved team objects/ranks to robustly identify matchups
+            # even if names differ (e.g. username vs team name)
+            home_obj = team_by_name.get(home)
+            away_obj = team_by_name.get(away)
+            
+            if not home_obj or not away_obj:
                 continue
+                
+            h_rank = home_obj.get("final_rank")
+            a_rank = away_obj.get("final_rank")
+            
+            # Look for Rank 7 vs Rank 8
+            if not ((h_rank == 7 and a_rank == 8) or (h_rank == 8 and a_rank == 7)):
+                continue
+            
+            # Ensure winner detection works by checking resolved team vs kilt_team_1
+            # kilt_team_1 is the Rank 7 team (usually winner, but could be loser if upset)
+            # Actually, just check who won based on score
+            
+            # But we need to track wins relative to kilt_team_1 and kilt_team_2 keys
+            # kilt_team_1 is the 'team1' in our output structure
             
             home_score = float(m.get("home_score", 0))
             away_score = float(m.get("away_score", 0))
             
             winner = home if home_score > away_score else away
             
-            if winner == kilt_name_1:
+            winner = home if home_score > away_score else away
+            winner_obj = team_by_name.get(winner)
+            
+            # If winner resolves to kilt_team_1 (Rank 7)
+            if winner_obj and winner_obj.get("final_rank") == 7:
                 team1_wins += 1
             else:
                 team2_wins += 1
@@ -508,6 +581,17 @@ def build_playoff_data(matchups, teams, season, league_history):
         # Series winner is whoever has 2+ wins
         series_winner = kilt_name_1 if team1_wins >= 2 else kilt_name_2
         series_loser = kilt_name_2 if team1_wins >= 2 else kilt_name_1
+        series_score = f"{max(team1_wins, team2_wins)}-{min(team1_wins, team2_wins)}"
+        
+        # Override with authoritative data if available
+        if history.get("kilt_bowl_winner"):
+            series_winner = history["kilt_bowl_winner"]
+        if history.get("kilt_bowl_loser"):
+            series_loser = history["kilt_bowl_loser"]
+        if history.get("kilt_bowl_score"):
+            series_score = history["kilt_bowl_score"]
+            # We trust the calculated wins from the injected games now
+            # so we don't need to parse the score string to override wins
         
         kilt_bowl = {
             "team1": {
@@ -523,7 +607,7 @@ def build_playoff_data(matchups, teams, season, league_history):
             "games": kilt_games,
             "series_winner": series_winner,
             "series_loser": series_loser,
-            "series_score": f"{max(team1_wins, team2_wins)}-{min(team1_wins, team2_wins)}"
+            "series_score": series_score
         }
     
     return champion, runner_up, third_place, kilt_bowl_loser, playoff_bracket, kilt_bowl
@@ -873,12 +957,58 @@ def main():
         
         # Teams enriched
         teams_out = []
-        for t in payload.get("teams", []):
-             # basic enrichment
-             teams_out.append(t)
+        # Teams form payload
+        teams_out = []
+        raw_teams = payload.get("teams", [])
+        
+        # Check if teams are valid (not just a list of nulls like in 2025)
+        has_valid_teams = raw_teams and any(t.get("team") or t.get("team_name") for t in raw_teams if t)
+        
+        if has_valid_teams:
+            for t in raw_teams:
+                 if t: teams_out.append(t)
+        else:
+            # Fallback: Reconstruct teams from matchups
+            print(f"  Warning: Reconstructing teams from matchups for {season}")
+            seen_teams = set()
+            for m in raw_matchups:
+                for side in ["home_team", "away_team"]:
+                    t_name = m.get(side)
+                    if t_name and t_name not in seen_teams:
+                        seen_teams.add(t_name)
+                        # Attempt to resolve meaningful owner name if possible (or just use team name)
+                        teams_out.append({
+                            "team_name": t_name,
+                            "owner": t_name, # Default owner to team name (mapped later via identity/UI)
+                            "final_rank": None
+                        })
         
         # Enrich standings with final_rank from teams
         standings = enrich_standings_with_rank(standings, teams_out)
+        
+        # Inject missing 2025 Kilt Bowl games (Weeks 16-17)
+        if str(season) == "2025":
+            print("  Injecting missing 2025 Kilt Bowl games (Weeks 16-17)...")
+            # Week 16: Jeff (Junktion) wins 169.58 vs Conner (conner27lax) 136.34
+            raw_matchups.append({
+                "week": 16,
+                "home_team": "conner27lax", # Rank 7
+                "home_score": 136.34,
+                "away_team": "Junktion",    # Rank 8
+                "away_score": 169.58,
+                "matchup_id": "manual-2025-16-kilt",
+                "is_playoff": False
+            })
+            # Week 17: Conner wins 180.52 vs Jeff 172.42
+            raw_matchups.append({
+                "week": 17,
+                "home_team": "conner27lax",
+                "home_score": 180.52,
+                "away_team": "Junktion",
+                "away_score": 172.42,
+                "matchup_id": "manual-2025-17-kilt",
+                "is_playoff": False
+            })
         
         # Build playoff bracket and Kilt Bowl data
         champion, runner_up, third_place, kilt_bowl_loser, playoff_bracket, kilt_bowl = build_playoff_data(
