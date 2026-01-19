@@ -9,13 +9,7 @@ import SearchBar from "../components/SearchBar.jsx";
 import StatCard from "../components/StatCard.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { useFavorites } from "../utils/useFavorites.js";
-import {
-  loadAllTime,
-  loadMetricsSummary,
-  loadPlayerMetricsBoomBust,
-  loadSeasonSummary,
-  loadTransactions,
-} from "../data/loader.js";
+import { useSummaryData } from "../hooks/useSummaryData.js";
 import LocalStatAssistant from "../components/LocalStatAssistant.jsx";
 import { resolvePlayerName } from "../lib/playerName.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
@@ -41,11 +35,6 @@ function getLatestSeason(manifest) {
 
 export default function SummaryPage() {
   const { manifest, loading, error, playerIdLookup, playerIndex, espnNameMap } = useDataContext();
-  const [seasonSummary, setSeasonSummary] = useState(null);
-  const [allTime, setAllTime] = useState(null);
-  const [transactions, setTransactions] = useState(null);
-  const [metricsSummary, setMetricsSummary] = useState(null);
-  const [boomBust, setBoomBust] = useState(null);
   const [loadHistory, setLoadHistory] = useState(false);
   const [loadMetrics, setLoadMetrics] = useState(false);
   const [loadBoomBust, setLoadBoomBust] = useState(false);
@@ -53,7 +42,7 @@ export default function SummaryPage() {
   const [weeklySearch, setWeeklySearch] = useState("");
   const [careerPosition, setCareerPosition] = useState("ALL");
   const { favorites } = useFavorites();
-  const [allSummaries, setAllSummaries] = useState([]);
+
 
   const latestSeason = getLatestSeason(manifest);
   const seasonWeeks = latestSeason ? manifest?.weeksBySeason?.[String(latestSeason)] || [] : [];
@@ -65,19 +54,23 @@ export default function SummaryPage() {
       .filter(Number.isFinite)
       .sort((a, b) => b - a);
   }, [manifest]);
-  useEffect(() => {
-    let active = true;
-    if (!seasons.length) return undefined;
 
-    Promise.all(seasons.map((year) => loadSeasonSummary(year))).then((payloads) => {
-      if (!active) return;
-      setAllSummaries(payloads.filter(Boolean));
-    });
-
-    return () => {
-      active = false;
-    };
-  }, [seasons]);
+  const {
+    seasonSummary,
+    allSummaries,
+    transactions,
+    allTime,
+    metricsSummary,
+    boomBust,
+    isLoading: dataLoading,
+    isError: dataError
+  } = useSummaryData({
+    latestSeason,
+    allSeasons: seasons,
+    loadHistory,
+    loadMetrics,
+    loadBoomBust
+  });
 
   const ownersBySeason = useMemo(() => {
     const bySeason = new Map();
@@ -94,73 +87,6 @@ export default function SummaryPage() {
     return bySeason;
   }, [allSummaries]);
 
-  useEffect(() => {
-    let active = true;
-    if (!latestSeason) return undefined;
-    loadSeasonSummary(latestSeason).then((payload) => {
-      if (active) setSeasonSummary(payload);
-    });
-    loadTransactions(latestSeason).then((payload) => {
-      if (active) setTransactions(payload);
-    });
-    return () => {
-      active = false;
-    };
-  }, [latestSeason]);
-
-  useEffect(() => {
-    let active = true;
-    if (!loadHistory) return undefined;
-
-    const seasons = (manifest?.seasons || manifest?.years || [])
-      .map(Number)
-      .filter(Number.isFinite)
-      .sort((a, b) => a - b);
-
-    const tryLoad = async () => {
-      try {
-        // Preferred: loader supports a seasons filter so the backend can aggregate 2015-2025.
-        return await loadAllTime({ seasons });
-      } catch (e) {
-        // Back-compat: older loader takes no args.
-        return await loadAllTime();
-      }
-    };
-
-    tryLoad().then((payload) => {
-      if (active) setAllTime(payload);
-    });
-
-    return () => {
-      active = false;
-    };
-  }, [loadHistory, manifest]);
-
-  useEffect(() => {
-    let active = true;
-    if (!loadMetrics) return undefined;
-    loadMetricsSummary().then((payload) => {
-      if (active) setMetricsSummary(payload);
-    });
-    return () => {
-      active = false;
-    };
-  }, [loadMetrics]);
-
-  useEffect(() => {
-    let active = true;
-    if (!loadBoomBust) return undefined;
-    loadPlayerMetricsBoomBust()
-      .then((payload) => {
-        if (active) setBoomBust(payload);
-      })
-      .catch(() => {
-        if (active) setBoomBust(null);
-      });
-    return () => {
-      active = false;
-    };
-  }, [loadBoomBust]);
 
   const champion = useMemo(() => {
     const standings = seasonSummary?.standings || [];
@@ -244,8 +170,8 @@ export default function SummaryPage() {
     [favorites.players, playerIndex],
   );
 
-  if (loading) return <LoadingState label="Loading league snapshot..." />;
-  if (error) return <ErrorState message={error} />;
+  if (loading || dataLoading) return <LoadingState label="Loading league snapshot..." />;
+  if (error || dataError) return <ErrorState message={error || "Error loading summary data"} />;
 
   const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
   const statusLabel = inSeason ? "In Season" : `Offseason (last season: ${latestSeason ?? "—"})`;

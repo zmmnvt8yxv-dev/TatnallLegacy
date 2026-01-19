@@ -7,11 +7,7 @@ import StatCard from "../components/StatCard.jsx";
 import PlayoffBracket from "../components/PlayoffBracket.jsx";
 import KiltBowlBracket from "../components/KiltBowlBracket.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import {
-    loadSeasonSummary,
-    loadPlayerStatsSeason,
-    loadTransactions
-} from "../data/loader.js";
+import { useSeasonDetails } from "../hooks/useSeasonDetails.js";
 import { formatPoints } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { resolvePlayerName } from "../lib/playerName.js";
@@ -31,12 +27,6 @@ export default function SeasonPage() {
     const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
     const [season, setSeason] = useState(seasons[0] || "");
 
-    const [summary, setSummary] = useState(null);
-    const [playerStats, setPlayerStats] = useState(null);
-    const [transactions, setTransactions] = useState(null);
-    const [pageLoading, setPageLoading] = useState(false);
-    const [loadErrors, setLoadErrors] = useState({ summary: false, stats: false, transactions: false });
-
     // Sync season with URL
     useEffect(() => {
         if (!seasons.length) return;
@@ -44,7 +34,6 @@ export default function SeasonPage() {
         if (Number.isFinite(paramSeason) && seasons.includes(paramSeason) && paramSeason !== Number(season)) {
             setSeason(paramSeason);
         } else if (!paramSeason && season) {
-            // invalid or missing param, set to current state
             const p = new URLSearchParams(searchParams);
             p.set("season", season);
             setSearchParams(p, { replace: true });
@@ -59,73 +48,16 @@ export default function SeasonPage() {
         setSearchParams(p);
     };
 
-    // Load Data
-    useEffect(() => {
-        if (!season) return;
+    // Load Data using TanStack Query
+    const {
+        summary,
+        playerStats,
+        transactions,
+        isLoading: pageLoading,
+        errors: loadErrors
+    } = useSeasonDetails(season);
 
-        let active = true;
-        setPageLoading(true);
-
-        async function load() {
-            // Reset state immediately to prevent "sticky" old data
-            if (active) {
-                setSummary(null);
-                setPlayerStats(null);
-                setTransactions(null);
-            }
-
-            try {
-                const results = await Promise.allSettled([
-                    loadSeasonSummary(season),
-                    loadPlayerStatsSeason(season),
-                    loadTransactions(season)
-                ]);
-
-                if (!active) return;
-
-                const errors = { summary: false, stats: false, transactions: false };
-
-                // 0: Summary
-                if (results[0].status === "fulfilled") {
-                    setSummary(results[0].value);
-                } else {
-                    console.error("Failed to load summary", results[0].reason);
-                    errors.summary = true;
-                }
-
-                // 1: Stats
-                if (results[1].status === "fulfilled") {
-                    const stats = results[1].value;
-                    setPlayerStats(Array.isArray(stats) ? stats : stats?.rows || []);
-                } else {
-                    console.error("Failed to load player stats", results[1].reason);
-                    setPlayerStats([]);
-                    errors.stats = true;
-                }
-
-                // 2: Transactions
-                if (results[2].status === "fulfilled") {
-                    setTransactions(results[2].value);
-                } else {
-                    console.warn("Transactions unavailable", results[2].reason);
-                    setTransactions(null);
-                    errors.transactions = true;
-                }
-
-                setLoadErrors(errors);
-
-            } catch (err) {
-                console.error("Critical loader error", err);
-            } finally {
-                if (active) setPageLoading(false);
-            }
-        }
-
-        load();
-        return () => { active = false; };
-    }, [season]);
-
-    // Derived Data - now using pre-computed fields from backend
+    // Derived Data
     const champion = useMemo(() => {
         // Use pre-computed champion from backend
         if (summary?.champion) return summary.champion;

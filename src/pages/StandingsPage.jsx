@@ -5,7 +5,7 @@ import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { loadSeasonSummary } from "../data/loader.js";
+import { useStandings } from "../hooks/useStandings.js";
 import { formatPoints } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { useFavorites } from "../utils/useFavorites.js";
@@ -18,11 +18,17 @@ export default function StandingsPage() {
   const didInitRef = useRef(false);
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
-  const [seasonSummary, setSeasonSummary] = useState(null);
-  const [allSummaries, setAllSummaries] = useState([]);
   const [teamQuery, setTeamQuery] = useState("");
   const { favorites, toggleTeam } = useFavorites();
   const STANDINGS_PREF_KEY = "tatnall-pref-standings";
+
+  const {
+    seasonSummary,
+    allSummaries,
+    isLoading: dataLoading,
+    isError: dataError,
+    error: fetchError
+  } = useStandings(season, seasons);
 
   useEffect(() => {
     if (!seasons.length) return;
@@ -60,27 +66,6 @@ export default function StandingsPage() {
     writeStorage(STANDINGS_PREF_KEY, { season: nextSeason });
   };
 
-  useEffect(() => {
-    let active = true;
-    if (!season) return undefined;
-    loadSeasonSummary(season).then((payload) => {
-      if (active) setSeasonSummary(payload);
-    });
-    return () => {
-      active = false;
-    };
-  }, [season]);
-
-  useEffect(() => {
-    let active = true;
-    if (!seasons.length) return undefined;
-    Promise.all(seasons.map((year) => loadSeasonSummary(year))).then((payloads) => {
-      if (active) setAllSummaries(payloads.filter(Boolean));
-    });
-    return () => {
-      active = false;
-    };
-  }, [seasons]);
 
   const seasonOwners = useMemo(() => {
     const mapping = new Map();
@@ -140,8 +125,8 @@ export default function StandingsPage() {
     return allTime.filter((row) => ownerLabel(row.team, row.team).toLowerCase().includes(query));
   }, [allTime, ownerLabel, query]);
 
-  if (loading) return <LoadingState label="Loading standings..." />;
-  if (error) return <ErrorState message={error} />;
+  if (loading || dataLoading) return <LoadingState label="Loading standings..." />;
+  if (error || dataError) return <ErrorState message={error || fetchError?.message || "Error loading standings"} />;
 
   return (
     <PageTransition>

@@ -5,7 +5,7 @@ import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import Modal from "../components/Modal.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { loadPlayerStatsFull, loadWeekData } from "../data/loader.js";
+import { useMatchups } from "../hooks/useMatchups.js";
 import SearchBar from "../components/SearchBar.jsx";
 import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
 import { buildNameIndex, normalizeName } from "../lib/nameUtils.js";
@@ -22,8 +22,6 @@ export default function MatchupsPage() {
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const [season, setSeason] = useState(seasons[0] || "");
   const [week, setWeek] = useState("");
-  const [weekData, setWeekData] = useState(null);
-  const [fullStatsRows, setFullStatsRows] = useState([]);
   const [activeMatchup, setActiveMatchup] = useState(null);
   const [teamQuery, setTeamQuery] = useState("");
   const MATCHUPS_PREF_KEY = "tatnall-pref-matchups";
@@ -110,33 +108,19 @@ export default function MatchupsPage() {
     updateSearchParams(season, nextWeek);
   };
 
-  useEffect(() => {
-    let active = true;
-    if (!season || !week) return undefined;
-    loadWeekData(season, week).then((payload) => {
-      if (active) setWeekData(payload);
-    });
-    return () => {
-      active = false;
-    };
-  }, [season, week]);
-
-  useEffect(() => {
-    let active = true;
-    if (!season) return undefined;
-    loadPlayerStatsFull(season).then((payload) => {
-      if (!active) return;
-      const rows = payload?.rows || payload || [];
-      setFullStatsRows(rows);
-    });
-    return () => {
-      active = false;
-    };
-  }, [season]);
+  // TanStack Query Refactor
+  const {
+    weekData,
+    fullStatsRows,
+    isLoading: dataLoading,
+    isError: dataError,
+    error: fetchError
+  } = useMatchups(season, week);
 
   useEffect(() => {
     setActiveMatchup(null);
   }, [season, week]);
+
 
   const matchups = weekData?.matchups || [];
   const lineups = weekData?.lineups || [];
@@ -318,8 +302,8 @@ export default function MatchupsPage() {
     };
   }, [isDev, weekData, lineups, playerIndex]);
 
-  if (loading) return <LoadingState label="Loading matchups..." />;
-  if (error) return <ErrorState message={error} />;
+  if (loading || dataLoading) return <LoadingState label="Loading matchups..." />;
+  if (error || dataError) return <ErrorState message={error || fetchError?.message || "Error loading data"} />;
 
   return (
     <PageTransition>

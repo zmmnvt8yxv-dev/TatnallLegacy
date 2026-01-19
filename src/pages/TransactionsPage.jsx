@@ -3,7 +3,7 @@ import PageTransition from "../components/PageTransition.jsx";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { loadTransactions } from "../data/loader.js";
+import { useTransactions } from "../hooks/useTransactions.js";
 import { filterRegularSeasonWeeks } from "../utils/format.js";
 import { normalizeOwnerName } from "../utils/owners.js";
 import { useVirtualRows } from "../utils/useVirtualRows.js";
@@ -21,7 +21,12 @@ export default function TransactionsPage() {
   const [week, setWeek] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
   const [teamFilter, setTeamFilter] = useState("");
-  const [transactions, setTransactions] = useState(null);
+  const {
+    transactions,
+    isLoading: dataLoading,
+    isError: dataError,
+    error: fetchError
+  } = useTransactions(season);
   const isDev = import.meta.env.DEV;
   const TRANSACTIONS_PREF_KEY = "tatnall-pref-transactions";
 
@@ -157,16 +162,7 @@ export default function TransactionsPage() {
     updateSearchParams(season, week, typeFilter, value);
   };
 
-  useEffect(() => {
-    let active = true;
-    if (!season) return undefined;
-    loadTransactions(season).then((payload) => {
-      if (active) setTransactions(payload);
-    });
-    return () => {
-      active = false;
-    };
-  }, [season]);
+
 
   const entries = useMemo(() => {
     const list = transactions?.entries || [];
@@ -267,8 +263,8 @@ export default function TransactionsPage() {
     };
   }, [isDev, transactions]);
 
-  if (loading) return <LoadingState label="Loading transactions..." />;
-  if (error) return <ErrorState message={error} />;
+  if (loading || dataLoading) return <LoadingState label="Loading transactions..." />;
+  if (error || dataError) return <ErrorState message={error || fetchError?.message || "Error loading transactions"} />;
 
   const isPlaceholderName = (value) => /^ESPN Player \d+$/i.test(String(value || "").trim());
 
