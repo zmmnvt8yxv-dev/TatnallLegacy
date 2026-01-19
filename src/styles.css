@@ -1,13 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
 }
 
+/* Light Theme (default) */
 :root {
   --ink-900: #0b1c1c;
   --ink-700: #22302e;
   --ink-500: #4d5c59;
+  --ink-400: #6b7a77;
   --ink-200: #e2e7e3;
   --paper-100: #f7f3ed;
   --paper-200: #efe7db;
@@ -16,13 +22,49 @@
   --accent-200: #b9e2d9;
   --shadow-soft: 0 18px 40px rgba(11, 28, 28, 0.12);
   --radius-lg: 18px;
+  --bg-gradient: radial-gradient(circle at top, #fef7ec 0%, #f6f2ea 45%, #edf1ef 100%);
+  --card-bg: #ffffff;
+  --border: var(--ink-200);
+  --surface-100: #f6f2ea;
+  --surface-200: #efe7db;
+  --success: #22c55e;
+  --error: #ef4444;
+  /* Header-specific colors for light mode */
+  --header-bg: #0b1c1c;
+  --header-text: #f8fafc;
+}
+
+/* Dark Theme (KiltBowl Aesthetic) */
+:root.dark {
+  --ink-900: #f0f0f0;
+  --ink-700: #d7e0de;
+  --ink-500: #999999;
+  --ink-400: #777777;
+  --ink-200: #3d3d4d;
+  --paper-100: #1e1e2c;
+  --paper-200: #2a2a38;
+  --accent-700: #4CAF50;
+  --accent-500: #66bb6a;
+  --accent-200: #1b5e20;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.4);
+  --bg-gradient: linear-gradient(180deg, #1e1e2c 0%, #252535 100%);
+  --card-bg: #2a2a38;
+  --border: #3d3d4d;
+  --surface-100: #2a2a38;
+  --surface-200: #353545;
+  --success: #4CAF50;
+  --error: #ef5350;
+  /* Header-specific colors for dark mode */
+  --header-bg: #1e1e2c;
+  --header-text: #f0f0f0;
 }
 
 body {
   margin: 0;
   font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
-  background: radial-gradient(circle at top, #fef7ec 0%, #f6f2ea 45%, #edf1ef 100%);
+  background: var(--bg-gradient);
   color: var(--ink-900);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -37,8 +79,8 @@ a {
 }
 
 .site-header {
-  background: rgba(11, 28, 28, 0.92);
-  color: #f8fafc;
+  background: var(--header-bg);
+  color: var(--header-text);
   padding: 18px 40px;
   display: flex;
   align-items: center;
@@ -49,6 +91,8 @@ a {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .brand-title {
@@ -169,10 +213,12 @@ a {
 .stat-card,
 .section-card,
 .state-card {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 18px 20px;
   box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .state-card.error {

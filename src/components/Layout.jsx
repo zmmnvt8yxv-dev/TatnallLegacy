@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useDataContext } from "../data/DataContext.jsx";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 const navItems = [
   { to: "/", label: "Summary" },
@@ -67,6 +68,7 @@ export default function Layout({ children }) {
           <div className="brand-subtitle">League Encyclopedia</div>
         </div>
         <div className="header-tools">
+          <ThemeToggle />
           <div className="header-search">
             <input
               type="search"
@@ -114,3 +116,4 @@ export default function Layout({ children }) {
     </div>
   );
 }
+
