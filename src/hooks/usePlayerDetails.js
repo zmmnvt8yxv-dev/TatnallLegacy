@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useQuery, useQueries } from "@tanstack/react-query";
 import {
     loadManifest,
@@ -117,19 +118,48 @@ export function usePlayerDetails({ selectedSeason, seasons }) {
         transactionsQuery.isError ||
         fullStatsQuery.isError;
 
-    return {
+    const seasonSummaries = useMemo(() =>
+        seasonSummaryQueries.map(q => q.data).filter(Boolean),
+        [seasonSummaryQueries]
+    );
+
+    const statsSeasonSummaries = useMemo(() =>
+        playerSeasonStatsQueries.map(q => q.data).filter(Boolean),
+        [playerSeasonStatsQueries]
+    );
+
+    const weekLineups = useMemo(() =>
+        weekDataQueries.map(q => ({ week: q.data?.week, lineups: q.data?.lineups })),
+        [weekDataQueries]
+    );
+
+    return useMemo(() => ({
         manifest: manifestQuery.data,
         careerStats: careerStatsQuery.data?.rows || careerStatsQuery.data || [],
         boomBustMetrics: boomBustQuery.data?.rows || boomBustQuery.data || [],
         careerMetrics: careerMetricsQuery.data?.rows || careerMetricsQuery.data || [],
-        seasonSummaries: seasonSummaryQueries.map(q => q.data).filter(Boolean),
-        statsSeasonSummaries: playerSeasonStatsQueries.map(q => q.data).filter(Boolean),
+        seasonSummaries,
+        statsSeasonSummaries,
         seasonMetrics: seasonMetricsQuery.data?.rows || seasonMetricsQuery.data || [],
         statsWeeklyRows: weeklyStatsQuery.data?.rows || weeklyStatsQuery.data || [],
         playerTransactions: transactionsQuery.data?.entries || [],
         fullStatsRows: fullStatsQuery.data?.rows || fullStatsQuery.data || [],
-        weekLineups: weekDataQueries.map(q => ({ week: q.data?.week, lineups: q.data?.lineups })),
+        weekLineups,
         isLoading,
         isError,
-    };
+    }), [
+        manifestQuery.data,
+        careerStatsQuery.data,
+        boomBustQuery.data,
+        careerMetricsQuery.data,
+        seasonSummaries,
+        statsSeasonSummaries,
+        seasonMetricsQuery.data,
+        weeklyStatsQuery.data,
+        transactionsQuery.data,
+        fullStatsQuery.data,
+        weekLineups,
+        isLoading,
+        isError
+    ]);
 }

@@ -50,11 +50,17 @@ export default function TeamsPage() {
     // Build team list with owner normalization
     const teams = useMemo(() => {
         if (!seasonData?.teams) return [];
-        return seasonData.teams.map((team) => ({
-            ...team,
-            ownerNormalized: normalizeOwnerName(team.owner || team.display_name || team.team_name),
-            ownerSlug: slugifyOwner(normalizeOwnerName(team.owner || team.display_name || team.team_name)),
-        }));
+        return seasonData.teams
+            .map((team) => ({
+                ...team,
+                ownerNormalized: normalizeOwnerName(team.owner || team.display_name || team.team_name),
+                ownerSlug: slugifyOwner(normalizeOwnerName(team.owner || team.display_name || team.team_name)),
+            }))
+            .sort((a, b) => {
+                const rankA = a.final_rank || a.regular_season_rank || 999;
+                const rankB = b.final_rank || b.regular_season_rank || 999;
+                return rankA - rankB;
+            });
     }, [seasonData]);
 
     if (loading) {

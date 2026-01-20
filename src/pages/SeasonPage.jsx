@@ -132,25 +132,31 @@ export default function SeasonPage() {
                         <div className="stat-card accent">
                             <div className="stat-label">League Champion</div>
                             <div className="stat-value">{champion ? ownerLabel(champion) : "—"}</div>
-                            <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
-                                {champion ? (champion.team || champion.team_name) : "No data"}
-                            </div>
+                            {champion && normalizeOwnerName(champion.team || champion.team_name).toLowerCase() !== ownerLabel(champion).toLowerCase() && (
+                                <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
+                                    {champion.team || champion.team_name}
+                                </div>
+                            )}
                         </div>
 
                         <div className="stat-card">
                             <div className="stat-label">Runner Up</div>
                             <div className="stat-value">{runnerUp ? ownerLabel(runnerUp) : "—"}</div>
-                            <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
-                                {runnerUp ? (runnerUp.team || runnerUp.team_name) : "—"}
-                            </div>
+                            {runnerUp && normalizeOwnerName(runnerUp.team || runnerUp.team_name).toLowerCase() !== ownerLabel(runnerUp).toLowerCase() && (
+                                <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
+                                    {runnerUp.team || runnerUp.team_name}
+                                </div>
+                            )}
                         </div>
 
                         <div className="stat-card">
                             <div className="stat-label">Kilt Bowl Loser</div>
                             <div className="stat-value">{kiltBowlLoser ? ownerLabel(kiltBowlLoser) : "—"}</div>
-                            <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
-                                {kiltBowlLoser ? kiltBowlLoser.team : "—"}
-                            </div>
+                            {kiltBowlLoser && normalizeOwnerName(kiltBowlLoser.team).toLowerCase() !== ownerLabel(kiltBowlLoser).toLowerCase() && (
+                                <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
+                                    {kiltBowlLoser.team}
+                                </div>
+                            )}
                         </div>
 
                         <div className="stat-card">
@@ -200,7 +206,9 @@ export default function SeasonPage() {
                                                             <div style={{ fontWeight: 600 }}>
                                                                 {ownerLabel(row)}
                                                             </div>
-                                                            <div style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>{row.team}</div>
+                                                            {normalizeOwnerName(row.team).toLowerCase() !== ownerLabel(row).toLowerCase() && (
+                                                                <div style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>{row.team}</div>
+                                                            )}
                                                         </td>
                                                         <td>{row.wins}-{row.losses}</td>
                                                         <td>{formatPoints(row.points_for)}</td>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 @plugin "tailwindcss-animate";
 @custom-variant dark (&:is(.dark *));
@@ -23,9 +23,9 @@
   --accent-700: #0f766e;
   --accent-500: #1f9386;
   --accent-200: #b9e2d9;
-  --shadow-soft: 0 18px 40px rgba(11, 28, 28, 0.12);
-  --radius-lg: 18px;
-  --bg-gradient: radial-gradient(circle at top, #fef7ec 0%, #f6f2ea 45%, #edf1ef 100%);
+  --shadow-soft: 0 12px 30px -4px rgba(11, 28, 28, 0.08), 0 4px 12px -2px rgba(11, 28, 28, 0.03);
+  --radius-lg: 20px;
+  --bg-gradient: radial-gradient(circle at top, #fdfcf9 0%, #f7f3ed 45%, #eff3f1 100%);
   --card-bg: #ffffff;
   --border: oklch(0.922 0 0);
   --surface-100: #f6f2ea;
@@ -95,10 +95,11 @@
 
 body {
   margin: 0;
-  font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   background: var(--bg-gradient);
   color: var(--ink-900);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -221,21 +222,31 @@ a {
 
 .site-main {
   flex: 1;
-  padding: 32px 40px 64px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  padding: 40px 0 80px;
+}
+
+.content-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
 }
 
 .page-title {
-  font-size: 1.6rem;
+  font-size: 2.25rem;
   margin: 0;
   font-family: "Space Grotesk", "Source Sans 3", sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 
 .page-subtitle {
-  margin-top: 4px;
+  margin-top: 8px;
+  margin-bottom: 2rem;
   color: var(--ink-500);
+  font-size: 1.1rem;
+  max-width: 800px;
+  line-height: 1.5;
 }
 
 .card-grid {
@@ -249,10 +260,16 @@ a {
 .state-card {
   background: var(--card-bg);
   border-radius: var(--radius-lg);
-  padding: 18px 20px;
+  padding: 24px;
   box-shadow: var(--shadow-soft);
   border: 1px solid var(--border);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-card:hover,
+.section-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -8px rgba(11, 28, 28, 0.12);
 }
 
 .state-card.error {
@@ -283,15 +300,18 @@ a {
 }
 
 .section-title {
-  margin: 0 0 12px;
-  font-size: 1.1rem;
+  margin: 0 0 1.5rem;
+  font-size: 1.4rem;
   font-family: "Space Grotesk", "Source Sans 3", sans-serif;
+  font-weight: 700;
+  color: var(--ink-900);
 }
 
 .section-card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .player-headshot {

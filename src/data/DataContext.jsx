@@ -30,7 +30,8 @@ export function DataProvider({ children }) {
     const byEspn = new Map();
     const byUid = new Map();
     for (const player of core.players || []) {
-      if (player?.player_uid) byUid.set(player.player_uid, player);
+      const uid = player?.player_uid || player?.id;
+      if (uid) byUid.set(String(uid), player);
     }
     for (const entry of core.playerIds || []) {
       if (entry?.id_type === "sleeper" && entry?.id_value && entry?.player_uid) {

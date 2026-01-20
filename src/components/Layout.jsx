@@ -115,7 +115,11 @@ export default function Layout({ children }) {
             </nav>
           </div>
         </header>
-        <main className="site-main">{children}</main>
+        <main className="site-main">
+          <div className="content-container">
+            {children}
+          </div>
+        </main>
       </div>
     </>
   );

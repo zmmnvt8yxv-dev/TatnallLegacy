@@ -53,7 +53,13 @@ def main():
                 "sleeper_id": None,
                 "espn_id": None,
                 "gsis_id": None
-            }
+            },
+            "height": None,
+            "weight": None,
+            "college": None,
+            "age": None,
+            "years_exp": None,
+            "birth_date": None
         }
         registry[canonical_id] = entry
         return entry
@@ -99,6 +105,14 @@ def main():
                 entry["name"] = full_name.strip()
                 entry["position"] = row.get("position")
                 entry["team"] = row.get("team")
+                
+                # Extended Bio
+                entry["height"] = row.get("height")
+                entry["weight"] = row.get("weight")
+                entry["college"] = row.get("college")
+                entry["age"] = row.get("age")
+                entry["years_exp"] = row.get("years_exp")
+                entry["birth_date"] = row.get("birth_date")
 
                 # External IDs
                 espn_id = row.get("espn_id", "").strip()
@@ -228,6 +242,12 @@ def main():
     print(f"Writing registry to {REGISTRY_PATH}...")
     with REGISTRY_PATH.open("w", encoding="utf-8") as f:
         json.dump(output_payload, f, indent=2)
+        
+    # Also write flat players list for loader.js compatibility
+    PLAYERS_JSON_PATH = OUTPUT_DIR / "players.json"
+    print(f"Writing flat players list to {PLAYERS_JSON_PATH}...")
+    with PLAYERS_JSON_PATH.open("w", encoding="utf-8") as f:
+        json.dump(list(registry.values()), f, indent=2)
     
     print(f"Done. Registry size: {len(registry)} players.")
     print(f"Mapped ESPN IDs: {len(by_espn)}")

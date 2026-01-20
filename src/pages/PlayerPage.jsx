@@ -8,6 +8,7 @@ import { usePlayerDetails } from "../hooks/usePlayerDetails.js";
 import PageTransition from "../components/PageTransition.jsx";
 import { getCanonicalPlayerId, resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName.js";
 import { normalizeName } from "../lib/nameUtils.js";
+import { normalizeOwnerName } from "../lib/identity.js";
 import { formatPoints, safeNumber } from "../utils/format.js";
 import { useVirtualRows } from "../utils/useVirtualRows.js";
 import { useFavorites } from "../utils/useFavorites.js";
@@ -92,6 +93,9 @@ export default function PlayerPage() {
   const playerInfo = useMemo(() => {
     const candidates = [resolvedPlayerId, playerId].filter(Boolean);
     for (const id of candidates) {
+      if (playerIdLookup.byUid.has(String(id))) {
+        return playerIdLookup.byUid.get(String(id));
+      }
       const uid =
         playerIdLookup.bySleeper.get(String(id)) ||
         playerIdLookup.byEspn.get(String(id));
@@ -147,7 +151,10 @@ export default function PlayerPage() {
         }
       }
     }
-    setWeeklyRows(rows.sort((a, b) => a.week - b.week));
+    setWeeklyRows(prev => {
+      const sorted = rows.sort((a, b) => a.week - b.week);
+      return JSON.stringify(prev) === JSON.stringify(sorted) ? prev : sorted;
+    });
   }, [weekLineups, targetIds, selectedSeason]);
 
 
@@ -403,60 +410,80 @@ export default function PlayerPage() {
   }, [isDev, selectedSeason, statsWeeklyRows, weeklyRows, fullStatsRows, resolvedPlayerId, displayName]);
 
 
-  useEffect(() => {
-    if (!seasonOptions.length) return;
-    const nextSeason = seasonOptions[0];
-    if (Number(selectedSeason) !== nextSeason) {
-      setSelectedSeason(nextSeason);
-      updateSearchParams(nextSeason, activeTab);
-    }
-  }, [seasonOptions, selectedSeason, activeTab]);
+  // REMOVED CONFLICTING USEEFFECT
+  // UseEffect that forced selectedSeason update was causing infinite loops.
+  // We rely on the searchParams synchronization effect for defaults.
 
+  console.log("DEBUG PLAYER INFO:", playerInfo);
+
+  // Sync State with URL (Source of Truth)
+  // This effect ensures that if the URL changes (back button, link click), the internal state matches.
   useEffect(() => {
-    if (!seasons.length) return;
-    const options = availableSeasons.length ? availableSeasons : seasons;
     const paramSeason = Number(searchParams.get("season"));
-    if (Number.isFinite(paramSeason) && options.includes(paramSeason) && paramSeason !== Number(selectedSeason)) {
-      setSelectedSeason(paramSeason);
-    }
     const paramTab = searchParams.get("tab");
-    if (paramTab && TABS.includes(paramTab) && paramTab !== activeTab) {
-      setActiveTab(paramTab);
-    }
-  }, [searchParamsString, seasons, selectedSeason, activeTab, availableSeasons]);
 
+    // 1. Sync Season
+    // Validation: Must be finite and within known seasons (manifest). 
+    // We use 'seasons' for validation to avoid circular dependency with 'availableSeasons' which depends on fetching.
+    if (Number.isFinite(paramSeason) && seasons.includes(paramSeason)) {
+      if (paramSeason !== Number(selectedSeason)) {
+        setSelectedSeason(paramSeason);
+      }
+    } else if (seasons.length && !selectedSeason) {
+      // Initialize default if state is empty
+      setSelectedSeason(seasons[0]);
+    }
+
+    // 2. Sync Tab
+    if (paramTab && TABS.includes(paramTab)) {
+      if (paramTab !== activeTab) {
+        setActiveTab(paramTab);
+      }
+    }
+  }, [searchParamsString, seasons, selectedSeason, activeTab]);
+
+  // Set Default URL Params if missing
+  // This runs once per seasons-load or if params are stripped.
   useEffect(() => {
     if (!seasons.length) return;
     if (didInitRef.current) return;
+
     const params = new URLSearchParams(searchParams);
-    const stored = readStorage(PLAYER_PREF_KEY, {});
-    const storedSeason = Number(stored?.season);
-    const storedTab = stored?.tab;
-    const paramSeason = Number(searchParams.get("season"));
-    const options = availableSeasons.length ? availableSeasons : seasons;
-    let nextSeason = Number.isFinite(paramSeason) && options.includes(paramSeason) ? paramSeason : options[0];
-    if (!searchParams.get("season") && Number.isFinite(storedSeason) && options.includes(storedSeason)) {
-      nextSeason = storedSeason;
-    }
-    const paramTab = searchParams.get("tab");
-    let nextTab = paramTab && TABS.includes(paramTab) ? paramTab : TABS[0];
-    if (!searchParams.get("tab") && storedTab && TABS.includes(storedTab)) {
-      nextTab = storedTab;
-    }
-    setSelectedSeason(nextSeason);
-    setActiveTab(nextTab);
     let changed = false;
-    if (!searchParams.get("season") && nextSeason) {
-      params.set("season", String(nextSeason));
-      changed = true;
+
+    // Default Season
+    const paramSeason = Number(params.get("season"));
+    if (!Number.isFinite(paramSeason) || !seasons.includes(paramSeason)) {
+      const stored = readStorage(PLAYER_PREF_KEY, {});
+      const storedSeason = Number(stored.season);
+      const defaultSeason = (Number.isFinite(storedSeason) && seasons.includes(storedSeason))
+        ? storedSeason
+        : seasons[0];
+
+      if (defaultSeason) {
+        params.set("season", String(defaultSeason));
+        changed = true;
+      }
     }
-    if (!searchParams.get("tab") && nextTab) {
-      params.set("tab", nextTab);
-      changed = true;
+
+    // Default Tab
+    const paramTab = params.get("tab");
+    if (!paramTab || !TABS.includes(paramTab)) {
+      const stored = readStorage(PLAYER_PREF_KEY, {});
+      const storedTab = stored.tab;
+      const defaultTab = (storedTab && TABS.includes(storedTab)) ? storedTab : TABS[0];
+
+      if (defaultTab) {
+        params.set("tab", defaultTab);
+        changed = true;
+      }
     }
-    if (changed) setSearchParams(params, { replace: true });
+
+    if (changed) {
+      setSearchParams(params, { replace: true });
+    }
     didInitRef.current = true;
-  }, [seasons, searchParams, setSearchParams, availableSeasons]);
+  }, [seasons, searchParamsString, setSearchParams]);
 
 
   const findMetricsRow = (rows) => {
@@ -725,7 +752,10 @@ export default function PlayerPage() {
           });
         }
       }
-      setCareerWeeklyRows(rows);
+      setCareerWeeklyRows(prev => {
+        if (JSON.stringify(prev) === JSON.stringify(rows)) return prev;
+        return rows;
+      });
     });
     return () => {
       active = false;
@@ -819,50 +849,162 @@ export default function PlayerPage() {
 
   return (
     <PageTransition>
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pt-4">
-        <div>
-          <div className="flex items-center gap-3 mb-2">
-            <h1 className="text-4xl font-display text-ink-900">{displayName}</h1>
-            <Button
-              variant="ghost"
-              size="icon"
-              className={isFavorite ? "text-red-500 hover:text-red-600" : "text-ink-300 hover:text-red-400"}
-              onClick={() => togglePlayer(resolvedPlayerId)}
-            >
-              <Heart className={isFavorite ? "fill-current" : ""} size={24} />
-            </Button>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="secondary" className="text-sm px-3 py-1">
-              {displayPosition}
-            </Badge>
-            <Badge variant="outline" className="text-sm px-3 py-1">
-              {displayTeam}
-            </Badge>
-            {playerInfo?.age && (
-              <span className="text-sm text-ink-500">Age: {playerInfo.age}</span>
-            )}
-            {playerInfo?.years_exp != null && (
-              <span className="text-sm text-ink-500">· {playerInfo.years_exp} yrs exp</span>
-            )}
-          </div>
-        </div>
+      {/* PlayerProfiler-style Hero Section */}
+      <div className="relative w-full bg-ink-900 text-white overflow-hidden rounded-3xl mb-8 p-6 md:p-8 isolate shadow-2xl">
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 -z-10" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-700/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 -z-10" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 -z-10" />
 
-        <div className="flex items-center gap-3">
-          <div className="flex flex-col items-end">
-            <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest">Season</span>
-            <select
-              value={selectedSeason}
-              onChange={(e) => handleSeasonChange(e.target.value)}
-              className="mt-1 rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[120px]"
-            >
-              {seasonOptions.map((v) => (
-                <option key={v} value={v}>
-                  {v} Season
-                </option>
-              ))}
-            </select>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 items-center relative z-10">
+
+          {/* LEFT COLUMN: Identity & Bio */}
+          <div className="flex flex-col gap-6 text-center lg:text-left">
+            <div>
+              <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-none">
+                  {displayName}
+                  <span className="text-accent-500 text-6xl leading-none">.</span>
+                </h1>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full hover:bg-white/10 text-white/50 hover:text-white"
+                  onClick={() => togglePlayer(resolvedPlayerId)}
+                >
+                  <Heart className={isFavorite ? "fill-red-500 text-red-500" : ""} size={28} />
+                </Button>
+              </div>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-lg font-medium text-ink-300">
+                <span className="text-white font-bold">{displayPosition}</span>
+                <span>•</span>
+                <span>{displayTeam}</span>
+                {playerInfo?.age && (
+                  <>
+                    <span>•</span>
+                    <span>{playerInfo.age} Years Old</span>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Bio Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-y-4 gap-x-8 max-w-lg mx-auto lg:mx-0 pt-4 border-t border-white/10">
+              <div>
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">Height</div>
+                <div className="text-xl font-display font-bold">{playerInfo?.height || "—"}</div>
+              </div>
+              <div>
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">Weight</div>
+                <div className="text-xl font-display font-bold">{playerInfo?.weight ? `${playerInfo.weight} lbs` : "—"}</div>
+              </div>
+              <div className="col-span-2">
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">College</div>
+                <div className="text-xl font-display font-bold truncate">{playerInfo?.college || "—"}</div>
+              </div>
+              <div>
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">Experience</div>
+                <div className="text-xl font-display font-bold">{playerInfo?.years_exp != null ? `${playerInfo.years_exp} Years` : "Rookie"}</div>
+              </div>
+              <div>
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">Draft</div>
+                <div className="text-xl font-display font-bold text-white/80 text-sm mt-1">{playerInfo?.draft_year ? `${playerInfo.draft_year}` : "—"}</div>
+              </div>
+            </div>
           </div>
+
+          {/* CENTER COLUMN: Hero Image */}
+          <div className="relative flex justify-center order-first lg:order-none mb-4 lg:mb-0">
+            <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-4 border-white/10 shadow-2xl overflow-hidden bg-ink-800 relative group">
+              {playerDisplay.headshotUrl ? (
+                <img
+                  src={playerDisplay.headshotUrl}
+                  alt={displayName}
+                  className="w-full h-full object-cover scale-110 group-hover:scale-105 transition-transform duration-700"
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-ink-700">
+                  <Heart size={64} className="opacity-20" />
+                </div>
+              )}
+              {/* Gloss effect */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none" />
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Key Metrics / Context */}
+          <div className="flex flex-col gap-6 justify-center">
+            <div className="bg-white/5 rounded-2xl p-5 border border-white/5 backdrop-blur-sm">
+              <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-4 flex justify-between items-center">
+                <span>Season Performance</span>
+                <div className="flex items-center gap-2">
+                  <select
+                    value={selectedSeason}
+                    onChange={(e) => handleSeasonChange(e.target.value)}
+                    className="bg-ink-900 border border-white/10 text-white text-xs rounded px-2 py-1 font-bold focus:outline-none focus:ring-1 focus:ring-accent-500"
+                  >
+                    {seasonOptions.map((v) => (
+                      <option key={v} value={v}>
+                        {v}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {(() => {
+                /* Find stats for the selected season */
+                const currentStats = seasonStats.find(s => Number(s.season) === Number(selectedSeason)) || {};
+                return (
+                  <div className="space-y-5">
+                    {/* Metric 1 */}
+                    <div>
+                      <div className="flex justify-between items-end mb-2">
+                        <span className="text-sm font-medium text-ink-300">Total Points</span>
+                        <span className="text-2xl font-display font-bold text-accent-400">{formatPoints(currentStats.points) || "—"}</span>
+                      </div>
+                      <div className="h-2 w-full bg-ink-800 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-accent-500 rounded-full"
+                          style={{ width: `${Math.min((safeNumber(currentStats.points) / 300) * 100, 100)}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Metric 2 */}
+                    <div>
+                      <div className="flex justify-between items-end mb-2">
+                        <span className="text-sm font-medium text-ink-300">Avg Points / Game</span>
+                        <span className="text-2xl font-display font-bold text-blue-400">
+                          {currentStats.games ? (safeNumber(currentStats.points) / currentStats.games).toFixed(1) : "—"}
+                        </span>
+                      </div>
+                      <div className="h-2 w-full bg-ink-800 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-blue-500 rounded-full"
+                          style={{ width: `${Math.min(((safeNumber(currentStats.points) / (currentStats.games || 1)) / 25) * 100, 100)}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Metric 3 */}
+                    <div className="grid grid-cols-2 gap-4 pt-2">
+                      <div className="bg-ink-900/50 rounded-lg p-3 text-center border border-white/5">
+                        <div className="text-[10px] uppercase tracking-wider text-ink-500 font-bold mb-1">Games Played</div>
+                        <div className="text-xl font-bold font-mono">{currentStats.games || 0}</div>
+                      </div>
+                      <div className="bg-ink-900/50 rounded-lg p-3 text-center border border-white/5">
+                        <div className="text-[10px] uppercase tracking-wider text-ink-500 font-bold mb-1">Pos Rank</div>
+                        <div className="text-xl font-bold font-mono text-ink-300">#{currentStats.positionRank || "—"}</div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
+          </div>
+
         </div>
       </div>
 

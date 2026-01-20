@@ -18,16 +18,22 @@ ReactGA.initialize("G-PLACEHOLDER");
 // Send initial pageview
 ReactGA.send("pageview");
 
-Sentry.init({
-  dsn: "https://placeholder-dsn@sentry.io/placeholder", // Placeholder for development
-  integrations: [
-    Sentry.browserTracingIntegration(),
-    Sentry.replayIntegration(),
-  ],
-  tracesSampleRate: 1.0,
-  replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1.0,
-});
+const sentryDsn = import.meta.env.VITE_SENTRY_DSN || "https://placeholder-dsn@sentry.io/placeholder";
+
+if (sentryDsn && !sentryDsn.includes("placeholder")) {
+  Sentry.init({
+    dsn: sentryDsn,
+    integrations: [
+      Sentry.browserTracingIntegration(),
+      Sentry.replayIntegration(),
+    ],
+    tracesSampleRate: 1.0,
+    replaysSessionSampleRate: 0.1,
+    replaysOnErrorSampleRate: 1.0,
+  });
+} else {
+  console.log("Sentry initialization skipped: No valid DSN provided.");
+}
 
 window.addEventListener("unhandledrejection", (e) => {
   console.error("UNHANDLED_REJECTION", e.reason);

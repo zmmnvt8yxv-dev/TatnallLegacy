@@ -17,6 +17,17 @@ import { normalizeOwnerName } from "../utils/owners.js";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
+import {
+  Trophy,
+  Users,
+  Repeat,
+  ArrowRightLeft,
+  Star,
+  Activity,
+  Calendar,
+  Zap,
+  ChevronRight
+} from "lucide-react";
 
 function normalizePosition(pos) {
   const p = String(pos || "").trim().toUpperCase();
@@ -205,43 +216,57 @@ export default function SummaryPage() {
       </section>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <Card className="shadow-soft border-ink-100">
-          <CardHeader className="pb-2">
-            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-widest pl-1">Current Season</span>
+        <Card className="shadow-soft border-ink-100 overflow-hidden relative">
+          <div className="absolute top-0 right-0 p-3 opacity-10">
+            <Calendar size={48} className="text-accent-700" />
+          </div>
+          <CardHeader className="pb-1">
+            <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest pl-1">Current Season</span>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-display text-accent-700 leading-tight">{latestSeason ?? "—"}</div>
-            <p className="text-[10px] text-ink-400 font-medium uppercase tracking-tight mt-1">{statusLabel}</p>
+            <div className="text-4xl font-display text-accent-700 leading-none">{latestSeason ?? "—"}</div>
+            <p className="text-[10px] text-ink-500 font-medium uppercase tracking-tight mt-2 flex items-center gap-1">
+              <Activity size={10} /> {statusLabel}
+            </p>
           </CardContent>
         </Card>
 
-        <Card className="shadow-soft border-ink-100">
-          <CardHeader className="pb-2">
-            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-widest pl-1">Current Champion</span>
+        <Card className="shadow-soft border-ink-100 overflow-hidden relative">
+          <div className="absolute top-0 right-0 p-3 opacity-10">
+            <Trophy size={48} className="text-amber-500" />
+          </div>
+          <CardHeader className="pb-1">
+            <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest pl-1">League Champion</span>
           </CardHeader>
           <CardContent>
-            <div className="text-xl font-display text-ink-900 truncate leading-tight">{championLabel}</div>
-            <p className="text-[10px] text-ink-400 font-medium uppercase tracking-tight mt-1">{championNote}</p>
+            <div className="text-xl font-display text-ink-900 truncate leading-tight mb-1">{championLabel}</div>
+            <p className="text-[10px] text-ink-500 font-medium uppercase tracking-tight leading-relaxed">{championNote}</p>
           </CardContent>
         </Card>
 
-        <Card className="shadow-soft border-ink-100">
-          <CardHeader className="pb-2">
-            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-widest pl-1">Transactions</span>
+        <Card className="shadow-soft border-ink-100 overflow-hidden relative">
+          <div className="absolute top-0 right-0 p-3 opacity-10">
+            <Zap size={48} className="text-blue-500" />
+          </div>
+          <CardHeader className="pb-1">
+            <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest pl-1">Transactions</span>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-display text-ink-900 leading-tight">{transactionTotals ? transactionTotals.total : "—"}</div>
-            <p className="text-[10px] text-ink-400 font-medium uppercase tracking-tight mt-1">Trades + adds + drops</p>
+            <div className="text-4xl font-display text-ink-900 leading-none">{transactionTotals ? transactionTotals.total : "—"}</div>
+            <p className="text-[10px] text-ink-500 font-medium uppercase tracking-tight mt-2">Trades + adds + drops</p>
           </CardContent>
         </Card>
 
-        <Card className="shadow-soft border-ink-100">
-          <CardHeader className="pb-2">
-            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-widest pl-1">Total Trades</span>
+        <Card className="shadow-soft border-ink-100 overflow-hidden relative">
+          <div className="absolute top-0 right-0 p-3 opacity-10">
+            <ArrowRightLeft size={48} className="text-purple-500" />
+          </div>
+          <CardHeader className="pb-1">
+            <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest pl-1">Total Trades</span>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-display text-ink-900 leading-tight">{transactionTotals ? transactionTotals.totalTrades : "—"}</div>
-            <p className="text-[10px] text-ink-400 font-medium uppercase tracking-tight mt-1">Latest season trades</p>
+            <div className="text-4xl font-display text-ink-900 leading-none">{transactionTotals ? transactionTotals.totalTrades : "—"}</div>
+            <p className="text-[10px] text-ink-500 font-medium uppercase tracking-tight mt-2">Latest season trades</p>
           </CardContent>
         </Card>
       </div>
@@ -398,35 +423,58 @@ export default function SummaryPage() {
                       const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
                       return (
                         <tr key={`${pid || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`}>
-                          <td>
+                          <td className="py-2 px-3 md:py-3 md:px-4">
                             {pid ? (
-                              <Link to={`/players/${pid}`}>
-                                <Badge variant="outline" className="hover:bg-accent-50 font-body">
-                                  {playerName}
-                                </Badge>
+                              <Link to={`/players/${pid}`} className="flex items-center gap-2 md:gap-3 group">
+                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-ink-100 overflow-hidden bg-white shrink-0 shadow-sm group-hover:border-accent-300 transition-colors">
+                                  <img
+                                    src={`https://sleepercdn.com/content/nfl/players/${pid}.jpg`}
+                                    alt=""
+                                    className="w-full h-full object-cover"
+                                    style={{ width: '100%', height: '100%' }}
+                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                  />
+                                </div>
+                                <div className="min-w-0">
+                                  <div className="font-bold text-ink-900 text-xs md:text-sm truncate max-w-[100px] md:max-w-none group-hover:text-accent-700 transition-colors">{playerName}</div>
+                                  <div className="text-[9px] md:text-[10px] font-bold text-ink-400 uppercase tracking-wider">
+                                    {row.season} · W{row.week}
+                                  </div>
+                                </div>
                               </Link>
                             ) : (
-                              <span className="text-sm font-body">{playerName || "Unknown"}</span>
+                              <div className="flex items-center gap-2 md:gap-3">
+                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-ink-50 border border-ink-100 shrink-0" />
+                                <div className="min-w-0">
+                                  <div className="font-bold text-ink-900 text-xs md:text-sm truncate max-w-[100px] md:max-w-none">{playerName || "Unknown"}</div>
+                                  <div className="text-[9px] md:text-[10px] font-bold text-ink-400 uppercase tracking-wider">
+                                    {row.season} · W{row.week}
+                                  </div>
+                                </div>
+                              </div>
                             )}
                           </td>
-                          <td className="font-mono text-sm">{row.season}</td>
-                          <td className="font-mono text-sm">{row.week}</td>
-                          <td className="text-sm">
+                          <td className="py-2 px-3 md:py-3 md:px-4 text-xs md:text-sm font-medium text-ink-800 hidden md:table-cell">
                             {(() => {
                               const ownerByTeam = ownersBySeason.get(Number(row.season));
                               const owner = ownerByTeam?.get(row.team);
-                              return owner ? `${row.team} - ${owner}` : row.team;
+                              return owner ? (
+                                <div className="flex flex-col">
+                                  <span className="font-bold">{owner}</span>
+                                  <span className="text-[10px] text-ink-400 uppercase tracking-tighter">{row.team}</span>
+                                </div>
+                              ) : row.team;
                             })()}
                           </td>
-                          <td>
-                            <div className="flex items-center gap-3">
-                              <span className="font-bold text-accent-700">{formatPoints(row.points)}</span>
+                          <td className="py-2 px-3 md:py-3 md:px-4">
+                            <div className="flex items-center gap-2 md:gap-3 justify-end md:justify-start">
+                              <span className="text-base md:text-lg font-display text-accent-700">{formatPoints(row.points)}</span>
                               {row.started != null && (
                                 <Badge
                                   variant={row.started ? "success" : "destructive"}
-                                  className="text-[10px] px-1.5 py-0"
+                                  className="text-[9px] px-1.5 py-0 font-black h-4"
                                 >
-                                  {row.started ? "STARTER" : "BENCH"}
+                                  {row.started ? "START" : "BN"}
                                 </Badge>
                               )}
                             </div>
@@ -494,22 +542,47 @@ export default function SummaryPage() {
                       const player = pid ? playerFromSleeper(pid) : null;
                       const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
                       return (
-                        <tr key={pid || `career-${index}`}>
-                          <td>
+                        <tr key={pid || `career-${index}`} className="hover:bg-ink-50/30 transition-colors">
+                          <td className="py-2 px-3 md:py-3 md:px-4">
                             {pid ? (
-                              <Link to={`/players/${pid}`}>
-                                <Badge variant="outline" className="hover:bg-accent-50 font-body">
-                                  {playerName}
-                                </Badge>
+                              <Link to={`/players/${pid}`} className="flex items-center gap-2 md:gap-3 group">
+                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-ink-100 overflow-hidden bg-white shrink-0 shadow-sm group-hover:border-accent-300 transition-colors">
+                                  <img
+                                    src={`https://sleepercdn.com/content/nfl/players/${pid}.jpg`}
+                                    alt=""
+                                    className="w-full h-full object-cover"
+                                    style={{ width: '100%', height: '100%' }}
+                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                  />
+                                </div>
+                                <div className="min-w-0">
+                                  <div className="font-bold text-ink-900 text-xs md:text-sm group-hover:text-accent-700 transition-colors truncate max-w-[120px] md:max-w-none">{playerName}</div>
+                                  <Badge variant="secondary" className="text-[9px] px-1.5 py-0 h-3.5 uppercase font-black tracking-tighter">
+                                    {row.__pos || "—"}
+                                  </Badge>
+                                </div>
                               </Link>
                             ) : (
-                              <span className="text-sm font-body">{playerName || "Unknown"}</span>
+                              <div className="flex items-center gap-2 md:gap-3">
+                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-ink-50 border border-ink-100 shrink-0" />
+                                <div className="min-w-0">
+                                  <div className="font-bold text-ink-900 text-xs md:text-sm truncate max-w-[120px] md:max-w-none">{playerName || "Unknown"}</div>
+                                  <Badge variant="secondary" className="text-[9px] px-1.5 py-0 h-3.5 uppercase font-black tracking-tighter">
+                                    {row.__pos || "—"}
+                                  </Badge>
+                                </div>
+                              </div>
                             )}
                           </td>
-                          <td className="text-sm">{row.__pos || "—"}</td>
-                          <td className="font-mono text-sm">{row.seasons}</td>
-                          <td className="font-mono text-sm">{row.games}</td>
-                          <td className="font-bold text-accent-700">{formatPoints(row.points)}</td>
+                          <td className="py-2 px-3 md:py-3 md:px-4 font-mono text-xs md:text-sm font-medium text-ink-600">
+                            {row.seasons} <span className="text-[9px] md:text-[10px] text-ink-300 uppercase hidden sm:inline">Seasons</span>
+                          </td>
+                          <td className="py-2 px-3 md:py-3 md:px-4 font-mono text-xs md:text-sm font-medium text-ink-600 text-right md:text-left">
+                            {row.games} <span className="text-[9px] md:text-[10px] text-ink-300 uppercase hidden sm:inline">Games</span>
+                          </td>
+                          <td className="py-2 px-3 md:py-3 md:px-4 font-display text-base md:text-lg text-accent-700 leading-none text-right">
+                            {formatPoints(row.points)}
+                          </td>
                         </tr>
                       );
                     })}
