@@ -205,43 +205,43 @@ export default function SummaryPage() {
       </section>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <Card className="shadow-soft">
+        <Card className="shadow-soft border-ink-100">
           <CardHeader className="pb-2">
-            <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Current Season</span>
+            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-widest pl-1">Current Season</span>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-display text-accent-700">{latestSeason ?? "—"}</div>
-            <p className="text-xs text-ink-400 mt-1">{statusLabel}</p>
+            <div className="text-4xl font-display text-accent-700 leading-tight">{latestSeason ?? "—"}</div>
+            <p className="text-[10px] text-ink-400 font-medium uppercase tracking-tight mt-1">{statusLabel}</p>
           </CardContent>
         </Card>
 
-        <Card className="shadow-soft">
+        <Card className="shadow-soft border-ink-100">
           <CardHeader className="pb-2">
-            <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Current Champion</span>
+            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-widest pl-1">Current Champion</span>
           </CardHeader>
           <CardContent>
-            <div className="text-xl font-display text-ink-900 truncate">{championLabel}</div>
-            <p className="text-xs text-ink-400 mt-1">{championNote}</p>
+            <div className="text-xl font-display text-ink-900 truncate leading-tight">{championLabel}</div>
+            <p className="text-[10px] text-ink-400 font-medium uppercase tracking-tight mt-1">{championNote}</p>
           </CardContent>
         </Card>
 
-        <Card className="shadow-soft">
+        <Card className="shadow-soft border-ink-100">
           <CardHeader className="pb-2">
-            <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Transactions</span>
+            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-widest pl-1">Transactions</span>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-display text-ink-900">{transactionTotals ? transactionTotals.total : "—"}</div>
-            <p className="text-xs text-ink-400 mt-1">Trades + adds + drops</p>
+            <div className="text-4xl font-display text-ink-900 leading-tight">{transactionTotals ? transactionTotals.total : "—"}</div>
+            <p className="text-[10px] text-ink-400 font-medium uppercase tracking-tight mt-1">Trades + adds + drops</p>
           </CardContent>
         </Card>
 
-        <Card className="shadow-soft">
+        <Card className="shadow-soft border-ink-100">
           <CardHeader className="pb-2">
-            <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Total Trades</span>
+            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-widest pl-1">Total Trades</span>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-display text-ink-900">{transactionTotals ? transactionTotals.totalTrades : "—"}</div>
-            <p className="text-xs text-ink-400 mt-1">Latest season trades</p>
+            <div className="text-4xl font-display text-ink-900 leading-tight">{transactionTotals ? transactionTotals.totalTrades : "—"}</div>
+            <p className="text-[10px] text-ink-400 font-medium uppercase tracking-tight mt-1">Latest season trades</p>
           </CardContent>
         </Card>
       </div>

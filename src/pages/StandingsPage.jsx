@@ -12,6 +12,8 @@ import { useFavorites } from "../utils/useFavorites.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
 import { Button } from "@/components/ui/button.jsx";
+import { Badge } from "@/components/ui/badge.jsx";
+import { Heart } from "lucide-react";
 
 export default function StandingsPage() {
   const { manifest, loading, error } = useDataContext();
@@ -138,21 +140,29 @@ export default function StandingsPage() {
       </section>
 
       <section className="section-card filters filters--sticky">
-        <div>
-          <label>Season</label>
-          <select value={season} onChange={(event) => handleSeasonChange(event.target.value)}>
-            {seasons.map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="flex flex-wrap gap-4 items-end">
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Season</label>
+              <select
+                value={season}
+                onChange={(event) => handleSeasonChange(event.target.value)}
+                className="rounded-md border border-ink-200 bg-card px-3 py-1.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[120px]"
+              >
+                {seasons.map((value) => (
+                  <option key={value} value={value}>{value}</option>
+                ))}
+              </select>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Filter Team</label>
+              <SearchBar value={teamQuery} onChange={setTeamQuery} placeholder="Filter by team..." />
+            </div>
+          </div>
+          <Badge variant="outline" className="h-8 px-3 border-ink-200">
+            {standings.length || 0} Teams
+          </Badge>
         </div>
-        <div>
-          <label>Team</label>
-          <SearchBar value={teamQuery} onChange={setTeamQuery} placeholder="Filter by team..." />
-        </div>
-        <div className="tag">Teams: {standings.length || 0}</div>
       </section>
 
       <Card className="mb-6">
@@ -175,25 +185,25 @@ export default function StandingsPage() {
                 </thead>
                 <tbody>
                   {filteredStandings.map((row) => (
-                    <tr key={row.team}>
-                      <td>
-                        <div className="flex-row items-center gap-2">
+                    <tr key={row.team} className="hover:bg-ink-50/30 transition-colors">
+                      <td className="py-3 px-4">
+                        <div className="flex items-center gap-3">
                           <Button
                             variant="ghost"
-                            size="sm"
-                            className={`favorite-button ${favorites.teams.includes(ownerLabel(seasonOwners.get(row.team) || row.team, row.team)) ? "active" : ""}`}
+                            size="icon"
+                            className={`h-8 w-8 rounded-full ${favorites.teams.includes(ownerLabel(seasonOwners.get(row.team) || row.team, row.team)) ? "text-red-500 fill-red-500" : "text-ink-300"}`}
                             onClick={() => toggleTeam(ownerLabel(seasonOwners.get(row.team) || row.team, row.team))}
                           >
-                            Fav
+                            <Heart size={16} className={favorites.teams.includes(ownerLabel(seasonOwners.get(row.team) || row.team, row.team)) ? "fill-current" : ""} />
                           </Button>
-                          <span>{ownerLabel(seasonOwners.get(row.team) || row.team, row.team)}</span>
+                          <span className="font-bold text-ink-900">{ownerLabel(seasonOwners.get(row.team) || row.team, row.team)}</span>
                         </div>
                       </td>
-                      <td>{row.wins}</td>
-                      <td>{row.losses}</td>
-                      <td>{row.ties}</td>
-                      <td>{formatPoints(row.points_for)}</td>
-                      <td>{formatPoints(row.points_against)}</td>
+                      <td className="py-3 px-4 text-center font-mono">{row.wins}</td>
+                      <td className="py-3 px-4 text-center font-mono">{row.losses}</td>
+                      <td className="py-3 px-4 text-center font-mono">{row.ties}</td>
+                      <td className="py-3 px-4 text-right font-mono font-bold text-accent-700">{formatPoints(row.points_for)}</td>
+                      <td className="py-3 px-4 text-right font-mono text-ink-400">{formatPoints(row.points_against)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -225,25 +235,25 @@ export default function StandingsPage() {
                 </thead>
                 <tbody>
                   {filteredAllTime.map((row) => (
-                    <tr key={row.team}>
-                      <td>
-                        <div className="flex-row items-center gap-2">
+                    <tr key={row.team} className="hover:bg-ink-50/30 transition-colors">
+                      <td className="py-3 px-4">
+                        <div className="flex items-center gap-3">
                           <Button
                             variant="ghost"
-                            size="sm"
-                            className={`favorite-button ${favorites.teams.includes(ownerLabel(row.team, row.team)) ? "active" : ""}`}
+                            size="icon"
+                            className={`h-8 w-8 rounded-full ${favorites.teams.includes(ownerLabel(row.team, row.team)) ? "text-red-500 fill-red-500" : "text-ink-300"}`}
                             onClick={() => toggleTeam(ownerLabel(row.team, row.team))}
                           >
-                            Fav
+                            <Heart size={16} className={favorites.teams.includes(ownerLabel(row.team, row.team)) ? "fill-current" : ""} />
                           </Button>
-                          <span>{ownerLabel(row.team, row.team)}</span>
+                          <span className="font-bold text-ink-900">{ownerLabel(row.team, row.team)}</span>
                         </div>
                       </td>
-                      <td>{row.wins}</td>
-                      <td>{row.losses}</td>
-                      <td>{row.ties}</td>
-                      <td>{formatPoints(row.points_for)}</td>
-                      <td>{formatPoints(row.points_against)}</td>
+                      <td className="py-3 px-4 text-center font-mono">{row.wins}</td>
+                      <td className="py-3 px-4 text-center font-mono">{row.losses}</td>
+                      <td className="py-3 px-4 text-center font-mono">{row.ties}</td>
+                      <td className="py-3 px-4 text-right font-mono font-bold text-accent-700">{formatPoints(row.points_for)}</td>
+                      <td className="py-3 px-4 text-right font-mono text-ink-400">{formatPoints(row.points_against)}</td>
                     </tr>
                   ))}
                 </tbody>

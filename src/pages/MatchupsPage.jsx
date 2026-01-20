@@ -278,8 +278,10 @@ export default function MatchupsPage() {
   const query = teamQuery.trim().toLowerCase();
 
   const filteredMatchups = useMemo(() => {
-    if (!query) return matchups;
-    return matchups.filter((matchup) => {
+    return matchups.map((matchup, index) => ({
+      ...matchup,
+      matchup_id: matchup.matchup_id ?? matchup.id ?? `m-${index}`,
+    })).filter((matchup) => {
       const homeLabel = ownerLabel(getMatchupLabel(matchup, "home"), matchup.home_team || "Home");
       const awayLabel = ownerLabel(getMatchupLabel(matchup, "away"), matchup.away_team || "Away");
       return homeLabel.toLowerCase().includes(query) || awayLabel.toLowerCase().includes(query);

@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useDataContext } from "../data/DataContext.jsx";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
@@ -25,7 +26,11 @@ export default function MatchupDetailPage() {
   const [search, setSearch] = useState("");
 
   const matchup = useMemo(() => {
-    return (weekData?.matchups || []).find((item) => String(item.matchup_id) === String(matchupId));
+    const list = (weekData?.matchups || []).map((item, index) => ({
+      ...item,
+      matchup_id: item.matchup_id ?? item.id ?? `m-${index}`,
+    }));
+    return list.find((item) => String(item.matchup_id) === String(matchupId));
   }, [weekData, matchupId]);
 
   const lineups = weekData?.lineups || [];

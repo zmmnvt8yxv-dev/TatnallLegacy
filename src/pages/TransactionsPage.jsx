@@ -418,31 +418,7 @@ export default function TransactionsPage() {
         </CardContent>
       </Card>
 
-      {diagnostics ? (
-        <section className="section-card">
-          <h2 className="section-title">Diagnostics (DEV)</h2>
-          <div className="flex-row">
-            <div className="tag">Source: {diagnostics.source}</div>
-            <div className="tag">
-              Adds: {diagnostics.counts.add} · Drops: {diagnostics.counts.drop} · Trades: {diagnostics.counts.trade}
-            </div>
-            {diagnostics.sources.length ? (
-              <div className="tag">Inputs: {diagnostics.sources.join(", ")}</div>
-            ) : null}
-          </div>
-          <pre className="code-block">
-            {JSON.stringify(
-              {
-                add: diagnostics.samples.add,
-                drop: diagnostics.samples.drop,
-                trade: diagnostics.samples.trade,
-              },
-              null,
-              2,
-            )}
-          </pre>
-        </section>
-      ) : null}
+      {/* Diagnostics removed */}
 
       <Card className="mb-8 shadow-soft">
         <CardHeader>
@@ -453,12 +429,12 @@ export default function TransactionsPage() {
             <div className="table-wrap virtual-table" ref={virtualEntries.containerRef}>
               <table className="table">
                 <thead>
-                  <tr>
-                    <th>Week</th>
-                    <th>Team</th>
-                    <th>Type</th>
-                    {showAmount ? <th>Amount</th> : null}
-                    <th>Details</th>
+                  <tr className="border-b border-ink-100">
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Week</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Team</th>
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Type</th>
+                    {showAmount ? <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Amount</th> : null}
+                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Details</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -468,8 +444,8 @@ export default function TransactionsPage() {
                     </tr>
                   ) : null}
                   {visibleEntries.map((entry) => (
-                    <tr key={entry.id}>
-                      <td className="font-mono text-sm">{entry.week ?? "—"}</td>
+                    <tr key={entry.id} className="hover:bg-ink-50/30 transition-colors">
+                      <td className="py-3 px-4 font-mono text-sm">{entry.week ?? "—"}</td>
                       <td>
                         <Button
                           variant="ghost"

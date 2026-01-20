@@ -43,6 +43,7 @@ export default function PlayerPage() {
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [selectedSeason, setSelectedSeason] = useState("");
   const [weeklyRows, setWeeklyRows] = useState([]);
+  const [careerWeeklyRows, setCareerWeeklyRows] = useState([]);
   const [search, setSearch] = useState("");
   const { favorites, togglePlayer } = useFavorites();
   const canonicalPlayerId = useMemo(
@@ -498,6 +499,13 @@ export default function PlayerPage() {
       if (!grouped.has(key)) grouped.set(key, []);
       grouped.get(key).push(row);
     }
+    const careerRows = [];
+    for (const summary of statsSeasonSummaries) {
+      if (summary?.rows) careerRows.push(...summary.rows);
+    }
+    const finalCareerRows = careerRows.filter(matchesPlayer);
+    setCareerWeeklyRows(finalCareerRows);
+
     for (const group of grouped.values()) {
       group.sort((a, b) => safeNumber(b.points) - safeNumber(a.points));
       const cutoff = cutoffs[group[0]?.position];
