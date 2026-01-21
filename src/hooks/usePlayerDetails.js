@@ -11,10 +11,12 @@ import {
     loadPlayerStatsFull,
     loadWeekData,
     loadPlayerStatsSeason,
-    loadSeasonSummary
+    loadSeasonSummary,
+    loadMegaProfile,
+    loadNflSiloMeta
 } from "../data/loader.js";
 
-export function usePlayerDetails({ selectedSeason, seasons }) {
+export function usePlayerDetails({ selectedSeason, seasons, playerId }) {
     // Global data
     const manifestQuery = useQuery({
         queryKey: ["manifest"],
@@ -86,6 +88,19 @@ export function usePlayerDetails({ selectedSeason, seasons }) {
         staleTime: 1000 * 60 * 15,
     });
 
+    const megaProfileQuery = useQuery({
+        queryKey: ["megaProfile", playerId],
+        queryFn: () => loadMegaProfile(playerId),
+        enabled: !!playerId,
+        staleTime: 1000 * 60 * 60 * 24,
+    });
+
+    const nflSiloMetaQuery = useQuery({
+        queryKey: ["nflSiloMeta"],
+        queryFn: loadNflSiloMeta,
+        staleTime: 1000 * 60 * 60 * 24,
+    });
+
     // Lineup/Week data for the selected season
     const weeks = manifestQuery.data?.weeksBySeason?.[String(selectedSeason)] || [];
     const weekDataQueries = useQueries({
@@ -105,7 +120,8 @@ export function usePlayerDetails({ selectedSeason, seasons }) {
             seasonMetricsQuery.isLoading ||
             weeklyStatsQuery.isLoading ||
             transactionsQuery.isLoading ||
-            fullStatsQuery.isLoading
+            fullStatsQuery.isLoading ||
+            megaProfileQuery.isLoading
         ));
 
     const isError =
@@ -145,6 +161,8 @@ export function usePlayerDetails({ selectedSeason, seasons }) {
         playerTransactions: transactionsQuery.data?.entries || [],
         fullStatsRows: fullStatsQuery.data?.rows || fullStatsQuery.data || [],
         weekLineups,
+        megaProfile: megaProfileQuery.data,
+        nflSiloMeta: nflSiloMetaQuery.data,
         isLoading,
         isError,
     }), [
@@ -159,6 +177,8 @@ export function usePlayerDetails({ selectedSeason, seasons }) {
         transactionsQuery.data,
         fullStatsQuery.data,
         weekLineups,
+        megaProfileQuery.data,
+        nflSiloMetaQuery.data,
         isLoading,
         isError
     ]);

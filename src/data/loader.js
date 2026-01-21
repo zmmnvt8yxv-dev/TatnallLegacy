@@ -444,3 +444,32 @@ export async function loadBoomBustMetrics() {
     throw err;
   }
 }
+
+export async function loadMegaProfile(playerId) {
+  if (!playerId) return null;
+  const key = `megaProfile:${playerId}`;
+  const path = `data/nfl_profiles/${playerId}.json`;
+  try {
+    const cached = getCached(key);
+    if (cached) return cached;
+    const payload = await fetchJson(path, { optional: true });
+    return setCached(key, payload);
+  } catch (err) {
+    console.warn("DATA_LOAD_WARN", { url: path, err: err.message });
+    return null;
+  }
+}
+
+export async function loadNflSiloMeta() {
+  const key = "nflSiloMeta";
+  const path = "data/nfl_silo_meta.json";
+  try {
+    const cached = getCached(key);
+    if (cached) return cached;
+    const payload = await fetchJson(path, { optional: true });
+    return setCached(key, payload);
+  } catch (err) {
+    console.warn("DATA_LOAD_WARN", { url: path, err: err.message });
+    return null;
+  }
+}

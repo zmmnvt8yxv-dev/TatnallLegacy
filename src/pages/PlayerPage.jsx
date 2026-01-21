@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
 import { Heart } from "lucide-react";
 
-const TABS = ["Overview", "Seasons", "Weekly Log", "Full Stats", "Boom/Bust"];
+const TABS = ["Overview", "Seasons", "Weekly Log", "Full Stats", "Boom/Bust", "NFL Profile"];
 const PLAYER_PREF_KEY = "tatnall-pref-player";
 
 const THRESHOLDS = {
@@ -130,11 +130,14 @@ export default function PlayerPage() {
     playerTransactions,
     fullStatsRows,
     weekLineups,
+    megaProfile,
+    nflSiloMeta,
     isLoading: dataLoading,
     isError: dataError
   } = usePlayerDetails({
     selectedSeason: Number(selectedSeason),
-    seasons
+    seasons,
+    playerId: resolvedPlayerId
   });
 
   useEffect(() => {
@@ -863,7 +866,7 @@ export default function PlayerPage() {
             <div>
               <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-none">
-                  {displayName}
+                  {megaProfile?.nfl?.bio?.display_name || megaProfile?.fantasy?.name || displayName}
                   <span className="text-accent-500 text-6xl leading-none">.</span>
                 </h1>
                 <Button
@@ -876,13 +879,13 @@ export default function PlayerPage() {
                 </Button>
               </div>
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-lg font-medium text-ink-300">
-                <span className="text-white font-bold">{displayPosition}</span>
+                <span className="text-white font-bold">{megaProfile?.nfl?.bio?.position || displayPosition}</span>
                 <span>•</span>
-                <span>{displayTeam}</span>
-                {playerInfo?.age && (
+                <span>{megaProfile?.nfl?.bio?.latest_team || displayTeam}</span>
+                {(megaProfile?.fantasy?.age || playerInfo?.age) && (
                   <>
                     <span>•</span>
-                    <span>{playerInfo.age} Years Old</span>
+                    <span>{megaProfile?.fantasy?.age || playerInfo.age} Years Old</span>
                   </>
                 )}
               </div>
@@ -891,24 +894,42 @@ export default function PlayerPage() {
             {/* Bio Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-y-4 gap-x-8 max-w-lg mx-auto lg:mx-0 pt-4 border-t border-white/10">
               <div>
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">Height</div>
-                <div className="text-xl font-display font-bold">{playerInfo?.height || "—"}</div>
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">Height</div>
+                <div className="text-xl font-display font-bold">
+                  {megaProfile?.nfl?.bio?.height
+                    ? `${Math.floor(megaProfile.nfl.bio.height / 12)}'${megaProfile.nfl.bio.height % 12}"`
+                    : megaProfile?.fantasy?.height || playerInfo?.height || "—"}
+                </div>
               </div>
               <div>
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">Weight</div>
-                <div className="text-xl font-display font-bold">{playerInfo?.weight ? `${playerInfo.weight} lbs` : "—"}</div>
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">Weight</div>
+                <div className="text-xl font-display font-bold">
+                  {megaProfile?.nfl?.bio?.weight
+                    ? `${megaProfile.nfl.bio.weight} lbs`
+                    : (megaProfile?.fantasy?.weight || playerInfo?.weight ? `${megaProfile?.fantasy?.weight || playerInfo.weight} lbs` : "—")}
+                </div>
               </div>
               <div className="col-span-2">
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">College</div>
-                <div className="text-xl font-display font-bold truncate">{playerInfo?.college || "—"}</div>
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">College</div>
+                <div className="text-xl font-display font-bold truncate">
+                  {megaProfile?.nfl?.bio?.college_name || megaProfile?.fantasy?.college || playerInfo?.college || "—"}
+                </div>
               </div>
               <div>
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">Experience</div>
-                <div className="text-xl font-display font-bold">{playerInfo?.years_exp != null ? `${playerInfo.years_exp} Years` : "Rookie"}</div>
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">Experience</div>
+                <div className="text-xl font-display font-bold">
+                  {megaProfile?.nfl?.bio?.years_of_experience != null
+                    ? `${megaProfile.nfl.bio.years_of_experience} Years`
+                    : (playerInfo?.years_exp != null ? `${playerInfo.years_exp} Years` : "Rookie")}
+                </div>
               </div>
               <div>
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1">Draft</div>
-                <div className="text-xl font-display font-bold text-white/80 text-sm mt-1">{playerInfo?.draft_year ? `${playerInfo.draft_year}` : "—"}</div>
+                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">Draft</div>
+                <div className="text-xl font-display font-bold text-white/80">
+                  {megaProfile?.nfl?.bio?.draft_year
+                    ? `${megaProfile.nfl.bio.draft_year} R${megaProfile.nfl.bio.draft_round} P${megaProfile.nfl.bio.draft_pick}`
+                    : (playerInfo?.draft_year ? `${playerInfo.draft_year}` : "Undrafted")}
+                </div>
               </div>
             </div>
           </div>
@@ -916,9 +937,9 @@ export default function PlayerPage() {
           {/* CENTER COLUMN: Hero Image */}
           <div className="relative flex justify-center order-first lg:order-none mb-4 lg:mb-0">
             <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-4 border-white/10 shadow-2xl overflow-hidden bg-ink-800 relative group">
-              {playerDisplay.headshotUrl ? (
+              {(megaProfile?.nfl?.bio?.headshot || playerDisplay.headshotUrl) ? (
                 <img
-                  src={playerDisplay.headshotUrl}
+                  src={megaProfile?.nfl?.bio?.headshot || playerDisplay.headshotUrl}
                   alt={displayName}
                   className="w-full h-full object-cover scale-110 group-hover:scale-105 transition-transform duration-700"
                   onError={(e) => { e.target.style.display = 'none'; }}
@@ -1438,6 +1459,140 @@ export default function PlayerPage() {
             </div>
           )}
         </section>
+      )}
+
+      {activeTab === "NFL Profile" && (
+        <div className="space-y-8 animate-in fade-in duration-500">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <Card className="shadow-soft">
+              <CardHeader>
+                <CardTitle>NFL Bio & Draft</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-ink-400">Full Name</label>
+                    <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.display_name || "—"}</div>
+                  </div>
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-ink-400">Status</label>
+                    <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.status || "—"}</div>
+                  </div>
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-ink-400">Draft Year</label>
+                    <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.draft_year || "Undrafted"}</div>
+                  </div>
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-ink-400">Draft Position</label>
+                    <div className="text-lg font-medium">
+                      {megaProfile?.nfl?.bio?.draft_round ? `Round ${megaProfile.nfl.bio.draft_round}, Pick ${megaProfile.nfl.bio.draft_pick}` : "—"}
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label className="text-[10px] uppercase font-bold text-ink-400">College</label>
+                  <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.college_name || "—"}</div>
+                </div>
+                {megaProfile?.nfl?.bio?.gsis_id && (
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-ink-400">GSIS ID</label>
+                    <div className="font-mono text-sm text-ink-500">{megaProfile.nfl.bio.gsis_id}</div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-soft">
+              <CardHeader>
+                <CardTitle>Sportradar Context</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {megaProfile?.nfl?.sportradar?.id ? (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4 p-4 bg-ink-50 rounded-lg border border-ink-100">
+                      <div className="p-3 bg-white rounded-full border border-ink-200 font-bold text-ink-700">
+                        {megaProfile.nfl.sportradar._team_alias}
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-ink-400 uppercase">Current Team</div>
+                        <div className="text-lg font-bold">{megaProfile.nfl.sportradar._team_alias} Roster</div>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-[10px] uppercase font-bold text-ink-400">Sportradar Status</label>
+                      <div className="text-sm">{megaProfile.nfl.sportradar.status || "Active"}</div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center py-8 text-ink-400 italic">
+                    Internal Sportradar mapping not found for this player.
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="shadow-soft border-accent-100 bg-accent-50/5">
+            <CardHeader>
+              <CardTitle>Vegas Odds (2025 Market)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {(() => {
+                const team = megaProfile?.nfl?.bio?.latest_team;
+                if (!team || !nflSiloMeta?.odds) return <div className="text-center py-4 text-ink-500 italic">No market data available for 2025.</div>;
+
+                // Search for game with this team
+                const gameId = Object.keys(nflSiloMeta.odds).find(gid => {
+                  const game = nflSiloMeta.odds[gid]?.game;
+                  return game?.home?.alias === team || game?.away?.alias === team;
+                });
+
+                const odds = nflSiloMeta.odds[gameId];
+                if (!odds) return <div className="text-center py-4 text-ink-500 italic">No 2025 opening odds found for {team}.</div>;
+
+                const game = odds.game;
+                const consensus = odds.consensus;
+
+                return (
+                  <div className="space-y-6">
+                    <div className="flex items-center justify-between p-4 bg-ink-900 text-white rounded-xl">
+                      <div className="text-center px-4">
+                        <div className="text-xs font-bold text-ink-400 uppercase mb-1">Away</div>
+                        <div className="text-2xl font-black">{game.away.alias}</div>
+                      </div>
+                      <div className="text-accent-500 font-display font-black text-2xl">AT</div>
+                      <div className="text-center px-4">
+                        <div className="text-xs font-bold text-ink-400 uppercase mb-1">Home</div>
+                        <div className="text-2xl font-black">{game.home.alias}</div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
+                        <div className="text-xs font-bold text-ink-400 uppercase mb-2">Moneyline</div>
+                        <div className="flex justify-around">
+                          <div className="font-mono font-bold text-accent-700">{consensus?.moneyline?.away_plus_minus || "—"}</div>
+                          <div className="font-mono font-bold text-accent-700">{consensus?.moneyline?.home_plus_minus || "—"}</div>
+                        </div>
+                      </div>
+                      <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
+                        <div className="text-xs font-bold text-ink-400 uppercase mb-2">Spread</div>
+                        <div className="flex justify-around">
+                          <div className="font-mono font-bold text-blue-600">{consensus?.spread?.away_spread_plus_minus || "—"}</div>
+                          <div className="font-mono font-bold text-blue-600">{consensus?.spread?.home_spread_plus_minus || "—"}</div>
+                        </div>
+                      </div>
+                      <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
+                        <div className="text-xs font-bold text-ink-400 uppercase mb-2">Total (O/U)</div>
+                        <div className="font-mono font-bold text-ink-900">{consensus?.total?.over_under || "—"}</div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+            </CardContent>
+          </Card>
+        </div>
       )}
 
       <Card className="mt-12 bg-ink-50/20 border-ink-100">
