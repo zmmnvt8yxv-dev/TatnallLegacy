@@ -83,6 +83,9 @@ jobs:
       - name: Refresh manifest
         run: python3 scripts/build_site_data_manifest.py
 
+      - name: Build bundled player profiles
+        run: python3 scripts/build_bundled_profiles.py
+
       - name: Build site
         run: npm run build
 

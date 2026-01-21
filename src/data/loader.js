@@ -445,17 +445,37 @@ export async function loadBoomBustMetrics() {
   }
 }
 
-export async function loadMegaProfile(playerId) {
-  if (!playerId) return null;
-  const key = `megaProfile:${playerId}`;
-  const path = `data/nfl_profiles/${playerId}.json`;
+// Load the bundled profiles file (cached after first load)
+async function loadProfilesBundle() {
+  const key = "profilesBundle";
   try {
     const cached = getCached(key);
     if (cached) return cached;
-    const payload = await fetchJson(path, { optional: true });
-    return setCached(key, payload);
+    const payload = await fetchJson("data/player_profiles_bundle.json", { optional: true });
+    if (payload?.profiles) {
+      return setCached(key, payload.profiles);
+    }
+    return setCached(key, {});
   } catch (err) {
-    console.warn("DATA_LOAD_WARN", { url: path, err: err.message });
+    console.warn("DATA_LOAD_WARN", { url: "data/player_profiles_bundle.json", err: err.message });
+    return {};
+  }
+}
+
+export async function loadMegaProfile(playerId) {
+  if (!playerId) return null;
+  const key = `megaProfile:${playerId}`;
+  try {
+    // Check if we already have this specific profile cached
+    const cached = getCached(key);
+    if (cached) return cached;
+
+    // Load the bundled profiles and look up by ID
+    const profiles = await loadProfilesBundle();
+    const profile = profiles[String(playerId)] || null;
+    return setCached(key, profile);
+  } catch (err) {
+    console.warn("DATA_LOAD_WARN", { playerId, err: err.message });
     return null;
   }
 }
