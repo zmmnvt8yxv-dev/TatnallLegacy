@@ -20,6 +20,14 @@ pnpm-debug.log*
 .DS_Store
 
 # -------------------------
+# Environment / API Keys (NEVER COMMIT)
+# -------------------------
+.env
+.env.local
+.env.*.local
+config/api_keys.json
+
+# -------------------------
 # Generated data (DO NOT COMMIT)
 # -------------------------
 data_raw/
