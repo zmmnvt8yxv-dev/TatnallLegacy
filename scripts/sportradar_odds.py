@@ -71,7 +71,8 @@ class SportradarOddsClient:
         if not self.api_key:
             raise ValueError(
                 "Sportradar Odds API key not configured. "
-                "Set SPORTRADAR_ODDS_API_KEY in .env.local or config/api_keys.json"
+                "Set one of: SPORTRADAR_ODDS_API_KEY or ODDS_COMPARISON_REGULAR_API "
+                "as an environment variable or in config/api_keys.json"
             )
 
         config = get_sportradar_odds_config()
@@ -408,8 +409,9 @@ if __name__ == "__main__":
 
     except ValueError as e:
         print(f"Configuration error: {e}")
-        print("\nTo use the Odds API, add your API key to:")
-        print("  - .env.local: SPORTRADAR_ODDS_API_KEY=your_key")
-        print("  - OR config/api_keys.json under sportradar.odds.api_key")
+        print("\nTo use the Odds API, set one of these environment variables:")
+        print("  - SPORTRADAR_ODDS_API_KEY (primary)")
+        print("  - ODDS_COMPARISON_REGULAR_API (codespace alias)")
+        print("  OR add to config/api_keys.json under sportradar.odds.api_key")
     except Exception as e:
         print(f"Error: {e}")

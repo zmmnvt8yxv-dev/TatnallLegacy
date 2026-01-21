@@ -77,7 +77,8 @@ class SportradarNFLClient:
         if not self.api_key:
             raise ValueError(
                 "Sportradar NFL API key not configured. "
-                "Set SPORTRADAR_NFL_API_KEY in .env.local or config/api_keys.json"
+                "Set one of: SPORTRADAR_NFL_API_KEY, NFL_API, or SPORTS_RADAR_API "
+                "as an environment variable or in config/api_keys.json"
             )
 
         config = get_sportradar_nfl_config()
