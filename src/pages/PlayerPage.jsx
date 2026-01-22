@@ -14,12 +14,11 @@ import { useVirtualRows } from "../utils/useVirtualRows.js";
 import { useFavorites } from "../utils/useFavorites.js";
 import { loadPlayerStatsWeekly } from "../data/loader.js";
 import { readStorage, writeStorage } from "../utils/persistence.js";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
-import { Heart } from "lucide-react";
+import { Heart, TrendingUp, TrendingDown, Activity, Target, Zap, Award, Calendar, Users, DollarSign, BarChart3, Trophy, Star, ChevronRight, ChevronDown } from "lucide-react";
 
-const TABS = ["Overview", "Seasons", "Weekly Log", "Full Stats", "Boom/Bust", "NFL Profile"];
 const PLAYER_PREF_KEY = "tatnall-pref-player";
 
 const THRESHOLDS = {
@@ -32,7 +31,7 @@ const THRESHOLDS = {
   default: 15,
 };
 
-const isNumericId = (value) => /^\\d+$/.test(String(value || "").trim());
+const isNumericId = (value) => /^\d+$/.test(String(value || "").trim());
 
 export default function PlayerPage() {
   const { playerId } = useParams();
@@ -41,18 +40,21 @@ export default function PlayerPage() {
   const didInitRef = useRef(false);
   const { manifest, loading, error, playerIdLookup, playerIndex, espnNameMap } = useDataContext();
   const isDev = import.meta.env.DEV;
-  const [activeTab, setActiveTab] = useState(TABS[0]);
   const [selectedSeason, setSelectedSeason] = useState("");
   const [weeklyRows, setWeeklyRows] = useState([]);
   const [careerWeeklyRows, setCareerWeeklyRows] = useState([]);
   const [search, setSearch] = useState("");
+  const [fantasyExpanded, setFantasyExpanded] = useState(true);
+  const [nflExpanded, setNflExpanded] = useState(true);
   const { favorites, togglePlayer } = useFavorites();
+
   const canonicalPlayerId = useMemo(
     () => getCanonicalPlayerId(playerId, { row: { espn_id: playerId, player_id: playerId }, playerIndex }),
     [playerId, playerIndex],
   );
   const resolvedPlayerId = canonicalPlayerId || String(playerId);
   const isFavorite = favorites.players.includes(String(resolvedPlayerId));
+
   const formatAmount = (entry) => {
     if (Number(selectedSeason) !== 2025) return "—";
     if (entry?.type !== "add" && entry?.type !== "trade") return "—";
@@ -60,6 +62,7 @@ export default function PlayerPage() {
     if (!Number.isFinite(numeric)) return "—";
     return `$${numeric}`;
   };
+
   const formatDollarValue = (value) => {
     const numeric = Number(value);
     if (!Number.isFinite(numeric)) return "—";
@@ -69,25 +72,17 @@ export default function PlayerPage() {
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const paramName = searchParams.get("name") || "";
 
-  const updateSearchParams = (nextSeason, nextTab) => {
+  const updateSearchParams = (nextSeason) => {
     const params = new URLSearchParams(searchParams);
     params.set("season", String(nextSeason));
-    if (nextTab) params.set("tab", nextTab);
-    else params.delete("tab");
     setSearchParams(params, { replace: true });
-    writeStorage(PLAYER_PREF_KEY, { season: nextSeason, tab: nextTab });
-  };
-
-  const handleTabChange = (value) => {
-    setActiveTab(value);
-    const fallbackSeason = selectedSeason || seasonOptions[0];
-    if (fallbackSeason) updateSearchParams(fallbackSeason, value);
+    writeStorage(PLAYER_PREF_KEY, { season: nextSeason });
   };
 
   const handleSeasonChange = (value) => {
     const nextSeason = Number(value);
     setSelectedSeason(nextSeason);
-    updateSearchParams(nextSeason, activeTab);
+    updateSearchParams(nextSeason);
   };
 
   const playerInfo = useMemo(() => {
@@ -159,7 +154,6 @@ export default function PlayerPage() {
       return JSON.stringify(prev) === JSON.stringify(sorted) ? prev : sorted;
     });
   }, [weekLineups, targetIds, selectedSeason]);
-
 
   const targetNames = useMemo(() => {
     const espnName = espnNameMap?.[String(resolvedPlayerId)];
@@ -389,7 +383,6 @@ export default function PlayerPage() {
     [availableSeasons, seasons],
   );
 
-
   useEffect(() => {
     if (!isDev) return;
     if (!availableSeasons.length && seasons.length) {
@@ -399,7 +392,6 @@ export default function PlayerPage() {
       });
     }
   }, [isDev, availableSeasons, seasons, resolvedPlayerId, displayName]);
-
 
   useEffect(() => {
     if (!isDev || !selectedSeason) return;
@@ -412,49 +404,22 @@ export default function PlayerPage() {
     }
   }, [isDev, selectedSeason, statsWeeklyRows, weeklyRows, fullStatsRows, resolvedPlayerId, displayName]);
 
-
-  // REMOVED CONFLICTING USEEFFECT
-  // UseEffect that forced selectedSeason update was causing infinite loops.
-  // We rely on the searchParams synchronization effect for defaults.
-
-  console.log("DEBUG PLAYER INFO:", playerInfo);
-
-  // Sync State with URL (Source of Truth)
-  // This effect ensures that if the URL changes (back button, link click), the internal state matches.
   useEffect(() => {
     const paramSeason = Number(searchParams.get("season"));
-    const paramTab = searchParams.get("tab");
-
-    // 1. Sync Season
-    // Validation: Must be finite and within known seasons (manifest). 
-    // We use 'seasons' for validation to avoid circular dependency with 'availableSeasons' which depends on fetching.
     if (Number.isFinite(paramSeason) && seasons.includes(paramSeason)) {
       if (paramSeason !== Number(selectedSeason)) {
         setSelectedSeason(paramSeason);
       }
     } else if (seasons.length && !selectedSeason) {
-      // Initialize default if state is empty
       setSelectedSeason(seasons[0]);
     }
+  }, [searchParamsString, seasons, selectedSeason]);
 
-    // 2. Sync Tab
-    if (paramTab && TABS.includes(paramTab)) {
-      if (paramTab !== activeTab) {
-        setActiveTab(paramTab);
-      }
-    }
-  }, [searchParamsString, seasons, selectedSeason, activeTab]);
-
-  // Set Default URL Params if missing
-  // This runs once per seasons-load or if params are stripped.
   useEffect(() => {
     if (!seasons.length) return;
     if (didInitRef.current) return;
-
     const params = new URLSearchParams(searchParams);
     let changed = false;
-
-    // Default Season
     const paramSeason = Number(params.get("season"));
     if (!Number.isFinite(paramSeason) || !seasons.includes(paramSeason)) {
       const stored = readStorage(PLAYER_PREF_KEY, {});
@@ -462,32 +427,16 @@ export default function PlayerPage() {
       const defaultSeason = (Number.isFinite(storedSeason) && seasons.includes(storedSeason))
         ? storedSeason
         : seasons[0];
-
       if (defaultSeason) {
         params.set("season", String(defaultSeason));
         changed = true;
       }
     }
-
-    // Default Tab
-    const paramTab = params.get("tab");
-    if (!paramTab || !TABS.includes(paramTab)) {
-      const stored = readStorage(PLAYER_PREF_KEY, {});
-      const storedTab = stored.tab;
-      const defaultTab = (storedTab && TABS.includes(storedTab)) ? storedTab : TABS[0];
-
-      if (defaultTab) {
-        params.set("tab", defaultTab);
-        changed = true;
-      }
-    }
-
     if (changed) {
       setSearchParams(params, { replace: true });
     }
     didInitRef.current = true;
   }, [seasons, searchParamsString, setSearchParams]);
-
 
   const findMetricsRow = (rows) => {
     if (!rows?.length) return null;
@@ -580,29 +529,6 @@ export default function PlayerPage() {
         };
       });
   }, [weeklyRows, metricsForPlayer, selectedSeason]);
-
-  const teamHistory = useMemo(() => {
-    const teams = new Set();
-    const addTeam = (value) => {
-      const cleaned = String(value || "").trim();
-      if (cleaned && cleaned !== "—") teams.add(cleaned);
-    };
-    for (const summary of statsSeasonSummaries) {
-      const rows = summary?.rows || [];
-      for (const row of rows) {
-        if (!matchesPlayer(row)) continue;
-        addTeam(row.team);
-        addTeam(row.nfl_team);
-        addTeam(row.team_abbr);
-        addTeam(row.team_abbrev);
-        addTeam(row.club);
-      }
-    }
-    for (const row of weeklyDisplayRows) {
-      addTeam(row.nflTeam);
-    }
-    return Array.from(teams).sort((a, b) => a.localeCompare(b));
-  }, [statsSeasonSummaries, careerWeeklyRows, weeklyDisplayRows, targetIds, targetNames]);
 
   const filteredWeeklyRows = useMemo(() => {
     const query = search.toLowerCase().trim();
@@ -798,27 +724,6 @@ export default function PlayerPage() {
     return { top: boomBust.topWeeks || [], bottom: boomBust.bottomWeeks || [] };
   }, [boomBust]);
 
-  const boomBustBySeason = useMemo(() => {
-    if (!careerWeeklyRows.length) return [];
-    const grouped = new Map();
-    for (const row of careerWeeklyRows) {
-      const season = row?.season;
-      if (!season) continue;
-      if (!grouped.has(season)) grouped.set(season, []);
-      grouped.get(season).push(row);
-    }
-    return Array.from(grouped.entries())
-      .map(([season, rows]) => {
-        const sorted = rows.slice().sort((a, b) => safeNumber(b.points) - safeNumber(a.points));
-        return {
-          season,
-          top: sorted.slice(0, 3),
-          bottom: sorted.slice(-3).reverse(),
-        };
-      })
-      .sort((a, b) => b.season - a.season);
-  }, [careerWeeklyRows]);
-
   const consistencyLabel = useMemo(() => {
     if (boomBustFromMetrics?.consistency_label) return boomBustFromMetrics.consistency_label;
     const stdDev = boomBust?.stdDev;
@@ -828,40 +733,19 @@ export default function PlayerPage() {
     return "Low";
   }, [boomBustFromMetrics, boomBust]);
 
-  const warDefinitions = (
-    <div className="section-card">
-      <h3 className="section-title">WAR Definitions</h3>
-      <p>
-        <strong>Replacement-level WAR</strong> is your weekly points minus a replacement baseline for your position.
-        In this league, baselines assume 8 teams (2QB, 3RB, 3WR, 2TE).{" "}
-        <strong>Delta to next guy</strong> is the margin to the next best player at the same position in a given week.
-        These values appear when weekly metrics exports are provided.
-      </p>
-      <p>
-        <strong>Baseline examples (weekly):</strong> The baseline is the points scored by the last starter in the
-        league at each position. With 8 teams, that means QB16, RB24, WR24, TE16, K8, and DEF8. Example: if the QB16
-        scored 14.2 points in Week 6, then every QB’s replacement baseline that week is 14.2, so a QB scoring 22.5 has
-        WAR of 8.3.
-      </p>
-    </div>
-  );
-
   if ((loading || dataLoading) && !seasonSummaries.length && !statsSeasonSummaries.length)
     return <LoadingState label="Loading player profile..." />;
   if (error || dataError) return <ErrorState message={error || "Error loading player data"} />;
 
   return (
     <PageTransition>
-      {/* PlayerProfiler-style Hero Section */}
+      {/* Hero Section */}
       <div className="relative w-full bg-ink-900 text-white overflow-hidden rounded-3xl mb-8 p-6 md:p-8 isolate shadow-2xl">
-        {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 -z-10" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-700/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 -z-10" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 -z-10" />
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 items-center relative z-10">
-
-          {/* LEFT COLUMN: Identity & Bio */}
           <div className="flex flex-col gap-6 text-center lg:text-left">
             <div>
               <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
@@ -891,7 +775,6 @@ export default function PlayerPage() {
               </div>
             </div>
 
-            {/* Bio Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-y-4 gap-x-8 max-w-lg mx-auto lg:mx-0 pt-4 border-t border-white/10">
               <div>
                 <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">Height</div>
@@ -934,7 +817,6 @@ export default function PlayerPage() {
             </div>
           </div>
 
-          {/* CENTER COLUMN: Hero Image */}
           <div className="relative flex justify-center order-first lg:order-none mb-4 lg:mb-0">
             <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-4 border-white/10 shadow-2xl overflow-hidden bg-ink-800 relative group">
               {(megaProfile?.nfl?.bio?.headshot || playerDisplay.headshotUrl) ? (
@@ -949,12 +831,10 @@ export default function PlayerPage() {
                   <Heart size={64} className="opacity-20" />
                 </div>
               )}
-              {/* Gloss effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none" />
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Key Metrics / Context */}
           <div className="flex flex-col gap-6 justify-center">
             <div className="bg-white/5 rounded-2xl p-5 border border-white/5 backdrop-blur-sm">
               <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-4 flex justify-between items-center">
@@ -975,11 +855,9 @@ export default function PlayerPage() {
               </div>
 
               {(() => {
-                /* Find stats for the selected season */
                 const currentStats = seasonStats.find(s => Number(s.season) === Number(selectedSeason)) || {};
                 return (
                   <div className="space-y-5">
-                    {/* Metric 1 */}
                     <div>
                       <div className="flex justify-between items-end mb-2">
                         <span className="text-sm font-medium text-ink-300">Total Points</span>
@@ -993,7 +871,6 @@ export default function PlayerPage() {
                       </div>
                     </div>
 
-                    {/* Metric 2 */}
                     <div>
                       <div className="flex justify-between items-end mb-2">
                         <span className="text-sm font-medium text-ink-300">Avg Points / Game</span>
@@ -1009,7 +886,6 @@ export default function PlayerPage() {
                       </div>
                     </div>
 
-                    {/* Metric 3 */}
                     <div className="grid grid-cols-2 gap-4 pt-2">
                       <div className="bg-ink-900/50 rounded-lg p-3 text-center border border-white/5">
                         <div className="text-[10px] uppercase tracking-wider text-ink-500 font-bold mb-1">Games Played</div>
@@ -1025,576 +901,561 @@ export default function PlayerPage() {
               })()}
             </div>
           </div>
-
         </div>
       </div>
 
-      <div className="flex border-b border-ink-100 mb-8 overflow-x-auto no-scrollbar">
-        {TABS.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => handleTabChange(tab)}
-            className={`px-6 py-3 text-sm font-bold transition-all whitespace-nowrap border-b-2 ${activeTab === tab
-              ? "border-accent-600 text-accent-700"
-              : "border-transparent text-ink-500 hover:text-ink-900 hover:border-ink-200"
-              }`}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
-
-      {activeTab === "Overview" && (
-        <div className="space-y-8 animate-in fade-in duration-500">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card className="shadow-soft bg-accent-50/20 border-accent-100">
-              <CardHeader className="pb-2">
-                <span className="text-xs font-bold text-accent-700 uppercase tracking-wider">Career Points</span>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-display text-accent-900">{formatPoints(careerTotals.points)}</div>
-                <p className="text-xs text-accent-600 mt-1">{careerTotals.games} games · {careerTotals.seasons} seasons</p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-soft">
-              <CardHeader className="pb-2">
-                <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Avg Points</span>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-display text-ink-900">
-                  {careerTotals.games > 0 ? (careerTotals.points / careerTotals.games).toFixed(1) : "0.0"}
-                </div>
-                <p className="text-xs text-ink-400 mt-1">Points per game</p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-soft">
-              <CardHeader className="pb-2">
-                <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Consistency</span>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2">
-                  <div className="text-3xl font-display text-ink-900">{consistencyLabel || "—"}</div>
-                  {consistencyLabel && (
-                    <Badge variant={consistencyLabel === "High" ? "success" : consistencyLabel === "Medium" ? "accent" : "destructive"}>
-                      {consistencyLabel === "High" ? "TOP" : consistencyLabel === "Medium" ? "STABLE" : "VOLATILE"}
-                    </Badge>
-                  )}
-                </div>
-                <p className="text-xs text-ink-400 mt-1">{boomBust?.stdDev ? `Std Dev: ${boomBust.stdDev.toFixed(1)}` : "No consistency data"}</p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-soft bg-ink-900 text-white border-none">
-              <CardHeader className="pb-2">
-                <span className="text-xs font-bold text-ink-300 uppercase tracking-wider">Career WAR</span>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-display text-accent-400">{formatPoints(careerTotals.war)}</div>
-                <p className="text-xs text-ink-400 mt-1">Value over replacement</p>
-              </CardContent>
-            </Card>
+      {/* FANTASY DATA SECTION */}
+      <Card className="mb-8 shadow-xl border-2 border-accent-200 bg-gradient-to-br from-accent-50/30 to-white">
+        <CardHeader
+          className="cursor-pointer hover:bg-accent-50/50 transition-colors rounded-t-lg"
+          onClick={() => setFantasyExpanded(!fantasyExpanded)}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="p-3 bg-accent-500 rounded-xl">
+                <Trophy className="text-white" size={28} />
+              </div>
+              <div>
+                <CardTitle className="text-2xl font-display">Fantasy Data</CardTitle>
+                <CardDescription className="text-sm">Performance, Transactions, and Analytics</CardDescription>
+              </div>
+            </div>
+            {fantasyExpanded ? <ChevronDown size={24} /> : <ChevronRight size={24} />}
           </div>
+        </CardHeader>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <Card className="lg:col-span-2 shadow-soft">
-              <CardHeader>
-                <CardTitle>Recent Transaction History</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {transactionHistory.length ? (
-                  <div className="space-y-4">
-                    {transactionHistory.slice(0, 5).map((entry) => (
-                      <div key={entry.id} className="flex items-start gap-4 p-3 rounded-lg border border-ink-100 bg-ink-50/30">
-                        <div className="flex flex-col items-center min-w-[60px]">
-                          <span className="text-[10px] font-bold text-ink-400 uppercase">{entry.season}</span>
-                          <span className="text-xl font-display text-ink-900">W{entry.week}</span>
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-1">
-                            <Badge variant={entry.type === "trade" ? "secondary" : entry.type === "add" ? "success" : "destructive"}>
-                              {entry.type.toUpperCase()}
-                            </Badge>
-                            <span className="text-sm font-bold text-ink-800">{normalizeOwnerName(entry.team)}</span>
-                          </div>
-                          <p className="text-sm text-ink-600">{formatTransactionDetails(entry)}</p>
-                        </div>
-                        {entry.amount != null && (
-                          <div className="font-mono text-sm font-bold text-accent-700">
-                            {formatAmount(entry)}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                    {transactionHistory.length > 5 && (
-                      <Button variant="outline" className="w-full text-xs" onClick={() => handleTabChange("Overview")}>
-                        View full history in transactions page
-                      </Button>
+        {fantasyExpanded && (
+          <CardContent className="space-y-8 pt-6">
+            {/* Career Stats Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Card className="shadow-soft bg-accent-50/20 border-accent-100">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center gap-2">
+                    <Star className="text-accent-600" size={16} />
+                    <span className="text-xs font-bold text-accent-700 uppercase tracking-wider">Career Points</span>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-display text-accent-900">{formatPoints(careerTotals.points)}</div>
+                  <p className="text-xs text-accent-600 mt-1">{careerTotals.games} games · {careerTotals.seasons} seasons</p>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-soft">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center gap-2">
+                    <BarChart3 className="text-ink-500" size={16} />
+                    <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Avg Points</span>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-display text-ink-900">
+                    {careerTotals.games > 0 ? (careerTotals.points / careerTotals.games).toFixed(1) : "0.0"}
+                  </div>
+                  <p className="text-xs text-ink-400 mt-1">Points per game</p>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-soft">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center gap-2">
+                    <Activity className="text-ink-500" size={16} />
+                    <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Consistency</span>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-2">
+                    <div className="text-3xl font-display text-ink-900">{consistencyLabel || "—"}</div>
+                    {consistencyLabel && (
+                      <Badge variant={consistencyLabel === "High" ? "success" : consistencyLabel === "Medium" ? "accent" : "destructive"}>
+                        {consistencyLabel === "High" ? "TOP" : consistencyLabel === "Medium" ? "STABLE" : "VOLATILE"}
+                      </Badge>
                     )}
                   </div>
-                ) : (
-                  <div className="text-sm text-ink-500 italic py-4 text-center border-2 border-dashed rounded-lg border-ink-100">
-                    No transactions recorded for this player.
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+                  <p className="text-xs text-ink-400 mt-1">{boomBust?.stdDev ? `Std Dev: ${boomBust.stdDev.toFixed(1)}` : "No data"}</p>
+                </CardContent>
+              </Card>
 
-            <Card className="shadow-soft bg-accent-50/10 border-accent-100/50">
+              <Card className="shadow-soft bg-ink-900 text-white border-none">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center gap-2">
+                    <Zap className="text-accent-400" size={16} />
+                    <span className="text-xs font-bold text-ink-300 uppercase tracking-wider">Career WAR</span>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-display text-accent-400">{formatPoints(careerTotals.war)}</div>
+                  <p className="text-xs text-ink-400 mt-1">Value over replacement</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Season by Season Table */}
+            <Card className="shadow-soft">
               <CardHeader>
-                <CardTitle className="text-lg">Keeper Analysis (2025)</CardTitle>
+                <div className="flex items-center gap-2">
+                  <Calendar className="text-accent-600" size={20} />
+                  <CardTitle>Season-by-Season Totals</CardTitle>
+                </div>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-col gap-6">
-                  <div>
-                    <div className="text-[10px] font-bold text-ink-400 uppercase tracking-wider mb-2">Projected Value</div>
-                    <div className="text-4xl font-display text-accent-700">{formatDollarValue(keeperInfo.value)}</div>
-                    <p className="text-xs text-ink-500 mt-2 leading-relaxed">{keeperInfo.note}</p>
-                  </div>
-
-                  <div className="space-y-3 pt-4 border-t border-accent-100/50">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-ink-500">Replacement Avg</span>
-                      <span className="font-bold text-ink-900">
-                        {metricsForPlayer.length > 0 ? (metricsForPlayer[0].replacement_baseline || 0).toFixed(1) : "—"}
-                      </span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-ink-500">Avg Weekly WAR</span>
-                      <span className="font-bold text-accent-700">
-                        {metricsForPlayer.length > 0
-                          ? (metricsForPlayer.reduce((sum, r) => sum + (r.war_rep || 0), 0) / metricsForPlayer.length).toFixed(1)
-                          : "—"}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-3 bg-amber-50 border border-amber-100 rounded text-[11px] text-amber-800 italic">
-                    Keeper values are calculated as: <strong>Added Value + $5 Inflation</strong>. Players never rostered default to $10 ($5 + $5 base).
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      )}
-
-      {activeTab === "Seasons" && (
-        <section className="section-card animate-in fade-in duration-500">
-          <h2 className="section-title">Season-by-Season Totals</h2>
-          {seasonStats.length ? (
-            <div className="table-wrap">
-              <table className="table">
-                <thead>
-                  <tr className="border-b border-ink-100">
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Season</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Games</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Avail</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Total Points</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pos Rank</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">WAR</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Delta</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-ink-50">
-                  {seasonStats.map((row) => (
-                    <tr key={row.season} className="hover:bg-ink-50/30 transition-colors">
-                      <td className="py-3 px-4 font-bold text-ink-900">{row.season}</td>
-                      <td className="py-3 px-4 text-ink-600">{row.games}</td>
-                      <td className="py-3 px-4">
-                        {row.gamesPossible ? (
-                          <Badge variant={row.availabilityFlag === "limited" ? "outline" : "secondary"} className="text-[10px]">
-                            {row.availabilityFlag === "limited" ? "Limited" : "Full"} ({row.games}/{row.gamesPossible})
-                          </Badge>
-                        ) : "—"}
-                      </td>
-                      <td className="py-3 px-4 font-mono font-bold text-accent-700">{formatPoints(row.points)}</td>
-                      <td className="py-3 px-4">
-                        {row.position && row.positionRank ? (
-                          <span className="text-sm font-bold text-ink-800">{row.position}{row.positionRank}</span>
-                        ) : "—"}
-                      </td>
-                      <td className="py-3 px-4 font-mono text-ink-600">{formatPoints(row.war)}</td>
-                      <td className="py-3 px-4 font-mono text-ink-400">{formatPoints(row.delta)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <div>No season totals available for this player.</div>
-          )}
-        </section>
-      )}
-
-      {activeTab === "Weekly Log" && (
-        <section className="section-card animate-in fade-in duration-500">
-          <div className="filters filters--sticky">
-            <div>
-              <label>Season</label>
-              <select value={selectedSeason} onChange={(event) => handleSeasonChange(event.target.value)}>
-                {seasonOptions.map((season) => (
-                  <option key={season} value={season}>
-                    {season}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <SearchBar value={search} onChange={setSearch} placeholder="Filter by team..." />
-          </div>
-          {weeklyDisplayRows.length ? (
-            <div className="table-wrap virtual-table" ref={weeklyVirtual.containerRef}>
-              <table className="table">
-                <thead>
-                  <tr className="border-b border-ink-100">
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Week</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">NFL Team</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Fantasy Team</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Starter</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Points</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Z-Score</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">WAR</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Delta</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pos Rank</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-ink-50">
-                  {weeklyVirtual.topPadding ? (
-                    <tr className="table-virtual-spacer" aria-hidden="true">
-                      <td colSpan={9} style={{ height: weeklyVirtual.topPadding }} />
-                    </tr>
-                  ) : null}
-                  {visibleWeeklyRows.map((row, idx) => (
-                    <tr key={`${row.week}-${idx}`} className="hover:bg-ink-50/30 transition-colors">
-                      <td className="py-3 px-4 font-bold text-ink-900">W{row.week}</td>
-                      <td className="py-3 px-4 text-sm text-ink-600">{row.nflTeam || "—"}</td>
-                      <td className="py-3 px-4 text-sm font-medium text-ink-800">{row.fantasyTeam || "—"}</td>
-                      <td className="py-3 px-4 capitalize">
-                        {row.started ? (
-                          <Badge variant="success" className="text-[10px]">Starter</Badge>
-                        ) : (
-                          <span className="text-xs text-ink-400">—</span>
-                        )}
-                      </td>
-                      <td className="py-3 px-4 font-mono font-bold text-accent-700">{formatPoints(row.points)}</td>
-                      <td className="py-3 px-4 font-mono text-xs text-ink-500">
-                        {row.pos_week_z ? safeNumber(row.pos_week_z).toFixed(2) : "—"}
-                      </td>
-                      <td className="py-3 px-4 font-mono text-xs text-ink-600">{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
-                      <td className="py-3 px-4 font-mono text-xs text-ink-400">{row.delta_to_next != null ? formatPoints(row.delta_to_next) : "—"}</td>
-                      <td className="py-3 px-4">
-                        {row.position && row.pos_week_rank ? (
-                          <span className="text-xs font-bold text-ink-700">{row.position}{row.pos_week_rank}</span>
-                        ) : "—"}
-                      </td>
-                    </tr>
-                  ))}
-                  {weeklyVirtual.bottomPadding ? (
-                    <tr className="table-virtual-spacer" aria-hidden="true">
-                      <td colSpan={9} style={{ height: weeklyVirtual.bottomPadding }} />
-                    </tr>
-                  ) : null}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <div>No weekly data available for this season.</div>
-          )}
-        </section>
-      )}
-
-      {activeTab === "Full Stats" && (
-        <section className="section-card animate-in fade-in duration-500">
-          <div className="filters filters--sticky">
-            <div>
-              <label>Season</label>
-              <select value={selectedSeason} onChange={(event) => handleSeasonChange(event.target.value)}>
-                {seasonOptions.map((season) => (
-                  <option key={season} value={season}>
-                    {season}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-          {filteredFullStatsRows.length ? (
-            <div className="table-wrap virtual-table" ref={fullStatsVirtual.containerRef}>
-              <table className="table">
-                <thead>
-                  <tr className="border-b border-ink-100">
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Season</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Week</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Team</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Opp</th>
-                    {fullStatsColumns.map((column) => (
-                      <th key={column.label} className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">{column.label}</th>
-                    ))}
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pts</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-ink-50">
-                  {fullStatsVirtual.topPadding ? (
-                    <tr className="table-virtual-spacer" aria-hidden="true">
-                      <td colSpan={5 + fullStatsColumns.length} style={{ height: fullStatsVirtual.topPadding }} />
-                    </tr>
-                  ) : null}
-                  {visibleFullStatsRows.map((row, idx) => (
-                    <tr key={`${row.week}-${idx}`} className="hover:bg-ink-50/30 transition-colors">
-                      <td className="py-3 px-4 text-xs text-ink-500">{row.season || selectedSeason}</td>
-                      <td className="py-3 px-4 font-bold text-ink-900">W{row.week}</td>
-                      <td className="py-3 px-4 text-xs font-medium text-ink-600 uppercase">{row.team || "—"}</td>
-                      <td className="py-3 px-4 text-xs text-ink-400">vs {row.opponent_team || "—"}</td>
-                      {fullStatsColumns.map((column) => (
-                        <td key={`${column.key}-${idx}`} className="py-3 px-4 font-mono text-sm text-ink-700">{resolveFullStatValue(row, column)}</td>
-                      ))}
-                      <td className="py-3 px-4 font-mono font-bold text-accent-700">
-                        {row.fantasy_points_custom_week_with_bonus ??
-                          row.fantasy_points_custom_week ??
-                          row.fantasy_points_ppr ??
-                          row.fantasy_points ??
-                          "—"}
-                      </td>
-                    </tr>
-                  ))}
-                  {fullStatsVirtual.bottomPadding ? (
-                    <tr className="table-virtual-spacer" aria-hidden="true">
-                      <td colSpan={13} style={{ height: fullStatsVirtual.bottomPadding }} />
-                    </tr>
-                  ) : null}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <div>No full stat rows available for this player in the selected season.</div>
-          )}
-        </section>
-      )}
-
-      {activeTab === "Boom/Bust" && (
-        <section className="section-card animate-in fade-in duration-500">
-          <h2 className="section-title">Boom / Bust Summary</h2>
-          {boomBustFromMetrics || boomBust ? (
-            <>
-              <div className="flex flex-wrap gap-2 mb-6">
-                <Badge variant="outline">
-                  Std dev: {formatPoints(boomBustFromMetrics?.fp_std ?? boomBust?.stdDev)}
-                </Badge>
-                {consistencyLabel && <Badge variant="secondary">Consistency: {consistencyLabel}</Badge>}
-                <Badge variant="accent">
-                  % weeks ≥ {boomBust?.threshold ?? THRESHOLDS.default} pts: {" "}
-                  {(boomBustFromMetrics?.boom_pct
-                    ? boomBustFromMetrics.boom_pct * 100
-                    : boomBust?.percentAbove || 0
-                  ).toFixed(1)}
-                  %
-                </Badge>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-sm">Top 5 Weeks</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {boomBustWeeks.top.map((row, idx) => (
-                        <li key={`top-${idx}`} className="text-sm flex justify-between">
-                          <span>Week {row.week} ({row.season || selectedSeason})</span>
-                          <span className="font-bold text-accent-700">{formatPoints(row.points)} pts</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-sm">Bottom 5 Weeks</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {boomBustWeeks.bottom.map((row, idx) => (
-                        <li key={`bottom-${idx}`} className="text-sm flex justify-between text-ink-500">
-                          <span>Week {row.week} ({row.season || selectedSeason})</span>
-                          <span className="font-bold">{formatPoints(row.points)} pts</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-              {boomBustBySeason.length ? (
-                <div className="mt-8">
-                  <h3 className="text-lg font-bold mb-4">Season Breakouts</h3>
-                  <div className="space-y-4">
-                    {boomBustBySeason.map((season) => (
-                      <Card key={season.season} className="bg-ink-50/30">
-                        <CardContent className="pt-4">
-                          <div className="font-bold text-lg mb-2">{season.season}</div>
-                          <div className="text-sm">
-                            <span className="text-ink-500">Top weeks:</span>{" "}
-                            {season.top.map((row, idx) => (
-                              <span key={`season-top-${season.season}-${idx}`}>
-                                W{row.week} ({formatPoints(row.points)}){idx < season.top.length - 1 ? ", " : ""}
-                              </span>
-                            ))}
-                          </div>
-                          <div className="text-sm mt-1">
-                            <span className="text-ink-500">Bottom weeks:</span>{" "}
-                            {season.bottom.map((row, idx) => (
-                              <span key={`season-bottom-${season.season}-${idx}`}>
-                                W{row.week} ({formatPoints(row.points)}){idx < season.bottom.length - 1 ? ", " : ""}
-                              </span>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-            </>
-          ) : (
-            <div className="text-center py-12 text-ink-500 italic">
-              No weekly data available to compute boom/bust metrics.
-            </div>
-          )}
-        </section>
-      )}
-
-      {activeTab === "NFL Profile" && (
-        <div className="space-y-8 animate-in fade-in duration-500">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card className="shadow-soft">
-              <CardHeader>
-                <CardTitle>NFL Bio & Draft</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[10px] uppercase font-bold text-ink-400">Full Name</label>
-                    <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.display_name || "—"}</div>
-                  </div>
-                  <div>
-                    <label className="text-[10px] uppercase font-bold text-ink-400">Status</label>
-                    <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.status || "—"}</div>
-                  </div>
-                  <div>
-                    <label className="text-[10px] uppercase font-bold text-ink-400">Draft Year</label>
-                    <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.draft_year || "Undrafted"}</div>
-                  </div>
-                  <div>
-                    <label className="text-[10px] uppercase font-bold text-ink-400">Draft Position</label>
-                    <div className="text-lg font-medium">
-                      {megaProfile?.nfl?.bio?.draft_round ? `Round ${megaProfile.nfl.bio.draft_round}, Pick ${megaProfile.nfl.bio.draft_pick}` : "—"}
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] uppercase font-bold text-ink-400">College</label>
-                  <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.college_name || "—"}</div>
-                </div>
-                {megaProfile?.nfl?.bio?.gsis_id && (
-                  <div>
-                    <label className="text-[10px] uppercase font-bold text-ink-400">GSIS ID</label>
-                    <div className="font-mono text-sm text-ink-500">{megaProfile.nfl.bio.gsis_id}</div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-soft">
-              <CardHeader>
-                <CardTitle>Sportradar Context</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {megaProfile?.nfl?.sportradar?.id ? (
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4 p-4 bg-ink-50 rounded-lg border border-ink-100">
-                      <div className="p-3 bg-white rounded-full border border-ink-200 font-bold text-ink-700">
-                        {megaProfile.nfl.sportradar._team_alias}
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-ink-400 uppercase">Current Team</div>
-                        <div className="text-lg font-bold">{megaProfile.nfl.sportradar._team_alias} Roster</div>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="text-[10px] uppercase font-bold text-ink-400">Sportradar Status</label>
-                      <div className="text-sm">{megaProfile.nfl.sportradar.status || "Active"}</div>
-                    </div>
+                {seasonStats.length ? (
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b border-ink-100">
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Season</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Games</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Total Points</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pos Rank</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">WAR</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Delta</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-ink-50">
+                        {seasonStats.map((row) => (
+                          <tr key={row.season} className="hover:bg-ink-50/30 transition-colors">
+                            <td className="py-3 px-4 font-bold text-ink-900">{row.season}</td>
+                            <td className="py-3 px-4 text-ink-600">{row.games}</td>
+                            <td className="py-3 px-4 font-mono font-bold text-accent-700">{formatPoints(row.points)}</td>
+                            <td className="py-3 px-4">
+                              {row.position && row.positionRank ? (
+                                <span className="text-sm font-bold text-ink-800">{row.position}{row.positionRank}</span>
+                              ) : "—"}
+                            </td>
+                            <td className="py-3 px-4 font-mono text-ink-600">{formatPoints(row.war)}</td>
+                            <td className="py-3 px-4 font-mono text-ink-400">{formatPoints(row.delta)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-ink-400 italic">
-                    Internal Sportradar mapping not found for this player.
+                  <div className="text-center py-8 text-ink-500 italic">No season totals available</div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Weekly Log */}
+            <Card className="shadow-soft">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Target className="text-accent-600" size={20} />
+                    <CardTitle>Weekly Performance Log</CardTitle>
+                  </div>
+                  <SearchBar value={search} onChange={setSearch} placeholder="Filter by team..." />
+                </div>
+              </CardHeader>
+              <CardContent>
+                {weeklyDisplayRows.length ? (
+                  <div className="overflow-x-auto" ref={weeklyVirtual.containerRef}>
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b border-ink-100">
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Week</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">NFL Team</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Fantasy Team</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Starter</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Points</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">WAR</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pos Rank</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-ink-50">
+                        {weeklyVirtual.topPadding ? (
+                          <tr aria-hidden="true">
+                            <td colSpan={7} style={{ height: weeklyVirtual.topPadding }} />
+                          </tr>
+                        ) : null}
+                        {visibleWeeklyRows.map((row, idx) => (
+                          <tr key={`${row.week}-${idx}`} className="hover:bg-ink-50/30 transition-colors">
+                            <td className="py-3 px-4 font-bold text-ink-900">W{row.week}</td>
+                            <td className="py-3 px-4 text-sm text-ink-600">{row.nflTeam || "—"}</td>
+                            <td className="py-3 px-4 text-sm font-medium text-ink-800">{row.fantasyTeam || "—"}</td>
+                            <td className="py-3 px-4">
+                              {row.started ? (
+                                <Badge variant="success" className="text-[10px]">Starter</Badge>
+                              ) : (
+                                <span className="text-xs text-ink-400">—</span>
+                              )}
+                            </td>
+                            <td className="py-3 px-4 font-mono font-bold text-accent-700">{formatPoints(row.points)}</td>
+                            <td className="py-3 px-4 font-mono text-xs text-ink-600">{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
+                            <td className="py-3 px-4">
+                              {row.position && row.pos_week_rank ? (
+                                <span className="text-xs font-bold text-ink-700">{row.position}{row.pos_week_rank}</span>
+                              ) : "—"}
+                            </td>
+                          </tr>
+                        ))}
+                        {weeklyVirtual.bottomPadding ? (
+                          <tr aria-hidden="true">
+                            <td colSpan={7} style={{ height: weeklyVirtual.bottomPadding }} />
+                          </tr>
+                        ) : null}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="text-center py-8 text-ink-500 italic">No weekly data available for this season</div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Boom/Bust Analysis */}
+            <Card className="shadow-soft bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="text-blue-600" size={20} />
+                  <CardTitle>Boom/Bust Analysis</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                {boomBustFromMetrics || boomBust ? (
+                  <>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      <Badge variant="outline">
+                        Std dev: {formatPoints(boomBustFromMetrics?.fp_std ?? boomBust?.stdDev)}
+                      </Badge>
+                      {consistencyLabel && <Badge variant="secondary">Consistency: {consistencyLabel}</Badge>}
+                      <Badge variant="accent">
+                        % weeks ≥ {boomBust?.threshold ?? THRESHOLDS.default} pts:{" "}
+                        {(boomBustFromMetrics?.boom_pct
+                          ? boomBustFromMetrics.boom_pct * 100
+                          : boomBust?.percentAbove || 0
+                        ).toFixed(1)}%
+                      </Badge>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-sm flex items-center gap-2">
+                            <TrendingUp size={16} className="text-green-600" />
+                            Top 5 Weeks
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <ul className="space-y-2">
+                            {boomBustWeeks.top.map((row, idx) => (
+                              <li key={`top-${idx}`} className="text-sm flex justify-between">
+                                <span>Week {row.week} ({row.season || selectedSeason})</span>
+                                <span className="font-bold text-accent-700">{formatPoints(row.points)} pts</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-sm flex items-center gap-2">
+                            <TrendingDown size={16} className="text-red-600" />
+                            Bottom 5 Weeks
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <ul className="space-y-2">
+                            {boomBustWeeks.bottom.map((row, idx) => (
+                              <li key={`bottom-${idx}`} className="text-sm flex justify-between text-ink-500">
+                                <span>Week {row.week} ({row.season || selectedSeason})</span>
+                                <span className="font-bold">{formatPoints(row.points)} pts</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-center py-8 text-ink-500 italic">
+                    No weekly data available to compute boom/bust metrics
                   </div>
                 )}
               </CardContent>
             </Card>
-          </div>
 
-          <Card className="shadow-soft border-accent-100 bg-accent-50/5">
-            <CardHeader>
-              <CardTitle>Vegas Odds (2025 Market)</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {(() => {
-                const team = megaProfile?.nfl?.bio?.latest_team;
-                if (!team || !nflSiloMeta?.odds) return <div className="text-center py-4 text-ink-500 italic">No market data available for 2025.</div>;
-
-                // Search for game with this team
-                const gameId = Object.keys(nflSiloMeta.odds).find(gid => {
-                  const game = nflSiloMeta.odds[gid]?.game;
-                  return game?.home?.alias === team || game?.away?.alias === team;
-                });
-
-                const odds = nflSiloMeta.odds[gameId];
-                if (!odds) return <div className="text-center py-4 text-ink-500 italic">No 2025 opening odds found for {team}.</div>;
-
-                const game = odds.game;
-                const consensus = odds.consensus;
-
-                return (
-                  <div className="space-y-6">
-                    <div className="flex items-center justify-between p-4 bg-ink-900 text-white rounded-xl">
-                      <div className="text-center px-4">
-                        <div className="text-xs font-bold text-ink-400 uppercase mb-1">Away</div>
-                        <div className="text-2xl font-black">{game.away.alias}</div>
-                      </div>
-                      <div className="text-accent-500 font-display font-black text-2xl">AT</div>
-                      <div className="text-center px-4">
-                        <div className="text-xs font-bold text-ink-400 uppercase mb-1">Home</div>
-                        <div className="text-2xl font-black">{game.home.alias}</div>
-                      </div>
+            {/* Transactions & Keeper */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <Card className="lg:col-span-2 shadow-soft">
+                <CardHeader>
+                  <div className="flex items-center gap-2">
+                    <Users className="text-accent-600" size={20} />
+                    <CardTitle>Transaction History</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  {transactionHistory.length ? (
+                    <div className="space-y-4">
+                      {transactionHistory.slice(0, 5).map((entry) => (
+                        <div key={entry.id} className="flex items-start gap-4 p-3 rounded-lg border border-ink-100 bg-ink-50/30">
+                          <div className="flex flex-col items-center min-w-[60px]">
+                            <span className="text-[10px] font-bold text-ink-400 uppercase">{entry.season}</span>
+                            <span className="text-xl font-display text-ink-900">W{entry.week}</span>
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <Badge variant={entry.type === "trade" ? "secondary" : entry.type === "add" ? "success" : "destructive"}>
+                                {entry.type.toUpperCase()}
+                              </Badge>
+                              <span className="text-sm font-bold text-ink-800">{normalizeOwnerName(entry.team)}</span>
+                            </div>
+                            <p className="text-sm text-ink-600">{formatTransactionDetails(entry)}</p>
+                          </div>
+                          {entry.amount != null && (
+                            <div className="font-mono text-sm font-bold text-accent-700">
+                              {formatAmount(entry)}
+                            </div>
+                          )}
+                        </div>
+                      ))}
                     </div>
+                  ) : (
+                    <div className="text-sm text-ink-500 italic py-4 text-center border-2 border-dashed rounded-lg border-ink-100">
+                      No transactions recorded
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
-                        <div className="text-xs font-bold text-ink-400 uppercase mb-2">Moneyline</div>
-                        <div className="flex justify-around">
-                          <div className="font-mono font-bold text-accent-700">{consensus?.moneyline?.away_plus_minus || "—"}</div>
-                          <div className="font-mono font-bold text-accent-700">{consensus?.moneyline?.home_plus_minus || "—"}</div>
-                        </div>
-                      </div>
-                      <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
-                        <div className="text-xs font-bold text-ink-400 uppercase mb-2">Spread</div>
-                        <div className="flex justify-around">
-                          <div className="font-mono font-bold text-blue-600">{consensus?.spread?.away_spread_plus_minus || "—"}</div>
-                          <div className="font-mono font-bold text-blue-600">{consensus?.spread?.home_spread_plus_minus || "—"}</div>
-                        </div>
-                      </div>
-                      <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
-                        <div className="text-xs font-bold text-ink-400 uppercase mb-2">Total (O/U)</div>
-                        <div className="font-mono font-bold text-ink-900">{consensus?.total?.over_under || "—"}</div>
+              <Card className="shadow-soft bg-accent-50/10 border-accent-100/50">
+                <CardHeader>
+                  <div className="flex items-center gap-2">
+                    <DollarSign className="text-accent-600" size={20} />
+                    <CardTitle className="text-lg">Keeper Value (2025)</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-col gap-6">
+                    <div>
+                      <div className="text-[10px] font-bold text-ink-400 uppercase tracking-wider mb-2">Projected Value</div>
+                      <div className="text-4xl font-display text-accent-700">{formatDollarValue(keeperInfo.value)}</div>
+                      <p className="text-xs text-ink-500 mt-2 leading-relaxed">{keeperInfo.note}</p>
+                    </div>
+                    <div className="p-3 bg-amber-50 border border-amber-100 rounded text-[11px] text-amber-800 italic">
+                      Keeper values: <strong>Added Value + $5 Inflation</strong>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </CardContent>
+        )}
+      </Card>
+
+      {/* NFL DATA SECTION */}
+      <Card className="mb-8 shadow-xl border-2 border-blue-200 bg-gradient-to-br from-blue-50/30 to-white">
+        <CardHeader
+          className="cursor-pointer hover:bg-blue-50/50 transition-colors rounded-t-lg"
+          onClick={() => setNflExpanded(!nflExpanded)}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="p-3 bg-blue-600 rounded-xl">
+                <Award className="text-white" size={28} />
+              </div>
+              <div>
+                <CardTitle className="text-2xl font-display">NFL Data</CardTitle>
+                <CardDescription className="text-sm">Biography, Draft Info, and Game Stats</CardDescription>
+              </div>
+            </div>
+            {nflExpanded ? <ChevronDown size={24} /> : <ChevronRight size={24} />}
+          </div>
+        </CardHeader>
+
+        {nflExpanded && (
+          <CardContent className="space-y-8 pt-6">
+            {/* Bio & Draft Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card className="shadow-soft">
+                <CardHeader>
+                  <CardTitle>NFL Bio & Draft</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-[10px] uppercase font-bold text-ink-400">Full Name</label>
+                      <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.display_name || displayName}</div>
+                    </div>
+                    <div>
+                      <label className="text-[10px] uppercase font-bold text-ink-400">Status</label>
+                      <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.status || "Active"}</div>
+                    </div>
+                    <div>
+                      <label className="text-[10px] uppercase font-bold text-ink-400">Draft Year</label>
+                      <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.draft_year || "Undrafted"}</div>
+                    </div>
+                    <div>
+                      <label className="text-[10px] uppercase font-bold text-ink-400">Draft Position</label>
+                      <div className="text-lg font-medium">
+                        {megaProfile?.nfl?.bio?.draft_round ? `Round ${megaProfile.nfl.bio.draft_round}, Pick ${megaProfile.nfl.bio.draft_pick}` : "—"}
                       </div>
                     </div>
                   </div>
-                );
-              })()}
-            </CardContent>
-          </Card>
-        </div>
-      )}
+                  <div>
+                    <label className="text-[10px] uppercase font-bold text-ink-400">College</label>
+                    <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.college_name || playerInfo?.college || "—"}</div>
+                  </div>
+                  {megaProfile?.nfl?.bio?.gsis_id && (
+                    <div>
+                      <label className="text-[10px] uppercase font-bold text-ink-400">GSIS ID</label>
+                      <div className="font-mono text-sm text-ink-500">{megaProfile.nfl.bio.gsis_id}</div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
 
+              <Card className="shadow-soft">
+                <CardHeader>
+                  <CardTitle>Sportradar Context</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {megaProfile?.nfl?.sportradar?.id ? (
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-4 p-4 bg-ink-50 rounded-lg border border-ink-100">
+                        <div className="p-3 bg-white rounded-full border border-ink-200 font-bold text-ink-700">
+                          {megaProfile.nfl.sportradar._team_alias}
+                        </div>
+                        <div>
+                          <div className="text-xs font-bold text-ink-400 uppercase">Current Team</div>
+                          <div className="text-lg font-bold">{megaProfile.nfl.sportradar._team_alias} Roster</div>
+                        </div>
+                      </div>
+                      <div>
+                        <label className="text-[10px] uppercase font-bold text-ink-400">Sportradar Status</label>
+                        <div className="text-sm">{megaProfile.nfl.sportradar.status || "Active"}</div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 text-ink-400 italic">
+                      Sportradar mapping not found
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Full Stats Table */}
+            <Card className="shadow-soft">
+              <CardHeader>
+                <CardTitle>Complete Game Stats ({selectedSeason})</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {filteredFullStatsRows.length ? (
+                  <div className="overflow-x-auto" ref={fullStatsVirtual.containerRef}>
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-ink-100">
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">Week</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">Team</th>
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">Opp</th>
+                          {fullStatsColumns.map((column) => (
+                            <th key={column.label} className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">{column.label}</th>
+                          ))}
+                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">Pts</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-ink-50">
+                        {fullStatsVirtual.topPadding ? (
+                          <tr aria-hidden="true">
+                            <td colSpan={4 + fullStatsColumns.length} style={{ height: fullStatsVirtual.topPadding }} />
+                          </tr>
+                        ) : null}
+                        {visibleFullStatsRows.map((row, idx) => (
+                          <tr key={`${row.week}-${idx}`} className="hover:bg-ink-50/30 transition-colors">
+                            <td className="py-3 px-4 font-bold text-ink-900">W{row.week}</td>
+                            <td className="py-3 px-4 text-xs font-medium text-ink-600 uppercase">{row.team || "—"}</td>
+                            <td className="py-3 px-4 text-xs text-ink-400">vs {row.opponent_team || "—"}</td>
+                            {fullStatsColumns.map((column) => (
+                              <td key={`${column.key}-${idx}`} className="py-3 px-4 font-mono text-sm text-ink-700">{resolveFullStatValue(row, column)}</td>
+                            ))}
+                            <td className="py-3 px-4 font-mono font-bold text-accent-700">
+                              {row.fantasy_points_custom_week_with_bonus ??
+                                row.fantasy_points_custom_week ??
+                                row.fantasy_points_ppr ??
+                                row.fantasy_points ??
+                                "—"}
+                            </td>
+                          </tr>
+                        ))}
+                        {fullStatsVirtual.bottomPadding ? (
+                          <tr aria-hidden="true">
+                            <td colSpan={13} style={{ height: fullStatsVirtual.bottomPadding }} />
+                          </tr>
+                        ) : null}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="text-center py-8 text-ink-500 italic">No full stats available for this season</div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Vegas Odds */}
+            <Card className="shadow-soft border-accent-100 bg-accent-50/5">
+              <CardHeader>
+                <CardTitle>Vegas Odds (2025 Market)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {(() => {
+                  const team = megaProfile?.nfl?.bio?.latest_team;
+                  if (!team || !nflSiloMeta?.odds) return <div className="text-center py-4 text-ink-500 italic">No market data available for 2025</div>;
+
+                  const gameId = Object.keys(nflSiloMeta.odds).find(gid => {
+                    const game = nflSiloMeta.odds[gid]?.game;
+                    return game?.home?.alias === team || game?.away?.alias === team;
+                  });
+
+                  const odds = nflSiloMeta.odds[gameId];
+                  if (!odds) return <div className="text-center py-4 text-ink-500 italic">No 2025 odds found for {team}</div>;
+
+                  const game = odds.game;
+                  const consensus = odds.consensus;
+
+                  return (
+                    <div className="space-y-6">
+                      <div className="flex items-center justify-between p-4 bg-ink-900 text-white rounded-xl">
+                        <div className="text-center px-4">
+                          <div className="text-xs font-bold text-ink-400 uppercase mb-1">Away</div>
+                          <div className="text-2xl font-black">{game.away.alias}</div>
+                        </div>
+                        <div className="text-accent-500 font-display font-black text-2xl">AT</div>
+                        <div className="text-center px-4">
+                          <div className="text-xs font-bold text-ink-400 uppercase mb-1">Home</div>
+                          <div className="text-2xl font-black">{game.home.alias}</div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
+                          <div className="text-xs font-bold text-ink-400 uppercase mb-2">Moneyline</div>
+                          <div className="flex justify-around">
+                            <div className="font-mono font-bold text-accent-700">{consensus?.moneyline?.away_plus_minus || "—"}</div>
+                            <div className="font-mono font-bold text-accent-700">{consensus?.moneyline?.home_plus_minus || "—"}</div>
+                          </div>
+                        </div>
+                        <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
+                          <div className="text-xs font-bold text-ink-400 uppercase mb-2">Spread</div>
+                          <div className="flex justify-around">
+                            <div className="font-mono font-bold text-blue-600">{consensus?.spread?.away_spread_plus_minus || "—"}</div>
+                            <div className="font-mono font-bold text-blue-600">{consensus?.spread?.home_spread_plus_minus || "—"}</div>
+                          </div>
+                        </div>
+                        <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
+                          <div className="text-xs font-bold text-ink-400 uppercase mb-2">Total (O/U)</div>
+                          <div className="font-mono font-bold text-ink-900">{consensus?.total?.over_under || "—"}</div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </CardContent>
+            </Card>
+          </CardContent>
+        )}
+      </Card>
+
+      {/* WAR Definitions Footer */}
       <Card className="mt-12 bg-ink-50/20 border-ink-100">
         <CardHeader>
           <CardTitle className="text-lg">WAR Definitions</CardTitle>
@@ -1606,7 +1467,6 @@ export default function PlayerPage() {
           </p>
           <p>
             <strong className="text-ink-900">Delta to next guy</strong> is the margin to the next best player at the same position in a given week.
-            These values appear when weekly metrics exports are provided.
           </p>
           <div className="p-4 bg-white rounded-lg border border-ink-100">
             <span className="font-bold text-ink-900 block mb-2">Baseline examples (8-team league):</span>
