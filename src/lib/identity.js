@@ -1,6 +1,4 @@
-import type { OwnerInput, RosterEntry, UsersById, UserEntry } from "../types/index";
-
-export const OWNER_ALIASES: Record<string, string> = {
+export const OWNER_ALIASES = {
   "carl marvin": "Carl Marvin",
   "cmarvin713": "Carl Marvin",
   "sdmarvin713": "Carl Marvin",
@@ -43,7 +41,7 @@ const PUNCTUATION_REGEX = /[.,'"]/g;
 const UNDERSCORE_REGEX = /[_]+/g;
 const WHITESPACE_REGEX = /\s+/g;
 
-function titleCase(input: string | null | undefined): string {
+function titleCase(input) {
   if (!input) return "";
   return String(input)
     .trim()
@@ -56,7 +54,7 @@ function titleCase(input: string | null | undefined): string {
     .join(" ");
 }
 
-export function normalizeKey(value: unknown): string {
+export function normalizeKey(value) {
   try {
     if (value === null || value === undefined) return "";
     const raw = String(value).trim();
@@ -75,7 +73,7 @@ export function normalizeKey(value: unknown): string {
   }
 }
 
-export function normalizeOwnerName(input: OwnerInput): string {
+export function normalizeOwnerName(input) {
   try {
     if (input === null || input === undefined) return "";
     const raw =
@@ -90,11 +88,11 @@ export function normalizeOwnerName(input: OwnerInput): string {
   }
 }
 
-export function resolveOwnerName(input: OwnerInput): string {
+export function resolveOwnerName(input) {
   return normalizeOwnerName(input);
 }
 
-export function resolveOwnerFromRoster(roster: RosterEntry | null | undefined, usersById: UsersById | null | undefined): string {
+export function resolveOwnerFromRoster(roster, usersById) {
   try {
     if (!roster) return "";
     const candidates = [
@@ -108,12 +106,7 @@ export function resolveOwnerFromRoster(roster: RosterEntry | null | undefined, u
     for (const candidate of candidates) {
       if (!candidate) continue;
       const id = String(candidate);
-      let user: UserEntry | undefined;
-      if (usersById instanceof Map) {
-        user = usersById.get(id);
-      } else if (usersById) {
-        user = usersById[id];
-      }
+      const user = usersById?.get ? usersById.get(id) : usersById?.[id];
       const raw = user?.display_name || user?.username || user?.name || user?.email || candidate;
       const resolved = normalizeOwnerName(raw);
       if (resolved) return resolved;

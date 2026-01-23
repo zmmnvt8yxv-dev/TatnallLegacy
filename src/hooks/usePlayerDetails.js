@@ -14,47 +14,9 @@ import {
     loadSeasonSummary,
     loadMegaProfile,
     loadNflSiloMeta
-} from "../data/loader";
-import type {
-    Manifest,
-    SeasonSummary,
-    PlayerStatsRow,
-    PlayerMetricsRow,
-    Transaction,
-    LineupEntry,
-} from "../schemas/index";
-import type { NflProfile, NflSiloMeta } from "../types/index";
+} from "../data/loader.js";
 
-export interface UsePlayerDetailsOptions {
-    selectedSeason?: number;
-    seasons: number[];
-    playerId?: string;
-}
-
-export interface WeekLineup {
-    week: number | undefined;
-    lineups: LineupEntry[] | undefined;
-}
-
-export interface UsePlayerDetailsResult {
-    manifest: Manifest | undefined;
-    careerStats: PlayerStatsRow[];
-    boomBustMetrics: PlayerMetricsRow[];
-    careerMetrics: PlayerMetricsRow[];
-    seasonSummaries: SeasonSummary[];
-    statsSeasonSummaries: Array<{ rows?: PlayerStatsRow[] } | null>;
-    seasonMetrics: PlayerMetricsRow[];
-    statsWeeklyRows: PlayerStatsRow[];
-    playerTransactions: Transaction[];
-    fullStatsRows: PlayerStatsRow[];
-    weekLineups: WeekLineup[];
-    megaProfile: NflProfile | null | undefined;
-    nflSiloMeta: NflSiloMeta | null | undefined;
-    isLoading: boolean;
-    isError: boolean;
-}
-
-export function usePlayerDetails({ selectedSeason, seasons, playerId }: UsePlayerDetailsOptions): UsePlayerDetailsResult {
+export function usePlayerDetails({ selectedSeason, seasons, playerId }) {
     // Global data
     const manifestQuery = useQuery({
         queryKey: ["manifest"],
@@ -100,28 +62,28 @@ export function usePlayerDetails({ selectedSeason, seasons, playerId }: UsePlaye
     // Season-specific data
     const seasonMetricsQuery = useQuery({
         queryKey: ["seasonMetrics", selectedSeason],
-        queryFn: () => loadSeasonMetrics(selectedSeason!),
+        queryFn: () => loadSeasonMetrics(selectedSeason),
         enabled: !!selectedSeason,
         staleTime: 1000 * 60 * 15,
     });
 
     const weeklyStatsQuery = useQuery({
         queryKey: ["playerStatsWeekly", selectedSeason],
-        queryFn: () => loadPlayerStatsWeekly(selectedSeason!),
+        queryFn: () => loadPlayerStatsWeekly(selectedSeason),
         enabled: !!selectedSeason,
         staleTime: 1000 * 60 * 15,
     });
 
     const transactionsQuery = useQuery({
         queryKey: ["transactions", selectedSeason],
-        queryFn: () => loadTransactions(selectedSeason!),
+        queryFn: () => loadTransactions(selectedSeason),
         enabled: !!selectedSeason,
         staleTime: 1000 * 60 * 15,
     });
 
     const fullStatsQuery = useQuery({
         queryKey: ["playerStatsFull", selectedSeason],
-        queryFn: () => loadPlayerStatsFull(selectedSeason!),
+        queryFn: () => loadPlayerStatsFull(selectedSeason),
         enabled: !!selectedSeason,
         staleTime: 1000 * 60 * 15,
     });
@@ -144,7 +106,7 @@ export function usePlayerDetails({ selectedSeason, seasons, playerId }: UsePlaye
     const weekDataQueries = useQueries({
         queries: weeks.map(w => ({
             queryKey: ["weekData", selectedSeason, w],
-            queryFn: () => loadWeekData(selectedSeason!, w),
+            queryFn: () => loadWeekData(selectedSeason, w),
             staleTime: 1000 * 60 * 15,
         }))
     });
@@ -154,13 +116,13 @@ export function usePlayerDetails({ selectedSeason, seasons, playerId }: UsePlaye
         careerStatsQuery.isLoading ||
         boomBustQuery.isLoading ||
         careerMetricsQuery.isLoading ||
-        (selectedSeason ? (
+        (selectedSeason && (
             seasonMetricsQuery.isLoading ||
             weeklyStatsQuery.isLoading ||
             transactionsQuery.isLoading ||
             fullStatsQuery.isLoading ||
             megaProfileQuery.isLoading
-        ) : false);
+        ));
 
     const isError =
         manifestQuery.isError ||
@@ -173,7 +135,7 @@ export function usePlayerDetails({ selectedSeason, seasons, playerId }: UsePlaye
         fullStatsQuery.isError;
 
     const seasonSummaries = useMemo(() =>
-        seasonSummaryQueries.map(q => q.data).filter((d): d is SeasonSummary => d != null),
+        seasonSummaryQueries.map(q => q.data).filter(Boolean),
         [seasonSummaryQueries]
     );
 
@@ -182,22 +144,22 @@ export function usePlayerDetails({ selectedSeason, seasons, playerId }: UsePlaye
         [playerSeasonStatsQueries]
     );
 
-    const weekLineups = useMemo((): WeekLineup[] =>
+    const weekLineups = useMemo(() =>
         weekDataQueries.map(q => ({ week: q.data?.week, lineups: q.data?.lineups })),
         [weekDataQueries]
     );
 
     return useMemo(() => ({
         manifest: manifestQuery.data,
-        careerStats: careerStatsQuery.data?.rows || [],
-        boomBustMetrics: boomBustQuery.data?.rows || [],
-        careerMetrics: careerMetricsQuery.data?.rows || [],
+        careerStats: careerStatsQuery.data?.rows || careerStatsQuery.data || [],
+        boomBustMetrics: boomBustQuery.data?.rows || boomBustQuery.data || [],
+        careerMetrics: careerMetricsQuery.data?.rows || careerMetricsQuery.data || [],
         seasonSummaries,
         statsSeasonSummaries,
-        seasonMetrics: seasonMetricsQuery.data?.rows || [],
-        statsWeeklyRows: weeklyStatsQuery.data?.rows || [],
+        seasonMetrics: seasonMetricsQuery.data?.rows || seasonMetricsQuery.data || [],
+        statsWeeklyRows: weeklyStatsQuery.data?.rows || weeklyStatsQuery.data || [],
         playerTransactions: transactionsQuery.data?.entries || [],
-        fullStatsRows: fullStatsQuery.data?.rows || [],
+        fullStatsRows: fullStatsQuery.data?.rows || fullStatsQuery.data || [],
         weekLineups,
         megaProfile: megaProfileQuery.data,
         nflSiloMeta: nflSiloMetaQuery.data,

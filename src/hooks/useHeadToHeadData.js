@@ -1,16 +1,7 @@
 import { useQuery, useQueries } from "@tanstack/react-query";
-import { loadManifest, loadSeasonSummary, loadWeekData } from "../data/loader";
-import type { Manifest, SeasonSummary, WeeklyChunk } from "../schemas/index";
+import { loadManifest, loadSeasonSummary, loadWeekData } from "../data/loader.js";
 
-export interface UseHeadToHeadDataResult {
-    manifest: Manifest | undefined;
-    allSeasonData: Record<number, SeasonSummary>;
-    allWeekData: WeeklyChunk[];
-    isLoading: boolean;
-    isError: boolean;
-}
-
-export function useHeadToHeadData(ownerA: string | undefined, ownerB: string | undefined): UseHeadToHeadDataResult {
+export function useHeadToHeadData(ownerA, ownerB) {
     const manifestQuery = useQuery({
         queryKey: ["manifest"],
         queryFn: loadManifest,
@@ -33,7 +24,7 @@ export function useHeadToHeadData(ownerA: string | undefined, ownerB: string | u
 
     const allWeekQueries = useQueries({
         queries: enabled ? seasons.flatMap(season => {
-            const weeks = weeksBySeason[String(season)] || Array.from({ length: 18 }, (_, i) => i + 1);
+            const weeks = weeksBySeason[season] || Array.from({ length: 18 }, (_, i) => i + 1);
             return weeks.map(week => ({
                 queryKey: ["weekData", season, week],
                 queryFn: () => loadWeekData(season, week),
@@ -42,13 +33,12 @@ export function useHeadToHeadData(ownerA: string | undefined, ownerB: string | u
         }) : []
     });
 
-    const allSeasonData: Record<number, SeasonSummary> = {};
+    const allSeasonData = {};
     seasons.forEach((s, idx) => {
-        const data = seasonSummaryQueries[idx]?.data;
-        if (data) allSeasonData[s] = data;
+        if (seasonSummaryQueries[idx].data) allSeasonData[s] = seasonSummaryQueries[idx].data;
     });
 
-    const allWeekData = allWeekQueries.map(q => q.data).filter((d): d is WeeklyChunk => d != null);
+    const allWeekData = allWeekQueries.map(q => q.data).filter(Boolean);
 
     return {
         manifest: manifestQuery.data,

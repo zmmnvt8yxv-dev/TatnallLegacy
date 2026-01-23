@@ -1,13 +1,4 @@
-import type {
-  PlayerIndex,
-  PlayerLookupResult,
-  PlayerDisplay,
-  IdEntry,
-  PlayerRow,
-} from "../types/index";
-import type { Player, PlayerId, EspnNameMap } from "../schemas/index";
-
-export function looksLikeId(value: unknown): boolean {
+export function looksLikeId(value) {
   if (value == null) return false;
   const text = String(value).trim();
   if (!text) return false;
@@ -17,12 +8,12 @@ export function looksLikeId(value: unknown): boolean {
   return false;
 }
 
-function isPlaceholderName(value: unknown): boolean {
+function isPlaceholderName(value) {
   if (!value) return false;
   return /^ESPN Player \d+$/i.test(String(value).trim());
 }
 
-function resolveNameFromEntry(entry: PlayerLookupResult | null | undefined): string {
+function resolveNameFromEntry(entry) {
   if (!entry) return "";
   const directName = entry.display_name || entry.player_display_name || entry.full_name || entry.name;
   if (directName && !looksLikeId(directName) && !isPlaceholderName(directName)) return directName;
@@ -33,14 +24,14 @@ function resolveNameFromEntry(entry: PlayerLookupResult | null | undefined): str
   return "";
 }
 
-function resolveEspnName(espnNameMap: EspnNameMap | Map<string, string> | null | undefined, espnId: string | null | undefined): string {
+function resolveEspnName(espnNameMap, espnId) {
   if (!espnNameMap || !espnId) return "";
   const key = String(espnId);
   if (espnNameMap instanceof Map) return espnNameMap.get(key) || "";
   return espnNameMap[key] || "";
 }
 
-function resolveEspnIdFromRow(row: PlayerRow | null | undefined): string | null {
+function resolveEspnIdFromRow(row) {
   if (!row) return null;
   if (row.espn_id) return row.espn_id;
   if (row.id_type === "espn" && row.id) return row.id;
@@ -49,7 +40,7 @@ function resolveEspnIdFromRow(row: PlayerRow | null | undefined): string | null 
   return null;
 }
 
-function getIdEntries(row: PlayerRow | null | undefined): IdEntry[] {
+function getIdEntries(row) {
   if (!row) return [];
   return [
     { key: "sleeper_id", value: row.sleeper_id },
@@ -59,27 +50,19 @@ function getIdEntries(row: PlayerRow | null | undefined): IdEntry[] {
   ];
 }
 
-function resolvePlayerFromIndex(playerIndex: PlayerIndex | null | undefined, candidates: IdEntry[]): PlayerLookupResult | null {
+function resolvePlayerFromIndex(playerIndex, candidates) {
   if (!playerIndex) return null;
   for (const { key, value } of candidates) {
     if (!value) continue;
-    const lookup = playerIndex[key as keyof PlayerIndex];
+    const lookup = playerIndex[key];
     if (!lookup) continue;
     const entry = lookup.get(String(value));
-    if (entry) return entry as unknown as PlayerLookupResult;
+    if (entry) return entry;
   }
   return null;
 }
 
-interface GetCanonicalPlayerIdOptions {
-  row?: PlayerRow;
-  playerIndex?: PlayerIndex | null;
-}
-
-export function getCanonicalPlayerId(
-  playerId: string | null | undefined,
-  { row, playerIndex }: GetCanonicalPlayerIdOptions = {}
-): string {
+export function getCanonicalPlayerId(playerId, { row, playerIndex } = {}) {
   const effectiveRow = row || {};
   const rawId = playerId != null ? String(playerId) : "";
   if (playerIndex && rawId) {
@@ -89,18 +72,17 @@ export function getCanonicalPlayerId(
       playerIndex.espn_id?.get(rawId) ||
       playerIndex.gsis_id?.get(rawId);
     if (direct) {
-      const lookupResult = direct as unknown as PlayerLookupResult;
-      const mappedId = lookupResult.sleeper_id || lookupResult.player_id;
+      const mappedId = direct.sleeper_id || direct.player_id;
       if (mappedId) return String(mappedId);
     }
   }
-  const candidates: IdEntry[] = [
+  const candidates = [
     { key: "sleeper_id", value: effectiveRow.sleeper_id },
     { key: "player_id", value: effectiveRow.player_id },
     { key: "gsis_id", value: effectiveRow.gsis_id },
     { key: "espn_id", value: effectiveRow.espn_id },
   ];
-  const resolved = resolvePlayerFromIndex(playerIndex ?? null, candidates);
+  const resolved = resolvePlayerFromIndex(playerIndex, candidates);
   if (resolved?.sleeper_id) return String(resolved.sleeper_id);
   if (resolved?.player_id) return String(resolved.player_id);
   if (effectiveRow.sleeper_id) return String(effectiveRow.sleeper_id);
@@ -109,21 +91,18 @@ export function getCanonicalPlayerId(
   return "";
 }
 
-export function canResolvePlayerId(playerId: string | null | undefined, playerIndex: PlayerIndex | null | undefined): boolean {
+export function canResolvePlayerId(playerId, playerIndex) {
   if (!playerId || !playerIndex) return false;
   const id = String(playerId);
   return (
     playerIndex.sleeper_id?.has(id) ||
     playerIndex.player_id?.has(id) ||
     playerIndex.espn_id?.has(id) ||
-    playerIndex.gsis_id?.has(id) ||
-    false
+    playerIndex.gsis_id?.has(id)
   );
 }
 
-type SleeperPlayersLookup = Map<string, PlayerLookupResult> | PlayerLookupResult[] | Record<string, PlayerLookupResult>;
-
-function getSleeperEntry(sleeperPlayers: SleeperPlayersLookup | null | undefined, playerId: string | null | undefined): PlayerLookupResult | null {
+function getSleeperEntry(sleeperPlayers, playerId) {
   if (!sleeperPlayers || !playerId) return null;
   if (sleeperPlayers instanceof Map) return sleeperPlayers.get(String(playerId)) || null;
   if (Array.isArray(sleeperPlayers)) {
@@ -132,21 +111,17 @@ function getSleeperEntry(sleeperPlayers: SleeperPlayersLookup | null | undefined
   return sleeperPlayers[String(playerId)] || null;
 }
 
-export function resolvePlayerName(
-  row: PlayerRow | null | undefined,
-  playerIndex: PlayerIndex | null | undefined,
-  espnNameMap: EspnNameMap | Map<string, string> | null | undefined
-): string {
+export function resolvePlayerName(row, playerIndex, espnNameMap) {
   if (!row) return "(Unknown Player)";
   const directName = row.display_name || row.player_display_name || row.player_name || row.player;
   if (directName && !looksLikeId(directName) && !isPlaceholderName(directName)) return directName;
   if (playerIndex) {
     for (const { key, value } of getIdEntries(row)) {
       if (!value) continue;
-      const lookup = playerIndex[key as keyof PlayerIndex];
+      const lookup = playerIndex[key];
       if (!lookup) continue;
       const entry = lookup.get(String(value));
-      const resolved = resolveNameFromEntry(entry as unknown as PlayerLookupResult);
+      const resolved = resolveNameFromEntry(entry);
       if (resolved) return resolved;
     }
   }
@@ -156,27 +131,17 @@ export function resolvePlayerName(
   return "(Unknown Player)";
 }
 
-interface ResolvePlayerDisplayOptions {
-  row?: PlayerRow;
-  playerIndex?: PlayerIndex | null;
-  sleeperPlayers?: SleeperPlayersLookup | null;
-  espnNameMap?: EspnNameMap | Map<string, string> | null;
-}
-
-export function resolvePlayerDisplay(
-  playerId: string | null | undefined,
-  { row, playerIndex, sleeperPlayers, espnNameMap }: ResolvePlayerDisplayOptions = {}
-): PlayerDisplay {
+export function resolvePlayerDisplay(playerId, { row, playerIndex, sleeperPlayers, espnNameMap } = {}) {
   const effectiveRow = row || {};
   const directName =
     effectiveRow.display_name || effectiveRow.player_display_name || effectiveRow.player_name || effectiveRow.player;
-  const candidates: IdEntry[] = [
+  const candidates = [
     { key: "sleeper_id", value: effectiveRow.sleeper_id || playerId },
     { key: "gsis_id", value: effectiveRow.gsis_id },
     { key: "espn_id", value: effectiveRow.espn_id },
     { key: "player_id", value: effectiveRow.player_id || playerId },
   ];
-  const player = resolvePlayerFromIndex(playerIndex ?? null, candidates);
+  const player = resolvePlayerFromIndex(playerIndex, candidates);
   const sleeperEntry = getSleeperEntry(sleeperPlayers, effectiveRow.player_id || playerId);
   const resolvedName =
     directName && !looksLikeId(directName) && !isPlaceholderName(directName)
@@ -210,26 +175,20 @@ export function resolvePlayerDisplay(
   };
 }
 
-interface BuildPlayerIndexOptions {
-  players?: Player[];
-  playerIds?: PlayerId[];
-}
-
-export function buildPlayerIndex({ players = [], playerIds = [] }: BuildPlayerIndexOptions = {}): PlayerIndex {
-  const byGsis = new Map<string, Player>();
-  const bySleeper = new Map<string, Player>();
-  const byEspn = new Map<string, Player>();
-  const byPlayerId = new Map<string, Player>();
-  const byUid = new Map<string, Player>();
+export function buildPlayerIndex({ players = [], playerIds = [] } = {}) {
+  const byGsis = new Map();
+  const bySleeper = new Map();
+  const byEspn = new Map();
+  const byPlayerId = new Map();
+  const byUid = new Map();
 
   for (const player of players) {
     if (!player) continue;
-    const playerAny = player as Player & { player_uid?: string; sleeper_id?: string; gsis_id?: string; espn_id?: string; player_id?: string };
-    if (playerAny.player_uid) byUid.set(String(playerAny.player_uid), player);
-    if (playerAny.gsis_id) byGsis.set(String(playerAny.gsis_id), player);
-    if (playerAny.sleeper_id) bySleeper.set(String(playerAny.sleeper_id), player);
-    if (playerAny.espn_id) byEspn.set(String(playerAny.espn_id), player);
-    if (playerAny.player_id) byPlayerId.set(String(playerAny.player_id), player);
+    if (player.player_uid) byUid.set(String(player.player_uid), player);
+    if (player.gsis_id) byGsis.set(String(player.gsis_id), player);
+    if (player.sleeper_id) bySleeper.set(String(player.sleeper_id), player);
+    if (player.espn_id) byEspn.set(String(player.espn_id), player);
+    if (player.player_id) byPlayerId.set(String(player.player_id), player);
   }
 
   for (const entry of playerIds) {

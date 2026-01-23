@@ -1,29 +1,10 @@
 const DEFAULT_BASE_URL = "/";
 
-// Note: Vite injects import.meta.env at build time
-// For Jest tests, this will use DEFAULT_BASE_URL
-declare global {
-  interface ImportMeta {
-    env?: {
-      BASE_URL?: string;
-      DEV?: boolean;
-      MODE?: string;
-    };
-  }
-}
-
-function getDefaultBase(): string {
-  // Use globalThis.import for test environment compatibility
-  const importMeta = (globalThis as { import?: { meta?: { env?: { BASE_URL?: string } } } }).import;
-  return importMeta?.meta?.env?.BASE_URL || DEFAULT_BASE_URL;
-}
-
-export function safeUrl(path: string | null | undefined, base?: string): string {
-  const effectiveBase = base ?? getDefaultBase();
-  if (!path) return effectiveBase || DEFAULT_BASE_URL;
+export function safeUrl(path, base = import.meta.env.BASE_URL || DEFAULT_BASE_URL) {
+  if (!path) return base || DEFAULT_BASE_URL;
   if (/^https?:\/\//i.test(path)) return path;
 
-  const resolvedBase = effectiveBase || DEFAULT_BASE_URL;
+  const resolvedBase = base || DEFAULT_BASE_URL;
   const baseWithSlash = resolvedBase.endsWith("/") ? resolvedBase : `${resolvedBase}/`;
   const pathNormalized = path.startsWith("/") ? path.slice(1) : path;
 

@@ -1,27 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import { loadTransactions } from "../data/loader";
-import type { Transactions } from "../schemas/index";
+import { loadTransactions } from "../data/loader.js";
 
-function getStaleTime(season: number | string | undefined): number {
+const getStaleTime = (season) => {
     if (Number(season) >= 2025) {
         return 1000 * 60 * 5; // 5 minutes
     }
     return 1000 * 60 * 60 * 24; // 24 hours
-}
+};
 
-export interface UseTransactionsResult {
-    transactions: Transactions | null | undefined;
-    isLoading: boolean;
-    isError: boolean;
-    error: Error | null;
-}
-
-export function useTransactions(season: number | undefined): UseTransactionsResult {
+export function useTransactions(season) {
     const staleTime = getStaleTime(season);
 
     const query = useQuery({
         queryKey: ["transactions", season],
-        queryFn: () => loadTransactions(season!),
+        queryFn: () => loadTransactions(season),
         staleTime,
         enabled: !!season,
     });

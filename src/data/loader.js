@@ -1,4 +1,4 @@
-import { safeUrl } from "../lib/url";
+import { safeUrl } from "../lib/url.js";
 import {
   ManifestSchema,
   PlayersArraySchema,
@@ -9,57 +9,27 @@ import {
   WeeklyChunkSchema,
   SeasonSummarySchema,
   validateWithWarnings,
-  type Manifest,
-  type Player,
-  type PlayerId,
-  type Team,
-  type EspnNameMap,
-  type PlayerSearchEntry,
-  type WeeklyChunk,
-  type SeasonSummary,
-  type Transactions,
-  type AllTime,
-  type PlayerStats,
-  type PlayerMetrics,
-} from "../schemas/index";
-import type {
-  FetchJsonOptions,
-  MetricsSummary,
-  NflProfile,
-  NflSiloMeta,
-} from "../types/index";
+} from "../schemas/index.js";
 
 const IS_DEV = import.meta.env.DEV;
 
-// =============================================================================
-// CACHE MANAGEMENT
-// =============================================================================
+const cache = new Map();
 
-const cache = new Map<string, unknown>();
-
-function getCached<T>(key: string): T | undefined {
-  return cache.get(key) as T | undefined;
+function getCached(key) {
+  return cache.get(key);
 }
 
-function setCached<T>(key: string, value: T): T {
+function setCached(key, value) {
   cache.set(key, value);
   return value;
 }
 
-// =============================================================================
-// PATH RESOLUTION
-// =============================================================================
-
-function resolvePath(template: string | null | undefined, params: Record<string, string | number> = {}): string | null {
+function resolvePath(template, params = {}) {
   if (!template) return null;
-  return template.replace(/\{(\w+)\}/g, (_, key: string) => String(params[key] ?? ""));
+  return template.replace(/\{(\w+)\}/g, (_, key) => String(params[key] ?? ""));
 }
 
-// =============================================================================
-// LOGGING
-// =============================================================================
-
-function logDev(message: string, details?: unknown): void {
+function logDev(message, details) {
   if (!IS_DEV) return;
   if (details) {
     console.info(message, details);
@@ -68,20 +38,15 @@ function logDev(message: string, details?: unknown): void {
   console.info(message);
 }
 
-function logMissingKeys(context: string, payload: unknown, keys: string[]): void {
+function logMissingKeys(context, payload, keys) {
   if (!IS_DEV) return;
-  const obj = payload as Record<string, unknown> | null | undefined;
-  const missing = keys.filter((key) => obj?.[key] == null);
+  const missing = keys.filter((key) => payload?.[key] == null);
   if (missing.length) {
     console.warn("DATA_MISSING_KEYS", { context, missing });
   }
 }
 
-// =============================================================================
-// MANIFEST PATH HELPERS
-// =============================================================================
-
-function requireManifestPath(manifest: Manifest | null | undefined, key: keyof Manifest["paths"]): string {
+function requireManifestPath(manifest, key) {
   const path = manifest?.paths?.[key];
   if (!path) {
     logDev("DATA_MISSING_KEY", { context: "manifest.paths", key });
@@ -90,7 +55,7 @@ function requireManifestPath(manifest: Manifest | null | undefined, key: keyof M
   return path;
 }
 
-function optionalManifestPath(manifest: Manifest | null | undefined, key: keyof Manifest["paths"]): string | null {
+function optionalManifestPath(manifest, key) {
   const path = manifest?.paths?.[key];
   if (!path) {
     logDev("DATA_MISSING_KEY", { context: "manifest.paths", key });
@@ -99,16 +64,9 @@ function optionalManifestPath(manifest: Manifest | null | undefined, key: keyof 
   return path;
 }
 
-// =============================================================================
-// FETCH UTILITIES
-// =============================================================================
-
-async function fetchJson<T>(
-  path: string,
-  { optional = false, retries = 2, retryDelay = 500 }: FetchJsonOptions = {}
-): Promise<T | null> {
+async function fetchJson(path, { optional = false, retries = 2, retryDelay = 500 } = {}) {
   const url = safeUrl(path);
-  let lastError: Error | null = null;
+  let lastError = null;
 
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
@@ -129,14 +87,14 @@ async function fetchJson<T>(
         throw new Error(`Non-JSON response (${contentType || "unknown"}) (${url})`);
       }
 
-      const payload = await response.json() as T;
+      const payload = await response.json();
       logDev("DATA_FILE_OK", { url, attempt });
       return payload;
     } catch (err) {
-      lastError = err as Error;
+      lastError = err;
 
       // Don't retry for 404s or if optional and not found
-      if (optional && (lastError.message?.includes("404") || lastError.message?.includes("Non-JSON"))) {
+      if (optional && (err.message?.includes("404") || err.message?.includes("Non-JSON"))) {
         return null;
       }
 
@@ -159,31 +117,11 @@ async function fetchJson<T>(
   throw lastError;
 }
 
-// =============================================================================
-// CORE DATA TYPES
-// =============================================================================
-
-export interface CoreDataResult {
-  players: Player[];
-  playerIds: PlayerId[];
-  teams: Team[];
-  espnNameMap: EspnNameMap;
-  playerSearch: PlayerSearchEntry[];
-}
-
-// =============================================================================
-// LOADER FUNCTIONS
-// =============================================================================
-
-export async function loadManifest(): Promise<Manifest> {
+export async function loadManifest() {
   try {
-    const cached = getCached<Manifest>("manifest");
+    const cached = getCached("manifest");
     if (cached) return cached;
-    const manifest = await fetchJson<Manifest>("data/manifest.json");
-
-    if (!manifest) {
-      throw new Error("Failed to load manifest");
-    }
+    const manifest = await fetchJson("data/manifest.json");
 
     // Validate manifest structure
     validateWithWarnings(ManifestSchema, manifest, "manifest", IS_DEV);
@@ -200,14 +138,14 @@ export async function loadManifest(): Promise<Manifest> {
   }
 }
 
-export async function loadCoreData(): Promise<CoreDataResult> {
-  let playersPath: string | null = null;
-  let playerIdsPath: string | null = null;
-  let teamsPath: string | null = null;
-  let espnNameMapPath: string | null = null;
-  let playerSearchPath: string | null = null;
+export async function loadCoreData() {
+  let playersPath;
+  let playerIdsPath;
+  let teamsPath;
+  let espnNameMapPath;
+  let playerSearchPath;
   try {
-    const cached = getCached<CoreDataResult>("core");
+    const cached = getCached("core");
     if (cached) return cached;
     const manifest = await loadManifest();
     playersPath = optionalManifestPath(manifest, "players");
@@ -216,11 +154,11 @@ export async function loadCoreData(): Promise<CoreDataResult> {
     espnNameMapPath = optionalManifestPath(manifest, "espnNameMap");
     playerSearchPath = optionalManifestPath(manifest, "playerSearch") || "data/player_search.json";
     const [players, playerIds, teams, espnNameMap, playerSearch] = await Promise.all([
-      playersPath ? fetchJson<Player[]>(playersPath, { optional: true }) : Promise.resolve([]),
-      playerIdsPath ? fetchJson<PlayerId[]>(playerIdsPath, { optional: true }) : Promise.resolve([]),
-      teamsPath ? fetchJson<Team[]>(teamsPath, { optional: true }) : Promise.resolve([]),
-      espnNameMapPath ? fetchJson<EspnNameMap>(espnNameMapPath, { optional: true }) : Promise.resolve({}),
-      playerSearchPath ? fetchJson<{ rows: PlayerSearchEntry[] }>(playerSearchPath, { optional: true }) : Promise.resolve(null),
+      playersPath ? fetchJson(playersPath, { optional: true }) : Promise.resolve([]),
+      playerIdsPath ? fetchJson(playerIdsPath, { optional: true }) : Promise.resolve([]),
+      teamsPath ? fetchJson(teamsPath, { optional: true }) : Promise.resolve([]),
+      espnNameMapPath ? fetchJson(espnNameMapPath, { optional: true }) : Promise.resolve({}),
+      playerSearchPath ? fetchJson(playerSearchPath, { optional: true }) : Promise.resolve(null),
     ]);
 
     // Validate each data source
@@ -273,18 +211,16 @@ export async function loadCoreData(): Promise<CoreDataResult> {
   }
 }
 
-export async function loadSeasonSummary(season: number): Promise<SeasonSummary | null> {
+export async function loadSeasonSummary(season) {
   const key = `season:${season}`;
-  let path: string | null = null;
+  let path;
   try {
-    const cached = getCached<SeasonSummary>(key);
+    const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
     path = resolvePath(requireManifestPath(manifest, "seasonSummary"), { season });
     if (!path) return null;
-    const payload = await fetchJson<SeasonSummary>(path);
-
-    if (!payload) return null;
+    const payload = await fetchJson(path);
 
     // Validate season summary structure
     validateWithWarnings(SeasonSummarySchema, payload, `seasonSummary:${season}`, IS_DEV);
@@ -296,18 +232,16 @@ export async function loadSeasonSummary(season: number): Promise<SeasonSummary |
   }
 }
 
-export async function loadWeekData(season: number, week: number): Promise<WeeklyChunk | null> {
+export async function loadWeekData(season, week) {
   const key = `week:${season}:${week}`;
-  let path: string | null = null;
+  let path;
   try {
-    const cached = getCached<WeeklyChunk>(key);
+    const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
     path = resolvePath(requireManifestPath(manifest, "weeklyChunk"), { season, week });
     if (!path) return null;
-    const payload = await fetchJson<WeeklyChunk>(path);
-
-    if (!payload) return null;
+    const payload = await fetchJson(path);
 
     // Validate weekly chunk structure
     validateWithWarnings(WeeklyChunkSchema, payload, `weeklyChunk:${season}:${week}`, IS_DEV);
@@ -332,20 +266,20 @@ export async function loadWeekData(season: number, week: number): Promise<Weekly
   }
 }
 
-export async function loadTransactions(season: number): Promise<Transactions | null> {
+export async function loadTransactions(season) {
   const key = `transactions:${season}`;
-  let path: string | null = null;
+  let path;
   try {
-    const cached = getCached<Transactions>(key);
+    const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
     const template = optionalManifestPath(manifest, "transactions");
     path = template ? resolvePath(template, { season }) : null;
     if (!path) return null;
-    const payload = await fetchJson<Transactions>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     if (payload && typeof payload === "object") {
-      (payload as Transactions).__meta = { path };
+      payload.__meta = { path };
     }
     return setCached(key, payload);
   } catch (err) {
@@ -354,16 +288,15 @@ export async function loadTransactions(season: number): Promise<Transactions | n
   }
 }
 
-export async function loadAllTime(): Promise<AllTime | null> {
-  let path: string | null = null;
+export async function loadAllTime() {
+  let path;
   try {
-    const cached = getCached<AllTime>("allTime");
+    const cached = getCached("allTime");
     if (cached) return cached;
     const manifest = await loadManifest();
     path = requireManifestPath(manifest, "allTime");
     if (!path) return null;
-    const payload = await fetchJson<AllTime>(path);
-    if (!payload) return null;
+    const payload = await fetchJson(path);
     return setCached("allTime", payload);
   } catch (err) {
     console.error("DATA_LOAD_ERROR", { url: path || "allTime", err });
@@ -371,17 +304,17 @@ export async function loadAllTime(): Promise<AllTime | null> {
   }
 }
 
-export async function loadPlayerMetricsBoomBust(): Promise<PlayerMetrics | null> {
+export async function loadPlayerMetricsBoomBust() {
   const key = "playerMetricsBoomBust";
-  let path: string | null = null;
+  let path;
   try {
-    const cached = getCached<PlayerMetrics>(key);
+    const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
     const template = optionalManifestPath(manifest, "playerMetricsBoomBust");
     path = template ? resolvePath(template) : null;
     if (!path) return null;
-    const payload = await fetchJson<PlayerMetrics>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached(key, payload);
   } catch (err) {
@@ -390,17 +323,17 @@ export async function loadPlayerMetricsBoomBust(): Promise<PlayerMetrics | null>
   }
 }
 
-export async function loadPlayerStatsWeekly(season: number): Promise<PlayerStats | null> {
+export async function loadPlayerStatsWeekly(season) {
   const key = `playerStatsWeekly:${season}`;
-  let path: string | null = null;
+  let path;
   try {
-    const cached = getCached<PlayerStats>(key);
+    const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
     const template = optionalManifestPath(manifest, "playerStatsWeekly");
     path = template ? resolvePath(template, { season }) : null;
     if (!path) return null;
-    const payload = await fetchJson<PlayerStats>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached(key, payload);
   } catch (err) {
@@ -409,17 +342,17 @@ export async function loadPlayerStatsWeekly(season: number): Promise<PlayerStats
   }
 }
 
-export async function loadPlayerStatsFull(season: number): Promise<PlayerStats | null> {
+export async function loadPlayerStatsFull(season) {
   const key = `playerStatsFull:${season}`;
-  let path: string | null = null;
+  let path;
   try {
-    const cached = getCached<PlayerStats>(key);
+    const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
     const template = optionalManifestPath(manifest, "playerStatsFull") || "data/player_stats/full/{season}.json";
     path = resolvePath(template, { season });
     if (!path) return null;
-    const payload = await fetchJson<PlayerStats>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached(key, payload);
   } catch (err) {
@@ -428,17 +361,17 @@ export async function loadPlayerStatsFull(season: number): Promise<PlayerStats |
   }
 }
 
-export async function loadPlayerStatsSeason(season: number): Promise<PlayerStats | null> {
+export async function loadPlayerStatsSeason(season) {
   const key = `playerStatsSeason:${season}`;
-  let path: string | null = null;
+  let path;
   try {
-    const cached = getCached<PlayerStats>(key);
+    const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
     const template = optionalManifestPath(manifest, "playerStatsSeason");
     path = template ? resolvePath(template, { season }) : null;
     if (!path) return null;
-    const payload = await fetchJson<PlayerStats>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached(key, payload);
   } catch (err) {
@@ -447,15 +380,15 @@ export async function loadPlayerStatsSeason(season: number): Promise<PlayerStats
   }
 }
 
-export async function loadPlayerStatsCareer(): Promise<PlayerStats | null> {
-  let path: string | null = null;
+export async function loadPlayerStatsCareer() {
+  let path;
   try {
-    const cached = getCached<PlayerStats>("playerStatsCareer");
+    const cached = getCached("playerStatsCareer");
     if (cached) return cached;
     const manifest = await loadManifest();
     path = optionalManifestPath(manifest, "playerStatsCareer");
     if (!path) return null;
-    const payload = await fetchJson<PlayerStats>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached("playerStatsCareer", payload);
   } catch (err) {
@@ -464,15 +397,15 @@ export async function loadPlayerStatsCareer(): Promise<PlayerStats | null> {
   }
 }
 
-export async function loadMetricsSummary(): Promise<MetricsSummary | null> {
-  let path: string | null = null;
+export async function loadMetricsSummary() {
+  let path;
   try {
-    const cached = getCached<MetricsSummary>("metricsSummary");
+    const cached = getCached("metricsSummary");
     if (cached) return cached;
     const manifest = await loadManifest();
     path = optionalManifestPath(manifest, "metricsSummary");
     if (!path) return null;
-    const payload = await fetchJson<MetricsSummary>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached("metricsSummary", payload);
   } catch (err) {
@@ -481,17 +414,17 @@ export async function loadMetricsSummary(): Promise<MetricsSummary | null> {
   }
 }
 
-export async function loadWeeklyMetrics(season: number): Promise<PlayerMetrics | null> {
+export async function loadWeeklyMetrics(season) {
   const key = `weeklyMetrics:${season}`;
-  let path: string | null = null;
+  let path;
   try {
-    const cached = getCached<PlayerMetrics>(key);
+    const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
     const template = optionalManifestPath(manifest, "playerMetricsWeekly");
     path = template ? resolvePath(template, { season }) : null;
     if (!path) return null;
-    const payload = await fetchJson<PlayerMetrics>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached(key, payload);
   } catch (err) {
@@ -500,17 +433,17 @@ export async function loadWeeklyMetrics(season: number): Promise<PlayerMetrics |
   }
 }
 
-export async function loadSeasonMetrics(season: number): Promise<PlayerMetrics | null> {
+export async function loadSeasonMetrics(season) {
   const key = `seasonMetrics:${season}`;
-  let path: string | null = null;
+  let path;
   try {
-    const cached = getCached<PlayerMetrics>(key);
+    const cached = getCached(key);
     if (cached) return cached;
     const manifest = await loadManifest();
     const template = optionalManifestPath(manifest, "playerMetricsSeason");
     path = template ? resolvePath(template, { season }) : null;
     if (!path) return null;
-    const payload = await fetchJson<PlayerMetrics>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached(key, payload);
   } catch (err) {
@@ -519,15 +452,15 @@ export async function loadSeasonMetrics(season: number): Promise<PlayerMetrics |
   }
 }
 
-export async function loadCareerMetrics(): Promise<PlayerMetrics | null> {
-  let path: string | null = null;
+export async function loadCareerMetrics() {
+  let path;
   try {
-    const cached = getCached<PlayerMetrics>("careerMetrics");
+    const cached = getCached("careerMetrics");
     if (cached) return cached;
     const manifest = await loadManifest();
     path = optionalManifestPath(manifest, "playerMetricsCareer");
     if (!path) return null;
-    const payload = await fetchJson<PlayerMetrics>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached("careerMetrics", payload);
   } catch (err) {
@@ -536,15 +469,15 @@ export async function loadCareerMetrics(): Promise<PlayerMetrics | null> {
   }
 }
 
-export async function loadBoomBustMetrics(): Promise<PlayerMetrics | null> {
-  let path: string | null = null;
+export async function loadBoomBustMetrics() {
+  let path;
   try {
-    const cached = getCached<PlayerMetrics>("boomBustMetrics");
+    const cached = getCached("boomBustMetrics");
     if (cached) return cached;
     const manifest = await loadManifest();
     path = optionalManifestPath(manifest, "playerMetricsBoomBust");
     if (!path) return null;
-    const payload = await fetchJson<PlayerMetrics>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     if (!payload) return null;
     return setCached("boomBustMetrics", payload);
   } catch (err) {
@@ -553,31 +486,31 @@ export async function loadBoomBustMetrics(): Promise<PlayerMetrics | null> {
   }
 }
 
-export async function loadMegaProfile(playerId: string | null | undefined): Promise<NflProfile | null> {
+export async function loadMegaProfile(playerId) {
   if (!playerId) return null;
   const key = `megaProfile:${playerId}`;
   const path = `data/nfl_profiles/${playerId}.json`;
   try {
-    const cached = getCached<NflProfile>(key);
+    const cached = getCached(key);
     if (cached) return cached;
-    const payload = await fetchJson<NflProfile>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     return setCached(key, payload);
   } catch (err) {
-    console.warn("DATA_LOAD_WARN", { url: path, err: (err as Error).message });
+    console.warn("DATA_LOAD_WARN", { url: path, err: err.message });
     return null;
   }
 }
 
-export async function loadNflSiloMeta(): Promise<NflSiloMeta | null> {
+export async function loadNflSiloMeta() {
   const key = "nflSiloMeta";
   const path = "data/nfl_silo_meta.json";
   try {
-    const cached = getCached<NflSiloMeta>(key);
+    const cached = getCached(key);
     if (cached) return cached;
-    const payload = await fetchJson<NflSiloMeta>(path, { optional: true });
+    const payload = await fetchJson(path, { optional: true });
     return setCached(key, payload);
   } catch (err) {
-    console.warn("DATA_LOAD_WARN", { url: path, err: (err as Error).message });
+    console.warn("DATA_LOAD_WARN", { url: path, err: err.message });
     return null;
   }
 }
