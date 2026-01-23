@@ -1,44 +1,64 @@
+/**
+ * Application Entry Point
+ *
+ * Phase 3: Proper configuration validation and monitoring initialization.
+ */
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const routerBase = (import.meta.env.BASE_URL && import.meta.env.BASE_URL !== "./") ? import.meta.env.BASE_URL : "/";
 import App from "./App.jsx";
 import { DataProvider } from "./data/DataContext.jsx";
 import { ThemeProvider } from "./lib/ThemeContext.jsx";
 import "./styles.css";
 
-const queryClient = new QueryClient();
-import * as Sentry from "@sentry/react";
+// Phase 3: Configuration validation
+import { initConfig, getSentryDsn, getGA4Id } from "./config";
+import { initMonitoring } from "./services/monitoring";
 import ReactGA from "react-ga4";
 
-// Initialize Google Analytics with a placeholder ID
-ReactGA.initialize("G-PLACEHOLDER");
-// Send initial pageview
-ReactGA.send("pageview");
+// =============================================================================
+// CONFIGURATION INITIALIZATION
+// =============================================================================
 
-const sentryDsn = import.meta.env.VITE_SENTRY_DSN || "https://placeholder-dsn@sentry.io/placeholder";
+// Initialize and validate configuration first (fail fast on errors)
+const config = initConfig();
 
-if (sentryDsn && !sentryDsn.includes("placeholder")) {
-  Sentry.init({
-    dsn: sentryDsn,
-    integrations: [
-      Sentry.browserTracingIntegration(),
-      Sentry.replayIntegration(),
-    ],
-    tracesSampleRate: 1.0,
-    replaysSessionSampleRate: 0.1,
-    replaysOnErrorSampleRate: 1.0,
-  });
+// Initialize monitoring (Sentry if configured)
+initMonitoring(getSentryDsn());
+
+// Initialize Google Analytics if configured
+const ga4Id = getGA4Id();
+if (ga4Id) {
+  ReactGA.initialize(ga4Id);
+  ReactGA.send("pageview");
 } else {
-  console.log("Sentry initialization skipped: No valid DSN provided.");
+  console.info("ANALYTICS_INIT", "Google Analytics not configured - skipping initialization");
 }
 
-window.addEventListener("unhandledrejection", (e) => {
-  console.error("UNHANDLED_REJECTION", e.reason);
-  Sentry.captureException(e.reason);
+// =============================================================================
+// REACT QUERY CLIENT
+// =============================================================================
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes default
+      retry: 2,
+    },
+  },
 });
+
+// =============================================================================
+// ROUTER CONFIGURATION
+// =============================================================================
+
+const routerBase = config.baseUrl !== "./" ? config.baseUrl : "/";
+
+// =============================================================================
+// RENDER
+// =============================================================================
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -51,5 +71,5 @@ createRoot(document.getElementById("root")).render(
         </ThemeProvider>
       </BrowserRouter>
     </QueryClientProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

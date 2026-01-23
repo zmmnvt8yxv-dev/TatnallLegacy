@@ -447,6 +447,83 @@ export function validateOrThrow<T>(
 }
 
 // =============================================================================
+// INTEGRITY REPORT SCHEMAS
+// =============================================================================
+
+/** Status values for integrity checks */
+export const IntegrityStatusSchema = z.enum(["ok", "warning", "error", "unknown"]);
+
+/** Player ID distribution in integrity report */
+const PlayerIdDistributionSchema = z.record(z.string(), z.number());
+
+/** Players section of integrity report */
+const IntegrityPlayersSchema = z.object({
+  total_players: z.number(),
+  id_type_distribution: PlayerIdDistributionSchema,
+}).passthrough();
+
+/** Manifest section of integrity report */
+const IntegrityManifestSchema = z.object({
+  seasons: z.array(z.number()),
+  path_count: z.number(),
+}).passthrough();
+
+/** Season issues in integrity report */
+const SeasonIssueSchema = z.string();
+
+/** Individual season health data */
+const IntegritySeasonSchema = z.object({
+  status: IntegrityStatusSchema,
+  team_count: z.number().optional(),
+  matchup_count: z.number().optional(),
+  lineup_count: z.number().optional(),
+  issues: z.array(SeasonIssueSchema).optional(),
+}).passthrough();
+
+/** Weekly summary issues */
+const WeeklyIssuesSchema = z.object({
+  missing_player_id: z.number().optional(),
+}).passthrough();
+
+/** Weekly summary for a season */
+const IntegrityWeeklySummarySchema = z.object({
+  total_matchups: z.number().optional(),
+  total_lineups: z.number().optional(),
+  issues: WeeklyIssuesSchema.optional(),
+}).passthrough();
+
+/** Transaction type distribution */
+const TransactionTypeDistributionSchema = z.object({
+  add: z.number().optional(),
+  drop: z.number().optional(),
+  trade: z.number().optional(),
+}).passthrough();
+
+/** Transaction summary for a season */
+const IntegrityTransactionSchema = z.object({
+  entry_count: z.number(),
+  type_distribution: TransactionTypeDistributionSchema.optional(),
+  missing_player_names: z.number().optional(),
+}).passthrough();
+
+/** Full integrity report schema */
+export const IntegrityReportSchema = z.object({
+  generated_at: z.string(),
+  overall_status: IntegrityStatusSchema,
+  players: IntegrityPlayersSchema.optional(),
+  manifest: IntegrityManifestSchema.optional(),
+  seasons: z.record(z.string(), IntegritySeasonSchema).optional(),
+  weekly_summary: z.record(z.string(), IntegrityWeeklySummarySchema).optional(),
+  transactions: z.record(z.string(), IntegrityTransactionSchema).optional(),
+}).passthrough();
+
+export type IntegrityStatus = z.infer<typeof IntegrityStatusSchema>;
+export type IntegrityReport = z.infer<typeof IntegrityReportSchema>;
+export type IntegritySeason = z.infer<typeof IntegritySeasonSchema>;
+export type IntegrityWeeklySummary = z.infer<typeof IntegrityWeeklySummarySchema>;
+export type IntegrityTransaction = z.infer<typeof IntegrityTransactionSchema>;
+
+// =============================================================================
 // PARTIAL/LOOSE SCHEMAS (for optional data that may have extra fields)
 // =============================================================================
 
