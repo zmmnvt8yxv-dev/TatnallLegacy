@@ -4,7 +4,7 @@
  * These schemas validate JSON data loaded from the public/data/ directory.
  * They help catch data integrity issues early and provide meaningful error messages.
  */
-import { z } from "zod";
+import { z, type ZodSchema, type ZodError } from "zod";
 
 // =============================================================================
 // SHARED/PRIMITIVE SCHEMAS
@@ -230,9 +230,9 @@ export const TransactionSchema = z.object({
   team: z.string().optional(),
   player: z.string().optional(),
   player_id: z.string().optional(),
-  adds: z.array(z.any()).optional(),
-  drops: z.array(z.any()).optional(),
-  trades: z.array(z.any()).optional(),
+  adds: z.array(z.unknown()).optional(),
+  drops: z.array(z.unknown()).optional(),
+  trades: z.array(z.unknown()).optional(),
 }).passthrough();
 
 /** Transactions data for a season */
@@ -301,9 +301,9 @@ export const PlayerMetricsSchema = z.object({
 
 /** All-time records data */
 export const AllTimeSchema = z.object({
-  topWeekly: z.array(z.any()).optional(),
-  topSeasons: z.array(z.any()).optional(),
-  careerLeaders: z.array(z.any()).optional(),
+  topWeekly: z.array(z.unknown()).optional(),
+  topSeasons: z.array(z.unknown()).optional(),
+  careerLeaders: z.array(z.unknown()).optional(),
 }).passthrough();
 
 // =============================================================================
@@ -326,26 +326,55 @@ export const CoreDataSchema = z.object({
 });
 
 // =============================================================================
+// TYPE EXPORTS (inferred from Zod schemas)
+// =============================================================================
+
+export type NflTeam = z.infer<typeof NflTeamSchema>;
+export type Position = z.infer<typeof PositionSchema>;
+export type Manifest = z.infer<typeof ManifestSchema>;
+export type ManifestPaths = z.infer<typeof ManifestPathsSchema>;
+export type Player = z.infer<typeof PlayerSchema>;
+export type PlayerIdentifiers = z.infer<typeof PlayerIdentifiersSchema>;
+export type PlayerId = z.infer<typeof PlayerIdSchema>;
+export type PlayerSearchEntry = z.infer<typeof PlayerSearchEntrySchema>;
+export type PlayerSearch = z.infer<typeof PlayerSearchSchema>;
+export type Team = z.infer<typeof TeamSchema>;
+export type Matchup = z.infer<typeof MatchupSchema>;
+export type LineupEntry = z.infer<typeof LineupEntrySchema>;
+export type WeeklyChunk = z.infer<typeof WeeklyChunkSchema>;
+export type SeasonTeam = z.infer<typeof SeasonTeamSchema>;
+export type StandingsEntry = z.infer<typeof StandingsEntrySchema>;
+export type SeasonSummary = z.infer<typeof SeasonSummarySchema>;
+export type Transaction = z.infer<typeof TransactionSchema>;
+export type Transactions = z.infer<typeof TransactionsSchema>;
+export type PlayerStatsRow = z.infer<typeof PlayerStatsRowSchema>;
+export type PlayerStats = z.infer<typeof PlayerStatsSchema>;
+export type PlayerMetricsRow = z.infer<typeof PlayerMetricsRowSchema>;
+export type PlayerMetrics = z.infer<typeof PlayerMetricsSchema>;
+export type AllTime = z.infer<typeof AllTimeSchema>;
+export type EspnNameMap = z.infer<typeof EspnNameMapSchema>;
+export type CoreData = z.infer<typeof CoreDataSchema>;
+
+// =============================================================================
 // VALIDATION UTILITIES
 // =============================================================================
 
-/**
- * Validation result type
- * @typedef {Object} ValidationResult
- * @property {boolean} success - Whether validation passed
- * @property {any} data - The validated data (if success)
- * @property {import('zod').ZodError|null} error - The validation error (if failed)
- * @property {string[]} issues - Human-readable issue descriptions
- */
+/** Validation result type */
+export interface ValidationResult<T> {
+  success: boolean;
+  data: T | null;
+  error: ZodError | null;
+  issues: string[];
+}
 
 /**
  * Validates data against a schema and returns a structured result
- * @param {import('zod').ZodSchema} schema - The Zod schema to validate against
- * @param {any} data - The data to validate
- * @param {string} context - A context string for error messages (e.g., "manifest", "players")
- * @returns {ValidationResult}
  */
-export function validate(schema, data, context = "data") {
+export function validate<T>(
+  schema: ZodSchema<T>,
+  data: unknown,
+  context: string = "data"
+): ValidationResult<T> {
   const result = schema.safeParse(data);
 
   if (result.success) {
@@ -373,13 +402,13 @@ export function validate(schema, data, context = "data") {
 /**
  * Validates data and logs warnings in development, but always returns data
  * This is a "soft" validation that warns but doesn't break the app
- * @param {import('zod').ZodSchema} schema - The Zod schema to validate against
- * @param {any} data - The data to validate
- * @param {string} context - A context string for error messages
- * @param {boolean} isDev - Whether we're in development mode
- * @returns {any} The original data (unmodified)
  */
-export function validateWithWarnings(schema, data, context = "data", isDev = false) {
+export function validateWithWarnings<T>(
+  schema: ZodSchema<T>,
+  data: T,
+  context: string = "data",
+  isDev: boolean = false
+): T {
   const result = validate(schema, data, context);
 
   if (!result.success && isDev) {
@@ -392,25 +421,29 @@ export function validateWithWarnings(schema, data, context = "data", isDev = fal
   return data;
 }
 
+/** Error type with validation issues */
+export interface ValidationError extends Error {
+  validationIssues?: string[];
+}
+
 /**
  * Validates data and throws if invalid (for critical paths)
- * @param {import('zod').ZodSchema} schema - The Zod schema to validate against
- * @param {any} data - The data to validate
- * @param {string} context - A context string for error messages
- * @returns {any} The validated data
- * @throws {Error} If validation fails
  */
-export function validateOrThrow(schema, data, context = "data") {
+export function validateOrThrow<T>(
+  schema: ZodSchema<T>,
+  data: unknown,
+  context: string = "data"
+): T {
   const result = validate(schema, data, context);
 
   if (!result.success) {
     const message = `Data validation failed for ${context}: ${result.issues.slice(0, 3).join("; ")}`;
-    const error = new Error(message);
+    const error = new Error(message) as ValidationError;
     error.validationIssues = result.issues;
     throw error;
   }
 
-  return result.data;
+  return result.data!;
 }
 
 // =============================================================================
@@ -428,3 +461,6 @@ export const LooseMatchupSchema = MatchupSchema.partial().extend({
   home_team: z.string(),
   away_team: z.string(),
 });
+
+export type LoosePlayer = z.infer<typeof LoosePlayerSchema>;
+export type LooseMatchup = z.infer<typeof LooseMatchupSchema>;

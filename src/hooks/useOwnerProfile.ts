@@ -1,7 +1,18 @@
 import { useQuery, useQueries } from "@tanstack/react-query";
-import { loadManifest, loadAllTime, loadSeasonSummary, loadTransactions } from "../data/loader.js";
+import { loadManifest, loadAllTime, loadSeasonSummary, loadTransactions } from "../data/loader";
+import type { Manifest, AllTime, SeasonSummary, Transactions } from "../schemas/index";
 
-export function useOwnerProfile() {
+export interface UseOwnerProfileResult {
+    manifest: Manifest | undefined;
+    allSeasonData: Record<number, SeasonSummary>;
+    allTransactions: Record<number, Transactions>;
+    allTimeData: AllTime | null | undefined;
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+}
+
+export function useOwnerProfile(): UseOwnerProfileResult {
     const manifestQuery = useQuery({
         queryKey: ["manifest"],
         queryFn: loadManifest,
@@ -43,11 +54,13 @@ export function useOwnerProfile() {
         seasonQueries.some(q => q.isError) ||
         transactionQueries.some(q => q.isError);
 
-    const allSeasonData = {};
-    const allTransactions = {};
+    const allSeasonData: Record<number, SeasonSummary> = {};
+    const allTransactions: Record<number, Transactions> = {};
     seasons.forEach((year, idx) => {
-        if (seasonQueries[idx].data) allSeasonData[year] = seasonQueries[idx].data;
-        if (transactionQueries[idx].data) allTransactions[year] = transactionQueries[idx].data;
+        const seasonData = seasonQueries[idx]?.data;
+        const transData = transactionQueries[idx]?.data;
+        if (seasonData) allSeasonData[year] = seasonData;
+        if (transData) allTransactions[year] = transData;
     });
 
     return {

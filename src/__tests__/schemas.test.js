@@ -17,7 +17,7 @@ import {
   validate,
   validateWithWarnings,
   validateOrThrow,
-} from "../schemas/index.js";
+} from "../schemas/index";
 
 describe("Schema Validation", () => {
   describe("ManifestSchema", () => {

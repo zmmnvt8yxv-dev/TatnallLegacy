@@ -5,14 +5,35 @@ import {
     loadAllTime,
     loadMetricsSummary,
     loadPlayerMetricsBoomBust
-} from "../data/loader.js";
+} from "../data/loader";
+import type { SeasonSummary, Transactions, AllTime, PlayerMetrics } from "../schemas/index";
+import type { MetricsSummary } from "../types/index";
 
-const getStaleTime = (season) => {
+function getStaleTime(season: number | string | undefined): number {
     if (Number(season) >= 2025) {
         return 1000 * 60 * 5; // 5 minutes
     }
     return 1000 * 60 * 60 * 24; // 24 hours
-};
+}
+
+export interface UseSummaryDataOptions {
+    latestSeason?: number;
+    allSeasons?: number[];
+    loadHistory?: boolean;
+    loadMetrics?: boolean;
+    loadBoomBust?: boolean;
+}
+
+export interface UseSummaryDataResult {
+    seasonSummary: SeasonSummary | null | undefined;
+    transactions: Transactions | null | undefined;
+    allSummaries: SeasonSummary[];
+    allTime: AllTime | null | undefined;
+    metricsSummary: MetricsSummary | null | undefined;
+    boomBust: PlayerMetrics | null | undefined;
+    isLoading: boolean;
+    isError: boolean;
+}
 
 export function useSummaryData({
     latestSeason,
@@ -20,12 +41,12 @@ export function useSummaryData({
     loadHistory = false,
     loadMetrics = false,
     loadBoomBust = false
-}) {
+}: UseSummaryDataOptions): UseSummaryDataResult {
 
     // 1. Current Season Summary
     const seasonQuery = useQuery({
         queryKey: ["seasonSummary", latestSeason],
-        queryFn: () => loadSeasonSummary(latestSeason),
+        queryFn: () => loadSeasonSummary(latestSeason!),
         staleTime: getStaleTime(latestSeason),
         enabled: !!latestSeason,
     });
@@ -33,7 +54,7 @@ export function useSummaryData({
     // 2. Current Season Transactions
     const transactionsQuery = useQuery({
         queryKey: ["transactions", latestSeason],
-        queryFn: () => loadTransactions(latestSeason),
+        queryFn: () => loadTransactions(latestSeason!),
         staleTime: getStaleTime(latestSeason),
         enabled: !!latestSeason,
     });
@@ -74,7 +95,7 @@ export function useSummaryData({
     return {
         seasonSummary: seasonQuery.data,
         transactions: transactionsQuery.data,
-        allSummaries: allSeasonQueries.map(q => q.data).filter(Boolean),
+        allSummaries: allSeasonQueries.map(q => q.data).filter((d): d is SeasonSummary => d != null),
         allTime: allTimeQuery.data,
         metricsSummary: metricsQuery.data,
         boomBust: boomBustQuery.data,

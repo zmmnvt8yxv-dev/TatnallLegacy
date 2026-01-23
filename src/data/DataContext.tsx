@@ -1,23 +1,28 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { buildPlayerIndex } from "../lib/playerName.js";
-import { loadCoreData, loadManifest } from "./loader.js";
+import React, { createContext, useContext, useMemo, type ReactNode } from "react";
+import { buildPlayerIndex } from "../lib/playerName";
 
-import { useManifest } from "../hooks/useManifest.js";
-import { useCore } from "../hooks/useCore.js";
+import { useManifest } from "../hooks/useManifest";
+import { useCore } from "../hooks/useCore";
+import type { DataContextValue, PlayerIdLookup, PlayerIndex } from "../types/index";
+import type { Player, Manifest, PlayerId, Team, PlayerSearchEntry, EspnNameMap } from "../schemas/index";
 
-const DataContext = createContext(null);
+const DataContext = createContext<DataContextValue | null>(null);
 
-export function DataProvider({ children }) {
+interface DataProviderProps {
+  children: ReactNode;
+}
+
+export function DataProvider({ children }: DataProviderProps): React.ReactElement {
   const { data: manifest, isLoading: manifestLoading, error: manifestError } = useManifest();
   const { data: coreData, isLoading: coreLoading, error: coreError } = useCore();
 
   const core = useMemo(() => {
     return coreData || {
-      players: [],
-      playerIds: [],
-      teams: [],
-      espnNameMap: {},
-      playerSearch: [],
+      players: [] as Player[],
+      playerIds: [] as PlayerId[],
+      teams: [] as Team[],
+      espnNameMap: {} as EspnNameMap,
+      playerSearch: [] as PlayerSearchEntry[],
     };
   }, [coreData]);
 
@@ -25,12 +30,13 @@ export function DataProvider({ children }) {
   const error = manifestError?.message || coreError?.message || "";
 
 
-  const playerIdLookup = useMemo(() => {
-    const bySleeper = new Map();
-    const byEspn = new Map();
-    const byUid = new Map();
+  const playerIdLookup = useMemo((): PlayerIdLookup => {
+    const bySleeper = new Map<string, string>();
+    const byEspn = new Map<string, string>();
+    const byUid = new Map<string, Player>();
     for (const player of core.players || []) {
-      const uid = player?.player_uid || player?.id;
+      const playerAny = player as Player & { player_uid?: string };
+      const uid = playerAny?.player_uid || player?.id;
       if (uid) byUid.set(String(uid), player);
     }
     for (const entry of core.playerIds || []) {
@@ -44,12 +50,12 @@ export function DataProvider({ children }) {
     return { bySleeper, byEspn, byUid };
   }, [core.players, core.playerIds]);
 
-  const playerIndex = useMemo(() => {
+  const playerIndex = useMemo((): PlayerIndex => {
     return buildPlayerIndex({ players: core.players, playerIds: core.playerIds });
   }, [core.players, core.playerIds]);
 
   const value = useMemo(
-    () => ({
+    (): DataContextValue => ({
       manifest,
       players: core.players,
       playerIds: core.playerIds,
@@ -67,6 +73,6 @@ export function DataProvider({ children }) {
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }
 
-export function useDataContext() {
+export function useDataContext(): DataContextValue | null {
   return useContext(DataContext);
 }

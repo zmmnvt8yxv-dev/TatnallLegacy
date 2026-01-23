@@ -1,7 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { loadManifest, loadSeasonSummary } from "../data/loader.js";
+import { loadManifest, loadSeasonSummary } from "../data/loader";
+import type { Manifest, SeasonSummary } from "../schemas/index";
 
-export function useTeamsList(season) {
+export interface UseTeamsListResult {
+    manifest: Manifest | undefined;
+    seasonData: SeasonSummary | null | undefined;
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+}
+
+export function useTeamsList(season: number | undefined): UseTeamsListResult {
     const manifestQuery = useQuery({
         queryKey: ["manifest"],
         queryFn: loadManifest,
@@ -10,7 +19,7 @@ export function useTeamsList(season) {
 
     const seasonDataQuery = useQuery({
         queryKey: ["seasonSummary", season],
-        queryFn: () => loadSeasonSummary(season),
+        queryFn: () => loadSeasonSummary(season!),
         enabled: !!season,
         staleTime: season === new Date().getFullYear() ? 1000 * 60 * 5 : 1000 * 60 * 60 * 24,
     });

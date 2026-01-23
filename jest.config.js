@@ -6,12 +6,12 @@ export default {
     '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/src/__tests__/__mocks__/fileMock.js',
   },
   transform: {
-    '^.+\\.(js|jsx)$': 'babel-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
-  testMatch: ['**/__tests__/**/*.test.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
-  moduleFileExtensions: ['js', 'jsx', 'json'],
+  testMatch: ['**/__tests__/**/*.test.js?(x)', '**/__tests__/**/*.test.ts?(x)', '**/?(*.)+(spec|test).js?(x)', '**/?(*.)+(spec|test).ts?(x)'],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   collectCoverageFrom: [
-    'src/**/*.{js,jsx}',
+    'src/**/*.{js,jsx,ts,tsx}',
     '!src/__tests__/**',
     '!src/main.jsx',
   ],
