@@ -14,7 +14,7 @@ import OwnerProfilePage from "./pages/OwnerProfilePage.jsx";
 import SeasonPage from "./pages/SeasonPage.jsx";
 import RecordsPage from "./pages/RecordsPage.jsx";
 import HeadToHeadPage from "./pages/HeadToHeadPage.jsx";
-import DataIntegrityPage from "./pages/DataIntegrityPage.jsx";
+import DataIntegrityPage from "./pages/DataIntegrityPage";
 import { initAnalytics, trackPageView } from "./utils/analytics.js";
 
 function AnalyticsListener() {
