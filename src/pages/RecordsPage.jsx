@@ -5,7 +5,7 @@ import LoadingState from "../components/LoadingState.jsx";
 import { useRecords } from "../hooks/useRecords.js";
 import PageTransition from "../components/PageTransition.jsx";
 import { normalizeOwnerName } from "../lib/identity.js";
-import { formatPoints, safeNumber } from "../utils/format.js";
+import { formatPoints, safeNumber } from "../utils/format";
 
 function slugifyOwner(name) {
     return encodeURIComponent(String(name || "").toLowerCase().replace(/\s+/g, "-"));

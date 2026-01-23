@@ -8,8 +8,8 @@ import PlayoffBracket from "../components/PlayoffBracket.jsx";
 import KiltBowlBracket from "../components/KiltBowlBracket.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { useSeasonDetails } from "../hooks/useSeasonDetails.js";
-import { formatPoints } from "../utils/format.js";
-import { normalizeOwnerName } from "../utils/owners.js";
+import { formatPoints } from "../utils/format";
+import { normalizeOwnerName } from "../utils/owners";
 import { resolvePlayerName } from "../lib/playerName.js";
 
 // Helper to find the best player (MVP) by fantasy points

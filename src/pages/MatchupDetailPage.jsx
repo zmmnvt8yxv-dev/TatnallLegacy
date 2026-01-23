@@ -8,9 +8,9 @@ import { useMatchupDetail } from "../hooks/useMatchupDetail.js";
 import PageTransition from "../components/PageTransition.jsx";
 import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
 import { buildNameIndex, normalizeName } from "../lib/nameUtils.js";
-import { formatPoints, safeNumber } from "../utils/format.js";
-import { normalizeOwnerName } from "../utils/owners.js";
-import { positionSort } from "../utils/positions.js";
+import { formatPoints, safeNumber } from "../utils/format";
+import { normalizeOwnerName } from "../utils/owners";
+import { positionSort } from "../utils/positions";
 
 export default function MatchupDetailPage() {
   const { season, week, matchupId } = useParams();

@@ -5,7 +5,7 @@ import ErrorState from "../components/ErrorState.jsx";
 import { useHeadToHeadData } from "../hooks/useHeadToHeadData.js";
 import PageTransition from "../components/PageTransition.jsx";
 import { normalizeOwnerName } from "../lib/identity.js";
-import { formatPoints, safeNumber } from "../utils/format.js";
+import { formatPoints, safeNumber } from "../utils/format";
 
 function getOwnerOptions(seasonData) {
     if (!seasonData) return [];

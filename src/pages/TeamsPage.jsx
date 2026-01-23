@@ -5,8 +5,8 @@ import LoadingState from "../components/LoadingState.jsx";
 import { useTeamsList } from "../hooks/useTeamsList.js";
 import PageTransition from "../components/PageTransition.jsx";
 import { normalizeOwnerName } from "../lib/identity.js";
-import { formatPoints } from "../utils/format.js";
-import { readStorage, writeStorage } from "../utils/persistence.js";
+import { formatPoints } from "../utils/format";
+import { readStorage, writeStorage } from "../utils/persistence";
 
 const PREF_KEY = "tatnall-pref-teams-season";
 

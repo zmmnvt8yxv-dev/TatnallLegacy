@@ -9,10 +9,10 @@ import { useMatchups } from "../hooks/useMatchups.js";
 import SearchBar from "../components/SearchBar.jsx";
 import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
 import { buildNameIndex, normalizeName } from "../lib/nameUtils.js";
-import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
-import { normalizeOwnerName } from "../utils/owners.js";
-import { positionSort } from "../utils/positions.js";
-import { readStorage, writeStorage } from "../utils/persistence.js";
+import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format";
+import { normalizeOwnerName } from "../utils/owners";
+import { positionSort } from "../utils/positions";
+import { readStorage, writeStorage } from "../utils/persistence";
 import { Button } from "@/components/ui/button.jsx";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
 

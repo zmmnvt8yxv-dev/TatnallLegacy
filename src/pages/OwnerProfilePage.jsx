@@ -5,7 +5,7 @@ import LoadingState from "../components/LoadingState.jsx";
 import { useOwnerProfile } from "../hooks/useOwnerProfile.js";
 import PageTransition from "../components/PageTransition.jsx";
 import { normalizeOwnerName, OWNER_ALIASES } from "../lib/identity.js";
-import { formatPoints, safeNumber } from "../utils/format.js";
+import { formatPoints, safeNumber } from "../utils/format";
 
 function slugToName(slug) {
     // Try to match against known aliases
