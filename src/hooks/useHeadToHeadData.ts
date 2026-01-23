@@ -1,7 +1,16 @@
 import { useQuery, useQueries } from "@tanstack/react-query";
-import { loadManifest, loadSeasonSummary, loadWeekData } from "../data/loader.js";
+import { loadManifest, loadSeasonSummary, loadWeekData } from "../data/loader";
+import type { Manifest, SeasonSummary, WeeklyChunk } from "../schemas/index";
 
-export function useHeadToHeadData(ownerA, ownerB) {
+export interface UseHeadToHeadDataResult {
+    manifest: Manifest | undefined;
+    allSeasonData: Record<number, SeasonSummary>;
+    allWeekData: WeeklyChunk[];
+    isLoading: boolean;
+    isError: boolean;
+}
+
+export function useHeadToHeadData(ownerA: string | undefined, ownerB: string | undefined): UseHeadToHeadDataResult {
     const manifestQuery = useQuery({
         queryKey: ["manifest"],
         queryFn: loadManifest,
@@ -24,7 +33,7 @@ export function useHeadToHeadData(ownerA, ownerB) {
 
     const allWeekQueries = useQueries({
         queries: enabled ? seasons.flatMap(season => {
-            const weeks = weeksBySeason[season] || Array.from({ length: 18 }, (_, i) => i + 1);
+            const weeks = weeksBySeason[String(season)] || Array.from({ length: 18 }, (_, i) => i + 1);
             return weeks.map(week => ({
                 queryKey: ["weekData", season, week],
                 queryFn: () => loadWeekData(season, week),
@@ -33,12 +42,13 @@ export function useHeadToHeadData(ownerA, ownerB) {
         }) : []
     });
 
-    const allSeasonData = {};
+    const allSeasonData: Record<number, SeasonSummary> = {};
     seasons.forEach((s, idx) => {
-        if (seasonSummaryQueries[idx].data) allSeasonData[s] = seasonSummaryQueries[idx].data;
+        const data = seasonSummaryQueries[idx]?.data;
+        if (data) allSeasonData[s] = data;
     });
 
-    const allWeekData = allWeekQueries.map(q => q.data).filter(Boolean);
+    const allWeekData = allWeekQueries.map(q => q.data).filter((d): d is WeeklyChunk => d != null);
 
     return {
         manifest: manifestQuery.data,

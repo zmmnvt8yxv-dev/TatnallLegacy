@@ -1,7 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { loadWeekData, loadPlayerStatsFull } from "../data/loader.js";
+import { loadWeekData, loadPlayerStatsFull } from "../data/loader";
+import type { WeeklyChunk, PlayerStatsRow } from "../schemas/index";
 
-export function useMatchupDetail(season, week) {
+export interface UseMatchupDetailResult {
+    weekData: WeeklyChunk | null | undefined;
+    fullStatsRows: PlayerStatsRow[];
+    isLoading: boolean;
+    isError: boolean;
+}
+
+export function useMatchupDetail(
+    season: number | string | undefined,
+    week: number | string | undefined
+): UseMatchupDetailResult {
     const weekDataQuery = useQuery({
         queryKey: ["weekData", season, week],
         queryFn: () => loadWeekData(Number(season), Number(week)),
@@ -18,7 +29,7 @@ export function useMatchupDetail(season, week) {
 
     return {
         weekData: weekDataQuery.data,
-        fullStatsRows: fullStatsQuery.data?.rows || fullStatsQuery.data || [],
+        fullStatsRows: fullStatsQuery.data?.rows || [],
         isLoading: weekDataQuery.isLoading || fullStatsQuery.isLoading,
         isError: weekDataQuery.isError || fullStatsQuery.isError,
     };

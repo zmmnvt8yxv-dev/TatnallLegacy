@@ -1,19 +1,29 @@
 import { useQuery, useQueries } from "@tanstack/react-query";
-import { loadSeasonSummary, loadAllTime } from "../data/loader.js";
+import { loadSeasonSummary, loadAllTime } from "../data/loader";
+import type { SeasonSummary, AllTime } from "../schemas/index";
 
-const getStaleTime = (season) => {
+function getStaleTime(season: number | string | undefined): number {
     if (Number(season) >= 2025) {
         return 1000 * 60 * 5; // 5 minutes
     }
     return 1000 * 60 * 60 * 24; // 24 hours
-};
+}
 
-export function useStandings(season, allSeasons = []) {
+export interface UseStandingsResult {
+    seasonSummary: SeasonSummary | null | undefined;
+    allSummaries: SeasonSummary[];
+    records: AllTime | null | undefined;
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+}
+
+export function useStandings(season: number | undefined, allSeasons: number[] = []): UseStandingsResult {
     const staleTime = getStaleTime(season);
 
     const seasonQuery = useQuery({
         queryKey: ["seasonSummary", season],
-        queryFn: () => loadSeasonSummary(season),
+        queryFn: () => loadSeasonSummary(season!),
         staleTime,
         enabled: !!season,
     });
@@ -32,12 +42,11 @@ export function useStandings(season, allSeasons = []) {
         staleTime: 1000 * 60 * 60 * 24, // 24 hours
     });
 
-    const allSummariesLoaded = allSeasonQueries.every((q) => q.isSuccess);
     const anySummaryLoading = allSeasonQueries.some((q) => q.isLoading);
 
     return {
         seasonSummary: seasonQuery.data,
-        allSummaries: allSeasonQueries.map((q) => q.data).filter(Boolean),
+        allSummaries: allSeasonQueries.map((q) => q.data).filter((d): d is SeasonSummary => d != null),
         records: recordsQuery.data,
 
         isLoading: seasonQuery.isLoading || anySummaryLoading || recordsQuery.isLoading,

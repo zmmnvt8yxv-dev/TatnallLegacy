@@ -1,7 +1,17 @@
 import { useQuery, useQueries } from "@tanstack/react-query";
-import { loadManifest, loadAllTime, loadSeasonSummary } from "../data/loader.js";
+import { loadManifest, loadAllTime, loadSeasonSummary } from "../data/loader";
+import type { Manifest, AllTime, SeasonSummary } from "../schemas/index";
 
-export function useRecords() {
+export interface UseRecordsResult {
+    manifest: Manifest | undefined;
+    allSeasonData: Record<number, SeasonSummary>;
+    allTimeData: AllTime | null | undefined;
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+}
+
+export function useRecords(): UseRecordsResult {
     const manifestQuery = useQuery({
         queryKey: ["manifest"],
         queryFn: loadManifest,
@@ -34,10 +44,11 @@ export function useRecords() {
         allTimeQuery.isError ||
         seasonQueries.some((q) => q.isError);
 
-    const allSeasonData = {};
+    const allSeasonData: Record<number, SeasonSummary> = {};
     seasons.forEach((year, idx) => {
-        if (seasonQueries[idx].data) {
-            allSeasonData[year] = seasonQueries[idx].data;
+        const data = seasonQueries[idx]?.data;
+        if (data) {
+            allSeasonData[year] = data;
         }
     });
 

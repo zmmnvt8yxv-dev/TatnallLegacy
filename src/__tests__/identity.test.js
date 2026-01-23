@@ -1,7 +1,7 @@
 /**
  * Unit tests for src/lib/identity.js
  */
-import { normalizeKey, normalizeOwnerName, resolveOwnerName, OWNER_ALIASES } from '../lib/identity.js';
+import { normalizeKey, normalizeOwnerName, resolveOwnerName, OWNER_ALIASES } from '../lib/identity';
 
 describe('normalizeKey', () => {
     test('converts to lowercase', () => {

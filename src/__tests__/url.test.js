@@ -3,7 +3,7 @@
  * Note: Tests always provide explicit base URL to avoid import.meta.env dependency
  */
 import { describe, test, expect } from '@jest/globals';
-import { safeUrl } from '../lib/url.js';
+import { safeUrl } from '../lib/url';
 
 describe('safeUrl', () => {
     test('returns absolute URLs unchanged', () => {
