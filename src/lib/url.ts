@@ -1,21 +1,22 @@
 const DEFAULT_BASE_URL = "/";
 
-// Note: Vite injects import.meta.env at build time
-// For Jest tests, this will use DEFAULT_BASE_URL
-declare global {
-  interface ImportMeta {
-    env?: {
-      BASE_URL?: string;
-      DEV?: boolean;
-      MODE?: string;
-    };
-  }
-}
+// Vite injects __APP_BASE_URL__ at build time via define config
+// For tests, we use the globalThis fallback or the default
+declare const __APP_BASE_URL__: string | undefined;
 
 function getDefaultBase(): string {
-  // Use globalThis.import for test environment compatibility
-  const importMeta = (globalThis as { import?: { meta?: { env?: { BASE_URL?: string } } } }).import;
-  return importMeta?.meta?.env?.BASE_URL || DEFAULT_BASE_URL;
+  // Check for Vite's compile-time constant first
+  if (typeof __APP_BASE_URL__ !== "undefined") {
+    return __APP_BASE_URL__;
+  }
+
+  // Fallback for test environment (globalThis.import set in Jest setup)
+  const testImportMeta = (globalThis as { import?: { meta?: { env?: { BASE_URL?: string } } } }).import;
+  if (testImportMeta?.meta?.env?.BASE_URL) {
+    return testImportMeta.meta.env.BASE_URL;
+  }
+
+  return DEFAULT_BASE_URL;
 }
 
 export function safeUrl(path: string | null | undefined, base?: string): string {
