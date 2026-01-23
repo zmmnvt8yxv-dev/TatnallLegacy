@@ -1,4 +1,15 @@
 import { safeUrl } from "../lib/url.js";
+import {
+  ManifestSchema,
+  PlayersArraySchema,
+  PlayerIdsArraySchema,
+  TeamsArraySchema,
+  EspnNameMapSchema,
+  PlayerSearchSchema,
+  WeeklyChunkSchema,
+  SeasonSummarySchema,
+  validateWithWarnings,
+} from "../schemas/index.js";
 
 const IS_DEV = import.meta.env.DEV;
 
@@ -111,6 +122,10 @@ export async function loadManifest() {
     const cached = getCached("manifest");
     if (cached) return cached;
     const manifest = await fetchJson("data/manifest.json");
+
+    // Validate manifest structure
+    validateWithWarnings(ManifestSchema, manifest, "manifest", IS_DEV);
+
     logMissingKeys("manifest", manifest, ["seasons", "weeksBySeason", "paths"]);
     logDev("DATA_MANIFEST_OK", {
       seasons: Array.isArray(manifest?.seasons) ? manifest.seasons.length : 0,
@@ -145,6 +160,24 @@ export async function loadCoreData() {
       espnNameMapPath ? fetchJson(espnNameMapPath, { optional: true }) : Promise.resolve({}),
       playerSearchPath ? fetchJson(playerSearchPath, { optional: true }) : Promise.resolve(null),
     ]);
+
+    // Validate each data source
+    if (players) {
+      validateWithWarnings(PlayersArraySchema, players, "players", IS_DEV);
+    }
+    if (playerIds) {
+      validateWithWarnings(PlayerIdsArraySchema, playerIds, "playerIds", IS_DEV);
+    }
+    if (teams) {
+      validateWithWarnings(TeamsArraySchema, teams, "teams", IS_DEV);
+    }
+    if (espnNameMap && typeof espnNameMap === "object") {
+      validateWithWarnings(EspnNameMapSchema, espnNameMap, "espnNameMap", IS_DEV);
+    }
+    if (playerSearch) {
+      validateWithWarnings(PlayerSearchSchema, playerSearch, "playerSearch", IS_DEV);
+    }
+
     if (IS_DEV) {
       if (!playerSearch?.rows?.length) {
         console.warn("DATA_OPTIONAL_MISSING", { key: "playerSearch", url: playerSearchPath });
@@ -188,6 +221,10 @@ export async function loadSeasonSummary(season) {
     path = resolvePath(requireManifestPath(manifest, "seasonSummary"), { season });
     if (!path) return null;
     const payload = await fetchJson(path);
+
+    // Validate season summary structure
+    validateWithWarnings(SeasonSummarySchema, payload, `seasonSummary:${season}`, IS_DEV);
+
     return setCached(key, payload);
   } catch (err) {
     console.error("DATA_LOAD_ERROR", { url: path || `seasonSummary:${season}`, err });
@@ -205,6 +242,10 @@ export async function loadWeekData(season, week) {
     path = resolvePath(requireManifestPath(manifest, "weeklyChunk"), { season, week });
     if (!path) return null;
     const payload = await fetchJson(path);
+
+    // Validate weekly chunk structure
+    validateWithWarnings(WeeklyChunkSchema, payload, `weeklyChunk:${season}:${week}`, IS_DEV);
+
     const matchups = Array.isArray(payload?.matchups) ? payload.matchups : null;
     const lineups = Array.isArray(payload?.lineups) ? payload.lineups : null;
     const rosterCount = lineups
