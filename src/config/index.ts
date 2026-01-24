@@ -215,9 +215,7 @@ export function initConfig(
     }
   }
 
-  if (result.warnings.length > 0 && isDev) {
-    console.info("CONFIG_WARNINGS:", result.warnings);
-  }
+  // Suppress config warnings in production - these are expected for optional services
 
   if (!result.config) {
     throw new Error("Configuration validation failed - no config returned");
@@ -226,13 +224,7 @@ export function initConfig(
   _config = result.config;
   _validated = true;
 
-  console.info("CONFIG_INITIALIZED", {
-    baseUrl: _config.baseUrl,
-    sentryEnabled: Boolean(_config.sentryDsn),
-    analyticsEnabled: Boolean(_config.ga4Id),
-    isDev: _config.isDev,
-    isCapacitor: _config.isCapacitor,
-  });
+  // Config initialized - suppress log in production
 
   return _config;
 }
