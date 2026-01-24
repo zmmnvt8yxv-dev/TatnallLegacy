@@ -562,8 +562,8 @@ export async function loadMegaProfile(playerId: string | null | undefined): Prom
     if (cached) return cached;
     const payload = await fetchJson<NflProfile>(path, { optional: true });
     return setCached(key, payload);
-  } catch (err) {
-    console.warn("DATA_LOAD_WARN", { url: path, err: (err as Error).message });
+  } catch {
+    // NFL profiles are optional - 404 is expected for most players
     return null;
   }
 }
@@ -576,8 +576,8 @@ export async function loadNflSiloMeta(): Promise<NflSiloMeta | null> {
     if (cached) return cached;
     const payload = await fetchJson<NflSiloMeta>(path, { optional: true });
     return setCached(key, payload);
-  } catch (err) {
-    console.warn("DATA_LOAD_WARN", { url: path, err: (err as Error).message });
+  } catch {
+    // NFL silo meta is optional - 404 is expected
     return null;
   }
 }

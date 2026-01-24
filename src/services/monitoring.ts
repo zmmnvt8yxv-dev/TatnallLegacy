@@ -354,9 +354,8 @@ export function initSentry(dsn: string): void {
 export function initMonitoring(sentryDsn: string | null): void {
   if (sentryDsn) {
     initSentry(sentryDsn);
-  } else {
-    log("info", "MONITORING_INIT", "Sentry not configured - using console logging only");
   }
+  // Sentry not configured is expected - no need to log
 
   // Set up global error handlers
   window.addEventListener("unhandledrejection", (event) => {

@@ -995,76 +995,85 @@ export default function PlayerPage(): React.ReactElement {
 
   return (
     <PageTransition>
-      {/* Hero Section */}
-      <div className="relative w-full bg-ink-900 text-white overflow-hidden rounded-3xl mb-8 p-6 md:p-8 isolate shadow-2xl">
+      {/* Hero Section - Futuristic Design */}
+      <div className="relative w-full bg-ink-900 text-white overflow-hidden rounded-3xl mb-8 p-6 md:p-10 isolate shadow-2xl border border-accent-500/20">
+        {/* Animated gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 -z-10" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-700/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 -z-10" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 -z-10" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 -z-10 animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/15 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 -z-10" />
+        <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[60px] -translate-x-1/2 -translate-y-1/2 -z-10" />
+
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.03] -z-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '50px 50px'}} />
+
+        {/* Accent lines */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-500/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-500/30 to-transparent" />
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 items-center relative z-10">
           <div className="flex flex-col gap-6 text-center lg:text-left">
             <div>
-              <div className="flex items-center justify-center lg:justify-start gap-3 mb-2">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-none">
+              <div className="flex items-center justify-center lg:justify-start gap-3 mb-3">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter leading-none bg-gradient-to-r from-white via-white to-accent-300 bg-clip-text text-transparent drop-shadow-lg">
                   {megaProfile?.nfl?.bio?.display_name || megaProfile?.fantasy?.name || displayName}
-                  <span className="text-accent-500 text-6xl leading-none">.</span>
+                  <span className="text-accent-400 text-6xl leading-none drop-shadow-[0_0_20px_rgba(31,147,134,0.5)]">.</span>
                 </h1>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-full hover:bg-white/10 text-white/50 hover:text-white"
+                  className="rounded-full hover:bg-white/10 text-white/50 hover:text-red-400 transition-all duration-300 hover:scale-110"
                   onClick={() => togglePlayer(resolvedPlayerId)}
                 >
-                  <Heart className={isFavorite ? "fill-red-500 text-red-500" : ""} size={28} />
+                  <Heart className={isFavorite ? "fill-red-500 text-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]" : ""} size={28} />
                 </Button>
               </div>
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-lg font-medium text-ink-300">
-                <span className="text-white font-bold">{megaProfile?.nfl?.bio?.position || displayPosition}</span>
-                <span>•</span>
-                <span>{megaProfile?.nfl?.bio?.latest_team || displayTeam}</span>
+                <span className="text-accent-400 font-bold px-3 py-1 bg-accent-500/10 rounded-full border border-accent-500/30 shadow-[0_0_15px_rgba(31,147,134,0.2)]">{megaProfile?.nfl?.bio?.position || displayPosition}</span>
+                <span className="text-ink-500">|</span>
+                <span className="text-white/80">{megaProfile?.nfl?.bio?.latest_team || displayTeam}</span>
                 {(megaProfile?.fantasy?.age || playerInfo?.age) && (
                   <>
-                    <span>•</span>
-                    <span>{megaProfile?.fantasy?.age || playerInfo?.age} Years Old</span>
+                    <span className="text-ink-500">|</span>
+                    <span className="text-ink-400">{megaProfile?.fantasy?.age || playerInfo?.age} Years Old</span>
                   </>
                 )}
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-y-4 gap-x-8 max-w-lg mx-auto lg:mx-0 pt-4 border-t border-white/10">
-              <div>
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">Height</div>
-                <div className="text-xl font-display font-bold">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-y-5 gap-x-8 max-w-lg mx-auto lg:mx-0 pt-5 border-t border-white/10">
+              <div className="group">
+                <div className="text-[10px] font-bold text-accent-500/70 uppercase tracking-[0.2em] mb-1">Height</div>
+                <div className="text-xl font-display font-bold text-white group-hover:text-accent-400 transition-colors">
                   {megaProfile?.nfl?.bio?.height
                     ? `${Math.floor(megaProfile.nfl.bio.height / 12)}'${megaProfile.nfl.bio.height % 12}"`
                     : megaProfile?.fantasy?.height || playerInfo?.height || "—"}
                 </div>
               </div>
-              <div>
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">Weight</div>
-                <div className="text-xl font-display font-bold">
+              <div className="group">
+                <div className="text-[10px] font-bold text-accent-500/70 uppercase tracking-[0.2em] mb-1">Weight</div>
+                <div className="text-xl font-display font-bold text-white group-hover:text-accent-400 transition-colors">
                   {megaProfile?.nfl?.bio?.weight
                     ? `${megaProfile.nfl.bio.weight} lbs`
                     : (megaProfile?.fantasy?.weight || playerInfo?.weight ? `${megaProfile?.fantasy?.weight || playerInfo?.weight} lbs` : "—")}
                 </div>
               </div>
-              <div className="col-span-2">
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">College</div>
-                <div className="text-xl font-display font-bold truncate">
+              <div className="col-span-2 group">
+                <div className="text-[10px] font-bold text-accent-500/70 uppercase tracking-[0.2em] mb-1">College</div>
+                <div className="text-xl font-display font-bold truncate text-white group-hover:text-accent-400 transition-colors">
                   {megaProfile?.nfl?.bio?.college_name || megaProfile?.fantasy?.college || playerInfo?.college || "—"}
                 </div>
               </div>
-              <div>
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">Experience</div>
-                <div className="text-xl font-display font-bold">
+              <div className="group">
+                <div className="text-[10px] font-bold text-accent-500/70 uppercase tracking-[0.2em] mb-1">Experience</div>
+                <div className="text-xl font-display font-bold text-white group-hover:text-accent-400 transition-colors">
                   {megaProfile?.nfl?.bio?.years_of_experience != null
                     ? `${megaProfile.nfl.bio.years_of_experience} Years`
                     : (playerInfo?.years_exp != null ? `${playerInfo.years_exp} Years` : "Rookie")}
                 </div>
               </div>
-              <div>
-                <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-1 text-ink-300">Draft</div>
-                <div className="text-xl font-display font-bold text-white/80">
+              <div className="group">
+                <div className="text-[10px] font-bold text-accent-500/70 uppercase tracking-[0.2em] mb-1">Draft</div>
+                <div className="text-xl font-display font-bold text-white/80 group-hover:text-accent-400 transition-colors">
                   {megaProfile?.nfl?.bio?.draft_year
                     ? `${megaProfile.nfl.bio.draft_year} R${megaProfile.nfl.bio.draft_round} P${megaProfile.nfl.bio.draft_pick}`
                     : (playerInfo?.draft_year ? `${playerInfo.draft_year}` : "Undrafted")}
@@ -1074,7 +1083,14 @@ export default function PlayerPage(): React.ReactElement {
           </div>
 
           <div className="relative flex justify-center order-first lg:order-none mb-4 lg:mb-0">
-            <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-4 border-white/10 shadow-2xl overflow-hidden bg-ink-800 relative group">
+            {/* Glowing ring effect */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full border-2 border-accent-500/30 animate-pulse" />
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-64 h-64 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] rounded-full border border-accent-500/10" />
+            </div>
+            <div className="w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-4 border-accent-500/40 shadow-[0_0_40px_rgba(31,147,134,0.3)] overflow-hidden bg-ink-800 relative group">
               {(megaProfile?.nfl?.bio?.headshot || playerDisplay.headshotUrl) ? (
                 <img
                   src={megaProfile?.nfl?.bio?.headshot || playerDisplay.headshotUrl}
@@ -1083,23 +1099,27 @@ export default function PlayerPage(): React.ReactElement {
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-ink-700">
-                  <Heart size={64} className="opacity-20" />
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-ink-800 to-ink-900">
+                  <Heart size={64} className="text-accent-500/30" />
                 </div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/10 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink-900/50 pointer-events-none" />
             </div>
           </div>
 
           <div className="flex flex-col gap-6 justify-center">
-            <div className="bg-white/5 rounded-2xl p-5 border border-white/5 backdrop-blur-sm">
-              <div className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-4 flex justify-between items-center">
-                <span>Season Performance</span>
+            <div className="bg-gradient-to-br from-white/[0.08] to-white/[0.02] rounded-2xl p-6 border border-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)]">
+              <div className="text-[10px] font-bold text-accent-400 uppercase tracking-[0.2em] mb-5 flex justify-between items-center">
+                <span className="flex items-center gap-2">
+                  <Zap size={14} className="text-accent-400" />
+                  Season Performance
+                </span>
                 <div className="flex items-center gap-2">
                   <select
                     value={selectedSeason}
                     onChange={(e) => handleSeasonChange(e.target.value)}
-                    className="bg-ink-900 border border-white/10 text-white text-xs rounded px-2 py-1 font-bold focus:outline-none focus:ring-1 focus:ring-accent-500"
+                    className="bg-ink-900/80 border border-accent-500/30 text-white text-xs rounded-lg px-3 py-1.5 font-bold focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition-all cursor-pointer hover:border-accent-500/50"
                   >
                     {seasonOptions.map((v) => (
                       <option key={v} value={v}>
@@ -1113,43 +1133,43 @@ export default function PlayerPage(): React.ReactElement {
               {(() => {
                 const currentStats = seasonStats.find(s => Number(s.season) === Number(selectedSeason)) || {} as SeasonStatsRow;
                 return (
-                  <div className="space-y-5">
+                  <div className="space-y-6">
                     <div>
-                      <div className="flex justify-between items-end mb-2">
-                        <span className="text-sm font-medium text-ink-300">Total Points</span>
-                        <span className="text-2xl font-display font-bold text-accent-400">{formatPoints(currentStats.points) || "—"}</span>
+                      <div className="flex justify-between items-end mb-3">
+                        <span className="text-sm font-medium text-ink-400">Total Points</span>
+                        <span className="text-3xl font-display font-black text-accent-400 drop-shadow-[0_0_10px_rgba(31,147,134,0.3)]">{formatPoints(currentStats.points) || "—"}</span>
                       </div>
-                      <div className="h-2 w-full bg-ink-800 rounded-full overflow-hidden">
+                      <div className="h-3 w-full bg-ink-800/80 rounded-full overflow-hidden border border-white/5">
                         <div
-                          className="h-full bg-accent-500 rounded-full"
+                          className="h-full bg-gradient-to-r from-accent-600 to-accent-400 rounded-full shadow-[0_0_15px_rgba(31,147,134,0.5)] transition-all duration-500"
                           style={{ width: `${Math.min((safeNumber(currentStats.points) / 300) * 100, 100)}%` }}
                         />
                       </div>
                     </div>
 
                     <div>
-                      <div className="flex justify-between items-end mb-2">
-                        <span className="text-sm font-medium text-ink-300">Avg Points / Game</span>
-                        <span className="text-2xl font-display font-bold text-blue-400">
+                      <div className="flex justify-between items-end mb-3">
+                        <span className="text-sm font-medium text-ink-400">Avg Points / Game</span>
+                        <span className="text-3xl font-display font-black text-blue-400 drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]">
                           {currentStats.games ? (safeNumber(currentStats.points) / currentStats.games).toFixed(1) : "—"}
                         </span>
                       </div>
-                      <div className="h-2 w-full bg-ink-800 rounded-full overflow-hidden">
+                      <div className="h-3 w-full bg-ink-800/80 rounded-full overflow-hidden border border-white/5">
                         <div
-                          className="h-full bg-blue-500 rounded-full"
+                          className="h-full bg-gradient-to-r from-blue-600 to-blue-400 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-500"
                           style={{ width: `${Math.min(((safeNumber(currentStats.points) / (currentStats.games || 1)) / 25) * 100, 100)}%` }}
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4 pt-2">
-                      <div className="bg-ink-900/50 rounded-lg p-3 text-center border border-white/5">
-                        <div className="text-[10px] uppercase tracking-wider text-ink-500 font-bold mb-1">Games Played</div>
-                        <div className="text-xl font-bold font-mono">{currentStats.games || 0}</div>
+                    <div className="grid grid-cols-2 gap-4 pt-3">
+                      <div className="bg-gradient-to-br from-ink-800/80 to-ink-900/80 rounded-xl p-4 text-center border border-white/5 hover:border-accent-500/30 transition-all group">
+                        <div className="text-[9px] uppercase tracking-[0.15em] text-ink-500 font-bold mb-2">Games Played</div>
+                        <div className="text-2xl font-black font-mono text-white group-hover:text-accent-400 transition-colors">{currentStats.games || 0}</div>
                       </div>
-                      <div className="bg-ink-900/50 rounded-lg p-3 text-center border border-white/5">
-                        <div className="text-[10px] uppercase tracking-wider text-ink-500 font-bold mb-1">Pos Rank</div>
-                        <div className="text-xl font-bold font-mono text-ink-300">#{currentStats.positionRank || "—"}</div>
+                      <div className="bg-gradient-to-br from-ink-800/80 to-ink-900/80 rounded-xl p-4 text-center border border-white/5 hover:border-accent-500/30 transition-all group">
+                        <div className="text-[9px] uppercase tracking-[0.15em] text-ink-500 font-bold mb-2">Pos Rank</div>
+                        <div className="text-2xl font-black font-mono text-accent-400 group-hover:text-white transition-colors">#{currentStats.positionRank || "—"}</div>
                       </div>
                     </div>
                   </div>
@@ -1160,187 +1180,203 @@ export default function PlayerPage(): React.ReactElement {
         </div>
       </div>
 
-      {/* FANTASY DATA SECTION */}
-      <Card className="mb-8 shadow-xl border-2 border-accent-200 bg-gradient-to-br from-accent-50/30 to-white">
+      {/* FANTASY DATA SECTION - Futuristic Card */}
+      <Card className="mb-8 shadow-[0_20px_60px_rgba(31,147,134,0.15)] border border-accent-500/30 bg-gradient-to-br from-white via-accent-50/20 to-white overflow-hidden relative">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
         <CardHeader
-          className="cursor-pointer hover:bg-accent-50/50 transition-colors rounded-t-lg"
+          className="cursor-pointer hover:bg-accent-50/80 transition-all duration-300 rounded-t-lg relative z-10 border-b border-accent-200/50"
           onClick={() => setFantasyExpanded(!fantasyExpanded)}
         >
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-3 bg-accent-500 rounded-xl">
-                <Trophy className="text-white" size={28} />
+            <div className="flex items-center gap-4">
+              <div className="p-4 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl shadow-lg shadow-accent-500/30">
+                <Trophy className="text-white drop-shadow-md" size={28} />
               </div>
               <div>
-                <CardTitle className="text-2xl font-display">Fantasy Data</CardTitle>
-                <CardDescription className="text-sm">Performance, Transactions, and Analytics</CardDescription>
+                <CardTitle className="text-2xl font-display font-black bg-gradient-to-r from-accent-700 to-accent-500 bg-clip-text text-transparent">Fantasy Data</CardTitle>
+                <CardDescription className="text-sm text-ink-500 font-medium">Performance, Transactions, and Analytics</CardDescription>
               </div>
             </div>
-            {fantasyExpanded ? <ChevronDown size={24} /> : <ChevronRight size={24} />}
+            <div className={`p-2 rounded-full bg-accent-100 text-accent-600 transition-transform duration-300 ${fantasyExpanded ? 'rotate-180' : ''}`}>
+              <ChevronDown size={24} />
+            </div>
           </div>
         </CardHeader>
 
         {fantasyExpanded && (
-          <CardContent className="space-y-8 pt-6">
-            {/* Career Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Card className="shadow-soft bg-accent-50/20 border-accent-100">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center gap-2">
-                    <Star className="text-accent-600" size={16} />
-                    <span className="text-xs font-bold text-accent-700 uppercase tracking-wider">Career Points</span>
+          <CardContent className="space-y-8 pt-8 relative z-10">
+            {/* Career Stats Grid - Futuristic Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="group relative bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl p-5 text-white shadow-lg shadow-accent-500/25 hover:shadow-xl hover:shadow-accent-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/5 rounded-full blur-xl translate-y-1/2 -translate-x-1/2" />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Star className="text-accent-200" size={18} />
+                    <span className="text-[10px] font-bold text-accent-200 uppercase tracking-[0.15em]">Career Points</span>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-display text-accent-900">{formatPoints(careerTotals.points)}</div>
-                  <p className="text-xs text-accent-600 mt-1">{careerTotals.games} games · {careerTotals.seasons} seasons</p>
-                </CardContent>
-              </Card>
+                  <div className="text-4xl font-display font-black mb-1">{formatPoints(careerTotals.points)}</div>
+                  <p className="text-xs text-accent-200/80">{careerTotals.games} games · {careerTotals.seasons} seasons</p>
+                </div>
+              </div>
 
-              <Card className="shadow-soft">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center gap-2">
-                    <BarChart3 className="text-ink-500" size={16} />
-                    <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Avg Points</span>
+              <div className="group relative bg-white rounded-2xl p-5 border-2 border-ink-100 hover:border-blue-300 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <BarChart3 className="text-blue-500" size={18} />
+                    <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Avg Points</span>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-display text-ink-900">
+                  <div className="text-4xl font-display font-black text-ink-900 group-hover:text-blue-600 transition-colors">
                     {careerTotals.games > 0 ? (careerTotals.points / careerTotals.games).toFixed(1) : "0.0"}
                   </div>
-                  <p className="text-xs text-ink-400 mt-1">Points per game</p>
-                </CardContent>
-              </Card>
+                  <p className="text-xs text-ink-400">Points per game</p>
+                </div>
+              </div>
 
-              <Card className="shadow-soft">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center gap-2">
-                    <Activity className="text-ink-500" size={16} />
-                    <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Consistency</span>
+              <div className="group relative bg-white rounded-2xl p-5 border-2 border-ink-100 hover:border-purple-300 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Activity className="text-purple-500" size={18} />
+                    <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Consistency</span>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-2">
-                    <div className="text-3xl font-display text-ink-900">{consistencyLabel || "—"}</div>
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="text-4xl font-display font-black text-ink-900 group-hover:text-purple-600 transition-colors">{consistencyLabel || "—"}</div>
                     {consistencyLabel && (
-                      <Badge variant={consistencyLabel === "High" ? "success" : consistencyLabel === "Medium" ? "accent" : "destructive"}>
+                      <Badge variant={consistencyLabel === "High" ? "success" : consistencyLabel === "Medium" ? "accent" : "destructive"} className="text-[10px] px-2 py-1 shadow-sm">
                         {consistencyLabel === "High" ? "TOP" : consistencyLabel === "Medium" ? "STABLE" : "VOLATILE"}
                       </Badge>
                     )}
                   </div>
-                  <p className="text-xs text-ink-400 mt-1">{boomBust?.stdDev ? `Std Dev: ${boomBust.stdDev.toFixed(1)}` : "No data"}</p>
-                </CardContent>
-              </Card>
+                  <p className="text-xs text-ink-400">{boomBust?.stdDev ? `Std Dev: ${boomBust.stdDev.toFixed(1)}` : "No data"}</p>
+                </div>
+              </div>
 
-              <Card className="shadow-soft bg-ink-900 text-white border-none">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center gap-2">
-                    <Zap className="text-accent-400" size={16} />
-                    <span className="text-xs font-bold text-ink-300 uppercase tracking-wider">Career WAR</span>
+              <div className="group relative bg-gradient-to-br from-ink-900 to-ink-800 rounded-2xl p-5 text-white shadow-lg shadow-ink-900/25 hover:shadow-xl hover:shadow-ink-900/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-accent-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-16 h-16 bg-accent-500/10 rounded-full blur-xl translate-y-1/2 -translate-x-1/2" />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Zap className="text-accent-400" size={18} />
+                    <span className="text-[10px] font-bold text-ink-400 uppercase tracking-[0.15em]">Career WAR</span>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-display text-accent-400">{formatPoints(careerTotals.war)}</div>
-                  <p className="text-xs text-ink-400 mt-1">Value over replacement</p>
-                </CardContent>
-              </Card>
+                  <div className="text-4xl font-display font-black text-accent-400 drop-shadow-[0_0_10px_rgba(31,147,134,0.3)]">{formatPoints(careerTotals.war)}</div>
+                  <p className="text-xs text-ink-500">Value over replacement</p>
+                </div>
+              </div>
             </div>
 
-            {/* Season by Season Table */}
-            <Card className="shadow-soft">
-              <CardHeader>
-                <div className="flex items-center gap-2">
-                  <Calendar className="text-accent-600" size={20} />
-                  <CardTitle>Season-by-Season Totals</CardTitle>
+            {/* Season by Season Table - Futuristic */}
+            <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-accent-100 rounded-lg">
+                    <Calendar className="text-accent-600" size={20} />
+                  </div>
+                  <CardTitle className="font-display">Season-by-Season Totals</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-0">
                 {seasonStats.length ? (
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
-                        <tr className="border-b border-ink-100">
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Season</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Games</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Total Points</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pos Rank</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">WAR</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Delta</th>
+                        <tr className="bg-gradient-to-r from-ink-900 to-ink-800 text-white">
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Season</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Games</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Total Points</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Pos Rank</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">WAR</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Delta</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-ink-50">
-                        {seasonStats.map((row) => (
-                          <tr key={row.season} className="hover:bg-ink-50/30 transition-colors">
-                            <td className="py-3 px-4 font-bold text-ink-900">{row.season}</td>
-                            <td className="py-3 px-4 text-ink-600">{row.games}</td>
-                            <td className="py-3 px-4 font-mono font-bold text-accent-700">{formatPoints(row.points)}</td>
-                            <td className="py-3 px-4">
+                      <tbody className="divide-y divide-ink-100">
+                        {seasonStats.map((row, idx) => (
+                          <tr key={row.season} className={`hover:bg-accent-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                            <td className="py-4 px-5 font-display font-black text-ink-900 text-lg">{row.season}</td>
+                            <td className="py-4 px-5 text-ink-600 font-medium">{row.games}</td>
+                            <td className="py-4 px-5">
+                              <span className="font-mono font-black text-lg text-accent-600">{formatPoints(row.points)}</span>
+                            </td>
+                            <td className="py-4 px-5">
                               {row.position && row.positionRank ? (
-                                <span className="text-sm font-bold text-ink-800">{row.position}{row.positionRank}</span>
+                                <span className="inline-flex items-center px-3 py-1 bg-ink-100 rounded-full text-sm font-bold text-ink-800">{row.position}{row.positionRank}</span>
                               ) : "—"}
                             </td>
-                            <td className="py-3 px-4 font-mono text-ink-600">{formatPoints(row.war)}</td>
-                            <td className="py-3 px-4 font-mono text-ink-400">{formatPoints(row.delta)}</td>
+                            <td className="py-4 px-5 font-mono font-bold text-ink-600">{formatPoints(row.war)}</td>
+                            <td className="py-4 px-5 font-mono text-ink-400">{formatPoints(row.delta)}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-ink-500 italic">No season totals available</div>
+                  <div className="text-center py-12 text-ink-400 italic">No season totals available</div>
                 )}
               </CardContent>
             </Card>
 
-            {/* Weekly Log */}
-            <Card className="shadow-soft">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Target className="text-accent-600" size={20} />
-                    <CardTitle>Weekly Performance Log</CardTitle>
+            {/* Weekly Log - Futuristic */}
+            <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+                <div className="flex items-center justify-between flex-wrap gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-accent-100 rounded-lg">
+                      <Target className="text-accent-600" size={20} />
+                    </div>
+                    <CardTitle className="font-display">Weekly Performance Log</CardTitle>
                   </div>
                   <SearchBar value={search} onChange={setSearch} placeholder="Filter by team..." />
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-0">
                 {weeklyDisplayRows.length ? (
                   <div className="overflow-x-auto" ref={weeklyVirtual.containerRef}>
                     <table className="w-full">
                       <thead>
-                        <tr className="border-b border-ink-100">
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Week</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">NFL Team</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Fantasy Team</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Starter</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Points</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">WAR</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Pos Rank</th>
+                        <tr className="bg-gradient-to-r from-ink-900 to-ink-800 text-white">
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Week</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">NFL Team</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Fantasy Team</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Starter</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Points</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">WAR</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Pos Rank</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-ink-50">
+                      <tbody className="divide-y divide-ink-100">
                         {weeklyVirtual.topPadding ? (
                           <tr aria-hidden="true">
                             <td colSpan={7} style={{ height: weeklyVirtual.topPadding }} />
                           </tr>
                         ) : null}
                         {visibleWeeklyRows.map((row, idx) => (
-                          <tr key={`${row.week}-${idx}`} className="hover:bg-ink-50/30 transition-colors">
-                            <td className="py-3 px-4 font-bold text-ink-900">W{row.week}</td>
-                            <td className="py-3 px-4 text-sm text-ink-600">{row.nflTeam || "—"}</td>
-                            <td className="py-3 px-4 text-sm font-medium text-ink-800">{row.fantasyTeam || "—"}</td>
-                            <td className="py-3 px-4">
+                          <tr key={`${row.week}-${idx}`} className={`hover:bg-accent-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                            <td className="py-4 px-5">
+                              <span className="inline-flex items-center justify-center w-10 h-10 bg-ink-900 text-white font-display font-black rounded-lg shadow-sm">
+                                {row.week}
+                              </span>
+                            </td>
+                            <td className="py-4 px-5 text-sm font-medium text-ink-600 uppercase">{row.nflTeam || "—"}</td>
+                            <td className="py-4 px-5 text-sm font-bold text-ink-800">{row.fantasyTeam || "—"}</td>
+                            <td className="py-4 px-5">
                               {row.started ? (
-                                <Badge variant="success" className="text-[10px]">Starter</Badge>
+                                <Badge variant="success" className="text-[10px] shadow-sm shadow-green-500/20">Starter</Badge>
                               ) : (
-                                <span className="text-xs text-ink-400">—</span>
+                                <span className="text-xs text-ink-400">Bench</span>
                               )}
                             </td>
-                            <td className="py-3 px-4 font-mono font-bold text-accent-700">{formatPoints(row.points)}</td>
-                            <td className="py-3 px-4 font-mono text-xs text-ink-600">{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
-                            <td className="py-3 px-4">
+                            <td className="py-4 px-5">
+                              <span className="font-mono font-black text-lg text-accent-600">{formatPoints(row.points)}</span>
+                            </td>
+                            <td className="py-4 px-5 font-mono font-bold text-ink-500">{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
+                            <td className="py-4 px-5">
                               {row.position && row.pos_week_rank ? (
-                                <span className="text-xs font-bold text-ink-700">{row.position}{row.pos_week_rank}</span>
+                                <span className="inline-flex items-center px-2 py-1 bg-ink-100 rounded-full text-xs font-bold text-ink-700">{row.position}{row.pos_week_rank}</span>
                               ) : "—"}
                             </td>
                           </tr>
@@ -1354,111 +1390,117 @@ export default function PlayerPage(): React.ReactElement {
                     </table>
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-ink-500 italic">No weekly data available for this season</div>
+                  <div className="text-center py-12 text-ink-400 italic">No weekly data available for this season</div>
                 )}
               </CardContent>
             </Card>
 
-            {/* Boom/Bust Analysis */}
-            <Card className="shadow-soft bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
-              <CardHeader>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="text-blue-600" size={20} />
-                  <CardTitle>Boom/Bust Analysis</CardTitle>
+            {/* Boom/Bust Analysis - Futuristic */}
+            <Card className="shadow-lg border-2 border-purple-200/50 bg-gradient-to-br from-blue-50/80 via-purple-50/50 to-pink-50/30 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+              <CardHeader className="relative z-10 border-b border-purple-200/50">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg shadow-lg shadow-purple-500/20">
+                    <TrendingUp className="text-white" size={20} />
+                  </div>
+                  <CardTitle className="font-display bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Boom/Bust Analysis</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10 pt-6">
                 {boomBustFromMetrics || boomBust ? (
                   <>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      <Badge variant="outline">
-                        Std dev: {formatPoints(boomBustFromMetrics?.fp_std ?? boomBust?.stdDev)}
+                    <div className="flex flex-wrap gap-3 mb-8">
+                      <Badge variant="outline" className="px-4 py-2 bg-white/80 border-ink-300 shadow-sm text-sm">
+                        Std dev: <span className="font-bold text-ink-900 ml-1">{formatPoints(boomBustFromMetrics?.fp_std ?? boomBust?.stdDev)}</span>
                       </Badge>
-                      {consistencyLabel && <Badge variant="secondary">Consistency: {consistencyLabel}</Badge>}
-                      <Badge variant="accent">
-                        % weeks ≥ {boomBust?.threshold ?? THRESHOLDS.default} pts:{" "}
-                        {(boomBustFromMetrics?.boom_pct
+                      {consistencyLabel && (
+                        <Badge variant="secondary" className="px-4 py-2 shadow-sm text-sm">
+                          Consistency: <span className="font-bold ml-1">{consistencyLabel}</span>
+                        </Badge>
+                      )}
+                      <Badge variant="accent" className="px-4 py-2 shadow-sm shadow-accent-500/20 text-sm">
+                        Boom Rate: <span className="font-bold ml-1">{(boomBustFromMetrics?.boom_pct
                           ? boomBustFromMetrics.boom_pct * 100
                           : boomBust?.percentAbove || 0
-                        ).toFixed(1)}%
+                        ).toFixed(1)}%</span>
                       </Badge>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <Card>
-                        <CardHeader>
-                          <CardTitle className="text-sm flex items-center gap-2">
-                            <TrendingUp size={16} className="text-green-600" />
-                            Top 5 Weeks
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <ul className="space-y-2">
-                            {boomBustWeeks.top.map((row, idx) => (
-                              <li key={`top-${idx}`} className="text-sm flex justify-between">
-                                <span>Week {row.week} ({row.season || selectedSeason})</span>
-                                <span className="font-bold text-accent-700">{formatPoints(row.points)} pts</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
-                      <Card>
-                        <CardHeader>
-                          <CardTitle className="text-sm flex items-center gap-2">
-                            <TrendingDown size={16} className="text-red-600" />
-                            Bottom 5 Weeks
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <ul className="space-y-2">
-                            {boomBustWeeks.bottom.map((row, idx) => (
-                              <li key={`bottom-${idx}`} className="text-sm flex justify-between text-ink-500">
-                                <span>Week {row.week} ({row.season || selectedSeason})</span>
-                                <span className="font-bold">{formatPoints(row.points)} pts</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
+                      <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-5 text-white shadow-lg shadow-green-500/25 overflow-hidden relative">
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+                        <div className="flex items-center gap-2 mb-4 relative z-10">
+                          <TrendingUp size={20} className="text-green-200" />
+                          <h4 className="text-sm font-bold text-green-100 uppercase tracking-wider">Top 5 Weeks</h4>
+                        </div>
+                        <ul className="space-y-3 relative z-10">
+                          {boomBustWeeks.top.map((row, idx) => (
+                            <li key={`top-${idx}`} className="flex justify-between items-center bg-white/10 rounded-lg px-3 py-2">
+                              <span className="text-green-100">Week {row.week} ({row.season || selectedSeason})</span>
+                              <span className="font-display font-black text-lg">{formatPoints(row.points)} pts</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl p-5 text-white shadow-lg shadow-red-500/25 overflow-hidden relative">
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+                        <div className="flex items-center gap-2 mb-4 relative z-10">
+                          <TrendingDown size={20} className="text-red-200" />
+                          <h4 className="text-sm font-bold text-red-100 uppercase tracking-wider">Bottom 5 Weeks</h4>
+                        </div>
+                        <ul className="space-y-3 relative z-10">
+                          {boomBustWeeks.bottom.map((row, idx) => (
+                            <li key={`bottom-${idx}`} className="flex justify-between items-center bg-white/10 rounded-lg px-3 py-2">
+                              <span className="text-red-100">Week {row.week} ({row.season || selectedSeason})</span>
+                              <span className="font-display font-black text-lg">{formatPoints(row.points)} pts</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </>
                 ) : (
-                  <div className="text-center py-8 text-ink-500 italic">
+                  <div className="text-center py-12 text-ink-400 italic">
                     No weekly data available to compute boom/bust metrics
                   </div>
                 )}
               </CardContent>
             </Card>
 
-            {/* Transactions & Keeper */}
+            {/* Transactions & Keeper - Futuristic */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <Card className="lg:col-span-2 shadow-soft">
-                <CardHeader>
-                  <div className="flex items-center gap-2">
-                    <Users className="text-accent-600" size={20} />
-                    <CardTitle>Transaction History</CardTitle>
+              <Card className="lg:col-span-2 shadow-lg border border-ink-200/50 overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-accent-100 rounded-lg">
+                      <Users className="text-accent-600" size={20} />
+                    </div>
+                    <CardTitle className="font-display">Transaction History</CardTitle>
                   </div>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-6">
                   {transactionHistory.length ? (
                     <div className="space-y-4">
                       {transactionHistory.slice(0, 5).map((entry) => (
-                        <div key={entry.id} className="flex items-start gap-4 p-3 rounded-lg border border-ink-100 bg-ink-50/30">
-                          <div className="flex flex-col items-center min-w-[60px]">
-                            <span className="text-[10px] font-bold text-ink-400 uppercase">{entry.season}</span>
-                            <span className="text-xl font-display text-ink-900">W{entry.week}</span>
+                        <div key={entry.id} className="flex items-start gap-4 p-4 rounded-xl border border-ink-100 bg-gradient-to-r from-white to-ink-50/50 hover:shadow-md transition-all duration-300 group">
+                          <div className="flex flex-col items-center justify-center min-w-[70px] bg-ink-900 text-white rounded-xl p-3 shadow-md group-hover:bg-accent-600 transition-colors">
+                            <span className="text-[9px] font-bold text-ink-400 uppercase group-hover:text-accent-200 transition-colors">{entry.season}</span>
+                            <span className="text-2xl font-display font-black">W{entry.week}</span>
                           </div>
                           <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <Badge variant={entry.type === "trade" ? "secondary" : entry.type === "add" ? "success" : "destructive"}>
+                            <div className="flex items-center gap-3 mb-2">
+                              <Badge
+                                variant={entry.type === "trade" ? "secondary" : entry.type === "add" ? "success" : "destructive"}
+                                className="shadow-sm text-[10px] px-3 py-1"
+                              >
                                 {(entry.type || "").toUpperCase()}
                               </Badge>
                               <span className="text-sm font-bold text-ink-800">{normalizeOwnerName(entry.team)}</span>
                             </div>
-                            <p className="text-sm text-ink-600">{formatTransactionDetails(entry)}</p>
+                            <p className="text-sm text-ink-600 leading-relaxed">{formatTransactionDetails(entry)}</p>
                           </div>
                           {entry.amount != null && (
-                            <div className="font-mono text-sm font-bold text-accent-700">
+                            <div className="font-mono text-lg font-black text-accent-600 bg-accent-50 px-3 py-1 rounded-lg">
                               {formatAmount(entry)}
                             </div>
                           )}
@@ -1466,123 +1508,130 @@ export default function PlayerPage(): React.ReactElement {
                       ))}
                     </div>
                   ) : (
-                    <div className="text-sm text-ink-500 italic py-4 text-center border-2 border-dashed rounded-lg border-ink-100">
+                    <div className="text-sm text-ink-400 italic py-8 text-center border-2 border-dashed rounded-xl border-ink-200 bg-ink-50/30">
                       No transactions recorded
                     </div>
                   )}
                 </CardContent>
               </Card>
 
-              <Card className="shadow-soft bg-accent-50/10 border-accent-100/50">
-                <CardHeader>
-                  <div className="flex items-center gap-2">
-                    <DollarSign className="text-accent-600" size={20} />
-                    <CardTitle className="text-lg">Keeper Value (2025)</CardTitle>
+              <div className="relative bg-gradient-to-br from-accent-500 via-accent-600 to-accent-700 rounded-2xl p-6 text-white shadow-xl shadow-accent-500/30 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-6">
+                    <DollarSign className="text-accent-200" size={24} />
+                    <h3 className="text-lg font-display font-bold text-accent-100">Keeper Value (2025)</h3>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-col gap-6">
-                    <div>
-                      <div className="text-[10px] font-bold text-ink-400 uppercase tracking-wider mb-2">Projected Value</div>
-                      <div className="text-4xl font-display text-accent-700">{formatDollarValue(keeperInfo.value)}</div>
-                      <p className="text-xs text-ink-500 mt-2 leading-relaxed">{keeperInfo.note}</p>
-                    </div>
-                    <div className="p-3 bg-amber-50 border border-amber-100 rounded text-[11px] text-amber-800 italic">
-                      Keeper values: <strong>Added Value + $5 Inflation</strong>
-                    </div>
+                  <div className="mb-6">
+                    <div className="text-[10px] font-bold text-accent-200/70 uppercase tracking-[0.15em] mb-2">Projected Value</div>
+                    <div className="text-5xl font-display font-black drop-shadow-lg">{formatDollarValue(keeperInfo.value)}</div>
+                    <p className="text-sm text-accent-100/80 mt-3 leading-relaxed">{keeperInfo.note}</p>
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-sm text-accent-100 italic">
+                    Keeper values: <strong className="text-white">Added Value + $5 Inflation</strong>
+                  </div>
+                </div>
+              </div>
             </div>
           </CardContent>
         )}
       </Card>
 
-      {/* NFL DATA SECTION */}
-      <Card className="mb-8 shadow-xl border-2 border-blue-200 bg-gradient-to-br from-blue-50/30 to-white">
+      {/* NFL DATA SECTION - Futuristic */}
+      <Card className="mb-8 shadow-[0_20px_60px_rgba(59,130,246,0.15)] border border-blue-500/30 bg-gradient-to-br from-white via-blue-50/20 to-white overflow-hidden relative">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
         <CardHeader
-          className="cursor-pointer hover:bg-blue-50/50 transition-colors rounded-t-lg"
+          className="cursor-pointer hover:bg-blue-50/80 transition-all duration-300 rounded-t-lg relative z-10 border-b border-blue-200/50"
           onClick={() => setNflExpanded(!nflExpanded)}
         >
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-3 bg-blue-600 rounded-xl">
-                <Award className="text-white" size={28} />
+            <div className="flex items-center gap-4">
+              <div className="p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-lg shadow-blue-500/30">
+                <Award className="text-white drop-shadow-md" size={28} />
               </div>
               <div>
-                <CardTitle className="text-2xl font-display">NFL Data</CardTitle>
-                <CardDescription className="text-sm">Biography, Draft Info, and Game Stats</CardDescription>
+                <CardTitle className="text-2xl font-display font-black bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">NFL Data</CardTitle>
+                <CardDescription className="text-sm text-ink-500 font-medium">Biography, Draft Info, and Game Stats</CardDescription>
               </div>
             </div>
-            {nflExpanded ? <ChevronDown size={24} /> : <ChevronRight size={24} />}
+            <div className={`p-2 rounded-full bg-blue-100 text-blue-600 transition-transform duration-300 ${nflExpanded ? 'rotate-180' : ''}`}>
+              <ChevronDown size={24} />
+            </div>
           </div>
         </CardHeader>
 
         {nflExpanded && (
-          <CardContent className="space-y-8 pt-6">
-            {/* Bio & Draft Grid */}
+          <CardContent className="space-y-8 pt-8 relative z-10">
+            {/* Bio & Draft Grid - Futuristic */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card className="shadow-soft">
-                <CardHeader>
-                  <CardTitle>NFL Bio & Draft</CardTitle>
+              <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+                  <CardTitle className="font-display">NFL Bio & Draft</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-[10px] uppercase font-bold text-ink-400">Full Name</label>
-                      <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.display_name || displayName}</div>
+                <CardContent className="space-y-5 pt-6">
+                  <div className="grid grid-cols-2 gap-5">
+                    <div className="group">
+                      <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">Full Name</label>
+                      <div className="text-lg font-bold text-ink-900 group-hover:text-blue-600 transition-colors">{megaProfile?.nfl?.bio?.display_name || displayName}</div>
                     </div>
-                    <div>
-                      <label className="text-[10px] uppercase font-bold text-ink-400">Status</label>
-                      <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.status || "Active"}</div>
+                    <div className="group">
+                      <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">Status</label>
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                        <span className="text-lg font-bold text-ink-900">{megaProfile?.nfl?.bio?.status || "Active"}</span>
+                      </div>
                     </div>
-                    <div>
-                      <label className="text-[10px] uppercase font-bold text-ink-400">Draft Year</label>
-                      <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.draft_year || "Undrafted"}</div>
+                    <div className="group">
+                      <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">Draft Year</label>
+                      <div className="text-lg font-bold text-ink-900 group-hover:text-blue-600 transition-colors">{megaProfile?.nfl?.bio?.draft_year || "Undrafted"}</div>
                     </div>
-                    <div>
-                      <label className="text-[10px] uppercase font-bold text-ink-400">Draft Position</label>
-                      <div className="text-lg font-medium">
+                    <div className="group">
+                      <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">Draft Position</label>
+                      <div className="text-lg font-bold text-ink-900 group-hover:text-blue-600 transition-colors">
                         {megaProfile?.nfl?.bio?.draft_round ? `Round ${megaProfile.nfl.bio.draft_round}, Pick ${megaProfile.nfl.bio.draft_pick}` : "—"}
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <label className="text-[10px] uppercase font-bold text-ink-400">College</label>
-                    <div className="text-lg font-medium">{megaProfile?.nfl?.bio?.college_name || playerInfo?.college || "—"}</div>
+                  <div className="group pt-2 border-t border-ink-100">
+                    <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">College</label>
+                    <div className="text-lg font-bold text-ink-900 group-hover:text-blue-600 transition-colors">{megaProfile?.nfl?.bio?.college_name || playerInfo?.college || "—"}</div>
                   </div>
                   {megaProfile?.nfl?.bio?.gsis_id && (
-                    <div>
-                      <label className="text-[10px] uppercase font-bold text-ink-400">GSIS ID</label>
-                      <div className="font-mono text-sm text-ink-500">{megaProfile.nfl.bio.gsis_id}</div>
+                    <div className="pt-2 border-t border-ink-100">
+                      <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">GSIS ID</label>
+                      <div className="font-mono text-sm text-ink-500 bg-ink-50 px-3 py-1.5 rounded-lg inline-block">{megaProfile.nfl.bio.gsis_id}</div>
                     </div>
                   )}
                 </CardContent>
               </Card>
 
-              <Card className="shadow-soft">
-                <CardHeader>
-                  <CardTitle>Sportradar Context</CardTitle>
+              <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white">
+                  <CardTitle className="font-display">Sportradar Context</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 pt-6">
                   {megaProfile?.nfl?.sportradar?.id ? (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-4 p-4 bg-ink-50 rounded-lg border border-ink-100">
-                        <div className="p-3 bg-white rounded-full border border-ink-200 font-bold text-ink-700">
+                    <div className="space-y-5">
+                      <div className="flex items-center gap-4 p-5 bg-gradient-to-r from-ink-900 to-ink-800 rounded-xl text-white shadow-lg">
+                        <div className="p-4 bg-white rounded-xl font-display font-black text-xl text-ink-900">
                           {megaProfile.nfl.sportradar._team_alias}
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-ink-400 uppercase">Current Team</div>
-                          <div className="text-lg font-bold">{megaProfile.nfl.sportradar._team_alias} Roster</div>
+                          <div className="text-[9px] font-bold text-ink-400 uppercase tracking-[0.15em]">Current Team</div>
+                          <div className="text-xl font-bold">{megaProfile.nfl.sportradar._team_alias} Roster</div>
                         </div>
                       </div>
-                      <div>
-                        <label className="text-[10px] uppercase font-bold text-ink-400">Sportradar Status</label>
-                        <div className="text-sm">{megaProfile.nfl.sportradar.status || "Active"}</div>
+                      <div className="group">
+                        <label className="text-[9px] uppercase font-bold text-indigo-500 tracking-[0.15em] mb-1 block">Sportradar Status</label>
+                        <div className="text-lg font-bold text-ink-900">{megaProfile.nfl.sportradar.status || "Active"}</div>
                       </div>
                     </div>
                   ) : (
-                    <div className="text-center py-8 text-ink-400 italic">
+                    <div className="text-center py-12 text-ink-400 italic bg-ink-50/50 rounded-xl">
                       Sportradar mapping not found
                     </div>
                   )}
@@ -1590,46 +1639,57 @@ export default function PlayerPage(): React.ReactElement {
               </Card>
             </div>
 
-            {/* Full Stats Table */}
-            <Card className="shadow-soft">
-              <CardHeader>
-                <CardTitle>Complete Game Stats ({selectedSeason})</CardTitle>
+            {/* Full Stats Table - Futuristic */}
+            <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-blue-100 rounded-lg">
+                    <BarChart3 className="text-blue-600" size={20} />
+                  </div>
+                  <CardTitle className="font-display">Complete Game Stats ({selectedSeason})</CardTitle>
+                </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-0">
                 {filteredFullStatsRows.length ? (
                   <div className="overflow-x-auto" ref={fullStatsVirtual.containerRef}>
                     <table className="w-full text-sm">
                       <thead>
-                        <tr className="border-b border-ink-100">
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">Week</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">Team</th>
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">Opp</th>
+                        <tr className="bg-gradient-to-r from-ink-900 to-ink-800 text-white">
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Week</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Team</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Opp</th>
                           {fullStatsColumns.map((column) => (
-                            <th key={column.label} className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">{column.label}</th>
+                            <th key={column.label} className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">{column.label}</th>
                           ))}
-                          <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase">Pts</th>
+                          <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em] text-accent-400">Pts</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-ink-50">
+                      <tbody className="divide-y divide-ink-100">
                         {fullStatsVirtual.topPadding ? (
                           <tr aria-hidden="true">
                             <td colSpan={4 + fullStatsColumns.length} style={{ height: fullStatsVirtual.topPadding }} />
                           </tr>
                         ) : null}
                         {visibleFullStatsRows.map((row, idx) => (
-                          <tr key={`${row.week}-${idx}`} className="hover:bg-ink-50/30 transition-colors">
-                            <td className="py-3 px-4 font-bold text-ink-900">W{row.week}</td>
-                            <td className="py-3 px-4 text-xs font-medium text-ink-600 uppercase">{row.team || "—"}</td>
-                            <td className="py-3 px-4 text-xs text-ink-400">vs {row.opponent_team || "—"}</td>
+                          <tr key={`${row.week}-${idx}`} className={`hover:bg-blue-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                            <td className="py-4 px-5">
+                              <span className="inline-flex items-center justify-center w-9 h-9 bg-ink-900 text-white font-display font-bold rounded-lg shadow-sm text-sm">
+                                {row.week}
+                              </span>
+                            </td>
+                            <td className="py-4 px-5 text-xs font-bold text-ink-600 uppercase">{row.team || "—"}</td>
+                            <td className="py-4 px-5 text-xs text-ink-400">vs {row.opponent_team || "—"}</td>
                             {fullStatsColumns.map((column) => (
-                              <td key={`${column.key}-${idx}`} className="py-3 px-4 font-mono text-sm text-ink-700">{resolveFullStatValue(row, column)}</td>
+                              <td key={`${column.key}-${idx}`} className="py-4 px-5 font-mono text-sm text-ink-700 font-medium">{resolveFullStatValue(row, column)}</td>
                             ))}
-                            <td className="py-3 px-4 font-mono font-bold text-accent-700">
-                              {row.fantasy_points_custom_week_with_bonus ??
-                                row.fantasy_points_custom_week ??
-                                row.fantasy_points_ppr ??
-                                row.fantasy_points ??
-                                "—"}
+                            <td className="py-4 px-5">
+                              <span className="font-mono font-black text-lg text-accent-600">
+                                {row.fantasy_points_custom_week_with_bonus ??
+                                  row.fantasy_points_custom_week ??
+                                  row.fantasy_points_ppr ??
+                                  row.fantasy_points ??
+                                  "—"}
+                              </span>
                             </td>
                           </tr>
                         ))}
@@ -1642,20 +1702,26 @@ export default function PlayerPage(): React.ReactElement {
                     </table>
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-ink-500 italic">No full stats available for this season</div>
+                  <div className="text-center py-12 text-ink-400 italic">No full stats available for this season</div>
                 )}
               </CardContent>
             </Card>
 
-            {/* Vegas Odds */}
-            <Card className="shadow-soft border-accent-100 bg-accent-50/5">
-              <CardHeader>
-                <CardTitle>Vegas Odds (2025 Market)</CardTitle>
+            {/* Vegas Odds - Futuristic */}
+            <Card className="shadow-lg border border-amber-200/50 bg-gradient-to-br from-amber-50/30 to-white overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <CardHeader className="relative z-10 border-b border-amber-200/50">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg shadow-md shadow-amber-500/20">
+                    <DollarSign className="text-white" size={20} />
+                  </div>
+                  <CardTitle className="font-display bg-gradient-to-r from-amber-700 to-amber-500 bg-clip-text text-transparent">Vegas Odds (2025 Market)</CardTitle>
+                </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="relative z-10 pt-6">
                 {(() => {
                   const team = megaProfile?.nfl?.bio?.latest_team;
-                  if (!team || !nflSiloMeta?.odds) return <div className="text-center py-4 text-ink-500 italic">No market data available for 2025</div>;
+                  if (!team || !nflSiloMeta?.odds) return <div className="text-center py-8 text-ink-400 italic bg-ink-50/50 rounded-xl">No market data available for 2025</div>;
 
                   const gameId = Object.keys(nflSiloMeta.odds).find(gid => {
                     const game = nflSiloMeta.odds![gid]?.game;
@@ -1663,43 +1729,46 @@ export default function PlayerPage(): React.ReactElement {
                   });
 
                   const odds = gameId ? nflSiloMeta.odds[gameId] : undefined;
-                  if (!odds) return <div className="text-center py-4 text-ink-500 italic">No 2025 odds found for {team}</div>;
+                  if (!odds) return <div className="text-center py-8 text-ink-400 italic bg-ink-50/50 rounded-xl">No 2025 odds found for {team}</div>;
 
                   const game = odds.game;
                   const consensus = odds.consensus;
 
                   return (
                     <div className="space-y-6">
-                      <div className="flex items-center justify-between p-4 bg-ink-900 text-white rounded-xl">
-                        <div className="text-center px-4">
-                          <div className="text-xs font-bold text-ink-400 uppercase mb-1">Away</div>
-                          <div className="text-2xl font-black">{game?.away?.alias}</div>
+                      <div className="flex items-center justify-between p-6 bg-gradient-to-r from-ink-900 via-ink-800 to-ink-900 text-white rounded-2xl shadow-xl relative overflow-hidden">
+                        <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px'}} />
+                        <div className="text-center px-6 relative z-10">
+                          <div className="text-[9px] font-bold text-ink-400 uppercase tracking-[0.15em] mb-2">Away</div>
+                          <div className="text-3xl font-display font-black">{game?.away?.alias}</div>
                         </div>
-                        <div className="text-accent-500 font-display font-black text-2xl">AT</div>
-                        <div className="text-center px-4">
-                          <div className="text-xs font-bold text-ink-400 uppercase mb-1">Home</div>
-                          <div className="text-2xl font-black">{game?.home?.alias}</div>
+                        <div className="px-6 py-3 bg-accent-500/20 rounded-full border border-accent-500/30 relative z-10">
+                          <span className="text-accent-400 font-display font-black text-xl">@</span>
+                        </div>
+                        <div className="text-center px-6 relative z-10">
+                          <div className="text-[9px] font-bold text-ink-400 uppercase tracking-[0.15em] mb-2">Home</div>
+                          <div className="text-3xl font-display font-black">{game?.home?.alias}</div>
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
-                          <div className="text-xs font-bold text-ink-400 uppercase mb-2">Moneyline</div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div className="p-5 rounded-xl bg-gradient-to-br from-white to-amber-50/50 border-2 border-amber-200/50 text-center hover:shadow-lg hover:border-amber-300 transition-all duration-300 group">
+                          <div className="text-[9px] font-bold text-amber-600 uppercase tracking-[0.15em] mb-3">Moneyline</div>
                           <div className="flex justify-around">
-                            <div className="font-mono font-bold text-accent-700">{consensus?.moneyline?.away_plus_minus || "—"}</div>
-                            <div className="font-mono font-bold text-accent-700">{consensus?.moneyline?.home_plus_minus || "—"}</div>
+                            <div className="font-mono font-black text-xl text-ink-800 group-hover:text-amber-600 transition-colors">{consensus?.moneyline?.away_plus_minus || "—"}</div>
+                            <div className="font-mono font-black text-xl text-ink-800 group-hover:text-amber-600 transition-colors">{consensus?.moneyline?.home_plus_minus || "—"}</div>
                           </div>
                         </div>
-                        <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
-                          <div className="text-xs font-bold text-ink-400 uppercase mb-2">Spread</div>
+                        <div className="p-5 rounded-xl bg-gradient-to-br from-white to-blue-50/50 border-2 border-blue-200/50 text-center hover:shadow-lg hover:border-blue-300 transition-all duration-300 group">
+                          <div className="text-[9px] font-bold text-blue-600 uppercase tracking-[0.15em] mb-3">Spread</div>
                           <div className="flex justify-around">
-                            <div className="font-mono font-bold text-blue-600">{consensus?.spread?.away_spread_plus_minus || "—"}</div>
-                            <div className="font-mono font-bold text-blue-600">{consensus?.spread?.home_spread_plus_minus || "—"}</div>
+                            <div className="font-mono font-black text-xl text-ink-800 group-hover:text-blue-600 transition-colors">{consensus?.spread?.away_spread_plus_minus || "—"}</div>
+                            <div className="font-mono font-black text-xl text-ink-800 group-hover:text-blue-600 transition-colors">{consensus?.spread?.home_spread_plus_minus || "—"}</div>
                           </div>
                         </div>
-                        <div className="p-4 rounded-lg bg-white border border-ink-100 text-center">
-                          <div className="text-xs font-bold text-ink-400 uppercase mb-2">Total (O/U)</div>
-                          <div className="font-mono font-bold text-ink-900">{consensus?.total?.over_under || "—"}</div>
+                        <div className="p-5 rounded-xl bg-gradient-to-br from-white to-purple-50/50 border-2 border-purple-200/50 text-center hover:shadow-lg hover:border-purple-300 transition-all duration-300 group">
+                          <div className="text-[9px] font-bold text-purple-600 uppercase tracking-[0.15em] mb-3">Total (O/U)</div>
+                          <div className="font-mono font-black text-2xl text-ink-800 group-hover:text-purple-600 transition-colors">{consensus?.total?.over_under || "—"}</div>
                         </div>
                       </div>
                     </div>
@@ -1711,24 +1780,33 @@ export default function PlayerPage(): React.ReactElement {
         )}
       </Card>
 
-      {/* WAR Definitions Footer */}
-      <Card className="mt-12 bg-ink-50/20 border-ink-100">
-        <CardHeader>
-          <CardTitle className="text-lg">WAR Definitions</CardTitle>
+      {/* WAR Definitions Footer - Futuristic */}
+      <Card className="mt-12 bg-gradient-to-br from-ink-900 to-ink-800 text-white border-none shadow-xl overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '30px 30px'}} />
+
+        <CardHeader className="relative z-10 border-b border-white/10">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-accent-500/20 rounded-lg border border-accent-500/30">
+              <Activity className="text-accent-400" size={20} />
+            </div>
+            <CardTitle className="text-lg font-display text-white">WAR Definitions</CardTitle>
+          </div>
         </CardHeader>
-        <CardContent className="text-sm text-ink-600 space-y-4">
-          <p>
-            <strong className="text-ink-900">Replacement-level WAR</strong> is your weekly points minus a replacement baseline for your position.
+        <CardContent className="text-sm text-ink-300 space-y-5 relative z-10 pt-6">
+          <p className="leading-relaxed">
+            <strong className="text-accent-400 font-display">Replacement-level WAR</strong> is your weekly points minus a replacement baseline for your position.
             In this league, baselines assume 8 teams (2QB, 3RB, 3WR, 2TE).
           </p>
-          <p>
-            <strong className="text-ink-900">Delta to next guy</strong> is the margin to the next best player at the same position in a given week.
+          <p className="leading-relaxed">
+            <strong className="text-accent-400 font-display">Delta to next guy</strong> is the margin to the next best player at the same position in a given week.
           </p>
-          <div className="p-4 bg-white rounded-lg border border-ink-100">
-            <span className="font-bold text-ink-900 block mb-2">Baseline examples (8-team league):</span>
-            <p>
+          <div className="p-5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+            <span className="font-bold text-white block mb-3 font-display">Baseline examples (8-team league):</span>
+            <p className="text-ink-300 leading-relaxed">
               The baseline is the points scored by the last starter in the league at each position:
-              <span className="font-mono text-accent-700 ml-2">QB16 · RB24 · WR24 · TE16 · K8 · DEF8</span>
+              <span className="font-mono text-accent-400 ml-2 bg-accent-500/10 px-3 py-1 rounded-lg inline-block mt-2">QB16 · RB24 · WR24 · TE16 · K8 · DEF8</span>
             </p>
           </div>
         </CardContent>

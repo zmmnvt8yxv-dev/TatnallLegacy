@@ -33,9 +33,8 @@ const ga4Id = getGA4Id();
 if (ga4Id) {
   ReactGA.initialize(ga4Id);
   ReactGA.send("pageview");
-} else {
-  console.info("ANALYTICS_INIT", "Google Analytics not configured - skipping initialization");
 }
+// GA4 not configured is expected - no need to log
 
 // =============================================================================
 // REACT QUERY CLIENT
