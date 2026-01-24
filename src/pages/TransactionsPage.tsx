@@ -1,42 +1,92 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import PageTransition from "../components/PageTransition.jsx";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { useTransactions } from "../hooks/useTransactions.js";
+import { useTransactions } from "../hooks/useTransactions";
 import { filterRegularSeasonWeeks } from "../utils/format";
 import { normalizeOwnerName } from "../utils/owners";
 import { useVirtualRows } from "../utils/useVirtualRows";
 import { readStorage, writeStorage } from "../utils/persistence";
 import { Link, useSearchParams } from "react-router-dom";
-import { getCanonicalPlayerId, looksLikeId } from "../lib/playerName.js";
+import { getCanonicalPlayerId, looksLikeId } from "../lib/playerName";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
+import type { Manifest, PlayerIndex, EspnNameMap } from "../types/index";
 
-export default function TransactionsPage() {
-  const { manifest, loading, error, playerIndex, espnNameMap } = useDataContext();
+interface Player {
+  id?: string;
+  name?: string;
+  id_type?: string;
+  action?: string;
+}
+
+interface TransactionEntry {
+  id?: string;
+  week?: number;
+  team?: string;
+  type?: string;
+  amount?: number;
+  created?: number;
+  players?: Player[];
+  summary?: string;
+}
+
+interface Transactions {
+  entries?: TransactionEntry[];
+  sources?: string[];
+  __meta?: { path?: string };
+}
+
+interface TeamTotal {
+  team: string;
+  adds: number;
+  drops: number;
+  trades: number;
+}
+
+interface StoredPrefs {
+  season?: number;
+  week?: string | number;
+  type?: string;
+  team?: string;
+}
+
+export default function TransactionsPage(): React.ReactElement {
+  const { manifest, loading, error, playerIndex, espnNameMap } = useDataContext() as {
+    manifest: Manifest | undefined;
+    loading: boolean;
+    error: string | null;
+    playerIndex: PlayerIndex;
+    espnNameMap: EspnNameMap;
+  };
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
-  const didInitRef = useRef(false);
+  const didInitRef = useRef<boolean>(false);
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
-  const [season, setSeason] = useState(seasons[0] || "");
-  const [week, setWeek] = useState("all");
-  const [typeFilter, setTypeFilter] = useState("all");
-  const [teamFilter, setTeamFilter] = useState("");
+  const [season, setSeason] = useState<number | string>(seasons[0] || "");
+  const [week, setWeek] = useState<number | string>("all");
+  const [typeFilter, setTypeFilter] = useState<string>("all");
+  const [teamFilter, setTeamFilter] = useState<string>("");
   const {
     transactions,
     isLoading: dataLoading,
     isError: dataError,
     error: fetchError
-  } = useTransactions(season);
+  } = useTransactions(season) as {
+    transactions: Transactions | undefined;
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+  };
   const isDev = import.meta.env.DEV;
   const TRANSACTIONS_PREF_KEY = "tatnall-pref-transactions";
 
-  const availableWeeks = useMemo(() => {
+  const availableWeeks = useMemo((): number[] => {
     if (!season) return [];
     const weeks = manifest?.weeksBySeason?.[String(season)] || [];
-    return filterRegularSeasonWeeks(weeks.map((value) => ({ week: value }))).map((row) => row.week);
+    return filterRegularSeasonWeeks(weeks.map((value) => ({ week: value }))).map((row) => row.week as number);
   }, [manifest, season]);
 
   useEffect(() => {
@@ -64,7 +114,7 @@ export default function TransactionsPage() {
     if (!seasons.length || !manifest) return;
     if (didInitRef.current) return;
     const params = new URLSearchParams(searchParams);
-    const stored = readStorage(TRANSACTIONS_PREF_KEY, {});
+    const stored = readStorage<StoredPrefs>(TRANSACTIONS_PREF_KEY, {});
     const storedSeason = Number(stored?.season);
     const storedWeek = stored?.week ?? "all";
     const storedType = stored?.type ?? "all";
@@ -76,11 +126,11 @@ export default function TransactionsPage() {
     }
     const weeksForSeason = manifest?.weeksBySeason?.[String(nextSeason)] || [];
     const regularWeeks = filterRegularSeasonWeeks(weeksForSeason.map((value) => ({ week: value }))).map(
-      (row) => row.week,
+      (row) => row.week as number,
     );
     const paramWeekRaw = searchParams.get("week") || "all";
     const paramWeek = Number(paramWeekRaw);
-    let nextWeek =
+    let nextWeek: string | number =
       paramWeekRaw === "all" || paramWeekRaw === ""
         ? "all"
         : Number.isFinite(paramWeek) && regularWeeks.includes(paramWeek)
@@ -126,7 +176,7 @@ export default function TransactionsPage() {
     }
   }, [availableWeeks, week]);
 
-  const updateSearchParams = (nextSeason, nextWeek, nextType, nextTeam) => {
+  const updateSearchParams = (nextSeason: number | string, nextWeek: string | number, nextType: string, nextTeam: string): void => {
     const params = new URLSearchParams(searchParams);
     params.set("season", String(nextSeason));
     params.set("week", nextWeek === "all" ? "all" : String(nextWeek));
@@ -143,31 +193,29 @@ export default function TransactionsPage() {
     });
   };
 
-  const handleSeasonChange = (value) => {
+  const handleSeasonChange = (value: string): void => {
     const nextSeason = Number(value);
     setSeason(nextSeason);
     updateSearchParams(nextSeason, week, typeFilter, teamFilter);
   };
 
-  const handleWeekChange = (value) => {
+  const handleWeekChange = (value: string): void => {
     const nextWeek = value === "all" ? "all" : Number(value);
     setWeek(nextWeek);
     updateSearchParams(season, nextWeek, typeFilter, teamFilter);
   };
 
-  const handleTypeChange = (value) => {
+  const handleTypeChange = (value: string): void => {
     setTypeFilter(value);
     updateSearchParams(season, week, value, teamFilter);
   };
 
-  const handleTeamChange = (value) => {
+  const handleTeamChange = (value: string): void => {
     setTeamFilter(value);
     updateSearchParams(season, week, typeFilter, value);
   };
 
-
-
-  const entries = useMemo(() => {
+  const entries = useMemo((): TransactionEntry[] => {
     const list = transactions?.entries || [];
     const filtered = list.filter((entry) => {
       const entryWeek = Number(entry.week);
@@ -188,8 +236,8 @@ export default function TransactionsPage() {
     });
   }, [transactions, week, typeFilter, teamFilter]);
 
-  const totalsByTeam = useMemo(() => {
-    const totals = new Map();
+  const totalsByTeam = useMemo((): TeamTotal[] => {
+    const totals = new Map<string, TeamTotal>();
     for (const entry of transactions?.entries || []) {
       const team = normalizeOwnerName(entry?.team) || "Unknown";
       const cur = totals.get(team) || { team, adds: 0, drops: 0, trades: 0 };
@@ -209,9 +257,9 @@ export default function TransactionsPage() {
     return { mostAdds, mostDrops, mostTrades };
   }, [totalsByTeam]);
 
-  const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+  const ownerLabel = (value: unknown, fallback: string = "—"): string => normalizeOwnerName(value) || fallback;
   const showAmount = Number(season) === 2025;
-  const formatAmount = (entry) => {
+  const formatAmount = (entry: TransactionEntry): string => {
     if (!showAmount) return "—";
     if (entry?.type !== "add" && entry?.type !== "trade") return "—";
     const value = entry?.amount;
@@ -222,8 +270,8 @@ export default function TransactionsPage() {
   const virtualEntries = useVirtualRows({ itemCount: entries.length, rowHeight: 46 });
   const visibleEntries = entries.slice(virtualEntries.start, virtualEntries.end);
 
-  const teamOptions = useMemo(() => {
-    const set = new Set();
+  const teamOptions = useMemo((): string[] => {
+    const set = new Set<string>();
     for (const entry of transactions?.entries || []) {
       const label = normalizeOwnerName(entry?.team);
       if (label) set.add(label);
@@ -241,37 +289,12 @@ export default function TransactionsPage() {
     return counts;
   }, [entries]);
 
-  const diagnostics = useMemo(() => {
-    if (!isDev || !transactions?.entries) return null;
-    const rows = transactions.entries;
-    const byType = { add: [], drop: [], trade: [] };
-    for (const row of rows) {
-      if (row?.type === "add") byType.add.push(row);
-      if (row?.type === "drop") byType.drop.push(row);
-      if (row?.type === "trade") byType.trade.push(row);
-    }
-    return {
-      source: transactions?.__meta?.path || "unknown",
-      sources: transactions?.sources || [],
-      counts: {
-        add: byType.add.length,
-        drop: byType.drop.length,
-        trade: byType.trade.length,
-      },
-      samples: {
-        add: byType.add.slice(0, 3),
-        drop: byType.drop.slice(0, 3),
-        trade: byType.trade.slice(0, 3),
-      },
-    };
-  }, [isDev, transactions]);
-
   if (loading || dataLoading) return <LoadingState label="Loading transactions..." />;
   if (error || dataError) return <ErrorState message={error || fetchError?.message || "Error loading transactions"} />;
 
-  const isPlaceholderName = (value) => /^ESPN Player \d+$/i.test(String(value || "").trim());
+  const isPlaceholderName = (value: unknown): boolean => /^ESPN Player \d+$/i.test(String(value || "").trim());
 
-  const resolvePlayerLabel = (player) => {
+  const resolvePlayerLabel = (player: Player | null | undefined): string => {
     if (!player) return "Unknown";
     if (player.name) {
       if (isPlaceholderName(player.name)) {
@@ -288,7 +311,7 @@ export default function TransactionsPage() {
     return player.name || player.id || "Unknown";
   };
 
-  const renderPlayerLinks = (players) =>
+  const renderPlayerLinks = (players: Player[]): ReactNode =>
     players
       .map((player, index) => {
         if (!player?.id) return <span key={`${player.name}-${index}`}>{player.name || "Unknown"}</span>;
@@ -310,7 +333,7 @@ export default function TransactionsPage() {
           </Link>
         );
       })
-      .reduce((prev, curr) => (prev === null ? [curr] : [prev, ", ", curr]), null);
+      .reduce<ReactNode>((prev, curr) => (prev === null ? [curr] : [prev, ", ", curr]), null);
 
   return (
     <PageTransition>
@@ -417,8 +440,6 @@ export default function TransactionsPage() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Diagnostics removed */}
 
       <Card className="mb-8 shadow-soft">
         <CardHeader>

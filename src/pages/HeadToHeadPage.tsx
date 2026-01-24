@@ -2,14 +2,66 @@ import React, { useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import LoadingState from "../components/LoadingState.jsx";
 import ErrorState from "../components/ErrorState.jsx";
-import { useHeadToHeadData } from "../hooks/useHeadToHeadData.js";
+import { useHeadToHeadData } from "../hooks/useHeadToHeadData";
 import PageTransition from "../components/PageTransition.jsx";
-import { normalizeOwnerName } from "../lib/identity.js";
+import { normalizeOwnerName } from "../lib/identity";
 import { formatPoints, safeNumber } from "../utils/format";
+import type { Manifest } from "../types/index";
 
-function getOwnerOptions(seasonData) {
+interface SeasonTeam {
+    owner?: string;
+    display_name?: string;
+    team_name?: string;
+    roster_id?: string | number;
+}
+
+interface SeasonData {
+    teams?: SeasonTeam[];
+}
+
+interface Roster {
+    owner?: string;
+    roster_id?: string | number;
+    points: number;
+}
+
+interface MatchupData {
+    rosters?: Roster[];
+}
+
+interface WeekData {
+    season: number;
+    week: number;
+    matchups?: MatchupData[];
+}
+
+interface MatchupHistoryEntry {
+    season: number;
+    week: number;
+    winner: string;
+    loser: string;
+    ownerA_score: number;
+    ownerB_score: number;
+    margin: number;
+    isPlayoff: boolean;
+}
+
+interface Stats {
+    winsA: number;
+    winsB: number;
+    totalPointsA: number;
+    totalPointsB: number;
+    avgA: number;
+    avgB: number;
+    maxScoreA: number;
+    maxScoreB: number;
+    longestStreakA: number;
+    longestStreakB: number;
+}
+
+function getOwnerOptions(seasonData: Record<string, SeasonData> | null): string[] {
     if (!seasonData) return [];
-    const owners = new Set();
+    const owners = new Set<string>();
 
     Object.values(seasonData).forEach(season => {
         season.teams?.forEach(team => {
@@ -21,7 +73,7 @@ function getOwnerOptions(seasonData) {
     return Array.from(owners).sort();
 }
 
-export default function HeadToHeadPage() {
+export default function HeadToHeadPage(): React.ReactElement {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const ownerA = searchParams.get("ownerA") || "";
@@ -33,13 +85,18 @@ export default function HeadToHeadPage() {
         allWeekData,
         isLoading: loading,
         isError: error
-    } = useHeadToHeadData(ownerA, ownerB);
+    } = useHeadToHeadData(ownerA, ownerB) as {
+        manifest: Manifest | undefined;
+        allSeasonData: Record<string, SeasonData>;
+        allWeekData: WeekData[];
+        isLoading: boolean;
+        isError: boolean;
+    };
 
-    // Calculate matchup history from loaded week data
-    const matchupHistory = useMemo(() => {
+    const matchupHistory = useMemo((): MatchupHistoryEntry[] => {
         if (!ownerA || !ownerB || !allWeekData.length || !allSeasonData) return [];
 
-        const history = [];
+        const history: MatchupHistoryEntry[] = [];
 
         allWeekData.forEach(weekData => {
             if (!weekData?.matchups) return;
@@ -54,7 +111,7 @@ export default function HeadToHeadPage() {
                 const roster2 = matchup.rosters[1];
                 if (!roster1 || !roster2) return;
 
-                const getOwner = (r) => {
+                const getOwner = (r: Roster): string | null => {
                     if (r.owner) return normalizeOwnerName(r.owner);
                     const team = summary.teams?.find(t => t.roster_id === r.roster_id);
                     if (team) return normalizeOwnerName(team.owner || team.display_name || team.team_name);
@@ -86,7 +143,7 @@ export default function HeadToHeadPage() {
 
     const owners = useMemo(() => getOwnerOptions(allSeasonData), [allSeasonData]);
 
-    const stats = useMemo(() => {
+    const stats = useMemo((): Stats | null => {
         if (!matchupHistory.length) return null;
 
         let winsA = 0;
@@ -100,14 +157,13 @@ export default function HeadToHeadPage() {
         let currentStreakA = 0;
         let currentStreakB = 0;
 
-        // Process chronological for streaks
         const chronoHistory = [...matchupHistory].reverse();
 
         chronoHistory.forEach(game => {
-            totalPointsA += safeNumber(game.ownerA_score);
-            totalPointsB += safeNumber(game.ownerB_score);
-            maxScoreA = Math.max(maxScoreA, safeNumber(game.ownerA_score));
-            maxScoreB = Math.max(maxScoreB, safeNumber(game.ownerB_score));
+            totalPointsA += safeNumber(game.ownerA_score, 0);
+            totalPointsB += safeNumber(game.ownerB_score, 0);
+            maxScoreA = Math.max(maxScoreA, safeNumber(game.ownerA_score, 0));
+            maxScoreB = Math.max(maxScoreB, safeNumber(game.ownerB_score, 0));
 
             if (game.winner === ownerA) {
                 winsA++;
@@ -139,7 +195,7 @@ export default function HeadToHeadPage() {
     }, [matchupHistory, ownerA, ownerB]);
 
 
-    const handleOwnerChange = (param, value) => {
+    const handleOwnerChange = (param: string, value: string): void => {
         const newParams = new URLSearchParams(searchParams);
         if (value) {
             newParams.set(param, value);

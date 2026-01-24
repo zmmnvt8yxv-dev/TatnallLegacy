@@ -2,29 +2,85 @@ import React, { useMemo } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
-import { useOwnerProfile } from "../hooks/useOwnerProfile.js";
+import { useOwnerProfile } from "../hooks/useOwnerProfile";
 import PageTransition from "../components/PageTransition.jsx";
-import { normalizeOwnerName, OWNER_ALIASES } from "../lib/identity.js";
+import { normalizeOwnerName, OWNER_ALIASES } from "../lib/identity";
 import { formatPoints, safeNumber } from "../utils/format";
+import type { Manifest } from "../types/index";
 
-function slugToName(slug) {
-    // Try to match against known aliases
+interface SeasonTeam {
+    owner?: string;
+    display_name?: string;
+    team_name?: string;
+    wins?: number;
+    losses?: number;
+    ties?: number;
+    points_for?: number;
+    points_against?: number;
+    final_rank?: number;
+    regular_season_rank?: number;
+    record?: string;
+}
+
+interface SeasonData {
+    teams?: SeasonTeam[];
+}
+
+interface TransactionEntry {
+    team?: string;
+    owner?: string;
+    type?: string;
+}
+
+interface TransactionsData {
+    entries?: TransactionEntry[];
+}
+
+interface SeasonStat {
+    year: number;
+    teamName: string;
+    wins: number;
+    losses: number;
+    ties: number;
+    pointsFor: number;
+    pointsAgainst: number;
+    rank: number;
+    record: string;
+}
+
+interface OwnerStats {
+    seasons: SeasonStat[];
+    totalWins: number;
+    totalLosses: number;
+    totalTies: number;
+    totalPointsFor: number;
+    totalPointsAgainst: number;
+    championships: number;
+    playoffAppearances: number;
+    trades: number;
+    adds: number;
+    drops: number;
+    bestFinish: { year: string; rank: number } | null;
+    worstFinish: { year: string; rank: number } | null;
+    bestSeason: { year: string; points: number } | null;
+    highestScore: null;
+}
+
+function slugToName(slug: string | undefined): string {
     const decoded = decodeURIComponent(slug || "").replace(/-/g, " ");
     const lowerDecoded = decoded.toLowerCase();
 
-    // Check if it matches a known alias
     for (const [alias, name] of Object.entries(OWNER_ALIASES)) {
         if (alias.toLowerCase() === lowerDecoded || name.toLowerCase() === lowerDecoded) {
             return name;
         }
     }
 
-    // Title case fallback
     return decoded.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 }
 
-export default function OwnerProfilePage() {
-    const { ownerId } = useParams();
+export default function OwnerProfilePage(): React.ReactElement {
+    const { ownerId } = useParams<{ ownerId: string }>();
     const [searchParams] = useSearchParams();
     const fromSeason = searchParams.get("from");
 
@@ -37,11 +93,17 @@ export default function OwnerProfilePage() {
         allTimeData,
         isLoading: loading,
         isError: error
-    } = useOwnerProfile();
+    } = useOwnerProfile() as {
+        manifest: Manifest | undefined;
+        allSeasonData: Record<string, SeasonData>;
+        allTransactions: Record<string, TransactionsData>;
+        allTimeData: unknown;
+        isLoading: boolean;
+        isError: boolean;
+    };
 
-    // Calculate owner stats across all seasons
-    const ownerStats = useMemo(() => {
-        const stats = {
+    const ownerStats = useMemo((): OwnerStats => {
+        const stats: OwnerStats = {
             seasons: [],
             totalWins: 0,
             totalLosses: 0,
@@ -68,16 +130,16 @@ export default function OwnerProfilePage() {
             });
 
             if (team) {
-                const wins = safeNumber(team.wins);
-                const losses = safeNumber(team.losses);
-                const ties = safeNumber(team.ties);
-                const pf = safeNumber(team.points_for);
-                const pa = safeNumber(team.points_against);
+                const wins = safeNumber(team.wins, 0);
+                const losses = safeNumber(team.losses, 0);
+                const ties = safeNumber(team.ties, 0);
+                const pf = safeNumber(team.points_for, 0);
+                const pa = safeNumber(team.points_against, 0);
                 const rank = safeNumber(team.final_rank || team.regular_season_rank, 99);
 
                 stats.seasons.push({
                     year: Number(seasonYear),
-                    teamName: team.team_name || team.display_name,
+                    teamName: team.team_name || team.display_name || "",
                     wins,
                     losses,
                     ties,
@@ -108,7 +170,6 @@ export default function OwnerProfilePage() {
             }
         });
 
-        // Count transactions
         Object.entries(allTransactions).forEach(([, txData]) => {
             if (!txData?.entries) return;
 
@@ -122,18 +183,14 @@ export default function OwnerProfilePage() {
             });
         });
 
-        // Sort seasons descending
         stats.seasons.sort((a, b) => b.year - a.year);
 
         return stats;
     }, [allSeasonData, allTransactions, ownerName]);
 
-    // Get opponents for head-to-head summary
-    const opponents = useMemo(() => {
-        const oppMap = new Map();
+    const opponents = useMemo((): [string, number][] => {
+        const oppMap = new Map<string, number>();
 
-        // This would need matchup data to properly calculate
-        // For now, we'll show all other owners as potential opponents
         Object.values(allSeasonData).forEach((data) => {
             if (!data?.teams) return;
             data.teams.forEach((t) => {
@@ -172,7 +229,6 @@ export default function OwnerProfilePage() {
                 League member since {Math.min(...ownerStats.seasons.map((s) => s.year))}
             </p>
 
-            {/* Career Summary Cards */}
             <div className="card-grid">
                 <div className="stat-card">
                     <div className="stat-label">All-Time Record</div>
@@ -208,7 +264,6 @@ export default function OwnerProfilePage() {
                 </div>
             </div>
 
-            {/* Transaction Activity */}
             <div className="section-card">
                 <h2 className="section-title">Transaction Activity</h2>
                 <div className="flex-row">
@@ -218,7 +273,6 @@ export default function OwnerProfilePage() {
                 </div>
             </div>
 
-            {/* Season History */}
             <div className="section-card">
                 <h2 className="section-title">Season History</h2>
                 <div className="table-wrap">
@@ -254,7 +308,6 @@ export default function OwnerProfilePage() {
                 </div>
             </div>
 
-            {/* Head to Head */}
             <div className="section-card">
                 <h2 className="section-title">League Rivals</h2>
                 <p style={{ color: "var(--ink-500)", marginBottom: "12px" }}>

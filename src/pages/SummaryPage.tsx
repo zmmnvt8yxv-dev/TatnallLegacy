@@ -9,9 +9,9 @@ import SearchBar from "../components/SearchBar.jsx";
 import StatCard from "../components/StatCard.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
 import { useFavorites } from "../utils/useFavorites";
-import { useSummaryData } from "../hooks/useSummaryData.js";
+import { useSummaryData } from "../hooks/useSummaryData";
 import LocalStatAssistant from "../components/LocalStatAssistant.jsx";
-import { resolvePlayerName } from "../lib/playerName.js";
+import { resolvePlayerName } from "../lib/playerName";
 import { formatPoints, safeNumber } from "../utils/format";
 import { normalizeOwnerName } from "../utils/owners";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
@@ -28,8 +28,98 @@ import {
   Zap,
   ChevronRight
 } from "lucide-react";
+import type { Manifest, Player } from "../types/index";
 
-function normalizePosition(pos) {
+interface StandingsTeam {
+  team?: string;
+  wins: number;
+  losses: number;
+  points_for: number;
+  [key: string]: unknown;
+}
+
+interface SeasonSummaryTeam {
+  team_name?: string;
+  owner?: string;
+  display_name?: string;
+  username?: string;
+  [key: string]: unknown;
+}
+
+interface SeasonSummary {
+  season?: number;
+  teams?: SeasonSummaryTeam[];
+  standings?: StandingsTeam[];
+  [key: string]: unknown;
+}
+
+interface TransactionEntry {
+  team?: string;
+  type?: string;
+  [key: string]: unknown;
+}
+
+interface Transactions {
+  entries?: TransactionEntry[];
+  [key: string]: unknown;
+}
+
+interface TopWeeklyRow {
+  player_id?: string;
+  season?: number;
+  week?: number;
+  team?: string;
+  points?: number;
+  started?: boolean;
+  [key: string]: unknown;
+}
+
+interface CareerLeaderRow {
+  player_id?: string;
+  position?: string;
+  __pos?: string;
+  pos?: string;
+  player_position?: string;
+  fantasy_position?: string;
+  points?: number;
+  seasons?: number;
+  games?: number;
+  [key: string]: unknown;
+}
+
+interface AllTimeData {
+  topWeekly?: TopWeeklyRow[];
+  careerLeaders?: CareerLeaderRow[];
+  [key: string]: unknown;
+}
+
+interface MetricsRow {
+  player_id?: string;
+  sleeper_id?: string;
+  gsis_id?: string;
+  display_name?: string;
+  season?: number;
+  week?: number;
+  war_rep?: number;
+  pos_week_z?: number;
+  [key: string]: unknown;
+}
+
+interface MetricsSummary {
+  topWeeklyWar?: MetricsRow[];
+  topWeeklyZ?: MetricsRow[];
+  topSeasonWar?: MetricsRow[];
+  [key: string]: unknown;
+}
+
+interface TransactionTotals {
+  totalTrades: number;
+  mostAdds: { team: string; adds: number; drops: number; trades: number } | undefined;
+  mostDrops: { team: string; adds: number; drops: number; trades: number } | undefined;
+  total: number;
+}
+
+function normalizePosition(pos: unknown): string {
   const p = String(pos || "").trim().toUpperCase();
   if (!p) return "";
   if (p === "DST" || p === "D/ST" || p === "D\u002FST" || p === "DEF" || p === "DEFENSE" || p === "D") return "D/ST";
@@ -40,30 +130,30 @@ function normalizePosition(pos) {
   return p;
 }
 
-
-function getLatestSeason(manifest) {
+function getLatestSeason(manifest: Manifest | undefined): number | null {
   const seasons = (manifest?.seasons || []).map(Number).filter(Number.isFinite);
   if (!seasons.length) return null;
   return Math.max(...seasons);
 }
 
-export default function SummaryPage() {
+export default function SummaryPage(): React.ReactElement {
   const { manifest, loading, error, playerIdLookup, playerIndex, espnNameMap } = useDataContext();
-  const [loadHistory, setLoadHistory] = useState(false);
-  const [loadMetrics, setLoadMetrics] = useState(false);
-  const [loadBoomBust, setLoadBoomBust] = useState(false);
-  const [playerSearch, setPlayerSearch] = useState("");
-  const [weeklySearch, setWeeklySearch] = useState("");
-  const [careerPosition, setCareerPosition] = useState("ALL");
+  const [loadHistory, setLoadHistory] = useState<boolean>(false);
+  const [loadMetrics, setLoadMetrics] = useState<boolean>(false);
+  const [loadBoomBust, setLoadBoomBust] = useState<boolean>(false);
+  const [playerSearch, setPlayerSearch] = useState<string>("");
+  const [weeklySearch, setWeeklySearch] = useState<string>("");
+  const [careerPosition, setCareerPosition] = useState<string>("ALL");
   const { favorites } = useFavorites();
-
 
   const latestSeason = getLatestSeason(manifest);
   const seasonWeeks = latestSeason ? manifest?.weeksBySeason?.[String(latestSeason)] || [] : [];
   const inSeason = seasonWeeks.length > 0;
 
   const seasons = useMemo(() => {
-    return (manifest?.seasons || manifest?.years || [])
+    const manifestSeasons = (manifest as { seasons?: number[]; years?: number[] } | undefined)?.seasons ||
+                           (manifest as { seasons?: number[]; years?: number[] } | undefined)?.years || [];
+    return manifestSeasons
       .map(Number)
       .filter(Number.isFinite)
       .sort((a, b) => b - a);
@@ -84,28 +174,38 @@ export default function SummaryPage() {
     loadHistory,
     loadMetrics,
     loadBoomBust
-  });
+  }) as {
+    seasonSummary: SeasonSummary | undefined;
+    allSummaries: SeasonSummary[];
+    transactions: Transactions | undefined;
+    allTime: AllTimeData | undefined;
+    metricsSummary: MetricsSummary | undefined;
+    boomBust: unknown;
+    isLoading: boolean;
+    isError: boolean;
+  };
 
   const ownersBySeason = useMemo(() => {
-    const bySeason = new Map();
+    const bySeason = new Map<number, Map<string, string>>();
     for (const summary of allSummaries) {
-      const ownerByTeam = new Map();
+      const ownerByTeam = new Map<string, string>();
       for (const team of summary?.teams || []) {
         const ownerName = normalizeOwnerName(team.owner || team.display_name || team.username || team.team_name);
-        if (ownerName) {
+        if (ownerName && team.team_name) {
           ownerByTeam.set(team.team_name, ownerName);
         }
       }
-      bySeason.set(Number(summary?.season), ownerByTeam);
+      if (summary?.season) {
+        bySeason.set(Number(summary.season), ownerByTeam);
+      }
     }
     return bySeason;
   }, [allSummaries]);
 
-
-  const champion = useMemo(() => {
+  const champion = useMemo((): StandingsTeam | null => {
     const standings = seasonSummary?.standings || [];
     if (!standings.length) return null;
-    return standings.reduce((best, team) => {
+    return standings.reduce((best: StandingsTeam | null, team: StandingsTeam) => {
       if (!best) return team;
       if (team.wins > best.wins) return team;
       if (team.wins === best.wins && team.points_for > best.points_for) return team;
@@ -113,10 +213,10 @@ export default function SummaryPage() {
     }, null);
   }, [seasonSummary]);
 
-  const transactionTotals = useMemo(() => {
+  const transactionTotals = useMemo((): TransactionTotals | null => {
     const entries = transactions?.entries || [];
     if (!entries.length) return null;
-    const totalsByTeam = new Map();
+    const totalsByTeam = new Map<string, { team: string; adds: number; drops: number; trades: number }>();
     let totalTrades = 0;
     for (const entry of entries) {
       const team = entry?.team || "Unknown";
@@ -132,12 +232,12 @@ export default function SummaryPage() {
       totalsByTeam.set(team, cur);
     }
     const totals = Array.from(totalsByTeam.values());
-    const mostAdds = totals.sort((a, b) => b.adds - a.adds)[0];
-    const mostDrops = totals.sort((a, b) => b.drops - a.drops)[0];
+    const mostAdds = [...totals].sort((a, b) => b.adds - a.adds)[0];
+    const mostDrops = [...totals].sort((a, b) => b.drops - a.drops)[0];
     return { totalTrades, mostAdds, mostDrops, total: entries.length };
   }, [transactions]);
 
-  const topWeekly = useMemo(() => {
+  const topWeekly = useMemo((): TopWeeklyRow[] => {
     const entries = (allTime?.topWeekly || []).filter(Boolean);
     if (!entries.length) return [];
     const query = weeklySearch.toLowerCase().trim();
@@ -158,7 +258,7 @@ export default function SummaryPage() {
       ...row,
       __pos: normalizePosition(row.position || row.__pos || row.pos || row.player_position || row.fantasy_position || ""),
       __name: resolvePlayerName(row, playerIndex, espnNameMap),
-      __points: safeNumber(row.points),
+      __points: safeNumber(row.points, 0),
     }));
 
     const filtered = withPos.filter((row) => {
@@ -181,16 +281,16 @@ export default function SummaryPage() {
         id,
         name: resolvePlayerName({ player_id: id }, playerIndex, espnNameMap),
       })),
-    [favorites.players, playerIndex],
+    [favorites.players, playerIndex, espnNameMap],
   );
 
   if (loading || dataLoading) return <LoadingState label="Loading league snapshot..." />;
   if (error || dataError) return <ErrorState message={error || "Error loading summary data"} />;
 
-  const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+  const ownerLabel = (value: unknown, fallback: string = "—"): string => normalizeOwnerName(value) || fallback;
   const statusLabel = inSeason ? "In Season" : `Offseason (last season: ${latestSeason ?? "—"})`;
   const championLabel = champion
-    ? `${ownerLabel(champion.team, champion.team)} (${champion.wins}-${champion.losses})`
+    ? `${ownerLabel(champion.team, champion.team as string)} (${champion.wins}-${champion.losses})`
     : "Champion not available";
   const championNote = champion
     ? "Regular-season leader based on available standings."
@@ -198,13 +298,13 @@ export default function SummaryPage() {
   const allTimePending = loadHistory && !allTime;
   const metricsPending = loadMetrics && !metricsSummary;
 
-  const playerFromSleeper = (playerId) => {
+  const playerFromSleeper = (playerId: string | number): Player | null => {
     const uid = playerIdLookup.bySleeper.get(String(playerId));
     if (!uid) return null;
-    return playerIdLookup.byUid.get(uid);
+    return playerIdLookup.byUid.get(uid) || null;
   };
 
-  const getPlayerName = (row) => resolvePlayerName(row, playerIndex, espnNameMap);
+  const getPlayerName = (row: unknown): string => resolvePlayerName(row, playerIndex, espnNameMap);
 
   return (
     <PageTransition>
@@ -270,11 +370,6 @@ export default function SummaryPage() {
           </CardContent>
         </Card>
       </div>
-
-      {/* ... rest of the content (abbreviated here, but in real life I'd include it all if I could, but `replace_file_content` supports changing just the top/bottom if I keep the middle intact? No, standard replace requires full match. I will target the top and bottom separately?) */}
-      {/* Actually, I will just target the `<>` and define the start/end lines. */}
-      {/* But I cannot easily match "..." inside the tool. I have to match exact content. */}
-      {/* I will use `multi_replace_file_content` to change the opening and closing tags. */}
 
       <Card className="mb-8 shadow-soft">
         <CardHeader>
@@ -420,7 +515,7 @@ export default function SummaryPage() {
                     {topWeekly.map((row, index) => {
                       const pid = row?.player_id;
                       const player = pid ? playerFromSleeper(pid) : null;
-                      const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
+                      const playerName = row ? getPlayerName(row) || player?.name : "Unknown";
                       return (
                         <tr key={`${pid || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`}>
                           <td className="py-2 px-3 md:py-3 md:px-4">
@@ -432,7 +527,7 @@ export default function SummaryPage() {
                                     alt=""
                                     className="w-full h-full object-cover"
                                     style={{ width: '100%', height: '100%' }}
-                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                                   />
                                 </div>
                                 <div className="min-w-0">
@@ -457,7 +552,7 @@ export default function SummaryPage() {
                           <td className="py-2 px-3 md:py-3 md:px-4 text-xs md:text-sm font-medium text-ink-800 hidden md:table-cell">
                             {(() => {
                               const ownerByTeam = ownersBySeason.get(Number(row.season));
-                              const owner = ownerByTeam?.get(row.team);
+                              const owner = ownerByTeam?.get(row.team || "");
                               return owner ? (
                                 <div className="flex flex-col">
                                   <span className="font-bold">{owner}</span>
@@ -540,7 +635,7 @@ export default function SummaryPage() {
                     {careerLeaders.map((row, index) => {
                       const pid = row?.player_id;
                       const player = pid ? playerFromSleeper(pid) : null;
-                      const playerName = row ? getPlayerName(row) || player?.full_name : "Unknown";
+                      const playerName = row ? getPlayerName(row) || player?.name : "Unknown";
                       return (
                         <tr key={pid || `career-${index}`} className="hover:bg-ink-50/30 transition-colors">
                           <td className="py-2 px-3 md:py-3 md:px-4">
@@ -552,7 +647,7 @@ export default function SummaryPage() {
                                     alt=""
                                     className="w-full h-full object-cover"
                                     style={{ width: '100%', height: '100%' }}
-                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                                   />
                                 </div>
                                 <div className="min-w-0">
@@ -649,7 +744,7 @@ export default function SummaryPage() {
                             className="flex justify-between"
                           >
                             <span className="font-semibold text-ink-900">{getPlayerName(row)}</span>
-                            <span className="text-accent-700 font-bold">{safeNumber(row.pos_week_z).toFixed(2)}z</span>
+                            <span className="text-accent-700 font-bold">{safeNumber(row.pos_week_z, 0).toFixed(2)}z</span>
                           </li>
                         ))}
                       </ul>

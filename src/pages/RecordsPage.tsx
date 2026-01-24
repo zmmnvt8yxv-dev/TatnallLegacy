@@ -2,27 +2,97 @@ import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
-import { useRecords } from "../hooks/useRecords.js";
+import { useRecords } from "../hooks/useRecords";
 import PageTransition from "../components/PageTransition.jsx";
-import { normalizeOwnerName } from "../lib/identity.js";
+import { normalizeOwnerName } from "../lib/identity";
 import { formatPoints, safeNumber } from "../utils/format";
+import type { Manifest } from "../types/index";
 
-function slugifyOwner(name) {
+interface SeasonTeam {
+    owner?: string;
+    display_name?: string;
+    team_name?: string;
+    final_rank?: number;
+    regular_season_rank?: number;
+    points_for?: number;
+    wins?: number;
+    losses?: number;
+}
+
+interface SeasonData {
+    teams?: SeasonTeam[];
+}
+
+interface CareerLeader {
+    sleeper_id?: string;
+    player_id?: string;
+    display_name?: string;
+    player_name?: string;
+    points?: number;
+    games?: number;
+    seasons?: number;
+}
+
+interface AllTimeData {
+    careerLeaders?: CareerLeader[];
+}
+
+interface Champion {
+    year: number;
+    owner: string;
+    teamName: string;
+    pointsFor: number;
+}
+
+interface BestSeason {
+    year: number;
+    owner: string;
+    teamName: string;
+    pointsFor: number;
+    wins: number;
+    losses: number;
+    rank: number;
+}
+
+interface OwnerStats {
+    seasons: number;
+    wins: number;
+    losses: number;
+    pointsFor: number;
+    championships: number;
+    playoffs: number;
+}
+
+interface Records {
+    champions: Champion[];
+    bestSeasons: BestSeason[];
+    highestScorers: CareerLeader[];
+    mostChampionships: Map<string, number>;
+    mostPlayoffs: Map<string, number>;
+    allOwners: Map<string, OwnerStats>;
+}
+
+function slugifyOwner(name: string): string {
     return encodeURIComponent(String(name || "").toLowerCase().replace(/\s+/g, "-"));
 }
 
-export default function RecordsPage() {
+export default function RecordsPage(): React.ReactElement {
     const {
         manifest,
         allSeasonData,
         allTimeData,
         isLoading: loading,
         isError: error
-    } = useRecords();
+    } = useRecords() as {
+        manifest: Manifest | undefined;
+        allSeasonData: Record<string, SeasonData>;
+        allTimeData: AllTimeData | undefined;
+        isLoading: boolean;
+        isError: boolean;
+    };
 
-    // Calculate all-time records
-    const records = useMemo(() => {
-        const rec = {
+    const records = useMemo((): Records => {
+        const rec: Records = {
             champions: [],
             bestSeasons: [],
             highestScorers: [],
@@ -31,11 +101,9 @@ export default function RecordsPage() {
             allOwners: new Map(),
         };
 
-        // Process each season
         Object.entries(allSeasonData).forEach(([year, data]) => {
             if (!data?.teams) return;
 
-            // Find champion
             const champion = data.teams.find(
                 (t) => t.final_rank === 1 || t.regular_season_rank === 1
             );
@@ -44,13 +112,12 @@ export default function RecordsPage() {
                 rec.champions.push({
                     year: Number(year),
                     owner,
-                    teamName: champion.team_name || champion.display_name,
-                    pointsFor: safeNumber(champion.points_for),
+                    teamName: champion.team_name || champion.display_name || "",
+                    pointsFor: safeNumber(champion.points_for, 0),
                 });
                 rec.mostChampionships.set(owner, (rec.mostChampionships.get(owner) || 0) + 1);
             }
 
-            // Track all owner records
             data.teams.forEach((t) => {
                 const owner = normalizeOwnerName(t.owner || t.display_name || t.team_name);
                 if (!owner) return;
@@ -66,36 +133,31 @@ export default function RecordsPage() {
                     });
                 }
 
-                const ownerStats = rec.allOwners.get(owner);
+                const ownerStats = rec.allOwners.get(owner)!;
                 ownerStats.seasons++;
-                ownerStats.wins += safeNumber(t.wins);
-                ownerStats.losses += safeNumber(t.losses);
-                ownerStats.pointsFor += safeNumber(t.points_for);
+                ownerStats.wins += safeNumber(t.wins, 0);
+                ownerStats.losses += safeNumber(t.losses, 0);
+                ownerStats.pointsFor += safeNumber(t.points_for, 0);
 
-                const rank = safeNumber(t.final_rank || t.regular_season_rank);
+                const rank = safeNumber(t.final_rank || t.regular_season_rank, 0);
                 if (rank === 1) ownerStats.championships++;
-                if (rank <= 4) ownerStats.playoffs++;
+                if (rank <= 4 && rank > 0) ownerStats.playoffs++;
 
-                // Track best seasons
                 rec.bestSeasons.push({
                     year: Number(year),
                     owner,
-                    teamName: t.team_name || t.display_name,
-                    pointsFor: safeNumber(t.points_for),
-                    wins: safeNumber(t.wins),
-                    losses: safeNumber(t.losses),
+                    teamName: t.team_name || t.display_name || "",
+                    pointsFor: safeNumber(t.points_for, 0),
+                    wins: safeNumber(t.wins, 0),
+                    losses: safeNumber(t.losses, 0),
                     rank,
                 });
             });
         });
 
-        // Sort best seasons by points
         rec.bestSeasons.sort((a, b) => b.pointsFor - a.pointsFor);
-
-        // Sort champions by year descending
         rec.champions.sort((a, b) => b.year - a.year);
 
-        // Process all-time data for top scorers
         if (allTimeData?.careerLeaders) {
             rec.highestScorers = allTimeData.careerLeaders.slice(0, 10);
         }
@@ -103,7 +165,6 @@ export default function RecordsPage() {
         return rec;
     }, [allSeasonData, allTimeData]);
 
-    // Convert maps to sorted arrays
     const championshipLeaders = useMemo(() => {
         return [...records.mostChampionships.entries()]
             .sort((a, b) => b[1] - a[1])
@@ -138,7 +199,6 @@ export default function RecordsPage() {
                 All-time achievements and records across {manifest?.seasons?.length || 0} seasons
             </p>
 
-            {/* Championships */}
             <div className="section-card">
                 <h2 className="section-title">League Champions</h2>
                 <div className="table-wrap">
@@ -169,7 +229,6 @@ export default function RecordsPage() {
                 </div>
             </div>
 
-            {/* Championship Leaders */}
             <div className="card-grid">
                 <div className="section-card">
                     <h2 className="section-title">Most Championships</h2>
@@ -213,7 +272,6 @@ export default function RecordsPage() {
                 </div>
             </div>
 
-            {/* All-Time Standings */}
             <div className="section-card">
                 <h2 className="section-title">All-Time Owner Standings</h2>
                 <div className="table-wrap">
@@ -248,7 +306,6 @@ export default function RecordsPage() {
                 </div>
             </div>
 
-            {/* Top Career Scorers */}
             {records.highestScorers.length > 0 && (
                 <div className="section-card">
                     <h2 className="section-title">Career Fantasy Point Leaders (Players)</h2>

@@ -5,7 +5,7 @@ import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { useStandings } from "../hooks/useStandings.js";
+import { useStandings } from "../hooks/useStandings";
 import { formatPoints } from "../utils/format";
 import { normalizeOwnerName } from "../utils/owners";
 import { useFavorites } from "../utils/useFavorites";
@@ -14,15 +14,54 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.j
 import { Button } from "@/components/ui/button.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
 import { Heart } from "lucide-react";
+import type { Manifest } from "../types/index";
 
-export default function StandingsPage() {
-  const { manifest, loading, error } = useDataContext();
+interface StandingsTeam {
+  owner?: string;
+  display_name?: string;
+  username?: string;
+  team_name?: string;
+}
+
+interface StandingsRow {
+  team: string;
+  wins: number;
+  losses: number;
+  ties: number;
+  points_for: number;
+  points_against: number;
+}
+
+interface SeasonSummary {
+  teams?: StandingsTeam[];
+  standings?: StandingsRow[];
+}
+
+interface AllTimeRow {
+  team: string;
+  wins: number;
+  losses: number;
+  ties: number;
+  points_for: number;
+  points_against: number;
+}
+
+interface StoredPrefs {
+  season?: number;
+}
+
+export default function StandingsPage(): React.ReactElement {
+  const { manifest, loading, error } = useDataContext() as {
+    manifest: Manifest | undefined;
+    loading: boolean;
+    error: string | null;
+  };
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
-  const didInitRef = useRef(false);
+  const didInitRef = useRef<boolean>(false);
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
-  const [season, setSeason] = useState(seasons[0] || "");
-  const [teamQuery, setTeamQuery] = useState("");
+  const [season, setSeason] = useState<number | string>(seasons[0] || "");
+  const [teamQuery, setTeamQuery] = useState<string>("");
   const { favorites, toggleTeam } = useFavorites();
   const STANDINGS_PREF_KEY = "tatnall-pref-standings";
 
@@ -32,7 +71,13 @@ export default function StandingsPage() {
     isLoading: dataLoading,
     isError: dataError,
     error: fetchError
-  } = useStandings(season, seasons);
+  } = useStandings(season, seasons) as {
+    seasonSummary: SeasonSummary | undefined;
+    allSummaries: SeasonSummary[];
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+  };
 
   useEffect(() => {
     if (!seasons.length) return;
@@ -46,7 +91,7 @@ export default function StandingsPage() {
     if (!seasons.length) return;
     if (didInitRef.current) return;
     const params = new URLSearchParams(searchParams);
-    const stored = readStorage(STANDINGS_PREF_KEY, {});
+    const stored = readStorage<StoredPrefs>(STANDINGS_PREF_KEY, {});
     const storedSeason = Number(stored?.season);
     const paramSeason = Number(searchParams.get("season"));
     let nextSeason = Number.isFinite(paramSeason) && seasons.includes(paramSeason) ? paramSeason : seasons[0];
@@ -61,7 +106,7 @@ export default function StandingsPage() {
     didInitRef.current = true;
   }, [seasons, searchParams, setSearchParams]);
 
-  const handleSeasonChange = (value) => {
+  const handleSeasonChange = (value: string): void => {
     const nextSeason = Number(value);
     setSeason(nextSeason);
     const params = new URLSearchParams(searchParams);
@@ -70,25 +115,24 @@ export default function StandingsPage() {
     writeStorage(STANDINGS_PREF_KEY, { season: nextSeason });
   };
 
-
-  const seasonOwners = useMemo(() => {
-    const mapping = new Map();
+  const seasonOwners = useMemo((): Map<string, string> => {
+    const mapping = new Map<string, string>();
     for (const team of seasonSummary?.teams || []) {
       const ownerName = normalizeOwnerName(team.owner || team.display_name || team.username || team.team_name);
-      if (ownerName) {
+      if (ownerName && team.team_name) {
         mapping.set(team.team_name, ownerName);
       }
     }
     return mapping;
   }, [seasonSummary]);
 
-  const allTime = useMemo(() => {
-    const totals = new Map();
+  const allTime = useMemo((): AllTimeRow[] => {
+    const totals = new Map<string, AllTimeRow>();
     for (const summary of allSummaries) {
-      const ownerByTeam = new Map();
+      const ownerByTeam = new Map<string, string>();
       for (const team of summary?.teams || []) {
         const ownerName = normalizeOwnerName(team.owner || team.display_name || team.username || team.team_name);
-        if (ownerName) {
+        if (ownerName && team.team_name) {
           ownerByTeam.set(team.team_name, ownerName);
         }
       }
@@ -115,19 +159,19 @@ export default function StandingsPage() {
   }, [allSummaries]);
 
   const standings = seasonSummary?.standings || [];
-  const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+  const ownerLabel = (value: unknown, fallback: string = "—"): string => normalizeOwnerName(value) || fallback;
   const query = teamQuery.trim().toLowerCase();
-  const filteredStandings = useMemo(() => {
+  const filteredStandings = useMemo((): StandingsRow[] => {
     if (!query) return standings;
     return standings.filter((row) =>
       ownerLabel(seasonOwners.get(row.team) || row.team, row.team).toLowerCase().includes(query),
     );
-  }, [standings, ownerLabel, query, seasonOwners]);
+  }, [standings, query, seasonOwners]);
 
-  const filteredAllTime = useMemo(() => {
+  const filteredAllTime = useMemo((): AllTimeRow[] => {
     if (!query) return allTime;
     return allTime.filter((row) => ownerLabel(row.team, row.team).toLowerCase().includes(query));
-  }, [allTime, ownerLabel, query]);
+  }, [allTime, query]);
 
   if (loading || dataLoading) return <LoadingState label="Loading standings..." />;
   if (error || dataError) return <ErrorState message={error || fetchError?.message || "Error loading standings"} />;

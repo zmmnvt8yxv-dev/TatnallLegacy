@@ -3,31 +3,80 @@ import PageTransition from "../components/PageTransition.jsx";
 import { Link, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
-import StatCard from "../components/StatCard.jsx";
 import PlayoffBracket from "../components/PlayoffBracket.jsx";
 import KiltBowlBracket from "../components/KiltBowlBracket.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { useSeasonDetails } from "../hooks/useSeasonDetails.js";
+import { useSeasonDetails } from "../hooks/useSeasonDetails";
 import { formatPoints } from "../utils/format";
 import { normalizeOwnerName } from "../utils/owners";
-import { resolvePlayerName } from "../lib/playerName.js";
+import { resolvePlayerName } from "../lib/playerName";
+import type { Manifest, PlayerIndex, EspnNameMap } from "../types/index";
 
-// Helper to find the best player (MVP) by fantasy points
-function getMvp(playerStats) {
+interface Team {
+    owner?: string;
+    display_name?: string;
+    team_name?: string;
+    team?: string;
+    final_rank?: number;
+    points_for?: number;
+}
+
+interface StandingsRow {
+    team: string;
+    owner?: string;
+    display_name?: string;
+    team_name?: string;
+    rank?: number;
+    wins: number;
+    losses: number;
+    points_for: number;
+}
+
+interface Summary {
+    teams?: Team[];
+    standings?: StandingsRow[];
+    champion?: Team;
+    runnerUp?: Team;
+    kiltBowlLoser?: Team;
+    playoffBracket?: unknown;
+    kiltBowl?: unknown;
+}
+
+interface PlayerStat {
+    player_id?: string;
+    position?: string;
+    fantasy_points_custom?: number;
+    [key: string]: unknown;
+}
+
+interface Transactions {
+    entries?: unknown[];
+}
+
+interface LoadErrors {
+    summary: boolean;
+    stats: boolean;
+}
+
+function getMvp(playerStats: PlayerStat[] | undefined): PlayerStat | null {
     if (!playerStats || !playerStats.length) return null;
-    // Sort by points desc
     const sorted = [...playerStats].sort((a, b) => (b.fantasy_points_custom || 0) - (a.fantasy_points_custom || 0));
     return sorted[0];
 }
 
-export default function SeasonPage() {
-    const { manifest, loading, error, playerIndex, espnNameMap, playerIdLookup } = useDataContext();
+export default function SeasonPage(): React.ReactElement {
+    const { manifest, loading, error, playerIndex, espnNameMap } = useDataContext() as {
+        manifest: Manifest | undefined;
+        loading: boolean;
+        error: string | null;
+        playerIndex: PlayerIndex;
+        espnNameMap: EspnNameMap;
+    };
     const [searchParams, setSearchParams] = useSearchParams();
 
     const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
-    const [season, setSeason] = useState(seasons[0] || "");
+    const [season, setSeason] = useState<number | string>(seasons[0] || "");
 
-    // Sync season with URL
     useEffect(() => {
         if (!seasons.length) return;
         const paramSeason = Number(searchParams.get("season"));
@@ -35,65 +84,64 @@ export default function SeasonPage() {
             setSeason(paramSeason);
         } else if (!paramSeason && season) {
             const p = new URLSearchParams(searchParams);
-            p.set("season", season);
+            p.set("season", String(season));
             setSearchParams(p, { replace: true });
         }
     }, [searchParams, seasons, season, setSearchParams]);
 
-    const handleSeasonChange = (val) => {
+    const handleSeasonChange = (val: string): void => {
         const s = Number(val);
         setSeason(s);
         const p = new URLSearchParams(searchParams);
-        p.set("season", s);
+        p.set("season", String(s));
         setSearchParams(p);
     };
 
-    // Load Data using TanStack Query
     const {
         summary,
         playerStats,
         transactions,
         isLoading: pageLoading,
         errors: loadErrors
-    } = useSeasonDetails(season);
+    } = useSeasonDetails(season) as {
+        summary: Summary | undefined;
+        playerStats: PlayerStat[] | undefined;
+        transactions: Transactions | undefined;
+        isLoading: boolean;
+        errors: LoadErrors;
+    };
 
-    // Derived Data
-    const champion = useMemo(() => {
-        // Use pre-computed champion from backend
+    const champion = useMemo((): Team | null => {
         if (summary?.champion) return summary.champion;
-        // Fallback: find team with final_rank === 1
         const teams = summary?.teams || [];
         return teams.find(t => t.final_rank === 1) || null;
     }, [summary]);
 
-    const runnerUp = useMemo(() => {
-        // Use pre-computed runnerUp from backend
+    const runnerUp = useMemo((): Team | null => {
         if (summary?.runnerUp) return summary.runnerUp;
-        // Fallback: find team with final_rank === 2
         const teams = summary?.teams || [];
         return teams.find(t => t.final_rank === 2) || null;
     }, [summary]);
 
-    const kiltBowlLoser = useMemo(() => {
-        // Use pre-computed kiltBowlLoser from backend
+    const kiltBowlLoser = useMemo((): Team | null => {
         if (summary?.kiltBowlLoser) return summary.kiltBowlLoser;
-        // Fallback: find team with final_rank === 8
         const teams = summary?.teams || [];
         return teams.find(t => t.final_rank === 8) || null;
     }, [summary]);
 
-    const scoringChamp = useMemo(() => {
+    const scoringChamp = useMemo((): Team | null => {
         if (!summary?.teams) return null;
-        return [...summary.teams].sort((a, b) => b.points_for - a.points_for)[0];
+        return [...summary.teams].sort((a, b) => (b.points_for || 0) - (a.points_for || 0))[0];
     }, [summary]);
 
     const mvp = useMemo(() => getMvp(playerStats), [playerStats]);
 
     const transactionCount = useMemo(() => transactions?.entries?.length || 0, [transactions]);
 
-    const ownerLabel = (t) => t ? normalizeOwnerName(t.owner || t.display_name || t.team_name || t.team) : "—";
+    const ownerLabel = (t: Team | StandingsRow | null | undefined): string =>
+        t ? normalizeOwnerName(t.owner || t.display_name || t.team_name || t.team) : "—";
 
-    const getPlayerName = (row) => resolvePlayerName(row, playerIndex, espnNameMap);
+    const getPlayerName = (row: PlayerStat): string => resolvePlayerName(row, playerIndex, espnNameMap);
 
     if (loading) return <LoadingState label="Loading season data..." />;
     if (error) return <ErrorState message={error} />;
@@ -116,7 +164,6 @@ export default function SeasonPage() {
                 <LoadingState label={`Loading ${season} data...`} />
             ) : (
                 <div className="season-content">
-                    {/* Error Banners */}
                     {loadErrors.summary && (
                         <div className="error-banner" style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: 'rgba(239, 68, 68, 0.1)', borderLeft: '4px solid #ef4444', borderRadius: '4px' }}>
                             <p style={{ margin: 0, color: '#ef4444' }}>⚠️ Partial Data: League summary and standings could not be loaded for {season}.</p>
@@ -181,7 +228,6 @@ export default function SeasonPage() {
                     </div>
 
                     <div className="detail-grid">
-                        {/* STANDINGS PREVIEW */}
                         <div className="section-card">
                             <h2 className="section-title">Final Standings</h2>
                             {summary?.standings?.length ? (
@@ -224,7 +270,6 @@ export default function SeasonPage() {
                             )}
                         </div>
 
-                        {/* STATS / INFO */}
                         <div className="flex-col" style={{ gap: '20px' }}>
                             <div className="section-card">
                                 <h2 className="section-title">Season Facts</h2>
@@ -236,7 +281,7 @@ export default function SeasonPage() {
                                         <strong>Teams:</strong> {summary?.teams?.length || 0}
                                     </li>
                                     <li>
-                                        <strong>Weeks:</strong> {(manifest?.weeksBySeason?.[season] || []).length}
+                                        <strong>Weeks:</strong> {(manifest?.weeksBySeason?.[String(season)] || []).length}
                                     </li>
                                 </ul>
                                 <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -247,14 +292,12 @@ export default function SeasonPage() {
                         </div>
                     </div>
 
-                    {/* Playoff Bracket */}
                     <PlayoffBracket
                         bracket={summary?.playoffBracket}
                         champion={champion}
                         runnerUp={runnerUp}
                     />
 
-                    {/* Kilt Bowl */}
                     <KiltBowlBracket kiltBowl={summary?.kiltBowl} />
                 </div>
             )}
