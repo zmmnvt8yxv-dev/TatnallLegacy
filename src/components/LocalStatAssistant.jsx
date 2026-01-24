@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { resolvePlayerName } from "../lib/playerName.js";
-import { formatPoints, safeNumber } from "../utils/format.js";
+import { formatPoints, safeNumber } from "../utils/format";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
 import { Button } from "@/components/ui/button.jsx";
 

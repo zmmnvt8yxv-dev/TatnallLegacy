@@ -4,24 +4,35 @@ import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { usePlayerDetails } from "../hooks/usePlayerDetails.js";
+import { usePlayerDetails } from "../hooks/usePlayerDetails";
 import PageTransition from "../components/PageTransition.jsx";
-import { getCanonicalPlayerId, resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName.js";
-import { normalizeName } from "../lib/nameUtils.js";
-import { normalizeOwnerName } from "../lib/identity.js";
-import { formatPoints, safeNumber } from "../utils/format.js";
-import { useVirtualRows } from "../utils/useVirtualRows.js";
-import { useFavorites } from "../utils/useFavorites.js";
-import { loadPlayerStatsWeekly } from "../data/loader.js";
-import { readStorage, writeStorage } from "../utils/persistence.js";
+import { getCanonicalPlayerId, resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName";
+import { normalizeName } from "../lib/nameUtils";
+import { normalizeOwnerName } from "../lib/identity";
+import { formatPoints, safeNumber } from "../utils/format";
+import { useVirtualRows } from "../utils/useVirtualRows";
+import { useFavorites } from "../utils/useFavorites";
+import { loadPlayerStatsWeekly } from "../data/loader";
+import { readStorage, writeStorage } from "../utils/persistence";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
 import { Heart, TrendingUp, TrendingDown, Activity, Target, Zap, Award, Calendar, Users, DollarSign, BarChart3, Trophy, Star, ChevronRight, ChevronDown } from "lucide-react";
+import type { PlayerIndex, EspnNameMap } from "../types/index";
 
 const PLAYER_PREF_KEY = "tatnall-pref-player";
 
-const THRESHOLDS = {
+interface PositionThresholds {
+  QB: number;
+  RB: number;
+  WR: number;
+  TE: number;
+  K: number;
+  DEF: number;
+  default: number;
+}
+
+const THRESHOLDS: PositionThresholds = {
   QB: 20,
   RB: 15,
   WR: 15,
@@ -31,21 +42,243 @@ const THRESHOLDS = {
   default: 15,
 };
 
-const isNumericId = (value) => /^\d+$/.test(String(value || "").trim());
+interface PlayerInfo {
+  player_id?: string;
+  sleeper_id?: string;
+  espn_id?: string;
+  gsis_id?: string;
+  full_name?: string;
+  display_name?: string;
+  name?: string;
+  position?: string;
+  nfl_team?: string;
+  age?: number;
+  height?: string;
+  weight?: number;
+  college?: string;
+  years_exp?: number;
+  draft_year?: number;
+}
 
-export default function PlayerPage() {
-  const { playerId } = useParams();
+interface TransactionPlayer {
+  id?: string;
+  source_player_id?: string;
+  name?: string;
+  action?: string;
+}
+
+interface TransactionEntry {
+  id?: string;
+  type?: string;
+  amount?: number | string;
+  week?: number;
+  season?: number;
+  created?: number;
+  team?: string;
+  players?: TransactionPlayer[];
+  summary?: string;
+}
+
+interface SeasonSummary {
+  season: number;
+  rows?: StatsRow[];
+  playerSeasonTotals?: StatsRow[];
+}
+
+interface StatsRow {
+  sleeper_id?: string;
+  player_id?: string;
+  gsis_id?: string;
+  espn_id?: string;
+  display_name?: string;
+  player_display_name?: string;
+  player_name?: string;
+  position?: string;
+  team?: string;
+  season?: number;
+  week?: number;
+  points?: number;
+  fantasy_points_custom?: number;
+  fantasy_points_custom_week?: number;
+  fantasy_points_custom_week_with_bonus?: number;
+  fantasy_points_ppr?: number;
+  fantasy_points?: number;
+  games?: number;
+  games_played?: number;
+  games_possible?: number;
+  availability_flag?: string;
+  availability_ratio?: number;
+  war_rep?: number;
+  war_rep_season?: number;
+  delta_to_next?: number;
+  delta_to_next_season?: number;
+  seasons?: number;
+  seasons_played?: number;
+  pos_week_z?: number;
+  pos_week_rank?: number;
+  replacement_baseline?: number;
+  started?: boolean;
+  opponent_team?: string;
+  attempts?: number;
+  completions?: number;
+  passing_yards?: number;
+  passing_tds?: number;
+  passing_interceptions?: number;
+  passing_rating?: number;
+  passing_qbr?: number;
+  carries?: number;
+  rushing_yards?: number;
+  rushing_tds?: number;
+  fumbles_lost?: number;
+  rushing_fumbles_lost?: number;
+  receiving_fumbles_lost?: number;
+  sack_fumbles_lost?: number;
+  receptions?: number;
+  targets?: number;
+  receiving_yards?: number;
+  receiving_tds?: number;
+  extra_points_attempted?: number;
+  extra_points_made?: number;
+  field_goals_attempted?: number;
+  field_goals_made?: number;
+  field_goals_made_40_49?: number;
+  field_goals_made_50_plus?: number;
+}
+
+interface WeekLineup {
+  week: number;
+  lineups?: StatsRow[];
+}
+
+interface BoomBustMetricsRow {
+  sleeper_id?: string;
+  player_id?: string;
+  gsis_id?: string;
+  espn_id?: string;
+  consistency_label?: string;
+  fp_std?: number;
+  boom_pct?: number;
+}
+
+interface MegaProfile {
+  nfl?: {
+    bio?: {
+      display_name?: string;
+      position?: string;
+      latest_team?: string;
+      height?: number;
+      weight?: number;
+      college_name?: string;
+      years_of_experience?: number;
+      draft_year?: number;
+      draft_round?: number;
+      draft_pick?: number;
+      status?: string;
+      gsis_id?: string;
+      headshot?: string;
+    };
+    sportradar?: {
+      id?: string;
+      _team_alias?: string;
+      status?: string;
+    };
+  };
+  fantasy?: {
+    name?: string;
+    age?: number;
+    height?: string;
+    weight?: number;
+    college?: string;
+  };
+}
+
+interface NflSiloMeta {
+  odds?: Record<string, {
+    game?: {
+      home?: { alias?: string };
+      away?: { alias?: string };
+    };
+    consensus?: {
+      moneyline?: { away_plus_minus?: string; home_plus_minus?: string };
+      spread?: { away_spread_plus_minus?: string; home_spread_plus_minus?: string };
+      total?: { over_under?: string };
+    };
+  }>;
+}
+
+interface SeasonStatsRow {
+  season: number;
+  position: string;
+  positionRank: number | null;
+  points?: number;
+  games?: number;
+  gamesPossible?: number;
+  availabilityFlag?: string;
+  availabilityRatio?: number;
+  war?: number;
+  delta?: number;
+}
+
+interface WeeklyDisplayRow {
+  season: number;
+  week: number;
+  nflTeam: string;
+  fantasyTeam: string;
+  started?: boolean;
+  points?: number;
+  pos_week_z?: number;
+  war_rep?: number;
+  delta_to_next?: number;
+  position?: string;
+  pos_week_rank?: number;
+}
+
+interface BoomBust {
+  stdDev: number;
+  threshold: number;
+  percentAbove: number;
+  topWeeks: StatsRow[];
+  bottomWeeks: StatsRow[];
+}
+
+interface FullStatsColumn {
+  key: string;
+  label: string;
+  calc?: string;
+}
+
+interface Manifest {
+  seasons?: number[];
+}
+
+interface PlayerIdLookup {
+  byUid: Map<string, PlayerInfo>;
+  bySleeper: Map<string, string>;
+  byEspn: Map<string, string>;
+}
+
+const isNumericId = (value: unknown): boolean => /^\d+$/.test(String(value || "").trim());
+
+export default function PlayerPage(): React.ReactElement {
+  const { playerId } = useParams<{ playerId: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
-  const didInitRef = useRef(false);
-  const { manifest, loading, error, playerIdLookup, playerIndex, espnNameMap } = useDataContext();
+  const didInitRef = useRef<boolean>(false);
+  const { manifest, loading, error, playerIdLookup, playerIndex, espnNameMap } = useDataContext() as {
+    manifest: Manifest;
+    loading: boolean;
+    error: string | null;
+    playerIdLookup: PlayerIdLookup;
+    playerIndex: PlayerIndex;
+    espnNameMap: EspnNameMap;
+  };
   const isDev = import.meta.env.DEV;
-  const [selectedSeason, setSelectedSeason] = useState("");
-  const [weeklyRows, setWeeklyRows] = useState([]);
-  const [careerWeeklyRows, setCareerWeeklyRows] = useState([]);
-  const [search, setSearch] = useState("");
-  const [fantasyExpanded, setFantasyExpanded] = useState(true);
-  const [nflExpanded, setNflExpanded] = useState(true);
+  const [selectedSeason, setSelectedSeason] = useState<number | string>("");
+  const [weeklyRows, setWeeklyRows] = useState<StatsRow[]>([]);
+  const [careerWeeklyRows, setCareerWeeklyRows] = useState<StatsRow[]>([]);
+  const [search, setSearch] = useState<string>("");
+  const [fantasyExpanded, setFantasyExpanded] = useState<boolean>(true);
+  const [nflExpanded, setNflExpanded] = useState<boolean>(true);
   const { favorites, togglePlayer } = useFavorites();
 
   const canonicalPlayerId = useMemo(
@@ -55,7 +288,7 @@ export default function PlayerPage() {
   const resolvedPlayerId = canonicalPlayerId || String(playerId);
   const isFavorite = favorites.players.includes(String(resolvedPlayerId));
 
-  const formatAmount = (entry) => {
+  const formatAmount = (entry: TransactionEntry): string => {
     if (Number(selectedSeason) !== 2025) return "—";
     if (entry?.type !== "add" && entry?.type !== "trade") return "—";
     const numeric = Number(entry?.amount);
@@ -63,7 +296,7 @@ export default function PlayerPage() {
     return `$${numeric}`;
   };
 
-  const formatDollarValue = (value) => {
+  const formatDollarValue = (value: unknown): string => {
     const numeric = Number(value);
     if (!Number.isFinite(numeric)) return "—";
     return `$${numeric}`;
@@ -72,24 +305,24 @@ export default function PlayerPage() {
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
   const paramName = searchParams.get("name") || "";
 
-  const updateSearchParams = (nextSeason) => {
+  const updateSearchParams = (nextSeason: number): void => {
     const params = new URLSearchParams(searchParams);
     params.set("season", String(nextSeason));
     setSearchParams(params, { replace: true });
     writeStorage(PLAYER_PREF_KEY, { season: nextSeason });
   };
 
-  const handleSeasonChange = (value) => {
+  const handleSeasonChange = (value: string): void => {
     const nextSeason = Number(value);
     setSelectedSeason(nextSeason);
     updateSearchParams(nextSeason);
   };
 
-  const playerInfo = useMemo(() => {
+  const playerInfo = useMemo((): PlayerInfo | null => {
     const candidates = [resolvedPlayerId, playerId].filter(Boolean);
     for (const id of candidates) {
       if (playerIdLookup.byUid.has(String(id))) {
-        return playerIdLookup.byUid.get(String(id));
+        return playerIdLookup.byUid.get(String(id)) || null;
       }
       const uid =
         playerIdLookup.bySleeper.get(String(id)) ||
@@ -99,8 +332,8 @@ export default function PlayerPage() {
     return null;
   }, [playerIdLookup, resolvedPlayerId, playerId]);
 
-  const targetIds = useMemo(() => {
-    const ids = new Set();
+  const targetIds = useMemo((): Set<string> => {
+    const ids = new Set<string>();
     for (const value of [
       resolvedPlayerId,
       playerId,
@@ -133,11 +366,26 @@ export default function PlayerPage() {
     selectedSeason: Number(selectedSeason),
     seasons,
     playerId: resolvedPlayerId
-  });
+  }) as {
+    careerStats: StatsRow[];
+    boomBustMetrics: BoomBustMetricsRow[];
+    careerMetrics: StatsRow[];
+    seasonSummaries: SeasonSummary[];
+    statsSeasonSummaries: SeasonSummary[];
+    seasonMetrics: StatsRow[];
+    statsWeeklyRows: StatsRow[];
+    playerTransactions: TransactionEntry[];
+    fullStatsRows: StatsRow[];
+    weekLineups: WeekLineup[];
+    megaProfile: MegaProfile | null;
+    nflSiloMeta: NflSiloMeta | null;
+    isLoading: boolean;
+    isError: boolean;
+  };
 
   useEffect(() => {
     if (!weekLineups.length || !targetIds.size) return;
-    const rows = [];
+    const rows: StatsRow[] = [];
     for (const payload of weekLineups) {
       if (!payload?.lineups) continue;
       for (const row of payload.lineups) {
@@ -145,26 +393,26 @@ export default function PlayerPage() {
           String(value || ""),
         );
         if (ids.some((value) => targetIds.has(value))) {
-          rows.push({ ...row, season: selectedSeason, week: payload.week });
+          rows.push({ ...row, season: Number(selectedSeason), week: payload.week });
         }
       }
     }
     setWeeklyRows(prev => {
-      const sorted = rows.sort((a, b) => a.week - b.week);
+      const sorted = rows.sort((a, b) => (a.week || 0) - (b.week || 0));
       return JSON.stringify(prev) === JSON.stringify(sorted) ? prev : sorted;
     });
   }, [weekLineups, targetIds, selectedSeason]);
 
-  const targetNames = useMemo(() => {
+  const targetNames = useMemo((): string[] => {
     const espnName = espnNameMap?.[String(resolvedPlayerId)];
     return [playerInfo?.full_name, playerInfo?.display_name, playerInfo?.name, paramName, espnName]
       .map(normalizeName)
-      .filter(Boolean);
+      .filter((name): name is string => Boolean(name));
   }, [playerInfo, paramName, espnNameMap, resolvedPlayerId]);
 
-  const transactionHistory = useMemo(() => {
+  const transactionHistory = useMemo((): TransactionEntry[] => {
     if (!playerTransactions.length) return [];
-    const rows = [];
+    const rows: TransactionEntry[] = [];
     for (const entry of playerTransactions) {
       const players = entry?.players || [];
       if (!players.length) continue;
@@ -189,7 +437,7 @@ export default function PlayerPage() {
     });
   }, [playerTransactions, targetIds, targetNames]);
 
-  const keeperInfo = useMemo(() => {
+  const keeperInfo = useMemo((): { base: number | null; value: number; note: string } => {
     if (Number(selectedSeason) !== 2025) {
       return { base: null, value: 5, note: "Keeper value is tracked for 2025 adds only" };
     }
@@ -202,11 +450,11 @@ export default function PlayerPage() {
     const latest = addsWithAmount[0];
     const base = Number(latest.amount);
     return { base, value: base + 5, note: `Last add ${formatDollarValue(base)} + $5` };
-  }, [transactionHistory]);
+  }, [transactionHistory, selectedSeason]);
 
-  const formatTransactionDetails = (entry) => {
+  const formatTransactionDetails = (entry: TransactionEntry): string => {
     if (!entry?.players?.length) return entry?.summary || "No details";
-    const names = (list) =>
+    const names = (list: TransactionPlayer[]): string =>
       list
         .map((player) => player?.name || player?.id || "Unknown")
         .filter(Boolean)
@@ -220,14 +468,14 @@ export default function PlayerPage() {
     return `${label}: ${names(entry.players) || "Unknown"}`;
   };
 
-  const statsNameRow = useMemo(() => {
-    const tryFind = (rows) =>
+  const statsNameRow = useMemo((): StatsRow | null => {
+    const tryFind = (rows: StatsRow[]): StatsRow | null =>
       rows.find((row) => {
         const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) => String(value || ""));
         if (ids.some((value) => targetIds.has(value))) return true;
         if (!targetNames.length) return false;
         const name = normalizeName(row?.display_name || row?.player_display_name || row?.player_name);
-        return name && targetNames.includes(name);
+        return name ? targetNames.includes(name) : false;
       }) || null;
     if (statsWeeklyRows.length) return tryFind(statsWeeklyRows);
     if (fullStatsRows.length) return tryFind(fullStatsRows);
@@ -239,10 +487,10 @@ export default function PlayerPage() {
     return null;
   }, [targetIds, targetNames, statsWeeklyRows, fullStatsRows, statsSeasonSummaries]);
 
-  const playerInfoWithStats = useMemo(() => {
+  const playerInfoWithStats = useMemo((): PlayerInfo => {
     if (!statsNameRow) {
       if (playerInfo) return playerInfo;
-      const fallback = { player_id: resolvedPlayerId };
+      const fallback: PlayerInfo = { player_id: resolvedPlayerId };
       if (isNumericId(resolvedPlayerId)) fallback.espn_id = resolvedPlayerId;
       return fallback;
     }
@@ -256,7 +504,7 @@ export default function PlayerPage() {
     };
   }, [statsNameRow, playerInfo, resolvedPlayerId]);
 
-  const resolvedName = useMemo(() => {
+  const resolvedName = useMemo((): string => {
     return resolvePlayerName(playerInfoWithStats, playerIndex, espnNameMap);
   }, [playerInfoWithStats, playerIndex, espnNameMap]);
 
@@ -268,8 +516,16 @@ export default function PlayerPage() {
   const displayPosition = playerDisplay.position || playerInfo?.position || "Position —";
   const displayTeam = playerDisplay.team || playerInfo?.nfl_team || "Team —";
 
-  const seasonStats = useMemo(() => {
-    const stats = [];
+  const matchesPlayer = (row: StatsRow): boolean => {
+    const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) => String(value || ""));
+    if (ids.some((value) => targetIds.has(value))) return true;
+    if (!targetNames.length) return false;
+    const name = normalizeName(row?.display_name || row?.player_display_name || row?.player_name);
+    return name ? targetNames.includes(name) : false;
+  };
+
+  const seasonStats = useMemo((): SeasonStatsRow[] => {
+    const stats: SeasonStatsRow[] = [];
     const hasStats = statsSeasonSummaries.length > 0;
     const summaries = hasStats ? statsSeasonSummaries : seasonSummaries;
     for (const summary of summaries) {
@@ -281,7 +537,7 @@ export default function PlayerPage() {
         if (ids.some((value) => targetIds.has(value))) return true;
         if (!targetNames.length) return false;
         const name = normalizeName(item?.display_name || item?.player_display_name || item?.player_name);
-        return name && targetNames.includes(name);
+        return name ? targetNames.includes(name) : false;
       });
       if (row) {
         const position = row.position || playerInfo?.position || "—";
@@ -314,9 +570,9 @@ export default function PlayerPage() {
       }
     }
     return stats.sort((a, b) => b.season - a.season);
-  }, [statsSeasonSummaries, seasonSummaries, targetIds, targetNames, playerInfo, resolvedName]);
+  }, [statsSeasonSummaries, seasonSummaries, targetIds, targetNames, playerInfo]);
 
-  const careerTotals = useMemo(() => {
+  const careerTotals = useMemo((): { points: number; games: number; seasons: number; war: number; delta: number } => {
     if (careerStats.length) {
       const row = careerStats.find((item) => {
         const ids = [item?.sleeper_id, item?.player_id, item?.gsis_id, item?.espn_id].map((value) =>
@@ -325,7 +581,7 @@ export default function PlayerPage() {
         if (ids.some((value) => targetIds.has(value))) return true;
         if (!targetNames.length) return false;
         const name = normalizeName(item?.display_name || item?.player_display_name || item?.player_name);
-        return name && targetNames.includes(name);
+        return name ? targetNames.includes(name) : false;
       });
       if (row) {
         return {
@@ -350,16 +606,8 @@ export default function PlayerPage() {
     );
   }, [seasonStats, careerStats, targetIds, targetNames]);
 
-  const matchesPlayer = (row) => {
-    const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) => String(value || ""));
-    if (ids.some((value) => targetIds.has(value))) return true;
-    if (!targetNames.length) return false;
-    const name = normalizeName(row?.display_name || row?.player_display_name || row?.player_name);
-    return name && targetNames.includes(name);
-  };
-
-  const availableSeasons = useMemo(() => {
-    const seen = new Set();
+  const availableSeasons = useMemo((): number[] => {
+    const seen = new Set<number>();
     for (const summary of statsSeasonSummaries) {
       const rows = summary?.rows || [];
       if (!rows.length) continue;
@@ -376,7 +624,7 @@ export default function PlayerPage() {
     }
     if (!seen.size) return seasons;
     return Array.from(seen).sort((a, b) => b - a);
-  }, [statsSeasonSummaries, careerWeeklyRows, statsWeeklyRows, seasons, targetIds, targetNames]);
+  }, [statsSeasonSummaries, statsWeeklyRows, seasons, targetIds, targetNames]);
 
   const seasonOptions = useMemo(
     () => (availableSeasons.length ? availableSeasons : seasons),
@@ -422,7 +670,7 @@ export default function PlayerPage() {
     let changed = false;
     const paramSeason = Number(params.get("season"));
     if (!Number.isFinite(paramSeason) || !seasons.includes(paramSeason)) {
-      const stored = readStorage(PLAYER_PREF_KEY, {});
+      const stored = readStorage<{ season?: number }>(PLAYER_PREF_KEY, {});
       const storedSeason = Number(stored.season);
       const defaultSeason = (Number.isFinite(storedSeason) && seasons.includes(storedSeason))
         ? storedSeason
@@ -438,7 +686,7 @@ export default function PlayerPage() {
     didInitRef.current = true;
   }, [seasons, searchParamsString, setSearchParams]);
 
-  const findMetricsRow = (rows) => {
+  const findMetricsRow = (rows: StatsRow[] | undefined): StatsRow | null => {
     if (!rows?.length) return null;
     return (
       rows.find((item) => {
@@ -448,7 +696,7 @@ export default function PlayerPage() {
         if (ids.some((value) => targetIds.has(value))) return true;
         if (!targetNames.length) return false;
         const name = normalizeName(item?.display_name || item?.player_display_name || item?.player_name);
-        return name && targetNames.includes(name);
+        return name ? targetNames.includes(name) : false;
       }) || null
     );
   };
@@ -462,12 +710,12 @@ export default function PlayerPage() {
     [careerMetrics, targetIds, targetNames],
   );
 
-  const normalizedMetrics = useMemo(() => {
+  const normalizedMetrics = useMemo((): StatsRow[] => {
     if (!statsWeeklyRows.length) return [];
     const hasWar = statsWeeklyRows.some((row) => row.war_rep != null);
     const hasDelta = statsWeeklyRows.some((row) => row.delta_to_next != null);
-    const cutoffs = { QB: 16, RB: 24, WR: 24, TE: 16, K: 8, DEF: 8 };
-    const grouped = new Map();
+    const cutoffs: Record<string, number> = { QB: 16, RB: 24, WR: 24, TE: 16, K: 8, DEF: 8 };
+    const grouped = new Map<string, StatsRow[]>();
     const rows = statsWeeklyRows.map((row) => ({
       ...row,
       points: safeNumber(row.points ?? row.fantasy_points_custom_week ?? row.fantasy_points_custom),
@@ -476,9 +724,9 @@ export default function PlayerPage() {
     for (const row of rows) {
       const key = `${row.season}-${row.week}-${row.position}`;
       if (!grouped.has(key)) grouped.set(key, []);
-      grouped.get(key).push(row);
+      grouped.get(key)!.push(row);
     }
-    const careerRows = [];
+    const careerRows: StatsRow[] = [];
     for (const summary of statsSeasonSummaries) {
       if (summary?.rows) careerRows.push(...summary.rows);
     }
@@ -487,35 +735,35 @@ export default function PlayerPage() {
 
     for (const group of grouped.values()) {
       group.sort((a, b) => safeNumber(b.points) - safeNumber(a.points));
-      const cutoff = cutoffs[group[0]?.position];
+      const cutoff = cutoffs[group[0]?.position || ""];
       const baselineIndex = cutoff ? Math.min(cutoff - 1, group.length - 1) : null;
       const baseline = baselineIndex != null ? safeNumber(group[baselineIndex].points) : 0;
       group.forEach((row, index) => {
         const nextPoints = group[index + 1] ? safeNumber(group[index + 1].points) : 0;
-        if (!hasDelta) row.delta_to_next = row.delta_to_next ?? row.points - nextPoints;
+        if (!hasDelta) row.delta_to_next = row.delta_to_next ?? (row.points || 0) - nextPoints;
         row.replacement_baseline = row.replacement_baseline ?? baseline;
-        if (!hasWar) row.war_rep = row.war_rep ?? row.points - baseline;
+        if (!hasWar) row.war_rep = row.war_rep ?? (row.points || 0) - baseline;
         row.pos_week_rank = row.pos_week_rank ?? index + 1;
       });
     }
     return rows;
-  }, [statsWeeklyRows]);
+  }, [statsWeeklyRows, statsSeasonSummaries]);
 
-  const metricsForPlayer = useMemo(() => {
+  const metricsForPlayer = useMemo((): StatsRow[] => {
     return normalizedMetrics.filter(matchesPlayer);
   }, [normalizedMetrics, targetIds, playerInfo]);
 
-  const weeklyDisplayRows = useMemo(() => {
-    const lineupByWeek = new Map(weeklyRows.map((row) => [Number(row.week), row]));
-    const metricsByWeek = new Map(metricsForPlayer.map((row) => [Number(row.week), row]));
+  const weeklyDisplayRows = useMemo((): WeeklyDisplayRow[] => {
+    const lineupByWeek = new Map<number, StatsRow>(weeklyRows.map((row) => [Number(row.week), row]));
+    const metricsByWeek = new Map<number, StatsRow>(metricsForPlayer.map((row) => [Number(row.week), row]));
     const weeks = Array.from(new Set([...lineupByWeek.keys(), ...metricsByWeek.keys()])).filter((w) => w >= 1 && w <= 18);
     return weeks
       .sort((a, b) => a - b)
-      .map((week) => {
+      .map((week): WeeklyDisplayRow => {
         const lineup = lineupByWeek.get(week);
         const metrics = metricsByWeek.get(week);
         return {
-          season: metrics?.season || lineup?.season || selectedSeason,
+          season: metrics?.season || lineup?.season || Number(selectedSeason),
           week,
           nflTeam: metrics?.team || "—",
           fantasyTeam: lineup?.team || "—",
@@ -530,25 +778,25 @@ export default function PlayerPage() {
       });
   }, [weeklyRows, metricsForPlayer, selectedSeason]);
 
-  const filteredWeeklyRows = useMemo(() => {
+  const filteredWeeklyRows = useMemo((): WeeklyDisplayRow[] => {
     const query = search.toLowerCase().trim();
     if (!query) return weeklyDisplayRows;
     return weeklyDisplayRows.filter((row) => String(row.nflTeam || "").toLowerCase().includes(query));
   }, [weeklyDisplayRows, search]);
 
-  const filteredFullStatsRows = useMemo(() => {
+  const filteredFullStatsRows = useMemo((): StatsRow[] => {
     if (!fullStatsRows.length) return [];
     return fullStatsRows.filter(matchesPlayer);
   }, [fullStatsRows, targetIds, playerInfo]);
 
-  const fullStatsColumns = useMemo(() => {
+  const fullStatsColumns = useMemo((): FullStatsColumn[] => {
     const position =
       String(playerInfo?.position || statsNameRow?.position || displayPosition || "")
         .toUpperCase()
         .trim() || "FLEX";
     const rows = filteredFullStatsRows;
-    const hasCol = (key) => rows.some((row) => row?.[key] != null);
-    const columnsByPosition = {
+    const hasCol = (key: string): boolean => rows.some((row) => (row as Record<string, unknown>)?.[key] != null);
+    const columnsByPosition: Record<string, FullStatsColumn[]> = {
       QB: [
         { key: "attempts", label: "Pass Att" },
         { key: "completions", label: "Comp" },
@@ -626,8 +874,8 @@ export default function PlayerPage() {
     return columns.filter((col) => col.calc || hasCol(col.key));
   }, [filteredFullStatsRows, playerInfo, statsNameRow, displayPosition]);
 
-  const resolveFullStatValue = (row, column) => {
-    const get = (key) => safeNumber(row?.[key]);
+  const resolveFullStatValue = (row: StatsRow, column: FullStatsColumn): string | number => {
+    const get = (key: string): number => safeNumber((row as Record<string, unknown>)?.[key]);
     if (column.calc === "ypc") {
       const carries = get("carries");
       if (!carries) return "—";
@@ -654,8 +902,8 @@ export default function PlayerPage() {
         get("sack_fumbles_lost");
       return total ? total : "—";
     }
-    const value = row?.[column.key];
-    return value == null || value === "" ? "—" : value;
+    const value = (row as Record<string, unknown>)?.[column.key];
+    return value == null || value === "" ? "—" : value as string | number;
   };
 
   const weeklyVirtual = useVirtualRows({ itemCount: filteredWeeklyRows.length, rowHeight: 46 });
@@ -668,10 +916,10 @@ export default function PlayerPage() {
     if (!seasons.length) return undefined;
     Promise.all(seasons.map((season) => loadPlayerStatsWeekly(season))).then((payloads) => {
       if (!active) return;
-      const rows = [];
+      const rows: StatsRow[] = [];
       for (const payload of payloads) {
-        const seasonRows = payload?.rows || payload || [];
-        for (const row of seasonRows) {
+        const seasonRows = (payload as { rows?: StatsRow[] })?.rows || payload || [];
+        for (const row of seasonRows as StatsRow[]) {
           const week = Number(row?.week);
           if (!Number.isFinite(week) || week < 1 || week > 18) continue;
           if (!matchesPlayer(row)) continue;
@@ -691,40 +939,40 @@ export default function PlayerPage() {
     };
   }, [seasons, targetIds, playerInfo, resolvedName]);
 
-  const boomBust = useMemo(() => {
+  const boomBust = useMemo((): BoomBust | null => {
     const rows = careerWeeklyRows.length ? careerWeeklyRows : weeklyDisplayRows;
     if (!rows.length) return null;
     const points = rows.map((row) => safeNumber(row.points));
     const mean = points.reduce((sum, value) => sum + value, 0) / points.length;
     const variance = points.reduce((sum, value) => sum + (value - mean) ** 2, 0) / points.length;
     const stdDev = Math.sqrt(variance);
-    const threshold = THRESHOLDS[playerInfo?.position] || THRESHOLDS.default;
+    const threshold = THRESHOLDS[playerInfo?.position as keyof PositionThresholds] || THRESHOLDS.default;
     const above = points.filter((value) => value >= threshold).length;
     const percentAbove = (above / points.length) * 100;
-    const sorted = rows.slice().sort((a, b) => safeNumber(b.points) - safeNumber(a.points));
+    const sorted = [...rows].sort((a, b) => safeNumber(b.points) - safeNumber(a.points));
     return {
       stdDev,
       threshold,
       percentAbove,
-      topWeeks: sorted.slice(0, 5),
-      bottomWeeks: sorted.slice(-5).reverse(),
+      topWeeks: sorted.slice(0, 5) as StatsRow[],
+      bottomWeeks: sorted.slice(-5).reverse() as StatsRow[],
     };
   }, [careerWeeklyRows, weeklyDisplayRows, playerInfo]);
 
-  const boomBustFromMetrics = useMemo(() => {
+  const boomBustFromMetrics = useMemo((): BoomBustMetricsRow | null => {
     if (!boomBustMetrics.length) return null;
     return boomBustMetrics.find((row) => {
       const ids = [row?.sleeper_id, row?.player_id, row?.gsis_id, row?.espn_id].map((value) => String(value || ""));
       return ids.some((value) => targetIds.has(value));
-    });
+    }) || null;
   }, [boomBustMetrics, targetIds]);
 
-  const boomBustWeeks = useMemo(() => {
+  const boomBustWeeks = useMemo((): { top: StatsRow[]; bottom: StatsRow[] } => {
     if (!boomBust) return { top: [], bottom: [] };
     return { top: boomBust.topWeeks || [], bottom: boomBust.bottomWeeks || [] };
   }, [boomBust]);
 
-  const consistencyLabel = useMemo(() => {
+  const consistencyLabel = useMemo((): string | null => {
     if (boomBustFromMetrics?.consistency_label) return boomBustFromMetrics.consistency_label;
     const stdDev = boomBust?.stdDev;
     if (stdDev == null) return null;
@@ -769,7 +1017,7 @@ export default function PlayerPage() {
                 {(megaProfile?.fantasy?.age || playerInfo?.age) && (
                   <>
                     <span>•</span>
-                    <span>{megaProfile?.fantasy?.age || playerInfo.age} Years Old</span>
+                    <span>{megaProfile?.fantasy?.age || playerInfo?.age} Years Old</span>
                   </>
                 )}
               </div>
@@ -789,7 +1037,7 @@ export default function PlayerPage() {
                 <div className="text-xl font-display font-bold">
                   {megaProfile?.nfl?.bio?.weight
                     ? `${megaProfile.nfl.bio.weight} lbs`
-                    : (megaProfile?.fantasy?.weight || playerInfo?.weight ? `${megaProfile?.fantasy?.weight || playerInfo.weight} lbs` : "—")}
+                    : (megaProfile?.fantasy?.weight || playerInfo?.weight ? `${megaProfile?.fantasy?.weight || playerInfo?.weight} lbs` : "—")}
                 </div>
               </div>
               <div className="col-span-2">
@@ -824,7 +1072,7 @@ export default function PlayerPage() {
                   src={megaProfile?.nfl?.bio?.headshot || playerDisplay.headshotUrl}
                   alt={displayName}
                   className="w-full h-full object-cover scale-110 group-hover:scale-105 transition-transform duration-700"
-                  onError={(e) => { e.target.style.display = 'none'; }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-ink-700">
@@ -855,7 +1103,7 @@ export default function PlayerPage() {
               </div>
 
               {(() => {
-                const currentStats = seasonStats.find(s => Number(s.season) === Number(selectedSeason)) || {};
+                const currentStats = seasonStats.find(s => Number(s.season) === Number(selectedSeason)) || {} as SeasonStatsRow;
                 return (
                   <div className="space-y-5">
                     <div>
@@ -1195,7 +1443,7 @@ export default function PlayerPage() {
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
                               <Badge variant={entry.type === "trade" ? "secondary" : entry.type === "add" ? "success" : "destructive"}>
-                                {entry.type.toUpperCase()}
+                                {(entry.type || "").toUpperCase()}
                               </Badge>
                               <span className="text-sm font-bold text-ink-800">{normalizeOwnerName(entry.team)}</span>
                             </div>
@@ -1402,11 +1650,11 @@ export default function PlayerPage() {
                   if (!team || !nflSiloMeta?.odds) return <div className="text-center py-4 text-ink-500 italic">No market data available for 2025</div>;
 
                   const gameId = Object.keys(nflSiloMeta.odds).find(gid => {
-                    const game = nflSiloMeta.odds[gid]?.game;
+                    const game = nflSiloMeta.odds![gid]?.game;
                     return game?.home?.alias === team || game?.away?.alias === team;
                   });
 
-                  const odds = nflSiloMeta.odds[gameId];
+                  const odds = gameId ? nflSiloMeta.odds[gameId] : undefined;
                   if (!odds) return <div className="text-center py-4 text-ink-500 italic">No 2025 odds found for {team}</div>;
 
                   const game = odds.game;
@@ -1417,12 +1665,12 @@ export default function PlayerPage() {
                       <div className="flex items-center justify-between p-4 bg-ink-900 text-white rounded-xl">
                         <div className="text-center px-4">
                           <div className="text-xs font-bold text-ink-400 uppercase mb-1">Away</div>
-                          <div className="text-2xl font-black">{game.away.alias}</div>
+                          <div className="text-2xl font-black">{game?.away?.alias}</div>
                         </div>
                         <div className="text-accent-500 font-display font-black text-2xl">AT</div>
                         <div className="text-center px-4">
                           <div className="text-xs font-bold text-ink-400 uppercase mb-1">Home</div>
-                          <div className="text-2xl font-black">{game.home.alias}</div>
+                          <div className="text-2xl font-black">{game?.home?.alias}</div>
                         </div>
                       </div>
 

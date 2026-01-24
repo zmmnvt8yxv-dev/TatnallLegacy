@@ -1,8 +1,8 @@
 /**
- * Unit tests for src/utils/format.js
+ * Unit tests for src/utils/format.ts
  */
 import { describe, test, expect } from '@jest/globals';
-import { safeNumber, formatPoints, filterRegularSeasonWeeks } from '../utils/format.js';
+import { safeNumber, formatPoints, filterRegularSeasonWeeks } from '../utils/format';
 
 describe('safeNumber', () => {
     test('returns number for valid numeric input', () => {

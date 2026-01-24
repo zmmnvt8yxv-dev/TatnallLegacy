@@ -1,7 +1,7 @@
 /**
- * Unit tests for src/utils/positions.js
+ * Unit tests for src/utils/positions.ts
  */
-import { positionSort, getPositionOrder } from '../utils/positions.js';
+import { positionSort, getPositionOrder } from '../utils/positions';
 
 describe('getPositionOrder', () => {
     test('returns array with standard fantasy positions', () => {

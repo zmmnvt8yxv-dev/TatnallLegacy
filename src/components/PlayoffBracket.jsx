@@ -1,5 +1,5 @@
 import React from "react";
-import { normalizeOwnerName } from "../utils/owners.js";
+import { normalizeOwnerName } from "../utils/owners";
 
 /**
  * PlayoffBracket - Visualizes the playoff bracket for a season

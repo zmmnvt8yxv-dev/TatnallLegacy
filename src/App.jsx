@@ -15,7 +15,7 @@ import SeasonPage from "./pages/SeasonPage.jsx";
 import RecordsPage from "./pages/RecordsPage.jsx";
 import HeadToHeadPage from "./pages/HeadToHeadPage.jsx";
 import DataIntegrityPage from "./pages/DataIntegrityPage";
-import { initAnalytics, trackPageView } from "./utils/analytics.js";
+import { initAnalytics, trackPageView } from "./utils/analytics";
 
 function AnalyticsListener() {
   const location = useLocation();

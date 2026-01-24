@@ -1,5 +1,5 @@
 import React from "react";
-import { normalizeOwnerName } from "../utils/owners.js";
+import { normalizeOwnerName } from "../utils/owners";
 
 /**
  * KiltBowlBracket - Visualizes the Kilt Bowl (consolation) best-of-3 series

@@ -5,41 +5,100 @@ import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import Modal from "../components/Modal.jsx";
 import { useDataContext } from "../data/DataContext.jsx";
-import { useMatchups } from "../hooks/useMatchups.js";
+import { useMatchups } from "../hooks/useMatchups";
 import SearchBar from "../components/SearchBar.jsx";
-import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName.js";
-import { buildNameIndex, normalizeName } from "../lib/nameUtils.js";
-import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format.js";
-import { normalizeOwnerName } from "../utils/owners.js";
-import { positionSort } from "../utils/positions.js";
-import { readStorage, writeStorage } from "../utils/persistence.js";
+import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName";
+import { buildNameIndex, normalizeName } from "../lib/nameUtils";
+import { formatPoints, filterRegularSeasonWeeks, safeNumber } from "../utils/format";
+import { normalizeOwnerName } from "../utils/owners";
+import { positionSort } from "../utils/positions";
+import { readStorage, writeStorage } from "../utils/persistence";
 import { Button } from "@/components/ui/button.jsx";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
+import type { Manifest, LineupEntry, Matchup, Team, PlayerIndex, EspnNameMap, PlayerSearchEntry } from "../types/index";
 
-export default function MatchupsPage() {
-  const { manifest, loading, error, playerIndex, teams, espnNameMap, playerSearch } = useDataContext();
+interface MatchupWithId extends Matchup {
+  matchup_id: string | number;
+  home_roster_id?: string | number;
+  away_roster_id?: string | number;
+  entries?: Array<{
+    roster_id?: string | number;
+    display_name?: string;
+    team_name?: string;
+    username?: string;
+  }>;
+}
+
+interface LineupRow extends LineupEntry {
+  player?: string;
+  display_name?: string;
+  player_name?: string;
+  espn_id?: string;
+  source_player_id?: string;
+  slot?: string;
+  lineup_position?: string;
+  lineupSlot?: string;
+  pos?: string;
+}
+
+interface EnrichedRow extends LineupRow {
+  originalIndex: number;
+  displayName: string;
+  position: string;
+  nflTeam: string;
+  canonicalPlayerId: string;
+  linkName: string;
+  canLink: boolean;
+}
+
+interface RosterData {
+  rows: EnrichedRow[];
+  totals: { points: number; starters: number };
+  positionalTotals: Record<string, number>;
+}
+
+interface WeekData {
+  matchups?: MatchupWithId[];
+  lineups?: LineupRow[];
+}
+
+interface StoredPrefs {
+  season?: number;
+  week?: number;
+}
+
+export default function MatchupsPage(): React.ReactElement {
+  const { manifest, loading, error, playerIndex, teams, espnNameMap, playerSearch } = useDataContext() as {
+    manifest: Manifest | undefined;
+    loading: boolean;
+    error: string | null;
+    playerIndex: PlayerIndex;
+    teams: Team[];
+    espnNameMap: EspnNameMap;
+    playerSearch: PlayerSearchEntry[];
+  };
   const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
-  const didInitRef = useRef(false);
+  const didInitRef = useRef<boolean>(false);
   const seasons = useMemo(() => (manifest?.seasons || []).slice().sort((a, b) => b - a), [manifest]);
-  const [season, setSeason] = useState(seasons[0] || "");
-  const [week, setWeek] = useState("");
-  const [activeMatchup, setActiveMatchup] = useState(null);
-  const [teamQuery, setTeamQuery] = useState("");
+  const [season, setSeason] = useState<number | string>(seasons[0] || "");
+  const [week, setWeek] = useState<number | string>("");
+  const [activeMatchup, setActiveMatchup] = useState<MatchupWithId | null>(null);
+  const [teamQuery, setTeamQuery] = useState<string>("");
   const MATCHUPS_PREF_KEY = "tatnall-pref-matchups";
   const isDev = import.meta.env.DEV;
 
-  const availableWeeks = useMemo(() => {
+  const availableWeeks = useMemo((): number[] => {
     if (!season) return [];
     const weeks = manifest?.weeksBySeason?.[String(season)] || [];
-    return filterRegularSeasonWeeks(weeks.map((value) => ({ week: value }))).map((row) => row.week);
+    return filterRegularSeasonWeeks(weeks.map((value) => ({ week: value }))).map((row) => row.week as number);
   }, [manifest, season]);
 
   useEffect(() => {
     if (!seasons.length || !manifest) return;
     if (didInitRef.current) return;
     const params = new URLSearchParams(searchParams);
-    const stored = readStorage(MATCHUPS_PREF_KEY, {});
+    const stored = readStorage<StoredPrefs>(MATCHUPS_PREF_KEY, {});
     const storedSeason = Number(stored?.season);
     const storedWeek = Number(stored?.week);
     const paramSeason = Number(searchParams.get("season"));
@@ -49,10 +108,10 @@ export default function MatchupsPage() {
     }
     const weeksForSeason = manifest?.weeksBySeason?.[String(nextSeason)] || [];
     const regularWeeks = filterRegularSeasonWeeks(weeksForSeason.map((value) => ({ week: value }))).map(
-      (row) => row.week,
+      (row) => row.week as number,
     );
     const paramWeek = Number(searchParams.get("week"));
-    let nextWeek =
+    let nextWeek: number | string =
       Number.isFinite(paramWeek) && regularWeeks.includes(paramWeek) ? paramWeek : regularWeeks[0] || "";
     if (!searchParams.get("week") && Number.isFinite(storedWeek) && regularWeeks.includes(storedWeek)) {
       nextWeek = storedWeek;
@@ -85,7 +144,7 @@ export default function MatchupsPage() {
     }
   }, [availableWeeks, week, searchParamsString]);
 
-  const updateSearchParams = (nextSeason, nextWeek) => {
+  const updateSearchParams = (nextSeason: number | string, nextWeek: number | string): void => {
     const params = new URLSearchParams(searchParams);
     params.set("season", String(nextSeason));
     if (nextWeek) params.set("week", String(nextWeek));
@@ -94,55 +153,59 @@ export default function MatchupsPage() {
     writeStorage(MATCHUPS_PREF_KEY, { season: nextSeason, week: nextWeek });
   };
 
-  const handleSeasonChange = (value) => {
+  const handleSeasonChange = (value: string): void => {
     const nextSeason = Number(value);
     setSeason(nextSeason);
     const weeksForSeason = manifest?.weeksBySeason?.[String(nextSeason)] || [];
-    const regularWeeks = filterRegularSeasonWeeks(weeksForSeason.map((w) => ({ week: w }))).map((row) => row.week);
+    const regularWeeks = filterRegularSeasonWeeks(weeksForSeason.map((w) => ({ week: w }))).map((row) => row.week as number);
     const nextWeek = regularWeeks.includes(Number(week)) ? Number(week) : regularWeeks[0] || "";
     setWeek(nextWeek);
     updateSearchParams(nextSeason, nextWeek);
   };
 
-  const handleWeekChange = (value) => {
+  const handleWeekChange = (value: string): void => {
     const nextWeek = Number(value);
     setWeek(nextWeek);
     updateSearchParams(season, nextWeek);
   };
 
-  // TanStack Query Refactor
   const {
     weekData,
     fullStatsRows,
     isLoading: dataLoading,
     isError: dataError,
     error: fetchError
-  } = useMatchups(season, week);
+  } = useMatchups(season, week) as {
+    weekData: WeekData | undefined;
+    fullStatsRows: unknown[];
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+  };
 
   useEffect(() => {
     setActiveMatchup(null);
   }, [season, week]);
 
-
-  const matchups = weekData?.matchups || [];
-  const lineups = weekData?.lineups || [];
+  const matchups = (weekData?.matchups || []) as MatchupWithId[];
+  const lineups = (weekData?.lineups || []) as LineupRow[];
   const fullStatsIndex = useMemo(() => buildNameIndex(fullStatsRows), [fullStatsRows]);
   const searchIndex = useMemo(() => buildNameIndex(playerSearch), [playerSearch]);
 
-  const teamsByRosterId = useMemo(() => {
-    const map = new Map();
+  const teamsByRosterId = useMemo((): Map<string, string> => {
+    const map = new Map<string, string>();
     for (const team of teams || []) {
       if (season && Number(team?.season) !== Number(season)) continue;
       const key = team?.roster_id ?? team?.team_id;
       if (key == null) continue;
-      const name = team?.display_name || team?.team_name || team?.name;
+      const name = team?.display_name || (team as { team_name?: string }).team_name || (team as { name?: string }).name;
       if (name) map.set(String(key), name);
     }
     return map;
   }, [teams, season]);
 
-  const getLineupTeamKeys = (matchup, side) => {
-    const keys = new Set();
+  const getLineupTeamKeys = (matchup: MatchupWithId, side: "home" | "away"): Set<string> => {
+    const keys = new Set<string>();
     const teamValue = side === "home" ? matchup?.home_team : matchup?.away_team;
     const rosterId = side === "home" ? matchup?.home_roster_id : matchup?.away_roster_id;
     if (teamValue) keys.add(String(teamValue));
@@ -161,16 +224,16 @@ export default function MatchupsPage() {
     return keys;
   };
 
-  const getMatchupLabel = (matchup, side) => {
+  const getMatchupLabel = (matchup: MatchupWithId, side: "home" | "away"): string => {
     const teamValue = side === "home" ? matchup?.home_team : matchup?.away_team;
     const rosterId = side === "home" ? matchup?.home_roster_id : matchup?.away_roster_id;
     const rosterName = rosterId != null ? teamsByRosterId.get(String(rosterId)) : null;
     return rosterName || teamValue || (side === "home" ? "Home" : "Away");
   };
 
-  const buildRoster = (teamKeys) => {
+  const buildRoster = (teamKeys: Set<string>): RosterData => {
     const rows = lineups.filter((row) => teamKeys.has(String(row.team)));
-    const mapped = rows.map((row, originalIndex) => {
+    const mapped: EnrichedRow[] = rows.map((row, originalIndex) => {
       const rawName = row.player || row.display_name || row.player_name;
       const espnLookupId = row.espn_id || row.player_id || row.source_player_id;
       const resolvedName =
@@ -205,7 +268,7 @@ export default function MatchupsPage() {
         canonicalPlayerId: canonicalId || "",
         linkName: display.name || merged.display_name || row.player || "",
         canLink,
-      };
+      } as EnrichedRow;
     });
     const sortedRows = Number(season) === 2025
       ? mapped
@@ -222,7 +285,7 @@ export default function MatchupsPage() {
         const isFlexA = slotA.includes("FLEX") || slotA.includes("W/R") || slotA.includes("WR/RB") || slotA.includes("RB/WR") || slotA.includes("W/R/T");
         const isFlexB = slotB.includes("FLEX") || slotB.includes("W/R") || slotB.includes("WR/RB") || slotB.includes("RB/WR") || slotB.includes("W/R/T");
 
-        const rank = (pos, isFlex) => {
+        const rank = (pos: string, isFlex: boolean): number => {
           if (isFlex) return 4;
           if (pos === "QB") return 0;
           if (pos === "RB") return 1;
@@ -238,35 +301,35 @@ export default function MatchupsPage() {
         const rB = rank(posB, isFlexB);
         if (rA !== rB) return rA - rB;
 
-        const pA = safeNumber(a.points);
-        const pB = safeNumber(b.points);
+        const pA = safeNumber(a.points, 0);
+        const pB = safeNumber(b.points, 0);
         if (pA !== pB) return pB - pA;
 
         return (a.originalIndex ?? 0) - (b.originalIndex ?? 0);
       });
     const totals = sortedRows.reduce(
       (acc, row) => {
-        acc.points += safeNumber(row.points);
+        acc.points += safeNumber(row.points, 0);
         acc.starters += row.started ? 1 : 0;
         return acc;
       },
       { points: 0, starters: 0 },
     );
-    const positionalTotals = sortedRows.reduce((acc, row) => {
+    const positionalTotals = sortedRows.reduce<Record<string, number>>((acc, row) => {
       const position = row.position || "—";
-      acc[position] = (acc[position] || 0) + safeNumber(row.points);
+      acc[position] = (acc[position] || 0) + safeNumber(row.points, 0);
       return acc;
     }, {});
     return { rows: sortedRows, totals, positionalTotals };
   };
 
-  const buildPlayerLink = (row) => {
+  const buildPlayerLink = (row: EnrichedRow): string => {
     const name = row.linkName || row.displayName;
     if (name) return `/players/${row.canonicalPlayerId}?name=${encodeURIComponent(name)}`;
     return `/players/${row.canonicalPlayerId}`;
   };
 
-  const activeRoster = useMemo(() => {
+  const activeRoster = useMemo((): { home: RosterData; away: RosterData } | null => {
     if (!activeMatchup) return null;
     return {
       home: buildRoster(getLineupTeamKeys(activeMatchup, "home")),
@@ -274,19 +337,19 @@ export default function MatchupsPage() {
     };
   }, [activeMatchup, lineups, playerIndex, teamsByRosterId, fullStatsIndex, searchIndex, espnNameMap]);
 
-  const ownerLabel = (value, fallback = "—") => normalizeOwnerName(value) || fallback;
+  const ownerLabel = (value: unknown, fallback: string = "—"): string => normalizeOwnerName(value) || fallback;
   const query = teamQuery.trim().toLowerCase();
 
-  const filteredMatchups = useMemo(() => {
+  const filteredMatchups = useMemo((): MatchupWithId[] => {
     return matchups.map((matchup, index) => ({
       ...matchup,
-      matchup_id: matchup.matchup_id ?? matchup.id ?? `m-${index}`,
+      matchup_id: matchup.matchup_id ?? (matchup as { id?: string | number }).id ?? `m-${index}`,
     })).filter((matchup) => {
       const homeLabel = ownerLabel(getMatchupLabel(matchup, "home"), matchup.home_team || "Home");
       const awayLabel = ownerLabel(getMatchupLabel(matchup, "away"), matchup.away_team || "Away");
       return homeLabel.toLowerCase().includes(query) || awayLabel.toLowerCase().includes(query);
     });
-  }, [matchups, ownerLabel, query]);
+  }, [matchups, query]);
 
   const diagnostics = useMemo(() => {
     if (!isDev || !weekData) return null;
@@ -304,7 +367,7 @@ export default function MatchupsPage() {
       resolvedNames,
       missingIds,
     };
-  }, [isDev, weekData, lineups, playerIndex]);
+  }, [isDev, weekData, lineups, playerIndex, espnNameMap]);
 
   if (loading || dataLoading) return <LoadingState label="Loading matchups..." />;
   if (error || dataError) return <ErrorState message={error || fetchError?.message || "Error loading data"} />;
@@ -343,10 +406,6 @@ export default function MatchupsPage() {
         </div>
         <div className="tag">Matchups loaded: {matchups.length || 0}</div>
       </section>
-
-      {/* ... keeping middle content ... */}
-      {/* Wait, I can't keep middle content if I replace a large block. I should just replace the top tag and the bottom tag separately or use multi-replace. */}
-      {/* I will use multi_replace to target opening and closing tags. */}
 
       {diagnostics ? (
         <Card className="mb-6">
@@ -447,8 +506,8 @@ export default function MatchupsPage() {
                         {(() => {
                           const starters = roster.rows.filter((r) => r.started);
                           const bench = roster.rows.filter((r) => !r.started);
-                          const startersTotal = starters.reduce((acc, r) => acc + safeNumber(r.points), 0);
-                          const benchTotal = bench.reduce((acc, r) => acc + safeNumber(r.points), 0);
+                          const startersTotal = starters.reduce((acc, r) => acc + safeNumber(r.points, 0), 0);
+                          const benchTotal = bench.reduce((acc, r) => acc + safeNumber(r.points, 0), 0);
 
                           return (
                             <>

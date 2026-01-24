@@ -2,19 +2,42 @@ import React, { useEffect, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
-import { useTeamsList } from "../hooks/useTeamsList.js";
+import { useTeamsList } from "../hooks/useTeamsList";
 import PageTransition from "../components/PageTransition.jsx";
-import { normalizeOwnerName } from "../lib/identity.js";
-import { formatPoints } from "../utils/format.js";
-import { readStorage, writeStorage } from "../utils/persistence.js";
+import { normalizeOwnerName } from "../lib/identity";
+import { formatPoints } from "../utils/format";
+import { readStorage, writeStorage } from "../utils/persistence";
+import type { Manifest } from "../types/index";
 
 const PREF_KEY = "tatnall-pref-teams-season";
 
-function slugifyOwner(name) {
+interface SeasonTeam {
+    team_name?: string;
+    display_name?: string;
+    owner?: string;
+    final_rank?: number;
+    regular_season_rank?: number;
+    wins?: number;
+    losses?: number;
+    record?: string;
+    points_for?: number;
+    points_against?: number;
+}
+
+interface SeasonData {
+    teams?: SeasonTeam[];
+}
+
+interface EnrichedTeam extends SeasonTeam {
+    ownerNormalized: string;
+    ownerSlug: string;
+}
+
+function slugifyOwner(name: string): string {
     return encodeURIComponent(String(name || "").toLowerCase().replace(/\s+/g, "-"));
 }
 
-export default function TeamsPage() {
+export default function TeamsPage(): React.ReactElement {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const season = searchParams.get("season")
@@ -26,32 +49,36 @@ export default function TeamsPage() {
         seasonData,
         isLoading: loading,
         isError: error
-    } = useTeamsList(season);
+    } = useTeamsList(season) as {
+        manifest: Manifest | undefined;
+        seasonData: SeasonData | undefined;
+        isLoading: boolean;
+        isError: boolean;
+    };
 
     useEffect(() => {
         if (!manifest) return;
         const seasons = manifest?.seasons || [];
-        const stored = readStorage(PREF_KEY);
+        const stored = readStorage<number | null>(PREF_KEY, null);
         const targetSeason =
             season || (stored && seasons.includes(Number(stored)) ? Number(stored) : seasons[0]);
         if (!season && targetSeason) {
-            setSearchParams({ season: targetSeason }, { replace: true });
+            setSearchParams({ season: String(targetSeason) }, { replace: true });
         }
     }, [season, manifest, setSearchParams]);
 
-    const handleSeasonChange = (value) => {
+    const handleSeasonChange = (value: string): void => {
         const newSeason = Number(value);
         writeStorage(PREF_KEY, newSeason);
-        setSearchParams({ season: newSeason });
+        setSearchParams({ season: String(newSeason) });
     };
 
     const seasons = manifest?.seasons || [];
 
-    // Build team list with owner normalization
-    const teams = useMemo(() => {
+    const teams = useMemo((): EnrichedTeam[] => {
         if (!seasonData?.teams) return [];
         return seasonData.teams
-            .map((team) => ({
+            .map((team): EnrichedTeam => ({
                 ...team,
                 ownerNormalized: normalizeOwnerName(team.owner || team.display_name || team.team_name),
                 ownerSlug: slugifyOwner(normalizeOwnerName(team.owner || team.display_name || team.team_name)),
