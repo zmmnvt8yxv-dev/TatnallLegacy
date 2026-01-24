@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import App from "./App.jsx";
-import { DataProvider } from "./data/DataContext.jsx";
+import { DataProvider } from "./data/DataContext";
 import { ThemeProvider } from "./lib/ThemeContext.jsx";
 import "./styles.css";
 

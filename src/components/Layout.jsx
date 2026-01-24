@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useDataContext } from "../data/DataContext.jsx";
+import { useDataContext } from "../data/DataContext";
 import ThemeToggle from "./ThemeToggle.jsx";
 import { CommandMenu } from "./CommandMenu.jsx";
 

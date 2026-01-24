@@ -5,7 +5,7 @@ import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import PlayoffBracket from "../components/PlayoffBracket.jsx";
 import KiltBowlBracket from "../components/KiltBowlBracket.jsx";
-import { useDataContext } from "../data/DataContext.jsx";
+import { useDataContext } from "../data/DataContext";
 import { useSeasonDetails } from "../hooks/useSeasonDetails";
 import { formatPoints } from "../utils/format";
 import { normalizeOwnerName } from "../utils/owners";

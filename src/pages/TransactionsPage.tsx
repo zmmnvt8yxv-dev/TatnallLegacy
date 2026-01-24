@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState, type ReactNode } from "rea
 import PageTransition from "../components/PageTransition.jsx";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
-import { useDataContext } from "../data/DataContext.jsx";
+import { useDataContext } from "../data/DataContext";
 import { useTransactions } from "../hooks/useTransactions";
 import { filterRegularSeasonWeeks } from "../utils/format";
 import { normalizeOwnerName } from "../utils/owners";

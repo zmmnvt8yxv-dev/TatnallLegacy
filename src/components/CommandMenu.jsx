@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { useDataContext } from "../data/DataContext.jsx";
+import { useDataContext } from "../data/DataContext";
 import { useNavigate } from "react-router-dom";
 import {
     CommandDialog,

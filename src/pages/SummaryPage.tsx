@@ -7,7 +7,7 @@ import DeferredSection from "../components/DeferredSection.jsx";
 import NavigationCard from "../components/NavigationCard.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import StatCard from "../components/StatCard.jsx";
-import { useDataContext } from "../data/DataContext.jsx";
+import { useDataContext } from "../data/DataContext";
 import { useFavorites } from "../utils/useFavorites";
 import { useSummaryData } from "../hooks/useSummaryData";
 import LocalStatAssistant from "../components/LocalStatAssistant.jsx";

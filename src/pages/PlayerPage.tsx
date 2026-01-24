@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
-import { useDataContext } from "../data/DataContext.jsx";
+import { useDataContext } from "../data/DataContext";
 import { usePlayerDetails } from "../hooks/usePlayerDetails";
 import PageTransition from "../components/PageTransition.jsx";
 import { getCanonicalPlayerId, resolvePlayerDisplay, resolvePlayerName } from "../lib/playerName";
@@ -726,12 +726,6 @@ export default function PlayerPage(): React.ReactElement {
       if (!grouped.has(key)) grouped.set(key, []);
       grouped.get(key)!.push(row);
     }
-    const careerRows: StatsRow[] = [];
-    for (const summary of statsSeasonSummaries) {
-      if (summary?.rows) careerRows.push(...summary.rows);
-    }
-    const finalCareerRows = careerRows.filter(matchesPlayer);
-    setCareerWeeklyRows(finalCareerRows);
 
     for (const group of grouped.values()) {
       group.sort((a, b) => safeNumber(b.points) - safeNumber(a.points));
@@ -747,7 +741,21 @@ export default function PlayerPage(): React.ReactElement {
       });
     }
     return rows;
-  }, [statsWeeklyRows, statsSeasonSummaries]);
+  }, [statsWeeklyRows]);
+
+  // Update careerWeeklyRows from season summaries (moved from useMemo to useEffect to avoid setState during render)
+  useEffect(() => {
+    if (!statsSeasonSummaries.length) return;
+    const careerRows: StatsRow[] = [];
+    for (const summary of statsSeasonSummaries) {
+      if (summary?.rows) careerRows.push(...summary.rows);
+    }
+    const finalCareerRows = careerRows.filter(matchesPlayer);
+    setCareerWeeklyRows(prev => {
+      if (JSON.stringify(prev) === JSON.stringify(finalCareerRows)) return prev;
+      return finalCareerRows;
+    });
+  }, [statsSeasonSummaries, targetIds, targetNames]);
 
   const metricsForPlayer = useMemo((): StatsRow[] => {
     return normalizedMetrics.filter(matchesPlayer);
