@@ -4,7 +4,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import Modal from "../components/Modal.jsx";
-import { useDataContext } from "../data/DataContext.jsx";
+import { useDataContext } from "../data/DataContext";
 import { useMatchups } from "../hooks/useMatchups";
 import SearchBar from "../components/SearchBar.jsx";
 import { getCanonicalPlayerId, resolvePlayerDisplay } from "../lib/playerName";

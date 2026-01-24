@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import ErrorState from "../components/ErrorState.jsx";
 import LoadingState from "../components/LoadingState.jsx";
 import SearchBar from "../components/SearchBar.jsx";
-import { useDataContext } from "../data/DataContext.jsx";
+import { useDataContext } from "../data/DataContext";
 import { useStandings } from "../hooks/useStandings";
 import { formatPoints } from "../utils/format";
 import { normalizeOwnerName } from "../utils/owners";
