@@ -148,14 +148,18 @@ export default function SeasonPage(): React.ReactElement {
 
     return (
         <PageTransition>
-            <section>
-                <h1 className="page-title">Season Overview</h1>
-                <p className="page-subtitle">Champions, awards, and statistics for {season}</p>
+            <section className="mb-6">
+                <h1 className="text-5xl md:text-6xl font-display font-black text-ink-900 mb-3">Season Overview</h1>
+                <p className="text-lg md:text-xl text-ink-600">Champions, awards, and statistics for {season}</p>
             </section>
 
-            <section className="section-card filters">
-                <label>Select Season:</label>
-                <select value={season} onChange={(e) => handleSeasonChange(e.target.value)}>
+            <section className="section-card filters mb-6">
+                <label className="text-base md:text-lg font-bold text-ink-700">Select Season:</label>
+                <select
+                    value={season}
+                    onChange={(e) => handleSeasonChange(e.target.value)}
+                    className="rounded-md border-2 border-ink-300 bg-white px-4 py-2 text-base md:text-lg font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[140px]"
+                >
                     {seasons.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
             </section>
@@ -175,70 +179,70 @@ export default function SeasonPage(): React.ReactElement {
                         </div>
                     )}
 
-                    <div className="stat-cards-grid">
-                        <div className="stat-card accent">
-                            <div className="stat-label">League Champion</div>
-                            <div className="stat-value">{champion ? ownerLabel(champion) : "—"}</div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+                        <div className="stat-card accent p-4 md:p-6">
+                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">League Champion</div>
+                            <div className="text-2xl md:text-3xl font-display font-black text-ink-900 mb-1">{champion ? ownerLabel(champion) : "—"}</div>
                             {champion && normalizeOwnerName(champion.team || champion.team_name).toLowerCase() !== ownerLabel(champion).toLowerCase() && (
-                                <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
+                                <div className="text-xs md:text-sm text-ink-500">
                                     {champion.team || champion.team_name}
                                 </div>
                             )}
                         </div>
 
-                        <div className="stat-card">
-                            <div className="stat-label">Runner Up</div>
-                            <div className="stat-value">{runnerUp ? ownerLabel(runnerUp) : "—"}</div>
+                        <div className="stat-card p-4 md:p-6">
+                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">Runner Up</div>
+                            <div className="text-2xl md:text-3xl font-display font-black text-ink-900 mb-1">{runnerUp ? ownerLabel(runnerUp) : "—"}</div>
                             {runnerUp && normalizeOwnerName(runnerUp.team || runnerUp.team_name).toLowerCase() !== ownerLabel(runnerUp).toLowerCase() && (
-                                <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
+                                <div className="text-xs md:text-sm text-ink-500">
                                     {runnerUp.team || runnerUp.team_name}
                                 </div>
                             )}
                         </div>
 
-                        <div className="stat-card">
-                            <div className="stat-label">Kilt Bowl Loser</div>
-                            <div className="stat-value">{kiltBowlLoser ? ownerLabel(kiltBowlLoser) : "—"}</div>
+                        <div className="stat-card p-4 md:p-6">
+                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">Kilt Bowl Loser</div>
+                            <div className="text-2xl md:text-3xl font-display font-black text-ink-900 mb-1">{kiltBowlLoser ? ownerLabel(kiltBowlLoser) : "—"}</div>
                             {kiltBowlLoser && normalizeOwnerName(kiltBowlLoser.team).toLowerCase() !== ownerLabel(kiltBowlLoser).toLowerCase() && (
-                                <div className="stat-subtext" style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>
+                                <div className="text-xs md:text-sm text-ink-500">
                                     {kiltBowlLoser.team}
                                 </div>
                             )}
                         </div>
 
-                        <div className="stat-card">
-                            <div className="stat-label">Scoring Leader (Team)</div>
-                            <div className="stat-value">{scoringChamp ? ownerLabel(scoringChamp) : "—"}</div>
-                            <div className="stat-subtext">{scoringChamp ? formatPoints(scoringChamp.points_for) : "—"} pts</div>
+                        <div className="stat-card p-4 md:p-6">
+                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">Scoring Leader</div>
+                            <div className="text-2xl md:text-3xl font-display font-black text-ink-900 mb-1">{scoringChamp ? ownerLabel(scoringChamp) : "—"}</div>
+                            <div className="text-base md:text-lg text-accent-700 font-bold">{scoringChamp ? formatPoints(scoringChamp.points_for) : "—"} pts</div>
                         </div>
 
-                        <div className="stat-card">
-                            <div className="stat-label">Season MVP (Player)</div>
-                            <div className="stat-value" style={{ fontSize: '1.5rem' }}>
+                        <div className="stat-card p-4 md:p-6">
+                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">Season MVP</div>
+                            <div className="text-xl md:text-2xl font-display font-black text-ink-900 mb-1">
                                 {mvp ? (
-                                    <Link to={`/players/${mvp.player_id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <Link to={`/players/${mvp.player_id}`} className="hover:text-accent-700 transition-colors">
                                         {getPlayerName(mvp)}
                                     </Link>
                                 ) : "—"}
                             </div>
-                            <div className="stat-subtext">
-                                {mvp ? `${formatPoints(mvp.fantasy_points_custom)} pts (${mvp.position})` : "—"}
+                            <div className="text-base md:text-lg text-accent-700 font-bold">
+                                {mvp ? `${formatPoints(mvp.fantasy_points_custom)} pts` : "—"}
                             </div>
                         </div>
                     </div>
 
-                    <div className="detail-grid">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div className="section-card">
-                            <h2 className="section-title">Final Standings</h2>
+                            <h2 className="text-2xl md:text-3xl font-black mb-4">Final Standings</h2>
                             {summary?.standings?.length ? (
                                 <div className="table-wrap">
                                     <table className="table">
                                         <thead>
                                             <tr>
-                                                <th>Rank</th>
-                                                <th>Team</th>
-                                                <th>Rec</th>
-                                                <th>PF</th>
+                                                <th className="text-base md:text-lg">Rank</th>
+                                                <th className="text-base md:text-lg">Team</th>
+                                                <th className="text-base md:text-lg">Record</th>
+                                                <th className="text-base md:text-lg">Points</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -247,47 +251,45 @@ export default function SeasonPage(): React.ReactElement {
                                                 .sort((a, b) => (a.rank || 99) - (b.rank || 99))
                                                 .map(row => (
                                                     <tr key={row.team}>
-                                                        <td>{row.rank || "-"}</td>
+                                                        <td className="text-base md:text-xl font-black text-accent-700">{row.rank || "-"}</td>
                                                         <td>
-                                                            <div style={{ fontWeight: 600 }}>
+                                                            <div className="font-bold text-base md:text-lg">
                                                                 {ownerLabel(row)}
                                                             </div>
                                                             {normalizeOwnerName(row.team).toLowerCase() !== ownerLabel(row).toLowerCase() && (
-                                                                <div style={{ fontSize: '0.8em', color: 'var(--ink-400)' }}>{row.team}</div>
+                                                                <div className="text-sm text-ink-400">{row.team}</div>
                                                             )}
                                                         </td>
-                                                        <td>{row.wins}-{row.losses}</td>
-                                                        <td>{formatPoints(row.points_for)}</td>
+                                                        <td className="text-base md:text-lg font-mono font-bold">{row.wins}-{row.losses}</td>
+                                                        <td className="text-base md:text-xl font-display font-black text-accent-700">{formatPoints(row.points_for)}</td>
                                                     </tr>
                                                 ))}
                                         </tbody>
                                     </table>
                                 </div>
                             ) : (
-                                <div style={{ color: 'var(--ink-400)', padding: '20px 0' }}>
+                                <div className="text-base text-ink-400 py-5">
                                     {loadErrors.summary ? "Failed to load standings data." : "No standings available for this season."}
                                 </div>
                             )}
                         </div>
 
-                        <div className="flex-col" style={{ gap: '20px' }}>
-                            <div className="section-card">
-                                <h2 className="section-title">Season Facts</h2>
-                                <ul style={{ lineHeight: '1.8', listStyle: 'none', padding: 0 }}>
-                                    <li>
-                                        <strong>Trades & Transactions:</strong> {transactionCount}
-                                    </li>
-                                    <li>
-                                        <strong>Teams:</strong> {summary?.teams?.length || 0}
-                                    </li>
-                                    <li>
-                                        <strong>Weeks:</strong> {(manifest?.weeksBySeason?.[String(season)] || []).length}
-                                    </li>
-                                </ul>
-                                <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                    <Link to={`/matchups?season=${season}`} className="button">Browse Matchups</Link>
-                                    <Link to={`/transactions?season=${season}`} className="button secondary">View Transactions</Link>
-                                </div>
+                        <div className="section-card">
+                            <h2 className="text-2xl md:text-3xl font-black mb-4">Season Facts</h2>
+                            <ul className="space-y-3 text-base md:text-lg">
+                                <li>
+                                    <strong className="text-ink-900">Trades & Transactions:</strong> <span className="text-accent-700 font-bold">{transactionCount}</span>
+                                </li>
+                                <li>
+                                    <strong className="text-ink-900">Teams:</strong> <span className="text-accent-700 font-bold">{summary?.teams?.length || 0}</span>
+                                </li>
+                                <li>
+                                    <strong className="text-ink-900">Weeks:</strong> <span className="text-accent-700 font-bold">{(manifest?.weeksBySeason?.[String(season)] || []).length}</span>
+                                </li>
+                            </ul>
+                            <div className="mt-6 flex flex-col gap-3">
+                                <Link to={`/matchups?season=${season}`} className="button text-base md:text-lg py-3">Browse Matchups</Link>
+                                <Link to={`/transactions?season=${season}`} className="button secondary text-base md:text-lg py-3">View Transactions</Link>
                             </div>
                         </div>
                     </div>
