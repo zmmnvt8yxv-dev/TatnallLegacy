@@ -374,15 +374,19 @@ export default function MatchupsPage(): React.ReactElement {
 
   return (
     <PageTransition>
-      <section>
-        <h1 className="page-title">Matchups</h1>
-        <p className="page-subtitle">Filter by season and week, then open a matchup to see roster details.</p>
+      <section className="mb-6">
+        <h1 className="text-5xl md:text-6xl font-display font-black text-ink-900 mb-3">Matchups</h1>
+        <p className="text-lg md:text-xl text-ink-600">Filter by season and week, then open a matchup to see roster details.</p>
       </section>
 
-      <section className="section-card filters filters--sticky">
+      <section className="section-card filters filters--sticky mb-6">
         <div>
-          <label>Season</label>
-          <select value={season} onChange={(event) => handleSeasonChange(event.target.value)}>
+          <label className="text-base md:text-lg font-bold mb-2">Season</label>
+          <select
+            value={season}
+            onChange={(event) => handleSeasonChange(event.target.value)}
+            className="rounded-md border-2 border-ink-300 bg-white px-4 py-2 text-base md:text-lg font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[140px]"
+          >
             {seasons.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -391,8 +395,12 @@ export default function MatchupsPage(): React.ReactElement {
           </select>
         </div>
         <div>
-          <label>Week</label>
-          <select value={week} onChange={(event) => handleWeekChange(event.target.value)}>
+          <label className="text-base md:text-lg font-bold mb-2">Week</label>
+          <select
+            value={week}
+            onChange={(event) => handleWeekChange(event.target.value)}
+            className="rounded-md border-2 border-ink-300 bg-white px-4 py-2 text-base md:text-lg font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[140px]"
+          >
             {availableWeeks.map((value) => (
               <option key={value} value={value}>
                 Week {value}
@@ -401,10 +409,10 @@ export default function MatchupsPage(): React.ReactElement {
           </select>
         </div>
         <div>
-          <label>Team</label>
+          <label className="text-base md:text-lg font-bold mb-2">Team</label>
           <SearchBar value={teamQuery} onChange={setTeamQuery} placeholder="Filter by team..." />
         </div>
-        <div className="tag">Matchups loaded: {matchups.length || 0}</div>
+        <div className="tag text-base md:text-lg px-4 py-2">Matchups: {matchups.length || 0}</div>
       </section>
 
       {diagnostics ? (
@@ -429,22 +437,22 @@ export default function MatchupsPage(): React.ReactElement {
             const homeLabel = ownerLabel(getMatchupLabel(matchup, "home"), matchup.home_team || "Home");
             const awayLabel = ownerLabel(getMatchupLabel(matchup, "away"), matchup.away_team || "Away");
             return (
-              <div key={matchup.matchup_id} className="matchup-card">
-                <div className="matchup-row">
-                  <strong>{homeLabel}</strong>
-                  <span className="pill">{homeWin ? "Winner" : awayWin ? "—" : "Tie"}</span>
-                  <span>{formatPoints(matchup.home_score)}</span>
+              <div key={matchup.matchup_id} className="matchup-card p-5">
+                <div className="matchup-row mb-3">
+                  <strong className="text-lg md:text-xl">{homeLabel}</strong>
+                  <span className={`pill text-sm md:text-base px-3 py-1 font-bold ${homeWin ? "bg-green-100 text-green-800" : ""}`}>{homeWin ? "Winner" : awayWin ? "—" : "Tie"}</span>
+                  <span className="text-xl md:text-3xl font-display font-black text-accent-700">{formatPoints(matchup.home_score)}</span>
                 </div>
-                <div className="matchup-row">
-                  <strong>{awayLabel}</strong>
-                  <span className="pill">{awayWin ? "Winner" : homeWin ? "—" : "Tie"}</span>
-                  <span>{formatPoints(matchup.away_score)}</span>
+                <div className="matchup-row mb-4">
+                  <strong className="text-lg md:text-xl">{awayLabel}</strong>
+                  <span className={`pill text-sm md:text-base px-3 py-1 font-bold ${awayWin ? "bg-green-100 text-green-800" : ""}`}>{awayWin ? "Winner" : homeWin ? "—" : "Tie"}</span>
+                  <span className="text-xl md:text-3xl font-display font-black text-accent-700">{formatPoints(matchup.away_score)}</span>
                 </div>
                 <div className="flex-row gap-2 mt-4">
-                  <Button variant="outline" size="sm" onClick={() => setActiveMatchup(matchup)}>
+                  <Button variant="outline" className="text-base" onClick={() => setActiveMatchup(matchup)}>
                     Quick view →
                   </Button>
-                  <Button asChild variant="outline" size="sm">
+                  <Button asChild variant="outline" className="text-base">
                     <Link to={`/matchups/${season}/${week}/${matchup.matchup_id}`}>
                       Full matchup →
                     </Link>
