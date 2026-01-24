@@ -14,7 +14,7 @@ import LocalStatAssistant from "../components/LocalStatAssistant.jsx";
 import { resolvePlayerName } from "../lib/playerName";
 import { formatPoints, safeNumber } from "../utils/format";
 import { normalizeOwnerName } from "../utils/owners";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
 import {
