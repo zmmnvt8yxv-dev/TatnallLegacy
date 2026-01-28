@@ -1,0 +1,364 @@
+# =============================================================================
+# TATNALL LEGACY - UNIFIED BUILD CONFIGURATION
+# =============================================================================
+# This configuration file controls all aspects of the data pipeline build.
+# Modify these settings to customize the build for your league.
+# =============================================================================
+
+# Schema version for configuration compatibility
+config_version: "1.0.0"
+
+# -----------------------------------------------------------------------------
+# League Configuration
+# -----------------------------------------------------------------------------
+league:
+  # League identifiers
+  sleeper_league_id: "your_sleeper_league_id"
+  espn_league_id: "your_espn_league_id"
+
+  # League settings
+  name: "Tatnall Legacy"
+  num_teams: 8
+  roster_size: 15
+
+  # Starting lineup configuration
+  starting_lineup:
+    qb: 2
+    rb: 3
+    wr: 3
+    te: 2
+    flex: 2  # RB/WR/TE
+    k: 1
+    def: 1
+
+  # Bench and reserves
+  bench_spots: 6
+  ir_spots: 2
+
+# -----------------------------------------------------------------------------
+# Season Configuration
+# -----------------------------------------------------------------------------
+seasons:
+  # Range of seasons to process
+  start_season: 2015
+  end_season: 2025
+
+  # Current season (for live updates)
+  current_season: 2025
+
+  # Weeks per season (varies by year)
+  weeks_by_season:
+    2015: 17
+    2016: 17
+    2017: 17
+    2018: 17
+    2019: 17
+    2020: 17
+    2021: 18
+    2022: 18
+    2023: 18
+    2024: 18
+    2025: 18
+
+# -----------------------------------------------------------------------------
+# Scoring Rules
+# -----------------------------------------------------------------------------
+scoring:
+  # Primary scoring system
+  default_system: "ppr"
+
+  # PPR (Points Per Reception)
+  ppr:
+    passing_yard: 0.04
+    passing_td: 4
+    passing_int: -2
+    passing_2pt: 2
+    rushing_yard: 0.1
+    rushing_td: 6
+    rushing_2pt: 2
+    receiving_yard: 0.1
+    receiving_td: 6
+    receiving_2pt: 2
+    reception: 1.0
+    fumble_lost: -2
+
+  # Half-PPR
+  half_ppr:
+    passing_yard: 0.04
+    passing_td: 4
+    passing_int: -2
+    passing_2pt: 2
+    rushing_yard: 0.1
+    rushing_td: 6
+    rushing_2pt: 2
+    receiving_yard: 0.1
+    receiving_td: 6
+    receiving_2pt: 2
+    reception: 0.5
+    fumble_lost: -2
+
+  # Standard (no PPR)
+  standard:
+    passing_yard: 0.04
+    passing_td: 4
+    passing_int: -2
+    passing_2pt: 2
+    rushing_yard: 0.1
+    rushing_td: 6
+    rushing_2pt: 2
+    receiving_yard: 0.1
+    receiving_td: 6
+    receiving_2pt: 2
+    reception: 0
+    fumble_lost: -2
+
+  # Custom league scoring (override specific values)
+  custom:
+    td_bonus_100_rushing: 3
+    td_bonus_100_receiving: 3
+    td_bonus_300_passing: 3
+
+# -----------------------------------------------------------------------------
+# WAR (Wins Above Replacement) Configuration
+# -----------------------------------------------------------------------------
+war:
+  # Points per win (for WAR calculation)
+  points_per_win: 15.0
+
+  # Replacement level thresholds (starters + buffer)
+  replacement_level:
+    qb: 20  # 8 teams * 2 starters + 4 buffer
+    rb: 30  # 8 teams * 3 starters + 6 buffer
+    wr: 30  # 8 teams * 3 starters + 6 buffer
+    te: 20  # 8 teams * 2 starters + 4 buffer
+    k: 10
+    def: 10
+
+# -----------------------------------------------------------------------------
+# Metrics Configuration
+# -----------------------------------------------------------------------------
+metrics:
+  # Boom/bust thresholds
+  boom_threshold: 20.0  # Points for "boom" week
+  bust_threshold: 5.0   # Points for "bust" week
+
+  # Consistency scoring
+  consistency_weeks_min: 6  # Minimum weeks to qualify
+
+  # Confidence thresholds for ID matching
+  confidence:
+    exact: 1.0
+    manual: 1.0
+    crosswalk: 0.95
+    name_position_dob: 0.85
+    name_dob: 0.80
+    fuzzy_high: 0.75
+    fuzzy_medium: 0.70
+    fuzzy_low: 0.60
+    name_only: 0.50
+
+# -----------------------------------------------------------------------------
+# Data Sources
+# -----------------------------------------------------------------------------
+data_sources:
+  # Primary sources (in order of preference)
+  primary:
+    - nflverse
+    - sleeper
+    - espn
+
+  # NFLverse configuration
+  nflverse:
+    enabled: true
+    base_url: "https://github.com/nflverse/nflverse-data/releases/download"
+    cache_days: 1  # How long to cache downloaded data
+
+  # Sleeper API
+  sleeper:
+    enabled: true
+    base_url: "https://api.sleeper.app/v1"
+
+  # ESPN API
+  espn:
+    enabled: true
+    # ESPN requires authentication cookies
+    # Set S2 and SWID in environment variables or config/api_keys.json
+
+  # Sportradar API (optional, for additional data)
+  sportradar:
+    enabled: false
+    # Requires API key in environment or config/api_keys.json
+
+# -----------------------------------------------------------------------------
+# File Paths
+# -----------------------------------------------------------------------------
+paths:
+  # Database locations
+  databases:
+    players: "db/players.sqlite"
+    stats: "db/stats.sqlite"
+    league: "db/league.sqlite"
+
+  # Raw data storage
+  data_raw: "data_raw"
+
+  # Public output
+  public_data: "public/data"
+
+  # API cache
+  api_cache: "public/api"
+
+  # Build state (for incremental builds)
+  build_state: ".build_state"
+
+  # Configuration files
+  config:
+    api_keys: "config/api_keys.json"
+    manual_overrides: "scripts/identity/manual_overrides.json"
+
+# -----------------------------------------------------------------------------
+# Export Configuration
+# -----------------------------------------------------------------------------
+export:
+  # JSON formatting
+  minify: false
+  compress: false  # gzip compression
+
+  # Pagination for API
+  page_size: 25
+  max_page_size: 100
+
+  # Search index
+  search:
+    include_aliases: true
+    include_owners: false
+    phonetic_matching: true  # Soundex/Metaphone
+
+# -----------------------------------------------------------------------------
+# Build Pipeline
+# -----------------------------------------------------------------------------
+pipeline:
+  # Steps to run (in order)
+  steps:
+    - name: verify_inputs
+      script: scripts/verify_inputs.py
+      required: true
+
+    - name: load_identities
+      script: scripts/identity/load_all_sources.py
+      depends_on: []
+
+    - name: load_stats
+      script: scripts/stats/load_weekly_stats.py
+      depends_on: [load_identities]
+
+    - name: calculate_metrics
+      script: scripts/metrics/calculate_all.py
+      depends_on: [load_stats]
+
+    - name: unify_transactions
+      script: scripts/league/unify_transactions.py
+      depends_on: [load_identities]
+
+    - name: unify_lineups
+      script: scripts/league/unify_lineups.py
+      depends_on: [load_identities, load_stats]
+
+    - name: build_matchups
+      script: scripts/league/build_matchups.py
+      depends_on: [unify_lineups]
+
+    - name: export_site_data
+      script: scripts/export/build_site_data.py
+      depends_on: [calculate_metrics, build_matchups]
+
+    - name: build_search_index
+      script: scripts/export/build_search_index.py
+      depends_on: [load_identities]
+
+    - name: build_api_cache
+      script: scripts/export/build_api_cache.py
+      depends_on: [export_site_data]
+
+    - name: validate
+      script: scripts/validation/validate.py
+      depends_on: [export_site_data]
+      required: true
+
+    - name: audit
+      script: scripts/audit/full_audit.py
+      depends_on: [validate]
+
+  # Parallel execution settings
+  parallel:
+    enabled: true
+    max_workers: 4
+
+  # Incremental build settings
+  incremental:
+    enabled: true
+    check_file_hashes: true
+
+# -----------------------------------------------------------------------------
+# Quality Gates
+# -----------------------------------------------------------------------------
+quality:
+  # Minimum audit score to pass build
+  min_audit_score: 80.0
+
+  # Maximum allowed errors
+  max_validation_errors: 0
+  max_audit_warnings: 50
+
+  # Required coverage thresholds
+  coverage:
+    player_id_coverage: 95.0  # % of players with IDs
+    active_player_coverage: 98.0  # % of active players with IDs
+    stats_coverage: 90.0  # % of games with stats
+
+# -----------------------------------------------------------------------------
+# Feature Flags
+# -----------------------------------------------------------------------------
+features:
+  # Enable/disable specific features
+  load_injuries: true
+  load_schedule: true
+  build_profiles: true
+  calculate_war: true
+  calculate_zscores: true
+  opponent_adjustment: true
+
+  # Experimental features
+  experimental:
+    predictive_metrics: false
+    player_comparisons: false
+
+# -----------------------------------------------------------------------------
+# Notifications
+# -----------------------------------------------------------------------------
+notifications:
+  # Slack notifications (optional)
+  slack:
+    enabled: false
+    webhook_url: ""
+    channel: "#data-pipeline"
+
+  # Email notifications (optional)
+  email:
+    enabled: false
+    smtp_server: ""
+    recipients: []
+
+# -----------------------------------------------------------------------------
+# Logging
+# -----------------------------------------------------------------------------
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+
+  # File logging
+  file:
+    enabled: true
+    path: "logs/build.log"
+    max_size_mb: 10
+    backup_count: 5
