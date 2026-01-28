@@ -1,0 +1,77 @@
+{
+  "$schema": "./manual_overrides.schema.json",
+  "_version": "1.0.0",
+  "_description": "Manual player ID mappings for edge cases that automation cannot solve",
+  "_last_updated": "2026-01-26",
+  "_documentation": "https://github.com/TatnallLegacy/docs/manual-overrides.md",
+
+  "overrides": {
+    "_comment": "Format: 'source:external_id': { 'player_uid': '...', 'note': '...', ... }"
+  },
+
+  "id_mappings": {
+    "_comment": "Direct ID-to-player_uid mappings for unresolved IDs"
+  },
+
+  "name_corrections": {
+    "_comment": "Canonical name corrections for data quality",
+    "_example": {
+      "player_uid": "example-uuid-here",
+      "old_name": "John Smth",
+      "new_name": "John Smith",
+      "reason": "Typo correction",
+      "added_by": "admin",
+      "added_at": "2026-01-26T00:00:00Z"
+    }
+  },
+
+  "player_merges": {
+    "_comment": "Records for merging duplicate player entries",
+    "_example": {
+      "primary_uid": "keep-this-uuid",
+      "merged_uids": ["duplicate-uuid-1", "duplicate-uuid-2"],
+      "reason": "Same player incorrectly created as multiple records",
+      "merged_by": "admin",
+      "merged_at": "2026-01-26T00:00:00Z"
+    }
+  },
+
+  "player_splits": {
+    "_comment": "Records for splitting incorrectly merged players",
+    "_example": {
+      "original_uid": "incorrectly-merged-uuid",
+      "new_uids": ["player-a-uuid", "player-b-uuid"],
+      "reason": "Two different players incorrectly merged",
+      "split_by": "admin",
+      "split_at": "2026-01-26T00:00:00Z"
+    }
+  },
+
+  "exclusions": {
+    "_comment": "IDs that should be explicitly excluded from matching",
+    "_example": {
+      "source": "sleeper",
+      "external_id": "0",
+      "reason": "Placeholder ID, not a real player",
+      "added_by": "admin",
+      "added_at": "2026-01-26T00:00:00Z"
+    }
+  },
+
+  "alias_overrides": {
+    "_comment": "Manual alias additions or removals",
+    "_example": {
+      "player_uid": "example-uuid",
+      "action": "add",
+      "alias": "T-Mac",
+      "reason": "Common nickname not in source data",
+      "added_by": "admin",
+      "added_at": "2026-01-26T00:00:00Z"
+    }
+  },
+
+  "audit_log": {
+    "_comment": "Chronological log of all manual changes",
+    "entries": []
+  }
+}
