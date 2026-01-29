@@ -26,7 +26,12 @@ import {
   Activity,
   Calendar,
   Zap,
-  ChevronRight
+  ChevronRight,
+  TrendingUp,
+  Target,
+  BarChart3,
+  Crown,
+  Flame
 } from "lucide-react";
 import type { Manifest, Player } from "../types/index";
 
@@ -308,146 +313,220 @@ export default function SummaryPage(): React.ReactElement {
 
   return (
     <PageTransition>
-      <section className="mb-6">
-        <h1 className="text-5xl md:text-6xl font-display font-black text-ink-900 mb-3">League Summary</h1>
-        <p className="text-lg md:text-xl text-ink-600 max-w-4xl">
-          Snapshot of the latest season plus all-time records from available league exports.
-        </p>
-      </section>
+      {/* Hero Section - Futuristic Design */}
+      <div className="relative w-full bg-ink-900 text-white overflow-hidden rounded-3xl mb-10 p-8 md:p-12 isolate shadow-2xl border border-accent-500/20">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 -z-10" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 -z-10 animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/15 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 -z-10" />
+        <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[60px] -translate-x-1/2 -translate-y-1/2 -z-10" />
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <Card className="shadow-soft border-ink-100 overflow-hidden relative">
-          <div className="absolute top-0 right-0 p-3 opacity-10">
-            <Calendar size={56} className="text-accent-700" />
-          </div>
-          <CardHeader className="pb-2">
-            <span className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest">Current Season</span>
-          </CardHeader>
-          <CardContent>
-            <div className="text-5xl md:text-6xl font-display text-accent-700 leading-none font-black">{latestSeason ?? "—"}</div>
-            <p className="text-sm md:text-base text-ink-500 font-medium uppercase tracking-tight mt-2 flex items-center gap-1">
-              <Activity size={14} /> {statusLabel}
-            </p>
-          </CardContent>
-        </Card>
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.03] -z-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '50px 50px'}} />
 
-        <Card className="shadow-soft border-ink-100 overflow-hidden relative">
-          <div className="absolute top-0 right-0 p-3 opacity-10">
-            <Trophy size={56} className="text-amber-500" />
-          </div>
-          <CardHeader className="pb-2">
-            <span className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest">League Champion</span>
-          </CardHeader>
-          <CardContent>
-            <div className="text-xl md:text-2xl font-display text-ink-900 truncate leading-tight mb-1 font-black">{championLabel}</div>
-            <p className="text-xs md:text-sm text-ink-500 font-medium uppercase tracking-tight leading-relaxed">{championNote}</p>
-          </CardContent>
-        </Card>
+        {/* Accent lines */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-500/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-500/30 to-transparent" />
 
-        <Card className="shadow-soft border-ink-100 overflow-hidden relative">
-          <div className="absolute top-0 right-0 p-3 opacity-10">
-            <Zap size={56} className="text-blue-500" />
+        <div className="relative z-10">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="p-4 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl shadow-lg shadow-accent-500/30">
+              <Trophy className="text-white drop-shadow-md" size={32} />
+            </div>
+            <Badge variant="outline" className="bg-accent-500/10 text-accent-400 border-accent-500/30 px-4 py-1.5 text-sm font-bold">
+              <Activity size={14} className="mr-2" />
+              {statusLabel}
+            </Badge>
           </div>
-          <CardHeader className="pb-2">
-            <span className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest">Transactions</span>
-          </CardHeader>
-          <CardContent>
-            <div className="text-5xl md:text-6xl font-display text-ink-900 leading-none font-black">{transactionTotals ? transactionTotals.total : "—"}</div>
-            <p className="text-sm md:text-base text-ink-500 font-medium uppercase tracking-tight mt-2">Trades + adds + drops</p>
-          </CardContent>
-        </Card>
 
-        <Card className="shadow-soft border-ink-100 overflow-hidden relative">
-          <div className="absolute top-0 right-0 p-3 opacity-10">
-            <ArrowRightLeft size={56} className="text-purple-500" />
-          </div>
-          <CardHeader className="pb-2">
-            <span className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest">Total Trades</span>
-          </CardHeader>
-          <CardContent>
-            <div className="text-5xl md:text-6xl font-display text-ink-900 leading-none font-black">{transactionTotals ? transactionTotals.totalTrades : "—"}</div>
-            <p className="text-sm md:text-base text-ink-500 font-medium uppercase tracking-tight mt-2">Latest season trades</p>
-          </CardContent>
-        </Card>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-none bg-gradient-to-r from-white via-white to-accent-300 bg-clip-text text-transparent drop-shadow-lg mb-4">
+            League Summary
+            <span className="text-accent-400 text-6xl lg:text-7xl leading-none drop-shadow-[0_0_20px_rgba(31,147,134,0.5)]">.</span>
+          </h1>
+          <p className="text-lg md:text-xl text-ink-300 max-w-3xl leading-relaxed">
+            Snapshot of the latest season plus all-time records from available league exports.
+          </p>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
-        <Card className="shadow-soft">
-          <CardHeader>
-            <CardTitle className="text-2xl font-black">Season Highlights</CardTitle>
+      {/* Quick Stats Grid - Futuristic Cards */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        <div className="group relative bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl p-6 text-white shadow-lg shadow-accent-500/25 hover:shadow-xl hover:shadow-accent-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/5 rounded-full blur-xl translate-y-1/2 -translate-x-1/2" />
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <Calendar className="text-accent-200" size={18} />
+              <span className="text-[10px] font-bold text-accent-200 uppercase tracking-[0.15em]">Current Season</span>
+            </div>
+            <div className="text-5xl md:text-6xl font-display font-black leading-none mb-1">{latestSeason ?? "—"}</div>
+            <p className="text-xs text-accent-200/80">Active fantasy season</p>
+          </div>
+        </div>
+
+        <div className="group relative bg-white rounded-2xl p-6 border-2 border-amber-200 hover:border-amber-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <Crown className="text-amber-500" size={18} />
+              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">League Champion</span>
+            </div>
+            <div className="text-xl md:text-2xl font-display font-black text-ink-900 truncate group-hover:text-amber-600 transition-colors mb-1">{championLabel}</div>
+            <p className="text-xs text-ink-400 truncate">{championNote}</p>
+          </div>
+        </div>
+
+        <div className="group relative bg-white rounded-2xl p-6 border-2 border-blue-200 hover:border-blue-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <Zap className="text-blue-500" size={18} />
+              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Transactions</span>
+            </div>
+            <div className="text-5xl md:text-6xl font-display font-black text-ink-900 leading-none group-hover:text-blue-600 transition-colors">{transactionTotals ? transactionTotals.total : "—"}</div>
+            <p className="text-xs text-ink-400 mt-1">Trades + adds + drops</p>
+          </div>
+        </div>
+
+        <div className="group relative bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/5 rounded-full blur-xl translate-y-1/2 -translate-x-1/2" />
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <ArrowRightLeft className="text-purple-200" size={18} />
+              <span className="text-[10px] font-bold text-purple-200 uppercase tracking-[0.15em]">Total Trades</span>
+            </div>
+            <div className="text-5xl md:text-6xl font-display font-black leading-none mb-1">{transactionTotals ? transactionTotals.totalTrades : "—"}</div>
+            <p className="text-xs text-purple-200/80">Latest season trades</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Season Highlights & Navigation */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+        <Card className="shadow-lg border-2 border-ink-100 hover:border-accent-300 transition-all duration-300 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-40 h-40 bg-accent-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          <CardHeader className="border-b border-ink-100 bg-gradient-to-r from-ink-50 to-white">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-gradient-to-br from-accent-500 to-accent-600 rounded-xl shadow-md shadow-accent-500/20">
+                <Flame className="text-white" size={20} />
+              </div>
+              <CardTitle className="text-xl font-display font-black">Season Highlights</CardTitle>
+            </div>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6 relative z-10">
             {transactionTotals ? (
-              <div className="flex flex-col gap-2">
-                <div className="text-base md:text-lg">
-                  <span className="font-bold text-ink-900">Most adds:</span>{" "}
-                  <span className="text-accent-700">{ownerLabel(transactionTotals.mostAdds?.team, transactionTotals.mostAdds?.team || "—")}</span>{" "}
-                  <span className="text-ink-600">({transactionTotals.mostAdds?.adds || 0})</span>
+              <div className="flex flex-col gap-4">
+                <div className="p-4 rounded-xl bg-gradient-to-r from-green-50 to-white border border-green-200 hover:shadow-md transition-all">
+                  <span className="text-[10px] font-bold text-green-600 uppercase tracking-wider block mb-1">Most Adds</span>
+                  <span className="text-lg font-display font-black text-ink-900">{ownerLabel(transactionTotals.mostAdds?.team, transactionTotals.mostAdds?.team || "—")}</span>
+                  <Badge variant="success" className="ml-2 text-xs">{transactionTotals.mostAdds?.adds || 0} adds</Badge>
                 </div>
-                <div className="text-base md:text-lg">
-                  <span className="font-bold text-ink-900">Most drops:</span>{" "}
-                  <span className="text-accent-700">{ownerLabel(transactionTotals.mostDrops?.team, transactionTotals.mostDrops?.team || "—")}</span>{" "}
-                  <span className="text-ink-600">({transactionTotals.mostDrops?.drops || 0})</span>
+                <div className="p-4 rounded-xl bg-gradient-to-r from-red-50 to-white border border-red-200 hover:shadow-md transition-all">
+                  <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider block mb-1">Most Drops</span>
+                  <span className="text-lg font-display font-black text-ink-900">{ownerLabel(transactionTotals.mostDrops?.team, transactionTotals.mostDrops?.team || "—")}</span>
+                  <Badge variant="destructive" className="ml-2 text-xs">{transactionTotals.mostDrops?.drops || 0} drops</Badge>
                 </div>
-                <div className="text-base md:text-lg">
-                  <span className="font-bold text-ink-900">Trades logged:</span>{" "}
-                  <span className="text-accent-700">{transactionTotals.totalTrades}</span>
+                <div className="p-4 rounded-xl bg-gradient-to-r from-purple-50 to-white border border-purple-200 hover:shadow-md transition-all">
+                  <span className="text-[10px] font-bold text-purple-600 uppercase tracking-wider block mb-1">Trade Activity</span>
+                  <span className="text-lg font-display font-black text-ink-900">{transactionTotals.totalTrades} trades logged</span>
                 </div>
               </div>
             ) : (
-              <div className="text-base text-ink-500">No transaction data available for this season.</div>
+              <div className="text-base text-ink-500 p-6 text-center bg-ink-50 rounded-xl border-2 border-dashed border-ink-200">No transaction data available for this season.</div>
             )}
           </CardContent>
         </Card>
 
-        <NavigationCard
-          to="/matchups"
-          title="Weekly Matchups"
-          description="Browse matchups by season and week, then dive into roster details."
-        />
-        <NavigationCard
-          to="/standings"
-          title="Standings"
-          description="Season standings plus all-time franchise summaries."
-        />
+        <Link to="/matchups" className="block group">
+          <div className="h-full relative bg-gradient-to-br from-ink-900 to-ink-800 rounded-2xl p-6 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-accent-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '30px 30px'}} />
+            <div className="relative z-10 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-accent-500/20 rounded-xl border border-accent-500/30">
+                  <Target className="text-accent-400" size={24} />
+                </div>
+              </div>
+              <h3 className="text-2xl font-display font-black mb-3 group-hover:text-accent-400 transition-colors">Weekly Matchups</h3>
+              <p className="text-ink-400 text-sm leading-relaxed flex-1">Browse matchups by season and week, then dive into roster details.</p>
+              <div className="flex items-center gap-2 text-accent-400 font-bold text-sm mt-4 group-hover:gap-3 transition-all">
+                <span>Explore matchups</span>
+                <ChevronRight size={18} />
+              </div>
+            </div>
+          </div>
+        </Link>
+
+        <Link to="/standings" className="block group">
+          <div className="h-full relative bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl p-6 text-white shadow-xl shadow-amber-500/25 hover:shadow-2xl hover:shadow-amber-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+            <div className="relative z-10 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-white/10 rounded-xl border border-white/20">
+                  <BarChart3 className="text-amber-100" size={24} />
+                </div>
+              </div>
+              <h3 className="text-2xl font-display font-black mb-3">Standings</h3>
+              <p className="text-amber-100/80 text-sm leading-relaxed flex-1">Season standings plus all-time franchise summaries.</p>
+              <div className="flex items-center gap-2 text-white font-bold text-sm mt-4 group-hover:gap-3 transition-all">
+                <span>View standings</span>
+                <ChevronRight size={18} />
+              </div>
+            </div>
+          </div>
+        </Link>
       </div>
 
+      {/* Top Weekly Performances */}
       <DeferredSection
         onVisible={() => setLoadHistory(true)}
-        placeholder={<Card className="mb-6 shadow-soft"><CardContent className="pt-6 text-base">Loading weekly leaders…</CardContent></Card>}
+        placeholder={<Card className="mb-8 shadow-lg"><CardContent className="pt-6 text-base">Loading weekly leaders...</CardContent></Card>}
       >
-        <Card className="mb-6 shadow-soft">
-          <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl font-black">Top Weekly Performances</CardTitle>
-            <CardDescription className="text-base md:text-lg">45+ Point Games (2015–2025)</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="mb-4">
-              <SearchBar value={weeklySearch} onChange={setWeeklySearch} placeholder="Search weekly leaders..." />
+        <Card className="mb-8 shadow-lg border border-ink-200/50 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg shadow-green-500/20">
+                  <TrendingUp className="text-white" size={22} />
+                </div>
+                <div>
+                  <CardTitle className="text-2xl font-display font-black">Top Weekly Performances</CardTitle>
+                  <CardDescription className="text-sm text-ink-500 font-medium">45+ Point Games (2015–2025)</CardDescription>
+                </div>
+              </div>
+              <div className="w-full md:w-64">
+                <SearchBar value={weeklySearch} onChange={setWeeklySearch} placeholder="Search weekly leaders..." />
+              </div>
             </div>
+          </CardHeader>
+          <CardContent className="p-0 relative z-10">
             {allTimePending ? (
-              <div className="text-base text-ink-500">Loading weekly leaders…</div>
+              <div className="text-base text-ink-500 p-8 text-center">Loading weekly leaders...</div>
             ) : topWeekly.length ? (
-              <div className="table-wrap">
-                <table className="table">
+              <div className="overflow-x-auto">
+                <table className="w-full">
                   <thead>
-                    <tr>
-                      <th className="text-sm md:text-base">Player</th>
-                      <th className="text-sm md:text-base hidden md:table-cell">Team</th>
-                      <th className="text-sm md:text-base">Points</th>
+                    <tr className="bg-gradient-to-r from-ink-900 to-ink-800 text-white">
+                      <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Player</th>
+                      <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em] hidden md:table-cell">Team</th>
+                      <th className="py-4 px-5 text-right text-[10px] font-bold uppercase tracking-[0.15em]">Points</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="divide-y divide-ink-100">
                     {topWeekly.slice(0, 10).map((row, index) => {
                       const pid = row?.player_id;
                       const player = pid ? playerFromSleeper(pid) : null;
                       const playerName = row ? getPlayerName(row) || player?.name : "Unknown";
                       return (
-                        <tr key={`${pid || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`}>
-                          <td className="py-3 px-4">
+                        <tr key={`${pid || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`} className={`hover:bg-accent-50/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                          <td className="py-4 px-5">
                             {pid ? (
-                              <Link to={`/players/${pid}`} className="flex items-center gap-2 md:gap-3 group">
-                                <div className="w-6 h-6 rounded-full border border-ink-100 overflow-hidden bg-white shrink-0 shadow-sm group-hover:border-accent-300 transition-colors">
+                              <Link to={`/players/${pid}`} className="flex items-center gap-3 group">
+                                <div className="w-10 h-10 rounded-full border-2 border-ink-100 overflow-hidden bg-white shrink-0 shadow-sm group-hover:border-accent-400 transition-all group-hover:shadow-md">
                                   <img
                                     src={`https://sleepercdn.com/content/nfl/players/${pid}.jpg`}
                                     alt=""
@@ -457,43 +536,45 @@ export default function SummaryPage(): React.ReactElement {
                                   />
                                 </div>
                                 <div className="min-w-0">
-                                  <div className="font-bold text-ink-900 text-sm md:text-base truncate max-w-[120px] md:max-w-none group-hover:text-accent-700 transition-colors">{playerName}</div>
-                                  <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-wider">
+                                  <div className="font-bold text-ink-900 text-sm md:text-base truncate max-w-[150px] md:max-w-none group-hover:text-accent-600 transition-colors">{playerName}</div>
+                                  <div className="text-xs font-bold text-ink-400 uppercase tracking-wider">
                                     {row.season} · W{row.week}
                                   </div>
                                 </div>
                               </Link>
                             ) : (
-                              <div className="flex items-center gap-2 md:gap-3">
-                                <div className="w-6 h-6 rounded-full bg-ink-50 border border-ink-100 shrink-0" />
+                              <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-ink-100 border border-ink-200 shrink-0 flex items-center justify-center">
+                                  <Users size={18} className="text-ink-400" />
+                                </div>
                                 <div className="min-w-0">
-                                  <div className="font-bold text-ink-900 text-sm md:text-base truncate max-w-[120px] md:max-w-none">{playerName || "Unknown"}</div>
-                                  <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-wider">
+                                  <div className="font-bold text-ink-900 text-sm md:text-base truncate max-w-[150px] md:max-w-none">{playerName || "Unknown"}</div>
+                                  <div className="text-xs font-bold text-ink-400 uppercase tracking-wider">
                                     {row.season} · W{row.week}
                                   </div>
                                 </div>
                               </div>
                             )}
                           </td>
-                          <td className="py-3 px-4 text-base md:text-lg font-medium text-ink-800 hidden md:table-cell">
+                          <td className="py-4 px-5 text-base font-medium text-ink-800 hidden md:table-cell">
                             {(() => {
                               const ownerByTeam = ownersBySeason.get(Number(row.season));
                               const owner = ownerByTeam?.get(row.team || "");
                               return owner ? (
                                 <div className="flex flex-col">
                                   <span className="font-bold">{owner}</span>
-                                  <span className="text-xs md:text-sm text-ink-400 uppercase tracking-tighter">{row.team}</span>
+                                  <span className="text-xs text-ink-400 uppercase tracking-tighter">{row.team}</span>
                                 </div>
                               ) : row.team;
                             })()}
                           </td>
-                          <td className="py-3 px-4">
-                            <div className="flex items-center gap-2 md:gap-3 justify-end md:justify-start">
-                              <span className="text-xl md:text-3xl font-display text-accent-700 font-black">{formatPoints(row.points)}</span>
+                          <td className="py-4 px-5">
+                            <div className="flex items-center gap-3 justify-end">
+                              <span className="text-2xl md:text-3xl font-display text-accent-600 font-black">{formatPoints(row.points)}</span>
                               {row.started != null && (
                                 <Badge
                                   variant={row.started ? "success" : "destructive"}
-                                  className="text-xs md:text-sm px-2 py-0.5 font-black"
+                                  className="text-[10px] px-2 py-0.5 font-bold shadow-sm"
                                 >
                                   {row.started ? "START" : "BN"}
                                 </Badge>
@@ -507,65 +588,85 @@ export default function SummaryPage(): React.ReactElement {
                 </table>
               </div>
             ) : (
-              <div className="text-base text-ink-500 italic pb-4">No weekly performance data available.</div>
+              <div className="text-base text-ink-500 italic p-8 text-center bg-ink-50/50">No weekly performance data available.</div>
             )}
           </CardContent>
         </Card>
       </DeferredSection>
 
+      {/* Career Fantasy Leaders */}
       <DeferredSection
         onVisible={() => setLoadHistory(true)}
-        placeholder={<Card className="mb-6 shadow-soft"><CardContent className="pt-6 text-base">Loading career leaders…</CardContent></Card>}
+        placeholder={<Card className="mb-8 shadow-lg"><CardContent className="pt-6 text-base">Loading career leaders...</CardContent></Card>}
       >
-        <Card className="mb-6 shadow-soft">
-          <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl font-black">Career Fantasy Leaders</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap items-center gap-4 mb-6">
-              <div className="flex-1 min-w-[200px]">
-                <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search career leaders..." />
+        <Card className="mb-8 shadow-lg border border-ink-200/50 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl shadow-lg shadow-amber-500/20">
+                  <Star className="text-white" size={22} />
+                </div>
+                <CardTitle className="text-2xl font-display font-black">Career Fantasy Leaders</CardTitle>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-base font-bold text-ink-500 uppercase">Position</span>
-                <select
-                  value={careerPosition}
-                  onChange={(e) => setCareerPosition(e.target.value)}
-                  className="rounded-md border border-ink-200 bg-white px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-accent-500"
-                >
-                  <option value="ALL">All</option>
-                  <option value="QB">QB</option>
-                  <option value="RB">RB</option>
-                  <option value="WR">WR</option>
-                  <option value="TE">TE</option>
-                  <option value="D/ST">D/ST</option>
-                  <option value="K">K</option>
-                </select>
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="w-full md:w-48">
+                  <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search leaders..." />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Position</span>
+                  <select
+                    value={careerPosition}
+                    onChange={(e) => setCareerPosition(e.target.value)}
+                    className="rounded-lg border-2 border-ink-200 bg-white px-4 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 hover:border-ink-300 transition-colors"
+                  >
+                    <option value="ALL">All</option>
+                    <option value="QB">QB</option>
+                    <option value="RB">RB</option>
+                    <option value="WR">WR</option>
+                    <option value="TE">TE</option>
+                    <option value="D/ST">D/ST</option>
+                    <option value="K">K</option>
+                  </select>
+                </div>
               </div>
             </div>
+          </CardHeader>
+          <CardContent className="p-0 relative z-10">
             {allTimePending ? (
-              <div className="text-base text-ink-500">Loading career leaders…</div>
+              <div className="text-base text-ink-500 p-8 text-center">Loading career leaders...</div>
             ) : careerLeaders.length ? (
-              <div className="table-wrap">
-                <table className="table">
+              <div className="overflow-x-auto">
+                <table className="w-full">
                   <thead>
-                    <tr>
-                      <th className="text-sm md:text-base">Player</th>
-                      <th className="text-sm md:text-base">Seasons</th>
-                      <th className="text-sm md:text-base">Total Points</th>
+                    <tr className="bg-gradient-to-r from-ink-900 to-ink-800 text-white">
+                      <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Rank</th>
+                      <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Player</th>
+                      <th className="py-4 px-5 text-center text-[10px] font-bold uppercase tracking-[0.15em]">Seasons</th>
+                      <th className="py-4 px-5 text-right text-[10px] font-bold uppercase tracking-[0.15em]">Total Points</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="divide-y divide-ink-100">
                     {careerLeaders.slice(0, 10).map((row, index) => {
                       const pid = row?.player_id;
                       const player = pid ? playerFromSleeper(pid) : null;
                       const playerName = row ? getPlayerName(row) || player?.name : "Unknown";
                       return (
-                        <tr key={pid || `career-${index}`} className="hover:bg-ink-50/30 transition-colors">
-                          <td className="py-3 px-4">
+                        <tr key={pid || `career-${index}`} className={`hover:bg-accent-50/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                          <td className="py-4 px-5">
+                            <span className={`inline-flex items-center justify-center w-10 h-10 rounded-xl font-display font-black text-lg shadow-sm ${
+                              index === 0 ? 'bg-gradient-to-br from-amber-400 to-amber-500 text-white' :
+                              index === 1 ? 'bg-gradient-to-br from-slate-300 to-slate-400 text-white' :
+                              index === 2 ? 'bg-gradient-to-br from-amber-600 to-amber-700 text-white' :
+                              'bg-ink-100 text-ink-600'
+                            }`}>
+                              {index + 1}
+                            </span>
+                          </td>
+                          <td className="py-4 px-5">
                             {pid ? (
-                              <Link to={`/players/${pid}`} className="flex items-center gap-2 md:gap-3 group">
-                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-ink-100 overflow-hidden bg-white shrink-0 shadow-sm group-hover:border-accent-300 transition-colors">
+                              <Link to={`/players/${pid}`} className="flex items-center gap-3 group">
+                                <div className="w-12 h-12 rounded-full border-2 border-ink-100 overflow-hidden bg-white shrink-0 shadow-sm group-hover:border-accent-400 transition-all group-hover:shadow-md">
                                   <img
                                     src={`https://sleepercdn.com/content/nfl/players/${pid}.jpg`}
                                     alt=""
@@ -575,28 +676,30 @@ export default function SummaryPage(): React.ReactElement {
                                   />
                                 </div>
                                 <div className="min-w-0">
-                                  <div className="font-bold text-ink-900 text-xs md:text-sm group-hover:text-accent-700 transition-colors truncate max-w-[120px] md:max-w-none">{playerName}</div>
-                                  <Badge variant="secondary" className="text-[9px] px-1.5 py-0 h-3.5 uppercase font-black tracking-tighter">
+                                  <div className="font-bold text-ink-900 text-sm md:text-base group-hover:text-accent-600 transition-colors truncate max-w-[150px] md:max-w-none">{playerName}</div>
+                                  <Badge variant="secondary" className="text-[9px] px-2 py-0 h-5 uppercase font-bold tracking-tight mt-1">
                                     {row.__pos || "—"}
                                   </Badge>
                                 </div>
                               </Link>
                             ) : (
-                              <div className="flex items-center gap-2 md:gap-3">
-                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-ink-50 border border-ink-100 shrink-0" />
+                              <div className="flex items-center gap-3">
+                                <div className="w-12 h-12 rounded-full bg-ink-100 border border-ink-200 shrink-0 flex items-center justify-center">
+                                  <Users size={20} className="text-ink-400" />
+                                </div>
                                 <div className="min-w-0">
-                                  <div className="font-bold text-ink-900 text-xs md:text-sm truncate max-w-[120px] md:max-w-none">{playerName || "Unknown"}</div>
-                                  <Badge variant="secondary" className="text-[9px] px-1.5 py-0 h-3.5 uppercase font-black tracking-tighter">
+                                  <div className="font-bold text-ink-900 text-sm md:text-base truncate max-w-[150px] md:max-w-none">{playerName || "Unknown"}</div>
+                                  <Badge variant="secondary" className="text-[9px] px-2 py-0 h-5 uppercase font-bold tracking-tight mt-1">
                                     {row.__pos || "—"}
                                   </Badge>
                                 </div>
                               </div>
                             )}
                           </td>
-                          <td className="py-3 px-4 font-mono text-base md:text-lg font-medium text-ink-600 text-center">
+                          <td className="py-4 px-5 font-mono text-lg font-bold text-ink-600 text-center">
                             {row.seasons}
                           </td>
-                          <td className="py-3 px-4 font-display text-xl md:text-3xl text-accent-700 leading-none text-right font-black">
+                          <td className="py-4 px-5 font-display text-2xl md:text-3xl text-accent-600 leading-none text-right font-black">
                             {formatPoints(row.points)}
                           </td>
                         </tr>
@@ -606,7 +709,7 @@ export default function SummaryPage(): React.ReactElement {
                 </table>
               </div>
             ) : (
-              <div className="text-base text-ink-500 italic pb-4">No career leaderboard data available.</div>
+              <div className="text-base text-ink-500 italic p-8 text-center bg-ink-50/50">No career leaderboard data available.</div>
             )}
           </CardContent>
         </Card>

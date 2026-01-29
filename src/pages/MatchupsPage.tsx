@@ -15,6 +15,8 @@ import { positionSort } from "../utils/positions";
 import { readStorage, writeStorage } from "../utils/persistence";
 import { Button } from "@/components/ui/button.jsx";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
+import { Badge } from "@/components/ui/badge.jsx";
+import { Target, Calendar, Users, Trophy, ChevronRight, Zap, Crown, Swords, Eye, ExternalLink } from "lucide-react";
 import type { Manifest, LineupEntry, Matchup, Team, PlayerIndex, EspnNameMap, PlayerSearchEntry } from "../types/index";
 
 interface MatchupWithId extends Matchup {
@@ -374,96 +376,188 @@ export default function MatchupsPage(): React.ReactElement {
 
   return (
     <PageTransition>
-      <section className="mb-6">
-        <h1 className="text-5xl md:text-6xl font-display font-black text-ink-900 mb-3">Matchups</h1>
-        <p className="text-lg md:text-xl text-ink-600">Filter by season and week, then open a matchup to see roster details.</p>
-      </section>
+      {/* Hero Section */}
+      <div className="relative w-full bg-ink-900 text-white overflow-hidden rounded-3xl mb-10 p-8 md:p-12 isolate shadow-2xl border border-accent-500/20">
+        <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 -z-10" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 -z-10 animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/15 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 -z-10" />
 
-      <section className="section-card filters filters--sticky mb-6">
-        <div>
-          <label className="text-base md:text-lg font-bold mb-2">Season</label>
-          <select
-            value={season}
-            onChange={(event) => handleSeasonChange(event.target.value)}
-            className="rounded-md border-2 border-ink-300 bg-white px-4 py-2 text-base md:text-lg font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[140px]"
-          >
-            {seasons.map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
+        <div className="absolute inset-0 opacity-[0.03] -z-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '50px 50px'}} />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-500/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-500/30 to-transparent" />
+
+        <div className="relative z-10">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="p-4 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl shadow-lg shadow-accent-500/30">
+              <Swords className="text-white drop-shadow-md" size={32} />
+            </div>
+            <Badge variant="outline" className="bg-accent-500/10 text-accent-400 border-accent-500/30 px-4 py-1.5 text-sm font-bold">
+              <Calendar size={14} className="mr-2" />
+              Season {season} · Week {week}
+            </Badge>
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-none bg-gradient-to-r from-white via-white to-accent-300 bg-clip-text text-transparent drop-shadow-lg mb-4">
+            Matchups
+            <span className="text-accent-400 text-6xl lg:text-7xl leading-none drop-shadow-[0_0_20px_rgba(31,147,134,0.5)]">.</span>
+          </h1>
+          <p className="text-lg md:text-xl text-ink-300 max-w-3xl leading-relaxed">
+            Filter by season and week, then open a matchup to see roster details.
+          </p>
         </div>
-        <div>
-          <label className="text-base md:text-lg font-bold mb-2">Week</label>
-          <select
-            value={week}
-            onChange={(event) => handleWeekChange(event.target.value)}
-            className="rounded-md border-2 border-ink-300 bg-white px-4 py-2 text-base md:text-lg font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[140px]"
-          >
-            {availableWeeks.map((value) => (
-              <option key={value} value={value}>
-                Week {value}
-              </option>
-            ))}
-          </select>
+      </div>
+
+      {/* Filters Section */}
+      <div className="bg-white rounded-2xl shadow-lg border border-ink-200/50 p-6 mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-40 h-40 bg-accent-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="relative z-10 flex flex-wrap gap-6 items-end">
+          <div className="flex flex-col gap-2">
+            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+              <Calendar size={14} className="text-accent-500" />
+              Season
+            </label>
+            <select
+              value={season}
+              onChange={(event) => handleSeasonChange(event.target.value)}
+              className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 hover:border-accent-300 transition-all min-w-[140px]"
+            >
+              {seasons.map((value) => (
+                <option key={value} value={value}>
+                  {value}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+              <Target size={14} className="text-accent-500" />
+              Week
+            </label>
+            <select
+              value={week}
+              onChange={(event) => handleWeekChange(event.target.value)}
+              className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 hover:border-accent-300 transition-all min-w-[140px]"
+            >
+              {availableWeeks.map((value) => (
+                <option key={value} value={value}>
+                  Week {value}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex flex-col gap-2 flex-1 min-w-[200px]">
+            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+              <Users size={14} className="text-accent-500" />
+              Filter Team
+            </label>
+            <SearchBar value={teamQuery} onChange={setTeamQuery} placeholder="Filter by team..." />
+          </div>
+          <Badge variant="outline" className="h-12 px-5 border-2 border-ink-200 text-lg font-bold flex items-center gap-2">
+            <Zap size={18} className="text-accent-500" />
+            {matchups.length || 0} Matchups
+          </Badge>
         </div>
-        <div>
-          <label className="text-base md:text-lg font-bold mb-2">Team</label>
-          <SearchBar value={teamQuery} onChange={setTeamQuery} placeholder="Filter by team..." />
-        </div>
-        <div className="tag text-base md:text-lg px-4 py-2">Matchups: {matchups.length || 0}</div>
-      </section>
+      </div>
 
       {diagnostics ? (
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle>Diagnostics (DEV)</CardTitle>
+        <Card className="mb-6 bg-gradient-to-r from-blue-50 to-white border-blue-200">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm text-blue-700">Diagnostics (DEV)</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-row gap-2 flex-wrap">
-            <div className="tag">Lineups: {diagnostics.total}</div>
-            <div className="tag">Starters loaded: {diagnostics.starters}</div>
-            <div className="tag">Resolved names: {diagnostics.resolvedNames}</div>
-            <div className="tag">Missing player ids: {diagnostics.missingIds}</div>
+          <CardContent className="flex flex-row gap-3 flex-wrap">
+            <Badge variant="outline" className="bg-white">Lineups: {diagnostics.total}</Badge>
+            <Badge variant="outline" className="bg-white">Starters: {diagnostics.starters}</Badge>
+            <Badge variant="outline" className="bg-white">Resolved: {diagnostics.resolvedNames}</Badge>
+            <Badge variant="outline" className="bg-white">Missing IDs: {diagnostics.missingIds}</Badge>
           </CardContent>
         </Card>
       ) : null}
 
       {filteredMatchups.length ? (
-        <section className="matchup-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredMatchups.map((matchup) => {
             const homeWin = matchup.home_score > matchup.away_score;
             const awayWin = matchup.away_score > matchup.home_score;
             const homeLabel = ownerLabel(getMatchupLabel(matchup, "home"), matchup.home_team || "Home");
             const awayLabel = ownerLabel(getMatchupLabel(matchup, "away"), matchup.away_team || "Away");
             return (
-              <div key={matchup.matchup_id} className="matchup-card p-5">
-                <div className="matchup-row mb-3">
-                  <strong className="text-lg md:text-xl">{homeLabel}</strong>
-                  <span className={`pill text-sm md:text-base px-3 py-1 font-bold ${homeWin ? "bg-green-100 text-green-800" : ""}`}>{homeWin ? "Winner" : awayWin ? "—" : "Tie"}</span>
-                  <span className="text-xl md:text-3xl font-display font-black text-accent-700">{formatPoints(matchup.home_score)}</span>
-                </div>
-                <div className="matchup-row mb-4">
-                  <strong className="text-lg md:text-xl">{awayLabel}</strong>
-                  <span className={`pill text-sm md:text-base px-3 py-1 font-bold ${awayWin ? "bg-green-100 text-green-800" : ""}`}>{awayWin ? "Winner" : homeWin ? "—" : "Tie"}</span>
-                  <span className="text-xl md:text-3xl font-display font-black text-accent-700">{formatPoints(matchup.away_score)}</span>
-                </div>
-                <div className="flex-row gap-2 mt-4">
-                  <Button variant="outline" className="text-base" onClick={() => setActiveMatchup(matchup)}>
-                    Quick view →
-                  </Button>
-                  <Button asChild variant="outline" className="text-base">
-                    <Link to={`/matchups/${season}/${week}/${matchup.matchup_id}`}>
-                      Full matchup →
-                    </Link>
-                  </Button>
+              <div
+                key={matchup.matchup_id}
+                className="group relative bg-white rounded-2xl shadow-lg border-2 border-ink-100 hover:border-accent-400 hover:shadow-xl transition-all duration-300 overflow-hidden"
+              >
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:bg-accent-500/10 transition-colors" />
+
+                {/* Winner banner */}
+                {(homeWin || awayWin) && (
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className={`p-2 rounded-full ${homeWin ? 'bg-gradient-to-br from-green-400 to-green-500' : 'bg-gradient-to-br from-green-400 to-green-500'} shadow-lg`}>
+                      <Trophy size={16} className="text-white" />
+                    </div>
+                  </div>
+                )}
+
+                <div className="p-6 relative z-10">
+                  {/* Home Team */}
+                  <div className={`flex items-center justify-between p-4 rounded-xl mb-3 transition-all ${homeWin ? 'bg-gradient-to-r from-green-50 to-green-100/50 border border-green-200' : 'bg-ink-50/50'}`}>
+                    <div className="flex items-center gap-3">
+                      {homeWin && <Crown size={18} className="text-green-600" />}
+                      <span className="font-display font-black text-lg text-ink-900">{homeLabel}</span>
+                    </div>
+                    <span className={`text-3xl font-display font-black ${homeWin ? 'text-green-600' : 'text-ink-600'}`}>
+                      {formatPoints(matchup.home_score)}
+                    </span>
+                  </div>
+
+                  {/* VS Divider */}
+                  <div className="flex items-center justify-center gap-4 py-2">
+                    <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent to-ink-200" />
+                    <span className="text-xs font-bold text-ink-400 uppercase tracking-widest">vs</span>
+                    <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent to-ink-200" />
+                  </div>
+
+                  {/* Away Team */}
+                  <div className={`flex items-center justify-between p-4 rounded-xl mt-3 transition-all ${awayWin ? 'bg-gradient-to-r from-green-50 to-green-100/50 border border-green-200' : 'bg-ink-50/50'}`}>
+                    <div className="flex items-center gap-3">
+                      {awayWin && <Crown size={18} className="text-green-600" />}
+                      <span className="font-display font-black text-lg text-ink-900">{awayLabel}</span>
+                    </div>
+                    <span className={`text-3xl font-display font-black ${awayWin ? 'text-green-600' : 'text-ink-600'}`}>
+                      {formatPoints(matchup.away_score)}
+                    </span>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex gap-3 mt-6">
+                    <Button
+                      variant="outline"
+                      className="flex-1 rounded-xl border-2 hover:bg-accent-50 hover:border-accent-400 hover:text-accent-700 transition-all group/btn"
+                      onClick={() => setActiveMatchup(matchup)}
+                    >
+                      <Eye size={16} className="mr-2 group-hover/btn:scale-110 transition-transform" />
+                      Quick View
+                    </Button>
+                    <Button asChild variant="outline" className="flex-1 rounded-xl border-2 hover:bg-accent-50 hover:border-accent-400 hover:text-accent-700 transition-all group/btn">
+                      <Link to={`/matchups/${season}/${week}/${matchup.matchup_id}`}>
+                        <ExternalLink size={16} className="mr-2 group-hover/btn:scale-110 transition-transform" />
+                        Full View
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             );
           })}
-        </section>
+        </div>
       ) : (
-        <div className="section-card">No matchups available for this week.</div>
+        <Card className="shadow-lg border-2 border-dashed border-ink-200 bg-ink-50/30">
+          <CardContent className="py-16 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-ink-100 flex items-center justify-center">
+              <Swords size={32} className="text-ink-400" />
+            </div>
+            <p className="text-lg text-ink-500 font-medium">No matchups available for this week.</p>
+          </CardContent>
+        </Card>
       )}
 
       <Modal
@@ -479,115 +573,133 @@ export default function MatchupsPage(): React.ReactElement {
         onClose={() => setActiveMatchup(null)}
       >
         {activeMatchup && activeRoster ? (
-          <div className="detail-grid">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {[
-              { label: getMatchupLabel(activeMatchup, "home"), roster: activeRoster.home },
-              { label: getMatchupLabel(activeMatchup, "away"), roster: activeRoster.away },
-            ].map(({ label, roster }) => (
-              <div key={label} className="section-card">
-                <h3 className="section-title">{ownerLabel(label, label)}</h3>
-                <div className="flex-row">
-                  <div className="tag">Team total: {formatPoints(roster.totals.points)}</div>
-                  <div className="tag">Starters tracked: {roster.totals.starters}</div>
-                </div>
-                <div className="flex-row">
-                  {Object.entries(roster.positionalTotals)
-                    .sort(([a], [b]) => positionSort(a, b))
-                    .map(([position, total]) => (
-                      <div key={position} className="tag">
-                        {position}: {formatPoints(total)}
-                      </div>
-                    ))}
-                </div>
-                {roster.rows.length ? (
-                  <div className="table-wrap">
-                    <table className="table">
-                      <thead>
-                        <tr>
-                          <th>Player</th>
-                          <th>Pos</th>
-                          <th>Starter</th>
-                          <th>Points</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {(() => {
-                          const starters = roster.rows.filter((r) => r.started);
-                          const bench = roster.rows.filter((r) => !r.started);
-                          const startersTotal = starters.reduce((acc, r) => acc + safeNumber(r.points, 0), 0);
-                          const benchTotal = bench.reduce((acc, r) => acc + safeNumber(r.points, 0), 0);
-
-                          return (
-                            <>
-                              {starters.map((row, idx) => (
-                                <tr key={`${row.player_id || row.player}-starter-${idx}`}>
-                                  <td>
-                                    {row.canLink ? (
-                                      <Link className="link-button" to={buildPlayerLink(row)}>
-                                        {row.displayName}
-                                      </Link>
-                                    ) : (
-                                      row.displayName
-                                    )}
-                                  </td>
-                                  <td>{row.position}</td>
-                                  <td>{row.started ? "Yes" : "No"}</td>
-                                  <td>{formatPoints(row.points)}</td>
-                                </tr>
-                              ))}
-
-                              {starters.length ? (
-                                <tr className="table-total">
-                                  <td colSpan={3}>
-                                    <strong>Starters total</strong>
-                                  </td>
-                                  <td>
-                                    <strong>{formatPoints(startersTotal)}</strong>
-                                  </td>
-                                </tr>
-                              ) : null}
-
-                              {bench.map((row, idx) => (
-                                <tr key={`${row.player_id || row.player}-bench-${idx}`}>
-                                  <td>
-                                    {row.canLink ? (
-                                      <Link className="link-button" to={buildPlayerLink(row)}>
-                                        {row.displayName}
-                                      </Link>
-                                    ) : (
-                                      row.displayName
-                                    )}
-                                  </td>
-                                  <td>{row.position}</td>
-                                  <td>{row.started ? "Yes" : "No"}</td>
-                                  <td>{formatPoints(row.points)}</td>
-                                </tr>
-                              ))}
-
-                              {bench.length ? (
-                                <tr className="table-total">
-                                  <td colSpan={3}>
-                                    <strong>Bench total</strong>
-                                  </td>
-                                  <td>
-                                    <strong>{formatPoints(benchTotal)}</strong>
-                                  </td>
-                                </tr>
-                              ) : null}
-                            </>
-                          );
-                        })()}
-                      </tbody>
-                    </table>
+              { label: getMatchupLabel(activeMatchup, "home"), roster: activeRoster.home, score: activeMatchup.home_score, isWinner: activeMatchup.home_score > activeMatchup.away_score },
+              { label: getMatchupLabel(activeMatchup, "away"), roster: activeRoster.away, score: activeMatchup.away_score, isWinner: activeMatchup.away_score > activeMatchup.home_score },
+            ].map(({ label, roster, score, isWinner }) => (
+              <Card key={label} className={`shadow-lg overflow-hidden ${isWinner ? 'border-2 border-green-300' : 'border border-ink-200'}`}>
+                <CardHeader className={`${isWinner ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white' : 'bg-gradient-to-r from-ink-900 to-ink-800 text-white'}`}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      {isWinner && <Trophy size={20} className="text-green-200" />}
+                      <CardTitle className="font-display font-black">{ownerLabel(label, label)}</CardTitle>
+                    </div>
+                    <span className="text-3xl font-display font-black">{formatPoints(score)}</span>
                   </div>
-                ) : (
-                  <div>No roster data available for this team.</div>
-                )}
-              </div>
+                </CardHeader>
+                <CardContent className="p-4">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline" className="bg-white">Team: {formatPoints(roster.totals.points)}</Badge>
+                    <Badge variant="outline" className="bg-white">Starters: {roster.totals.starters}</Badge>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {Object.entries(roster.positionalTotals)
+                      .sort(([a], [b]) => positionSort(a, b))
+                      .map(([position, total]) => (
+                        <Badge key={position} variant="secondary" className="text-xs">
+                          {position}: {formatPoints(total)}
+                        </Badge>
+                      ))}
+                  </div>
+                  {roster.rows.length ? (
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="bg-ink-100">
+                            <th className="py-2 px-3 text-left text-[10px] font-bold uppercase text-ink-500">Player</th>
+                            <th className="py-2 px-3 text-left text-[10px] font-bold uppercase text-ink-500">Pos</th>
+                            <th className="py-2 px-3 text-center text-[10px] font-bold uppercase text-ink-500">Start</th>
+                            <th className="py-2 px-3 text-right text-[10px] font-bold uppercase text-ink-500">Pts</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-ink-100">
+                          {(() => {
+                            const starters = roster.rows.filter((r) => r.started);
+                            const bench = roster.rows.filter((r) => !r.started);
+                            const startersTotal = starters.reduce((acc, r) => acc + safeNumber(r.points, 0), 0);
+                            const benchTotal = bench.reduce((acc, r) => acc + safeNumber(r.points, 0), 0);
+
+                            return (
+                              <>
+                                {starters.map((row, idx) => (
+                                  <tr key={`${row.player_id || row.player}-starter-${idx}`} className="hover:bg-accent-50/50">
+                                    <td className="py-2 px-3">
+                                      {row.canLink ? (
+                                        <Link className="text-accent-600 hover:text-accent-700 font-medium hover:underline" to={buildPlayerLink(row)}>
+                                          {row.displayName}
+                                        </Link>
+                                      ) : (
+                                        <span className="font-medium">{row.displayName}</span>
+                                      )}
+                                    </td>
+                                    <td className="py-2 px-3">
+                                      <Badge variant="secondary" className="text-[10px]">{row.position}</Badge>
+                                    </td>
+                                    <td className="py-2 px-3 text-center">
+                                      <Badge variant="success" className="text-[10px]">Yes</Badge>
+                                    </td>
+                                    <td className="py-2 px-3 text-right font-mono font-bold text-accent-600">{formatPoints(row.points)}</td>
+                                  </tr>
+                                ))}
+
+                                {starters.length ? (
+                                  <tr className="bg-green-50 border-y-2 border-green-200">
+                                    <td colSpan={3} className="py-2 px-3">
+                                      <strong className="text-green-700">Starters Total</strong>
+                                    </td>
+                                    <td className="py-2 px-3 text-right">
+                                      <strong className="font-mono text-green-700">{formatPoints(startersTotal)}</strong>
+                                    </td>
+                                  </tr>
+                                ) : null}
+
+                                {bench.map((row, idx) => (
+                                  <tr key={`${row.player_id || row.player}-bench-${idx}`} className="hover:bg-ink-50/50 text-ink-500">
+                                    <td className="py-2 px-3">
+                                      {row.canLink ? (
+                                        <Link className="text-ink-600 hover:text-accent-600 font-medium hover:underline" to={buildPlayerLink(row)}>
+                                          {row.displayName}
+                                        </Link>
+                                      ) : (
+                                        <span className="font-medium">{row.displayName}</span>
+                                      )}
+                                    </td>
+                                    <td className="py-2 px-3">
+                                      <Badge variant="secondary" className="text-[10px]">{row.position}</Badge>
+                                    </td>
+                                    <td className="py-2 px-3 text-center">
+                                      <span className="text-xs text-ink-400">—</span>
+                                    </td>
+                                    <td className="py-2 px-3 text-right font-mono">{formatPoints(row.points)}</td>
+                                  </tr>
+                                ))}
+
+                                {bench.length ? (
+                                  <tr className="bg-ink-100">
+                                    <td colSpan={3} className="py-2 px-3">
+                                      <strong className="text-ink-600">Bench Total</strong>
+                                    </td>
+                                    <td className="py-2 px-3 text-right">
+                                      <strong className="font-mono text-ink-600">{formatPoints(benchTotal)}</strong>
+                                    </td>
+                                  </tr>
+                                ) : null}
+                              </>
+                            );
+                          })()}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 text-ink-400">No roster data available for this team.</div>
+                  )}
+                </CardContent>
+              </Card>
             ))}
           </div>
         ) : (
-          <div>No matchup details available.</div>
+          <div className="text-center py-8 text-ink-400">No matchup details available.</div>
         )}
       </Modal>
 
