@@ -10,9 +10,10 @@ import { useVirtualRows } from "../utils/useVirtualRows";
 import { readStorage, writeStorage } from "../utils/persistence";
 import { Link, useSearchParams } from "react-router-dom";
 import { getCanonicalPlayerId, looksLikeId } from "../lib/playerName";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card.jsx";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
+import { ArrowRightLeft, Calendar, Users, Target, Zap, Plus, Minus, TrendingUp, Award, Filter, X } from "lucide-react";
 import type { Manifest, PlayerIndex, EspnNameMap } from "../types/index";
 
 interface Player {
@@ -80,7 +81,6 @@ export default function TransactionsPage(): React.ReactElement {
     isError: boolean;
     error: Error | null;
   };
-  const isDev = import.meta.env.DEV;
   const TRANSACTIONS_PREF_KEY = "tatnall-pref-transactions";
 
   const availableWeeks = useMemo((): number[] => {
@@ -289,6 +289,8 @@ export default function TransactionsPage(): React.ReactElement {
     return counts;
   }, [entries]);
 
+  const totalTransactions = (transactions?.entries || []).length;
+
   if (loading || dataLoading) return <LoadingState label="Loading transactions..." />;
   if (error || dataError) return <ErrorState message={error || fetchError?.message || "Error loading transactions"} />;
 
@@ -328,29 +330,113 @@ export default function TransactionsPage(): React.ReactElement {
         const label = resolvePlayerLabel(player);
         const link = label ? `/players/${linkId}?name=${encodeURIComponent(label)}` : `/players/${linkId}`;
         return (
-          <Link key={`${player.id}-${index}`} to={link} className="link-button">
+          <Link key={`${player.id}-${index}`} to={link} className="text-accent-600 hover:text-accent-700 font-medium hover:underline transition-colors">
             {label}
           </Link>
         );
       })
       .reduce<ReactNode>((prev, curr) => (prev === null ? [curr] : [prev, ", ", curr]), null);
 
+  const hasActiveFilters = teamFilter || typeFilter !== "all" || week !== "all";
+
   return (
     <PageTransition>
-      <section>
-        <h1 className="page-title">Transactions</h1>
-        <p className="page-subtitle">Track trades, adds, and drops by season and week.</p>
-      </section>
+      {/* Hero Section */}
+      <div className="relative w-full bg-ink-900 text-white overflow-hidden rounded-3xl mb-10 p-8 md:p-12 isolate shadow-2xl border border-accent-500/20">
+        <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 -z-10" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 -z-10 animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-red-500/15 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 -z-10" />
 
-      <Card className="mb-6 shadow-soft filters--sticky bg-white/80 backdrop-blur-sm border-ink-100">
-        <CardContent className="py-4">
-          <div className="flex flex-wrap gap-4 items-end">
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Season</label>
+        <div className="absolute inset-0 opacity-[0.03] -z-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '50px 50px'}} />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-green-500/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-green-500/30 to-transparent" />
+
+        <div className="relative z-10">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="p-4 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl shadow-lg shadow-green-500/30">
+              <ArrowRightLeft className="text-white drop-shadow-md" size={32} />
+            </div>
+            <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30 px-4 py-1.5 text-sm font-bold">
+              <Calendar size={14} className="mr-2" />
+              Season {season}
+            </Badge>
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-none bg-gradient-to-r from-white via-white to-green-300 bg-clip-text text-transparent drop-shadow-lg mb-4">
+            Transactions
+            <span className="text-green-400 text-6xl lg:text-7xl leading-none drop-shadow-[0_0_20px_rgba(34,197,94,0.5)]">.</span>
+          </h1>
+          <p className="text-lg md:text-xl text-ink-300 max-w-3xl leading-relaxed">
+            Track trades, adds, and drops by season and week.
+          </p>
+        </div>
+      </div>
+
+      {/* Quick Stats */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        <div className="group relative bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl p-6 text-white shadow-lg shadow-accent-500/25 hover:shadow-xl hover:shadow-accent-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <ArrowRightLeft className="text-accent-200" size={18} />
+              <span className="text-[10px] font-bold text-accent-200 uppercase tracking-[0.15em]">Total Trades</span>
+            </div>
+            <div className="text-5xl font-display font-black leading-none mb-1">{filteredCounts.trade}</div>
+            <p className="text-xs text-accent-200/80">This season</p>
+          </div>
+        </div>
+
+        <div className="group relative bg-white rounded-2xl p-6 border-2 border-green-200 hover:border-green-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <Plus className="text-green-500" size={18} />
+              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Adds</span>
+            </div>
+            <div className="text-5xl font-display font-black text-ink-900 leading-none group-hover:text-green-600 transition-colors">{filteredCounts.add}</div>
+            <p className="text-xs text-ink-400 mt-1">Player pickups</p>
+          </div>
+        </div>
+
+        <div className="group relative bg-white rounded-2xl p-6 border-2 border-red-200 hover:border-red-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <Minus className="text-red-500" size={18} />
+              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Drops</span>
+            </div>
+            <div className="text-5xl font-display font-black text-ink-900 leading-none group-hover:text-red-600 transition-colors">{filteredCounts.drop}</div>
+            <p className="text-xs text-ink-400 mt-1">Released players</p>
+          </div>
+        </div>
+
+        <div className="group relative bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-3">
+              <Zap className="text-purple-200" size={18} />
+              <span className="text-[10px] font-bold text-purple-200 uppercase tracking-[0.15em]">Total Activity</span>
+            </div>
+            <div className="text-5xl font-display font-black leading-none mb-1">{totalTransactions}</div>
+            <p className="text-xs text-purple-200/80">All transactions</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Filters Section */}
+      <div className="bg-white rounded-2xl shadow-lg border border-ink-200/50 p-6 mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-40 h-40 bg-green-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="relative z-10">
+          <div className="flex flex-wrap gap-6 items-end mb-4">
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+                <Calendar size={14} className="text-green-500" />
+                Season
+              </label>
               <select
                 value={season}
                 onChange={(event) => handleSeasonChange(event.target.value)}
-                className="rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[100px]"
+                className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[140px]"
               >
                 {seasons.map((value) => (
                   <option key={value} value={value}>{value}</option>
@@ -358,12 +444,15 @@ export default function TransactionsPage(): React.ReactElement {
               </select>
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Week</label>
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+                <Target size={14} className="text-green-500" />
+                Week
+              </label>
               <select
                 value={week}
                 onChange={(event) => handleWeekChange(event.target.value)}
-                className="rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[120px]"
+                className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[140px]"
               >
                 <option value="all">All weeks</option>
                 {availableWeeks.map((value) => (
@@ -372,12 +461,15 @@ export default function TransactionsPage(): React.ReactElement {
               </select>
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Type</label>
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+                <Filter size={14} className="text-green-500" />
+                Type
+              </label>
               <select
                 value={typeFilter}
                 onChange={(event) => handleTypeChange(event.target.value)}
-                className="rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[120px]"
+                className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[140px]"
               >
                 <option value="all">All types</option>
                 <option value="trade">Trade</option>
@@ -386,12 +478,15 @@ export default function TransactionsPage(): React.ReactElement {
               </select>
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-wider ml-1">Team</label>
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+                <Users size={14} className="text-green-500" />
+                Team
+              </label>
               <select
                 value={teamFilter}
                 onChange={(event) => handleTeamChange(event.target.value)}
-                className="rounded-md border border-ink-200 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[150px]"
+                className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[180px]"
               >
                 <option value="">All teams</option>
                 {teamOptions.map((value) => (
@@ -400,15 +495,15 @@ export default function TransactionsPage(): React.ReactElement {
               </select>
             </div>
 
-            <div className="flex gap-2 mb-1.5">
-              <Badge variant="outline" className="h-8 px-3 border-ink-200 whitespace-nowrap">
+            <div className="flex items-center gap-3">
+              <Badge variant="outline" className="h-12 px-5 border-2 border-ink-200 text-lg font-bold flex items-center gap-2">
+                <Zap size={18} className="text-green-500" />
                 {entries.length} Entries
               </Badge>
-              {teamFilter || typeFilter !== "all" || week !== "all" ? (
+              {hasActiveFilters && (
                 <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 text-xs text-ink-500 hover:text-accent-700"
+                  variant="outline"
+                  className="h-12 px-4 border-2 rounded-xl hover:bg-red-50 hover:border-red-300 hover:text-red-600 transition-all"
                   onClick={() => {
                     setTeamFilter("");
                     setTypeFilter("all");
@@ -416,95 +511,115 @@ export default function TransactionsPage(): React.ReactElement {
                     updateSearchParams(season, "all", "all", "");
                   }}
                 >
-                  Clear filters
+                  <X size={16} className="mr-2" />
+                  Clear
                 </Button>
-              ) : null}
+              )}
             </div>
           </div>
 
-          <div className="flex gap-4 mt-3 pt-3 border-t border-ink-100">
-            <div className="text-[11px] text-ink-500 flex items-center gap-3">
-              <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-500"></span>
-                Trades: <span className="font-bold text-ink-900">{filteredCounts.trade}</span>
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                Adds: <span className="font-bold text-ink-900">{filteredCounts.add}</span>
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                Drops: <span className="font-bold text-ink-900">{filteredCounts.drop}</span>
-              </span>
+          <div className="flex gap-6 pt-4 border-t border-ink-100">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-accent-500" />
+              <span className="text-sm text-ink-600">Trades: <span className="font-bold text-ink-900">{filteredCounts.trade}</span></span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-green-500" />
+              <span className="text-sm text-ink-600">Adds: <span className="font-bold text-ink-900">{filteredCounts.add}</span></span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500" />
+              <span className="text-sm text-ink-600">Drops: <span className="font-bold text-ink-900">{filteredCounts.drop}</span></span>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      <Card className="mb-8 shadow-soft">
-        <CardHeader>
-          <CardTitle>Recent Transactions</CardTitle>
+      {/* Recent Transactions Table */}
+      <Card className="mb-8 shadow-lg border border-ink-200/50 overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+          <div className="flex items-center gap-3">
+            <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg shadow-green-500/20">
+              <TrendingUp className="text-white" size={22} />
+            </div>
+            <div>
+              <CardTitle className="text-2xl font-display font-black">Recent Transactions</CardTitle>
+              <CardDescription className="text-sm text-ink-500 font-medium">Latest waiver moves and trades</CardDescription>
+            </div>
+          </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0 relative z-10">
           {entries.length ? (
-            <div className="table-wrap virtual-table" ref={virtualEntries.containerRef}>
-              <table className="table">
+            <div className="overflow-x-auto" ref={virtualEntries.containerRef}>
+              <table className="w-full">
                 <thead>
-                  <tr className="border-b border-ink-100">
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Week</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Team</th>
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Type</th>
-                    {showAmount ? <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Amount</th> : null}
-                    <th className="py-3 px-4 text-left text-xs font-bold text-ink-500 uppercase tracking-wider">Details</th>
+                  <tr className="bg-gradient-to-r from-ink-900 to-ink-800 text-white">
+                    <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Week</th>
+                    <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Team</th>
+                    <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Type</th>
+                    {showAmount ? <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Amount</th> : null}
+                    <th className="py-4 px-5 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Details</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="divide-y divide-ink-100">
                   {virtualEntries.topPadding ? (
-                    <tr className="table-virtual-spacer" aria-hidden="true">
+                    <tr aria-hidden="true">
                       <td colSpan={showAmount ? 5 : 4} style={{ height: virtualEntries.topPadding }} />
                     </tr>
                   ) : null}
-                  {visibleEntries.map((entry) => (
-                    <tr key={entry.id} className="hover:bg-ink-50/30 transition-colors">
-                      <td className="py-3 px-4 font-mono text-sm">{entry.week ?? "—"}</td>
-                      <td>
+                  {visibleEntries.map((entry, idx) => (
+                    <tr key={entry.id} className={`hover:bg-accent-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                      <td className="py-4 px-5">
+                        <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-ink-100 font-mono font-bold text-ink-700">
+                          {entry.week ?? "—"}
+                        </span>
+                      </td>
+                      <td className="py-4 px-5">
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-7 px-2 text-xs font-semibold text-accent-700 bg-accent-50/50 hover:bg-accent-100"
+                          className="h-8 px-3 text-sm font-bold text-accent-700 bg-accent-50 hover:bg-accent-100 rounded-lg transition-all"
                           onClick={() => handleTeamChange(normalizeOwnerName(entry.team))}
                         >
                           {ownerLabel(entry.team, entry.team || "Unknown")}
                         </Button>
                       </td>
-                      <td>
+                      <td className="py-4 px-5">
                         <Badge
-                          className="text-[10px] uppercase font-bold"
+                          className="text-[10px] uppercase font-bold px-3 py-1"
                           variant={
                             entry.type === "trade" ? "secondary" : entry.type === "add" ? "success" : "destructive"
                           }
                         >
+                          {entry.type === "trade" && <ArrowRightLeft size={12} className="mr-1" />}
+                          {entry.type === "add" && <Plus size={12} className="mr-1" />}
+                          {entry.type === "drop" && <Minus size={12} className="mr-1" />}
                           {entry.type}
                         </Badge>
                       </td>
-                      {showAmount ? <td className="font-mono text-sm">{formatAmount(entry)}</td> : null}
-                      <td>
+                      {showAmount ? <td className="py-4 px-5 font-mono text-lg font-bold text-green-600">{formatAmount(entry)}</td> : null}
+                      <td className="py-4 px-5">
                         {entry.players?.length ? (
                           <div className="text-sm">
                             {entry.type === "trade" ? (
-                              <div className="flex flex-col gap-1">
-                                <span className="text-xs text-ink-400">Received:</span>
-                                <div className="flex flex-wrap gap-x-1">
-                                  {renderPlayerLinks(entry.players.filter((player) => player?.action === "received"))}
+                              <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                  <Badge variant="success" className="text-[9px] px-2 py-0.5">Received</Badge>
+                                  <div className="flex flex-wrap gap-x-1">
+                                    {renderPlayerLinks(entry.players.filter((player) => player?.action === "received"))}
+                                  </div>
                                 </div>
-                                <span className="text-xs text-ink-400">Sent:</span>
-                                <div className="flex flex-wrap gap-x-1">
-                                  {renderPlayerLinks(entry.players.filter((player) => player?.action === "sent"))}
+                                <div className="flex items-center gap-2">
+                                  <Badge variant="destructive" className="text-[9px] px-2 py-0.5">Sent</Badge>
+                                  <div className="flex flex-wrap gap-x-1">
+                                    {renderPlayerLinks(entry.players.filter((player) => player?.action === "sent"))}
+                                  </div>
                                 </div>
                               </div>
                             ) : (
-                              <div className="flex flex-wrap gap-x-1">
-                                <span className="text-ink-500 italic mr-1">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-ink-500 text-xs font-medium">
                                   {entry.type === "add" ? "Added:" : entry.type === "drop" ? "Dropped:" : "Updated:"}
                                 </span>
                                 {renderPlayerLinks(entry.players)}
@@ -512,13 +627,13 @@ export default function TransactionsPage(): React.ReactElement {
                             )}
                           </div>
                         ) : (
-                          <div className="text-sm text-ink-600 italic">{entry.summary || "No details"}</div>
+                          <div className="text-sm text-ink-500 italic">{entry.summary || "No details"}</div>
                         )}
                       </td>
                     </tr>
                   ))}
                   {virtualEntries.bottomPadding ? (
-                    <tr className="table-virtual-spacer" aria-hidden="true">
+                    <tr aria-hidden="true">
                       <td colSpan={showAmount ? 5 : 4} style={{ height: virtualEntries.bottomPadding }} />
                     </tr>
                   ) : null}
@@ -526,79 +641,116 @@ export default function TransactionsPage(): React.ReactElement {
               </table>
             </div>
           ) : (
-            <div className="text-sm text-ink-500 italic text-center py-12">
-              No transaction data available for this season.
+            <div className="text-center py-16">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-ink-100 flex items-center justify-center">
+                <ArrowRightLeft size={32} className="text-ink-400" />
+              </div>
+              <p className="text-lg text-ink-500 font-medium">No transaction data available for this season.</p>
             </div>
           )}
         </CardContent>
       </Card>
 
+      {/* Season Totals & League Records */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <Card className="shadow-soft">
-          <CardHeader>
-            <CardTitle>Season Totals by Team</CardTitle>
+        <Card className="shadow-lg border border-ink-200/50 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+            <div className="flex items-center gap-3">
+              <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg shadow-blue-500/20">
+                <Users className="text-white" size={22} />
+              </div>
+              <CardTitle className="text-xl font-display font-black">Season Totals by Team</CardTitle>
+            </div>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-0 relative z-10">
             {totalsByTeam.length ? (
-              <div className="table-wrap">
-                <table className="table">
+              <div className="overflow-x-auto">
+                <table className="w-full">
                   <thead>
-                    <tr>
-                      <th>Team</th>
-                      <th>Adds</th>
-                      <th>Drops</th>
-                      <th>Trades</th>
+                    <tr className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+                      <th className="py-3 px-4 text-left text-[10px] font-bold uppercase tracking-[0.15em]">Team</th>
+                      <th className="py-3 px-4 text-center text-[10px] font-bold uppercase tracking-[0.15em]">Adds</th>
+                      <th className="py-3 px-4 text-center text-[10px] font-bold uppercase tracking-[0.15em]">Drops</th>
+                      <th className="py-3 px-4 text-center text-[10px] font-bold uppercase tracking-[0.15em]">Trades</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {totalsByTeam.map((row) => (
-                      <tr key={row.team}>
-                        <td className="font-semibold text-ink-900">{ownerLabel(row.team, row.team)}</td>
-                        <td className="font-mono text-sm">{row.adds}</td>
-                        <td className="font-mono text-sm">{row.drops}</td>
-                        <td className="font-mono text-sm text-accent-700 font-bold">{row.trades}</td>
+                  <tbody className="divide-y divide-ink-100">
+                    {totalsByTeam.map((row, idx) => (
+                      <tr key={row.team} className={`hover:bg-accent-50/50 transition-all ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                        <td className="py-3 px-4 font-display font-bold text-ink-900">{ownerLabel(row.team, row.team)}</td>
+                        <td className="py-3 px-4 text-center">
+                          <span className="inline-flex items-center justify-center w-10 h-8 rounded-lg bg-green-100 text-green-700 font-mono font-bold">
+                            {row.adds}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 text-center">
+                          <span className="inline-flex items-center justify-center w-10 h-8 rounded-lg bg-red-100 text-red-700 font-mono font-bold">
+                            {row.drops}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 text-center">
+                          <span className="inline-flex items-center justify-center w-10 h-8 rounded-lg bg-accent-100 text-accent-700 font-mono font-bold">
+                            {row.trades}
+                          </span>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             ) : (
-              <div className="text-sm text-ink-500 italic">No team totals available.</div>
+              <div className="text-center py-12 text-ink-500">No team totals available.</div>
             )}
           </CardContent>
         </Card>
 
-        <Card className="shadow-soft">
-          <CardHeader>
-            <CardTitle>League Records</CardTitle>
+        <Card className="shadow-lg border border-ink-200/50 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+            <div className="flex items-center gap-3">
+              <div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl shadow-lg shadow-amber-500/20">
+                <Award className="text-white" size={22} />
+              </div>
+              <CardTitle className="text-xl font-display font-black">League Records</CardTitle>
+            </div>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6 relative z-10">
             {recordHighlights ? (
               <div className="space-y-4">
-                <div className="p-3 rounded-lg bg-accent-50/50 border border-accent-100">
-                  <div className="text-[10px] font-bold text-accent-700 uppercase tracking-wider mb-1">Most Weekly Adds</div>
+                <div className="p-4 rounded-xl bg-gradient-to-r from-green-50 to-white border border-green-200 hover:shadow-md transition-all">
+                  <div className="text-[10px] font-bold text-green-600 uppercase tracking-wider mb-2 flex items-center gap-2">
+                    <Plus size={14} />
+                    Most Weekly Adds
+                  </div>
                   <div className="flex justify-between items-center">
-                    <span className="font-display text-ink-900">{ownerLabel(recordHighlights.mostAdds.team, recordHighlights.mostAdds.team)}</span>
-                    <Badge variant="accent">{recordHighlights.mostAdds.adds} adds</Badge>
+                    <span className="font-display font-black text-lg text-ink-900">{ownerLabel(recordHighlights.mostAdds.team, recordHighlights.mostAdds.team)}</span>
+                    <Badge variant="success" className="text-sm font-bold">{recordHighlights.mostAdds.adds} adds</Badge>
                   </div>
                 </div>
-                <div className="p-3 rounded-lg bg-ink-50/50 border border-ink-100">
-                  <div className="text-[10px] font-bold text-ink-500 uppercase tracking-wider mb-1">Most Weekly Drops</div>
+                <div className="p-4 rounded-xl bg-gradient-to-r from-red-50 to-white border border-red-200 hover:shadow-md transition-all">
+                  <div className="text-[10px] font-bold text-red-600 uppercase tracking-wider mb-2 flex items-center gap-2">
+                    <Minus size={14} />
+                    Most Weekly Drops
+                  </div>
                   <div className="flex justify-between items-center">
-                    <span className="font-display text-ink-900">{ownerLabel(recordHighlights.mostDrops.team, recordHighlights.mostDrops.team)}</span>
-                    <Badge variant="outline">{recordHighlights.mostDrops.drops} drops</Badge>
+                    <span className="font-display font-black text-lg text-ink-900">{ownerLabel(recordHighlights.mostDrops.team, recordHighlights.mostDrops.team)}</span>
+                    <Badge variant="destructive" className="text-sm font-bold">{recordHighlights.mostDrops.drops} drops</Badge>
                   </div>
                 </div>
-                <div className="p-3 rounded-lg bg-accent-50/50 border border-accent-100">
-                  <div className="text-[10px] font-bold text-accent-700 uppercase tracking-wider mb-1">Total Trades Leader</div>
+                <div className="p-4 rounded-xl bg-gradient-to-r from-accent-50 to-white border border-accent-200 hover:shadow-md transition-all">
+                  <div className="text-[10px] font-bold text-accent-600 uppercase tracking-wider mb-2 flex items-center gap-2">
+                    <ArrowRightLeft size={14} />
+                    Total Trades Leader
+                  </div>
                   <div className="flex justify-between items-center">
-                    <span className="font-display text-ink-900">{ownerLabel(recordHighlights.mostTrades.team, recordHighlights.mostTrades.team)}</span>
-                    <Badge variant="accent">{recordHighlights.mostTrades.trades} trades</Badge>
+                    <span className="font-display font-black text-lg text-ink-900">{ownerLabel(recordHighlights.mostTrades.team, recordHighlights.mostTrades.team)}</span>
+                    <Badge className="text-sm font-bold bg-accent-500">{recordHighlights.mostTrades.trades} trades</Badge>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="text-sm text-ink-500 italic">No league transaction records available.</div>
+              <div className="text-center py-12 text-ink-500">No league transaction records available.</div>
             )}
           </CardContent>
         </Card>
