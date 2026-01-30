@@ -12,30 +12,25 @@ export default function ThemeToggle() {
     return (
         <motion.button
             onClick={toggleTheme}
-            className="theme-toggle"
+            className="relative flex items-center justify-center w-10 h-10 rounded-full border border-[var(--border)] bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-colors cursor-pointer"
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '40px',
-                height: '40px',
-                borderRadius: '50%',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'background-color 0.2s ease',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                color: '#f8fafc',
-            }}
         >
             <motion.div
                 initial={false}
-                animate={{ rotate: isDark ? 0 : 180 }}
-                transition={{ duration: 0.3 }}
+                animate={{
+                    rotate: isDark ? 0 : 180,
+                    scale: isDark ? 1 : 1
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="text-[var(--text-primary)]"
             >
-                {isDark ? <Moon size={20} /> : <Sun size={20} />}
+                {isDark ? (
+                    <Moon size={18} className="text-[var(--accent)]" />
+                ) : (
+                    <Sun size={18} className="text-amber-500" />
+                )}
             </motion.div>
         </motion.button>
     );
