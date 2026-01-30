@@ -377,49 +377,49 @@ export default function MatchupsPage(): React.ReactElement {
   return (
     <PageTransition>
       {/* Hero Section */}
-      <div className="relative w-full bg-ink-900 text-white overflow-hidden rounded-3xl mb-10 p-8 md:p-12 isolate shadow-2xl border border-accent-500/20">
-        <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 -z-10" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 -z-10 animate-pulse" />
+      <div className="relative w-full bg-[var(--bg-card)] text-[var(--text-primary)] overflow-hidden rounded-3xl mb-10 p-8 md:p-12 isolate shadow-2xl border border-[var(--accent)]/20">
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-card)] to-[var(--bg-primary)] -z-10" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--accent)]/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 -z-10 animate-pulse" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/15 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4 -z-10" />
 
         <div className="absolute inset-0 opacity-[0.03] -z-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '50px 50px'}} />
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-500/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent-500/30 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--accent)]/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--accent)]/30 to-transparent" />
 
         <div className="relative z-10">
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-4 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl shadow-lg shadow-accent-500/30">
+            <div className="p-4 bg-gradient-to-br from-[var(--accent)] to-[var(--accent-hover)] rounded-2xl shadow-lg shadow-[var(--accent)]/30">
               <Swords className="text-white drop-shadow-md" size={32} />
             </div>
-            <Badge variant="outline" className="bg-accent-500/10 text-accent-400 border-accent-500/30 px-4 py-1.5 text-sm font-bold">
+            <Badge variant="outline" className="bg-[var(--accent)]/10 text-[var(--accent)] border-[var(--accent)]/30 px-4 py-1.5 text-sm font-bold">
               <Calendar size={14} className="mr-2" />
               Season {season} · Week {week}
             </Badge>
           </div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-none bg-gradient-to-r from-white via-white to-accent-300 bg-clip-text text-transparent drop-shadow-lg mb-4">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-none bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--accent)] bg-clip-text text-transparent drop-shadow-lg mb-4">
             Matchups
-            <span className="text-accent-400 text-6xl lg:text-7xl leading-none drop-shadow-[0_0_20px_rgba(31,147,134,0.5)]">.</span>
+            <span className="text-[var(--accent)] text-6xl lg:text-7xl leading-none drop-shadow-[0_0_20px_rgba(31,147,134,0.5)]">.</span>
           </h1>
-          <p className="text-lg md:text-xl text-ink-300 max-w-3xl leading-relaxed">
+          <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-3xl leading-relaxed">
             Filter by season and week, then open a matchup to see roster details.
           </p>
         </div>
       </div>
 
       {/* Filters Section */}
-      <div className="bg-white rounded-2xl shadow-lg border border-ink-200/50 p-6 mb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-40 h-40 bg-accent-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="bg-[var(--bg-card)] rounded-2xl shadow-lg border border-[var(--border)] p-6 mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--accent)]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="relative z-10 flex flex-wrap gap-6 items-end">
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
-              <Calendar size={14} className="text-accent-500" />
+            <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
+              <Calendar size={14} className="text-[var(--accent)]" />
               Season
             </label>
             <select
               value={season}
               onChange={(event) => handleSeasonChange(event.target.value)}
-              className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 hover:border-accent-300 transition-all min-w-[140px]"
+              className="rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-primary)] px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-[var(--accent)] hover:border-[var(--accent)]/50 transition-all min-w-[140px]"
             >
               {seasons.map((value) => (
                 <option key={value} value={value}>
@@ -429,14 +429,14 @@ export default function MatchupsPage(): React.ReactElement {
             </select>
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
-              <Target size={14} className="text-accent-500" />
+            <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
+              <Target size={14} className="text-[var(--accent)]" />
               Week
             </label>
             <select
               value={week}
               onChange={(event) => handleWeekChange(event.target.value)}
-              className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 hover:border-accent-300 transition-all min-w-[140px]"
+              className="rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-primary)] px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-[var(--accent)] hover:border-[var(--accent)]/50 transition-all min-w-[140px]"
             >
               {availableWeeks.map((value) => (
                 <option key={value} value={value}>
@@ -446,29 +446,29 @@ export default function MatchupsPage(): React.ReactElement {
             </select>
           </div>
           <div className="flex flex-col gap-2 flex-1 min-w-[200px]">
-            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
-              <Users size={14} className="text-accent-500" />
+            <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
+              <Users size={14} className="text-[var(--accent)]" />
               Filter Team
             </label>
             <SearchBar value={teamQuery} onChange={setTeamQuery} placeholder="Filter by team..." />
           </div>
-          <Badge variant="outline" className="h-12 px-5 border-2 border-ink-200 text-lg font-bold flex items-center gap-2">
-            <Zap size={18} className="text-accent-500" />
+          <Badge variant="outline" className="h-12 px-5 border-2 border-[var(--border)] text-lg font-bold flex items-center gap-2">
+            <Zap size={18} className="text-[var(--accent)]" />
             {matchups.length || 0} Matchups
           </Badge>
         </div>
       </div>
 
       {diagnostics ? (
-        <Card className="mb-6 bg-gradient-to-r from-blue-50 to-white border-blue-200">
+        <Card className="mb-6 bg-gradient-to-r from-blue-500/10 to-[var(--bg-card)] border-blue-500/30">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-blue-700">Diagnostics (DEV)</CardTitle>
+            <CardTitle className="text-sm text-blue-500">Diagnostics (DEV)</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-row gap-3 flex-wrap">
-            <Badge variant="outline" className="bg-white">Lineups: {diagnostics.total}</Badge>
-            <Badge variant="outline" className="bg-white">Starters: {diagnostics.starters}</Badge>
-            <Badge variant="outline" className="bg-white">Resolved: {diagnostics.resolvedNames}</Badge>
-            <Badge variant="outline" className="bg-white">Missing IDs: {diagnostics.missingIds}</Badge>
+            <Badge variant="outline" className="bg-[var(--bg-card)]">Lineups: {diagnostics.total}</Badge>
+            <Badge variant="outline" className="bg-[var(--bg-card)]">Starters: {diagnostics.starters}</Badge>
+            <Badge variant="outline" className="bg-[var(--bg-card)]">Resolved: {diagnostics.resolvedNames}</Badge>
+            <Badge variant="outline" className="bg-[var(--bg-card)]">Missing IDs: {diagnostics.missingIds}</Badge>
           </CardContent>
         </Card>
       ) : null}
@@ -483,15 +483,15 @@ export default function MatchupsPage(): React.ReactElement {
             return (
               <div
                 key={matchup.matchup_id}
-                className="group relative bg-white rounded-2xl shadow-lg border-2 border-ink-100 hover:border-accent-400 hover:shadow-xl transition-all duration-300 overflow-hidden"
+                className="group relative bg-[var(--bg-card)] rounded-2xl shadow-lg border-2 border-[var(--border)] hover:border-[var(--accent)] hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
                 {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:bg-accent-500/10 transition-colors" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--accent)]/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:bg-[var(--accent)]/10 transition-colors" />
 
                 {/* Winner banner */}
                 {(homeWin || awayWin) && (
                   <div className="absolute top-4 right-4 z-10">
-                    <div className={`p-2 rounded-full ${homeWin ? 'bg-gradient-to-br from-green-400 to-green-500' : 'bg-gradient-to-br from-green-400 to-green-500'} shadow-lg`}>
+                    <div className={`p-2 rounded-full ${homeWin ? 'bg-gradient-to-br from-[var(--success)] to-emerald-600' : 'bg-gradient-to-br from-[var(--success)] to-emerald-600'} shadow-lg`}>
                       <Trophy size={16} className="text-white" />
                     </div>
                   </div>
@@ -499,30 +499,30 @@ export default function MatchupsPage(): React.ReactElement {
 
                 <div className="p-6 relative z-10">
                   {/* Home Team */}
-                  <div className={`flex items-center justify-between p-4 rounded-xl mb-3 transition-all ${homeWin ? 'bg-gradient-to-r from-green-50 to-green-100/50 border border-green-200' : 'bg-ink-50/50'}`}>
+                  <div className={`flex items-center justify-between p-4 rounded-xl mb-3 transition-all ${homeWin ? 'bg-[var(--success-light)] border border-[var(--success)]/30' : 'bg-[var(--bg-card-hover)]'}`}>
                     <div className="flex items-center gap-3">
-                      {homeWin && <Crown size={18} className="text-green-600" />}
-                      <span className="font-display font-black text-lg text-ink-900">{homeLabel}</span>
+                      {homeWin && <Crown size={18} className="text-[var(--success)]" />}
+                      <span className="font-display font-black text-lg text-[var(--text-primary)]">{homeLabel}</span>
                     </div>
-                    <span className={`text-3xl font-display font-black ${homeWin ? 'text-green-600' : 'text-ink-600'}`}>
+                    <span className={`text-3xl font-display font-black ${homeWin ? 'text-[var(--success)]' : 'text-[var(--text-secondary)]'}`}>
                       {formatPoints(matchup.home_score)}
                     </span>
                   </div>
 
                   {/* VS Divider */}
                   <div className="flex items-center justify-center gap-4 py-2">
-                    <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent to-ink-200" />
-                    <span className="text-xs font-bold text-ink-400 uppercase tracking-widest">vs</span>
-                    <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent to-ink-200" />
+                    <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent to-[var(--border)]" />
+                    <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-widest">vs</span>
+                    <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent to-[var(--border)]" />
                   </div>
 
                   {/* Away Team */}
-                  <div className={`flex items-center justify-between p-4 rounded-xl mt-3 transition-all ${awayWin ? 'bg-gradient-to-r from-green-50 to-green-100/50 border border-green-200' : 'bg-ink-50/50'}`}>
+                  <div className={`flex items-center justify-between p-4 rounded-xl mt-3 transition-all ${awayWin ? 'bg-[var(--success-light)] border border-[var(--success)]/30' : 'bg-[var(--bg-card-hover)]'}`}>
                     <div className="flex items-center gap-3">
-                      {awayWin && <Crown size={18} className="text-green-600" />}
-                      <span className="font-display font-black text-lg text-ink-900">{awayLabel}</span>
+                      {awayWin && <Crown size={18} className="text-[var(--success)]" />}
+                      <span className="font-display font-black text-lg text-[var(--text-primary)]">{awayLabel}</span>
                     </div>
-                    <span className={`text-3xl font-display font-black ${awayWin ? 'text-green-600' : 'text-ink-600'}`}>
+                    <span className={`text-3xl font-display font-black ${awayWin ? 'text-[var(--success)]' : 'text-[var(--text-secondary)]'}`}>
                       {formatPoints(matchup.away_score)}
                     </span>
                   </div>
@@ -531,13 +531,13 @@ export default function MatchupsPage(): React.ReactElement {
                   <div className="flex gap-3 mt-6">
                     <Button
                       variant="outline"
-                      className="flex-1 rounded-xl border-2 hover:bg-accent-50 hover:border-accent-400 hover:text-accent-700 transition-all group/btn"
+                      className="flex-1 rounded-xl border-2 hover:bg-[var(--accent-light)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all group/btn"
                       onClick={() => setActiveMatchup(matchup)}
                     >
                       <Eye size={16} className="mr-2 group-hover/btn:scale-110 transition-transform" />
                       Quick View
                     </Button>
-                    <Button asChild variant="outline" className="flex-1 rounded-xl border-2 hover:bg-accent-50 hover:border-accent-400 hover:text-accent-700 transition-all group/btn">
+                    <Button asChild variant="outline" className="flex-1 rounded-xl border-2 hover:bg-[var(--accent-light)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all group/btn">
                       <Link to={`/matchups/${season}/${week}/${matchup.matchup_id}`}>
                         <ExternalLink size={16} className="mr-2 group-hover/btn:scale-110 transition-transform" />
                         Full View
@@ -550,12 +550,12 @@ export default function MatchupsPage(): React.ReactElement {
           })}
         </div>
       ) : (
-        <Card className="shadow-lg border-2 border-dashed border-ink-200 bg-ink-50/30">
+        <Card className="shadow-lg border-2 border-dashed border-[var(--border)] bg-[var(--bg-card-hover)]">
           <CardContent className="py-16 text-center">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-ink-100 flex items-center justify-center">
-              <Swords size={32} className="text-ink-400" />
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--bg-card)] flex items-center justify-center">
+              <Swords size={32} className="text-[var(--text-muted)]" />
             </div>
-            <p className="text-lg text-ink-500 font-medium">No matchups available for this week.</p>
+            <p className="text-lg text-[var(--text-muted)] font-medium">No matchups available for this week.</p>
           </CardContent>
         </Card>
       )}
@@ -578,11 +578,11 @@ export default function MatchupsPage(): React.ReactElement {
               { label: getMatchupLabel(activeMatchup, "home"), roster: activeRoster.home, score: activeMatchup.home_score, isWinner: activeMatchup.home_score > activeMatchup.away_score },
               { label: getMatchupLabel(activeMatchup, "away"), roster: activeRoster.away, score: activeMatchup.away_score, isWinner: activeMatchup.away_score > activeMatchup.home_score },
             ].map(({ label, roster, score, isWinner }) => (
-              <Card key={label} className={`shadow-lg overflow-hidden ${isWinner ? 'border-2 border-green-300' : 'border border-ink-200'}`}>
-                <CardHeader className={`${isWinner ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white' : 'bg-gradient-to-r from-ink-900 to-ink-800 text-white'}`}>
+              <Card key={label} className={`shadow-lg overflow-hidden ${isWinner ? 'border-2 border-[var(--success)]/50' : 'border border-[var(--border)]'}`}>
+                <CardHeader className={`${isWinner ? 'bg-gradient-to-r from-[var(--success)] to-emerald-600 text-white' : 'bg-gradient-to-r from-[var(--bg-primary)] to-[var(--bg-card)] text-[var(--text-primary)]'}`}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      {isWinner && <Trophy size={20} className="text-green-200" />}
+                      {isWinner && <Trophy size={20} className="text-emerald-200" />}
                       <CardTitle className="font-display font-black">{ownerLabel(label, label)}</CardTitle>
                     </div>
                     <span className="text-3xl font-display font-black">{formatPoints(score)}</span>
@@ -590,8 +590,8 @@ export default function MatchupsPage(): React.ReactElement {
                 </CardHeader>
                 <CardContent className="p-4">
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge variant="outline" className="bg-white">Team: {formatPoints(roster.totals.points)}</Badge>
-                    <Badge variant="outline" className="bg-white">Starters: {roster.totals.starters}</Badge>
+                    <Badge variant="outline" className="bg-[var(--bg-card)]">Team: {formatPoints(roster.totals.points)}</Badge>
+                    <Badge variant="outline" className="bg-[var(--bg-card)]">Starters: {roster.totals.starters}</Badge>
                   </div>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {Object.entries(roster.positionalTotals)
@@ -606,14 +606,14 @@ export default function MatchupsPage(): React.ReactElement {
                     <div className="overflow-x-auto">
                       <table className="w-full text-sm">
                         <thead>
-                          <tr className="bg-ink-100">
-                            <th className="py-2 px-3 text-left text-[10px] font-bold uppercase text-ink-500">Player</th>
-                            <th className="py-2 px-3 text-left text-[10px] font-bold uppercase text-ink-500">Pos</th>
-                            <th className="py-2 px-3 text-center text-[10px] font-bold uppercase text-ink-500">Start</th>
-                            <th className="py-2 px-3 text-right text-[10px] font-bold uppercase text-ink-500">Pts</th>
+                          <tr className="bg-[var(--bg-card-hover)]">
+                            <th className="py-2 px-3 text-left text-[10px] font-bold uppercase text-[var(--text-muted)]">Player</th>
+                            <th className="py-2 px-3 text-left text-[10px] font-bold uppercase text-[var(--text-muted)]">Pos</th>
+                            <th className="py-2 px-3 text-center text-[10px] font-bold uppercase text-[var(--text-muted)]">Start</th>
+                            <th className="py-2 px-3 text-right text-[10px] font-bold uppercase text-[var(--text-muted)]">Pts</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-ink-100">
+                        <tbody className="divide-y divide-[var(--border)]">
                           {(() => {
                             const starters = roster.rows.filter((r) => r.started);
                             const bench = roster.rows.filter((r) => !r.started);
@@ -623,14 +623,14 @@ export default function MatchupsPage(): React.ReactElement {
                             return (
                               <>
                                 {starters.map((row, idx) => (
-                                  <tr key={`${row.player_id || row.player}-starter-${idx}`} className="hover:bg-accent-50/50">
+                                  <tr key={`${row.player_id || row.player}-starter-${idx}`} className="hover:bg-[var(--accent-light)]">
                                     <td className="py-2 px-3">
                                       {row.canLink ? (
-                                        <Link className="text-accent-600 hover:text-accent-700 font-medium hover:underline" to={buildPlayerLink(row)}>
+                                        <Link className="text-[var(--accent)] hover:text-[var(--accent-hover)] font-medium hover:underline" to={buildPlayerLink(row)}>
                                           {row.displayName}
                                         </Link>
                                       ) : (
-                                        <span className="font-medium">{row.displayName}</span>
+                                        <span className="font-medium text-[var(--text-primary)]">{row.displayName}</span>
                                       )}
                                     </td>
                                     <td className="py-2 px-3">
@@ -639,26 +639,26 @@ export default function MatchupsPage(): React.ReactElement {
                                     <td className="py-2 px-3 text-center">
                                       <Badge variant="success" className="text-[10px]">Yes</Badge>
                                     </td>
-                                    <td className="py-2 px-3 text-right font-mono font-bold text-accent-600">{formatPoints(row.points)}</td>
+                                    <td className="py-2 px-3 text-right font-mono font-bold text-[var(--accent)]">{formatPoints(row.points)}</td>
                                   </tr>
                                 ))}
 
                                 {starters.length ? (
-                                  <tr className="bg-green-50 border-y-2 border-green-200">
+                                  <tr className="bg-[var(--success-light)] border-y-2 border-[var(--success)]/30">
                                     <td colSpan={3} className="py-2 px-3">
-                                      <strong className="text-green-700">Starters Total</strong>
+                                      <strong className="text-[var(--success)]">Starters Total</strong>
                                     </td>
                                     <td className="py-2 px-3 text-right">
-                                      <strong className="font-mono text-green-700">{formatPoints(startersTotal)}</strong>
+                                      <strong className="font-mono text-[var(--success)]">{formatPoints(startersTotal)}</strong>
                                     </td>
                                   </tr>
                                 ) : null}
 
                                 {bench.map((row, idx) => (
-                                  <tr key={`${row.player_id || row.player}-bench-${idx}`} className="hover:bg-ink-50/50 text-ink-500">
+                                  <tr key={`${row.player_id || row.player}-bench-${idx}`} className="hover:bg-[var(--bg-card-hover)] text-[var(--text-muted)]">
                                     <td className="py-2 px-3">
                                       {row.canLink ? (
-                                        <Link className="text-ink-600 hover:text-accent-600 font-medium hover:underline" to={buildPlayerLink(row)}>
+                                        <Link className="text-[var(--text-secondary)] hover:text-[var(--accent)] font-medium hover:underline" to={buildPlayerLink(row)}>
                                           {row.displayName}
                                         </Link>
                                       ) : (
@@ -669,19 +669,19 @@ export default function MatchupsPage(): React.ReactElement {
                                       <Badge variant="secondary" className="text-[10px]">{row.position}</Badge>
                                     </td>
                                     <td className="py-2 px-3 text-center">
-                                      <span className="text-xs text-ink-400">—</span>
+                                      <span className="text-xs text-[var(--text-muted)]">—</span>
                                     </td>
                                     <td className="py-2 px-3 text-right font-mono">{formatPoints(row.points)}</td>
                                   </tr>
                                 ))}
 
                                 {bench.length ? (
-                                  <tr className="bg-ink-100">
+                                  <tr className="bg-[var(--bg-card-hover)]">
                                     <td colSpan={3} className="py-2 px-3">
-                                      <strong className="text-ink-600">Bench Total</strong>
+                                      <strong className="text-[var(--text-secondary)]">Bench Total</strong>
                                     </td>
                                     <td className="py-2 px-3 text-right">
-                                      <strong className="font-mono text-ink-600">{formatPoints(benchTotal)}</strong>
+                                      <strong className="font-mono text-[var(--text-secondary)]">{formatPoints(benchTotal)}</strong>
                                     </td>
                                   </tr>
                                 ) : null}
@@ -692,14 +692,14 @@ export default function MatchupsPage(): React.ReactElement {
                       </table>
                     </div>
                   ) : (
-                    <div className="text-center py-8 text-ink-400">No roster data available for this team.</div>
+                    <div className="text-center py-8 text-[var(--text-muted)]">No roster data available for this team.</div>
                   )}
                 </CardContent>
               </Card>
             ))}
           </div>
         ) : (
-          <div className="text-center py-8 text-ink-400">No matchup details available.</div>
+          <div className="text-center py-8 text-[var(--text-muted)]">No matchup details available.</div>
         )}
       </Modal>
 

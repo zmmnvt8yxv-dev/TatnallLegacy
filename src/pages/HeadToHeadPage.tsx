@@ -8,7 +8,9 @@ import { normalizeOwnerName } from "../lib/identity";
 import { formatPoints, safeNumber } from "../utils/format";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
-import { Swords, Users, Trophy, TrendingUp, Target, Zap, ChevronRight, Crown, Flame } from "lucide-react";
+import { EmptyState } from "@/components/ui/EmptyState.jsx";
+import { Avatar } from "@/components/ui/Avatar.jsx";
+import { Swords, Users, Trophy, TrendingUp, Target, Zap, ChevronRight, Crown, Flame, Handshake } from "lucide-react";
 import type { Manifest } from "../types/index";
 
 interface SeasonTeam {
@@ -253,48 +255,54 @@ export default function HeadToHeadPage(): React.ReactElement {
             </div>
 
             {/* Owner Selection */}
-            <div className="bg-white rounded-2xl shadow-lg border border-ink-200/50 p-8 mb-8 relative overflow-hidden">
+            <div className="bg-[var(--bg-card)] rounded-2xl shadow-lg border border-[var(--border)] p-8 mb-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-red-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
                 <div className="relative z-10">
                     <div className="flex flex-wrap items-center gap-6">
                         <div className="flex-1 min-w-[200px]">
-                            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2 mb-3">
+                            <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2 mb-3">
                                 <Users size={14} className="text-blue-500" />
                                 Owner 1
                             </label>
-                            <select
-                                className="w-full rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-300 transition-all"
-                                value={ownerA}
-                                onChange={e => handleOwnerChange('ownerA', e.target.value)}
-                            >
-                                <option value="">Select Owner...</option>
-                                {owners.map(o => (
-                                    <option key={o} value={o} disabled={o === ownerB}>{o}</option>
-                                ))}
-                            </select>
+                            <div className="flex items-center gap-3">
+                                {ownerA && <Avatar name={ownerA} size="md" />}
+                                <select
+                                    className="flex-1 rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] px-5 py-3 text-base font-bold text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-400 transition-all"
+                                    value={ownerA}
+                                    onChange={e => handleOwnerChange('ownerA', e.target.value)}
+                                >
+                                    <option value="">Select Owner...</option>
+                                    {owners.map(o => (
+                                        <option key={o} value={o} disabled={o === ownerB}>{o}</option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
 
                         <div className="flex items-center justify-center">
-                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg shadow-red-500/30">
-                                <span className="text-white font-display font-black text-xl">VS</span>
+                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg shadow-red-500/30 animate-pulse">
+                                <Swords className="text-white" size={28} />
                             </div>
                         </div>
 
                         <div className="flex-1 min-w-[200px]">
-                            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2 mb-3">
+                            <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2 mb-3">
                                 <Users size={14} className="text-purple-500" />
                                 Owner 2
                             </label>
-                            <select
-                                className="w-full rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 hover:border-purple-300 transition-all"
-                                value={ownerB}
-                                onChange={e => handleOwnerChange('ownerB', e.target.value)}
-                            >
-                                <option value="">Select Owner...</option>
-                                {owners.map(o => (
-                                    <option key={o} value={o} disabled={o === ownerA}>{o}</option>
-                                ))}
-                            </select>
+                            <div className="flex items-center gap-3">
+                                {ownerB && <Avatar name={ownerB} size="md" />}
+                                <select
+                                    className="flex-1 rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] px-5 py-3 text-base font-bold text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 hover:border-purple-400 transition-all"
+                                    value={ownerB}
+                                    onChange={e => handleOwnerChange('ownerB', e.target.value)}
+                                >
+                                    <option value="">Select Owner...</option>
+                                    {owners.map(o => (
+                                        <option key={o} value={o} disabled={o === ownerA}>{o}</option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -305,13 +313,29 @@ export default function HeadToHeadPage(): React.ReactElement {
             )}
 
             {ownerA && ownerB && !loading && matchupHistory.length === 0 && (
-                <Card className="shadow-lg border-2 border-dashed border-ink-200 bg-ink-50/30">
+                <Card className="shadow-lg border-2 border-dashed border-[var(--border)] bg-[var(--bg-card)]">
                     <CardContent className="py-16 text-center">
-                        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-ink-100 flex items-center justify-center">
-                            <Swords size={32} className="text-ink-400" />
+                        <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[var(--accent-light)] flex items-center justify-center">
+                            <Handshake size={40} className="text-[var(--accent)]" />
                         </div>
-                        <h3 className="text-xl font-display font-black text-ink-900 mb-2">No Matchups Found</h3>
-                        <p className="text-ink-500">These owners have never played each other in the recorded history.</p>
+                        <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-3">These Rivals Haven't Faced Off Yet!</h3>
+                        <p className="text-[var(--text-muted)] max-w-md mx-auto mb-6">
+                            {ownerA} and {ownerB} have never played each other in the recorded league history.
+                            Check back after more matchups are played!
+                        </p>
+                        <div className="flex items-center justify-center gap-4">
+                            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--bg-card-hover)]">
+                                <Avatar name={ownerA} size="sm" />
+                                <span className="font-medium text-[var(--text-primary)]">{ownerA}</span>
+                            </div>
+                            <div className="w-10 h-10 rounded-full bg-[var(--bg-card-hover)] flex items-center justify-center">
+                                <Swords size={18} className="text-[var(--text-muted)]" />
+                            </div>
+                            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--bg-card-hover)]">
+                                <Avatar name={ownerB} size="sm" />
+                                <span className="font-medium text-[var(--text-primary)]">{ownerB}</span>
+                            </div>
+                        </div>
                     </CardContent>
                 </Card>
             )}
@@ -320,21 +344,23 @@ export default function HeadToHeadPage(): React.ReactElement {
                 <>
                     {/* All-Time Record Card */}
                     <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-red-600 rounded-2xl p-1 mb-8 shadow-xl">
-                        <div className="bg-white rounded-xl p-8">
+                        <div className="bg-[var(--bg-card)] rounded-xl p-8">
                             <div className="text-center mb-6">
-                                <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">All-Time Head-to-Head Record</span>
+                                <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">All-Time Head-to-Head Record</span>
                             </div>
                             <div className="flex items-center justify-center gap-8">
-                                <div className={`text-center flex-1 p-6 rounded-xl transition-all ${leaderA ? 'bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-300' : 'bg-ink-50'}`}>
+                                <div className={`text-center flex-1 p-6 rounded-xl transition-all ${leaderA ? 'bg-[var(--success-light)] border-2 border-[var(--success)]' : 'bg-[var(--bg-card-hover)]'}`}>
                                     {leaderA && <Crown className="mx-auto mb-2 text-amber-500" size={24} />}
-                                    <div className={`text-6xl font-display font-black ${leaderA ? 'text-green-600' : 'text-ink-600'}`}>{stats.winsA}</div>
-                                    <div className="text-lg font-display font-bold text-ink-700 mt-2">{ownerA}</div>
+                                    <Avatar name={ownerA} size="lg" className="mx-auto mb-3" />
+                                    <div className={`text-6xl font-bold ${leaderA ? 'text-[var(--success)]' : 'text-[var(--text-muted)]'}`}>{stats.winsA}</div>
+                                    <div className="text-lg font-bold text-[var(--text-primary)] mt-2">{ownerA}</div>
                                 </div>
-                                <div className="text-4xl font-display font-black text-ink-300">—</div>
-                                <div className={`text-center flex-1 p-6 rounded-xl transition-all ${leaderB ? 'bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-300' : 'bg-ink-50'}`}>
+                                <div className="text-4xl font-bold text-[var(--text-muted)]">—</div>
+                                <div className={`text-center flex-1 p-6 rounded-xl transition-all ${leaderB ? 'bg-[var(--success-light)] border-2 border-[var(--success)]' : 'bg-[var(--bg-card-hover)]'}`}>
                                     {leaderB && <Crown className="mx-auto mb-2 text-amber-500" size={24} />}
-                                    <div className={`text-6xl font-display font-black ${leaderB ? 'text-green-600' : 'text-ink-600'}`}>{stats.winsB}</div>
-                                    <div className="text-lg font-display font-bold text-ink-700 mt-2">{ownerB}</div>
+                                    <Avatar name={ownerB} size="lg" className="mx-auto mb-3" />
+                                    <div className={`text-6xl font-bold ${leaderB ? 'text-[var(--success)]' : 'text-[var(--text-muted)]'}`}>{stats.winsB}</div>
+                                    <div className="text-lg font-bold text-[var(--text-primary)] mt-2">{ownerB}</div>
                                 </div>
                             </div>
                         </div>
