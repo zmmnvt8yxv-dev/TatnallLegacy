@@ -1181,3 +1181,165 @@ a {
     @apply bg-background text-foreground;
   }
 }
+
+/* Theme-aware color overrides for legacy components */
+/* These help bridge the old ink-* and accent-* color system to the new theme */
+
+/* Background overrides for dark mode */
+:root.dark .bg-white {
+  background-color: var(--bg-card) !important;
+}
+
+:root.dark .bg-ink-50,
+:root.dark .bg-ink-50\/30 {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+:root.dark .bg-ink-100 {
+  background-color: var(--bg-card-hover) !important;
+}
+
+:root.dark .bg-ink-900 {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Gradient overrides for dark mode */
+:root.dark .from-ink-900 {
+  --tw-gradient-from: var(--bg-secondary) !important;
+}
+
+:root.dark .via-ink-800,
+:root.dark .to-ink-900,
+:root.dark .from-ink-800,
+:root.dark .to-ink-800 {
+  --tw-gradient-to: var(--bg-primary) !important;
+}
+
+:root.dark .from-ink-50 {
+  --tw-gradient-from: var(--bg-card) !important;
+}
+
+:root.dark .to-white {
+  --tw-gradient-to: var(--bg-card) !important;
+}
+
+/* Text overrides for dark mode */
+:root.dark .text-ink-900 {
+  color: var(--text-primary) !important;
+}
+
+:root.dark .text-ink-800,
+:root.dark .text-ink-700 {
+  color: var(--text-secondary) !important;
+}
+
+:root.dark .text-ink-600,
+:root.dark .text-ink-500,
+:root.dark .text-ink-400,
+:root.dark .text-ink-300 {
+  color: var(--text-muted) !important;
+}
+
+/* Border overrides for dark mode */
+:root.dark .border-ink-100,
+:root.dark .border-ink-200,
+:root.dark .border-ink-200\/50 {
+  border-color: var(--border) !important;
+}
+
+:root.dark .divide-ink-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--border) !important;
+}
+
+/* Card hover states for dark mode */
+:root.dark .hover\:bg-accent-50\/50:hover,
+:root.dark .hover\:bg-purple-50\/50:hover,
+:root.dark .hover\:bg-ink-50\/50:hover {
+  background-color: var(--bg-card-hover) !important;
+}
+
+/* Accent color adjustments for dark mode */
+:root.dark .text-accent-600,
+:root.dark .text-accent-500,
+:root.dark .text-accent-400 {
+  color: var(--accent) !important;
+}
+
+:root.dark .border-accent-500\/20,
+:root.dark .border-accent-500\/30 {
+  border-color: rgba(96, 165, 250, 0.2) !important;
+}
+
+/* Table header fixes for dark mode */
+:root.dark .bg-gradient-to-r.from-ink-900.to-ink-800,
+:root.dark .bg-gradient-to-r.from-amber-900.to-amber-800,
+:root.dark .bg-gradient-to-r.from-purple-900.to-purple-800,
+:root.dark .bg-gradient-to-r.from-accent-900.to-accent-800 {
+  background: linear-gradient(to right, var(--bg-secondary), rgba(255, 255, 255, 0.05)) !important;
+}
+
+/* Shadow adjustments for dark mode */
+:root.dark .shadow-lg,
+:root.dark .shadow-xl,
+:root.dark .shadow-2xl {
+  --tw-shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Input and select fixes for dark mode */
+:root.dark select,
+:root.dark input[type="text"],
+:root.dark input[type="search"] {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+:root.dark select option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Badge color fixes for dark mode */
+:root.dark .bg-green-100 {
+  background-color: var(--success-light) !important;
+}
+
+:root.dark .text-green-700,
+:root.dark .text-green-600 {
+  color: var(--success) !important;
+}
+
+:root.dark .bg-red-100 {
+  background-color: var(--danger-light) !important;
+}
+
+:root.dark .text-red-700,
+:root.dark .text-red-600 {
+  color: var(--danger) !important;
+}
+
+/* Fix filter panel backgrounds */
+:root.dark .bg-white.rounded-2xl {
+  background-color: var(--bg-card) !important;
+}
+
+/* Fix stat card hover effects in dark mode */
+:root.dark .group:hover .group-hover\:text-green-600,
+:root.dark .group:hover .group-hover\:text-purple-600,
+:root.dark .group:hover .group-hover\:text-accent-600,
+:root.dark .group:hover .group-hover\:text-amber-600 {
+  color: var(--accent) !important;
+}
+
+/* Hero section text stays white in dark mode */
+:root.dark [class*="text-white"] {
+  color: white !important;
+}
+
+:root.dark .text-amber-200,
+:root.dark .text-accent-200,
+:root.dark .text-purple-200,
+:root.dark .text-red-200,
+:root.dark .text-green-200 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
