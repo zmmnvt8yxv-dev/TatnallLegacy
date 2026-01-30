@@ -8,15 +8,12 @@ const ThemeContext = createContext({
 
 export function ThemeProvider({ children }) {
     const [theme, setTheme] = useState(() => {
-        // Check localStorage first, then system preference
+        // Check localStorage first, default to dark mode
         if (typeof window !== 'undefined') {
             const stored = localStorage.getItem('tatnall-theme');
             if (stored) return stored;
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                return 'dark';
-            }
         }
-        return 'light';
+        return 'dark'; // Default to dark mode
     });
 
     useEffect(() => {
