@@ -8,7 +8,9 @@ import { normalizeOwnerName } from "../lib/identity";
 import { formatPoints, safeNumber } from "../utils/format";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card.jsx";
 import { Badge } from "@/components/ui/badge.jsx";
-import { Swords, Users, Trophy, TrendingUp, Target, Zap, ChevronRight, Crown, Flame } from "lucide-react";
+import { EmptyState } from "@/components/ui/EmptyState.jsx";
+import { Avatar } from "@/components/ui/Avatar.jsx";
+import { Swords, Users, Trophy, TrendingUp, Target, Zap, ChevronRight, Crown, Flame, Handshake } from "lucide-react";
 import type { Manifest } from "../types/index";
 
 interface SeasonTeam {
