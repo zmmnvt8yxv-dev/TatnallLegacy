@@ -366,7 +366,7 @@ export default function TransactionsPage(): React.ReactElement {
             Transactions
             <span className="text-green-400 text-6xl lg:text-7xl leading-none drop-shadow-[0_0_20px_rgba(34,197,94,0.5)]">.</span>
           </h1>
-          <p className="text-lg md:text-xl text-ink-300 max-w-3xl leading-relaxed">
+          <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-3xl leading-relaxed">
             Track trades, adds, and drops by season and week.
           </p>
         </div>
@@ -386,27 +386,27 @@ export default function TransactionsPage(): React.ReactElement {
           </div>
         </div>
 
-        <div className="group relative bg-white rounded-2xl p-6 border-2 border-green-200 hover:border-green-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+        <div className="group relative bg-[var(--bg-card)] rounded-2xl p-6 border-2 border-green-200 hover:border-green-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
               <Plus className="text-green-500" size={18} />
-              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Adds</span>
+              <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Adds</span>
             </div>
-            <div className="text-5xl font-display font-black text-ink-900 leading-none group-hover:text-green-600 transition-colors">{filteredCounts.add}</div>
-            <p className="text-xs text-ink-400 mt-1">Player pickups</p>
+            <div className="text-5xl font-display font-black text-[var(--text-primary)] leading-none group-hover:text-green-600 transition-colors">{filteredCounts.add}</div>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Player pickups</p>
           </div>
         </div>
 
-        <div className="group relative bg-white rounded-2xl p-6 border-2 border-red-200 hover:border-red-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+        <div className="group relative bg-[var(--bg-card)] rounded-2xl p-6 border-2 border-red-200 hover:border-red-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
               <Minus className="text-red-500" size={18} />
-              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Drops</span>
+              <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Drops</span>
             </div>
-            <div className="text-5xl font-display font-black text-ink-900 leading-none group-hover:text-red-600 transition-colors">{filteredCounts.drop}</div>
-            <p className="text-xs text-ink-400 mt-1">Released players</p>
+            <div className="text-5xl font-display font-black text-[var(--text-primary)] leading-none group-hover:text-red-600 transition-colors">{filteredCounts.drop}</div>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Released players</p>
           </div>
         </div>
 
@@ -424,19 +424,19 @@ export default function TransactionsPage(): React.ReactElement {
       </div>
 
       {/* Filters Section */}
-      <div className="bg-white rounded-2xl shadow-lg border border-ink-200/50 p-6 mb-8 relative overflow-hidden">
+      <div className="bg-[var(--bg-card)] rounded-2xl shadow-lg border border-[var(--border)]/50 p-6 mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-40 h-40 bg-green-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="relative z-10">
           <div className="flex flex-wrap gap-6 items-end mb-4">
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+              <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
                 <Calendar size={14} className="text-green-500" />
                 Season
               </label>
               <select
                 value={season}
                 onChange={(event) => handleSeasonChange(event.target.value)}
-                className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[140px]"
+                className="rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[140px]"
               >
                 {seasons.map((value) => (
                   <option key={value} value={value}>{value}</option>
@@ -445,14 +445,14 @@ export default function TransactionsPage(): React.ReactElement {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+              <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
                 <Target size={14} className="text-green-500" />
                 Week
               </label>
               <select
                 value={week}
                 onChange={(event) => handleWeekChange(event.target.value)}
-                className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[140px]"
+                className="rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[140px]"
               >
                 <option value="all">All weeks</option>
                 {availableWeeks.map((value) => (
@@ -462,14 +462,14 @@ export default function TransactionsPage(): React.ReactElement {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+              <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
                 <Filter size={14} className="text-green-500" />
                 Type
               </label>
               <select
                 value={typeFilter}
                 onChange={(event) => handleTypeChange(event.target.value)}
-                className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[140px]"
+                className="rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[140px]"
               >
                 <option value="all">All types</option>
                 <option value="trade">Trade</option>
@@ -479,14 +479,14 @@ export default function TransactionsPage(): React.ReactElement {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+              <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
                 <Users size={14} className="text-green-500" />
                 Team
               </label>
               <select
                 value={teamFilter}
                 onChange={(event) => handleTeamChange(event.target.value)}
-                className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[180px]"
+                className="rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:border-green-300 transition-all min-w-[180px]"
               >
                 <option value="">All teams</option>
                 {teamOptions.map((value) => (
@@ -496,7 +496,7 @@ export default function TransactionsPage(): React.ReactElement {
             </div>
 
             <div className="flex items-center gap-3">
-              <Badge variant="outline" className="h-12 px-5 border-2 border-ink-200 text-lg font-bold flex items-center gap-2">
+              <Badge variant="outline" className="h-12 px-5 border-2 border-[var(--border)] text-lg font-bold flex items-center gap-2">
                 <Zap size={18} className="text-green-500" />
                 {entries.length} Entries
               </Badge>
@@ -518,34 +518,34 @@ export default function TransactionsPage(): React.ReactElement {
             </div>
           </div>
 
-          <div className="flex gap-6 pt-4 border-t border-ink-100">
+          <div className="flex gap-6 pt-4 border-t border-[var(--border)]">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-accent-500" />
-              <span className="text-sm text-ink-600">Trades: <span className="font-bold text-ink-900">{filteredCounts.trade}</span></span>
+              <span className="text-sm text-[var(--text-secondary)]">Trades: <span className="font-bold text-[var(--text-primary)]">{filteredCounts.trade}</span></span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="text-sm text-ink-600">Adds: <span className="font-bold text-ink-900">{filteredCounts.add}</span></span>
+              <span className="text-sm text-[var(--text-secondary)]">Adds: <span className="font-bold text-[var(--text-primary)]">{filteredCounts.add}</span></span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500" />
-              <span className="text-sm text-ink-600">Drops: <span className="font-bold text-ink-900">{filteredCounts.drop}</span></span>
+              <span className="text-sm text-[var(--text-secondary)]">Drops: <span className="font-bold text-[var(--text-primary)]">{filteredCounts.drop}</span></span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Recent Transactions Table */}
-      <Card className="mb-8 shadow-lg border border-ink-200/50 overflow-hidden relative">
+      <Card className="mb-8 shadow-lg border border-[var(--border)]/50 overflow-hidden relative">
         <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-        <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+        <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-[var(--border)]">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg shadow-green-500/20">
               <TrendingUp className="text-white" size={22} />
             </div>
             <div>
               <CardTitle className="text-2xl font-display font-black">Recent Transactions</CardTitle>
-              <CardDescription className="text-sm text-ink-500 font-medium">Latest waiver moves and trades</CardDescription>
+              <CardDescription className="text-sm text-[var(--text-muted)] font-medium">Latest waiver moves and trades</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -569,9 +569,9 @@ export default function TransactionsPage(): React.ReactElement {
                     </tr>
                   ) : null}
                   {visibleEntries.map((entry, idx) => (
-                    <tr key={entry.id} className={`hover:bg-accent-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                    <tr key={entry.id} className={`hover:bg-accent-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]/30'}`}>
                       <td className="py-4 px-5">
-                        <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-ink-100 font-mono font-bold text-ink-700">
+                        <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--bg-card-hover)] font-mono font-bold text-[var(--text-primary)]">
                           {entry.week ?? "—"}
                         </span>
                       </td>
@@ -619,7 +619,7 @@ export default function TransactionsPage(): React.ReactElement {
                               </div>
                             ) : (
                               <div className="flex flex-wrap items-center gap-2">
-                                <span className="text-ink-500 text-xs font-medium">
+                                <span className="text-[var(--text-muted)] text-xs font-medium">
                                   {entry.type === "add" ? "Added:" : entry.type === "drop" ? "Dropped:" : "Updated:"}
                                 </span>
                                 {renderPlayerLinks(entry.players)}
@@ -627,7 +627,7 @@ export default function TransactionsPage(): React.ReactElement {
                             )}
                           </div>
                         ) : (
-                          <div className="text-sm text-ink-500 italic">{entry.summary || "No details"}</div>
+                          <div className="text-sm text-[var(--text-muted)] italic">{entry.summary || "No details"}</div>
                         )}
                       </td>
                     </tr>
@@ -642,10 +642,10 @@ export default function TransactionsPage(): React.ReactElement {
             </div>
           ) : (
             <div className="text-center py-16">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-ink-100 flex items-center justify-center">
-                <ArrowRightLeft size={32} className="text-ink-400" />
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--bg-card-hover)] flex items-center justify-center">
+                <ArrowRightLeft size={32} className="text-[var(--text-muted)]" />
               </div>
-              <p className="text-lg text-ink-500 font-medium">No transaction data available for this season.</p>
+              <p className="text-lg text-[var(--text-muted)] font-medium">No transaction data available for this season.</p>
             </div>
           )}
         </CardContent>
@@ -653,9 +653,9 @@ export default function TransactionsPage(): React.ReactElement {
 
       {/* Season Totals & League Records */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <Card className="shadow-lg border border-ink-200/50 overflow-hidden relative">
+        <Card className="shadow-lg border border-[var(--border)]/50 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-[var(--border)]">
             <div className="flex items-center gap-3">
               <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg shadow-blue-500/20">
                 <Users className="text-white" size={22} />
@@ -677,8 +677,8 @@ export default function TransactionsPage(): React.ReactElement {
                   </thead>
                   <tbody className="divide-y divide-ink-100">
                     {totalsByTeam.map((row, idx) => (
-                      <tr key={row.team} className={`hover:bg-accent-50/50 transition-all ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
-                        <td className="py-3 px-4 font-display font-bold text-ink-900">{ownerLabel(row.team, row.team)}</td>
+                      <tr key={row.team} className={`hover:bg-accent-50/50 transition-all ${idx % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]/30'}`}>
+                        <td className="py-3 px-4 font-display font-bold text-[var(--text-primary)]">{ownerLabel(row.team, row.team)}</td>
                         <td className="py-3 px-4 text-center">
                           <span className="inline-flex items-center justify-center w-10 h-8 rounded-lg bg-green-100 text-green-700 font-mono font-bold">
                             {row.adds}
@@ -700,14 +700,14 @@ export default function TransactionsPage(): React.ReactElement {
                 </table>
               </div>
             ) : (
-              <div className="text-center py-12 text-ink-500">No team totals available.</div>
+              <div className="text-center py-12 text-[var(--text-muted)]">No team totals available.</div>
             )}
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg border border-ink-200/50 overflow-hidden relative">
+        <Card className="shadow-lg border border-[var(--border)]/50 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-[var(--border)]">
             <div className="flex items-center gap-3">
               <div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl shadow-lg shadow-amber-500/20">
                 <Award className="text-white" size={22} />
@@ -724,7 +724,7 @@ export default function TransactionsPage(): React.ReactElement {
                     Most Weekly Adds
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="font-display font-black text-lg text-ink-900">{ownerLabel(recordHighlights.mostAdds.team, recordHighlights.mostAdds.team)}</span>
+                    <span className="font-display font-black text-lg text-[var(--text-primary)]">{ownerLabel(recordHighlights.mostAdds.team, recordHighlights.mostAdds.team)}</span>
                     <Badge variant="success" className="text-sm font-bold">{recordHighlights.mostAdds.adds} adds</Badge>
                   </div>
                 </div>
@@ -734,7 +734,7 @@ export default function TransactionsPage(): React.ReactElement {
                     Most Weekly Drops
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="font-display font-black text-lg text-ink-900">{ownerLabel(recordHighlights.mostDrops.team, recordHighlights.mostDrops.team)}</span>
+                    <span className="font-display font-black text-lg text-[var(--text-primary)]">{ownerLabel(recordHighlights.mostDrops.team, recordHighlights.mostDrops.team)}</span>
                     <Badge variant="destructive" className="text-sm font-bold">{recordHighlights.mostDrops.drops} drops</Badge>
                   </div>
                 </div>
@@ -744,13 +744,13 @@ export default function TransactionsPage(): React.ReactElement {
                     Total Trades Leader
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="font-display font-black text-lg text-ink-900">{ownerLabel(recordHighlights.mostTrades.team, recordHighlights.mostTrades.team)}</span>
+                    <span className="font-display font-black text-lg text-[var(--text-primary)]">{ownerLabel(recordHighlights.mostTrades.team, recordHighlights.mostTrades.team)}</span>
                     <Badge className="text-sm font-bold bg-accent-500">{recordHighlights.mostTrades.trades} trades</Badge>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="text-center py-12 text-ink-500">No league transaction records available.</div>
+              <div className="text-center py-12 text-[var(--text-muted)]">No league transaction records available.</div>
             )}
           </CardContent>
         </Card>

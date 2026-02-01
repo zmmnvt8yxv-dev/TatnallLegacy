@@ -132,7 +132,7 @@ export default function TeamsPage(): React.ReactElement {
                         Fantasy Teams
                         <span className="text-blue-400 text-6xl lg:text-7xl leading-none drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]">.</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-ink-300 max-w-3xl leading-relaxed">
+                    <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-3xl leading-relaxed">
                         Browse all fantasy teams across {seasons.length} seasons of league history.
                     </p>
                 </div>
@@ -152,31 +152,31 @@ export default function TeamsPage(): React.ReactElement {
                     </div>
                 </div>
 
-                <div className="group relative bg-white rounded-2xl p-6 border-2 border-green-200 hover:border-green-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                <div className="group relative bg-[var(--bg-card)] rounded-2xl p-6 border-2 border-green-200 hover:border-green-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                     <div className="relative z-10">
                         <div className="flex items-center gap-2 mb-3">
                             <Crown className="text-green-500" size={18} />
-                            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Champion</span>
+                            <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Champion</span>
                         </div>
-                        <div className="text-xl font-display font-black text-ink-900 truncate group-hover:text-green-600 transition-colors mb-1">
+                        <div className="text-xl font-display font-black text-[var(--text-primary)] truncate group-hover:text-green-600 transition-colors mb-1">
                             {teams[0]?.ownerNormalized || "—"}
                         </div>
-                        <p className="text-xs text-ink-400">
+                        <p className="text-xs text-[var(--text-muted)]">
                             {teams[0] ? `#1 in ${season}` : "No data"}
                         </p>
                     </div>
                 </div>
 
-                <div className="group relative bg-white rounded-2xl p-6 border-2 border-purple-200 hover:border-purple-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                <div className="group relative bg-[var(--bg-card)] rounded-2xl p-6 border-2 border-purple-200 hover:border-purple-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                     <div className="relative z-10">
                         <div className="flex items-center gap-2 mb-3">
                             <UserCircle className="text-purple-500" size={18} />
-                            <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Unique Owners</span>
+                            <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Unique Owners</span>
                         </div>
-                        <div className="text-5xl font-display font-black text-ink-900 leading-none group-hover:text-purple-600 transition-colors">{uniqueOwners.length}</div>
-                        <p className="text-xs text-ink-400 mt-1">This season</p>
+                        <div className="text-5xl font-display font-black text-[var(--text-primary)] leading-none group-hover:text-purple-600 transition-colors">{uniqueOwners.length}</div>
+                        <p className="text-xs text-[var(--text-muted)] mt-1">This season</p>
                     </div>
                 </div>
 
@@ -194,11 +194,11 @@ export default function TeamsPage(): React.ReactElement {
             </div>
 
             {/* Filters Section */}
-            <div className="bg-white rounded-2xl shadow-lg border border-ink-200/50 p-6 mb-8 relative overflow-hidden">
+            <div className="bg-[var(--bg-card)] rounded-2xl shadow-lg border border-[var(--border)]/50 p-6 mb-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
                 <div className="relative z-10 flex flex-wrap gap-6 items-end">
                     <div className="flex flex-col gap-2">
-                        <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+                        <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
                             <Calendar size={14} className="text-blue-500" />
                             Season
                         </label>
@@ -206,7 +206,7 @@ export default function TeamsPage(): React.ReactElement {
                             id="season-select"
                             value={season || ""}
                             onChange={(e) => handleSeasonChange(e.target.value)}
-                            className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-300 transition-all min-w-[140px]"
+                            className="rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-blue-300 transition-all min-w-[140px]"
                         >
                             {seasons.map((s) => (
                                 <option key={s} value={s}>
@@ -215,7 +215,7 @@ export default function TeamsPage(): React.ReactElement {
                             ))}
                         </select>
                     </div>
-                    <Badge variant="outline" className="h-12 px-5 border-2 border-ink-200 text-lg font-bold flex items-center gap-2">
+                    <Badge variant="outline" className="h-12 px-5 border-2 border-[var(--border)] text-lg font-bold flex items-center gap-2">
                         <Zap size={18} className="text-blue-500" />
                         {teams.length} Teams
                     </Badge>
@@ -223,16 +223,16 @@ export default function TeamsPage(): React.ReactElement {
             </div>
 
             {/* Teams Table */}
-            <Card className="mb-8 shadow-lg border border-ink-200/50 overflow-hidden relative">
+            <Card className="mb-8 shadow-lg border border-[var(--border)]/50 overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+                <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-[var(--border)]">
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg shadow-blue-500/20">
                             <Trophy className="text-white" size={22} />
                         </div>
                         <div>
                             <CardTitle className="text-2xl font-display font-black">{season} Teams</CardTitle>
-                            <CardDescription className="text-sm text-ink-500 font-medium">Final standings and season results</CardDescription>
+                            <CardDescription className="text-sm text-[var(--text-muted)] font-medium">Final standings and season results</CardDescription>
                         </div>
                     </div>
                 </CardHeader>
@@ -252,20 +252,20 @@ export default function TeamsPage(): React.ReactElement {
                                 {teams.map((team, idx) => {
                                     const rank = team.final_rank || team.regular_season_rank || idx + 1;
                                     return (
-                                        <tr key={team.team_name || team.display_name || idx} className={`hover:bg-accent-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                                        <tr key={team.team_name || team.display_name || idx} className={`hover:bg-accent-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]/30'}`}>
                                             <td className="py-4 px-5">
                                                 <span className={`inline-flex items-center justify-center w-10 h-10 rounded-xl font-display font-black text-lg shadow-sm ${
                                                     rank === 1 ? 'bg-gradient-to-br from-amber-400 to-amber-500 text-white' :
                                                     rank === 2 ? 'bg-gradient-to-br from-slate-300 to-slate-400 text-white' :
                                                     rank === 3 ? 'bg-gradient-to-br from-amber-600 to-amber-700 text-white' :
-                                                    'bg-ink-100 text-ink-600'
+                                                    'bg-[var(--bg-card-hover)] text-[var(--text-secondary)]'
                                                 }`}>
                                                     {rank}
                                                 </span>
                                             </td>
                                             <td className="py-4 px-5">
                                                 <div className="flex flex-col gap-1">
-                                                    <span className="font-display font-black text-lg text-ink-900 flex items-center gap-2">
+                                                    <span className="font-display font-black text-lg text-[var(--text-primary)] flex items-center gap-2">
                                                         {team.team_name || team.display_name}
                                                         {rank === 1 && <Crown size={16} className="text-amber-500" />}
                                                     </span>
@@ -279,9 +279,9 @@ export default function TeamsPage(): React.ReactElement {
                                                 </div>
                                             </td>
                                             <td className="py-4 px-5 text-center">
-                                                <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-ink-100 font-mono font-bold text-ink-700">
+                                                <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[var(--bg-card-hover)] font-mono font-bold text-[var(--text-primary)]">
                                                     <span className="text-green-600">{team.wins || 0}</span>
-                                                    <span className="text-ink-400">-</span>
+                                                    <span className="text-[var(--text-muted)]">-</span>
                                                     <span className="text-red-600">{team.losses || 0}</span>
                                                 </span>
                                             </td>
@@ -289,7 +289,7 @@ export default function TeamsPage(): React.ReactElement {
                                                 <span className="font-display text-xl text-accent-600 font-black">{formatPoints(team.points_for, 1)}</span>
                                             </td>
                                             <td className="py-4 px-5 text-right">
-                                                <span className="font-mono text-lg text-ink-400">{formatPoints(team.points_against, 1)}</span>
+                                                <span className="font-mono text-lg text-[var(--text-muted)]">{formatPoints(team.points_against, 1)}</span>
                                             </td>
                                         </tr>
                                     );
@@ -301,16 +301,16 @@ export default function TeamsPage(): React.ReactElement {
             </Card>
 
             {/* All Owners */}
-            <Card className="shadow-lg border border-ink-200/50 overflow-hidden relative">
+            <Card className="shadow-lg border border-[var(--border)]/50 overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+                <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-[var(--border)]">
                     <div className="flex items-center gap-3">
                         <div className="p-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg shadow-purple-500/20">
                             <UserCircle className="text-white" size={22} />
                         </div>
                         <div>
                             <CardTitle className="text-2xl font-display font-black">All Owners</CardTitle>
-                            <CardDescription className="text-sm text-ink-500 font-medium">Click an owner to see their full league history</CardDescription>
+                            <CardDescription className="text-sm text-[var(--text-muted)] font-medium">Click an owner to see their full league history</CardDescription>
                         </div>
                     </div>
                 </CardHeader>
@@ -322,7 +322,7 @@ export default function TeamsPage(): React.ReactElement {
                                 to={`/owners/${slugifyOwner(owner)}`}
                                 className="group px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-50 to-white border-2 border-purple-200 hover:border-purple-400 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
                             >
-                                <span className="font-display font-bold text-ink-800 group-hover:text-purple-600 transition-colors flex items-center gap-2">
+                                <span className="font-display font-bold text-[var(--text-primary)] group-hover:text-purple-600 transition-colors flex items-center gap-2">
                                     {owner}
                                     <ChevronRight size={16} className="text-purple-400 group-hover:translate-x-0.5 transition-transform" />
                                 </span>
