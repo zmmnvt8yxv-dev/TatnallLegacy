@@ -343,7 +343,7 @@ export default function SummaryPage(): React.ReactElement {
             League Summary
             <span className="text-accent-400 text-6xl lg:text-7xl leading-none drop-shadow-[0_0_20px_rgba(31,147,134,0.5)]">.</span>
           </h1>
-          <p className="text-lg md:text-xl text-ink-300 max-w-3xl leading-relaxed">
+          <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-3xl leading-relaxed">
             Snapshot of the latest season plus all-time records from available league exports.
           </p>
         </div>
@@ -352,8 +352,8 @@ export default function SummaryPage(): React.ReactElement {
       {/* Quick Stats Grid - Futuristic Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
         <div className="group relative bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl p-6 text-white shadow-lg shadow-accent-500/25 hover:shadow-xl hover:shadow-accent-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/5 rounded-full blur-xl translate-y-1/2 -translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--bg-card)]/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-20 h-20 bg-[var(--bg-card)]/5 rounded-full blur-xl translate-y-1/2 -translate-x-1/2" />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
               <Calendar className="text-accent-200" size={18} />
@@ -364,33 +364,33 @@ export default function SummaryPage(): React.ReactElement {
           </div>
         </div>
 
-        <div className="group relative bg-white rounded-2xl p-6 border-2 border-amber-200 hover:border-amber-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+        <div className="group relative bg-[var(--bg-card)] rounded-2xl p-6 border-2 border-amber-200 hover:border-amber-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
               <Crown className="text-amber-500" size={18} />
-              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">League Champion</span>
+              <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">League Champion</span>
             </div>
-            <div className="text-xl md:text-2xl font-display font-black text-ink-900 truncate group-hover:text-amber-600 transition-colors mb-1">{championLabel}</div>
-            <p className="text-xs text-ink-400 truncate">{championNote}</p>
+            <div className="text-xl md:text-2xl font-display font-black text-[var(--text-primary)] truncate group-hover:text-amber-600 transition-colors mb-1">{championLabel}</div>
+            <p className="text-xs text-[var(--text-muted)] truncate">{championNote}</p>
           </div>
         </div>
 
-        <div className="group relative bg-white rounded-2xl p-6 border-2 border-blue-200 hover:border-blue-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+        <div className="group relative bg-[var(--bg-card)] rounded-2xl p-6 border-2 border-blue-200 hover:border-blue-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
               <Zap className="text-blue-500" size={18} />
-              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Transactions</span>
+              <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Transactions</span>
             </div>
-            <div className="text-5xl md:text-6xl font-display font-black text-ink-900 leading-none group-hover:text-blue-600 transition-colors">{transactionTotals ? transactionTotals.total : "—"}</div>
-            <p className="text-xs text-ink-400 mt-1">Trades + adds + drops</p>
+            <div className="text-5xl md:text-6xl font-display font-black text-[var(--text-primary)] leading-none group-hover:text-blue-600 transition-colors">{transactionTotals ? transactionTotals.total : "—"}</div>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Trades + adds + drops</p>
           </div>
         </div>
 
         <div className="group relative bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/5 rounded-full blur-xl translate-y-1/2 -translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--bg-card)]/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-20 h-20 bg-[var(--bg-card)]/5 rounded-full blur-xl translate-y-1/2 -translate-x-1/2" />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
               <ArrowRightLeft className="text-purple-200" size={18} />
@@ -404,9 +404,9 @@ export default function SummaryPage(): React.ReactElement {
 
       {/* Season Highlights & Navigation */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-        <Card className="shadow-lg border-2 border-ink-100 hover:border-accent-300 transition-all duration-300 overflow-hidden relative">
+        <Card className="shadow-lg border-2 border-[var(--border)] hover:border-accent-300 transition-all duration-300 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-40 h-40 bg-accent-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <CardHeader className="border-b border-ink-100 bg-gradient-to-r from-ink-50 to-white">
+          <CardHeader className="border-b border-[var(--border)] bg-gradient-to-r from-ink-50 to-white">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-gradient-to-br from-accent-500 to-accent-600 rounded-xl shadow-md shadow-accent-500/20">
                 <Flame className="text-white" size={20} />
@@ -419,21 +419,21 @@ export default function SummaryPage(): React.ReactElement {
               <div className="flex flex-col gap-4">
                 <div className="p-4 rounded-xl bg-gradient-to-r from-green-50 to-white border border-green-200 hover:shadow-md transition-all">
                   <span className="text-[10px] font-bold text-green-600 uppercase tracking-wider block mb-1">Most Adds</span>
-                  <span className="text-lg font-display font-black text-ink-900">{ownerLabel(transactionTotals.mostAdds?.team, transactionTotals.mostAdds?.team || "—")}</span>
+                  <span className="text-lg font-display font-black text-[var(--text-primary)]">{ownerLabel(transactionTotals.mostAdds?.team, transactionTotals.mostAdds?.team || "—")}</span>
                   <Badge variant="success" className="ml-2 text-xs">{transactionTotals.mostAdds?.adds || 0} adds</Badge>
                 </div>
                 <div className="p-4 rounded-xl bg-gradient-to-r from-red-50 to-white border border-red-200 hover:shadow-md transition-all">
                   <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider block mb-1">Most Drops</span>
-                  <span className="text-lg font-display font-black text-ink-900">{ownerLabel(transactionTotals.mostDrops?.team, transactionTotals.mostDrops?.team || "—")}</span>
+                  <span className="text-lg font-display font-black text-[var(--text-primary)]">{ownerLabel(transactionTotals.mostDrops?.team, transactionTotals.mostDrops?.team || "—")}</span>
                   <Badge variant="destructive" className="ml-2 text-xs">{transactionTotals.mostDrops?.drops || 0} drops</Badge>
                 </div>
                 <div className="p-4 rounded-xl bg-gradient-to-r from-purple-50 to-white border border-purple-200 hover:shadow-md transition-all">
                   <span className="text-[10px] font-bold text-purple-600 uppercase tracking-wider block mb-1">Trade Activity</span>
-                  <span className="text-lg font-display font-black text-ink-900">{transactionTotals.totalTrades} trades logged</span>
+                  <span className="text-lg font-display font-black text-[var(--text-primary)]">{transactionTotals.totalTrades} trades logged</span>
                 </div>
               </div>
             ) : (
-              <div className="text-base text-ink-500 p-6 text-center bg-ink-50 rounded-xl border-2 border-dashed border-ink-200">No transaction data available for this season.</div>
+              <div className="text-base text-[var(--text-muted)] p-6 text-center bg-[var(--bg-card-hover)] rounded-xl border-2 border-dashed border-[var(--border)]">No transaction data available for this season.</div>
             )}
           </CardContent>
         </Card>
@@ -450,7 +450,7 @@ export default function SummaryPage(): React.ReactElement {
                 </div>
               </div>
               <h3 className="text-2xl font-display font-black mb-3 group-hover:text-accent-400 transition-colors">Weekly Matchups</h3>
-              <p className="text-ink-400 text-sm leading-relaxed flex-1">Browse matchups by season and week, then dive into roster details.</p>
+              <p className="text-[var(--text-muted)] text-sm leading-relaxed flex-1">Browse matchups by season and week, then dive into roster details.</p>
               <div className="flex items-center gap-2 text-accent-400 font-bold text-sm mt-4 group-hover:gap-3 transition-all">
                 <span>Explore matchups</span>
                 <ChevronRight size={18} />
@@ -461,11 +461,11 @@ export default function SummaryPage(): React.ReactElement {
 
         <Link to="/standings" className="block group">
           <div className="h-full relative bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl p-6 text-white shadow-xl shadow-amber-500/25 hover:shadow-2xl hover:shadow-amber-500/30 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--bg-card)]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-[var(--bg-card)]/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
             <div className="relative z-10 h-full flex flex-col">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-white/10 rounded-xl border border-white/20">
+                <div className="p-3 bg-[var(--bg-card)]/10 rounded-xl border border-white/20">
                   <BarChart3 className="text-amber-100" size={24} />
                 </div>
               </div>
@@ -485,9 +485,9 @@ export default function SummaryPage(): React.ReactElement {
         onVisible={() => setLoadHistory(true)}
         placeholder={<Card className="mb-8 shadow-lg"><CardContent className="pt-6 text-base">Loading weekly leaders...</CardContent></Card>}
       >
-        <Card className="mb-8 shadow-lg border border-ink-200/50 overflow-hidden relative">
+        <Card className="mb-8 shadow-lg border border-[var(--border)]/50 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-[var(--border)]">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg shadow-green-500/20">
@@ -495,7 +495,7 @@ export default function SummaryPage(): React.ReactElement {
                 </div>
                 <div>
                   <CardTitle className="text-2xl font-display font-black">Top Weekly Performances</CardTitle>
-                  <CardDescription className="text-sm text-ink-500 font-medium">45+ Point Games (2015–2025)</CardDescription>
+                  <CardDescription className="text-sm text-[var(--text-muted)] font-medium">45+ Point Games (2015–2025)</CardDescription>
                 </div>
               </div>
               <div className="w-full md:w-64">
@@ -505,7 +505,7 @@ export default function SummaryPage(): React.ReactElement {
           </CardHeader>
           <CardContent className="p-0 relative z-10">
             {allTimePending ? (
-              <div className="text-base text-ink-500 p-8 text-center">Loading weekly leaders...</div>
+              <div className="text-base text-[var(--text-muted)] p-8 text-center">Loading weekly leaders...</div>
             ) : topWeekly.length ? (
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -522,11 +522,11 @@ export default function SummaryPage(): React.ReactElement {
                       const player = pid ? playerFromSleeper(pid) : null;
                       const playerName = row ? getPlayerName(row) || player?.name : "Unknown";
                       return (
-                        <tr key={`${pid || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`} className={`hover:bg-accent-50/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                        <tr key={`${pid || "unknown"}-${row?.season || "x"}-${row?.week || "x"}-${index}`} className={`hover:bg-[var(--accent-light)]/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]/30'}`}>
                           <td className="py-4 px-5">
                             {pid ? (
                               <Link to={`/players/${pid}`} className="flex items-center gap-3 group">
-                                <div className="w-10 h-10 rounded-full border-2 border-ink-100 overflow-hidden bg-white shrink-0 shadow-sm group-hover:border-accent-400 transition-all group-hover:shadow-md">
+                                <div className="w-10 h-10 rounded-full border-2 border-[var(--border)] overflow-hidden bg-[var(--bg-card)] shrink-0 shadow-sm group-hover:border-accent-400 transition-all group-hover:shadow-md">
                                   <img
                                     src={`https://sleepercdn.com/content/nfl/players/${pid}.jpg`}
                                     alt=""
@@ -536,34 +536,34 @@ export default function SummaryPage(): React.ReactElement {
                                   />
                                 </div>
                                 <div className="min-w-0">
-                                  <div className="font-bold text-ink-900 text-sm md:text-base truncate max-w-[150px] md:max-w-none group-hover:text-accent-600 transition-colors">{playerName}</div>
-                                  <div className="text-xs font-bold text-ink-400 uppercase tracking-wider">
+                                  <div className="font-bold text-[var(--text-primary)] text-sm md:text-base truncate max-w-[150px] md:max-w-none group-hover:text-accent-600 transition-colors">{playerName}</div>
+                                  <div className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">
                                     {row.season} · W{row.week}
                                   </div>
                                 </div>
                               </Link>
                             ) : (
                               <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-ink-100 border border-ink-200 shrink-0 flex items-center justify-center">
-                                  <Users size={18} className="text-ink-400" />
+                                <div className="w-10 h-10 rounded-full bg-[var(--bg-card-hover)] border border-[var(--border)] shrink-0 flex items-center justify-center">
+                                  <Users size={18} className="text-[var(--text-muted)]" />
                                 </div>
                                 <div className="min-w-0">
-                                  <div className="font-bold text-ink-900 text-sm md:text-base truncate max-w-[150px] md:max-w-none">{playerName || "Unknown"}</div>
-                                  <div className="text-xs font-bold text-ink-400 uppercase tracking-wider">
+                                  <div className="font-bold text-[var(--text-primary)] text-sm md:text-base truncate max-w-[150px] md:max-w-none">{playerName || "Unknown"}</div>
+                                  <div className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">
                                     {row.season} · W{row.week}
                                   </div>
                                 </div>
                               </div>
                             )}
                           </td>
-                          <td className="py-4 px-5 text-base font-medium text-ink-800 hidden md:table-cell">
+                          <td className="py-4 px-5 text-base font-medium text-[var(--text-primary)] hidden md:table-cell">
                             {(() => {
                               const ownerByTeam = ownersBySeason.get(Number(row.season));
                               const owner = ownerByTeam?.get(row.team || "");
                               return owner ? (
                                 <div className="flex flex-col">
                                   <span className="font-bold">{owner}</span>
-                                  <span className="text-xs text-ink-400 uppercase tracking-tighter">{row.team}</span>
+                                  <span className="text-xs text-[var(--text-muted)] uppercase tracking-tighter">{row.team}</span>
                                 </div>
                               ) : row.team;
                             })()}
@@ -588,7 +588,7 @@ export default function SummaryPage(): React.ReactElement {
                 </table>
               </div>
             ) : (
-              <div className="text-base text-ink-500 italic p-8 text-center bg-ink-50/50">No weekly performance data available.</div>
+              <div className="text-base text-[var(--text-muted)] italic p-8 text-center bg-[var(--bg-card-hover)]/50">No weekly performance data available.</div>
             )}
           </CardContent>
         </Card>
@@ -599,9 +599,9 @@ export default function SummaryPage(): React.ReactElement {
         onVisible={() => setLoadHistory(true)}
         placeholder={<Card className="mb-8 shadow-lg"><CardContent className="pt-6 text-base">Loading career leaders...</CardContent></Card>}
       >
-        <Card className="mb-8 shadow-lg border border-ink-200/50 overflow-hidden relative">
+        <Card className="mb-8 shadow-lg border border-[var(--border)]/50 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+          <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-[var(--border)]">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl shadow-lg shadow-amber-500/20">
@@ -614,11 +614,11 @@ export default function SummaryPage(): React.ReactElement {
                   <SearchBar value={playerSearch} onChange={setPlayerSearch} placeholder="Search leaders..." />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-ink-500 uppercase tracking-wider">Position</span>
+                  <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">Position</span>
                   <select
                     value={careerPosition}
                     onChange={(e) => setCareerPosition(e.target.value)}
-                    className="rounded-lg border-2 border-ink-200 bg-white px-4 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 hover:border-ink-300 transition-colors"
+                    className="rounded-lg border-2 border-[var(--border)] bg-[var(--bg-card)] px-4 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 hover:border-[var(--accent)] transition-colors"
                   >
                     <option value="ALL">All</option>
                     <option value="QB">QB</option>
@@ -634,7 +634,7 @@ export default function SummaryPage(): React.ReactElement {
           </CardHeader>
           <CardContent className="p-0 relative z-10">
             {allTimePending ? (
-              <div className="text-base text-ink-500 p-8 text-center">Loading career leaders...</div>
+              <div className="text-base text-[var(--text-muted)] p-8 text-center">Loading career leaders...</div>
             ) : careerLeaders.length ? (
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -652,13 +652,13 @@ export default function SummaryPage(): React.ReactElement {
                       const player = pid ? playerFromSleeper(pid) : null;
                       const playerName = row ? getPlayerName(row) || player?.name : "Unknown";
                       return (
-                        <tr key={pid || `career-${index}`} className={`hover:bg-accent-50/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                        <tr key={pid || `career-${index}`} className={`hover:bg-[var(--accent-light)]/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]/30'}`}>
                           <td className="py-4 px-5">
                             <span className={`inline-flex items-center justify-center w-10 h-10 rounded-xl font-display font-black text-lg shadow-sm ${
                               index === 0 ? 'bg-gradient-to-br from-amber-400 to-amber-500 text-white' :
                               index === 1 ? 'bg-gradient-to-br from-slate-300 to-slate-400 text-white' :
                               index === 2 ? 'bg-gradient-to-br from-amber-600 to-amber-700 text-white' :
-                              'bg-ink-100 text-ink-600'
+                              'bg-[var(--bg-card-hover)] text-[var(--text-secondary)]'
                             }`}>
                               {index + 1}
                             </span>
@@ -666,7 +666,7 @@ export default function SummaryPage(): React.ReactElement {
                           <td className="py-4 px-5">
                             {pid ? (
                               <Link to={`/players/${pid}`} className="flex items-center gap-3 group">
-                                <div className="w-12 h-12 rounded-full border-2 border-ink-100 overflow-hidden bg-white shrink-0 shadow-sm group-hover:border-accent-400 transition-all group-hover:shadow-md">
+                                <div className="w-12 h-12 rounded-full border-2 border-[var(--border)] overflow-hidden bg-[var(--bg-card)] shrink-0 shadow-sm group-hover:border-accent-400 transition-all group-hover:shadow-md">
                                   <img
                                     src={`https://sleepercdn.com/content/nfl/players/${pid}.jpg`}
                                     alt=""
@@ -676,7 +676,7 @@ export default function SummaryPage(): React.ReactElement {
                                   />
                                 </div>
                                 <div className="min-w-0">
-                                  <div className="font-bold text-ink-900 text-sm md:text-base group-hover:text-accent-600 transition-colors truncate max-w-[150px] md:max-w-none">{playerName}</div>
+                                  <div className="font-bold text-[var(--text-primary)] text-sm md:text-base group-hover:text-accent-600 transition-colors truncate max-w-[150px] md:max-w-none">{playerName}</div>
                                   <Badge variant="secondary" className="text-[9px] px-2 py-0 h-5 uppercase font-bold tracking-tight mt-1">
                                     {row.__pos || "—"}
                                   </Badge>
@@ -684,11 +684,11 @@ export default function SummaryPage(): React.ReactElement {
                               </Link>
                             ) : (
                               <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 rounded-full bg-ink-100 border border-ink-200 shrink-0 flex items-center justify-center">
-                                  <Users size={20} className="text-ink-400" />
+                                <div className="w-12 h-12 rounded-full bg-[var(--bg-card-hover)] border border-[var(--border)] shrink-0 flex items-center justify-center">
+                                  <Users size={20} className="text-[var(--text-muted)]" />
                                 </div>
                                 <div className="min-w-0">
-                                  <div className="font-bold text-ink-900 text-sm md:text-base truncate max-w-[150px] md:max-w-none">{playerName || "Unknown"}</div>
+                                  <div className="font-bold text-[var(--text-primary)] text-sm md:text-base truncate max-w-[150px] md:max-w-none">{playerName || "Unknown"}</div>
                                   <Badge variant="secondary" className="text-[9px] px-2 py-0 h-5 uppercase font-bold tracking-tight mt-1">
                                     {row.__pos || "—"}
                                   </Badge>
@@ -696,7 +696,7 @@ export default function SummaryPage(): React.ReactElement {
                               </div>
                             )}
                           </td>
-                          <td className="py-4 px-5 font-mono text-lg font-bold text-ink-600 text-center">
+                          <td className="py-4 px-5 font-mono text-lg font-bold text-[var(--text-secondary)] text-center">
                             {row.seasons}
                           </td>
                           <td className="py-4 px-5 font-display text-2xl md:text-3xl text-accent-600 leading-none text-right font-black">
@@ -709,7 +709,7 @@ export default function SummaryPage(): React.ReactElement {
                 </table>
               </div>
             ) : (
-              <div className="text-base text-ink-500 italic p-8 text-center bg-ink-50/50">No career leaderboard data available.</div>
+              <div className="text-base text-[var(--text-muted)] italic p-8 text-center bg-[var(--bg-card-hover)]/50">No career leaderboard data available.</div>
             )}
           </CardContent>
         </Card>

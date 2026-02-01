@@ -1027,14 +1027,14 @@ export default function PlayerPage(): React.ReactElement {
                   <Heart className={isFavorite ? "fill-red-500 text-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]" : ""} size={28} />
                 </Button>
               </div>
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-lg font-medium text-ink-300">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-lg font-medium text-[var(--text-muted)]">
                 <span className="text-accent-400 font-bold px-3 py-1 bg-accent-500/10 rounded-full border border-accent-500/30 shadow-[0_0_15px_rgba(31,147,134,0.2)]">{megaProfile?.nfl?.bio?.position || displayPosition}</span>
-                <span className="text-ink-500">|</span>
+                <span className="text-[var(--text-muted)]">|</span>
                 <span className="text-white/80">{megaProfile?.nfl?.bio?.latest_team || displayTeam}</span>
                 {(megaProfile?.fantasy?.age || playerInfo?.age) && (
                   <>
-                    <span className="text-ink-500">|</span>
-                    <span className="text-ink-400">{megaProfile?.fantasy?.age || playerInfo?.age} Years Old</span>
+                    <span className="text-[var(--text-muted)]">|</span>
+                    <span className="text-[var(--text-muted)]">{megaProfile?.fantasy?.age || playerInfo?.age} Years Old</span>
                   </>
                 )}
               </div>
@@ -1136,7 +1136,7 @@ export default function PlayerPage(): React.ReactElement {
                   <div className="space-y-6">
                     <div>
                       <div className="flex justify-between items-end mb-3">
-                        <span className="text-sm font-medium text-ink-400">Total Points</span>
+                        <span className="text-sm font-medium text-[var(--text-muted)]">Total Points</span>
                         <span className="text-3xl font-display font-black text-accent-400 drop-shadow-[0_0_10px_rgba(31,147,134,0.3)]">{formatPoints(currentStats.points) || "—"}</span>
                       </div>
                       <div className="h-3 w-full bg-ink-800/80 rounded-full overflow-hidden border border-white/5">
@@ -1149,7 +1149,7 @@ export default function PlayerPage(): React.ReactElement {
 
                     <div>
                       <div className="flex justify-between items-end mb-3">
-                        <span className="text-sm font-medium text-ink-400">Avg Points / Game</span>
+                        <span className="text-sm font-medium text-[var(--text-muted)]">Avg Points / Game</span>
                         <span className="text-3xl font-display font-black text-blue-400 drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]">
                           {currentStats.games ? (safeNumber(currentStats.points) / currentStats.games).toFixed(1) : "—"}
                         </span>
@@ -1164,11 +1164,11 @@ export default function PlayerPage(): React.ReactElement {
 
                     <div className="grid grid-cols-2 gap-4 pt-3">
                       <div className="bg-gradient-to-br from-ink-800/80 to-ink-900/80 rounded-xl p-4 text-center border border-white/5 hover:border-accent-500/30 transition-all group">
-                        <div className="text-[9px] uppercase tracking-[0.15em] text-ink-500 font-bold mb-2">Games Played</div>
+                        <div className="text-[9px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-bold mb-2">Games Played</div>
                         <div className="text-2xl font-black font-mono text-white group-hover:text-accent-400 transition-colors">{currentStats.games || 0}</div>
                       </div>
                       <div className="bg-gradient-to-br from-ink-800/80 to-ink-900/80 rounded-xl p-4 text-center border border-white/5 hover:border-accent-500/30 transition-all group">
-                        <div className="text-[9px] uppercase tracking-[0.15em] text-ink-500 font-bold mb-2">Pos Rank</div>
+                        <div className="text-[9px] uppercase tracking-[0.15em] text-[var(--text-muted)] font-bold mb-2">Pos Rank</div>
                         <div className="text-2xl font-black font-mono text-accent-400 group-hover:text-white transition-colors">#{currentStats.positionRank || "—"}</div>
                       </div>
                     </div>
@@ -1181,13 +1181,13 @@ export default function PlayerPage(): React.ReactElement {
       </div>
 
       {/* FANTASY DATA SECTION - Futuristic Card */}
-      <Card className="mb-8 shadow-[0_20px_60px_rgba(31,147,134,0.15)] border border-accent-500/30 bg-gradient-to-br from-white via-accent-50/20 to-white overflow-hidden relative">
+      <Card className="mb-8 shadow-[0_20px_60px_rgba(31,147,134,0.15)] border border-accent-500/30 bg-gradient-to-br from-[var(--bg-card)] via-[var(--accent-light)] to-[var(--bg-card)] overflow-hidden relative">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
         <CardHeader
-          className="cursor-pointer hover:bg-accent-50/80 transition-all duration-300 rounded-t-lg relative z-10 border-b border-accent-200/50"
+          className="cursor-pointer hover:bg-[var(--accent-light)] transition-all duration-300 rounded-t-lg relative z-10 border-b border-[var(--accent)]/30"
           onClick={() => setFantasyExpanded(!fantasyExpanded)}
         >
           <div className="flex items-center justify-between">
@@ -1197,7 +1197,7 @@ export default function PlayerPage(): React.ReactElement {
               </div>
               <div>
                 <CardTitle className="text-2xl font-display font-black bg-gradient-to-r from-accent-700 to-accent-500 bg-clip-text text-transparent">Fantasy Data</CardTitle>
-                <CardDescription className="text-sm text-ink-500 font-medium">Performance, Transactions, and Analytics</CardDescription>
+                <CardDescription className="text-sm text-[var(--text-muted)] font-medium">Performance, Transactions, and Analytics</CardDescription>
               </div>
             </div>
             <div className={`p-2 rounded-full bg-accent-100 text-accent-600 transition-transform duration-300 ${fantasyExpanded ? 'rotate-180' : ''}`}>
@@ -1223,36 +1223,36 @@ export default function PlayerPage(): React.ReactElement {
                 </div>
               </div>
 
-              <div className="group relative bg-white rounded-2xl p-5 border-2 border-ink-100 hover:border-blue-300 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div className="group relative bg-[var(--bg-card)] rounded-2xl p-5 border-2 border-[var(--border)] hover:border-blue-300 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-3">
                     <BarChart3 className="text-blue-500" size={18} />
-                    <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Avg Points</span>
+                    <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Avg Points</span>
                   </div>
-                  <div className="text-4xl font-display font-black text-ink-900 group-hover:text-blue-600 transition-colors">
+                  <div className="text-4xl font-display font-black text-[var(--text-primary)] group-hover:text-blue-600 transition-colors">
                     {careerTotals.games > 0 ? (careerTotals.points / careerTotals.games).toFixed(1) : "0.0"}
                   </div>
-                  <p className="text-xs text-ink-400">Points per game</p>
+                  <p className="text-xs text-[var(--text-muted)]">Points per game</p>
                 </div>
               </div>
 
-              <div className="group relative bg-white rounded-2xl p-5 border-2 border-ink-100 hover:border-purple-300 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div className="group relative bg-[var(--bg-card)] rounded-2xl p-5 border-2 border-[var(--border)] hover:border-purple-300 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-purple-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-3">
                     <Activity className="text-purple-500" size={18} />
-                    <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Consistency</span>
+                    <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Consistency</span>
                   </div>
                   <div className="flex items-center gap-3 mb-1">
-                    <div className="text-4xl font-display font-black text-ink-900 group-hover:text-purple-600 transition-colors">{consistencyLabel || "—"}</div>
+                    <div className="text-4xl font-display font-black text-[var(--text-primary)] group-hover:text-purple-600 transition-colors">{consistencyLabel || "—"}</div>
                     {consistencyLabel && (
                       <Badge variant={consistencyLabel === "High" ? "success" : consistencyLabel === "Medium" ? "accent" : "destructive"} className="text-[10px] px-2 py-1 shadow-sm">
                         {consistencyLabel === "High" ? "TOP" : consistencyLabel === "Medium" ? "STABLE" : "VOLATILE"}
                       </Badge>
                     )}
                   </div>
-                  <p className="text-xs text-ink-400">{boomBust?.stdDev ? `Std Dev: ${boomBust.stdDev.toFixed(1)}` : "No data"}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{boomBust?.stdDev ? `Std Dev: ${boomBust.stdDev.toFixed(1)}` : "No data"}</p>
                 </div>
               </div>
 
@@ -1262,17 +1262,17 @@ export default function PlayerPage(): React.ReactElement {
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-3">
                     <Zap className="text-accent-400" size={18} />
-                    <span className="text-[10px] font-bold text-ink-400 uppercase tracking-[0.15em]">Career WAR</span>
+                    <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Career WAR</span>
                   </div>
                   <div className="text-4xl font-display font-black text-accent-400 drop-shadow-[0_0_10px_rgba(31,147,134,0.3)]">{formatPoints(careerTotals.war)}</div>
-                  <p className="text-xs text-ink-500">Value over replacement</p>
+                  <p className="text-xs text-[var(--text-muted)]">Value over replacement</p>
                 </div>
               </div>
             </div>
 
             {/* Season by Season Table - Futuristic */}
-            <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+            <Card className="shadow-lg border border-[var(--border)] overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-[var(--bg-card-hover)] to-[var(--bg-card)] border-b border-[var(--border)]">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-accent-100 rounded-lg">
                     <Calendar className="text-accent-600" size={20} />
@@ -1296,33 +1296,33 @@ export default function PlayerPage(): React.ReactElement {
                       </thead>
                       <tbody className="divide-y divide-ink-100">
                         {seasonStats.map((row, idx) => (
-                          <tr key={row.season} className={`hover:bg-accent-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
-                            <td className="py-4 px-5 font-display font-black text-ink-900 text-lg">{row.season}</td>
-                            <td className="py-4 px-5 text-ink-600 font-medium">{row.games}</td>
+                          <tr key={row.season} className={`hover:bg-[var(--accent-light)] transition-all duration-200 ${idx % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]'}`}>
+                            <td className="py-4 px-5 font-display font-black text-[var(--text-primary)] text-lg">{row.season}</td>
+                            <td className="py-4 px-5 text-[var(--text-secondary)] font-medium">{row.games}</td>
                             <td className="py-4 px-5">
                               <span className="font-mono font-black text-lg text-accent-600">{formatPoints(row.points)}</span>
                             </td>
                             <td className="py-4 px-5">
                               {row.position && row.positionRank ? (
-                                <span className="inline-flex items-center px-3 py-1 bg-ink-100 rounded-full text-sm font-bold text-ink-800">{row.position}{row.positionRank}</span>
+                                <span className="inline-flex items-center px-3 py-1 bg-[var(--bg-card-hover)] rounded-full text-sm font-bold text-[var(--text-primary)]">{row.position}{row.positionRank}</span>
                               ) : "—"}
                             </td>
-                            <td className="py-4 px-5 font-mono font-bold text-ink-600">{formatPoints(row.war)}</td>
-                            <td className="py-4 px-5 font-mono text-ink-400">{formatPoints(row.delta)}</td>
+                            <td className="py-4 px-5 font-mono font-bold text-[var(--text-secondary)]">{formatPoints(row.war)}</td>
+                            <td className="py-4 px-5 font-mono text-[var(--text-muted)]">{formatPoints(row.delta)}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </div>
                 ) : (
-                  <div className="text-center py-12 text-ink-400 italic">No season totals available</div>
+                  <div className="text-center py-12 text-[var(--text-muted)] italic">No season totals available</div>
                 )}
               </CardContent>
             </Card>
 
             {/* Weekly Log - Futuristic */}
-            <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+            <Card className="shadow-lg border border-[var(--border)] overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-[var(--bg-card-hover)] to-[var(--bg-card)] border-b border-[var(--border)]">
                 <div className="flex items-center justify-between flex-wrap gap-4">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-accent-100 rounded-lg">
@@ -1355,28 +1355,28 @@ export default function PlayerPage(): React.ReactElement {
                           </tr>
                         ) : null}
                         {visibleWeeklyRows.map((row, idx) => (
-                          <tr key={`${row.week}-${idx}`} className={`hover:bg-accent-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                          <tr key={`${row.week}-${idx}`} className={`hover:bg-[var(--accent-light)] transition-all duration-200 ${idx % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]'}`}>
                             <td className="py-4 px-5">
                               <span className="inline-flex items-center justify-center w-10 h-10 bg-ink-900 text-white font-display font-black rounded-lg shadow-sm">
                                 {row.week}
                               </span>
                             </td>
-                            <td className="py-4 px-5 text-sm font-medium text-ink-600 uppercase">{row.nflTeam || "—"}</td>
-                            <td className="py-4 px-5 text-sm font-bold text-ink-800">{row.fantasyTeam || "—"}</td>
+                            <td className="py-4 px-5 text-sm font-medium text-[var(--text-secondary)] uppercase">{row.nflTeam || "—"}</td>
+                            <td className="py-4 px-5 text-sm font-bold text-[var(--text-primary)]">{row.fantasyTeam || "—"}</td>
                             <td className="py-4 px-5">
                               {row.started ? (
                                 <Badge variant="success" className="text-[10px] shadow-sm shadow-green-500/20">Starter</Badge>
                               ) : (
-                                <span className="text-xs text-ink-400">Bench</span>
+                                <span className="text-xs text-[var(--text-muted)]">Bench</span>
                               )}
                             </td>
                             <td className="py-4 px-5">
                               <span className="font-mono font-black text-lg text-accent-600">{formatPoints(row.points)}</span>
                             </td>
-                            <td className="py-4 px-5 font-mono font-bold text-ink-500">{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
+                            <td className="py-4 px-5 font-mono font-bold text-[var(--text-muted)]">{row.war_rep != null ? formatPoints(row.war_rep) : "—"}</td>
                             <td className="py-4 px-5">
                               {row.position && row.pos_week_rank ? (
-                                <span className="inline-flex items-center px-2 py-1 bg-ink-100 rounded-full text-xs font-bold text-ink-700">{row.position}{row.pos_week_rank}</span>
+                                <span className="inline-flex items-center px-2 py-1 bg-[var(--bg-card-hover)] rounded-full text-xs font-bold text-[var(--text-primary)]">{row.position}{row.pos_week_rank}</span>
                               ) : "—"}
                             </td>
                           </tr>
@@ -1390,7 +1390,7 @@ export default function PlayerPage(): React.ReactElement {
                     </table>
                   </div>
                 ) : (
-                  <div className="text-center py-12 text-ink-400 italic">No weekly data available for this season</div>
+                  <div className="text-center py-12 text-[var(--text-muted)] italic">No weekly data available for this season</div>
                 )}
               </CardContent>
             </Card>
@@ -1411,8 +1411,8 @@ export default function PlayerPage(): React.ReactElement {
                 {boomBustFromMetrics || boomBust ? (
                   <>
                     <div className="flex flex-wrap gap-3 mb-8">
-                      <Badge variant="outline" className="px-4 py-2 bg-white/80 border-ink-300 shadow-sm text-sm">
-                        Std dev: <span className="font-bold text-ink-900 ml-1">{formatPoints(boomBustFromMetrics?.fp_std ?? boomBust?.stdDev)}</span>
+                      <Badge variant="outline" className="px-4 py-2 bg-[var(--bg-card)] border-[var(--border)] shadow-sm text-sm">
+                        Std dev: <span className="font-bold text-[var(--text-primary)] ml-1">{formatPoints(boomBustFromMetrics?.fp_std ?? boomBust?.stdDev)}</span>
                       </Badge>
                       {consistencyLabel && (
                         <Badge variant="secondary" className="px-4 py-2 shadow-sm text-sm">
@@ -1460,7 +1460,7 @@ export default function PlayerPage(): React.ReactElement {
                     </div>
                   </>
                 ) : (
-                  <div className="text-center py-12 text-ink-400 italic">
+                  <div className="text-center py-12 text-[var(--text-muted)] italic">
                     No weekly data available to compute boom/bust metrics
                   </div>
                 )}
@@ -1469,8 +1469,8 @@ export default function PlayerPage(): React.ReactElement {
 
             {/* Transactions & Keeper - Futuristic */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <Card className="lg:col-span-2 shadow-lg border border-ink-200/50 overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+              <Card className="lg:col-span-2 shadow-lg border border-[var(--border)] overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-[var(--bg-card-hover)] to-[var(--bg-card)] border-b border-[var(--border)]">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-accent-100 rounded-lg">
                       <Users className="text-accent-600" size={20} />
@@ -1482,9 +1482,9 @@ export default function PlayerPage(): React.ReactElement {
                   {transactionHistory.length ? (
                     <div className="space-y-4">
                       {transactionHistory.slice(0, 5).map((entry) => (
-                        <div key={entry.id} className="flex items-start gap-4 p-4 rounded-xl border border-ink-100 bg-gradient-to-r from-white to-ink-50/50 hover:shadow-md transition-all duration-300 group">
+                        <div key={entry.id} className="flex items-start gap-4 p-4 rounded-xl border border-[var(--border)] bg-gradient-to-r from-white to-ink-50/50 hover:shadow-md transition-all duration-300 group">
                           <div className="flex flex-col items-center justify-center min-w-[70px] bg-ink-900 text-white rounded-xl p-3 shadow-md group-hover:bg-accent-600 transition-colors">
-                            <span className="text-[9px] font-bold text-ink-400 uppercase group-hover:text-accent-200 transition-colors">{entry.season}</span>
+                            <span className="text-[9px] font-bold text-[var(--text-muted)] uppercase group-hover:text-accent-200 transition-colors">{entry.season}</span>
                             <span className="text-2xl font-display font-black">W{entry.week}</span>
                           </div>
                           <div className="flex-1">
@@ -1495,9 +1495,9 @@ export default function PlayerPage(): React.ReactElement {
                               >
                                 {(entry.type || "").toUpperCase()}
                               </Badge>
-                              <span className="text-sm font-bold text-ink-800">{normalizeOwnerName(entry.team)}</span>
+                              <span className="text-sm font-bold text-[var(--text-primary)]">{normalizeOwnerName(entry.team)}</span>
                             </div>
-                            <p className="text-sm text-ink-600 leading-relaxed">{formatTransactionDetails(entry)}</p>
+                            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{formatTransactionDetails(entry)}</p>
                           </div>
                           {entry.amount != null && (
                             <div className="font-mono text-lg font-black text-accent-600 bg-accent-50 px-3 py-1 rounded-lg">
@@ -1508,7 +1508,7 @@ export default function PlayerPage(): React.ReactElement {
                       ))}
                     </div>
                   ) : (
-                    <div className="text-sm text-ink-400 italic py-8 text-center border-2 border-dashed rounded-xl border-ink-200 bg-ink-50/30">
+                    <div className="text-sm text-[var(--text-muted)] italic py-8 text-center border-2 border-dashed rounded-xl border-[var(--border)] bg-[var(--bg-card-hover)]">
                       No transactions recorded
                     </div>
                   )}
@@ -1555,7 +1555,7 @@ export default function PlayerPage(): React.ReactElement {
               </div>
               <div>
                 <CardTitle className="text-2xl font-display font-black bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">NFL Data</CardTitle>
-                <CardDescription className="text-sm text-ink-500 font-medium">Biography, Draft Info, and Game Stats</CardDescription>
+                <CardDescription className="text-sm text-[var(--text-muted)] font-medium">Biography, Draft Info, and Game Stats</CardDescription>
               </div>
             </div>
             <div className={`p-2 rounded-full bg-blue-100 text-blue-600 transition-transform duration-300 ${nflExpanded ? 'rotate-180' : ''}`}>
@@ -1568,7 +1568,7 @@ export default function PlayerPage(): React.ReactElement {
           <CardContent className="space-y-8 pt-8 relative z-10">
             {/* Bio & Draft Grid - Futuristic */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
+              <Card className="shadow-lg border border-[var(--border)] overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
                   <CardTitle className="font-display">NFL Bio & Draft</CardTitle>
                 </CardHeader>
@@ -1576,40 +1576,40 @@ export default function PlayerPage(): React.ReactElement {
                   <div className="grid grid-cols-2 gap-5">
                     <div className="group">
                       <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">Full Name</label>
-                      <div className="text-lg font-bold text-ink-900 group-hover:text-blue-600 transition-colors">{megaProfile?.nfl?.bio?.display_name || displayName}</div>
+                      <div className="text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-600 transition-colors">{megaProfile?.nfl?.bio?.display_name || displayName}</div>
                     </div>
                     <div className="group">
                       <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">Status</label>
                       <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                        <span className="text-lg font-bold text-ink-900">{megaProfile?.nfl?.bio?.status || "Active"}</span>
+                        <span className="text-lg font-bold text-[var(--text-primary)]">{megaProfile?.nfl?.bio?.status || "Active"}</span>
                       </div>
                     </div>
                     <div className="group">
                       <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">Draft Year</label>
-                      <div className="text-lg font-bold text-ink-900 group-hover:text-blue-600 transition-colors">{megaProfile?.nfl?.bio?.draft_year || "Undrafted"}</div>
+                      <div className="text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-600 transition-colors">{megaProfile?.nfl?.bio?.draft_year || "Undrafted"}</div>
                     </div>
                     <div className="group">
                       <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">Draft Position</label>
-                      <div className="text-lg font-bold text-ink-900 group-hover:text-blue-600 transition-colors">
+                      <div className="text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-600 transition-colors">
                         {megaProfile?.nfl?.bio?.draft_round ? `Round ${megaProfile.nfl.bio.draft_round}, Pick ${megaProfile.nfl.bio.draft_pick}` : "—"}
                       </div>
                     </div>
                   </div>
-                  <div className="group pt-2 border-t border-ink-100">
+                  <div className="group pt-2 border-t border-[var(--border)]">
                     <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">College</label>
-                    <div className="text-lg font-bold text-ink-900 group-hover:text-blue-600 transition-colors">{megaProfile?.nfl?.bio?.college_name || playerInfo?.college || "—"}</div>
+                    <div className="text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-600 transition-colors">{megaProfile?.nfl?.bio?.college_name || playerInfo?.college || "—"}</div>
                   </div>
                   {megaProfile?.nfl?.bio?.gsis_id && (
-                    <div className="pt-2 border-t border-ink-100">
+                    <div className="pt-2 border-t border-[var(--border)]">
                       <label className="text-[9px] uppercase font-bold text-blue-500 tracking-[0.15em] mb-1 block">GSIS ID</label>
-                      <div className="font-mono text-sm text-ink-500 bg-ink-50 px-3 py-1.5 rounded-lg inline-block">{megaProfile.nfl.bio.gsis_id}</div>
+                      <div className="font-mono text-sm text-[var(--text-muted)] bg-[var(--bg-card-hover)] px-3 py-1.5 rounded-lg inline-block">{megaProfile.nfl.bio.gsis_id}</div>
                     </div>
                   )}
                 </CardContent>
               </Card>
 
-              <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
+              <Card className="shadow-lg border border-[var(--border)] overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white">
                   <CardTitle className="font-display">Sportradar Context</CardTitle>
                 </CardHeader>
@@ -1617,21 +1617,21 @@ export default function PlayerPage(): React.ReactElement {
                   {megaProfile?.nfl?.sportradar?.id ? (
                     <div className="space-y-5">
                       <div className="flex items-center gap-4 p-5 bg-gradient-to-r from-ink-900 to-ink-800 rounded-xl text-white shadow-lg">
-                        <div className="p-4 bg-white rounded-xl font-display font-black text-xl text-ink-900">
+                        <div className="p-4 bg-[var(--bg-card)] rounded-xl font-display font-black text-xl text-[var(--text-primary)]">
                           {megaProfile.nfl.sportradar._team_alias}
                         </div>
                         <div>
-                          <div className="text-[9px] font-bold text-ink-400 uppercase tracking-[0.15em]">Current Team</div>
+                          <div className="text-[9px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Current Team</div>
                           <div className="text-xl font-bold">{megaProfile.nfl.sportradar._team_alias} Roster</div>
                         </div>
                       </div>
                       <div className="group">
                         <label className="text-[9px] uppercase font-bold text-indigo-500 tracking-[0.15em] mb-1 block">Sportradar Status</label>
-                        <div className="text-lg font-bold text-ink-900">{megaProfile.nfl.sportradar.status || "Active"}</div>
+                        <div className="text-lg font-bold text-[var(--text-primary)]">{megaProfile.nfl.sportradar.status || "Active"}</div>
                       </div>
                     </div>
                   ) : (
-                    <div className="text-center py-12 text-ink-400 italic bg-ink-50/50 rounded-xl">
+                    <div className="text-center py-12 text-[var(--text-muted)] italic bg-[var(--bg-card-hover)]/50 rounded-xl">
                       Sportradar mapping not found
                     </div>
                   )}
@@ -1640,8 +1640,8 @@ export default function PlayerPage(): React.ReactElement {
             </div>
 
             {/* Full Stats Table - Futuristic */}
-            <Card className="shadow-lg border border-ink-200/50 overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+            <Card className="shadow-lg border border-[var(--border)] overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-[var(--bg-card-hover)] to-[var(--bg-card)] border-b border-[var(--border)]">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-blue-100 rounded-lg">
                     <BarChart3 className="text-blue-600" size={20} />
@@ -1671,16 +1671,16 @@ export default function PlayerPage(): React.ReactElement {
                           </tr>
                         ) : null}
                         {visibleFullStatsRows.map((row, idx) => (
-                          <tr key={`${row.week}-${idx}`} className={`hover:bg-blue-50/50 transition-all duration-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                          <tr key={`${row.week}-${idx}`} className={`hover:bg-[var(--accent-light)] transition-all duration-200 ${idx % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]'}`}>
                             <td className="py-4 px-5">
                               <span className="inline-flex items-center justify-center w-9 h-9 bg-ink-900 text-white font-display font-bold rounded-lg shadow-sm text-sm">
                                 {row.week}
                               </span>
                             </td>
-                            <td className="py-4 px-5 text-xs font-bold text-ink-600 uppercase">{row.team || "—"}</td>
-                            <td className="py-4 px-5 text-xs text-ink-400">vs {row.opponent_team || "—"}</td>
+                            <td className="py-4 px-5 text-xs font-bold text-[var(--text-secondary)] uppercase">{row.team || "—"}</td>
+                            <td className="py-4 px-5 text-xs text-[var(--text-muted)]">vs {row.opponent_team || "—"}</td>
                             {fullStatsColumns.map((column) => (
-                              <td key={`${column.key}-${idx}`} className="py-4 px-5 font-mono text-sm text-ink-700 font-medium">{resolveFullStatValue(row, column)}</td>
+                              <td key={`${column.key}-${idx}`} className="py-4 px-5 font-mono text-sm text-[var(--text-primary)] font-medium">{resolveFullStatValue(row, column)}</td>
                             ))}
                             <td className="py-4 px-5">
                               <span className="font-mono font-black text-lg text-accent-600">
@@ -1702,7 +1702,7 @@ export default function PlayerPage(): React.ReactElement {
                     </table>
                   </div>
                 ) : (
-                  <div className="text-center py-12 text-ink-400 italic">No full stats available for this season</div>
+                  <div className="text-center py-12 text-[var(--text-muted)] italic">No full stats available for this season</div>
                 )}
               </CardContent>
             </Card>
@@ -1721,7 +1721,7 @@ export default function PlayerPage(): React.ReactElement {
               <CardContent className="relative z-10 pt-6">
                 {(() => {
                   const team = megaProfile?.nfl?.bio?.latest_team;
-                  if (!team || !nflSiloMeta?.odds) return <div className="text-center py-8 text-ink-400 italic bg-ink-50/50 rounded-xl">No market data available for 2025</div>;
+                  if (!team || !nflSiloMeta?.odds) return <div className="text-center py-8 text-[var(--text-muted)] italic bg-[var(--bg-card-hover)]/50 rounded-xl">No market data available for 2025</div>;
 
                   const gameId = Object.keys(nflSiloMeta.odds).find(gid => {
                     const game = nflSiloMeta.odds![gid]?.game;
@@ -1729,7 +1729,7 @@ export default function PlayerPage(): React.ReactElement {
                   });
 
                   const odds = gameId ? nflSiloMeta.odds[gameId] : undefined;
-                  if (!odds) return <div className="text-center py-8 text-ink-400 italic bg-ink-50/50 rounded-xl">No 2025 odds found for {team}</div>;
+                  if (!odds) return <div className="text-center py-8 text-[var(--text-muted)] italic bg-[var(--bg-card-hover)]/50 rounded-xl">No 2025 odds found for {team}</div>;
 
                   const game = odds.game;
                   const consensus = odds.consensus;
@@ -1739,14 +1739,14 @@ export default function PlayerPage(): React.ReactElement {
                       <div className="flex items-center justify-between p-6 bg-gradient-to-r from-ink-900 via-ink-800 to-ink-900 text-white rounded-2xl shadow-xl relative overflow-hidden">
                         <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px'}} />
                         <div className="text-center px-6 relative z-10">
-                          <div className="text-[9px] font-bold text-ink-400 uppercase tracking-[0.15em] mb-2">Away</div>
+                          <div className="text-[9px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] mb-2">Away</div>
                           <div className="text-3xl font-display font-black">{game?.away?.alias}</div>
                         </div>
                         <div className="px-6 py-3 bg-accent-500/20 rounded-full border border-accent-500/30 relative z-10">
                           <span className="text-accent-400 font-display font-black text-xl">@</span>
                         </div>
                         <div className="text-center px-6 relative z-10">
-                          <div className="text-[9px] font-bold text-ink-400 uppercase tracking-[0.15em] mb-2">Home</div>
+                          <div className="text-[9px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] mb-2">Home</div>
                           <div className="text-3xl font-display font-black">{game?.home?.alias}</div>
                         </div>
                       </div>
@@ -1755,20 +1755,20 @@ export default function PlayerPage(): React.ReactElement {
                         <div className="p-5 rounded-xl bg-gradient-to-br from-white to-amber-50/50 border-2 border-amber-200/50 text-center hover:shadow-lg hover:border-amber-300 transition-all duration-300 group">
                           <div className="text-[9px] font-bold text-amber-600 uppercase tracking-[0.15em] mb-3">Moneyline</div>
                           <div className="flex justify-around">
-                            <div className="font-mono font-black text-xl text-ink-800 group-hover:text-amber-600 transition-colors">{consensus?.moneyline?.away_plus_minus || "—"}</div>
-                            <div className="font-mono font-black text-xl text-ink-800 group-hover:text-amber-600 transition-colors">{consensus?.moneyline?.home_plus_minus || "—"}</div>
+                            <div className="font-mono font-black text-xl text-[var(--text-primary)] group-hover:text-amber-600 transition-colors">{consensus?.moneyline?.away_plus_minus || "—"}</div>
+                            <div className="font-mono font-black text-xl text-[var(--text-primary)] group-hover:text-amber-600 transition-colors">{consensus?.moneyline?.home_plus_minus || "—"}</div>
                           </div>
                         </div>
                         <div className="p-5 rounded-xl bg-gradient-to-br from-white to-blue-50/50 border-2 border-blue-200/50 text-center hover:shadow-lg hover:border-blue-300 transition-all duration-300 group">
                           <div className="text-[9px] font-bold text-blue-600 uppercase tracking-[0.15em] mb-3">Spread</div>
                           <div className="flex justify-around">
-                            <div className="font-mono font-black text-xl text-ink-800 group-hover:text-blue-600 transition-colors">{consensus?.spread?.away_spread_plus_minus || "—"}</div>
-                            <div className="font-mono font-black text-xl text-ink-800 group-hover:text-blue-600 transition-colors">{consensus?.spread?.home_spread_plus_minus || "—"}</div>
+                            <div className="font-mono font-black text-xl text-[var(--text-primary)] group-hover:text-blue-600 transition-colors">{consensus?.spread?.away_spread_plus_minus || "—"}</div>
+                            <div className="font-mono font-black text-xl text-[var(--text-primary)] group-hover:text-blue-600 transition-colors">{consensus?.spread?.home_spread_plus_minus || "—"}</div>
                           </div>
                         </div>
                         <div className="p-5 rounded-xl bg-gradient-to-br from-white to-purple-50/50 border-2 border-purple-200/50 text-center hover:shadow-lg hover:border-purple-300 transition-all duration-300 group">
                           <div className="text-[9px] font-bold text-purple-600 uppercase tracking-[0.15em] mb-3">Total (O/U)</div>
-                          <div className="font-mono font-black text-2xl text-ink-800 group-hover:text-purple-600 transition-colors">{consensus?.total?.over_under || "—"}</div>
+                          <div className="font-mono font-black text-2xl text-[var(--text-primary)] group-hover:text-purple-600 transition-colors">{consensus?.total?.over_under || "—"}</div>
                         </div>
                       </div>
                     </div>
@@ -1794,7 +1794,7 @@ export default function PlayerPage(): React.ReactElement {
             <CardTitle className="text-lg font-display text-white">WAR Definitions</CardTitle>
           </div>
         </CardHeader>
-        <CardContent className="text-sm text-ink-300 space-y-5 relative z-10 pt-6">
+        <CardContent className="text-sm text-[var(--text-muted)] space-y-5 relative z-10 pt-6">
           <p className="leading-relaxed">
             <strong className="text-accent-400 font-display">Replacement-level WAR</strong> is your weekly points minus a replacement baseline for your position.
             In this league, baselines assume 8 teams (2QB, 3RB, 3WR, 2TE).
@@ -1804,7 +1804,7 @@ export default function PlayerPage(): React.ReactElement {
           </p>
           <div className="p-5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
             <span className="font-bold text-white block mb-3 font-display">Baseline examples (8-team league):</span>
-            <p className="text-ink-300 leading-relaxed">
+            <p className="text-[var(--text-muted)] leading-relaxed">
               The baseline is the points scored by the last starter in the league at each position:
               <span className="font-mono text-accent-400 ml-2 bg-accent-500/10 px-3 py-1 rounded-lg inline-block mt-2">QB16 · RB24 · WR24 · TE16 · K8 · DEF8</span>
             </p>

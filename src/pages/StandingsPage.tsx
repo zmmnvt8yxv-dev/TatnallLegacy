@@ -209,7 +209,7 @@ export default function StandingsPage(): React.ReactElement {
             Standings
             <span className="text-amber-400 text-6xl lg:text-7xl leading-none drop-shadow-[0_0_20px_rgba(245,158,11,0.5)]">.</span>
           </h1>
-          <p className="text-lg md:text-xl text-ink-300 max-w-3xl leading-relaxed">
+          <p className="text-lg md:text-xl text-[var(--text-muted)] max-w-3xl leading-relaxed">
             Season standings plus all-time franchise performance.
           </p>
         </div>
@@ -229,33 +229,33 @@ export default function StandingsPage(): React.ReactElement {
           </div>
         </div>
 
-        <div className="group relative bg-white rounded-2xl p-6 border-2 border-green-200 hover:border-green-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+        <div className="group relative bg-[var(--bg-card)] rounded-2xl p-6 border-2 border-green-200 hover:border-green-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
               <Crown className="text-green-500" size={18} />
-              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Leader</span>
+              <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Leader</span>
             </div>
-            <div className="text-xl font-display font-black text-ink-900 truncate group-hover:text-green-600 transition-colors mb-1">
+            <div className="text-xl font-display font-black text-[var(--text-primary)] truncate group-hover:text-green-600 transition-colors mb-1">
               {standings[0] ? ownerLabel(seasonOwners.get(standings[0].team) || standings[0].team, standings[0].team) : "—"}
             </div>
-            <p className="text-xs text-ink-400">
+            <p className="text-xs text-[var(--text-muted)]">
               {standings[0] ? `${standings[0].wins}-${standings[0].losses}` : "No data"}
             </p>
           </div>
         </div>
 
-        <div className="group relative bg-white rounded-2xl p-6 border-2 border-accent-200 hover:border-accent-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+        <div className="group relative bg-[var(--bg-card)] rounded-2xl p-6 border-2 border-accent-200 hover:border-accent-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-accent-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
               <TrendingUp className="text-accent-500" size={18} />
-              <span className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em]">Top Scorer</span>
+              <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Top Scorer</span>
             </div>
-            <div className="text-xl font-display font-black text-ink-900 truncate group-hover:text-accent-600 transition-colors mb-1">
+            <div className="text-xl font-display font-black text-[var(--text-primary)] truncate group-hover:text-accent-600 transition-colors mb-1">
               {topPerformer ? ownerLabel(seasonOwners.get(topPerformer.team) || topPerformer.team, topPerformer.team) : "—"}
             </div>
-            <p className="text-xs text-ink-400">
+            <p className="text-xs text-[var(--text-muted)]">
               {topPerformer ? `${formatPoints(topPerformer.points_for)} pts` : "No data"}
             </p>
           </div>
@@ -275,18 +275,18 @@ export default function StandingsPage(): React.ReactElement {
       </div>
 
       {/* Filters Section */}
-      <div className="bg-white rounded-2xl shadow-lg border border-ink-200/50 p-6 mb-8 relative overflow-hidden">
+      <div className="bg-[var(--bg-card)] rounded-2xl shadow-lg border border-[var(--border)]/50 p-6 mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-40 h-40 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="relative z-10 flex flex-wrap gap-6 items-end">
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+            <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
               <Calendar size={14} className="text-amber-500" />
               Season
             </label>
             <select
               value={season}
               onChange={(event) => handleSeasonChange(event.target.value)}
-              className="rounded-xl border-2 border-ink-200 bg-white px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 hover:border-amber-300 transition-all min-w-[140px]"
+              className="rounded-xl border-2 border-[var(--border)] bg-[var(--bg-card)] px-5 py-3 text-base font-bold focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 hover:border-amber-300 transition-all min-w-[140px]"
             >
               {seasons.map((value) => (
                 <option key={value} value={value}>{value}</option>
@@ -294,13 +294,13 @@ export default function StandingsPage(): React.ReactElement {
             </select>
           </div>
           <div className="flex flex-col gap-2 flex-1 min-w-[200px]">
-            <label className="text-[10px] font-bold text-ink-500 uppercase tracking-[0.15em] flex items-center gap-2">
+            <label className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em] flex items-center gap-2">
               <Users size={14} className="text-amber-500" />
               Filter Team
             </label>
             <SearchBar value={teamQuery} onChange={setTeamQuery} placeholder="Filter by team..." />
           </div>
-          <Badge variant="outline" className="h-12 px-5 border-2 border-ink-200 text-lg font-bold flex items-center gap-2">
+          <Badge variant="outline" className="h-12 px-5 border-2 border-[var(--border)] text-lg font-bold flex items-center gap-2">
             <Zap size={18} className="text-amber-500" />
             {standings.length || 0} Teams
           </Badge>
@@ -308,16 +308,16 @@ export default function StandingsPage(): React.ReactElement {
       </div>
 
       {/* Season Standings */}
-      <Card className="mb-8 shadow-lg border border-ink-200/50 overflow-hidden relative">
+      <Card className="mb-8 shadow-lg border border-[var(--border)]/50 overflow-hidden relative">
         <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-        <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+        <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-[var(--border)]">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl shadow-lg shadow-amber-500/20">
               <Medal className="text-white" size={22} />
             </div>
             <div>
               <CardTitle className="text-2xl font-display font-black">Season Standings</CardTitle>
-              <CardDescription className="text-sm text-ink-500 font-medium">{season} Regular Season</CardDescription>
+              <CardDescription className="text-sm text-[var(--text-muted)] font-medium">{season} Regular Season</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -341,13 +341,13 @@ export default function StandingsPage(): React.ReactElement {
                     const teamName = ownerLabel(seasonOwners.get(row.team) || row.team, row.team);
                     const isFavorite = favorites.teams.includes(teamName);
                     return (
-                      <tr key={row.team} className={`hover:bg-accent-50/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                      <tr key={row.team} className={`hover:bg-accent-50/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]/30'}`}>
                         <td className="py-4 px-5">
                           <span className={`inline-flex items-center justify-center w-10 h-10 rounded-xl font-display font-black text-lg shadow-sm ${
                             index === 0 ? 'bg-gradient-to-br from-amber-400 to-amber-500 text-white' :
                             index === 1 ? 'bg-gradient-to-br from-slate-300 to-slate-400 text-white' :
                             index === 2 ? 'bg-gradient-to-br from-amber-600 to-amber-700 text-white' :
-                            'bg-ink-100 text-ink-600'
+                            'bg-[var(--bg-card-hover)] text-[var(--text-secondary)]'
                           }`}>
                             {index + 1}
                           </span>
@@ -357,12 +357,12 @@ export default function StandingsPage(): React.ReactElement {
                             <Button
                               variant="ghost"
                               size="icon"
-                              className={`h-9 w-9 rounded-full transition-all hover:scale-110 ${isFavorite ? "text-red-500" : "text-ink-300 hover:text-red-400"}`}
+                              className={`h-9 w-9 rounded-full transition-all hover:scale-110 ${isFavorite ? "text-red-500" : "text-[var(--text-muted)] hover:text-red-400"}`}
                               onClick={() => toggleTeam(teamName)}
                             >
                               <Heart size={18} className={isFavorite ? "fill-current" : ""} />
                             </Button>
-                            <span className="font-display font-black text-lg text-ink-900">{teamName}</span>
+                            <span className="font-display font-black text-lg text-[var(--text-primary)]">{teamName}</span>
                             {index === 0 && <Crown size={18} className="text-amber-500" />}
                           </div>
                         </td>
@@ -377,7 +377,7 @@ export default function StandingsPage(): React.ReactElement {
                           </span>
                         </td>
                         <td className="py-4 px-5 text-center">
-                          <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-ink-100 text-ink-600 font-mono font-black text-lg">
+                          <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--bg-card-hover)] text-[var(--text-secondary)] font-mono font-black text-lg">
                             {row.ties}
                           </span>
                         </td>
@@ -385,7 +385,7 @@ export default function StandingsPage(): React.ReactElement {
                           <span className="font-display text-2xl text-accent-600 font-black">{formatPoints(row.points_for)}</span>
                         </td>
                         <td className="py-4 px-5 text-right">
-                          <span className="font-mono text-lg text-ink-400">{formatPoints(row.points_against)}</span>
+                          <span className="font-mono text-lg text-[var(--text-muted)]">{formatPoints(row.points_against)}</span>
                         </td>
                       </tr>
                     );
@@ -395,26 +395,26 @@ export default function StandingsPage(): React.ReactElement {
             </div>
           ) : (
             <div className="text-center py-16">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-ink-100 flex items-center justify-center">
-                <Trophy size={32} className="text-ink-400" />
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--bg-card-hover)] flex items-center justify-center">
+                <Trophy size={32} className="text-[var(--text-muted)]" />
               </div>
-              <p className="text-lg text-ink-500 font-medium">No standings data available for this season.</p>
+              <p className="text-lg text-[var(--text-muted)] font-medium">No standings data available for this season.</p>
             </div>
           )}
         </CardContent>
       </Card>
 
       {/* All-Time Franchise Summary */}
-      <Card className="shadow-lg border border-ink-200/50 overflow-hidden relative">
+      <Card className="shadow-lg border border-[var(--border)]/50 overflow-hidden relative">
         <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-        <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-ink-100">
+        <CardHeader className="bg-gradient-to-r from-ink-50 to-white border-b border-[var(--border)]">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg shadow-purple-500/20">
               <Target className="text-white" size={22} />
             </div>
             <div>
               <CardTitle className="text-2xl font-display font-black">All-Time Franchise Summary</CardTitle>
-              <CardDescription className="text-sm text-ink-500 font-medium">Cumulative stats across all seasons</CardDescription>
+              <CardDescription className="text-sm text-[var(--text-muted)] font-medium">Cumulative stats across all seasons</CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -441,13 +441,13 @@ export default function StandingsPage(): React.ReactElement {
                     const totalGames = row.wins + row.losses + row.ties;
                     const winPct = totalGames > 0 ? ((row.wins / totalGames) * 100).toFixed(1) : "0.0";
                     return (
-                      <tr key={row.team} className={`hover:bg-purple-50/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+                      <tr key={row.team} className={`hover:bg-purple-50/50 transition-all duration-200 ${index % 2 === 0 ? 'bg-[var(--bg-card)]' : 'bg-[var(--bg-card-hover)]/30'}`}>
                         <td className="py-4 px-5">
                           <span className={`inline-flex items-center justify-center w-10 h-10 rounded-xl font-display font-black text-lg shadow-sm ${
                             index === 0 ? 'bg-gradient-to-br from-amber-400 to-amber-500 text-white' :
                             index === 1 ? 'bg-gradient-to-br from-slate-300 to-slate-400 text-white' :
                             index === 2 ? 'bg-gradient-to-br from-amber-600 to-amber-700 text-white' :
-                            'bg-ink-100 text-ink-600'
+                            'bg-[var(--bg-card-hover)] text-[var(--text-secondary)]'
                           }`}>
                             {index + 1}
                           </span>
@@ -457,12 +457,12 @@ export default function StandingsPage(): React.ReactElement {
                             <Button
                               variant="ghost"
                               size="icon"
-                              className={`h-9 w-9 rounded-full transition-all hover:scale-110 ${isFavorite ? "text-red-500" : "text-ink-300 hover:text-red-400"}`}
+                              className={`h-9 w-9 rounded-full transition-all hover:scale-110 ${isFavorite ? "text-red-500" : "text-[var(--text-muted)] hover:text-red-400"}`}
                               onClick={() => toggleTeam(teamName)}
                             >
                               <Heart size={18} className={isFavorite ? "fill-current" : ""} />
                             </Button>
-                            <span className="font-display font-black text-lg text-ink-900">{teamName}</span>
+                            <span className="font-display font-black text-lg text-[var(--text-primary)]">{teamName}</span>
                             {index === 0 && <Crown size={18} className="text-purple-500" />}
                           </div>
                         </td>
@@ -477,7 +477,7 @@ export default function StandingsPage(): React.ReactElement {
                           </span>
                         </td>
                         <td className="py-4 px-5 text-center">
-                          <span className="inline-flex items-center justify-center w-12 h-10 rounded-lg bg-ink-100 text-ink-600 font-mono font-black text-lg">
+                          <span className="inline-flex items-center justify-center w-12 h-10 rounded-lg bg-[var(--bg-card-hover)] text-[var(--text-secondary)] font-mono font-black text-lg">
                             {row.ties}
                           </span>
                         </td>
@@ -490,7 +490,7 @@ export default function StandingsPage(): React.ReactElement {
                           <span className="font-display text-2xl text-purple-600 font-black">{formatPoints(row.points_for)}</span>
                         </td>
                         <td className="py-4 px-5 text-right">
-                          <span className="font-mono text-lg text-ink-400">{formatPoints(row.points_against)}</span>
+                          <span className="font-mono text-lg text-[var(--text-muted)]">{formatPoints(row.points_against)}</span>
                         </td>
                       </tr>
                     );
@@ -500,10 +500,10 @@ export default function StandingsPage(): React.ReactElement {
             </div>
           ) : (
             <div className="text-center py-16">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-ink-100 flex items-center justify-center">
-                <BarChart3 size={32} className="text-ink-400" />
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--bg-card-hover)] flex items-center justify-center">
+                <BarChart3 size={32} className="text-[var(--text-muted)]" />
               </div>
-              <p className="text-lg text-ink-500 font-medium">No historical standings data available.</p>
+              <p className="text-lg text-[var(--text-muted)] font-medium">No historical standings data available.</p>
             </div>
           )}
         </CardContent>

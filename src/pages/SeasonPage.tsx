@@ -149,16 +149,16 @@ export default function SeasonPage(): React.ReactElement {
     return (
         <PageTransition>
             <section className="mb-6">
-                <h1 className="text-5xl md:text-6xl font-display font-black text-ink-900 mb-3">Season Overview</h1>
-                <p className="text-lg md:text-xl text-ink-600">Champions, awards, and statistics for {season}</p>
+                <h1 className="text-5xl md:text-6xl font-display font-black text-[var(--text-primary)] mb-3">Season Overview</h1>
+                <p className="text-lg md:text-xl text-[var(--text-secondary)]">Champions, awards, and statistics for {season}</p>
             </section>
 
             <section className="section-card filters mb-6">
-                <label className="text-base md:text-lg font-bold text-ink-700">Select Season:</label>
+                <label className="text-base md:text-lg font-bold text-[var(--text-primary)]">Select Season:</label>
                 <select
                     value={season}
                     onChange={(e) => handleSeasonChange(e.target.value)}
-                    className="rounded-md border-2 border-ink-300 bg-white px-4 py-2 text-base md:text-lg font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[140px]"
+                    className="rounded-md border-2 border-[var(--border)] bg-[var(--bg-card)] px-4 py-2 text-base md:text-lg font-bold focus:outline-none focus:ring-2 focus:ring-accent-500 min-w-[140px]"
                 >
                     {seasons.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
@@ -181,44 +181,44 @@ export default function SeasonPage(): React.ReactElement {
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
                         <div className="stat-card accent p-4 md:p-6">
-                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">League Champion</div>
-                            <div className="text-2xl md:text-3xl font-display font-black text-ink-900 mb-1">{champion ? ownerLabel(champion) : "—"}</div>
+                            <div className="text-xs md:text-sm font-bold text-[var(--text-muted)] uppercase tracking-widest mb-2">League Champion</div>
+                            <div className="text-2xl md:text-3xl font-display font-black text-[var(--text-primary)] mb-1">{champion ? ownerLabel(champion) : "—"}</div>
                             {champion && normalizeOwnerName(champion.team || champion.team_name).toLowerCase() !== ownerLabel(champion).toLowerCase() && (
-                                <div className="text-xs md:text-sm text-ink-500">
+                                <div className="text-xs md:text-sm text-[var(--text-muted)]">
                                     {champion.team || champion.team_name}
                                 </div>
                             )}
                         </div>
 
                         <div className="stat-card p-4 md:p-6">
-                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">Runner Up</div>
-                            <div className="text-2xl md:text-3xl font-display font-black text-ink-900 mb-1">{runnerUp ? ownerLabel(runnerUp) : "—"}</div>
+                            <div className="text-xs md:text-sm font-bold text-[var(--text-muted)] uppercase tracking-widest mb-2">Runner Up</div>
+                            <div className="text-2xl md:text-3xl font-display font-black text-[var(--text-primary)] mb-1">{runnerUp ? ownerLabel(runnerUp) : "—"}</div>
                             {runnerUp && normalizeOwnerName(runnerUp.team || runnerUp.team_name).toLowerCase() !== ownerLabel(runnerUp).toLowerCase() && (
-                                <div className="text-xs md:text-sm text-ink-500">
+                                <div className="text-xs md:text-sm text-[var(--text-muted)]">
                                     {runnerUp.team || runnerUp.team_name}
                                 </div>
                             )}
                         </div>
 
                         <div className="stat-card p-4 md:p-6">
-                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">Kilt Bowl Loser</div>
-                            <div className="text-2xl md:text-3xl font-display font-black text-ink-900 mb-1">{kiltBowlLoser ? ownerLabel(kiltBowlLoser) : "—"}</div>
+                            <div className="text-xs md:text-sm font-bold text-[var(--text-muted)] uppercase tracking-widest mb-2">Kilt Bowl Loser</div>
+                            <div className="text-2xl md:text-3xl font-display font-black text-[var(--text-primary)] mb-1">{kiltBowlLoser ? ownerLabel(kiltBowlLoser) : "—"}</div>
                             {kiltBowlLoser && normalizeOwnerName(kiltBowlLoser.team).toLowerCase() !== ownerLabel(kiltBowlLoser).toLowerCase() && (
-                                <div className="text-xs md:text-sm text-ink-500">
+                                <div className="text-xs md:text-sm text-[var(--text-muted)]">
                                     {kiltBowlLoser.team}
                                 </div>
                             )}
                         </div>
 
                         <div className="stat-card p-4 md:p-6">
-                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">Scoring Leader</div>
-                            <div className="text-2xl md:text-3xl font-display font-black text-ink-900 mb-1">{scoringChamp ? ownerLabel(scoringChamp) : "—"}</div>
+                            <div className="text-xs md:text-sm font-bold text-[var(--text-muted)] uppercase tracking-widest mb-2">Scoring Leader</div>
+                            <div className="text-2xl md:text-3xl font-display font-black text-[var(--text-primary)] mb-1">{scoringChamp ? ownerLabel(scoringChamp) : "—"}</div>
                             <div className="text-base md:text-lg text-accent-700 font-bold">{scoringChamp ? formatPoints(scoringChamp.points_for) : "—"} pts</div>
                         </div>
 
                         <div className="stat-card p-4 md:p-6">
-                            <div className="text-xs md:text-sm font-bold text-ink-400 uppercase tracking-widest mb-2">Season MVP</div>
-                            <div className="text-xl md:text-2xl font-display font-black text-ink-900 mb-1">
+                            <div className="text-xs md:text-sm font-bold text-[var(--text-muted)] uppercase tracking-widest mb-2">Season MVP</div>
+                            <div className="text-xl md:text-2xl font-display font-black text-[var(--text-primary)] mb-1">
                                 {mvp ? (
                                     <Link to={`/players/${mvp.player_id}`} className="hover:text-accent-700 transition-colors">
                                         {getPlayerName(mvp)}
@@ -257,7 +257,7 @@ export default function SeasonPage(): React.ReactElement {
                                                                 {ownerLabel(row)}
                                                             </div>
                                                             {normalizeOwnerName(row.team).toLowerCase() !== ownerLabel(row).toLowerCase() && (
-                                                                <div className="text-sm text-ink-400">{row.team}</div>
+                                                                <div className="text-sm text-[var(--text-muted)]">{row.team}</div>
                                                             )}
                                                         </td>
                                                         <td className="text-base md:text-lg font-mono font-bold">{row.wins}-{row.losses}</td>
@@ -268,7 +268,7 @@ export default function SeasonPage(): React.ReactElement {
                                     </table>
                                 </div>
                             ) : (
-                                <div className="text-base text-ink-400 py-5">
+                                <div className="text-base text-[var(--text-muted)] py-5">
                                     {loadErrors.summary ? "Failed to load standings data." : "No standings available for this season."}
                                 </div>
                             )}
@@ -278,13 +278,13 @@ export default function SeasonPage(): React.ReactElement {
                             <h2 className="text-2xl md:text-3xl font-black mb-4">Season Facts</h2>
                             <ul className="space-y-3 text-base md:text-lg">
                                 <li>
-                                    <strong className="text-ink-900">Trades & Transactions:</strong> <span className="text-accent-700 font-bold">{transactionCount}</span>
+                                    <strong className="text-[var(--text-primary)]">Trades & Transactions:</strong> <span className="text-accent-700 font-bold">{transactionCount}</span>
                                 </li>
                                 <li>
-                                    <strong className="text-ink-900">Teams:</strong> <span className="text-accent-700 font-bold">{summary?.teams?.length || 0}</span>
+                                    <strong className="text-[var(--text-primary)]">Teams:</strong> <span className="text-accent-700 font-bold">{summary?.teams?.length || 0}</span>
                                 </li>
                                 <li>
-                                    <strong className="text-ink-900">Weeks:</strong> <span className="text-accent-700 font-bold">{(manifest?.weeksBySeason?.[String(season)] || []).length}</span>
+                                    <strong className="text-[var(--text-primary)]">Weeks:</strong> <span className="text-accent-700 font-bold">{(manifest?.weeksBySeason?.[String(season)] || []).length}</span>
                                 </li>
                             </ul>
                             <div className="mt-6 flex flex-col gap-3">
