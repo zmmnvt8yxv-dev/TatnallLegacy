@@ -41,9 +41,20 @@ const buttonVariants = cva(
 )
 
 const Button = React.forwardRef(({ className, variant, size, asChild = false, leftIcon, rightIcon, children, ...props }, ref) => {
-  const Comp = asChild ? Slot : "button"
+  if (asChild) {
+    return (
+      <Slot
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </Slot>
+    );
+  }
+
   return (
-    <Comp
+    <button
       className={cn(buttonVariants({ variant, size, className }))}
       ref={ref}
       {...props}
@@ -51,7 +62,7 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, le
       {leftIcon && <span className="mr-1">{leftIcon}</span>}
       {children}
       {rightIcon && <span className="ml-1">{rightIcon}</span>}
-    </Comp>
+    </button>
   );
 })
 Button.displayName = "Button"

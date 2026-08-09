@@ -1,263 +1,116 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { useDataContext } from "../data/DataContext";
+import { Archive, BarChart3, Database, Menu, Search, ShieldCheck, Swords, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle.jsx";
-import { CommandMenu } from "./CommandMenu.jsx";
-import { Menu, X, Search, Trophy, Home, Calendar, ArrowLeftRight, List, Users, Award, Swords } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useV3Manifest, useV3Search } from "../data/v3/hooks";
 
-const navItems = [
-  { to: "/", label: "Summary", icon: Home },
-  { to: "/seasons", label: "Seasons", icon: Calendar },
+const mainNav = [
+  { to: "/", label: "Now", end: true },
+  { to: "/history", label: "History" },
+  { to: "/owners", label: "Owners" },
+  { to: "/players", label: "Players" },
+  { to: "/records", label: "Records" },
+];
+
+const currentNav = [
   { to: "/matchups", label: "Matchups", icon: Swords },
-  { to: "/transactions", label: "Transactions", icon: ArrowLeftRight },
-  { to: "/standings", label: "Standings", icon: List },
-  { to: "/teams", label: "Teams", icon: Users },
-  { to: "/records", label: "Records", icon: Award },
-  { to: "/head-to-head", label: "Head-to-Head", icon: Trophy },
+  { to: "/standings", label: "Standings", icon: BarChart3 },
+  { to: "/transactions", label: "Transactions", icon: Archive },
+  { to: "/data-health", label: "Data health", icon: Database },
 ];
 
 export default function Layout({ children }) {
-  const { players, playerIds, playerSearch } = useDataContext();
   const [search, setSearch] = useState("");
-  const [showResults, setShowResults] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const manifest = useV3Manifest();
+  const searchData = useV3Search(searchOpen || search.trim().length > 0);
+  const seasonLabel = manifest.data
+    ? `${manifest.data.league.currentSeason} ${manifest.data.league.seasonPhase}`
+    : "Current league";
+  const results = useMemo(() => {
+    const needle = search.trim().toLowerCase();
+    if (!needle) return [];
+    return (searchData.data?.items || [])
+      .filter((item) => `${item.label} ${item.secondary}`.toLowerCase().includes(needle))
+      .slice(0, 8);
+  }, [search, searchData.data]);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
+    setSearchOpen(false);
+    setSearch("");
   }, [location.pathname]);
 
-  // Prevent scroll when mobile menu is open
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [mobileMenuOpen]);
 
-  const playerIndex = useMemo(() => {
-    const combined = [];
-    const seen = new Set();
-    const pushRow = (row) => {
-      if (!row?.id || !row?.name) return;
-      if (seen.has(row.id)) return;
-      seen.add(row.id);
-      combined.push(row);
-    };
-    for (const row of playerSearch || []) {
-      pushRow({
-        id: String(row?.id || ""),
-        idType: row?.id_type || "",
-        name: row?.name || "",
-        position: row?.position || "—",
-        team: row?.team || "—",
-      });
-    }
-    const sleeperByUid = new Map();
-    for (const entry of playerIds || []) {
-      if (entry?.id_type === "sleeper" && entry?.player_uid && entry?.id_value) {
-        sleeperByUid.set(String(entry.player_uid), String(entry.id_value));
-      }
-    }
-    for (const player of players || []) {
-      pushRow({
-        id: sleeperByUid.get(String(player?.player_uid)),
-        name: player?.full_name,
-        position: player?.position || "—",
-        team: player?.nfl_team || "—",
-      });
-    }
-    return combined;
-  }, [players, playerIds, playerSearch]);
-
-  const filteredResults = useMemo(() => {
-    if (!search.trim()) return [];
-    const needle = search.trim().toLowerCase();
-    return playerIndex.filter((row) => row.name.toLowerCase().includes(needle)).slice(0, 8);
-  }, [search, playerIndex]);
-
   return (
-    <>
-      <CommandMenu />
-      <div className="app-shell">
-        <header className="site-header">
-          {/* Logo/Brand */}
-          <Link to="/" className="brand flex items-center gap-3 flex-shrink-0">
-            <div className="w-9 h-9 rounded-lg bg-[var(--accent)] flex items-center justify-center">
-              <Trophy className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <div className="brand-title">Tatnall Legacy League</div>
-              <div className="brand-subtitle hidden sm:block">League Encyclopedia</div>
-            </div>
-          </Link>
+    <div className="app-shell archive-shell">
+      <header className="archive-header">
+        <Link to="/" className="archive-brand" aria-label="Tatnall Legacy home">
+          <span className="archive-brand__mark">TL</span>
+          <span><strong>Tatnall Legacy</strong><small>League archive · Est. 2015</small></span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="site-nav hidden lg:flex">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
+        <nav className="archive-main-nav" aria-label="Primary navigation">
+          {mainNav.map((item) => (
+            <NavLink key={item.to} to={item.to} end={item.end} className={({ isActive }) => isActive ? "active" : ""}>{item.label}</NavLink>
+          ))}
+        </nav>
 
-          {/* Right side tools */}
-          <div className="header-tools">
-            {/* Search */}
-            <div className="header-search hidden sm:block">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)]" />
-                <input
-                  type="search"
-                  value={search}
-                  onChange={(event) => setSearch(event.target.value)}
-                  onFocus={() => setShowResults(true)}
-                  onBlur={() => setTimeout(() => setShowResults(false), 150)}
-                  placeholder="Find a player..."
-                  className="pl-9"
-                />
-              </div>
-              {showResults && filteredResults.length > 0 && (
-                <div className="search-results">
-                  {filteredResults.map((row) => (
-                    <Link
-                      key={row.id}
-                      to={`/players/${row.id}?name=${encodeURIComponent(row.name)}`}
-                      className="search-result"
-                      onClick={() => {
-                        setSearch("");
-                        setShowResults(false);
-                      }}
-                    >
-                      <span>{row.name}</span>
-                      <span className="search-result-meta">
-                        {row.position} · {row.team}
-                      </span>
-                    </Link>
-                  ))}
+        <div className="archive-header__tools">
+          <span className="season-chip"><i /> {seasonLabel}</span>
+          <button className="header-search-button" type="button" onClick={() => setSearchOpen((value) => !value)} aria-label="Search archive"><Search /></button>
+          <ThemeToggle />
+          <button className="header-menu-button" type="button" onClick={() => setMobileMenuOpen(true)} aria-label="Open navigation"><Menu /></button>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {searchOpen ? (
+          <motion.div className="archive-search-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <button className="search-backdrop" onClick={() => setSearchOpen(false)} aria-label="Close search" />
+            <motion.div className="archive-search-panel" initial={{ y: -20 }} animate={{ y: 0 }} exit={{ y: -20 }}>
+              <Search />
+              <input autoFocus value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search players, owners, and seasons…" />
+              <button type="button" onClick={() => setSearchOpen(false)}><X /></button>
+              {search.trim() ? (
+                <div className="archive-search-results">
+                  {searchData.isLoading ? <span>Searching the archive…</span> : results.length ? results.map((item) => (
+                    <Link to={item.url} key={`${item.type}-${item.id}`}><span className={`search-type search-type--${item.type}`}>{item.type[0]}</span><span><strong>{item.label}</strong><small>{item.secondary}</small></span></Link>
+                  )) : <span>No matching archive entries.</span>}
                 </div>
-              )}
-            </div>
+              ) : <small className="search-hint">Try an owner, a season, or an NFL player.</small>}
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
 
-            {/* Theme Toggle */}
-            <ThemeToggle />
+      <AnimatePresence>
+        {mobileMenuOpen ? (
+          <motion.div className="archive-mobile-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <button className="mobile-backdrop" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation" />
+            <motion.aside initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 28, stiffness: 320 }}>
+              <div className="mobile-menu-head"><span className="archive-brand__mark">TL</span><button type="button" onClick={() => setMobileMenuOpen(false)}><X /></button></div>
+              <nav>{mainNav.map((item) => <NavLink key={item.to} to={item.to} end={item.end}>{item.label}</NavLink>)}</nav>
+              <span className="mobile-nav-label">Current league</span>
+              <nav className="mobile-subnav">{currentNav.map((item) => { const Icon = item.icon; return <NavLink key={item.to} to={item.to}><Icon />{item.label}</NavLink>; })}</nav>
+            </motion.aside>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-[var(--bg-card-hover)] transition-colors"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-[var(--text-primary)]" />
-              ) : (
-                <Menu className="w-6 h-6 text-[var(--text-primary)]" />
-              )}
-            </button>
-          </div>
-        </header>
-
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
-                onClick={() => setMobileMenuOpen(false)}
-              />
-
-              {/* Mobile Menu Drawer */}
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                className="fixed top-0 left-0 bottom-0 w-72 bg-[var(--bg-secondary)] border-r border-[var(--border)] z-50 lg:hidden overflow-y-auto"
-              >
-                {/* Mobile Menu Header */}
-                <div className="p-4 border-b border-[var(--border)]">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-[var(--accent)] flex items-center justify-center">
-                      <Trophy className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-[var(--text-primary)]">Tatnall Legacy</div>
-                      <div className="text-sm text-[var(--text-muted)]">League Encyclopedia</div>
-                    </div>
-                  </div>
-
-                  {/* Mobile Search */}
-                  <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)]" />
-                    <input
-                      type="search"
-                      value={search}
-                      onChange={(event) => setSearch(event.target.value)}
-                      placeholder="Find a player..."
-                      className="w-full pl-9 pr-4 py-2.5 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--accent)]"
-                    />
-                  </div>
-                </div>
-
-                {/* Mobile Navigation Links */}
-                <nav className="p-4">
-                  <div className="space-y-1">
-                    {navItems.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <NavLink
-                          key={item.to}
-                          to={item.to}
-                          className={({ isActive }) =>
-                            `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                              isActive
-                                ? "bg-[var(--accent-light)] text-[var(--accent)]"
-                                : "text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)]"
-                            }`
-                          }
-                        >
-                          <Icon className="w-5 h-5" />
-                          {item.label}
-                        </NavLink>
-                      );
-                    })}
-                  </div>
-                </nav>
-
-                {/* Mobile Menu Footer */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[var(--border)] bg-[var(--bg-secondary)]">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-[var(--text-muted)]">Theme</span>
-                    <ThemeToggle />
-                  </div>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-
-        <main className="site-main">
-          <div className="content-container">
-            {children}
-          </div>
-        </main>
-      </div>
-    </>
+      <main className="site-main"><div className="content-container">{children}</div></main>
+      <footer className="archive-footer">
+        <div><span className="archive-brand__mark">TL</span><p><strong>Tatnall Legacy</strong><small>The permanent record and current-season command center.</small></p></div>
+        <nav>{currentNav.map((item) => <Link key={item.to} to={item.to}>{item.label}</Link>)}</nav>
+        <Link to="/data-health" className="footer-integrity"><ShieldCheck /> Canonical data · public audit trail</Link>
+      </footer>
+    </div>
   );
 }
-

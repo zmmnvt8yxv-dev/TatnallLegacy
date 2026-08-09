@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "3.0.0",
+  "generatedAt": "2026-08-09T16:27:43.365173+00:00",
+  "pipeline": [
+    "ingest",
+    "normalize",
+    "correct",
+    "derive",
+    "publish",
+    "validate"
+  ],
+  "sourceCounts": {
+    "state": {
+      "path": "state.json",
+      "records": 1
+    },
+    "league": {
+      "path": "league.json",
+      "records": 1
+    },
+    "users": {
+      "path": "users.json",
+      "records": 8
+    },
+    "rosters": {
+      "path": "rosters.json",
+      "records": 8
+    },
+    "drafts": {
+      "path": "drafts.json",
+      "records": 1
+    },
+    "traded_picks": {
+      "path": "traded_picks.json",
+      "records": 0
+    },
+    "winners_bracket": {
+      "path": "winners_bracket.json",
+      "records": 7
+    },
+    "losers_bracket": {
+      "path": "losers_bracket.json",
+      "records": 1
+    },
+    "matchups": {
+      "path": "matchups.json",
+      "records": 0
+    },
+    "transactions": {
+      "path": "transactions.json",
+      "records": 0
+    }
+  },
+  "normalizedCounts": {
+    "seasons": 11,
+    "owners": 13,
+    "franchises": 8,
+    "team_seasons": 88,
+    "matchups": 710,
+    "playoff_games": 118,
+    "players": 20068
+  },
+  "correctionCount": 9,
+  "warningCount": 11,
+  "criticalCount": 0,
+  "publishedFiles": 45,
+  "oversizedFiles": []
+}

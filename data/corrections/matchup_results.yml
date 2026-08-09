@@ -1,0 +1,49 @@
+schema_version: "1.0.0"
+
+corrections:
+  - correction_id: matchup-result-2022-championship-winner-001
+    type: matchup_result
+    season: 2022
+    target:
+      dataset: matchups
+      match:
+        matchup_uid: ced2dc71-bdc9-5d3a-8d34-4d5312db6b04
+        season: 2022
+    field: winner_team_season_uid
+    old_value: b9cca909-47ec-521f-8898-694a89b6270c
+    new_value: 118b89cf-237b-5349-9e55-418bb3b00b19
+    reason: >-
+      The cancelled Bills-Bengals game left the provider score incomplete. The
+      league ruled King of January the 2022 champion.
+    source_note: Commissioner confirmation on 2026-08-09; existing manual league history.
+    entered_at: "2026-08-09"
+
+  - correction_id: matchup-result-2022-championship-loser-001
+    type: matchup_result
+    season: 2022
+    target:
+      dataset: matchups
+      match:
+        matchup_uid: ced2dc71-bdc9-5d3a-8d34-4d5312db6b04
+        season: 2022
+    field: loser_team_season_uid
+    old_value: 118b89cf-237b-5349-9e55-418bb3b00b19
+    new_value: b9cca909-47ec-521f-8898-694a89b6270c
+    reason: Preserve the league-recognized counterpart to the corrected winner.
+    source_note: Commissioner confirmation on 2026-08-09; existing manual league history.
+    entered_at: "2026-08-09"
+
+  - correction_id: matchup-result-2022-championship-audit-001
+    type: matchup_result
+    season: 2022
+    target:
+      dataset: matchups
+      match:
+        matchup_uid: ced2dc71-bdc9-5d3a-8d34-4d5312db6b04
+        season: 2022
+    field: is_corrected
+    old_value: false
+    new_value: true
+    reason: Mark the canonical winner as an audited league ruling.
+    source_note: Commissioner confirmation on 2026-08-09; existing manual league history.
+    entered_at: "2026-08-09"

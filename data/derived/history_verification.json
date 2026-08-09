@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-09T15:51:00.335272+00:00",
+  "status": "warning",
+  "critical": [],
+  "warnings": [
+    "2015: non-complete datasets: lineups, transactions",
+    "2016: non-complete datasets: lineups, transactions",
+    "2017: non-complete datasets: lineups, transactions",
+    "2018: non-complete datasets: transactions",
+    "2019: non-complete datasets: transactions",
+    "2020: non-complete datasets: transactions",
+    "2021: non-complete datasets: transactions",
+    "2022: non-complete datasets: lineups, matchups, transactions",
+    "2023: non-complete datasets: transactions",
+    "2024: non-complete datasets: transactions",
+    "2025: non-complete datasets: draft, lineups, matchups, transactions"
+  ],
+  "summary": {
+    "seasons": 11,
+    "owners": 13,
+    "franchises": 8,
+    "team_seasons": 88,
+    "matchups": 710,
+    "playoff_games": 118
+  },
+  "seasons": [
+    {
+      "season": 2015,
+      "champion": "Team Downs",
+      "champion_owner_uid": "f6396c22-bffb-51b4-bec6-d7ef6edfdae2",
+      "champion_seed": 4,
+      "runner_up": "I am God",
+      "runner_up_owner_uid": "2e3b7928-a1a8-5b35-8b19-8b35e7ca4be7",
+      "runner_up_seed": 3,
+      "team_count": 8,
+      "matchup_count": 63,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "complete",
+        "lineups": "unavailable",
+        "transactions": "unavailable",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2016,
+      "champion": "Hello all my Peasants",
+      "champion_owner_uid": "f6396c22-bffb-51b4-bec6-d7ef6edfdae2",
+      "champion_seed": 2,
+      "runner_up": "Team Saad",
+      "runner_up_owner_uid": "30975500-4d4a-5dcc-af55-0ed3379f7378",
+      "runner_up_seed": 1,
+      "team_count": 8,
+      "matchup_count": 63,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "complete",
+        "lineups": "unavailable",
+        "transactions": "unavailable",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2017,
+      "champion": "The Champ",
+      "champion_owner_uid": "2e3b7928-a1a8-5b35-8b19-8b35e7ca4be7",
+      "champion_seed": 1,
+      "runner_up": "Hello All My Peasants",
+      "runner_up_owner_uid": "f6396c22-bffb-51b4-bec6-d7ef6edfdae2",
+      "runner_up_seed": 2,
+      "team_count": 8,
+      "matchup_count": 63,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "complete",
+        "lineups": "unavailable",
+        "transactions": "unavailable",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2018,
+      "champion": "The Champ",
+      "champion_owner_uid": "2e3b7928-a1a8-5b35-8b19-8b35e7ca4be7",
+      "champion_seed": 1,
+      "runner_up": "Big Dick Bandito",
+      "runner_up_owner_uid": "191870da-e358-5969-9342-66d3ea83c9b6",
+      "runner_up_seed": 6,
+      "team_count": 8,
+      "matchup_count": 63,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "complete",
+        "lineups": "complete",
+        "transactions": "partial",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2019,
+      "champion": "Dear Lord Please",
+      "champion_owner_uid": "d16e1cbf-905f-54da-80b8-5ba1671f5c50",
+      "champion_seed": 1,
+      "runner_up": "Team Blow me",
+      "runner_up_owner_uid": "7e9efc72-b7d4-51b0-8961-44c2cdeabfec",
+      "runner_up_seed": 6,
+      "team_count": 8,
+      "matchup_count": 63,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "complete",
+        "lineups": "complete",
+        "transactions": "partial",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2020,
+      "champion": "The King",
+      "champion_owner_uid": "2e3b7928-a1a8-5b35-8b19-8b35e7ca4be7",
+      "champion_seed": 1,
+      "runner_up": "Team Malley",
+      "runner_up_owner_uid": "3f7e769c-a878-5cb9-8a88-17ba446757e4",
+      "runner_up_seed": 6,
+      "team_count": 8,
+      "matchup_count": 63,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "complete",
+        "lineups": "complete",
+        "transactions": "partial",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2021,
+      "champion": "Team Downs",
+      "champion_owner_uid": "f6396c22-bffb-51b4-bec6-d7ef6edfdae2",
+      "champion_seed": 3,
+      "runner_up": "Team Malley",
+      "runner_up_owner_uid": "3f7e769c-a878-5cb9-8a88-17ba446757e4",
+      "runner_up_seed": 1,
+      "team_count": 8,
+      "matchup_count": 67,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "complete",
+        "lineups": "complete",
+        "transactions": "partial",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2022,
+      "champion": "King of January",
+      "champion_owner_uid": "3f7e769c-a878-5cb9-8a88-17ba446757e4",
+      "champion_seed": 5,
+      "runner_up": "King of  December",
+      "runner_up_owner_uid": "2e3b7928-a1a8-5b35-8b19-8b35e7ca4be7",
+      "runner_up_seed": 2,
+      "team_count": 8,
+      "matchup_count": 67,
+      "corrected": true,
+      "correction_ids": [
+        "matchup-result-2022-championship-audit-001",
+        "matchup-result-2022-championship-loser-001",
+        "matchup-result-2022-championship-winner-001",
+        "season-result-2022-champion-001",
+        "season-result-2022-champion-seed-001",
+        "season-result-2022-runner-up-001",
+        "season-result-2022-runner-up-seed-001",
+        "team-season-2022-king-of-december-seed-001",
+        "team-season-2022-king-of-january-seed-001"
+      ],
+      "completeness": {
+        "matchups": "partial",
+        "lineups": "partial",
+        "transactions": "partial",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2023,
+      "champion": "Sniper Gang - 1800 Block",
+      "champion_owner_uid": "7bcd558d-2d1e-5d3a-b846-42abb683d07b",
+      "champion_seed": 1,
+      "runner_up": "Emergency Room",
+      "runner_up_owner_uid": "d16e1cbf-905f-54da-80b8-5ba1671f5c50",
+      "runner_up_seed": 2,
+      "team_count": 8,
+      "matchup_count": 67,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "complete",
+        "lineups": "complete",
+        "transactions": "partial",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2024,
+      "champion": "Team Malley",
+      "champion_owner_uid": "3f7e769c-a878-5cb9-8a88-17ba446757e4",
+      "champion_seed": 3,
+      "runner_up": "King of December 💍💍💍",
+      "runner_up_owner_uid": "2e3b7928-a1a8-5b35-8b19-8b35e7ca4be7",
+      "runner_up_seed": 1,
+      "team_count": 8,
+      "matchup_count": 67,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "complete",
+        "lineups": "complete",
+        "transactions": "partial",
+        "draft": "complete"
+      }
+    },
+    {
+      "season": 2025,
+      "champion": "Insane in The Achane",
+      "champion_owner_uid": "d7cfd805-6646-56f4-9b79-c112f07f2c8c",
+      "champion_seed": 1,
+      "runner_up": "Only I can say the N-word",
+      "runner_up_owner_uid": "191870da-e358-5969-9342-66d3ea83c9b6",
+      "runner_up_seed": 6,
+      "team_count": 8,
+      "matchup_count": 64,
+      "corrected": false,
+      "correction_ids": [],
+      "completeness": {
+        "matchups": "partial",
+        "lineups": "partial",
+        "transactions": "partial",
+        "draft": "partial"
+      }
+    }
+  ]
+}

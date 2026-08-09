@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-09T15:51:00.335272+00:00",
+  "corrections": [
+    {
+      "correction_id": "season-result-2022-champion-001",
+      "dataset": "seasons",
+      "match": {
+        "season": 2022
+      },
+      "field": "champion_team_season_uid",
+      "previous_value": "b9cca909-47ec-521f-8898-694a89b6270c",
+      "new_value": "118b89cf-237b-5349-9e55-418bb3b00b19",
+      "status": "applied"
+    },
+    {
+      "correction_id": "season-result-2022-runner-up-001",
+      "dataset": "seasons",
+      "match": {
+        "season": 2022
+      },
+      "field": "runner_up_team_season_uid",
+      "previous_value": "118b89cf-237b-5349-9e55-418bb3b00b19",
+      "new_value": "b9cca909-47ec-521f-8898-694a89b6270c",
+      "status": "applied"
+    },
+    {
+      "correction_id": "season-result-2022-champion-seed-001",
+      "dataset": "seasons",
+      "match": {
+        "season": 2022
+      },
+      "field": "champion_seed",
+      "previous_value": 2,
+      "new_value": 5,
+      "status": "applied"
+    },
+    {
+      "correction_id": "season-result-2022-runner-up-seed-001",
+      "dataset": "seasons",
+      "match": {
+        "season": 2022
+      },
+      "field": "runner_up_seed",
+      "previous_value": 5,
+      "new_value": 2,
+      "status": "applied"
+    },
+    {
+      "correction_id": "team-season-2022-king-of-january-seed-001",
+      "dataset": "team_seasons",
+      "match": {
+        "team_season_uid": "118b89cf-237b-5349-9e55-418bb3b00b19",
+        "season": 2022
+      },
+      "field": "playoff_seed",
+      "previous_value": null,
+      "new_value": 5,
+      "status": "applied"
+    },
+    {
+      "correction_id": "team-season-2022-king-of-december-seed-001",
+      "dataset": "team_seasons",
+      "match": {
+        "team_season_uid": "b9cca909-47ec-521f-8898-694a89b6270c",
+        "season": 2022
+      },
+      "field": "playoff_seed",
+      "previous_value": null,
+      "new_value": 2,
+      "status": "applied"
+    },
+    {
+      "correction_id": "matchup-result-2022-championship-winner-001",
+      "dataset": "matchups",
+      "match": {
+        "matchup_uid": "ced2dc71-bdc9-5d3a-8d34-4d5312db6b04",
+        "season": 2022
+      },
+      "field": "winner_team_season_uid",
+      "previous_value": "b9cca909-47ec-521f-8898-694a89b6270c",
+      "new_value": "118b89cf-237b-5349-9e55-418bb3b00b19",
+      "status": "applied"
+    },
+    {
+      "correction_id": "matchup-result-2022-championship-loser-001",
+      "dataset": "matchups",
+      "match": {
+        "matchup_uid": "ced2dc71-bdc9-5d3a-8d34-4d5312db6b04",
+        "season": 2022
+      },
+      "field": "loser_team_season_uid",
+      "previous_value": "118b89cf-237b-5349-9e55-418bb3b00b19",
+      "new_value": "b9cca909-47ec-521f-8898-694a89b6270c",
+      "status": "applied"
+    },
+    {
+      "correction_id": "matchup-result-2022-championship-audit-001",
+      "dataset": "matchups",
+      "match": {
+        "matchup_uid": "ced2dc71-bdc9-5d3a-8d34-4d5312db6b04",
+        "season": 2022
+      },
+      "field": "is_corrected",
+      "previous_value": false,
+      "new_value": true,
+      "status": "applied"
+    }
+  ]
+}

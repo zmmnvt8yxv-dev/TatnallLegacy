@@ -15,23 +15,27 @@ import { z } from "zod";
  * The babel-plugin-transform-import-meta transforms import.meta at build time
  */
 function getEnv(): Record<string, unknown> {
-  // In test environment, use the global mock (set up in src/__tests__/setup.js)
-  const globalImport = (globalThis as Record<string, unknown>).import as
-    | { meta: { env: Record<string, unknown> } }
-    | undefined;
-  if (globalImport?.meta?.env) {
-    return globalImport.meta.env;
+  // Vite replaces import.meta.env in browser builds. Reading globalThis.import does
+  // not access that object and caused the app to fall through to an undefined
+  // browser `process` global before React could render.
+  const viteEnv = import.meta.env as Record<string, unknown> | undefined;
+  if (viteEnv) {
+    return viteEnv;
   }
 
-  // Fallback for Node/SSR environments where import.meta might not be available
-  // This is used during Jest testing or server-side rendering
+  // Defensive fallback for non-Vite Node/SSR consumers.
+  const nodeEnv = (
+    globalThis as typeof globalThis & {
+      process?: { env?: Record<string, string | undefined> };
+    }
+  ).process?.env || {};
   return {
-    DEV: process.env.NODE_ENV !== "production",
-    MODE: process.env.NODE_ENV || "development",
-    BASE_URL: process.env.BASE_URL || "/TatnallLegacy/",
-    VITE_SENTRY_DSN: process.env.VITE_SENTRY_DSN,
-    VITE_GA4_ID: process.env.VITE_GA4_ID,
-    CAPACITOR: process.env.CAPACITOR,
+    DEV: nodeEnv.NODE_ENV !== "production",
+    MODE: nodeEnv.NODE_ENV || "development",
+    BASE_URL: nodeEnv.BASE_URL || "/TatnallLegacy/",
+    VITE_SENTRY_DSN: nodeEnv.VITE_SENTRY_DSN,
+    VITE_GA4_ID: nodeEnv.VITE_GA4_ID,
+    CAPACITOR: nodeEnv.CAPACITOR,
   };
 }
 

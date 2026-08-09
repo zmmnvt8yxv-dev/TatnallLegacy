@@ -1,40 +1,144 @@
-# Tatnall Legacy League Encyclopedia
+# Tatnall Legacy
 
-## Runbook
+Tatnall Legacy is the permanent historical record, statistical database, and
+current-season command center for an eight-team fantasy football league founded
+in 2015.
 
-### Build site data
-1. Ensure the yearly league JSON exports exist under `data/` (e.g., `data/2025.json`).
-2. Ensure the weekly fantasy exports exist under `data_raw/master/` (parquet or CSV). The build uses:
-   - `player_week_fantasy_2015_2025_with_war.*` (preferred)
-   - `player_week_fantasy_2015_2025_with_z.*`
-   - `player_week_fantasy_2015_2025_with_td_bonus.*`
-   - `player_week_fantasy_2015_2025.*`
-3. Generate web-ready JSON chunks and manifest (weeks 1–18 only):
-   ```bash
-   npm run build:data
-   ```
-   This writes app-ready JSON to `public/data/` and updates `public/data/manifest.json`.
-   Rerun this after updating any `data_raw/` exports so the frontend has the latest datasets.
+The site combines a canonical league archive with a live Sleeper-era dashboard:
 
-### Install dependencies
-```bash
-npm install
+- accepted champions, finalists, playoff seeds, standings, and matchup history;
+- stable owner, franchise, team-season, matchup, and player identities;
+- current Sleeper league metadata, users, rosters, drafts, matchups, and transactions;
+- precomputed owner careers, rivalries, records, search, and data-health reporting;
+- player profiles backed by league and NFL statistics;
+- explicit coverage states for `complete`, `partial`, `unavailable`, `unknown`,
+  and `not_applicable` data.
+
+Raw provider data is never edited to make history look correct. League rulings,
+including the 2022 championship awarded to King of January / Conner Malley, live
+in audited correction files and are applied during normalization.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    ESPN["ESPN exports"] --> Raw["Raw evidence / snapshots"]
+    Sleeper["Sleeper API"] --> Raw
+    Registry["Player registries"] --> Raw
+    Raw --> Normalize["Canonical Parquet"]
+    Corrections["Audited corrections"] --> Normalize
+    Normalize --> Derive["Careers, H2H, records"]
+    Derive --> Publish["Manifest v3 + route JSON"]
+    Publish --> React["React / Vite site"]
 ```
 
-### Run the site locally
+The layers have distinct jobs:
+
+- `data/raw/`: immutable or refreshable provider evidence;
+- `data/config/`: league, owner, franchise, and scoring configuration;
+- `data/corrections/`: documented league rulings and identity overrides;
+- `data/normalized/`: canonical Parquet tables—the source of league truth;
+- `data/derived/`: verification and audit reports;
+- `public/data/`: compact browser-delivery datasets;
+- `src/`: React application and compatibility routes.
+
+The legacy v2 manifest remains available during migration. New archive pages use
+`public/data/manifest.v3.json` and domain-oriented resources under `now/`,
+`history/`, `seasons/`, `owners/`, `players/`, `records/`, and `integrity/`.
+
+## Local setup
+
+Requirements: Node 20+, Python 3.11+, and Git LFS for the optional historical
+player-stat repository.
+
 ```bash
+npm ci
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-data.txt
 npm run dev
 ```
 
-### Build the production bundle
+The Vite application is served under `/TatnallLegacy/`, matching GitHub Pages.
+
+## Data pipeline
+
+The complete current-data pipeline is:
+
 ```bash
+PATH="$PWD/.venv/bin:$PATH" npm run data:refresh
+```
+
+Granular stages are available for development:
+
+```bash
+npm run data:ingest     # official Sleeper league + active player snapshots
+npm run data:normalize  # canonical history and identity Parquet tables
+npm run data:derive     # invariant checks used by derived datasets
+npm run data:publish    # route-sized manifest v3 JSON
+npm run data:validate   # canonical, public v3, and compatibility validators
+```
+
+`npm run build:data` is intentionally preserved for the older weekly player-data
+pipeline until all player-detail routes migrate to v3.
+
+### Historical data repository
+
+Large ESPN/player-stat exports can live outside this repository and be linked as
+`data_raw/`. The canonical league history itself is reproducible from the compact
+season files under `data/`; missing large exports do not erase championship or
+owner history.
+
+## Corrections and provenance
+
+Every correction includes an ID, target, field, reason, source note, and date.
+The normalizer records both the previous and accepted values in
+`data/derived/corrections_applied.json`. Add new rulings under `data/corrections/`
+instead of editing raw exports or adding conditionals to React.
+
+The public Data Health page exposes:
+
+- season-by-season coverage;
+- applied corrections;
+- critical failures and warnings;
+- quarantined ambiguous player IDs;
+- unresolved commissioner questions.
+
+## Testing and validation
+
+```bash
+npm test -- --runInBand
+PATH="$PWD/.venv/bin:$PATH" npm run test:data
+PATH="$PWD/.venv/bin:$PATH" npm run data:validate
 npm run build
 ```
 
-### GitHub Pages
-The app is configured for the `/TatnallLegacy/` subpath (see `vite.config.ts`). All data fetches use
-`import.meta.env.BASE_URL`, so deployments under GitHub Pages should work without path changes.
+Critical invariants include exactly one champion per completed season, valid
+foreign keys, no duplicate canonical IDs, winner/score agreement unless audited,
+the permanent 2022 result and seeds, distinct Lamar Jackson QB/CB identities,
+and complete manifest v3 resources.
 
-### Deployment automation
-- GitHub Actions deploys from `main` on push, every 4 hours, or manual run.
-- Workflow: `.github/workflows/pages.yml`
+## Current-season refresh and deployment
+
+`.github/workflows/pages.yml` runs on pushes to `main`, every four hours, or by
+manual dispatch. It refreshes public Sleeper data, normalizes, publishes,
+validates, tests, builds the GitHub Pages bundle, and stops deployment on critical
+failure.
+
+Sleeper's public read-only API requires no secret. Private historical ESPN
+refreshes remain a local/manual process unless appropriate repository secrets are
+configured; cookies and credentials must never be committed.
+
+## Known limitations
+
+- ESPN-era scoring settings still need commissioner verification before custom
+  historical NFL points or value metrics are recalculated.
+- 2015–2017 lineup and transaction exports are unavailable.
+- Several later transaction exports are partial.
+- 2022 and 2025 matchup exports are partial, so they are excluded from generated
+  matchup records and head-to-head totals.
+- The 2025 third-place result remains unresolved.
+- Existing player-detail pages still use compatibility datasets while the
+  player-centric v3 profile publisher is completed.
+
+See [the baseline](docs/v2-baseline.md), [open data questions](docs/data-questions.md),
+and [corrections guide](data/corrections/README.md) for deeper detail.

@@ -1,0 +1,1496 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-09T15:51:02.824140+00:00",
+  "status": "warning",
+  "summary": {
+    "legacy_records": 19959,
+    "authoritative_current_records": 3301,
+    "canonical_players": 20068,
+    "provider_ids": 36254,
+    "safe_record_merges": 182,
+    "quarantined_provider_id_collisions": 88,
+    "manual_corrections": 2,
+    "name_fallbacks": 1
+  },
+  "conflicts": [
+    {
+      "id_type": "espn",
+      "id_value": "10031",
+      "source_player_ids": [
+        "341",
+        "espn:10031"
+      ],
+      "canonical_player_uids": [
+        "e99fbe62-7139-5c09-a0ab-af05f965cd18",
+        "f03fed2f-82fc-5ebb-9469-3d5d3bab5ddd"
+      ],
+      "names": [
+        "Tony Dewayne McDaniel",
+        "Tony McDaniel"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "10561",
+      "source_player_ids": [
+        "190",
+        "espn:10561"
+      ],
+      "canonical_player_uids": [
+        "16bee44d-a227-53d4-9a53-67a43bbb9990",
+        "783ffbb2-6657-501c-926a-a281bd608851"
+      ],
+      "names": [
+        "Manny Ramirez",
+        "Manuel Ramirez"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "11331",
+      "source_player_ids": [
+        "148",
+        "espn:11331"
+      ],
+      "canonical_player_uids": [
+        "2a622bcd-4633-5bb3-bc73-cfe96a0cbf1a",
+        "b19d64b2-805a-5539-af9e-650cf484b27e"
+      ],
+      "names": [
+        "Andre Caldwell",
+        "Andre Jerome Caldwell"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "11365",
+      "source_player_ids": [
+        "149",
+        "espn:11365"
+      ],
+      "canonical_player_uids": [
+        "52c0f729-9306-599c-a150-8dc7127bc9f1",
+        "dca378a3-2ff3-5624-9a23-7e9952e16da4"
+      ],
+      "names": [
+        "Zack Bowman",
+        "Zackary Bowman"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "11458",
+      "source_player_ids": [
+        "108",
+        "espn:11458"
+      ],
+      "canonical_player_uids": [
+        "6a20099b-f7c4-5087-9f53-556c595d1b12",
+        "c7a2ad4e-e697-5c28-874b-4a28efa00b75"
+      ],
+      "names": [
+        "Steve Johnson",
+        "Stevie Johnson"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "12619",
+      "source_player_ids": [
+        "395",
+        "espn:12619"
+      ],
+      "canonical_player_uids": [
+        "68ab02ec-e304-503c-b29a-944ec72c6b57",
+        "bb1e3ca5-f7bf-54d1-b6ec-bdbec1036cc0"
+      ],
+      "names": [
+        "Michael Mitchell",
+        "Mike Mitchell"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "12644",
+      "source_player_ids": [
+        "555",
+        "espn:12644"
+      ],
+      "canonical_player_uids": [
+        "1be2f12e-c8f9-516f-84cb-9068da925f5a",
+        "6ee07df8-27f1-58c4-a7a9-c7a980065c20"
+      ],
+      "names": [
+        "Don Carey",
+        "Don Juan Carey"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "12645",
+      "source_player_ids": [
+        "337",
+        "696"
+      ],
+      "canonical_player_uids": [
+        "482e3e9d-bc01-5538-9c81-9c899ff24736",
+        "a5fb625e-5d7c-5a22-8506-39cd832f9bab"
+      ],
+      "names": [
+        "Chris Clemons"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "12667",
+      "source_player_ids": [
+        "685",
+        "espn:12667"
+      ],
+      "canonical_player_uids": [
+        "1d5b4f9f-1fef-58be-b164-36c3ffe0f154",
+        "5e2b20da-106b-5cab-8250-054c80beaa38"
+      ],
+      "names": [
+        "Sammie Hill",
+        "Sammie Lee Hill"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "12738",
+      "source_player_ids": [
+        "475",
+        "espn:12738"
+      ],
+      "canonical_player_uids": [
+        "34a10708-ba59-57cc-b6f4-0946fadca9fa",
+        "6a2aad9f-c013-52fa-9261-8a1b48540e06"
+      ],
+      "names": [
+        "Greg Toler",
+        "Gregory Toler"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "13165",
+      "source_player_ids": [
+        "751",
+        "espn:13165"
+      ],
+      "canonical_player_uids": [
+        "faa26b7c-6c3b-5343-b8a9-0085b9d1eab4",
+        "fcbf7798-5892-5142-a8a8-d249c4febaa8"
+      ],
+      "names": [
+        "Josh Mauga",
+        "Joshua Mauga"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "13212",
+      "source_player_ids": [
+        "3027",
+        "727"
+      ],
+      "canonical_player_uids": [
+        "2b8a7dcf-ad12-5727-984c-9e570ffd9430",
+        "50a44672-05b8-5dc8-be0a-4b645f3681c5"
+      ],
+      "names": [
+        "Anthony Dixon",
+        "Boobie Dixon"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "13456",
+      "source_player_ids": [
+        "737",
+        "espn:13456"
+      ],
+      "canonical_player_uids": [
+        "0868f01b-941e-510f-a928-a6cb0d7aea9b",
+        "a8ad7d21-1cab-58f6-abc9-9e5687caf367"
+      ],
+      "names": [
+        "Mickey Charles Shuler",
+        "Mickey Shuler"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "13751",
+      "source_player_ids": [
+        "551",
+        "espn:13751"
+      ],
+      "canonical_player_uids": [
+        "589b3c60-635b-538a-82d5-b3c64bcaaa1d",
+        "b4fc45aa-a3e9-5301-97ca-50c37c8ebb1e"
+      ],
+      "names": [
+        "Jeff Linkenbach",
+        "Jeffrey Linkenbach"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "13968",
+      "source_player_ids": [
+        "838",
+        "espn:13968"
+      ],
+      "canonical_player_uids": [
+        "331e9a9c-1947-5e1e-8d69-6e7c64e61e3d",
+        "614b6583-aaee-576f-b339-e8848309430f"
+      ],
+      "names": [
+        "Phil Taylor Sr.",
+        "Phillip Taylor"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "14022",
+      "source_player_ids": [
+        "889",
+        "espn:14022"
+      ],
+      "canonical_player_uids": [
+        "12d72828-a57e-58d7-bd12-ebe32da75d05",
+        "9e533faa-a81e-5a3c-85f2-93b86d879bc7"
+      ],
+      "names": [
+        "DeMarcus Van Dyke",
+        "DeMarcus VanDyke"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "14292",
+      "source_player_ids": [
+        "994",
+        "espn:14292"
+      ],
+      "canonical_player_uids": [
+        "4774f03f-f7a8-5580-84a8-337cdf8ae558",
+        "8515f462-e19f-57f3-9f68-77fe592311c8"
+      ],
+      "names": [
+        "Michael Morgan",
+        "Mike Morgan"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "14853",
+      "source_player_ids": [
+        "1021",
+        "espn:14853"
+      ],
+      "canonical_player_uids": [
+        "366c4b72-0a74-54e2-926e-fd32608e77b8",
+        "38960293-1c54-578a-919d-2a5e65124b52"
+      ],
+      "names": [
+        "Michael McAdoo",
+        "Mike McAdoo"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "14890",
+      "source_player_ids": [
+        "1225",
+        "espn:14890"
+      ],
+      "canonical_player_uids": [
+        "4075d9d8-2ecb-56c8-96e0-35d4e32aac1e",
+        "4bea4211-f545-595d-9db0-ee8af27e1b8a"
+      ],
+      "names": [
+        "LaMichael James",
+        "LaMike James"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15002",
+      "source_player_ids": [
+        "1118",
+        "648"
+      ],
+      "canonical_player_uids": [
+        "467fbcaa-d107-5037-86d6-f91924197350",
+        "f1edcc01-928d-54ae-850e-c369c9684f03"
+      ],
+      "names": [
+        "Brandon Marshall"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15040",
+      "source_player_ids": [
+        "1729",
+        "espn:15040"
+      ],
+      "canonical_player_uids": [
+        "7cf99edb-c651-5416-b572-77a02401ba59",
+        "c0cfdd9b-dfa2-5001-8a16-82cf99784597"
+      ],
+      "names": [
+        "Nate Stupar",
+        "Nathan Stupar"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15041",
+      "source_player_ids": [
+        "1307",
+        "espn:15041"
+      ],
+      "canonical_player_uids": [
+        "20d1d2ef-ac4c-5126-becc-9c5ac690edf3",
+        "85a92c61-6c07-575b-b390-8a40542b7fd2"
+      ],
+      "names": [
+        "Dan Herron",
+        "Daniel Herron"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15132",
+      "source_player_ids": [
+        "1295",
+        "espn:15132"
+      ],
+      "canonical_player_uids": [
+        "953f05c3-63c0-5569-aad0-3d8a21897440",
+        "9dcc858c-d992-51af-8d22-aa59aff2bc79"
+      ],
+      "names": [
+        "Matt Masifilo",
+        "Matthew Masifilo"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15276",
+      "source_player_ids": [
+        "1327",
+        "espn:15276"
+      ],
+      "canonical_player_uids": [
+        "11464f40-c909-5670-8414-e4a389932ba8",
+        "3cd77d57-0a9d-5c6d-8a03-dcd12fc47cf7"
+      ],
+      "names": [
+        "Ron Leary",
+        "Ronald Leary"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15350",
+      "source_player_ids": [
+        "1115",
+        "espn:15350"
+      ],
+      "canonical_player_uids": [
+        "327df372-ead3-535d-920b-ad2312efe1fa",
+        "33054e2c-ee3f-585f-9f9d-066036ba0a8a"
+      ],
+      "names": [
+        "Antwon Blake",
+        "Valentino Blake"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15518",
+      "source_player_ids": [
+        "1772",
+        "espn:15518"
+      ],
+      "canonical_player_uids": [
+        "b05f7036-fe2b-5e59-97ff-2090406e0206",
+        "c13f37b3-e092-5164-8137-9be809f63ea4"
+      ],
+      "names": [
+        "J Talley",
+        "Julian Talley"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15639",
+      "source_player_ids": [
+        "1325",
+        "espn:15639"
+      ],
+      "canonical_player_uids": [
+        "1f83e39f-08db-54a8-888a-45f1d8772de0",
+        "6770e56d-9630-5a85-ab18-2510ef7d06ab"
+      ],
+      "names": [
+        "Hebron Fangupo",
+        "Loni Fangupo"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15698",
+      "source_player_ids": [
+        "1768",
+        "espn:15698"
+      ],
+      "canonical_player_uids": [
+        "26b4b273-38d9-551a-a5cf-d046c5986d6a",
+        "3a198aba-bd03-5d2d-b249-01d917e6580e"
+      ],
+      "names": [
+        "K Browner",
+        "Keith Browner"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15829",
+      "source_player_ids": [
+        "1582",
+        "espn:15829"
+      ],
+      "canonical_player_uids": [
+        "bec3fbdc-f81a-5333-af9b-74c5828629ae",
+        "f3157331-8430-51df-8217-3a9770888a60"
+      ],
+      "names": [
+        "Cornellius Carradine",
+        "Tank Carradine"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15885",
+      "source_player_ids": [
+        "1530",
+        "37"
+      ],
+      "canonical_player_uids": [
+        "3a1bd759-a031-54b4-93d4-1626cbd8af5a",
+        "e3b0e598-507c-5448-986c-371c7d1834f8"
+      ],
+      "names": [
+        "Charles Johnson"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "15955",
+      "source_player_ids": [
+        "1430",
+        "espn:15955"
+      ],
+      "canonical_player_uids": [
+        "2b3b7b91-2acc-54c9-bdc8-0cee20fa4d30",
+        "c8331015-ff49-5885-b24a-bb8002e5ac60"
+      ],
+      "names": [
+        "Chris Dwightstone Jones",
+        "Chris Jones"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "16285",
+      "source_player_ids": [
+        "1635",
+        "espn:16285"
+      ],
+      "canonical_player_uids": [
+        "1bd53751-32be-57bf-9bb6-0d97d1bceb98",
+        "5fb62efe-3be6-56a1-965b-18ecf0d1a1d3"
+      ],
+      "names": [
+        "Tim Wright",
+        "Timothy Wright"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "16288",
+      "source_player_ids": [
+        "1431",
+        "espn:16288"
+      ],
+      "canonical_player_uids": [
+        "4175548b-ee1d-50a8-aae7-1c7790f448d6",
+        "6f7db13e-3a1b-583f-849c-c2e198494d92"
+      ],
+      "names": [
+        "Emmett Cleary",
+        "Emmett Joseph Cleary"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "16593",
+      "source_player_ids": [
+        "1747",
+        "espn:16593"
+      ],
+      "canonical_player_uids": [
+        "15199f93-f816-50cc-80c8-dc6e3e785b12",
+        "d91432bb-3ea7-581e-b153-0c7daae784cf"
+      ],
+      "names": [
+        "Matt McGloin",
+        "Matthew McGloin"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "16935",
+      "source_player_ids": [
+        "2235",
+        "espn:16935"
+      ],
+      "canonical_player_uids": [
+        "46517557-0f75-5c1f-8580-5c8e799bf33a",
+        "aa475c24-ee34-5295-8c7e-4629249080ef"
+      ],
+      "names": [
+        "Mitchell Van Dyk",
+        "Mitchell VanDyk"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "17048",
+      "source_player_ids": [
+        "1978",
+        "2563"
+      ],
+      "canonical_player_uids": [
+        "8cfacdde-f931-50b0-aec6-91d198f04b52",
+        "f676f494-8e70-536d-91b1-81bd18e764b4"
+      ],
+      "names": [
+        "Tony Washington"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "17300",
+      "source_player_ids": [
+        "1877",
+        "espn:17300"
+      ],
+      "canonical_player_uids": [
+        "b33b75d5-f3a7-58e8-bec1-e327e123ebd6",
+        "fc313c93-8660-590f-af5a-7660b964921e"
+      ],
+      "names": [
+        "Zach Orr",
+        "Zachary Orr"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2273426",
+      "source_player_ids": [
+        "2615",
+        "espn:2273426"
+      ],
+      "canonical_player_uids": [
+        "d5ed25ba-cbdd-5d83-a13c-99c3b9b3ae85",
+        "df84a06e-7720-5eff-aae7-68272380d3bb"
+      ],
+      "names": [
+        "Doug McNeil",
+        "Douglas McNeil"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2469745",
+      "source_player_ids": [
+        "2876",
+        "espn:2469745"
+      ],
+      "canonical_player_uids": [
+        "58597f66-9c79-5e1b-a695-c418212115e2",
+        "6fab861e-d8f5-5035-ae1a-5f9a9c13ccf8"
+      ],
+      "names": [
+        "Ed L Williams",
+        "Ed Williams"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2510866",
+      "source_player_ids": [
+        "2379",
+        "espn:2510866"
+      ],
+      "canonical_player_uids": [
+        "8858b982-62dc-5a54-b0b6-3dbae9ad7c58",
+        "ae96e945-d0fd-59a8-88bd-2971886955f0"
+      ],
+      "names": [
+        "Owa Odighizuwa",
+        "Owamagbe Odighizuwa"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2514374",
+      "source_player_ids": [
+        "2736",
+        "espn:2514374"
+      ],
+      "canonical_player_uids": [
+        "011bea15-6315-5c2f-8e97-3a851914328c",
+        "5a1063db-a6d6-5157-bc60-6724baa90fc3"
+      ],
+      "names": [
+        "Cap Capi",
+        "Nordly Capi"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2515662",
+      "source_player_ids": [
+        "12994",
+        "2685"
+      ],
+      "canonical_player_uids": [
+        "4569270e-48da-51d1-b0fe-34642e6afccd",
+        "b9609bea-e580-531d-bcdd-58470cca5389"
+      ],
+      "names": [
+        "Jordan Taylor"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2516079",
+      "source_player_ids": [
+        "2969",
+        "495"
+      ],
+      "canonical_player_uids": [
+        "7d78f866-0092-5e0a-897b-ff91d5da9c4b",
+        "9ac5ed3c-950a-51e9-9142-12ad64db19a9"
+      ],
+      "names": [
+        "Michael Bennett"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2516295",
+      "source_player_ids": [
+        "2480",
+        "espn:2516295"
+      ],
+      "canonical_player_uids": [
+        "376694ea-50b5-5310-a314-3a6eb56b97b3",
+        "a4d909bb-2126-533a-af44-c397a29deaf8"
+      ],
+      "names": [
+        "Matt Wells",
+        "Matthew Wells"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2516417",
+      "source_player_ids": [
+        "2500",
+        "espn:2516417"
+      ],
+      "canonical_player_uids": [
+        "151f7d51-01a5-54d0-8857-df316ae0d5ff",
+        "6c793c04-0680-558b-a38e-c15a9bd43fb8"
+      ],
+      "names": [
+        "L.T. Walton",
+        "Leterrius Walton"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2549",
+      "source_player_ids": [
+        "461",
+        "espn:2549"
+      ],
+      "canonical_player_uids": [
+        "02bb9858-cac0-5999-bc8f-cf77ec1fdff7",
+        "9bc75ae4-83e0-5b8b-bc5d-42a3c4e494b3"
+      ],
+      "names": [
+        "Michael Vick",
+        "Mike Vick"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2566598",
+      "source_player_ids": [
+        "2568",
+        "espn:2566598"
+      ],
+      "canonical_player_uids": [
+        "26e273b4-c8de-5a75-b034-704beaa8d443",
+        "b1f9f805-ffc1-529c-bf22-f3b54b96ca8a"
+      ],
+      "names": [
+        "Zach Hodges",
+        "Zack Hodges"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2575516",
+      "source_player_ids": [
+        "4734",
+        "espn:2575516"
+      ],
+      "canonical_player_uids": [
+        "08c0d9a9-148b-50c1-9456-1033b73eb1cb",
+        "65b232e5-a7de-586b-9201-be85770e2c85"
+      ],
+      "names": [
+        "Ezekiel Bigger",
+        "Zeek Bigger"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2576460",
+      "source_player_ids": [
+        "2659",
+        "espn:2576460"
+      ],
+      "canonical_player_uids": [
+        "7d169c7a-aea7-5c01-a5b5-c56eb6c5420d",
+        "b9b765d4-c8d9-538d-a937-44c36f23bbbb"
+      ],
+      "names": [
+        "Manny Asprilla",
+        "Manuel Asprilla"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2582099",
+      "source_player_ids": [
+        "4713",
+        "espn:2582099"
+      ],
+      "canonical_player_uids": [
+        "b09e407f-130d-5efa-99d7-05af462d695c",
+        "ffabbfc1-84df-5846-a218-cf728cc75122"
+      ],
+      "names": [
+        "C.J. Robbins",
+        "Cameron Robbins"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2589809",
+      "source_player_ids": [
+        "2461",
+        "espn:2589809"
+      ],
+      "canonical_player_uids": [
+        "4987d006-a00d-5173-a15c-fe1644b04e44",
+        "c7e28e2d-a540-566c-b5e9-112ab901bdcf"
+      ],
+      "names": [
+        "Shaq Riddick",
+        "Shaquille Riddick"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2972118",
+      "source_player_ids": [
+        "4382",
+        "espn:2972118"
+      ],
+      "canonical_player_uids": [
+        "d4982d5b-6521-5d48-9dbc-89af18e0abf4",
+        "e14935d2-52c1-51cb-92ad-33aea3e19d04"
+      ],
+      "names": [
+        "Izaah Burks",
+        "Izaah Lunsford"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2978065",
+      "source_player_ids": [
+        "4296",
+        "8091"
+      ],
+      "canonical_player_uids": [
+        "5e4a6b69-6116-52ed-91e2-e84003512b11",
+        "be3dfaa1-cb17-5647-9b08-ce1c9bc2784f"
+      ],
+      "names": [
+        "J.T. Jones",
+        "JT Jones"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2978933",
+      "source_player_ids": [
+        "2108",
+        "4245"
+      ],
+      "canonical_player_uids": [
+        "2acc3dca-2ac7-558e-aaf7-4302a4cdcbbb",
+        "8041e1d2-a42d-502c-9f53-fc46dd7208c7"
+      ],
+      "names": [
+        "Kyle Fuller"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2979591",
+      "source_player_ids": [
+        "1551",
+        "3560"
+      ],
+      "canonical_player_uids": [
+        "3dfda0a8-06f9-5f93-8860-759793f9504f",
+        "ce8f1ac3-b8a1-5529-9017-52504bbd681d"
+      ],
+      "names": [
+        "Austin Johnson"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "2994680",
+      "source_player_ids": [
+        "3404",
+        "espn:2994680"
+      ],
+      "canonical_player_uids": [
+        "561735a4-4568-5715-b7e0-fdbd0eb474a3",
+        "7450ab68-0150-55c1-b96d-6a30169aadf5"
+      ],
+      "names": [
+        "Prince Charles Charles Iworah",
+        "Prince Charles Iworah"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3040542",
+      "source_player_ids": [
+        "5716",
+        "espn:3040542"
+      ],
+      "canonical_player_uids": [
+        "638a0e46-27b1-57f4-832c-7658a4895e0a",
+        "a7d00688-c614-5fe7-bc65-ed60e027ee44"
+      ],
+      "names": [
+        "Brandon L. Smith",
+        "Brandon Smith"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3042370",
+      "source_player_ids": [
+        "4452",
+        "espn:3042370"
+      ],
+      "canonical_player_uids": [
+        "6cec8c76-690b-5acf-8d76-e944532e04ea",
+        "a47430fd-3cd9-5c6d-be7f-fc5012b36706"
+      ],
+      "names": [
+        "Xavier Woodson",
+        "Xavier Woodson-Luster"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3045214",
+      "source_player_ids": [
+        "4141",
+        "espn:3045214"
+      ],
+      "canonical_player_uids": [
+        "096e6494-4f2a-56f8-97aa-a43f71027914",
+        "c19d52a7-5495-5d64-a767-f270b689f5e7"
+      ],
+      "names": [
+        "Delano Hill",
+        "Lano Hill"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3049469",
+      "source_player_ids": [
+        "5148",
+        "5500"
+      ],
+      "canonical_player_uids": [
+        "655bde34-fd54-5bf6-9636-487c190414a2",
+        "7f41b2fb-cc94-56c9-ba28-2caf6aa01fed"
+      ],
+      "names": [
+        "Dewey Jarvis",
+        "Richard Jarvis"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3050009",
+      "source_player_ids": [
+        "4898",
+        "espn:3050009"
+      ],
+      "canonical_player_uids": [
+        "6d544082-f05e-536b-8b68-12c237688605",
+        "a7ec9450-8cd7-51fa-8b94-780971592a11"
+      ],
+      "names": [
+        "Chris Schneider",
+        "Christian Schneider"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3050022",
+      "source_player_ids": [
+        "5237",
+        "espn:3050022"
+      ],
+      "canonical_player_uids": [
+        "6089f292-00a2-58d6-b04d-1afd586b4c78",
+        "adb37ee8-e185-55da-ac22-75073bd0180c"
+      ],
+      "names": [
+        "Chad Kanoff",
+        "Charles Kanoff"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3051711",
+      "source_player_ids": [
+        "4232",
+        "espn:3051711"
+      ],
+      "canonical_player_uids": [
+        "18f21859-e35c-5a4c-a688-8a9a53a813b9",
+        "768e348a-457a-5452-bbb6-152df35e0409"
+      ],
+      "names": [
+        "Matt Dayes",
+        "Matthew Dayes"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3052144",
+      "source_player_ids": [
+        "5574",
+        "espn:3052144"
+      ],
+      "canonical_player_uids": [
+        "c338d3f0-126d-5f68-8cff-e4ff38d40fc8",
+        "d1810215-5f70-5a5a-8549-b308d74b1ae3"
+      ],
+      "names": [
+        "Ray Ray Davison",
+        "Raymond Davison"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3115482",
+      "source_player_ids": [
+        "6570",
+        "espn:3115482"
+      ],
+      "canonical_player_uids": [
+        "388ffec0-3df8-5253-958c-4ee66094b714",
+        "f1dfd666-8fc9-51f2-b49a-9ecfe497fb1e"
+      ],
+      "names": [
+        "Deion Calhoun",
+        "Shaq Calhoun"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3116104",
+      "source_player_ids": [
+        "5815",
+        "903"
+      ],
+      "canonical_player_uids": [
+        "4d6f696c-0bda-5a18-9ddc-9bc164e493c0",
+        "de6e9831-e5f6-5f29-bad1-850377368162"
+      ],
+      "names": [
+        "Chris Jones"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3119152",
+      "source_player_ids": [
+        "5702",
+        "espn:3119152"
+      ],
+      "canonical_player_uids": [
+        "30431da6-2afd-5ddf-b505-673d04795b3a",
+        "35f9b1dc-b12b-54ae-98df-557295363e0c"
+      ],
+      "names": [
+        "Pat Afriyie",
+        "Patrick Afriyie"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3119465",
+      "source_player_ids": [
+        "4793",
+        "4795"
+      ],
+      "canonical_player_uids": [
+        "b02a04f6-0ce8-5ff5-9926-2b24dfbdc847",
+        "b3d34fc6-4999-5881-971f-afa5873c8553"
+      ],
+      "names": [
+        "Peli Anau",
+        "Siupeli Anau"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3122932",
+      "source_player_ids": [
+        "5564",
+        "espn:3122932"
+      ],
+      "canonical_player_uids": [
+        "9b9fe28e-32ad-595f-8bac-77e0524e0f2a",
+        "dfbc23b9-bc13-5e54-9ebe-060be59c8d74"
+      ],
+      "names": [
+        "Jacob Pugh",
+        "Jake Pugh"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3126096",
+      "source_player_ids": [
+        "5400",
+        "espn:3126096"
+      ],
+      "canonical_player_uids": [
+        "3f839a1e-b639-591b-83ba-ecb9dbe15d3a",
+        "9a785732-2305-5b54-9e48-ef1c1b6415e3"
+      ],
+      "names": [
+        "Tre Mathis",
+        "Trevon Mathis"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3127201",
+      "source_player_ids": [
+        "3591",
+        "3945"
+      ],
+      "canonical_player_uids": [
+        "5a419a0f-598e-59c4-b2e9-4b84c1588114",
+        "cf927c0e-b3d6-5e05-b8af-3235f1ffc1aa"
+      ],
+      "names": [
+        "Darius White"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3128786",
+      "source_player_ids": [
+        "4525",
+        "espn:3128786"
+      ],
+      "canonical_player_uids": [
+        "1c4d1128-4aef-524d-8fb4-64bb39f547f7",
+        "8a90ec95-7321-5b57-b30c-86aa6af4e341"
+      ],
+      "names": [
+        "De'Chavon Hayes",
+        "Gump Hayes"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3134666",
+      "source_player_ids": [
+        "4215",
+        "5304"
+      ],
+      "canonical_player_uids": [
+        "6d5842b2-c798-5f3b-9091-55e73cad08b9",
+        "b12ac977-d4af-563b-b14d-e85ad7d8e92f"
+      ],
+      "names": [
+        "Brian Allen"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3169405",
+      "source_player_ids": [
+        "2854",
+        "espn:3169405"
+      ],
+      "canonical_player_uids": [
+        "0ae1265a-dd16-5ebc-8f66-238d7c91e627",
+        "f6d22444-fab9-57ac-ac2c-1fd3aff459fa"
+      ],
+      "names": [
+        "Kenneth Horsley",
+        "Kenny Horsley"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3895841",
+      "source_player_ids": [
+        "4982",
+        "5187"
+      ],
+      "canonical_player_uids": [
+        "0df6add7-07d3-5166-b3d3-31fab91a9c91",
+        "27a51192-81a8-5531-9744-ce6666d21cd1"
+      ],
+      "names": [
+        "Mike Hughes"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3895859",
+      "source_player_ids": [
+        "4096",
+        "5525"
+      ],
+      "canonical_player_uids": [
+        "1555985e-bc52-525b-92b3-a26e80f8595b",
+        "89d0e746-12f6-562b-945e-0c4fa7785861"
+      ],
+      "names": [
+        "Justin Evans"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3915989",
+      "source_player_ids": [
+        "2129",
+        "6440"
+      ],
+      "canonical_player_uids": [
+        "22c0c3d8-f251-5cc2-b756-a327506fc71a",
+        "3a4df86f-1a87-5d3c-9639-ab2a5253d9c6"
+      ],
+      "names": [
+        "Jordan Thompson"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3920576",
+      "source_player_ids": [
+        "11187",
+        "5713"
+      ],
+      "canonical_player_uids": [
+        "2593b847-89a4-5ead-b01d-4d9d92433bd1",
+        "c2a8778f-e6e3-5306-bd09-92e17298a9f5"
+      ],
+      "names": [
+        "Mike Jones"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3927739",
+      "source_player_ids": [
+        "3873",
+        "espn:3927739"
+      ],
+      "canonical_player_uids": [
+        "851f60bd-0723-5f4b-b946-c152df58179a",
+        "fb3ee2fa-d53d-56aa-a688-563f8114f757"
+      ],
+      "names": [
+        "Ben Roberts",
+        "Ben Romain Roberts"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "3929658",
+      "source_player_ids": [
+        "6893",
+        "espn:3929658"
+      ],
+      "canonical_player_uids": [
+        "3c242d9c-a04f-52bb-abd4-c7aa5975da72",
+        "4cd88495-4bb7-5646-96fb-b9e3f50da684"
+      ],
+      "names": [
+        "Rob Windsor",
+        "Robert Windsor"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "4040172",
+      "source_player_ids": [
+        "2706",
+        "3929"
+      ],
+      "canonical_player_uids": [
+        "64d709e8-4062-5de8-89b7-4126aa7e3bc4",
+        "c3db1729-6ba0-5819-9d8e-c28fd70e5a90"
+      ],
+      "names": [
+        "Terry Williams"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "4040622",
+      "source_player_ids": [
+        "5869",
+        "espn:3961462"
+      ],
+      "canonical_player_uids": [
+        "bf941372-4ae5-524a-afe8-805c0fcb4092",
+        "fb2bfe15-4807-5dc5-8ca4-e16de205c8be"
+      ],
+      "names": [
+        "Michael Jordan",
+        "Mike Jordan"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "4259327",
+      "source_player_ids": [
+        "6504",
+        "6537"
+      ],
+      "canonical_player_uids": [
+        "11f9e578-a8f8-560f-841a-18363291f52a",
+        "6cd1c384-b20b-5e7a-be49-5c121262a8da"
+      ],
+      "names": [
+        "Ryan Anderson"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "4290803",
+      "source_player_ids": [
+        "6484",
+        "espn:4290803"
+      ],
+      "canonical_player_uids": [
+        "38641e7f-407e-5601-9267-dd095ea17b44",
+        "8d8e07d9-a655-5adb-ab17-1aa890e40f88"
+      ],
+      "names": [
+        "Michael Onuoha",
+        "Mike Onuoha"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "4339831",
+      "source_player_ids": [
+        "5730",
+        "espn:4339831"
+      ],
+      "canonical_player_uids": [
+        "a9758d65-bba1-5464-97e5-f47b04c28e1a",
+        "c8a148bb-2878-5743-8576-3f24ac696126"
+      ],
+      "names": [
+        "Mark Myers",
+        "Marko Myers"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "4384564",
+      "source_player_ids": [
+        "7028",
+        "espn:4384564"
+      ],
+      "canonical_player_uids": [
+        "b8a5a1ef-b643-575f-9604-a91b465ff45b",
+        "fac11cc7-77d9-5b96-88a8-60b9cd336db2"
+      ],
+      "names": [
+        "Alex Taylor",
+        "Armani Taylor-Prioleau"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "espn",
+      "id_value": "8638",
+      "source_player_ids": [
+        "174",
+        "espn:8638"
+      ],
+      "canonical_player_uids": [
+        "01bec8a7-e56c-50d0-aeaf-7adf7c2e6eb2",
+        "c9b44c0c-8d39-5232-bbf2-a02ab8d5f6ce"
+      ],
+      "names": [
+        "Jay Ratliff",
+        "Jeremiah Ratliff"
+      ],
+      "status": "quarantined"
+    },
+    {
+      "id_type": "gsis",
+      "id_value": "00-0034641",
+      "source_player_ids": [
+        "2110",
+        "5815"
+      ],
+      "canonical_player_uids": [
+        "4d6f696c-0bda-5a18-9ddc-9bc164e493c0",
+        "c6639159-fae9-5508-bc9c-4503f643b26a"
+      ],
+      "names": [
+        "Chris Jones",
+        "Christian Jones"
+      ],
+      "status": "quarantined"
+    }
+  ]
+}

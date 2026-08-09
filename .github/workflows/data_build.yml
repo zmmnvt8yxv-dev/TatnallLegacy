@@ -117,10 +117,18 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas numpy scipy pyyaml pytest
+          pip install pandas numpy scipy pyarrow requests pyyaml pytest
 
       - name: Run correction regression tests
         run: python -m pytest tests/python
+
+      - name: Build and validate canonical archive
+        run: |
+          python scripts/normalize/canonical_history.py
+          python scripts/normalize/player_identity.py
+          python scripts/publish/web_data.py
+          python scripts/validate_canonical_outputs.py
+          python scripts/validate_public_v3.py
 
       - name: Restore build cache
         uses: actions/cache@v4
