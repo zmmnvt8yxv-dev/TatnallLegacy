@@ -2,7 +2,11 @@ import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-const baseUrl = process.env.CAPACITOR ? './' : '/TatnallLegacy/';
+const baseUrl = process.env.CAPACITOR
+  ? './'
+  : process.env.NETLIFY
+    ? '/'
+    : '/TatnallLegacy/';
 
 export default defineConfig({
   base: baseUrl,
