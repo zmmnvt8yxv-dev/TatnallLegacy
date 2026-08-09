@@ -125,7 +125,8 @@ def test_2025_final_sleeper_bracket_sets_all_supported_finishes(history) -> None
     assert teams[5]["playoff_finish"] == 6
 
 
-def test_html_uses_the_github_pages_base_for_the_only_favicon() -> None:
+def test_html_uses_the_github_pages_base_for_both_favicon_formats() -> None:
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     assert 'href="%BASE_URL%favicon.svg"' in html
-    assert "favicon.ico" not in html
+    assert 'href="%BASE_URL%favicon.ico"' in html
+    assert (ROOT / "public/favicon.ico").stat().st_size > 0

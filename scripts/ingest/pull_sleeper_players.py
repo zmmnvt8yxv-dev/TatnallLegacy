@@ -35,6 +35,13 @@ FIELDS = (
     "espn_id",
     "gsis_id",
     "sportradar_id",
+    "search_rank",
+    "injury_status",
+    "depth_chart_position",
+    "depth_chart_order",
+    "practice_participation",
+    "news_updated",
+    "number",
 )
 
 

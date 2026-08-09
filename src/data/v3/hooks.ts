@@ -8,12 +8,20 @@ import {
   OwnersSchema,
   PlayerDirectorySchema,
   SearchSchema,
+  WarRoomSchema,
+  PlayerCareerSchema,
+  PlayerSeasonSchema,
+  EditorialSchema,
   type HistoryData,
   type ManifestV3,
   type NowData,
   type OwnersData,
   type PlayerDirectory,
   type SearchData,
+  type WarRoomData,
+  type PlayerCareer,
+  type PlayerSeason,
+  type EditorialData,
 } from "../../schemas/v3";
 
 export function useV3Manifest(): UseQueryResult<ManifestV3, Error> {
@@ -62,6 +70,59 @@ export function useV3Search(enabled: boolean): UseQueryResult<SearchData, Error>
     queryFn: () => getV3("data/search/index.json", SearchSchema),
     staleTime: 1000 * 60 * 30,
     enabled,
+  });
+}
+
+export function useWarRoom(): UseQueryResult<WarRoomData, Error> {
+  return useQuery({
+    queryKey: ["v3", "war-room"],
+    queryFn: () => getV3("data/war-room/index.json", WarRoomSchema),
+    staleTime: 1000 * 60 * 5,
+  });
+}
+
+export function useEditorial(): UseQueryResult<EditorialData, Error> {
+  return useQuery({
+    queryKey: ["v3", "editorial"],
+    queryFn: () => getV3("data/now/editorial.json", EditorialSchema),
+    staleTime: 1000 * 60 * 30,
+  });
+}
+
+export interface ResolvedPlayerCareer {
+  career: PlayerCareer;
+  canonicalPlayerUid: string;
+}
+
+export function usePlayerCareer(playerId: string): UseQueryResult<ResolvedPlayerCareer, Error> {
+  return useQuery({
+    queryKey: ["v3", "player-career", playerId],
+    queryFn: async () => {
+      try {
+        const career = await getV3(`data/players/${encodeURIComponent(playerId)}/career.json`, PlayerCareerSchema);
+        return { career, canonicalPlayerUid: career.player.playerUid };
+      } catch (error) {
+        const resolver = await getV3(
+          `data/players/resolve/${encodeURIComponent(playerId)}.json`,
+          z.object({ playerUid: z.string(), canonicalUrl: z.string(), provider: z.string() }),
+        );
+        const career = await getV3(`data/players/${resolver.playerUid}/career.json`, PlayerCareerSchema);
+        return { career, canonicalPlayerUid: resolver.playerUid };
+      }
+    },
+    enabled: Boolean(playerId),
+    staleTime: 1000 * 60 * 30,
+    retry: false,
+  });
+}
+
+export function usePlayerSeason(playerUid: string | undefined, season: number): UseQueryResult<PlayerSeason, Error> {
+  return useQuery({
+    queryKey: ["v3", "player-season", playerUid, season],
+    queryFn: () => getV3(`data/players/${playerUid}/${season}.json`, PlayerSeasonSchema),
+    enabled: Boolean(playerUid),
+    staleTime: 1000 * 60 * 30,
+    retry: false,
   });
 }
 

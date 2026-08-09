@@ -71,6 +71,9 @@ export const NowSchema = z.object({
       ownerName: z.string(),
       franchiseUid: z.string().nullable(),
       teamName: z.string(),
+      monogram: z.string().optional(),
+      accent: z.string().optional(),
+      motto: z.string().optional(),
       avatar: z.string().nullable().optional(),
       division: z.number().nullable().optional(),
       wins: z.number(),
@@ -251,6 +254,135 @@ export const SearchSchema = z.object({
   ),
 });
 
+export const PublicOwnerIdentitySchema = z.object({
+  ownerUid: z.string().nullable(),
+  ownerName: z.string(),
+  teamName: z.string(),
+  accent: z.string().optional(),
+});
+
+export const DraftPlayerSchema = z.object({
+  playerUid: z.string(),
+  sleeperId: z.string(),
+  name: z.string(),
+  position: z.string(),
+  nflTeam: z.string().nullable(),
+  active: z.boolean(),
+  nflStatus: z.string().nullable(),
+  injuryStatus: z.string().nullable(),
+  depthChart: z.object({ position: z.string().nullable(), order: z.number().nullable() }),
+  rank: z.number(),
+  positionRank: z.number(),
+  draftScore: z.number().nullable(),
+  performanceScore: z.number().nullable(),
+  marketScore: z.number().nullable(),
+  reliability: z.number(),
+  confidence: z.enum(["high", "medium", "low"]),
+  games: z.number(),
+  pointsPerGame: z.number().nullable(),
+  replacementWar: z.number().nullable(),
+  boomRate: z.number().nullable(),
+  volatility: z.number().nullable(),
+  scarcityTier: z.string(),
+  recommendedValue: z.number(),
+  inRosterDemand: z.boolean(),
+  availability: z.enum(["available", "rostered", "kept"]),
+  keeper: z.boolean(),
+  keeperCost: z.number().nullable(),
+  keeperSurplus: z.number().nullable(),
+  currentOwner: PublicOwnerIdentitySchema.nullable(),
+});
+
+export const WarRoomSchema = z.object({
+  meta: z.object({
+    schemaVersion: z.literal("3.0.0"),
+    generatedAt: z.string(),
+    modelVersion: z.string(),
+    verifiedPerformanceSeason: z.number(),
+    historicalModelCoverage: z.string(),
+  }),
+  league: z.object({
+    season: z.number(), teams: z.number(), budgetPerTeam: z.number(), rosterSpotsPerTeam: z.number(),
+    lineup: z.record(z.string(), z.number()),
+  }),
+  budget: z.object({
+    leagueTotal: z.number(), rosterSpots: z.number(), keeperSpend: z.number(), keeperCount: z.number(),
+    auctionPool: z.number(), openSpots: z.number(), minimumReserve: z.number(), discretionaryPool: z.number(),
+    recommendedAuctionTotal: z.number(),
+  }),
+  draft: z.object({
+    draftId: z.string(), status: z.string(), startTime: z.string().nullable(), draftEndpoint: z.string(),
+    picksEndpoint: z.string(), pollingSeconds: z.number(), backoffSeconds: z.array(z.number()), staticPicks: z.array(z.unknown()),
+  }),
+  teams: z.array(z.object({
+    ownerUid: z.string().nullable(), ownerKey: z.string().optional(), ownerName: z.string(), teamName: z.string(),
+    monogram: z.string(), accent: z.string(), motto: z.string(), rosterId: z.number(), keeperSpend: z.number(),
+    remainingBudget: z.number(), openSlots: z.number(), maximumBid: z.number(), positionCounts: z.record(z.string(), z.number()),
+    keepers: z.array(z.object({
+      playerUid: z.string().nullable(), sleeperId: z.string(), name: z.string(), position: z.string(), cost: z.number(),
+      modelValue: z.number(), surplus: z.number().nullable(),
+    })),
+  })),
+  players: z.array(DraftPlayerSchema),
+  methodology: z.record(z.string(), z.string()),
+});
+
+export const PlayerCareerSchema = z.object({
+  meta: z.object({ schemaVersion: z.literal("3.0.0"), generatedAt: z.string() }),
+  player: z.object({
+    playerUid: z.string(), sleeperId: z.string(), name: z.string(), position: z.string(), nflTeam: z.string().nullable(),
+    active: z.boolean(), nflStatus: z.string().nullable(), injuryStatus: z.string().nullable(),
+    depthChart: z.object({ position: z.string().nullable(), order: z.number().nullable() }),
+    college: z.string().nullable().optional(), yearsExperience: z.number().nullable(),
+    providerIds: z.array(z.object({ type: z.string(), value: z.string() })),
+  }),
+  current: z.object({
+    availability: z.string(), owner: PublicOwnerIdentitySchema.nullable(), keeper: z.boolean(), keeperCost: z.number().nullable(),
+    modelValue: z.number(), keeperSurplus: z.number().nullable(), draftScore: z.number().nullable(), confidence: z.string(),
+    scarcityTier: z.string(), positionRank: z.number(),
+  }),
+  comparables: z.array(z.object({
+    playerUid: z.string(), name: z.string(), position: z.string(), nflTeam: z.string().nullable(), modelValue: z.number(),
+    draftScore: z.number().nullable(), confidence: z.string(),
+  })),
+  career: z.array(z.object({
+    season: z.number(), games: z.number(), providerPoints: z.number().nullable(), pointsPerGame: z.number().nullable(),
+    replacementWar: z.number().nullable(), scoringEra: z.enum(["verified_tatnall", "provider_recorded"]), modelVerified: z.boolean(),
+  })),
+  timeline: z.array(z.object({
+    eventUid: z.string(), season: z.number(), week: z.number(), type: z.string(), amount: z.number().nullable(),
+    team: PublicOwnerIdentitySchema.nullable(),
+  })),
+});
+
+export const PlayerSeasonSchema = z.object({
+  meta: z.object({
+    schemaVersion: z.literal("3.0.0"), generatedAt: z.string(), season: z.number(),
+    scoringEra: z.enum(["verified_tatnall", "provider_recorded"]), modelVerified: z.boolean(),
+  }),
+  playerUid: z.string(),
+  season: z.number(),
+  weeks: z.array(z.object({
+    week: z.number(), points: z.number().nullable(), positionalBaseline: z.number().nullable(),
+    replacementWar: z.number().nullable(), tatnallStarts: z.number(),
+  })),
+  acquisitions: z.array(z.object({
+    week: z.number(), type: z.string(), amount: z.number().nullable(), team: z.unknown().nullable(),
+  })),
+});
+
+export const EditorialSchema = z.object({
+  meta: z.object({ schemaVersion: z.literal("3.0.0"), generatedAt: z.string(), modelVersion: z.string(), verifiedThrough: z.number() }),
+  lead: z.object({ kicker: z.string(), headline: z.string(), dek: z.string(), commissionerNote: z.string().nullable() }),
+  powerRankings: z.array(z.object({
+    powerRank: z.number(), powerScore: z.number(), ownerUid: z.string(), ownerName: z.string(), teamName: z.string(),
+    accent: z.string(), wins: z.number(), pointsFor: z.number(), expectedWins: z.number(), luck: z.number(),
+    allPlayWins: z.number(), allPlayGames: z.number(), managerEfficiency: z.number().nullable(),
+  })),
+  methodology: z.record(z.string(), z.string()),
+  history: z.object({ headline: z.string(), items: z.array(z.string()) }),
+});
+
 export type ManifestV3 = z.infer<typeof ManifestV3Schema>;
 export type NowData = z.infer<typeof NowSchema>;
 export type HistoryData = z.infer<typeof HistorySchema>;
@@ -259,3 +391,8 @@ export type OwnerSummary = z.infer<typeof OwnerSummarySchema>;
 export type OwnersData = z.infer<typeof OwnersSchema>;
 export type PlayerDirectory = z.infer<typeof PlayerDirectorySchema>;
 export type SearchData = z.infer<typeof SearchSchema>;
+export type WarRoomData = z.infer<typeof WarRoomSchema>;
+export type DraftPlayer = z.infer<typeof DraftPlayerSchema>;
+export type PlayerCareer = z.infer<typeof PlayerCareerSchema>;
+export type PlayerSeason = z.infer<typeof PlayerSeasonSchema>;
+export type EditorialData = z.infer<typeof EditorialSchema>;

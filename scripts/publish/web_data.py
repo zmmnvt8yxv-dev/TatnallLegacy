@@ -74,6 +74,7 @@ def _write(path: Path, payload: Any, *, pretty: bool = False) -> int:
 
 def _owner_aliases() -> tuple[dict[str, dict[str, Any]], dict[str, str]]:
     config = _load_yaml(CONFIG / "owners.yml")
+    branding = (_load_yaml(CONFIG / "branding.yml").get("franchises") or {})
     owners = pd.read_parquet(NORMALIZED / "owners.parquet")
     by_key = {row.owner_key: row._asdict() for row in owners.itertuples(index=False)}
     full: dict[str, dict[str, Any]] = {}
@@ -82,7 +83,16 @@ def _owner_aliases() -> tuple[dict[str, dict[str, Any]], dict[str, str]]:
         canonical = by_key[configured["owner_key"]]
         aliases = configured.get("aliases") or {}
         uid = canonical["owner_uid"]
-        full[uid] = {**canonical, "aliases": aliases}
+        identity = branding.get(configured["owner_key"]) or {}
+        fallback = f"Team {str(canonical['canonical_name']).split()[-1]}"
+        full[uid] = {
+            **canonical,
+            "aliases": aliases,
+            "public_alias": identity.get("public_alias") or fallback,
+            "monogram": identity.get("monogram") or "TL",
+            "accent": identity.get("accent") or "#d7a928",
+            "motto": identity.get("motto") or "",
+        }
         for user_id in aliases.get("sleeper_user_ids") or []:
             sleeper_to_uid[str(user_id)] = uid
     return full, sleeper_to_uid
@@ -105,7 +115,7 @@ def _team_ref(row: pd.Series | dict[str, Any], owners: dict[str, dict[str, Any]]
     owner_uid = get("owner_uid")
     return {
         "teamSeasonUid": get("team_season_uid"),
-        "teamName": get("team_name"),
+        "teamName": owners.get(owner_uid, {}).get("public_alias") or get("team_name"),
         "ownerUid": owner_uid,
         "ownerName": owners.get(owner_uid, {}).get("canonical_name", "Unknown owner"),
         "franchiseUid": get("franchise_uid"),
@@ -561,7 +571,10 @@ def publish() -> dict[str, Any]:
                 "ownerUid": owner_uid,
                 "ownerName": owners.get(owner_uid, {}).get("canonical_name", user.get("display_name", "Unknown owner")),
                 "franchiseUid": roster_to_franchise.get(int(roster["roster_id"])),
-                "teamName": metadata.get("team_name") or user.get("display_name") or f"Roster {roster['roster_id']}",
+                "teamName": owners.get(owner_uid, {}).get("public_alias") or f"Roster {roster['roster_id']}",
+                "monogram": owners.get(owner_uid, {}).get("monogram") or "TL",
+                "accent": owners.get(owner_uid, {}).get("accent") or "#d7a928",
+                "motto": owners.get(owner_uid, {}).get("motto") or "",
                 "avatar": metadata.get("avatar") or user.get("avatar"),
                 "division": settings.get("division"),
                 "wins": settings.get("wins", 0),
@@ -827,7 +840,7 @@ def publish() -> dict[str, Any]:
                     "season": team["season"],
                     "teamSeasonUid": team["team_season_uid"],
                     "franchiseUid": team["franchise_uid"],
-                    "teamName": team["team_name"],
+                    "teamName": owners.get(owner_uid, {}).get("public_alias") or team["team_name"],
                     "seed": team["playoff_seed"] if team["playoff_seed"] is not None else team["seed"],
                     "record": {"wins": team["wins"], "losses": team["losses"], "ties": team["ties"]},
                     "pointsFor": team["points_for"],
@@ -960,7 +973,7 @@ def publish() -> dict[str, Any]:
             "id": row["playerUid"],
             "label": row["name"],
             "secondary": " · ".join(part for part in (row["position"], row["nflTeam"]) if part),
-            "url": f"/players/{row['sleeperId']}",
+            "url": f"/players/{row['playerUid']}",
         }
         for row in player_directory
     )
@@ -1020,6 +1033,11 @@ def publish() -> dict[str, Any]:
             "owners": "data/owners/index.json",
             "owner": "data/owners/{ownerUid}.json",
             "players": "data/players/index.json",
+            "playerCareer": "data/players/{playerUid}/career.json",
+            "playerSeason": "data/players/{playerUid}/{season}.json",
+            "playerResolve": "data/players/resolve/{providerId}.json",
+            "warRoom": "data/war-room/index.json",
+            "editorial": "data/now/editorial.json",
             "records": "data/records/index.json",
             "search": "data/search/index.json",
             "integrity": "data/integrity/index.json",

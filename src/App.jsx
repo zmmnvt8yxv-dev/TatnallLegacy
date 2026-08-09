@@ -12,11 +12,12 @@ const SeasonYearbookPage = lazy(() => import("./pages/v3/SeasonYearbookPage"));
 const OwnersPage = lazy(() => import("./pages/v3/OwnersPage"));
 const OwnerCareerPage = lazy(() => import("./pages/v3/OwnerCareerPage"));
 const PlayersDirectoryPage = lazy(() => import("./pages/v3/PlayersDirectoryPage"));
+const PlayerIntelligencePage = lazy(() => import("./pages/v3/PlayerIntelligencePage"));
+const WarRoomPage = lazy(() => import("./pages/v3/WarRoomPage"));
 const RecordsPage = lazy(() => import("./pages/v3/RecordsPage"));
 const DataHealthPage = lazy(() => import("./pages/v3/DataHealthPage"));
 const MatchupsPage = lazy(() => import("./pages/MatchupsPage.jsx"));
 const MatchupDetailPage = lazy(() => import("./pages/MatchupDetailPage.jsx"));
-const PlayerPage = lazy(() => import("./pages/PlayerPage.jsx"));
 const TransactionsPage = lazy(() => import("./pages/TransactionsPage.jsx"));
 const StandingsPage = lazy(() => import("./pages/StandingsPage.jsx"));
 const TeamsPage = lazy(() => import("./pages/TeamsPage.jsx"));
@@ -51,8 +52,9 @@ export default function App() {
               <Route path="/history" element={<HistoryPage />} />
               <Route path="/matchups" element={<MatchupsPage />} />
               <Route path="/matchups/:season/:week/:matchupId" element={<MatchupDetailPage />} />
-              <Route path="/players/:playerId" element={<PlayerPage />} />
+              <Route path="/players/:playerId" element={<PlayerIntelligencePage />} />
               <Route path="/players" element={<PlayersDirectoryPage />} />
+              <Route path="/war-room" element={<WarRoomPage />} />
               <Route path="/transactions" element={<TransactionsPage />} />
               <Route path="/standings" element={<StandingsPage />} />
               <Route path="/teams" element={<TeamsPage />} />

@@ -1,0 +1,36 @@
+schema_version: "1.0.0"
+season: 2026
+verified_performance_season: 2025
+
+league:
+  teams: 8
+  budget_per_team: 200
+  roster_spots_per_team: 19
+  starters:
+    QB: 2
+    RB: 3
+    WR: 3
+    TE: 1
+    FLEX: 2
+    K: 1
+    DEF: 1
+  bench: 6
+
+score:
+  performance_weights:
+    points_per_game: 0.55
+    replacement_war: 0.30
+    consistency: 0.15
+  reliable_performance_weight: 0.85
+  reliable_market_weight: 0.15
+  reliability_games: 8
+
+keeper_pricing:
+  default_increase: 5
+  overrides:
+    "12519":
+      amount: 7
+      reason: Commissioner ruling for Luther Burden
+
+editorial:
+  commissioner_note: ""

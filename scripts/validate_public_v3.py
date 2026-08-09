@@ -18,7 +18,7 @@ def main() -> None:
     assert manifest["league"]["seasonPhase"] == "preseason"
     assert manifest["seasons"] == list(range(2015, 2026))
 
-    required = ["current", "history", "owners", "players", "records", "search", "integrity"]
+    required = ["current", "history", "owners", "players", "warRoom", "editorial", "records", "search", "integrity"]
     for name in required:
         path = manifest["paths"][name]
         assert "{" not in path
@@ -63,6 +63,27 @@ def main() -> None:
     assert now["transactionStatus"]["recorded"] == 0
     assert now["recentTransactions"] == []
     assert now["currentWeekLineups"] == []
+    assert [team["teamName"] for team in now["teams"]] == [
+        "Three Rings",
+        "Team Duncan",
+        "Insane in the Achane",
+        "King of January",
+        "FantasyGPT",
+        "Feels Different This Year",
+        "Dak Shots",
+        "Nine-1-1",
+    ]
+
+    war_room = json.loads((PUBLIC / "war-room/index.json").read_text())
+    assert war_room["budget"]["recommendedAuctionTotal"] == 1299
+    assert sum(team["keeperSpend"] for team in war_room["teams"]) == 301
+    assert len([keeper for team in war_room["teams"] for keeper in team["keepers"]]) == 16
+    assert all(
+        player["availability"] == "kept"
+        for player in war_room["players"]
+        if player["keeper"]
+    )
+    assert (PUBLIC / "players/resolve/4881.json").exists()
 
     season_2025 = json.loads((PUBLIC / "seasons/2025/index.json").read_text())
     assert season_2025["meta"]["completeness"] == {

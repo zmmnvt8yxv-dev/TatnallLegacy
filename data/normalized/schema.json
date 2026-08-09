@@ -229,6 +229,133 @@
         "is_keeper",
         "source"
       ]
+    },
+    "player_seasons": {
+      "path": "data/normalized/player_seasons.parquet",
+      "rows": 6298,
+      "fields": [
+        "player_uid",
+        "season",
+        "display_name",
+        "position",
+        "nfl_team",
+        "games",
+        "provider_points",
+        "points_per_game",
+        "replacement_war",
+        "replacement_war_per_game",
+        "scoring_era",
+        "model_verified",
+        "source"
+      ]
+    },
+    "player_weeks": {
+      "path": "data/normalized/player_weeks.parquet",
+      "rows": 45893,
+      "fields": [
+        "player_uid",
+        "season",
+        "week",
+        "display_name",
+        "position",
+        "nfl_team",
+        "provider_points",
+        "positional_baseline",
+        "replacement_war",
+        "tatnall_starts",
+        "team_season_uid",
+        "scoring_era",
+        "model_verified",
+        "source"
+      ]
+    },
+    "ownership_events": {
+      "path": "data/normalized/ownership_events.parquet",
+      "rows": 3131,
+      "fields": [
+        "event_uid",
+        "player_uid",
+        "season",
+        "week",
+        "event_type",
+        "team_season_uid",
+        "owner_uid",
+        "amount",
+        "created_at_ms",
+        "source_uid"
+      ]
+    },
+    "acquisitions": {
+      "path": "data/normalized/acquisitions.parquet",
+      "rows": 833,
+      "fields": [
+        "event_uid",
+        "player_uid",
+        "season",
+        "week",
+        "event_type",
+        "team_season_uid",
+        "owner_uid",
+        "amount",
+        "created_at_ms",
+        "source_uid",
+        "acquisition_type"
+      ]
+    },
+    "keeper_costs": {
+      "path": "data/normalized/keeper_costs.parquet",
+      "rows": 16,
+      "fields": [
+        "season",
+        "player_uid",
+        "sleeper_player_id",
+        "roster_id",
+        "owner_uid",
+        "keeper_cost",
+        "prior_auction_cost",
+        "pricing_basis",
+        "reason"
+      ]
+    },
+    "player_values": {
+      "path": "data/normalized/player_values.parquet",
+      "rows": 3223,
+      "fields": [
+        "player_uid",
+        "sleeper_player_id",
+        "display_name",
+        "position",
+        "nfl_team",
+        "active",
+        "status",
+        "injury_status",
+        "depth_chart_position",
+        "depth_chart_order",
+        "search_rank",
+        "years_experience",
+        "market_score",
+        "games",
+        "points_per_game",
+        "replacement_war",
+        "boom_rate",
+        "volatility",
+        "consistency_percentile",
+        "performance_score",
+        "draft_score",
+        "reliability",
+        "confidence",
+        "rank_overall",
+        "rank_position",
+        "scarcity_tier",
+        "keeper",
+        "keeper_cost",
+        "keeper_owner_uid",
+        "in_roster_demand",
+        "recommended_value",
+        "keeper_surplus",
+        "model_version",
+        "verified_season"
+      ]
     }
   }
 }

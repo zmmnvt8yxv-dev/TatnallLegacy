@@ -3,11 +3,12 @@ import { ArrowUpRight, CalendarClock, CheckCircle2, Crown, Database, Gavel, Lock
 import { Link } from "react-router-dom";
 import PageTransition from "../../components/PageTransition.jsx";
 import { ArchiveError, ArchiveLoading, Eyebrow, OwnerLink, formatFreshness } from "../../components/v3/ArchiveUI";
-import { useHistory, useNow } from "../../data/v3/hooks";
+import { useEditorial, useHistory, useNow } from "../../data/v3/hooks";
 
 export default function NowPage(): React.ReactElement {
   const now = useNow();
   const history = useHistory();
+  const editorial = useEditorial();
   const titleLeaders = useMemo(() => {
     const counts = new Map<string, { uid: string | null; name: string; titles: number }>();
     for (const season of history.data?.seasons || []) {
@@ -19,8 +20,8 @@ export default function NowPage(): React.ReactElement {
     return [...counts.values()].sort((a, b) => b.titles - a.titles || a.name.localeCompare(b.name)).slice(0, 3);
   }, [history.data]);
 
-  if (now.isLoading || history.isLoading) return <ArchiveLoading label="Opening the 2026 command center" />;
-  if (now.error || history.error || !now.data || !history.data) return <ArchiveError error={now.error || history.error} />;
+  if (now.isLoading || history.isLoading || editorial.isLoading) return <ArchiveLoading label="Opening the 2026 command center" />;
+  if (now.error || history.error || editorial.error || !now.data || !history.data || !editorial.data) return <ArchiveError error={now.error || history.error || editorial.error} />;
 
   const data = now.data;
   const phaseLabel = data.league.phase === "preseason" ? "Preseason" : `Week ${data.league.week}`;
@@ -36,14 +37,11 @@ export default function NowPage(): React.ReactElement {
         <div className="now-hero__grid" aria-hidden="true" />
         <div className="now-hero__main">
           <div className="live-line"><span /> {data.league.season} · {phaseLabel}</div>
-          <h1>The league never forgets.</h1>
-          <p>
-            Eleven seasons of accepted Tatnall history, now connected to the live {data.league.season} Sleeper league.
-            The archive is ready before the first kickoff.
-          </p>
+          <h1>{editorial.data.lead.headline}</h1>
+          <p>{editorial.data.lead.commissionerNote || editorial.data.lead.dek}</p>
           <div className="now-hero__actions">
             <Link to="/history" className="archive-button archive-button--primary">Explore the archive <ArrowUpRight /></Link>
-            <Link to="/players" className="archive-button">Scout players</Link>
+            <Link to="/war-room" className="archive-button">Enter War Room</Link>
           </div>
           <div className="freshness"><Database /> Sleeper snapshot · {formatFreshness(data.meta.sourceUpdatedAt.sleeper)}</div>
         </div>
@@ -61,6 +59,12 @@ export default function NowPage(): React.ReactElement {
         <div><span>Current teams</span><strong>{data.teams.length}</strong><small>2026 rosters linked</small></div>
         <div><span>Accepted champions</span><strong>{history.data.seasons.length}</strong><small>one per completed year</small></div>
         <div><span>Keepers locked</span><strong>{data.keeperStatus.submitted}</strong><small>{data.keeperStatus.teamsComplete}/{data.teams.length} teams complete</small></div>
+      </section>
+
+      <section className="broadcast-rankings">
+        <header><div><Eyebrow>2025 final signal</Eyebrow><h2>Power, luck, and lineup command.</h2></div><p>Versioned and transparent: 45% points, 25% all-play, 20% manager efficiency, and 10% closing form.</p></header>
+        <div className="broadcast-ranking-grid">{editorial.data.powerRankings.map((team) => <Link key={team.ownerUid} to={`/owners/${team.ownerUid}`} style={{ "--team-accent": team.accent } as React.CSSProperties}><span className="power-rank">{team.powerRank}</span><div><strong>{team.teamName}</strong><small>{team.ownerName}</small></div><span><small>Power</small><b>{team.powerScore}</b></span><span><small>xW</small><b>{team.expectedWins.toFixed(1)}</b></span><span className={team.luck >= 0 ? "positive" : "negative"}><small>Luck</small><b>{team.luck >= 0 ? "+" : ""}{team.luck.toFixed(1)}</b></span><span><small>Eff.</small><b>{team.managerEfficiency == null ? "—" : `${Math.round(team.managerEfficiency * 100)}%`}</b></span></Link>)}</div>
+        <footer><Sparkles /><div><strong>{editorial.data.history.headline}</strong><span>{editorial.data.history.items[0]}</span></div><Link to="/data-health">Methodology <ArrowUpRight /></Link></footer>
       </section>
 
       <section className="draft-command">
@@ -90,7 +94,7 @@ export default function NowPage(): React.ReactElement {
 
       <section className="current-team-grid">
         {data.teams.map((team) => (
-          <article className="current-team-card" key={team.rosterId}>
+          <article className="current-team-card" key={team.rosterId} style={{ "--team-accent": team.accent || "#d7a928" } as React.CSSProperties}>
             <div className="current-team-card__top">
               <span className="roster-number">0{team.rosterId}</span>
               <span className="division-label">Division {team.division}</span>
@@ -99,7 +103,7 @@ export default function NowPage(): React.ReactElement {
             <OwnerLink uid={team.ownerUid}>{team.ownerName}</OwnerLink>
             <div className="keeper-pair">
               {team.keepers.map((player) => (
-                <Link key={player.sleeperId} to={`/players/${player.sleeperId}?name=${encodeURIComponent(player.name)}`}>
+                <Link key={player.sleeperId} to={`/players/${player.playerUid || player.sleeperId}`}>
                   <Crown /><span><small>{player.position || "—"} · {player.nflTeam || "FA"}</small><strong>{player.name}</strong></span>
                 </Link>
               ))}
@@ -112,7 +116,7 @@ export default function NowPage(): React.ReactElement {
               <summary>Roster snapshot</summary>
               <div className="mini-roster">
                 {team.players.filter((player) => !player.keeper).slice(0, 13).map((player) => (
-                  <Link key={player.sleeperId} to={`/players/${player.sleeperId}?name=${encodeURIComponent(player.name)}`}>
+                  <Link key={player.sleeperId} to={`/players/${player.playerUid || player.sleeperId}`}>
                     <span>{player.position || "—"}</span>{player.name}<small>{player.nflTeam || "FA"}</small>
                   </Link>
                 ))}
@@ -126,7 +130,7 @@ export default function NowPage(): React.ReactElement {
         <section className="archive-section future-feed">
           <div className="archive-section-heading"><div><Eyebrow>Live auction board</Eyebrow><h2>{data.draft.pickCount} picks are in.</h2></div><p>The board refreshes from Sleeper automatically as the auction advances.</p></div>
           <div className="standings-table-wrap draft-table-wrap">
-            <table className="archive-table"><thead><tr><th>Pick</th><th>Player</th><th>Position</th><th>Winning team</th><th>Price</th></tr></thead><tbody>{data.draft.picks.map((pick) => <tr key={pick.pickNo}><td>{pick.pickNo}</td><td><Link to={`/players/${pick.sleeperId}?name=${encodeURIComponent(pick.name)}`}>{pick.name}</Link></td><td>{pick.position || "—"} · {pick.nflTeam || "FA"}</td><td><strong>{pick.team?.teamName || "—"}</strong><small>{pick.team?.ownerName || ""}</small></td><td><b className="auction-price">${pick.amount ?? 0}</b></td></tr>)}</tbody></table>
+            <table className="archive-table"><thead><tr><th>Pick</th><th>Player</th><th>Position</th><th>Winning team</th><th>Price</th></tr></thead><tbody>{data.draft.picks.map((pick) => <tr key={pick.pickNo}><td>{pick.pickNo}</td><td><Link to={`/players/${pick.playerUid || pick.sleeperId}`}>{pick.name}</Link></td><td>{pick.position || "—"} · {pick.nflTeam || "FA"}</td><td><strong>{pick.team?.teamName || "—"}</strong><small>{pick.team?.ownerName || ""}</small></td><td><b className="auction-price">${pick.amount ?? 0}</b></td></tr>)}</tbody></table>
           </div>
         </section>
       ) : null}
@@ -134,14 +138,14 @@ export default function NowPage(): React.ReactElement {
       {data.currentWeekLineups.length ? (
         <section className="archive-section future-feed">
           <div className="archive-section-heading"><div><Eyebrow>Week {data.league.week}</Eyebrow><h2>Submitted lineups.</h2></div><p>Starter points and matchup totals switch on only when Sleeper publishes the week.</p></div>
-          <div className="live-lineup-grid">{data.currentWeekLineups.map((lineup) => <article key={lineup.rosterId}><header><strong>{lineup.team?.teamName || `Roster ${lineup.rosterId}`}</strong><b>{lineup.points == null ? "—" : lineup.points.toFixed(1)}</b></header><div>{lineup.starters.map((player) => <Link key={player.sleeperId} to={`/players/${player.sleeperId}?name=${encodeURIComponent(player.name)}`}><span>{player.position || "—"}</span><strong>{player.name}</strong><b>{player.points == null ? "—" : player.points.toFixed(1)}</b></Link>)}</div></article>)}</div>
+          <div className="live-lineup-grid">{data.currentWeekLineups.map((lineup) => <article key={lineup.rosterId}><header><strong>{lineup.team?.teamName || `Roster ${lineup.rosterId}`}</strong><b>{lineup.points == null ? "—" : lineup.points.toFixed(1)}</b></header><div>{lineup.starters.map((player) => <Link key={player.sleeperId} to={`/players/${player.playerUid || player.sleeperId}`}><span>{player.position || "—"}</span><strong>{player.name}</strong><b>{player.points == null ? "—" : player.points.toFixed(1)}</b></Link>)}</div></article>)}</div>
         </section>
       ) : null}
 
       {data.recentTransactions.length ? (
         <section className="archive-section future-feed">
           <div className="archive-section-heading"><div><Eyebrow>Live league activity</Eyebrow><h2>Recent transactions.</h2></div><p>The latest 20 completed 2026 moves; failed claims are never shown as completed.</p></div>
-          <div className="transaction-ledger live-transaction-ledger">{data.recentTransactions.map((transaction) => <article key={transaction.transactionId}><div className="transaction-ledger__meta"><span>Week {transaction.week}</span><strong>{transaction.type.replaceAll("_", " ")}</strong><time>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(transaction.createdAt))}</time>{transaction.waiverBid != null ? <b>${transaction.waiverBid} FAAB</b> : null}</div><div className="transaction-assets">{transaction.assets.map((asset) => <div key={`${transaction.transactionId}-${asset.sleeperId}`}><Link to={`/players/${asset.sleeperId}?name=${encodeURIComponent(asset.name)}`}><span>{asset.position || "—"}</span><strong>{asset.name}</strong></Link><small>{asset.from ? `${asset.from.teamName} → ` : "Added by "}{asset.to?.teamName || "Free agency"}</small></div>)}</div></article>)}</div>
+          <div className="transaction-ledger live-transaction-ledger">{data.recentTransactions.map((transaction) => <article key={transaction.transactionId}><div className="transaction-ledger__meta"><span>Week {transaction.week}</span><strong>{transaction.type.replaceAll("_", " ")}</strong><time>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(transaction.createdAt))}</time>{transaction.waiverBid != null ? <b>${transaction.waiverBid} FAAB</b> : null}</div><div className="transaction-assets">{transaction.assets.map((asset) => <div key={`${transaction.transactionId}-${asset.sleeperId}`}><Link to={`/players/${asset.playerUid || asset.sleeperId}`}><span>{asset.position || "—"}</span><strong>{asset.name}</strong></Link><small>{asset.from ? `${asset.from.teamName} → ` : "Added by "}{asset.to?.teamName || "Free agency"}</small></div>)}</div></article>)}</div>
         </section>
       ) : null}
 

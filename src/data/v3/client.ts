@@ -1,4 +1,5 @@
 import { safeUrl } from "../../lib/url";
+import { sanitizePublicData } from "../../lib/publicIdentity";
 import type { z } from "zod";
 
 export async function getV3<T>(path: string, schema?: z.ZodType<T>): Promise<T> {
@@ -10,7 +11,7 @@ export async function getV3<T>(path: string, schema?: z.ZodType<T>): Promise<T> 
   if (!contentType.includes("application/json")) {
     throw new Error(`Expected JSON from ${path}`);
   }
-  const payload: unknown = await response.json();
+  const payload: unknown = sanitizePublicData(await response.json());
   return schema ? schema.parse(payload) : (payload as T);
 }
 
