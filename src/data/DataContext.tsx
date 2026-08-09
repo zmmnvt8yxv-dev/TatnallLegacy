@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useMemo, type ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 import { buildPlayerIndex } from "../lib/playerName";
 
 import { useManifest } from "../hooks/useManifest";
 import { useCore } from "../hooks/useCore";
 import type { DataContextValue, PlayerIdLookup, PlayerIndex } from "../types/index";
-import type { Player, Manifest, PlayerId, Team, PlayerSearchEntry, EspnNameMap } from "../schemas/index";
+import type { Player, PlayerId, Team, PlayerSearchEntry, EspnNameMap } from "../schemas/index";
 
 const DataContext = createContext<DataContextValue | null>(null);
 
@@ -13,8 +14,11 @@ interface DataProviderProps {
 }
 
 export function DataProvider({ children }: DataProviderProps): React.ReactElement {
-  const { data: manifest, isLoading: manifestLoading, error: manifestError } = useManifest();
-  const { data: coreData, isLoading: coreLoading, error: coreError } = useCore();
+  const location = useLocation();
+  const needsLegacyData = /^\/(matchups|transactions|standings|teams|head-to-head)(\/|$)/.test(location.pathname)
+    || /^\/players\/[^/]+/.test(location.pathname);
+  const { data: manifest, isLoading: manifestLoading, error: manifestError } = useManifest(needsLegacyData);
+  const { data: coreData, isLoading: coreLoading, error: coreError } = useCore(needsLegacyData);
 
   const core = useMemo(() => {
     return coreData || {
@@ -26,7 +30,7 @@ export function DataProvider({ children }: DataProviderProps): React.ReactElemen
     };
   }, [coreData]);
 
-  const loading = manifestLoading || coreLoading;
+  const loading = needsLegacyData && (manifestLoading || coreLoading);
   const error = manifestError?.message || coreError?.message || "";
 
 

@@ -1,21 +1,26 @@
-import React, { useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import Layout from "./components/Layout.jsx";
-import SummaryPage from "./pages/SummaryPage.jsx";
-import MatchupsPage from "./pages/MatchupsPage.jsx";
-import MatchupDetailPage from "./pages/MatchupDetailPage.jsx";
-import PlayerPage from "./pages/PlayerPage.jsx";
-import TransactionsPage from "./pages/TransactionsPage.jsx";
-import StandingsPage from "./pages/StandingsPage.jsx";
-import TeamsPage from "./pages/TeamsPage.jsx";
-import OwnerProfilePage from "./pages/OwnerProfilePage.jsx";
-import SeasonPage from "./pages/SeasonPage.jsx";
-import RecordsPage from "./pages/RecordsPage.jsx";
-import HeadToHeadPage from "./pages/HeadToHeadPage.jsx";
-import DataIntegrityPage from "./pages/DataIntegrityPage";
+import { ArchiveLoading } from "./components/v3/ArchiveUI";
 import { initAnalytics, trackPageView } from "./utils/analytics";
+
+const NowPage = lazy(() => import("./pages/v3/NowPage"));
+const HistoryPage = lazy(() => import("./pages/v3/HistoryPage"));
+const SeasonYearbookPage = lazy(() => import("./pages/v3/SeasonYearbookPage"));
+const OwnersPage = lazy(() => import("./pages/v3/OwnersPage"));
+const OwnerCareerPage = lazy(() => import("./pages/v3/OwnerCareerPage"));
+const PlayersDirectoryPage = lazy(() => import("./pages/v3/PlayersDirectoryPage"));
+const RecordsPage = lazy(() => import("./pages/v3/RecordsPage"));
+const DataHealthPage = lazy(() => import("./pages/v3/DataHealthPage"));
+const MatchupsPage = lazy(() => import("./pages/MatchupsPage.jsx"));
+const MatchupDetailPage = lazy(() => import("./pages/MatchupDetailPage.jsx"));
+const PlayerPage = lazy(() => import("./pages/PlayerPage.jsx"));
+const TransactionsPage = lazy(() => import("./pages/TransactionsPage.jsx"));
+const StandingsPage = lazy(() => import("./pages/StandingsPage.jsx"));
+const TeamsPage = lazy(() => import("./pages/TeamsPage.jsx"));
+const HeadToHeadPage = lazy(() => import("./pages/HeadToHeadPage.jsx"));
 
 function AnalyticsListener() {
   const location = useLocation();
@@ -40,24 +45,29 @@ export default function App() {
       <AnalyticsListener />
       <Layout>
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<SummaryPage />} />
-            <Route path="/matchups" element={<MatchupsPage />} />
-            <Route path="/matchups/:season/:week/:matchupId" element={<MatchupDetailPage />} />
-            <Route path="/players/:playerId" element={<PlayerPage />} />
-            <Route path="/transactions" element={<TransactionsPage />} />
-            <Route path="/standings" element={<StandingsPage />} />
-            <Route path="/teams" element={<TeamsPage />} />
-            <Route path="/owners/:ownerId" element={<OwnerProfilePage />} />
-            <Route path="/seasons" element={<SeasonPage />} />
-            <Route path="/records" element={<RecordsPage />} />
-            <Route path="/head-to-head" element={<HeadToHeadPage />} />
-            <Route path="/data-health" element={<DataIntegrityPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <Suspense fallback={<ArchiveLoading label="Opening this part of the archive" />}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<NowPage />} />
+              <Route path="/history" element={<HistoryPage />} />
+              <Route path="/matchups" element={<MatchupsPage />} />
+              <Route path="/matchups/:season/:week/:matchupId" element={<MatchupDetailPage />} />
+              <Route path="/players/:playerId" element={<PlayerPage />} />
+              <Route path="/players" element={<PlayersDirectoryPage />} />
+              <Route path="/transactions" element={<TransactionsPage />} />
+              <Route path="/standings" element={<StandingsPage />} />
+              <Route path="/teams" element={<TeamsPage />} />
+              <Route path="/owners" element={<OwnersPage />} />
+              <Route path="/owners/:ownerId" element={<OwnerCareerPage />} />
+              <Route path="/seasons" element={<Navigate to="/history" replace />} />
+              <Route path="/seasons/:season" element={<SeasonYearbookPage />} />
+              <Route path="/records" element={<RecordsPage />} />
+              <Route path="/head-to-head" element={<HeadToHeadPage />} />
+              <Route path="/data-health" element={<DataHealthPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
         </AnimatePresence>
       </Layout>
     </ErrorBoundary>
   );
 }
-
