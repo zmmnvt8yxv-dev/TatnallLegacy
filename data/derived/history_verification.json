@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-09T15:51:00.335272+00:00",
+  "generated_at": "2026-08-09T17:15:02.661182+00:00",
   "status": "warning",
   "critical": [],
   "warnings": [
@@ -13,8 +13,7 @@
     "2021: non-complete datasets: transactions",
     "2022: non-complete datasets: lineups, matchups, transactions",
     "2023: non-complete datasets: transactions",
-    "2024: non-complete datasets: transactions",
-    "2025: non-complete datasets: draft, lineups, matchups, transactions"
+    "2024: non-complete datasets: transactions"
   ],
   "summary": {
     "seasons": 11,
@@ -22,7 +21,13 @@
     "franchises": 8,
     "team_seasons": 88,
     "matchups": 710,
-    "playoff_games": 118
+    "playoff_games": 118,
+    "lineups": 136,
+    "lineup_entries": 2794,
+    "transactions": 727,
+    "transaction_assets": 1220,
+    "drafts": 2,
+    "draft_picks": 152
   },
   "seasons": [
     {
@@ -238,10 +243,10 @@
       "corrected": false,
       "correction_ids": [],
       "completeness": {
-        "matchups": "partial",
-        "lineups": "partial",
-        "transactions": "partial",
-        "draft": "partial"
+        "matchups": "complete",
+        "lineups": "complete",
+        "transactions": "complete",
+        "draft": "complete"
       }
     }
   ]

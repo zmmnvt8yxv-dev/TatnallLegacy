@@ -46,6 +46,18 @@ def main() -> int:
         errors.extend(f"history: {value}" for value in history["critical"])
     if (history.get("summary") or {}).get("seasons") != 11:
         errors.append("history: expected 11 completed seasons")
+    expected_final_2025_counts = {
+        "lineups": 136,
+        "lineup_entries": 2794,
+        "transactions": 727,
+        "transaction_assets": 1220,
+        "drafts": 2,
+        "draft_picks": 152,
+    }
+    for name, expected in expected_final_2025_counts.items():
+        actual = (history.get("summary") or {}).get(name)
+        if actual != expected:
+            errors.append(f"history: expected {expected} {name}, found {actual}")
 
     players = json.loads(
         (DERIVED / "player_identity_report.json").read_text(encoding="utf-8")

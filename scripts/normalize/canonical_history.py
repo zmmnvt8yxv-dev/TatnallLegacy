@@ -32,6 +32,7 @@ LEAGUE_CONFIG = ROOT / "data" / "config" / "league.yml"
 OWNERS_CONFIG = ROOT / "data" / "config" / "owners.yml"
 FRANCHISES_CONFIG = ROOT / "data" / "config" / "franchises.yml"
 HISTORY_SOURCE = ROOT / "data" / "manual_league_history.json"
+SLEEPER_FINAL_ROOT = ROOT / "data" / "raw" / "sleeper"
 CORRECTION_FILES = (
     ROOT / "data" / "corrections" / "season_results.yml",
     ROOT / "data" / "corrections" / "matchup_results.yml",
@@ -50,6 +51,12 @@ class CanonicalHistory:
     team_seasons: list[dict[str, Any]]
     matchups: list[dict[str, Any]]
     playoff_games: list[dict[str, Any]]
+    lineups: list[dict[str, Any]]
+    lineup_entries: list[dict[str, Any]]
+    transactions: list[dict[str, Any]]
+    transaction_assets: list[dict[str, Any]]
+    drafts: list[dict[str, Any]]
+    draft_picks: list[dict[str, Any]]
     corrections: tuple[AppliedCorrection, ...]
     verification: dict[str, Any]
 
@@ -112,6 +119,122 @@ def sleeper_points(settings: Mapping[str, Any], prefix: str) -> float | None:
         return None
     decimal = finite_number(settings.get(f"{prefix}_decimal")) or 0.0
     return whole + decimal / 100.0
+
+
+def sleeper_final_payload(
+    root: Path, season: int, history: Mapping[str, Any]
+) -> dict[str, Any] | None:
+    """Convert a checked-in final Sleeper snapshot into the history contract."""
+    snapshot = root / "data" / "raw" / "sleeper" / str(season) / "final"
+    required = ("league", "users", "rosters", "matchups", "winners_bracket")
+    if not snapshot.exists() or any(not (snapshot / f"{name}.json").exists() for name in required):
+        return None
+
+    league = read_json(snapshot / "league.json")
+    users = read_json(snapshot / "users.json")
+    rosters = read_json(snapshot / "rosters.json")
+    raw_matchups = read_json(snapshot / "matchups.json")
+    winners_bracket = read_json(snapshot / "winners_bracket.json")
+    losers_bracket = read_json(snapshot / "losers_bracket.json")
+    users_by_id = {str(row.get("user_id")): row for row in users}
+
+    def points_for(roster: Mapping[str, Any]) -> float:
+        return sleeper_points(roster.get("settings") or {}, "fpts") or 0.0
+
+    ranked_rosters = sorted(
+        rosters,
+        key=lambda row: (
+            -int((row.get("settings") or {}).get("wins") or 0),
+            -points_for(row),
+            int(row.get("roster_id") or 0),
+        ),
+    )
+    rank_by_roster = {
+        int(row["roster_id"]): rank for rank, row in enumerate(ranked_rosters, start=1)
+    }
+    teams = []
+    for roster in rosters:
+        roster_id = int(roster["roster_id"])
+        user = users_by_id.get(str(roster.get("owner_id")), {})
+        user_metadata = user.get("metadata") or {}
+        teams.append(
+            {
+                **roster,
+                "owner_id": roster.get("owner_id"),
+                "display_name": user.get("display_name"),
+                "username": user.get("display_name"),
+                "team_name": user_metadata.get("team_name")
+                or user.get("display_name")
+                or f"Roster {roster_id}",
+                "regular_season_rank": rank_by_roster[roster_id],
+            }
+        )
+
+    playoff_start = int((league.get("settings") or {}).get("playoff_week_start") or 15)
+    bracket_types: dict[tuple[int, tuple[int, int]], str] = {}
+    finish_by_roster: dict[int, int] = {}
+    finish_labels = {1: "championship", 3: "third_place", 5: "fifth_place"}
+    for game in winners_bracket:
+        if not isinstance(game, dict) or game.get("t1") is None or game.get("t2") is None:
+            continue
+        week = playoff_start + int(game.get("r") or 1) - 1
+        pair = tuple(sorted((int(game["t1"]), int(game["t2"]))))
+        placement = game.get("p")
+        if placement is not None:
+            matchup_type = finish_labels.get(int(placement), "placement")
+            if game.get("w") is not None:
+                finish_by_roster[int(game["w"])] = int(placement)
+            if game.get("l") is not None:
+                finish_by_roster[int(game["l"])] = int(placement) + 1
+        else:
+            matchup_type = (
+                "playoff_quarterfinal" if int(game.get("r") or 1) == 1 else "playoff_semifinal"
+            )
+        bracket_types[(week, pair)] = matchup_type
+    for game in losers_bracket:
+        if not isinstance(game, dict) or game.get("t1") is None or game.get("t2") is None:
+            continue
+        week = playoff_start + int(game.get("r") or 1) - 1
+        pair = tuple(sorted((int(game["t1"]), int(game["t2"]))))
+        bracket_types[(week, pair)] = "kilt_bowl_game"
+
+    final_week = int(max(history.get(str(season), {}).get("playoff_weeks") or [17]))
+    matchups = []
+    for week_text, entries in sorted(raw_matchups.items(), key=lambda item: int(item[0])):
+        week = int(week_text)
+        if week < 1 or week > final_week:
+            continue
+        grouped: dict[int, list[dict[str, Any]]] = defaultdict(list)
+        for entry in entries:
+            if entry.get("matchup_id") is not None:
+                grouped[int(entry["matchup_id"])].append(entry)
+        for matchup_id, pair_rows in sorted(grouped.items()):
+            if len(pair_rows) != 2:
+                raise NormalizationError(
+                    f"Sleeper {season} week {week} matchup {matchup_id} has {len(pair_rows)} teams"
+                )
+            home, away = sorted(pair_rows, key=lambda row: int(row["roster_id"]))
+            roster_pair = tuple(sorted((int(home["roster_id"]), int(away["roster_id"]))))
+            matchups.append(
+                {
+                    "week": week,
+                    "matchup_id": matchup_id,
+                    "home_roster_id": int(home["roster_id"]),
+                    "away_roster_id": int(away["roster_id"]),
+                    "home_score": home.get("points"),
+                    "away_score": away.get("points"),
+                    "matchup_type": bracket_types.get((week, roster_pair)),
+                }
+            )
+
+    return {
+        "league_id": str(league.get("league_id")),
+        "season": season,
+        "teams": teams,
+        "matchups": matchups,
+        "_provider_finishes": finish_by_roster,
+        "_source": f"data/raw/sleeper/{season}/final",
+    }
 
 
 class OwnerDirectory:
@@ -480,7 +603,10 @@ def build_matchups(
                 else:
                     tie = True
 
-            matchup_type = "regular_season" if week <= regular_weeks else "unknown_playoff"
+            matchup_type = str(
+                matchup.get("matchup_type")
+                or ("regular_season" if week <= regular_weeks else "unknown_playoff")
+            )
             pair = {str(home_uid), str(away_uid)}
             if week == final_week and champion_uid and runner_uid and pair == {champion_uid, runner_uid}:
                 matchup_type = "championship"
@@ -500,7 +626,7 @@ def build_matchups(
                     "winner_team_season_uid": winner_uid,
                     "loser_team_season_uid": loser_uid,
                     "tie": tie,
-                    "source": f"data/{season}.json",
+                    "source": str(payload.get("_source") or f"data/{season}.json"),
                     "source_matchup_id": str(matchup.get("matchup_id") or ""),
                     "status": "final" if home_points is not None and away_points is not None else "unknown",
                     "is_corrected": False,
@@ -517,16 +643,16 @@ def coverage_for_season(season: int) -> dict[str, str]:
         lineups = "partial"
         transactions = "partial"
     elif season == 2025:
-        lineups = "partial"
-        transactions = "partial"
+        lineups = "complete"
+        transactions = "complete"
     else:
         lineups = "complete"
         transactions = "partial"
     return {
-        "matchups": "partial" if season in {2022, 2025} else "complete",
+        "matchups": "partial" if season == 2022 else "complete",
         "lineups": lineups,
         "transactions": transactions,
-        "draft": "partial" if season == 2025 else "complete",
+        "draft": "complete",
     }
 
 
@@ -554,6 +680,29 @@ def build_seasons(
         )
         champion_uid = canonical_champion
         runner_uid = canonical_runner
+
+        provider_finishes = payload.get("_provider_finishes") or {}
+        if provider_finishes:
+            provider_champion_roster = next(
+                (roster_id for roster_id, finish in provider_finishes.items() if int(finish) == 1),
+                None,
+            )
+            provider_runner_roster = next(
+                (roster_id for roster_id, finish in provider_finishes.items() if int(finish) == 2),
+                None,
+            )
+            provider_champion = resolve_team_alias(
+                aliases_by_season, season, provider_champion_roster
+            )
+            provider_runner = resolve_team_alias(
+                aliases_by_season, season, provider_runner_roster
+            )
+            if provider_champion != canonical_champion or provider_runner != canonical_runner:
+                raise NormalizationError(
+                    f"{season} manual final disagrees with the completed Sleeper bracket"
+                )
+            champion_uid = provider_champion
+            runner_uid = provider_runner
 
         if season == 2022:
             championship = next(
@@ -586,7 +735,11 @@ def build_seasons(
                 "champion_seed": champion_team["seed"],
                 "runner_up_seed": runner_team["seed"],
                 "data_completeness": coverage_for_season(season),
-                "source": "provider_result" if season == 2022 else "manual_league_history",
+                "source": (
+                    "provider_result"
+                    if season in {2022, 2025}
+                    else "manual_league_history"
+                ),
                 "is_corrected": False,
                 "correction_ids": [],
             }
@@ -618,6 +771,7 @@ def annotate_results(
     applied: tuple[AppliedCorrection, ...],
     aliases_by_season: Mapping[int, Mapping[str, str]],
     history: Mapping[str, Any],
+    season_payloads: Mapping[int, Mapping[str, Any]],
 ) -> None:
     correction_ids_by_season: dict[int, list[str]] = defaultdict(list)
     for correction in applied:
@@ -653,6 +807,353 @@ def annotate_results(
             if third_uid == team_uid:
                 team["playoff_finish"] = 3
 
+    for season, payload in season_payloads.items():
+        for roster_id, finish in (payload.get("_provider_finishes") or {}).items():
+            team_uid = resolve_team_alias(aliases_by_season, season, roster_id)
+            team = next(
+                row for row in normalized["team_seasons"] if row["team_season_uid"] == team_uid
+            )
+            team["playoff_finish"] = int(finish)
+
+
+def sleeper_player_uid_map(root: Path) -> dict[str, str]:
+    path = root / "data" / "normalized" / "player_ids.parquet"
+    if not path.exists():
+        raise NormalizationError(
+            "Sleeper lineup normalization requires player_ids.parquet; "
+            "run player_identity.py first"
+        )
+    try:
+        import pyarrow.parquet as pq
+    except ImportError as exc:
+        raise NormalizationError("Player ID lookup requires pyarrow") from exc
+    rows = pq.read_table(path).to_pylist()
+    return {
+        str(row["id_value"]): str(row["player_uid"])
+        for row in rows
+        if row.get("id_type") == "sleeper"
+    }
+
+
+def build_sleeper_fact_tables(
+    root: Path,
+    ids: CanonicalIds,
+    aliases_by_season: Mapping[int, Mapping[str, str]],
+    matchups: list[dict[str, Any]],
+) -> dict[str, list[dict[str, Any]]]:
+    """Normalize final Sleeper lineups, transactions, and drafts."""
+    output: dict[str, list[dict[str, Any]]] = {
+        "lineups": [],
+        "lineup_entries": [],
+        "transactions": [],
+        "transaction_assets": [],
+        "drafts": [],
+        "draft_picks": [],
+    }
+    player_uids = sleeper_player_uid_map(root)
+
+    for season in sorted(aliases_by_season):
+        snapshot = root / "data" / "raw" / "sleeper" / str(season) / "final"
+        if not snapshot.exists():
+            continue
+        league = read_json(snapshot / "league.json")
+        league_id = str(league["league_id"])
+        source = f"data/raw/sleeper/{season}/final"
+        playoff_start = int((league.get("settings") or {}).get("playoff_week_start") or 15)
+        final_week = playoff_start + 2
+        starter_positions = [
+            str(value)
+            for value in (league.get("roster_positions") or [])
+            if str(value) != "BN"
+        ]
+        matchup_uids = {
+            (int(row["week"]), str(row["source_matchup_id"])): row["matchup_uid"]
+            for row in matchups
+            if int(row["season"]) == season
+        }
+
+        raw_matchups = read_json(snapshot / "matchups.json")
+        for week_text, entries in sorted(raw_matchups.items(), key=lambda item: int(item[0])):
+            week = int(week_text)
+            if week < 1 or week > final_week:
+                continue
+            for entry in sorted(entries, key=lambda row: int(row["roster_id"])):
+                roster_id = int(entry["roster_id"])
+                team_uid = resolve_team_alias(aliases_by_season, season, roster_id)
+                lineup_uid = ids.make(
+                    "lineup",
+                    platform="sleeper",
+                    league_id=league_id,
+                    season=season,
+                    week=week,
+                    platform_team_id=roster_id,
+                )
+                matchup_id = entry.get("matchup_id")
+                output["lineups"].append(
+                    {
+                        "lineup_uid": lineup_uid,
+                        "season": season,
+                        "week": week,
+                        "team_season_uid": team_uid,
+                        "matchup_uid": (
+                            matchup_uids.get((week, str(matchup_id)))
+                            if matchup_id is not None
+                            else None
+                        ),
+                        "platform_roster_id": roster_id,
+                        "points": finite_number(entry.get("points")),
+                        "starter_count": len(entry.get("starters") or []),
+                        "rostered_count": len(entry.get("players") or []),
+                        "is_playoff_week": week >= playoff_start,
+                        "status": "final",
+                        "source": source,
+                    }
+                )
+                starters = [str(value) for value in (entry.get("starters") or [])]
+                slot_by_player = {
+                    player_id: (
+                        starter_positions[index]
+                        if index < len(starter_positions)
+                        else "STARTER"
+                    )
+                    for index, player_id in enumerate(starters)
+                }
+                starter_index = {player_id: index + 1 for index, player_id in enumerate(starters)}
+                player_points = entry.get("players_points") or {}
+                for player_id_value in entry.get("players") or []:
+                    player_id = str(player_id_value)
+                    player_uid = player_uids.get(player_id)
+                    if not player_uid:
+                        raise NormalizationError(
+                            f"Unresolved Sleeper player {player_id} in {season} week {week}"
+                        )
+                    output["lineup_entries"].append(
+                        {
+                            "lineup_entry_uid": ids.make(
+                                "lineup_entry",
+                                lineup_uid=lineup_uid,
+                                player_id=player_id,
+                            ),
+                            "lineup_uid": lineup_uid,
+                            "season": season,
+                            "week": week,
+                            "team_season_uid": team_uid,
+                            "player_uid": player_uid,
+                            "sleeper_player_id": player_id,
+                            "roster_slot": slot_by_player.get(player_id, "BN"),
+                            "starter_index": starter_index.get(player_id),
+                            "started": player_id in slot_by_player,
+                            "fantasy_points": finite_number(player_points.get(player_id)),
+                            "source": source,
+                        }
+                    )
+
+        raw_transactions = read_json(snapshot / "transactions.json")
+        for endpoint_week, transactions in sorted(
+            raw_transactions.items(), key=lambda item: int(item[0])
+        ):
+            for transaction in transactions:
+                transaction_id = str(transaction["transaction_id"])
+                transaction_uid = ids.make(
+                    "transaction",
+                    platform="sleeper",
+                    league_id=league_id,
+                    season=season,
+                    transaction_id=transaction_id,
+                )
+                roster_ids = [int(value) for value in transaction.get("roster_ids") or []]
+                settings = transaction.get("settings") or {}
+                output["transactions"].append(
+                    {
+                        "transaction_uid": transaction_uid,
+                        "season": season,
+                        "week": int(transaction.get("leg") or endpoint_week),
+                        "endpoint_week": int(endpoint_week),
+                        "transaction_type": str(transaction.get("type") or "unknown"),
+                        "status": str(transaction.get("status") or "unknown"),
+                        "created_at_ms": int(transaction.get("created") or 0),
+                        "status_updated_at_ms": int(transaction.get("status_updated") or 0),
+                        "creator_user_id": str(transaction.get("creator") or ""),
+                        "platform_roster_ids": roster_ids,
+                        "team_season_uids": [
+                            resolve_team_alias(aliases_by_season, season, roster_id)
+                            for roster_id in roster_ids
+                        ],
+                        "waiver_bid": settings.get("waiver_bid"),
+                        "source_transaction_id": transaction_id,
+                        "source": source,
+                    }
+                )
+                adds = {str(key): int(value) for key, value in (transaction.get("adds") or {}).items()}
+                drops = {str(key): int(value) for key, value in (transaction.get("drops") or {}).items()}
+                for player_id in sorted(set(adds) | set(drops)):
+                    player_uid = player_uids.get(player_id)
+                    if not player_uid:
+                        raise NormalizationError(
+                            f"Unresolved Sleeper transaction player {player_id}"
+                        )
+                    from_roster = drops.get(player_id)
+                    to_roster = adds.get(player_id)
+                    output["transaction_assets"].append(
+                        {
+                            "transaction_asset_uid": ids.make(
+                                "transaction_asset",
+                                transaction_uid=transaction_uid,
+                                asset_type="player",
+                                asset_id=player_id,
+                                from_roster_id=from_roster or 0,
+                                to_roster_id=to_roster or 0,
+                            ),
+                            "transaction_uid": transaction_uid,
+                            "season": season,
+                            "asset_type": "player",
+                            "asset_id": player_id,
+                            "player_uid": player_uid,
+                            "from_team_season_uid": (
+                                resolve_team_alias(aliases_by_season, season, from_roster)
+                                if from_roster is not None
+                                else None
+                            ),
+                            "to_team_season_uid": (
+                                resolve_team_alias(aliases_by_season, season, to_roster)
+                                if to_roster is not None
+                                else None
+                            ),
+                            "amount": None,
+                            "metadata_json": None,
+                            "source": source,
+                        }
+                    )
+                for index, budget in enumerate(transaction.get("waiver_budget") or []):
+                    sender = int(budget.get("sender") or 0)
+                    receiver = int(budget.get("receiver") or 0)
+                    asset_id = f"faab-{index + 1}"
+                    output["transaction_assets"].append(
+                        {
+                            "transaction_asset_uid": ids.make(
+                                "transaction_asset",
+                                transaction_uid=transaction_uid,
+                                asset_type="faab",
+                                asset_id=asset_id,
+                                from_roster_id=sender,
+                                to_roster_id=receiver,
+                            ),
+                            "transaction_uid": transaction_uid,
+                            "season": season,
+                            "asset_type": "faab",
+                            "asset_id": asset_id,
+                            "player_uid": None,
+                            "from_team_season_uid": resolve_team_alias(
+                                aliases_by_season, season, sender
+                            ),
+                            "to_team_season_uid": resolve_team_alias(
+                                aliases_by_season, season, receiver
+                            ),
+                            "amount": finite_number(budget.get("amount")),
+                            "metadata_json": None,
+                            "source": source,
+                        }
+                    )
+                for index, pick in enumerate(transaction.get("draft_picks") or []):
+                    owner_roster = int(pick.get("owner_id") or 0)
+                    previous_roster = int(pick.get("previous_owner_id") or 0)
+                    asset_id = f"{pick.get('season')}-{pick.get('round')}-{index + 1}"
+                    output["transaction_assets"].append(
+                        {
+                            "transaction_asset_uid": ids.make(
+                                "transaction_asset",
+                                transaction_uid=transaction_uid,
+                                asset_type="draft_pick",
+                                asset_id=asset_id,
+                                from_roster_id=previous_roster,
+                                to_roster_id=owner_roster,
+                            ),
+                            "transaction_uid": transaction_uid,
+                            "season": season,
+                            "asset_type": "draft_pick",
+                            "asset_id": asset_id,
+                            "player_uid": None,
+                            "from_team_season_uid": (
+                                resolve_team_alias(aliases_by_season, season, previous_roster)
+                                if previous_roster
+                                else None
+                            ),
+                            "to_team_season_uid": (
+                                resolve_team_alias(aliases_by_season, season, owner_roster)
+                                if owner_roster
+                                else None
+                            ),
+                            "amount": None,
+                            "metadata_json": json.dumps(pick, sort_keys=True),
+                            "source": source,
+                        }
+                    )
+
+        raw_drafts = read_json(snapshot / "drafts.json")
+        raw_draft_picks = read_json(snapshot / "draft_picks.json")
+        for draft in raw_drafts:
+            draft_id = str(draft["draft_id"])
+            draft_uid = ids.make(
+                "draft",
+                platform="sleeper",
+                league_id=league_id,
+                season=season,
+                draft_id=draft_id,
+            )
+            picks = raw_draft_picks.get(draft_id) or []
+            output["drafts"].append(
+                {
+                    "draft_uid": draft_uid,
+                    "season": season,
+                    "platform_draft_id": draft_id,
+                    "status": str(draft.get("status") or "unknown"),
+                    "draft_type": str(draft.get("type") or "unknown"),
+                    "start_time_ms": int(draft.get("start_time") or 0),
+                    "created_at_ms": int(draft.get("created") or 0),
+                    "team_count": int((draft.get("settings") or {}).get("teams") or 0),
+                    "rounds": int((draft.get("settings") or {}).get("rounds") or 0),
+                    "budget": (draft.get("settings") or {}).get("budget"),
+                    "pick_count": len(picks),
+                    "settings_json": json.dumps(draft.get("settings") or {}, sort_keys=True),
+                    "metadata_json": json.dumps(draft.get("metadata") or {}, sort_keys=True),
+                    "source": source,
+                }
+            )
+            for pick in picks:
+                player_id = str(pick["player_id"])
+                player_uid = player_uids.get(player_id)
+                if not player_uid:
+                    raise NormalizationError(f"Unresolved Sleeper draft player {player_id}")
+                roster_id = int(pick["roster_id"])
+                metadata = pick.get("metadata") or {}
+                output["draft_picks"].append(
+                    {
+                        "draft_pick_uid": ids.make(
+                            "draft_pick", draft_uid=draft_uid, pick_no=int(pick["pick_no"])
+                        ),
+                        "draft_uid": draft_uid,
+                        "season": season,
+                        "pick_no": int(pick["pick_no"]),
+                        "round": int(pick.get("round") or 0),
+                        "draft_slot": int(pick.get("draft_slot") or 0),
+                        "team_season_uid": resolve_team_alias(
+                            aliases_by_season, season, roster_id
+                        ),
+                        "platform_roster_id": roster_id,
+                        "picked_by_user_id": str(pick.get("picked_by") or ""),
+                        "player_uid": player_uid,
+                        "sleeper_player_id": player_id,
+                        "nfl_team_at_draft": str(metadata.get("team") or "") or None,
+                        "amount": finite_number(metadata.get("amount")),
+                        "is_keeper": bool(pick.get("is_keeper")),
+                        "source": source,
+                    }
+                )
+
+    for rows in output.values():
+        rows.sort(key=lambda row: tuple(str(value) for value in row.values()))
+    return output
+
 
 def validate_history(normalized: Mapping[str, Any]) -> dict[str, Any]:
     critical: list[str] = []
@@ -669,6 +1170,24 @@ def validate_history(normalized: Mapping[str, Any]) -> dict[str, Any]:
     for table, rows, key in (
         ("team_seasons", team_seasons, "team_season_uid"),
         ("matchups", matchups, "matchup_uid"),
+        ("lineups", normalized.get("lineups") or [], "lineup_uid"),
+        (
+            "lineup_entries",
+            normalized.get("lineup_entries") or [],
+            "lineup_entry_uid",
+        ),
+        (
+            "transactions",
+            normalized.get("transactions") or [],
+            "transaction_uid",
+        ),
+        (
+            "transaction_assets",
+            normalized.get("transaction_assets") or [],
+            "transaction_asset_uid",
+        ),
+        ("drafts", normalized.get("drafts") or [], "draft_uid"),
+        ("draft_picks", normalized.get("draft_picks") or [], "draft_pick_uid"),
     ):
         duplicates = duplicate_ids(rows, key)
         if duplicates:
@@ -739,6 +1258,22 @@ def validate_history(normalized: Mapping[str, Any]) -> dict[str, Any]:
             }
         )
 
+    final_lineups = normalized.get("lineups") or []
+    final_transactions = normalized.get("transactions") or []
+    final_draft_picks = normalized.get("draft_picks") or []
+    if len([row for row in final_lineups if int(row["season"]) == 2025]) != 136:
+        critical.append("2025: expected 136 final team-week lineups")
+    if len(
+        [
+            row
+            for row in final_transactions
+            if int(row["season"]) == 2025 and row["status"] == "complete"
+        ]
+    ) != 551:
+        critical.append("2025: expected 551 completed Sleeper transactions")
+    if len([row for row in final_draft_picks if int(row["season"]) == 2025]) != 152:
+        critical.append("2025: expected 152 completed auction purchases")
+
     return {
         "status": "error" if critical else ("warning" if warnings else "ok"),
         "critical": critical,
@@ -750,6 +1285,12 @@ def validate_history(normalized: Mapping[str, Any]) -> dict[str, Any]:
             "team_seasons": len(team_seasons),
             "matchups": len(matchups),
             "playoff_games": len(normalized["playoff_games"]),
+            "lineups": len(final_lineups),
+            "lineup_entries": len(normalized.get("lineup_entries") or []),
+            "transactions": len(final_transactions),
+            "transaction_assets": len(normalized.get("transaction_assets") or []),
+            "drafts": len(normalized.get("drafts") or []),
+            "draft_picks": len(final_draft_picks),
         },
         "seasons": verification_seasons,
     }
@@ -769,7 +1310,12 @@ def build_canonical_history(root: Path = ROOT) -> CanonicalHistory:
     history = history_document.get("seasons") or {}
     payloads = {}
     for season in range(2015, 2026):
-        payload = dict(read_json(root / "data" / f"{season}.json"))
+        final_sleeper = sleeper_final_payload(root, season, history)
+        payload = dict(
+            final_sleeper
+            if final_sleeper is not None
+            else read_json(root / "data" / f"{season}.json")
+        )
         payload["league_id"] = str(
             payload.get("league_id") or configured_league_id(league_config, season)
         )
@@ -783,12 +1329,16 @@ def build_canonical_history(root: Path = ROOT) -> CanonicalHistory:
         payloads, team_seasons, matchups, aliases_by_season, history
     )
     corrected, applied = apply_all_corrections(seasons, team_seasons, matchups)
-    annotate_results(corrected, applied, aliases_by_season, history)
+    annotate_results(corrected, applied, aliases_by_season, history, payloads)
     corrected["owners"] = owner_directory.rows(corrected["team_seasons"])
     corrected["franchises"] = franchise_directory.rows(corrected["team_seasons"])
     corrected["playoff_games"] = [
         row for row in corrected["matchups"] if row["matchup_type"] != "regular_season"
     ]
+    sleeper_facts = build_sleeper_fact_tables(
+        root, ids, aliases_by_season, corrected["matchups"]
+    )
+    corrected.update(sleeper_facts)
     verification = validate_history(corrected)
     if verification["critical"]:
         raise NormalizationError(
@@ -803,6 +1353,12 @@ def build_canonical_history(root: Path = ROOT) -> CanonicalHistory:
         team_seasons=corrected["team_seasons"],
         matchups=corrected["matchups"],
         playoff_games=corrected["playoff_games"],
+        lineups=corrected["lineups"],
+        lineup_entries=corrected["lineup_entries"],
+        transactions=corrected["transactions"],
+        transaction_assets=corrected["transaction_assets"],
+        drafts=corrected["drafts"],
+        draft_picks=corrected["draft_picks"],
         corrections=applied,
         verification=verification,
     )
@@ -830,6 +1386,12 @@ def write_outputs(history: CanonicalHistory, root: Path = ROOT) -> None:
         "team_seasons": history.team_seasons,
         "matchups": history.matchups,
         "playoff_games": history.playoff_games,
+        "lineups": history.lineups,
+        "lineup_entries": history.lineup_entries,
+        "transactions": history.transactions,
+        "transaction_assets": history.transaction_assets,
+        "drafts": history.drafts,
+        "draft_picks": history.draft_picks,
     }
     for name, rows in tables.items():
         write_parquet(normalized_dir / f"{name}.parquet", rows)

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "3.0.0",
-  "generatedAt": "2026-08-09T16:27:43.365173+00:00",
+  "generatedAt": "2026-08-09T17:15:40.893530+00:00",
   "pipeline": [
     "ingest",
     "normalize",
@@ -30,6 +30,14 @@
       "path": "drafts.json",
       "records": 1
     },
+    "draft_picks": {
+      "path": "draft_picks.json",
+      "records": 0
+    },
+    "draft_traded_picks": {
+      "path": "draft_traded_picks.json",
+      "records": 0
+    },
     "traded_picks": {
       "path": "traded_picks.json",
       "records": 0
@@ -58,11 +66,17 @@
     "team_seasons": 88,
     "matchups": 710,
     "playoff_games": 118,
+    "lineups": 136,
+    "lineup_entries": 2794,
+    "transactions": 727,
+    "transaction_assets": 1220,
+    "drafts": 2,
+    "draft_picks": 152,
     "players": 20068
   },
   "correctionCount": 9,
-  "warningCount": 11,
+  "warningCount": 10,
   "criticalCount": 0,
-  "publishedFiles": 45,
+  "publishedFiles": 81,
   "oversizedFiles": []
 }

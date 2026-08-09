@@ -19,6 +19,8 @@ baseline in `docs/v2-baseline.md`.
 
 - 11 completed seasons, 88 team-seasons, 710 two-team matchups, and 118
   postseason games normalized to Parquet.
+- Final 2025 Sleeper facts normalized as 136 team-week lineups, 2,794 lineup
+  entries, 727 transaction attempts / 551 completed moves, and 152 auction buys.
 - Exactly one accepted champion and runner-up per completed season.
 - 13 stable owner identities and 8 stable franchise identities.
 - 20,068 canonical players and 36,254 safe provider-ID mappings.
@@ -31,7 +33,7 @@ baseline in `docs/v2-baseline.md`.
 - Current league resolved as `1389343653058609152` by validating its relationship
   to the configured 2025 league.
 - Reusable public read-only Sleeper client with retries.
-- Refreshable state, league, users, rosters, drafts, traded picks, brackets,
+- Refreshable state, league, users, rosters, keepers, drafts, draft picks, traded picks, brackets,
   weekly matchups, weekly transactions, and active fantasy-player snapshots.
 - Explicit 2026 preseason/current-week metadata.
 
@@ -42,8 +44,8 @@ baseline in `docs/v2-baseline.md`.
   integrity resources.
 - Precomputed owner careers and head-to-head ledgers.
 - Generated records with source context.
-- Matchup records and head-to-head results exclude the partial 2022 and 2025
-  matchup exports.
+- Matchup records and head-to-head results exclude only the partial 2022
+  matchup export; finalized 2025 matchups are included.
 - Public files expose update timestamps, coverage, corrections, and identity
   warnings.
 
@@ -55,6 +57,9 @@ baseline in `docs/v2-baseline.md`.
 - New generated record book.
 - New compact active-player directory and canonical search.
 - New data-health experience.
+- Finalized 2025 lineup viewer, complete-move ledger, and full auction board.
+- Live 2026 keeper board and scheduled auction runway with an explicit
+  not-yet-published draft-order state.
 - Legacy matchup, standings, transaction, head-to-head, and player-detail routes
   remain available during migration and load their larger compatibility datasets
   only when visited.
@@ -63,7 +68,7 @@ baseline in `docs/v2-baseline.md`.
 ## Verification
 
 - Frontend: 7 suites / 82 tests pass.
-- Python: 23 tests pass.
+- Python: 26 tests pass.
 - Canonical output validation passes.
 - Manifest v2 and v3 validation pass.
 - Production Vite build passes.
@@ -75,13 +80,13 @@ baseline in `docs/v2-baseline.md`.
 - Historical ESPN scoring settings remain unverified, so historical custom NFL
   fantasy points are not recomputed.
 - 2015–2017 lineups and transactions are unavailable.
-- 2022 and 2025 matchup exports are partial; they remain viewable as evidence but
-  are excluded from all-time matchup records and H2H results.
-- 2025 third place is unresolved.
+- The 2022 matchup export is partial; it remains viewable as evidence but is
+  excluded from all-time matchup records and H2H results.
 - Current power rankings and playoff odds wait for regular-season games and a
   verified tiebreaker/playoff-rules configuration.
 - Player profiles still use the legacy detail datasets; the directory/search and
   identity path are migrated, but player-centric career files are the next
   performance phase.
-- The JavaScript bundle still exceeds Vite's 500 KB advisory threshold. Route
-  code splitting is the next frontend performance improvement.
+- The 2025 fact archive is route- and week-chunked; every new v3 fact resource
+  and production JavaScript chunk remains below 500 KB. Some compatibility-era
+  player resources remain larger while their consumers are migrated.

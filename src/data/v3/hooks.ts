@@ -121,6 +121,138 @@ export function useSeasonMatchups(season: number): UseQueryResult<SeasonMatchups
   });
 }
 
+export interface SeasonFacts {
+  meta: { schemaVersion: string; generatedAt: string; source: string };
+  summary: {
+    lineups: { weeks: number; availableWeeks: number[]; teamWeeks: number; playerEntries: number };
+    transactions: { recorded: number; completed: number; failed: number; byType: Record<string, number>; availableWeeks: number[] };
+    draft: { draftsRecorded: number; completedPicks: number; primaryDraftId: string | null; budget: number | null };
+  };
+  paths: { lineups: string; transactions: string; draft: string };
+}
+
+type SeasonTeamRef = HistoryData["seasons"][number]["champion"];
+
+export interface SeasonLineup {
+  lineupUid: string;
+  week: number;
+  team: SeasonTeamRef;
+  matchupUid: string | null;
+  points: number;
+  players: Array<{
+    playerUid: string;
+    sleeperId: string;
+    name: string;
+    position: string | null;
+    nflTeam: string | null;
+    slot: string;
+    started: boolean;
+    points: number | null;
+  }>;
+}
+
+export interface SeasonTransaction {
+  transactionUid: string;
+  week: number;
+  type: string;
+  status: string;
+  createdAt: string;
+  waiverBid: number | null;
+  teams: SeasonTeamRef[];
+  assets: Array<{
+    type: string;
+    playerUid: string | null;
+    sleeperId: string | null;
+    name: string | null;
+    position: string | null;
+    amount: number | null;
+    from: SeasonTeamRef | null;
+    to: SeasonTeamRef | null;
+  }>;
+}
+
+export interface SeasonDraft {
+    draftUid: string;
+    draftId: string;
+    status: string;
+    type: string;
+    startTime: string;
+    budget: number;
+    rounds: number;
+    pickCount: number;
+    settings: Record<string, number>;
+    picks: Array<{
+      pickNo: number;
+      round: number;
+      team: SeasonTeamRef;
+      playerUid: string;
+      sleeperId: string;
+      name: string;
+      position: string | null;
+      nflTeam: string | null;
+      amount: number | null;
+      keeper: boolean;
+    }>;
+}
+
+export function useSeasonFacts(season: number): UseQueryResult<SeasonFacts, Error> {
+  return useQuery({
+    queryKey: ["v3", "season", season, "facts"],
+    queryFn: () => getV3<SeasonFacts>(`data/seasons/${season}/facts.json`),
+    enabled: season === 2025,
+    staleTime: Infinity,
+  });
+}
+
+export function useSeasonLineups(
+  season: number,
+  week: number,
+  enabled: boolean,
+): UseQueryResult<SeasonLineup[], Error> {
+  return useQuery({
+    queryKey: ["v3", "season", season, "lineups", week],
+    queryFn: async () => {
+      const payload = await getV3<{ lineups: SeasonLineup[] }>(`data/seasons/${season}/lineups/${week}.json`);
+      return payload.lineups;
+    },
+    enabled,
+    staleTime: Infinity,
+  });
+}
+
+export function useSeasonTransactions(
+  season: number,
+  weeks: number[],
+  enabled: boolean,
+): UseQueryResult<SeasonTransaction[], Error> {
+  return useQuery({
+    queryKey: ["v3", "season", season, "transactions", weeks.join("-")],
+    queryFn: async () => {
+      const chunks = await Promise.all(
+        weeks.map((week) => getV3<{ transactions: SeasonTransaction[] }>(`data/seasons/${season}/transactions/${week}.json`)),
+      );
+      return chunks.flatMap((chunk) => chunk.transactions).sort((left, right) => right.createdAt.localeCompare(left.createdAt));
+    },
+    enabled: enabled && weeks.length > 0,
+    staleTime: Infinity,
+  });
+}
+
+export function useSeasonDraft(
+  season: number,
+  enabled: boolean,
+): UseQueryResult<SeasonDraft[], Error> {
+  return useQuery({
+    queryKey: ["v3", "season", season, "draft"],
+    queryFn: async () => {
+      const payload = await getV3<{ drafts: SeasonDraft[] }>(`data/seasons/${season}/draft.json`);
+      return payload.drafts;
+    },
+    enabled,
+    staleTime: Infinity,
+  });
+}
+
 export interface OwnerProfile {
   meta: { schemaVersion: string; generatedAt: string };
   owner: OwnersData["owners"][number];

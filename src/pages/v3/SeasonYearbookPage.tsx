@@ -1,31 +1,52 @@
-import React, { useMemo } from "react";
-import { ArrowLeft, ChevronLeft, ChevronRight, Crown, ShieldCheck, Trophy } from "lucide-react";
+import React, { useMemo, useState } from "react";
+import { Activity, ArrowLeft, BadgeDollarSign, ChevronLeft, ChevronRight, Crown, Gavel, ListChecks, ShieldCheck, Trophy } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import PageTransition from "../../components/PageTransition.jsx";
 import { ArchiveError, ArchiveLoading, CompletenessBadge, CorrectedBadge, Eyebrow, OwnerLink, formatPoints } from "../../components/v3/ArchiveUI";
-import { useSeasonMatchups, useSeasonYearbook, useV3Manifest } from "../../data/v3/hooks";
+import { useSeasonDraft, useSeasonFacts, useSeasonLineups, useSeasonMatchups, useSeasonTransactions, useSeasonYearbook, useV3Manifest } from "../../data/v3/hooks";
 
 export default function SeasonYearbookPage(): React.ReactElement {
   const { season: seasonParam } = useParams();
   const season = Number(seasonParam);
   const yearbook = useSeasonYearbook(season);
   const matchups = useSeasonMatchups(season);
+  const facts = useSeasonFacts(season);
   const manifest = useV3Manifest();
+  const [factView, setFactView] = useState<"lineups" | "transactions" | "draft">("lineups");
+  const [lineupWeek, setLineupWeek] = useState(17);
+  const [transactionType, setTransactionType] = useState("all");
+  const factLineups = useSeasonLineups(season, lineupWeek, season === 2025 && factView === "lineups" && Boolean(facts.data));
+  const factTransactions = useSeasonTransactions(
+    season,
+    facts.data?.summary.transactions.availableWeeks || [],
+    season === 2025 && factView === "transactions",
+  );
+  const factDraft = useSeasonDraft(season, season === 2025 && factView === "draft");
   const playoffs = useMemo(
     () => (matchups.data?.matchups || []).filter((row) => row.type !== "regular_season"),
     [matchups.data],
   );
 
   if (!Number.isFinite(season)) return <Navigate to="/history" replace />;
-  if (yearbook.isLoading || matchups.isLoading || manifest.isLoading) return <ArchiveLoading label={`Opening the ${season} yearbook`} />;
-  if (yearbook.error || matchups.error || manifest.error || !yearbook.data || !matchups.data || !manifest.data) {
-    return <ArchiveError error={yearbook.error || matchups.error || manifest.error} />;
+  if (yearbook.isLoading || matchups.isLoading || manifest.isLoading || (season === 2025 && facts.isLoading)) return <ArchiveLoading label={`Opening the ${season} yearbook`} />;
+  if (yearbook.error || matchups.error || manifest.error || facts.error || !yearbook.data || !matchups.data || !manifest.data) {
+    return <ArchiveError error={yearbook.error || matchups.error || manifest.error || facts.error} />;
   }
 
   const data = yearbook.data;
   const years = manifest.data.seasons;
   const previous = years.includes(season - 1) ? season - 1 : null;
   const next = years.includes(season + 1) ? season + 1 : null;
+  const seasonFacts = facts.data;
+  const selectedLineups = factLineups.data || [];
+  const completedTransactions = (factTransactions.data || []).filter(
+    (row) => row.status === "complete" && (transactionType === "all" || row.type === transactionType),
+  );
+  const draftRows = factDraft.data || [];
+  const primaryDraft = draftRows.reduce(
+    (best, draft) => (draft.pickCount > (best?.pickCount || 0) ? draft : best),
+    draftRows[0],
+  );
 
   return (
     <PageTransition>
@@ -75,6 +96,86 @@ export default function SeasonYearbookPage(): React.ReactElement {
         </div>
       </section>
 
+      {seasonFacts ? (
+        <section className="season-facts archive-section">
+          <div className="archive-section-heading">
+            <div><Eyebrow>Complete Sleeper record</Eyebrow><h2>Every lineup, move, and auction buy.</h2></div>
+            <p>The 2025 season is finalized from the official league snapshot—not reconstructed from summaries.</p>
+          </div>
+          <div className="season-fact-strip">
+            <div><ListChecks /><span>Final lineups</span><strong>{seasonFacts.summary.lineups.teamWeeks}</strong><small>{seasonFacts.summary.lineups.weeks} weeks · {seasonFacts.summary.lineups.playerEntries.toLocaleString()} player entries</small></div>
+            <div><Activity /><span>Completed moves</span><strong>{seasonFacts.summary.transactions.completed}</strong><small>{seasonFacts.summary.transactions.failed} failed claims preserved separately</small></div>
+            <div><Gavel /><span>Auction purchases</span><strong>{seasonFacts.summary.draft.completedPicks}</strong><small>${seasonFacts.summary.draft.budget} starting budget</small></div>
+          </div>
+
+          <div className="fact-tabs" role="tablist" aria-label="2025 season details">
+            <button type="button" role="tab" aria-selected={factView === "lineups"} onClick={() => setFactView("lineups")}><ListChecks /> Lineups</button>
+            <button type="button" role="tab" aria-selected={factView === "transactions"} onClick={() => setFactView("transactions")}><Activity /> Transactions</button>
+            <button type="button" role="tab" aria-selected={factView === "draft"} onClick={() => setFactView("draft")}><Gavel /> Auction draft</button>
+          </div>
+
+          {factView === "lineups" ? (
+            <div className="fact-view">
+              <div className="fact-toolbar">
+                <div><strong>Final submitted lineups</strong><span>Starter slots and official Sleeper points</span></div>
+                <label>Week <select value={lineupWeek} onChange={(event) => setLineupWeek(Number(event.target.value))}>{Array.from({ length: 17 }, (_, index) => index + 1).map((week) => <option value={week} key={week}>{week}</option>)}</select></label>
+              </div>
+              {factLineups.isLoading ? <div className="fact-inline-state">Loading Week {lineupWeek} lineups…</div> : factLineups.error ? <div className="fact-inline-state">Could not load this lineup week.</div> : <div className="lineup-fact-grid">
+                {selectedLineups.map((lineup) => (
+                  <article key={lineup.lineupUid} className="lineup-fact-card">
+                    <header><div><strong>{lineup.team.teamName}</strong><OwnerLink uid={lineup.team.ownerUid}>{lineup.team.ownerName}</OwnerLink></div><b>{formatPoints(lineup.points)}</b></header>
+                    <div className="lineup-starters">
+                      {lineup.players.filter((player) => player.started).map((player) => (
+                        <Link to={`/players/${player.sleeperId}?name=${encodeURIComponent(player.name)}`} key={player.sleeperId}>
+                          <span>{player.slot}</span><strong>{player.name}</strong><b>{player.points == null ? "—" : formatPoints(player.points)}</b>
+                        </Link>
+                      ))}
+                    </div>
+                    <details><summary>Bench ({lineup.players.filter((player) => !player.started).length})</summary><div className="lineup-bench">{lineup.players.filter((player) => !player.started).map((player) => <span key={player.sleeperId}>{player.position || "—"} · {player.name} <b>{player.points == null ? "—" : formatPoints(player.points)}</b></span>)}</div></details>
+                  </article>
+                ))}
+              </div>}
+            </div>
+          ) : null}
+
+          {factView === "transactions" ? (
+            <div className="fact-view">
+              <div className="fact-toolbar">
+                <div><strong>Completed transaction ledger</strong><span>Failed waiver claims remain counted in data health but do not masquerade as moves.</span></div>
+                <label>Type <select value={transactionType} onChange={(event) => setTransactionType(event.target.value)}><option value="all">All</option><option value="trade">Trades</option><option value="waiver">Waivers</option><option value="free_agent">Free agents</option><option value="commissioner">Commissioner</option></select></label>
+              </div>
+              {factTransactions.isLoading ? <div className="fact-inline-state">Loading the complete transaction ledger…</div> : factTransactions.error ? <div className="fact-inline-state">Could not load the transaction ledger.</div> : <div className="transaction-ledger">
+                {completedTransactions.map((transaction) => (
+                  <article key={transaction.transactionUid}>
+                    <div className="transaction-ledger__meta"><span>Week {transaction.week}</span><strong>{transaction.type.replace("_", " ")}</strong><time>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(transaction.createdAt))}</time>{transaction.waiverBid != null ? <b>${transaction.waiverBid} FAAB</b> : null}</div>
+                    <div className="transaction-assets">
+                      {transaction.assets.map((asset, index) => (
+                        <div key={`${asset.type}-${asset.sleeperId || index}`}>
+                          {asset.type === "player" && asset.sleeperId ? <Link to={`/players/${asset.sleeperId}?name=${encodeURIComponent(asset.name || "Player")}`}><span>{asset.position || "—"}</span><strong>{asset.name}</strong></Link> : <strong><BadgeDollarSign /> {asset.amount} FAAB</strong>}
+                          <small>{asset.from ? `${asset.from.teamName} → ` : "Added by "}{asset.to?.teamName || "Free agency"}</small>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>}
+            </div>
+          ) : null}
+
+          {factView === "draft" ? factDraft.isLoading ? <div className="fact-view fact-inline-state">Loading the auction board…</div> : factDraft.error ? <div className="fact-view fact-inline-state">Could not load the auction board.</div> : primaryDraft ? (
+            <div className="fact-view">
+              <div className="fact-toolbar"><div><strong>2025 auction board</strong><span>{primaryDraft.pickCount} purchases · ${primaryDraft.budget} per team · {primaryDraft.rounds} roster rounds</span></div><span className="draft-complete-pill"><ShieldCheck /> Complete</span></div>
+              <div className="standings-table-wrap draft-table-wrap">
+                <table className="archive-table">
+                  <thead><tr><th>Pick</th><th>Player</th><th>Position</th><th>Winning team</th><th>Price</th></tr></thead>
+                  <tbody>{primaryDraft.picks.map((pick) => <tr key={pick.pickNo}><td>{pick.pickNo}</td><td><Link to={`/players/${pick.sleeperId}?name=${encodeURIComponent(pick.name)}`}>{pick.name}</Link></td><td>{pick.position || "—"} · {pick.nflTeam || "FA"}</td><td><strong>{pick.team.teamName}</strong><small>{pick.team.ownerName}</small></td><td><b className="auction-price">${pick.amount ?? 0}</b></td></tr>)}</tbody>
+                </table>
+              </div>
+            </div>
+          ) : <div className="fact-view fact-inline-state">No completed draft is available.</div> : null}
+        </section>
+      ) : null}
+
       <section className="archive-split archive-split--season">
         <div className="archive-panel">
           <Eyebrow>Postseason</Eyebrow><h2>Playoff ledger</h2>
@@ -85,7 +186,7 @@ export default function SeasonYearbookPage(): React.ReactElement {
               const awayWon = game.winnerTeamSeasonUid === game.away.teamSeasonUid;
               return (
                 <div key={game.matchupUid}>
-                  <span className="playoff-week">W{game.week}<small>{game.type.replace("_", " ")}</small></span>
+                  <span className="playoff-week">W{game.week}<small>{game.type.replaceAll("_", " ")}</small></span>
                   <span className={homeWon ? "won" : ""}>{game.home.teamName}<b>{formatPoints(game.home.points)}</b></span>
                   <span className={awayWon ? "won" : ""}>{game.away.teamName}<b>{formatPoints(game.away.points)}</b></span>
                   {game.corrected ? <ShieldCheck aria-label="Corrected result" /> : null}

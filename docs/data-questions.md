@@ -23,19 +23,29 @@ These questions must be resolved from league rules or commissioner knowledge. Th
 - Still open: confirm whether league members consider a transferred platform
   slot to be the same named franchise for narrative franchise-history features.
 
-## 2025 third place
+## Resolved: 2025 third place
 
-- Affected record: 2025 final placement.
-- Evidence: `data/manual_league_history.json` records `third_place: "Unknown"`.
-- Possible interpretations: a third-place game was played, placement came from the bracket, or the league does not recognize third place for 2025.
-- Blocks: complete 2025 season result validation and placement analytics; it does not block champion/runner-up history.
+- Resolution: Carl Marvin / 💍💍💍 finished third.
+- Evidence: the completed Sleeper winners bracket marks roster 1 as the winner
+  of the Week 17 third-place game over roster 6, 127.48–101.64.
+- Result: 2025 placement analytics and the third-place matchup are canonical.
 
-## 2025 draft representation
+## Resolved: 2025 draft representation
 
-- Affected record: 2025 draft history.
-- Evidence: ESPN-era exports contain 136/152 draft rows, while `data/2025.json` stores a three-key draft object rather than a comparable pick list.
-- Possible interpretations: picks are nested in the object, must be fetched from Sleeper's draft endpoints, or were never archived.
-- Blocks: canonical 2025 draft picks, keeper history, and draft ROI.
+- Resolution: the completed Sleeper auction draft is archived directly from its
+  draft endpoint.
+- Evidence: draft `1262548301656363008` contains 152 purchases across 19 roster
+  rounds, with team, player, price, and team-at-draft metadata.
+- Result: the full 2025 auction board is canonical and published in route-sized data.
+
+## Resolved: 2025 matchups, lineups, and transactions
+
+- Resolution: the completed Sleeper league snapshot is the canonical season source.
+- Evidence: Weeks 1–17 provide 64 paired matchups, 136 team-week lineups with
+  2,794 player entries, and 727 transaction attempts. The ledger distinguishes
+  551 completed moves from 176 failed waiver attempts.
+- Result: 2025 is included in all-time matchup records and head-to-head results;
+  failed claims remain preserved without being displayed as completed moves.
 
 ## Resolved: 2026 Sleeper league ID
 

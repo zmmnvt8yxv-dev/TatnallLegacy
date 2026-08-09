@@ -39,6 +39,8 @@ class FakeSleeperClient:
             return [{"roster_id": 1}]
         if path.endswith("/drafts") or path.endswith("/traded_picks"):
             return []
+        if "/draft/" in path and (path.endswith("/picks") or path.endswith("/traded_picks")):
+            return []
         if path.endswith("/winners_bracket") or path.endswith("/losers_bracket"):
             return []
         if "/matchups/" in path or "/transactions/" in path:
@@ -85,6 +87,8 @@ def test_preseason_snapshot_is_small_and_manifested(tmp_path) -> None:
     assert manifest["current_week"] == 1
     assert manifest["resources"]["matchups"]["records"] == 0
     assert manifest["resources"]["transactions"]["records"] == 0
+    assert manifest["resources"]["draft_picks"]["records"] == 0
+    assert (output / "draft_picks.json").exists()
     assert json.loads((output / "league.json").read_text())["league_id"] == LEAGUE_ID_2026
     assert (output / "manifest.json").exists()
 

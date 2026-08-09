@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "retrieved_at": "2026-08-09T15:44:59.444554+00:00",
+  "retrieved_at": "2026-08-09T17:07:38.982102+00:00",
   "season": 2026,
   "league_id": "1389343653058609152",
   "previous_league_id": "1262418074540195841",
@@ -28,6 +28,14 @@
     "drafts": {
       "path": "drafts.json",
       "records": 1
+    },
+    "draft_picks": {
+      "path": "draft_picks.json",
+      "records": 0
+    },
+    "draft_traded_picks": {
+      "path": "draft_traded_picks.json",
+      "records": 0
     },
     "traded_picks": {
       "path": "traded_picks.json",

@@ -97,9 +97,32 @@ def test_missing_data_is_status_not_zero(history) -> None:
     seasons = {row["season"]: row for row in history.seasons}
     assert seasons[2015]["data_completeness"]["lineups"] == "unavailable"
     assert seasons[2022]["data_completeness"]["lineups"] == "partial"
-    assert seasons[2025]["data_completeness"]["draft"] == "partial"
+    assert seasons[2025]["data_completeness"] == {
+        "matchups": "complete",
+        "lineups": "complete",
+        "transactions": "complete",
+        "draft": "complete",
+    }
+    assert len(history.lineups) == 136
+    assert len([row for row in history.transactions if row["status"] == "complete"]) == 551
+    assert len(history.draft_picks) == 152
     assert history.verification["status"] == "warning"
     assert history.verification["critical"] == []
+
+
+def test_2025_final_sleeper_bracket_sets_all_supported_finishes(history) -> None:
+    teams = {
+        row["platform_roster_id"]: row
+        for row in history.team_seasons
+        if row["season"] == 2025
+    }
+
+    assert teams[3]["playoff_finish"] == 1
+    assert teams[2]["playoff_finish"] == 2
+    assert teams[1]["playoff_finish"] == 3
+    assert teams[6]["playoff_finish"] == 4
+    assert teams[7]["playoff_finish"] == 5
+    assert teams[5]["playoff_finish"] == 6
 
 
 def test_html_uses_the_github_pages_base_for_the_only_favicon() -> None:
