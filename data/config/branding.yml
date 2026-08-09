@@ -1,0 +1,57 @@
+schema_version: "1.0.0"
+
+# This is the commissioner-editable public identity layer. Provider team names
+# remain untouched in raw and normalized evidence; public pages use these stable
+# aliases, colors, and monograms instead.
+franchises:
+  carl_marvin:
+    public_alias: Three Rings
+    monogram: CM
+    accent: "#d7a928"
+    motto: Standard set high.
+  jared_duncan:
+    public_alias: Team Duncan
+    monogram: JD
+    accent: "#e0565b"
+    motto: Make every dollar count.
+  samuel_kirby:
+    public_alias: Insane in the Achane
+    monogram: SK
+    accent: "#35b779"
+    motto: Pressure creates points.
+  conner_malley:
+    public_alias: King of January
+    monogram: CM
+    accent: "#4f8cff"
+    motto: Built for the postseason.
+  roy_lee:
+    public_alias: FantasyGPT
+    monogram: RL
+    accent: "#9b72e8"
+    motto: Process over noise.
+  edward_saad:
+    public_alias: Feels Different This Year
+    monogram: ES
+    accent: "#e8863a"
+    motto: Bet on the breakout.
+  john_downs:
+    public_alias: Dak Shots
+    monogram: JD
+    accent: "#2bbbd8"
+    motto: Volume wins weeks.
+  jeff_crossland:
+    public_alias: Nine-1-1
+    monogram: JC
+    accent: "#e66fab"
+    motto: Chaos, managed.
+
+public_name_policy:
+  fallback: "Team {last_name}"
+  # Source labels matching these phrases may never enter a public artifact.
+  blocked_phrases:
+    - "only i can say the n-word"
+    - "n-word"
+
+social:
+  title: Tatnall Legacy
+  subtitle: Player Intelligence · Draft War Room

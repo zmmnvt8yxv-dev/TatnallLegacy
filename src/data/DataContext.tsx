@@ -15,8 +15,7 @@ interface DataProviderProps {
 
 export function DataProvider({ children }: DataProviderProps): React.ReactElement {
   const location = useLocation();
-  const needsLegacyData = /^\/(matchups|transactions|standings|teams|head-to-head)(\/|$)/.test(location.pathname)
-    || /^\/players\/[^/]+/.test(location.pathname);
+  const needsLegacyData = /^\/(matchups|transactions|standings|teams|head-to-head)(\/|$)/.test(location.pathname);
   const { data: manifest, isLoading: manifestLoading, error: manifestError } = useManifest(needsLegacyData);
   const { data: coreData, isLoading: coreLoading, error: coreError } = useCore(needsLegacyData);
 

@@ -1,8 +1,9 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Archive, BarChart3, Database, Menu, Search, ShieldCheck, Swords, X } from "lucide-react";
+import { Archive, BarChart3, Database, Gavel, Menu, Search, ShieldCheck, Swords, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle.jsx";
+import { features } from "../config/features";
 import { useV3Manifest, useV3Search } from "../data/v3/hooks";
 
 const mainNav = [
@@ -10,11 +11,13 @@ const mainNav = [
   { to: "/history", label: "History" },
   { to: "/owners", label: "Owners" },
   { to: "/players", label: "Players" },
+  ...(features.playerIntelligenceV1 ? [{ to: "/war-room", label: "War Room" }] : []),
   { to: "/records", label: "Records" },
 ];
 
 const currentNav = [
   { to: "/matchups", label: "Matchups", icon: Swords },
+  ...(features.playerIntelligenceV1 ? [{ to: "/war-room", label: "Draft War Room", icon: Gavel }] : []),
   { to: "/standings", label: "Standings", icon: BarChart3 },
   { to: "/transactions", label: "Transactions", icon: Archive },
   { to: "/data-health", label: "Data health", icon: Database },

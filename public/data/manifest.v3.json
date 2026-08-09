@@ -1,6 +1,6 @@
 {
   "schemaVersion": "3.0.0",
-  "generatedAt": "2026-08-09T17:15:40.893530+00:00",
+  "generatedAt": "2026-08-09T18:47:06.970489+00:00",
   "league": {
     "name": "Tatnall Legacy",
     "firstSeason": 2015,
@@ -100,6 +100,11 @@
     "owners": "data/owners/index.json",
     "owner": "data/owners/{ownerUid}.json",
     "players": "data/players/index.json",
+    "playerCareer": "data/players/{playerUid}/career.json",
+    "playerSeason": "data/players/{playerUid}/{season}.json",
+    "playerResolve": "data/players/resolve/{providerId}.json",
+    "warRoom": "data/war-room/index.json",
+    "editorial": "data/now/editorial.json",
     "records": "data/records/index.json",
     "search": "data/search/index.json",
     "integrity": "data/integrity/index.json"

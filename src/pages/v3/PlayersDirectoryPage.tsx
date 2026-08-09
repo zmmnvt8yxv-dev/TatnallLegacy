@@ -35,7 +35,7 @@ export default function PlayersDirectoryPage(): React.ReactElement {
       <div className="player-results-meta"><span>Showing {filtered.length} results</span><small>Current NFL-team players · Rostered players appear first</small></div>
       <section className="player-directory">
         {filtered.map((player) => (
-          <Link key={player.playerUid} to={`/players/${player.sleeperId}?name=${encodeURIComponent(player.name)}`}>
+          <Link key={player.playerUid} to={`/players/${player.playerUid}`}>
             <span className={`position-mark position-mark--${player.position.toLowerCase().replace("/", "")}`}>{player.position}</span>
             <span className="player-directory__name"><strong>{player.name}</strong><small>{[player.nflTeam, player.college].filter(Boolean).join(" · ") || "NFL player"}</small></span>
             {player.currentlyRostered ? <span className="rostered-mark"><ShieldCheck /> Tatnall roster</span> : <span />}

@@ -1,4 +1,5 @@
 import { safeUrl } from "../lib/url";
+import { sanitizePublicData } from "../lib/publicIdentity";
 import {
   ManifestSchema,
   PlayersArraySchema,
@@ -129,7 +130,7 @@ async function fetchJson<T>(
         throw new Error(`Non-JSON response (${contentType || "unknown"}) (${url})`);
       }
 
-      const payload = await response.json() as T;
+      const payload = sanitizePublicData(await response.json()) as T;
       logDev("DATA_FILE_OK", { url, attempt });
       return payload;
     } catch (err) {
