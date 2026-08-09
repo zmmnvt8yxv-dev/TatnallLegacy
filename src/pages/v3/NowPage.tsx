@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { ArrowUpRight, Crown, Database, ShieldCheck, Sparkles, Trophy, Users } from "lucide-react";
+import { ArrowUpRight, CalendarClock, CheckCircle2, Crown, Database, Gavel, LockKeyhole, ShieldCheck, Sparkles, Trophy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageTransition from "../../components/PageTransition.jsx";
 import { ArchiveError, ArchiveLoading, Eyebrow, OwnerLink, formatFreshness } from "../../components/v3/ArchiveUI";
@@ -25,6 +25,10 @@ export default function NowPage(): React.ReactElement {
   const data = now.data;
   const phaseLabel = data.league.phase === "preseason" ? "Preseason" : `Week ${data.league.week}`;
   const latestChampions = history.data.seasons.slice(0, 5);
+  const draftDate = data.draft?.startTime ? new Date(data.draft.startTime) : null;
+  const draftDateLabel = draftDate && !Number.isNaN(draftDate.getTime())
+    ? new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" }).format(draftDate)
+    : "Date not published";
 
   return (
     <PageTransition>
@@ -56,12 +60,32 @@ export default function NowPage(): React.ReactElement {
         <div><span>Seasons archived</span><strong>{history.data.meta.seasons}</strong><small>2015–2025</small></div>
         <div><span>Current teams</span><strong>{data.teams.length}</strong><small>2026 rosters linked</small></div>
         <div><span>Accepted champions</span><strong>{history.data.seasons.length}</strong><small>one per completed year</small></div>
-        <div><span>Current phase</span><strong className="textual-stat">Preseason</strong><small>draft research mode</small></div>
+        <div><span>Keepers locked</span><strong>{data.keeperStatus.submitted}</strong><small>{data.keeperStatus.teamsComplete}/{data.teams.length} teams complete</small></div>
+      </section>
+
+      <section className="draft-command">
+        <div className="draft-command__status">
+          <Eyebrow>2026 auction runway</Eyebrow>
+          <Gavel aria-hidden="true" />
+          <h2>{data.draft?.status === "pre_draft" ? "Draft night is scheduled." : "Draft status connected."}</h2>
+          <p><CalendarClock /> {draftDateLabel}</p>
+          <div className="draft-command__facts">
+            <span><strong>${data.draft?.budget ?? "—"}</strong> budget</span>
+            <span><strong>{data.draft?.rounds ?? "—"}</strong> roster spots</span>
+            <span><strong>{data.draft?.nominationSeconds ?? "—"}s</strong> nominations</span>
+          </div>
+          {data.draft ? <a className="archive-button archive-button--primary" href={data.draft.sleeperUrl} target="_blank" rel="noreferrer">Open Sleeper draft room <ArrowUpRight /></a> : null}
+        </div>
+        <div className="draft-command__readiness">
+          <div><CheckCircle2 /><span><strong>Keepers submitted</strong><small>{data.keeperStatus.submitted} of {data.keeperStatus.expected} slots filled</small></span></div>
+          <div className={data.draft?.orderPublished ? "" : "is-waiting"}><LockKeyhole /><span><strong>Draft order</strong><small>{data.draft?.orderPublished ? "Published in Sleeper" : "Not published yet—no placeholder order shown"}</small></span></div>
+          <div className={data.transactionStatus.recorded ? "" : "is-waiting"}><Database /><span><strong>2026 transaction feed</strong><small>{data.transactionStatus.recorded ? `${data.transactionStatus.completed} completed moves` : "No 2026 moves returned by Sleeper yet"}</small></span></div>
+        </div>
       </section>
 
       <div className="archive-section-heading">
-        <div><Eyebrow>Now</Eyebrow><h2>Eight teams. A clean slate.</h2></div>
-        <p>Live rosters are connected; standings and matchup panels will switch on when the season begins.</p>
+        <div><Eyebrow>Keeper board</Eyebrow><h2>Sixteen decisions are in.</h2></div>
+        <p>These are the actual 2026 keepers from Sleeper. The rest of each card is the inherited preseason roster—not a submitted Week 1 lineup.</p>
       </div>
 
       <section className="current-team-grid">
@@ -73,6 +97,13 @@ export default function NowPage(): React.ReactElement {
             </div>
             <h3>{team.teamName}</h3>
             <OwnerLink uid={team.ownerUid}>{team.ownerName}</OwnerLink>
+            <div className="keeper-pair">
+              {team.keepers.map((player) => (
+                <Link key={player.sleeperId} to={`/players/${player.sleeperId}?name=${encodeURIComponent(player.name)}`}>
+                  <Crown /><span><small>{player.position || "—"} · {player.nflTeam || "FA"}</small><strong>{player.name}</strong></span>
+                </Link>
+              ))}
+            </div>
             <div className="roster-summary">
               <span><Users /> {team.players.length} players</span>
               <span>Waiver #{team.waiverPosition ?? "—"}</span>
@@ -80,7 +111,7 @@ export default function NowPage(): React.ReactElement {
             <details>
               <summary>Roster snapshot</summary>
               <div className="mini-roster">
-                {team.players.slice(0, 13).map((player) => (
+                {team.players.filter((player) => !player.keeper).slice(0, 13).map((player) => (
                   <Link key={player.sleeperId} to={`/players/${player.sleeperId}?name=${encodeURIComponent(player.name)}`}>
                     <span>{player.position || "—"}</span>{player.name}<small>{player.nflTeam || "FA"}</small>
                   </Link>
@@ -90,6 +121,29 @@ export default function NowPage(): React.ReactElement {
           </article>
         ))}
       </section>
+
+      {data.draft?.picks.length ? (
+        <section className="archive-section future-feed">
+          <div className="archive-section-heading"><div><Eyebrow>Live auction board</Eyebrow><h2>{data.draft.pickCount} picks are in.</h2></div><p>The board refreshes from Sleeper automatically as the auction advances.</p></div>
+          <div className="standings-table-wrap draft-table-wrap">
+            <table className="archive-table"><thead><tr><th>Pick</th><th>Player</th><th>Position</th><th>Winning team</th><th>Price</th></tr></thead><tbody>{data.draft.picks.map((pick) => <tr key={pick.pickNo}><td>{pick.pickNo}</td><td><Link to={`/players/${pick.sleeperId}?name=${encodeURIComponent(pick.name)}`}>{pick.name}</Link></td><td>{pick.position || "—"} · {pick.nflTeam || "FA"}</td><td><strong>{pick.team?.teamName || "—"}</strong><small>{pick.team?.ownerName || ""}</small></td><td><b className="auction-price">${pick.amount ?? 0}</b></td></tr>)}</tbody></table>
+          </div>
+        </section>
+      ) : null}
+
+      {data.currentWeekLineups.length ? (
+        <section className="archive-section future-feed">
+          <div className="archive-section-heading"><div><Eyebrow>Week {data.league.week}</Eyebrow><h2>Submitted lineups.</h2></div><p>Starter points and matchup totals switch on only when Sleeper publishes the week.</p></div>
+          <div className="live-lineup-grid">{data.currentWeekLineups.map((lineup) => <article key={lineup.rosterId}><header><strong>{lineup.team?.teamName || `Roster ${lineup.rosterId}`}</strong><b>{lineup.points == null ? "—" : lineup.points.toFixed(1)}</b></header><div>{lineup.starters.map((player) => <Link key={player.sleeperId} to={`/players/${player.sleeperId}?name=${encodeURIComponent(player.name)}`}><span>{player.position || "—"}</span><strong>{player.name}</strong><b>{player.points == null ? "—" : player.points.toFixed(1)}</b></Link>)}</div></article>)}</div>
+        </section>
+      ) : null}
+
+      {data.recentTransactions.length ? (
+        <section className="archive-section future-feed">
+          <div className="archive-section-heading"><div><Eyebrow>Live league activity</Eyebrow><h2>Recent transactions.</h2></div><p>The latest 20 completed 2026 moves; failed claims are never shown as completed.</p></div>
+          <div className="transaction-ledger live-transaction-ledger">{data.recentTransactions.map((transaction) => <article key={transaction.transactionId}><div className="transaction-ledger__meta"><span>Week {transaction.week}</span><strong>{transaction.type.replaceAll("_", " ")}</strong><time>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(transaction.createdAt))}</time>{transaction.waiverBid != null ? <b>${transaction.waiverBid} FAAB</b> : null}</div><div className="transaction-assets">{transaction.assets.map((asset) => <div key={`${transaction.transactionId}-${asset.sleeperId}`}><Link to={`/players/${asset.sleeperId}?name=${encodeURIComponent(asset.name)}`}><span>{asset.position || "—"}</span><strong>{asset.name}</strong></Link><small>{asset.from ? `${asset.from.teamName} → ` : "Added by "}{asset.to?.teamName || "Free agency"}</small></div>)}</div></article>)}</div>
+        </section>
+      ) : null}
 
       <section className="archive-split">
         <div className="archive-panel">

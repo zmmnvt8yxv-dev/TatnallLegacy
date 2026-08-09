@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "retrieved_at": "2026-08-09T17:07:37.684670+00:00",
+  "season": 2025,
+  "league_id": "1262418074540195841",
+  "previous_league_id": null,
+  "resolution_strategy": "configured_and_validated",
+  "league_status": "complete",
+  "season_phase": "complete",
+  "current_week": 17,
+  "resources": {
+    "state": {
+      "path": "state.json",
+      "records": 1
+    },
+    "league": {
+      "path": "league.json",
+      "records": 1
+    },
+    "users": {
+      "path": "users.json",
+      "records": 8
+    },
+    "rosters": {
+      "path": "rosters.json",
+      "records": 8
+    },
+    "drafts": {
+      "path": "drafts.json",
+      "records": 2
+    },
+    "draft_picks": {
+      "path": "draft_picks.json",
+      "records": 152
+    },
+    "draft_traded_picks": {
+      "path": "draft_traded_picks.json",
+      "records": 0
+    },
+    "traded_picks": {
+      "path": "traded_picks.json",
+      "records": 0
+    },
+    "winners_bracket": {
+      "path": "winners_bracket.json",
+      "records": 7
+    },
+    "losers_bracket": {
+      "path": "losers_bracket.json",
+      "records": 1
+    },
+    "matchups": {
+      "path": "matchups.json",
+      "records": 136
+    },
+    "transactions": {
+      "path": "transactions.json",
+      "records": 727
+    }
+  }
+}

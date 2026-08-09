@@ -85,11 +85,113 @@ export const NowSchema = z.object({
           position: z.string().nullable(),
           nflTeam: z.string().nullable(),
           starter: z.boolean(),
+          keeper: z.boolean(),
+        }),
+      ),
+      keepers: z.array(
+        z.object({
+          playerUid: z.string().nullable(),
+          sleeperId: z.string(),
+          name: z.string(),
+          position: z.string().nullable(),
+          nflTeam: z.string().nullable(),
+          starter: z.boolean(),
+          keeper: z.boolean(),
         }),
       ),
     }),
   ),
-  drafts: z.array(z.record(z.string(), z.unknown())),
+  keeperStatus: z.object({
+    maxPerTeam: z.number(),
+    submitted: z.number(),
+    expected: z.number(),
+    teamsComplete: z.number(),
+  }),
+  draft: z
+    .object({
+      draftId: z.string(),
+      status: z.string(),
+      type: z.string(),
+      startTime: z.string().nullable(),
+      teamCount: z.number(),
+      rounds: z.number(),
+      budget: z.number(),
+      nominationSeconds: z.number(),
+      pickSeconds: z.number(),
+      orderPublished: z.boolean(),
+      order: z.array(
+        z.object({
+          slot: z.number(),
+          userId: z.string(),
+          ownerName: z.string(),
+          teamName: z.string(),
+        }),
+      ),
+      pickCount: z.number(),
+      picks: z.array(
+        z.object({
+          pickNo: z.number(),
+          round: z.number(),
+          team: z.object({
+            rosterId: z.number(),
+            ownerUid: z.string().nullable(),
+            ownerName: z.string(),
+            teamName: z.string(),
+          }).nullable(),
+          playerUid: z.string().nullable(),
+          sleeperId: z.string(),
+          name: z.string(),
+          position: z.string().nullable(),
+          nflTeam: z.string().nullable(),
+          amount: z.number().nullable(),
+          keeper: z.boolean(),
+        }),
+      ),
+      sleeperUrl: z.string(),
+    })
+    .nullable(),
+  transactionStatus: z.object({
+    recorded: z.number(),
+    completed: z.number(),
+    asOf: z.string(),
+  }),
+  recentTransactions: z.array(
+    z.object({
+      transactionId: z.string(),
+      week: z.number(),
+      type: z.string(),
+      createdAt: z.string(),
+      waiverBid: z.number().nullable(),
+      assets: z.array(
+        z.object({
+          playerUid: z.string().nullable(),
+          sleeperId: z.string(),
+          name: z.string(),
+          position: z.string().nullable(),
+          from: z.object({ rosterId: z.number(), ownerUid: z.string().nullable(), ownerName: z.string(), teamName: z.string() }).nullable(),
+          to: z.object({ rosterId: z.number(), ownerUid: z.string().nullable(), ownerName: z.string(), teamName: z.string() }).nullable(),
+        }),
+      ),
+    }),
+  ),
+  currentWeekLineups: z.array(
+    z.object({
+      rosterId: z.number(),
+      team: z.object({ rosterId: z.number(), ownerUid: z.string().nullable(), ownerName: z.string(), teamName: z.string() }).nullable(),
+      matchupId: z.number().nullable(),
+      points: z.number().nullable(),
+      starters: z.array(
+        z.object({
+          playerUid: z.string().nullable(),
+          sleeperId: z.string(),
+          name: z.string(),
+          position: z.string().nullable(),
+          nflTeam: z.string().nullable(),
+          points: z.number().nullable(),
+        }),
+      ),
+    }),
+  ),
 });
 
 export const HistorySchema = z.object({

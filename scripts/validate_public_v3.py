@@ -49,6 +49,39 @@ def main() -> None:
     assert now["league"]["leagueId"] == "1389343653058609152"
     assert len(now["teams"]) == 8
     assert now["defendingChampion"]["ownerName"] == "Samuel Kirby"
+    assert now["keeperStatus"] == {
+        "maxPerTeam": 2,
+        "submitted": 16,
+        "expected": 16,
+        "teamsComplete": 8,
+    }
+    assert now["draft"]["draftId"] == "1389343653058609153"
+    assert now["draft"]["status"] == "pre_draft"
+    assert now["draft"]["orderPublished"] is False
+    assert now["draft"]["pickCount"] == 0
+    assert now["draft"]["budget"] == 200
+    assert now["transactionStatus"]["recorded"] == 0
+    assert now["recentTransactions"] == []
+    assert now["currentWeekLineups"] == []
+
+    season_2025 = json.loads((PUBLIC / "seasons/2025/index.json").read_text())
+    assert season_2025["meta"]["completeness"] == {
+        "matchups": "complete",
+        "lineups": "complete",
+        "transactions": "complete",
+        "draft": "complete",
+    }
+    facts_2025_root = PUBLIC / "seasons/2025"
+    facts_2025 = json.loads((facts_2025_root / "facts.json").read_text())
+    draft_2025 = json.loads((facts_2025_root / "draft.json").read_text())
+    assert facts_2025["summary"]["lineups"]["teamWeeks"] == 136
+    assert facts_2025["summary"]["transactions"]["completed"] == 551
+    assert max(row["pickCount"] for row in draft_2025["drafts"]) == 152
+    assert all(path.stat().st_size < 500_000 for path in facts_2025_root.rglob("*.json"))
+
+    records = json.loads((PUBLIC / "records/index.json").read_text())
+    assert records["meta"]["excludedSeasons"] == [2022]
+    assert 2025 in records["meta"]["includedSeasons"]
 
     integrity = json.loads((PUBLIC / "integrity/index.json").read_text())
     assert integrity["critical"] == []

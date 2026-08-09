@@ -1,6 +1,6 @@
 {
   "schemaVersion": "3.0.0",
-  "generatedAt": "2026-08-09T16:27:43.365173+00:00",
+  "generatedAt": "2026-08-09T17:15:40.893530+00:00",
   "league": {
     "name": "Tatnall Legacy",
     "firstSeason": 2015,
@@ -85,10 +85,10 @@
       "transactions": "partial"
     },
     "2025": {
-      "draft": "partial",
-      "lineups": "partial",
-      "matchups": "partial",
-      "transactions": "partial"
+      "draft": "complete",
+      "lineups": "complete",
+      "matchups": "complete",
+      "transactions": "complete"
     }
   },
   "paths": {
@@ -96,6 +96,7 @@
     "history": "data/history/index.json",
     "season": "data/seasons/{season}/index.json",
     "seasonMatchups": "data/seasons/{season}/matchups.json",
+    "seasonFacts": "data/seasons/{season}/facts.json",
     "owners": "data/owners/index.json",
     "owner": "data/owners/{ownerUid}.json",
     "players": "data/players/index.json",

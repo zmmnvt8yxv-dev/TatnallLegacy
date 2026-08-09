@@ -1,0 +1,123 @@
+[
+  {
+    "created": 1755377481432,
+    "creators": [
+      "866330097534279680"
+    ],
+    "draft_id": "1262548301656363008",
+    "draft_order": {
+      "1075987804573880320": 5,
+      "1262429321784459264": 6,
+      "1262431325780979712": 1,
+      "1262441208882397184": 8,
+      "1262993751630938112": 7,
+      "725035808507097088": 3,
+      "866330097534279680": 2,
+      "925111291306483712": 4
+    },
+    "last_message_id": "1265065653832794112",
+    "last_message_time": 1755977664958,
+    "last_picked": 1755977664317,
+    "league_id": "1262418074540195841",
+    "metadata": {
+      "description": "",
+      "highest_offer": "1",
+      "hovered_player_id": "9494",
+      "last_action_at": "1755977663464",
+      "league_type": "1",
+      "name": "Tatnall Class of 2018",
+      "nominated_player_id": "9494",
+      "nominating_slot": "8",
+      "nominating_user_id": "1262441208882397184",
+      "offering_slot": "8",
+      "offering_user_id": "1262441208882397184",
+      "paused_pick_timer": "28",
+      "scoring_type": "2qb",
+      "show_team_names": "0"
+    },
+    "season": "2025",
+    "season_type": "regular",
+    "settings": {
+      "alpha_sort": 0,
+      "autopause_enabled": 0,
+      "autopause_end_time": 900,
+      "autopause_start_time": 180,
+      "autostart": 0,
+      "budget": 200,
+      "cpu_autopick": 1,
+      "enforce_position_limits": 1,
+      "nomination_timer": 60,
+      "pick_timer": 30,
+      "player_type": 0,
+      "reversal_round": 0,
+      "rounds": 19,
+      "slots_bn": 6,
+      "slots_def": 1,
+      "slots_flex": 2,
+      "slots_k": 1,
+      "slots_qb": 2,
+      "slots_rb": 3,
+      "slots_te": 1,
+      "slots_wr": 3,
+      "teams": 8
+    },
+    "sport": "nfl",
+    "start_time": 1755966146565,
+    "status": "complete",
+    "type": "auction"
+  },
+  {
+    "created": 1755346433030,
+    "creators": [
+      "866330097534279680"
+    ],
+    "draft_id": "1262418075269988352",
+    "draft_order": {
+      "1262429321784459264": 5,
+      "1262431325780979712": 1,
+      "866330097534279680": 2,
+      "925111291306483712": 4
+    },
+    "last_message_id": "1262418075269988352",
+    "last_message_time": 1755346433030,
+    "last_picked": null,
+    "league_id": "1262418074540195841",
+    "metadata": {
+      "description": "",
+      "league_type": "1",
+      "name": "Tatnall Class of 2018",
+      "scoring_type": "2qb",
+      "show_team_names": "0"
+    },
+    "season": "2025",
+    "season_type": "regular",
+    "settings": {
+      "alpha_sort": 0,
+      "autopause_enabled": 0,
+      "autopause_end_time": 900,
+      "autopause_start_time": 180,
+      "autostart": 0,
+      "budget": 200,
+      "cpu_autopick": 1,
+      "enforce_position_limits": 1,
+      "nomination_timer": 60,
+      "pick_timer": 120,
+      "player_type": 0,
+      "reversal_round": 0,
+      "rounds": 19,
+      "slots_bn": 6,
+      "slots_def": 1,
+      "slots_flex": 2,
+      "slots_k": 1,
+      "slots_qb": 2,
+      "slots_rb": 3,
+      "slots_te": 1,
+      "slots_wr": 3,
+      "teams": 8
+    },
+    "sport": "nfl",
+    "start_time": 1755964800000,
+    "status": "complete",
+    "type": "auction"
+  }
+]

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-09T15:51:02.823682+00:00",
+  "generated_at": "2026-08-09T17:15:02.661182+00:00",
   "tables": {
     "seasons": {
       "path": "data/normalized/seasons.parquet",
@@ -116,45 +116,117 @@
         "is_corrected"
       ]
     },
-    "players": {
-      "path": "data/normalized/players.parquet",
-      "rows": 20068,
+    "lineups": {
+      "path": "data/normalized/lineups.parquet",
+      "rows": 136,
       "fields": [
-        "player_uid",
-        "display_name",
-        "first_name",
-        "last_name",
-        "position",
-        "nfl_team",
-        "birth_date",
-        "college",
-        "height",
-        "weight",
-        "years_experience",
-        "active",
-        "identity_key",
-        "source_record_count"
-      ]
-    },
-    "player_ids": {
-      "path": "data/normalized/player_ids.parquet",
-      "rows": 36254,
-      "fields": [
-        "player_uid",
-        "id_type",
-        "id_value",
-        "valid_from",
-        "valid_to",
-        "confidence",
+        "lineup_uid",
+        "season",
+        "week",
+        "team_season_uid",
+        "matchup_uid",
+        "platform_roster_id",
+        "points",
+        "starter_count",
+        "rostered_count",
+        "is_playoff_week",
+        "status",
         "source"
       ]
     },
-    "player_source_records": {
-      "path": "data/normalized/player_source_records.parquet",
-      "rows": 20250,
+    "lineup_entries": {
+      "path": "data/normalized/lineup_entries.parquet",
+      "rows": 2794,
       "fields": [
-        "source_player_id",
+        "lineup_entry_uid",
+        "lineup_uid",
+        "season",
+        "week",
+        "team_season_uid",
         "player_uid",
+        "sleeper_player_id",
+        "roster_slot",
+        "starter_index",
+        "started",
+        "fantasy_points",
+        "source"
+      ]
+    },
+    "transactions": {
+      "path": "data/normalized/transactions.parquet",
+      "rows": 727,
+      "fields": [
+        "transaction_uid",
+        "season",
+        "week",
+        "endpoint_week",
+        "transaction_type",
+        "status",
+        "created_at_ms",
+        "status_updated_at_ms",
+        "creator_user_id",
+        "platform_roster_ids",
+        "team_season_uids",
+        "waiver_bid",
+        "source_transaction_id",
+        "source"
+      ]
+    },
+    "transaction_assets": {
+      "path": "data/normalized/transaction_assets.parquet",
+      "rows": 1220,
+      "fields": [
+        "transaction_asset_uid",
+        "transaction_uid",
+        "season",
+        "asset_type",
+        "asset_id",
+        "player_uid",
+        "from_team_season_uid",
+        "to_team_season_uid",
+        "amount",
+        "metadata_json",
+        "source"
+      ]
+    },
+    "drafts": {
+      "path": "data/normalized/drafts.parquet",
+      "rows": 2,
+      "fields": [
+        "draft_uid",
+        "season",
+        "platform_draft_id",
+        "status",
+        "draft_type",
+        "start_time_ms",
+        "created_at_ms",
+        "team_count",
+        "rounds",
+        "budget",
+        "pick_count",
+        "settings_json",
+        "metadata_json",
+        "source"
+      ]
+    },
+    "draft_picks": {
+      "path": "data/normalized/draft_picks.parquet",
+      "rows": 152,
+      "fields": [
+        "draft_pick_uid",
+        "draft_uid",
+        "season",
+        "pick_no",
+        "round",
+        "draft_slot",
+        "team_season_uid",
+        "platform_roster_id",
+        "picked_by_user_id",
+        "player_uid",
+        "sleeper_player_id",
+        "nfl_team_at_draft",
+        "amount",
+        "is_keeper",
         "source"
       ]
     }

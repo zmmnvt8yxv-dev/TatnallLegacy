@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "3.0.0",
-    "generatedAt": "2026-08-09T16:27:43.365173+00:00"
+    "generatedAt": "2026-08-09T17:15:40.893530+00:00"
   },
   "status": "warning",
   "critical": [],
@@ -15,8 +15,7 @@
     "2021: non-complete datasets: transactions",
     "2022: non-complete datasets: lineups, matchups, transactions",
     "2023: non-complete datasets: transactions",
-    "2024: non-complete datasets: transactions",
-    "2025: non-complete datasets: draft, lineups, matchups, transactions"
+    "2024: non-complete datasets: transactions"
   ],
   "coverage": {
     "2015": {
@@ -80,10 +79,10 @@
       "transactions": "partial"
     },
     "2025": {
-      "draft": "partial",
-      "lineups": "partial",
-      "matchups": "partial",
-      "transactions": "partial"
+      "draft": "complete",
+      "lineups": "complete",
+      "matchups": "complete",
+      "transactions": "complete"
     }
   },
   "corrections": [
@@ -1686,7 +1685,6 @@
     ]
   },
   "openQuestions": [
-    "Confirm 2025 third-place result if the league recognizes one.",
     "Verify ESPN-era scoring settings before recomputing historical custom player points."
   ]
 }

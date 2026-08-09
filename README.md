@@ -8,7 +8,7 @@ The site combines a canonical league archive with a live Sleeper-era dashboard:
 
 - accepted champions, finalists, playoff seeds, standings, and matchup history;
 - stable owner, franchise, team-season, matchup, and player identities;
-- current Sleeper league metadata, users, rosters, drafts, matchups, and transactions;
+- current Sleeper league metadata, users, rosters, keepers, drafts, matchups, and transactions;
 - precomputed owner careers, rivalries, records, search, and data-health reporting;
 - player profiles backed by league and NFL statistics;
 - explicit coverage states for `complete`, `partial`, `unavailable`, `unknown`,
@@ -45,6 +45,8 @@ The layers have distinct jobs:
 The legacy v2 manifest remains available during migration. New archive pages use
 `public/data/manifest.v3.json` and domain-oriented resources under `now/`,
 `history/`, `seasons/`, `owners/`, `players/`, `records/`, and `integrity/`.
+The finalized 2025 facts are split into week-sized lineup and transaction files
+plus a dedicated auction board, so the complete archive remains fast to browse.
 
 ## Local setup
 
@@ -115,7 +117,8 @@ npm run build
 Critical invariants include exactly one champion per completed season, valid
 foreign keys, no duplicate canonical IDs, winner/score agreement unless audited,
 the permanent 2022 result and seeds, distinct Lamar Jackson QB/CB identities,
-and complete manifest v3 resources.
+136 final 2025 team-week lineups, 551 completed 2025 transactions, 152 auction
+purchases, and complete manifest v3 resources.
 
 ## Current-season refresh and deployment
 
@@ -134,9 +137,12 @@ configured; cookies and credentials must never be committed.
   historical NFL points or value metrics are recalculated.
 - 2015–2017 lineup and transaction exports are unavailable.
 - Several later transaction exports are partial.
-- 2022 and 2025 matchup exports are partial, so they are excluded from generated
+- The 2022 matchup export remains partial, so it is excluded from generated
   matchup records and head-to-head totals.
-- The 2025 third-place result remains unresolved.
+- The completed 2025 Sleeper snapshot is canonical for matchups, lineups,
+  transactions, the auction draft, and Carl Marvin's third-place finish.
+- The 2026 draft order has not yet been published by Sleeper. All 16 submitted
+  keepers and the scheduled auction details are available without inventing an order.
 - Existing player-detail pages still use compatibility datasets while the
   player-centric v3 profile publisher is completed.
 

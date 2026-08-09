@@ -124,8 +124,8 @@ jobs:
 
       - name: Build and validate canonical archive
         run: |
-          python scripts/normalize/canonical_history.py
           python scripts/normalize/player_identity.py
+          python scripts/normalize/canonical_history.py
           python scripts/publish/web_data.py
           python scripts/validate_canonical_outputs.py
           python scripts/validate_public_v3.py

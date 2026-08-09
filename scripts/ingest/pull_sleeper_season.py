@@ -42,12 +42,26 @@ def pull_season(
     state = client.get("state/nfl")
     league = client.league(league_id)
 
+    drafts = client.get(f"league/{league_id}/drafts") or []
+    draft_picks: dict[str, Any] = {}
+    draft_traded_picks: dict[str, Any] = {}
+    for draft in drafts:
+        if not isinstance(draft, dict) or not draft.get("draft_id"):
+            continue
+        draft_id = str(draft["draft_id"])
+        draft_picks[draft_id] = client.get(f"draft/{draft_id}/picks") or []
+        draft_traded_picks[draft_id] = (
+            client.get(f"draft/{draft_id}/traded_picks") or []
+        )
+
     resources = {
         "state": state,
         "league": league,
         "users": client.get(f"league/{league_id}/users"),
         "rosters": client.get(f"league/{league_id}/rosters"),
-        "drafts": client.get(f"league/{league_id}/drafts"),
+        "drafts": drafts,
+        "draft_picks": draft_picks,
+        "draft_traded_picks": draft_traded_picks,
         "traded_picks": client.get(f"league/{league_id}/traded_picks"),
         "winners_bracket": client.get(
             f"league/{league_id}/winners_bracket", optional=True
@@ -61,8 +75,14 @@ def pull_season(
 
     status = str(league.get("status") or "")
     state_week = int((state or {}).get("week") or 1)
+    league_settings = league.get("settings") or {}
+    league_week = int(
+        league_settings.get("last_scored_leg")
+        or league_settings.get("leg")
+        or state_week
+    )
     if status == "complete":
-        max_week = 18
+        max_week = league_week
     elif status in {"in_season", "post_season"}:
         max_week = max(1, state_week)
     else:
@@ -88,14 +108,20 @@ def pull_season(
         "previous_league_id": resolved.previous_league_id,
         "resolution_strategy": resolved.strategy,
         "league_status": resolved.status,
-        "season_phase": (state or {}).get("season_type"),
-        "current_week": state_week,
+        "season_phase": "complete" if status == "complete" else (state or {}).get("season_type"),
+        "current_week": max_week if status == "complete" else state_week,
         "resources": {
             name: {
                 "path": f"{name}.json",
                 "records": (
                     sum(len(rows) for rows in value.values())
-                    if name in {"matchups", "transactions"}
+                    if name
+                    in {
+                        "matchups",
+                        "transactions",
+                        "draft_picks",
+                        "draft_traded_picks",
+                    }
                     else len(value)
                     if isinstance(value, list)
                     else 1
