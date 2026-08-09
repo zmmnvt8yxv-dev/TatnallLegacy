@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import Layout from "./components/Layout.jsx";
 import { ArchiveLoading } from "./components/v3/ArchiveUI";
+import { features } from "./config/features";
 import { initAnalytics, trackPageView } from "./utils/analytics";
 
 const NowPage = lazy(() => import("./pages/v3/NowPage"));
@@ -52,9 +53,9 @@ export default function App() {
               <Route path="/history" element={<HistoryPage />} />
               <Route path="/matchups" element={<MatchupsPage />} />
               <Route path="/matchups/:season/:week/:matchupId" element={<MatchupDetailPage />} />
-              <Route path="/players/:playerId" element={<PlayerIntelligencePage />} />
+              <Route path="/players/:playerId" element={features.playerIntelligenceV1 ? <PlayerIntelligencePage /> : <Navigate to="/players" replace />} />
               <Route path="/players" element={<PlayersDirectoryPage />} />
-              <Route path="/war-room" element={<WarRoomPage />} />
+              <Route path="/war-room" element={features.playerIntelligenceV1 ? <WarRoomPage /> : <Navigate to="/" replace />} />
               <Route path="/transactions" element={<TransactionsPage />} />
               <Route path="/standings" element={<StandingsPage />} />
               <Route path="/teams" element={<TeamsPage />} />

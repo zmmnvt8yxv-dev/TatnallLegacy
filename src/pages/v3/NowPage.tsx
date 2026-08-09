@@ -3,6 +3,7 @@ import { ArrowUpRight, CalendarClock, CheckCircle2, Crown, Database, Gavel, Lock
 import { Link } from "react-router-dom";
 import PageTransition from "../../components/PageTransition.jsx";
 import { ArchiveError, ArchiveLoading, Eyebrow, OwnerLink, formatFreshness } from "../../components/v3/ArchiveUI";
+import { features } from "../../config/features";
 import { useEditorial, useHistory, useNow } from "../../data/v3/hooks";
 
 export default function NowPage(): React.ReactElement {
@@ -41,7 +42,7 @@ export default function NowPage(): React.ReactElement {
           <p>{editorial.data.lead.commissionerNote || editorial.data.lead.dek}</p>
           <div className="now-hero__actions">
             <Link to="/history" className="archive-button archive-button--primary">Explore the archive <ArrowUpRight /></Link>
-            <Link to="/war-room" className="archive-button">Enter War Room</Link>
+            {features.playerIntelligenceV1 ? <Link to="/war-room" className="archive-button">Enter War Room</Link> : null}
           </div>
           <div className="freshness"><Database /> Sleeper snapshot · {formatFreshness(data.meta.sourceUpdatedAt.sleeper)}</div>
         </div>
