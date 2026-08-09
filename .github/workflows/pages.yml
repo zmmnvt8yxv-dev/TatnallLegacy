@@ -38,10 +38,19 @@ jobs:
           python-version: "3.12"
 
       - name: Install Python dependencies
-        run: pip install pandas pyarrow requests pyyaml pytest
+        run: pip install -r requirements-data.txt
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Refresh current Sleeper data
+        run: npm run data:ingest
+
+      - name: Build canonical and public v3 data
+        run: |
+          npm run data:normalize
+          npm run data:derive
+          npm run data:publish
 
       - name: Run tests
         run: |
@@ -89,7 +98,7 @@ jobs:
         run: python3 scripts/build_site_data_manifest.py
 
       - name: Validate published data
-        run: python3 scripts/validate_manifest.py
+        run: npm run data:validate
 
       - name: Build site
         run: npm run build
