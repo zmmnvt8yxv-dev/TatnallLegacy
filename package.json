@@ -10,6 +10,7 @@
     "build": "vite build",
     "preview": "vite preview --strictPort --port 4173 --host",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:data": "python3 -m pytest tests/python",
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
   },

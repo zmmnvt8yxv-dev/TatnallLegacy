@@ -38,10 +38,15 @@ jobs:
           python-version: "3.12"
 
       - name: Install Python dependencies
-        run: pip install pandas pyarrow requests
+        run: pip install pandas pyarrow requests pyyaml pytest
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Run tests
+        run: |
+          npm test -- --runInBand
+          npm run test:data
 
       - name: Fetch data_raw from data repo
         id: datarepo
@@ -82,6 +87,9 @@ jobs:
 
       - name: Refresh manifest
         run: python3 scripts/build_site_data_manifest.py
+
+      - name: Validate published data
+        run: python3 scripts/validate_manifest.py
 
       - name: Build site
         run: npm run build

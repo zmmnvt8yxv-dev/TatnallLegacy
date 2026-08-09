@@ -5,6 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLIC_DIR = ROOT / "public"
 DATA_DIR = ROOT / "public" / "data"
 MANIFEST_PATH = DATA_DIR / "manifest.json"
 
@@ -19,6 +20,13 @@ def resolve_template(template: str, **params) -> str:
     for key, value in params.items():
         path = path.replace(f"{{{key}}}", str(value))
     return path
+
+
+def public_path(path: str) -> Path:
+    relative = Path(path)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise ValueError(f"Manifest target must be a safe public-relative path: {path}")
+    return PUBLIC_DIR / relative
 
 
 def main() -> int:
@@ -42,23 +50,23 @@ def main() -> int:
     # all_time.json
     all_time_path = paths.get("allTime")
     if all_time_path:
-        if not (DATA_DIR / all_time_path).exists():
+        if not public_path(all_time_path).exists():
             missing.append(all_time_path)
 
     # season summaries + weekly chunks + transactions
     for season in seasons:
         season_path = resolve_template(paths.get("seasonSummary", ""), season=season)
-        if season_path and not (DATA_DIR / season_path).exists():
+        if season_path and not public_path(season_path).exists():
             missing.append(season_path)
 
         txn_path = resolve_template(paths.get("transactions", ""), season=season)
-        if txn_path and not (DATA_DIR / txn_path).exists():
+        if txn_path and not public_path(txn_path).exists():
             missing.append(txn_path)
 
         weeks = weeks_by_season.get(str(season)) or weeks_by_season.get(season) or []
         for week in weeks:
             weekly_path = resolve_template(paths.get("weeklyChunk", ""), season=season, week=week)
-            if weekly_path and not (DATA_DIR / weekly_path).exists():
+            if weekly_path and not public_path(weekly_path).exists():
                 missing.append(weekly_path)
 
     # Validate every template path with available params
@@ -69,20 +77,20 @@ def main() -> int:
                     weeks = weeks_by_season.get(str(season)) or weeks_by_season.get(season) or []
                     for week in weeks:
                         resolved = resolve_template(template, season=season, week=week)
-                        if resolved and not (DATA_DIR / resolved).exists():
+                        if resolved and not public_path(resolved).exists():
                             missing.append(resolved)
                 else:
                     resolved = resolve_template(template, season=season)
-                    if resolved and not (DATA_DIR / resolved).exists():
+                    if resolved and not public_path(resolved).exists():
                         missing.append(resolved)
         elif "{week}" in template:
             # week without season is not expected, but validate literal if present
             resolved = resolve_template(template)
-            if resolved and not (DATA_DIR / resolved).exists():
+            if resolved and not public_path(resolved).exists():
                 missing.append(resolved)
         else:
             resolved = resolve_template(template)
-            if resolved and not (DATA_DIR / resolved).exists():
+            if resolved and not public_path(resolved).exists():
                 missing.append(resolved)
 
     if missing:

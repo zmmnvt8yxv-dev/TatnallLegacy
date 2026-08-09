@@ -1,0 +1,28 @@
+{
+  "seasons": [
+    {
+      "season": 2022,
+      "status": "complete",
+      "champion_team_season_uid": "b9cca909-47ec-521f-8898-694a89b6270c",
+      "runner_up_team_season_uid": "118b89cf-237b-5349-9e55-418bb3b00b19",
+      "champion_seed": 2,
+      "runner_up_seed": 5
+    }
+  ],
+  "team_seasons": [
+    {
+      "team_season_uid": "118b89cf-237b-5349-9e55-418bb3b00b19",
+      "season": 2022,
+      "team_name": "King of January",
+      "owner_name": "Conner Malley",
+      "playoff_seed": null
+    },
+    {
+      "team_season_uid": "b9cca909-47ec-521f-8898-694a89b6270c",
+      "season": 2022,
+      "team_name": "King of December",
+      "owner_name": "Carl Marvin",
+      "playoff_seed": null
+    }
+  ]
+}
