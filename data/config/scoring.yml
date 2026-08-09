@@ -1,0 +1,90 @@
+schema_version: "1.0.0"
+
+eras:
+  - era_id: sleeper-2025-present
+    start_season: 2025
+    end_season: null
+    source: sleeper_league_settings
+    source_league_ids:
+      - "1262418074540195841"
+      - "1389343653058609152"
+    verified_at: "2026-08-09"
+    notes: The 2025 and 2026 Sleeper APIs return identical scoring settings.
+    settings:
+      blk_kick: 2.0
+      bonus_pass_yd_300: 2.0
+      bonus_pass_yd_400: 4.0
+      bonus_rec_yd_100: 2.0
+      bonus_rec_yd_200: 4.0
+      bonus_rush_yd_100: 2.0
+      bonus_rush_yd_200: 4.0
+      def_st_ff: 1.0
+      def_st_fum_rec: 1.0
+      def_st_td: 6.0
+      def_td: 6.0
+      ff: 0.0
+      fgm_0_19: 3.0
+      fgm_20_29: 3.0
+      fgm_30_39: 3.0
+      fgm_40_49: 4.0
+      fgm_50_59: 0.0
+      fgm_50p: 5.0
+      fgm_60p: 0.0
+      fgmiss: -1.0
+      fgmiss_0_19: -2.0
+      fgmiss_20_29: -2.0
+      fgmiss_30_39: -2.0
+      fgmiss_40_49: -1.0
+      fgmiss_50p: 0.0
+      fum: 0.0
+      fum_lost: -2.0
+      fum_rec: 2.0
+      fum_rec_td: 6.0
+      int: 2.0
+      pass_2pt: 2.0
+      pass_int: -1.0
+      pass_td: 4.0
+      pass_td_40p: 1.0
+      pass_td_50p: 1.0
+      pass_yd: 0.04
+      pts_allow_0: 5.0
+      pts_allow_14_20: 1.0
+      pts_allow_1_6: 4.0
+      pts_allow_21_27: 0.0
+      pts_allow_28_34: -1.0
+      pts_allow_35p: -3.0
+      pts_allow_7_13: 3.0
+      rec: 0.5
+      rec_2pt: 2.0
+      rec_td: 6.0
+      rec_td_40p: 1.0
+      rec_td_50p: 1.0
+      rec_yd: 0.1
+      rush_2pt: 2.0
+      rush_td: 6.0
+      rush_td_40p: 1.0
+      rush_td_50p: 1.0
+      rush_yd: 0.1
+      sack: 1.0
+      safe: 2.0
+      st_ff: 1.0
+      st_fum_rec: 1.0
+      st_td: 6.0
+      xpm: 1.0
+      xpmiss: -2.0
+      yds_allow_0_100: 5.0
+      yds_allow_100_199: 3.0
+      yds_allow_200_299: 2.0
+      yds_allow_300_349: 0.0
+      yds_allow_350_399: -1.0
+      yds_allow_400_449: -3.0
+      yds_allow_450_499: -5.0
+      yds_allow_500_549: -6.0
+      yds_allow_550p: -7.0
+
+historical_status:
+  seasons: 2015-2024
+  status: unresolved
+  reason: >-
+    Existing YAML and active scripts disagree. Historical analytics continue to
+    use provider fantasy points until ESPN-era scoring settings are verified.

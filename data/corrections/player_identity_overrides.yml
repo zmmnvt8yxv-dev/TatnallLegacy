@@ -1,0 +1,41 @@
+schema_version: "1.0.0"
+
+corrections:
+  - correction_id: player-identity-lamar-jackson-qb-espn-001
+    type: player_identity
+    season: 2026
+    target:
+      dataset: players
+      match:
+        source_player_id: "4881"
+    field: identifiers.espn_id
+    old_value: "4034849"
+    new_value: "3916387"
+    reason: >-
+      The legacy registry assigned the ESPN ID for defensive back Lamar Jackson
+      to the Baltimore quarterback. Sleeper and ESPN identify the quarterback as
+      ESPN athlete 3916387.
+    source_note: Sleeper players API and ESPN athlete index, verified 2026-08-09.
+    entered_at: "2026-08-09"
+
+  - correction_id: player-identity-lamar-jackson-cb-espn-001
+    type: player_identity
+    season: 2026
+    target:
+      dataset: players
+      match:
+        source_player_id: "6994"
+    field: identifiers.espn_id
+    old_value: "4034849.0"
+    new_value: "4034849"
+    reason: Normalize the defensive back's ESPN ID without float formatting.
+    source_note: ESPN athlete index, verified 2026-08-09.
+    entered_at: "2026-08-09"
+
+name_fallbacks:
+  - normalized_name: lamar jackson
+    sleeper_id: "4881"
+    context: fantasy_lineup
+    reason: >-
+      Name-only Tatnall lineup rows refer to the fantasy quarterback; the
+      defensive back was not a rostered fantasy position in this league.

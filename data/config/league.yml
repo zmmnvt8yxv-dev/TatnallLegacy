@@ -17,19 +17,28 @@ platforms:
   sleeper:
     league_ids:
       "2025": "1262418074540195841"
+      "2026": "1389343653058609152"
 
 current_season:
   season: 2026
   platform: sleeper
-  league_id: null
+  league_id: "1389343653058609152"
+  season_phase: preseason
+  current_week: 1
   resolution:
-    strategy: sleeper_league_chain
+    strategy: sleeper_previous_league_match
     previous_season: 2025
-    require_manual_override_if_unresolved: true
+    previous_league_id: "1262418074540195841"
+    resolved_at: "2026-08-09"
+    require_manual_override_if_unresolved: false
 
 identity:
   strategy: uuid5
   namespace_url: https://github.com/zmmnvt8yxv-dev/TatnallLegacy
   namespace_uuid: 03f007fb-1dc9-562f-85ae-6f82257f50eb
   keys:
+    owner: "owner:{owner_key}"
+    franchise: "franchise:{franchise_key}"
+    player: "player:{player_key}"
     team_season: "team-season:{platform}:{league_id}:{season}:{platform_team_id}"
+    matchup: "matchup:{platform}:{league_id}:{season}:{week}:{team_pair}"

@@ -1,0 +1,118 @@
+schema_version: "1.0.0"
+
+# Canonical people. Aliases are explicit evidence mappings; display names are
+# never used as primary keys by the normalizer.
+owners:
+  - owner_key: carl_marvin
+    canonical_name: Carl Marvin
+    active: true
+    aliases:
+      names: [Carl Marvin, Stephen Marvin]
+      espn_usernames: [sdmarvin713]
+      espn_member_ids: ["{32C77D09-4BAE-4A0E-A1D8-0A710B6B4D14}"]
+      sleeper_usernames: [cmarvin713]
+      sleeper_user_ids: ["866330097534279680"]
+
+  - owner_key: john_downs
+    canonical_name: John Downs
+    active: true
+    aliases:
+      names: [John Downs]
+      espn_usernames: [John.downs123]
+      espn_member_ids: ["{ED86A238-7B41-4E77-86A2-387B41BE773A}"]
+      sleeper_usernames: [downsliquidity]
+      sleeper_user_ids: ["1075987804573880320"]
+
+  - owner_key: edward_saad
+    canonical_name: Edward Saad
+    active: true
+    aliases:
+      names: [Edward Saad]
+      espn_usernames: [Edward3864]
+      espn_member_ids: ["{D6C6DA64-7369-44C6-86DA-64736964C634}"]
+      sleeper_usernames: [PhillyPhilly709]
+      sleeper_user_ids: ["725035808507097088"]
+
+  - owner_key: conner_malley
+    canonical_name: Conner Malley
+    active: true
+    aliases:
+      names: [Conner Malley]
+      espn_usernames: [connerandfinn]
+      espn_member_ids: ["{68A1A8C5-2E56-4A19-A60D-D7BB78512169}"]
+      sleeper_usernames: [conner27lax]
+      sleeper_user_ids: ["1262431325780979712"]
+
+  - owner_key: max_hardin
+    canonical_name: Max Hardin
+    active: false
+    aliases:
+      names: [Max Hardin]
+      espn_usernames: [mhardi5674696]
+
+  - owner_key: jackie_sheehy
+    canonical_name: Jackie Sheehy
+    active: false
+    aliases:
+      names: [Jackie Sheehy, Jack Sheehy]
+      espn_usernames: [jksheehy]
+
+  - owner_key: brendan_hanrahan
+    canonical_name: Brendan Hanrahan
+    active: false
+    aliases:
+      names: [Brendan Hanrahan]
+      espn_usernames: [bhanrahan7]
+      espn_member_ids: ["{29BF7227-B3CA-4FFD-830F-93443771ED0E}"]
+
+  - owner_key: samuel_kirby
+    canonical_name: Samuel Kirby
+    active: true
+    aliases:
+      names: [Samuel Kirby]
+      sleeper_usernames: [LbmBets]
+      sleeper_user_ids: ["925111291306483712"]
+
+  - owner_key: jeff_crossland
+    canonical_name: Jeff Crossland
+    active: true
+    aliases:
+      names: [Jeff Crossland, Jeffrey Crossland]
+      espn_usernames: [Jefe6700]
+      espn_member_ids: ["{626214E1-C295-402C-A214-E1C295902C88}"]
+      sleeper_usernames: [Junktion]
+      sleeper_user_ids: ["1262993751630938112"]
+
+  - owner_key: jared_duncan
+    canonical_name: Jared Duncan
+    active: true
+    aliases:
+      names: [Jared Duncan]
+      espn_usernames: [jdunca5228572]
+      espn_member_ids: ["{8486E9CC-9753-4A5F-84CB-6C20B865800F}"]
+      sleeper_usernames: [jawnwick13]
+      sleeper_user_ids: ["1262429321784459264"]
+
+  - owner_key: jalen_del_rosario
+    canonical_name: Jalen Del Rosario
+    active: false
+    aliases:
+      names: [Jalen Del Rosario]
+      espn_usernames: [jalendelrosario, jalendelrosario@comcast.net]
+
+  - owner_key: matt_maloy
+    canonical_name: Matt Maloy
+    active: false
+    aliases:
+      names: [Matt Maloy]
+      espn_usernames: [mattmaloy99]
+
+  - owner_key: roy_lee
+    canonical_name: Roy Lee
+    active: true
+    aliases:
+      names: [Roy Lee]
+      espn_usernames: [espn92085473]
+      espn_member_ids: ["{DB480AF7-0202-4D27-9E9E-066C3D10A1B0}"]
+      sleeper_usernames: [roylee6]
+      sleeper_user_ids: ["1262441208882397184"]

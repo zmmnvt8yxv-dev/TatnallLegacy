@@ -1,0 +1,37 @@
+schema_version: "1.0.0"
+
+# ESPN exports preserve eight league slots. Sleeper reordered the same active
+# franchises in 2025, so that cross-platform mapping is explicit here.
+franchises:
+  - franchise_key: slot_1
+    canonical_name: Franchise 1
+    espn_team_slot: 1
+    sleeper_roster_ids: {"2025": 1, "2026": 1}
+  - franchise_key: slot_2
+    canonical_name: Franchise 2
+    espn_team_slot: 2
+    sleeper_roster_ids: {"2025": 7, "2026": 7}
+  - franchise_key: slot_3
+    canonical_name: Franchise 3
+    espn_team_slot: 3
+    sleeper_roster_ids: {"2025": 6, "2026": 6}
+  - franchise_key: slot_4
+    canonical_name: Franchise 4
+    espn_team_slot: 4
+    sleeper_roster_ids: {"2025": 4, "2026": 4}
+  - franchise_key: slot_5
+    canonical_name: Franchise 5
+    espn_team_slot: 5
+    sleeper_roster_ids: {"2025": 3, "2026": 3}
+  - franchise_key: slot_6
+    canonical_name: Franchise 6
+    espn_team_slot: 6
+    sleeper_roster_ids: {"2025": 8, "2026": 8}
+  - franchise_key: slot_7
+    canonical_name: Franchise 7
+    espn_team_slot: 7
+    sleeper_roster_ids: {"2025": 2, "2026": 2}
+  - franchise_key: slot_8
+    canonical_name: Franchise 8
+    espn_team_slot: 8
+    sleeper_roster_ids: {"2025": 5, "2026": 5}

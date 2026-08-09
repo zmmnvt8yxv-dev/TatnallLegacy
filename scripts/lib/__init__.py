@@ -41,3 +41,8 @@ __all__ = [
     "clear_cache",
     "PlayerLookup",
 ]
+"""Shared pipeline helpers."""
+
+from .canonical_ids import CanonicalIdError, CanonicalIds
+
+__all__ = ["CanonicalIdError", "CanonicalIds"]

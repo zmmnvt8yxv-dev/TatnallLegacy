@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "retrieved_at": "2026-08-09T15:44:59.444554+00:00",
+  "season": 2026,
+  "league_id": "1389343653058609152",
+  "previous_league_id": "1262418074540195841",
+  "resolution_strategy": "configured_and_validated",
+  "league_status": "pre_draft",
+  "season_phase": "pre",
+  "current_week": 1,
+  "resources": {
+    "state": {
+      "path": "state.json",
+      "records": 1
+    },
+    "league": {
+      "path": "league.json",
+      "records": 1
+    },
+    "users": {
+      "path": "users.json",
+      "records": 8
+    },
+    "rosters": {
+      "path": "rosters.json",
+      "records": 8
+    },
+    "drafts": {
+      "path": "drafts.json",
+      "records": 1
+    },
+    "traded_picks": {
+      "path": "traded_picks.json",
+      "records": 0
+    },
+    "winners_bracket": {
+      "path": "winners_bracket.json",
+      "records": 7
+    },
+    "losers_bracket": {
+      "path": "losers_bracket.json",
+      "records": 1
+    },
+    "matchups": {
+      "path": "matchups.json",
+      "records": 0
+    },
+    "transactions": {
+      "path": "transactions.json",
+      "records": 0
+    }
+  }
+}

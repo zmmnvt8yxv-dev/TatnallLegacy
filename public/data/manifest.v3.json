@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "3.0.0",
+  "generatedAt": "2026-08-09T16:27:43.365173+00:00",
+  "league": {
+    "name": "Tatnall Legacy",
+    "firstSeason": 2015,
+    "currentSeason": 2026,
+    "currentWeek": 1,
+    "seasonPhase": "preseason",
+    "leaguePlatform": "sleeper",
+    "leagueId": "1389343653058609152"
+  },
+  "seasons": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "coverage": {
+    "2015": {
+      "draft": "complete",
+      "lineups": "unavailable",
+      "matchups": "complete",
+      "transactions": "unavailable"
+    },
+    "2016": {
+      "draft": "complete",
+      "lineups": "unavailable",
+      "matchups": "complete",
+      "transactions": "unavailable"
+    },
+    "2017": {
+      "draft": "complete",
+      "lineups": "unavailable",
+      "matchups": "complete",
+      "transactions": "unavailable"
+    },
+    "2018": {
+      "draft": "complete",
+      "lineups": "complete",
+      "matchups": "complete",
+      "transactions": "partial"
+    },
+    "2019": {
+      "draft": "complete",
+      "lineups": "complete",
+      "matchups": "complete",
+      "transactions": "partial"
+    },
+    "2020": {
+      "draft": "complete",
+      "lineups": "complete",
+      "matchups": "complete",
+      "transactions": "partial"
+    },
+    "2021": {
+      "draft": "complete",
+      "lineups": "complete",
+      "matchups": "complete",
+      "transactions": "partial"
+    },
+    "2022": {
+      "draft": "complete",
+      "lineups": "partial",
+      "matchups": "partial",
+      "transactions": "partial"
+    },
+    "2023": {
+      "draft": "complete",
+      "lineups": "complete",
+      "matchups": "complete",
+      "transactions": "partial"
+    },
+    "2024": {
+      "draft": "complete",
+      "lineups": "complete",
+      "matchups": "complete",
+      "transactions": "partial"
+    },
+    "2025": {
+      "draft": "partial",
+      "lineups": "partial",
+      "matchups": "partial",
+      "transactions": "partial"
+    }
+  },
+  "paths": {
+    "current": "data/now/index.json",
+    "history": "data/history/index.json",
+    "season": "data/seasons/{season}/index.json",
+    "seasonMatchups": "data/seasons/{season}/matchups.json",
+    "owners": "data/owners/index.json",
+    "owner": "data/owners/{ownerUid}.json",
+    "players": "data/players/index.json",
+    "records": "data/records/index.json",
+    "search": "data/search/index.json",
+    "integrity": "data/integrity/index.json"
+  }
+}

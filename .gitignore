@@ -38,6 +38,10 @@ audit/
 *.csv
 *.bak
 
+# Canonical Parquet outputs are deliberately versioned: they are the compact,
+# reproducible league-truth layer, not disposable bulk exports.
+!data/normalized/*.parquet
+
 # -------------------------
 # Python / virtual env
 # -------------------------

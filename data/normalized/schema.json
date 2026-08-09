@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-09T15:51:02.823682+00:00",
+  "tables": {
+    "seasons": {
+      "path": "data/normalized/seasons.parquet",
+      "rows": 11,
+      "fields": [
+        "season",
+        "platform",
+        "platform_league_id",
+        "regular_season_weeks",
+        "playoff_start_week",
+        "championship_week",
+        "team_count",
+        "status",
+        "champion_team_season_uid",
+        "runner_up_team_season_uid",
+        "champion_seed",
+        "runner_up_seed",
+        "data_completeness",
+        "source",
+        "is_corrected",
+        "correction_ids"
+      ]
+    },
+    "owners": {
+      "path": "data/normalized/owners.parquet",
+      "rows": 13,
+      "fields": [
+        "owner_uid",
+        "owner_key",
+        "canonical_name",
+        "active",
+        "first_season",
+        "last_season"
+      ]
+    },
+    "franchises": {
+      "path": "data/normalized/franchises.parquet",
+      "rows": 8,
+      "fields": [
+        "franchise_uid",
+        "franchise_key",
+        "canonical_name",
+        "first_season",
+        "last_season",
+        "active"
+      ]
+    },
+    "team_seasons": {
+      "path": "data/normalized/team_seasons.parquet",
+      "rows": 88,
+      "fields": [
+        "team_season_uid",
+        "season",
+        "franchise_uid",
+        "owner_uid",
+        "platform_team_id",
+        "platform_roster_id",
+        "team_name",
+        "provider_owner_label",
+        "seed",
+        "playoff_seed",
+        "wins",
+        "losses",
+        "ties",
+        "points_for",
+        "points_against",
+        "regular_season_rank",
+        "playoff_finish",
+        "champion",
+        "runner_up",
+        "source"
+      ]
+    },
+    "matchups": {
+      "path": "data/normalized/matchups.parquet",
+      "rows": 710,
+      "fields": [
+        "matchup_uid",
+        "season",
+        "week",
+        "matchup_type",
+        "home_team_season_uid",
+        "away_team_season_uid",
+        "home_points",
+        "away_points",
+        "winner_team_season_uid",
+        "loser_team_season_uid",
+        "tie",
+        "source",
+        "source_matchup_id",
+        "status",
+        "is_corrected"
+      ]
+    },
+    "playoff_games": {
+      "path": "data/normalized/playoff_games.parquet",
+      "rows": 118,
+      "fields": [
+        "matchup_uid",
+        "season",
+        "week",
+        "matchup_type",
+        "home_team_season_uid",
+        "away_team_season_uid",
+        "home_points",
+        "away_points",
+        "winner_team_season_uid",
+        "loser_team_season_uid",
+        "tie",
+        "source",
+        "source_matchup_id",
+        "status",
+        "is_corrected"
+      ]
+    },
+    "players": {
+      "path": "data/normalized/players.parquet",
+      "rows": 20068,
+      "fields": [
+        "player_uid",
+        "display_name",
+        "first_name",
+        "last_name",
+        "position",
+        "nfl_team",
+        "birth_date",
+        "college",
+        "height",
+        "weight",
+        "years_experience",
+        "active",
+        "identity_key",
+        "source_record_count"
+      ]
+    },
+    "player_ids": {
+      "path": "data/normalized/player_ids.parquet",
+      "rows": 36254,
+      "fields": [
+        "player_uid",
+        "id_type",
+        "id_value",
+        "valid_from",
+        "valid_to",
+        "confidence",
+        "source"
+      ]
+    },
+    "player_source_records": {
+      "path": "data/normalized/player_source_records.parquet",
+      "rows": 20250,
+      "fields": [
+        "source_player_id",
+        "player_uid",
+        "source"
+      ]
+    }
+  }
+}
