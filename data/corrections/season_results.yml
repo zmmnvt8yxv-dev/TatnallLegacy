@@ -1,0 +1,95 @@
+schema_version: "1.0.0"
+
+corrections:
+  - correction_id: season-result-2022-champion-001
+    type: season_result
+    season: 2022
+    target:
+      dataset: seasons
+      match:
+        season: 2022
+    field: champion_team_season_uid
+    old_value: b9cca909-47ec-521f-8898-694a89b6270c
+    new_value: 118b89cf-237b-5349-9e55-418bb3b00b19
+    reason: >-
+      The Week 17 championship was affected by the cancelled Bills-Bengals game.
+      The league ruled King of January the 2022 champion.
+    source_note: Commissioner confirmation on 2026-08-09; existing manual league history.
+    entered_at: "2026-08-09"
+
+  - correction_id: season-result-2022-runner-up-001
+    type: season_result
+    season: 2022
+    target:
+      dataset: seasons
+      match:
+        season: 2022
+    field: runner_up_team_season_uid
+    old_value: 118b89cf-237b-5349-9e55-418bb3b00b19
+    new_value: b9cca909-47ec-521f-8898-694a89b6270c
+    reason: >-
+      Preserve the league-recognized counterpart to the corrected 2022 champion.
+    source_note: Existing manual league history and published season summary.
+    entered_at: "2026-08-09"
+
+  - correction_id: season-result-2022-champion-seed-001
+    type: season_result
+    season: 2022
+    target:
+      dataset: seasons
+      match:
+        season: 2022
+    field: champion_seed
+    old_value: 2
+    new_value: 5
+    reason: >-
+      Seed analytics must follow the league-recognized champion while preserving
+      the initial playoff seed entering the postseason.
+    source_note: 2022 regular-season rank and playoff bracket.
+    entered_at: "2026-08-09"
+
+  - correction_id: season-result-2022-runner-up-seed-001
+    type: season_result
+    season: 2022
+    target:
+      dataset: seasons
+      match:
+        season: 2022
+    field: runner_up_seed
+    old_value: 5
+    new_value: 2
+    reason: >-
+      Seed analytics must follow the league-recognized runner-up while preserving
+      the initial playoff seed entering the postseason.
+    source_note: 2022 regular-season rank and playoff bracket.
+    entered_at: "2026-08-09"
+
+  - correction_id: team-season-2022-king-of-january-seed-001
+    type: team_season
+    season: 2022
+    target:
+      dataset: team_seasons
+      match:
+        team_season_uid: 118b89cf-237b-5349-9e55-418bb3b00b19
+        season: 2022
+    field: playoff_seed
+    old_value: null
+    new_value: 5
+    reason: Preserve King of January's initial 2022 playoff seed.
+    source_note: 2022 regular-season rank and playoff bracket.
+    entered_at: "2026-08-09"
+
+  - correction_id: team-season-2022-king-of-december-seed-001
+    type: team_season
+    season: 2022
+    target:
+      dataset: team_seasons
+      match:
+        team_season_uid: b9cca909-47ec-521f-8898-694a89b6270c
+        season: 2022
+    field: playoff_seed
+    old_value: null
+    new_value: 2
+    reason: Preserve King of December's initial 2022 playoff seed.
+    source_note: 2022 regular-season rank and playoff bracket.
+    entered_at: "2026-08-09"

@@ -1,0 +1,35 @@
+schema_version: "1.0.0"
+
+league:
+  uid: tatnall
+  name: Tatnall Legacy
+  timezone: America/New_York
+  first_season: 2015
+  current_platform: sleeper
+
+platforms:
+  espn:
+    league_id: "1773893"
+    seasons:
+      start: 2015
+      end: 2024
+
+  sleeper:
+    league_ids:
+      "2025": "1262418074540195841"
+
+current_season:
+  season: 2026
+  platform: sleeper
+  league_id: null
+  resolution:
+    strategy: sleeper_league_chain
+    previous_season: 2025
+    require_manual_override_if_unresolved: true
+
+identity:
+  strategy: uuid5
+  namespace_url: https://github.com/zmmnvt8yxv-dev/TatnallLegacy
+  namespace_uuid: 03f007fb-1dc9-562f-85ae-6f82257f50eb
+  keys:
+    team_season: "team-season:{platform}:{league_id}:{season}:{platform_team_id}"
