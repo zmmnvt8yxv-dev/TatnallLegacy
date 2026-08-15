@@ -34,6 +34,10 @@ class SleeperClient:
         url = f"{API_ROOT}/{path.lstrip('/')}"
         if params:
             url = f"{url}?{urlencode(params)}"
+        return self.get_url(url, optional=optional)
+
+    def get_url(self, url: str, *, optional: bool = False) -> Any:
+        """Read an absolute Sleeper URL with the same retry policy as v1 calls."""
         last_error: Exception | None = None
         for attempt in range(self.retries + 1):
             try:

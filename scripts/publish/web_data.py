@@ -531,6 +531,13 @@ def publish() -> dict[str, Any]:
     )
 
     # Current-season/offseason command center.
+    current_keeper_ids_by_roster: dict[int, set[str]] = defaultdict(set)
+    for picks in current_draft_picks_raw.values():
+        for pick in picks:
+            if pick.get("is_keeper") and pick.get("roster_id") is not None:
+                current_keeper_ids_by_roster[int(pick["roster_id"])].add(
+                    str(pick.get("player_id") or "")
+                )
     current_teams = []
     rostered_player_uids: set[str] = set()
     for roster in sorted(current_rosters, key=lambda row: int(row["roster_id"])):
@@ -539,7 +546,9 @@ def publish() -> dict[str, Any]:
         metadata = user.get("metadata") or {}
         roster_players = []
         starters = {str(player_id) for player_id in roster.get("starters") or []}
-        keepers = {str(player_id) for player_id in roster.get("keepers") or []}
+        keepers = {
+            str(player_id) for player_id in roster.get("keepers") or []
+        } | current_keeper_ids_by_roster.get(int(roster["roster_id"]), set())
         for sleeper_id in roster.get("players") or []:
             player_uid = sleeper_to_player_uid.get(str(sleeper_id))
             player = players_by_uid.get(player_uid, {})
@@ -1026,6 +1035,7 @@ def publish() -> dict[str, Any]:
         "coverage": {str(row["season"]): row["completeness"] for row in history_seasons},
         "paths": {
             "current": "data/now/index.json",
+            "seasonHub": "data/now/season-hub.json",
             "history": "data/history/index.json",
             "season": "data/seasons/{season}/index.json",
             "seasonMatchups": "data/seasons/{season}/matchups.json",

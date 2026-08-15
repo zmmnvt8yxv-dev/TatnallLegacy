@@ -5,9 +5,11 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlencode
 
 if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -87,15 +89,62 @@ def pull_season(
         max_week = max(1, state_week)
     else:
         max_week = 1
+    playoff_start_week = int(league_settings.get("playoff_week_start") or 15)
+    regular_season_end_week = max(playoff_start_week - 1, 1)
+    schedule_end_week = max(max_week, regular_season_end_week)
     matchups: dict[str, Any] = {}
     transactions: dict[str, Any] = {}
-    for week in range(1, max_week + 1):
+    for week in range(1, schedule_end_week + 1):
         matchups[str(week)] = client.get(f"league/{league_id}/matchups/{week}") or []
+    for week in range(1, max_week + 1):
         transactions[str(week)] = client.get(
             f"league/{league_id}/transactions/{week}"
         ) or []
     resources["matchups"] = matchups
     resources["transactions"] = transactions
+
+    rostered_player_ids = {
+        str(player_id)
+        for roster in resources["rosters"] or []
+        for player_id in roster.get("players") or []
+    }
+    def pull_projection_week(week: int) -> tuple[str, list[dict[str, Any]]]:
+        params = urlencode({"season_type": "regular", "order_by": "pts_half_ppr"})
+        endpoint = f"https://api.sleeper.app/projections/nfl/{season}/{week}?{params}"
+        rows = client.get_url(endpoint, optional=True) or []
+        filtered = sorted(
+            [
+                {
+                    "player_id": str(row.get("player_id") or ""),
+                    "week": int(row.get("week") or week),
+                    "date": row.get("date"),
+                    "team": row.get("team"),
+                    "opponent": row.get("opponent"),
+                    "game_id": row.get("game_id"),
+                    "company": row.get("company"),
+                    "updated_at": row.get("updated_at") or row.get("last_modified"),
+                    "pts_half_ppr": (row.get("stats") or {}).get("pts_half_ppr"),
+                }
+                for row in rows
+                if str(row.get("player_id") or "") in rostered_player_ids
+            ],
+            key=lambda row: row["player_id"],
+        )
+        return str(week), filtered
+
+    projection_weeks: dict[str, list[dict[str, Any]]] = {}
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        for week_text, rows in executor.map(
+            pull_projection_week, range(1, regular_season_end_week + 1)
+        ):
+            projection_weeks[week_text] = rows
+    projection_weeks = dict(sorted(projection_weeks.items(), key=lambda item: int(item[0])))
+    resources["projections"] = {
+        "source": "Sleeper projections API",
+        "scoring": "pts_half_ppr",
+        "season_type": "regular",
+        "weeks": projection_weeks,
+    }
 
     retrieved_at = datetime.now(timezone.utc).isoformat()
     for name, value in resources.items():
@@ -110,6 +159,9 @@ def pull_season(
         "league_status": resolved.status,
         "season_phase": "complete" if status == "complete" else (state or {}).get("season_type"),
         "current_week": max_week if status == "complete" else state_week,
+        "regular_season_end_week": regular_season_end_week,
+        "schedule_through_week": schedule_end_week,
+        "projection_weeks": list(range(1, regular_season_end_week + 1)),
         "resources": {
             name: {
                 "path": f"{name}.json",
@@ -122,6 +174,8 @@ def pull_season(
                         "draft_picks",
                         "draft_traded_picks",
                     }
+                    else sum(len(rows) for rows in value.get("weeks", {}).values())
+                    if name == "projections" and isinstance(value, dict)
                     else len(value)
                     if isinstance(value, list)
                     else 1

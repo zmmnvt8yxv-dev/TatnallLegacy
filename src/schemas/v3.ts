@@ -197,6 +197,131 @@ export const NowSchema = z.object({
   ),
 });
 
+const SeasonHubTeamRefSchema = z.object({
+  rosterId: z.number(),
+  ownerUid: z.string().nullable(),
+  ownerName: z.string(),
+  teamName: z.string(),
+  monogram: z.string(),
+  accent: z.string(),
+});
+
+const SeasonHubPlayerSchema = z.object({
+  playerUid: z.string().nullable(),
+  sleeperId: z.string(),
+  name: z.string(),
+  position: z.string().nullable(),
+  nflTeam: z.string().nullable(),
+  starter: z.boolean(),
+  keeper: z.boolean(),
+  injuryStatus: z.string().nullable().optional(),
+  nflStatus: z.string().nullable().optional(),
+  weekOneProjection: z.number(),
+  regularSeasonProjection: z.number(),
+  draftPrice: z.number().nullable(),
+  projectedWeekOneStarter: z.boolean().optional(),
+});
+
+export const SeasonHubSchema = z.object({
+  meta: z.object({
+    schemaVersion: z.literal("3.1.0"),
+    generatedAt: z.string(),
+    sleeperSnapshotAt: z.string(),
+    season: z.number(),
+    status: z.string(),
+  }),
+  projectionSource: z.object({
+    label: z.string(),
+    provider: z.string(),
+    scoringField: z.string(),
+    seasonType: z.string(),
+    updatedAt: z.string(),
+    publishedValues: z.number(),
+    expectedRosterWeeks: z.number(),
+    coveragePct: z.number(),
+    method: z.string(),
+    coverageNote: z.string(),
+  }),
+  draft: z.object({
+    draftId: z.string(),
+    status: z.string(),
+    completedAt: z.string().nullable(),
+    pickCount: z.number(),
+    totalSpend: z.number(),
+    unspent: z.number(),
+    sleeperUrl: z.string(),
+  }),
+  regularSeason: z.object({
+    startWeek: z.number(),
+    endWeek: z.number(),
+    scheduleSource: z.string(),
+    matchupCount: z.number(),
+  }),
+  teams: z.array(z.object({
+    rosterId: z.number(),
+    ownerUid: z.string().nullable(),
+    ownerName: z.string(),
+    franchiseUid: z.string().nullable(),
+    teamName: z.string(),
+    monogram: z.string(),
+    accent: z.string(),
+    motto: z.string(),
+    avatar: z.string().nullable().optional(),
+    division: z.number().nullable().optional(),
+    wins: z.number(),
+    losses: z.number(),
+    ties: z.number(),
+    waiverPosition: z.number().nullable().optional(),
+    players: z.array(SeasonHubPlayerSchema),
+    keepers: z.array(SeasonHubPlayerSchema),
+    analysis: z.object({
+      projectionRank: z.number(),
+      grade: z.string(),
+      tier: z.string(),
+      projectedRegularSeasonPoints: z.number(),
+      projectedWeeklyAverage: z.number(),
+      projectedAllPlayWins: z.number(),
+      projectedRecord: z.object({ wins: z.number(), losses: z.number(), ties: z.number() }),
+      scheduleStrengthRank: z.number(),
+      opponentProjectedAverage: z.number(),
+      strength: z.object({ position: z.string(), rank: z.number(), label: z.string() }),
+      concern: z.object({ position: z.string(), rank: z.number(), label: z.string() }),
+      headline: z.string(),
+      overview: z.string(),
+      positionGroups: z.array(z.object({
+        position: z.string(), rank: z.number(), projectedWeeklyPoints: z.number(),
+      })),
+      weekOneLineup: z.array(SeasonHubPlayerSchema.extend({
+        projectedPoints: z.number(), slot: z.string(),
+      })),
+      openLineupSlots: z.array(z.string()),
+      topProjectedPlayers: z.array(z.object({
+        playerUid: z.string().nullable(), sleeperId: z.string(), name: z.string(),
+        position: z.string().nullable(), projectedPoints: z.number(),
+      })),
+      injuryFlags: z.number(),
+    }),
+    draftRecap: z.object({
+      picks: z.number(), spend: z.number(), unspent: z.number(), keeperSpend: z.number(), auctionSpend: z.number(),
+      largestPurchase: z.object({
+        playerUid: z.string().nullable(), sleeperId: z.string(), name: z.string(), amount: z.number(),
+      }).nullable(),
+    }),
+  })),
+  schedule: z.array(z.object({
+    week: z.number(),
+    matchups: z.array(z.object({
+      matchupId: z.number(),
+      teamA: SeasonHubTeamRefSchema,
+      teamB: SeasonHubTeamRefSchema,
+      projectedA: z.number(),
+      projectedB: z.number(),
+      projectedFavoriteRosterId: z.number().nullable(),
+      projectedMargin: z.number(),
+    })),
+  })),
+});
+
 export const HistorySchema = z.object({
   meta: z.object({ schemaVersion: z.literal("3.0.0"), generatedAt: z.string(), seasons: z.number() }),
   seasons: z.array(HistorySeasonSchema),
@@ -385,6 +510,7 @@ export const EditorialSchema = z.object({
 
 export type ManifestV3 = z.infer<typeof ManifestV3Schema>;
 export type NowData = z.infer<typeof NowSchema>;
+export type SeasonHubData = z.infer<typeof SeasonHubSchema>;
 export type HistoryData = z.infer<typeof HistorySchema>;
 export type HistorySeason = z.infer<typeof HistorySeasonSchema>;
 export type OwnerSummary = z.infer<typeof OwnerSummarySchema>;
