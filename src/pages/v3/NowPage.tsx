@@ -1,188 +1,178 @@
-import React, { useMemo } from "react";
-import { ArrowUpRight, CalendarClock, CheckCircle2, Crown, Database, Gavel, LockKeyhole, ShieldCheck, Sparkles, Trophy, Users } from "lucide-react";
+import React, { useMemo, useState } from "react";
+import {
+  Activity, ArrowUpRight, CalendarDays, CheckCircle2, CircleDollarSign, Database,
+  Gauge, History, Radio, ShieldAlert, Sparkles, Trophy, Users, Zap,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import PageTransition from "../../components/PageTransition.jsx";
-import { ArchiveError, ArchiveLoading, Eyebrow, OwnerLink, formatFreshness } from "../../components/v3/ArchiveUI";
-import { features } from "../../config/features";
-import { useEditorial, useHistory, useNow } from "../../data/v3/hooks";
+import { ArchiveError, ArchiveLoading, Eyebrow, formatFreshness } from "../../components/v3/ArchiveUI";
+import { useHistory, useNow, useSeasonHub } from "../../data/v3/hooks";
+import { useWarRoomPreferences } from "../../hooks/useWarRoomPreferences";
+import type { SeasonHubData } from "../../schemas/v3";
+
+type HubTeam = SeasonHubData["teams"][number];
+type HubMatchup = SeasonHubData["schedule"][number]["matchups"][number];
+
+const POSITION_ORDER = ["QB", "RB", "WR", "TE", "K", "DEF"];
+
+function teamRecord(team: HubTeam): string {
+  const record = team.analysis.projectedRecord;
+  return `${record.wins}-${record.losses}${record.ties ? `-${record.ties}` : ""}`;
+}
+
+function MatchupCard({ matchup }: { matchup: HubMatchup }): React.ReactElement {
+  const favoriteA = matchup.projectedFavoriteRosterId === matchup.teamA.rosterId;
+  const favoriteB = matchup.projectedFavoriteRosterId === matchup.teamB.rosterId;
+  return (
+    <article className="season-matchup-card">
+      <span className="season-matchup-card__id">M{matchup.matchupId}</span>
+      <div className={favoriteA ? "is-favorite" : ""} style={{ "--team-accent": matchup.teamA.accent } as React.CSSProperties}>
+        <i>{matchup.teamA.monogram}</i><span><strong>{matchup.teamA.teamName}</strong><small>{matchup.teamA.ownerName}</small></span><b>{matchup.projectedA.toFixed(1)}</b>
+      </div>
+      <div className={favoriteB ? "is-favorite" : ""} style={{ "--team-accent": matchup.teamB.accent } as React.CSSProperties}>
+        <i>{matchup.teamB.monogram}</i><span><strong>{matchup.teamB.teamName}</strong><small>{matchup.teamB.ownerName}</small></span><b>{matchup.projectedB.toFixed(1)}</b>
+      </div>
+      <footer><span>Sleeper projection</span><strong>{matchup.projectedFavoriteRosterId ? `${matchup.projectedMargin.toFixed(1)} pt edge` : "Even"}</strong></footer>
+    </article>
+  );
+}
 
 export default function NowPage(): React.ReactElement {
   const now = useNow();
+  const hub = useSeasonHub();
   const history = useHistory();
-  const editorial = useEditorial();
-  const titleLeaders = useMemo(() => {
-    const counts = new Map<string, { uid: string | null; name: string; titles: number }>();
-    for (const season of history.data?.seasons || []) {
-      const key = season.champion.ownerUid || season.champion.ownerName;
-      const row = counts.get(key) || { uid: season.champion.ownerUid, name: season.champion.ownerName, titles: 0 };
-      row.titles += 1;
-      counts.set(key, row);
-    }
-    return [...counts.values()].sort((a, b) => b.titles - a.titles || a.name.localeCompare(b.name)).slice(0, 3);
-  }, [history.data]);
+  const { preferences, selectOwner } = useWarRoomPreferences();
+  const [selectedWeek, setSelectedWeek] = useState(1);
 
-  if (now.isLoading || history.isLoading || editorial.isLoading) return <ArchiveLoading label="Opening the 2026 command center" />;
-  if (now.error || history.error || editorial.error || !now.data || !history.data || !editorial.data) return <ArchiveError error={now.error || history.error || editorial.error} />;
+  const selectedTeam = useMemo(() => {
+    if (!hub.data) return undefined;
+    return hub.data.teams.find((team) => team.ownerUid === preferences.selectedOwnerUid) || hub.data.teams[0];
+  }, [hub.data, preferences.selectedOwnerUid]);
+  const week = hub.data?.schedule.find((row) => row.week === selectedWeek);
+
+  if (now.isLoading || hub.isLoading || history.isLoading) return <ArchiveLoading label="Opening the 2026 season command center" />;
+  if (now.error || hub.error || history.error || !now.data || !hub.data || !history.data || !selectedTeam) {
+    return <ArchiveError error={now.error || hub.error || history.error} />;
+  }
 
   const data = now.data;
-  const phaseLabel = data.league.phase === "preseason" ? "Preseason" : `Week ${data.league.week}`;
+  const season = hub.data;
+  const leader = season.teams[0];
   const latestChampions = history.data.seasons.slice(0, 5);
-  const draftDate = data.draft?.startTime ? new Date(data.draft.startTime) : null;
-  const draftDateLabel = draftDate && !Number.isNaN(draftDate.getTime())
-    ? new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" }).format(draftDate)
-    : "Date not published";
 
   return (
     <PageTransition>
-      <section className="now-hero">
-        <div className="now-hero__grid" aria-hidden="true" />
-        <div className="now-hero__main">
-          <div className="live-line"><span /> {data.league.season} · {phaseLabel}</div>
-          <h1>{editorial.data.lead.headline}</h1>
-          <p>{editorial.data.lead.commissionerNote || editorial.data.lead.dek}</p>
+      <section className="season-hero">
+        <div className="season-hero__grid" aria-hidden="true" />
+        <div className="season-hero__copy">
+          <div className="live-line"><span /> 2026 · Post-draft</div>
+          <Eyebrow>Tatnall season command center</Eyebrow>
+          <h1>Eight rosters.<br />One race.</h1>
+          <p>The complete 2026 league in one place: finalized rosters, factual team outlooks, the full Sleeper schedule, Sleeper’s weekly projections, live transactions, and eleven seasons of history.</p>
           <div className="now-hero__actions">
-            <Link to="/history" className="archive-button archive-button--primary">Explore the archive <ArrowUpRight /></Link>
-            {features.playerIntelligenceV1 ? <Link to="/war-room" className="archive-button">Enter War Room</Link> : null}
+            <a href="#teams" className="archive-button archive-button--primary">Scout every team <ArrowUpRight /></a>
+            <a href="#schedule" className="archive-button">Open schedule <CalendarDays /></a>
+            <Link to="/history" className="archive-button">League history <History /></Link>
           </div>
-          <div className="freshness"><Database /> Sleeper snapshot · {formatFreshness(data.meta.sourceUpdatedAt.sleeper)}</div>
+          <div className="freshness"><Database /> Sleeper snapshot · {formatFreshness(season.meta.sleeperSnapshotAt)}</div>
         </div>
-        <aside className="champion-spotlight">
-          <Eyebrow>Defending champion</Eyebrow>
-          <Crown aria-hidden="true" />
-          <strong>{data.defendingChampion.ownerName}</strong>
-          <span>{data.defendingChampion.teamName}</span>
-          <div className="champion-seed">{data.lastFinal.season} · #{data.defendingChampion.seed} seed</div>
+        <aside className="season-leader-scorebug" style={{ "--team-accent": leader.accent } as React.CSSProperties}>
+          <header><Radio /> Sleeper projection leader</header>
+          <div className="season-leader-scorebug__rank"><span>01</span><b>{leader.analysis.grade}</b></div>
+          <i>{leader.monogram}</i>
+          <strong>{leader.teamName}</strong>
+          <small>{leader.ownerName}</small>
+          <footer><span>{leader.analysis.projectedWeeklyAverage.toFixed(1)} PPG</span><span>{teamRecord(leader)} projected</span></footer>
         </aside>
       </section>
 
-      <section className="archive-stat-strip" aria-label="League at a glance">
-        <div><span>Seasons archived</span><strong>{history.data.meta.seasons}</strong><small>2015–2025</small></div>
-        <div><span>Current teams</span><strong>{data.teams.length}</strong><small>2026 rosters linked</small></div>
-        <div><span>Accepted champions</span><strong>{history.data.seasons.length}</strong><small>one per completed year</small></div>
-        <div><span>Keepers locked</span><strong>{data.keeperStatus.submitted}</strong><small>{data.keeperStatus.teamsComplete}/{data.teams.length} teams complete</small></div>
+      <nav className="season-jumpbar" aria-label="Season hub sections">
+        <a href="#outlook">League outlook</a><a href="#teams">Team rooms</a><a href="#schedule">Schedule</a><a href="#activity">Activity</a><Link to="/history">History</Link>
+      </nav>
+
+      <section className="season-stat-strip" aria-label="Post-draft league facts">
+        <div><span>Drafted</span><strong>{season.draft.pickCount}</strong><small>verified Sleeper picks</small></div>
+        <div><span>Auction spend</span><strong>${season.draft.totalSpend.toLocaleString()}</strong><small>${season.draft.unspent} left league-wide</small></div>
+        <div><span>Regular season</span><strong>{season.regularSeason.matchupCount}</strong><small>Sleeper matchups · Weeks 1–14</small></div>
+        <div><span>Projection feed</span><strong>{Math.round(season.projectionSource.coveragePct * 100)}%</strong><small>published roster-weeks</small></div>
       </section>
 
-      <section className="broadcast-rankings">
-        <header><div><Eyebrow>2025 final signal</Eyebrow><h2>Power, luck, and lineup command.</h2></div><p>Versioned and transparent: 45% points, 25% all-play, 20% manager efficiency, and 10% closing form.</p></header>
-        <div className="broadcast-ranking-grid">{editorial.data.powerRankings.map((team) => <Link key={team.ownerUid} to={`/owners/${team.ownerUid}`} style={{ "--team-accent": team.accent } as React.CSSProperties}><span className="power-rank">{team.powerRank}</span><div><strong>{team.teamName}</strong><small>{team.ownerName}</small></div><span><small>Power</small><b>{team.powerScore}</b></span><span><small>xW</small><b>{team.expectedWins.toFixed(1)}</b></span><span className={team.luck >= 0 ? "positive" : "negative"}><small>Luck</small><b>{team.luck >= 0 ? "+" : ""}{team.luck.toFixed(1)}</b></span><span><small>Eff.</small><b>{team.managerEfficiency == null ? "—" : `${Math.round(team.managerEfficiency * 100)}%`}</b></span></Link>)}</div>
-        <footer><Sparkles /><div><strong>{editorial.data.history.headline}</strong><span>{editorial.data.history.items[0]}</span></div><Link to="/data-health">Methodology <ArrowUpRight /></Link></footer>
+      <section className="week-one-marquee" aria-labelledby="week-one-title">
+        <header><div><Eyebrow>Opening slate · direct from Sleeper</Eyebrow><h2 id="week-one-title">Week 1 on the board.</h2></div><p>Projected scores use Sleeper’s unchanged half-PPR values and the best legal Tatnall lineup. They are a snapshot, not a promise.</p></header>
+        <div className="season-matchup-grid">{season.schedule[0].matchups.map((matchup) => <MatchupCard key={matchup.matchupId} matchup={matchup} />)}</div>
       </section>
 
-      <section className="draft-command">
-        <div className="draft-command__status">
-          <Eyebrow>2026 auction runway</Eyebrow>
-          <Gavel aria-hidden="true" />
-          <h2>{data.draft?.status === "pre_draft" ? "Draft night is scheduled." : "Draft status connected."}</h2>
-          <p><CalendarClock /> {draftDateLabel}</p>
-          <div className="draft-command__facts">
-            <span><strong>${data.draft?.budget ?? "—"}</strong> budget</span>
-            <span><strong>{data.draft?.rounds ?? "—"}</strong> roster spots</span>
-            <span><strong>{data.draft?.nominationSeconds ?? "—"}s</strong> nominations</span>
-          </div>
-          {data.draft ? <a className="archive-button archive-button--primary" href={data.draft.sleeperUrl} target="_blank" rel="noreferrer">Open Sleeper draft room <ArrowUpRight /></a> : null}
+      <section className="season-outlook" id="outlook">
+        <div className="archive-section-heading"><div><Eyebrow>Sleeper projection board</Eyebrow><h2>Where every roster starts.</h2></div><p>Ranked only from Sleeper’s currently published weekly numbers. Team analysis updates automatically with the four-hour site refresh.</p></div>
+        <div className="season-power-table" role="table" aria-label="2026 projected team rankings">
+          <div className="season-power-table__head" role="row"><span>Rank</span><span>Team</span><span>Grade</span><span>PPG</span><span>Projected</span><span>Schedule</span><span>Best room</span></div>
+          {season.teams.map((team) => (
+            <button type="button" role="row" key={team.rosterId} onClick={() => { selectOwner(team.ownerUid || ""); document.getElementById("teams")?.scrollIntoView({ behavior: "smooth" }); }} style={{ "--team-accent": team.accent } as React.CSSProperties}>
+              <span className="projection-rank">{String(team.analysis.projectionRank).padStart(2, "0")}</span>
+              <span className="projection-team"><i>{team.monogram}</i><span><strong>{team.teamName}</strong><small>{team.ownerName}</small></span></span>
+              <b className="projection-grade">{team.analysis.grade}</b>
+              <span><strong>{team.analysis.projectedWeeklyAverage.toFixed(1)}</strong><small>Sleeper</small></span>
+              <span><strong>{teamRecord(team)}</strong><small>W-L</small></span>
+              <span><strong>#{team.analysis.scheduleStrengthRank}</strong><small>hardest</small></span>
+              <span><strong>{team.analysis.strength.position}</strong><small>#{team.analysis.strength.rank} room</small></span>
+            </button>
+          ))}
         </div>
-        <div className="draft-command__readiness">
-          <div><CheckCircle2 /><span><strong>Keepers submitted</strong><small>{data.keeperStatus.submitted} of {data.keeperStatus.expected} slots filled</small></span></div>
-          <div className={data.draft?.orderPublished ? "" : "is-waiting"}><LockKeyhole /><span><strong>Draft order</strong><small>{data.draft?.orderPublished ? "Published in Sleeper" : "Not published yet—no placeholder order shown"}</small></span></div>
-          <div className={data.transactionStatus.recorded ? "" : "is-waiting"}><Database /><span><strong>2026 transaction feed</strong><small>{data.transactionStatus.recorded ? `${data.transactionStatus.completed} completed moves` : "No 2026 moves returned by Sleeper yet"}</small></span></div>
+        <div className="projection-disclosure"><CheckCircle2 /><p><strong>{season.projectionSource.label}</strong> · {season.projectionSource.provider} · {season.projectionSource.scoringField.replaceAll("_", " ")}. {season.projectionSource.method} {season.projectionSource.coverageNote}</p><time>{formatFreshness(season.projectionSource.updatedAt)}</time></div>
+      </section>
+
+      <section className="team-rooms" id="teams">
+        <div className="archive-section-heading"><div><Eyebrow>All eight franchises</Eyebrow><h2>Team rooms.</h2></div><p>Choose a franchise for its full post-draft diagnosis, projected lineup, auction accounting, and complete roster.</p></div>
+        <div className="team-room-tabs" role="tablist" aria-label="Choose a team">
+          {season.teams.map((team) => <button type="button" role="tab" aria-selected={team.rosterId === selectedTeam.rosterId} key={team.rosterId} onClick={() => selectOwner(team.ownerUid || "")} style={{ "--team-accent": team.accent } as React.CSSProperties}><i>{team.monogram}</i><span><strong>{team.teamName}</strong><small>#{team.analysis.projectionRank} · {team.analysis.grade}</small></span></button>)}
         </div>
-      </section>
 
-      <div className="archive-section-heading">
-        <div><Eyebrow>Keeper board</Eyebrow><h2>Sixteen decisions are in.</h2></div>
-        <p>These are the actual 2026 keepers from Sleeper. The rest of each card is the inherited preseason roster—not a submitted Week 1 lineup.</p>
-      </div>
-
-      <section className="current-team-grid">
-        {data.teams.map((team) => (
-          <article className="current-team-card" key={team.rosterId} style={{ "--team-accent": team.accent || "#d7a928" } as React.CSSProperties}>
-            <div className="current-team-card__top">
-              <span className="roster-number">0{team.rosterId}</span>
-              <span className="division-label">Division {team.division}</span>
-            </div>
-            <h3>{team.teamName}</h3>
-            <OwnerLink uid={team.ownerUid}>{team.ownerName}</OwnerLink>
-            <div className="keeper-pair">
-              {team.keepers.map((player) => (
-                <Link key={player.sleeperId} to={`/players/${player.playerUid || player.sleeperId}`}>
-                  <Crown /><span><small>{player.position || "—"} · {player.nflTeam || "FA"}</small><strong>{player.name}</strong></span>
-                </Link>
-              ))}
-            </div>
-            <div className="roster-summary">
-              <span><Users /> {team.players.length} players</span>
-              <span>Waiver #{team.waiverPosition ?? "—"}</span>
-            </div>
-            <details>
-              <summary>Roster snapshot</summary>
-              <div className="mini-roster">
-                {team.players.filter((player) => !player.keeper).slice(0, 13).map((player) => (
-                  <Link key={player.sleeperId} to={`/players/${player.playerUid || player.sleeperId}`}>
-                    <span>{player.position || "—"}</span>{player.name}<small>{player.nflTeam || "FA"}</small>
-                  </Link>
-                ))}
-              </div>
-            </details>
-          </article>
-        ))}
-      </section>
-
-      {data.draft?.picks.length ? (
-        <section className="archive-section future-feed">
-          <div className="archive-section-heading"><div><Eyebrow>Live auction board</Eyebrow><h2>{data.draft.pickCount} picks are in.</h2></div><p>The board refreshes from Sleeper automatically as the auction advances.</p></div>
-          <div className="standings-table-wrap draft-table-wrap">
-            <table className="archive-table"><thead><tr><th>Pick</th><th>Player</th><th>Position</th><th>Winning team</th><th>Price</th></tr></thead><tbody>{data.draft.picks.map((pick) => <tr key={pick.pickNo}><td>{pick.pickNo}</td><td><Link to={`/players/${pick.playerUid || pick.sleeperId}`}>{pick.name}</Link></td><td>{pick.position || "—"} · {pick.nflTeam || "FA"}</td><td><strong>{pick.team?.teamName || "—"}</strong><small>{pick.team?.ownerName || ""}</small></td><td><b className="auction-price">${pick.amount ?? 0}</b></td></tr>)}</tbody></table>
+        <article className="team-room" style={{ "--team-accent": selectedTeam.accent } as React.CSSProperties}>
+          <header className="team-room__hero">
+            <div className="team-room__monogram">{selectedTeam.monogram}</div>
+            <div><Eyebrow>{selectedTeam.analysis.tier}</Eyebrow><h2>{selectedTeam.teamName}</h2><p>{selectedTeam.ownerName} · {selectedTeam.motto}</p></div>
+            <div className="team-room__grade"><span>Projection grade</span><strong>{selectedTeam.analysis.grade}</strong><small>#{selectedTeam.analysis.projectionRank} of 8</small></div>
+          </header>
+          <div className="team-room__scorebugs">
+            <div><Gauge /><span>Projected PPG<strong>{selectedTeam.analysis.projectedWeeklyAverage.toFixed(1)}</strong></span></div>
+            <div><Zap /><span>Projected record<strong>{teamRecord(selectedTeam)}</strong></span></div>
+            <div><CalendarDays /><span>Schedule difficulty<strong>#{selectedTeam.analysis.scheduleStrengthRank}</strong></span></div>
+            <div><CircleDollarSign /><span>Draft spend<strong>${selectedTeam.draftRecap.spend}</strong></span></div>
+            <div><ShieldAlert /><span>Injury flags<strong>{selectedTeam.analysis.injuryFlags}</strong></span></div>
           </div>
-        </section>
-      ) : null}
-
-      {data.currentWeekLineups.length ? (
-        <section className="archive-section future-feed">
-          <div className="archive-section-heading"><div><Eyebrow>Week {data.league.week}</Eyebrow><h2>Submitted lineups.</h2></div><p>Starter points and matchup totals switch on only when Sleeper publishes the week.</p></div>
-          <div className="live-lineup-grid">{data.currentWeekLineups.map((lineup) => <article key={lineup.rosterId}><header><strong>{lineup.team?.teamName || `Roster ${lineup.rosterId}`}</strong><b>{lineup.points == null ? "—" : lineup.points.toFixed(1)}</b></header><div>{lineup.starters.map((player) => <Link key={player.sleeperId} to={`/players/${player.playerUid || player.sleeperId}`}><span>{player.position || "—"}</span><strong>{player.name}</strong><b>{player.points == null ? "—" : player.points.toFixed(1)}</b></Link>)}</div></article>)}</div>
-        </section>
-      ) : null}
-
-      {data.recentTransactions.length ? (
-        <section className="archive-section future-feed">
-          <div className="archive-section-heading"><div><Eyebrow>Live league activity</Eyebrow><h2>Recent transactions.</h2></div><p>The latest 20 completed 2026 moves; failed claims are never shown as completed.</p></div>
-          <div className="transaction-ledger live-transaction-ledger">{data.recentTransactions.map((transaction) => <article key={transaction.transactionId}><div className="transaction-ledger__meta"><span>Week {transaction.week}</span><strong>{transaction.type.replaceAll("_", " ")}</strong><time>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(transaction.createdAt))}</time>{transaction.waiverBid != null ? <b>${transaction.waiverBid} FAAB</b> : null}</div><div className="transaction-assets">{transaction.assets.map((asset) => <div key={`${transaction.transactionId}-${asset.sleeperId}`}><Link to={`/players/${asset.playerUid || asset.sleeperId}`}><span>{asset.position || "—"}</span><strong>{asset.name}</strong></Link><small>{asset.from ? `${asset.from.teamName} → ` : "Added by "}{asset.to?.teamName || "Free agency"}</small></div>)}</div></article>)}</div>
-        </section>
-      ) : null}
-
-      <section className="archive-split">
-        <div className="archive-panel">
-          <div className="archive-panel__head"><div><Eyebrow>Championship lineage</Eyebrow><h2>Recent title holders</h2></div><Link to="/history">All seasons <ArrowUpRight /></Link></div>
-          <div className="champion-lineage">
-            {latestChampions.map((season) => (
-              <Link to={`/seasons/${season.season}`} key={season.season}>
-                <span className="lineage-year">{season.season}</span>
-                <span className="lineage-mark"><Trophy /></span>
-                <span><strong>{season.champion.ownerName}</strong><small>{season.champion.teamName} · Seed {season.champion.seed}</small></span>
-                {season.corrected ? <ShieldCheck className="lineage-corrected" aria-label="League ruling applied" /> : <ArrowUpRight />}
-              </Link>
-            ))}
+          <div className="team-room__analysis">
+            <div className="team-room__story"><Eyebrow>Post-draft read</Eyebrow><h3>{selectedTeam.analysis.headline}</h3><p>{selectedTeam.analysis.overview}</p><div><span><b>Strength</b>#{selectedTeam.analysis.strength.rank} {selectedTeam.analysis.strength.label}</span><span><b>Pressure point</b>#{selectedTeam.analysis.concern.rank} {selectedTeam.analysis.concern.label}</span></div></div>
+            <div className="position-report"><Eyebrow>Position report</Eyebrow>{[...selectedTeam.analysis.positionGroups].sort((a, b) => POSITION_ORDER.indexOf(a.position) - POSITION_ORDER.indexOf(b.position)).map((group) => <div key={group.position}><span><b>{group.position}</b><small>#{group.rank} · {group.projectedWeeklyPoints.toFixed(1)} PPG</small></span><i><em style={{ width: `${((9 - group.rank) / 8) * 100}%` }} /></i></div>)}</div>
           </div>
-        </div>
-        <div className="archive-panel archive-panel--warm">
-          <Eyebrow>League royalty</Eyebrow>
-          <h2>The title table</h2>
-          <div className="title-podium">
-            {titleLeaders.map((owner, index) => (
-              <OwnerLink uid={owner.uid} key={owner.name}>
-                <span>0{index + 1}</span><strong>{owner.name}</strong><b>{owner.titles}</b><small>{owner.titles === 1 ? "title" : "titles"}</small>
-              </OwnerLink>
-            ))}
+          <div className="team-room__columns">
+            <section className="projected-lineup"><header><div><Eyebrow>Best projected lineup</Eyebrow><h3>Week 1</h3></div><span>Sleeper</span></header>{selectedTeam.analysis.weekOneLineup.map((player) => <Link to={`/players/${player.playerUid || player.sleeperId}`} key={`${player.slot}-${player.sleeperId}`}><span>{player.slot}</span><i>{player.position}</i><strong>{player.name}</strong><small>{player.nflTeam || "FA"}</small><b>{player.projectedPoints.toFixed(1)}</b></Link>)}{selectedTeam.analysis.openLineupSlots.map((slot) => <div className="lineup-open" key={slot}><span>{slot}</span><i>OPEN</i><strong>Roster spot unfilled</strong><small>Sleeper roster</small><b>—</b></div>)}</section>
+            <section className="draft-recap-card"><header><Eyebrow>Draft receipt</Eyebrow><h3>${selectedTeam.draftRecap.spend} spent</h3></header><div><span>Keeper spend<strong>${selectedTeam.draftRecap.keeperSpend}</strong></span><span>Auction spend<strong>${selectedTeam.draftRecap.auctionSpend}</strong></span><span>Budget left<strong>${selectedTeam.draftRecap.unspent}</strong></span><span>Selections<strong>{selectedTeam.draftRecap.picks}</strong></span></div>{selectedTeam.draftRecap.largestPurchase ? <Link to={`/players/${selectedTeam.draftRecap.largestPurchase.playerUid || selectedTeam.draftRecap.largestPurchase.sleeperId}`}><small>Biggest auction buy</small><strong>{selectedTeam.draftRecap.largestPurchase.name}</strong><b>${selectedTeam.draftRecap.largestPurchase.amount}</b></Link> : null}<div className="top-engines"><small>Projection engines</small>{selectedTeam.analysis.topProjectedPlayers.map((player, index) => <Link to={`/players/${player.playerUid || player.sleeperId}`} key={player.sleeperId}><span>0{index + 1}</span><strong>{player.name}</strong><b>{player.projectedPoints.toFixed(1)}</b></Link>)}</div></section>
           </div>
-          <Link to="/owners" className="archive-button archive-button--dark">All owner careers <ArrowUpRight /></Link>
-        </div>
+          <details className="full-roster" open>
+            <summary><span><Users /> Complete roster</span><small>{selectedTeam.players.length} current players · direct from Sleeper</small></summary>
+            <div className="full-roster__table"><div className="full-roster__head"><span>Role</span><span>Player</span><span>NFL</span><span>W1 proj.</span><span>Season proj.</span><span>Price</span></div>{selectedTeam.players.map((player) => <Link to={`/players/${player.playerUid || player.sleeperId}`} key={player.sleeperId} className={player.projectedWeekOneStarter ? "is-projected-starter" : ""}><span>{player.projectedWeekOneStarter ? "START" : "BN"}</span><span><b>{player.name}</b><small>{player.keeper ? "Keeper" : player.injuryStatus || "Active"}</small></span><span>{player.position} · {player.nflTeam || "FA"}</span><strong>{player.weekOneProjection.toFixed(1)}</strong><strong>{player.regularSeasonProjection.toFixed(1)}</strong><b>{player.draftPrice == null ? "—" : `$${player.draftPrice}`}</b></Link>)}</div>
+          </details>
+        </article>
       </section>
 
-      <section className="archive-callout">
-        <Sparkles />
-        <div><Eyebrow>Built for what comes next</Eyebrow><h2>One source of truth.</h2><p>Every correction is audited, every incomplete dataset is labeled, and the live season no longer depends on a stale 2025 ID.</p></div>
-        <Link to="/data-health">Inspect data health <ArrowUpRight /></Link>
+      <section className="full-schedule" id="schedule">
+        <div className="archive-section-heading"><div><Eyebrow>Weeks 1–14 · direct from Sleeper</Eyebrow><h2>The full league schedule.</h2></div><p>Matchup pairings are copied from Sleeper. The scores beside them are the current Sleeper projection snapshot.</p></div>
+        <div className="week-selector" role="tablist" aria-label="Select schedule week">{season.schedule.map((row) => <button type="button" role="tab" aria-selected={selectedWeek === row.week} key={row.week} onClick={() => setSelectedWeek(row.week)}><small>Week</small>{row.week}</button>)}</div>
+        <div className="season-matchup-grid">{(week?.matchups || []).map((matchup) => <MatchupCard key={matchup.matchupId} matchup={matchup} />)}</div>
+        <div className="schedule-source"><Database /><span><strong>{season.regularSeason.scheduleSource}</strong><small>{season.regularSeason.matchupCount} verified regular-season matchups. Playoff pairings are excluded until Sleeper seeds the bracket.</small></span></div>
       </section>
+
+      <section className="season-activity" id="activity">
+        <div className="archive-section-heading"><div><Eyebrow>League wire</Eyebrow><h2>Moves after the hammer.</h2></div><Link to="/transactions">Full transaction ledger <ArrowUpRight /></Link></div>
+        {data.recentTransactions.length ? <div className="transaction-ledger live-transaction-ledger">{data.recentTransactions.slice(0, 8).map((transaction) => <article key={transaction.transactionId}><div className="transaction-ledger__meta"><span>Week {transaction.week}</span><strong>{transaction.type.replaceAll("_", " ")}</strong><time>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).format(new Date(transaction.createdAt))}</time>{transaction.waiverBid != null ? <b>${transaction.waiverBid} FAAB</b> : null}</div><div className="transaction-assets">{transaction.assets.map((asset) => <div key={`${transaction.transactionId}-${asset.sleeperId}`}><Link to={`/players/${asset.playerUid || asset.sleeperId}`}><span>{asset.position || "—"}</span><strong>{asset.name}</strong></Link><small>{asset.from ? `${asset.from.teamName} → ` : "Added by "}{asset.to?.teamName || "Free agency"}</small></div>)}</div></article>)}</div> : <div className="season-empty"><Activity /><strong>No completed post-draft transactions yet.</strong><span>Sleeper’s activity feed is connected and will appear here automatically.</span></div>}
+      </section>
+
+      <section className="season-history-bridge">
+        <div><Eyebrow>The record remains</Eyebrow><h2>2026 lives on top of eleven completed seasons.</h2><p>The main site now runs the active season, while every championship, owner career, record, player history, ruling, and source audit remains one click away.</p><Link to="/history" className="archive-button archive-button--primary">Enter league history <Trophy /></Link></div>
+        <div className="champion-lineage">{latestChampions.map((completedSeason) => <Link to={`/seasons/${completedSeason.season}`} key={completedSeason.season}><span className="lineage-year">{completedSeason.season}</span><span className="lineage-mark"><Trophy /></span><span><strong>{completedSeason.champion.ownerName}</strong><small>{completedSeason.champion.teamName} · Seed {completedSeason.champion.seed}</small></span><ArrowUpRight /></Link>)}</div>
+      </section>
+
+      <section className="archive-callout"><Sparkles /><div><Eyebrow>One source of truth</Eyebrow><h2>Current season up front. League history always available.</h2><p>Schedules, rosters, draft results, and projection inputs come from Sleeper; Tatnall analysis is deterministic, disclosed, and refreshed every four hours.</p></div><Link to="/data-health">Inspect data health <ArrowUpRight /></Link></section>
     </PageTransition>
   );
 }

@@ -5,6 +5,7 @@ import {
   HistorySchema,
   ManifestV3Schema,
   NowSchema,
+  SeasonHubSchema,
   OwnersSchema,
   PlayerDirectorySchema,
   SearchSchema,
@@ -15,6 +16,7 @@ import {
   type HistoryData,
   type ManifestV3,
   type NowData,
+  type SeasonHubData,
   type OwnersData,
   type PlayerDirectory,
   type SearchData,
@@ -37,6 +39,14 @@ export function useNow(): UseQueryResult<NowData, Error> {
     queryKey: ["v3", "now"],
     queryFn: () => getV3("data/now/index.json", NowSchema),
     staleTime: 1000 * 60 * 5,
+  });
+}
+
+export function useSeasonHub(): UseQueryResult<SeasonHubData, Error> {
+  return useQuery({
+    queryKey: ["v3", "season-hub"],
+    queryFn: () => getV3("data/now/season-hub.json", SeasonHubSchema),
+    staleTime: 1000 * 60 * 15,
   });
 }
 

@@ -47,6 +47,10 @@ class FakeSleeperClient:
             return []
         raise AssertionError(f"Unexpected fake Sleeper path: {path}")
 
+    def get_url(self, url: str, *, optional=False):
+        assert url.startswith("https://api.sleeper.app/projections/nfl/2026/")
+        return []
+
 
 def test_configured_2026_league_is_validated_against_the_chain() -> None:
     league_config = load_yaml(ROOT / "data" / "config" / "league.yml")

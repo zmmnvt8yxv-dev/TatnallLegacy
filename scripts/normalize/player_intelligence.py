@@ -364,6 +364,14 @@ def _current_keeper_costs(
         if pd.notna(row.amount)
     }
     roster_rows = _json(CURRENT / "rosters.json")
+    draft_rows = _json(CURRENT / "drafts.json")
+    draft_pick_map = _json(CURRENT / "draft_picks.json")
+    latest_draft = max(draft_rows, key=lambda row: int(row.get("created") or 0), default={})
+    latest_picks = draft_pick_map.get(str(latest_draft.get("draft_id") or "")) or []
+    drafted_keepers: dict[int, list[str]] = defaultdict(list)
+    for pick in latest_picks:
+        if pick.get("is_keeper") and pick.get("roster_id") is not None:
+            drafted_keepers[int(pick["roster_id"])].append(str(pick.get("player_id") or ""))
     roster_to_owner: dict[int, str] = {}
     rows: list[dict[str, Any]] = []
     for roster in roster_rows:
@@ -371,7 +379,10 @@ def _current_keeper_costs(
         owner_uid = sleeper_owner_to_uid.get(str(roster.get("owner_id")))
         if owner_uid:
             roster_to_owner[roster_id] = owner_uid
-        for sleeper_id_value in roster.get("keepers") or []:
+        keeper_ids = [str(value) for value in roster.get("keepers") or []]
+        if not keeper_ids:
+            keeper_ids = drafted_keepers.get(roster_id, [])
+        for sleeper_id_value in keeper_ids:
             sleeper_id = str(sleeper_id_value)
             override = overrides.get(sleeper_id)
             prior = prior_prices.get(sleeper_id)
@@ -686,6 +697,11 @@ def _editorial_payload(
         ]
     ].to_dict("records")
     note = str((_yaml(CONFIG / "draft_model.yml").get("editorial") or {}).get("commissioner_note") or "").strip()
+    current_drafts = _json(CURRENT / "drafts.json")
+    current_pick_map = _json(CURRENT / "draft_picks.json")
+    current_draft = max(current_drafts, key=lambda row: int(row.get("created") or 0), default={})
+    current_pick_count = len(current_pick_map.get(str(current_draft.get("draft_id") or "")) or [])
+    post_draft = current_draft.get("status") == "complete" and current_pick_count == 152
     return {
         "meta": {
             "schemaVersion": "3.0.0",
@@ -694,9 +710,17 @@ def _editorial_payload(
             "verifiedThrough": 2025,
         },
         "lead": {
-            "kicker": "Tatnall Draft Central",
-            "headline": "Sixteen keepers are locked. The remaining $1,299 is up for auction.",
-            "dek": "The first Tatnall Draft Score board is live with verified 2025 performance, market context, and every franchise's real roster constraints.",
+            "kicker": "Tatnall 2026 Season Hub" if post_draft else "Tatnall Draft Central",
+            "headline": (
+                "The auction is over. Eight rosters enter the 2026 race."
+                if post_draft
+                else "Sixteen keepers are locked. The remaining $1,299 is up for auction."
+            ),
+            "dek": (
+                "Every roster, weekly matchup, Sleeper projection, transaction, and eleven-season league record now lives in one command center."
+                if post_draft
+                else "The first Tatnall Draft Score board is live with verified 2025 performance, market context, and every franchise's real roster constraints."
+            ),
             "commissionerNote": note or None,
         },
         "powerRankings": rankings,
@@ -763,9 +787,10 @@ def publish_player_intelligence(
         }
         keeper_players = []
         counts = {position: 0 for position in FANTASY_POSITIONS}
-        for sleeper_id_value in roster.get("keepers") or []:
-            sleeper_id = str(sleeper_id_value)
-            uid = sleeper_to_uid.get(sleeper_id)
+        roster_keepers = keepers[keepers["roster_id"] == roster_id]
+        for keeper_row in roster_keepers.itertuples(index=False):
+            sleeper_id = str(keeper_row.sleeper_player_id)
+            uid = str(keeper_row.player_uid) if pd.notna(keeper_row.player_uid) else sleeper_to_uid.get(sleeper_id)
             value = values_by_uid.get(uid or "", {})
             position = str(value.get("position") or current_players.get(sleeper_id, {}).get("position") or "")
             if position in counts:
@@ -801,7 +826,7 @@ def publish_player_intelligence(
     for row in values.sort_values(["rank_overall", "display_name"]).itertuples(index=False):
         keeper = bool(row.keeper)
         inherited_owner_uid = current_owner_by_player.get(str(row.player_uid))
-        owner_uid = inherited_owner_uid if keeper else None
+        owner_uid = inherited_owner_uid
         owner = owners.get(owner_uid or "")
         if (not bool(row.active) or pd.isna(row.nfl_team)) and not keeper:
             continue

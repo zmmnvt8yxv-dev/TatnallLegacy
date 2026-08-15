@@ -29,12 +29,12 @@ def test_publish_v3_exposes_canonical_history_and_current_state() -> None:
         "expected": 16,
         "teamsComplete": 8,
     }
-    assert now["draft"]["orderPublished"] is False
+    assert now["draft"]["status"] == "complete"
+    assert now["draft"]["orderPublished"] is True
     assert now["draft"]["budget"] == 200
-    assert now["draft"]["picks"] == []
-    assert now["transactionStatus"]["recorded"] == 0
-    assert now["recentTransactions"] == []
-    assert now["currentWeekLineups"] == []
+    assert len(now["draft"]["picks"]) == 152
+    assert now["transactionStatus"]["recorded"] >= len(now["recentTransactions"]) > 0
+    assert len(now["currentWeekLineups"]) == 8
 
 
 def test_public_player_directory_keeps_lamar_jackson_qb_and_cb_distinct() -> None:

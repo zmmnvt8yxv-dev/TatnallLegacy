@@ -7,17 +7,17 @@ import { features } from "../config/features";
 import { useV3Manifest, useV3Search } from "../data/v3/hooks";
 
 const mainNav = [
-  { to: "/", label: "Now", end: true },
+  { to: "/", label: "2026 Season", end: true },
   { to: "/history", label: "History" },
   { to: "/owners", label: "Owners" },
   { to: "/players", label: "Players" },
-  ...(features.playerIntelligenceV1 ? [{ to: "/war-room", label: "War Room" }] : []),
+  ...(features.playerIntelligenceV1 ? [{ to: "/war-room", label: "Draft Recap" }] : []),
   { to: "/records", label: "Records" },
 ];
 
 const currentNav = [
   { to: "/matchups", label: "Matchups", icon: Swords },
-  ...(features.playerIntelligenceV1 ? [{ to: "/war-room", label: "Draft War Room", icon: Gavel }] : []),
+  ...(features.playerIntelligenceV1 ? [{ to: "/war-room", label: "Draft Recap", icon: Gavel }] : []),
   { to: "/standings", label: "Standings", icon: BarChart3 },
   { to: "/transactions", label: "Transactions", icon: Archive },
   { to: "/data-health", label: "Data health", icon: Database },

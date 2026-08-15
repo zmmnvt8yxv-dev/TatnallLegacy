@@ -1,6 +1,6 @@
 {
   "schemaVersion": "3.0.0",
-  "generatedAt": "2026-08-09T18:47:06.970489+00:00",
+  "generatedAt": "2026-08-15T22:52:11.253578+00:00",
   "league": {
     "name": "Tatnall Legacy",
     "firstSeason": 2015,
@@ -93,6 +93,7 @@
   },
   "paths": {
     "current": "data/now/index.json",
+    "seasonHub": "data/now/season-hub.json",
     "history": "data/history/index.json",
     "season": "data/seasons/{season}/index.json",
     "seasonMatchups": "data/seasons/{season}/matchups.json",

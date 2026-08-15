@@ -18,7 +18,7 @@ def main() -> None:
     assert manifest["league"]["seasonPhase"] == "preseason"
     assert manifest["seasons"] == list(range(2015, 2026))
 
-    required = ["current", "history", "owners", "players", "warRoom", "editorial", "records", "search", "integrity"]
+    required = ["current", "seasonHub", "history", "owners", "players", "warRoom", "editorial", "records", "search", "integrity"]
     for name in required:
         path = manifest["paths"][name]
         assert "{" not in path
@@ -56,13 +56,12 @@ def main() -> None:
         "teamsComplete": 8,
     }
     assert now["draft"]["draftId"] == "1389343653058609153"
-    assert now["draft"]["status"] == "pre_draft"
-    assert now["draft"]["orderPublished"] is False
-    assert now["draft"]["pickCount"] == 0
+    assert now["draft"]["status"] == "complete"
+    assert now["draft"]["orderPublished"] is True
+    assert now["draft"]["pickCount"] == 152
     assert now["draft"]["budget"] == 200
-    assert now["transactionStatus"]["recorded"] == 0
-    assert now["recentTransactions"] == []
-    assert now["currentWeekLineups"] == []
+    assert now["transactionStatus"]["recorded"] >= 1
+    assert len(now["currentWeekLineups"]) == 8
     assert [team["teamName"] for team in now["teams"]] == [
         "Three Rings",
         "Team Duncan",
@@ -73,6 +72,26 @@ def main() -> None:
         "Dak Shots",
         "Nine-1-1",
     ]
+
+    hub = json.loads((PUBLIC / "now/season-hub.json").read_text())
+    assert hub["meta"]["status"] == "post_draft"
+    assert hub["draft"]["pickCount"] == 152
+    assert hub["draft"]["totalSpend"] == 1577
+    assert hub["regularSeason"] == {
+        "startWeek": 1,
+        "endWeek": 14,
+        "scheduleSource": "Sleeper league matchup endpoints",
+        "matchupCount": 56,
+    }
+    assert len(hub["teams"]) == 8
+    assert sorted(team["analysis"]["projectionRank"] for team in hub["teams"]) == list(range(1, 9))
+    assert all(
+        len(team["analysis"]["weekOneLineup"]) + len(team["analysis"]["openLineupSlots"]) == 13
+        for team in hub["teams"]
+    )
+    assert len(hub["schedule"]) == 14
+    assert all(len(week["matchups"]) == 4 for week in hub["schedule"])
+    assert (PUBLIC / "now/season-hub.json").stat().st_size < 500_000
 
     war_room = json.loads((PUBLIC / "war-room/index.json").read_text())
     assert war_room["budget"]["recommendedAuctionTotal"] == 1299
