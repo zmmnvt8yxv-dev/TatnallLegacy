@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-16T19:31:20Z",
+  "generated_at": "2026-08-16T19:40:19Z",
   "source": "Sleeper",
   "league": {
     "league_id": "1389343653058609152",
@@ -42,6 +42,15 @@
       "name": "Bucky Irving",
       "position": "RB",
       "team": "TB",
+      "injury_status": null,
+      "starter": true,
+      "projected_points": null
+    },
+    {
+      "player_id": "11646",
+      "name": "Jalen Coker",
+      "position": "WR",
+      "team": "CAR",
       "injury_status": null,
       "starter": true,
       "projected_points": null
@@ -97,15 +106,6 @@
       "position": "WR",
       "team": "DEN",
       "injury_status": "Questionable",
-      "starter": true,
-      "projected_points": null
-    },
-    {
-      "player_id": "7553",
-      "name": "Kyle Pitts",
-      "position": "TE",
-      "team": "ATL",
-      "injury_status": null,
       "starter": true,
       "projected_points": null
     },
@@ -166,19 +166,10 @@
       "projected_points": null
     },
     {
-      "player_id": "3321",
-      "name": "Tyreek Hill",
-      "position": "WR",
-      "team": null,
-      "injury_status": "Questionable",
-      "starter": false,
-      "projected_points": null
-    },
-    {
-      "player_id": "4017",
-      "name": "Deshaun Watson",
-      "position": "QB",
-      "team": "CLE",
+      "player_id": "4199",
+      "name": "Aaron Jones",
+      "position": "RB",
+      "team": "MIN",
       "injury_status": null,
       "starter": false,
       "projected_points": null
@@ -188,6 +179,15 @@
       "name": "Deebo Samuel",
       "position": "WR",
       "team": "SF",
+      "injury_status": null,
+      "starter": false,
+      "projected_points": null
+    },
+    {
+      "player_id": "7553",
+      "name": "Kyle Pitts",
+      "position": "TE",
+      "team": "ATL",
       "injury_status": null,
       "starter": false,
       "projected_points": null
