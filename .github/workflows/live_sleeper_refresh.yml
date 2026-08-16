@@ -1,0 +1,49 @@
+name: Live Sleeper Refresh
+
+on:
+  schedule:
+    # 40 refreshes/day: every 36 minutes, UTC. GitHub schedules may be delayed
+    # under load, but this remains comfortably above the 5-minute minimum.
+    - cron: '0,36 * * * *'
+    - cron: '12,48 * * * *'
+    - cron: '24 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-sleeper-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build live Sleeper snapshots
+        env:
+          SLEEPER_USER_ID: ${{ vars.SLEEPER_USER_ID }}
+          SLEEPER_USERNAME: ${{ vars.SLEEPER_USERNAME }}
+          SLEEPER_DISPLAY_NAME: ${{ vars.SLEEPER_DISPLAY_NAME }}
+        run: python scripts/live_sleeper_snapshot.py
+
+      - name: Commit changed live data
+        run: |
+          git config user.name "tatnall-live-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/live/my_roster.json data/live/current_matchup.json data/live/status.json data/live/players_cache.json
+          if git diff --cached --quiet; then
+            echo "No live data changes."
+            exit 0
+          fi
+          git commit -m "Refresh live Sleeper snapshot"
+          git push
