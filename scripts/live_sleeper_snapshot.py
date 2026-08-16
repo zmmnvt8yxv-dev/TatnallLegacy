@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import urllib.parse
 import urllib.request
@@ -23,13 +24,15 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 LEAGUE_CONFIG = ROOT / "data" / "config" / "league.yml"
+OWNERS_CONFIG = ROOT / "data" / "config" / "owners.yml"
 OUT_DIR = ROOT / "data" / "live"
 SLEEPER_BASE = "https://api.sleeper.app/v1"
 PROJECTIONS_BASE = "https://api.sleeper.com/projections/nfl"
+CANONICAL_OWNER_KEY = "conner_malley"
 
 
 def get_json(url: str, timeout: int = 30) -> Any:
-    req = urllib.request.Request(url, headers={"User-Agent": "TatnallLegacy-live-mirror/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "TatnallLegacy-live-mirror/1.1"})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return json.load(resp)
 
@@ -58,33 +61,72 @@ def parse_league_config(path: Path) -> tuple[str, int]:
     return league_id, season
 
 
+def parse_owner_identity(path: Path, owner_key: str = CANONICAL_OWNER_KEY) -> tuple[str, str]:
+    """Resolve canonical Sleeper identity from data/config/owners.yml without PyYAML."""
+    text = path.read_text(encoding="utf-8")
+    marker = f"- owner_key: {owner_key}"
+    start = text.find(marker)
+    if start < 0:
+        raise RuntimeError(f"Owner key {owner_key!r} not found in {path}")
+
+    # Slice only this owner block, ending at the next owner entry.
+    rest = text[start:]
+    next_owner = rest.find("\n  - owner_key:", len(marker))
+    block = rest if next_owner < 0 else rest[:next_owner]
+
+    username_match = re.search(r"sleeper_usernames:\s*\[\s*([^\],]+)", block)
+    user_id_match = re.search(r"sleeper_user_ids:\s*\[\s*[\"']?([^\"'\],]+)", block)
+    username = username_match.group(1).strip().strip('"\'') if username_match else ""
+    user_id = user_id_match.group(1).strip() if user_id_match else ""
+    if not username and not user_id:
+        raise RuntimeError(f"No Sleeper identity found for {owner_key!r} in {path}")
+    return user_id, username
+
+
 def choose_user(users: list[dict[str, Any]]) -> dict[str, Any]:
+    # Explicit workflow/repository variables remain supported as overrides.
     explicit_id = os.getenv("SLEEPER_USER_ID", "").strip()
     explicit_name = os.getenv("SLEEPER_USERNAME", "").strip().lower()
-    display_hint = os.getenv("SLEEPER_DISPLAY_NAME", "Conner").strip().lower()
+    display_hint = os.getenv("SLEEPER_DISPLAY_NAME", "").strip().lower()
+
+    # Default to the repo's canonical owner mapping so the workflow is self-contained.
+    if not explicit_id and not explicit_name:
+        canonical_id, canonical_name = parse_owner_identity(OWNERS_CONFIG)
+        explicit_id = canonical_id
+        explicit_name = canonical_name.lower()
 
     if explicit_id:
         for u in users:
             if str(u.get("user_id")) == explicit_id:
                 return u
-        raise RuntimeError(f"SLEEPER_USER_ID {explicit_id} is not a member of this league")
+        # If the ID was migrated/changed but the canonical username still matches,
+        # fall through to username before failing.
 
     if explicit_name:
         for u in users:
             if str(u.get("username") or "").lower() == explicit_name:
                 return u
-        raise RuntimeError(f"SLEEPER_USERNAME {explicit_name!r} is not a member of this league")
 
-    exact = [u for u in users if str(u.get("display_name") or "").lower() == display_hint]
-    if len(exact) == 1:
-        return exact[0]
-    contains = [u for u in users if display_hint and display_hint in str(u.get("display_name") or "").lower()]
-    if len(contains) == 1:
-        return contains[0]
+    if display_hint:
+        exact = [u for u in users if str(u.get("display_name") or "").lower() == display_hint]
+        if len(exact) == 1:
+            return exact[0]
+        contains = [u for u in users if display_hint in str(u.get("display_name") or "").lower()]
+        if len(contains) == 1:
+            return contains[0]
 
+    member_summary = [
+        {
+            "user_id": str(u.get("user_id") or ""),
+            "username": u.get("username"),
+            "display_name": u.get("display_name"),
+        }
+        for u in users
+    ]
     raise RuntimeError(
-        "Could not uniquely identify your Sleeper user. Add repository variable "
-        "SLEEPER_USER_ID or SLEEPER_USERNAME to the live-snapshot workflow environment."
+        "Could not identify Conner's Sleeper user from canonical owner mapping. "
+        f"Expected user_id={explicit_id!r}, username={explicit_name!r}. "
+        f"League members={member_summary}"
     )
 
 
@@ -123,7 +165,6 @@ def projection_map(season: int, week: int, scoring: str = "ppr") -> tuple[dict[s
         pid = str(rec.get("player_id") or rec.get("player", {}).get("player_id") or "")
         if not pid:
             continue
-        # Sleeper projection records may expose fantasy_points directly or stat fields.
         val = rec.get("pts_ppr") if scoring == "ppr" else rec.get("pts_half_ppr")
         if val is None:
             val = rec.get("fantasy_points") or rec.get("pts")
@@ -161,7 +202,6 @@ def main() -> int:
     if not my_roster:
         raise RuntimeError("Found your Sleeper user but no owned roster in the current league")
 
-    # Prefer NFL state's display week during preseason/regular season; fall back to config.
     week = int(state.get("display_week") or state.get("week") or 1)
     season = int(league.get("season") or configured_season)
     matchups = get_json(f"{SLEEPER_BASE}/league/{league_id}/matchups/{week}")
@@ -180,7 +220,6 @@ def main() -> int:
             if opponent_roster:
                 opponent_user = next((u for u in users if str(u.get("user_id")) == str(opponent_roster.get("owner_id"))), None)
 
-    # Player map: once-per-day guidance is handled by the workflow cache file.
     players_cache = OUT_DIR / "players_cache.json"
     players = {}
     refresh_players = True
@@ -260,6 +299,7 @@ def main() -> int:
         "my_roster_id": my_roster.get("roster_id"),
         "opponent_roster_id": (opponent_roster or {}).get("roster_id"),
         "player_map_refreshed": refresh_players,
+        "resolved_owner": {"user_id": me.get("user_id"), "username": me.get("username"), "display_name": me.get("display_name")},
     }
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
