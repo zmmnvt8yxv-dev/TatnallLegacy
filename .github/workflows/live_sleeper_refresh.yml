@@ -1,6 +1,14 @@
 name: Live Sleeper Refresh
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/live_sleeper_snapshot.py'
+      - '.github/workflows/live_sleeper_refresh.yml'
+      - 'data/config/league.yml'
+      - 'data/config/owners.yml'
   schedule:
     # 40 refreshes/day: every 36 minutes, UTC. GitHub schedules may be delayed
     # under load, but this remains comfortably above the 5-minute minimum.
@@ -31,6 +39,8 @@ jobs:
 
       - name: Build live Sleeper snapshots
         env:
+          # Optional repository variables. If unset, the script resolves Conner
+          # from data/config/owners.yml (owner_key: conner_malley).
           SLEEPER_USER_ID: ${{ vars.SLEEPER_USER_ID }}
           SLEEPER_USERNAME: ${{ vars.SLEEPER_USERNAME }}
           SLEEPER_DISPLAY_NAME: ${{ vars.SLEEPER_DISPLAY_NAME }}
