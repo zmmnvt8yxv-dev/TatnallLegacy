@@ -1,13 +1,13 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Archive, BarChart3, Database, Gavel, Menu, Search, ShieldCheck, Swords, X } from "lucide-react";
+import { Archive, BarChart3, CalendarDays, Database, Gavel, Menu, Search, ShieldCheck, Swords, Trophy, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle.jsx";
 import { features } from "../config/features";
 import { useV3Manifest, useV3Search } from "../data/v3/hooks";
 
 const mainNav = [
-  { to: "/", label: "2026 Season", end: true },
+  { to: "/2026", label: "2026 Projections" },
   { to: "/history", label: "History" },
   { to: "/owners", label: "Owners" },
   { to: "/players", label: "Players" },
@@ -16,6 +16,8 @@ const mainNav = [
 ];
 
 const currentNav = [
+  { to: "/2026", label: "2026 Overview", icon: Trophy },
+  { to: "/2026/weeks/1", label: "Weekly Reports", icon: CalendarDays },
   { to: "/matchups", label: "Matchups", icon: Swords },
   ...(features.playerIntelligenceV1 ? [{ to: "/war-room", label: "Draft Recap", icon: Gavel }] : []),
   { to: "/standings", label: "Standings", icon: BarChart3 },
@@ -62,7 +64,7 @@ export default function Layout({ children }) {
 
         <nav className="archive-main-nav" aria-label="Primary navigation">
           {mainNav.map((item) => (
-            <NavLink key={item.to} to={item.to} end={item.end} className={({ isActive }) => isActive ? "active" : ""}>{item.label}</NavLink>
+            <NavLink key={item.to} to={item.to} end={item.end} className={({ isActive }) => isActive || (item.to === "/2026" && location.pathname === "/") ? "active" : ""}>{item.label}</NavLink>
           ))}
         </nav>
 
