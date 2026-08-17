@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import yaml
+
 from scripts.publish.web_data import publish
 
 
@@ -35,6 +37,36 @@ def test_publish_v3_exposes_canonical_history_and_current_state() -> None:
     assert len(now["draft"]["picks"]) == 152
     assert now["transactionStatus"]["recorded"] >= len(now["recentTransactions"]) > 0
     assert len(now["currentWeekLineups"]) == 8
+
+    raw_users = {
+        str(user["user_id"]): user
+        for user in json.loads((ROOT / "data/raw/sleeper/2026/current/users.json").read_text())
+    }
+    raw_rosters = json.loads((ROOT / "data/raw/sleeper/2026/current/rosters.json").read_text())
+    raw_team_name_by_roster = {
+        int(roster["roster_id"]): str(
+            (raw_users[str(roster["owner_id"])].get("metadata") or {}).get("team_name") or ""
+        ).strip()
+        for roster in raw_rosters
+    }
+    public_team_name_by_roster = {
+        int(team["rosterId"]): team["teamName"] for team in now["teams"]
+    }
+    branding = yaml.safe_load((ROOT / "data/config/branding.yml").read_text()) or {}
+    blocked_phrases = [
+        str(value).casefold()
+        for value in (branding.get("public_name_policy") or {}).get("blocked_phrases") or []
+    ]
+    for roster_id, raw_team_name in raw_team_name_by_roster.items():
+        public_team_name = public_team_name_by_roster[roster_id]
+        is_safe_source_name = raw_team_name and not any(
+            phrase in raw_team_name.casefold() for phrase in blocked_phrases
+        )
+        if is_safe_source_name:
+            assert public_team_name == raw_team_name
+        else:
+            assert public_team_name
+            assert not any(phrase in public_team_name.casefold() for phrase in blocked_phrases)
 
 
 def test_public_player_directory_keeps_lamar_jackson_qb_and_cb_distinct() -> None:

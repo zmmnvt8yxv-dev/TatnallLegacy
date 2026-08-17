@@ -39,6 +39,7 @@ def test_integer_pool_reconciles_exactly_with_stable_ties() -> None:
 
 def test_war_room_reconciles_budget_and_keeper_rules() -> None:
     room = json.loads((PUBLIC / "war-room/index.json").read_text())
+    now = json.loads((PUBLIC / "now/index.json").read_text())
     assert room["budget"] == {
         "leagueTotal": 1600,
         "rosterSpots": 152,
@@ -59,6 +60,9 @@ def test_war_room_reconciles_budget_and_keeper_rules() -> None:
     available_demand = [player for player in room["players"] if player["inRosterDemand"] and not player["keeper"]]
     assert len(available_demand) == 136
     assert sum(player["recommendedValue"] for player in available_demand) == 1299
+    assert {team["rosterId"]: team["teamName"] for team in room["teams"]} == {
+        team["rosterId"]: team["teamName"] for team in now["teams"]
+    }
 
 
 def test_historical_points_never_claim_verified_model_coverage() -> None:

@@ -183,6 +183,28 @@ def _owner_context() -> tuple[dict[str, dict[str, Any]], dict[str, str], dict[st
     return result, sleeper_to_uid, key_to_uid
 
 
+def _current_owner_context(
+    owners: dict[str, dict[str, Any]],
+    sleeper_to_uid: dict[str, str],
+) -> dict[str, dict[str, Any]]:
+    """Overlay live Sleeper team names on current-season owner identities."""
+    current = {uid: dict(identity) for uid, identity in owners.items()}
+    policy = _yaml(CONFIG / "branding.yml").get("public_name_policy") or {}
+    blocked_phrases = [
+        str(value).casefold() for value in policy.get("blocked_phrases") or []
+    ]
+    for user in _json(CURRENT / "users.json"):
+        owner_uid = sleeper_to_uid.get(str(user.get("user_id")))
+        identity = current.get(owner_uid or "")
+        if not identity:
+            continue
+        candidate = str((user.get("metadata") or {}).get("team_name") or "").strip()
+        normalized = candidate.casefold()
+        if candidate and not any(phrase in normalized for phrase in blocked_phrases):
+            identity["teamName"] = candidate
+    return current
+
+
 def _metrics_rows(kind: str) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for season in range(2015, 2026):
@@ -750,6 +772,7 @@ def publish_player_intelligence(
     generated_at = datetime.now(timezone.utc).isoformat()
     owners, sleeper_owner_to_uid, _ = _owner_context()
     team_identity, _ = _team_identity_maps(owners)
+    current_owners = _current_owner_context(owners, sleeper_owner_to_uid)
     sleeper_to_uid, _, players_by_uid = _identity_maps()
     current_players = _json(RAW_PLAYERS).get("players") or {}
     current_rosters = _json(CURRENT / "rosters.json")
@@ -777,7 +800,7 @@ def publish_player_intelligence(
     for roster in sorted(current_rosters, key=lambda row: int(row["roster_id"])):
         roster_id = int(roster["roster_id"])
         owner_uid = roster_to_owner.get(roster_id)
-        identity = owners.get(owner_uid or "") or {
+        identity = current_owners.get(owner_uid or "") or {
             "ownerUid": owner_uid,
             "ownerName": "Unknown owner",
             "teamName": f"Roster {roster_id}",
@@ -827,7 +850,7 @@ def publish_player_intelligence(
         keeper = bool(row.keeper)
         inherited_owner_uid = current_owner_by_player.get(str(row.player_uid))
         owner_uid = inherited_owner_uid
-        owner = owners.get(owner_uid or "")
+        owner = current_owners.get(owner_uid or "")
         if (not bool(row.active) or pd.isna(row.nfl_team)) and not keeper:
             continue
         value_rows.append(

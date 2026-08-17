@@ -6,6 +6,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import yaml
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public" / "data"
@@ -62,16 +64,32 @@ def main() -> None:
     assert now["draft"]["budget"] == 200
     assert now["transactionStatus"]["recorded"] >= 1
     assert len(now["currentWeekLineups"]) == 8
-    assert [team["teamName"] for team in now["teams"]] == [
-        "Three Rings",
-        "Team Duncan",
-        "Insane in the Achane",
-        "King of January",
-        "FantasyGPT",
-        "Feels Different This Year",
-        "Dak Shots",
-        "Nine-1-1",
+    raw_users = {
+        str(user["user_id"]): user
+        for user in json.loads((ROOT / "data/raw/sleeper/2026/current/users.json").read_text())
+    }
+    raw_rosters = json.loads((ROOT / "data/raw/sleeper/2026/current/rosters.json").read_text())
+    branding = yaml.safe_load((ROOT / "data/config/branding.yml").read_text()) or {}
+    blocked_phrases = [
+        str(value).casefold()
+        for value in (branding.get("public_name_policy") or {}).get("blocked_phrases") or []
     ]
+    public_team_name_by_roster = {
+        int(team["rosterId"]): team["teamName"] for team in now["teams"]
+    }
+    for roster in raw_rosters:
+        roster_id = int(roster["roster_id"])
+        raw_team_name = str(
+            (raw_users[str(roster["owner_id"])].get("metadata") or {}).get("team_name") or ""
+        ).strip()
+        public_team_name = public_team_name_by_roster[roster_id]
+        if raw_team_name and not any(
+            phrase in raw_team_name.casefold() for phrase in blocked_phrases
+        ):
+            assert public_team_name == raw_team_name
+        else:
+            assert public_team_name
+            assert not any(phrase in public_team_name.casefold() for phrase in blocked_phrases)
 
     hub = json.loads((PUBLIC / "now/season-hub.json").read_text())
     assert hub["meta"]["status"] == "post_draft"

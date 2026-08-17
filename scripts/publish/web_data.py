@@ -98,6 +98,19 @@ def _owner_aliases() -> tuple[dict[str, dict[str, Any]], dict[str, str]]:
     return full, sleeper_to_uid
 
 
+def _current_team_name(
+    user: dict[str, Any],
+    fallback: str,
+    blocked_phrases: list[str],
+) -> str:
+    """Resolve a current-season public name from the latest Sleeper user payload."""
+    candidate = str((user.get("metadata") or {}).get("team_name") or "").strip()
+    normalized = candidate.casefold()
+    if not candidate or any(str(phrase).casefold() in normalized for phrase in blocked_phrases):
+        return fallback
+    return candidate
+
+
 def _franchise_rosters(season: int) -> dict[int, str]:
     config = _load_yaml(CONFIG / "franchises.yml")
     normalized = pd.read_parquet(NORMALIZED / "franchises.parquet")
@@ -250,6 +263,12 @@ def publish() -> dict[str, Any]:
     current_transactions_raw = _load_json(SLEEPER_CURRENT / "transactions.json")
     current_matchups_raw = _load_json(SLEEPER_CURRENT / "matchups.json")
     users_by_id = {str(row["user_id"]): row for row in current_users}
+    blocked_team_phrases = list(
+        (_load_yaml(CONFIG / "branding.yml").get("public_name_policy") or {}).get(
+            "blocked_phrases"
+        )
+        or []
+    )
     roster_to_franchise = _franchise_rosters(current_season)
     sleeper_to_player_uid, players_by_uid, player_directory = _current_players(player_ids, players)
     current_week = int(current_manifest.get("current_week") or current.get("current_week", 1))
@@ -574,13 +593,16 @@ def publish() -> dict[str, Any]:
             )
         )
         settings = roster.get("settings") or {}
+        fallback_team_name = owners.get(owner_uid, {}).get(
+            "public_alias"
+        ) or f"Roster {roster['roster_id']}"
         current_teams.append(
             {
                 "rosterId": int(roster["roster_id"]),
                 "ownerUid": owner_uid,
                 "ownerName": owners.get(owner_uid, {}).get("canonical_name", user.get("display_name", "Unknown owner")),
                 "franchiseUid": roster_to_franchise.get(int(roster["roster_id"])),
-                "teamName": owners.get(owner_uid, {}).get("public_alias") or f"Roster {roster['roster_id']}",
+                "teamName": _current_team_name(user, fallback_team_name, blocked_team_phrases),
                 "monogram": owners.get(owner_uid, {}).get("monogram") or "TL",
                 "accent": owners.get(owner_uid, {}).get("accent") or "#d7a928",
                 "motto": owners.get(owner_uid, {}).get("motto") or "",
