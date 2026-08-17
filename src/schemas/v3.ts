@@ -218,8 +218,12 @@ const SeasonHubPlayerSchema = z.object({
   nflStatus: z.string().nullable().optional(),
   weekOneProjection: z.number(),
   regularSeasonProjection: z.number(),
+  pointsAboveExpectedReplacement: z.number(),
+  lineupPointsAboveExpectedReplacement: z.number(),
+  projectedStarts: z.number(),
   draftPrice: z.number().nullable(),
   projectedWeekOneStarter: z.boolean().optional(),
+  replacement: z.boolean().optional(),
 });
 
 export const SeasonHubSchema = z.object({
@@ -237,10 +241,20 @@ export const SeasonHubSchema = z.object({
     seasonType: z.string(),
     updatedAt: z.string(),
     publishedValues: z.number(),
+    projectionPoolValues: z.number(),
     expectedRosterWeeks: z.number(),
     coveragePct: z.number(),
     method: z.string(),
     coverageNote: z.string(),
+  }),
+  replacementModel: z.object({
+    label: z.string(),
+    poolMethod: z.string(),
+    poolSizes: z.record(z.string(), z.number()),
+    weeklyBaselines: z.array(z.object({
+      week: z.number(), QB: z.number(), RB: z.number(), WR: z.number(),
+      TE: z.number(), K: z.number(), DEF: z.number(),
+    })),
   }),
   draft: z.object({
     draftId: z.string(),
@@ -280,6 +294,8 @@ export const SeasonHubSchema = z.object({
       tier: z.string(),
       projectedRegularSeasonPoints: z.number(),
       projectedWeeklyAverage: z.number(),
+      pointsAboveExpectedReplacement: z.number(),
+      pointsAboveExpectedReplacementPerWeek: z.number(),
       projectedAllPlayWins: z.number(),
       projectedRecord: z.object({ wins: z.number(), losses: z.number(), ties: z.number() }),
       scheduleStrengthRank: z.number(),
@@ -290,6 +306,7 @@ export const SeasonHubSchema = z.object({
       overview: z.string(),
       positionGroups: z.array(z.object({
         position: z.string(), rank: z.number(), projectedWeeklyPoints: z.number(),
+        pointsAboveExpectedReplacement: z.number(),
       })),
       weekOneLineup: z.array(SeasonHubPlayerSchema.extend({
         projectedPoints: z.number(), slot: z.string(),
@@ -300,13 +317,15 @@ export const SeasonHubSchema = z.object({
         players: z.array(z.object({
           playerUid: z.string().nullable(), sleeperId: z.string(), name: z.string(),
           position: z.string().nullable(), nflTeam: z.string().nullable(),
-          projectedPoints: z.number(), slot: z.string(),
+          projectedPoints: z.number(), paer: z.number(),
+          replacement: z.boolean().optional(), slot: z.string(),
         })),
       })),
       openLineupSlots: z.array(z.string()),
       topProjectedPlayers: z.array(z.object({
         playerUid: z.string().nullable(), sleeperId: z.string(), name: z.string(),
         position: z.string().nullable(), projectedPoints: z.number(),
+        pointsAboveExpectedReplacement: z.number(),
       })),
       injuryFlags: z.number(),
     }),

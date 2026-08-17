@@ -1,0 +1,2305 @@
+{
+  "source": "Sleeper projections API",
+  "scoring": "pts_half_ppr",
+  "season_type": "regular",
+  "published_values": 12572,
+  "candidates_per_position": 5,
+  "weeks": {
+    "1": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.86
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 7.6
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.36
+        },
+        {
+          "player_id": "TEN",
+          "position": "DEF",
+          "pts_half_ppr": 7.1
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.01
+        }
+      ],
+      "K": [
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 8.03
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.96
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.78
+        },
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "2020",
+          "position": "K",
+          "pts_half_ppr": 7.32
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.01
+        },
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 18.86
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.82
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 17.46
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 17.37
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.15
+        },
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.15
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 6.09
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.72
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.35
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 9.31
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.97
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 7.93
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.8
+        },
+        {
+          "player_id": "3214",
+          "position": "TE",
+          "pts_half_ppr": 7.61
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.71
+        },
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.51
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.92
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.64
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.29
+        }
+      ]
+    },
+    "2": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.84
+        },
+        {
+          "player_id": "TB",
+          "position": "DEF",
+          "pts_half_ppr": 7.65
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 7.36
+        },
+        {
+          "player_id": "SF",
+          "position": "DEF",
+          "pts_half_ppr": 7.3
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 7.22
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.71
+        },
+        {
+          "player_id": "4227",
+          "position": "K",
+          "pts_half_ppr": 7.4
+        },
+        {
+          "player_id": "5189",
+          "position": "K",
+          "pts_half_ppr": 7.4
+        },
+        {
+          "player_id": "7042",
+          "position": "K",
+          "pts_half_ppr": 7.4
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 19.24
+        },
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.14
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 18.37
+        },
+        {
+          "player_id": "6768",
+          "position": "QB",
+          "pts_half_ppr": 17.89
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 17.8
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.19
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.06
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.75
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.72
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.34
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 9.75
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.4
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 8.04
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.83
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.71
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.87
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.39
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 8.0
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.74
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.33
+        }
+      ]
+    },
+    "3": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.44
+        },
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 19.42
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 18.04
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 17.93
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.49
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.4
+        },
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.36
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.75
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.66
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.4
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.3
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.58
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 8.11
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.83
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.59
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.85
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.43
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 8.0
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.82
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.36
+        }
+      ]
+    },
+    "4": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.38
+        },
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 18.93
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 18.32
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 18.27
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.43
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.05
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.0
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.96
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.78
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.21
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.19
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.49
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 7.93
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.85
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.66
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.95
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.36
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 8.04
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.64
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.34
+        }
+      ]
+    },
+    "5": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        },
+        {
+          "player_id": "CHI",
+          "position": "DEF",
+          "pts_half_ppr": 6.41
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.53
+        },
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 18.99
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 17.93
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 17.85
+        },
+        {
+          "player_id": "12522",
+          "position": "QB",
+          "pts_half_ppr": 15.79
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.24
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.07
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.9
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.55
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.21
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.48
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 7.96
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.77
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.74
+        },
+        {
+          "player_id": "3214",
+          "position": "TE",
+          "pts_half_ppr": 7.4
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.86
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.48
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.89
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.67
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.35
+        }
+      ]
+    },
+    "6": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        },
+        {
+          "player_id": "CHI",
+          "position": "DEF",
+          "pts_half_ppr": 6.41
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        },
+        {
+          "player_id": "5189",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        },
+        {
+          "player_id": "2020",
+          "position": "K",
+          "pts_half_ppr": 7.19
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.68
+        },
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 18.63
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 18.01
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 17.84
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.22
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.23
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 5.96
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.86
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.71
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.28
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.07
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.41
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 7.83
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.79
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.68
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.77
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.44
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.54
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.32
+        },
+        {
+          "player_id": "10213",
+          "position": "WR",
+          "pts_half_ppr": 6.73
+        }
+      ]
+    },
+    "7": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.21
+        },
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 18.92
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 17.82
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 17.69
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.53
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.29
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.07
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.93
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.89
+        },
+        {
+          "player_id": "11571",
+          "position": "RB",
+          "pts_half_ppr": 4.66
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.02
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.51
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 7.93
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.6
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.77
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.52
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.99
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.64
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.38
+        }
+      ]
+    },
+    "8": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.4
+        },
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 19.32
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 17.93
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.43
+        },
+        {
+          "player_id": "12522",
+          "position": "QB",
+          "pts_half_ppr": 16.07
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.3
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.0
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.2
+        },
+        {
+          "player_id": "11571",
+          "position": "RB",
+          "pts_half_ppr": 4.64
+        },
+        {
+          "player_id": "8154",
+          "position": "RB",
+          "pts_half_ppr": 4.36
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 9.94
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.37
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 8.06
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.74
+        },
+        {
+          "player_id": "3214",
+          "position": "TE",
+          "pts_half_ppr": 7.47
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.57
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.92
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.77
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.39
+        },
+        {
+          "player_id": "10213",
+          "position": "WR",
+          "pts_half_ppr": 6.78
+        }
+      ]
+    },
+    "9": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 19.24
+        },
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.05
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 18.38
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 17.72
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.0
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.14
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.81
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.73
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.32
+        },
+        {
+          "player_id": "11571",
+          "position": "RB",
+          "pts_half_ppr": 4.59
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.15
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.43
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 8.04
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.77
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.76
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.71
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.44
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.85
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.74
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.37
+        }
+      ]
+    },
+    "10": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 19.11
+        },
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.01
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 18.27
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 17.87
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.32
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.24
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.2
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.9
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.8
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.16
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.21
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.38
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 8.01
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.84
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.66
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.75
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.44
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.92
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.72
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.3
+        }
+      ]
+    },
+    "11": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "CHI",
+          "position": "DEF",
+          "pts_half_ppr": 6.41
+        },
+        {
+          "player_id": "BUF",
+          "position": "DEF",
+          "pts_half_ppr": 6.35
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "5189",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        },
+        {
+          "player_id": "2020",
+          "position": "K",
+          "pts_half_ppr": 7.19
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 18.04
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 17.93
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 16.95
+        },
+        {
+          "player_id": "12522",
+          "position": "QB",
+          "pts_half_ppr": 16.23
+        },
+        {
+          "player_id": "96",
+          "position": "QB",
+          "pts_half_ppr": 14.5
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.34
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.93
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.66
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.24
+        },
+        {
+          "player_id": "11571",
+          "position": "RB",
+          "pts_half_ppr": 4.63
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.21
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.48
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.88
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.76
+        },
+        {
+          "player_id": "8210",
+          "position": "TE",
+          "pts_half_ppr": 7.3
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.85
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.9
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.24
+        },
+        {
+          "player_id": "10213",
+          "position": "WR",
+          "pts_half_ppr": 6.64
+        },
+        {
+          "player_id": "13276",
+          "position": "WR",
+          "pts_half_ppr": 6.32
+        }
+      ]
+    },
+    "12": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.24
+        },
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 18.99
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 17.92
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.53
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 17.4
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.24
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.22
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.87
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.47
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.19
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.04
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.41
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 7.96
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.88
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.6
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.68
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.38
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.97
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.67
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.37
+        }
+      ]
+    },
+    "13": {
+      "DEF": [
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        },
+        {
+          "player_id": "CHI",
+          "position": "DEF",
+          "pts_half_ppr": 6.41
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        },
+        {
+          "player_id": "5189",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 19.47
+        },
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.13
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 17.77
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.18
+        },
+        {
+          "player_id": "12522",
+          "position": "QB",
+          "pts_half_ppr": 16.18
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.28
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.25
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.81
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.5
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.24
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.13
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 8.13
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.8
+        },
+        {
+          "player_id": "8110",
+          "position": "TE",
+          "pts_half_ppr": 7.59
+        },
+        {
+          "player_id": "3214",
+          "position": "TE",
+          "pts_half_ppr": 7.3
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.72
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.36
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.96
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.83
+        },
+        {
+          "player_id": "11618",
+          "position": "WR",
+          "pts_half_ppr": 6.07
+        }
+      ]
+    },
+    "14": {
+      "DEF": [
+        {
+          "player_id": "BAL",
+          "position": "DEF",
+          "pts_half_ppr": 7.47
+        },
+        {
+          "player_id": "MIN",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "NE",
+          "position": "DEF",
+          "pts_half_ppr": 7.29
+        },
+        {
+          "player_id": "KC",
+          "position": "DEF",
+          "pts_half_ppr": 6.94
+        },
+        {
+          "player_id": "GB",
+          "position": "DEF",
+          "pts_half_ppr": 6.88
+        }
+      ],
+      "K": [
+        {
+          "player_id": "12015",
+          "position": "K",
+          "pts_half_ppr": 7.75
+        },
+        {
+          "player_id": "12711",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "7839",
+          "position": "K",
+          "pts_half_ppr": 7.56
+        },
+        {
+          "player_id": "11539",
+          "position": "K",
+          "pts_half_ppr": 7.5
+        },
+        {
+          "player_id": "12713",
+          "position": "K",
+          "pts_half_ppr": 7.25
+        }
+      ],
+      "QB": [
+        {
+          "player_id": "6804",
+          "position": "QB",
+          "pts_half_ppr": 19.15
+        },
+        {
+          "player_id": "4943",
+          "position": "QB",
+          "pts_half_ppr": 19.03
+        },
+        {
+          "player_id": "9758",
+          "position": "QB",
+          "pts_half_ppr": 18.22
+        },
+        {
+          "player_id": "5870",
+          "position": "QB",
+          "pts_half_ppr": 17.72
+        },
+        {
+          "player_id": "9228",
+          "position": "QB",
+          "pts_half_ppr": 17.32
+        }
+      ],
+      "RB": [
+        {
+          "player_id": "9508",
+          "position": "RB",
+          "pts_half_ppr": 6.29
+        },
+        {
+          "player_id": "12469",
+          "position": "RB",
+          "pts_half_ppr": 6.21
+        },
+        {
+          "player_id": "11655",
+          "position": "RB",
+          "pts_half_ppr": 5.76
+        },
+        {
+          "player_id": "12474",
+          "position": "RB",
+          "pts_half_ppr": 5.7
+        },
+        {
+          "player_id": "9511",
+          "position": "RB",
+          "pts_half_ppr": 5.34
+        }
+      ],
+      "TE": [
+        {
+          "player_id": "1466",
+          "position": "TE",
+          "pts_half_ppr": 10.25
+        },
+        {
+          "player_id": "5012",
+          "position": "TE",
+          "pts_half_ppr": 8.5
+        },
+        {
+          "player_id": "11603",
+          "position": "TE",
+          "pts_half_ppr": 7.99
+        },
+        {
+          "player_id": "7002",
+          "position": "TE",
+          "pts_half_ppr": 7.84
+        },
+        {
+          "player_id": "3214",
+          "position": "TE",
+          "pts_half_ppr": 7.32
+        }
+      ],
+      "WR": [
+        {
+          "player_id": "12484",
+          "position": "WR",
+          "pts_half_ppr": 8.93
+        },
+        {
+          "player_id": "8121",
+          "position": "WR",
+          "pts_half_ppr": 8.38
+        },
+        {
+          "player_id": "7049",
+          "position": "WR",
+          "pts_half_ppr": 7.88
+        },
+        {
+          "player_id": "8676",
+          "position": "WR",
+          "pts_half_ppr": 7.7
+        },
+        {
+          "player_id": "8180",
+          "position": "WR",
+          "pts_half_ppr": 7.33
+        }
+      ]
+    }
+  }
+}

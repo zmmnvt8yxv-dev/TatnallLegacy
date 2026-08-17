@@ -4,7 +4,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from scripts.publish.season_hub import optimize_lineup
+from scripts.publish.season_hub import build_replacement_baselines, optimize_lineup
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -32,6 +32,32 @@ def test_lineup_optimizer_is_legal_and_deterministic() -> None:
     assert all(row["position"] in {"RB", "WR", "TE"} for row in first if row["slot"].startswith("FLEX"))
 
 
+def test_replacement_baseline_uses_available_weekly_position_pool() -> None:
+    projections = {1: {"owned": 30.0, "free-a": 22.0, "free-b": 19.0, "free-c": 16.0}}
+    players = {
+        player_id: {"position": "QB"}
+        for player_id in projections[1]
+    }
+    baselines = build_replacement_baselines(projections, players, {"owned"}, 1)
+    assert baselines[1]["QB"] == 19.0
+
+
+def test_lineup_uses_replacement_instead_of_a_below_baseline_extra_qb() -> None:
+    players = [
+        {"sleeperId": "qb-1", "name": "QB One", "position": "QB"},
+        {"sleeperId": "qb-2", "name": "QB Two", "position": "QB"},
+        {"sleeperId": "qb-3", "name": "QB Three", "position": "QB"},
+    ]
+    projections = {"qb-1": 30.0, "qb-2": 19.0, "qb-3": 18.0}
+    replacement = {"QB": 20.0, "RB": 8.0, "WR": 9.0, "TE": 7.0, "K": 6.0, "DEF": 6.0}
+    lineup = optimize_lineup(players, projections, replacement)
+    quarterbacks = [row for row in lineup if row["slot"].startswith("QB")]
+    assert len(lineup) == 13
+    assert [row["name"] for row in quarterbacks] == ["QB One", "Expected QB replacement"]
+    assert quarterbacks[0]["pointsAboveExpectedReplacement"] == 10.0
+    assert quarterbacks[1]["pointsAboveExpectedReplacement"] == 0.0
+
+
 def test_hub_uses_final_sleeper_draft_and_route_sized_payload() -> None:
     hub = load(PUBLIC / "now/season-hub.json")
     assert hub["meta"]["status"] == "post_draft"
@@ -42,6 +68,8 @@ def test_hub_uses_final_sleeper_draft_and_route_sized_payload() -> None:
     assert len(hub["teams"]) == 8
     assert sorted(team["analysis"]["projectionRank"] for team in hub["teams"]) == list(range(1, 9))
     assert all(sum(team["analysis"]["projectedRecord"].values()) == 14 for team in hub["teams"])
+    assert hub["replacementModel"]["label"] == "Points above expected replacement"
+    assert all(team["analysis"]["pointsAboveExpectedReplacement"] >= 0 for team in hub["teams"])
     assert (PUBLIC / "now/season-hub.json").stat().st_size < 500_000
 
 
@@ -74,6 +102,7 @@ def test_public_player_values_are_unchanged_sleeper_projections() -> None:
         assert len(lineup) + len(team["analysis"]["openLineupSlots"]) == 13
         assert len({row["sleeperId"] for row in lineup}) == len(lineup)
         assert round(sum(row["projectedPoints"] for row in lineup), 2) > 0
+        assert all(row["pointsAboveExpectedReplacement"] >= 0 for row in lineup)
     assert hub["projectionSource"]["label"] == "Sleeper weekly projections"
     assert hub["projectionSource"]["provider"] == "rotowire"
     assert hub["projectionSource"]["scoringField"] == "pts_half_ppr"

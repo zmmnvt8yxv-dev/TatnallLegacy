@@ -78,6 +78,10 @@
     "projections": {
       "path": "projections.json",
       "records": 2135
+    },
+    "replacement_pool": {
+      "path": "replacement_pool.json",
+      "records": 420
     }
   }
 }

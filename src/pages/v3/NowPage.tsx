@@ -28,31 +28,35 @@ export default function NowPage(): React.ReactElement {
   const projectedFinish = useMemo(() => [...(hub.data?.teams || [])].sort((left, right) => {
     const recordGap = right.analysis.projectedRecord.wins - left.analysis.projectedRecord.wins;
     if (recordGap) return recordGap;
-    const pointsGap = right.analysis.projectedRegularSeasonPoints - left.analysis.projectedRegularSeasonPoints;
-    if (Math.abs(pointsGap) > 0.01) return pointsGap;
+    const valueGap = right.analysis.pointsAboveExpectedReplacement - left.analysis.pointsAboveExpectedReplacement;
+    if (Math.abs(valueGap) > 0.01) return valueGap;
     return left.analysis.projectionRank - right.analysis.projectionRank;
   }), [hub.data]);
 
   const playerBoard = useMemo(() => {
     const rows = (hub.data?.teams || []).flatMap((team) => team.players.map((player) => ({ ...player, team })));
     const positionRanks = new Map<string, number>();
-    return rows.sort((left, right) => right.regularSeasonProjection - left.regularSeasonProjection).map((player, index) => {
-      const position = player.position || "—";
-      const positionRank = (positionRanks.get(position) || 0) + 1;
-      positionRanks.set(position, positionRank);
-      return { ...player, overallRank: index + 1, positionRank };
-    });
+    for (const position of new Set(rows.map((player) => player.position || "—"))) {
+      rows.filter((player) => (player.position || "—") === position)
+        .sort((left, right) => right.pointsAboveExpectedReplacement - left.pointsAboveExpectedReplacement || right.regularSeasonProjection - left.regularSeasonProjection)
+        .forEach((player, index) => positionRanks.set(player.sleeperId, index + 1));
+    }
+    return rows.sort((left, right) =>
+      right.lineupPointsAboveExpectedReplacement - left.lineupPointsAboveExpectedReplacement
+      || right.pointsAboveExpectedReplacement - left.pointsAboveExpectedReplacement
+      || right.regularSeasonProjection - left.regularSeasonProjection
+    ).map((player, index) => ({ ...player, overallRank: index + 1, positionRank: positionRanks.get(player.sleeperId) || 0 }));
   }, [hub.data]);
 
   if (hub.isLoading || owners.isLoading) return <ArchiveLoading label="Building the complete 2026 forecast" />;
   if (hub.error || owners.error || !hub.data || !owners.data || projectedFinish.length !== 8) return <ArchiveError error={hub.error || owners.error} />;
 
   const champion = projectedFinish[0];
-  const runnerUp = projectedFinish.find((team) => team.ownerName === "Carl Marvin") || projectedFinish[1];
+  const runnerUp = projectedFinish[1];
   const playoffs = projectedFinish.slice(0, 6);
   const kiltBowl = projectedFinish.slice(6);
-  const projectedLoser = kiltBowl.find((team) => team.ownerName === "Samuel Kirby") || kiltBowl[1];
-  const projectedKiltWinner = kiltBowl.find((team) => team.rosterId !== projectedLoser.rosterId) || kiltBowl[0];
+  const projectedKiltWinner = kiltBowl[0];
+  const projectedLoser = kiltBowl[1];
   const ownerByUid = new Map(owners.data.owners.map((owner) => [owner.ownerUid, owner]));
   const closestWeek = (matchups: typeof hub.data.schedule[number]["matchups"]) => [...matchups].sort((a, b) => a.projectedMargin - b.projectedMargin)[0];
 
@@ -63,7 +67,7 @@ export default function NowPage(): React.ReactElement {
           <div className="live-line"><span /> 2026 preseason forecast · v2</div>
           <Eyebrow>Tatnall Legacy annual</Eyebrow>
           <h1>Every team.<br />Every week.<br /><em>Every bad idea.</em></h1>
-          <p>A full-season scouting book built from finalized rosters, unchanged Sleeper half-PPR projections, eleven years of owner history and the complete 2025 transaction ledger.</p>
+          <p>A full-season scouting book built from finalized rosters, weekly value above expected replacement, eleven years of owner history and the complete 2025 transaction ledger.</p>
           <div className="forecast-hero__actions">
             <a className="archive-button archive-button--primary" href="#final-table">Final table <BarChart3 /></a>
             <Link className="archive-button" to="/2026/weeks/1">Week 1 <CalendarDays /></Link>
@@ -87,21 +91,21 @@ export default function NowPage(): React.ReactElement {
         <div><span>Projected champion</span><strong>{champion.analysis.grade}</strong><small>{champion.ownerName} · {projectedRecord(champion)}</small></div>
         <div><span>Playoff field</span><strong>6</strong><small>{playoffs.map((team) => team.monogram).join(" · ")}</small></div>
         <div><span>Kilt Bowl format</span><strong>3</strong><small>games · loser earns last</small></div>
-        <div><span>Players ranked</span><strong>{playerBoard.length}</strong><small>across eight finalized rosters</small></div>
+        <div><span>Lineup edge</span><strong>+{champion.analysis.pointsAboveExpectedReplacementPerWeek.toFixed(1)}</strong><small>PAER per week · {champion.monogram}</small></div>
       </section>
 
       <section className="forecast-section" id="final-table">
-        <div className="archive-section-heading"><div><Eyebrow>Final regular-season projection</Eyebrow><h2>The predicted table.</h2></div><p>Seeds are ordered by projected head-to-head record, then projected points. The separate power rank grades roster strength without pretending schedule luck does not exist.</p></div>
+        <div className="archive-section-heading"><div><Eyebrow>Final regular-season projection</Eyebrow><h2>The predicted table.</h2></div><p>Seeds are ordered by projected head-to-head record, then lineup points above expected replacement. Power rank measures the weekly advantage a legal lineup creates over available alternatives.</p></div>
         <div className="forecast-table-wrap">
           <div className="forecast-table forecast-table--standings" role="table" aria-label="Predicted 2026 final standings">
-            <div className="forecast-table__head" role="row"><span>Seed</span><span>Team / owner</span><span>Finish</span><span>Record</span><span>PPG</span><span>Power</span><span>Best room</span><span>Weak room</span></div>
+            <div className="forecast-table__head" role="row"><span>Seed</span><span>Team / owner</span><span>Finish</span><span>Record</span><span>PAER/WK</span><span>Power</span><span>Best room</span><span>Weak room</span></div>
             {projectedFinish.map((team, index) => (
               <TeamPageLink team={team} className={`forecast-table__row${index >= 6 ? " is-kilt" : ""}`} key={team.rosterId}>
                 <span className="forecast-seed">{index + 1}</span>
                 <TeamIdentity team={team} />
                 <span><b>{finishLabel(index)}</b><small>{index < 6 ? "Projected playoff team" : "Best-of-three series"}</small></span>
                 <span><b>{projectedRecord(team)}</b><small>median outcome</small></span>
-                <span><b>{team.analysis.projectedWeeklyAverage.toFixed(1)}</b><small>Sleeper</small></span>
+                <span><b>+{team.analysis.pointsAboveExpectedReplacementPerWeek.toFixed(1)}</b><small>{team.analysis.projectedWeeklyAverage.toFixed(1)} PPG</small></span>
                 <span><b>#{team.analysis.projectionRank}</b><small>{team.analysis.grade}</small></span>
                 <span><b>{team.analysis.strength.position} #{team.analysis.strength.rank}</b><small>{team.analysis.strength.label}</small></span>
                 <span><b>{team.analysis.concern.position} #{team.analysis.concern.rank}</b><small>{team.analysis.concern.label}</small></span>
@@ -109,22 +113,22 @@ export default function NowPage(): React.ReactElement {
             ))}
           </div>
         </div>
-        <div className="projection-disclosure"><Gauge /><p><strong>How this table works.</strong> Weekly legal lineups use Sleeper's published half-PPR values. Editorial finish calls then account for owner history, roster construction, transaction behavior and playoff volatility. They are intentionally more opinionated than the raw projection board.</p><time>{Math.round(hub.data.projectionSource.coveragePct * 100)}% projection coverage</time></div>
+        <div className="projection-disclosure"><Gauge /><p><strong>How this table works.</strong> Weekly legal lineups use Sleeper's published half-PPR values, then measure only the advantage above an expected available replacement at each position. Editorial finish calls also account for owner history, roster construction, transaction behavior and playoff volatility.</p><time>{Math.round(hub.data.projectionSource.coveragePct * 100)}% roster coverage</time></div>
       </section>
 
       <section className="forecast-section" id="postseason">
         <div className="archive-section-heading"><div><Eyebrow>Weeks 15–17 forecast</Eyebrow><h2>Two trophies. One you do not want.</h2></div><p>Six teams enter the championship bracket. The two that miss face a three-game Kilt Bowl; the loser of that series is the official last-place projection.</p></div>
         <div className="postseason-grid">
           <article className="playoff-forecast">
-            <header><Trophy /><div><Eyebrow>Championship bracket</Eyebrow><h3>FantasyGPT over Three Rings</h3></div></header>
+            <header><Trophy /><div><Eyebrow>Championship bracket</Eyebrow><h3>{champion.teamName} over {runnerUp.teamName}</h3></div></header>
             <div className="playoff-seeds">{playoffs.map((team, index) => <TeamPageLink team={team} key={team.rosterId}><span>{index + 1}</span><TeamIdentity team={team} compact /><b>{projectedRecord(team)}</b></TeamPageLink>)}</div>
-            <p><strong>The call:</strong> Roy's quarterback advantage survives the single-elimination variance, while Carl's receiver depth carries Three Rings through the other side. FantasyGPT wins the final because its Bijan–McCaffrey ceiling is the best answer to Carl's WR wave.</p>
+            <p><strong>The call:</strong> {champion.teamName} carries the league's largest weekly lineup advantage into the bracket. {runnerUp.teamName} has enough premium scoring to reach the final, but the projected +{champion.analysis.pointsAboveExpectedReplacementPerWeek.toFixed(1)} PAER weekly edge gives {champion.ownerName} the last word.</p>
           </article>
           <article className="kilt-forecast">
             <header><Swords /><div><Eyebrow>Kilt Bowl · best of three</Eyebrow><h3>{projectedKiltWinner.teamName} wins, 2–1.</h3></div></header>
             <div className="kilt-versus"><TeamIdentity team={projectedKiltWinner} /><em>vs</em><TeamIdentity team={projectedLoser} /></div>
             <div className="kilt-games"><span><b>Game 1</b>{projectedKiltWinner.teamName}</span><span><b>Game 2</b>{projectedLoser.teamName}</span><span><b>Game 3</b>{projectedKiltWinner.teamName}</span></div>
-            <p><strong>Why Samuel is the loser pick:</strong> the defending champion has more star power than a normal No. 8, but the projection snapshot penalizes an unfinished lineup and extreme RB concentration. Conner's Lamar–Maye–Chase core is better suited to a three-week points series. This is the forecast most likely to look foolish by October.</p>
+            <p><strong>Why {projectedLoser.ownerName} is the loser pick:</strong> {projectedKiltWinner.teamName} enters the series with the stronger replacement-adjusted weekly lineup and more usable positional separation. Over three games, that depth is the narrow tiebreaker—but this remains the forecast most likely to look foolish by October.</p>
           </article>
         </div>
       </section>
@@ -146,18 +150,18 @@ export default function NowPage(): React.ReactElement {
       </section>
 
       <section className="forecast-section" id="players">
-        <div className="archive-section-heading"><div><Eyebrow>Player-by-player projection board</Eyebrow><h2>The league's top 32.</h2></div><p>Ranks use each player's published Weeks 1–14 Sleeper projection. Every team dossier continues the list through all nineteen roster spots.</p></div>
+        <div className="archive-section-heading"><div><Eyebrow>Player-by-player projection board</Eyebrow><h2>The league's top 32.</h2></div><p>Ranks use the points above expected replacement that each player contributes to a legal weekly lineup. Every team dossier continues the list through all nineteen roster spots.</p></div>
         <div className="forecast-table-wrap">
           <div className="forecast-table forecast-table--players" role="table" aria-label="Top projected 2026 fantasy players">
-            <div className="forecast-table__head" role="row"><span>RK</span><span>Player</span><span>Pos.</span><span>Team / owner</span><span>14-week pts</span><span>Draft $</span><span>Outlook</span></div>
+            <div className="forecast-table__head" role="row"><span>RK</span><span>Player</span><span>Pos.</span><span>Team / owner</span><span>PAER</span><span>Draft $</span><span>Outlook</span></div>
             {playerBoard.slice(0, 32).map((player) => <Link to={`/players/${player.playerUid || player.sleeperId}`} className="forecast-table__row" key={`${player.team.rosterId}-${player.sleeperId}`}>
               <span className="forecast-seed">{player.overallRank}</span>
               <span><b>{player.name}</b><small>{player.nflTeam || "FA"}{player.injuryStatus ? ` · ${player.injuryStatus}` : ""}</small></span>
               <span><b>{player.position || "—"}{player.positionRank}</b><small>position rank</small></span>
               <TeamIdentity team={player.team} compact />
-              <span><b>{player.regularSeasonProjection.toFixed(1)}</b><small>{(player.regularSeasonProjection / 14).toFixed(1)} per week</small></span>
+              <span><b>+{player.lineupPointsAboveExpectedReplacement.toFixed(1)}</b><small>{player.regularSeasonProjection.toFixed(1)} raw pts</small></span>
               <span><b>{player.draftPrice == null ? "—" : `$${player.draftPrice}`}</b><small>{player.keeper ? "keeper" : "auction"}</small></span>
-              <span><b>{player.regularSeasonProjection >= 220 ? "Cornerstone" : player.regularSeasonProjection >= 170 ? "Every-week starter" : "High-end support"}</b><small>{player.injuryStatus ? "health changes the range" : "projection-led"}</small></span>
+              <span><b>{player.projectedStarts >= 13 ? "Weekly engine" : player.projectedStarts >= 9 ? "Core starter" : player.projectedStarts >= 4 ? "Rotation edge" : "Depth option"}</b><small>{player.projectedStarts}/14 modeled starts</small></span>
             </Link>)}
           </div>
         </div>
