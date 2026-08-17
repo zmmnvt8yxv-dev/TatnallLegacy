@@ -367,6 +367,25 @@ def build_payload() -> dict[str, Any]:
             ),
             "positionGroups": position_groups,
             "weekOneLineup": team_week_lineups[roster_id][1],
+            "weeklyLineups": [
+                {
+                    "week": week,
+                    "projectedPoints": team_week_totals[roster_id][week],
+                    "players": [
+                        {
+                            "playerUid": player.get("playerUid"),
+                            "sleeperId": player["sleeperId"],
+                            "name": player["name"],
+                            "position": player.get("position"),
+                            "nflTeam": player.get("nflTeam"),
+                            "projectedPoints": player["projectedPoints"],
+                            "slot": player["slot"],
+                        }
+                        for player in team_week_lineups[roster_id][week]
+                    ],
+                }
+                for week in range(1, regular_end + 1)
+            ],
             "openLineupSlots": [
                 slot
                 for slot in REQUIRED_LINEUP_SLOTS

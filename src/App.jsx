@@ -8,6 +8,8 @@ import { features } from "./config/features";
 import { initAnalytics, trackPageView } from "./utils/analytics";
 
 const NowPage = lazy(() => import("./pages/v3/NowPage"));
+const SeasonWeekPage = lazy(() => import("./pages/v3/SeasonWeekPage"));
+const SeasonTeamPage = lazy(() => import("./pages/v3/SeasonTeamPage"));
 const HistoryPage = lazy(() => import("./pages/v3/HistoryPage"));
 const SeasonYearbookPage = lazy(() => import("./pages/v3/SeasonYearbookPage"));
 const OwnersPage = lazy(() => import("./pages/v3/OwnersPage"));
@@ -50,6 +52,9 @@ export default function App() {
           <Suspense fallback={<ArchiveLoading label="Opening this part of the archive" />}>
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<NowPage />} />
+              <Route path="/2026" element={<NowPage />} />
+              <Route path="/2026/weeks/:week" element={<SeasonWeekPage />} />
+              <Route path="/2026/teams/:ownerId" element={<SeasonTeamPage />} />
               <Route path="/history" element={<HistoryPage />} />
               <Route path="/matchups" element={<MatchupsPage />} />
               <Route path="/matchups/:season/:week/:matchupId" element={<MatchupDetailPage />} />
