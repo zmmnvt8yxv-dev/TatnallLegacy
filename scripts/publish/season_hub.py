@@ -63,6 +63,35 @@ def _ordinal(value: int) -> str:
     return f"{value}{suffix}"
 
 
+def sleeper_score(entry: dict[str, Any]) -> float:
+    """Return Sleeper's official matchup total, including commissioner overrides."""
+    custom = _number(entry.get("custom_points"))
+    points = custom if custom is not None else (_number(entry.get("points")) or 0.0)
+    return round(points, 2)
+
+
+def sleeper_matchup_status(
+    week: int,
+    current_week: int,
+    season_phase: str,
+    entries: list[dict[str, Any]],
+) -> str:
+    """Classify an official matchup snapshot without treating future zeroes as scores."""
+    if season_phase == "complete" or week < current_week:
+        return "final"
+    if season_phase == "pre" or week > current_week:
+        return "scheduled"
+    has_scoring = any(
+        sleeper_score(entry) != 0
+        or any(
+            (_number(value) or 0.0) != 0
+            for value in (entry.get("players_points") or {}).values()
+        )
+        for entry in entries
+    )
+    return "live" if has_scoring else "scheduled"
+
+
 def optimize_lineup(
     players: list[dict[str, Any]],
     projected_points: dict[str, float | None],
@@ -204,6 +233,8 @@ def build_payload() -> dict[str, Any]:
     draft_pick_map = _json(RAW / "draft_picks.json")
     player_snapshot = (_json(ROOT / "data" / "raw" / "sleeper" / "players" / "current.json").get("players") or {})
     now = _json(PUBLIC / "now" / "index.json")
+    current_week = int(manifest.get("current_week") or 1)
+    season_phase = str(manifest.get("season_phase") or "pre")
 
     draft = max(drafts, key=lambda row: int(row.get("created") or 0))
     draft_id = str(draft["draft_id"])
@@ -364,16 +395,38 @@ def build_payload() -> dict[str, Any]:
     }
     opponent_totals: dict[int, list[float]] = defaultdict(list)
     for week in range(1, regular_end + 1):
-        grouped: dict[int, list[int]] = defaultdict(list)
+        grouped: dict[int, list[dict[str, Any]]] = defaultdict(list)
         for entry in matchups_raw.get(str(week)) or []:
-            grouped[int(entry.get("matchup_id") or 0)].append(int(entry.get("roster_id") or 0))
+            grouped[int(entry.get("matchup_id") or 0)].append(entry)
         matchup_rows: list[dict[str, Any]] = []
-        for matchup_id, roster_ids in sorted(grouped.items()):
-            if len(roster_ids) != 2:
+        for matchup_id, matchup_entries in sorted(grouped.items()):
+            if len(matchup_entries) != 2:
                 continue
-            roster_a, roster_b = sorted(roster_ids)
+            entries_by_roster = {
+                int(entry.get("roster_id") or 0): entry for entry in matchup_entries
+            }
+            roster_a, roster_b = sorted(entries_by_roster)
             points_a = team_week_totals[roster_a][week]
             points_b = team_week_totals[roster_b][week]
+            sleeper_status = sleeper_matchup_status(
+                week,
+                current_week,
+                season_phase,
+                matchup_entries,
+            )
+            sleeper_a = (
+                sleeper_score(entries_by_roster[roster_a])
+                if sleeper_status != "scheduled"
+                else None
+            )
+            sleeper_b = (
+                sleeper_score(entries_by_roster[roster_b])
+                if sleeper_status != "scheduled"
+                else None
+            )
+            sleeper_winner = None
+            if sleeper_a is not None and sleeper_b is not None and sleeper_a != sleeper_b:
+                sleeper_winner = roster_a if sleeper_a > sleeper_b else roster_b
             opponent_totals[roster_a].append(points_b)
             opponent_totals[roster_b].append(points_a)
             if points_a == points_b:
@@ -397,6 +450,15 @@ def build_payload() -> dict[str, Any]:
                     "projectedB": points_b,
                     "projectedFavoriteRosterId": favorite,
                     "projectedMargin": round(abs(points_a - points_b), 2),
+                    "sleeperScoreA": sleeper_a,
+                    "sleeperScoreB": sleeper_b,
+                    "sleeperWinnerRosterId": sleeper_winner,
+                    "sleeperMargin": (
+                        round(abs(sleeper_a - sleeper_b), 2)
+                        if sleeper_a is not None and sleeper_b is not None
+                        else None
+                    ),
+                    "sleeperStatus": sleeper_status,
                 }
             )
         schedule.append({"week": week, "matchups": matchup_rows})
@@ -598,7 +660,16 @@ def build_payload() -> dict[str, Any]:
             "generatedAt": generated_at,
             "sleeperSnapshotAt": manifest["retrieved_at"],
             "season": 2026,
+            "leagueId": str(manifest["league_id"]),
+            "currentWeek": current_week,
+            "seasonPhase": season_phase,
             "status": "post_draft" if draft.get("status") == "complete" else str(draft.get("status") or "unknown"),
+        },
+        "actualSource": {
+            "label": "Sleeper official matchup scores",
+            "snapshotAt": manifest["retrieved_at"],
+            "endpointTemplate": f"https://api.sleeper.app/v1/league/{manifest['league_id']}/matchups/{{week}}",
+            "refreshMode": "Current-week pages poll Sleeper directly every 60 seconds and retain this deployment snapshot as a fallback.",
         },
         "projectionSource": {
             "label": "Sleeper weekly projections",

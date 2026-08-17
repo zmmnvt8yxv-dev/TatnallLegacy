@@ -4,7 +4,12 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from scripts.publish.season_hub import build_replacement_baselines, optimize_lineup
+from scripts.publish.season_hub import (
+    build_replacement_baselines,
+    optimize_lineup,
+    sleeper_matchup_status,
+    sleeper_score,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -42,6 +47,20 @@ def test_replacement_baseline_uses_available_weekly_position_pool() -> None:
     assert baselines[1]["QB"] == 19.0
 
 
+def test_sleeper_score_prefers_official_commissioner_override() -> None:
+    assert sleeper_score({"points": 121.34, "custom_points": None}) == 121.34
+    assert sleeper_score({"points": 121.34, "custom_points": 125.5}) == 125.5
+
+
+def test_sleeper_matchup_status_does_not_publish_future_zeroes_as_actuals() -> None:
+    empty = [{"points": 0, "players_points": {"one": 0}}]
+    active = [{"points": 3.4, "players_points": {"one": 3.4}}]
+    assert sleeper_matchup_status(1, 1, "pre", empty) == "scheduled"
+    assert sleeper_matchup_status(2, 1, "regular", empty) == "scheduled"
+    assert sleeper_matchup_status(1, 1, "regular", active) == "live"
+    assert sleeper_matchup_status(1, 2, "regular", empty) == "final"
+
+
 def test_lineup_uses_replacement_instead_of_a_below_baseline_extra_qb() -> None:
     players = [
         {"sleeperId": "qb-1", "name": "QB One", "position": "QB"},
@@ -76,6 +95,7 @@ def test_hub_uses_final_sleeper_draft_and_route_sized_payload() -> None:
 def test_public_schedule_exactly_matches_sleeper_regular_season_pairs() -> None:
     hub = load(PUBLIC / "now/season-hub.json")
     raw = load(RAW / "matchups.json")
+    manifest = load(RAW / "manifest.json")
     assert len(hub["schedule"]) == 14
     for week in hub["schedule"]:
         expected = {
@@ -88,6 +108,27 @@ def test_public_schedule_exactly_matches_sleeper_regular_season_pairs() -> None:
         }
         assert actual == expected
         assert len(actual) == 4
+        raw_by_roster = {
+            int(row["roster_id"]): row for row in raw[str(week["week"])]
+        }
+        for matchup in week["matchups"]:
+            entries = [
+                raw_by_roster[matchup["teamA"]["rosterId"]],
+                raw_by_roster[matchup["teamB"]["rosterId"]],
+            ]
+            expected_status = sleeper_matchup_status(
+                int(week["week"]),
+                int(manifest["current_week"]),
+                str(manifest["season_phase"]),
+                entries,
+            )
+            assert matchup["sleeperStatus"] == expected_status
+            if expected_status == "scheduled":
+                assert matchup["sleeperScoreA"] is None
+                assert matchup["sleeperScoreB"] is None
+            else:
+                assert matchup["sleeperScoreA"] == sleeper_score(entries[0])
+                assert matchup["sleeperScoreB"] == sleeper_score(entries[1])
 
 
 def test_public_player_values_are_unchanged_sleeper_projections() -> None:
