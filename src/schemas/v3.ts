@@ -232,7 +232,16 @@ export const SeasonHubSchema = z.object({
     generatedAt: z.string(),
     sleeperSnapshotAt: z.string(),
     season: z.number(),
+    leagueId: z.string(),
+    currentWeek: z.number(),
+    seasonPhase: z.string(),
     status: z.string(),
+  }),
+  actualSource: z.object({
+    label: z.string(),
+    snapshotAt: z.string(),
+    endpointTemplate: z.string(),
+    refreshMode: z.string(),
   }),
   projectionSource: z.object({
     label: z.string(),
@@ -346,6 +355,11 @@ export const SeasonHubSchema = z.object({
       projectedB: z.number(),
       projectedFavoriteRosterId: z.number().nullable(),
       projectedMargin: z.number(),
+      sleeperScoreA: z.number().nullable(),
+      sleeperScoreB: z.number().nullable(),
+      sleeperWinnerRosterId: z.number().nullable(),
+      sleeperMargin: z.number().nullable(),
+      sleeperStatus: z.enum(["scheduled", "live", "final"]),
     })),
   })),
 });
