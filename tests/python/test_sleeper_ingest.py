@@ -36,7 +36,7 @@ class FakeSleeperClient:
         if path.endswith("/users"):
             return [{"user_id": "1"}]
         if path.endswith("/rosters"):
-            return [{"roster_id": 1}]
+            return [{"roster_id": 1, "players": ["1"]}]
         if path.endswith("/drafts") or path.endswith("/traded_picks"):
             return []
         if "/draft/" in path and (path.endswith("/picks") or path.endswith("/traded_picks")):
@@ -49,7 +49,10 @@ class FakeSleeperClient:
 
     def get_url(self, url: str, *, optional=False):
         assert url.startswith("https://api.sleeper.app/projections/nfl/2026/")
-        return []
+        return [
+            {"player_id": "1", "week": 1, "position": "QB", "stats": {"pts_half_ppr": 20.0}},
+            {"player_id": "2", "week": 1, "position": "QB", "stats": {"pts_half_ppr": 18.0}},
+        ]
 
 
 def test_configured_2026_league_is_validated_against_the_chain() -> None:
@@ -92,6 +95,12 @@ def test_preseason_snapshot_is_small_and_manifested(tmp_path) -> None:
     assert manifest["resources"]["matchups"]["records"] == 0
     assert manifest["resources"]["transactions"]["records"] == 0
     assert manifest["resources"]["draft_picks"]["records"] == 0
+    assert manifest["resources"]["projections"]["records"] == 14
+    assert manifest["resources"]["replacement_pool"]["records"] == 14
+    projections = json.loads((output / "projections.json").read_text())
+    replacements = json.loads((output / "replacement_pool.json").read_text())
+    assert {row["player_id"] for row in projections["weeks"]["1"]} == {"1"}
+    assert replacements["weeks"]["1"]["QB"][0]["player_id"] == "2"
     assert (output / "draft_picks.json").exists()
     assert json.loads((output / "league.json").read_text())["league_id"] == LEAGUE_ID_2026
     assert (output / "manifest.json").exists()

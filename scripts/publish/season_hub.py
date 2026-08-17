@@ -24,6 +24,8 @@ LINEUP_RULES = {"QB": 2, "RB": 3, "WR": 3, "TE": 1, "K": 1, "DEF": 1}
 FLEX_POSITIONS = {"RB", "WR", "TE"}
 REQUIRED_LINEUP_SLOTS = ("QB1", "QB2", "RB1", "RB2", "RB3", "WR1", "WR2", "WR3", "TE", "FLEX1", "FLEX2", "K", "DEF")
 CORE_POSITIONS = ("QB", "RB", "WR", "TE")
+REPLACEMENT_POOL_SIZES = {"QB": 3, "RB": 5, "WR": 5, "TE": 3, "K": 3, "DEF": 3}
+REPLACEMENT_LINEUP_COUNTS = {"QB": 2, "RB": 5, "WR": 5, "TE": 3, "K": 1, "DEF": 1}
 POSITION_LABELS = {
     "QB": "quarterback room",
     "RB": "running back room",
@@ -64,17 +66,60 @@ def _ordinal(value: int) -> str:
 def optimize_lineup(
     players: list[dict[str, Any]],
     projected_points: dict[str, float | None],
+    replacement_points: dict[str, float] | None = None,
 ) -> list[dict[str, Any]]:
-    """Choose the best legal Tatnall lineup from unchanged Sleeper values."""
+    """Choose the best legal lineup, optionally including expected waiver replacements."""
 
+    replacement_points = replacement_points or {}
     pool = [
         {
             **player,
             "projectedPoints": round(_number(projected_points.get(str(player["sleeperId"]))) or 0.0, 2),
+            "pointsAboveExpectedReplacement": round(
+                max(
+                    (_number(projected_points.get(str(player["sleeperId"]))) or 0.0)
+                    - replacement_points.get(str(player.get("position") or ""), 0.0),
+                    0.0,
+                ),
+                2,
+            ),
+            "replacement": False,
         }
         for player in players
     ]
-    pool.sort(key=lambda row: (-row["projectedPoints"], row.get("name") or "", row["sleeperId"]))
+    if replacement_points:
+        for position, count in REPLACEMENT_LINEUP_COUNTS.items():
+            baseline = round(replacement_points.get(position, 0.0), 2)
+            for index in range(1, count + 1):
+                pool.append(
+                    {
+                        "playerUid": None,
+                        "sleeperId": f"replacement-{position.lower()}-{index}",
+                        "name": f"Expected {position} replacement",
+                        "position": position,
+                        "nflTeam": None,
+                        "starter": False,
+                        "keeper": False,
+                        "injuryStatus": None,
+                        "nflStatus": None,
+                        "weekOneProjection": baseline,
+                        "regularSeasonProjection": 0.0,
+                        "lineupPointsAboveExpectedReplacement": 0.0,
+                        "projectedStarts": 0,
+                        "draftPrice": None,
+                        "projectedPoints": baseline,
+                        "pointsAboveExpectedReplacement": 0.0,
+                        "replacement": True,
+                    }
+                )
+    pool.sort(
+        key=lambda row: (
+            -row["projectedPoints"],
+            bool(row.get("replacement")),
+            row.get("name") or "",
+            row["sleeperId"],
+        )
+    )
     selected: set[str] = set()
     lineup: list[dict[str, Any]] = []
 
@@ -97,6 +142,41 @@ def optimize_lineup(
     return lineup
 
 
+def build_replacement_baselines(
+    projection_by_week: dict[int, dict[str, float | None]],
+    player_snapshot: dict[str, dict[str, Any]],
+    rostered_player_ids: set[str],
+    regular_end: int,
+) -> dict[int, dict[str, float]]:
+    """Return the median of each week's strongest immediately available options."""
+
+    baselines: dict[int, dict[str, float]] = {}
+    for week in range(1, regular_end + 1):
+        candidates: dict[str, list[float]] = defaultdict(list)
+        for player_id, value in projection_by_week.get(week, {}).items():
+            points = _number(value)
+            if player_id in rostered_player_ids or points is None or points <= 0:
+                continue
+            position = str((player_snapshot.get(player_id) or {}).get("position") or "")
+            if position in REPLACEMENT_POOL_SIZES:
+                candidates[position].append(points)
+
+        week_baselines: dict[str, float] = {}
+        for position, pool_size in REPLACEMENT_POOL_SIZES.items():
+            top_available = sorted(candidates[position], reverse=True)[:pool_size]
+            if not top_available:
+                week_baselines[position] = 0.0
+                continue
+            midpoint = len(top_available) // 2
+            if len(top_available) % 2:
+                expected = top_available[midpoint]
+            else:
+                expected = (top_available[midpoint - 1] + top_available[midpoint]) / 2
+            week_baselines[position] = round(expected, 2)
+        baselines[week] = week_baselines
+    return baselines
+
+
 def _rank(values: dict[int, float], *, reverse: bool = True) -> dict[int, int]:
     ordered = sorted(values, key=lambda key: ((-values[key]) if reverse else values[key], key))
     return {key: index for index, key in enumerate(ordered, start=1)}
@@ -117,6 +197,8 @@ def build_payload() -> dict[str, Any]:
     generated_at = datetime.now(timezone.utc).isoformat()
     manifest = _json(RAW / "manifest.json")
     projections_raw = _json(RAW / "projections.json")
+    replacement_pool_path = RAW / "replacement_pool.json"
+    replacement_pool_raw = _json(replacement_pool_path) if replacement_pool_path.exists() else {}
     matchups_raw = _json(RAW / "matchups.json")
     drafts = _json(RAW / "drafts.json")
     draft_pick_map = _json(RAW / "draft_picks.json")
@@ -138,6 +220,12 @@ def build_payload() -> dict[str, Any]:
     projection_providers: set[str] = set()
     projection_updates: list[int] = []
     published_projection_count = 0
+    projection_pool_count = 0
+    rostered_player_ids = {
+        str(player["sleeperId"])
+        for team in now["teams"]
+        for player in team["players"]
+    }
     for week_text, rows in projections_raw.get("weeks", {}).items():
         week = int(week_text)
         projection_by_week[week] = {}
@@ -147,11 +235,24 @@ def build_payload() -> dict[str, Any]:
             projection_by_week[week][player_id] = points
             projection_context[(week, player_id)] = row
             if points is not None:
-                published_projection_count += 1
+                projection_pool_count += 1
+                if player_id in rostered_player_ids:
+                    published_projection_count += 1
             if row.get("company"):
                 projection_providers.add(str(row["company"]))
             if row.get("updated_at"):
                 projection_updates.append(int(row["updated_at"]))
+    projection_pool_count = int(replacement_pool_raw.get("published_values") or projection_pool_count)
+
+    replacement_projection_by_week: dict[int, dict[str, float | None]] = {}
+    for week_text, positions in replacement_pool_raw.get("weeks", {}).items():
+        week = int(week_text)
+        replacement_projection_by_week[week] = {}
+        for rows in positions.values():
+            for row in rows:
+                replacement_projection_by_week[week][str(row.get("player_id") or "")] = _number(
+                    row.get("pts_half_ppr")
+                )
 
     player_ids = pd.read_parquet(NORMALIZED / "player_ids.parquet")
     sleeper_to_uid = dict(
@@ -164,10 +265,18 @@ def build_payload() -> dict[str, Any]:
     teams = [{**team} for team in now["teams"]]
     teams_by_roster = {int(team["rosterId"]): team for team in teams}
     team_week_totals: dict[int, dict[int, float]] = defaultdict(dict)
+    team_week_paer: dict[int, dict[int, float]] = defaultdict(dict)
     team_week_lineups: dict[int, dict[int, list[dict[str, Any]]]] = defaultdict(dict)
     position_totals: dict[int, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    position_paer_totals: dict[int, dict[str, float]] = defaultdict(lambda: defaultdict(float))
 
     regular_end = int(manifest["regular_season_end_week"])
+    replacement_baselines = build_replacement_baselines(
+        replacement_projection_by_week or projection_by_week,
+        player_snapshot,
+        rostered_player_ids,
+        regular_end,
+    )
     for team in teams:
         roster_id = int(team["rosterId"])
         keeper_ids = {
@@ -184,6 +293,14 @@ def build_payload() -> dict[str, Any]:
                 _number(projection_by_week.get(week, {}).get(sleeper_id)) or 0.0
                 for week in range(1, regular_end + 1)
             )
+            season_paer = sum(
+                max(
+                    (_number(projection_by_week.get(week, {}).get(sleeper_id)) or 0.0)
+                    - replacement_baselines[week].get(str(player.get("position") or ""), 0.0),
+                    0.0,
+                )
+                for week in range(1, regular_end + 1)
+            )
             enriched_players.append(
                 {
                     **player,
@@ -193,18 +310,42 @@ def build_payload() -> dict[str, Any]:
                     "nflStatus": source.get("status"),
                     "weekOneProjection": round(_number(projection_by_week.get(1, {}).get(sleeper_id)) or 0.0, 2),
                     "regularSeasonProjection": round(season_projection, 2),
+                    "pointsAboveExpectedReplacement": round(season_paer, 2),
+                    "lineupPointsAboveExpectedReplacement": 0.0,
+                    "projectedStarts": 0,
                     "draftPrice": _number((pick.get("metadata") or {}).get("amount")),
                 }
             )
+        lineup_paer_by_player: dict[str, float] = defaultdict(float)
+        starts_by_player: dict[str, int] = defaultdict(int)
         for week in range(1, regular_end + 1):
-            lineup = optimize_lineup(enriched_players, projection_by_week.get(week, {}))
+            lineup = optimize_lineup(
+                enriched_players,
+                projection_by_week.get(week, {}),
+                replacement_baselines[week],
+            )
             team_week_lineups[roster_id][week] = lineup
             team_week_totals[roster_id][week] = round(sum(row["projectedPoints"] for row in lineup), 2)
+            team_week_paer[roster_id][week] = round(
+                sum(row["pointsAboveExpectedReplacement"] for row in lineup),
+                2,
+            )
             for row in lineup:
                 position_totals[roster_id][str(row.get("position") or "UNK")] += row["projectedPoints"]
+                if not row.get("replacement"):
+                    player_id = str(row["sleeperId"])
+                    paer = float(row["pointsAboveExpectedReplacement"])
+                    position_paer_totals[roster_id][str(row.get("position") or "UNK")] += paer
+                    lineup_paer_by_player[player_id] += paer
+                    starts_by_player[player_id] += 1
         week_one_ids = {row["sleeperId"] for row in team_week_lineups[roster_id][1]}
         for player in enriched_players:
             player["projectedWeekOneStarter"] = player["sleeperId"] in week_one_ids
+            player["lineupPointsAboveExpectedReplacement"] = round(
+                lineup_paer_by_player[player["sleeperId"]],
+                2,
+            )
+            player["projectedStarts"] = starts_by_player[player["sleeperId"]]
         enriched_players.sort(
             key=lambda row: (
                 not row["projectedWeekOneStarter"],
@@ -264,7 +405,11 @@ def build_payload() -> dict[str, Any]:
         roster_id: round(sum(weeks.values()), 2)
         for roster_id, weeks in team_week_totals.items()
     }
-    projection_ranks = _rank(projected_season)
+    projected_season_paer = {
+        roster_id: round(sum(weeks.values()), 2)
+        for roster_id, weeks in team_week_paer.items()
+    }
+    projection_ranks = _rank(projected_season_paer)
     projected_weekly_average = {
         roster_id: round(total / regular_end, 2)
         for roster_id, total in projected_season.items()
@@ -278,7 +423,7 @@ def build_payload() -> dict[str, Any]:
     for position in POSITION_LABELS:
         position_ranks[position] = _rank(
             {
-                roster_id: position_totals[roster_id].get(position, 0.0) / regular_end
+                roster_id: position_paer_totals[roster_id].get(position, 0.0) / regular_end
                 for roster_id in teams_by_roster
             }
         )
@@ -326,12 +471,24 @@ def build_payload() -> dict[str, Any]:
         )
         spend = int(sum(_number((pick.get("metadata") or {}).get("amount")) or 0.0 for pick in team_picks))
         keeper_spend = int(sum(_number((pick.get("metadata") or {}).get("amount")) or 0.0 for pick in team_picks if pick.get("is_keeper")))
-        projected_players = sorted(team["players"], key=lambda row: (-row["regularSeasonProjection"], row["name"]))
+        projected_players = sorted(
+            team["players"],
+            key=lambda row: (
+                -row["lineupPointsAboveExpectedReplacement"],
+                -row["pointsAboveExpectedReplacement"],
+                -row["regularSeasonProjection"],
+                row["name"],
+            ),
+        )
         position_groups = [
             {
                 "position": position,
                 "rank": position_ranks[position][roster_id],
                 "projectedWeeklyPoints": round(position_totals[roster_id].get(position, 0.0) / regular_end, 2),
+                "pointsAboveExpectedReplacement": round(
+                    position_paer_totals[roster_id].get(position, 0.0) / regular_end,
+                    2,
+                ),
             }
             for position in POSITION_LABELS
         ]
@@ -342,6 +499,8 @@ def build_payload() -> dict[str, Any]:
             "tier": tier_by_rank[rank],
             "projectedRegularSeasonPoints": projected_season[roster_id],
             "projectedWeeklyAverage": projected_weekly_average[roster_id],
+            "pointsAboveExpectedReplacement": projected_season_paer[roster_id],
+            "pointsAboveExpectedReplacementPerWeek": round(projected_season_paer[roster_id] / regular_end, 2),
             "projectedAllPlayWins": round(projected_all_play[roster_id], 1),
             "projectedRecord": record,
             "scheduleStrengthRank": schedule_rank,
@@ -358,8 +517,9 @@ def build_payload() -> dict[str, Any]:
             },
             "headline": f"The {POSITION_LABELS[strength_position]} sets the ceiling.",
             "overview": (
-                f"{team['teamName']} opens {_ordinal(rank)} in the Sleeper projection table at "
-                f"{projected_weekly_average[roster_id]:.1f} points per week. The {POSITION_LABELS[strength_position]} "
+                f"{team['teamName']} opens {_ordinal(rank)} in the lineup-value model at "
+                f"{projected_season_paer[roster_id] / regular_end:.1f} points above expected replacement per week. "
+                f"The {POSITION_LABELS[strength_position]} "
                 f"projects {_ordinal(core_ranks[strength_position])} in the league, while the {POSITION_LABELS[concern_position]} "
                 f"enters {_ordinal(core_ranks[concern_position])}. Sleeper's schedule gives this roster the {schedule_label} "
                 f"slate, producing a {record_label} "
@@ -379,6 +539,8 @@ def build_payload() -> dict[str, Any]:
                             "position": player.get("position"),
                             "nflTeam": player.get("nflTeam"),
                             "projectedPoints": player["projectedPoints"],
+                            "paer": player["pointsAboveExpectedReplacement"],
+                            **({"replacement": True} if player.get("replacement") else {}),
                             "slot": player["slot"],
                         }
                         for player in team_week_lineups[roster_id][week]
@@ -398,6 +560,7 @@ def build_payload() -> dict[str, Any]:
                     "name": player["name"],
                     "position": player.get("position"),
                     "projectedPoints": player["regularSeasonProjection"],
+                    "pointsAboveExpectedReplacement": player["lineupPointsAboveExpectedReplacement"],
                 }
                 for player in projected_players[:3]
             ],
@@ -444,10 +607,20 @@ def build_payload() -> dict[str, Any]:
             "seasonType": str(projections_raw.get("season_type") or "regular"),
             "updatedAt": projection_updated_at,
             "publishedValues": published_projection_count,
+            "projectionPoolValues": projection_pool_count,
             "expectedRosterWeeks": expected_projection_count,
             "coveragePct": round(published_projection_count / expected_projection_count, 4) if expected_projection_count else 0.0,
-            "method": "Player values are Sleeper's published pts_half_ppr field, unchanged. Team totals select the highest-projected legal Tatnall lineup each week; no injury penalty or private projection is added.",
-            "coverageNote": "A blank Sleeper value remains zero in the weekly total; most blanks are scheduled NFL bye weeks.",
+            "method": "Sleeper's published half-PPR points remain the scoring input. Player and roster value are ranked by weekly points above the expected unrostered replacement at each position, and team totals choose the best legal lineup from rostered players plus replacement-level waiver options.",
+            "coverageNote": "A blank Sleeper value remains zero; expected replacement is the median of the strongest projected unrostered options in each weekly position pool.",
+        },
+        "replacementModel": {
+            "label": "Points above expected replacement",
+            "poolMethod": "Weekly median of the strongest projected unrostered players by position",
+            "poolSizes": REPLACEMENT_POOL_SIZES,
+            "weeklyBaselines": [
+                {"week": week, **replacement_baselines[week]}
+                for week in range(1, regular_end + 1)
+            ],
         },
         "draft": {
             "draftId": draft_id,

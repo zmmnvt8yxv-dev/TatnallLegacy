@@ -10,13 +10,20 @@ import { TeamIdentity, projectedRecord } from "../../components/v3/Season2026UI"
 import { findOwnerEditorial, ownerSlug, season2026Editorial } from "../../data/season2026Editorial";
 import { useNow, useOwnerProfileV3, useOwners, useSeasonHub } from "../../data/v3/hooks";
 
-function playerOutlook(points: number, injuryStatus?: string | null): string {
-  const base = points >= 240 ? "League-winning ceiling with a foundational weekly role."
-    : points >= 190 ? "Premium starter whose volume should survive ordinary matchup swings."
-      : points >= 150 ? "Every-week starter with a stable path to useful volume."
-        : points >= 110 ? "Lineup-rotation player; matchup and role growth decide the ceiling."
-          : "Depth bet who needs an injury, role change or projection miss to become a regular start.";
+function playerOutlook(value: number, starts: number, injuryStatus?: string | null): string {
+  const base = value >= 90 && starts >= 12 ? "Foundational weekly advantage with a league-winning value ceiling."
+    : value >= 50 && starts >= 10 ? "Premium starter who creates a durable edge over available alternatives."
+      : starts >= 9 ? "Regular starter whose value depends on preserving a clear weekly lineup advantage."
+        : starts >= 4 ? "Rotation piece whose useful weeks come from matchups, byes and role changes."
+          : "Depth option with limited modeled lineup impact unless usage or availability changes.";
   return injuryStatus ? `${base} ${injuryStatus} status widens the early-season range.` : base;
+}
+
+function playerRole(starts: number): string {
+  if (starts >= 13) return "Engine";
+  if (starts >= 9) return "Starter";
+  if (starts >= 4) return "Rotation";
+  return "Depth";
 }
 
 export default function SeasonTeamPage(): React.ReactElement {
@@ -30,13 +37,17 @@ export default function SeasonTeamPage(): React.ReactElement {
 
   const leaguePlayers = useMemo(() => {
     const rows = (hub.data?.teams || []).flatMap((row) => row.players.map((player) => ({ ...player, fantasyTeam: row })));
-    const positionCounts = new Map<string, number>();
-    return rows.sort((a, b) => b.regularSeasonProjection - a.regularSeasonProjection).map((player, index) => {
-      const position = player.position || "—";
-      const positionRank = (positionCounts.get(position) || 0) + 1;
-      positionCounts.set(position, positionRank);
-      return { ...player, overallRank: index + 1, positionRank };
-    });
+    const positionRanks = new Map<string, number>();
+    for (const position of new Set(rows.map((player) => player.position || "—"))) {
+      rows.filter((player) => (player.position || "—") === position)
+        .sort((a, b) => b.pointsAboveExpectedReplacement - a.pointsAboveExpectedReplacement || b.regularSeasonProjection - a.regularSeasonProjection)
+        .forEach((player, index) => positionRanks.set(player.sleeperId, index + 1));
+    }
+    return rows.sort((a, b) =>
+      b.lineupPointsAboveExpectedReplacement - a.lineupPointsAboveExpectedReplacement
+      || b.pointsAboveExpectedReplacement - a.pointsAboveExpectedReplacement
+      || b.regularSeasonProjection - a.regularSeasonProjection
+    ).map((player, index) => ({ ...player, overallRank: index + 1, positionRank: positionRanks.get(player.sleeperId) || 0 }));
   }, [hub.data]);
 
   if (hub.isLoading || owners.isLoading || now.isLoading) return <ArchiveLoading label="Opening the 2026 team dossier" />;
@@ -61,8 +72,8 @@ export default function SeasonTeamPage(): React.ReactElement {
     return { week: week.week, opponent, projected, opponentProjected, win: projected > opponentProjected, margin: Math.abs(projected - opponentProjected) };
   });
   const currentMoves = now.data.recentTransactions.filter((transaction) => transaction.assets.some((asset) => asset.to?.ownerUid === team.ownerUid || asset.from?.ownerUid === team.ownerUid));
-  const valueBuys = [...teamPlayers].filter((player) => player.draftPrice != null).sort((a, b) => (b.regularSeasonProjection / Math.max(b.draftPrice || 1, 1)) - (a.regularSeasonProjection / Math.max(a.draftPrice || 1, 1))).slice(0, 3);
-  const predictedFinish = [...hub.data.teams].sort((a, b) => b.analysis.projectedRecord.wins - a.analysis.projectedRecord.wins || b.analysis.projectedRegularSeasonPoints - a.analysis.projectedRegularSeasonPoints).findIndex((row) => row.rosterId === team.rosterId) + 1;
+  const valueBuys = [...teamPlayers].filter((player) => player.draftPrice != null).sort((a, b) => (b.lineupPointsAboveExpectedReplacement / Math.max(b.draftPrice || 1, 1)) - (a.lineupPointsAboveExpectedReplacement / Math.max(a.draftPrice || 1, 1))).slice(0, 3);
+  const predictedFinish = [...hub.data.teams].sort((a, b) => b.analysis.projectedRecord.wins - a.analysis.projectedRecord.wins || b.analysis.pointsAboveExpectedReplacement - a.analysis.pointsAboveExpectedReplacement).findIndex((row) => row.rosterId === team.rosterId) + 1;
 
   return (
     <PageTransition>
@@ -70,13 +81,13 @@ export default function SeasonTeamPage(): React.ReactElement {
 
       <section className="team-dossier-hero" style={{ "--team-accent": team.accent } as React.CSSProperties}>
         <div className="team-dossier-hero__mark">{team.monogram}</div>
-        <div><Eyebrow>2026 team & owner dossier · Power #{team.analysis.projectionRank}</Eyebrow><h1>{team.teamName}</h1><p>{team.ownerName} · {editorial.verdict} · {team.motto}</p><div><span>{team.analysis.grade}<small>roster grade</small></span><span>{projectedRecord(team)}<small>projected record</small></span><span>{team.analysis.projectedWeeklyAverage.toFixed(1)}<small>projected PPG</small></span><span>#{team.analysis.scheduleStrengthRank}<small>schedule difficulty</small></span></div></div>
+        <div><Eyebrow>2026 team & owner dossier · Power #{team.analysis.projectionRank}</Eyebrow><h1>{team.teamName}</h1><p>{team.ownerName} · {editorial.verdict} · {team.motto}</p><div><span>{team.analysis.grade}<small>roster grade</small></span><span>{projectedRecord(team)}<small>projected record</small></span><span>+{team.analysis.pointsAboveExpectedReplacementPerWeek.toFixed(1)}<small>PAER per week</small></span><span>#{team.analysis.scheduleStrengthRank}<small>schedule difficulty</small></span></div></div>
         <aside><span>Predicted finish</span><strong>#{predictedFinish}</strong><small>{team.analysis.tier}</small></aside>
       </section>
 
       <section className="team-dossier-thesis">
         <article><Eyebrow>The 2026 read</Eyebrow><h2>{team.analysis.headline}</h2><p>{editorial.thesis}</p><div className="thesis-scenarios"><span><Crown /><b>How this team wins</b>{editorial.titleCase}</span><span><ShieldAlert /><b>How it falls apart</b>{editorial.collapseCase}</span></div></article>
-        <aside><Eyebrow>Position-room ranks</Eyebrow>{team.analysis.positionGroups.map((group) => <div key={group.position}><span><b>{group.position}</b><small>#{group.rank} of 8</small></span><i><em style={{ width: `${((9 - group.rank) / 8) * 100}%` }} /></i><strong>{group.projectedWeeklyPoints.toFixed(1)}</strong></div>)}</aside>
+        <aside><Eyebrow>Position-room ranks</Eyebrow>{team.analysis.positionGroups.map((group) => <div key={group.position}><span><b>{group.position}</b><small>#{group.rank} of 8</small></span><i><em style={{ width: `${((9 - group.rank) / 8) * 100}%` }} /></i><strong title={`${group.projectedWeeklyPoints.toFixed(1)} projected points per week`}>+{group.pointsAboveExpectedReplacement.toFixed(1)}</strong></div>)}</aside>
       </section>
 
       <section className="forecast-section team-schedule-path">
@@ -85,28 +96,28 @@ export default function SeasonTeamPage(): React.ReactElement {
       </section>
 
       <section className="forecast-section">
-        <div className="archive-section-heading"><div><Eyebrow>All {teamPlayers.length} rostered players</Eyebrow><h2>Player-by-player forecast.</h2></div><p>Overall and positional ranks compare every finalized 2026 Tatnall roster. Season totals cover projected Weeks 1–14.</p></div>
+        <div className="archive-section-heading"><div><Eyebrow>All {teamPlayers.length} rostered players</Eyebrow><h2>Player-by-player forecast.</h2></div><p>Overall rank reflects lineup points above expected replacement; positional rank compares each player's full replacement-level profile. Season totals cover Weeks 1–14.</p></div>
         <div className="forecast-table-wrap">
           <div className="forecast-table forecast-table--team-players" role="table" aria-label={`${team.teamName} player projections`}>
-            <div className="forecast-table__head"><span>Team RK</span><span>Player</span><span>League / Pos.</span><span>Projection</span><span>Cost</span><span>Role</span><span>Analysis</span></div>
+            <div className="forecast-table__head"><span>Team RK</span><span>Player</span><span>League / Pos.</span><span>PAER</span><span>Cost</span><span>Role</span><span>Analysis</span></div>
             {teamPlayers.map((player, index) => <Link to={`/players/${player.playerUid || player.sleeperId}`} className="forecast-table__row" key={player.sleeperId}>
               <span className="forecast-seed">{index + 1}</span>
               <span><b>{player.name}</b><small>{player.nflTeam || "FA"} · {player.position || "—"}{player.injuryStatus ? ` · ${player.injuryStatus}` : ""}</small></span>
               <span><b>#{player.overallRank}</b><small>{player.position || "—"}{player.positionRank}</small></span>
-              <span><b>{player.regularSeasonProjection.toFixed(1)}</b><small>{(player.regularSeasonProjection / 14).toFixed(1)} PPG</small></span>
+              <span><b>+{player.lineupPointsAboveExpectedReplacement.toFixed(1)}</b><small>{player.regularSeasonProjection.toFixed(1)} raw pts</small></span>
               <span><b>{player.draftPrice == null ? "FA" : `$${player.draftPrice}`}</b><small>{player.keeper ? "keeper" : "auction"}</small></span>
-              <span><b>{index < 3 ? "Engine" : player.regularSeasonProjection >= 150 ? "Starter" : player.regularSeasonProjection >= 100 ? "Rotation" : "Depth"}</b><small>{player.weekOneProjection.toFixed(1)} W1</small></span>
-              <span><p>{playerOutlook(player.regularSeasonProjection, player.injuryStatus)}</p></span>
+              <span><b>{playerRole(player.projectedStarts)}</b><small>{player.projectedStarts}/14 starts</small></span>
+              <span><p>{playerOutlook(player.lineupPointsAboveExpectedReplacement, player.projectedStarts, player.injuryStatus)}</p></span>
             </Link>)}
           </div>
         </div>
       </section>
 
       <section className="forecast-section team-auction-review">
-        <div className="archive-section-heading"><div><Eyebrow>Draft construction</Eyebrow><h2>The $200 autopsy.</h2></div><p>Price is not value by itself; the projection-to-dollar ratio highlights where the roster purchased useful volume cheaply.</p></div>
+        <div className="archive-section-heading"><div><Eyebrow>Draft construction</Eyebrow><h2>The $200 autopsy.</h2></div><p>Price is not value by itself; lineup advantage per dollar highlights where the roster purchased scarce weekly production cheaply.</p></div>
         <div className="auction-review-grid">
           <article><BadgeDollarSign /><span>Keeper spend<strong>${team.draftRecap.keeperSpend}</strong></span><span>Auction spend<strong>${team.draftRecap.auctionSpend}</strong></span><span>Unspent<strong>${team.draftRecap.unspent}</strong></span><span>Players<strong>{team.draftRecap.picks}</strong></span></article>
-          <article><Eyebrow>Best projected values</Eyebrow>{valueBuys.map((player, index) => <Link to={`/players/${player.playerUid || player.sleeperId}`} key={player.sleeperId}><span>0{index + 1}</span><strong>{player.name}</strong><small>{player.regularSeasonProjection.toFixed(1)} pts</small><b>${player.draftPrice}</b></Link>)}</article>
+          <article><Eyebrow>Best projected values</Eyebrow>{valueBuys.map((player, index) => <Link to={`/players/${player.playerUid || player.sleeperId}`} key={player.sleeperId}><span>0{index + 1}</span><strong>{player.name}</strong><small>+{player.lineupPointsAboveExpectedReplacement.toFixed(1)} PAER</small><b>${player.draftPrice}</b></Link>)}</article>
           <article><Eyebrow>Largest bet</Eyebrow>{team.draftRecap.largestPurchase ? <><strong>{team.draftRecap.largestPurchase.name}</strong><b>${team.draftRecap.largestPurchase.amount}</b><p>The purchase defines the auction thesis. It must perform like a top-of-roster engine for the construction to pay off.</p></> : <p>No auction purchase is available.</p>}</article>
         </div>
       </section>

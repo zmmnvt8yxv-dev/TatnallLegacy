@@ -19,6 +19,8 @@ from scripts.ingest.sleeper_client import SleeperClient
 
 
 ROOT = Path(__file__).resolve().parents[2]
+REPLACEMENT_POSITIONS = {"QB", "RB", "WR", "TE", "K", "DEF"}
+REPLACEMENT_CANDIDATES_PER_POSITION = 5
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -108,14 +110,27 @@ def pull_season(
         for roster in resources["rosters"] or []
         for player_id in roster.get("players") or []
     }
-    def pull_projection_week(week: int) -> tuple[str, list[dict[str, Any]]]:
+    players_path = ROOT / "data" / "raw" / "sleeper" / "players" / "current.json"
+    player_snapshot = (
+        json.loads(players_path.read_text()).get("players") or {}
+        if players_path.exists()
+        else {}
+    )
+
+    def pull_projection_week(week: int) -> tuple[str, list[dict[str, Any]], dict[str, list[dict[str, Any]]], int]:
         params = urlencode({"season_type": "regular", "order_by": "pts_half_ppr"})
         endpoint = f"https://api.sleeper.app/projections/nfl/{season}/{week}?{params}"
         rows = client.get_url(endpoint, optional=True) or []
-        filtered = sorted(
-            [
+        scored: list[dict[str, Any]] = []
+        for row in rows:
+            player_id = str(row.get("player_id") or "")
+            points = (row.get("stats") or {}).get("pts_half_ppr")
+            if not player_id or points is None:
+                continue
+            source = player_snapshot.get(player_id) or {}
+            scored.append(
                 {
-                    "player_id": str(row.get("player_id") or ""),
+                    "player_id": player_id,
                     "week": int(row.get("week") or week),
                     "date": row.get("date"),
                     "team": row.get("team"),
@@ -123,27 +138,64 @@ def pull_season(
                     "game_id": row.get("game_id"),
                     "company": row.get("company"),
                     "updated_at": row.get("updated_at") or row.get("last_modified"),
-                    "pts_half_ppr": (row.get("stats") or {}).get("pts_half_ppr"),
+                    "pts_half_ppr": points,
+                    "position": row.get("position") or source.get("position"),
                 }
-                for row in rows
-                if str(row.get("player_id") or "") in rostered_player_ids
+            )
+
+        rostered = sorted(
+            [
+                {key: value for key, value in row.items() if key != "position"}
+                for row in scored
+                if row["player_id"] in rostered_player_ids
             ],
             key=lambda row: row["player_id"],
         )
-        return str(week), filtered
+        available: dict[str, list[dict[str, Any]]] = {}
+        for position in sorted(REPLACEMENT_POSITIONS):
+            candidates = sorted(
+                [
+                    row
+                    for row in scored
+                    if row["player_id"] not in rostered_player_ids and row.get("position") == position
+                ],
+                key=lambda row: (-float(row["pts_half_ppr"]), row["player_id"]),
+            )[:REPLACEMENT_CANDIDATES_PER_POSITION]
+            available[position] = [
+                {
+                    "player_id": row["player_id"],
+                    "position": position,
+                    "pts_half_ppr": row["pts_half_ppr"],
+                }
+                for row in candidates
+            ]
+        return str(week), rostered, available, len(scored)
 
     projection_weeks: dict[str, list[dict[str, Any]]] = {}
+    replacement_weeks: dict[str, dict[str, list[dict[str, Any]]]] = {}
+    projection_pool_values = 0
     with ThreadPoolExecutor(max_workers=4) as executor:
-        for week_text, rows in executor.map(
+        for week_text, rows, available, scored_count in executor.map(
             pull_projection_week, range(1, regular_season_end_week + 1)
         ):
             projection_weeks[week_text] = rows
+            replacement_weeks[week_text] = available
+            projection_pool_values += scored_count
     projection_weeks = dict(sorted(projection_weeks.items(), key=lambda item: int(item[0])))
+    replacement_weeks = dict(sorted(replacement_weeks.items(), key=lambda item: int(item[0])))
     resources["projections"] = {
         "source": "Sleeper projections API",
         "scoring": "pts_half_ppr",
         "season_type": "regular",
         "weeks": projection_weeks,
+    }
+    resources["replacement_pool"] = {
+        "source": "Sleeper projections API",
+        "scoring": "pts_half_ppr",
+        "season_type": "regular",
+        "published_values": projection_pool_values,
+        "candidates_per_position": REPLACEMENT_CANDIDATES_PER_POSITION,
+        "weeks": replacement_weeks,
     }
 
     retrieved_at = datetime.now(timezone.utc).isoformat()
@@ -176,6 +228,12 @@ def pull_season(
                     }
                     else sum(len(rows) for rows in value.get("weeks", {}).values())
                     if name == "projections" and isinstance(value, dict)
+                    else sum(
+                        len(rows)
+                        for positions in value.get("weeks", {}).values()
+                        for rows in positions.values()
+                    )
+                    if name == "replacement_pool" and isinstance(value, dict)
                     else len(value)
                     if isinstance(value, list)
                     else 1
