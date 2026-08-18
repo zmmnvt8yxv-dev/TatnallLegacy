@@ -1,0 +1,31 @@
+#samuel-power-rankings {
+  scroll-margin-top: 6rem;
+}
+
+#samuel-power-rankings .archive-inline-link {
+  color: inherit;
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+#samuel-power-rankings .archive-inline-link:hover,
+#samuel-power-rankings .archive-inline-link:focus-visible {
+  text-decoration-style: solid;
+}
+
+#samuel-power-rankings .forecast-team-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+#samuel-power-rankings .transaction-tone svg {
+  width: 0.9em;
+  height: 0.9em;
+}
+
+#samuel-power-rankings blockquote {
+  line-height: 1.65;
+}
