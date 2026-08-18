@@ -3,6 +3,7 @@ import { ArrowUpRight, Medal, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Eyebrow } from "./ArchiveUI";
 import { TeamIdentity, TeamPageLink } from "./Season2026UI";
+import "./SamuelPowerRankings.css";
 import { useSeasonHub } from "../../data/v3/hooks";
 import { samuel2026PowerRankings, type SamuelRankingEntity } from "../../data/samuel2026PowerRankings";
 
