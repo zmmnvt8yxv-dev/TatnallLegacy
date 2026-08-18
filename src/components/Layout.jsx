@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Archive, BarChart3, CalendarDays, Database, Gavel, Menu, Search, ShieldCheck, Swords, Trophy, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle.jsx";
+import SamuelPowerRankings from "./v3/SamuelPowerRankings";
 import { features } from "../config/features";
 import { useV3Manifest, useV3Search } from "../data/v3/hooks";
 
@@ -42,6 +43,7 @@ export default function Layout({ children }) {
       .filter((item) => `${item.label} ${item.secondary}`.toLowerCase().includes(needle))
       .slice(0, 8);
   }, [search, searchData.data]);
+  const showSamuelRankings = location.pathname === "/" || location.pathname === "/2026";
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -110,7 +112,7 @@ export default function Layout({ children }) {
         ) : null}
       </AnimatePresence>
 
-      <main className="site-main"><div className="content-container">{children}</div></main>
+      <main className="site-main"><div className="content-container">{showSamuelRankings ? <SamuelPowerRankings /> : null}{children}</div></main>
       <footer className="archive-footer">
         <div><span className="archive-brand__mark">TL</span><p><strong>Tatnall Legacy</strong><small>The permanent record and current-season command center.</small></p></div>
         <nav>{currentNav.map((item) => <Link key={item.to} to={item.to}>{item.label}</Link>)}</nav>
